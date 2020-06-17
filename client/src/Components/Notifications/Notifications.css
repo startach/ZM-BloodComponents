@@ -1,0 +1,35 @@
+.notificationTitle {
+
+    margin-top: 8%;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+
+.notificationOptions {
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+}
+
+.notifications {
+    margin-top: 4%;
+
+}
+
+.comment {
+
+    font-style: italic;
+    margin-top: 50%;
+}
+
+.form-check-label {
+    margin-bottom: 3%;
+
+}
+
+.notifiedtext {
+
+    margin-bottom: 4%;
+}
