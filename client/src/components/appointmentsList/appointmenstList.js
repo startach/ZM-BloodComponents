@@ -15,7 +15,6 @@ const AppointmentList = () => {
             <li className="headerEntries" key="Location">Location </li>
 
 
-
         </ul>
     )
 }

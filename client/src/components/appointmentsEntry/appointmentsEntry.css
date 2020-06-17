@@ -1,19 +1,21 @@
-.headerRow {
 
+.rowContainer {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     list-style-type: none;
     border-radius: 15px;
+    background-color: #C3B7B1;
+    height: fit-content;
 
 }
 
-
-
-.headerEntries {
-
+.rowEntry {
     width: 25%;
+    color: #fafafa;
     font-family: 'Montserrat';
     font-size: 18px;
-
+    
 }
+
+
