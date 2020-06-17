@@ -1,0 +1,35 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 50px;
+    text-align: center;
+
+  }
+.loginbutt{
+  background-color: #DEB675;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  text-align: center;
+
+}
+
+label{
+    display:inline-block;
+}
+.registPart{
+    color:black
+
+}
+.loginPage{
+
+    width:411;
+    height:730;
+    text-align: center;
+    margin: 20px;
+
+
+}

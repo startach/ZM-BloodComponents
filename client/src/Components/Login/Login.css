@@ -1,0 +1,53 @@
+.form {
+    display: inline-block;
+    flex-direction: column;
+    position: relative;
+    left: 50px;
+    text-align: center;  width: 60%;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 0px;
+    opacity: 0.85;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  
+.loginbutt{
+  background-color: #DEB675;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  text-align: center;
+
+}
+
+label{
+    display:inline-block;
+}
+.registPart{
+    color:black
+
+}
+
+.login{
+  display: inline-block;
+  flex-direction: column;
+  position: relative;
+  left: 40px;
+  text-align: center;  width: 60%;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 0px;
+  opacity: 0.85;
+  font-size: 18px;
+  line-height: 20px;
+}
+.img{
+  display: inline-block;
+  flex-direction: column;
+  position: relative;
+  text-align: center;  width: 40%;
+  left: 40px;
+}
