@@ -14,7 +14,6 @@ const VerificationList = () => {
                 <h2 id = "forgetText" >Don't Forget to</h2>
 
        
-
             <ul className="bringList">
 
                 <li id="toBring">Bring your ID with you</li>
@@ -25,13 +24,9 @@ const VerificationList = () => {
 
             </ul>
 
-
-
-
                 <p id="footer">Have a nice day ,</p>
 
                 <Button text = "Dashboard"/>
-
 
 
 
