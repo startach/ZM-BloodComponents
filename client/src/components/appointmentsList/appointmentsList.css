@@ -1,0 +1,18 @@
+.headerRow {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    border-radius: 6px;
+
+}
+
+
+
+.headerEntries {
+
+
+    width: '33.3%'
+
+}
