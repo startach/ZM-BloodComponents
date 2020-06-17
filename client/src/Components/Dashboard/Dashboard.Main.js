@@ -26,13 +26,13 @@ const handleNoAppointment = () => {
       <button onClick={handleNoAppointment}>Dont have an appointment</button>
       <Fragment>
         {
-          (view == "NotEligibleView" ? (
+          (view === "NotEligibleView" ? (
             <NotEligible />
           ) : (
-            (view == "AppointmentView" ? (
+            (view === "AppointmentView" ? (
               <HaveAppointment />
             ) : (
-              (view == "NoAppointmentView" ? (
+              (view === "NoAppointmentView" ? (
                 <DontHaveAppointment />
               ) : (
                 <span>
