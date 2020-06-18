@@ -2,7 +2,6 @@
     display: inline-block;
     flex-direction: column;
     position: relative;
-    left: 50px;
     text-align: center;  width: 60%;
     padding: 12px;
     border-radius: 10px;
@@ -10,32 +9,19 @@
     opacity: 0.85;
     font-size: 18px;
     line-height: 20px;
+    
   }
   
-.loginbutt{
-  background-color: #DEB675;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-  border: none;
-  padding: 10px;
-  text-align: center;
 
-}
 
-label{
-    display:inline-block;
-}
 .registPart{
     color:black
 
 }
-
 .login{
   display: inline-block;
   flex-direction: column;
   position: relative;
-  left: 40px;
   text-align: center;  width: 60%;
   padding: 12px;
   border-radius: 10px;
@@ -44,10 +30,39 @@ label{
   font-size: 18px;
   line-height: 20px;
 }
+.loginbutt1{
+  background-color: #DEB675;
+ /* // background-color: #DEB675; */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  text-align: center;
+}
 .img{
   display: inline-block;
   flex-direction: column;
   position: relative;
   text-align: center;  width: 40%;
-  left: 40px;
 }
+.loginbutt{
+  background-color: #C71585;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  width:30ex;
+
+
+}
+.Regist-form{
+  float:initial; width:90px;
+  display: inline-block;
+  margin-right: 120px;
+
+  
+}
+.input{ float:center; width:100px;}

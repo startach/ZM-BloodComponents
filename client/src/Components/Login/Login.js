@@ -44,7 +44,8 @@ export class Login extends React.Component {
                 placeholder="Password"
                 name="password"
               ></input>
-              <br></br>
+               <br></br><br></br>
+
               <button type="submit" className="loginbutt" onClick={this.login}>
                 Login{" "}
               </button>
@@ -53,10 +54,7 @@ export class Login extends React.Component {
           <div class="registPart">
             <p>Not signed up as donor yet</p>
 
-            {/* <button type="submit"  onClick={this.login}>
-              Come Save Lives{" "}
-            </button> */}
-            <a  class="registPart" href="/Regist">Come Save Lives</a>
+           <button  class="loginbutt1" href="/Regist">Come Save Lives</button>
           </div>
           </div>
 
