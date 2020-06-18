@@ -1,0 +1,56 @@
+.introContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid;
+    margin-top: 10px;
+}
+
+#introHeader {
+    font-family: 'Montserrat';
+    font-size: 30px;
+}
+
+#forgetText {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Montserrat';
+}
+
+
+.bringList {
+
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid;
+    padding-bottom: 20px;
+    
+}
+
+#toBring {
+
+    font-family: 'Montserrat';
+    font-size: 30px;
+    margin-bottom: 5px;
+
+
+}
+
+
+#footer {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 30px;
+
+}
+
+
+#link {
+
+    text-decoration: none;
+    
+}

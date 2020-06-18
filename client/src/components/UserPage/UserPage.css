@@ -1,0 +1,92 @@
+.userPage {
+
+text-align: left;
+padding: 4%;
+}
+
+.title {
+    font-family: Montserrat, arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #000000;
+}
+
+.line1 {
+border: 1px solid #000000;
+}
+
+.line2 {
+    border: 1px solid #000000;
+}
+
+.topBox {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        margin-right: 2%;
+        font-size: 25px;
+
+
+ }
+
+ .topBox-right {
+    white-space: nowrap;
+
+ }
+
+ .bloodType {
+    font-weight: 800;
+    margin-right: 2%;
+
+ }
+
+ .userDetails {
+
+    width: 100%;;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+
+ }
+
+ .dataItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 18px;;
+ }
+
+ .icon, .data, .editBtn {
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+    transition: linear 0.1s;
+
+ }
+
+ .icon {
+
+    font-size: 36px;;
+ }
+
+
+
+ .editBtn {
+
+    background: #DEB675;
+    border-radius: 50px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 15%;
+    color: white;
+    justify-content: center;
+    transition: ease-out 0.3s;
+
+ }
+
