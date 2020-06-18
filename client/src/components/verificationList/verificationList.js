@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '../button'
 import './verificationList.css'
+import {Link} from 'react-router-dom'
+
 const VerificationList = () => {
     return (
         <div>
@@ -26,8 +28,10 @@ const VerificationList = () => {
 
                 <p id="footer">Have a nice day ,</p>
 
-                <Button text = "Dashboard"/>
 
+            <Link id ="link" to ="/dashboard">
+                <Button text = "Dashboard"/>
+                </Link>
 
 
         </div>

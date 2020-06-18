@@ -1,6 +1,7 @@
 import React from 'react'
 import './appointmentsEntry.css'
 import Button from '../button'
+import {Link} from 'react-router-dom'
 
 const AppointmentsEntry = () => {
 
@@ -32,7 +33,9 @@ const AppointmentsEntry = () => {
 
             </ul>
 
-            <Button text='Dashboard' />
+            <Link id = 'link' to ="/dashboard">
+                <Button text = "Dashboard"/>
+                </Link>
 
         </div>
     )
