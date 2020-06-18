@@ -3,6 +3,7 @@ import './Questionnaire.css'
 
 export default function Questionnaire() {
 
+    //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
         Q1: "select",
         Q2: "select",
@@ -23,8 +24,11 @@ export default function Questionnaire() {
         Q17: "select",
     })
 
+    //allow submit only when all questions have been submit TODO:
+    const [complete, setComplete] = useState(false)
 
 
+    //questionare questions and options, in english
     const questionList = [
         { "id": 1, "question": "Have you ever donated blood or Thrombocytes?", "options": ["Yes", "No"] },
         { "id": 2, "question": "Is your weight above 55kg?", "options": ["Yes", "No"] },
@@ -45,6 +49,7 @@ export default function Questionnaire() {
         { "id": 17, "question": "Reading and truth statement confirmation", "options": ["I confirm", "I do not confirm"] },
     ]
 
+    //saves result of drop down into state by Question/ID number
     const handleResults = (e, index) => {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })

@@ -4,6 +4,7 @@ import './Notifications.css'
 
 export default function Notifications() {
 
+    //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
         emergency: false,
         casual: false,

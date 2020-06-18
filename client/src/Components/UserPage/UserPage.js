@@ -4,42 +4,49 @@ import Notifications from '../Notifications/Notifications.js'
 
 export default function UserPage() {
 
+    //state for if data feild is currently editable or not
     const [editable, setEditable] = useState({
         emailData: false,
         phoneData: false,
         addressData: false,
     })
+
+    //set up refs for data field nodes (to link with the buttons below)
     const emailNode = useRef(null)
     const phoneNode = useRef(null)
     const addressNode = useRef(null)
 
-
+    //run when edit button is clicked
     const handleEdit = (e, dataType) => {
         console.log(editable.dataType)
+
+        //allows you to edit another feild, only if no other feilds are open
         if ((editable.emailData === true || editable.phoneData === true || editable.addressData === true) && editable[dataType] === false) return
 
+        //set data feild to editable
         setEditable({ ...editable, [dataType]: !editable[dataType] })
         console.log(editable, editable[dataType])
 
+        //alligns data field with correct data node based on edit button clicked
         let currentNode = ""
         dataType === "emailData" ? currentNode = emailNode : dataType === "phoneData" ? currentNode = phoneNode : currentNode = addressNode
 
         console.log(currentNode.current)
 
         if (e.target.textContent == "Save") {
+            //options for non-editable state
             e.target.textContent = "Edit"
             e.target.style.backgroundColor = "#DEB675"
             e.target.style.transform = "translateY(+2px) scale(1)";
-
             currentNode.current.style.backgroundColor = "white"
             currentNode.current.style.border = "none";
 
         }
         else {
+            //options for editable state
             e.target.textContent = "Save"
             e.target.style.backgroundColor = "crimson"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
-
             currentNode.current.style.border = "medium solid #DEB675";
         }
 
@@ -75,13 +82,8 @@ export default function UserPage() {
                     <div ref={addressNode} className="data" contentEditable={editable.addressData} suppressContentEditableWarning={true}>123 Main St, Haifa, Isreal</div>
                     <div className="editBtn" onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
-
-
                 <Notifications />
-
             </div>
-
-
 
 
         </div>
