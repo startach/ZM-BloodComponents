@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./dashboard.css"
 
 export default function DashboardNotEligible() {
   const [eligibleState, seteligibleState] = useState(false);

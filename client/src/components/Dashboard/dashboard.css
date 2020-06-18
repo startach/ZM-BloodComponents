@@ -1,6 +1,6 @@
-
 .dashboardMainContainer{
-    margin: auto ;
+    margin: auto;
+    height: 100vh;
 }
 
 .upcomingAppointment{
@@ -45,4 +45,6 @@ width: 30vw;
 
 .userEligibility{
     padding-top: 6%;
+    display: flex;
+    justify-content: center;
 }
