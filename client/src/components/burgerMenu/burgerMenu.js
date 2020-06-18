@@ -10,7 +10,7 @@ const BurgerMenu = () => {
           width: '50px',
           height: '30px',
           left: '12px',
-          top: '12px'
+          top: '12px',
         },
         bmBurgerBars: {
           background: '#373a47'
@@ -20,7 +20,8 @@ const BurgerMenu = () => {
         },
         bmCrossButton: {
           height: '24px',
-          width: '25px'
+          width: '25px',
+          
         },
         bmCross: {
           background: 'black'
