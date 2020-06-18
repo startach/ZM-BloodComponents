@@ -29,15 +29,18 @@ export default function UserPage() {
         if (e.target.textContent == "Save") {
             e.target.textContent = "Edit"
             e.target.style.backgroundColor = "#DEB675"
+            e.target.style.transform = "translateY(+2px) scale(1)";
+
             currentNode.current.style.backgroundColor = "white"
             currentNode.current.style.border = "none";
-            e.target.style.transform = "translateY(+2px) scale(1)";
+
         }
         else {
             e.target.textContent = "Save"
             e.target.style.backgroundColor = "crimson"
-            currentNode.current.style.border = "medium solid #DEB675";
             e.target.style.transform = "scale(1.11) translateY(-2px)";
+
+            currentNode.current.style.border = "medium solid #DEB675";
         }
 
     }
