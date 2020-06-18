@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid;
+    margin-top: 10px;
 }
 
 #introHeader {
@@ -14,6 +15,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Montserrat';
 }
 
 
