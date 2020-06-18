@@ -1,0 +1,80 @@
+.questionnairePage {
+
+    text-align: left;
+    padding: 4%;
+    }
+    
+    .title {
+        font-family: Montserrat, arial;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        color: #000000;
+    }
+    
+    .line1 {
+    border: 1px solid #000000;
+    }
+
+    .questions {
+
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6%;
+        margin-left: 8%;
+        margin-right: 8%;
+       
+    }
+
+
+    .left {
+
+        width: 65%;
+
+    }
+    .right {
+        width: 35%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+
+
+    }
+
+    
+
+    .dropdown {
+
+        width: 65%;
+        background-color: #C3B7B1;
+        border-radius: 4px;
+        font-size: 14px;
+
+
+    }
+
+    .submit {
+
+        display: flex;
+        justify-content: center;
+        margin-top: 4%;
+ 
+    }
+
+    .submitBtn {
+   
+
+        display: flex;
+        background: #DEB675;
+        border-radius: 50px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        width: 8em;
+        height: 3em;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        transition: ease-out 0.3s;
+    
+    }
