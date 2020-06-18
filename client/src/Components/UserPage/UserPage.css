@@ -66,6 +66,8 @@ border: 1px solid #000000;
  .icon, .data, .editBtn {
     display: flex;
     flex-direction: row;
+    padding: 1%;
+    transition: linear 0.1s;
 
  }
 
@@ -74,6 +76,8 @@ border: 1px solid #000000;
     font-size: 36px;;
  }
 
+
+
  .editBtn {
 
     background: #DEB675;
@@ -81,6 +85,8 @@ border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 15%;
     color: white;
+    justify-content: center;
+    transition: ease-out 0.3s;
 
  }
 

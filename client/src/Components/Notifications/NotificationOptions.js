@@ -3,7 +3,7 @@ import './Notifications.css'
 
 export default function NotificationOptions() {
     return (
-        <div >
+        <div className="options">
             <span className="comment">please select all methods you are happy to be contacted by:</span>
             <div className="notificationOptions">
 
