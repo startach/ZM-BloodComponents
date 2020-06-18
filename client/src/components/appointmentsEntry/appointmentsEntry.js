@@ -13,23 +13,22 @@ const AppointmentsEntry = () => {
                 <li id="time" className="rowEntry">10:00</li>
 
                 <li id="Location" className="rowEntry">Haifa</li>
-                </ul>
+            </ul>
 
-                <ul className="rowContainer">
+            <ul className="rowContainer">
                 <li id="date" className="rowEntry">16/6/2020</li>
 
                 <li id="time" className="rowEntry">9:00</li>
 
                 <li id="Location" className="rowEntry">Tel Aviv</li>
-                </ul>
-                <ul className="rowContainer">
+            </ul>
+
+            <ul className="rowContainer">
                 <li id="date" className="rowEntry">15/6/2020</li>
 
                 <li id="time" className="rowEntry">8:00</li>
 
                 <li id="Location" className="rowEntry">Jerusalem</li>
-
-
 
             </ul>
 

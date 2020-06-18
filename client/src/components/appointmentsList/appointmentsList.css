@@ -5,6 +5,7 @@
     align-items: center;
     list-style-type: none;
     border-radius: 15px;
+    margin-top: 20px;
 
 }
 
@@ -12,7 +13,7 @@
 
 .headerEntries {
 
-    width: 25%;
+    width: 33.3%;
     font-family: 'Montserrat';
     font-size: 18px;
 
