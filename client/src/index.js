@@ -22,11 +22,6 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 const functions = firebase.functions();
 
-db.collection('users').add({
-
-  fullname : 'AMIR'
-})
-
 
 ReactDOM.render(
   <React.StrictMode>
