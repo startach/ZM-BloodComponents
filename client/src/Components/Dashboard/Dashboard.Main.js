@@ -20,7 +20,7 @@ const handleNoAppointment = () => {
 }
 
   return (
-    <div>
+    <div className='dashboardMainContainer'>
       <button onClick={handleNotEligible}>Not Eligible view</button>
       <button onClick={handleHaveAppointment}>Have an appointment</button>
       <button onClick={handleNoAppointment}>Dont have an appointment</button>
