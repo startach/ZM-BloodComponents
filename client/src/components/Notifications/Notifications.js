@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NotificationOptions from '../Notifications/NotificationOptions'
+import NotificationOptions from './NotificationOptions'
 import './Notifications.css'
 
 export default function Notifications() {
