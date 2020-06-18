@@ -57,6 +57,19 @@ export default function Questionnaire() {
 
     }
 
+    const handleSubmit = () => {
+
+        if (complete) {
+
+            //submit results and go to next page
+
+        } else {
+            alert("you need to answer all questions before you can submit the questionnare")
+        }
+
+
+    }
+
 
     return (
         <div className="questionnairePage">
@@ -85,7 +98,7 @@ export default function Questionnaire() {
 
             )}
             <div className="submit">
-                <div className="submitBtn" onClick={handleResults}>Submit</div>
+                <div className="submitBtn" onClick={handleSubmit}>Submit</div>
             </div>
 
 

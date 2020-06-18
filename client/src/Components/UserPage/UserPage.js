@@ -4,18 +4,19 @@ import Notifications from '../Notifications/Notifications.js'
 
 export default function UserPage() {
 
-    //state for if data feild is currently editable or not
-    const [editable, setEditable] = useState({
-        emailData: false,
-        phoneData: false,
-        addressData: false,
-    })
-
     //state for user
     const [userDetails, setUserDetails] = useState({
         email: "dvir@gmail.com",
         phone: "972-53-01243567",
         address: "123 Main St, Haifa, Isreal"
+    })
+
+
+    //state for if data feild is currently editable or not
+    const [editable, setEditable] = useState({
+        emailData: false,
+        phoneData: false,
+        addressData: false,
     })
 
 
