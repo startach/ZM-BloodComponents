@@ -1,12 +1,14 @@
 
 .rowContainer {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     list-style-type: none;
     border-radius: 15px;
     background-color: #C3B7B1;
     height: fit-content;
+    width: 95%;
+    margin-left: 10px;
 
 }
 

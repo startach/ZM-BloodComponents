@@ -1,11 +1,13 @@
 .headerRow {
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     list-style-type: none;
     border-radius: 15px;
     margin-top: 20px;
+    width: 95%;
+    margin-left: 10px;
 
 }
 

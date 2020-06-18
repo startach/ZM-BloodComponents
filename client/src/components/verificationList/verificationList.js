@@ -11,7 +11,7 @@ const VerificationList = () => {
 
             </div>
 
-                <h2 id = "forgetText" >Don't Forget to</h2>
+                <h2 id = "forgetText" ><b>Don't Forget to</b></h2>
 
        
             <ul className="bringList">
