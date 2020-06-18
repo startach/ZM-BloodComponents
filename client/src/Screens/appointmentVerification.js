@@ -6,7 +6,7 @@ import MenuHeader from '../components/MenuHeader'
 const AppointmentVerification = () => {
     return (
         <ScreenContainer>
-            <MenuHeader icon = "burger" title = "Appiontment Verification"/>
+            <MenuHeader icon = "burger" title = "Appointment Verification"/>
             <VerificationList/>
         </ScreenContainer>
     )
