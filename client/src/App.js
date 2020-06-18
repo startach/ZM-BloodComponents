@@ -7,7 +7,7 @@ import Questionnaire from './Components/Questionnaire/Questionnaire'
 function App() {
   return (
     <div className="App">
-
+      <UserPage />
       <Questionnaire />
     </div>
   );

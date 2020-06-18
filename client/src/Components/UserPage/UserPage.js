@@ -11,6 +11,14 @@ export default function UserPage() {
         addressData: false,
     })
 
+    //state for user
+    const [userDetails, setUserDetails] = useState({
+        email: "dvir@gmail.com",
+        phone: "972-53-01243567",
+        address: "123 Main St, Haifa, Isreal"
+    })
+
+
     //set up refs for data field nodes (to link with the buttons below)
     const emailNode = useRef(null)
     const phoneNode = useRef(null)
@@ -18,20 +26,21 @@ export default function UserPage() {
 
     //run when edit button is clicked
     const handleEdit = (e, dataType) => {
-        console.log(editable.dataType)
+
+        console.log("user details", userDetails)
 
         //allows you to edit another feild, only if no other feilds are open
         if ((editable.emailData === true || editable.phoneData === true || editable.addressData === true) && editable[dataType] === false) return
 
         //set data feild to editable
         setEditable({ ...editable, [dataType]: !editable[dataType] })
-        console.log(editable, editable[dataType])
+        console.log("editable content", editable, editable[dataType])
 
         //alligns data field with correct data node based on edit button clicked
         let currentNode = ""
         dataType === "emailData" ? currentNode = emailNode : dataType === "phoneData" ? currentNode = phoneNode : currentNode = addressNode
 
-        console.log(currentNode.current)
+        console.log("refed node", currentNode.current)
 
         if (e.target.textContent == "Save") {
             //options for non-editable state
@@ -40,6 +49,13 @@ export default function UserPage() {
             e.target.style.transform = "translateY(+2px) scale(1)";
             currentNode.current.style.backgroundColor = "white"
             currentNode.current.style.border = "none";
+
+            //save new data to state on click of save
+            let currentData = ""
+            dataType === "emailData" ? currentData = "email" : dataType === "phoneData" ? currentData = "phone" : currentData = "address"
+            setUserDetails({ ...userDetails, [currentData]: currentNode.current.textContent })
+
+            //send to database TODO:
 
         }
         else {
@@ -69,17 +85,23 @@ export default function UserPage() {
             <div className="userDetails" >
                 <div className="dataItem">
                     <div className="icon"><i className="far fa-envelope"></i></div>
-                    <div ref={emailNode} className="data" contentEditable={editable.emailData} suppressContentEditableWarning={true}>dvir@gmail.com</div>
+                    <div ref={emailNode} className="data" contentEditable={editable.emailData} suppressContentEditableWarning={true}>
+                        {userDetails.email}
+                    </div>
                     <div className="editBtn" onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-phone"></i></div>
-                    <div ref={phoneNode} className="data" contentEditable={editable.phoneData} suppressContentEditableWarning={true}>972-53-01243567</div>
+                    <div ref={phoneNode} className="data" contentEditable={editable.phoneData} suppressContentEditableWarning={true}>
+                        {userDetails.phone}
+                    </div>
                     <div className="editBtn" onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-home"></i></div>
-                    <div ref={addressNode} className="data" contentEditable={editable.addressData} suppressContentEditableWarning={true}>123 Main St, Haifa, Isreal</div>
+                    <div ref={addressNode} className="data" contentEditable={editable.addressData} suppressContentEditableWarning={true}>
+                        {userDetails.address}
+                    </div>
                     <div className="editBtn" onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
                 <Notifications />
