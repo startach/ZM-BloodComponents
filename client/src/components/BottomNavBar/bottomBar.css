@@ -21,8 +21,9 @@
 }
 
 .iconClicked:focus{
-  border: #c3b7b1 solid 2px;
-  border-radius: 45%;
+  border: solid 0.5px #c3b7b1;
+  box-shadow: 3px 3px 5px #c3b7b1;
+  border-radius: 35%;
   
   position: relative;
   
