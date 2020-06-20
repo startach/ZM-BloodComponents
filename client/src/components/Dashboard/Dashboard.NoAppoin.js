@@ -4,12 +4,12 @@ import "../appointmentsEntry/appointmentsEntry.css";
 
 function DashboardNoAppoin() {
   return (
-    <div className="noAppointmentViewContainer">
-      <span className="userEligibility">
+    <div className="dashboardView noAppointmentViewContainer">
+      <div className="userEligibility">
         you are <b style={{ color: "green" }}> eligible </b> to donate.
         <br></br>
         Please, schedule a new appointment:
-      </span>
+      </div>
 
 
       <p className="hospitalsOptionsContainer">

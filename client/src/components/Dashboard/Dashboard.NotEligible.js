@@ -6,7 +6,7 @@ export default function DashboardNotEligible() {
   const [eligibleState, seteligibleState] = useState(false);
 
   return (
-    <div>
+    <div className="dashboardView userEligibility">
       You are
       {eligibleState === false ? (
         <div>

@@ -1,10 +1,6 @@
 .dashboardMainContainer{
     margin: auto;
-    /* height: 100vh; */
-}
-
-.upcomingAppointment{
-    padding: 8% 0 8% 0;
+    
 }
 
 .directionsButton{
@@ -27,7 +23,7 @@ width: 34vw;
 .scheduleButton{
 background-color: #C71585;
 color: white;
-height: 4vh;
+/* height: 4vh; */
 border-radius: 5px;
 width: fit-content;
 }
@@ -38,7 +34,7 @@ width: fit-content;
 }
 
 .userEligibility{
-    padding-top: 6%;
+    padding: 8% 0 8% 0;
 }
 
 .rowClass{
@@ -63,4 +59,9 @@ width: fit-content;
     width: 100%;
     margin-bottom: 1rem;
     color: #212529;
+  }
+
+  .dashboardView{
+      margin: auto;
+      text-align: center;
   }

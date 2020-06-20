@@ -10,7 +10,7 @@ export default function DashboardAppoin() {
   const [appointmentDetails, setappointmentDetails] = useState(['Date', 'Time', 'Location']);
   
   return (
-    <div>
+    <div className='dashboardView'>
       <div className='userEligibility'>
       you are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
