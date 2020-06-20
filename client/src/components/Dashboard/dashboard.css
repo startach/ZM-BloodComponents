@@ -65,3 +65,9 @@ width: fit-content;
       margin: auto;
       text-align: center;
   }
+  
+  .headerRow{
+      border: 2px solid #c3b7b1;
+      /* border-bottom: 2px solid #c3b7b1; */
+      margin-bottom: 0.5rem;
+  }
