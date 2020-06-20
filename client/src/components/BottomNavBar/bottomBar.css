@@ -1,14 +1,51 @@
 .bottomBarContainer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  display: inline-flex;
-  flex-direction: row;
-  width: 30%;
-  list-style: none;
+  display: table;
+  width: 100vw;
+  justify-items: center;
   justify-content: space-around;
-}
+  margin: auto;
+  }
 
 .iconContainer{
-  display: flex;
-  flex-flow: column;
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  /* margin: 0 auto; */
+  transition: all 0.4s ease-in;
 }
+
+.iconContainer:focus{
+  outline: none;
+}
+
+.iconClicked:focus{
+  border: #c3b7b1 solid 2px;
+  border-radius: 45%;
+  /* display: fixed; */
+  position: relative;
+  /* transform: scale(0.001, 0.001); */
+  animation: bottomBarEffect 0.8s ease-in;
+  outline: none;
+}
+
+@keyframes bottomBarEffect{
+  50%{
+    transform: scale(0.9, 0.9);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(100%,100%);
+    opacity: 0.1;
+  }
+}
+
+
+
+.donateIcon{
+  padding: 0 21vw 0 21vw;
+}
+
+

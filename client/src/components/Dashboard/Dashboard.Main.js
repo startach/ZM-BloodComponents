@@ -3,6 +3,7 @@ import NotEligible from "./Dashboard.NotEligible";
 import HaveAppointment from "./Dashboard.Appoin";
 import DontHaveAppointment from "./Dashboard.NoAppoin";
 import "./dashboard.css"
+import "../appointmentsEntry/appointmentsEntry.css"
 
 
 export default function Dashboard() {

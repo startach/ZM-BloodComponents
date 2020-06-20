@@ -1,23 +1,18 @@
-
 .rowContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    border-radius: 15px;
-    background-color: #C3B7B1;
-    height: fit-content;
-    width: 95%;
-    margin-left: 10px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  border-radius: 15px;
+  background-color: #c3b7b1;
+  height: fit-content;
+  width: 95%;
+  margin-left: 10px;
 }
 
 .rowEntry {
-    width: 33.3%;
-    color: #fafafa;
-    font-family: 'Montserrat';
-    font-size: 18px;
-    
+  width: 33.3%;
+  color: #fafafa;
+  font-family: "Montserrat";
+  font-size: 18px;
 }
-
-

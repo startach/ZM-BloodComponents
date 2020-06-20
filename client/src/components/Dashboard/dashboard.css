@@ -1,6 +1,6 @@
 .dashboardMainContainer{
     margin: auto;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .upcomingAppointment{
@@ -29,8 +29,9 @@ background-color: #C71585;
 color: white;
 height: 4vh;
 border-radius: 5px;
-width: 30vw;
+width: fit-content;
 }
+
 
 .table{
     justify-content: space-between;
@@ -45,6 +46,16 @@ width: 30vw;
 
 .userEligibility{
     padding-top: 6%;
-    display: flex;
-    justify-content: center;
+    
 }
+
+.headerRow{
+    height: fit-content;
+}
+
+.rowClass{
+    color: #fafafa;
+    font-family: "Montserrat";
+    font-size: 18px;
+    padding-top: 3px; 
+} 

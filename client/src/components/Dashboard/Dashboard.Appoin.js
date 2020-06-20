@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./dashboard.css"
+import "../appointmentsEntry/appointmentsEntry.css"
 
 export default function DashboardAppoin() {
   const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
@@ -11,23 +12,23 @@ export default function DashboardAppoin() {
   return (
     <div>
       <div className='userEligibility'>
-      you are <b style={{ color: "green" }}>eligible</b> to donate.
+      you are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
       Here is few details regarding your upcoming appointment:
       </div>
       <table className='table upcomingAppointment'>
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
+          <tr className='headerRow'>
+            <th className='headerEntries'>Date</th>
+            <th className='headerEntries'>Time</th>
+            <th className='headerEntries'>Location</th>
           </tr>
         </thead>
         <tbody> 
-            <tr>
-          <td>{appointmentDate}</td>
-          <td>{appointmentTime}</td>
-          <td>{appointmentLocation}</td>
+            <tr className='rowContainer'>
+          <td className='rowClass'>{appointmentDate}</td>
+          <td className='rowClass'>{appointmentTime}</td>
+          <td className='rowClass'>{appointmentLocation}</td>
           </tr>
         </tbody>
       </table>
