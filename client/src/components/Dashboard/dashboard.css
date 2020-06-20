@@ -32,13 +32,6 @@ border-radius: 5px;
 width: fit-content;
 }
 
-
-.table{
-    justify-content: space-between;
-    width: 95%;
-    margin: auto;
-}
-
 .hospitalsOptionsContainer{
     margin: auto;
     padding: 8% 0 8% 0;
@@ -46,16 +39,28 @@ width: fit-content;
 
 .userEligibility{
     padding-top: 6%;
-    
-}
-
-.headerRow{
-    height: fit-content;
 }
 
 .rowClass{
     color: #fafafa;
     font-family: "Montserrat";
     font-size: 18px;
-    padding-top: 3px; 
+    padding-top: 30px;
+    text-align: start;
 } 
+
+.schedulesTables th,
+.schedulesTables td {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.schedulesTables thead th {
+  vertical-align: bottom;
+}
+
+.schedulesTables {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }

@@ -25,7 +25,7 @@ function DashboardNoAppoin() {
       </p>
       {/* table area::::: */}
 
-      <table className="table noAppointmentTable">
+      <table className="schedulesTables noAppointmentTable">
         <thead>
           <tr className="headerRow">
             <th className="headerEntries">Date</th>
@@ -37,25 +37,19 @@ function DashboardNoAppoin() {
           <tr className='rowContainer'>
             <td className='rowClass' >01/08/2020</td>
             <td className='rowClass'>12:30</td>
-            <td className='rowClass'>
-              {" "}
-              <button className="scheduleButton">Register</button>
+            <td className='rowClass'><button className="scheduleButton">Register</button>
             </td>
           </tr>
           <tr className='rowContainer'>
             <td className="rowClass">31/06/2020</td>
             <td className="rowClass">14:30</td>
-            <td className="rowClass">
-              {" "}
-              <button className="scheduleButton">Register</button>
+            <td className="rowClass"><button className="scheduleButton">Register</button>
             </td>
           </tr>
           <tr className='rowContainer'>
             <td className="rowClass scheduleTableRow">08/07/2020</td>
             <td className="rowClass">09:00</td>
-            <td className="rowClass">
-              {" "}
-              <button className="scheduleButton">Register</button>
+            <td className="rowClass"><button className="scheduleButton">Register</button>
             </td>
           </tr>
         </tbody>

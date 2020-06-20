@@ -1,13 +1,14 @@
 .rowContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  align-content: center;
   list-style-type: none;
   border-radius: 15px;
   background-color: #c3b7b1;
-  height: fit-content;
+  height: 6vh;
   width: 95%;
-  margin-left: 10px;
+  margin: 4.5px auto auto 10px;
+  box-shadow: black 1px 1px 2.5px;
 }
 
 .rowEntry {

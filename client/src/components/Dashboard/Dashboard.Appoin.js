@@ -16,7 +16,7 @@ export default function DashboardAppoin() {
       <br></br>
       Here is few details regarding your upcoming appointment:
       </div>
-      <table className='table upcomingAppointment'>
+      <table className='schedulesTables upcomingAppointment'>
         <thead>
           <tr className='headerRow'>
             <th className='headerEntries'>Date</th>
