@@ -11,7 +11,7 @@ const BurgerMenu = () => {
           width: '50px',
           height: '30px',
           left: '12px',
-          top: '12px'
+          top: '12px',
         },
         bmBurgerBars: {
           background: '#373a47'
@@ -21,14 +21,15 @@ const BurgerMenu = () => {
         },
         bmCrossButton: {
           height: '24px',
-          width: '25px'
+          width: '25px',
+          
         },
         bmCross: {
           background: 'black'
         },
         bmMenuWrap: {
           position: 'fixed',
-          height: '350px',
+          height: '400px',
           transition:'all 1s ease'
         },
         bmMenu: {
@@ -41,11 +42,15 @@ const BurgerMenu = () => {
         },
         bmItemList: {
           color: '#b8b7ad',
-          padding: '.5em'
+          padding: '.5em',
         },
         bmItem: {
           color: '#E4FDFF',
-          padding: '.8em'
+          padding: '.8em',
+          fontFamily: 'Montserrat',
+          outline : 'none',
+          textDecoration: 'none',
+
         },
         
         bmOverlay: {
@@ -61,11 +66,11 @@ const BurgerMenu = () => {
             <Link to='/profile' className="link">
                 Profile
             </Link>
-            <Link to='/settings' className="link">
-                Settings
+            <Link to='/Emergency' className="link">
+            Emergency Donation
             </Link>
-            <Link to='/about' className="link">
-                About
+            <Link to='/prevapp' className="link">
+            Previous  Appointments
             </Link>
             <Link to='/logout' className="link">
                 Logout

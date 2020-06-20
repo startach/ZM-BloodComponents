@@ -29,7 +29,9 @@ let styles = {
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
-        marginBottom: '-10px'
+        marginBottom: '-10px',
+        fontFamily: 'Montserrat',
+  
     },
 };
 

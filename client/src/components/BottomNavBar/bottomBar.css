@@ -1,0 +1,14 @@
+.bottomBarContainer {
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+  flex-direction: row;
+  width: 30%;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.iconContainer{
+  display: flex;
+  flex-flow: column;
+}

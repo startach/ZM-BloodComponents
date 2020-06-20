@@ -11,24 +11,23 @@
     display: inline-block;
     vertical-align: middle;
     transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     border-radius: 50px ;
     height: 48px ;
     width : 170px;
     background-color: #DEB675;
     border:  none;
     color : #fafafa;
-    text-decoration : center;
     box-shadow: 5px 10px 18px #888888;
     font-family: 'Montserrat';
     font-size: 18px;
-
+    outline : none;
 }
+
 
 
 #btn:hover , #btn:focus , #btn:active {
 
     transform: scale(1.1);
-
+    
     
 }
