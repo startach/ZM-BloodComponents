@@ -1,7 +1,6 @@
 import * as firebase from 'firebase'
 
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyC6EDL8gMkZc3GGzGveMqWe5zvAr5DNiL4",
     authDomain: "blood-components.firebaseapp.com",

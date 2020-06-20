@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./registerForm.css"
 import Button from '../button'
 import { useHistory } from 'react-router-dom'
-import {db,auth} from '../firebase/firebase'
+import { db, auth } from '../firebase/firebase'
 
 
 const RegisterForm = () => {
@@ -27,17 +27,24 @@ const RegisterForm = () => {
 
     //Insert user into firestore
 
-    auth.createUserWithEmailAndPassword(userInputs.email,userInputs.password);
+    auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password).then(cred => {
 
-    db.collection('users').add({
+      return db.collection('users').doc(cred.user.uid).set(
 
-      userInputs
+        userInputs
+
+      )
+
+    }).then(() => {
+
+      history.push('/dashboard')
 
     })
 
+
+
     //Redirect to Dashboard after registration
 
-    history.push('/dashboard')
 
     e.preventDefault()
 
@@ -140,7 +147,7 @@ const RegisterForm = () => {
         <div className="bloodTypesContainer">
           <label> Blood Type
           <select id="bloodType" onChange={handleChange}>
-          <option value="N/A" selected disabled>N/A</option>
+              <option value="N/A" selected disabled>N/A</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
               <option value="B+">B+</option>
@@ -154,7 +161,7 @@ const RegisterForm = () => {
         </div>
 
 
-        <Button type="submit" text="Signup" color='#C71585' marginTop = '14px'></Button>
+        <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
 
       </form>
 
