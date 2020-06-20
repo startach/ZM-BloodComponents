@@ -47,10 +47,12 @@ const Menu_header = (props) => {
             </span>
 
             <div className="col-xs-2 vcenter pa2">
-                <h3>Z!M</h3>
-                {/* <img 
+                {/* 
+                Profile picture 
+                <img 
                 style={{width:'60px'}}
-                src={headerImageUrl}></img> */}
+                src={headerImageUrl}></img> 
+                */}
             </div>
             
         </div>

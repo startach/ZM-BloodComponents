@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import './burgerMenu.css'
+import {Dropdown} from 'react-bootstrap';
 
 const BurgerMenu = () => {
     var styles = {
@@ -54,9 +55,8 @@ const BurgerMenu = () => {
     return (
         <div>
         <Menu styles={styles} className="tc shadow-5">
-            <Link to='/dashboard' className="link">
+            <Link to='/dashboard' className="menu-item">
                 Dashboard
-            {/* <a id="dashboard" className="menu-item">Dashboard</a> */}
             </Link>
             <Link to='/profile' className="link">
                 Profile
@@ -71,6 +71,22 @@ const BurgerMenu = () => {
                 Logout
             </Link>
         </Menu>  
+       
+        {/* <Dropdown id="dropdown-menu">
+            <Dropdown.Toggle 
+            variant="success" 
+            id="dropdown-basic">
+                Dropdown
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="super-colors">
+                <Dropdown.Item href="#">Action</Dropdown.Item>
+                <Dropdown.Item href="#">Another action</Dropdown.Item>
+                <Dropdown.Item href="#">Something</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item href="#">Separated link</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown> */}
+       
         </div>
     )
 }
