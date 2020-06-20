@@ -139,7 +139,7 @@ const RegisterForm = () => {
 
         <div className="bloodTypesContainer">
           <label> Blood Type
-          <select id="bloodList" onChange={handleChange}>
+          <select id="bloodType" onChange={handleChange}>
           <option value="N/A" selected disabled>N/A</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
