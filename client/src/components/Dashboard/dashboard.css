@@ -1,10 +1,6 @@
-
 .dashboardMainContainer{
-    margin: auto ;
-}
-
-.upcomingAppointment{
-    padding: 8% 0 8% 0;
+    margin: auto;
+    
 }
 
 .directionsButton{
@@ -27,15 +23,9 @@ width: 34vw;
 .scheduleButton{
 background-color: #C71585;
 color: white;
-height: 4vh;
+/* height: 4vh; */
 border-radius: 5px;
-width: 30vw;
-}
-
-.table{
-    justify-content: space-between;
-    width: 95%;
-    margin: auto;
+width: fit-content;
 }
 
 .hospitalsOptionsContainer{
@@ -44,5 +34,40 @@ width: 30vw;
 }
 
 .userEligibility{
-    padding-top: 6%;
+    padding: 8% 0 8% 0;
 }
+
+.rowClass{
+    color: #fafafa;
+    font-family: "Montserrat";
+    font-size: 18px;
+    padding-top: 30px;
+    text-align: start;
+} 
+
+.schedulesTables th,
+.schedulesTables td {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.schedulesTables thead th {
+  vertical-align: bottom;
+}
+
+.schedulesTables {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+
+  .dashboardView{
+      margin: auto;
+      text-align: center;
+  }
+  
+  .headerRow{
+      border: 2px solid #c3b7b1;
+      /* border-bottom: 2px solid #c3b7b1; */
+      margin-bottom: 0.5rem;
+  }

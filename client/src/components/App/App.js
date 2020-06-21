@@ -5,6 +5,7 @@ import AppointmentVerification from '../../Screens/appointmentVerification'
 import './App.css';
 import Dashboard from '../../Screens/dashboard';
 import NotFound from '../NotFound'
+import BottomNavBar from '../BottomNavBar/BottomBar'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Redirect from='/' exact to="/dashboard" />
         <Redirect to='/not-found' />
       </Switch>
+      <BottomNavBar />
     </Router>
 
   );
