@@ -8,6 +8,8 @@ import NotFound from '../NotFound'
 import Login from '../../Screens/login'
 import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
+import BottomNavBar from '../BottomNavBar/BottomBar'
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Redirect from='/' exact to="/dashboard" />
         <Redirect to='/not-found' />
       </Switch>
+      <BottomNavBar />
     </Router>
 
   );

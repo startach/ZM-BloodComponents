@@ -1,15 +1,16 @@
 import React from "react";
+import "./dashboard.css";
+import "../appointmentsEntry/appointmentsEntry.css";
 
 function DashboardNoAppoin() {
   return (
-    <div>
-      <span className="userEligibility">
-        you are <b style={{ color: "green" }}>eligible</b> to donate.
+    <div className="dashboardView noAppointmentViewContainer">
+      <div className="userEligibility">
+        you are <b style={{ color: "green" }}> eligible </b> to donate.
         <br></br>
         Please, schedule a new appointment:
-      </span>
+      </div>
 
-      <br></br>
 
       <p className="hospitalsOptionsContainer">
         Nearest hospital is{" "}
@@ -24,37 +25,31 @@ function DashboardNoAppoin() {
       </p>
       {/* table area::::: */}
 
-      <table className="table noAppointmentTable">
+      <table className="schedulesTables noAppointmentTable">
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Schedule</th>
+          <tr className="headerRow">
+            <th className="headerEntries">Date</th>
+            <th className="headerEntries">Time</th>
+            <th className="headerEntries">Schedule</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>01/08/2020</td>
-            <td>12:30</td>
-            <td>
-              {" "}
-              <button className="scheduleButton">Register</button>
+          <tr className='rowContainer'>
+            <td className='rowClass' >01/08/2020</td>
+            <td className='rowClass'>12:30</td>
+            <td className='rowClass'><button className="scheduleButton">Register</button>
             </td>
           </tr>
-          <tr>
-            <td>31/06/2020</td>
-            <td>14:30</td>
-            <td>
-              {" "}
-              <button className="scheduleButton">Register</button>
+          <tr className='rowContainer'>
+            <td className="rowClass">31/06/2020</td>
+            <td className="rowClass">14:30</td>
+            <td className="rowClass"><button className="scheduleButton">Register</button>
             </td>
           </tr>
-          <tr>
-            <td>08/07/2020</td>
-            <td>09:00</td>
-            <td>
-              {" "}
-              <button className="scheduleButton">Register</button>
+          <tr className='rowContainer'>
+            <td className="rowClass scheduleTableRow">08/07/2020</td>
+            <td className="rowClass">09:00</td>
+            <td className="rowClass"><button className="scheduleButton">Register</button>
             </td>
           </tr>
         </tbody>
