@@ -7,7 +7,7 @@ const BurgerMenu = () => {
 
 
   //set this depending on auth status (global variable)
-  const coordinator = false;
+  const coordinator = true;
 
 
   var styles = {

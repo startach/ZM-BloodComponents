@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './AddAppointments.css'
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,6 +12,8 @@ export default function AddAppointments() {
     const [appDate, setAppDate] = useState(new Date())
 
     const hosIDs = { "Rambam": 1, "Tal Hashomer": 2 }
+
+    const display = useRef()
 
     const [currentApp, setCurrentApp] = useState({
         userID: null,
@@ -61,6 +63,9 @@ export default function AddAppointments() {
             }
             //reset list
             setAppList([])
+            //FIXME: fixed messgae when successfully uploaded
+            // display.textContent = "Appointments Successfully Uploaded"
+
         })
     }
 
@@ -90,7 +95,7 @@ export default function AddAppointments() {
 
             <div className="display my-5 mx-3">
                 {appList.length === 0 ?
-                    <div className="text-center">Currently No Appointments to Submit</div>
+                    <div ref={display} className="text-center">Currently No Appointments to Submit</div>
                     :
                     <div>
                         <div className="row heading">
