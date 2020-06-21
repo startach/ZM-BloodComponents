@@ -51,7 +51,7 @@ const RegisterForm = () => {
     <div>
 
       <div className="imgContainer">
-        <img src={logo} id="logo" />
+        <img src={logo} id="register-logo" />
       </div>
 
       <div className="registerHeader">

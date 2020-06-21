@@ -1,5 +1,6 @@
 .screenContainer {
     height: 100vh;
     background-color : #fafafa;
-    width: 100%
+    width: 100vw;
 }
+
