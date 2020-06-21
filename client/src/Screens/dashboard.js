@@ -11,8 +11,7 @@ const Dashboard = () => {
     return (
      
             <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
-            <DashboardMain>
-            </DashboardMain>
+            <DashboardMain> </DashboardMain>
     )
 }
 

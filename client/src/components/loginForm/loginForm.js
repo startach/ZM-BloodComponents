@@ -39,8 +39,6 @@ const LoginForm = () => {
     })
 
 
-
-
     e.preventDefault()
 
   }
@@ -50,7 +48,7 @@ const LoginForm = () => {
   return (
     <div className="loginPage">
       <div className="imgContainer">
-        <img src={logo} id="logo" />
+        <img src={logo} id="login-logo" />
       </div>
       <div className="loginHeader">
         <b id="header1"> Blood Components</b>

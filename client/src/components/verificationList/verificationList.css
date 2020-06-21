@@ -1,12 +1,10 @@
-.introContainer {
+
+
+#introHeader {
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid;
-    margin-top: 10px;
-}
-
-#introHeader {
     font-family: 'Montserrat';
     font-size: 30px;
 }
@@ -24,7 +22,7 @@
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid;
-    padding-bottom: 20px;
+
     
 }
 
@@ -32,9 +30,6 @@
 
     font-family: 'Montserrat';
     font-size: 30px;
-    margin-bottom: 5px;
-
-
 }
 
 
