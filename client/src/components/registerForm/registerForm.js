@@ -15,7 +15,6 @@ const RegisterForm = () => {
   const handleChange = (e) => {
 
     userInputs = ({ ...userInputs, [e.target.id]: e.target.value });
-    console.log(userInputs)
 
   }
 
@@ -37,13 +36,10 @@ const RegisterForm = () => {
 
     }).then(() => {
 
+      //Redirect to Dashboard after registration
       history.push('/dashboard')
 
     })
-
-
-
-    //Redirect to Dashboard after registration
 
 
     e.preventDefault()
