@@ -1,7 +1,7 @@
 import React from 'react'
 import ScreenContainer from '../components/screen'
-import VerificationList from '../components/verificationList'
 import MenuHeader from '../components/MenuHeader'
+import VerificationList from '../components/verificationList'
 
 const AppointmentVerification = () => {
     return (
