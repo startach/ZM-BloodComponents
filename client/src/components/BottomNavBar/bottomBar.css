@@ -1,0 +1,52 @@
+.bottomBarContainer {
+  position: fixed;
+  bottom: 0;
+  display: table;
+  width: 100vw;
+  justify-items: center;
+  justify-content: space-around;
+  margin: auto;
+  align-content: center;
+  }
+
+.iconContainer{
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+
+  transition: all 0.4s ease-in;
+}
+
+.iconContainer:focus{
+  outline: none;
+}
+
+.iconClicked:focus{
+  border: solid 0.5px #c3b7b1;
+  box-shadow: 3px 3px 5px #c3b7b1;
+  border-radius: 35%;
+  
+  position: relative;
+  
+  animation: bottomBarEffect 0.6s ease-in;
+  outline: none;
+}
+
+@keyframes bottomBarEffect{
+  50%{
+    transform: scale(0.9, 0.9);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(100%,100%);
+    opacity: 0.1;
+  }
+}
+
+
+
+.donateIcon{
+  padding: 0 22vw 0 22vw;
+}
+
+

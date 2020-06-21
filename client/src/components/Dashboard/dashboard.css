@@ -1,0 +1,73 @@
+.dashboardMainContainer{
+    margin: auto;
+    
+}
+
+.directionsButton{
+background-color: #DEB675;
+border-radius: 5px;
+color: white;
+height: 5vh;
+width: 34vw;
+}
+
+
+.taxiButton{
+border-radius: 5px;
+background-color: #C71585;
+color: white;
+height: 5vh;
+width: 34vw;
+}
+
+.scheduleButton{
+background-color: #C71585;
+color: white;
+/* height: 4vh; */
+border-radius: 5px;
+width: fit-content;
+}
+
+.hospitalsOptionsContainer{
+    margin: auto;
+    padding: 8% 0 8% 0;
+}
+
+.userEligibility{
+    padding: 8% 0 8% 0;
+}
+
+.rowClass{
+    color: #fafafa;
+    font-family: "Montserrat";
+    font-size: 18px;
+    padding-top: 30px;
+    text-align: start;
+} 
+
+.schedulesTables th,
+.schedulesTables td {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+
+.schedulesTables thead th {
+  vertical-align: bottom;
+}
+
+.schedulesTables {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+  }
+
+  .dashboardView{
+      margin: auto;
+      text-align: center;
+  }
+  
+  .headerRow{
+      border: 2px solid #c3b7b1;
+      /* border-bottom: 2px solid #c3b7b1; */
+      margin-bottom: 0.5rem;
+  }

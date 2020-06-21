@@ -3,10 +3,11 @@ import './button.css'
 
 const button = (props) => {
     return (
-        <div className = "btnContainer">
+        <div style = {{'margin-top': props.marginTop}} className="btnContainer">
 
-                <button id = "btn" type="button"  onClick={props.onClick}> {props.text} </button>
-            </div>
+            <button id="btn" type={props.type} style={{ 'background-color': props.color }}
+                onClick={props.onClick}> {props.text} </button>
+        </div>
 
     )
 }

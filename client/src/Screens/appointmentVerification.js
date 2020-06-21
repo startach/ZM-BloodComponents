@@ -7,7 +7,7 @@ import Login from '../components/Login/Login'
 const AppointmentVerification = () => {
     return (
         <ScreenContainer>
-            <MenuHeader icon = "burger" title = "Appiontment Verification"/>
+            <MenuHeader icon = "burger" title = "Appointment Verification"/>
             <VerificationList/>
 
         </ScreenContainer>
