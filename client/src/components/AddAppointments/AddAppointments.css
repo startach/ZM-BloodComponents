@@ -33,7 +33,10 @@ input {
     border-radius: 4px;
     font-size: 14px;
 
+}
 
+.msg {
+    font-size: 12px;
 }
 
 
@@ -58,7 +61,7 @@ font-weight: 800;
 
 .display {
     font-size: 12px;
-    min-height: 30VH;
+    min-height: 28VH;
 }
 
 
