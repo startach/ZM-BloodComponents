@@ -15,6 +15,7 @@ export class Login extends React.Component {
       [name]: value,
     });
   }
+
   render() {
     this.handleChange = this.handleChange.bind(this);
 

@@ -45,6 +45,7 @@
   flex-direction: column;
   position: relative;
   text-align: center;  width: 40%;
+  padding-left:16ex;
 }
 .loginbutt{
   background-color: #C71585;
