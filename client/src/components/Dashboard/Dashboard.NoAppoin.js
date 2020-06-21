@@ -40,18 +40,7 @@ function DashboardNoAppoin() {
             <td className='rowClass'><button className="scheduleButton">Register</button>
             </td>
           </tr>
-          <tr className='rowContainer'>
-            <td className="rowClass">31/06/2020</td>
-            <td className="rowClass">14:30</td>
-            <td className="rowClass"><button className="scheduleButton">Register</button>
-            </td>
-          </tr>
-          <tr className='rowContainer'>
-            <td className="rowClass scheduleTableRow">08/07/2020</td>
-            <td className="rowClass">09:00</td>
-            <td className="rowClass"><button className="scheduleButton">Register</button>
-            </td>
-          </tr>
+      
         </tbody>
       </table>
     </div>

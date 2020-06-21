@@ -1,21 +1,66 @@
 import React, { useState } from "react";
 import "./dashboard.css"
 import "../appointmentsEntry/appointmentsEntry.css"
+import { db, auth } from '../firebase/firebase'
 
 export default function DashboardAppoin() {
-  const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
+  availableAppoitmentsspecific();
+  //addAppoitment();
+    const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
   const [appointmentTime, setappointmentTime] = useState("15:00 PM");
   const [appointmentLocation, setappointmentLocation] = useState("Haifa-Rambam");
 
   const [appointmentDetails, setappointmentDetails] = useState(['Date', 'Time', 'Location']);
+
+  async function  availableAppotiment(){
+      const allAvailableAppoitments = await db.collection('Appointments')
+      allAvailableAppoitments.get().then((temp) => {
+          const tempDoc = temp.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() }
+          })
+          console.log(tempDoc)
+        })
+    
+  }
+
+  async function  availableAppoitmentsspecific(){
+    const locationKey = 'Tal Hashomer';    
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName','==',locationKey)
+    filteredQuery.get()
+        .then(querySnapshot => {
+            querySnapshot.docs.forEach(index => {
+              console.log(index.data());
+            })
+           
+        })
+        .catch(error => {
+            // Catch errors
+        });
+}
+
+// async function addAppoitment(){
+//   let data = {
+//     appointmentType: '3',
+//     date: '10.10.2020',
+//     hospitalId: 3.14159265,
+//     location:'jerusalem',
+//     time: '16:00',
+
+// }
+// let setDoc = db.collection('Appoitments').doc().set(data);
+// console.log(setDoc)
+
+// }
   
   return (
+
     <div className='dashboardView'>
       <div className='userEligibility'>
       you are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
       Here is few details regarding your upcoming appointment:
       </div>
+
       <table className='schedulesTables upcomingAppointment'>
         <thead>
           <tr className='headerRow'>
@@ -24,6 +69,7 @@ export default function DashboardAppoin() {
             <th className='headerEntries'>Location</th>
           </tr>
         </thead>
+       
         <tbody> 
             <tr className='rowContainer'>
           <td className='rowClass'>{appointmentDate}</td>
