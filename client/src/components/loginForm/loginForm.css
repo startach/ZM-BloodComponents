@@ -1,0 +1,69 @@
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+img {
+
+  height: 150px;
+  width: 150px;
+
+}
+#header1, #header2 {
+  font-family: 'Montserrat';
+  font-size: 30px;
+
+}
+
+
+.loginHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.emailContainer, .passwordContainer {
+
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+margin-bottom: 15px;
+
+}
+
+label {
+
+  font-family: 'Montserrat';
+
+}
+
+#emailLogin , #passwordLogin {
+  display: flex;
+  border-radius: 2em / 5em;
+  background-color: #C3B7B1;
+  margin-left: 35px;
+  padding-left: 5px;
+  border: none;
+  width : 200px
+}
+
+
+#footertext {
+
+  font-family: 'Montserrat';
+  margin-bottom: 20px;
+
+}
+
+
+.registerFooter {
+
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  padding-top: 15px;
+}

@@ -5,7 +5,11 @@ import AppointmentVerification from '../../Screens/appointmentVerification'
 import './App.css';
 import Dashboard from '../../Screens/dashboard';
 import NotFound from '../NotFound'
+import Login from '../../Screens/login'
+import UserPage from '../UserPage/UserPage'
+import Register from '../../Screens/register'
 import BottomNavBar from '../BottomNavBar/BottomBar'
+
 
 function App() {
   return (
@@ -15,6 +19,9 @@ function App() {
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/prevapp' component={PreviousAppointments} />
         <Route path='/appver' component={AppointmentVerification} />
+        <Route path='/user' component={UserPage} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
         <Redirect from='/' exact to="/dashboard" />
         <Redirect to='/not-found' />
