@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
+import { db } from '../firebase/firebase'
 
 function DashboardNoAppoin() {
+
+  useEffect(() => {
+
+
+    db.collection('Hospitals').get().then((hopsitals) => {
+
+      hopsitals.docs.forEach(hospitalDetails => {
+
+        renderOption(hospitalDetails)
+
+
+      })
+
+    })
+
+  }, [])
+
+
+  const renderOption = (hospitalData) => {
+
+    let optionsList = document.querySelector('.hospitalsOptionsList')
+
+    let option = document.createElement('OPTION')
+
+    option.setAttribute("id", hospitalData.id)
+
+    option.textContent = hospitalData.data().hospitalName
+
+    optionsList.appendChild(option)
+
+  }
+
+
   return (
     <div className="dashboardView noAppointmentViewContainer">
       <div className="userEligibility">
@@ -14,13 +48,10 @@ function DashboardNoAppoin() {
 
       <p className="hospitalsOptionsContainer">
         Nearest hospital is{" "}
+
         <select className="hospitalsOptionsList">
-          <option value="Rambam - Haifa" className="option">
-            Rambam - Haifa
-          </option>
-          <option value="Tal Hashomer - Tel Aviv" className="option">
-            Tal Hashomer - Tel Aviv
-          </option>
+
+
         </select>
       </p>
       {/* table area::::: */}
