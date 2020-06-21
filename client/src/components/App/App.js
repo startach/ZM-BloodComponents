@@ -17,6 +17,8 @@ function App() {
     <Router>
       <Switch>
         <Route path='/dashboard' component={Dashboard} />
+        <Route path='/login' component={LoginPage} />
+
         <Route path='/prevapp' component={PreviousAppointments} />
         <Route path='/appver' component={AppointmentVerification} />
         <Route path='/user' component={UserPage} />

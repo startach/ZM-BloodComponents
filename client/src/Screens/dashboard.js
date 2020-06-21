@@ -9,11 +9,9 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 const Dashboard = () => {
     
     return (
-        <ScreenContainer>
+     
             <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
-            <DashboardMain>
-            </DashboardMain>
-        </ScreenContainer>
+            <DashboardMain> </DashboardMain>
     )
 }
 
