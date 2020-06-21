@@ -4,7 +4,6 @@ import "../appointmentsEntry/appointmentsEntry.css"
 import { db, auth } from '../firebase/firebase'
 
 export default function DashboardAppoin() {
-  availableAppoitmentsspecific();
   //addAppoitment();
     const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
   const [appointmentTime, setappointmentTime] = useState("15:00 PM");
@@ -12,31 +11,18 @@ export default function DashboardAppoin() {
 
   const [appointmentDetails, setappointmentDetails] = useState(['Date', 'Time', 'Location']);
 
-  async function  availableAppotiment(){
-      const allAvailableAppoitments = await db.collection('Appointments')
-      allAvailableAppoitments.get().then((temp) => {
-          const tempDoc = temp.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() }
-          })
-          console.log(tempDoc)
-        })
+  // async function  availableAppotiment(){
+  //     const allAvailableAppoitments = await db.collection('Appointments')
+  //     allAvailableAppoitments.get().then((temp) => {
+  //         const tempDoc = temp.docs.map((doc) => {
+  //           return { id: doc.id, ...doc.data() }
+  //         })
+  //         console.log(tempDoc)
+  //       })
     
-  }
+  // }
 
-  async function  availableAppoitmentsspecific(){
-    const locationKey = 'Tal Hashomer';    
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName','==',locationKey)
-    filteredQuery.get()
-        .then(querySnapshot => {
-            querySnapshot.docs.forEach(index => {
-              console.log(index.data());
-            })
-           
-        })
-        .catch(error => {
-            // Catch errors
-        });
-}
+  
 
 // async function addAppoitment(){
 //   let data = {

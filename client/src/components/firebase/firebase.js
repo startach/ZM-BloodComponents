@@ -21,8 +21,7 @@ const functions = firebase.functions();
 
 
 
-
-export { db, auth,firebase , functions as default}
+export { db, auth , functions as default}
 
 
     
