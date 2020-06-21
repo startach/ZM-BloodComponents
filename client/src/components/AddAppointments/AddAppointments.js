@@ -25,7 +25,9 @@ export default function AddAppointments() {
 
     //set state values for slots & hospital
     const handleChange = e => {
+        //FIXME: bug in setting hospital ID
         setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ["hospitalID"]: hosIDs[currentApp.hospitalName] })
+        console.log(currentApp)
     }
 
     //set state values for date
@@ -43,6 +45,8 @@ export default function AddAppointments() {
 
     //add new Appointment to appoitnment list
     const handleAdd = () => {
+        if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName) return
+
         setAppList(appList.concat(currentApp))
     }
 
@@ -62,7 +66,7 @@ export default function AddAppointments() {
 
 
     return (
-        <div>
+        <div className="addAppContainer">
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
                 <select className="dropdown" id="hospitalName" onChange={handleChange}>
@@ -78,8 +82,8 @@ export default function AddAppointments() {
                     showTimeSelect
                     dateFormat="Pp"
                 />
-                <input id="slots" className="slots" onChange={handleChange} placeholder="#slots"></input>
-                <div className="addBtn text-center" onClick={handleAdd}>Add </div>
+                <input id="slots" className="slots ml-3" onChange={handleChange} placeholder="#slots"></input>
+                <div className="addBtn text-center mx-3" onClick={handleAdd}>Add </div>
             </div>
             <hr />
 
@@ -109,7 +113,9 @@ export default function AddAppointments() {
                         ))}
                     </div>}
             </div>
-            <Button type="button" text="Submit" onClick={handleSubmit}></Button>
+            <div className="subBtn">
+                <Button type="button" text="Submit" onClick={handleSubmit}></Button>
+            </div>
         </div>
 
 
