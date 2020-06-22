@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Questionnaire.css'
 import {useHistory} from 'react-router-dom'
+import Button from '../button'
 
 export default function Questionnaire() {
     let history=useHistory()
@@ -55,23 +56,32 @@ export default function Questionnaire() {
     const handleResults = (e, index) => {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
-        console.log(result)
-        console.log(e.target.value)
 
     }
 
-    const handleSubmit = () => {
-        setComplete(true);
 
-        if (complete) {
+
+    const handleSubmit = (e) => {
+        var sum=questionList.length;
+        //  console.log(sum);
+           console.log(result)
+        Object.keys(result).forEach(function(key) {
+            
+            if(result[key]!='select'){
+            sum--;
+            }
+           // setComplete(true)
+        });
+        console.log(sum);
+        if(sum==0)
+        {
+            setComplete(true)
             history.push('/verfication')
-
-            //submit results and go to next page
-
-        } else {
+        }else{
+       
             alert("you need to answer all questions before you can submit the questionnare")
         }
-
+    e.preventDefault();
 
     }
 
@@ -83,7 +93,7 @@ export default function Questionnaire() {
             <div className="title">Questionnaire</div>
             <div className="line1"></div>
 
-
+                <form onSubmit={handleSubmit}>
             {questionList.map((question, index) => (
 
                 <div className="questions">
@@ -102,10 +112,12 @@ export default function Questionnaire() {
             )
 
             )}
-            <div className="submit">
-                <div className="submitBtn" onClick={handleSubmit}>Submit</div>
+               <div className="submit">
+                <Button  type="submit" text='Submit'  ></Button>
             </div>
 
+            </form>
+         
 
         </div>
     )
