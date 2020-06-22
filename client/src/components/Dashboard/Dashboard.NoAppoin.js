@@ -50,6 +50,48 @@ function DashboardNoAppoin() {
 
   }, [chosenOption])
 
+<<<<<<< HEAD
+=======
+    let table = document.querySelector('.schedulesTables')
+
+
+    let rowContainer = document.createElement('tr')
+    
+    rowContainer.setAttribute('class','rowContainer')
+    let tdDate=document.createElement('td')
+    let tdTime=document.createElement('td')
+    
+    tdDate.setAttribute('class','rowClass')
+    tdTime.setAttribute('class','rowClass')
+
+
+    let butt=document.createElement('button')
+    butt.setAttribute('class','scheduleButton');
+
+    butt.onclick=function(){
+      history.push('/questions')
+
+    }
+    tdDate.textContent=appointments.date;
+    tdTime.textContent=appointments.time;
+    butt.textContent="Register";
+   
+
+
+    let butt = document.createElement('button')
+    butt.setAttribute('class', 'scheduleButton');
+    tdDate.textContent = appointments.date;
+    tdTime.textContent = appointments.time;
+    butt.textContent = "Register";
+    rowContainer.appendChild(tdDate);
+    rowContainer.appendChild(tdTime);
+    
+    tdTime.appendChild(butt);
+    tBody.appendChild(rowContainer)
+    table.appendChild(tBody);
+
+  }
+>>>>>>> 1440e1f9a107810c33decfac79ab1adeb946a972
 
 
   return (
