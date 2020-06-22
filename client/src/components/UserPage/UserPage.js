@@ -70,9 +70,6 @@ export default function UserPage() {
     }
     return (
         <div className="userPage" >
-
-            <div className="title">User Page</div>
-            <div className="line1"></div>
             <div className="topBox">
                 <div className="name topBox-right">Dvir Cohen</div>
                 <div className="topBox-right">

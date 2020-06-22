@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ScreenContainer from '../components/screen'
 import AppointmentsList from '../components/appointmentsList'
 import AppointmentsEntry from '../components/appointmentsEntry'
 import MenuHeader from '../components/MenuHeader'
+import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 const PreviousAppointments = () => {
 
     return (
+        <Fragment>
+            <div className="header"></div>
+            <ScreenContainer>
 
-        <ScreenContainer>
+                <MenuHeader icon="burger" title="Previous Appointments" />
 
-            <MenuHeader icon="burger" title="Previous Appointments" />
+                <AppointmentsList />
 
-            <AppointmentsList />
+                <AppointmentsEntry />
+                <BottomNavBar />
 
-            <AppointmentsEntry />
-
-        </ScreenContainer>
+            </ScreenContainer>
+        </Fragment>
 
     )
 }

@@ -11,9 +11,13 @@ const User = () => {
 
     return (
         <div>
-            <MenuHeader title="." icon='burger'></MenuHeader>
-            <UserPage />
-            <BottomNavBar />
+            <div className="header"></div>
+            <ScreenContainer>
+                <MenuHeader title="User Profile" icon='burger'></MenuHeader>
+                <UserPage />
+                <BottomNavBar />
+            </ScreenContainer>
+            <div className="footer"></div>
         </div>
     )
 }
