@@ -25,18 +25,18 @@ let styles = {
         fontWeight: 'bold',
     },
     titleSingle: {
-        marginTop:'5px',
+        marginTop: '5px',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
         marginBottom: '-10px',
         fontFamily: 'Montserrat',
-  
+
     },
 };
 
 const Menu_header = (props) => {
-   
+
     return (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
@@ -54,7 +54,7 @@ const Menu_header = (props) => {
                 style={{width:'60px'}}
                 src={headerImageUrl}></img> */}
             </div>
-            
+
         </div>
     );
 }

@@ -82,15 +82,21 @@ export default function Admin() {
 
     return (
         <div>
-            <div className="text-center">ADMIN PAGE</div>
-            <div>ACCESS LEVEL: {accessLevel}</div>
+            <div className="donationsPage" >
+
+                <div className="title">Admin Controls</div>
+                <div className="line1"></div>
+            </div>
+
+
+            <div className="text-center">ACCESS LEVEL: <b>{accessLevel}</b></div>
 
 
 
-            <form style={{ margin: "40px auto", maxWidth: "300px" }} onSubmit={handleCord}>
+            <form className="mb-5" style={{ margin: "40px auto", maxWidth: "300px" }} onSubmit={handleCord}>
                 <input type="email" placeholder="User email" id="cord-email" value={control.cord} required />
 
-                <select className="dropdown" id="cord" onChange={handleChange}>
+                <select className="dropdown mt-2" id="cord" onChange={handleChange}>
                     <option value="select" className="option">select user to make cord </option>
                     {userList.map((user) => (
 
@@ -99,7 +105,7 @@ export default function Admin() {
                     ))}
                 </select>
 
-                <button class="btn btn-small btn-warning">Make Cordinator</button>
+                <button class="btn btn-small btn-warning mt-2">Make Cordinator</button>
             </form>
 
 
@@ -108,7 +114,7 @@ export default function Admin() {
             <form style={{ margin: "40px auto", maxWidth: "300px" }} onSubmit={handleAdmin}>
                 <input type="email" placeholder="User email" id="admin-email" value={control.admin} required />
 
-                <select className="dropdown" id="admin" onChange={handleChange}>
+                <select className="dropdown mt-2" id="admin" onChange={handleChange}>
                     <option value="select" className="option">select user to make admin </option>
                     {userList.map((user) => (
 
@@ -116,7 +122,7 @@ export default function Admin() {
 
                     ))}
                 </select>
-                <button className="btn btn-small btn-danger">Make Admin</button>
+                <button className="btn btn-small btn-danger mt-2">Make Admin</button>
             </form>
 
         </div>
