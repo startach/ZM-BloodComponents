@@ -10,9 +10,8 @@ import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
 import Admin from '../../Screens/admin'
-import BottomNavBar from '../BottomNavBar/BottomBar'
 import Questions from '../Questionnaire/Questionnaire'
-
+import Verfication from '../verificationList/verificationList'
 
 
 function App() {
@@ -21,8 +20,6 @@ function App() {
     <Router>
       <Switch>
         <Route path='/dashboard' component={Dashboard} />
-
-
         <Route path='/prevapp' component={PreviousAppointments} />
         <Route path='/appver' component={AppointmentVerification} />
         <Route path='/add' component={AddAppointment} />
@@ -32,6 +29,8 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
+        <Route path='/verfication' component={Verfication} />
+
 
 
         <Redirect from='/' exact to="/dashboard" />

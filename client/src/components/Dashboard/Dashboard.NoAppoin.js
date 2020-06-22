@@ -51,6 +51,7 @@ function DashboardNoAppoin() {
   }, [chosenOption])
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     let table = document.querySelector('.schedulesTables')
 
@@ -92,6 +93,8 @@ function DashboardNoAppoin() {
 
   }
 >>>>>>> 1440e1f9a107810c33decfac79ab1adeb946a972
+=======
+>>>>>>> 409315798f88ea030563f83d11ed141f10be1e22
 
 
   return (
@@ -151,7 +154,6 @@ function DashboardNoAppoin() {
       </table>
     </div >
   );
+
 }
-
-
 export default DashboardNoAppoin;
