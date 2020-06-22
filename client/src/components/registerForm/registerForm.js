@@ -68,6 +68,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="email"
+              required
             ></input>
           </label>
 
@@ -80,6 +81,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="email"
               name="email"
+              required
             ></input>
           </label>
 
@@ -95,6 +97,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              required
             ></input>
           </label>
 
@@ -108,6 +111,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="phone"
               name="phone"
+              required
             ></input>
           </label>
 
@@ -121,6 +125,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="City"
+              required
             ></input>
           </label>
 
@@ -136,6 +141,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="address"
+              required
             ></input>
           </label>
 
