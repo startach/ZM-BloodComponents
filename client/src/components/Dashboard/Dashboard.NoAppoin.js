@@ -38,7 +38,9 @@ function DashboardNoAppoin() {
     filteredQuery.get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
-          return hospitalAppointments.data();
+          console.log(hospitalAppointments.id)
+
+          return hospitalAppointments;
 
         })
         setAppointments(Appointments)
@@ -93,9 +95,9 @@ function DashboardNoAppoin() {
         <tbody>
           {appointments.map(appointment => (
 
-            <tr className='rowContainer'>
-              <td className='rowClass' >{appointment.date}</td>
-              <td className='rowClass'>{appointment.time}</td>
+            <tr className='rowContainer' id={appointment.id}>
+              <td className='rowClass' >{appointment.data().date}</td>
+              <td className='rowClass'>{appointment.data().time}</td>
               <Link to='/questions'>
                 <td className='rowClass'><button className="scheduleButton">Register</button>
                 </td>

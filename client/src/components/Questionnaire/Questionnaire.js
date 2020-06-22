@@ -5,7 +5,6 @@ import Button from '../button'
 
 export default function Questionnaire() {
     let history=useHistory()
-
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
         Q1: "select",
