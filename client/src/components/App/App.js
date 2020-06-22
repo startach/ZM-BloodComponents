@@ -9,7 +9,10 @@ import Login from '../../Screens/login'
 import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
+import Admin from '../../Screens/admin'
+import BottomNavBar from '../BottomNavBar/BottomBar'
 import Questions from '../Questionnaire/Questionnaire'
+
 
 
 function App() {
@@ -23,6 +26,7 @@ function App() {
         <Route path='/prevapp' component={PreviousAppointments} />
         <Route path='/appver' component={AppointmentVerification} />
         <Route path='/add' component={AddAppointment} />
+        <Route path='/admin' component={Admin} />
         <Route path='/user' component={UserPage} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
