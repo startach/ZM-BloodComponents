@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db } from '../firebase/firebase'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function DashboardNoAppoin() {
-  let history = useHistory()
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState({})
 
   function handleChange(e) {
     setChosenOption(e.target.value)
-    console.log(e.target.value)
   }
 
   useEffect(() => {
@@ -98,8 +96,10 @@ function DashboardNoAppoin() {
             <tr className='rowContainer'>
               <td className='rowClass' >{appointment.date}</td>
               <td className='rowClass'>{appointment.time}</td>
-              <td className='rowClass'><button className="scheduleButton">Register</button>
-              </td>
+              <Link to='/questions'>
+                <td className='rowClass'><button className="scheduleButton">Register</button>
+                </td>
+              </Link>
             </tr>
 
 
