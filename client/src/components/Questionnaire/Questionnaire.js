@@ -60,6 +60,7 @@ export default function Questionnaire() {
     }
 
     const handleSubmit = () => {
+        setComplete(true);
 
         if (complete) {
             history.push('/verfication')
