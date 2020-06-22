@@ -5,11 +5,11 @@ import { db } from '../firebase/firebase'
 
 function DashboardNoAppoin() {
 
-let [state, setstate] = useState({})
-  function handlechange(e){
-    state={...state,[e.target.id]:e.target.value}
+  let [state, setstate] = useState({})
+  function handlechange(e) {
+    state = { ...state, [e.target.id]: e.target.value }
     availableAppoitmentsspecific(state.selectoption)
-  } 
+  }
 
 
   useEffect(() => {
@@ -20,33 +20,30 @@ let [state, setstate] = useState({})
       hopsitals.docs.forEach(hospitalDetails => {
 
         renderOption(hospitalDetails)
-
-
       })
-
     })
 
   }, [])
 
 
-//getting available appoitments for specific hospital by name
-  async function  availableAppoitmentsspecific(hospitalName){
-    
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName','==',hospitalName)
-    filteredQuery.get()
-        .then(querySnapshot => {
-          console.log(querySnapshot)
-            querySnapshot.docs.forEach(hospitalAppoitments => {
-              console.log(hospitalAppoitments.data());
-              renderAppointments(hospitalAppoitments.data())
+  //getting available appoitments for specific hospital by name
+  async function availableAppoitmentsspecific(hospitalName) {
 
-            })
-           
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName)
+    filteredQuery.get()
+      .then(querySnapshot => {
+        console.log(querySnapshot)
+        querySnapshot.docs.forEach(hospitalAppoitments => {
+          console.log(hospitalAppoitments.data());
+          renderAppointments(hospitalAppoitments.data())
+
         })
-        .catch(error => {
-            // Catch errors
-        });
-}
+
+      })
+      .catch(error => {
+        // Catch errors
+      });
+  }
 
 
 
@@ -70,19 +67,19 @@ let [state, setstate] = useState({})
     let table = document.querySelector('.schedulesTables')
 
     let rowContainer = document.createElement('tr')
-    
-    rowContainer.setAttribute('class','rowContainer')
-    let tdDate=document.createElement('td')
-    let tdTime=document.createElement('td')
-    tdDate.setAttribute('class','rowClass')
-    tdTime.setAttribute('class','rowClass')
+
+    rowContainer.setAttribute('class', 'rowContainer')
+    let tdDate = document.createElement('td')
+    let tdTime = document.createElement('td')
+    tdDate.setAttribute('class', 'rowClass')
+    tdTime.setAttribute('class', 'rowClass')
 
 
-    let butt=document.createElement('button')
-    butt.setAttribute('class','scheduleButton');
-    tdDate.textContent=appointments.date;
-    tdTime.textContent=appointments.time;
-    butt.textContent="Register";
+    let butt = document.createElement('button')
+    butt.setAttribute('class', 'scheduleButton');
+    tdDate.textContent = appointments.date;
+    tdTime.textContent = appointments.time;
+    butt.textContent = "Register";
 
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
@@ -105,7 +102,7 @@ let [state, setstate] = useState({})
       <p className="hospitalsOptionsContainer">
         Nearest hospital is{" "}
 
-        <select className="hospitalsOptionsList"  id="selectoption" onChange={handlechange}>
+        <select className="hospitalsOptionsList" id="selectoption" onChange={handlechange}>
 
 
         </select>
@@ -121,7 +118,7 @@ let [state, setstate] = useState({})
           </tr>
         </thead>
         <tbody>
-         
+
         </tbody>
       </table>
     </div>
