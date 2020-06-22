@@ -6,13 +6,13 @@ import './App.css';
 import Dashboard from '../../Screens/dashboard';
 import NotFound from '../NotFound'
 import Login from '../../Screens/login'
-import UserPage from '../UserPage/UserPage'
+import User from '../../Screens/user'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
 import Admin from '../../Screens/admin'
 import Questions from '../Questionnaire/Questionnaire'
 import Verfication from '../verificationList/verificationList'
-
+import EmergencyDonations from '../../Screens/emergencyDonations'
 
 function App() {
   return (
@@ -24,7 +24,8 @@ function App() {
         <Route path='/appver' component={AppointmentVerification} />
         <Route path='/add' component={AddAppointment} />
         <Route path='/admin' component={Admin} />
-        <Route path='/user' component={UserPage} />
+        <Route path='/emergency' component={EmergencyDonations} />
+        <Route path='/user' component={User} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
