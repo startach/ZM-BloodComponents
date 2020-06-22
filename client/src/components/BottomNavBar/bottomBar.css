@@ -1,5 +1,5 @@
 .bottomBarContainer {
-  position: fixed;
+  position: static;
   bottom: 0;
   background-color: #fafafa;
   overflow: hidden;
