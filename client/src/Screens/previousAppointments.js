@@ -10,12 +10,11 @@ const PreviousAppointments = () => {
 
         <ScreenContainer>
 
-            <MenuHeader icon = "burger" title = "Previous Appointments"/>
+            <MenuHeader icon="burger" title="Previous Appointments" />
 
             <AppointmentsList />
 
             <AppointmentsEntry />
-
 
         </ScreenContainer>
 

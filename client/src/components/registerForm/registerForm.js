@@ -3,6 +3,7 @@ import "./registerForm.css"
 import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
+import Notifications from '../Notifications/Notifications'
 
 
 const RegisterForm = () => {
@@ -154,11 +155,15 @@ const RegisterForm = () => {
               <option value="O-">O-</option>
             </select>
           </label>
+
+        </div>
+        <div className="mx-4">
+          <Notifications />
         </div>
 
-
-        <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
-
+        <div className="mb-4">
+          <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+        </div>
       </form>
 
 

@@ -1,13 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
+import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 
 const BurgerMenu = () => {
 
+  const [accessLevel, setAccessLevel] = useState("loading");
 
-  //set this depending on auth status (global variable)
-  const coordinator = true;
+
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        user.getIdTokenResult().then(function (data) {
+          console.log(data.claims)
+          setAccessLevel(data.claims.userLevel)
+        });
+      }
+    });
+  }, [])
 
 
   var styles = {
@@ -69,7 +80,7 @@ const BurgerMenu = () => {
           Dashboard
             {/* <a id="dashboard" className="menu-item">Dashboard</a> */}
         </Link>
-        {coordinator ? <Link to='/add' className="link">
+        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/add' className="link">
           Add Appointments
             </Link> : null}
         <Link to='/user' className="link">
@@ -81,6 +92,9 @@ const BurgerMenu = () => {
         <Link to='/prevapp' className="link">
           Previous  Appointments
             </Link>
+        {accessLevel === "admin" ? <Link to='/admin' className="link">
+          Admin
+            </Link> : null}
         <Link to='/logout' className="link">
           Logout
             </Link>

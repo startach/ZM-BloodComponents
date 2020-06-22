@@ -7,14 +7,15 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 import AddAppointments from '../components/AddAppointments/AddAppointments'
 
 
-const Dashboard = () => {
+const AddAppointment = () => {
 
     return (
         <div>
-            <MenuHeader title="Add Appointment" icon='burger'></MenuHeader>
+            <MenuHeader title="." icon='burger'></MenuHeader>
             <AddAppointments />
+            <BottomNavBar />
         </div>
     )
 }
 
-export default Dashboard
+export default AddAppointment

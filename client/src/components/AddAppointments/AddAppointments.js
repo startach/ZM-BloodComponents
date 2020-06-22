@@ -76,8 +76,23 @@ export default function AddAppointments() {
     }
 
 
+    const handleDelete = (index) => {
+
+        setAppList(appList.filter((item, count) => count !== index));
+
+    }
+
+
     return (
         <div className="addAppContainer">
+
+            <div className="donationsPage" >
+
+                <div className="title">Add Appointments</div>
+                <div className="line1"></div>
+            </div>
+
+
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
                 <select className="dropdown" id="hospitalName" onChange={handleChange}>
@@ -110,14 +125,14 @@ export default function AddAppointments() {
                             <span className="col-2">Time</span>
                             <span className="col-2">Slots</span>
                         </div>
-                        {appList.map((appointment) => (
+                        {appList.map((appointment, index) => (
 
-                            <div className="row">
+                            <div key={index} id={index} className="row">
                                 <span className="col-4">{appointment.hospitalName} </span>
                                 <span className="col-4">{appointment.date}</span>
                                 <span className="col-2">{appointment.time} </span>
                                 <span className="col-1">{appointment.slots}</span>
-                                <span className="col-1" style={{ color: "red", fontWeight: "1000" }}>x</span>
+                                <span className="col-1" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
                             </div>
 
 
@@ -130,7 +145,7 @@ export default function AddAppointments() {
                 <Button type="button" text="Submit" onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
-        </div>
+        </div >
 
 
     )
