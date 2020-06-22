@@ -10,7 +10,7 @@ import User from '../../Screens/user'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
 import Admin from '../../Screens/admin'
-import Questions from '../Questionnaire/Questionnaire'
+import Questions from '../../Screens/Questionnaire'
 import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
 
