@@ -5,47 +5,36 @@ import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 
 const LoginForm = () => {
-
+ 
   const history = useHistory();
   const logo = "/img/Logo.png";
-
   let [userData, setUserData] = useState([])
 
-
   const handleChange = (e) => {
-
     userData = ({ ...userData, [e.target.id]: e.target.value });
     console.log(userData)
-
   }
 
-
   const handleSubmit = (e) => {
-
     //update state
-
     setUserData(userData)
 
     //check auth from firebase
-
-    auth.signInWithEmailAndPassword(userData.email, userData.password).then(() => {
-
-
+    auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
+      //storing the logged in user's id into localStorage variable
+      console.log(cred.user.uid)
+      localStorage.setItem('userid', cred.user.uid)
+      console.log(localStorage.getItem('userid'))
+      // const newUserData ={
+      //   id:cred.user.uid,
+      //   ...userData
+      // }
+    
       //Redirect to Dashboard after login if the user exists
-
-
       history.push('/dashboard')
-
     })
-
-
-
-
     e.preventDefault()
-
   }
-
-
 
   return (
     <div className="loginPage">
@@ -69,9 +58,7 @@ const LoginForm = () => {
 
         </div>
         <div className="passwordContainer">
-
           <label> Password
-
           <input
               id="password"
               onChange={handleChange}
@@ -79,21 +66,15 @@ const LoginForm = () => {
               name="password"
             ></input>
           </label>
-
         </div>
-
         <Button type="submit" text="Login" color='#C71585'></Button>
-
       </form>
-
       <div class="registerFooter">
         <p id="footertext">Not signed up as donor yet?</p>
 
         <Button type="button" text="Come Save Lives"></Button>
       </div>
     </div>
-
-
   )
 }
 
