@@ -4,7 +4,7 @@ import HaveAppointment from "./Dashboard.Appoin";
 import DontHaveAppointment from "./Dashboard.NoAppoin";
 import "./dashboard.css"
 import "../appointmentsEntry/appointmentsEntry.css"
-
+import {firebase} from "firebase"
 
 export default function Dashboard() {
   const [view, setView] = useState("");
@@ -12,6 +12,14 @@ export default function Dashboard() {
 
 const handleNotEligible = () => {
     setView("NotEligibleView");
+    // Import Admin SDK
+var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value')
+.then((snapshot) => {
+  // var userName = (snapshot.val() && snapshot.val().userName) || 'Anonymous';
+  console.log(snapshot);
+  
+})
 }
 
 const handleHaveAppointment = () => {
