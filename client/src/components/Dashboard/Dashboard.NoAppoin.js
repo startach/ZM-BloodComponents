@@ -109,6 +109,7 @@ function DashboardNoAppoin() {
       </table>
     </div >
   );
-
 }
+
+
 export default DashboardNoAppoin;
