@@ -7,7 +7,7 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 import AddAppointments from '../components/AddAppointments/AddAppointments'
 
 
-const Dashboard = () => {
+const AddAppointment = () => {
 
     return (
         <div>
@@ -17,4 +17,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default AddAppointment

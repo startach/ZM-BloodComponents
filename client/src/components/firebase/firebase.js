@@ -21,10 +21,10 @@ const functions = firebase.functions();
 
 
 
-export { db, auth , functions as default}
+export { db, auth, functions }
 
 
-    
+
 
 
 
