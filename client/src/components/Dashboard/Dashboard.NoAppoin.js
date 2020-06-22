@@ -12,8 +12,9 @@ let [state, setstate] = useState({})
     let table = document.querySelector('.schedulesTables')
     table.innerHTML="";
     state={...state,[e.target.id]:e.target.value}
+
     availableAppoitmentsspecific(state.selectoption)
-  } 
+  }
 
 
   useEffect(() => {
@@ -24,33 +25,30 @@ let [state, setstate] = useState({})
       hopsitals.docs.forEach(hospitalDetails => {
 
         renderOption(hospitalDetails)
-
-
       })
-
     })
 
   }, [])
 
 
-//getting available appoitments for specific hospital by name
-  async function  availableAppoitmentsspecific(hospitalName){
-    
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName','==',hospitalName)
-    filteredQuery.get()
-        .then(querySnapshot => {
-          console.log(querySnapshot)
-            querySnapshot.docs.forEach(hospitalAppoitments => {
-              console.log(hospitalAppoitments.data());
-              renderAppointments(hospitalAppoitments.data())
+  //getting available appoitments for specific hospital by name
+  async function availableAppoitmentsspecific(hospitalName) {
 
-            })
-           
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName)
+    filteredQuery.get()
+      .then(querySnapshot => {
+        console.log(querySnapshot)
+        querySnapshot.docs.forEach(hospitalAppoitments => {
+          console.log(hospitalAppoitments.data());
+          renderAppointments(hospitalAppoitments.data())
+
         })
-        .catch(error => {
-            // Catch errors
-        });
-}
+
+      })
+      .catch(error => {
+        // Catch errors
+      });
+  }
 
 
 
@@ -97,6 +95,7 @@ let [state, setstate] = useState({})
     tdTime.textContent=appointments.time;
     butt.textContent="Register";
    
+
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
     tdTime.appendChild(butt);
@@ -119,7 +118,7 @@ let [state, setstate] = useState({})
       <p className="hospitalsOptionsContainer">
         Nearest hospital is{" "}
 
-        <select className="hospitalsOptionsList"  id="selectoption" onChange={handlechange}>
+        <select className="hospitalsOptionsList" id="selectoption" onChange={handlechange}>
 
 
         </select>
@@ -135,7 +134,7 @@ let [state, setstate] = useState({})
           </tr>
         </thead>
         <tbody>
-         
+
         </tbody>
       </table>
     </div>
