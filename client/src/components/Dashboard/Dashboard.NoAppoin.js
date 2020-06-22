@@ -68,13 +68,6 @@ function DashboardNoAppoin() {
 
     let rowContainer = document.createElement('tr')
 
-    rowContainer.setAttribute('class', 'rowContainer')
-    let tdDate = document.createElement('td')
-    let tdTime = document.createElement('td')
-    tdDate.setAttribute('class', 'rowClass')
-    tdTime.setAttribute('class', 'rowClass')
-
-
     let butt = document.createElement('button')
     butt.setAttribute('class', 'scheduleButton');
     tdDate.textContent = appointments.date;
@@ -84,7 +77,8 @@ function DashboardNoAppoin() {
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
     tdTime.appendChild(butt);
-    table.appendChild(rowContainer);
+    tBody.appendChild(rowContainer)
+    table.appendChild(tBody);
 
 
   }

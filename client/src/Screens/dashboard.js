@@ -8,11 +8,16 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 const Dashboard = () => {
 
+
     return (
-        <div>
+        <ScreenContainer>
             <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
             <DashboardMain> </DashboardMain>
-        </div>
+
+            <BottomNavBar />
+
+        </ScreenContainer>
+
     )
 }
 
