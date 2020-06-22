@@ -2,24 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db } from '../firebase/firebase'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 
 function DashboardNoAppoin() {
-let history=useHistory()
-let [state, setstate] = useState({})
-  function handlechange(e){
-    let table = document.querySelector('.schedulesTables')
-    table.innerHTML="";
-    state={...state,[e.target.id]:e.target.value}
-
-
+  let history = useHistory()
   let [state, setstate] = useState({})
   function handlechange(e) {
+    let table = document.querySelector('.schedulesTables')
+    table.innerHTML = "";
     state = { ...state, [e.target.id]: e.target.value }
-availableAppoitmentsspecific(state.selectoption)
+    availableAppoitmentsspecific(state.selectoption)
 
-    
+
+
   }
 
 
@@ -77,36 +73,34 @@ availableAppoitmentsspecific(state.selectoption)
 
 
     let table = document.querySelector('.schedulesTables')
-
-
     let rowContainer = document.createElement('tr')
-    
-    rowContainer.setAttribute('class','rowContainer')
-    let tdDate=document.createElement('td')
-    let tdTime=document.createElement('td')
-    let tBody=document.createElement('tbody')
-    tdDate.setAttribute('class','rowClass')
-    tdTime.setAttribute('class','rowClass')
 
-
-    let butt=document.createElement('button')
-    butt.setAttribute('class','scheduleButton');
-
-    butt.onclick=function(){
-      history.push('/questions')
-
-    }
-    tdDate.textContent=appointments.date;
-    tdTime.textContent=appointments.time;
-    butt.textContent="Register";
-   
+    rowContainer.setAttribute('class', 'rowContainer')
+    let tdDate = document.createElement('td')
+    let tdTime = document.createElement('td')
+    let tBody = document.createElement('tbody')
+    tdDate.setAttribute('class', 'rowClass')
+    tdTime.setAttribute('class', 'rowClass')
 
 
     let butt = document.createElement('button')
     butt.setAttribute('class', 'scheduleButton');
+
+    butt.onclick = function () {
+      history.push('/questions')
+
+    }
     tdDate.textContent = appointments.date;
     tdTime.textContent = appointments.time;
     butt.textContent = "Register";
+
+
+    rowContainer.appendChild(tdDate);
+    rowContainer.appendChild(tdTime);
+    tdTime.appendChild(butt);
+    tBody.appendChild(rowContainer)
+    table.appendChild(tBody);
+
 
 
   }
@@ -146,5 +140,6 @@ availableAppoitmentsspecific(state.selectoption)
     </div>
   );
 }
+
 
 export default DashboardNoAppoin;
