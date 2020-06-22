@@ -107,7 +107,12 @@ availableAppoitmentsspecific(state.selectoption)
     tdDate.textContent = appointments.date;
     tdTime.textContent = appointments.time;
     butt.textContent = "Register";
-
+    rowContainer.appendChild(tdDate);
+    rowContainer.appendChild(tdTime);
+    
+    tdTime.appendChild(butt);
+    tBody.appendChild(rowContainer)
+    table.appendChild(tBody);
 
   }
 
