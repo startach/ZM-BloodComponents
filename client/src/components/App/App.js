@@ -9,7 +9,6 @@ import Login from '../../Screens/login'
 import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
-import BottomNavBar from '../BottomNavBar/BottomBar'
 import Questions from '../Questionnaire/Questionnaire'
 
 
@@ -34,7 +33,6 @@ function App() {
         <Redirect from='/' exact to="/dashboard" />
         <Redirect to='/not-found' />
       </Switch>
-      <BottomNavBar />
     </Router>
 
   );

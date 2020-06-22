@@ -81,6 +81,7 @@ let [state, setstate] = useState({})
     rowContainer.setAttribute('class','rowContainer')
     let tdDate=document.createElement('td')
     let tdTime=document.createElement('td')
+    let tBody=document.createElement('tbody')
     tdDate.setAttribute('class','rowClass')
     tdTime.setAttribute('class','rowClass')
 
@@ -99,7 +100,8 @@ let [state, setstate] = useState({})
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
     tdTime.appendChild(butt);
-    table.appendChild(rowContainer);
+    tBody.appendChild(rowContainer)
+    table.appendChild(tBody);
 
 
   }
