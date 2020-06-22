@@ -1,26 +1,23 @@
-.bottomBarContainer {
-  position: fixed;
-  bottom: 0;
-  background-color: #fafafa;
-  overflow: hidden;
-  width: 100vw;
-  }
 
   .listContainer {
-
+    position: sticky;
+    bottom: 0;
+    background-color: #fafafa;
+    width: 100vw;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    justify-content: space-evenly;
+    height: 100px;
 
   }
 
 .iconContainer{
   list-style: none;
+  position: relative;
   cursor: pointer;
   transition: all 0.4s ease-in;
-  margin-top: 15px;
-  margin-right: 20px;
+  outline: none;
+  margin-top: 20px;
+  margin-right: 50px;
 }
 
 .iconContainer:focus{
