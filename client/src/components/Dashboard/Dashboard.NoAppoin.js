@@ -86,7 +86,6 @@ function DashboardNoAppoin() {
     tdTime.appendChild(butt);
     table.appendChild(rowContainer);
 
-
   }
 
 
