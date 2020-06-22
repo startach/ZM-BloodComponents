@@ -4,11 +4,11 @@ import "../appointmentsEntry/appointmentsEntry.css";
 import { db } from '../firebase/firebase'
 import { useHistory } from 'react-router-dom'
 
-
 function DashboardNoAppoin() {
   let history = useHistory()
   let [hospital, setHospital] = useState([])
-  let [chosenOption,setChosenOption] = useState({})
+  let [appointments, setAppointments] = useState([])
+  let [chosenOption, setChosenOption] = useState({})
 
   function handleChange(e) {
     setChosenOption(e.target.value)
@@ -24,104 +24,33 @@ function DashboardNoAppoin() {
 
         return hospitalDetails.data().hospitalName
 
-        
-       
+
+
       })
       setHospital(hospitalsNames)
     })
 
   }, [])
-     
 
 
 
+  useEffect(() => {
 
-
-  //getting available appoitments for specific hospital by name
-  async function availableAppoitmentsspecific(hospitalName) {
-
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName)
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
     filteredQuery.get()
       .then(querySnapshot => {
-        console.log(querySnapshot)
-        querySnapshot.docs.forEach(hospitalAppoitments => {
-          console.log(hospitalAppoitments.data());
-          // renderAppointments(hospitalAppoitments.data())
+        const Appointments = querySnapshot.docs.map(hospitalAppointments => {
+          return hospitalAppointments.data();
 
         })
+        setAppointments(Appointments)
 
       })
       .catch(error => {
         // Catch errors
       });
-  }
 
-
-
-
-  // const renderOption = (hospitalData) => {
-
-  //   let optionsList = document.querySelector('.hospitalsOptionsList')
-
-  //   let option = document.createElement('OPTION')
-
-  //   option.setAttribute("id", hospitalData.id)
-
-  //   option.textContent = hospitalData.data().hospitalName
-
-  //   optionsList.appendChild(option)
-
-  // }
-
-  // const renderAppointments = (appointments) => {
-
-
-  //   let table = document.querySelector('.schedulesTables')
-  //   let rowContainer = document.createElement('tr')
-
-  //   rowContainer.setAttribute('class', 'rowContainer')
-  //   let tdDate = document.createElement('td')
-  //   let tdTime = document.createElement('td')
-  //   let tBody = document.createElement('tbody')
-  //   tdDate.setAttribute('class', 'rowClass')
-  //   tdTime.setAttribute('class', 'rowClass')
-
-
-  //   let butt = document.createElement('button')
-  //   butt.setAttribute('class', 'scheduleButton');
-
-  //   butt.onclick = function () {
-  //     history.push('/questions')
-
-  //   }
-  //   tdDate.textContent = appointments.date;
-  //   tdTime.textContent = appointments.time;
-  //   butt.textContent = "Register";
-
-
-  //   rowContainer.appendChild(tdDate);
-  //   rowContainer.appendChild(tdTime);
-  //   tdTime.appendChild(butt);
-  //   tBody.appendChild(rowContainer)
-  //   table.appendChild(tBody);
-
-
-
-  // }
-
-
-  // function Cleartable() {
-
-  //   let table = document.querySelector('.schedulesTables')
-
-  //   Array.from(table.childNodes).forEach(item => {
-  //     if (item.nodeName == 'TR') table.removeChild(item);
-  //     else return
-
-
-  //   })
-  // }
-
+  }, [chosenOption])
 
 
 
@@ -141,7 +70,7 @@ function DashboardNoAppoin() {
 
           {hospital.map(name => (
 
-            <option value ={name}>
+            <option value={name}>
 
               {name}
 
@@ -149,7 +78,7 @@ function DashboardNoAppoin() {
 
           ))}
 
-         
+
 
         </select>
       </p>
@@ -164,6 +93,17 @@ function DashboardNoAppoin() {
           </tr>
         </thead>
         <tbody>
+          {appointments.map(appointment => (
+
+            <tr className='rowContainer'>
+              <td className='rowClass' >{appointment.date}</td>
+              <td className='rowClass'>{appointment.time}</td>
+              <td className='rowClass'><button className="scheduleButton">Register</button>
+              </td>
+            </tr>
+
+
+          ))}
 
         </tbody>
       </table>
