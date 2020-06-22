@@ -86,11 +86,7 @@ export default function AddAppointments() {
     return (
         <div className="addAppContainer">
 
-            <div className="donationsPage" >
 
-                <div className="title">Add Appointments</div>
-                <div className="line1"></div>
-            </div>
 
 
             <p className="text-center mt-5">

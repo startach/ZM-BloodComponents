@@ -6,7 +6,9 @@
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    height: 100px;
+    height: 80px;
+    margin-bottom: 0px !important;
+    border-top: solid black 2px;
 
   }
 
@@ -16,8 +18,9 @@
   cursor: pointer;
   transition: all 0.4s ease-in;
   outline: none;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 50px;
+
 }
 
 .iconContainer:focus{

@@ -41,7 +41,7 @@ let styles = {
 const Menu_header = (props) => {
 
     return (
-        <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
+        <div className="col-xs-12 navbar-fixed-top fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
                 {/* change the icon depending on the page we are in */}
                 {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu /> : null}
