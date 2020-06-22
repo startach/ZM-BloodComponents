@@ -9,7 +9,7 @@ import Login from '../../Screens/login'
 import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
-
+import Questions from '../Questionnaire/Questionnaire'
 
 
 function App() {
@@ -27,6 +27,9 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
+        <Route path='/questions' component={Questions} />
+
+
         <Redirect from='/' exact to="/dashboard" />
         <Redirect to='/not-found' />
       </Switch>

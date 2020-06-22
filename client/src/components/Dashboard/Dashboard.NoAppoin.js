@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db } from '../firebase/firebase'
+import { useHistory } from 'react-router-dom'
+
 
 function DashboardNoAppoin() {
-
+  let history = useHistory()
   let [state, setstate] = useState({})
   function handlechange(e) {
+    let table = document.querySelector('.schedulesTables')
+    table.innerHTML = "";
     state = { ...state, [e.target.id]: e.target.value }
     availableAppoitmentsspecific(state.selectoption)
+
+
+
   }
 
 
@@ -64,38 +71,36 @@ function DashboardNoAppoin() {
 
   const renderAppointments = (appointments) => {
 
-    let table = document.querySelector('.schedulesTables')
 
+    let table = document.querySelector('.schedulesTables')
     let rowContainer = document.createElement('tr')
-<<<<<<< HEAD
-    
-    rowContainer.setAttribute('class','rowContainer')
-    let tdDate=document.createElement('td')
-    let tdTime=document.createElement('td')
-    let tBody=document.createElement('tbody')
-    tdDate.setAttribute('class','rowClass')
-    tdTime.setAttribute('class','rowClass')
-=======
 
     rowContainer.setAttribute('class', 'rowContainer')
     let tdDate = document.createElement('td')
     let tdTime = document.createElement('td')
+    let tBody = document.createElement('tbody')
     tdDate.setAttribute('class', 'rowClass')
     tdTime.setAttribute('class', 'rowClass')
->>>>>>> 687003a843857dd9395d4a7f33a97cee7467729d
 
 
     let butt = document.createElement('button')
     butt.setAttribute('class', 'scheduleButton');
+
+    butt.onclick = function () {
+      history.push('/questions')
+
+    }
     tdDate.textContent = appointments.date;
     tdTime.textContent = appointments.time;
     butt.textContent = "Register";
+
 
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
     tdTime.appendChild(butt);
     tBody.appendChild(rowContainer)
     table.appendChild(tBody);
+
 
 
   }
@@ -135,5 +140,6 @@ function DashboardNoAppoin() {
     </div>
   );
 }
+
 
 export default DashboardNoAppoin;
