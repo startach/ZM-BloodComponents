@@ -20,6 +20,12 @@ const BurgerMenu = () => {
     });
   }, [])
 
+  const handleLogout = () => {
+
+    auth.signOut();
+
+  }
+
 
   var styles = {
     bmBurgerButton: {
@@ -45,12 +51,14 @@ const BurgerMenu = () => {
     },
     bmMenuWrap: {
       position: 'fixed',
-      height: '400px',
-      transition: 'all 1s ease'
+      top: '57px',
+      height: 'auto',
+      transition: 'all 1s ease',
+      borderRadius: '4px'
     },
     bmMenu: {
       background: '#DEB675',
-      padding: '2.0em 1.5em 0',
+      padding: '1.0em 1.5em 0',
       fontSize: '1.15em'
     },
     bmMorphShape: {
@@ -62,15 +70,23 @@ const BurgerMenu = () => {
     },
     bmItem: {
       color: '#E4FDFF',
-      padding: '.8em',
+      paddingTop: '.8em',
+      paddingBottom: '.8em',
       fontFamily: 'Montserrat',
       outline: 'none',
       textDecoration: 'none',
+      textAlign: 'left',
+
 
     },
 
     bmOverlay: {
-      background: 'rgba(0, 0, 0, 0)'
+      background: 'rgba(0, 0, 0, 0)',
+      position: 'fixed',
+      width: '50px',
+      height: '30px',
+      left: '12px',
+      top: '12px',
     }
   }
   return (
@@ -80,22 +96,28 @@ const BurgerMenu = () => {
           Dashboard
             {/* <a id="dashboard" className="menu-item">Dashboard</a> */}
         </Link>
+        <div className="line"></div>
         {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/add' className="link">
           Add Appointments
             </Link> : null}
+        <div className="line"></div>
         <Link to='/user' className="link">
           Profile
             </Link>
+        <div className="line"></div>
         <Link to='/Emergency' className="link">
           Emergency Donation
             </Link>
+        <div className="line"></div>
         <Link to='/prevapp' className="link">
           Previous  Appointments
             </Link>
+        <div className="line"></div>
         {accessLevel === "admin" ? <Link to='/admin' className="link">
           Admin
             </Link> : null}
-        <Link to='/logout' className="link">
+        <div className="line"></div>
+        <Link to='/login' className="link" onClick={handleLogout}>
           Logout
             </Link>
       </Menu>
