@@ -81,7 +81,7 @@ let [state, setstate] = useState({})
     rowContainer.setAttribute('class','rowContainer')
     let tdDate=document.createElement('td')
     let tdTime=document.createElement('td')
-    let tBody=document.createElement('tbody')
+    
     tdDate.setAttribute('class','rowClass')
     tdTime.setAttribute('class','rowClass')
 
