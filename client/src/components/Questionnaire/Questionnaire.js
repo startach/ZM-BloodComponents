@@ -89,10 +89,6 @@ export default function Questionnaire() {
     return (
         <div className="questionnairePage">
 
-
-            <div className="title">Questionnaire</div>
-            <div className="line1"></div>
-
                 <form onSubmit={handleSubmit}>
             {questionList.map((question, index) => (
 
