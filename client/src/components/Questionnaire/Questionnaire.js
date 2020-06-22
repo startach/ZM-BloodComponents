@@ -63,8 +63,7 @@ export default function Questionnaire() {
 
     const handleSubmit = (e) => {
         var sum=questionList.length;
-        //  console.log(sum);
-           console.log(result)
+
         Object.keys(result).forEach(function(key) {
             
             if(result[key]!='select'){
