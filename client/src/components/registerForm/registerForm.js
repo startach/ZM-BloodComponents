@@ -15,7 +15,6 @@ const RegisterForm = () => {
   const handleChange = (e) => {
 
     userInputs = ({ ...userInputs, [e.target.id]: e.target.value });
-    console.log(userInputs)
 
   }
 
@@ -37,13 +36,10 @@ const RegisterForm = () => {
 
     }).then(() => {
 
+      //Redirect to Dashboard after registration
       history.push('/dashboard')
 
     })
-
-
-
-    //Redirect to Dashboard after registration
 
 
     e.preventDefault()
@@ -55,7 +51,7 @@ const RegisterForm = () => {
     <div>
 
       <div className="imgContainer">
-        <img src={logo} id="logo" />
+        <img src={logo} id="register-logo" />
       </div>
 
       <div className="registerHeader">

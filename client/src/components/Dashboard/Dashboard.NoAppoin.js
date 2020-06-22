@@ -1,8 +1,95 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
+import { db } from '../firebase/firebase'
 
 function DashboardNoAppoin() {
+
+  let [state, setstate] = useState({})
+  function handlechange(e) {
+    state = { ...state, [e.target.id]: e.target.value }
+    availableAppoitmentsspecific(state.selectoption)
+  }
+
+
+  useEffect(() => {
+
+
+    db.collection('Hospitals').get().then((hopsitals) => {
+
+      hopsitals.docs.forEach(hospitalDetails => {
+
+        renderOption(hospitalDetails)
+      })
+    })
+
+  }, [])
+
+
+  //getting available appoitments for specific hospital by name
+  async function availableAppoitmentsspecific(hospitalName) {
+
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName)
+    filteredQuery.get()
+      .then(querySnapshot => {
+        console.log(querySnapshot)
+        querySnapshot.docs.forEach(hospitalAppoitments => {
+          console.log(hospitalAppoitments.data());
+          renderAppointments(hospitalAppoitments.data())
+
+        })
+
+      })
+      .catch(error => {
+        // Catch errors
+      });
+  }
+
+
+
+
+  const renderOption = (hospitalData) => {
+
+    let optionsList = document.querySelector('.hospitalsOptionsList')
+
+    let option = document.createElement('OPTION')
+
+    option.setAttribute("id", hospitalData.id)
+
+    option.textContent = hospitalData.data().hospitalName
+
+    optionsList.appendChild(option)
+
+  }
+
+  const renderAppointments = (appointments) => {
+
+    let table = document.querySelector('.schedulesTables')
+
+    let rowContainer = document.createElement('tr')
+
+    rowContainer.setAttribute('class', 'rowContainer')
+    let tdDate = document.createElement('td')
+    let tdTime = document.createElement('td')
+    tdDate.setAttribute('class', 'rowClass')
+    tdTime.setAttribute('class', 'rowClass')
+
+
+    let butt = document.createElement('button')
+    butt.setAttribute('class', 'scheduleButton');
+    tdDate.textContent = appointments.date;
+    tdTime.textContent = appointments.time;
+    butt.textContent = "Register";
+
+    rowContainer.appendChild(tdDate);
+    rowContainer.appendChild(tdTime);
+    tdTime.appendChild(butt);
+    table.appendChild(rowContainer);
+
+
+  }
+
+
   return (
     <div className="dashboardView noAppointmentViewContainer">
       <div className="userEligibility">
@@ -14,13 +101,10 @@ function DashboardNoAppoin() {
 
       <p className="hospitalsOptionsContainer">
         Nearest hospital is{" "}
-        <select className="hospitalsOptionsList">
-          <option value="Rambam - Haifa" className="option">
-            Rambam - Haifa
-          </option>
-          <option value="Tal Hashomer - Tel Aviv" className="option">
-            Tal Hashomer - Tel Aviv
-          </option>
+
+        <select className="hospitalsOptionsList" id="selectoption" onChange={handlechange}>
+
+
         </select>
       </p>
       {/* table area::::: */}
@@ -34,24 +118,7 @@ function DashboardNoAppoin() {
           </tr>
         </thead>
         <tbody>
-          <tr className='rowContainer'>
-            <td className='rowClass' >01/08/2020</td>
-            <td className='rowClass'>12:30</td>
-            <td className='rowClass'><button className="scheduleButton">Register</button>
-            </td>
-          </tr>
-          <tr className='rowContainer'>
-            <td className="rowClass">31/06/2020</td>
-            <td className="rowClass">14:30</td>
-            <td className="rowClass"><button className="scheduleButton">Register</button>
-            </td>
-          </tr>
-          <tr className='rowContainer'>
-            <td className="rowClass scheduleTableRow">08/07/2020</td>
-            <td className="rowClass">09:00</td>
-            <td className="rowClass"><button className="scheduleButton">Register</button>
-            </td>
-          </tr>
+
         </tbody>
       </table>
     </div>
