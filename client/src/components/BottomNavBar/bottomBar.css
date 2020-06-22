@@ -1,20 +1,26 @@
 .bottomBarContainer {
   position: fixed;
   bottom: 0;
-  display: table;
+  background-color: #fafafa;
+  overflow: hidden;
   width: 100vw;
-  justify-items: center;
-  justify-content: space-around;
-  margin: auto;
-  align-content: center;
+  }
+
+  .listContainer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
   }
 
 .iconContainer{
   list-style: none;
-  display: inline-block;
   cursor: pointer;
-
   transition: all 0.4s ease-in;
+  margin-top: 15px;
+  margin-right: 20px;
 }
 
 .iconContainer:focus{
@@ -25,9 +31,7 @@
   border: solid 0.5px #c3b7b1;
   box-shadow: 3px 3px 5px #c3b7b1;
   border-radius: 35%;
-  
   position: relative;
-  
   animation: bottomBarEffect 0.6s ease-in;
   outline: none;
 }
@@ -45,8 +49,8 @@
 
 
 
-.donateIcon{
+/* .donateIcon{
   padding: 0 22vw 0 22vw;
-}
+} */
 
 

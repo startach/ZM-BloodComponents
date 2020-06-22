@@ -12,8 +12,7 @@ const addIconClass = (e) => {
 
   return (
     <div className='bottomBarContainer'>
-        <hr/>
-        <ul>
+        <ul className='listContainer'>
             <li className='iconContainer aboutBtn'  onClick={(e) => {addIconClass(e)}}>
                 <img className='ion-about' alt="About icon" tabIndex='1' src={aboutIcon}></img>
             </li>
