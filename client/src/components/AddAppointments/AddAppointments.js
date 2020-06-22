@@ -13,7 +13,8 @@ export default function AddAppointments() {
 
     const hosIDs = { "Rambam": 1, "Tal Hashomer": 2 }
 
-    const display = useRef()
+    const displayNode = useRef(null)
+
 
     const [currentApp, setCurrentApp] = useState({
         userID: null,
@@ -24,6 +25,9 @@ export default function AddAppointments() {
         slots: 1,
         appointmentType: "Thrombocytes",
     })
+
+    //for counted appointments added
+    let count = 0;
 
     //set state values for slots & hospital
     const handleChange = e => {
@@ -50,6 +54,7 @@ export default function AddAppointments() {
         if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName) return
 
         setAppList(appList.concat(currentApp))
+        displayNode.current.textContent = ""
     }
 
     //add free appointments to DB
@@ -60,11 +65,12 @@ export default function AddAppointments() {
             //lopp though and add as many appointments for empty spots
             for (let i = 0; i < loops; i++) {
                 db.collection('Appointments').add({ ...appointment, ["slots"]: null })
+                count++
             }
             //reset list
             setAppList([])
             //FIXME: fixed messgae when successfully uploaded
-            // display.textContent = "Appointments Successfully Uploaded"
+            displayNode.current.textContent = `${count} Appointments Successfully Uploaded`
 
         })
     }
@@ -102,7 +108,7 @@ export default function AddAppointments() {
 
             <div className="display my-5 mx-3">
                 {appList.length === 0 ?
-                    <div ref={display} className="text-center">Currently No Appointments to Submit</div>
+                    <div className="text-center">Currently No Appointments to Submit</div>
                     :
                     <div>
                         <div className="row heading">
@@ -125,8 +131,11 @@ export default function AddAppointments() {
                         ))}
                     </div>}
             </div>
+
             <div className="subBtn">
+
                 <Button type="button" text="Submit" onClick={handleSubmit}></Button>
+                <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
         </div>
 
