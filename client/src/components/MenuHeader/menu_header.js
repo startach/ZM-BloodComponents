@@ -8,8 +8,9 @@ let styles = {
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        backgroundColor: '#DEB675',
-        color: 'BLACK'
+        backgroundColor: '#fafafa',
+        color: 'BLACK',
+        borderBottom: '1px solid black'
     },
     backArrow: {
         display: 'flex',
@@ -25,18 +26,20 @@ let styles = {
         fontWeight: 'bold',
     },
     titleSingle: {
-        marginTop:'5px',
+        marginTop: '5px',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
         marginBottom: '-10px',
         fontFamily: 'Montserrat',
-  
+
     },
+
+
 };
 
 const Menu_header = (props) => {
-   
+
     return (
         <div className="col-xs-12 navbar-fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
@@ -49,12 +52,10 @@ const Menu_header = (props) => {
             </span>
 
             <div className="col-xs-2 vcenter pa2">
-                {/* <h3>Z!M</h3> */}
-                {/* <img 
-                style={{width:'60px'}}
-                src={headerImageUrl}></img> */}
+
             </div>
-            
+
+
         </div>
     );
 }

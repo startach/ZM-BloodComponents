@@ -56,6 +56,7 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result)
+        console.log(e.target.value)
 
     }
 

@@ -1,6 +1,6 @@
 
   .listContainer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     background-color: #fafafa;
     width: 100vw;
