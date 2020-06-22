@@ -13,7 +13,13 @@ let [state, setstate] = useState({})
     table.innerHTML="";
     state={...state,[e.target.id]:e.target.value}
 
-    availableAppoitmentsspecific(state.selectoption)
+
+  let [state, setstate] = useState({})
+  function handlechange(e) {
+    state = { ...state, [e.target.id]: e.target.value }
+availableAppoitmentsspecific(state.selectoption)
+
+    
   }
 
 
@@ -74,7 +80,6 @@ let [state, setstate] = useState({})
 
 
     let rowContainer = document.createElement('tr')
- 
     
     rowContainer.setAttribute('class','rowContainer')
     let tdDate=document.createElement('td')
@@ -96,11 +101,12 @@ let [state, setstate] = useState({})
     butt.textContent="Register";
    
 
-    rowContainer.appendChild(tdDate);
-    rowContainer.appendChild(tdTime);
-    tdTime.appendChild(butt);
-    tBody.appendChild(rowContainer)
-    table.appendChild(tBody);
+
+    let butt = document.createElement('button')
+    butt.setAttribute('class', 'scheduleButton');
+    tdDate.textContent = appointments.date;
+    tdTime.textContent = appointments.time;
+    butt.textContent = "Register";
 
 
   }
