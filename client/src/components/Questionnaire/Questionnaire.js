@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './Questionnaire.css'
+import {useHistory} from 'react-router-dom'
 
 export default function Questionnaire() {
+    let history=useHistory()
 
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
@@ -54,12 +56,15 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result)
+        console.log(e.target.value)
 
     }
 
     const handleSubmit = () => {
+        setComplete(true);
 
         if (complete) {
+            history.push('/verfication')
 
             //submit results and go to next page
 
