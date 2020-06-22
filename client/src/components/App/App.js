@@ -10,7 +10,7 @@ import UserPage from '../UserPage/UserPage'
 import Register from '../../Screens/register'
 import AddAppointment from '../../Screens/addAppointment'
 import Questions from '../Questionnaire/Questionnaire'
-
+import Verfication from '../verificationList/verificationList'
 
 function App() {
   return (
@@ -28,6 +28,8 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
+        <Route path='/verfication' component={Verfication} />
+
 
 
         <Redirect from='/' exact to="/dashboard" />

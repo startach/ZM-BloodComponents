@@ -11,13 +11,8 @@ let [state, setstate] = useState({})
   function handlechange(e){
     let table = document.querySelector('.schedulesTables')
     table.innerHTML="";
-    state={...state,[e.target.id]:e.target.value}
-
-
-  let [state, setstate] = useState({})
-  function handlechange(e) {
-    state = { ...state, [e.target.id]: e.target.value }
-availableAppoitmentsspecific(state.selectoption)
+    state={...state,[e.target.id]:e.target.value} 
+   availableAppoitmentsspecific(state.selectoption)
 
     
   }
@@ -95,24 +90,15 @@ availableAppoitmentsspecific(state.selectoption)
     butt.onclick=function(){
       history.push('/questions')
 
-    }
+    };
     tdDate.textContent=appointments.date;
     tdTime.textContent=appointments.time;
     butt.textContent="Register";
-   
-
-
-    let butt = document.createElement('button')
-    butt.setAttribute('class', 'scheduleButton');
-    tdDate.textContent = appointments.date;
-    tdTime.textContent = appointments.time;
-    butt.textContent = "Register";
+  
     rowContainer.appendChild(tdDate);
     rowContainer.appendChild(tdTime);
-    
     tdTime.appendChild(butt);
-    tBody.appendChild(rowContainer)
-    table.appendChild(tBody);
+
 
   }
 
@@ -150,6 +136,6 @@ availableAppoitmentsspecific(state.selectoption)
       </table>
     </div>
   );
-}
 
+}
 export default DashboardNoAppoin;
