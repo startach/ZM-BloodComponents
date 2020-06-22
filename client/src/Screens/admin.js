@@ -4,17 +4,17 @@ import MenuHeader from '../components/MenuHeader'
 import DashboardMain from "../components/Dashboard/Dashboard.Main"
 import "../components/Dashboard/dashboard.css"
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
-import AddAppointments from '../components/AddAppointments/AddAppointments'
+import Admin from '../components/Admin/Admin'
 
 
-const AddAppointment = () => {
+const AdminPage = () => {
 
     return (
         <div>
-            <MenuHeader title="Add Appointment" icon='burger'></MenuHeader>
-            <AddAppointments />
+            <MenuHeader title="Admin" icon='burger'></MenuHeader>
+            <Admin />
         </div>
     )
 }
 
-export default AddAppointment
+export default AdminPage
