@@ -105,11 +105,6 @@ function DashboardNoAppoin() {
   }, [])
 
 
-  const bookTaxi = () => {
-
-
-  }
-
   return (
 
 
