@@ -24,14 +24,14 @@ export default function UserPage() {
      const id = localStorage.getItem('userid');
      const history = useHistory();
     useEffect(() => {
-        const userData = async ()=> { 
-            const data = await db.collection('users').doc(id).get()
+        //const userData = async ()=> { const data = await
+            db.collection('users').doc(id).get()
                 .then(snapshot => setUserDetails(snapshot.data()))
                 .catch( err =>{
                    history.push('/not-found')
                 })
-            }
-        userData()
+         //  }
+       // userData()
     }, [])
 
     //state for if data feild is currently editable or not
