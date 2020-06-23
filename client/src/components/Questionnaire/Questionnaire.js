@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './Questionnaire.css'
 import {useHistory} from 'react-router-dom'
 import Button from '../button'
+import { db } from '../firebase/firebase'
+
 
 export default function Questionnaire() {
     let history=useHistory()
@@ -70,10 +72,18 @@ export default function Questionnaire() {
             }
            // setComplete(true)
         });
-        console.log(sum);
         if(sum==0)
         {
             setComplete(true)
+           var appointId = localStorage.getItem('appointmentId');
+           var userId= localStorage.getItem('userid')
+           db.collection('Appointments').doc(appointId).update({
+               userID:userId
+           })
+            
+
+            console.log(appointId,userId)
+
             history.push('/verfication')
         }else{
        

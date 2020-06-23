@@ -18,6 +18,15 @@ function DashboardNoAppoin() {
   function handleChange(e) {
     setChosenOption(e.target.value)
   }
+
+
+  function run(e)
+  {
+    localStorage.setItem('appointmentId',( e.target.id));
+    
+
+    console.log(e.target.id);
+  }
   const history = useHistory();
   useEffect(() => {
     //redirect user to login screen if he is not logged in 
@@ -199,7 +208,7 @@ function DashboardNoAppoin() {
                     <td className='rowClass' >{appointment.data().date}</td>
                     <td className='rowClass'>{appointment.data().time}</td>
                     <Link to='/questions'>
-                      <button className="scheduleButton">Register</button>
+                      <button onClick={run} id={appointment.id} className="scheduleButton">Register</button>
 
                     </Link>
                   </tr>
