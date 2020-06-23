@@ -1,5 +1,5 @@
-.screenContainer {
-    height: 79.5vh;
+.fullscreenContainer {
+    height: 100vh;
     background-color: #fafafa;
     width: 100vw;
     overflow: auto

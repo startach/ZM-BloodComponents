@@ -20,6 +20,7 @@ const PreviousAppointments = () => {
                 <BottomNavBar />
 
             </ScreenContainer>
+            <div className="footer"></div>
         </Fragment>
 
     )

@@ -12,6 +12,7 @@ const AppointmentVerification = () => {
                 <VerificationList />
 
             </ScreenContainer>
+            <div className="footer"></div>
         </Fragment>
 
     )

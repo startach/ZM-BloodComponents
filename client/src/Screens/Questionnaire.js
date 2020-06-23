@@ -12,7 +12,7 @@ const Questionnaire = () => {
             <MenuHeader title="Questionnaire" icon='backArrow'></MenuHeader>
             <QuestionnaireList />
             <BottomNavBar />
-
+            <div className="footer"></div>
         </ScreenContainer>
     )
 }
