@@ -17,6 +17,7 @@ const AdminPage = () => {
                 <Admin />
                 <BottomNavBar />
             </ScreenContainer>
+            <div className="footer"></div>
         </div>
     )
 }
