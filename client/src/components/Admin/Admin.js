@@ -7,6 +7,8 @@ export default function Admin() {
     //set current access level
     const [accessLevel, setAccessLevel] = useState();
 
+    const [response, setResponse] = useState(null);
+
     //set person to add
     const [control, setControl] = useState({
         admin: null,
@@ -33,7 +35,9 @@ export default function Admin() {
 
         const addAdminRole = functions.httpsCallable('addAdminRole');
         addAdminRole({ email: control.admin }).then(result => {
-            console.log(result);
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
         });
 
     }
@@ -46,7 +50,9 @@ export default function Admin() {
 
         const addCordRole = functions.httpsCallable('addCordRole');
         addCordRole({ email: control.cord }).then(result => {
-            console.log(result);
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
         });
 
 
@@ -57,8 +63,10 @@ export default function Admin() {
         e.preventDefault();
 
         const removeRole = functions.httpsCallable('removeRole');
-        removeRole({ email: control.role }).then(result => {
-            console.log(result);
+        removeRole({ email: control[role] }).then(result => {
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
         });
 
 
@@ -119,6 +127,7 @@ export default function Admin() {
 
 
 
+
             <form style={{ margin: "40px auto", maxWidth: "300px" }} >
                 <input type="email" placeholder="User email" id="admin-email" value={control.admin} required />
 
@@ -134,6 +143,8 @@ export default function Admin() {
                 <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "admin")}>Remove</button>
             </form>
 
-        </div >
+            {response ? <div className="text-center">{response.data.message}</div> : null}
+
+        </div>
     )
 }
