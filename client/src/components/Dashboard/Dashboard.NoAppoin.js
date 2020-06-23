@@ -2,10 +2,12 @@ import React, { useState, useEffect, Fragment } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db, auth } from '../firebase/firebase'
-import { Link } from 'react-router-dom'
+import { Link, useHistory} from 'react-router-dom'
 import Button from '../button'
 
 function DashboardNoAppoin() {
+
+
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState({})
@@ -16,9 +18,11 @@ function DashboardNoAppoin() {
   function handleChange(e) {
     setChosenOption(e.target.value)
   }
-
+  const history = useHistory();
   useEffect(() => {
-
+  //redirect user to login screen if he is not logged in 
+  if (!localStorage.getItem('userid'))
+      history.push('/login')
 
     db.collection('Hospitals').get().then((hopsitals) => {
 

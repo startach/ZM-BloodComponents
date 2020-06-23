@@ -3,6 +3,7 @@ import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
+import {Dropdown} from 'react-bootstrap';
 
 const BurgerMenu = () => {
 
@@ -21,7 +22,8 @@ const BurgerMenu = () => {
   }, [])
 
   const handleLogout = () => {
-
+    // remove remove localstored userid
+  localStorage.removeItem('userid');
     auth.signOut();
 
   }

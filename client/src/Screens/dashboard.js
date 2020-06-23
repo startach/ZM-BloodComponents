@@ -7,8 +7,6 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 
 const Dashboard = () => {
-
-
     return (
         <Fragment>
             <div className="header"></div>
