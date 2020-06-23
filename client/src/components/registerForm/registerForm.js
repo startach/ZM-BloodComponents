@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import Notifications from '../Notifications/Notifications'
 
+
+
 const RegisterForm = () => {
 
   const history = useHistory();
@@ -34,7 +36,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <div>
+  
 
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
@@ -159,7 +161,7 @@ const RegisterForm = () => {
 
 
 
-    </div>
+
   )
 }
 
