@@ -11,9 +11,13 @@ const AddAppointment = () => {
 
     return (
         <div>
-            <MenuHeader title="." icon='burger'></MenuHeader>
-            <AddAppointments />
-            <BottomNavBar />
+            <div className="header"></div>
+            <ScreenContainer>
+                <MenuHeader title="Add Appointments" icon='burger'></MenuHeader>
+                <AddAppointments />
+                <BottomNavBar />
+            </ScreenContainer>
+            <div className="footer"></div>
         </div>
     )
 }

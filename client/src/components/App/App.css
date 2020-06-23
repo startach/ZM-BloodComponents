@@ -3,7 +3,19 @@
 *{
   user-select: none;
   outline: none;
+  font-family: 'Montserrat';
 }
 .App {
   text-align: center;
+}
+
+.header {
+
+  height: 57px;
+  background-color: pink;;
+}
+
+.footer {
+
+
 }

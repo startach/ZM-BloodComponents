@@ -1,22 +1,24 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ScreenContainer from '../components/screen'
 import MenuHeader from '../components/MenuHeader'
-import DashboardMain from "../components/Dashboard/Dashboard.Main"
+import MainDashboard from "../components/Dashboard/Dashboard.NoAppoin"
 import "../components/Dashboard/dashboard.css"
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 
 const Dashboard = () => {
-
-
     return (
-        <ScreenContainer>
-            <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
-            <DashboardMain> </DashboardMain>
+        <Fragment>
+            <div className="header"></div>
+            <ScreenContainer>
+                <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
+                <MainDashboard> </MainDashboard>
+            </ScreenContainer>
 
             <BottomNavBar />
+            <div className="footer"></div>
 
-        </ScreenContainer>
+        </Fragment>
 
     )
 }

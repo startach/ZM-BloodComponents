@@ -82,14 +82,10 @@ export default function Admin() {
 
     return (
         <div>
-            <div className="donationsPage" >
-
-                <div className="title">Admin Controls</div>
-                <div className="line1"></div>
-            </div>
 
 
-            <div className="text-center">ACCESS LEVEL: <b>{accessLevel}</b></div>
+
+            <div className="text-center mt-5">ACCESS LEVEL: <b>{accessLevel}</b></div>
 
 
 
