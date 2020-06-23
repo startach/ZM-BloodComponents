@@ -3,6 +3,7 @@
 *{
   user-select: none;
   outline: none;
+  font-family: 'Montserrat';
 }
 .App {
   text-align: center;

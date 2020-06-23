@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./loginForm.css";
 import Button from '../button'
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 
 const LoginForm = () => {
@@ -62,6 +62,7 @@ const LoginForm = () => {
               onChange={handleChange}
               type="email"
               name="email"
+              required
             ></input>
           </label>
 
@@ -75,6 +76,7 @@ const LoginForm = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              required
             ></input>
           </label>
 
@@ -87,7 +89,11 @@ const LoginForm = () => {
       <div class="registerFooter">
         <p id="footertext">Not signed up as donor yet?</p>
 
-        <Button type="button" text="Come Save Lives"></Button>
+
+        <Link to = '/register'>
+
+          <Button type="button" text="Come Save Lives"></Button>
+        </Link>
       </div>
     </div>
 
