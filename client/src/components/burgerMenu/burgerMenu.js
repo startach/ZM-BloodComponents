@@ -118,7 +118,7 @@ const BurgerMenu = () => {
         {accessLevel === "admin" ? <Link to='/admin' className="link">
           Admin
             </Link> : null}
-        {gaccessLevel === "admin" ? <div className="line"></div> : null}
+        {accessLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/login' className="link" onClick={handleLogout}>
           Logout
             </Link>
