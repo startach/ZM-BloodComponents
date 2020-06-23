@@ -1,16 +1,38 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import "./UserPage.css"
 import Notifications from '../Notifications/Notifications.js'
+import { db, auth } from '../firebase/firebase'
+import { useHistory, Link , Redirect} from 'react-router-dom'
 
 export default function UserPage() {
 
-    //state for user
-    const [userDetails, setUserDetails] = useState({
-        email: "dvir@gmail.com",
-        phone: "972-53-01243567",
-        address: "123 Main St, Haifa, Isreal"
-    })
+    //retrieving user authentication data/id
+    // useEffect(() => {
+    //     auth.onAuthStateChanged(async user => {
+    //       if (user) {
+    //         user.getIdTokenResult().then(data => {
+    //           console.log(data.claims.user_id)
+    //         });
+    //       }
+    //     });
+    //   }, [])
 
+    //state for user
+    const [userDetails, setUserDetails] = useState({})
+
+     //user id from localstorage
+     const id = localStorage.getItem('userid');
+     const history = useHistory();
+    useEffect(() => {
+        const userData = async ()=> { 
+            const data = await db.collection('users').doc(id).get()
+                .then(snapshot => setUserDetails(snapshot.data()))
+                .catch( err =>{
+                   history.push('/not-found')
+                })
+            }
+        userData()
+    }, [])
 
     //state for if data feild is currently editable or not
     const [editable, setEditable] = useState({
@@ -57,6 +79,8 @@ export default function UserPage() {
             setUserDetails({ ...userDetails, [currentData]: currentNode.current.textContent })
 
             //send to database TODO:
+            console.log(userDetails)
+            db.collection('users').doc(id).update({[currentData]: currentNode.current.textContent})
 
         }
         else {
@@ -70,14 +94,11 @@ export default function UserPage() {
     }
     return (
         <div className="userPage" >
-
-            <div className="title">User Page</div>
-            <div className="line1"></div>
             <div className="topBox">
-                <div className="name topBox-right">Dvir Cohen</div>
+                <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
                     <span className="bloodType">Blood Type:</span>
-                    <span>B-</span></div>
+                    <span style={{color:'red'}}>{userDetails.bloodType}</span></div>
             </div>
 
             <div className="line2"></div>

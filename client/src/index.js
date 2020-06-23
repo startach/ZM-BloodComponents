@@ -4,15 +4,12 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { RecoilRoot } from 'recoil';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
     <App />
-    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );

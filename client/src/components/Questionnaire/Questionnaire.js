@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './Questionnaire.css'
+import {useHistory} from 'react-router-dom'
+import Button from '../button'
 
 export default function Questionnaire() {
-
+    let history=useHistory()
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
         Q1: "select",
@@ -53,20 +55,31 @@ export default function Questionnaire() {
     const handleResults = (e, index) => {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
-        console.log(result)
 
     }
 
-    const handleSubmit = () => {
 
-        if (complete) {
 
-            //submit results and go to next page
+    const handleSubmit = (e) => {
+        var sum=questionList.length;
 
-        } else {
+        Object.keys(result).forEach(function(key) {
+            
+            if(result[key]!='select'){
+            sum--;
+            }
+           // setComplete(true)
+        });
+        console.log(sum);
+        if(sum==0)
+        {
+            setComplete(true)
+            history.push('/verfication')
+        }else{
+       
             alert("you need to answer all questions before you can submit the questionnare")
         }
-
+    e.preventDefault();
 
     }
 
@@ -74,11 +87,7 @@ export default function Questionnaire() {
     return (
         <div className="questionnairePage">
 
-
-            <div className="title">Questionnaire</div>
-            <div className="line1"></div>
-
-
+                <form onSubmit={handleSubmit}>
             {questionList.map((question, index) => (
 
                 <div className="questions">
@@ -97,10 +106,12 @@ export default function Questionnaire() {
             )
 
             )}
-            <div className="submit">
-                <div className="submitBtn" onClick={handleSubmit}>Submit</div>
+               <div className="submit">
+                <Button  type="submit" text='Submit'  ></Button>
             </div>
 
+            </form>
+         
 
         </div>
     )

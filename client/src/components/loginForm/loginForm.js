@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./loginForm.css";
 import Button from '../button'
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 
 const LoginForm = () => {
@@ -22,13 +22,7 @@ const LoginForm = () => {
     //check auth from firebase
     auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
       //storing the logged in user's id into localStorage variable
-      console.log(cred.user.uid)
       localStorage.setItem('userid', cred.user.uid)
-      console.log(localStorage.getItem('userid'))
-      // const newUserData ={
-      //   id:cred.user.uid,
-      //   ...userData
-      // }
     
       //Redirect to Dashboard after login if the user exists
       history.push('/dashboard')
@@ -39,7 +33,7 @@ const LoginForm = () => {
   return (
     <div className="loginPage">
       <div className="imgContainer">
-        <img src={logo} id="logo" />
+        <img src={logo} id="login-logo" />
       </div>
       <div className="loginHeader">
         <b id="header1"> Blood Components</b>
@@ -53,6 +47,7 @@ const LoginForm = () => {
               onChange={handleChange}
               type="email"
               name="email"
+              required
             ></input>
           </label>
 
@@ -64,6 +59,7 @@ const LoginForm = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              required
             ></input>
           </label>
         </div>
@@ -72,7 +68,11 @@ const LoginForm = () => {
       <div class="registerFooter">
         <p id="footertext">Not signed up as donor yet?</p>
 
-        <Button type="button" text="Come Save Lives"></Button>
+
+        <Link to = '/register'>
+
+          <Button type="button" text="Come Save Lives"></Button>
+        </Link>
       </div>
     </div>
   )

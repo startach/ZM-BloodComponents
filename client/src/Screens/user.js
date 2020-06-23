@@ -1,26 +1,26 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
 import ScreenContainer from '../components/screen'
 import MenuHeader from '../components/MenuHeader'
-import MainDashboard from "../components/Dashboard/Dashboard.NoAppoin"
 import "../components/Dashboard/dashboard.css"
+import UserPage from '../components/UserPage/UserPage'
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 
-const Dashboard = () => {
+const User = () => {
+
     return (
-        <Fragment>
+        <div>
             <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
-                <MainDashboard> </MainDashboard>
+                <MenuHeader title="User Profile" icon='burger'></MenuHeader>
+                <UserPage />
+                <BottomNavBar />
             </ScreenContainer>
-
-            <BottomNavBar />
             <div className="footer"></div>
-
-        </Fragment>
-
+        </div>
     )
 }
 
-export default Dashboard
+
+export default User

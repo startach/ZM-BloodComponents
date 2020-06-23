@@ -1,48 +1,81 @@
 
-.dashboardMainContainer{
-    margin: auto ;
+.scheduleButton {
+  background-color: #C71585;
+  color: white;
+  border-radius: 5px;
+  width: fit-content;
+  margin-top: 10px;
 }
 
-.upcomingAppointment{
-    padding: 8% 0 8% 0;
+.hospitalsOptionsContainer {
+  margin-top: 10px;
 }
 
-.directionsButton{
-background-color: #DEB675;
-border-radius: 5px;
-color: white;
-height: 5vh;
-width: 34vw;
+.rowClass {
+  color: #fafafa;
+  font-family: "Montserrat";
+  font-size: 18px;
+ 
+}
+
+.schedulesTables th, .schedulesTables td {
+  margin-top: 10px;
+  vertical-align: top;
+}
+
+.schedulesTables thead th {
+  vertical-align: bottom;
+}
+
+.schedulesTables {
+  width: 100%;
+  color: #212529;
+}
+
+.dashboardView {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.headerRow {
+  border: 2px solid #c3b7b1;
+}
+
+.headerEntries {
+
+  margin-bottom: 10px;
+}
+
+#introSpan {
+  font-size: 20px;
+}
+
+.lineUnderSpan {
+  border: 1px inset;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.userEligibility {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.hospitalsOptionsList {
+
+  width: 30vw;
+  background-color: #C3B7B1;
+  border-radius: 4px;
+
 }
 
 
-.taxiButton{
-border-radius: 5px;
-background-color: #C71585;
-color: white;
-height: 5vh;
-width: 34vw;
-}
 
-.scheduleButton{
-background-color: #C71585;
-color: white;
-height: 4vh;
-border-radius: 5px;
-width: 30vw;
-}
+.bottomButtons {
 
-.table{
-    justify-content: space-between;
-    width: 95%;
-    margin: auto;
-}
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+margin-top: 50px;
 
-.hospitalsOptionsContainer{
-    margin: auto;
-    padding: 8% 0 8% 0;
-}
-
-.userEligibility{
-    padding-top: 6%;
 }

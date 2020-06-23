@@ -5,23 +5,23 @@ import DonateIcon from "./Donate.svg";
 import "./bottomBar.css"
 
 export default function BottomBar() {
-  return (
-    <div className='bottomBarContainer'>
-        <ul>
-            <li className='iconContainer'>
-                <img alt="About icon" src={aboutIcon}></img>
-                About
+
+    const addIconClass = (e) => {
+        e.target.classList.add('iconClicked')
+    }
+
+    return (
+        <ul className='listContainer'>
+            <li className='iconContainer aboutBtn' onClick={(e) => { addIconClass(e) }}>
+                <img className='ion-about' alt="About icon" tabIndex='1' src={aboutIcon}></img>
             </li>
 
-            <li className='iconContainer'>
-                <img alt="Donate icon" src={DonateIcon}></img>
-                Donate
+            <li className='iconContainer donateIcon donateBtn' onClick={(e) => { addIconClass(e) }}>
+                <img className='ion-donate' tabIndex='2' alt="Donate icon" src={DonateIcon}></img>
             </li>
-            <li className='iconContainer'>
-                <img alt="Contact icon" src={ContactUsIcon}></img>
-                Contact us
+            <li className='iconContainer contactBtn' onClick={(e) => { addIconClass(e) }}>
+                <img className='ion-contact' tabIndex='3' alt="Contact us icon" src={ContactUsIcon}></img>
             </li>
         </ul>
-    </div>
-  );
+    );
 }

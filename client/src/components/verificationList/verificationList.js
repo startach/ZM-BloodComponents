@@ -1,21 +1,20 @@
 import React from 'react'
 import Button from '../button'
 import './verificationList.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const VerificationList = () => {
     return (
         <div>
-
             <div className="introContainer">
 
                 <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b>X</b> hospital</p>
-
             </div>
 
-                <h2 id = "forgetText" ><b>Don't Forget to</b></h2>
 
-       
+            <h2 id="forgetText" ><b>Don't Forget to</b></h2>
+
+
             <ul className="bringList">
 
                 <li id="toBring">Bring your ID with you</li>
@@ -26,12 +25,12 @@ const VerificationList = () => {
 
             </ul>
 
-                <p id="footer">Have a nice day ,</p>
+            <p id="footer">Have a nice day ,</p>
 
 
-            <Link id ="link" to ="/dashboard">
-                <Button text = "Dashboard"/>
-                </Link>
+            <Link id="link" to="/dashboard">
+                <Button text="Dashboard" />
+            </Link>
 
 
         </div>

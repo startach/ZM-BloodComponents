@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ScreenContainer from '../components/screen'
-import VerificationList from '../components/verificationList'
 import MenuHeader from '../components/MenuHeader'
+import VerificationList from '../components/verificationList'
 
 const AppointmentVerification = () => {
     return (
-        <ScreenContainer>
-            <MenuHeader icon = "burger" title = "Appointment Verification"/>
-            <VerificationList/>
-        </ScreenContainer>
+        <Fragment>
+            <div className="header"></div>
+            <ScreenContainer>
+                <MenuHeader icon="burger" title="Appointment Verification" />
+                <VerificationList />
+
+            </ScreenContainer>
+        </Fragment>
+
     )
 }
 
