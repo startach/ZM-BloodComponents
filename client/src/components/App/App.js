@@ -29,7 +29,7 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
-        <Route path='/verfication' component={Verfication} />
+        <Route path='/verfication' component={AppointmentVerification} />
         {/* <Redirect from='/' exact to="/dashboard" /> */}
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
