@@ -16,7 +16,6 @@ import EmergencyDonations from '../../Screens/emergencyDonations'
 
 function App() {
   return (
-
     <Router>
       <Switch>
         <Route path='/dashboard' component={Dashboard} />
@@ -31,14 +30,11 @@ function App() {
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
         <Route path='/verfication' component={Verfication} />
-
-
-
-        <Redirect from='/' exact to="/dashboard" />
+        {/* <Redirect from='/' exact to="/dashboard" /> */}
+        <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
       </Switch>
     </Router>
-
   );
 }
 

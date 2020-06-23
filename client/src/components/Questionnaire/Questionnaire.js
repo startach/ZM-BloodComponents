@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import './Questionnaire.css'
 import {useHistory} from 'react-router-dom'
 import Button from '../button'
+import { db } from '../firebase/firebase'
+
 
 export default function Questionnaire() {
     let history=useHistory()
-
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
         Q1: "select",
@@ -63,8 +64,7 @@ export default function Questionnaire() {
 
     const handleSubmit = (e) => {
         var sum=questionList.length;
-        //  console.log(sum);
-           console.log(result)
+
         Object.keys(result).forEach(function(key) {
             
             if(result[key]!='select'){
@@ -72,10 +72,18 @@ export default function Questionnaire() {
             }
            // setComplete(true)
         });
-        console.log(sum);
         if(sum==0)
         {
             setComplete(true)
+           var appointId = localStorage.getItem('appointmentId');
+           var userId= localStorage.getItem('userid')
+           db.collection('Appointments').doc(appointId).update({
+               userID:userId
+           })
+            
+
+            console.log(appointId,userId)
+
             history.push('/verfication')
         }else{
        

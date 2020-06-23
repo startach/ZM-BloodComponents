@@ -7,6 +7,8 @@ export default function Admin() {
     //set current access level
     const [accessLevel, setAccessLevel] = useState();
 
+    const [response, setResponse] = useState(null);
+
     //set person to add
     const [control, setControl] = useState({
         admin: null,
@@ -33,9 +35,11 @@ export default function Admin() {
 
         const addAdminRole = functions.httpsCallable('addAdminRole');
         addAdminRole({ email: control.admin }).then(result => {
-            console.log(result);
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
         });
-        setControl(control.admin = "")
+
     }
 
 
@@ -45,11 +49,26 @@ export default function Admin() {
         e.preventDefault();
 
         const addCordRole = functions.httpsCallable('addCordRole');
-        console.log("cord to add: ", control.cord)
         addCordRole({ email: control.cord }).then(result => {
-            console.log(result);
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
         });
-        setControl(control.cord = "")
+
+
+    }
+
+
+    const handleRemove = (e, role) => {
+        e.preventDefault();
+
+        const removeRole = functions.httpsCallable('removeRole');
+        removeRole({ email: control[role] }).then(result => {
+            setResponse(result)
+            console.log(result)
+            console.log(result.data.message)
+        });
+
 
     }
 
@@ -82,18 +101,14 @@ export default function Admin() {
 
     return (
         <div>
-            <div className="donationsPage" >
-
-                <div className="title">Admin Controls</div>
-                <div className="line1"></div>
-            </div>
-
-
-            <div className="text-center">ACCESS LEVEL: <b>{accessLevel}</b></div>
 
 
 
-            <form className="mb-5" style={{ margin: "40px auto", maxWidth: "300px" }} onSubmit={handleCord}>
+            <div className="text-center mt-5">ACCESS LEVEL: <b>{accessLevel}</b></div>
+
+
+
+            <form className="mb-5" style={{ margin: "40px auto", maxWidth: "300px" }} >
                 <input type="email" placeholder="User email" id="cord-email" value={control.cord} required />
 
                 <select className="dropdown mt-2" id="cord" onChange={handleChange}>
@@ -105,13 +120,15 @@ export default function Admin() {
                     ))}
                 </select>
 
-                <button class="btn btn-small btn-warning mt-2">Make Cordinator</button>
+                <button class="btn btn-small btn-warning mt-2" onClick={handleCord}>Make Cordinator</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "cord")}>Remove</button>
             </form>
 
 
 
 
-            <form style={{ margin: "40px auto", maxWidth: "300px" }} onSubmit={handleAdmin}>
+
+            <form style={{ margin: "40px auto", maxWidth: "300px" }} >
                 <input type="email" placeholder="User email" id="admin-email" value={control.admin} required />
 
                 <select className="dropdown mt-2" id="admin" onChange={handleChange}>
@@ -122,8 +139,11 @@ export default function Admin() {
 
                     ))}
                 </select>
-                <button className="btn btn-small btn-danger mt-2">Make Admin</button>
+                <button className="btn btn-small btn-danger mt-2" onClick={handleAdmin}>Make Admin</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "admin")}>Remove</button>
             </form>
+
+            {response ? <div className="text-center">{response.data.message}</div> : null}
 
         </div>
     )

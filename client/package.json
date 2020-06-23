@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.0",
     "firebase": "^7.15.3",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-burger-menu": "^2.6.15",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.1",

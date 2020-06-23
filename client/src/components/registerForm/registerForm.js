@@ -5,48 +5,33 @@ import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import Notifications from '../Notifications/Notifications'
 
-
 const RegisterForm = () => {
 
   const history = useHistory();
   const logo = "/img/Logo.png";
-
   let [userInputs, setuserInputs] = useState([])
 
   const handleChange = (e) => {
-
     userInputs = ({ ...userInputs, [e.target.id]: e.target.value });
-
   }
 
   const handleSubmit = (e) => {
-
     //update state
-
     setuserInputs(userInputs)
 
     //Insert user into firestore
-
     auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password).then(cred => {
-
+      //storing the logged in user's id into localStorage variable
+      localStorage.setItem('userid', cred.user.uid)
       return db.collection('users').doc(cred.user.uid).set(
-
         userInputs
-
       )
-
     }).then(() => {
-
       //Redirect to Dashboard after registration
       history.push('/dashboard')
-
     })
-
-
     e.preventDefault()
-
   }
-
 
   return (
     <div>
@@ -68,6 +53,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="email"
+              required
             ></input>
           </label>
 
@@ -80,6 +66,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="email"
               name="email"
+              required
             ></input>
           </label>
 
@@ -95,6 +82,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              required
             ></input>
           </label>
 
@@ -108,6 +96,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="phone"
               name="phone"
+              required
             ></input>
           </label>
 
@@ -121,6 +110,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="City"
+              required
             ></input>
           </label>
 
@@ -136,6 +126,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="address"
+              required
             ></input>
           </label>
 

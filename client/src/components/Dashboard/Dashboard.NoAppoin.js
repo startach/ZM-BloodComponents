@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
-import { db } from '../firebase/firebase'
-import { Link } from 'react-router-dom'
+import { db, auth } from '../firebase/firebase'
+import { Link, useHistory } from 'react-router-dom'
+import Button from '../button'
 
 function DashboardNoAppoin() {
+
+
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState({})
+  let [checkUserAppointments, setCheckUserAppointments] = useState(false)
+  let [userName, setUserName] = useState('')
+  let [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
 
   function handleChange(e) {
     setChosenOption(e.target.value)
   }
 
-  useEffect(() => {
 
+  function run(e)
+  {
+    localStorage.setItem('appointmentId',( e.target.id));
+    
+
+    console.log(e.target.id);
+  }
+  const history = useHistory();
+  useEffect(() => {
+    //redirect user to login screen if he is not logged in 
+    if (!localStorage.getItem('userid'))
+      history.push('/login')
 
     db.collection('Hospitals').get().then((hopsitals) => {
 
@@ -38,7 +55,8 @@ function DashboardNoAppoin() {
     filteredQuery.get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
-          return hospitalAppointments.data();
+
+          return hospitalAppointments;
 
         })
         setAppointments(Appointments)
@@ -52,61 +70,160 @@ function DashboardNoAppoin() {
 
 
 
+  useEffect(() => {
+
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        const userData = await db.collection('users').doc(user.uid).get()
+        setUserName(userData.data().name)
+
+
+
+        db.collection('Appointments').where('userID', '==', user.uid).get()
+          .then(snapShot => {
+
+            if (snapShot.empty) {
+
+              console.log("User doesn't have any Appointment")
+            } else {
+              setCheckUserAppointments(true)
+              const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
+
+                return userAppointments
+              })
+              setUserAppointmentsDetails(userAppointmentsDetails)
+            }
+
+          })
+
+      }
+
+    })
+
+
+  }, [])
+
+
   return (
-    <div className="dashboardView noAppointmentViewContainer">
-      <div className="userEligibility">
-        you are <b style={{ color: "green" }}> eligible </b> to donate.
-        <br></br>
-        Please, schedule a new appointment:
-      </div>
 
 
-      <p className="hospitalsOptionsContainer">
-        Nearest hospital is{" "}
+    <div className="dashboardView">
+      {checkUserAppointments ? (
 
-        <select className="hospitalsOptionsList" id="selectedOption" onChange={handleChange}>
+        <Fragment>
 
-          {hospital.map(name => (
+          <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
 
-            <option value={name}>
-
-              {name}
-
-            </option>
-
-          ))}
+          <div className="lineUnderSpan"></div>
 
 
+          <div className="userEligibility">
+            You are <b style={{ color: "green" }}> eligible </b> to donate.
+      <br></br>
+      Here is few details regarding your upcoming appointment
+    </div>
 
-        </select>
-      </p>
-      {/* table area::::: */}
+          <table className="schedulesTables noAppointmentTable">
+            <thead>
+              <tr className="headerRow">
+                <th className="headerEntries">Date</th>
+                <th className="headerEntries">Time</th>
+                <th className="headerEntries">Location</th>
+              </tr>
+            </thead>
 
-      <table className="schedulesTables noAppointmentTable">
-        <thead>
-          <tr className="headerRow">
-            <th className="headerEntries">Date</th>
-            <th className="headerEntries">Time</th>
-            <th className="headerEntries">Schedule</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointments.map(appointment => (
+            <tbody>
 
-            <tr className='rowContainer'>
-              <td className='rowClass' >{appointment.date}</td>
-              <td className='rowClass'>{appointment.time}</td>
-              <Link to='/questions'>
-                <td className='rowClass'><button className="scheduleButton">Register</button>
-                </td>
-              </Link>
-            </tr>
+              {userAppointmentsDetails.map(appointment => (
+
+                <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass' >{appointment.data().date}</td>
+                  <td className='rowClass'>{appointment.data().time}</td>
+                  <td className='rowClass'>{appointment.data().hospitalName}</td>
+
+                </tr>
+
+              ))}
 
 
-          ))}
 
-        </tbody>
-      </table>
+            </tbody>
+
+          </table>
+
+          <div className="bottomButtons">
+            <Button type="button" text="Get Directions" width="150px"></Button>
+            <Button type="button" text="Open Gett" color='#C71585' width="150px"></Button>
+          </div>
+
+        </Fragment>
+
+
+      ) : (
+
+          <Fragment>
+
+            <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
+
+            <div className="lineUnderSpan"></div>
+
+            <div className="userEligibility">
+              You are <b style={{ color: "green" }}> eligible </b> to donate.
+      <br></br>
+      Please, schedule a new appointment:
+    </div>
+
+            <p className="hospitalsOptionsContainer">
+              Nearest hospital is{" "}
+
+              <select className="hospitalsOptionsList" onChange={handleChange}>
+
+                {hospital.map(name => (
+
+                  <option value={name}>
+
+                    {name}
+
+                  </option>
+
+                ))}
+
+
+
+              </select>
+            </p>
+
+            <table className="schedulesTables noAppointmentTable">
+              <thead>
+                <tr className="headerRow">
+                  <th className="headerEntries">Date</th>
+                  <th className="headerEntries">Time</th>
+                  <th className="headerEntries">Schedule</th>
+                </tr>
+              </thead>
+              <tbody>
+                {appointments.map(appointment => (
+
+                  <tr className='rowContainer' id={appointment.id}>
+                    <td className='rowClass' >{appointment.data().date}</td>
+                    <td className='rowClass'>{appointment.data().time}</td>
+                    <Link to='/questions'>
+                      <button onClick={run} id={appointment.id} className="scheduleButton">Register</button>
+
+                    </Link>
+                  </tr>
+
+
+                ))}
+
+              </tbody>
+            </table>
+
+          </Fragment>
+
+        )
+      }
+
     </div >
   );
 }

@@ -3,8 +3,9 @@ import { useHistory } from 'react-router-dom'
 
 const styles = {
   image: {
-    width: '40px',
-    height: '35px'
+    width: '50px',
+    height: '40px',
+    margin: '5px'
   },
 };
 
@@ -20,6 +21,7 @@ const BackArrow = (props) => {
 
   return (
     <img
+      className=" pointer"
       onClick={() => onClickGoBackArrow()}
       alt="presentation"
       style={styles.image}
