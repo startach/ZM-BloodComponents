@@ -70,7 +70,7 @@ export default function UserPage() {
             e.target.textContent = "Edit"
             e.target.style.backgroundColor = "#DEB675"
             e.target.style.transform = "translateY(+2px) scale(1)";
-            currentNode.current.style.backgroundColor = "white"
+            currentNode.current.style.backgroundColor = ""
             currentNode.current.style.border = "none";
 
             //save new data to state on click of save
@@ -89,6 +89,7 @@ export default function UserPage() {
             e.target.style.backgroundColor = "crimson"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
             currentNode.current.style.border = "medium solid #DEB675";
+            currentNode.current.style.backgroundColor = "white"
         }
 
     }
@@ -107,24 +108,42 @@ export default function UserPage() {
             <div className="userDetails" >
                 <div className="dataItem">
                     <div className="icon"><i className="far fa-envelope"></i></div>
-                    <div ref={emailNode} className="data" contentEditable={editable.emailData} suppressContentEditableWarning={true}>
+                    <div 
+                    ref={emailNode} 
+                    className="data" 
+                    contentEditable={editable.emailData} 
+                    suppressContentEditableWarning={true}>
                         {userDetails.email}
                     </div>
-                    <div className="editBtn" onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
+                    <div 
+                    className="editBtn" 
+                    onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-phone"></i></div>
-                    <div ref={phoneNode} className="data" contentEditable={editable.phoneData} suppressContentEditableWarning={true}>
+                    <div
+                    ref={phoneNode} 
+                    className="data" 
+                    contentEditable={editable.phoneData} 
+                    suppressContentEditableWarning={true}>
                         {userDetails.phone}
                     </div>
-                    <div className="editBtn" onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
+                    <div
+                    className="editBtn" 
+                    onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-home"></i></div>
-                    <div ref={addressNode} className="data" contentEditable={editable.addressData} suppressContentEditableWarning={true}>
+                    <div
+                    ref={addressNode} 
+                    className="data" 
+                    contentEditable={editable.addressData} 
+                    suppressContentEditableWarning={true}>
                         {userDetails.address}
                     </div>
-                    <div className="editBtn" onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
+                    <div  
+                    className="editBtn" 
+                    onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
                 <Notifications />
             </div>
