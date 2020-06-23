@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./dashboard.css"
 import "../appointmentsEntry/appointmentsEntry.css"
-import { db, auth } from '../firebase/firebase'
+// import { db, auth } from '../firebase/firebase'
 
 export default function DashboardAppoin() {
   //addAppoitment();
