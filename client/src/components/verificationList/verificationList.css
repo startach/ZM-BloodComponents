@@ -7,7 +7,7 @@
 
 #introHeader {
     font-family: 'Montserrat';
-    font-size: 30px;
+    font-size:20px;
 }
 
 #forgetText {
@@ -15,6 +15,7 @@
     justify-content: flex-start;
     align-items: center;
     font-family: 'Montserrat';
+    font-size:20px;
 }
 
 .bringList {
@@ -26,7 +27,7 @@
 
 #toBring {
     font-family: 'Montserrat';
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 5px;
 }
 
@@ -35,5 +36,5 @@
     justify-content: flex-start;
     align-items: center;
     font-family: 'Montserrat';
-    font-size: 30px;
+    font-size: 20px;
 }
