@@ -8,11 +8,17 @@ function DashboardNoAppoin() {
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState({})
+ // let [selectApp,setApp]=useState([])
 
   function handleChange(e) {
     setChosenOption(e.target.value)
   }
 
+
+  function run(id)
+  {
+    console.log(id);
+  }
   useEffect(() => {
 
 
@@ -38,7 +44,7 @@ function DashboardNoAppoin() {
     filteredQuery.get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
-          console.log(hospitalAppointments.id)
+          //console.log(hospitalAppointments.data())
 
           return hospitalAppointments;
 
@@ -99,7 +105,7 @@ function DashboardNoAppoin() {
               <td className='rowClass' >{appointment.data().date}</td>
               <td className='rowClass'>{appointment.data().time}</td>
               <Link to='/questions'>
-                <td className='rowClass'><button className="scheduleButton">Register</button>
+                <td className='rowClass'><button onClick={run(appointment.id)}  className="scheduleButton">Register</button>
                 </td>
               </Link>
             </tr>
