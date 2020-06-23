@@ -3,7 +3,7 @@ import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
-import {Dropdown} from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 
 const BurgerMenu = () => {
 
@@ -23,7 +23,7 @@ const BurgerMenu = () => {
 
   const handleLogout = () => {
     // remove remove localstored userid
-  localStorage.removeItem('userid');
+    localStorage.removeItem('userid');
     auth.signOut();
 
   }
@@ -102,7 +102,7 @@ const BurgerMenu = () => {
         {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/add' className="link">
           Add Appointments
             </Link> : null}
-        <div className="line"></div>
+        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/user' className="link">
           Profile
             </Link>
@@ -118,7 +118,7 @@ const BurgerMenu = () => {
         {accessLevel === "admin" ? <Link to='/admin' className="link">
           Admin
             </Link> : null}
-        <div className="line"></div>
+        {accessLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/login' className="link" onClick={handleLogout}>
           Logout
             </Link>
