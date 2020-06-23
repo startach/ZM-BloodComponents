@@ -12,21 +12,32 @@ const LoginForm = () => {
 
   const handleChange = (e) => {
     userData = ({ ...userData, [e.target.id]: e.target.value });
+   // console.log(userData)
+  }
+  const Validation=(userData)=>{
     console.log(userData)
+
+
   }
 
   const handleSubmit = (e) => {
+   // Validation(userData)
     //update state
     setUserData(userData)
 
     //check auth from firebase
     auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
       //storing the logged in user's id into localStorage variable
-      localStorage.setItem('userid', cred.user.uid)
-    
+      localStorage.setItem('userid', cred.user.uid)    
       //Redirect to Dashboard after login if the user exists
       history.push('/dashboard')
-    })
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+        alert(errorMessage,errorCode);
+      
+    });
     e.preventDefault()
   }
 

@@ -20,12 +20,18 @@ function DashboardNoAppoin() {
   }
 
 
-  function run(e)
+  function setlocalStorage(e)
   {
     localStorage.setItem('appointmentId',( e.target.id));
-    
+  }
+  function deleteAppointment(e)
+  {
+    console.log( e.target.id)
+    var appId=e.target.id;
+    db.collection('Appointments').doc(appId).update({
+        userID:null
+    })
 
-    console.log(e.target.id);
   }
   const history = useHistory();
   useEffect(() => {
@@ -52,6 +58,8 @@ function DashboardNoAppoin() {
   useEffect(() => {
 
     const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+    
+
     filteredQuery.get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
@@ -79,13 +87,14 @@ function DashboardNoAppoin() {
 
 
 
-        db.collection('Appointments').where('userID', '==', user.uid).get()
-          .then(snapShot => {
+        db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
 
             if (snapShot.empty) {
 
               console.log("User doesn't have any Appointment")
-            } else {
+              setCheckUserAppointments(false);
+            }
+             else {
               setCheckUserAppointments(true)
               const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
 
@@ -101,7 +110,7 @@ function DashboardNoAppoin() {
     })
 
 
-  }, [])
+  }, [userAppointmentsDetails])
 
 
   return (
@@ -140,6 +149,8 @@ function DashboardNoAppoin() {
                   <td className='rowClass' >{appointment.data().date}</td>
                   <td className='rowClass'>{appointment.data().time}</td>
                   <td className='rowClass'>{appointment.data().hospitalName}</td>
+                  <button onClick={deleteAppointment}  id={appointment.id} className="scheduleButton">Cancel</button>
+
 
                 </tr>
 
@@ -158,7 +169,7 @@ function DashboardNoAppoin() {
 
         </Fragment>
 
-
+//no appointments
       ) : (
 
           <Fragment>
@@ -208,7 +219,7 @@ function DashboardNoAppoin() {
                     <td className='rowClass' >{appointment.data().date}</td>
                     <td className='rowClass'>{appointment.data().time}</td>
                     <Link to='/questions'>
-                      <button onClick={run} id={appointment.id} className="scheduleButton">Register</button>
+                      <button onClick={setlocalStorage} id={appointment.id} className="scheduleButton">Register</button>
 
                     </Link>
                   </tr>
