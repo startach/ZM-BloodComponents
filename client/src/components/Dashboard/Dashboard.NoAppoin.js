@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db, auth } from '../firebase/firebase'
-import { Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
 
 function DashboardNoAppoin() {
@@ -20,8 +20,8 @@ function DashboardNoAppoin() {
   }
   const history = useHistory();
   useEffect(() => {
-  //redirect user to login screen if he is not logged in 
-  if (!localStorage.getItem('userid'))
+    //redirect user to login screen if he is not logged in 
+    if (!localStorage.getItem('userid'))
       history.push('/login')
 
     db.collection('Hospitals').get().then((hopsitals) => {
@@ -65,10 +65,9 @@ function DashboardNoAppoin() {
 
     auth.onAuthStateChanged(async user => {
       if (user) {
-        const userData = await db.collection('users').doc(user.uid).get().then(userSnapShot => {
-          return userSnapShot.data().name
-        })
-        setUserName(userData)
+        const userData = await db.collection('users').doc(user.uid).get()
+        setUserName(userData.data().name)
+
 
 
         db.collection('Appointments').where('userID', '==', user.uid).get()
@@ -88,8 +87,8 @@ function DashboardNoAppoin() {
 
           })
 
-
       }
+
     })
 
 
@@ -144,8 +143,8 @@ function DashboardNoAppoin() {
           </table>
 
           <div className="bottomButtons">
-            <Button type="button" text="Get Directions"></Button>
-            <Button type="button" text="Open Gett" color='#C71585'></Button>
+            <Button type="button" text="Get Directions" width="150px"></Button>
+            <Button type="button" text="Open Gett" color='#C71585' width="150px"></Button>
           </div>
 
         </Fragment>
