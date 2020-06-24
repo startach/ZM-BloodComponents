@@ -16,7 +16,14 @@
   font-size: 30px;
 
 }
+.login_error{
+  font-size: 15px;
+  color: red;
+display: flex;
+justify-content: center;
+align-items: center;
 
+}
 
 .loginHeader {
   display: flex;
