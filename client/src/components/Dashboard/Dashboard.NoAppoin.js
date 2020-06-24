@@ -135,8 +135,6 @@ function DashboardNoAppoin() {
                   <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
 
 
-
-
                 </tr>
               ))}
             </tbody>
