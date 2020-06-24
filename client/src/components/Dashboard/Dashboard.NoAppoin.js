@@ -54,6 +54,7 @@ function DashboardNoAppoin() {
     const today = Date.now() / 1000
 
     const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+    
 
     filteredQuery.get()
       .then(querySnapshot => {
