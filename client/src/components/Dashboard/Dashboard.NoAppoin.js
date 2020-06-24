@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
 import { db, auth } from '../firebase/firebase'
-import { Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
 
 function DashboardNoAppoin() {
@@ -18,10 +18,19 @@ function DashboardNoAppoin() {
   function handleChange(e) {
     setChosenOption(e.target.value)
   }
+
+
+  function run(e)
+  {
+    localStorage.setItem('appointmentId',( e.target.id));
+    
+
+    console.log(e.target.id);
+  }
   const history = useHistory();
   useEffect(() => {
-  //redirect user to login screen if he is not logged in 
-  if (!localStorage.getItem('userid'))
+    //redirect user to login screen if he is not logged in 
+    if (!localStorage.getItem('userid'))
       history.push('/login')
 
     db.collection('Hospitals').get().then((hopsitals) => {
@@ -50,10 +59,11 @@ function DashboardNoAppoin() {
   useEffect(() => {
     auth.onAuthStateChanged(async user => {
       if (user) {
-        const userData = await db.collection('users').doc(user.uid).get().then(userSnapShot => {
-          return userSnapShot.data().name
-        })
-        setUserName(userData)
+        const userData = await db.collection('users').doc(user.uid).get()
+        setUserName(userData.data().name)
+
+
+
         db.collection('Appointments').where('userID', '==', user.uid).get()
           .then(snapShot => {
             if (snapShot.empty) {
@@ -67,6 +77,7 @@ function DashboardNoAppoin() {
             }
           })
       }
+
     })
   }, [])
 
@@ -100,8 +111,8 @@ function DashboardNoAppoin() {
             </tbody>
           </table>
           <div className="bottomButtons">
-            <Button type="button" text="Get Directions"></Button>
-            <Button type="button" text="Open Gett" color='#C71585'></Button>
+            <Button type="button" text="Get Directions" width="150px"></Button>
+            <Button type="button" text="Open Gett" color='#C71585' width="150px"></Button>
           </div>
         </Fragment>
 
@@ -154,7 +165,7 @@ function DashboardNoAppoin() {
                     <td className='rowClass' >{appointment.data().date}</td>
                     <td className='rowClass'>{appointment.data().time}</td>
                     <Link to='/questions'>
-                      <button className="scheduleButton">Register</button>
+                      <button onClick={run} id={appointment.id} className="scheduleButton">Register</button>
 
                     </Link>
                   </tr>
