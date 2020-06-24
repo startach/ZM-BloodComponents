@@ -21,11 +21,14 @@
   align-items: center;
 }
 
-.nameSignupContainer, .emailSignupContainer, .passwordSignupContainer, .phoneSignupContainer, .citySignupContainer, 
-.addressSignupContainer, .bloodTypesContainer {
+.nameSignupContainer, .emailSignupContainer, .passwordSignupContainer, .confirmPasswordSignupContainer,
+ .phoneSignupContainer, .citySignupContainer , .genderContainer, 
+ .secondaryAddressSignupContainer,
+.addressSignupContainer, .bloodTypesContainer , .organizationContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
 }
 
 label {
@@ -36,7 +39,8 @@ label {
 
 
 
-#name , #password , #email , #phone , #city , #address, #bloodType {
+#name , #password , #email , #phone , #city , #address, #bloodType , #confirmPassword, #genderType , 
+#secondaryAddress, #organization {
   display: flex;
   border-radius: 2em / 5em;
   background-color: #C3B7B1;
@@ -44,5 +48,43 @@ label {
   padding-left: 5px;
   border: none;
   width: 200px;
+}
+
+
+.birthDateContainer {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.react-date-picker__wrapper {
+
+  background-color: #C3B7B1;
+  border-radius: 2em / 5em;
+  width: 200px;
+  margin-left: 35px !important;
+  border: none !important; 
+
+}
+
+.react-date-picker__inputGroup__input {
+
+padding: 0 0 0 0 !important;
+
+margin-left: 1px !important;
+
+
+
+}
+
+.madaLabelContainer {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-color: #fafafa;
 }
 
