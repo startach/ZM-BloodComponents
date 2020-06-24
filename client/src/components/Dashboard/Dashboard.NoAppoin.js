@@ -23,16 +23,14 @@ function DashboardNoAppoin() {
 
 
 
-  function setlocalStorage(e)
-  {
-    localStorage.setItem('appointmentId',( e.target.id));
+  function setlocalStorage(e) {
+    localStorage.setItem('appointmentId', (e.target.id));
   }
-  function deleteAppointment(e)
-  {
-    console.log( e.target.id)
-    var appId=e.target.id;
+  function deleteAppointment(e) {
+    console.log(e.target.id)
+    var appId = e.target.id;
     db.collection('Appointments').doc(appId).update({
-        userID:null
+      userID: null
     })
 
 
@@ -53,12 +51,23 @@ function DashboardNoAppoin() {
 
   useEffect(() => {
 
-    db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
-      .get()
+    const today = Date.now() / 1000
 
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+
+    filteredQuery.get()
       .then(querySnapshot => {
-        const Appointments = querySnapshot.docs.map(hospitalAppointments => {
-          return hospitalAppointments;
+        const Appointments = []
+        querySnapshot.docs.forEach(hospitalAppointments => {
+          let app = hospitalAppointments.data().timestamp.seconds
+          if (app > today) {
+            Appointments.push(hospitalAppointments.data())
+          }
+        })
+        Appointments.sort(function (b, a) {
+          a = new Date(a.timestamp.seconds);
+          b = new Date(b.timestamp.seconds);
+          return a > b ? -1 : a < b ? 1 : 0;
         })
         setAppointments(Appointments)
       })
@@ -78,18 +87,18 @@ function DashboardNoAppoin() {
 
         db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
 
-            if (snapShot.empty) {
-              console.log("User doesn't have any Appointment")
-              setCheckUserAppointments(false);
-            }
-             else {
-              setCheckUserAppointments(true)
-              const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
-                return userAppointments
-              })
-              setUserAppointmentsDetails(userAppointmentsDetails)
-            }
-          })
+          if (snapShot.empty) {
+            console.log("User doesn't have any Appointment")
+            setCheckUserAppointments(false);
+          }
+          else {
+            setCheckUserAppointments(true)
+            const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
+              return userAppointments
+            })
+            setUserAppointmentsDetails(userAppointmentsDetails)
+          }
+        })
       }
 
     })
@@ -123,8 +132,10 @@ function DashboardNoAppoin() {
                   <td className='rowClass' >{appointment.data().date}</td>
                   <td className='rowClass'>{appointment.data().time}</td>
                   <td className='rowClass'>{appointment.data().hospitalName}</td>
+                  <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
 
-             
+
+
 
                 </tr>
               ))}
@@ -145,7 +156,7 @@ function DashboardNoAppoin() {
 
         </Fragment>
 
-//no appointments
+        //no appointments
       ) : (
 
           <Fragment>
@@ -194,8 +205,8 @@ function DashboardNoAppoin() {
                 {appointments.map(appointment => (
 
                   <tr className='rowContainer' id={appointment.id}>
-                    <td className='rowClass' >{appointment.data().date}</td>
-                    <td className='rowClass'>{appointment.data().time}</td>
+                    <td className='rowClass' >{appointment.date}</td>
+                    <td className='rowClass'>{appointment.time}</td>
                     <Link to='/questions'>
                       <button onClick={setlocalStorage} id={appointment.id} className="scheduleButton">Register</button>
 
