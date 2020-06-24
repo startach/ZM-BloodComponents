@@ -20,10 +20,9 @@ function DashboardNoAppoin() {
   }
 
 
-  function run(e)
-  {
-    localStorage.setItem('appointmentId',( e.target.id));
-    
+  function run(e) {
+    localStorage.setItem('appointmentId', (e.target.id));
+
 
     console.log(e.target.id);
   }
@@ -51,8 +50,8 @@ function DashboardNoAppoin() {
 
   useEffect(() => {
 
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
-    filteredQuery.get()
+    db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+      .get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
 
@@ -177,6 +176,8 @@ function DashboardNoAppoin() {
               Nearest hospital is{" "}
 
               <select className="hospitalsOptionsList" onChange={handleChange}>
+
+                <option value="Select" disabled selected>Select</option>
 
                 {hospital.map(name => (
 
