@@ -15,6 +15,14 @@ const RegisterForm = () => {
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
+  const [isChecked, setIsChecked] = useState({
+    SMS: false,
+    Whatsapp: false,
+    Phonecall: false,
+    Email: false,
+    inAppAlert: false
+  })
+  const [notifications, setNotifications] = useState({})
 
 
   const history = useHistory();
@@ -26,6 +34,14 @@ const RegisterForm = () => {
 
 
     console.log(userInputs)
+  }
+
+
+  const handleCheckbox = (e,checked) => {
+
+    setIsChecked({...isChecked , [e.target.id] : !checked})
+    setNotifications({ ...notifications, [e.target.id]: !checked })
+    
   }
 
   const handleSubmit = async (e) => {
@@ -51,8 +67,16 @@ const RegisterForm = () => {
         //storing the logged in user's id into localStorage variable
         localStorage.setItem('userid', cred.user.uid)
         await db.collection('users').doc(cred.user.uid).set(
-          userInputs,
-
+          userInputs
+          
+          
+        )
+        
+        //Add casualNotifications to the database
+        
+        await db.collection('users').doc(cred.user.uid).update({
+          casualNotifications : notifications
+        }
         )
 
         //Redirect to Dashboard after registration
@@ -309,8 +333,80 @@ const RegisterForm = () => {
 
 
         <div className="mx-4">
-          <Notifications />
+          <div className="notificationsTitle">Notification Preferences</div>
+          <span id="notificationsSpan"> Please select all methods you are happy to be contacted by : </span>
+          <div className="optionsContainer">
+            <label>
+              <input
+                type="checkbox"
+                id="SMS"
+                value="SMS"
+                onChange={(e)=>handleCheckbox (e , isChecked.SMS)}
+                checked={isChecked.SMS}
+              />
+              SMS
+            </label>
+          </div>
+
+          <div className="optionsContainer">
+            <label >
+              <input
+                type="checkbox"
+                id="Whatsapp"
+                value="Whatsapp"
+                onChange={(e)=>handleCheckbox(e , isChecked.Whatsapp)}
+                checked={isChecked.Whatsapp}
+              />
+            Whatsapp</label>
+          </div>
+
+
+          <div className="optionsContainer">
+            <label>
+              <input
+                type="checkbox"
+                id="Phonecall"
+                value="Phonecall"
+                onChange={(e)=>handleCheckbox(e , isChecked.Phonecall)}
+                checked={isChecked.Phonecall}
+              />
+            Phonecall</label>
+          </div>
+
+
+
+          <div className="optionsContainer">
+            <label >
+              <input
+                type="checkbox"
+                id="Email"
+                value="Email"
+                onChange={(e)=>handleCheckbox(e , isChecked.Email)}
+                checked={isChecked.Email}
+
+
+              />
+            Email</label>
+          </div>
+
+
+
+          <div className="optionsContainer">
+            <label >
+              <input
+                type="checkbox"
+                id="inAppAlert"
+                value="inAppAlert"
+                onChange={(e)=>handleCheckbox(e , isChecked.inAppAlert)}
+                checked={isChecked.inAppAlert}
+              />
+            In-App alert</label>
+          </div>
+
+
         </div>
+
+
 
         {checkError ? (
 
@@ -338,7 +434,7 @@ const RegisterForm = () => {
 
       </form>
 
-    </Fragment>
+    </Fragment >
 
 
   )
