@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 *{
-  user-select: none;
   outline: none;
   font-family: 'Montserrat';
 }
