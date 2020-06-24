@@ -1,44 +1,114 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./registerForm.css"
 import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import Notifications from '../Notifications/Notifications'
+import DatePicker from 'react-date-picker'
+
+
 
 const RegisterForm = () => {
+
+
+  const [date, setDate] = useState(new Date())
+  const [error, setError] = useState('')
+  const [passwordError, setPasswordError] = useState(false)
+  const [checkError, setCheckError] = useState(false)
+
 
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([])
 
   const handleChange = (e) => {
-    userInputs = ({ ...userInputs, [e.target.id]: e.target.value });
-    console.log(userInputs['name'])
+    setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
 
 
+    console.log(userInputs)
   }
 
-  const handleSubmit = (e) => {
-
-    setuserInputs(userInputs)
-
-    //Insert user into firestore
-    auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password).then(cred => {
-      //storing the logged in user's id into localStorage variable
-      localStorage.setItem('userid', cred.user.uid)
-      return db.collection('users').doc(cred.user.uid).set(
-        userInputs
-      )
-    }).then(() => {
-      //Redirect to Dashboard after registration
-      history.push('/dashboard')
-    })
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    //check password and confirm password
+
+    if (userInputs.password != userInputs.confirmPassword) {
+
+      setCheckError(true)
+      setPasswordError(true)
+      setError('Password and confirm password do not match')
+
+      // if password and confirm password are matching
+    } else {
+
+      //update state
+      setuserInputs(userInputs)
+
+      //Insert user into firestore
+      try {
+        const cred = await auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password)
+
+        //storing the logged in user's id into localStorage variable
+        localStorage.setItem('userid', cred.user.uid)
+        await db.collection('users').doc(cred.user.uid).set(
+          userInputs,
+
+        )
+
+        //Redirect to Dashboard after registration
+        history.push('/dashboard')
+
+
+
+        //Check if there is error with password weakness , etc
+      } catch (err) {
+
+        setCheckError(true)
+        setError(err.message)
+
+      }
+
+
+    }
+
   }
+
+  const onClickDayHandler = (e) => {
+
+    if (e != null) {
+
+
+      let str = e.toString();
+      let parts = str.split(" ");
+      let months = {
+        Jan: "01",
+        Feb: "02",
+        Mar: "03",
+        Apr: "04",
+        May: "05",
+        Jun: "06",
+        Jul: "07",
+        Aug: "08",
+        Sep: "09",
+        Oct: "10",
+        Nov: "11",
+        Dec: "12"
+      };
+      let finalDate = parts[2] + "/" + months[parts[1]] + "/" + parts[3];
+
+      setDate(e)
+
+      setuserInputs({ ...userInputs, ['birthDate']: finalDate });
+    }
+    setDate(e)
+
+
+  }
+
 
   return (
-    <div>
 
+    <Fragment>
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
       </div>
@@ -50,12 +120,12 @@ const RegisterForm = () => {
 
       <form class="register-form" onSubmit={handleSubmit}>
         <div className="nameSignupContainer">
-          <label> Full Name
+          <label> * Full Name
             <input
               id="name"
               onChange={handleChange}
               type="text"
-              name="email"
+              name="name"
               required
             ></input>
           </label>
@@ -63,7 +133,7 @@ const RegisterForm = () => {
         </div>
 
         <div className="emailSignupContainer">
-          <label> Email
+          <label> * Email
             <input
               id="email"
               onChange={handleChange}
@@ -78,13 +148,14 @@ const RegisterForm = () => {
 
         <div className="passwordSignupContainer">
 
-          <label> Password
+          <label> * Password
 
           <input
               id="password"
               onChange={handleChange}
               type="password"
               name="password"
+              style={passwordError ? { border: '1px solid red' } : { border: 'none' }}
               required
             ></input>
           </label>
@@ -92,8 +163,57 @@ const RegisterForm = () => {
         </div>
 
 
+        <div className="confirmPasswordSignupContainer">
+
+          <label> * Confirm Password
+
+          <input
+              id="confirmPassword"
+              onChange={handleChange}
+              type="password"
+              name="confirmPassword"
+              required
+              style={passwordError ? { border: '1px solid red' } : { border: 'none' }}
+            ></input>
+          </label>
+
+        </div>
+
+
+
+        <div className="birthDateContainer">
+          <label id="labelBirth"> * Birth Date
+            <br></br>
+            <DatePicker
+              className="birthDate"
+              value={date}
+              onChange={onClickDayHandler}
+              format="dd/MM/yy"
+              required
+            />
+          </label>
+
+
+
+        </div>
+
+
+        <div className="genderContainer">
+          <label> * Gender
+          <select id="genderType" onChange={handleChange} required>
+
+              <option value="Select" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+
+            </select>
+          </label>
+
+        </div>
+
+
         <div className="phoneSignupContainer">
-          <label> Phone
+          <label> * Contact Number
             <input
               id="phone"
               onChange={handleChange}
@@ -106,7 +226,7 @@ const RegisterForm = () => {
         </div>
         <div className="citySignupContainer">
 
-          <label> City
+          <label> * City
 
           <input
               id="city"
@@ -122,7 +242,7 @@ const RegisterForm = () => {
 
         <div className="addressSignupContainer">
 
-          <label> Address
+          <label> * Address
 
           <input
               id="address"
@@ -135,9 +255,24 @@ const RegisterForm = () => {
 
         </div>
 
+
+        <div className="secondaryAddressSignupContainer">
+
+          <label> Secondary Address
+
+          <input
+              id="secondaryAddress"
+              onChange={handleChange}
+              type="text"
+              name="secondaryAddress"
+            ></input>
+          </label>
+
+        </div>
+
         <div className="bloodTypesContainer">
           <label> Blood Type
-          <select id="bloodType" onChange={handleChange}>
+          <select id="bloodType" onChange={handleChange} required>
               <option value="N/A" selected disabled>N/A</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -150,19 +285,62 @@ const RegisterForm = () => {
             </select>
           </label>
 
+
+
         </div>
+        <div className="madaLabelContainer">
+
+          <label >Don’t know? Call Mada 03-5300400</label>
+        </div>
+
+        <div className="organizationContainer">
+
+          <label> Organization
+
+          <input
+              id="organization"
+              onChange={handleChange}
+              type="text"
+              name="organization"
+            ></input>
+          </label>
+
+        </div>
+
+
         <div className="mx-4">
           <Notifications />
         </div>
 
+        {checkError ? (
+
+          <Fragment>
+
+            <span style={{ color: 'red', fontSize: '16px', marginTop: '5px' }}>{error}</span>
+
+          </Fragment>
+
+        ) : (
+
+
+            <Fragment>
+
+            </Fragment>
+          )
+
+        }
         <div className="mb-4">
           <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
         </div>
+
+
+
+
       </form>
 
+    </Fragment>
 
 
-    </div>
   )
 }
 

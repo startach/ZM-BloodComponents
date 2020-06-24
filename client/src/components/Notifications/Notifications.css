@@ -1,6 +1,5 @@
 .notificationTitle {
 
-    margin-top: 16%;
     margin-bottom: 4%;
     font-weight: bold;
     font-size: 24px;
@@ -8,7 +7,6 @@
 }
 
 .notificationOptions {
-
     display: flex;
     flex-direction: column;
     margin-left: 8%;
@@ -16,21 +14,16 @@
 
 .notifications {
     margin-top: 4%;
-
 }
 
 .comment {
-
     font-style: italic;
 }
 
 .form-check-label {
     margin-bottom: 3%;
-
 }
 
 .notifiedtext {
-
     margin-bottom: 4%;
 }
-
