@@ -1,81 +1,72 @@
-
 .scheduleButton {
-  background-color: #C71585;
-  color: white;
-  border-radius: 5px;
-  width: fit-content;
-  margin-top: 10px;
+    background-color: #C71585;
+    color: white;
+    border-radius: 5px;
+    width: fit-content;
+    margin-top: 10px;
 }
 
 .hospitalsOptionsContainer {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .rowClass {
-  color: #fafafa;
-  font-family: "Montserrat";
-  font-size: 18px;
- 
+    color: #fafafa;
+    font-family: "Montserrat";
+    font-size: 18px;
 }
 
-.schedulesTables th, .schedulesTables td {
-  margin-top: 10px;
-  vertical-align: top;
+.schedulesTables th,
+.schedulesTables td {
+    margin-top: 10px;
+    vertical-align: top;
 }
 
 .schedulesTables thead th {
-  vertical-align: bottom;
+    vertical-align: bottom;
 }
 
 .schedulesTables {
-  width: 100%;
-  color: #212529;
+    width: 100%;
+    color: #212529;
 }
 
 .dashboardView {
-  margin-top: 10px;
-  text-align: center;
+    text-align: center;
 }
 
 .headerRow {
-  border: 2px solid #c3b7b1;
+    border: 2px solid #c3b7b1;
 }
 
 .headerEntries {
-
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #introSpan {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .lineUnderSpan {
-  border: 1px inset;
-  width: 100%;
-  margin-top: 10px;
+    border: 1px inset;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .userEligibility {
-  margin-top: 10px;
-  font-size: 20px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 .hospitalsOptionsList {
-
-  width: 30vw;
-  background-color: #C3B7B1;
-  border-radius: 4px;
-
+    width: 30vw;
+    background-color: #C3B7B1;
+    border-radius: 4px;
 }
 
-
-
 .bottomButtons {
-
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-margin-top: 50px;
-
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
 }
