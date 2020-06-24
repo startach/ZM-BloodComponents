@@ -23,16 +23,14 @@ function DashboardNoAppoin() {
 
 
 
-  function setlocalStorage(e)
-  {
-    localStorage.setItem('appointmentId',( e.target.id));
+  function setlocalStorage(e) {
+    localStorage.setItem('appointmentId', (e.target.id));
   }
-  function deleteAppointment(e)
-  {
-    console.log( e.target.id)
-    var appId=e.target.id;
+  function deleteAppointment(e) {
+    console.log(e.target.id)
+    var appId = e.target.id;
     db.collection('Appointments').doc(appId).update({
-        userID:null
+      userID: null
     })
 
 
@@ -52,8 +50,8 @@ function DashboardNoAppoin() {
   }, [])
 
   useEffect(() => {
-
-    db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+    const today = Date.now();
+    db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption).where('timestamp', '>', today)
       .get()
 
       .then(querySnapshot => {
@@ -78,18 +76,18 @@ function DashboardNoAppoin() {
 
         db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
 
-            if (snapShot.empty) {
-              console.log("User doesn't have any Appointment")
-              setCheckUserAppointments(false);
-            }
-             else {
-              setCheckUserAppointments(true)
-              const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
-                return userAppointments
-              })
-              setUserAppointmentsDetails(userAppointmentsDetails)
-            }
-          })
+          if (snapShot.empty) {
+            console.log("User doesn't have any Appointment")
+            setCheckUserAppointments(false);
+          }
+          else {
+            setCheckUserAppointments(true)
+            const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
+              return userAppointments
+            })
+            setUserAppointmentsDetails(userAppointmentsDetails)
+          }
+        })
       }
 
     })
@@ -124,7 +122,7 @@ function DashboardNoAppoin() {
                   <td className='rowClass'>{appointment.data().time}</td>
                   <td className='rowClass'>{appointment.data().hospitalName}</td>
 
-             
+
 
                 </tr>
               ))}
@@ -145,7 +143,7 @@ function DashboardNoAppoin() {
 
         </Fragment>
 
-//no appointments
+        //no appointments
       ) : (
 
           <Fragment>
