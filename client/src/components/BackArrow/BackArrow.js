@@ -21,7 +21,7 @@ const BackArrow = (props) => {
 
   return (
     <img
-      className=" pointer"
+      className="pointer"
       onClick={() => onClickGoBackArrow()}
       alt="presentation"
       style={styles.image}

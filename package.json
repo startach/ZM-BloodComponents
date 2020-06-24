@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "firebase-tools": "^8.4.3"
+    "firebase-tools": "^8.4.3",
+    "react-toastify": "^6.0.6"
   },
   "devDependencies": {},
   "scripts": {
