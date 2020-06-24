@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./dashboard.css"
 import "../appointmentsEntry/appointmentsEntry.css"
-import { db, auth } from '../firebase/firebase'
+// import { db, auth } from '../firebase/firebase'
 
 export default function DashboardAppoin() {
   //addAppoitment();
-    const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
+  const [appointmentDate, setAppointmentDate] = useState("dd/mm/yy");
   const [appointmentTime, setappointmentTime] = useState("15:00 PM");
   const [appointmentLocation, setappointmentLocation] = useState("Haifa-Rambam");
 
@@ -19,30 +19,30 @@ export default function DashboardAppoin() {
   //         })
   //         console.log(tempDoc)
   //       })
-    
+
   // }
 
-  
 
-// async function addAppoitment(){
-//   let data = {
-//     appointmentType: '3',
-//     date: '10.10.2020',
-//     hospitalId: 3.14159265,
-//     location:'jerusalem',
-//     time: '16:00',
 
-// }
-// let setDoc = db.collection('Appoitments').doc().set(data);
-// console.log(setDoc)
+  // async function addAppoitment(){
+  //   let data = {
+  //     appointmentType: '3',
+  //     date: '10.10.2020',
+  //     hospitalId: 3.14159265,
+  //     location:'jerusalem',
+  //     time: '16:00',
 
-// }
-  
+  // }
+  // let setDoc = db.collection('Appoitments').doc().set(data);
+  // console.log(setDoc)
+
+  // }
+
   return (
 
     <div className='dashboardView'>
       <div className='userEligibility'>
-      you are <b style={{ color: "green" }}> eligible </b> to donate.
+        you are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
       Here is few details regarding your upcoming appointment:
       </div>

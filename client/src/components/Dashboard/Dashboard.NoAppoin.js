@@ -4,6 +4,8 @@ import "../appointmentsEntry/appointmentsEntry.css";
 import { db, auth } from '../firebase/firebase'
 import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
+import Popup from "reactjs-popup";
+import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
 
@@ -164,8 +166,16 @@ function DashboardNoAppoin() {
 
           <div className="bottomButtons">
             <Button type="button" text="Get Directions" width="150px"></Button>
-            <Button type="button" text="Open Gett" color='#C71585' width="150px"></Button>
+            <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              <div>
+                <BookTaxi />
+              </div>
+            </Popup>
           </div>
+
+
+
+
 
         </Fragment>
 
