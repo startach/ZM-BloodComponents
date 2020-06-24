@@ -9,14 +9,21 @@
 
   height: 150px;
   width: 150px;
+} 
 
-}
 #header1, #header2 {
   font-family: 'Montserrat';
   font-size: 30px;
 
 }
+.login_error{
+  font-size: 15px;
+  color: red;
+display: flex;
+justify-content: center;
+align-items: center;
 
+}
 
 .loginHeader {
   display: flex;

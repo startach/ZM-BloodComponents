@@ -4,6 +4,8 @@ import "../appointmentsEntry/appointmentsEntry.css";
 import { db, auth } from '../firebase/firebase'
 import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
+import Popup from "reactjs-popup";
+import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
 
@@ -20,12 +22,18 @@ function DashboardNoAppoin() {
   }
 
 
-  function run(e)
+  function setlocalStorage(e)
   {
     localStorage.setItem('appointmentId',( e.target.id));
-    
+  }
+  function deleteAppointment(e)
+  {
+    console.log( e.target.id)
+    var appId=e.target.id;
+    db.collection('Appointments').doc(appId).update({
+        userID:null
+    })
 
-    console.log(e.target.id);
   }
   const history = useHistory();
   useEffect(() => {
@@ -43,6 +51,8 @@ function DashboardNoAppoin() {
 
   useEffect(() => {
     const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+    
+
     filteredQuery.get()
       .then(querySnapshot => {
         const Appointments = querySnapshot.docs.map(hospitalAppointments => {
@@ -64,11 +74,13 @@ function DashboardNoAppoin() {
 
 
 
-        db.collection('Appointments').where('userID', '==', user.uid).get()
-          .then(snapShot => {
+        db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
+
             if (snapShot.empty) {
               console.log("User doesn't have any Appointment")
-            } else {
+              setCheckUserAppointments(false);
+            }
+             else {
               setCheckUserAppointments(true)
               const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
                 return userAppointments
@@ -79,7 +91,10 @@ function DashboardNoAppoin() {
       }
 
     })
-  }, [])
+
+
+  }, [userAppointmentsDetails])
+
 
   return (
     <div className="dashboardView">
@@ -106,16 +121,29 @@ function DashboardNoAppoin() {
                   <td className='rowClass' >{appointment.data().date}</td>
                   <td className='rowClass'>{appointment.data().time}</td>
                   <td className='rowClass'>{appointment.data().hospitalName}</td>
+
+             
+
                 </tr>
               ))}
             </tbody>
           </table>
           <div className="bottomButtons">
             <Button type="button" text="Get Directions" width="150px"></Button>
-            <Button type="button" text="Open Gett" color='#C71585' width="150px"></Button>
+            <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              <div>
+                <BookTaxi />
+              </div>
+            </Popup>
           </div>
+
+
+
+
+
         </Fragment>
 
+//no appointments
       ) : (
 
           <Fragment>
@@ -165,7 +193,7 @@ function DashboardNoAppoin() {
                     <td className='rowClass' >{appointment.data().date}</td>
                     <td className='rowClass'>{appointment.data().time}</td>
                     <Link to='/questions'>
-                      <button onClick={run} id={appointment.id} className="scheduleButton">Register</button>
+                      <button onClick={setlocalStorage} id={appointment.id} className="scheduleButton">Register</button>
 
                     </Link>
                   </tr>

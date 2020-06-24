@@ -1,14 +1,12 @@
 import React from 'react'
-import ScreenContainer from '../components/screen'
+import FullScreenContainer from '../components/fullscreen/fullscreen'
 import RegisterForm from '../components/registerForm'
 
 function Login() {
     return (
-        <ScreenContainer>
-
+        <FullScreenContainer>
             <RegisterForm />
-
-        </ScreenContainer>
+        </FullScreenContainer>
     )
 }
 

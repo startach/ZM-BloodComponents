@@ -1,7 +1,7 @@
 import React from 'react'
-import ScreenContainer from '../components/screen'
+import FullScreenContainer from '../components/fullscreen/fullscreen'
 import LoginForm from '../components/loginForm'
-import { useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { auth } from '../components/firebase/firebase'
 
 function Login() {
@@ -13,11 +13,13 @@ function Login() {
     // });
     if (localStorage.getItem('userid'))
         history.push('/dashboard')
-    
+
     return (
-        <ScreenContainer>
+
+        <FullScreenContainer>
             <LoginForm />
-        </ScreenContainer>
+        </FullScreenContainer>
+
     )
 }
 
