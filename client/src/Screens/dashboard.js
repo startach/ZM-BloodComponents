@@ -14,7 +14,6 @@ const Dashboard = () => {
                 <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
                 <MainDashboard> </MainDashboard>
             </ScreenContainer>
-
             <BottomNavBar />
             <div className="footer"></div>
 

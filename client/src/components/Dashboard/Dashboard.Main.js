@@ -4,7 +4,7 @@ import HaveAppointment from "./Dashboard.Appoin";
 import DontHaveAppointment from "./Dashboard.NoAppoin";
 import "./dashboard.css"
 import "../appointmentsEntry/appointmentsEntry.css"
-
+import {firebase} from "firebase"
 
 export default function Dashboard() {
   const [view, setView] = useState("");
