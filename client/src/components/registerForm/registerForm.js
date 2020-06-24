@@ -307,7 +307,6 @@ const RegisterForm = () => {
 
         </div>
 
-
         <div className="mx-4">
           <Notifications />
         </div>

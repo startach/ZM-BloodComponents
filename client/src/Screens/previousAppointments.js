@@ -11,14 +11,10 @@ const PreviousAppointments = () => {
         <Fragment>
             <div className="header"></div>
             <ScreenContainer>
-
                 <MenuHeader icon="burger" title="Previous Appointments" />
-
                 <AppointmentsList />
-
                 <AppointmentsEntry />
                 <BottomNavBar />
-
             </ScreenContainer>
             <div className="footer"></div>
         </Fragment>

@@ -19,6 +19,10 @@ export default function UserPage() {
      const id = localStorage.getItem('userid');
      const history = useHistory();
     useEffect(() => {
+        //if user has no id (is not logged in) then forward to log in screen
+        if (!localStorage.getItem('userid'))
+        history.push('/login')
+
         //const userData = async ()=> { const data = await
             db.collection('users').doc(id).get()
                 .then(snapshot => setUserDetails(snapshot.data()))

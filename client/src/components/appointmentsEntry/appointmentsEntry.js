@@ -1,39 +1,53 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './appointmentsEntry.css'
 import Button from '../button'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import { db, auth } from '../firebase/firebase'
 
 const AppointmentsEntry = () => {
-
+    const [prevAppointments, setPrevAppointments] = useState([])
+    const history = useHistory();
+    useEffect(() => {  
+        
+        //retrieve all data based on userID
+        const id= localStorage.getItem('userid')
+        if (!localStorage.getItem('userid'))
+        history.push('/login')
+        const today = Date.now() / 1000
+        db.collection('Appointments').where('userID', '==', id).onSnapshot(snapShot => {
+                const Appointments = []
+                snapShot.docs.forEach(hospitalAppointments => {
+                  let app = hospitalAppointments.data().timestamp.seconds
+                 if (app < today) {
+                    Appointments.push(hospitalAppointments.data())
+                  }
+                })
+                Appointments.sort(function (b, a) {
+                  a = new Date(a.timestamp.seconds);
+                  b = new Date(b.timestamp.seconds);
+                  return a > b ? -1 : a < b ? 1 : 0;
+                })
+                setPrevAppointments(Appointments)
+              })
+        
+    },[])
+    
     return (
-
-        <div>
-            <ul className="rowContainer">
-                <li id="date" className="rowEntry">17/6/2020</li>
-
-                <li id="time" className="rowEntry">10:00</li>
-
-                <li id="Location" className="rowEntry">Haifa</li>
-            </ul>
-
-            <ul className="rowContainer">
-                <li id="date" className="rowEntry">16/6/2020</li>
-
-                <li id="time" className="rowEntry">9:00</li>
-
-                <li id="Location" className="rowEntry">Tel Aviv</li>
-            </ul>
-
-            <ul className="rowContainer">
-                <li id="date" className="rowEntry">15/6/2020</li>
-
-                <li id="time" className="rowEntry">8:00</li>
-
-                <li id="Location" className="rowEntry">Jerusalem</li>
-
-            </ul>
-
-            <Link id = 'link' to ="/dashboard">
+        <div>{
+            prevAppointments.map( appointment => { 
+                 return(
+                <div key={appointment.id}>
+                    <ul className="rowContainer pa3 tc" >
+                    <li id="date" className="rowEntry">{appointment.date}</li>
+                    <li id="time" className="rowEntry">{appointment.time}</li>
+                    <li id="hospitalName" className="rowEntry">{appointment.hospitalName}</li>
+                </ul>
+                </div>
+                 )
+             })
+            }
+            
+            <Link id = 'link' to ="/dashboard" className="ma3">
                 <Button text = "Dashboard"/>
                 </Link>
 

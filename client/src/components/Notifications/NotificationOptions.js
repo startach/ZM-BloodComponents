@@ -25,7 +25,7 @@ const NotificationOptions = (props) => {
          //update the state
         setNotes({ ...notes, [ e.target.value]: !isChecked })
          //update database 
-         db.collection('users').doc(id).update({ [`${props.id}.${e.target.value}`]: !isChecked })
+        db.collection('users').doc(id).update({ [`${props.id}.${e.target.value}`]: !isChecked })
     }
     return (
         <div className="options">

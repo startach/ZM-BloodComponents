@@ -19,11 +19,7 @@ export default function DashboardAppoin() {
   //         })
   //         console.log(tempDoc)
   //       })
-
   // }
-
-
-
   // async function addAppoitment(){
   //   let data = {
   //     appointmentType: '3',
@@ -31,22 +27,18 @@ export default function DashboardAppoin() {
   //     hospitalId: 3.14159265,
   //     location:'jerusalem',
   //     time: '16:00',
-
   // }
   // let setDoc = db.collection('Appoitments').doc().set(data);
   // console.log(setDoc)
-
   // }
 
   return (
-
     <div className='dashboardView'>
       <div className='userEligibility'>
         you are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
       Here is few details regarding your upcoming appointment:
       </div>
-
       <table className='schedulesTables upcomingAppointment'>
         <thead>
           <tr className='headerRow'>
@@ -55,7 +47,6 @@ export default function DashboardAppoin() {
             <th className='headerEntries'>Location</th>
           </tr>
         </thead>
-       
         <tbody> 
             <tr className='rowContainer'>
 
