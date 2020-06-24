@@ -41,7 +41,7 @@ export default function AddAppointments() {
     const handleChangeDate = date => {
         setAppDate(date)
         console.log(date)
-        let fullDate = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`
+        let fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
         let minutes = date.getMinutes()
         if (minutes == 0) {
             minutes = "00"

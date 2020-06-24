@@ -50,13 +50,24 @@ function DashboardNoAppoin() {
   }, [])
 
   useEffect(() => {
-    const today = Date.now();
-    db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption).where('timestamp', '>', today)
-      .get()
 
+    const today = Date.now() / 1000
+
+    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+
+    filteredQuery.get()
       .then(querySnapshot => {
-        const Appointments = querySnapshot.docs.map(hospitalAppointments => {
-          return hospitalAppointments;
+        const Appointments = []
+        querySnapshot.docs.forEach(hospitalAppointments => {
+          let app = hospitalAppointments.data().timestamp.seconds
+          if (app > today) {
+            Appointments.push(hospitalAppointments.data())
+          }
+        })
+        Appointments.sort(function (b, a) {
+          a = new Date(a.timestamp.seconds);
+          b = new Date(b.timestamp.seconds);
+          return a > b ? -1 : a < b ? 1 : 0;
         })
         setAppointments(Appointments)
       })
@@ -194,8 +205,8 @@ function DashboardNoAppoin() {
                 {appointments.map(appointment => (
 
                   <tr className='rowContainer' id={appointment.id}>
-                    <td className='rowClass' >{appointment.data().date}</td>
-                    <td className='rowClass'>{appointment.data().time}</td>
+                    <td className='rowClass' >{appointment.date}</td>
+                    <td className='rowClass'>{appointment.time}</td>
                     <Link to='/questions'>
                       <button onClick={setlocalStorage} id={appointment.id} className="scheduleButton">Register</button>
 
