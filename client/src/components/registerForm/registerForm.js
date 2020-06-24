@@ -31,8 +31,7 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     //check password and confirm password
-    console.log(userInputs.password)
-    console.log(userInputs.confirmPassword)
+
     if (userInputs.password != userInputs.confirmPassword) {
 
       setCheckError(true)
