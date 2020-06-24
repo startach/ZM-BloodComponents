@@ -13,10 +13,13 @@ const RegisterForm = () => {
 
   const handleChange = (e) => {
     userInputs = ({ ...userInputs, [e.target.id]: e.target.value });
+    console.log(userInputs['name'])
+
+
   }
 
   const handleSubmit = (e) => {
-    //update state
+
     setuserInputs(userInputs)
 
     //Insert user into firestore

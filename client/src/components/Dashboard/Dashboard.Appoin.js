@@ -55,15 +55,17 @@ export default function DashboardAppoin() {
             <th className='headerEntries'>Location</th>
           </tr>
         </thead>
+       
+        <tbody> 
+            <tr className='rowContainer'>
 
-        <tbody>
-          <tr className='rowContainer'>
-            <td className='rowClass'>{appointmentDate}</td>
-            <td className='rowClass'>{appointmentTime}</td>
-            <td className='rowClass'>{appointmentLocation}</td>
+          <td className='rowClass'>{appointmentDate}</td>
+          <td className='rowClass'>{appointmentTime}</td>
+          <td className='rowClass'>{appointmentLocation}</td>
           </tr>
         </tbody>
       </table>
+
       <button className='directionsButton'>Get Directions</button>
       <button className='taxiButton'>Order Taxi</button>
     </div>
