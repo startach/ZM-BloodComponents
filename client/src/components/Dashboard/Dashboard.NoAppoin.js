@@ -60,6 +60,7 @@ function DashboardNoAppoin() {
   useEffect(() => {
 
     const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+    //.where('date','>=', db.Timestamp.now());
     
 
     filteredQuery.get()

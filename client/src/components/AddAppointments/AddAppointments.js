@@ -40,12 +40,12 @@ export default function AddAppointments() {
     const handleChangeDate = date => {
         setAppDate(date)
         console.log(date)
-        let fullDate = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`
-        let minutes = date.getMinutes()
-        if (minutes == 0) {
-            minutes = "00"
-        }
-        let time = `${date.getHours()}:${minutes}`
+        // let fullDate = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`
+        // let minutes = date.getMinutes()
+        // if (minutes == 0) {
+        //     minutes = "00"
+        // }
+        // let time = `${date.getHours()}:${minutes}`
         setCurrentApp({ ...currentApp, ["date"]: fullDate, ["time"]: time })
     }
 
