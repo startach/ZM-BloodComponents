@@ -3,14 +3,23 @@ import './Notifications.css'
 import { db } from '../firebase/firebase'
 
 const NotificationOptions = (props) => {
-
-    const [notes, setNotes] = useState({...props.notifications})
+    const [notes, setNotes] = useState('')
+    
     //user id from localstorage
     const id = localStorage.getItem('userid');
-    // useEffect(() => {
-    //         //setNotes(props.notifications)
-    //         console.log(notes)
-    // }, [])
+    useEffect(() => {
+        if(!props.notifications){
+            setNotes({
+                SMS: false,
+                Whatsapp: false,
+                Phonecall: false,
+                Email: false,
+                inAppAlert: false
+            })
+        }else{
+           setNotes({...props.notifications})
+        }
+     }, [])
 
     const handleChange = (e, isChecked) =>{
          //update the state
