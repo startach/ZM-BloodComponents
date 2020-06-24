@@ -7,17 +7,16 @@ const NotificationOptions = (props) => {
     const [notes, setNotes] = useState({...props.notifications})
     //user id from localstorage
     const id = localStorage.getItem('userid');
-    useEffect(() => {
-            setNotes(notes)
-            console.log(notes)
-    }, [])
+    // useEffect(() => {
+    //         //setNotes(props.notifications)
+    //         console.log(notes)
+    // }, [])
 
     const handleChange = (e, isChecked) =>{
+         //update the state
+        setNotes({ ...notes, [ e.target.value]: !isChecked })
          //update database 
          db.collection('users').doc(id).update({ [`${props.id}.${e.target.value}`]: !isChecked })
-        setNotes({ ...notes, [ e.target.value]: !isChecked })
-        console.log(notes)
-       
     }
     return (
         <div className="options">
