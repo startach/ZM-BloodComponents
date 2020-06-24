@@ -13,6 +13,7 @@ function Login() {
                 <EmergencyDonations />
                 <BottomNavBar />
             </ScreenContainer>
+            <div className="footer"></div>
         </Fragment>
     )
 }

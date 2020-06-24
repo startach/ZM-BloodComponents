@@ -11,7 +11,7 @@ export default function AddAppointments() {
 
     const [appDate, setAppDate] = useState(new Date())
 
-    const hosIDs = { "Rambam": 1, "Tal Hashomer": 2 }
+    const hosIDs = { "Rambam": 1, "Tal Hashomer": 2, "Ichilov": 3 }
 
     const displayNode = useRef(null)
 
@@ -94,6 +94,7 @@ export default function AddAppointments() {
                 <select className="dropdown" id="hospitalName" onChange={handleChange}>
                     <option value="Rambam" className="option">Rambam - Haifa </option>
                     <option value="Tal Hashomer" className="option">Tal Hashomer - Tel Aviv</option>
+                    <option value="Tal Hashomer" className="option">Ichilov - Tel Aviv</option>
                 </select>
             </p>
 

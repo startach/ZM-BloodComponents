@@ -1,22 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react'
 import "./UserPage.css"
-import Notifications from '../Notifications/Notifications.js'
+//mport Notifications from '../Notifications/Notifications.js'
+import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
-import { useHistory, Link , Redirect} from 'react-router-dom'
+import { useHistory , Redirect} from 'react-router-dom'
 
 export default function UserPage() {
-
-    //retrieving user authentication data/id
-    // useEffect(() => {
-    //     auth.onAuthStateChanged(async user => {
-    //       if (user) {
-    //         user.getIdTokenResult().then(data => {
-    //           console.log(data.claims.user_id)
-    //         });
-    //       }
-    //     });
-    //   }, [])
-
+ 
+    //state for if addtional options are visable or not, set by checkbox click
+    const [visible, setVisible] = useState({
+        emergency: false,
+        casual: false,
+    })
     //state for user
     const [userDetails, setUserDetails] = useState({})
 
@@ -29,6 +24,7 @@ export default function UserPage() {
                 .then(snapshot => setUserDetails(snapshot.data()))
                 .catch( err =>{
                    history.push('/not-found')
+
                 })
          //  }
        // userData()
@@ -93,6 +89,13 @@ export default function UserPage() {
         }
 
     }
+    
+    // in order to show updates to notifications methods without having to refresh the page
+    const handleReload = () => {
+        db.collection('users').doc(id).get()
+            .then(snapshot => setUserDetails(snapshot.data()))
+    }
+
     return (
         <div className="userPage" >
             <div className="topBox">
@@ -145,7 +148,30 @@ export default function UserPage() {
                     className="editBtn" 
                     onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
-                <Notifications />
+                <div className="notificationTitle">Notification Prefences</div>
+                 <div className="notifications">
+                <span className="notifiedText my-3">I want to get notified on:</span>
+                <div className="form-check my-3">
+                    <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    id="exampleCheck1" 
+                    onChange={handleReload}
+                    onClick={() => setVisible({ ...visible, ["emergency"]: !visible["emergency"] })} />
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Emergency request that I am suitable to answer</b></label>
+                    {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
+                </div>
+                <div className="form-check">
+                    <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    id="exampleCheck1" 
+                    onChange={handleReload}
+                    onClick={() => setVisible({ ...visible, ["casual"]: !visible["casual"] })} />
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Casual reminders calling me to donate</b></label>
+                    {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
+                </div>
+            </div>
             </div>
 
 

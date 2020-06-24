@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 *{
-  user-select: none;
   outline: none;
   font-family: 'Montserrat';
 }
@@ -12,10 +11,11 @@
 .header {
 
   height: 57px;
-  background-color: pink;;
+  background-color:inherit;
 }
 
 .footer {
-
-
+display:block;
+height: 80px;
+background-color:inherit;;
 }
