@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 *{
-
+  outline: none;
   font-family: 'Montserrat';
 }
 .App {
