@@ -19,12 +19,14 @@ function DashboardNoAppoin() {
 
   function handleChange(e) {
     setChosenOption(e.target.value)
+    localStorage.setItem('hospital', e.target.value)
   }
 
 
 
-  function setlocalStorage(e) {
-    localStorage.setItem('appointmentId', (e.target.id));
+  function setlocalStorage(appointmentID) {
+    console.log(appointmentID)
+    localStorage.setItem('appointmentId', (appointmentID));
   }
   function deleteAppointment(e) {
     console.log(e.target.id)
@@ -54,7 +56,7 @@ function DashboardNoAppoin() {
     const today = Date.now() / 1000
 
     const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
-    
+
 
     filteredQuery.get()
       .then(querySnapshot => {
@@ -83,6 +85,8 @@ function DashboardNoAppoin() {
       if (user) {
         const userData = await db.collection('users').doc(user.uid).get()
         setUserName(userData.data().name)
+
+        userData.data().gender ? localStorage.setItem('gender', userData.data().gender) : localStorage.setItem('gender', "unknown");
 
 
 
@@ -206,10 +210,10 @@ function DashboardNoAppoin() {
                   <tr className='rowContainer' id={appointment.id}>
                     <td className='rowClass' >{appointment.date}</td>
                     <td className='rowClass'>{appointment.time}</td>
-                    <Link to='/questions'>
-                      <button onClick={setlocalStorage} id={appointment.id} className="scheduleButton">Register</button>
+                    {/* <Link to='/questions'> */}
+                    <button onClick={() => setlocalStorage(appointment)} id={appointment.id} className="scheduleButton">Register</button>
 
-                    </Link>
+                    {/* </Link> */}
                   </tr>
 
 
