@@ -8,18 +8,19 @@ const AppointmentsEntry = () => {
     const [prevAppointments, setPrevAppointments] = useState([])
     const history = useHistory();
     useEffect(() => {  
-        
         //retrieve all data based on userID
         const id= localStorage.getItem('userid')
+
         if (!localStorage.getItem('userid'))
-        history.push('/login')
+            history.push('/login')
+            
         const today = Date.now() / 1000
         db.collection('Appointments').where('userID', '==', id).onSnapshot(snapShot => {
                 const Appointments = []
-                snapShot.docs.forEach(hospitalAppointments => {
-                  let app = hospitalAppointments.data().timestamp.seconds
+                snapShot.docs.forEach(appointment => {
+                  let app = appointment.data().timestamp.seconds
                  if (app < today) {
-                    Appointments.push(hospitalAppointments.data())
+                    Appointments.push(appointment.data())
                   }
                 })
                 Appointments.sort(function (b, a) {
@@ -29,7 +30,6 @@ const AppointmentsEntry = () => {
                 })
                 setPrevAppointments(Appointments)
               })
-        
     },[])
     
     return (
@@ -49,7 +49,7 @@ const AppointmentsEntry = () => {
             
             <Link id = 'link' to ="/dashboard" className="ma3">
                 <Button text = "Dashboard"/>
-                </Link>
+            </Link>
 
         </div>
     )

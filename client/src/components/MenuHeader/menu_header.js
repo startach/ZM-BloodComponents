@@ -24,13 +24,15 @@ let styles = {
         fontSize: '1.0em',
         color: 'black',
         fontWeight: 'bold',
+        
     },
     titleSingle: {
         marginTop: '5px',
-        fontSize: '30px',
+        fontSize: '28px',
         color: 'black',
         fontWeight: 'bold',
         marginBottom: '-10px',
+        marginRight:'10px',
         fontFamily: 'Montserrat',
 
     },
@@ -51,14 +53,14 @@ const Menu_header = (props) => {
                 {props.title && <p> {props.title}</p>}
             </span>
 
-            <div className="col-xs-2 vcenter pa2">
-                {/* 
+            {/* <div className="col-xs-2 vcenter pa2">
+                
                 Profile picture 
                 <img 
                 style={{width:'60px'}}
                 src={headerImageUrl}></img> 
-                */}
-            </div>
+               
+            </div> */}
 
         </div>
     );
