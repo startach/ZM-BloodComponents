@@ -19,6 +19,7 @@ function DashboardNoAppoin() {
 
   function handleChange(e) {
     setChosenOption(e.target.value)
+    localStorage.setItem('hospital', e.target.value);
   }
 
 
@@ -47,6 +48,7 @@ function DashboardNoAppoin() {
         return hospitalDetails.data().hospitalName
       })
       setHospital(hospitalsNames)
+
     })
   }, [])
 
@@ -87,6 +89,9 @@ function DashboardNoAppoin() {
       if (user) {
         const userData = await db.collection('users').doc(user.uid).get()
         setUserName(userData.data().name)
+
+
+        userData.data().gender ? localStorage.setItem('gender', userData.data().gender) : localStorage.setItem('gender', 'unkown');
 
 
 
