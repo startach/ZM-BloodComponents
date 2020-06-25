@@ -1,15 +1,19 @@
 import React from "react";
 import "./appointmentsEntry.css";
 import Button from "../button";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db, auth } from "../firebase/firebase";
 import { useState, useEffect, Fragment } from "react";
 
 const AppointmentsEntry = () => {
   let [appointments, setAppointments] = useState([]);
+  let history = useHistory();
+  var userID = localStorage.getItem("userid");
+  if (!localStorage.getItem('userid'))
+  history.push("/login")
 
   useEffect(() => {
-    var userID = localStorage.getItem("userid");
+
 
     const today = Date.now() / 1000;
 

@@ -3,14 +3,10 @@ import "./registerForm.css"
 import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
-import Notifications from '../Notifications/Notifications'
 import DatePicker from 'react-date-picker'
 
 
-
 const RegisterForm = () => {
-
-
   const [date, setDate] = useState()
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
@@ -23,11 +19,13 @@ const RegisterForm = () => {
     inAppAlert: false
   })
   const [notifications, setNotifications] = useState({})
-
-
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([])
+
+  if (localStorage.getItem('userid'))
+    history.push("/dashboard")
+
 
   const handleChange = (e) => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
@@ -68,7 +66,6 @@ const RegisterForm = () => {
         localStorage.setItem('userid', cred.user.uid)
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
-
 
         )
 
@@ -128,6 +125,7 @@ const RegisterForm = () => {
 
 
   }
+
 
 
   return (
