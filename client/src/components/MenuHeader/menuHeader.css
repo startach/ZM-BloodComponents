@@ -1,0 +1,14 @@
+.titleText {
+
+  margin: 0;
+
+}
+
+.title {
+
+    max-width: 220px;
+    height: 101px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
