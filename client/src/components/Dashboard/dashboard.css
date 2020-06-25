@@ -60,6 +60,12 @@
 
 }
 
+.introSpan {
+    padding-right: 2%;
+    padding-left: 2%;
+    text-align: center;
+}
+
 .hospitalsOptionsContainer {
     margin-top: 10px;
 }

@@ -10,7 +10,7 @@ const AppointmentsEntry = () => {
   let history = useHistory();
   var userID = localStorage.getItem("userid");
   if (!localStorage.getItem('userid'))
-  history.push("/login")
+    history.push("/login")
 
   useEffect(() => {
 
@@ -44,7 +44,7 @@ const AppointmentsEntry = () => {
   }, [setAppointments]);
 
   return (
-    <div>
+    <div >
       <table className="schedulesTables noAppointmentTable">
         <tbody>
           {appointments.length ? appointments.map((appointment) => (
