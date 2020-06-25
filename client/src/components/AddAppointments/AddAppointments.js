@@ -22,6 +22,7 @@ export default function AddAppointments() {
         hospitalID: 1,
         date: null,
         time: null,
+        timestamp: null,
         slots: 1,
         appointmentType: "Thrombocytes",
     })
@@ -40,13 +41,17 @@ export default function AddAppointments() {
     const handleChangeDate = date => {
         setAppDate(date)
         console.log(date)
-        let fullDate = `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`
+        let fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
         let minutes = date.getMinutes()
         if (minutes == 0) {
             minutes = "00"
         }
         let time = `${date.getHours()}:${minutes}`
-        setCurrentApp({ ...currentApp, ["date"]: fullDate, ["time"]: time })
+
+
+        let timestamp = new Date(`${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}, ${time}`);
+
+        setCurrentApp({ ...currentApp, ["date"]: fullDate, ["time"]: time, ["timestamp"]: timestamp })
     }
 
     //add new Appointment to appoitnment list
@@ -94,7 +99,7 @@ export default function AddAppointments() {
                 <select className="dropdown" id="hospitalName" onChange={handleChange}>
                     <option value="Rambam" className="option">Rambam - Haifa </option>
                     <option value="Tal Hashomer" className="option">Tal Hashomer - Tel Aviv</option>
-                    <option value="Tal Hashomer" className="option">Ichilov - Tel Aviv</option>
+                    <option value="Ichilov" className="option">Ichilov - Tel Aviv</option>
                 </select>
             </p>
 
