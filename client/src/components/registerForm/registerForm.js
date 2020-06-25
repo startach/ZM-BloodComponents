@@ -7,8 +7,7 @@ import DatePicker from 'react-date-picker'
 
 
 const RegisterForm = () => {
-
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState()
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
