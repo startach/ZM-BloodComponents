@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Questionnaire.css'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Button from '../button'
 import { db } from '../firebase/firebase'
 
 
 export default function Questionnaire() {
-    let history=useHistory()
+    let history = useHistory()
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
         Q1: "select",
@@ -30,6 +30,9 @@ export default function Questionnaire() {
 
     //allow submit only when all questions have been submit TODO:
     const [complete, setComplete] = useState(false)
+
+    const [hospital, setHospital] = useState(false)
+    const [gender, setGender] = useState(false)
 
 
     //questionare questions and options, in english
@@ -63,65 +66,81 @@ export default function Questionnaire() {
 
 
     const handleSubmit = (e) => {
-        var sum=questionList.length;
+        var sum = questionList.length - 1;
+        //changhe for question length gender/hospital
 
-        Object.keys(result).forEach(function(key) {
-            
-            if(result[key]!='select'){
-            sum--;
+        Object.keys(result).forEach(function (key) {
+
+            if (result[key] != 'select') {
+                sum--;
             }
-           // setComplete(true)
+            console.log("sum is", sum)
+            // setComplete(true)
         });
-        if(sum==0)
-        {
+        if (sum == 0) {
             setComplete(true)
-           var appointId = localStorage.getItem('appointmentId');
-           var userId= localStorage.getItem('userid')
-           db.collection('Appointments').doc(appointId).update({
-               userID:userId
-           })
-            
+            var appointId = localStorage.getItem('appointmentId');
+            var userId = localStorage.getItem('userid')
+            db.collection('Appointments').doc(appointId).update({
+                userID: userId
+            })
 
-            console.log(appointId,userId)
+
+            console.log(appointId, userId)
 
             history.push('/verfication')
-        }else{
-       
+        } else {
+
             alert("you need to answer all questions before you can submit the questionnare")
         }
-    e.preventDefault();
+        e.preventDefault();
 
     }
+
+
+    useEffect(() => {
+
+        setHospital(localStorage.getItem('hospital'))
+        setGender(localStorage.getItem('gender'))
+
+        console.log(hospital, gender)
+    })
 
 
     return (
         <div className="questionnairePage">
 
-                <form onSubmit={handleSubmit}>
-            {questionList.map((question, index) => (
+            <form onSubmit={handleSubmit}>
+                {questionList.map((question, index) => (
 
-                <div className="questions">
-                    <div className="left">
-                        <div><b>{question.id}:</b> {question.question}</div>
-                    </div>
 
-                    <div className="right">
-                        <select class="dropdown" onChange={e => handleResults(e, index)}>
-                            <option disabled="disabled" selected="selected">Select</option>
-                            {question.options.map((option) => <option>{option}</option>)}
-                        </select>
-                    </div>
+                    //Questionairee Logic
+                    hospital == "Ichilov" && question.id == 3 ? <div></div> :
+                        hospital !== "Ichilov" && question.id == 2 ? <div></div> :
+                            gender == "female" && question.id == 15 ? <div></div> :
 
+                                <div className="questions">
+                                    <div className="left">
+                                        <div><b>{question.id}:</b> {question.question}</div>
+                                    </div>
+
+                                    <div className="right">
+                                        <select class="dropdown" onChange={e => handleResults(e, index)}>
+                                            <option disabled="disabled" selected="selected">Select</option>
+                                            {question.options.map((option) => <option>{option}</option>)}
+                                        </select>
+                                    </div>
+
+                                </div>
+                )
+
+                )}
+                <div className="submit">
+                    <Button type="submit" text='Submit'  ></Button>
                 </div>
-            )
-
-            )}
-               <div className="submit">
-                <Button  type="submit" text='Submit'  ></Button>
-            </div>
 
             </form>
-         
+
 
         </div>
     )
