@@ -133,11 +133,7 @@ function DashboardNoAppoin() {
                   <td className='rowClass' >{appointment.data().date}</td>
                   <td className='rowClass'>{appointment.data().time}</td>
                   <td className='rowClass'>{appointment.data().hospitalName}</td>
-<<<<<<< HEAD
-                  <button onClick={deleteAppointment}  id={appointment.id} className="scheduleButton">Cancel</button>
-=======
                   <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
->>>>>>> 41ebdf68853884874d06ce091ab92de21b421aeb
 
 
                 </tr>

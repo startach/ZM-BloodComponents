@@ -37,11 +37,11 @@ const RegisterForm = () => {
   }
 
 
-  const handleCheckbox = (e,checked) => {
+  const handleCheckbox = (e, checked) => {
 
-    setIsChecked({...isChecked , [e.target.id] : !checked})
+    setIsChecked({ ...isChecked, [e.target.id]: !checked })
     setNotifications({ ...notifications, [e.target.id]: !checked })
-    
+
   }
 
   const handleSubmit = async (e) => {
@@ -68,14 +68,14 @@ const RegisterForm = () => {
         localStorage.setItem('userid', cred.user.uid)
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
-          
-          
+
+
         )
-        
+
         //Add casualNotifications to the database
-        
+
         await db.collection('users').doc(cred.user.uid).update({
-          casualNotifications : notifications
+          casualNotifications: notifications
         }
         )
 
@@ -332,79 +332,81 @@ const RegisterForm = () => {
         </div>
 
 
-        <div className="mx-4">
-          <div className="notificationsTitle">Notification Preferences</div>
-          <span id="notificationsSpan"> Please select all methods you are happy to be contacted by : </span>
-          <div className="optionsContainer">
-            <label>
-              <input
-                type="checkbox"
-                id="SMS"
-                value="SMS"
-                onChange={(e)=>handleCheckbox (e , isChecked.SMS)}
-                checked={isChecked.SMS}
-              />
-              SMS
-            </label>
-          </div>
+        <div className="notificationsTitle">Notification Preferences</div>
+        <span id="notificationsSpan"> Please select all methods you are happy to be contacted by : </span>
+        <ul className="optionsContainer ">
+          <li >
+            <input
+              type="checkbox"
+              name="SMS"
+              id="SMS"
+              value="SMS"
+              onChange={(e) => handleCheckbox(e, isChecked.SMS)}
+              checked={isChecked.SMS}
+            />
+            <label for="SMS"> SMS </label>
+          </li>
 
-          <div className="optionsContainer">
-            <label >
-              <input
-                type="checkbox"
-                id="Whatsapp"
-                value="Whatsapp"
-                onChange={(e)=>handleCheckbox(e , isChecked.Whatsapp)}
-                checked={isChecked.Whatsapp}
-              />
-            Whatsapp</label>
-          </div>
+          <li>
 
-
-          <div className="optionsContainer">
-            <label>
-              <input
-                type="checkbox"
-                id="Phonecall"
-                value="Phonecall"
-                onChange={(e)=>handleCheckbox(e , isChecked.Phonecall)}
-                checked={isChecked.Phonecall}
-              />
-            Phonecall</label>
-          </div>
+            <input
+              name="Whatsapp"
+              type="checkbox"
+              id="Whatsapp"
+              value="Whatsapp"
+              onChange={(e) => handleCheckbox(e, isChecked.Whatsapp)}
+              checked={isChecked.Whatsapp}
+            />
+            <label for="Whatsapp"> Whatsapp </label>
+          </li>
 
 
+          <li>
 
-          <div className="optionsContainer">
-            <label >
-              <input
-                type="checkbox"
-                id="Email"
-                value="Email"
-                onChange={(e)=>handleCheckbox(e , isChecked.Email)}
-                checked={isChecked.Email}
-
-
-              />
-            Email</label>
-          </div>
+            <input
+              type="checkbox"
+              name="Phonecall"
+              id="Phonecall"
+              value="Phonecall"
+              onChange={(e) => handleCheckbox(e, isChecked.Phonecall)}
+              checked={isChecked.Phonecall}
+            />
+            <label for="Phonecall"> Phonecall </label>
+          </li>
 
 
 
-          <div className="optionsContainer">
-            <label >
-              <input
-                type="checkbox"
-                id="inAppAlert"
-                value="inAppAlert"
-                onChange={(e)=>handleCheckbox(e , isChecked.inAppAlert)}
-                checked={isChecked.inAppAlert}
-              />
-            In-App alert</label>
-          </div>
+          <li>
+
+            <input
+              type="checkbox"
+              id="Email"
+              value="Email"
+              onChange={(e) => handleCheckbox(e, isChecked.Email)}
+              checked={isChecked.Email}
 
 
-        </div>
+            />
+            <label for="Email"> Email </label>
+          </li>
+
+
+
+          <li>
+
+            <input
+              name="inAppAlert"
+              type="checkbox"
+              id="inAppAlert"
+              value="inAppAlert"
+              onChange={(e) => handleCheckbox(e, isChecked.inAppAlert)}
+              checked={isChecked.inAppAlert}
+            />
+            <label for="Email"> In-App alert </label>
+          </li>
+
+        </ul>
+
 
 
 

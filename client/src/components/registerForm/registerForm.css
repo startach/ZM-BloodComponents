@@ -106,3 +106,13 @@ margin-left: 1px !important;
 
 }
 
+li {
+
+  list-style-type: none;
+}
+
+.optionsContainer {
+
+  width : 50vw;
+  margin-left: 30%;
+}
