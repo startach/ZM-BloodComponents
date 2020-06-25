@@ -10,7 +10,7 @@ const VerificationList = () => {
         <div>
             <div className="introContainer">
 
-                <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b>X</b> hospital</p>
+                <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b> {localStorage.getItem('hospital')} </b> Hospital</p>
             </div>
 
             <div className="my-4">
