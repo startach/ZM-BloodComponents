@@ -100,141 +100,152 @@ function DashboardNoAppoin() {
           if (snapShot.empty) {
             console.log("User doesn't have any Appointment")
             setCheckUserAppointments(false);
-          }
-          else {
+          } else {
             setCheckUserAppointments(true)
-            const userAppointmentsDetails = snapShot.docs.map(userAppointments => {
-              return userAppointments
+            const appointmentsDetails = []
+            snapShot.docs.map(userAppointments => {
+
+              let app = userAppointments.data().timestamp.seconds
+              const today = Date.now() / 1000
+              if (app > today) {
+                let currentID = userAppointments.id
+                let appObj = { ...userAppointments.data(), ['id']: currentID }
+                appointmentsDetails.push(appObj)
+                setUserAppointmentsDetails(appointmentsDetails)
+              }
+
             })
-            setUserAppointmentsDetails(userAppointmentsDetails)
+
           }
+
         })
+
       }
 
     })
 
 
-  }, [userAppointmentsDetails])
+      }, [userAppointmentsDetails])
 
 
-  return (
-    <div className="dashboardView">
-      {checkUserAppointments ? (
-        <Fragment>
-          <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
-          <div className="lineUnderSpan"></div>
-          <div className="userEligibility">
-            You are <b style={{ color: "green" }}> eligible </b> to donate.
-      <br></br>
-      Here is few details regarding your upcoming appointment
-    </div>
-          <table className="schedulesTables noAppointmentTable">
-            <thead>
-              <tr className="headerRow">
-                <th className="headerEntries">Date</th>
-                <th className="headerEntries">Time</th>
-                <th className="headerEntries">Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              {userAppointmentsDetails.map(appointment => (
-                <tr className='rowContainer' id={appointment.id}>
-                  <td className='rowClass' >{appointment.data().date}</td>
-                  <td className='rowClass'>{appointment.data().time}</td>
-                  <td className='rowClass'>{appointment.data().hospitalName}</td>
-                  <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
-
-
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="bottomButtons">
-            <Button type="button" text="Get Directions" width="150px"></Button>
-            <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              <div>
-                <BookTaxi />
-              </div>
-            </Popup>
-          </div>
-
-
-
-
-
-        </Fragment>
-
-        //no appointments
-      ) : (
-
+    return (
+      <div className="dashboardView">
+        {checkUserAppointments ? (
           <Fragment>
-
             <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
-
             <div className="lineUnderSpan"></div>
-
             <div className="userEligibility">
               You are <b style={{ color: "green" }}> eligible </b> to donate.
       <br></br>
-      Please, schedule a new appointment:
+      Here is few details regarding your upcoming appointment
     </div>
-
-            <p className="hospitalsOptionsContainer">
-              Nearest hospital is{" "}
-
-              <select className="hospitalsOptionsList" onChange={handleChange}>
-
-                <option value="Select" disabled selected>Select</option>
-
-                {hospital.map(name => (
-
-                  <option value={name}>
-
-                    {name}
-
-                  </option>
-
-                ))}
-
-
-
-              </select>
-            </p>
-
             <table className="schedulesTables noAppointmentTable">
               <thead>
                 <tr className="headerRow">
                   <th className="headerEntries">Date</th>
                   <th className="headerEntries">Time</th>
-                  <th className="headerEntries">Schedule</th>
+                  <th className="headerEntries">Location</th>
                 </tr>
               </thead>
               <tbody>
-                {appointments.map(appointment => (
-
+                {userAppointmentsDetails.map(appointment => (
                   <tr className='rowContainer' id={appointment.id}>
                     <td className='rowClass' >{appointment.date}</td>
                     <td className='rowClass'>{appointment.time}</td>
-                    <Link to='/questions'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
+                    <td className='rowClass'>{appointment.hospitalName}</td>
+                    <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
 
-                    </Link>
+
                   </tr>
-
-
                 ))}
-
               </tbody>
             </table>
+            <div className="bottomButtons">
+              <Button type="button" text="Get Directions" width="150px"></Button>
+              <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+                <div>
+                  <BookTaxi />
+                </div>
+              </Popup>
+            </div>
+
+
+
+
 
           </Fragment>
 
-        )
-      }
+          //no appointments
+        ) : (
 
-    </div >
-  );
-}
+            <Fragment>
+
+              <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
+
+              <div className="lineUnderSpan"></div>
+
+              <div className="userEligibility">
+                You are <b style={{ color: "green" }}> eligible </b> to donate.
+      <br></br>
+      Please, schedule a new appointment:
+    </div>
+
+              <p className="hospitalsOptionsContainer">
+                Nearest hospital is{" "}
+
+                <select className="hospitalsOptionsList" onChange={handleChange}>
+
+                  <option value="Select" disabled selected>Select</option>
+
+                  {hospital.map(name => (
+
+                    <option value={name}>
+
+                      {name}
+
+                    </option>
+
+                  ))}
+
+
+
+                </select>
+              </p>
+
+              <table className="schedulesTables noAppointmentTable">
+                <thead>
+                  <tr className="headerRow">
+                    <th className="headerEntries">Date</th>
+                    <th className="headerEntries">Time</th>
+                    <th className="headerEntries">Schedule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {appointments.map(appointment => (
+
+                    <tr className='rowContainer' id={appointment.id}>
+                      <td className='rowClass' >{appointment.date}</td>
+                      <td className='rowClass'>{appointment.time}</td>
+                      <Link to='/questions'>
+                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
+
+                      </Link>
+                    </tr>
+
+
+                  ))}
+
+                </tbody>
+              </table>
+
+            </Fragment>
+
+          )
+        }
+
+      </div >
+    );
+  }
 
 
 export default DashboardNoAppoin;
