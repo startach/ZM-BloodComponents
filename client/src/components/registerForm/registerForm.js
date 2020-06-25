@@ -68,7 +68,6 @@ const RegisterForm = () => {
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
 
-
         )
 
         //Add casualNotifications to the database
@@ -127,7 +126,6 @@ const RegisterForm = () => {
 
 
   }
-
 
 
 
