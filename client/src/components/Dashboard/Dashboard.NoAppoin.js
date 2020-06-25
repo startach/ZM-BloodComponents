@@ -19,15 +19,14 @@ function DashboardNoAppoin() {
 
   function handleChange(e) {
     setChosenOption(e.target.value)
-    localStorage.setItem('hospital', e.target.value)
   }
 
 
 
   function setlocalStorage(appointmentID) {
-    console.log(appointmentID)
     localStorage.setItem('appointmentId', (appointmentID));
   }
+
   function deleteAppointment(e) {
     console.log(e.target.id)
     var appId = e.target.id;
@@ -64,7 +63,9 @@ function DashboardNoAppoin() {
         querySnapshot.docs.forEach(hospitalAppointments => {
           let app = hospitalAppointments.data().timestamp.seconds
           if (app > today) {
-            Appointments.push(hospitalAppointments.data())
+            let currentID = hospitalAppointments.id
+            let appObj = { ...hospitalAppointments.data(), ['id']: currentID }
+            Appointments.push(appObj)
           }
         })
         Appointments.sort(function (b, a) {
@@ -72,6 +73,7 @@ function DashboardNoAppoin() {
           b = new Date(b.timestamp.seconds);
           return a > b ? -1 : a < b ? 1 : 0;
         })
+        console.log("APPS", Appointments)
         setAppointments(Appointments)
       })
       .catch(error => {
@@ -85,8 +87,6 @@ function DashboardNoAppoin() {
       if (user) {
         const userData = await db.collection('users').doc(user.uid).get()
         setUserName(userData.data().name)
-
-        userData.data().gender ? localStorage.setItem('gender', userData.data().gender) : localStorage.setItem('gender', "unknown");
 
 
 
@@ -210,10 +210,10 @@ function DashboardNoAppoin() {
                   <tr className='rowContainer' id={appointment.id}>
                     <td className='rowClass' >{appointment.date}</td>
                     <td className='rowClass'>{appointment.time}</td>
-                    {/* <Link to='/questions'> */}
-                    <button onClick={() => setlocalStorage(appointment)} id={appointment.id} className="scheduleButton">Register</button>
+                    <Link to='/questions'>
+                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
 
-                    {/* </Link> */}
+                    </Link>
                   </tr>
 
 
