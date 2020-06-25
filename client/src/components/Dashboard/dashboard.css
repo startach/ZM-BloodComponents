@@ -6,6 +6,12 @@
     margin-top: 10px;
 }
 
+.introSpan {
+    padding-right: 2%;
+    padding-left: 2%;
+    text-align: center;
+}
+
 .hospitalsOptionsContainer {
     margin-top: 10px;
 }
@@ -38,6 +44,7 @@
 
 .headerRow {
     border: 2px solid #c3b7b1;
+
 }
 
 .headerEntries {
