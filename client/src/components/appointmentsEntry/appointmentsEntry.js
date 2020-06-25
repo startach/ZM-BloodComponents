@@ -7,13 +7,12 @@ import { db, auth } from '../firebase/firebase'
 const AppointmentsEntry = () => {
     const [prevAppointments, setPrevAppointments] = useState([])
     const history = useHistory();
+    if (!localStorage.getItem('userid'))
+    history.push('/login')
+
     useEffect(() => {  
         //retrieve all data based on userID
         const id= localStorage.getItem('userid')
-
-        if (!localStorage.getItem('userid'))
-            history.push('/login')
-            
         const today = Date.now() / 1000
         db.collection('Appointments').where('userID', '==', id).onSnapshot(snapShot => {
                 const Appointments = []
@@ -23,7 +22,7 @@ const AppointmentsEntry = () => {
                     Appointments.push(appointment.data())
                   }
                 })
-                Appointments.sort(function (b, a) {
+                Appointments.sort( (b, a) => {
                   a = new Date(a.timestamp.seconds);
                   b = new Date(b.timestamp.seconds);
                   return a > b ? -1 : a < b ? 1 : 0;
