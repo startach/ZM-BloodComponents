@@ -1,5 +1,4 @@
-.headerRow {
-
+.appHeaderRow {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,15 +8,17 @@
     margin-bottom: 0px;
     width: 95%;
     margin-left: 10px;
-
+    border: 2px solid #c3b7b1;
+    padding-bottom: 10px;
 }
 
 
 
-.headerEntries {
+.appHeaderEntries {
 
     width: 33.3%;
     font-family: 'Montserrat';
     font-size: 18px;
+    margin-top: 10px;
 
 }

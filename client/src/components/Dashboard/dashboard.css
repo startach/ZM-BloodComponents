@@ -1,9 +1,63 @@
-.scheduleButton {
+.headerRow {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 95%;
+    margin-left: 5px;
+    border: 2px solid #c3b7b1;
+    height: 6vh;
+}
+
+
+  .headerEntries {
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 25%;
+}
+
+
+
+.rowContainer {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    border-radius: 15px;
+    height: 6vh;
+    width: 95%;
+    box-shadow: black 1px 1px 2.5px;
+    background-color: #c3b7b1;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+
+  .rowClass {
+    color: #fafafa;
+    font-size: 18px;
+   
+}
+
+
+.cancelButton {
     background-color: #C71585;
     color: white;
     border-radius: 5px;
     width: fit-content;
+    height: fit-content;
+    
+}
+
+.registerButton {
+
+    background-color: #C71585;
+    color: white;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
     margin-top: 10px;
+
 }
 
 .introSpan {
@@ -16,20 +70,11 @@
     margin-top: 10px;
 }
 
-.rowClass {
-    color: #fafafa;
-    font-family: "Montserrat";
-    font-size: 18px;
-}
 
 .schedulesTables th,
 .schedulesTables td {
     margin-top: 10px;
-    vertical-align: top;
-}
-
-.schedulesTables thead th {
-    vertical-align: bottom;
+ 
 }
 
 .schedulesTables {
@@ -42,14 +87,7 @@
     padding-top: 10px;
 }
 
-.headerRow {
-    border: 2px solid #c3b7b1;
 
-}
-
-.headerEntries {
-    margin-bottom: 10px;
-}
 
 #introSpan {
     font-size: 20px;
