@@ -77,7 +77,7 @@ const LoginForm = () => {
         <p id="footertext">Not signed up as donor yet?</p>
 
 
-        <Link to = '/register'>
+        <Link to = '/register' style={{textDecoration : 'none'}}>
 
           <Button type="button" text="Come Save Lives"></Button>
         </Link>
