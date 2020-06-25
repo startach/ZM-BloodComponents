@@ -125,127 +125,129 @@ function DashboardNoAppoin() {
     })
 
 
-      }, [userAppointmentsDetails])
+  }, [userAppointmentsDetails])
 
 
-    return (
-      <div className="dashboardView">
-        {checkUserAppointments ? (
-          <Fragment>
-            <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
-            <div className="lineUnderSpan"></div>
-            <div className="userEligibility">
-              You are <b style={{ color: "green" }}> eligible </b> to donate.
-      <br></br>
+  return (
+    <div className="dashboardView mt-3">
+      {checkUserAppointments ? (
+        <Fragment>
+          <div id="introSpan" className="introSpan">Hello <b>{userName}</b>, So far you have donated X times. Wow! That’s wonderful.</div>
+          <div className="lineUnderSpan"></div>
+          <div className="userEligibility my-3">
+            You are <b style={{ color: "green" }}> eligible </b> to donate.
+      <br />
+            <br />
       Here is few details regarding your upcoming appointment
     </div>
-            <table className="schedulesTables noAppointmentTable">
-              <thead>
-                <tr className="headerRow">
-                  <th className="headerEntries">Date</th>
-                  <th className="headerEntries">Time</th>
-                  <th className="headerEntries">Location</th>
+          <table className="schedulesTables noAppointmentTable">
+            <thead>
+              <tr className="headerRow mt-1">
+                <th className="headerEntries">Date</th>
+                <th className="headerEntries">Time</th>
+                <th className="headerEntries">Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userAppointmentsDetails.map(appointment => (
+                <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass' >{appointment.date}</td>
+                  <td className='rowClass'>{appointment.time}</td>
+                  <td className='rowClass'>{appointment.hospitalName}</td>
+                  <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
+
+
                 </tr>
-              </thead>
-              <tbody>
-                {userAppointmentsDetails.map(appointment => (
-                  <tr className='rowContainer' id={appointment.id}>
-                    <td className='rowClass' >{appointment.date}</td>
-                    <td className='rowClass'>{appointment.time}</td>
-                    <td className='rowClass'>{appointment.hospitalName}</td>
-                    <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
-
-
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="bottomButtons">
-              <Button type="button" text="Get Directions" width="150px"></Button>
-              <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-                <div>
-                  <BookTaxi />
-                </div>
-              </Popup>
-            </div>
+              ))}
+            </tbody>
+          </table>
+          <div className="bottomButtons">
+            <Button type="button" text="Get Directions" width="150px"></Button>
+            <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              <div>
+                <BookTaxi />
+              </div>
+            </Popup>
+          </div>
 
 
 
 
 
-          </Fragment>
+        </Fragment>
 
-          //no appointments
-        ) : (
+        //no appointments
+      ) : (
 
-            <Fragment>
+          <Fragment>
 
-              <span id="introSpan">Hello <b>{userName}</b>, So far you have donated X times.Wow ! That’s wonderful.</span>
+            <div id="introSpan" className="introSpan">Hello <b>{userName}</b>, So far you have donated X times. Wow! That’s wonderful.</div>
 
-              <div className="lineUnderSpan"></div>
+            <div className="lineUnderSpan"></div>
 
-              <div className="userEligibility">
-                You are <b style={{ color: "green" }}> eligible </b> to donate.
-      <br></br>
+            <div className="userEligibility my-3">
+              You are <b style={{ color: "green" }}> eligible </b> to donate.
+      <br />
+              <br />
       Please, schedule a new appointment:
     </div>
 
-              <p className="hospitalsOptionsContainer">
-                Nearest hospital is{" "}
+            <p className="hospitalsOptionsContainer mt-3">
+              Nearest hospital is{" "}
 
-                <select className="hospitalsOptionsList" onChange={handleChange}>
+              <select className="hospitalsOptionsList" onChange={handleChange}>
 
-                  <option value="Select" disabled selected>Select</option>
+                <option value="Select" disabled selected>Select</option>
 
-                  {hospital.map(name => (
+                {hospital.map(name => (
 
-                    <option value={name}>
+                  <option value={name}>
 
-                      {name}
+                    {name}
 
-                    </option>
+                  </option>
 
-                  ))}
+                ))}
 
 
 
-                </select>
-              </p>
+              </select>
+            </p>
 
-              <table className="schedulesTables noAppointmentTable">
-                <thead>
-                  <tr className="headerRow">
-                    <th className="headerEntries">Date</th>
-                    <th className="headerEntries">Time</th>
-                    <th className="headerEntries">Schedule</th>
+            <table className="schedulesTables noAppointmentTable">
+              <thead>
+                <tr className="headerRow mt-1">
+                  <th className="headerEntries">Date</th>
+                  <th className="headerEntries">Time</th>
+                  <th className="headerEntries">Schedule</th>
+                </tr>
+              </thead>
+              <tbody>
+                {appointments.map(appointment => (
+
+                  <tr className='rowContainer' id={appointment.id}>
+                    <td className='rowClass' >{appointment.date}</td>
+                    <td className='rowClass'>{appointment.time}</td>
+                    <Link to='/questions'>
+                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
+
+                    </Link>
                   </tr>
-                </thead>
-                <tbody>
-                  {appointments.map(appointment => (
-
-                    <tr className='rowContainer' id={appointment.id}>
-                      <td className='rowClass' >{appointment.date}</td>
-                      <td className='rowClass'>{appointment.time}</td>
-                      <Link to='/questions'>
-                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
-
-                      </Link>
-                    </tr>
 
 
-                  ))}
+                ))}
 
-                </tbody>
-              </table>
+              </tbody>
+            </table>
 
-            </Fragment>
+          </Fragment>
 
-          )
-        }
+        )
+      }
 
-      </div >
-    );
-  }
+    </div >
+  );
+}
 
 
 export default DashboardNoAppoin;
