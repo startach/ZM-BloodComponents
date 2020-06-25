@@ -49,7 +49,7 @@ export default function AddAppointments() {
         let time = `${date.getHours()}:${minutes}`
 
 
-        let timestamp = new Date(`${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}`);
+        let timestamp = new Date(`${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}, ${time}`);
 
         setCurrentApp({ ...currentApp, ["date"]: fullDate, ["time"]: time, ["timestamp"]: timestamp })
     }

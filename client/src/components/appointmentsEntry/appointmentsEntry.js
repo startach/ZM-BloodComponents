@@ -27,7 +27,7 @@ const AppointmentsEntry = () => {
             Appointments.push(hospitalAppointments.data());
           }
         });
-        Appointments.sort(function (b, a) {
+        Appointments.sort(function (a, b) {
           a = new Date(a.timestamp.seconds);
           b = new Date(b.timestamp.seconds);
           return a > b ? -1 : a < b ? 1 : 0;
@@ -43,13 +43,13 @@ const AppointmentsEntry = () => {
     <div>
       <table className="schedulesTables noAppointmentTable">
         <tbody>
-          {appointments.map((appointment) => (
-            <tr className="rowContainer" id={appointment.id}>
+          {appointments.length ? appointments.map((appointment) => (
+            <tr className="rowContainer my-3" id={appointment.id}>
               <td className="rowClass">{appointment.date}</td>
               <td className="rowClass">{appointment.time}</td>
               <td className="rowClass">{appointment.hospitalName}</td>
             </tr>
-          ))}
+          )) : <div className="text-center my-4">You have no past appointments</div>}
         </tbody>
       </table>
       <Link id="link" to="/dashboard">
