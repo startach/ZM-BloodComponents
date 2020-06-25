@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
+
 const VerificationList = () => {
     return (
         <div>
@@ -35,7 +36,7 @@ const VerificationList = () => {
 
             </ul>
 
-            <p id="footer">Have a nice day ,</p>
+            <p id="footer">Have a nice day & thank you for donating</p>
 
 
             <Link id="link" to="/dashboard">

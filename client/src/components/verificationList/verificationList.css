@@ -3,7 +3,10 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid;
+    padding: 2%;
+    text-align: center;;
 }
+
 
 #introHeader {
     font-family: 'Montserrat';
@@ -17,6 +20,7 @@
     align-items: center;
     font-family: 'Montserrat';
     font-size:20px;
+    padding: 2%;
 }
 
 .bringList {
@@ -33,9 +37,8 @@
 }
 
 #footer {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+
     font-family: 'Montserrat';
-    font-size: 20px;
+    font-size: 16px;
+    text-align: center;;
 }
