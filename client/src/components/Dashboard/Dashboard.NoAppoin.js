@@ -139,26 +139,26 @@ function DashboardNoAppoin() {
       <br></br>
       Here is few details regarding your upcoming appointment
     </div>
-            <table className="schedulesTables noAppointmentTable">
-              <thead>
+            <table className="schedulesTables">
                 <tr className="headerRow">
                   <th className="headerEntries">Date</th>
                   <th className="headerEntries">Time</th>
                   <th className="headerEntries">Location</th>
+                  <th className="headerEntries">Delete Appointment</th>
                 </tr>
-              </thead>
-              <tbody>
+   
                 {userAppointmentsDetails.map(appointment => (
                   <tr className='rowContainer' id={appointment.id}>
                     <td className='rowClass' >{appointment.date}</td>
                     <td className='rowClass'>{appointment.time}</td>
                     <td className='rowClass'>{appointment.hospitalName}</td>
-                    <button onClick={deleteAppointment} id={appointment.id} className="scheduleButton">Cancel</button>
-
+                    <td className='rowClass'>
+                    <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
+                    </td>
 
                   </tr>
                 ))}
-              </tbody>
+
             </table>
             <div className="bottomButtons">
               <Button type="button" text="Get Directions" width="150px"></Button>
@@ -212,30 +212,29 @@ function DashboardNoAppoin() {
                 </select>
               </p>
 
-              <table className="schedulesTables noAppointmentTable">
-                <thead>
+              <table className="schedulesTables">
                   <tr className="headerRow">
                     <th className="headerEntries">Date</th>
                     <th className="headerEntries">Time</th>
-                    <th className="headerEntries">Schedule</th>
+                    <th className="headerEntries">Register for an Appointment</th>
                   </tr>
-                </thead>
-                <tbody>
+               
                   {appointments.map(appointment => (
 
                     <tr className='rowContainer' id={appointment.id}>
                       <td className='rowClass' >{appointment.date}</td>
                       <td className='rowClass'>{appointment.time}</td>
                       <Link to='/questions'>
-                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="scheduleButton">Register</button>
-
+                        <td className='rowClass'>
+                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
+                        </td>
                       </Link>
                     </tr>
 
 
                   ))}
 
-                </tbody>
+              
               </table>
 
             </Fragment>

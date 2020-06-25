@@ -48,10 +48,10 @@ const AppointmentsEntry = () => {
       <table className="schedulesTables noAppointmentTable">
         <tbody>
           {appointments.length ? appointments.map((appointment) => (
-            <tr className="rowContainer my-3" id={appointment.id}>
-              <td className="rowClass">{appointment.date}</td>
-              <td className="rowClass">{appointment.time}</td>
-              <td className="rowClass">{appointment.hospitalName}</td>
+            <tr className="appContainer my-3" id={appointment.id}>
+              <td className="rowEntry">{appointment.date}</td>
+              <td className="rowEntry">{appointment.time}</td>
+              <td className="rowEntry">{appointment.hospitalName}</td>
             </tr>
           )) : <div className="text-center my-4">You have no past appointments</div>}
         </tbody>

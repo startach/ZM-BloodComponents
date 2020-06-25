@@ -8,7 +8,7 @@ import DatePicker from 'react-date-picker'
 
 const RegisterForm = () => {
 
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState()
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
@@ -24,16 +24,19 @@ const RegisterForm = () => {
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([])
 
+  //Prevent the user which is logged in to enter register again
+
   if (localStorage.getItem('userid'))
     history.push("/dashboard")
 
 
+  // Handle change of register form fields
+
   const handleChange = (e) => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
-
-
-    console.log(userInputs)
   }
+
+  //Handle change of notifications checkboxes
 
 
   const handleCheckbox = (e, checked) => {
@@ -42,6 +45,8 @@ const RegisterForm = () => {
     setNotifications({ ...notifications, [e.target.id]: !checked })
 
   }
+
+  //Handle Submit of register fields
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -96,6 +101,8 @@ const RegisterForm = () => {
 
   }
 
+  //Hadle DatePicker State
+
   const onClickDayHandler = (e) => {
 
     if (e != null) {
@@ -127,8 +134,6 @@ const RegisterForm = () => {
 
 
   }
-
-
 
 
   return (
