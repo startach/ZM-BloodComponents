@@ -7,7 +7,6 @@ import DatePicker from 'react-date-picker'
 
 
 const RegisterForm = () => {
-
   const [date, setDate] = useState()
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
@@ -72,7 +71,6 @@ const RegisterForm = () => {
         localStorage.setItem('userid', cred.user.uid)
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
-
 
         )
 
