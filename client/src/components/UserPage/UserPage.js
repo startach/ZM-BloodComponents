@@ -152,8 +152,8 @@ export default function UserPage() {
                     className="editBtn" 
                     onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
-                <div className="notificationTitle">Notification Prefences</div>
-                 <div className="notifications">
+                <div className="notificationTitle ma4">Notification Prefences</div>
+                 <div className="notifications ma0">
                 <span className="notifiedText my-3">I want to get notified on:</span>
                 <div className="form-check my-3">
                     <input 

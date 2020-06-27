@@ -3,8 +3,10 @@ import "./loginForm.css";
 import Button from '../button'
 import { useHistory,Link } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
+import { SignInWithGoogle } from '../../actions/googleAuth';
+import GoogleButton from 'react-google-button'
+
 const LoginForm = () => {
- 
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
@@ -45,7 +47,7 @@ const LoginForm = () => {
         <b id="header1"> Blood Components</b>
         <b id="header2"> Donations</b>
       </div>
-      <form class="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="emailContainer">
           <label> Email
             <input
@@ -73,12 +75,15 @@ const LoginForm = () => {
 
         <Button type="submit" text="Login" color='#C71585'></Button>
       </form>
-      <div class="registerFooter">
+      <div className="registerFooter">
+        <GoogleButton 
+        className="ma3"
+        onClick={SignInWithGoogle()}>
+          Sign in with Google
+        </GoogleButton>
+
         <p id="footertext">Not signed up as donor yet?</p>
-
-
         <Link to = '/register'>
-
           <Button type="button" text="Come Save Lives"></Button>
         </Link>
       </div>

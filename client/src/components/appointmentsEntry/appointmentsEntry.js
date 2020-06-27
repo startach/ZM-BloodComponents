@@ -8,7 +8,7 @@ const AppointmentsEntry = () => {
     const [prevAppointments, setPrevAppointments] = useState([])
     const history = useHistory();
     if (!localStorage.getItem('userid'))
-    history.push('/login')
+        history.push('/login')
 
     useEffect(() => {  
         //retrieve all data based on userID

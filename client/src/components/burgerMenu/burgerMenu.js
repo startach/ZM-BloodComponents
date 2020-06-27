@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 import { Dropdown } from 'react-bootstrap';
+import {startLogout} from '../../actions/googleAuth'
 
 const BurgerMenu = () => {
 
@@ -22,12 +23,14 @@ const BurgerMenu = () => {
   }, [])
 
   const handleLogout = () => {
-    // remove remove localstored userid
+    // remove localstored userid
     localStorage.removeItem('userid');
+    localStorage.removeItem('photoURL');
+
+    //email password sing out & google signout
     auth.signOut();
 
   }
-
 
   var styles = {
     bmBurgerButton: {

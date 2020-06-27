@@ -17,6 +17,11 @@ let styles = {
         justifyContent: 'start',
 
     },
+    burgerMenu: {
+        display: 'flex',
+        justifyContent: 'start',
+
+    },
     backArrowIcon: {
         display: 'flex',
     },
@@ -27,45 +32,44 @@ let styles = {
         
     },
     titleSingle: {
-        marginTop: '5px',
+        display: 'flex',
+        justifyContent: 'center',
         fontSize: '28px',
         color: 'black',
         fontWeight: 'bold',
-        marginBottom: '-10px',
-        marginRight:'10px',
         fontFamily: 'Montserrat',
+        width:'70%',
 
     },
+    imgIcon: {
+        width:'40px',
+    }
 
 
 };
 
 const Menu_header = (props) => {
-
+    const photoURL= localStorage.getItem('photoURL')
     return (
         <div className="col-xs-12 navbar-fixed-top fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
                 {/* change the icon depending on the page we are in */}
-                {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu /> : null}
+                {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu style={styles.burgerMenu} /> : null}
             </div>
 
-            <span className="col-xs-8 tc" style={styles.titleSingle}>
-                {props.title && <p> {props.title}</p>}
-            </span>
+            <div className="col-xs-8 tc dib" style={styles.titleSingle}>
+                {props.title}
+            </div>
 
-            {/* <div className="col-xs-2 vcenter pa2">
-                
-                Profile picture 
+            <div className="col-xs-2 vcenter pa2">
                 <img 
-                style={{width:'60px'}}
-                src={headerImageUrl}></img> 
-               
-            </div> */}
+                style={styles.imgIcon}
+                src={photoURL}>
+                </img> 
+            </div>
 
         </div>
     );
 }
-
-
 
 export default Menu_header;
