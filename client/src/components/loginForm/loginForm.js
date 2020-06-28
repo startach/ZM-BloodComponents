@@ -10,14 +10,14 @@ const LoginForm = () => {
   let [userData, setUserData] = useState([])
   let [error,setError]=useState([])
 
+  //Handle change of login form fields 
+
   const handleChange = (e) => {
     userData = ({ ...userData, [e.target.id]: e.target.value });
-   // console.log(userData)
   }
  
 
   const handleSubmit = (e) => {
-   // Validation(userData)
     //update state
     setUserData(userData)
 
@@ -77,7 +77,7 @@ const LoginForm = () => {
         <p id="footertext">Not signed up as donor yet?</p>
 
 
-        <Link to = '/register'>
+        <Link to = '/register' style={{textDecoration : 'none'}}>
 
           <Button type="button" text="Come Save Lives"></Button>
         </Link>

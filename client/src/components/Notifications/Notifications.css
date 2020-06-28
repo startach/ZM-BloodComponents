@@ -1,6 +1,7 @@
 .notificationTitle {
 
-    margin-bottom: 4%;
+    margin-top: 10%;
+    margin-bottom: 1%;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
@@ -13,7 +14,7 @@
 }
 
 .notifications {
-    margin-top: 4%;
+    margin-top: 2%;
 }
 
 .comment {
