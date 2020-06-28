@@ -115,6 +115,7 @@ function DashboardNoAppoin() {
                 localStorage.setItem('hospital', appointmentsDetails[0].hospitalName)
                 localStorage.setItem('appointmentDate', appointmentsDetails[0].date)
                 localStorage.setItem('appointmentTime', appointmentsDetails[0].time)
+                localStorage.setItem('appointmentID', currentID)
               }
 
             })
