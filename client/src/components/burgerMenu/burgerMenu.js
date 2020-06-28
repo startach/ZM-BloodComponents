@@ -56,7 +56,7 @@ const BurgerMenu = () => {
     },
     bmMenuWrap: {
       position: 'fixed',
-      top: '57px',
+      top: '102px',
       height: 'auto',
       transition: 'all 1s ease',
       borderRadius: '4px'

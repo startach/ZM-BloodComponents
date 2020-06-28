@@ -1,19 +1,26 @@
-.rowContainer {
+.appContainer {
   display: flex;
   justify-content: space-around;
   align-content: center;
-  list-style-type: none;
   border-radius: 15px;
-  background-color: #c3b7b1;
   height: 6vh;
   width: 95%;
-  margin: 0.5rem auto auto 10px;
   box-shadow: black 1px 1px 2.5px;
+  background-color: #c3b7b1;
+  margin-left: 10px;
 }
 
 .rowEntry {
-  width: 33.3%;
+  width: 30%;
   color: #fafafa;
   font-family: "Montserrat";
   font-size: 18px;
 }
+
+
+#link {
+
+  text-decoration: none;
+}
+
+

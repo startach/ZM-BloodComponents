@@ -14,9 +14,12 @@ export default function AddAppointments() {
         db.collection('Hospitals').get()
             .then(snapshot => {
                 snapshot.docs.forEach(hospital => {
-                    hospitals.push(hospital.data())
+                    let currentID = hospital.id
+                    let appObj = { ...hospital.data(), ['id']: currentID }
+                    hospitals.push(appObj)
             })
             setHospitalsDetails(hospitals)
+            console.log(hospitalsDetails)
         })
     },[])
 
@@ -25,13 +28,13 @@ export default function AddAppointments() {
     const displayNode = useRef(null)
     const [currentApp, setCurrentApp] = useState({
         userID: null,
-        hospitalName: null,
+        hospitalName: null, //: hospitalDetails[0].hospitalName
         hospitalID: null,
         date: null,
         time: null,
         timestamp: null,
         slots: 1,
-        appointmentType: 'Thrombocytes',
+        appointmentType: null
     })
 
     //for counted appointments added
@@ -40,9 +43,14 @@ export default function AddAppointments() {
     //set state values for slots & hospital
     //take care of hosID here
     const handleChange = (e) => {
-        //FIXME: bug in setting hospital ID
-        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ["hospitalID"]: e.target.id })
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value})
         console.log(currentApp)
+    }
+
+    const handleChangeHospital = (e) => {
+        //setting hospital ID vs Passing it as props from options
+        const hospital = hospitalsDetails.filter(obj => obj.hospitalName === e.target.value)
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ['hospitalID'] : hospital[0].id})  
     }
 
     //set state values for date
@@ -55,7 +63,10 @@ export default function AddAppointments() {
             minutes = "00"
         }
         let time = `${date.getHours()}:${minutes}`
-        let timestamp = new Date(`${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}`);
+
+
+        let timestamp = new Date(`${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}, ${time}`);
+
         setCurrentApp({ ...currentApp, ["date"]: fullDate, ["time"]: time, ["timestamp"]: timestamp })
     }
 
@@ -65,7 +76,6 @@ export default function AddAppointments() {
         setAppList(appList.concat(currentApp))
         displayNode.current.textContent = ""
         console.log(appList)
-        console.log("fff")
     }
 
     //add free appointments to DB
@@ -93,22 +103,23 @@ export default function AddAppointments() {
         <div className="addAppContainer">
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
-                <select className="dropdown" id="hospitalName" onChange={handleChange}>
+                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital}>
+                <option selected disabled>Select hospital</option>
                     {
                     hospitalsDetails.map( hospital => {
-                        return <option  
-                            id={hospital.hospitalID}
+                        return <option 
                             value={hospital.hospitalName} 
                             className="option">
                             {hospital.hospitalName} 
                             </option>
-                        })
+                    })  
                     }
                 </select>
             </p>
 
             <div className="inputContainer">
                 <Datepicker
+                    required
                     selected={appDate}
                     onChange={handleChangeDate}
                     showTimeSelect
@@ -118,12 +129,15 @@ export default function AddAppointments() {
                 id="slots" 
                 type="number"
                 // defaultValue="1"
+                min="1"
                 caption="slots"
                 className="slots ml-3" 
                 onChange={handleChange} 
-                placeholder="#slots"></input>
-                 <select className="dropdown" id="appointmentType" onChange={handleChange}>
-                    <option id="AppointmentType" value="Thrombocytes" className="option" selected> Thrombocytes</option>
+                placeholder="#slots">
+                </input>
+                 <select className="dropdown" id="appointmentType" onChange={handleChange} style={{width:'200px'}}>
+                    <option selected disabled>Select appointment type</option>
+                    <option id="AppointmentType" value="Thrombocytes" className="option"> Thrombocytes</option>
                     <option id="AppointmentType" value="Granulocytes" className="option"> Granulocytes</option>
                  </select>
                 <button 

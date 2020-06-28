@@ -9,14 +9,16 @@ const PreviousAppointments = () => {
 
     return (
         <Fragment>
-            <div className="header"></div>
+
             <ScreenContainer>
+                <div className="header"></div>
                 <MenuHeader icon="burger" title="Previous Appointments" />
                 <AppointmentsList />
                 <AppointmentsEntry />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
-            <div className="footer"></div>
+
         </Fragment>
 
     )

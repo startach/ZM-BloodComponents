@@ -6,13 +6,13 @@ const AppointmentList = () => {
 
     return (
 
-        <ul className="headerRow tc">
+        <ul className="appHeaderRow">
 
-            <li className="headerEntries" key="Date">Date </li>
+            <li className="appHeaderEntries" key="Date">Date </li>
 
-            <li className="headerEntries" key="Time">Time</li>
+            <li className="appHeaderEntries" key="Time">Time</li>
 
-            <li className="headerEntries" key="Location"> Hospital </li>
+            <li className="appHeaderEntries" key="Location">Location </li>
 
 
         </ul>

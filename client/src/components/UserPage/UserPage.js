@@ -3,10 +3,10 @@ import "./UserPage.css"
 //mport Notifications from '../Notifications/Notifications.js'
 import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
-import { useHistory , Redirect} from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 
 export default function UserPage() {
- 
+
     //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
         emergency: false,
@@ -15,23 +15,23 @@ export default function UserPage() {
     //state for user
     const [userDetails, setUserDetails] = useState({})
 
-     //user id from localstorage
-     const id = localStorage.getItem('userid');
-     const history = useHistory();
+    //user id from localstorage
+    const id = localStorage.getItem('userid');
+    const history = useHistory();
     useEffect(() => {
         //if user has no id (is not logged in) then forward to log in screen
         if (!localStorage.getItem('userid'))
         history.push('/login')
 
         //const userData = async ()=> { const data = await
-            db.collection('users').doc(id).get()
-                .then(snapshot => setUserDetails(snapshot.data()))
-                .catch( err =>{
-                   history.push('/not-found')
+        db.collection('users').doc(id).get()
+            .then(snapshot => setUserDetails(snapshot.data()))
+            .catch(err => {
+                history.push('/not-found')
 
-                })
-         //  }
-       // userData()
+            })
+        //  }
+        // userData()
     }, [])
 
     //state for if data feild is currently editable or not
@@ -80,7 +80,7 @@ export default function UserPage() {
 
             //send to database TODO:
             console.log(userDetails)
-            db.collection('users').doc(id).update({[currentData]: currentNode.current.textContent})
+            db.collection('users').doc(id).update({ [currentData]: currentNode.current.textContent })
 
         }
         else {
@@ -93,7 +93,7 @@ export default function UserPage() {
         }
 
     }
-    
+
     // in order to show updates to notifications methods without having to refresh the page
     const handleReload = () => {
         db.collection('users').doc(id).get()
@@ -106,7 +106,7 @@ export default function UserPage() {
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
                     <span className="bloodType">Blood Type:</span>
-                    <span style={{color:'red'}}>{userDetails.bloodType}</span></div>
+                    <span style={{ color: 'red' }}>{userDetails.bloodType}</span></div>
             </div>
 
             <div className="line2"></div>
@@ -115,42 +115,42 @@ export default function UserPage() {
             <div className="userDetails" >
                 <div className="dataItem">
                     <div className="icon"><i className="far fa-envelope"></i></div>
-                    <div 
-                    ref={emailNode} 
-                    className="data" 
-                    contentEditable={editable.emailData} 
-                    suppressContentEditableWarning={true}>
+                    <div
+                        ref={emailNode}
+                        className="data"
+                        contentEditable={editable.emailData}
+                        suppressContentEditableWarning={true}>
                         {userDetails.email}
                     </div>
-                    <div 
-                    className="editBtn" 
-                    onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
+                    <div
+                        className="editBtn"
+                        onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-phone"></i></div>
                     <div
-                    ref={phoneNode} 
-                    className="data" 
-                    contentEditable={editable.phoneData} 
-                    suppressContentEditableWarning={true}>
+                        ref={phoneNode}
+                        className="data"
+                        contentEditable={editable.phoneData}
+                        suppressContentEditableWarning={true}>
                         {userDetails.phone}
                     </div>
                     <div
-                    className="editBtn" 
-                    onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
+                        className="editBtn"
+                        onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-home"></i></div>
                     <div
-                    ref={addressNode} 
-                    className="data" 
-                    contentEditable={editable.addressData} 
-                    suppressContentEditableWarning={true}>
+                        ref={addressNode}
+                        className="data"
+                        contentEditable={editable.addressData}
+                        suppressContentEditableWarning={true}>
                         {userDetails.address}
                     </div>
-                    <div  
-                    className="editBtn" 
-                    onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
+                    <div
+                        className="editBtn"
+                        onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
                 <div className="notificationTitle ma4">Notification Prefences</div>
                  <div className="notifications ma0">
@@ -176,9 +176,8 @@ export default function UserPage() {
                     {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
                 </div>
             </div>
+
             </div>
-
-
         </div>
 
     )
