@@ -27,11 +27,7 @@ const AppointmentsEntry = () => {
             Appointments.push(hospitalAppointments.data());
           }
         });
-        Appointments.sort(function (b, a) {
-          a = new Date(a.timestamp.seconds);
-          b = new Date(b.timestamp.seconds);
-          return a > b ? -1 : a < b ? 1 : 0;
-        });
+      
         setAppointments(Appointments);
       })
       .catch((error) => {
