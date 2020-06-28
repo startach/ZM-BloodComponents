@@ -1,6 +1,7 @@
 import React from 'react';
 import BackArrow from '../BackArrow';
 import BurgerMenu from '../burgerMenu'
+import './menuHeader.css'
 
 let styles = {
     header: {
@@ -26,11 +27,9 @@ let styles = {
         fontWeight: 'bold',
     },
     titleSingle: {
-        marginTop: '5px',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
-        marginBottom: '-10px',
         fontFamily: 'Montserrat',
 
     },
@@ -47,8 +46,8 @@ const Menu_header = (props) => {
                 {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu /> : null}
             </div>
 
-            <span className="col-xs-8 tc" style={styles.titleSingle}>
-                {props.title && <p> {props.title}</p>}
+            <span className="col-xs-8 tc title" style={styles.titleSingle}>
+                <p className="titleText"> {props.title}</p>
             </span>
 
             <div className="col-xs-2 vcenter pa2">

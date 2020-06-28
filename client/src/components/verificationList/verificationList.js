@@ -5,19 +5,18 @@ import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
+
 const VerificationList = () => {
     return (
         <div>
             <div className="introContainer">
 
-                <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b>X</b> hospital</p>
+                <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b> {localStorage.getItem('hospital')} </b> Hospital</p>
             </div>
 
             <div className="my-4">
                 <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-                    <div>
-                        <BookTaxi />
-                    </div>
+                    {close => <BookTaxi close={close} />}
                 </Popup>
             </div>
 
@@ -35,7 +34,7 @@ const VerificationList = () => {
 
             </ul>
 
-            <p id="footer">Have a nice day ,</p>
+            <p id="footer">Have a nice day & thank you for donating</p>
 
 
             <Link id="link" to="/dashboard">

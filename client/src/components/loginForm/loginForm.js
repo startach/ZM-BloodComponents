@@ -10,14 +10,14 @@ const LoginForm = () => {
   let [userData, setUserData] = useState([])
   let [error,setError]=useState([])
 
+  //Handle change of login form fields 
+
   const handleChange = (e) => {
     userData = ({ ...userData, [e.target.id]: e.target.value });
-   // console.log(userData)
   }
  
 
   const handleSubmit = (e) => {
-   // Validation(userData)
     //update state
     setUserData(userData)
 

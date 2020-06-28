@@ -10,10 +10,11 @@ const AppointmentsEntry = () => {
   let history = useHistory();
   var userID = localStorage.getItem("userid");
   if (!localStorage.getItem('userid'))
-  history.push("/login")
+    history.push("/login")
 
   useEffect(() => {
 
+    console.log("are we looping like crazy?")
 
     const today = Date.now() / 1000;
 
@@ -44,14 +45,14 @@ const AppointmentsEntry = () => {
   }, [setAppointments]);
 
   return (
-    <div>
+    <div >
       <table className="schedulesTables noAppointmentTable">
         <tbody>
           {appointments.length ? appointments.map((appointment) => (
-            <tr className="rowContainer my-3" id={appointment.id}>
-              <td className="rowClass">{appointment.date}</td>
-              <td className="rowClass">{appointment.time}</td>
-              <td className="rowClass">{appointment.hospitalName}</td>
+            <tr className="appContainer my-3" id={appointment.id}>
+              <td className="rowEntry">{appointment.date}</td>
+              <td className="rowEntry">{appointment.time}</td>
+              <td className="rowEntry">{appointment.hospitalName}</td>
             </tr>
           )) : <div className="text-center my-4">You have no past appointments</div>}
         </tbody>

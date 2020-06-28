@@ -116,3 +116,21 @@ li {
   width : 50vw;
   margin-left: 30%;
 }
+
+
+.react-date-picker__clear-button  {
+
+  outline: none !important;
+}
+
+
+.react-date-picker__calendar-button {
+
+  outline: none !important;
+}
+
+
+.react-date-picker__inputGroup__input:invalid {
+
+  background: none !important;
+}
