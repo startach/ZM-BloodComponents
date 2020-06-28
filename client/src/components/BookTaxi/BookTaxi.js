@@ -1,27 +1,142 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../button/button'
+import { db } from '../firebase/firebase'
+import './bookTaxi.css'
 
 export default function BookTaxi() {
+
+    //object containing pick up info
+    const [pickupData, setPickupData] = useState({
+        user: localStorage.getItem('userid'),
+        from: "",
+        backto: "",
+        hour: "",
+        min: "",
+        hospital: localStorage.getItem('hospital')
+    })
+
+
+    const [addressOptions, setAddressOptions] = useState({
+        main: "",
+        second: ""
+    })
+
+    //get address
+    useEffect(() => {
+        db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
+            setAddressOptions({
+                main: `${user.data().address}, ${user.data().city}`,
+                second: `${user.data().secondaryAddress}, ${user.data().city}`
+            })
+
+        }, err => console.log(err.message))
+
+    }, [])
+
+
+    //create hours & min arrays
+    let arr = [], i;
+    for (i = 6; i < 23; i++) {
+        arr.push(i)
+    }
+    let mins = ["00", "15", "30", "45"]
+
+    //get current time
+    let d = new Date()
+    let h = d.getHours()
+    let pos = arr.indexOf(h)
+    let timelist = arr.slice(pos).concat(arr.slice(0, pos));
+
+    const handleChange = (e) => {
+        console.log(e.target.id, e.target.value)
+
+        setPickupData({ ...pickupData, [e.target.id]: e.target.value })
+        console.log(pickupData)
+    }
+
+    const close = () => {
+
+    }
+
     return (
         <div>
+            <a className="close" onClick={close()}>
+                &times;
+        </a>
             <div className="my-3">
-                I need a ride from <select><option>select</option></select>
+                I need a ride from
+                <div>
+                    <select className="addressMenu" onChange={handleChange} id="from">
+                        <option>select</option>
+                        {Object.values(addressOptions).map((address) => <option>{address}</option>)}
+                    </select>
+                </div>
             </div>
 
             <div className="my-3">
-                Pickup Time <select><option>select</option></select>
+                I need a ride back to
+                <div>
+                    <select className="addressMenu" onChange={handleChange} id="backto">
+                        <option>select</option>
+                        {Object.values(addressOptions).map((address) => <option>{address}</option>)}
+                    </select>
+                </div>
             </div>
 
-            <div className="my-3">
-                I need a ride back to <select><option>select</option></select>
-            </div>
-            <div className="my-3">
-                Pickup Time: XX:XX
-            </div>
 
             <div className="my-3">
-                <Button text="Finish"></Button>
+                Pickup Time:
+                <div>
+                    <select onChange={handleChange} id="hour">
+                        {timelist.map((slot) => (
+                            <option value={slot}>{slot}</option>
+                        ))}
+                    </select>:
+                <select onChange={handleChange} id="min">
+                        {mins.map((min) => (
+                            <option value={min}>{min}</option>
+                        ))}
+                    </select>
+                </div>
+
             </div>
+            <hr />
+
+            <div className="my-3">
+                <b>From:</b>  {pickupData.from ? <span> {pickupData.from} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+            </div>
+            <div className="my-3">
+                <b> Back to: </b>  {pickupData.backto ? <span> {pickupData.backto} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+            </div>
+            <div className="my-3">
+                <b> Time:</b> {pickupData.min && pickupData.hour ? <span>{pickupData.hour}:{pickupData.min} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+            </div>
+            <hr />
+            <div className="my-3">
+                <div><b>For appointment:</b></div>
+                on {localStorage.getItem('appointmentDate')}, at {localStorage.getItem('appointmentTime')} at {localStorage.getItem('hospital')}
+            </div>
+
+
+            {pickupData.min && pickupData.hour && pickupData.from && pickupData.backto ?
+
+                <div className="my-3">
+                    <Button text="Confirm"></Button>
+                </div>
+                :
+
+                <div className="my-3">
+                    <Button text="Confirm" color="grey"></Button>
+                </div>
+            }
+
+            <div className="my-3">
+                <Button text="Close" color="red" onClick={() => {
+                    console.log("modal closed ");
+                    close();
+                }}></Button>
+            </div>
+
         </div>
     )
 }
