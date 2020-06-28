@@ -23,17 +23,31 @@ export default function BookTaxi({ close }) {
 
     const [screen, setScreen] = useState("book")
 
-    //get address
-    useEffect(() => {
-        db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
-            setAddressOptions({
-                main: `${user.data().address}, ${user.data().city}`,
-                second: `${user.data().secondaryAddress}, ${user.data().city}`
-            })
 
-        }, err => console.log(err.message))
+    useEffect(() => {
+
+        // //get address
+        // db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
+        //     setAddressOptions({
+        //         main: `${user.data().address}, ${user.data().city}`,
+        //         second: `${user.data().secondaryAddress}, ${user.data().city}`
+        //     })
+
+        // }, err => console.log(err.message))
+
+        // //get appointment details
+
+        // db.collection('Appointments').doc(localStorage.getItem('appointmentID')).get().then(app => {
+
+        //     localStorage.setItem('appointmentDate', app.data().date)
+        //     localStorage.setItem('appointmentTime', app.data().time)
+        // })
+
+
+        console.log("USE EFFECT RUNNING in BookTaxi")
 
     }, [])
+
 
 
     //create hours & min arrays

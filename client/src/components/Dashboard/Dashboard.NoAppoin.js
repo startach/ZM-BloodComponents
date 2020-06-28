@@ -28,6 +28,7 @@ function DashboardNoAppoin() {
     localStorage.setItem('appointmentId', (appointmentID));
   }
 
+
   function deleteAppointment(e) {
     console.log(e.target.id)
     var appId = e.target.id;
@@ -85,6 +86,7 @@ function DashboardNoAppoin() {
   }, [chosenOption])
 
   useEffect(() => {
+    console.log("are we looping like crazy?")
     auth.onAuthStateChanged(async user => {
       if (user) {
         const userData = await db.collection('users').doc(user.uid).get()
@@ -129,7 +131,7 @@ function DashboardNoAppoin() {
     })
 
 
-  }, [userAppointmentsDetails])
+  }, [])
 
 
   return (
