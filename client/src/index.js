@@ -5,31 +5,33 @@ import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { firebase } from './components/firebase/firebase'
-import {Redirect} from 'react-router-dom'
+import {Redirect, useHistory} from 'react-router-dom'
 
 
 //let hasRendered = false; 
 //const renderApp = () => {
-  //if(!hasRendered) {
+ // if(!hasRendered) {
     ReactDOM.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>,
       document.getElementById('root'));
 
-  //  hasRendered=true;
- // }
+   // hasRendered=true;
+  //}
 //}
 
-//  firebase.auth().onAuthStateChanged( user => {
-//    if(user){
-//      //renderApp();
-//        return <Redirect from="/login" to="/dashboard" />
-//    }else{
-//      //renderApp();
-//      return <Redirect to="/" />
-//   }
-//  })
+  // let history = useHistory();
+  // firebase.auth().onAuthStateChanged( user => {
+  //   if(user){
+  //     renderApp();
+  //     if(history.location.pathname === '/')
+  //       history.push('/dashboard')
+  //   }else{
+  //     renderApp();
+  //     history.push('/')
+  //  }
+  // })
  
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

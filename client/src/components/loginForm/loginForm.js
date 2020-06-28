@@ -78,9 +78,8 @@ const LoginForm = () => {
       <div className="registerFooter">
         <GoogleButton 
         className="ma3"
-        onClick={SignInWithGoogle()}>
-          Sign in with Google
-        </GoogleButton>
+        onClick={SignInWithGoogle()} />
+        
 
         <p id="footertext">Not signed up as donor yet?</p>
         <Link to = '/register'>

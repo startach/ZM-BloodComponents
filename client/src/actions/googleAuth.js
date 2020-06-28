@@ -13,21 +13,25 @@ export const SignInWithGoogle = () => {
 
     return () => {
         return firebase.auth().signInWithPopup(googleProvider)
-        .then( async result =>{
+        .then(async result =>{
             console.log(result.credential.accessToken)
             const user = result.user
             console.log(user)
             localStorage.setItem('userid', user.uid)
             localStorage.setItem('photoURL', user.photoURL)
-            await db.collection('users').doc(user.uid).set({
-                id: user.uid,
+            await db.collection('users').doc(user.uid).update({
+               // id: user.uid,
                 name: user.displayName,
                 email: user.email,
                 phone: user.phoneNumber,
                 photoURL: user.photoURL
             })
 
-        }).catch( err => {
+        })
+        .then(() => {
+            history.push('/dashboard');
+        })
+        .catch( err => {
             console.log(err)
         })       
     }
