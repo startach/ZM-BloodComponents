@@ -25,23 +25,23 @@ export default function BookTaxi({ close }) {
 
 
     useEffect(() => {
+        console.log("are we looping like crazy? book taxi")
+        //get address
+        db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
+            setAddressOptions({
+                main: `${user.data().address}, ${user.data().city}`,
+                second: `${user.data().secondaryAddress}, ${user.data().city}`
+            })
 
-        // //get address
-        // db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
-        //     setAddressOptions({
-        //         main: `${user.data().address}, ${user.data().city}`,
-        //         second: `${user.data().secondaryAddress}, ${user.data().city}`
-        //     })
+        }, err => console.log(err.message))
 
-        // }, err => console.log(err.message))
+        //get appointment details
 
-        // //get appointment details
+        db.collection('Appointments').doc(localStorage.getItem('appointmentID')).get().then(app => {
 
-        // db.collection('Appointments').doc(localStorage.getItem('appointmentID')).get().then(app => {
-
-        //     localStorage.setItem('appointmentDate', app.data().date)
-        //     localStorage.setItem('appointmentTime', app.data().time)
-        // })
+            localStorage.setItem('appointmentDate', app.data().date)
+            localStorage.setItem('appointmentTime', app.data().time)
+        })
 
 
         console.log("USE EFFECT RUNNING in BookTaxi")

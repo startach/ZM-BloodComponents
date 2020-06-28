@@ -54,6 +54,7 @@ function DashboardNoAppoin() {
   }, [])
 
   useEffect(() => {
+    console.log("are we looping like crazy?")
 
     const today = Date.now() / 1000
 
