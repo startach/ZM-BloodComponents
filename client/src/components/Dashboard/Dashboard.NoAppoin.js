@@ -149,7 +149,7 @@ function DashboardNoAppoin() {
               <th className="headerEntries">Date</th>
               <th className="headerEntries">Time</th>
               <th className="headerEntries">Location</th>
-              <th className="headerEntries">Delete Appointment</th>
+              <th className="headerEntries"></th>
             </tr>
 
             {userAppointmentsDetails.map(appointment => (
@@ -157,12 +157,12 @@ function DashboardNoAppoin() {
                 <td className='rowClass' >{appointment.date}</td>
                 <td className='rowClass'>{appointment.time}</td>
                 <td className='rowClass'>{appointment.hospitalName}</td>
-                <td className='rowClass'>
+                <div className='btnContainer'>
                   <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
-                </td>
+                </div>
+              </tr>))}
 
-              </tr>
-            ))}
+
 
           </table>
           <div className="bottomButtons">
@@ -220,7 +220,7 @@ function DashboardNoAppoin() {
               <tr className="headerRow">
                 <th className="headerEntries">Date</th>
                 <th className="headerEntries">Time</th>
-                <th className="headerEntries">Register for an Appointment</th>
+                <th className="headerEntries"></th>
               </tr>
 
               {appointments.map(appointment => (

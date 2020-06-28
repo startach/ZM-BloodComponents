@@ -40,12 +40,16 @@
 }
 
 
+
+
 .cancelButton {
     background-color: #C71585;
     color: white;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
+
+
     
 }
 
@@ -56,7 +60,7 @@
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
-    margin-top: 10px;
+    margin-top: 4px;
 
 }
 
@@ -70,10 +74,13 @@
     margin-top: 10px;
 }
 
+.schedulesTables th {
 
-.schedulesTables th,
-.schedulesTables td {
     margin-top: 10px;
+}
+
+.schedulesTables td {
+    margin-top: 7px;
  
 }
 
@@ -115,4 +122,9 @@
     justify-content: space-evenly;
     align-items: center;
     margin-top: 50px;
+}
+
+.btnContainer {
+
+    margin-top: 3px;
 }
