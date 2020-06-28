@@ -3,7 +3,7 @@ import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi() {
+export default function BookTaxi({ close }) {
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
@@ -62,15 +62,11 @@ export default function BookTaxi() {
         db.collection('taxiBookings').add({ ...pickupData, ["date"]: localStorage.getItem('appointmentDate'), ['appointmentID']: localStorage.getItem('appointmentID'), ['time']: time })
     }
 
-    const close = () => {
 
-        //
-
-    }
 
     return (
         <div>
-            <a className="close" onClick={close()}>
+            <a className="close" onClick={() => close()}>
                 &times;
         </a>
 
@@ -161,9 +157,6 @@ export default function BookTaxi() {
                     </div>
 
                     If you have any issues on the day, please contact your coordinator.
-
-
-
 
                 </div>}
 

@@ -168,10 +168,7 @@ function DashboardNoAppoin() {
           <div className="bottomButtons">
             <Button type="button" text="Get Directions" width="150px"></Button>
             <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              <div>
-
-                <BookTaxi />
-              </div>
+              {close => <BookTaxi close={close} />}
             </Popup>
           </div>
 
