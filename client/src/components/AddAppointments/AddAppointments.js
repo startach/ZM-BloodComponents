@@ -9,6 +9,8 @@ export default function AddAppointments() {
 
     const [hospitalsDetails, setHospitalsDetails] = useState([])
     useEffect(()=>{
+        //TODO: add authentication check / credentials
+
         //load hospitals into hospitalsList
         const hospitals = []
         db.collection('Hospitals').get()
@@ -28,7 +30,7 @@ export default function AddAppointments() {
     const displayNode = useRef(null)
     const [currentApp, setCurrentApp] = useState({
         userID: null,
-        hospitalName: null, //: hospitalDetails[0].hospitalName
+        hospitalName: null, 
         hospitalID: null,
         date: null,
         time: null,
@@ -41,7 +43,6 @@ export default function AddAppointments() {
     let count = 0;
 
     //set state values for slots & hospital
-    //take care of hosID here
     const handleChange = (e) => {
         setCurrentApp({ ...currentApp, [e.target.id]: e.target.value})
         console.log(currentApp)
@@ -100,11 +101,11 @@ export default function AddAppointments() {
     }
 
     return (
-        <div className="addAppContainer">
+        <div className="addAppContainer tc">
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
-                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital}>
-                <option selected disabled>Select hospital</option>
+                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
+                <option selected disabled >Select hospital</option>
                     {
                     hospitalsDetails.map( hospital => {
                         return <option 
@@ -117,25 +118,29 @@ export default function AddAppointments() {
                 </select>
             </p>
 
-            <div className="inputContainer">
+            <div className="inputContainer vcenter pa2 ma3">
                 <Datepicker
                     required
                     selected={appDate}
                     onChange={handleChangeDate}
                     showTimeSelect
                     dateFormat="Pp"
+                    className="ml-3 pa2"
                 />
                 <input 
                 id="slots" 
                 type="number"
-                // defaultValue="1"
                 min="1"
                 caption="slots"
-                className="slots ml-3" 
+                className="slots ml-3 pa2" 
                 onChange={handleChange} 
                 placeholder="#slots">
                 </input>
-                 <select className="dropdown" id="appointmentType" onChange={handleChange} style={{width:'200px'}}>
+                 <select 
+                 className="dropdown ml-3 pa2" 
+                 id="appointmentType" 
+                 onChange={handleChange} 
+                 style={{width:'220px'}}>
                     <option selected disabled>Select appointment type</option>
                     <option id="AppointmentType" value="Thrombocytes" className="option"> Thrombocytes</option>
                     <option id="AppointmentType" value="Granulocytes" className="option"> Granulocytes</option>
@@ -145,7 +150,7 @@ export default function AddAppointments() {
                 onClick={handleAdd}>Add 
                 </button>
             </div>
-            <hr />
+            <hr/>
             <div className="display my-5 mx-3">
                 {appList.length === 0 ?
                     <div className="text-center">Currently No Appointments to Submit</div>
@@ -155,6 +160,7 @@ export default function AddAppointments() {
                             <span className="col-4">Hospital </span>
                             <span className="col-4">Date</span>
                             <span className="col-2">Time</span>
+                            <span className="col-4">Type</span>
                             <span className="col-2">Slots</span>
                         </div>
                         {appList.map((appointment, index) => (
@@ -163,6 +169,7 @@ export default function AddAppointments() {
                                 <span className="col-4">{appointment.hospitalName} </span>
                                 <span className="col-4">{appointment.date}</span>
                                 <span className="col-2">{appointment.time} </span>
+                                <span className="col-4">{appointment.appointmentType}</span>
                                 <span className="col-1">{appointment.slots}</span>
                                 <span className="col-1 pointer" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
                             </div>
