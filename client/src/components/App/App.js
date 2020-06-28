@@ -13,6 +13,7 @@ import Admin from '../../Screens/admin'
 import Questions from '../../Screens/Questionnaire'
 import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
+import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
         <Route path='/verfication' component={AppointmentVerification} />
+        <Route path='/passwordreset' component={ForgotPassword} />
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
       </Switch>

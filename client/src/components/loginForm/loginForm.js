@@ -73,6 +73,13 @@ const LoginForm = () => {
 
         <Button type="submit" text="Login" color='#C71585'></Button>
       </form>
+      <div className='forgotPassword'>
+        <Link to = '/passwordreset' style={{textDecoration:'none'}}>
+        <p>
+          Forgot your password?
+        </p>
+        </Link>
+      </div>
       <div class="registerFooter">
         <p id="footertext">Not signed up as donor yet?</p>
 
