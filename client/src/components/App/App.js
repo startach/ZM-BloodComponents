@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from 'react-router-dom'
 import PreviousAppointments from '../../Screens/previousAppointments'
 import AppointmentVerification from '../../Screens/appointmentVerification'
 import './App.css';
@@ -13,9 +13,28 @@ import Admin from '../../Screens/admin'
 import Questions from '../../Screens/Questionnaire'
 import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
+import { firebase, auth } from '../../components/firebase/firebase'
 
 function App() {
+  // let history = useHistory();
+ const [userClaims, setUserClaims] = useState({})
+  let isUser = false
+  useEffect(() => {
+  auth.onAuthStateChanged( user => {
+     if(user){
+      isUser=true
+      user.getIdTokenResult().then(data => {
+        setUserClaims(data.claims)
+      }) 
+    }
+    })}, [])
+
+  //     if(history.location.pathname === '/')
+  //       history.push('/dashboard')
+
+
   return (
+   
     <Router>
       <Switch>
         <Route path='/dashboard' component={Dashboard} />

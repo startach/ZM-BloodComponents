@@ -76,12 +76,12 @@ const LoginForm = () => {
         <Button type="submit" text="Login" color='#C71585'></Button>
       </form>
       <div className="registerFooter">
+        {/* google log in button 
         <GoogleButton 
         className="ma3"
-        onClick={SignInWithGoogle()} />
+        onClick={SignInWithGoogle()} /> */}
         
-
-        <Link to = '/register' style={{textDecoration : 'none'}}>
+          <Link to = '/register' style={{textDecoration : 'none'}}>
 
           <Button type="button" text="Come Save Lives"></Button>
         </Link>

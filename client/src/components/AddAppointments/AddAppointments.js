@@ -82,6 +82,7 @@ export default function AddAppointments() {
     //add free appointments to DB
     const handleSubmit = () => {
         appList.forEach((appointment) => {
+            //fixme: slots does not need to be in the database or state instead use reference 
             let loops = appointment.slots;
             //lopp though and add as many appointments for empty spots
             for (let i = 0; i < loops; i++) {
@@ -160,7 +161,7 @@ export default function AddAppointments() {
                             <span className="col-4">Hospital </span>
                             <span className="col-4">Date</span>
                             <span className="col-2">Time</span>
-                            <span className="col-4">Type</span>
+                            {/* <span className="col-4">Type</span> */}
                             <span className="col-2">Slots</span>
                         </div>
                         {appList.map((appointment, index) => (
@@ -169,7 +170,7 @@ export default function AddAppointments() {
                                 <span className="col-4">{appointment.hospitalName} </span>
                                 <span className="col-4">{appointment.date}</span>
                                 <span className="col-2">{appointment.time} </span>
-                                <span className="col-4">{appointment.appointmentType}</span>
+                                {/* <span className="col-4">{appointment.appointmentType}</span> */}
                                 <span className="col-1">{appointment.slots}</span>
                                 <span className="col-1 pointer" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
                             </div>
