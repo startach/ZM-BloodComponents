@@ -17,6 +17,8 @@ function DashboardNoAppoin() {
   let [userName, setUserName] = useState('')
   let [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
 
+  let src = ""
+
   function handleChange(e) {
     setChosenOption(e.target.value)
     localStorage.setItem('hospital', e.target.value);
@@ -39,22 +41,23 @@ function DashboardNoAppoin() {
 
   }
   const history = useHistory();
-  useEffect(() => {
-    //redirect user to login screen if he is not logged in 
-    if (!localStorage.getItem('userid'))
-      history.push('/login')
 
+
+  const setHospitalNames = () => {
+    console.log("unning set hospitals")
     db.collection('Hospitals').get().then((hopsitals) => {
       const hospitalsNames = hopsitals.docs.map(hospitalDetails => {
         return hospitalDetails.data().hospitalName
       })
       setHospital(hospitalsNames)
-
     })
-  }, [])
+  }
 
   useEffect(() => {
-    console.log("are we looping like crazy?")
+    //FIXME: this donest need to run if you dont have an appointment - this filters offered appoitnemnts
+
+
+    console.log("are we looping like crazy? dash2")
 
     const today = Date.now() / 1000
 
@@ -86,28 +89,49 @@ function DashboardNoAppoin() {
 
   }, [chosenOption])
 
+
+
   useEffect(() => {
-    console.log("are we looping like crazy?")
+
+    //redirect user to login screen if he is not logged in 
+    if (!localStorage.getItem('userid'))
+      history.push('/login')
+
+    //FIXME: needs to run everytime to check if we have appiitnments or not.
+
+
+    console.log("are we looping like crazy? dash3")
+
+    //get currently logged in user
     auth.onAuthStateChanged(async user => {
       if (user) {
         const userData = await db.collection('users').doc(user.uid).get()
         setUserName(userData.data().name)
 
-
         userData.data().gender ? localStorage.setItem('gender', userData.data().gender) : localStorage.setItem('gender', 'unkown');
 
 
-
+        //get appointments for that user, if any
         db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
 
+          //if non exist
           if (snapShot.empty) {
-            console.log("User doesn't have any Appointment")
-            setCheckUserAppointments(false);
-          } else {
-            setCheckUserAppointments(true)
-            const appointmentsDetails = []
-            snapShot.docs.map(userAppointments => {
 
+
+            //change state to false - show no appointment screen
+            setCheckUserAppointments(false);
+            console.log("User doesn't have any Appointment")
+            //set names for drop down
+            setHospitalNames()
+
+
+          } // if user has appointments
+          else {
+
+
+            const appointmentsDetails = []
+            //map appointments if not historic
+            snapShot.docs.map(userAppointments => {
               let app = userAppointments.data().timestamp.seconds
               const today = Date.now() / 1000
               if (app > today) {
@@ -115,13 +139,29 @@ function DashboardNoAppoin() {
                 let appObj = { ...userAppointments.data(), ['id']: currentID }
                 appointmentsDetails.push(appObj)
                 setUserAppointmentsDetails(appointmentsDetails)
+                console.log("FUTURE user appointments found")
+                //set local storag for later pages (taxi booking)
                 localStorage.setItem('hospital', appointmentsDetails[0].hospitalName)
                 localStorage.setItem('appointmentDate', appointmentsDetails[0].date)
                 localStorage.setItem('appointmentTime', appointmentsDetails[0].time)
                 localStorage.setItem('appointmentID', currentID)
               }
 
+
+
             })
+
+            //if none of the appointments found were in the future, set up page for book new appointment
+            if (!appointmentsDetails.length) {
+              console.log("User doesn't have any FUTURE Appointment")
+              setCheckUserAppointments(false);
+              setHospitalNames()
+
+            } else {
+              setCheckUserAppointments(true);
+              console.log("User has appointments")
+
+            }
 
           }
 
@@ -169,10 +209,14 @@ function DashboardNoAppoin() {
 
           </table>
           <div className="bottomButtons">
-            <Button type="button" text="Get Directions" width="150px"></Button>
+            <a target="_blank"
+              href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital')}%hospital`}
+            ><Button type="button" text="Get Directions" width="150px">
+              </Button></a>
             <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
               {close => <BookTaxi close={close} />}
             </Popup>
+
           </div>
 
 

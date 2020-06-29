@@ -14,7 +14,7 @@ const AppointmentsEntry = () => {
 
   useEffect(() => {
 
-    console.log("are we looping like crazy?")
+    console.log("are we looping like crazy? history")
 
     const today = Date.now() / 1000;
 
