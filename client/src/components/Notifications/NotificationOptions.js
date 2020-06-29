@@ -8,7 +8,7 @@ const NotificationOptions = (props) => {
     //user id from localstorage
     const id = localStorage.getItem('userid');
     useEffect(() => {
-        console.log("are we looping like crazy? note")
+
         if (!props.notifications) {
             setNotes({
                 SMS: false,
