@@ -20,12 +20,7 @@ function DeleteAppointments() {
 
 
     //state for if data feild is currently editable or not
-    const [editable, setEditable] = useState({
-        date: false,
-        time: false,
-        appointmentType: false,
-        hospitalName: false,
-    })
+    const [editable, setEditable] = useState({})
 
 
 
@@ -33,22 +28,27 @@ function DeleteAppointments() {
 
 
 
-
+    const [saveEdit, setSaveEdit] = useState(true)
     const handleEdit = (e) => {
+        if(saveEdit){
+            e.target.textContent = "Save"
+            setEditable({id: e.target.id, date: true},
+                        {id: e.target.id, time: true},
+                        {id: e.target.id, appointmentType: true},
+                        {id: e.target.id, hospitalName: true})
+                    setSaveEdit(false)
 
-        e.target.textContent = "Save"
-
-        setEditable({
-            date: true,
-            time: true,
-            appointmentType: true,
-            hospitalName: true,
-        })
-        
-    }
-
+        } else {
+            e.target.textContent = "Edit"
+            setEditable({id: e.target.id, date: false},
+                        {id: e.target.id, time: false},
+                        {id: e.target.id, appointmentType: false},
+                        {id: e.target.id, hospitalName: false})
+                setSaveEdit(true)
+            
+        }
     
-
+        }
 
     const handleEditChange = (e) => {
 
@@ -123,9 +123,7 @@ function DeleteAppointments() {
 
     }, [hospitalAppointments])
 
-
-
-
+    
     return (
         <Fragment>
             <div className="deleteEditAppContainer">
@@ -193,10 +191,10 @@ function DeleteAppointments() {
                 <li className="deleteTableEntries"></li>
             </ul>
 
-            {selectedInputs.map(Details  => (
+            {selectedInputs.map((Details, id ) => (
                 <ul className='deleteRowContainer' id={Details.id}>
 
-                    {editable.date ? (
+                    {editable.date &&  editable.id == Details.id ? (
 
                         <Fragment>
 

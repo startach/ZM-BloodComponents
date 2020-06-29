@@ -18,13 +18,11 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const functions = firebase.functions();
 
-
-
-export { db, auth, functions }
-
-
+//google provider sign-in
+const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 
 
 
 
+export { firebase, db, auth, functions, googleProvider }

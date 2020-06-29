@@ -4,8 +4,7 @@ import MenuHeader from '../MenuHeader'
 const NotFound = () => {
     return (
         <div className="tc ma5">
-            <MenuHeader title='' icon='backArrow'></MenuHeader>
-            <h1>Page Not Found</h1>
+            <MenuHeader title='Page Not Found' icon='backArrow'></MenuHeader>
         </div>
     )
 }
