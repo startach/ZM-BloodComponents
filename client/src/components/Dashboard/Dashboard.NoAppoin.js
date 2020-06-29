@@ -135,7 +135,7 @@ function DashboardNoAppoin() {
                 localStorage.setItem('appointmentTime', appointmentsDetails[0].time)
                 localStorage.setItem('appointmentID', currentID)
               } else {
-                console.log("past pp count")
+                //count old appointments
                 count++
               }
               setPastApp(count)
