@@ -11,14 +11,12 @@ const VerificationList = () => {
         <div>
             <div className="introContainer">
 
-                <p id="introHeader">Thanks, we're expecting you on the <b>dd/mm/yyyy</b> at <b> {localStorage.getItem('hospital')} </b> Hospital</p>
+                <p id="introHeader">Thanks, we're expecting you at <b>{localStorage.getItem('appointmentTime')} </b> on the <b>{localStorage.getItem('appointmentDate')}</b> at <b> {localStorage.getItem('hospital')} Hospital</b> </p>
             </div>
 
             <div className="my-4">
                 <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-                    <div>
-                        <BookTaxi />
-                    </div>
+                    {close => <BookTaxi close={close} />}
                 </Popup>
             </div>
 

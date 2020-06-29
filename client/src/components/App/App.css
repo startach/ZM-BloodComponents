@@ -19,3 +19,28 @@ display:block;
 height: 80px;
 background-color:inherit;;
 }
+
+
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* visited link */
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* selected link */
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

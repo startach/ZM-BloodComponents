@@ -14,7 +14,6 @@ const AppointmentsEntry = () => {
 
   useEffect(() => {
 
-
     const today = Date.now() / 1000;
 
     const filteredQuery = db
