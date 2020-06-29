@@ -9,6 +9,7 @@ import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
 
+  const history = useHistory();
 
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
@@ -17,13 +18,10 @@ function DashboardNoAppoin() {
   let [userName, setUserName] = useState('')
   let [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
 
-  let src = ""
-
   function handleChange(e) {
     setChosenOption(e.target.value)
     localStorage.setItem('hospital', e.target.value);
   }
-
 
 
   function setlocalStorage(appointmentID) {
@@ -37,11 +35,7 @@ function DashboardNoAppoin() {
     db.collection('Appointments').doc(appId).update({
       userID: null
     })
-
-
   }
-  const history = useHistory();
-
 
   const setHospitalNames = () => {
     console.log("unning set hospitals")
@@ -54,10 +48,6 @@ function DashboardNoAppoin() {
   }
 
   useEffect(() => {
-    //FIXME: this donest need to run if you dont have an appointment - this filters offered appoitnemnts
-
-
-    console.log("are we looping like crazy? dash2")
 
     const today = Date.now() / 1000
 
@@ -96,11 +86,6 @@ function DashboardNoAppoin() {
     //redirect user to login screen if he is not logged in 
     if (!localStorage.getItem('userid'))
       history.push('/login')
-
-    //FIXME: needs to run everytime to check if we have appiitnments or not.
-
-
-    console.log("are we looping like crazy? dash3")
 
     //get currently logged in user
     auth.onAuthStateChanged(async user => {
@@ -147,8 +132,6 @@ function DashboardNoAppoin() {
                 localStorage.setItem('appointmentID', currentID)
               }
 
-
-
             })
 
             //if none of the appointments found were in the future, set up page for book new appointment
@@ -160,17 +143,11 @@ function DashboardNoAppoin() {
             } else {
               setCheckUserAppointments(true);
               console.log("User has appointments")
-
             }
-
           }
-
         })
-
       }
-
     })
-
 
   }, [])
 

@@ -11,7 +11,7 @@ const BurgerMenu = () => {
 
 
   useEffect(() => {
-    console.log("are we looping like crazy? burger")
+
     auth.onAuthStateChanged(function (user) {
       if (user) {
         user.getIdTokenResult().then(function (data) {

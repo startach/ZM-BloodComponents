@@ -17,7 +17,7 @@ export default function Admin() {
 
 
     useEffect(() => {
-        console.log("are we looping like crazy? admin")
+
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 user.getIdTokenResult().then(function (data) {
@@ -80,7 +80,7 @@ export default function Admin() {
 
     //set drop downs from users in DB
     useEffect(() => {
-        console.log("are we looping like crazy? admin2")
+
         db.collection('users').onSnapshot(snapshot => {
             let list = snapshot.docs.map((user) => {
                 return user.data().email

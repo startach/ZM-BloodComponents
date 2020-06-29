@@ -99,7 +99,7 @@ export default function Questionnaire() {
 
 
     useEffect(() => {
-        console.log("are we looping like crazy? Ques")
+
         setHospital(localStorage.getItem('hospital'))
         setGender(localStorage.getItem('gender'))
 
