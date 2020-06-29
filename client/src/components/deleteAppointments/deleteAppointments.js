@@ -130,7 +130,6 @@ function DeleteAppointments() {
         <Fragment>
             <div className="deleteEditAppContainer">
 
-
                 <div className="selectHospitalContainer">
                     <p className="text-center mt-5">
                         Select Hospital : {" "}
@@ -200,6 +199,8 @@ function DeleteAppointments() {
                     {editable.date ? (
 
                         <Fragment>
+
+                            
 
                             <input className='inputDate'
                                 id="date"
