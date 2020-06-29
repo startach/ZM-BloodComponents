@@ -14,6 +14,7 @@ import Questions from '../../Screens/Questionnaire'
 import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
 import { firebase, auth } from '../../components/firebase/firebase'
+import DeleteEditAppointments from '../../Screens/deleteAppointments'
 
 function App() {
   // let history = useHistory();
@@ -34,7 +35,6 @@ function App() {
 
 
   return (
-   
     <Router>
       <Switch>
         <Route path='/dashboard' component={Dashboard} />
@@ -48,6 +48,7 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/not-found' component={NotFound} />
         <Route path='/questions' component={Questions} />
+        <Route path='/edit-delete' component={DeleteEditAppointments} />
         <Route path='/verfication' component={AppointmentVerification} />
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />

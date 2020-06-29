@@ -1,0 +1,86 @@
+.hospitalsList {
+    width: 229px;
+    background-color: #C3B7B1;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.appointmentTypeList {
+    width: 229px;
+    background-color: #C3B7B1;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.deleteTableHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 90vw;
+    margin-left: 10px;
+    border: 2px solid #c3b7b1;
+    height: 6vh;
+}
+
+.deleteTableEntries {
+    width: 10vw;
+    font-weight: bold;
+}
+
+.deleteRowContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    border-radius: 15px;
+    height: 6vh;
+    width: 90vw;
+    box-shadow: black 1px 1px 2.5px;
+    background-color: #c3b7b1;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.deleteAppRow {
+    width: 10vw;
+    color: black;
+    margin-top: 15px;
+}
+
+.ButtonsContainer {
+    margin-top: 10px;
+    width: 10vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.DeleteButton {
+    background-color: #C71585;
+    color: #fafafa;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.SaveButton {
+    background-color: #DEB675;
+    color: #fafafa;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.inputDate {
+    background-color: #fafafa;
+    border: none;
+    width: 10vw;
+    margin-top: 5px;
+    height: 35px;
+}
+
+
+/* @media only screen and (max-width: 600px) {
+
+
+} */
