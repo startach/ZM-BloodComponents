@@ -1,10 +1,11 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment, useRef} from 'react'
 import './deleteAppointments.css'
 import { db } from '../firebase/firebase'
 import Datepicker from "react-datepicker";
 
 
 function DeleteAppointments() {
+    const editButtonRef = useRef();
     const [appDate, setAppDate] = useState(new Date())
     const [hospitals, setHospitals] = useState([])
     const [hospitalAppointments, setHospitalAppointments] = useState({
@@ -28,29 +29,30 @@ function DeleteAppointments() {
 
 
 
+    const [editedInputs, setEditedInputs] = useState({})
 
 
-    const handleRemoveEdit = (e) => {
 
-        setEditable({ ...editable, [e.target.id]: !editable[e.target.id] })
 
-    }
+    const handleEdit = (e) => {
 
-    const handleApproveEdit = (e) => {
+        e.target.textContent = "Save"
 
-        setEditable({ ...editable, [e.target.id]: !editable[e.target.id] })
+        setEditable({
+            date: true,
+            time: true,
+            appointmentType: true,
+            hospitalName: true,
+        })
         
-
-        console.log(editedInputs)
-
     }
 
+    
 
 
     const handleEditChange = (e) => {
 
         setEditedInputs({ ...editedInputs, [e.target.id]: e.target.value })
-        setSelectedInputs([...selectedInputs, { [e.target.id]: [e.target.value] }])
 
         console.log(editedInputs)
     }
@@ -192,14 +194,14 @@ function DeleteAppointments() {
                 <li className="deleteTableEntries"></li>
             </ul>
 
-            {selectedInputs.map(Details => (
+            {selectedInputs.map(Details  => (
                 <ul className='deleteRowContainer' id={Details.id}>
 
                     {editable.date ? (
 
                         <Fragment>
 
-                            <input className='inputData'
+                            <input className='inputDate'
                                 id="date"
                                 type="text"
                                 defaultValue={Details.data().date}
@@ -209,15 +211,13 @@ function DeleteAppointments() {
 
                             </input>
 
-                            <button className="approveEdit" id="date" onClick={handleApproveEdit}>✓</button>
-                            <button className="removeEdit" id="date" onClick={handleRemoveEdit}>X</button>
+
                         </Fragment>
 
                     ) : (
                             <Fragment>
-                                <li className='deleteAppRow rowDate'
+                                <li className='deleteAppRow'
                                     id="date"
-                                    onDoubleClick={handleRemoveEdit}
                                 >
                                     {Details.data().date}</li>
 
@@ -238,9 +238,9 @@ function DeleteAppointments() {
                         <button id={Details.id} className="DeleteButton">Delete</button>
                         <button
                             id={Details.id}
-                            className="SaveButton">
+                            className="SaveButton" onClick={handleEdit} ref={editButtonRef}>
 
-                            Save</button>
+                            Edit</button>
 
                     </div>
 

@@ -71,30 +71,14 @@
     height: fit-content;
 }
 
-.inputData {
-    background-color: #c3b7b1;
+.inputDate {
+    background-color: #fafafa;
     border: none;
     width: 10vw;
-    margin-top: 10px;
+    margin-top: 5px;
+    height: 35px;
 }
 
-.removeEdit {
-    background-color: red;
-    color: #fafafa;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
-}
-
-.approveEdit {
-    background-color: green;
-    color: #fafafa;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
-}
 
 /* @media only screen and (max-width: 600px) {
 
