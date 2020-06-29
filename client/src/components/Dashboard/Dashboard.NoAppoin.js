@@ -13,7 +13,7 @@ function DashboardNoAppoin() {
 
   let [hospital, setHospital] = useState([])
   let [appointments, setAppointments] = useState([])
-  let [chosenOption, setChosenOption] = useState({})
+  let [chosenOption, setChosenOption] = useState(null)
   let [checkUserAppointments, setCheckUserAppointments] = useState(false)
   let [userName, setUserName] = useState('')
   let [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
@@ -38,7 +38,6 @@ function DashboardNoAppoin() {
   }
 
   const setHospitalNames = () => {
-    console.log("unning set hospitals")
     db.collection('Hospitals').get().then((hopsitals) => {
       const hospitalsNames = hopsitals.docs.map(hospitalDetails => {
         return hospitalDetails.data().hospitalName
@@ -49,34 +48,37 @@ function DashboardNoAppoin() {
 
   useEffect(() => {
 
-    const today = Date.now() / 1000
+    //only run when hospital chosen
+    if (chosenOption) {
 
-    const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+      const today = Date.now() / 1000
+
+      const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
 
 
-    filteredQuery.get()
-      .then(querySnapshot => {
-        const Appointments = []
-        querySnapshot.docs.forEach(hospitalAppointments => {
-          let app = hospitalAppointments.data().timestamp.seconds
-          if (app > today) {
-            let currentID = hospitalAppointments.id
-            let appObj = { ...hospitalAppointments.data(), ['id']: currentID }
-            Appointments.push(appObj)
-          }
+      filteredQuery.get()
+        .then(querySnapshot => {
+          const Appointments = []
+          querySnapshot.docs.forEach(hospitalAppointments => {
+            let app = hospitalAppointments.data().timestamp.seconds
+            if (app > today) {
+              let currentID = hospitalAppointments.id
+              let appObj = { ...hospitalAppointments.data(), ['id']: currentID }
+              Appointments.push(appObj)
+            }
+          })
+          Appointments.sort(function (b, a) {
+            a = new Date(a.timestamp.seconds);
+            b = new Date(b.timestamp.seconds);
+            return a > b ? -1 : a < b ? 1 : 0;
+          })
+          console.log("APPS", Appointments)
+          setAppointments(Appointments)
         })
-        Appointments.sort(function (b, a) {
-          a = new Date(a.timestamp.seconds);
-          b = new Date(b.timestamp.seconds);
-          return a > b ? -1 : a < b ? 1 : 0;
-        })
-        console.log("APPS", Appointments)
-        setAppointments(Appointments)
-      })
-      .catch(error => {
-        // Catch errors
-      });
-
+        .catch(error => {
+          // Catch errors
+        });
+    }
   }, [chosenOption])
 
 
@@ -136,13 +138,11 @@ function DashboardNoAppoin() {
 
             //if none of the appointments found were in the future, set up page for book new appointment
             if (!appointmentsDetails.length) {
-              console.log("User doesn't have any FUTURE Appointment")
               setCheckUserAppointments(false);
               setHospitalNames()
 
             } else {
               setCheckUserAppointments(true);
-              console.log("User has appointments")
             }
           }
         })
@@ -193,12 +193,7 @@ function DashboardNoAppoin() {
             <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
               {close => <BookTaxi close={close} />}
             </Popup>
-
           </div>
-
-
-
-
 
         </Fragment>
 
