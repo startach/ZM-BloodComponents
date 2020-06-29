@@ -11,6 +11,7 @@ const BurgerMenu = () => {
 
 
   useEffect(() => {
+
     auth.onAuthStateChanged(function (user) {
       if (user) {
         user.getIdTokenResult().then(function (data) {

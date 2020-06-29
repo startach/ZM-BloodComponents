@@ -28,7 +28,6 @@ function DeleteAppointments() {
 
 
 
-    const [editedInputs, setEditedInputs] = useState({})
 
 
     const handleRemoveEdit = (e) => {
@@ -40,7 +39,7 @@ function DeleteAppointments() {
     const handleApproveEdit = (e) => {
 
         setEditable({ ...editable, [e.target.id]: !editable[e.target.id] })
-        setEditedInputs({ ...editedInputs, [e.target.id]: e.target.value })
+        
 
         console.log(editedInputs)
 
@@ -51,7 +50,8 @@ function DeleteAppointments() {
     const handleEditChange = (e) => {
 
         setEditedInputs({ ...editedInputs, [e.target.id]: e.target.value })
-        
+        setSelectedInputs([...selectedInputs, { [e.target.id]: [e.target.value] }])
+
         console.log(editedInputs)
     }
 
