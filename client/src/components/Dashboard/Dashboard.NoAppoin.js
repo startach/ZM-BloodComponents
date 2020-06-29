@@ -12,6 +12,7 @@ function DashboardNoAppoin() {
   const history = useHistory();
 
   let [hospital, setHospital] = useState([])
+  let [pastApp, setPastApp] = useState(0)
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState(null)
   let [checkUserAppointments, setCheckUserAppointments] = useState(false)
@@ -117,22 +118,27 @@ function DashboardNoAppoin() {
 
 
             const appointmentsDetails = []
+            let count = 0
             //map appointments if not historic
             snapShot.docs.map(userAppointments => {
               let app = userAppointments.data().timestamp.seconds
               const today = Date.now() / 1000
+
               if (app > today) {
                 let currentID = userAppointments.id
                 let appObj = { ...userAppointments.data(), ['id']: currentID }
                 appointmentsDetails.push(appObj)
                 setUserAppointmentsDetails(appointmentsDetails)
-                console.log("FUTURE user appointments found")
                 //set local storag for later pages (taxi booking)
                 localStorage.setItem('hospital', appointmentsDetails[0].hospitalName)
                 localStorage.setItem('appointmentDate', appointmentsDetails[0].date)
                 localStorage.setItem('appointmentTime', appointmentsDetails[0].time)
                 localStorage.setItem('appointmentID', currentID)
+              } else {
+                //count old appointments
+                count++
               }
+              setPastApp(count)
 
             })
 
@@ -156,7 +162,8 @@ function DashboardNoAppoin() {
     <div className="dashboardView mt-3">
       {checkUserAppointments ? (
         <Fragment>
-          <div id="introSpan" className="introSpan">Hello <b>{userName}</b>, So far you have donated X times. Wow! That’s wonderful.</div>
+          <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
+            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
           <div className="lineUnderSpan"></div>
           <div className="userEligibility my-3">
             You are <b style={{ color: "green" }}> eligible </b> to donate.
@@ -202,7 +209,8 @@ function DashboardNoAppoin() {
 
           <Fragment>
 
-            <div id="introSpan" className="introSpan">Hello <b>{userName}</b>, So far you have donated X times. Wow! That’s wonderful.</div>
+            <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
+            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
 
             <div className="lineUnderSpan"></div>
 
