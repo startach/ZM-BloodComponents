@@ -19,7 +19,10 @@ export default function UserPage() {
     const id = localStorage.getItem('userid');
     const history = useHistory();
     useEffect(() => {
-        console.log("userPage cray loops?")
+        //if user has no id (is not logged in) then forward to log in screen
+        if (!localStorage.getItem('userid'))
+        history.push('/login')
+
         //const userData = async ()=> { const data = await
         db.collection('users').doc(id).get()
             .then(snapshot => setUserDetails(snapshot.data()))
@@ -149,33 +152,32 @@ export default function UserPage() {
                         className="editBtn"
                         onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
                 </div>
-                <div className="notificationTitle">Notification Prefences</div>
-                <div className="notifications">
-                    <span className="notifiedText my-3">I want to get notified on:</span>
-                    <div className="form-check my-3">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="exampleCheck1"
-                            onChange={handleReload}
-                            onClick={() => setVisible({ ...visible, ["emergency"]: !visible["emergency"] })} />
-                        <label className="form-check-label" htmlFor="exampleCheck1"><b>Emergency request that I am suitable to answer</b></label>
-                        {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="exampleCheck1"
-                            onChange={handleReload}
-                            onClick={() => setVisible({ ...visible, ["casual"]: !visible["casual"] })} />
-                        <label className="form-check-label" htmlFor="exampleCheck1"><b>Casual reminders calling me to donate</b></label>
-                        {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
-                    </div>
+                <div className="notificationTitle ma4">Notification Prefences</div>
+                 <div className="notifications ma0">
+                <span className="notifiedText my-3">I want to get notified on:</span>
+                <div className="form-check my-3">
+                    <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    id="exampleCheck1" 
+                    onChange={handleReload}
+                    onClick={() => setVisible({ ...visible, ["emergency"]: !visible["emergency"] })} />
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Emergency request that I am suitable to answer</b></label>
+                    {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
+                </div>
+                <div className="form-check">
+                    <input 
+                    type="checkbox" 
+                    className="form-check-input" 
+                    id="exampleCheck1" 
+                    onChange={handleReload}
+                    onClick={() => setVisible({ ...visible, ["casual"]: !visible["casual"] })} />
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Casual reminders calling me to donate</b></label>
+                    {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
                 </div>
             </div>
 
-
+            </div>
         </div>
 
     )
