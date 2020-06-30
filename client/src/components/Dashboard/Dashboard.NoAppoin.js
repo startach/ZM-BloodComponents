@@ -150,7 +150,7 @@ function DashboardNoAppoin() {
                 localStorage.setItem('appointmentTime', appointmentsDetails[0].time)
                 localStorage.setItem('appointmentID', currentID)
               } else {
-                console.log("past pp count")
+                //count old appointments
                 count++
               }
               setPastApp(count)
@@ -213,8 +213,8 @@ function DashboardNoAppoin() {
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text="Get Directions" width="150px">
               </Button></a>
-            <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} bookingData={bookingData} />}
+            <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} />}
             </Popup>
           </div>
 

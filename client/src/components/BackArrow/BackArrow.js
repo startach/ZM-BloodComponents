@@ -4,9 +4,8 @@ import { useHistory } from 'react-router-dom'
 const styles = {
   image: {
     width: '50px',
-    height: '40px',
     margin: '5px'
-  },
+  }
 };
 
 const BackArrow = (props) => {

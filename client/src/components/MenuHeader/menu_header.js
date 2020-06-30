@@ -18,6 +18,11 @@ let styles = {
         justifyContent: 'start',
 
     },
+    burgerMenu: {
+        // display: 'flex',
+        // justifyContent: 'start',
+
+    },
     backArrowIcon: {
         display: 'flex',
     },
@@ -25,25 +30,32 @@ let styles = {
         fontSize: '1.0em',
         color: 'black',
         fontWeight: 'bold',
+
     },
     titleSingle: {
+        // display: 'flex',
+        // justifyContent: 'center',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
         fontFamily: 'Montserrat',
+        width: '70%',
 
     },
+    imgIcon: {
+        width: '40px',
+    }
 
 
 };
 
 const Menu_header = (props) => {
-
+    const photoURL = localStorage.getItem('photoURL')
     return (
         <div className="col-xs-12 navbar-fixed-top fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
                 {/* change the icon depending on the page we are in */}
-                {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu /> : null}
+                {props.icon === 'backArrow' ? <BackArrow style={styles.backArrowIcon} /> : props.icon === 'burger' ? <BurgerMenu style={styles.burgerMenu} /> : null}
             </div>
 
             <span className="col-xs-8 tc title" style={styles.titleSingle}>
@@ -51,18 +63,14 @@ const Menu_header = (props) => {
             </span>
 
             <div className="col-xs-2 vcenter pa2">
-                {/* 
-                Profile picture 
-                <img 
-                style={{width:'60px'}}
-                src={headerImageUrl}></img> 
-                */}
+                {/* <img 
+                style={styles.imgIcon}
+                src={photoURL}>
+                </img>  */}
             </div>
 
         </div>
     );
 }
-
-
 
 export default Menu_header;
