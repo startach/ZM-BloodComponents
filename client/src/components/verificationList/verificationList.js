@@ -15,7 +15,7 @@ const VerificationList = () => {
             </div>
 
             <div className="my-4">
-                <Popup trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+                <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
                     {close => <BookTaxi close={close} />}
                 </Popup>
             </div>

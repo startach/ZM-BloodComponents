@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -29,7 +30,6 @@ function DashboardNoAppoin() {
   function setlocalStorage(appointmentID) {
     localStorage.setItem('appointmentId', (appointmentID));
   }
-
 
   function deleteAppointment(e) {
     console.log(e.target.id)
@@ -202,10 +202,56 @@ function DashboardNoAppoin() {
                 <td className='rowClass'>{appointment.time}</td>
                 <td className='rowClass'>{appointment.hospitalName}</td>
                 <div className='btnContainer'>
-                  <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
-                </div>
-              </tr>))}
+                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton">Cancel</button>
+                  }
+                    modal position="left top" closeOnDocumentClick
+                    contentStyle={{ width: "20px" }}
+                  >
+                    {close => (
+                      <div className="container">
+                        <a className="close" onClick={close}>
+                          X
+                                </a>
 
+
+                        <div className="content">
+
+                          Are you sure that you want to delete the appointment ?
+
+                                     </div>
+
+                        <div className="actions">
+
+                          <button
+                            id={appointment.id}
+                            className="yesButton"
+                            onClick={(e) => {
+                              deleteAppointment(e)
+                              close();
+                            }}>
+                            Yes
+                                        </button>
+
+                          <button
+                            className="noButton"
+                            onClick={() => {
+                              close();
+                            }}>
+                            No
+                                        </button>
+
+                        </div>
+
+
+
+                      </div>
+                    )}
+
+                  </Popup>
+                </div>
+
+              </tr>
+            ))}
 
 
           </table>
@@ -290,7 +336,7 @@ function DashboardNoAppoin() {
         )
       }
 
-    </div>
+    </div >
   );
 }
 

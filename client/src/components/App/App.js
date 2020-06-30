@@ -15,43 +15,38 @@ import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
 import { firebase, auth } from '../../components/firebase/firebase'
 import DeleteEditAppointments from '../../Screens/deleteAppointments'
+import UserRoute from '../../routes/UserRoute';
+import PublicRoute from '../../routes/PublicRoute';
+import CordRoute from '../../routes/CordRoute';
+import AdminRoute from '../../routes/AdminRoute';
 import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 
-function App() {
-  // let history = useHistory();
- const [userClaims, setUserClaims] = useState({})
-  let isUser = false
-  useEffect(() => {
-  auth.onAuthStateChanged( user => {
-     if(user){
-      isUser=true
-      user.getIdTokenResult().then(data => {
-        setUserClaims(data.claims)
-      }) 
-    }
-    })}, [])
-
-  //     if(history.location.pathname === '/')
-  //       history.push('/dashboard')
-
+function App(){
+  const [userClaims, setUserClaims] = useState(localStorage.getItem('userLevel'))
+  const  [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userid'))
+  
 
   return (
+   
     <Router>
       <Switch>
-        <Route path='/dashboard' component={Dashboard} />
-        <Route path='/prevapp' component={PreviousAppointments} />
-        <Route path='/appver' component={AppointmentVerification} />
-        <Route path='/add' component={AddAppointment} />
-        <Route path='/admin' component={Admin} />
-        <Route path='/emergency' component={EmergencyDonations} />
-        <Route path='/user' component={User} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route path='/not-found' component={NotFound} />
-        <Route path='/questions' component={Questions} />
-        <Route path='/edit-delete' component={DeleteEditAppointments} />
-        <Route path='/verfication' component={AppointmentVerification} />
-        <Route path='/passwordreset' component={ForgotPassword} />
+        <UserRoute path='/dashboard' component={Dashboard} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <UserRoute path='/prevapp' component={PreviousAppointments} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <UserRoute path='/appver' component={AppointmentVerification} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <UserRoute path='/user' component={User} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <UserRoute path='/questions' component={Questions} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+
+        <CordRoute path='/add' component={AddAppointment} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <CordRoute path='/emergency' component={EmergencyDonations} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <CordRoute path='/edit-delete' component={DeleteEditAppointments} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <CordRoute path='/verfication' component={AppointmentVerification} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+
+        <AdminRoute path='/admin' component={Admin} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+
+        <PublicRoute path='/not-found' component={NotFound} />
+        <PublicRoute path='/login' component={Login} />
+        <PublicRoute path='/register' component={Register} /> 
+
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
       </Switch>

@@ -4,6 +4,7 @@ import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import DatePicker from 'react-date-picker'
+import Popup from "reactjs-popup";
 
 
 const RegisterForm = () => {
@@ -11,6 +12,7 @@ const RegisterForm = () => {
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
+  const [popUp,setPop]=useState(false)
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -22,6 +24,8 @@ const RegisterForm = () => {
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([])
+  let[flag,setFlag]=useState(false)
+
 
   //Prevent the user which is logged in to enter register again
 
@@ -48,8 +52,11 @@ const RegisterForm = () => {
   //Handle Submit of register fields
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
-    //check password and confirm password
+
+  
+  
 
     if (userInputs.password != userInputs.confirmPassword) {
 
@@ -58,17 +65,26 @@ const RegisterForm = () => {
       setError('Password and confirm password do not match')
 
       // if password and confirm password are matching
-    } else {
+    } else  { 
+
 
       //update state
+      if( Object.entries(notifications).length < 1)
+      //check password and confirm password
+      {
+          console.log(Object.entries(notifications).length)
+        setPop(true)
+      }
+
       setuserInputs(userInputs)
 
       //Insert user into firestore
       try {
         const cred = await auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password)
-
         //storing the logged in user's id into localStorage variable
         localStorage.setItem('userid', cred.user.uid)
+        //localStorage.setItem('userLevel', cred.user.userLevel)
+
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
 
@@ -86,17 +102,17 @@ const RegisterForm = () => {
 
 
 
-        //Check if there is error with password weakness , etc
+                      //Check if there is error with password weakness , etc
       } catch (err) {
 
         setCheckError(true)
         setError(err.message)
 
       }
-
+      
 
     }
-
+  
   }
 
   //Hadle DatePicker State
@@ -140,6 +156,15 @@ const RegisterForm = () => {
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
       </div>
+
+
+  {/* <div className="modal-content1" > */}
+
+ 
+
+
+
+
 
       <div className="registerHeader">
         <b id="header1"> Signup</b>
@@ -432,7 +457,70 @@ const RegisterForm = () => {
 
         }
         <div className="mb-4">
-          <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+        {popUp ? (
+          <Fragment>
+        <Popup className="popup2" trigger={<Button type="button" text="Signup" color='#C71585' marginTop='14px'></Button>
+}
+                            modal position="left top" closeOnDocumentClick
+                            contentStyle={{ width: "20px" }}
+                        >
+                            {close => (
+                                <div className="container">
+                                    <a className="close" onClick={close}>
+                                        X
+                                </a>
+
+
+                                    <div className="content">
+
+                                    contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted? 
+                                     </div>
+
+                                    <div className="actions">
+
+                                        <button
+                                            type="button"
+                                            className="yesButton"
+                                            onClick={(e) => {
+                                            handleSubmit(e);
+    
+                                                close();
+                                            }}>
+                                            Yes
+                                        </button>
+
+                                        <button
+                                            className="noButton"
+                                            onClick={() => {
+                                                close();
+                                            }}>
+                                            No
+                                        </button>
+
+                                    </div>
+
+
+
+                                </div>
+                            )}
+
+                        </Popup>
+                        </Fragment>
+
+) : (
+
+<Fragment>
+
+
+<Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+</Fragment>
+
+
+
+
+)}
+
+
         </div>
 
 
