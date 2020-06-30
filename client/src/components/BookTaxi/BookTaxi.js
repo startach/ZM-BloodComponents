@@ -25,7 +25,6 @@ export default function BookTaxi({ close }) {
 
 
     useEffect(() => {
-        console.log("are we looping like crazy? book taxi")
         //get address
         db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
             setAddressOptions({

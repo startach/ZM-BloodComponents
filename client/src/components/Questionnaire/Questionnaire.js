@@ -104,7 +104,9 @@ export default function Questionnaire() {
         setGender(localStorage.getItem('gender'))
 
         console.log(hospital, gender)
-    })
+
+    }, [])
+
 
 
     return (

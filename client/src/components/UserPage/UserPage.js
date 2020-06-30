@@ -19,6 +19,7 @@ export default function UserPage() {
     const id = localStorage.getItem('userid');
     const history = useHistory();
     useEffect(() => {
+        console.log("userPage cray loops?")
         //const userData = async ()=> { const data = await
         db.collection('users').doc(id).get()
             .then(snapshot => setUserDetails(snapshot.data()))
