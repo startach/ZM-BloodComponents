@@ -66,9 +66,10 @@ const RegisterForm = () => {
       //Insert user into firestore
       try {
         const cred = await auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password)
-
         //storing the logged in user's id into localStorage variable
         localStorage.setItem('userid', cred.user.uid)
+        //localStorage.setItem('userLevel', cred.user.userLevel)
+
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
 

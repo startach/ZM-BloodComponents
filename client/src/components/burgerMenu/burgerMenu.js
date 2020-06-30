@@ -12,11 +12,12 @@ const BurgerMenu = () => {
 
 
   useEffect(() => {
-
+    //FIXME: localstorage for userid can be initialized here instead of at signin and register
     auth.onAuthStateChanged(function (user) {
       if (user) {
         user.getIdTokenResult().then(function (data) {
-          console.log(data.claims)
+          localStorage.setItem('userLevel', !data.claims.userLevel ? "none" : data.claims.userLevel)
+          console.log(localStorage.getItem('userLevel'))
           setAccessLevel(data.claims.userLevel)
         });
       }
@@ -26,7 +27,8 @@ const BurgerMenu = () => {
   const handleLogout = () => {
     // remove localstored userid
     localStorage.removeItem('userid');
-    localStorage.removeItem('photoURL');
+    //localStorage.removeItem('photoURL');
+    localStorage.removeItem('userLevel');
 
     //email password sing out & google signout
     auth.signOut();
