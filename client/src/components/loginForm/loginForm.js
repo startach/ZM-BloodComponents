@@ -25,8 +25,9 @@ const LoginForm = () => {
 
     //check auth from firebase
     auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
-      //storing the logged in user's id into localStorage variable
-      localStorage.setItem('userid', cred.user.uid)    
+      //storing the logged in user's id into localStorage variable and userLevel
+      localStorage.setItem('userid', cred.user.uid)  
+      
       //Redirect to Dashboard after login if the user exists
       history.push('/dashboard')
     }).catch(function(error) {
