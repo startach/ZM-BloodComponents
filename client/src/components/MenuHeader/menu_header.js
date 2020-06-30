@@ -6,7 +6,7 @@ import './menuHeader.css'
 let styles = {
     header: {
         display: 'flex',
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
         width: "100%",
         backgroundColor: '#fafafa',
@@ -30,28 +30,27 @@ let styles = {
         fontSize: '1.0em',
         color: 'black',
         fontWeight: 'bold',
-        
+
     },
     titleSingle: {
         display: 'flex',
         justifyContent: 'center',
-        fontSize: '28px',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
         fontFamily: 'Montserrat',
-        width:'70%',
+        width: '70%',
 
     },
     imgIcon: {
-        width:'40px',
+        width: '40px',
     }
 
 
 };
 
 const Menu_header = (props) => {
-    const photoURL= localStorage.getItem('photoURL')
+    const photoURL = localStorage.getItem('photoURL')
     return (
         <div className="col-xs-12 navbar-fixed-top fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
@@ -63,12 +62,12 @@ const Menu_header = (props) => {
                 <p className="titleText"> {props.title}</p>
             </span>
 
-            <div className="col-xs-2 vcenter pa2">
+            {/* <div className="col-xs-2 vcenter pa2">
                 <img 
                 style={styles.imgIcon}
                 src={photoURL}>
                 </img> 
-            </div>
+            </div> */}
 
         </div>
     );

@@ -58,6 +58,7 @@ const BurgerMenu = () => {
     bmMenuWrap: {
       position: 'fixed',
       top: '102px',
+      right: '115px',
       height: 'auto',
       transition: 'all 1s ease',
       borderRadius: '4px'
@@ -97,7 +98,7 @@ const BurgerMenu = () => {
   }
   return (
     <div>
-      <Menu styles={styles} className="tc shadow-5">
+      <Menu styles={styles} className="tc">
         <Link to='/dashboard' className="link">
           Dashboard
         </Link>
