@@ -13,6 +13,7 @@ function DashboardNoAppoin() {
 
   let [hospital, setHospital] = useState([])
   let [pastApp, setPastApp] = useState(0)
+  let [bookingData, setBookingData] = useState(false)
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState(null)
   let [checkUserAppointments, setCheckUserAppointments] = useState(false)
@@ -44,6 +45,20 @@ function DashboardNoAppoin() {
         return hospitalDetails.data().hospitalName
       })
       setHospital(hospitalsNames)
+    })
+  }
+
+
+  //FIXME:
+  const checkRideBooked = () => {
+
+    //get bookings where userID matches.
+
+    db.collection('taxiBookings').get().then((bookings) => {
+      const bookingsMap = bookings.docs.map(bookingDetails => {
+        return bookingDetails.data()
+      })
+      setBookingData(bookingsMap)
     })
   }
 
@@ -149,6 +164,7 @@ function DashboardNoAppoin() {
 
             } else {
               setCheckUserAppointments(true);
+              checkRideBooked()
             }
           }
         })
@@ -194,7 +210,7 @@ function DashboardNoAppoin() {
           </table>
           <div className="bottomButtons">
             <a target="_blank"
-              href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital')}%hospital`}
+              href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text="Get Directions" width="150px">
               </Button></a>
             <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>

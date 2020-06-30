@@ -6,7 +6,7 @@ import './menuHeader.css'
 let styles = {
     header: {
         display: 'flex',
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
         backgroundColor: '#fafafa',
@@ -19,8 +19,8 @@ let styles = {
 
     },
     burgerMenu: {
-        display: 'flex',
-        justifyContent: 'start',
+        // display: 'flex',
+        // justifyContent: 'start',
 
     },
     backArrowIcon: {
@@ -33,8 +33,8 @@ let styles = {
 
     },
     titleSingle: {
-        display: 'flex',
-        justifyContent: 'center',
+        // display: 'flex',
+        // justifyContent: 'center',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
@@ -62,12 +62,12 @@ const Menu_header = (props) => {
                 <p className="titleText"> {props.title}</p>
             </span>
 
-            {/* <div className="col-xs-2 vcenter pa2">
-                <img 
+            <div className="col-xs-2 vcenter pa2">
+                {/* <img 
                 style={styles.imgIcon}
                 src={photoURL}>
-                </img> 
-            </div> */}
+                </img>  */}
+            </div>
 
         </div>
     );

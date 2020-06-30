@@ -58,7 +58,6 @@ const BurgerMenu = () => {
     bmMenuWrap: {
       position: 'fixed',
       top: '102px',
-      right: '115px',
       height: 'auto',
       transition: 'all 1s ease',
       borderRadius: '4px'
@@ -83,7 +82,6 @@ const BurgerMenu = () => {
       outline: 'none',
       textDecoration: 'none',
       textAlign: 'left',
-
 
     },
 
