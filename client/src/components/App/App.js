@@ -19,28 +19,13 @@ import UserRoute from '../../routes/UserRoute';
 import PublicRoute from '../../routes/PublicRoute';
 import CordRoute from '../../routes/CordRoute';
 import AdminRoute from '../../routes/AdminRoute';
+import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 
 function App(){
   const [userClaims, setUserClaims] = useState(localStorage.getItem('userLevel'))
   const  [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userid'))
   
 
-  // useEffect(() => {
-  //   setIsAuthenticated(!!localStorage.getItem('userid')) 
-  //   setUserClaims()
-  //   // auth.onAuthStateChanged(user => {
-  //   //    if(user){
-  //   //     setIsAuthenticated(true)
-  //   //     user.getIdTokenResult().then(data => {
-  //   //         if(data.claims.userLevel == undefined)
-  //   //            setUserClaims("none")
-  //   //         else 
-  //   //            setUserClaims(data.claims.userLevel)    
-  //   //     });
-  //   //   }
-  //   //   });
-  //   }, [])
-  
   return (
    
     <Router>
@@ -61,6 +46,7 @@ function App(){
         <PublicRoute path='/not-found' component={NotFound} />
         <PublicRoute path='/login' component={Login} />
         <PublicRoute path='/register' component={Register} /> 
+
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
       </Switch>

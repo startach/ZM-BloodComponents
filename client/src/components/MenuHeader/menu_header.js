@@ -19,8 +19,8 @@ let styles = {
 
     },
     burgerMenu: {
-        display: 'flex',
-        justifyContent: 'start',
+        // display: 'flex',
+        // justifyContent: 'start',
 
     },
     backArrowIcon: {
@@ -30,28 +30,27 @@ let styles = {
         fontSize: '1.0em',
         color: 'black',
         fontWeight: 'bold',
-        
+
     },
     titleSingle: {
-        display: 'flex',
-        justifyContent: 'center',
-        fontSize: '28px',
+        // display: 'flex',
+        // justifyContent: 'center',
         fontSize: '30px',
         color: 'black',
         fontWeight: 'bold',
         fontFamily: 'Montserrat',
-        width:'70%',
+        width: '70%',
 
     },
     imgIcon: {
-        width:'40px',
+        width: '40px',
     }
 
 
 };
 
 const Menu_header = (props) => {
-    const photoURL= localStorage.getItem('photoURL')
+    const photoURL = localStorage.getItem('photoURL')
     return (
         <div className="col-xs-12 navbar-fixed-top fixed-top" style={styles.header}>
             <div className="col-xs-1 vcenter" style={styles.backArrow}>
@@ -64,10 +63,10 @@ const Menu_header = (props) => {
             </span>
 
             <div className="col-xs-2 vcenter pa2">
-                <img 
+                {/* <img 
                 style={styles.imgIcon}
                 src={photoURL}>
-                </img> 
+                </img>  */}
             </div>
 
         </div>
