@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 import { Dropdown } from 'react-bootstrap';
-import {startLogout} from '../../actions/googleAuth'
+import { startLogout } from '../../actions/googleAuth'
 
 const BurgerMenu = () => {
 
@@ -100,11 +100,14 @@ const BurgerMenu = () => {
       <Menu styles={styles} className="tc shadow-5">
         <Link to='/dashboard' className="link">
           Dashboard
-            {/* <a id="dashboard" className="menu-item">Dashboard</a> */}
         </Link>
         <div className="line"></div>
         {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/add' className="link">
           Add Appointments
+            </Link> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/edit-delete' className="link">
+          Edit Appointments
             </Link> : null}
         {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/user' className="link">

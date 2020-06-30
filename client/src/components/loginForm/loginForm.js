@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./loginForm.css";
 import Button from '../button'
-import { useHistory,Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import { SignInWithGoogle } from '../../actions/googleAuth';
 import GoogleButton from 'react-google-button'
@@ -10,14 +10,14 @@ const LoginForm = () => {
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
-  let [error,setError]=useState([])
+  let [error, setError] = useState([])
 
   //Handle change of login form fields 
 
   const handleChange = (e) => {
     userData = ({ ...userData, [e.target.id]: e.target.value });
   }
- 
+
 
   const handleSubmit = (e) => {
     //update state
@@ -26,14 +26,14 @@ const LoginForm = () => {
     //check auth from firebase
     auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
       //storing the logged in user's id into localStorage variable
-      localStorage.setItem('userid', cred.user.uid)    
+      localStorage.setItem('userid', cred.user.uid)
       //Redirect to Dashboard after login if the user exists
       history.push('/dashboard')
-    }).catch(function(error) {
+    }).catch(function (error) {
       // Handle Errors here.
       var errorMessage = error.message;
       setError(errorMessage);
-      
+
     });
     e.preventDefault()
   }
@@ -80,23 +80,24 @@ const LoginForm = () => {
         <GoogleButton 
         className="ma3"
         onClick={SignInWithGoogle()} /> */}
-       
-      <div className='forgotPassword'>
-        <Link to = '/passwordreset' style={{textDecoration:'none'}}>
-        <p>
-          Forgot your password?
+
+        <div className='forgotPassword'>
+          <Link to='/passwordreset' style={{ textDecoration: 'none' }}>
+            <p>
+              Forgot your password?
         </p>
-        </Link>
-      </div>
-      <div class="registerFooter">
-        <p id="footertext">Not signed up as donor yet?</p>
+          </Link>
+        </div>
+        <div class="registerFooter">
+          <p id="footertext">Not signed up as donor yet?</p>
 
 
-        <Link to = '/register' style={{textDecoration : 'none'}}>
+          <Link to='/register' style={{ textDecoration: 'none' }}>
 
 
-          <Button type="button" text="Come Save Lives"></Button>
-        </Link>
+            <Button type="button" text="Come Save Lives"></Button>
+          </Link>
+        </div>
       </div>
     </div>
   )
