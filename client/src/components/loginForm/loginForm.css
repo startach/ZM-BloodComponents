@@ -10,6 +10,10 @@
   width: 150px;
 } 
 
+.forgotPassword{
+  text-align: center;
+}
+
 #header1, #header2 {
   font-family: 'Montserrat';
   font-size: 30px;
