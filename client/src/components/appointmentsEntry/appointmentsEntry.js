@@ -30,6 +30,7 @@ const AppointmentsEntry = () => {
             Appointments.push(hospitalAppointments.data());
           }
         });
+      
         Appointments.sort(function (a, b) {
           a = new Date(a.timestamp.seconds);
           b = new Date(b.timestamp.seconds);

@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -29,7 +30,6 @@ function DashboardNoAppoin() {
   function setlocalStorage(appointmentID) {
     localStorage.setItem('appointmentId', (appointmentID));
   }
-
 
   function deleteAppointment(e) {
     console.log(e.target.id)
@@ -187,25 +187,71 @@ function DashboardNoAppoin() {
             <br />
       Here is few details regarding your upcoming appointment
     </div>
-          <table className="schedulesTables">
-            <tr className="headerRow">
-              <th className="headerEntries">Date</th>
-              <th className="headerEntries">Time</th>
-              <th className="headerEntries">Location</th>
-              <th className="headerEntries"></th>
-            </tr>
+            <table className="schedulesTables">
+                <tr className="headerRow">
+                  <th className="headerEntries">Date</th>
+                  <th className="headerEntries">Time</th>
+                  <th className="headerEntries">Location</th>
+                  <th className="headerEntries"></th>
+                </tr>
+   
+                {userAppointmentsDetails.map(appointment => (
+                  <tr className='rowContainer' id={appointment.id}>
+                    <td className='rowClass' >{appointment.date}</td>
+                    <td className='rowClass'>{appointment.time}</td>
+                    <td className='rowClass'>{appointment.hospitalName}</td>
+                    <div className='btnContainer'>
+                    <Popup className="popup2" trigger={ <button id={appointment.id} className="cancelButton">Cancel</button>
+}
+                            modal position="left top" closeOnDocumentClick
+                            contentStyle={{ width: "20px" }}
+                        >
+                            {close => (
+                                <div className="container">
+                                    <a className="close" onClick={close}>
+                                        X
+                                </a>
 
-            {userAppointmentsDetails.map(appointment => (
-              <tr className='rowContainer' id={appointment.id}>
-                <td className='rowClass' >{appointment.date}</td>
-                <td className='rowClass'>{appointment.time}</td>
-                <td className='rowClass'>{appointment.hospitalName}</td>
-                <div className='btnContainer'>
-                  <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
-                </div>
-              </tr>))}
+
+                                    <div className="content">
+
+                                        Are you sure that you want to delete the appointment ?
+
+                                     </div>
+
+                                    <div className="actions">
+
+                                        <button
+                                            id={appointment.id}
+                                            className="yesButton"
+                                            onClick={(e) => {
+                                                deleteAppointment(e)
+                                                close();
+                                            }}>
+                                            Yes
+                                        </button>
+
+                                        <button
+                                            className="noButton"
+                                            onClick={() => {
+                                                close();
+                                            }}>
+                                            No
+                                        </button>
+
+                                    </div>
 
 
+
+                                </div>
+                            )}
+
+                        </Popup>
+                    </div>
+
+                  </tr>
+                ))}
+                
 
           </table>
           <div className="bottomButtons">
@@ -259,37 +305,37 @@ function DashboardNoAppoin() {
               </select>
             </p>
 
-            <table className="schedulesTables">
-              <tr className="headerRow">
-                <th className="headerEntries">Date</th>
-                <th className="headerEntries">Time</th>
-                <th className="headerEntries"></th>
-              </tr>
+              <table className="schedulesTables">
+                  <tr className="headerRow">
+                    <th className="headerEntries">Date</th>
+                    <th className="headerEntries">Time</th>
+                    <th className="headerEntries"></th>
+                  </tr>
+               
+                  {appointments.map(appointment => (
 
-              {appointments.map(appointment => (
-
-                <tr className='rowContainer' id={appointment.id}>
-                  <td className='rowClass' >{appointment.date}</td>
-                  <td className='rowClass'>{appointment.time}</td>
-                  <Link to='/questions'>
-                    <td className='rowClass'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
-                    </td>
-                  </Link>
-                </tr>
-
-
-              ))}
+                    <tr className='rowContainer' id={appointment.id}>
+                      <td className='rowClass' >{appointment.date}</td>
+                      <td className='rowClass'>{appointment.time}</td>
+                      <Link to='/questions'>
+                        <td className='rowClass'>
+                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
+                        </td>
+                      </Link>
+                    </tr>
 
 
-            </table>
+                ))}
+
+              
+              </table>
 
           </Fragment>
 
         )
       }
 
-    </div>
+    </div >
   );
 }
 

@@ -134,3 +134,24 @@ li {
 
   background: none !important;
 }
+.modal-content1 {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+  background: grey;
+  border-radius: 5px;
+  position: relative;
+}
+.modelbutt{
+  display: flex;
+  justify-content: center;
+ margin-left: 300px;  
+ border-radius: 10px;
+ background-color: #C71585;
+  
+}
