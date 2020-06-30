@@ -1,11 +1,11 @@
-import React, { useEffect, useState, Fragment, useRef} from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import './deleteAppointments.css'
 import { db } from '../firebase/firebase'
 import Datepicker from "react-datepicker";
+import Popup from "reactjs-popup";
 
 
 function DeleteAppointments() {
-    const editButtonRef = useRef();
     const [appDate, setAppDate] = useState(new Date())
     const [hospitals, setHospitals] = useState([])
     const [hospitalAppointments, setHospitalAppointments] = useState({
@@ -26,42 +26,63 @@ function DeleteAppointments() {
 
     const [editedInputs, setEditedInputs] = useState({})
 
+    useEffect(() => {
+
+        selectedInputs.map(SingleInput => {
+
+            setEditedInputs(SingleInput.data())
+        })
+
+    }, [selectedInputs])
+
 
 
     const [saveEdit, setSaveEdit] = useState(true)
     const handleEdit = (e) => {
-        if(saveEdit){
+        if (saveEdit) {
             e.target.textContent = "Save"
-            setEditable({id: e.target.id, date: true},
-                        {id: e.target.id, time: true},
-                        {id: e.target.id, appointmentType: true},
-                        {id: e.target.id, hospitalName: true})
-                    setSaveEdit(false)
+            e.target.style.backgroundColor = "red"
+            setEditable({ id: e.target.id, date: true },
+                { id: e.target.id, time: true },
+                { id: e.target.id, appointmentType: true },
+                { id: e.target.id, hospitalName: true })
+            setSaveEdit(false)
 
         } else {
             e.target.textContent = "Edit"
-            setEditable({id: e.target.id, date: false},
-                        {id: e.target.id, time: false},
-                        {id: e.target.id, appointmentType: false},
-                        {id: e.target.id, hospitalName: false})
-                setSaveEdit(true)
-            
+            e.target.style.backgroundColor = "#DEB675"
+            setEditable({ id: e.target.id, date: false },
+                { id: e.target.id, time: false },
+                { id: e.target.id, appointmentType: false },
+                { id: e.target.id, hospitalName: false })
+
+            db.collection('Appointments').doc(e.target.id).update(
+
+                editedInputs
+
+            )
+
+            setSaveEdit(true)
+
         }
-    
-        }
+
+
+
+
+    }
 
     const handleEditChange = (e) => {
 
         setEditedInputs({ ...editedInputs, [e.target.id]: e.target.value })
 
         console.log(editedInputs)
+
     }
 
 
 
     const handleDateChange = date => {
         setAppDate(date)
-        console.log(date)
         let fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
         setHospitalAppointments({ ...hospitalAppointments, ['date']: fullDate })
 
@@ -86,6 +107,12 @@ function DeleteAppointments() {
     }, [])
 
 
+const deleteAppointment = (e) => {
+
+    db.collection('Appointments').doc(e.target.id).delete()
+
+}
+
 
 
     useEffect(() => {
@@ -95,12 +122,13 @@ function DeleteAppointments() {
             console.log('loooop')
             db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                 .where('date', '==', hospitalAppointments.date)
-                .get()
-                .then((Appointments) => {
+                .onSnapshot(Appointments => {
                     const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                         return appointmentsDetails
                     })
                     setSelectedInputs(hospitalApp)
+                    setEditable(hospitalApp)
+
 
                 })
 
@@ -109,12 +137,12 @@ function DeleteAppointments() {
             db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                 .where('date', '==', hospitalAppointments.date)
                 .where('appointmentType', '==', hospitalAppointments.appointmentType)
-                .get()
-                .then((Appointments) => {
+                .onSnapshot(Appointments => {
                     const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                         return appointmentsDetails
                     })
                     setSelectedInputs(hospitalApp)
+                    setEditable(hospitalApp)
 
                 })
 
@@ -123,7 +151,7 @@ function DeleteAppointments() {
 
     }, [hospitalAppointments])
 
-    
+
     return (
         <Fragment>
             <div className="deleteEditAppContainer">
@@ -191,23 +219,41 @@ function DeleteAppointments() {
                 <li className="deleteTableEntries"></li>
             </ul>
 
-            {selectedInputs.map((Details, id ) => (
+            {selectedInputs.map((Details, id) => (
                 <ul className='deleteRowContainer' id={Details.id}>
 
-                    {editable.date &&  editable.id == Details.id ? (
+                    {editable.date && editable.id == Details.id ? (
 
                         <Fragment>
-
-                            
-
-                            <input className='inputDate'
+                            <input className='editableInputsDB'
                                 id="date"
                                 type="text"
                                 defaultValue={Details.data().date}
-                                onChange={handleEditChange}
-                            >
+                                onChange={handleEditChange}>
+                            </input>
 
 
+                            <input className='editableInputsDB'
+                                id="time"
+                                type="text"
+                                defaultValue={Details.data().time}
+                                onChange={handleEditChange}>
+                            </input>
+
+
+                            <select id="appointmentType" className='editableInputsDB' onChange={handleEditChange}
+                                defaultValue={Details.data().appointmentType}>
+
+                                <option value="Thrombocytes" >Thrombocytes</option>
+                                <option value="Granulocytes">Granulocytes</option>
+
+                            </select>
+
+                            <input className='editableInputsDB'
+                                id="hospitalName"
+                                type="text"
+                                defaultValue={Details.data().hospitalName}
+                                onChange={handleEditChange}>
                             </input>
 
 
@@ -215,29 +261,76 @@ function DeleteAppointments() {
 
                     ) : (
                             <Fragment>
-                                <li className='deleteAppRow'
-                                    id="date"
-                                >
+                                <li className='deleteAppRow deleteRowDate' id="date">
                                     {Details.data().date}</li>
 
+                                <li className='deleteAppRow deleteRowTime' id="time">
+                                    {Details.data().time}</li>
 
+                                <li className='deleteAppRow deleteRowAppointmentType' id="appointmentType">
+                                    {Details.data().appointmentType}</li>
+
+                                <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
+                                    {Details.data().hospitalName}</li>
                             </Fragment>
-
                         )
-
 
                     }
 
-                    <li className='deleteAppRow'>{Details.data().time}</li>
+                    <div className='ButtonsContainer ButtonsContainerRow '>
 
 
-                    <li className='deleteAppRow'>{Details.data().appointmentType}</li>
-                    <li className='deleteAppRow'>{Details.data().hospitalName}</li>
-                    <div className='ButtonsContainer'>
-                        <button id={Details.id} className="DeleteButton">Delete</button>
+                        <Popup trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
+                            modal position="left top" closeOnDocumentClick
+                            contentStyle={{width: "20px"}}
+                            >
+                            {close => (
+                                <div className="container">
+                                    <a className="close" onClick={close}>
+                                        X
+                                </a>
+
+
+                                    <div className="content">
+
+                                        Are you sure that you want to delete the appointment ?
+
+                                     </div>
+
+                                    <div className="actions">
+
+                                        <button
+                                            id={Details.id}
+                                            className="yesButton"
+                                            onClick={(e) => {
+                                                deleteAppointment(e)
+                                                close(); 
+                                                }}>
+                                            Yes
+                                        </button>
+
+                                        <button
+                                            className="noButton"
+                                            onClick={() => {
+                                                close(); 
+                                                }}>
+                                            No
+                                        </button>
+
+                                    </div>
+
+
+
+                                </div>
+                            )}
+
+                        </Popup>
+
+
+
                         <button
                             id={Details.id}
-                            className="SaveButton" onClick={handleEdit} ref={editButtonRef}>
+                            className="SaveButton" onClick={handleEdit}>
 
                             Edit</button>
 
