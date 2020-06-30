@@ -4,6 +4,7 @@ import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import DatePicker from 'react-date-picker'
+import Popup from "reactjs-popup";
 
 
 const RegisterForm = () => {
@@ -11,6 +12,7 @@ const RegisterForm = () => {
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
+  const [popUp,setPop]=useState(false)
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -63,14 +65,22 @@ const RegisterForm = () => {
       setError('Password and confirm password do not match')
 
       // if password and confirm password are matching
-    } else {
+    } else  { 
+
 
       //update state
       if( Object.entries(notifications).length < 1)
       //check password and confirm password
       {
+        
         setFlag(true)
+        setPop(true)
       }
+
+
+      if(Popup=true)
+      {
+        setPop(false);
       setuserInputs(userInputs)
 
       //Insert user into firestore
@@ -96,17 +106,17 @@ const RegisterForm = () => {
 
 
 
-        //Check if there is error with password weakness , etc
+                      //Check if there is error with password weakness , etc
       } catch (err) {
 
         setCheckError(true)
         setError(err.message)
 
       }
-
+      }
 
     }
-
+  
   }
 
   //Hadle DatePicker State
@@ -151,11 +161,19 @@ const RegisterForm = () => {
         <img src={logo} id="register-logo" />
       </div>
 
-      {true===true ? (<div className="modal-content1" >
+
+  <div className="modal-content1" >
+
+ 
+{/* 
         <h1>contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?</h1>
         <div>
-        <button  className="modelbutt" type ="button" onClick={()=> setFlag(false)} > ok</button></div>
-      </div>) : ''}
+        <button  className="modelbutt" type ="button" onClick={()=> setFlag(false)} > ok</button></div> */}
+      </div> 
+
+
+
+
       <div className="registerHeader">
         <b id="header1"> Signup</b>
         <b id="header2"> Become A Donor</b>
@@ -447,7 +465,15 @@ const RegisterForm = () => {
 
         }
         <div className="mb-4">
-          <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+
+        {true?
+    <Popup flowing trigger={ <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+  } position="right center">
+    <div>Popup content here !!</div>
+      <h1>test</h1> 
+      <button  className="modelbutt" type ="button" onClick={()=> setFlag(false)} > ok</button>
+    </Popup>
+    :""}
         </div>
 
 

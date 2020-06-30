@@ -32,7 +32,6 @@ function DashboardNoAppoin() {
   }
 
   function deleteAppointment(e) {
-
     console.log(e.target.id)
     var appId = e.target.id;
     db.collection('Appointments').doc(appId).update({
@@ -158,7 +157,8 @@ function DashboardNoAppoin() {
                     <td className='rowClass'>{appointment.time}</td>
                     <td className='rowClass'>{appointment.hospitalName}</td>
                     <div className='btnContainer'>
-                    {true ? <Popup/>:''} 
+                    <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
+            
                     </div>
 
                   </tr>
