@@ -15,6 +15,7 @@ import Verfication from '../verificationList/verificationList'
 import EmergencyDonations from '../../Screens/emergencyDonations'
 import { firebase, auth } from '../../components/firebase/firebase'
 import DeleteEditAppointments from '../../Screens/deleteAppointments'
+import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 
 function App() {
   // let history = useHistory();
@@ -50,6 +51,7 @@ function App() {
         <Route path='/questions' component={Questions} />
         <Route path='/edit-delete' component={DeleteEditAppointments} />
         <Route path='/verfication' component={AppointmentVerification} />
+        <Route path='/passwordreset' component={ForgotPassword} />
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
       </Switch>

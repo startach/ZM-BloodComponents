@@ -5,7 +5,7 @@ const styles = {
   image: {
     width: '50px',
     margin: '5px'
-  },
+  }
 };
 
 const BackArrow = (props) => {
