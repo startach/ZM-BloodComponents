@@ -107,11 +107,11 @@ function DeleteAppointments() {
     }, [])
 
 
-const deleteAppointment = (e) => {
+    const deleteAppointment = (e) => {
 
-    db.collection('Appointments').doc(e.target.id).delete()
+        db.collection('Appointments').doc(e.target.id).delete()
 
-}
+    }
 
 
 
@@ -280,10 +280,10 @@ const deleteAppointment = (e) => {
                     <div className='ButtonsContainer ButtonsContainerRow '>
 
 
-                        <Popup trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
+                        <Popup className="popup2" trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
                             modal position="left top" closeOnDocumentClick
-                            contentStyle={{width: "20px"}}
-                            >
+                            contentStyle={{ width: "20px" }}
+                        >
                             {close => (
                                 <div className="container">
                                     <a className="close" onClick={close}>
@@ -304,16 +304,16 @@ const deleteAppointment = (e) => {
                                             className="yesButton"
                                             onClick={(e) => {
                                                 deleteAppointment(e)
-                                                close(); 
-                                                }}>
+                                                close();
+                                            }}>
                                             Yes
                                         </button>
 
                                         <button
                                             className="noButton"
                                             onClick={() => {
-                                                close(); 
-                                                }}>
+                                                close();
+                                            }}>
                                             No
                                         </button>
 
