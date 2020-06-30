@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './AddAppointments.css'
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,34 +7,51 @@ import { db, auth } from '../firebase/firebase'
 
 export default function AddAppointments() {
 
+    const [hospitalsDetails, setHospitalsDetails] = useState([])
+    useEffect(()=>{
+        //TODO: add authentication check / credentials
+
+        //load hospitals into hospitalsList
+        const hospitals = []
+        db.collection('Hospitals').get()
+            .then(snapshot => {
+                snapshot.docs.forEach(hospital => {
+                    let currentID = hospital.id
+                    let appObj = { ...hospital.data(), ['id']: currentID }
+                    hospitals.push(appObj)
+            })
+            setHospitalsDetails(hospitals)
+            console.log(hospitalsDetails)
+        })
+    },[])
+
     const [appList, setAppList] = useState([])
-
     const [appDate, setAppDate] = useState(new Date())
-
-    const hosIDs = { "Rambam": 1, "Tal Hashomer": 2, "Ichilov": 3 }
-
     const displayNode = useRef(null)
-
-
     const [currentApp, setCurrentApp] = useState({
         userID: null,
-        hospitalName: "Rambam",
-        hospitalID: 1,
+        hospitalName: null, 
+        hospitalID: null,
         date: null,
         time: null,
         timestamp: null,
         slots: 1,
-        appointmentType: "Thrombocytes",
+        appointmentType: null
     })
 
     //for counted appointments added
     let count = 0;
 
     //set state values for slots & hospital
-    const handleChange = e => {
-        //FIXME: bug in setting hospital ID
-        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ["hospitalID"]: hosIDs[currentApp.hospitalName] })
+    const handleChange = (e) => {
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value})
         console.log(currentApp)
+    }
+
+    const handleChangeHospital = (e) => {
+        //setting hospital ID vs Passing it as props from options
+        const hospital = hospitalsDetails.filter(obj => obj.hospitalName === e.target.value)
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ['hospitalID'] : hospital[0].id})  
     }
 
     //set state values for date
@@ -56,17 +73,17 @@ export default function AddAppointments() {
 
     //add new Appointment to appoitnment list
     const handleAdd = () => {
-        if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName) return
-
+        if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName) return  
         setAppList(appList.concat(currentApp))
         displayNode.current.textContent = ""
+        console.log(appList)
     }
 
     //add free appointments to DB
     const handleSubmit = () => {
         appList.forEach((appointment) => {
+            //fixme: slots does not need to be in the database or state instead use reference 
             let loops = appointment.slots;
-
             //lopp though and add as many appointments for empty spots
             for (let i = 0; i < loops; i++) {
                 db.collection('Appointments').add({ ...appointment, ["slots"]: null })
@@ -80,42 +97,61 @@ export default function AddAppointments() {
         })
     }
 
-
     const handleDelete = (index) => {
-
         setAppList(appList.filter((item, count) => count !== index));
-
     }
 
-
     return (
-        <div className="addAppContainer">
-
-
-
-
+        <div className="addAppContainer tc">
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
-                <select className="dropdown" id="hospitalName" onChange={handleChange}>
-                    <option value="Rambam" className="option">Rambam - Haifa </option>
-                    <option value="Tal Hashomer" className="option">Tal Hashomer - Tel Aviv</option>
-                    <option value="Ichilov" className="option">Ichilov - Tel Aviv</option>
+                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
+                <option selected disabled >Select hospital</option>
+                    {
+                    hospitalsDetails.map( hospital => {
+                        return <option 
+                            value={hospital.hospitalName} 
+                            className="option">
+                            {hospital.hospitalName} 
+                            </option>
+                    })  
+                    }
                 </select>
             </p>
 
-            <div className="inputContainer">
+            <div className="inputContainer vcenter pa2 ma3">
                 <Datepicker
+                    required
                     selected={appDate}
                     onChange={handleChangeDate}
                     showTimeSelect
                     dateFormat="Pp"
+                    className="ml-3 pa2"
                 />
-                <input id="slots" className="slots ml-3" onChange={handleChange} placeholder="#slots"></input>
-                <div className="addBtn text-center mx-3" onClick={handleAdd}>Add </div>
+                <input 
+                id="slots" 
+                type="number"
+                min="1"
+                caption="slots"
+                className="slots ml-3 pa2" 
+                onChange={handleChange} 
+                placeholder="#slots">
+                </input>
+                 <select 
+                 className="dropdown ml-3 pa2" 
+                 id="appointmentType" 
+                 onChange={handleChange} 
+                 style={{width:'220px'}}>
+                    <option selected disabled>Select appointment type</option>
+                    <option id="AppointmentType" value="Thrombocytes" className="option"> Thrombocytes</option>
+                    <option id="AppointmentType" value="Granulocytes" className="option"> Granulocytes</option>
+                 </select>
+                <button 
+                className="addBtn text-center mx-3" 
+                onClick={handleAdd}>Add 
+                </button>
             </div>
-            <hr />
-
-
+            <hr/>
             <div className="display my-5 mx-3">
                 {appList.length === 0 ?
                     <div className="text-center">Currently No Appointments to Submit</div>
@@ -125,6 +161,7 @@ export default function AddAppointments() {
                             <span className="col-4">Hospital </span>
                             <span className="col-4">Date</span>
                             <span className="col-2">Time</span>
+                            {/* <span className="col-4">Type</span> */}
                             <span className="col-2">Slots</span>
                         </div>
                         {appList.map((appointment, index) => (
@@ -133,17 +170,16 @@ export default function AddAppointments() {
                                 <span className="col-4">{appointment.hospitalName} </span>
                                 <span className="col-4">{appointment.date}</span>
                                 <span className="col-2">{appointment.time} </span>
+                                {/* <span className="col-4">{appointment.appointmentType}</span> */}
                                 <span className="col-1">{appointment.slots}</span>
-                                <span className="col-1" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
+                                <span className="col-1 pointer" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
                             </div>
 
 
                         ))}
                     </div>}
             </div>
-
             <div className="subBtn">
-
                 <Button type="button" text="Submit" onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>

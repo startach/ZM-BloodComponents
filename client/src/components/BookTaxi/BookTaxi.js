@@ -3,7 +3,7 @@ import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi({ close }) {
+export default function BookTaxi({ close, bookingData }) {
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
@@ -25,7 +25,6 @@ export default function BookTaxi({ close }) {
 
 
     useEffect(() => {
-        console.log("are we looping like crazy? book taxi")
         //get address
         db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
             setAddressOptions({

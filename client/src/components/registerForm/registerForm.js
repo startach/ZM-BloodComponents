@@ -72,23 +72,19 @@ const RegisterForm = () => {
       if( Object.entries(notifications).length < 1)
       //check password and confirm password
       {
-        
-        setFlag(true)
+          console.log(Object.entries(notifications).length)
         setPop(true)
       }
 
-
-      if(Popup=true)
-      {
-        setPop(false);
       setuserInputs(userInputs)
 
       //Insert user into firestore
       try {
         const cred = await auth.createUserWithEmailAndPassword(userInputs.email, userInputs.password)
-
         //storing the logged in user's id into localStorage variable
         localStorage.setItem('userid', cred.user.uid)
+        //localStorage.setItem('userLevel', cred.user.userLevel)
+
         await db.collection('users').doc(cred.user.uid).set(
           userInputs
 
@@ -113,7 +109,7 @@ const RegisterForm = () => {
         setError(err.message)
 
       }
-      }
+      
 
     }
   
@@ -162,14 +158,10 @@ const RegisterForm = () => {
       </div>
 
 
-  <div className="modal-content1" >
+  {/* <div className="modal-content1" > */}
 
  
-{/* 
-        <h1>contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?</h1>
-        <div>
-        <button  className="modelbutt" type ="button" onClick={()=> setFlag(false)} > ok</button></div> */}
-      </div> 
+
 
 
 
@@ -465,15 +457,70 @@ const RegisterForm = () => {
 
         }
         <div className="mb-4">
+        {popUp ? (
+          <Fragment>
+        <Popup className="popup2" trigger={<Button type="button" text="Signup" color='#C71585' marginTop='14px'></Button>
+}
+                            modal position="left top" closeOnDocumentClick
+                            contentStyle={{ width: "20px" }}
+                        >
+                            {close => (
+                                <div className="container">
+                                    <a className="close" onClick={close}>
+                                        X
+                                </a>
 
-        {true?
-    <Popup flowing trigger={ <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
-  } position="right center">
-    <div>Popup content here !!</div>
-      <h1>test</h1> 
-      <button  className="modelbutt" type ="button" onClick={()=> setFlag(false)} > ok</button>
-    </Popup>
-    :""}
+
+                                    <div className="content">
+
+                                    contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted? 
+                                     </div>
+
+                                    <div className="actions">
+
+                                        <button
+                                            type="button"
+                                            className="yesButton"
+                                            onClick={(e) => {
+                                            handleSubmit(e);
+    
+                                                close();
+                                            }}>
+                                            Yes
+                                        </button>
+
+                                        <button
+                                            className="noButton"
+                                            onClick={() => {
+                                                close();
+                                            }}>
+                                            No
+                                        </button>
+
+                                    </div>
+
+
+
+                                </div>
+                            )}
+
+                        </Popup>
+                        </Fragment>
+
+) : (
+
+<Fragment>
+
+
+<Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+</Fragment>
+
+
+
+
+)}
+
+
         </div>
 
 

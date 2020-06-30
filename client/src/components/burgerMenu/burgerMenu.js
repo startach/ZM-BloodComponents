@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 import { Dropdown } from 'react-bootstrap';
+import { startLogout } from '../../actions/googleAuth'
 
 const BurgerMenu = () => {
 
@@ -11,10 +12,12 @@ const BurgerMenu = () => {
 
 
   useEffect(() => {
+    //FIXME: localstorage for userid can be initialized here instead of at signin and register
     auth.onAuthStateChanged(function (user) {
       if (user) {
         user.getIdTokenResult().then(function (data) {
-          console.log(data.claims)
+          localStorage.setItem('userLevel', !data.claims.userLevel ? "none" : data.claims.userLevel)
+          console.log(localStorage.getItem('userLevel'))
           setAccessLevel(data.claims.userLevel)
         });
       }
@@ -22,12 +25,15 @@ const BurgerMenu = () => {
   }, [])
 
   const handleLogout = () => {
-    // remove remove localstored userid
+    // remove localstored userid
     localStorage.removeItem('userid');
+    //localStorage.removeItem('photoURL');
+    localStorage.removeItem('userLevel');
+
+    //email password sing out & google signout
     auth.signOut();
 
   }
-
 
   var styles = {
     bmBurgerButton: {
@@ -79,7 +85,6 @@ const BurgerMenu = () => {
       textDecoration: 'none',
       textAlign: 'left',
 
-
     },
 
     bmOverlay: {
@@ -93,14 +98,17 @@ const BurgerMenu = () => {
   }
   return (
     <div>
-      <Menu styles={styles} className="tc shadow-5">
+      <Menu styles={styles} className="tc">
         <Link to='/dashboard' className="link">
           Dashboard
-            {/* <a id="dashboard" className="menu-item">Dashboard</a> */}
         </Link>
         <div className="line"></div>
         {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/add' className="link">
           Add Appointments
+            </Link> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/edit-delete' className="link">
+          Edit Appointments
             </Link> : null}
         {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/user' className="link">

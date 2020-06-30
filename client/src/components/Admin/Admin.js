@@ -17,6 +17,7 @@ export default function Admin() {
 
 
     useEffect(() => {
+
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 user.getIdTokenResult().then(function (data) {
@@ -79,6 +80,7 @@ export default function Admin() {
 
     //set drop downs from users in DB
     useEffect(() => {
+
         db.collection('users').onSnapshot(snapshot => {
             let list = snapshot.docs.map((user) => {
                 return user.data().email
