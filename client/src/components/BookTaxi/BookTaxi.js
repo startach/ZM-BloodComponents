@@ -3,7 +3,7 @@ import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi({ close }) {
+export default function BookTaxi({ close, bookingData }) {
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
