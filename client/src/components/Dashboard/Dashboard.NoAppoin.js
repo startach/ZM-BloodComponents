@@ -50,15 +50,18 @@ function DashboardNoAppoin() {
 
 
   //FIXME:
-  const checkRideBooked = () => {
+  const checkRideBooked = (userid) => {
 
     //get bookings where userID matches.
+    console.log(userid)
 
-    db.collection('taxiBookings').get().then((bookings) => {
+    db.collection('taxiBookings').where('user', '==', userid).get().then((bookings) => {
       const bookingsMap = bookings.docs.map(bookingDetails => {
         return bookingDetails.data()
       })
-      setBookingData(bookingsMap)
+      setBookingData(bookingsMap[0])
+      console.log("booking", bookingsMap[0])
+
     })
   }
 
@@ -120,7 +123,6 @@ function DashboardNoAppoin() {
           //if non exist
           if (snapShot.empty) {
 
-
             //change state to false - show no appointment screen
             setCheckUserAppointments(false);
             console.log("User doesn't have any Appointment")
@@ -130,7 +132,6 @@ function DashboardNoAppoin() {
 
           } // if user has appointments
           else {
-
 
             const appointmentsDetails = []
             let count = 0
@@ -164,7 +165,7 @@ function DashboardNoAppoin() {
 
             } else {
               setCheckUserAppointments(true);
-              checkRideBooked()
+              checkRideBooked(user.uid)
             }
           }
         })
@@ -213,8 +214,8 @@ function DashboardNoAppoin() {
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text="Get Directions" width="150px">
               </Button></a>
-            <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} />}
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} bookingData={bookingData} />}
             </Popup>
           </div>
 
