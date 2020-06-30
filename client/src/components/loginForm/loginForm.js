@@ -80,8 +80,20 @@ const LoginForm = () => {
         <GoogleButton 
         className="ma3"
         onClick={SignInWithGoogle()} /> */}
-        
-          <Link to = '/register' style={{textDecoration : 'none'}}>
+       
+      <div className='forgotPassword'>
+        <Link to = '/passwordreset' style={{textDecoration:'none'}}>
+        <p>
+          Forgot your password?
+        </p>
+        </Link>
+      </div>
+      <div class="registerFooter">
+        <p id="footertext">Not signed up as donor yet?</p>
+
+
+        <Link to = '/register' style={{textDecoration : 'none'}}>
+
 
           <Button type="button" text="Come Save Lives"></Button>
         </Link>
