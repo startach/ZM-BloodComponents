@@ -201,8 +201,52 @@ function DashboardNoAppoin() {
                     <td className='rowClass'>{appointment.time}</td>
                     <td className='rowClass'>{appointment.hospitalName}</td>
                     <div className='btnContainer'>
-                    <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
-            
+                    <Popup className="popup2" trigger={ <button id={appointment.id} className="cancelButton">Cancel</button>
+}
+                            modal position="left top" closeOnDocumentClick
+                            contentStyle={{ width: "20px" }}
+                        >
+                            {close => (
+                                <div className="container">
+                                    <a className="close" onClick={close}>
+                                        X
+                                </a>
+
+
+                                    <div className="content">
+
+                                        Are you sure that you want to delete the appointment ?
+
+                                     </div>
+
+                                    <div className="actions">
+
+                                        <button
+                                            id={appointment.id}
+                                            className="yesButton"
+                                            onClick={(e) => {
+                                                deleteAppointment(e)
+                                                close();
+                                            }}>
+                                            Yes
+                                        </button>
+
+                                        <button
+                                            className="noButton"
+                                            onClick={() => {
+                                                close();
+                                            }}>
+                                            No
+                                        </button>
+
+                                    </div>
+
+
+
+                                </div>
+                            )}
+
+                        </Popup>
                     </div>
 
                   </tr>
