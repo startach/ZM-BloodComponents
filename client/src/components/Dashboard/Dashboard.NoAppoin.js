@@ -7,7 +7,28 @@ import Button from '../button'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
+
+
 function DashboardNoAppoin() {
+
+ 
+  const { t } = useTranslation();
+
+  function handleClick(lang) {
+    console.log("changing to ", lang)
+    i18next.changeLanguage(lang)
+  }
+  
+
+
+
+
+
+
   const [show, setShow] = useState(false);
 
   const history = useHistory();
@@ -64,6 +85,8 @@ function DashboardNoAppoin() {
 
     })
   }
+
+
 
   useEffect(() => {
 
@@ -177,6 +200,21 @@ function DashboardNoAppoin() {
 
   return (
     <div className="dashboardView mt-3">
+
+
+
+<div>
+      <button onClick={() => handleClick('ara')} >
+        Arabic
+    </button>
+      <button onClick={() => handleClick('en')} >
+        English
+    </button>
+
+      <h3>{t('test.1')}</h3>  <h3>{t('test.2')}</h3>
+
+</div>
+
       {checkUserAppointments ? (
         <Fragment>
           <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
