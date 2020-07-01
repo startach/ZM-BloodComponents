@@ -1,6 +1,87 @@
 {
-  "test": {
-    "1": "مرحبا",
-    "2": "ما هذا"
+  "general": {
+    "hospital": "مشفى",
+    "select": "إختار",
+    "date": "تاريخ",
+    "appointment": "موعد",
+    "Type": "نوع",
+    "ichilov":"ايخيلوف",
+    "talHashomer": " تل هشومير",
+    "rambam": "رمبام",
+    "Register": "سجّل",
+    "Yes": "نعم",
+    "No": "لا",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "Thrombocytes": "صفائح دمويّة",
+    "Granulocytes": "خلايا حبيبية (Granulocytes)",
+    "both": "كلاهما"
+  },
+  "dashboard": {
+    "hello": "مرحبا",
+    "intro": "مرحبا بك بالتطبيق, نتطلّع لتبرعك الأول!",
+    "youDonated": " حتى الآن تبرعتَ ",
+    "donationTimes": " مرات.",
+    "wonderful": " رائع! ",
+    "youAre": "انت",
+    "eligible": "مؤهل",
+    "toDonate": ".للتبرّع",
+    "fewDetails": "بعض التفاصيل حول الموعد القادم الخاص بك",
+    "date": "تاريخ",
+    "Time": "ساعة",
+    "Location": "موقع الموعد",
+    "Cancel": "إلغاء",
+    "deleteAppointment": "هل أنت متأكد من أنك تريد إلغاء الموعد ؟",
+    "scheduleAppointment": "من فضلك, إحجز موعد",
+    "NearestHospital": "أقرب مشفى هو",
+    "getDirections": "تلقّى إرشادات الطريق",
+    "orderTaxi": "اطلب سيارة اجرة"
+  },
+  "addAppointments":{
+    "addAppointmentTitle": "أضِف مواعيد",
+    "for": "ل",
+    "selectHospital": "قٌم بإختيار المشفى",
+    "selectAppointmentType": "قُم بإختيار نوع الموعد ",
+    "noAppsToSubmit": "حالياُلا يوجد أي مواعيد  للإضافة"
+  },
+  "editDeleteApp": {
+    "editDeleteTitle": "تعديل وحذف المواعيد"
+  },
+  "userProfile":{
+    "bloodType": "نوع الدم",
+    "notificationPrefence": "إعدادات الإشعارات",
+    "notifiedOn": "اريد تلقي إشعارات بالوسائل التالية",
+    "emergencyThatWilling": "افضل تلقي إشعارات الطوارئ من خلال الوسائل التالية",
+    "casualreminder": "افضل تلقي إشعارات عادية من خلال الوسائل التالية "
+  },
+  "admin":{
+    "accessLevel": "المستوى",
+    "selectToMakeCord": "قُم بالإختيار لتعيين منسّق",
+    "makeCord": "عيّن منسّق",
+    "remove": "حذف",
+    "selectMakeAdmin": "قُم بالإختيار لتعيين مدير",
+    "makeAdmin": "عيّن مدير"
+  },
+  "appointmentsEntry":{
+    "noAppoins": "ليس لديك اي مواعيد سابقة"
+  },
+  "bookTaxi":{
+    "rideFrom": "اريد سيارة اجرة لتقلّني من",
+    "rideBack": "اريد سيارة اجرة لتقلّني الى",
+    "pickupTime": "وقت",
+    "from": "من",
+    "backTo": "رجوعا الى",
+    "forAppointment": "لموعد",
+    "taxiConfirm": "سيارة الأجرة ستقلّك:",
+    "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق"
+  },
+  "burgerMenu":{
+    "dashboard": "الصفحة الرئيسية",
+    "addAppointment": "أضِف مواعيد",
+    "editAppointments": "عدّل المواعيد",
+    "profile": "الصفحة الشخصية",
+    "emergencyDonation": "تبرّع طوارئ",
+    "Admin": "مدير",
+    "Logout": "تسجيل الخروج"
   }
 }

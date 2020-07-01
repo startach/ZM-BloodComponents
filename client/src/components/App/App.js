@@ -22,6 +22,8 @@ import AdminRoute from '../../routes/AdminRoute';
 import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 function App() {
   const [userClaims, setUserClaims] = useState(localStorage.getItem('userLevel'))
