@@ -188,7 +188,7 @@ export default function AddAppointments() {
                 <Button type="button" text="Submit" onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
-        </div >
+        </div>
 
 
     )

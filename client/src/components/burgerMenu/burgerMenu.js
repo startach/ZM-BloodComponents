@@ -126,7 +126,7 @@ const BurgerMenu = () => {
             </Link>
         <div className="line"></div>
         <Link to='/prevapp' className="link">
-          Previous  Appointments
+        {t('burgerMenu.previousAppointments')}
             </Link>
         <div className="line"></div>
         {accessLevel === "admin" ? <Link to='/admin' className="link">

@@ -81,9 +81,49 @@
     "dashboard": "Dashboard",
     "addAppointment": "Add Appointment",
     "editAppointments": "Edit Appointments",
-    "profile": "Profile",
+    "previousAppointments": "Previous Appointments",
     "emergencyDonation": "Emergency Donation",
     "Admin": "Admin",
     "Logout": "Logout"
+  },
+  "forgotPassword": {
+    "enterEmailPhrase": "Please enter your email address below and an email will with your information will be sent to it.",
+    "emailSentPhrase": "An Email was send to the address you provided us with!",
+    "checkEmailPhrase": "Please check your email and try to login again",
+    "clickToLogin": "Click to login"
+  },
+  "loginForm": {
+    "bloodComponentsDonation": "Blood Components Donations",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot your password ?",
+    "notSignedUp": "Not signed up as donor yet?"
+  },
+  "notificationOptions": {
+    "contactPreferencesPhrase": "please select all methods you are happy to be contacted by",
+    "SMS": "SMS",
+    "Whatsapp": "Whatsapp",
+    "Phonecall": "Phonecall",
+    "Email": "Email",
+    "inAppAlert": "In-App alert"
+  },
+  "registerForm": {
+    "signUp": "Signup",
+    "becomeDonor": "Become A Donor",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "birthDate": "Birth Date",
+    "male": "Male",
+    "female": "female",
+    "contactNumber": "Contact Number",
+    "city": "City",
+    "address": "Address",
+    "secondaryAddress": "Secondary Address",
+    "bloodType": "Blood Type",
+    "callMadaPhrase": "Don’t know? Call Mada 03-5300400",
+    "organization": "Organization",
+    "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?"
   }
 }

@@ -63,7 +63,7 @@ const AppointmentsEntry = () => {
         </tbody>
       </table>
       <Link id="link" to="/dashboard">
-        <Button text="Dashboard" />
+        <Button text={t('burgerMenu.dashboard')} />
       </Link>
     </div>
   );

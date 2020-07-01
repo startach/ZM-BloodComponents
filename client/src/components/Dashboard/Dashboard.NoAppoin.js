@@ -277,9 +277,9 @@ function DashboardNoAppoin() {
           <div className="bottomButtons">
             <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
-            ><Button type="button" text="Get Directions" width="150px">
+            ><Button type="button" text={t('dashboard.getDirections')}  width="150px">
               </Button></a>
-            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
               {close => <BookTaxi close={close} bookingData={bookingData} />}
             </Popup>
           </div>
