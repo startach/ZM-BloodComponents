@@ -196,8 +196,8 @@ function DashboardNoAppoin() {
 
       {checkUserAppointments ? (
         <Fragment>
-          <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
-            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
+          <div id="introSpan" className="introSpan">{t('dashboard.hello')} <b>{userName}</b>,
+            {!pastApp ? <span> {t('dashboard.intro')} welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
           <div className="lineUnderSpan"></div>
           <div className="userEligibility my-3">
             You are <b style={{ color: "green" }}> eligible </b> to donate.

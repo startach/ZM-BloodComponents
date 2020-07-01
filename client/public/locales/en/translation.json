@@ -1,6 +1,89 @@
 {
-  "test": {
-    "1": "Hello",
-    "2": "Welcome to the App"
+  "general": {
+    "hospital": "Hospital",
+    "select": "Select",
+    "date": "Date",
+    "appointment": "appointment",
+    "Type": "Type",
+    "ichilov":"Ichilov",
+    "talHashomer": "Tal Hashomer",
+    "rambam": "Rambam",
+    "Register": "Register",
+    "Yes": "Yes",
+    "No": "No",
+    "edit": "edit",
+    "save": "save",
+    "Thrombocytes": "Thrombocytes",
+    "Granulocytes": "Granulocytes",
+    "both": "Both",
+    "on": "on",
+    "at": "at"
+  },
+  "dashboard": {
+    "hello": "Hello",
+    "intro": " welcome to the App, we look forward to your first donation",
+    "youDonated": " so far you have donated ",
+    "donationTimes": " times",
+    "wonderful": " Wow! That's wonderful",
+    "youAre": "You are",
+    "eligible": "eligible",
+    "toDonate": "to donate.",
+    "fewDetails": "Here is few details regarding your upcoming appointment",
+    "date": "Date",
+    "Time": "Time",
+    "Location": "Location",
+    "Cancel": "Cancel",
+    "deleteAppointment": "Are you sure that you want to delete the appointment",
+    "scheduleAppointment": "Please, schedule a new appointment",
+    "NearestHospital": "Nearest hospital is",
+    "getDirections": "Get Directions",
+    "orderTaxi": "Order Taxi"
+  },
+  "addAppointments":{
+    "addAppointmentTitle": "Add Appointments",
+    "for": "for",
+    "select hospital": "Select hospital",
+    "selectAppointmentType": "Select appointment type",
+    "noAppsToSubmit": "Currently no appointments to submit"
+  },
+  "editDeleteApp": {
+    "editDeleteTitle": "Edit & Delete Appointments"
+  },
+  "userProfile":{
+    "bloodType": "Blood Type",
+    "notificationPrefence": "Notification Prefernces",
+    "notifiedOn": "I want to get notified on",
+    "emergencyThatWilling": "Emergency request that I am suitable to answer",
+    "casualreminder": "Casual reminders calling me to donate"
+  },
+  "admin":{
+    "accessLevel": "ACCESS LEVEL",
+    "selectToMakeCord": "select user to make cord",
+    "makeCord": "Make Coordinator",
+    "remove": "Remove",
+    "selectMakeAdmin": "select user to make admin",
+    "makeAdmin": "make Admin"
+  },
+  "appointmentsEntry":{
+    "noAppoins": "You have no past appointments"
+  },
+  "bookTaxi":{
+    "rideFrom": "I need a ride from",
+    "rideBack": "I need a ride back to",
+    "pickupTime": "Pickup Time",
+    "from": "from",
+    "backTo": "Back to",
+    "forAppointment": "For appointment",
+    "taxiConfirm": "Your taxi has been confirmed for",
+    "editOrCancelPhrase": "If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator"
+  },
+  "burgerMenu":{
+    "dashboard": "dashboard",
+    "addAppointment": "Add Appointment",
+    "editAppointments": "Edit Appointments",
+    "profile": "Profile",
+    "emergencyDonation": "Emergency Donation",
+    "Admin": "Admin",
+    "Logout": "Logout"
   }
 }
