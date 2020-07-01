@@ -50,15 +50,18 @@ function DashboardNoAppoin() {
 
 
   //FIXME:
-  const checkRideBooked = () => {
+  const checkRideBooked = (userid) => {
 
     //get bookings where userID matches.
+    console.log(userid)
 
-    db.collection('taxiBookings').get().then((bookings) => {
+    db.collection('taxiBookings').where('user', '==', userid).get().then((bookings) => {
       const bookingsMap = bookings.docs.map(bookingDetails => {
         return bookingDetails.data()
       })
-      setBookingData(bookingsMap)
+      setBookingData(bookingsMap[0])
+      console.log("booking", bookingsMap[0])
+
     })
   }
 
@@ -120,7 +123,6 @@ function DashboardNoAppoin() {
           //if non exist
           if (snapShot.empty) {
 
-
             //change state to false - show no appointment screen
             setCheckUserAppointments(false);
             console.log("User doesn't have any Appointment")
@@ -130,7 +132,6 @@ function DashboardNoAppoin() {
 
           } // if user has appointments
           else {
-
 
             const appointmentsDetails = []
             let count = 0
@@ -164,7 +165,7 @@ function DashboardNoAppoin() {
 
             } else {
               setCheckUserAppointments(true);
-              checkRideBooked()
+              checkRideBooked(user.uid)
             }
           }
         })
@@ -187,71 +188,71 @@ function DashboardNoAppoin() {
             <br />
       Here is few details regarding your upcoming appointment
     </div>
-            <table className="schedulesTables">
-                <tr className="headerRow">
-                  <th className="headerEntries">Date</th>
-                  <th className="headerEntries">Time</th>
-                  <th className="headerEntries">Location</th>
-                  <th className="headerEntries"></th>
-                </tr>
-   
-                {userAppointmentsDetails.map(appointment => (
-                  <tr className='rowContainer' id={appointment.id}>
-                    <td className='rowClass' >{appointment.date}</td>
-                    <td className='rowClass'>{appointment.time}</td>
-                    <td className='rowClass'>{appointment.hospitalName}</td>
-                    <div className='btnContainer'>
-                    <Popup className="popup2" trigger={ <button id={appointment.id} className="cancelButton">Cancel</button>
-}
-                            modal position="left top" closeOnDocumentClick
-                            contentStyle={{ width: "20px" }}
-                        >
-                            {close => (
-                                <div className="container">
-                                    <a className="close" onClick={close}>
-                                        X
+          <table className="schedulesTables">
+            <tr className="headerRow">
+              <th className="headerEntries">Date</th>
+              <th className="headerEntries">Time</th>
+              <th className="headerEntries">Location</th>
+              <th className="headerEntries"></th>
+            </tr>
+
+            {userAppointmentsDetails.map(appointment => (
+              <tr className='rowContainer' id={appointment.id}>
+                <td className='rowClass' >{appointment.date}</td>
+                <td className='rowClass'>{appointment.time}</td>
+                <td className='rowClass'>{appointment.hospitalName}</td>
+                <div className='btnContainer'>
+                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton">Cancel</button>
+                  }
+                    modal position="left top" closeOnDocumentClick
+                    contentStyle={{ width: "20px" }}
+                  >
+                    {close => (
+                      <div className="container">
+                        <a className="close" onClick={close}>
+                          X
                                 </a>
 
 
-                                    <div className="content">
+                        <div className="content">
 
-                                        Are you sure that you want to delete the appointment ?
+                          Are you sure that you want to delete the appointment ?
 
                                      </div>
 
-                                    <div className="actions">
+                        <div className="actions">
 
-                                        <button
-                                            id={appointment.id}
-                                            className="yesButton"
-                                            onClick={(e) => {
-                                                deleteAppointment(e)
-                                                close();
-                                            }}>
-                                            Yes
+                          <button
+                            id={appointment.id}
+                            className="yesButton"
+                            onClick={(e) => {
+                              deleteAppointment(e)
+                              close();
+                            }}>
+                            Yes
                                         </button>
 
-                                        <button
-                                            className="noButton"
-                                            onClick={() => {
-                                                close();
-                                            }}>
-                                            No
+                          <button
+                            className="noButton"
+                            onClick={() => {
+                              close();
+                            }}>
+                            No
                                         </button>
 
-                                    </div>
+                        </div>
 
 
 
-                                </div>
-                            )}
+                      </div>
+                    )}
 
-                        </Popup>
-                    </div>
+                  </Popup>
+                </div>
 
-                  </tr>
-                ))}
-                
+              </tr>
+            ))}
+
 
           </table>
           <div className="bottomButtons">
@@ -259,8 +260,8 @@ function DashboardNoAppoin() {
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text="Get Directions" width="150px">
               </Button></a>
-              <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} />}
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} bookingData={bookingData} />}
             </Popup>
           </div>
 
@@ -305,30 +306,30 @@ function DashboardNoAppoin() {
               </select>
             </p>
 
-              <table className="schedulesTables">
-                  <tr className="headerRow">
-                    <th className="headerEntries">Date</th>
-                    <th className="headerEntries">Time</th>
-                    <th className="headerEntries"></th>
-                  </tr>
-               
-                  {appointments.map(appointment => (
+            <table className="schedulesTables">
+              <tr className="headerRow">
+                <th className="headerEntries">Date</th>
+                <th className="headerEntries">Time</th>
+                <th className="headerEntries"></th>
+              </tr>
 
-                    <tr className='rowContainer' id={appointment.id}>
-                      <td className='rowClass' >{appointment.date}</td>
-                      <td className='rowClass'>{appointment.time}</td>
-                      <Link to='/questions'>
-                        <td className='rowClass'>
-                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
-                        </td>
-                      </Link>
-                    </tr>
+              {appointments.map(appointment => (
+
+                <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass' >{appointment.date}</td>
+                  <td className='rowClass'>{appointment.time}</td>
+                  <Link to='/questions'>
+                    <td className='rowClass'>
+                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
+                    </td>
+                  </Link>
+                </tr>
 
 
-                ))}
+              ))}
 
-              
-              </table>
+
+            </table>
 
           </Fragment>
 
