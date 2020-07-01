@@ -39,8 +39,9 @@ label {
 
 
 
-#name , #password , #email , #phone , #city , #address, #bloodType , #confirmPassword, #genderType , 
-#secondaryAddress, #organization {
+.registerName , .registerPassword , .registerEmail , .registerPhone ,
+.registerCity , ..registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
+..registerSecondaryAddress, .registerOrganization {
   display: flex;
   border-radius: 2em / 5em;
   background-color: #C3B7B1;
