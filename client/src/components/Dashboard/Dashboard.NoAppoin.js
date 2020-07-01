@@ -6,8 +6,11 @@ import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
+
+///////
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+//////
 
 
 
@@ -16,8 +19,9 @@ import i18next from 'i18next';
 
 function DashboardNoAppoin() {
 
- 
+/////////
   const { t } = useTranslation();
+//////////
 
   const [show, setShow] = useState(false);
 
@@ -192,24 +196,22 @@ function DashboardNoAppoin() {
     <div className="dashboardView mt-3">
 
 
-<h3>{t('test.1')}</h3>  <h3>{t('test.2')}</h3>
-
       {checkUserAppointments ? (
         <Fragment>
           <div id="introSpan" className="introSpan">{t('dashboard.hello')} <b>{userName}</b>,
-            {!pastApp ? <span> {t('dashboard.intro')} welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
+            {!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
           <div className="lineUnderSpan"></div>
           <div className="userEligibility my-3">
-            You are <b style={{ color: "green" }}> eligible </b> to donate.
+          {t('dashboard.youAre')} <b style={{ color: "green" }}> {t('dashboard.eligible')} </b>{t('dashboard.toDonate')} 
       <br />
             <br />
-      Here is few details regarding your upcoming appointment
+            {t('dashboard.fewDetails')}
     </div>
           <table className="schedulesTables">
             <tr className="headerRow">
-              <th className="headerEntries">Date</th>
-              <th className="headerEntries">Time</th>
-              <th className="headerEntries">Location</th>
+              <th className="headerEntries"> {t('dashboard.date')}</th>
+              <th className="headerEntries"> {t('dashboard.Time')}</th>
+              <th className="headerEntries"> {t('dashboard.Location')}</th>
               <th className="headerEntries"></th>
             </tr>
 
@@ -219,7 +221,7 @@ function DashboardNoAppoin() {
                 <td className='rowClass'>{appointment.time}</td>
                 <td className='rowClass'>{appointment.hospitalName}</td>
                 <div className='btnContainer'>
-                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton">Cancel</button>
+                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton"> {t('dashboard.Cancel')}</button>
                   }
                     modal position="left top" closeOnDocumentClick
                     contentStyle={{ width: "20px" }}
@@ -233,7 +235,7 @@ function DashboardNoAppoin() {
 
                         <div className="content">
 
-                          Are you sure that you want to delete the appointment ?
+                        {t('dashboard.deleteAppointment')}
 
                                      </div>
 
@@ -246,7 +248,7 @@ function DashboardNoAppoin() {
                               deleteAppointment(e)
                               close();
                             }}>
-                            Yes
+                             {t('general.Yes')}
                                         </button>
 
                           <button
@@ -254,7 +256,7 @@ function DashboardNoAppoin() {
                             onClick={() => {
                               close();
                             }}>
-                            No
+                             {t('general.No')}
                                         </button>
 
                         </div>
@@ -289,24 +291,23 @@ function DashboardNoAppoin() {
 
           <Fragment>
 
-            <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
-            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
-
-            <div className="lineUnderSpan"></div>
-
-            <div className="userEligibility my-3">
-              You are <b style={{ color: "green" }}> eligible </b> to donate.
+          <div id="introSpan" className="introSpan">{t('dashboard.hello')} <b>{userName}</b>,
+            {!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
+          <div className="lineUnderSpan"></div>
+          <div className="userEligibility my-3">
+          {t('dashboard.youAre')} <b style={{ color: "green" }}> {t('dashboard.eligible')} </b>{t('dashboard.toDonate')} 
+      <br />
       <br />
               <br />
-      Please, schedule a new appointment:
+              {t('dashboard.scheduleAppointment')}
     </div>
 
             <p className="hospitalsOptionsContainer mt-3">
-              Nearest hospital is{" "}
+            {t('dashboard.NearestHospital')}{" "}
 
               <select className="hospitalsOptionsList" onChange={handleChange}>
 
-                <option value="Select" disabled selected>Select</option>
+                <option value="Select" disabled selected> {t('general.select')}</option>
 
                 {hospital.map(name => (
 
@@ -325,8 +326,8 @@ function DashboardNoAppoin() {
 
             <table className="schedulesTables">
               <tr className="headerRow">
-                <th className="headerEntries">Date</th>
-                <th className="headerEntries">Time</th>
+                <th className="headerEntries">{t('dashboard.date')}</th>
+                <th className="headerEntries">{t('dashboard.Time')}</th>
                 <th className="headerEntries"></th>
               </tr>
 
@@ -337,7 +338,7 @@ function DashboardNoAppoin() {
                   <td className='rowClass'>{appointment.time}</td>
                   <Link to='/questions'>
                     <td className='rowClass'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
+                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
                     </td>
                   </Link>
                 </tr>

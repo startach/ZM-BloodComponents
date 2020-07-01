@@ -5,7 +5,7 @@
     "date": "Date",
     "appointment": "appointment",
     "Type": "Type",
-    "ichilov":"Ichilov",
+    "ichilov": "Ichilov",
     "talHashomer": "Tal Hashomer",
     "rambam": "Rambam",
     "Register": "Register",
@@ -39,24 +39,24 @@
     "getDirections": "Get Directions",
     "orderTaxi": "Order Taxi"
   },
-  "addAppointments":{
+  "addAppointments": {
     "addAppointmentTitle": "Add Appointments",
     "for": "for",
-    "select hospital": "Select hospital",
+    "selectHospital": "Select hospital",
     "selectAppointmentType": "Select appointment type",
     "noAppsToSubmit": "Currently no appointments to submit"
   },
   "editDeleteApp": {
     "editDeleteTitle": "Edit & Delete Appointments"
   },
-  "userProfile":{
+  "userProfile": {
     "bloodType": "Blood Type",
     "notificationPrefence": "Notification Prefernces",
     "notifiedOn": "I want to get notified on",
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
     "casualreminder": "Casual reminders calling me to donate"
   },
-  "admin":{
+  "admin": {
     "accessLevel": "ACCESS LEVEL",
     "selectToMakeCord": "select user to make cord",
     "makeCord": "Make Coordinator",
@@ -64,10 +64,10 @@
     "selectMakeAdmin": "select user to make admin",
     "makeAdmin": "make Admin"
   },
-  "appointmentsEntry":{
+  "appointmentsEntry": {
     "noAppoins": "You have no past appointments"
   },
-  "bookTaxi":{
+  "bookTaxi": {
     "rideFrom": "I need a ride from",
     "rideBack": "I need a ride back to",
     "pickupTime": "Pickup Time",
@@ -77,8 +77,8 @@
     "taxiConfirm": "Your taxi has been confirmed for",
     "editOrCancelPhrase": "If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator"
   },
-  "burgerMenu":{
-    "dashboard": "dashboard",
+  "burgerMenu": {
+    "dashboard": "Dashboard",
     "addAppointment": "Add Appointment",
     "editAppointments": "Edit Appointments",
     "profile": "Profile",

@@ -5,7 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from '../button'
 import { db, auth } from '../firebase/firebase'
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 export default function AddAppointments() {
+
+    const { t } = useTranslation();
 
     const [hospitalsDetails, setHospitalsDetails] = useState([])
     useEffect(()=>{
@@ -104,9 +109,9 @@ export default function AddAppointments() {
     return (
         <div className="addAppContainer tc">
             <p className="text-center mt-5">
-                Add Appointments for: {" "}
+            {t('addAppointments.addAppointmentTitle')}: {" "}
                 <select className="dropdown" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
-                <option selected disabled >Select hospital</option>
+                <option selected disabled >{t('addAppointments.selectHospital')}</option>
                     {
                     hospitalsDetails.map( hospital => {
                         return <option 
@@ -142,9 +147,9 @@ export default function AddAppointments() {
                  id="appointmentType" 
                  onChange={handleChange} 
                  style={{width:'220px'}}>
-                    <option selected disabled>Select appointment type</option>
-                    <option id="AppointmentType" value="Thrombocytes" className="option"> Thrombocytes</option>
-                    <option id="AppointmentType" value="Granulocytes" className="option"> Granulocytes</option>
+                    <option selected disabled>{t('addAppointments.selectAppointmentType')}</option>
+                    <option id="AppointmentType" value="Thrombocytes" className="option"> {t('general.Thrombocytes')} </option>
+                    <option id="AppointmentType" value="Granulocytes" className="option"> {t('general.Granulocytes')}</option>
                  </select>
                 <button 
                 className="addBtn text-center mx-3" 
@@ -154,13 +159,13 @@ export default function AddAppointments() {
             <hr/>
             <div className="display my-5 mx-3">
                 {appList.length === 0 ?
-                    <div className="text-center">Currently No Appointments to Submit</div>
+                    <div className="text-center">{t('addAppointments.noAppsToSubmit')}</div>
                     :
                     <div>
                         <div className="row heading">
-                            <span className="col-4">Hospital </span>
-                            <span className="col-4">Date</span>
-                            <span className="col-2">Time</span>
+                            <span className="col-4">{t('general.hospital')} </span>
+                            <span className="col-4">{t('general.date')}</span>
+                            <span className="col-2">{t('general.Time')}</span>
                             {/* <span className="col-4">Type</span> */}
                             <span className="col-2">Slots</span>
                         </div>
