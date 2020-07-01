@@ -73,11 +73,11 @@ const Menu_header = (props) => {
             </span>
 
       
-
       <select style={{width:"50px"}} onChange={handleChange} >
-            <option value='heb'>עִברִית</option>
-            <option value='ara'>عربى</option>
-            <option value='en'>en</option>
+      <option value={i18next.language}>{i18next.language == 'heb' ? 'עִברִית' : i18next.language == 'ara' ? 'عربى' : 'en'}</option>
+            {i18next.language != 'heb' ? <option value='heb'>עִברִית</option> : null}
+            {i18next.language != 'ara' ? <option value='ara'>عربى</option> : null}
+            {i18next.language != 'en' ? <option value='en'>en</option> : null}
     </select>
  
 
