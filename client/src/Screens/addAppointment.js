@@ -10,15 +10,14 @@ import AddAppointments from '../components/AddAppointments/AddAppointments'
 const AddAppointment = () => {
 
     return (
-        <div>
-            <div className="header"></div>
+           
             <ScreenContainer>
-                <MenuHeader title="Add Appointments" icon='burger'></MenuHeader>
+                <MenuHeader title="Add Appointments" icon='burger'/>
                 <AddAppointments />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
+            
+       
     )
 }
 

@@ -6,15 +6,11 @@ import MenuHeader from '../components/MenuHeader'
 
 function Login() {
     return (
-        <Fragment>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Emergency Donations" icon='burger'></MenuHeader>
+                <MenuHeader title="Emergency Donations" icon='burger' />
                 <EmergencyDonations />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </Fragment>
     )
 }
 

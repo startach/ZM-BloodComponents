@@ -1,33 +1,27 @@
-
 .btnContainer {
-
     display: flex;
-    justify-content : center;
+    justify-content: center;
     align-items: center;
 }
 
 #btn {
-
     display: inline-block;
     vertical-align: middle;
     transform: translateZ(0);
-    border-radius: 50px ;
-    height: 48px ;
-    width : 170px;
-    background-color: #DEB675;
-    border:  none;
-    color : #fafafa;
-    box-shadow: 5px 10px 18px #888888;
+    border-radius: 50px;
+    height: 48px;
+    width: 170px;
+    background-color: #d5068d;
+    border: none;
+    color: #fafafa;
+    box-shadow: 0px 5px 5px #888888;
     font-family: 'Montserrat';
     font-size: 18px;
-    outline : none;
+    outline: none;
 }
 
-
-
-#btn:hover , #btn:focus , #btn:active {
-
+#btn:hover,
+#btn:focus,
+#btn:active {
     transform: scale(1.1);
-    
-    
 }

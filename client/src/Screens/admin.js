@@ -10,15 +10,11 @@ import Admin from '../components/Admin/Admin'
 const AdminPage = () => {
 
     return (
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Admin Controls" icon='burger'></MenuHeader>
+                <MenuHeader title="Admin Controls" icon='burger'/>
                 <Admin />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
     )
 }
 

@@ -1,9 +1,9 @@
-.menu-item:hover {
-    color: green,
+.menu {
+    display: flex;
+    color: yellow;
 }
 
 .line {
-
     height: 1px;
     width: 80%;
     border-top: solid black 1px;
