@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from 'react-router-dom'
 import PreviousAppointments from '../../Screens/previousAppointments'
 import AppointmentVerification from '../../Screens/appointmentVerification'
@@ -25,12 +25,17 @@ import { ForgotPassword } from '../forgetPassword/ForgotPassword';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
+
 function App() {
   const [userClaims, setUserClaims] = useState(localStorage.getItem('userLevel'))
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userid'))
 
 
+
   return (
+<Fragment>
+
+
 
       <Router>
         <Switch>
@@ -55,6 +60,8 @@ function App() {
           <Redirect to='/not-found' />
         </Switch>
       </Router>
+
+     </Fragment>
   );
 }
 
