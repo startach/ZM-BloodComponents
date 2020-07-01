@@ -44,15 +44,13 @@ margin-top: 20px;
 
 }
 
-
 .emailLogin , .passwordLogin {
-  background-color: #C71585;
+  background-color: #d5068d;
   color : #fafafa;
   padding-left: 5px;
   height: 70px;
   width: 300px;
   box-shadow: 5px 10px 18px #888888;
-
 }
 
 ::placeholder {
@@ -63,7 +61,7 @@ margin-top: 20px;
 #footertext {
 
   font-family: 'Montserrat';
-  color: #C71585;
+  color: #d5068d;
   font-weight: bold;
   font-size: 25px;
 }
@@ -91,7 +89,7 @@ margin-top: 20px;
 
   width: 300px;
   background-color: #fafafa;
-  color: #C71585;
+  color: #d5068d;
   height: 70px;
   font-weight: bold;
   border : thin inset #ff01a2;
@@ -99,20 +97,20 @@ margin-top: 20px;
 
 .loginButton:hover {
 
-  background-color: #C71585;
+  background-color: #d5068d;
   color: #fafafa;
 }
 
 .forgotPassword {
 
-  color: #C71585;
+  color: #d5068d;
 }
 
 
 .comeSaveLivesButton {
 
   width: 300px;
-  background-color: #C71585;
+  background-color: #d5068d;
   color: #fafafa;
   height: 70px;
   font-weight: bold;
@@ -135,3 +133,4 @@ margin-top: 20px;
   font-size: 25px;
   font-weight: bold;
 }
+

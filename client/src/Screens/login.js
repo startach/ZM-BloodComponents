@@ -12,6 +12,7 @@ function Login() {
 
         <FullScreenContainer>
             <LoginForm />
+
         </FullScreenContainer>
 
     )

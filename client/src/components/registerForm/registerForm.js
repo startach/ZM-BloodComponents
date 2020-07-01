@@ -158,14 +158,6 @@ const RegisterForm = () => {
       </div>
 
 
-      {/* <div className="modal-content1" > */}
-
-
-
-
-
-
-
       <div className="registerHeader">
         <b id="header1"> Signup</b>
         <b id="header2"> Become A Donor</b>
@@ -224,7 +216,7 @@ const RegisterForm = () => {
           <label> * Confirm Password
 
           <input
-              className="registerconfirmPassword"
+              className="registerConfirmPassword"
               id="confirmPassword"
               onChange={handleChange}
               type="password"
@@ -321,7 +313,7 @@ const RegisterForm = () => {
           <label> Secondary Address
 
           <input
-              className="registersecondaryAddress"
+              className="registerSecondaryAddress"
               id="secondaryAddress"
               onChange={handleChange}
               type="text"
@@ -359,7 +351,7 @@ const RegisterForm = () => {
           <label> Organization
 
           <input
-               className="registerOrganization"
+              className="registerOrganization"
               id="organization"
               onChange={handleChange}
               type="text"
@@ -468,7 +460,9 @@ const RegisterForm = () => {
         <div className="mb-4">
           {popUp ? (
             <Fragment>
-              <Popup className="popup2" trigger={<Button type="button" text="Signup" color='#C71585' marginTop='14px'></Button>
+              <Popup className="popup2" trigger={<div className="signUpButtonContainer">
+                <button className="signUpButton" type="button" >Signup</button>
+              </div>
               }
                 modal position="left top" closeOnDocumentClick
                 contentStyle={{ width: "20px" }}
@@ -520,8 +514,9 @@ const RegisterForm = () => {
 
               <Fragment>
 
-
-                <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+                <div className="signUpButtonContainer">
+                  <button className="signUpButton" type="submit" >Signup</button>
+                </div>
               </Fragment>
 
 
