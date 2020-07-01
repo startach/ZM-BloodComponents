@@ -192,7 +192,7 @@ function DashboardNoAppoin() {
     <div className="dashboardView mt-3">
 
 
-<h3>{t('test.1')}</h3>  <h3>{t('test.2')}</h3>
+<h3>{t('dashboard.hello')}</h3>  <h3>{t('dashboard.intro')}</h3>
 
       {checkUserAppointments ? (
         <Fragment>
