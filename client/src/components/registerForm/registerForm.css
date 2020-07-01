@@ -39,11 +39,11 @@ label {
 
 
 
-#name , #password , #email , #phone , #city , #address, #bloodType , #confirmPassword, #genderType , 
-#secondaryAddress, #organization {
+.registerName , .registerPassword , .registerEmail , .registerPhone ,
+.registerCity , .registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
+.registerSecondaryAddress, .registerOrganization {
   display: flex;
-  border-radius: 2em / 5em;
-  background-color: #C3B7B1;
+  background-color: #a3d863;
   margin-left: 35px;
   padding-left: 5px;
   border: none;
@@ -61,13 +61,14 @@ label {
 
 .react-date-picker__wrapper {
 
-  background-color: #C3B7B1;
-  border-radius: 2em / 5em;
+  background-color: #a3d863;
   width: 200px;
   margin-left: 35px !important;
   border: none !important; 
 
 }
+
+
 
 .react-date-picker__inputGroup__input {
 
@@ -76,6 +77,11 @@ padding: 0 0 0 0 !important;
 margin-left: 1px !important;
 
 
+}
+
+.react-date-picker__inputGroup ::placeholder {
+
+  color : black !important
 
 }
 
@@ -152,6 +158,29 @@ li {
   justify-content: center;
  margin-left: 300px;  
  border-radius: 10px;
- background-color: #C71585;
+ background-color: #ff01a2;
   
+}
+
+
+.signUpButton {
+
+  width: 300px;
+  background-color: #ff01a2;
+  color: #fafafa;
+  height: 70px;
+  font-weight: bold;
+  border: none;
+}
+
+
+
+.signUpButtonContainer {
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
 }
