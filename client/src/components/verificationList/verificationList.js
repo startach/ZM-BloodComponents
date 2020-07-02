@@ -37,7 +37,7 @@ const VerificationList = () => {
             </ul>
 
             <Link id="link" to="/dashboard">
-                <button className="dashboardButton">Dashboard</button>
+                <button className="confirmButton">Confirm</button>
             </Link>
 
             <p id="footer">Need a ride for your visit to the hospital ?</p>
