@@ -3,9 +3,13 @@ import './Questionnaire.css'
 import { useHistory } from 'react-router-dom'
 import Button from '../button'
 import { db } from '../firebase/firebase'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 
 export default function Questionnaire() {
+    const { t } = useTranslation();
+
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
@@ -128,7 +132,7 @@ export default function Questionnaire() {
 
                                     <div className="right">
                                         <select class="dropdown" onChange={e => handleResults(e, index)}>
-                                            <option disabled="disabled" selected="selected">Select</option>
+                                            <option disabled="disabled" selected="selected">{t('general.select')}</option>
                                             {question.options.map((option) => <option>{option}</option>)}
                                         </select>
                                     </div>

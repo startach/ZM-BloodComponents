@@ -15,7 +15,9 @@
     "save": "حفظ",
     "Thrombocytes": "صفائح دمويّة",
     "Granulocytes": "خلايا حبيبية (Granulocytes)",
-    "both": "كلاهما"
+    "both": "كلاهما",
+    "on": "عند",
+    "at": "في"
   },
   "dashboard": {
     "hello": "مرحبا",
