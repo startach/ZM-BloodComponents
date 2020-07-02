@@ -6,15 +6,11 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 function DeleteAppointments () {
     return (
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Edit & Delete Appointments" icon='burger'></MenuHeader>
+                <MenuHeader title="Edit/Delete Appointments" icon='burger'/>
                 <DeleteElements />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
     )
 }
 

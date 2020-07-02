@@ -10,15 +10,11 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 const User = () => {
 
     return (
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="User Profile" icon='burger'></MenuHeader>
+                <MenuHeader title="User Profile" icon='burger' />
                 <UserPage />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
     )
 }
 

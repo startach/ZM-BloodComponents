@@ -8,18 +8,13 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 const PreviousAppointments = () => {
 
     return (
-        <Fragment>
 
             <ScreenContainer>
-                <div className="header"></div>
                 <MenuHeader icon="burger" title="Previous Appointments" />
                 <AppointmentsList />
                 <AppointmentsEntry />
                 <BottomNavBar />
-                <div className="footer"></div>
             </ScreenContainer>
-
-        </Fragment>
 
     )
 }

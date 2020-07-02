@@ -105,7 +105,9 @@ export default function AddAppointments() {
         <div className="addAppContainer tc">
             <p className="text-center mt-5">
                 Add Appointments for: {" "}
-                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
+                <select className="dropdown ml-3 pa2" id="hospitalName" 
+                onChange={handleChangeHospital} 
+                style={{width:'300px'}}>
                 <option selected disabled >Select hospital</option>
                     {
                     hospitalsDetails.map( hospital => {
@@ -180,7 +182,8 @@ export default function AddAppointments() {
                     </div>}
             </div>
             <div className="subBtn">
-                <Button type="button" text="Submit" onClick={handleSubmit}></Button>
+                <Button type="button" text="Submit" 
+                onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
         </div >

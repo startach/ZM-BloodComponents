@@ -8,16 +8,12 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
 const Dashboard = () => {
     return (
-        <Fragment>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Dashboard" icon='burger'></MenuHeader>
+                <MenuHeader title="Dashboard" icon='burger'/>
                 <MainDashboard> </MainDashboard>
+                <BottomNavBar />
             </ScreenContainer>
-            <BottomNavBar />
-            <div className="footer"></div>
-
-        </Fragment>
+           
 
     )
 }

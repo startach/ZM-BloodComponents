@@ -1,6 +1,7 @@
 .screenContainer {
-    height: 82vh;
+    height: 100vh;
     background-color: #fafafa;
     width: 100vw;
-    overflow: auto
+    overflow: auto;
+    margin-top: 60px
 }
