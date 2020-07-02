@@ -2,6 +2,7 @@ import React from 'react';
 import BackArrow from '../BackArrow';
 import BurgerMenu from '../burgerMenu'
 import './menuHeader.css'
+import LanguageSwitch from '../languageSwich/LanguageSwitch';
 
 let styles = {
     header: {
@@ -22,6 +23,10 @@ const Menu_header = (props) => {
 
             <div className="title"> 
                 {props.title}
+            </div>
+
+            <div className="language">
+                <LanguageSwitch caption='' />
             </div>
         </div>
     );

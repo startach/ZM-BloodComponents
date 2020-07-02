@@ -3,7 +3,6 @@ import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
-import { Dropdown } from 'react-bootstrap';
 import { startLogout } from '../../actions/googleAuth'
 import './burgerMenu.css'
 
