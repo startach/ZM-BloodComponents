@@ -142,7 +142,7 @@ export default function Questionnaire() {
 
                 )}
                 <div className="submit">
-                    <Button type="submit" text='Submit'  ></Button>
+                    <Button type="submit" text={t('questionnaire.submit')}  ></Button>
                 </div>
 
             </form>

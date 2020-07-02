@@ -114,7 +114,7 @@ export default function Admin() {
 
 
 
-            <div className="text-center mt-5">{t('admin.accessLevel')}: <b>{accessLevel}</b></div>
+            <div className="text-center mt-5"><u>{t('admin.accessLevel')}</u>: <b>{accessLevel}</b></div>
 
 
 

@@ -6,7 +6,7 @@ import Button from '../button'
 import { db, auth } from '../firebase/firebase'
 
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import i18next, {dir} from 'i18next';
 
 export default function AddAppointments() {
 
@@ -153,7 +153,7 @@ export default function AddAppointments() {
                  </select>
                 <button 
                 className="addBtn text-center mx-3" 
-                onClick={handleAdd}>Add 
+                onClick={handleAdd}>{t('addAppointment.add')}
                 </button>
             </div>
             <hr/>
@@ -185,7 +185,7 @@ export default function AddAppointments() {
                     </div>}
             </div>
             <div className="subBtn">
-                <Button type="button" text="Submit" onClick={handleSubmit}></Button>
+                <Button type="button" text={t('addAppointment.submit')} onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
         </div>

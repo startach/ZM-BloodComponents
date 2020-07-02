@@ -6,15 +6,19 @@ import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { firebase } from './components/firebase/firebase'
 import { Redirect, useHistory } from 'react-router-dom'
+import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
+
 
 import './i18n';
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <DirectionProvider direction={DIRECTIONS.RTL}>
     <Suspense fallback={(<div>Loading</div>)}>
       <App />
     </Suspense>
+    </DirectionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

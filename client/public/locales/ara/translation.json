@@ -44,7 +44,7 @@
     "for": "ل",
     "selectHospital": "قٌم بإختيار المشفى",
     "selectAppointmentType": "قُم بإختيار نوع الموعد ",
-    "noAppsToSubmit": "حالياُلا يوجد أي مواعيد  للإضافة"
+    "noAppsToSubmit": "حالياً لا يوجد أي مواعيد  للإضافة"
   },
   "editDeleteApp": {
     "editDeleteTitle": "تعديل وحذف المواعيد"
@@ -126,7 +126,13 @@
     "callMadaPhrase": "لا تعرف؟ تواصل مع مادا 035300400",
     "organization": "شركة",
     "contactingPhrase": "التواصل معك في حالة طوارئ يمكنه انقاذ حياة, هل انت متاكد من انك لا تريد تلقّي اشعارات طوارئ؟"
-
+  },
+  "questionnaire": {
+    "submit": "تقديم"
+  },
+  "addAppointment":{
+    "submit": "إضافة",
+    "add": "أضف"
   }
   
 }
