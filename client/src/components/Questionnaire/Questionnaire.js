@@ -64,7 +64,7 @@ export default function Questionnaire() {
     const handleResults = (e, index) => {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
-
+        
     }
 
 

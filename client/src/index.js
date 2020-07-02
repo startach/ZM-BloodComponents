@@ -12,9 +12,9 @@ import i18next from "i18next";
 
 import './i18n';
 
-let languageSelected = localStorage.getItem('i18nextLng');
-console.log(languageSelected,' languageaaaaa');
-console.log(i18next.dir(languageSelected).toUpperCase());
+// let languageSelected = localStorage.getItem('i18nextLng');
+// console.log(languageSelected,' languageaaaaa');
+// console.log(i18next.dir(languageSelected).toUpperCase());
 
 
 

@@ -94,11 +94,14 @@
     "clickToLogin": "Click to login"
   },
   "loginForm": {
-    "bloodComponentsDonation": "Blood Components Donations",
+    "bloodComponents": "Blood Components Donations",
+    "bloodComponentsDonation": "Donations",
     "email": "Email",
     "password": "Password",
     "forgotPassword": "Forgot your password ?",
-    "notSignedUp": "Not signed up as donor yet?"
+    "notSignedUp": "Not signed up as donor yet?",
+    "login": "Login",
+    "comeSaveLives": "Come Save Lives"
   },
   "notificationOptions": {
     "contactPreferencesPhrase": "please select all methods you are happy to be contacted by",
@@ -116,6 +119,7 @@
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "birthDate": "Birth Date",
+    "gender": "Gender",
     "male": "Male",
     "female": "female",
     "contactNumber": "Contact Number",

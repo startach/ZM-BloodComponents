@@ -6,12 +6,23 @@ import { db, auth } from '../firebase/firebase'
 import { SignInWithGoogle } from '../../actions/googleAuth';
 import GoogleButton from 'react-google-button'
 
+///////
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import LanguageSwitch from "../languageSwich/LanguageSwitch";
+//////
+
 const LoginForm = () => {
   const backArrow = "/img/back-button-white.svg"
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
   let [error, setError] = useState([])
+
+
+/////////
+const { t } = useTranslation();
+//////////
 
   //Handle change of login form fields 
 
@@ -41,13 +52,14 @@ const LoginForm = () => {
 
   return (
     <div className="loginPage">
+      <LanguageSwitch />
       <div className="imgContainer">
         <img src={logo} id="login-logo" />
 
       </div>
       <div className="loginHeader">
-        <b id="header1"> Blood Components</b>
-        <b id="header2"> Donations</b>
+        <b id="header1"> {t('loginForm.bloodComponents')}</b>
+        {/* <b id="header2"> {t('loginForm.bloodComponentsDonation')}</b> */}
       </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="emailContainer">
@@ -57,7 +69,7 @@ const LoginForm = () => {
             onChange={handleChange}
             type="email"
             name="email"
-            placeholder="email"
+            placeholder={t('loginForm.email')}
             required
           ></input>
 
@@ -69,7 +81,7 @@ const LoginForm = () => {
             onChange={handleChange}
             type="password"
             name="password"
-            placeholder="password"
+            placeholder={t('loginForm.password')}
             required
           ></input>
         </div>
@@ -77,7 +89,7 @@ const LoginForm = () => {
 
         <div className="loginButtonContainer">
 
-          <button className="loginButton" type="submit" >Login</button>
+          <button className="loginButton" type="submit" >{t('loginForm.login')}</button>
         </div>
       </form>
       <div className="registerFooter">
@@ -89,18 +101,18 @@ const LoginForm = () => {
         <div className='forgotPassword'>
           <Link to='/passwordreset' style={{ textDecoration: 'none' }}>
             <p>
-              Forgot your password?
+              {t('loginForm.forgotPassword')}
         </p>
           </Link>
         </div>
         <div class="registerFooter">
-          <p id="footertext">Not signed up as donor yet?</p>
+          <p id="footertext">{t('loginForm.notSignedUp')}</p>
 
 
-            <Link to='/register' style={{ textDecoration: 'none' }}>
+            <Link  to='/register' style={{ textDecoration: 'none' }}>
           <div className="comeSaveLivesButton">
             <img src={backArrow} id ="backArrowLogin"/>
-            <span id ="comeSaveLivesSpan">Come Save Lives</span>
+            <span id ="comeSaveLivesSpan">{t('loginForm.comeSaveLives')}</span>
           </div>
             </Link>
         </div>
