@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { functions, db, auth } from '../firebase/firebase'
 
+///////
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+//////
 
 export default function Admin() {
+
+
+    const { t } = useTranslation();
+
 
     //set current access level
     const [accessLevel, setAccessLevel] = useState();
@@ -106,7 +114,7 @@ export default function Admin() {
 
 
 
-            <div className="text-center mt-5">ACCESS LEVEL: <b>{accessLevel}</b></div>
+            <div className="text-center mt-5">{t('admin.accessLevel')}: <b>{accessLevel}</b></div>
 
 
 
@@ -114,7 +122,7 @@ export default function Admin() {
                 <input type="email" placeholder="User email" id="cord-email" value={control.cord} required />
 
                 <select className="dropdown mt-2" id="cord" onChange={handleChange}>
-                    <option value="select" className="option">select user to make cord </option>
+                    <option value="select" className="option">{t('admin.selectToMakeCord')} </option>
                     {userList.map((user) => (
 
                         <option value={user} id="cord" className="option">{user}</option>
@@ -122,8 +130,8 @@ export default function Admin() {
                     ))}
                 </select>
 
-                <button class="btn btn-small btn-warning mt-2" onClick={handleCord}>Make Cordinator</button>
-                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "cord")}>Remove</button>
+                <button class="btn btn-small btn-warning mt-2" onClick={handleCord}>{t('admin.makeCord')}</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "cord")}>{t('admin.remove')}</button>
             </form>
 
 
@@ -134,15 +142,15 @@ export default function Admin() {
                 <input type="email" placeholder="User email" id="admin-email" value={control.admin} required />
 
                 <select className="dropdown mt-2" id="admin" onChange={handleChange}>
-                    <option value="select" className="option">select user to make admin </option>
+                    <option value="select" className="option">{t('admin.selectMakeAdmin')} </option>
                     {userList.map((user) => (
 
                         <option value={user} id="admin" className="option">{user}</option>
 
                     ))}
                 </select>
-                <button className="btn btn-small btn-danger mt-2" onClick={handleAdmin}>Make Admin</button>
-                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "admin")}>Remove</button>
+                <button className="btn btn-small btn-danger mt-2" onClick={handleAdmin}>{t('admin.makeAdmin')}</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "admin")}>{t('admin.remove')}</button>
             </form>
 
             {response ? <div className="text-center">{response.data.message}</div> : null}
