@@ -44,7 +44,7 @@ const BurgerMenu = () => {
       top: '20px',
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: 'white'
     },
     bmBurgerBarsHover: {
       background: '#a90000'

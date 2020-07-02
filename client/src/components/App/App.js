@@ -29,8 +29,7 @@ function App(){
    
     <Router>
       <Switch>
-      <Route path='/dashboard' component={Dashboard}/>
-        {/* <UserRoute path='/dashboard' component={Dashboard} isAuthenticated={isAuthenticated} userLevel={userClaims}/> */}
+        <UserRoute path='/dashboard' component={Dashboard} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <UserRoute path='/prevapp' component={PreviousAppointments} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <UserRoute path='/verfication' component={AppointmentVerification} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <UserRoute path='/user' component={User} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
