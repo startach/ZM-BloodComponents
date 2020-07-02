@@ -81,7 +81,7 @@
         grid-template-rows: 100%;
         grid-template-areas: "burger title language";
         width: 100%;
-        height: 70px;
+        height: 80px;
         background: #d5068d;
         color: 'BLACK';
         top: 0
