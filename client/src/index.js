@@ -7,18 +7,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { firebase } from './components/firebase/firebase'
 import { Redirect, useHistory } from 'react-router-dom'
 import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
+import i18next from "i18next";
 
 
 import './i18n';
 
+let languageSelected = localStorage.getItem('i18nextLng');
+console.log(languageSelected,' languageaaaaa');
+console.log(i18next.dir(languageSelected).toUpperCase());
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <DirectionProvider direction={DIRECTIONS.RTL}>
+    
     <Suspense fallback={(<div>Loading</div>)}>
       <App />
     </Suspense>
-    </DirectionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
