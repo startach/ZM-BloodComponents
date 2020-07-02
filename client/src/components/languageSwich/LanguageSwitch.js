@@ -9,8 +9,7 @@ const LanguageSwitch = (props) => {
         <Dropdown>
         <Dropdown.Toggle 
          variant="success btn-lg">
-            <Icon.ChatFill size="lg"/>
-            
+             <Icon.ChatFill size="lg"/> 
         </Dropdown.Toggle>
 
         <Dropdown.Menu style={{backgroundColor:'rat'}}>

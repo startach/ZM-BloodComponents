@@ -3,7 +3,7 @@ import BackArrow from '../BackArrow';
 import BurgerMenu from '../burgerMenu'
 import './menuHeader.css'
 import LanguageSwitch from '../languageSwich/LanguageSwitch';
-
+import {MDBBtn, MDBIcon } from "mdbreact";
 let styles = {
     header: {
         alignItems: "center",
@@ -26,7 +26,8 @@ const Menu_header = (props) => {
             </div>
 
             <div className="language">
-                <LanguageSwitch caption='' />
+                <MDBIcon icon="bolt" className="ml-2 white bg-green pa2" size="2x"/>
+                {/* <LanguageSwitch caption='' /> */}
             </div>
         </div>
     );
