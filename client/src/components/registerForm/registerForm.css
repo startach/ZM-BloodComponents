@@ -43,7 +43,7 @@ label {
 .registerCity , .registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
 .registerSecondaryAddress, .registerOrganization {
   display: flex;
-  background-color: #a3d863;
+  background-color: #ecf8e4;
   margin-left: 35px;
   padding-left: 5px;
   border: none;
@@ -61,7 +61,7 @@ label {
 
 .react-date-picker__wrapper {
 
-  background-color: #a3d863;
+  background-color: #ecf8e4;
   width: 200px;
   margin-left: 35px !important;
   border: none !important; 
