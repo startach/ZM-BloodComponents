@@ -3,8 +3,8 @@ import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
-import { Dropdown } from 'react-bootstrap';
 import { startLogout } from '../../actions/googleAuth'
+import './burgerMenu.css'
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -44,13 +44,13 @@ const BurgerMenu = () => {
   var styles = {
     bmBurgerButton: {
       position: 'fixed',
-      width: '50px',
+      width: '40px',
       height: '30px',
-      left: '12px',
-      top: '12px',
+      left: '10px',
+      top: '20px',
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: 'white'
     },
     bmBurgerBarsHover: {
       background: '#a90000'
@@ -64,14 +64,16 @@ const BurgerMenu = () => {
       background: 'black'
     },
     bmMenuWrap: {
-      position: 'fixed',
-      top: '102px',
+      position: 'absolute',
+      top: '70px',
+      left:'0px',
       height: 'auto',
       transition: 'all 1s ease',
-      borderRadius: '4px'
+      borderRadius: '4px',
+      zIndex:'-1'
     },
     bmMenu: {
-      background: '#DEB675',
+      background: '#d5068d',
       padding: '1.0em 1.5em 0',
       fontSize: '1.15em'
     },
@@ -96,7 +98,7 @@ const BurgerMenu = () => {
     bmOverlay: {
       background: 'rgba(0, 0, 0, 0)',
       position: 'fixed',
-      width: '50px',
+      width: '30px',
       height: '30px',
       left: '12px',
       top: '12px',
@@ -104,7 +106,7 @@ const BurgerMenu = () => {
   }
   return (
     <div>
-      <Menu styles={styles} className="tc">
+      <Menu styles={styles}>
         <Link to='/dashboard' className="link">
         {t('burgerMenu.dashboard')} 
         </Link>

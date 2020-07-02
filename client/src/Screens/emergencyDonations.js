@@ -10,15 +10,11 @@ import i18next from 'i18next';
 function Login() {
     const { t } = useTranslation();
     return (
-        <Fragment>
-            <div className="header"></div>
             <ScreenContainer>
                 <MenuHeader title= {t('burgerMenu.emergencyDonation')}  icon='burger'></MenuHeader>
                 <EmergencyDonations />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </Fragment>
     )
 }
 

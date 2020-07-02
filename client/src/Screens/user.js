@@ -13,15 +13,11 @@ import i18next from 'i18next';
 const User = () => {
     const { t } = useTranslation();
     return (
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
                 <MenuHeader title={t('burgerMenu.profile')}  icon='burger'></MenuHeader>
                 <UserPage />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
     )
 }
 

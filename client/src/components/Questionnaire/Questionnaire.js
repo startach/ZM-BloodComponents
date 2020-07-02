@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import './Questionnaire.css'
 import { useHistory } from 'react-router-dom'
 import Button from '../button'
@@ -130,12 +130,42 @@ export default function Questionnaire() {
                                         <div><b>{question.id}:</b> {question.question}</div>
                                     </div>
 
+
                                     <div className="right">
-                                        <select class="dropdown" onChange={e => handleResults(e, index)}>
-                                            <option disabled="disabled" selected="selected">{t('general.select')}</option>
-                                            {question.options.map((option) => <option>{option}</option>)}
-                                        </select>
+                                        {(question.id == (5) || question.id == 16) ? (
+                                            <Fragment>
+                                                <select class="dropdown" onChange={e => handleResults(e, index)}>
+                                                <option disabled="disabled" selected="selected">{t('general.select')}</option>
+                                                    {question.options.map(option => (
+                                                        <option>{option}</option>
+
+                                                    ))}
+
+                                                </select>
+
+                                            </Fragment>
+
+
+                                        ) : (
+                                                <Fragment>
+                                                    {question.options.map(option => (
+                                                        <label>
+                                                            <input
+                                                                type="radio"
+                                                                class="options"
+                                                                value=""
+                                                                name="radiobutt"
+                                                                onChange={(e) => handleResults(e, index)}
+                                                            />
+                                                            {" " + option}
+                                                        </label>
+
+                                                    ))}
+                                                </Fragment>
+                                            )
+                                        }
                                     </div>
+
 
                                 </div>
                 )
@@ -146,7 +176,6 @@ export default function Questionnaire() {
                 </div>
 
             </form>
-
 
         </div>
     )

@@ -12,7 +12,6 @@ const PreviousAppointments = () => {
     const { t } = useTranslation();
 
     return (
-        <Fragment>
 
             <ScreenContainer>
                 <div className="header"></div>
@@ -20,10 +19,7 @@ const PreviousAppointments = () => {
                 <AppointmentsList />
                 <AppointmentsEntry />
                 <BottomNavBar />
-                <div className="footer"></div>
             </ScreenContainer>
-
-        </Fragment>
 
     )
 }

@@ -10,15 +10,11 @@ import i18next from 'i18next';
 function DeleteAppointments () {
     const { t } = useTranslation();
     return (
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
                 <MenuHeader title={t('burgerMenu.editAppointments')} icon='burger'></MenuHeader>
                 <DeleteElements />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
     )
 }
 

@@ -14,15 +14,14 @@ const AddAppointment = () => {
     const { t } = useTranslation();
 
     return (
-        <div>
-            <div className="header"></div>
+           
             <ScreenContainer>
                 <MenuHeader title={t('burgerMenu.addAppointment')} icon='burger'></MenuHeader>
                 <AddAppointments />
                 <BottomNavBar />
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
+            
+       
     )
 }
 

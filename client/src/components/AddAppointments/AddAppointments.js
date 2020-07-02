@@ -110,7 +110,7 @@ export default function AddAppointments() {
         <div className="addAppContainer tc">
             <p className="text-center mt-5">
             {t('addAppointments.addAppointmentTitle')}: {" "}
-                <select className="dropdown" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
+                <select className="dropdown ml-3 pa2" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
                 <option selected disabled >{t('addAppointments.selectHospital')}</option>
                     {
                     hospitalsDetails.map( hospital => {
