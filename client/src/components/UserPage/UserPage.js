@@ -5,7 +5,12 @@ import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
 import { useHistory, Redirect } from 'react-router-dom'
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 export default function UserPage() {
+
+    const { t } = useTranslation();
 
     //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
@@ -105,7 +110,7 @@ export default function UserPage() {
             <div className="topBox">
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
-                    <span className="bloodType">Blood Type:</span>
+                    <span className="bloodType">{t('userProfile.bloodType')}</span>
                     <span style={{ color: 'red' }}>{userDetails.bloodType}</span></div>
             </div>
 
@@ -124,7 +129,7 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "emailData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-phone"></i></div>
@@ -137,7 +142,7 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "phoneData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-home"></i></div>
@@ -150,11 +155,11 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
-                <div className="notificationTitle ma4">Notification Prefences</div>
+                <div className="notificationTitle ma4">{t('userProfile.notificationPrefence')}</div>
                  <div className="notifications ma0">
-                <span className="notifiedText my-3">I want to get notified on:</span>
+                <span className="notifiedText my-3">{t('userProfile.notifiedOn')}</span>
                 <div className="form-check my-3">
                     <input 
                     type="checkbox" 
@@ -162,7 +167,7 @@ export default function UserPage() {
                     id="exampleCheck1" 
                     onChange={handleReload}
                     onClick={() => setVisible({ ...visible, ["emergency"]: !visible["emergency"] })} />
-                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Emergency request that I am suitable to answer</b></label>
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>{t('userProfile.emergencyThatWilling')}</b></label>
                     {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
                 </div>
                 <div className="form-check">
@@ -172,7 +177,7 @@ export default function UserPage() {
                     id="exampleCheck1" 
                     onChange={handleReload}
                     onClick={() => setVisible({ ...visible, ["casual"]: !visible["casual"] })} />
-                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Casual reminders calling me to donate</b></label>
+                    <label className="form-check-label" htmlFor="exampleCheck1"><b>{t('userProfile.casualreminder')}</b></label>
                     {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
                 </div>
             </div>
