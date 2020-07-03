@@ -15,6 +15,7 @@
     grid-area: "burger";
     height: 70px;
     width: 50px;
+    padding-top: 20px
 }
 
 .headerBody .title {
@@ -25,7 +26,7 @@
     background-color: #d5068d;
     font-size: 35px;
     padding-top: 10px;
-    color : white
+    color: white
 }
 
 .headerBody .language {
@@ -33,10 +34,10 @@
     text-align: center;
     height: 70px;
     width: 50px;
-    padding: 10px 0px 0px 0px;
+    padding: 20px 0px 0px 0px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 580px) {
     .headerBody {
         position: fixed;
         display: grid;
@@ -69,7 +70,7 @@
         text-align: center;
         height: 70px;
         width: 30px;
-        padding: 10px 0px 0px 0px;
+        padding: 20px 0px 0px 0px;
     }
 }
 
@@ -103,9 +104,9 @@
     }
     .headerBody .language {
         grid-area: "language";
-        height: 70px;
-        width: 30px;
-        padding: 15px 0px 0px 0px;
+        height: 50px;
+        width: 20px;
+        padding: 20px 0px 0px 0px;
         object-fit: contain;
     }
 }

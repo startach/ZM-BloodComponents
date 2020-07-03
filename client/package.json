@@ -7,6 +7,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
+    "bootstrap-switch-button-react": "^1.2.0",
+    "bootstrap4-toggle": "^3.6.1",
     "firebase": "^7.15.3",
     "google-auth-library": "^6.0.2",
     "history": "^5.0.0",

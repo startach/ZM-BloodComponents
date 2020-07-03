@@ -21,7 +21,6 @@ console.log(i18next.dir(languageSelected).toUpperCase());
 
 ReactDOM.render(
   <React.StrictMode>
-    
     <Suspense fallback={(<div>Loading</div>)}>
       <App />
     </Suspense>

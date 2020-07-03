@@ -29,7 +29,7 @@ const LoginForm = () => {
       //storing the logged in user's id into localStorage variable
       localStorage.setItem('userid', cred.user.uid)
       //Redirect to Dashboard after login if the user exists
-      window.location.href = '/dashboard';
+      window.location.href= '/dashboard';
     }).catch(function (error) {
       // Handle Errors here.
       var errorMessage = error.message;
