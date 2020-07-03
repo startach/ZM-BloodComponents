@@ -1,17 +1,12 @@
 .introContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid;
-    padding: 2%;
-    text-align: center;;
+    padding: 1.5%;
+    text-align: center;
 }
 
-
-#introHeader {
+#secondHeader {
     font-family: 'Montserrat';
-    font-size:20px;
-    margin-top:30px;
+    font-size: 20px;
+    margin-top: 30px;
 }
 
 #forgetText {
@@ -19,26 +14,75 @@
     justify-content: flex-start;
     align-items: center;
     font-family: 'Montserrat';
-    font-size:20px;
+    font-size: 20px;
     padding: 2%;
+    border-top: thin inset;
+    color: #ff01a2;
 }
 
 .bringList {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid;
-    padding-bottom: 20px;
 }
 
 #toBring {
     font-family: 'Montserrat';
     font-size: 20px;
     margin-bottom: 5px;
+    list-style-type: square;
 }
 
 #footer {
-
     font-family: 'Montserrat';
-    font-size: 16px;
-    text-align: center;;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff01a2;
 }
+
+.checkIcon {
+    color: #d5068d;
+    padding-top: 10px;
+}
+
+#firstHeader {
+    color: #d5068d;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.confirmButton {
+    width: 200px;
+    background-color: #ff01a2;
+    color: #fafafa;
+    height: 70px;
+    font-weight: bold;
+    border: none;
+    margin-left: 15px;
+}
+
+.bookTaxiButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.bookTaxiButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff01a2;
+    color: #fafafa;
+    font-weight: bold;
+    border: none;
+
+    
+}
+
+#backArrowVer {
+    width: 80px;
+    height: 100px;
+
+}
+

@@ -6,12 +6,15 @@ import "../components/Dashboard/dashboard.css"
 import UserPage from '../components/UserPage/UserPage'
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 
 const User = () => {
-
+    const { t } = useTranslation();
     return (
             <ScreenContainer>
-                <MenuHeader title="User Profile" icon='burger' />
+                <MenuHeader title={t('burgerMenu.profile')}  icon='burger'></MenuHeader>
                 <UserPage />
                 <BottomNavBar />
             </ScreenContainer>

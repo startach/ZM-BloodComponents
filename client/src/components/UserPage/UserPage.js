@@ -5,7 +5,12 @@ import { db, auth } from '../firebase/firebase'
 import { useHistory, Redirect } from 'react-router-dom'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 export default function UserPage() {
+
+    const { t } = useTranslation();
 
     //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
@@ -105,7 +110,7 @@ export default function UserPage() {
             <div className="topBox">
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
-                    <span className="bloodType">Blood Type:</span>
+                    <span className="bloodType">{t('userProfile.bloodType')}</span>
                     <span style={{ color: 'red' }}>{userDetails.bloodType}</span></div>
             </div>
 
@@ -125,7 +130,7 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "emailData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-phone"></i></div>
@@ -138,7 +143,7 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "phoneData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
                     <div className="icon"><i className="fas fa-home"></i></div>
@@ -151,7 +156,7 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
                 <div className="notificationTitle ma3">Notification Prefences</div>
                  <div className="notifications ma0">

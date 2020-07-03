@@ -5,7 +5,13 @@ import { Link, useHistory } from "react-router-dom";
 import { db, auth } from "../firebase/firebase";
 import { useState, useEffect, Fragment } from "react";
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const AppointmentsEntry = () => {
+
+  const { t } = useTranslation();
+
   let [appointments, setAppointments] = useState([]);
   let history = useHistory();
   var userID = localStorage.getItem("userid");
@@ -53,11 +59,11 @@ const AppointmentsEntry = () => {
               <td className="rowEntry">{appointment.time}</td>
               <td className="rowEntry">{appointment.hospitalName}</td>
             </tr>
-          )) : <div className="text-center my-4">You have no past appointments</div>}
+          )) : <div className="text-center my-4">{t('appointmentsEntry.noAppoins')} </div>}
         </tbody>
       </table>
       <Link id="link" to="/dashboard">
-        <Button text="Dashboard" />
+        <Button text={t('burgerMenu.dashboard')} />
       </Link>
     </div>
   );

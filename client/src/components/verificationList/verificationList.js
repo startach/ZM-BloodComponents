@@ -5,20 +5,21 @@ import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
+import { MDBIcon, MDBBtn } from "mdbreact";
 
 const VerificationList = () => {
+    const backArrow = "/img/back-button-white.svg"
     return (
         <div>
             <div className="introContainer">
 
-                <p id="introHeader">Thanks, we're expecting you at <b>{localStorage.getItem('appointmentTime')} </b> on the <b>{localStorage.getItem('appointmentDate')}</b> at <b> {localStorage.getItem('hospital')} Hospital</b> </p>
+                <MDBIcon icon="check-circle" className="checkIcon" size="4x" />
+
+                <p id="firstHeader">You have been registered successfully ! </p>
+
+                <p id="secondHeader">Thanks, we're expecting you at <b>{localStorage.getItem('appointmentTime')} </b> on the <b>{localStorage.getItem('appointmentDate')}</b> at <b> {localStorage.getItem('hospital')} Hospital</b> </p>
             </div>
 
-            <div className="my-4">
-                <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-                    {close => <BookTaxi close={close} />}
-                </Popup>
-            </div>
 
 
             <h2 id="forgetText" ><b>Don't Forget to</b></h2>
@@ -32,14 +33,28 @@ const VerificationList = () => {
 
                 <li id="toBring">Drink some water</li>
 
+
             </ul>
 
-            <p id="footer">Have a nice day & thank you for donating</p>
-
-
             <Link id="link" to="/dashboard">
-                <Button text="Dashboard" />
+                <button className="confirmButton">Confirm</button>
             </Link>
+
+            <p id="footer">Need a ride for your visit to the hospital ?</p>
+
+            <div className="my-4">
+                <Popup className="popup1" trigger={<div className="bookTaxiButtonContainer">
+                    <button className="bookTaxiButton">
+                    <img src={backArrow} id="backArrowVer" />
+                    <span id="BookTaxiSpan">Order a ride now </span>
+                    </button>
+                    
+                </div>} modal position="left top" closeOnDocumentClick>
+                    {close => <BookTaxi close={close} />}
+                </Popup>
+            </div>
+
+
 
 
         </div>
