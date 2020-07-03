@@ -162,8 +162,7 @@ export default function UserPage() {
                     onstyle='danger'
                     offlabel='Show'
                     offstyle='success'
-                    style="border"
-                    width={70}
+                    width={75}
                     onChange={() => {
                         setVisible({ ...visible, ["emergency"]: !visible["emergency"] })
                         handleReload()
@@ -176,8 +175,7 @@ export default function UserPage() {
                     onstyle='danger'
                     offlabel='Show'
                     offstyle='success'
-                    style="border"
-                    width={70}
+                    width={75}
                     onChange={() => {
                         setVisible({ ...visible, ["casual"]: !visible["casual"] })
                         handleReload()
