@@ -4,7 +4,7 @@ import Button from '../button'
 import { useHistory, Link } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import { SignInWithGoogle } from '../../actions/googleAuth';
-import GoogleButton from 'react-google-button'
+import GoogleButton from 'react-google-button';
 
 ///////
 import { useTranslation } from 'react-i18next';
