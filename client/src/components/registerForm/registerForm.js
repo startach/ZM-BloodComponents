@@ -4,6 +4,7 @@ import Button from '../button'
 import { useHistory } from 'react-router-dom'
 import { db, auth } from '../firebase/firebase'
 import DatePicker from 'react-date-picker'
+import Popup from "reactjs-popup";
 
 
 const RegisterForm = () => {
@@ -11,6 +12,7 @@ const RegisterForm = () => {
   const [error, setError] = useState('')
   const [passwordError, setPasswordError] = useState(false)
   const [checkError, setCheckError] = useState(false)
+  const [popUp, setPop] = useState(false)
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -22,6 +24,8 @@ const RegisterForm = () => {
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([])
+  let [flag, setFlag] = useState(false)
+
 
   //Prevent the user which is logged in to enter register again
 
@@ -48,8 +52,11 @@ const RegisterForm = () => {
   //Handle Submit of register fields
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
-    //check password and confirm password
+
+
+
 
     if (userInputs.password != userInputs.confirmPassword) {
 
@@ -60,7 +67,15 @@ const RegisterForm = () => {
       // if password and confirm password are matching
     } else {
 
+
       //update state
+      if (Object.entries(notifications).length < 1)
+      //check password and confirm password
+      {
+        console.log(Object.entries(notifications).length)
+        setPop(true)
+      }
+
       setuserInputs(userInputs)
 
       //Insert user into firestore
@@ -142,6 +157,7 @@ const RegisterForm = () => {
         <img src={logo} id="register-logo" />
       </div>
 
+
       <div className="registerHeader">
         <b id="header1"> Signup</b>
         <b id="header2"> Become A Donor</b>
@@ -151,6 +167,7 @@ const RegisterForm = () => {
         <div className="nameSignupContainer">
           <label> * Full Name
             <input
+              className="registerName"
               id="name"
               onChange={handleChange}
               type="text"
@@ -164,6 +181,7 @@ const RegisterForm = () => {
         <div className="emailSignupContainer">
           <label> * Email
             <input
+              className="registerEmail"
               id="email"
               onChange={handleChange}
               type="email"
@@ -180,6 +198,7 @@ const RegisterForm = () => {
           <label> * Password
 
           <input
+              className="registerPassword"
               id="password"
               onChange={handleChange}
               type="password"
@@ -197,6 +216,7 @@ const RegisterForm = () => {
           <label> * Confirm Password
 
           <input
+              className="registerConfirmPassword"
               id="confirmPassword"
               onChange={handleChange}
               type="password"
@@ -229,7 +249,7 @@ const RegisterForm = () => {
 
         <div className="genderContainer">
           <label> * Gender
-          <select id="genderType" onChange={handleChange} required>
+          <select id="genderType" className="registerGenderType" onChange={handleChange} required>
 
               <option value="Select" disabled selected>Select</option>
               <option value="Male">Male</option>
@@ -244,6 +264,7 @@ const RegisterForm = () => {
         <div className="phoneSignupContainer">
           <label> * Contact Number
             <input
+              className="registerPhone"
               id="phone"
               onChange={handleChange}
               type="phone"
@@ -258,6 +279,7 @@ const RegisterForm = () => {
           <label> * City
 
           <input
+              className="registerCity"
               id="city"
               onChange={handleChange}
               type="text"
@@ -274,6 +296,7 @@ const RegisterForm = () => {
           <label> * Address
 
           <input
+              className="registerAddress"
               id="address"
               onChange={handleChange}
               type="text"
@@ -290,6 +313,7 @@ const RegisterForm = () => {
           <label> Secondary Address
 
           <input
+              className="registerSecondaryAddress"
               id="secondaryAddress"
               onChange={handleChange}
               type="text"
@@ -301,7 +325,7 @@ const RegisterForm = () => {
 
         <div className="bloodTypesContainer">
           <label> Blood Type
-          <select id="bloodType" onChange={handleChange} required>
+          <select id="bloodType" className="registerBloodType" onChange={handleChange} required>
               <option value="N/A" selected disabled>N/A</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -327,6 +351,7 @@ const RegisterForm = () => {
           <label> Organization
 
           <input
+              className="registerOrganization"
               id="organization"
               onChange={handleChange}
               type="text"
@@ -433,7 +458,73 @@ const RegisterForm = () => {
 
         }
         <div className="mb-4">
-          <Button type="submit" text="Signup" color='#C71585' marginTop='14px'></Button>
+          {popUp ? (
+            <Fragment>
+              <Popup className="popup2" trigger={<div className="signUpButtonContainer">
+                <button className="signUpButton" type="button" >Signup</button>
+              </div>
+              }
+                modal position="left top" closeOnDocumentClick
+                contentStyle={{ width: "20px" }}
+              >
+                {close => (
+                  <div className="container">
+                    <a className="close" onClick={close}>
+                      X
+                                </a>
+
+
+                    <div className="content">
+
+                      contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?
+                                     </div>
+
+                    <div className="actions">
+
+                      <button
+                        type="button"
+                        className="yesButton"
+                        onClick={(e) => {
+                          handleSubmit(e);
+
+                          close();
+                        }}>
+                        Yes
+                                        </button>
+
+                      <button
+                        className="noButton"
+                        onClick={() => {
+                          close();
+                        }}>
+                        No
+                                        </button>
+
+                    </div>
+
+
+
+                  </div>
+                )}
+
+              </Popup>
+            </Fragment>
+
+          ) : (
+
+              <Fragment>
+
+                <div className="signUpButtonContainer">
+                  <button className="signUpButton" type="submit" >Signup</button>
+                </div>
+              </Fragment>
+
+
+
+
+            )}
+
+
         </div>
 
 

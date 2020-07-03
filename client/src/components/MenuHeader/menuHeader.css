@@ -7,7 +7,6 @@
     width: 100%;
     height: 70px;
     background: #d5068d;
-    color: 'BLACK';
     top: 0;
     z-index: 99;
 }
@@ -16,6 +15,7 @@
     grid-area: "burger";
     height: 70px;
     width: 50px;
+    padding-top: 20px
 }
 
 .headerBody .title {
@@ -25,7 +25,8 @@
     white-space: nowrap;
     background-color: #d5068d;
     font-size: 35px;
-    padding-top: 10px
+    padding-top: 10px;
+    color: white
 }
 
 .headerBody .language {
@@ -33,7 +34,7 @@
     text-align: center;
     height: 70px;
     width: 50px;
-    padding: 10px 0px 0px 0px;
+    padding: 20px 0px 0px 0px;
 }
 
 @media only screen and (max-width: 580px) {
@@ -62,14 +63,14 @@
         white-space: nowrap;
         background: #d5068d;
         font-size: 20px;
-        padding-top: 15px;
+        padding-top: 20px;
     }
     .headerBody .language {
         grid-area: "language";
         text-align: center;
         height: 70px;
         width: 30px;
-        padding: 10px 0px 0px 0px;
+        padding: 20px 0px 0px 0px;
     }
 }
 
@@ -81,7 +82,7 @@
         grid-template-rows: 100%;
         grid-template-areas: "burger title language";
         width: 100%;
-        height: 70px;
+        height: 80px;
         background: #d5068d;
         color: 'BLACK';
         top: 0
@@ -99,13 +100,13 @@
         white-space: normal;
         background: #d5068d;
         font-size: 20px;
-        padding-top: 10px;
+        padding-top: 20px;
     }
     .headerBody .language {
         grid-area: "language";
         height: 50px;
         width: 20px;
-        padding: 10px 0px 0px 0px;
+        padding: 20px 0px 0px 0px;
         object-fit: contain;
     }
 }

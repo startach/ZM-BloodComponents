@@ -7,6 +7,7 @@ import { SignInWithGoogle } from '../../actions/googleAuth';
 import GoogleButton from 'react-google-button'
 
 const LoginForm = () => {
+  const backArrow = "/img/back-button-white.svg"
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
@@ -42,6 +43,7 @@ const LoginForm = () => {
     <div className="loginPage">
       <div className="imgContainer">
         <img src={logo} id="login-logo" />
+
       </div>
       <div className="loginHeader">
         <b id="header1"> Blood Components</b>
@@ -49,31 +51,34 @@ const LoginForm = () => {
       </div>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="emailContainer">
-          <label> Email
-            <input
-              id="email"
-              onChange={handleChange}
-              type="email"
-              name="email"
-              required
-            ></input>
-          </label>
+          <input
+            className="emailLogin"
+            id="email"
+            onChange={handleChange}
+            type="email"
+            name="email"
+            placeholder="email"
+            required
+          ></input>
 
         </div>
         <div className="passwordContainer">
-          <label> Password
           <input
-              id="password"
-              onChange={handleChange}
-              type="password"
-              name="password"
-              required
-            ></input>
-          </label>
+            className="passwordLogin"
+            id="password"
+            onChange={handleChange}
+            type="password"
+            name="password"
+            placeholder="password"
+            required
+          ></input>
         </div>
         <h2 className={"login_error"}>{error}</h2>
 
-        <Button type="submit" text="Login" color='#C71585'></Button>
+        <div className="loginButtonContainer">
+
+          <button className="loginButton" type="submit" >Login</button>
+        </div>
       </form>
       <div className="registerFooter">
         {/* google log in button 
@@ -92,11 +97,12 @@ const LoginForm = () => {
           <p id="footertext">Not signed up as donor yet?</p>
 
 
-          <Link to='/register' style={{ textDecoration: 'none' }}>
-
-
-            <Button type="button" text="Come Save Lives"></Button>
-          </Link>
+            <Link to='/register' style={{ textDecoration: 'none' }}>
+          <div className="comeSaveLivesButton">
+            <img src={backArrow} id ="backArrowLogin"/>
+            <span id ="comeSaveLivesSpan">Come Save Lives</span>
+          </div>
+            </Link>
         </div>
       </div>
     </div>

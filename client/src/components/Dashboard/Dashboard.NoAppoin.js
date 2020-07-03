@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
 function DashboardNoAppoin() {
+  const [show, setShow] = useState(false);
 
   const history = useHistory();
 
@@ -30,7 +31,6 @@ function DashboardNoAppoin() {
     localStorage.setItem('appointmentId', (appointmentID));
   }
 
-
   function deleteAppointment(e) {
     console.log(e.target.id)
     var appId = e.target.id;
@@ -50,15 +50,18 @@ function DashboardNoAppoin() {
 
 
   //FIXME:
-  const checkRideBooked = () => {
+  const checkRideBooked = (userid) => {
 
     //get bookings where userID matches.
+    console.log(userid)
 
-    db.collection('taxiBookings').get().then((bookings) => {
+    db.collection('taxiBookings').where('user', '==', userid).get().then((bookings) => {
       const bookingsMap = bookings.docs.map(bookingDetails => {
         return bookingDetails.data()
       })
-      setBookingData(bookingsMap)
+      setBookingData(bookingsMap[0])
+      console.log("booking", bookingsMap[0])
+
     })
   }
 
@@ -120,7 +123,6 @@ function DashboardNoAppoin() {
           //if non exist
           if (snapShot.empty) {
 
-
             //change state to false - show no appointment screen
             setCheckUserAppointments(false);
             console.log("User doesn't have any Appointment")
@@ -130,7 +132,6 @@ function DashboardNoAppoin() {
 
           } // if user has appointments
           else {
-
 
             const appointmentsDetails = []
             let count = 0
@@ -164,7 +165,7 @@ function DashboardNoAppoin() {
 
             } else {
               setCheckUserAppointments(true);
-              checkRideBooked()
+              checkRideBooked(user.uid)
             }
           }
         })
@@ -201,10 +202,56 @@ function DashboardNoAppoin() {
                 <td className='rowClass'>{appointment.time}</td>
                 <td className='rowClass'>{appointment.hospitalName}</td>
                 <div className='btnContainer'>
-                  <button onClick={deleteAppointment} id={appointment.id} className="cancelButton">Cancel</button>
-                </div>
-              </tr>))}
+                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton">Cancel</button>
+                  }
+                    modal position="left top" closeOnDocumentClick
+                    contentStyle={{ width: "20px" }}
+                  >
+                    {close => (
+                      <div className="container">
+                        <a className="close" onClick={close}>
+                          X
+                                </a>
 
+
+                        <div className="content">
+
+                          Are you sure that you want to delete the appointment ?
+
+                                     </div>
+
+                        <div className="actions">
+
+                          <button
+                            id={appointment.id}
+                            className="yesButton"
+                            onClick={(e) => {
+                              deleteAppointment(e)
+                              close();
+                            }}>
+                            Yes
+                                        </button>
+
+                          <button
+                            className="noButton"
+                            onClick={() => {
+                              close();
+                            }}>
+                            No
+                                        </button>
+
+                        </div>
+
+
+
+                      </div>
+                    )}
+
+                  </Popup>
+                </div>
+
+              </tr>
+            ))}
 
 
           </table>
@@ -213,8 +260,8 @@ function DashboardNoAppoin() {
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text="Get Directions" width="150px">
               </Button></a>
-              <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} />}
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} bookingData={bookingData} />}
             </Popup>
           </div>
 
@@ -289,7 +336,7 @@ function DashboardNoAppoin() {
         )
       }
 
-    </div>
+    </div >
   );
 }
 

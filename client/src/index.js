@@ -4,8 +4,6 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { firebase } from './components/firebase/firebase'
-import {Redirect, useHistory} from 'react-router-dom'
 
 
 ReactDOM.render(

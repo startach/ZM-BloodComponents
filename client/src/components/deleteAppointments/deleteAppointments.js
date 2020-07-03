@@ -127,8 +127,6 @@ function DeleteAppointments() {
                         return appointmentsDetails
                     })
                     setSelectedInputs(hospitalApp)
-                    setEditable(hospitalApp)
-
 
                 })
 
@@ -142,7 +140,6 @@ function DeleteAppointments() {
                         return appointmentsDetails
                     })
                     setSelectedInputs(hospitalApp)
-                    setEditable(hospitalApp)
 
                 })
 

@@ -9,7 +9,6 @@ let styles = {
         alignItems: "center",
         backgroundColor: '#d5068d',
         color: 'black',
-        // borderBottom: '1px solid black',
         height: '60px',
     }
 }
@@ -26,8 +25,7 @@ const Menu_header = (props) => {
             </div>
 
             <div className="language">
-                <MDBIcon icon="bolt" className="ml-2 white bg-green pa2" size="2x"/>
-                {/* <LanguageSwitch caption='' /> */}
+                <LanguageSwitch />
             </div>
         </div>
     );
