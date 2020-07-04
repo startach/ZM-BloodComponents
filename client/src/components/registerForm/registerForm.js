@@ -27,6 +27,7 @@ const RegisterForm = () => {
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([]);
   let [flag, setFlag] = useState(false);
+  const [passValid, setPassValid] = useState();
 
   const { t } = useTranslation();
 
@@ -38,7 +39,9 @@ const RegisterForm = () => {
 
   const handleChange = (e) => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
+    
   };
+
 
   //Handle change of notifications checkboxes
 
@@ -126,6 +129,9 @@ const RegisterForm = () => {
     setDate(e);
   };
 
+  const titleObj =
+    "Password must contain at least 6 characters, 1 upper case and 1 digit";
+
   return (
     <Fragment>
       <LanguageSwitch />
@@ -134,15 +140,15 @@ const RegisterForm = () => {
       </div>
 
       <div className="registerHeader">
-        <b id="header1">{t('registerForm.signUp')}</b>
-        <b id="header2">{t('registerForm.becomeDonor')}</b>
+        <b id="header1">{t("registerForm.signUp")}</b>
+        <b id="header2">{t("registerForm.becomeDonor")}</b>
       </div>
 
       <form class="register-form" onSubmit={handleSubmit}>
         <div className="nameSignupContainer">
           <label>
             {" "}
-            * {t('registerForm.fullName')}
+            * {t("registerForm.fullName")}
             <input
               className="registerName"
               id="name"
@@ -156,7 +162,7 @@ const RegisterForm = () => {
         <div className="emailSignupContainer">
           <label>
             {" "}
-            * {t('registerForm.email')}
+            * {t("registerForm.email")}
             <input
               className="registerEmail"
               id="email"
@@ -166,45 +172,55 @@ const RegisterForm = () => {
               required></input>
           </label>
         </div>
+        <div className="passwordsContainer">
+          <div className="passwordSignupContainer">
+            <label>
+              <img title={titleObj} className="passInfo infoIcon" /> *{" "}
+              {t("registerForm.password")}
+              <input
+                className="registerPassword"
+                id="password"
+                onChange={handleChange}
+                type="password"
+                name="password"
+                style={
+                  passwordError
+                    ? { border: "1px solid red" }
+                    : { border: "none" }
+                }
+                required></input>
+            </label>
+          </div>
 
-        <div className="passwordSignupContainer">
-          <label>
-            {" "}
-            * {t('registerForm.password')}
-            <input
-              className="registerPassword"
-              id="password"
-              onChange={handleChange}
-              type="password"
-              name="password"
-              style={
-                passwordError ? { border: "1px solid red" } : { border: "none" }
-              }
-              required></input>
-          </label>
+          <div className="confirmPasswordSignupContainer">
+            <label>
+              {" "}
+              * {t("registerForm.confirmPassword")}
+              <input
+                className="registerConfirmPassword"
+                id="confirmPassword"
+                onChange={handleChange}
+                type="password"
+                name="confirmPassword"
+                required
+                style={
+                  passwordError
+                    ? { border: "1px solid red" }
+                    : { border: "none" }
+                }></input>
+            </label>
+          </div>
+          <span
+            className="hiddenError"
+            id="hiddenError"
+            style={{ color: "red", textAlign: "center" }}>
+            Passwords do not match
+          </span>
         </div>
-
-        <div className="confirmPasswordSignupContainer">
-          <label>
-            {" "}
-            * {t('registerForm.confirmPassword')}
-            <input
-              className="registerConfirmPassword"
-              id="confirmPassword"
-              onChange={handleChange}
-              type="password"
-              name="confirmPassword"
-              required
-              style={
-                passwordError ? { border: "1px solid red" } : { border: "none" }
-              }></input>
-          </label>
-        </div>
-
         <div className="birthDateContainer">
           <label id="labelBirth">
             {" "}
-            * {t('registerForm.birthDate')}
+            * {t("registerForm.birthDate")}
             <br></br>
             <DatePicker
               className="birthDate"
@@ -219,17 +235,17 @@ const RegisterForm = () => {
         <div className="genderContainer">
           <label>
             {" "}
-            * {t('registerForm.gender')}
+            * {t("registerForm.gender")}
             <select
               id="genderType"
               className="registerGenderType"
               onChange={handleChange}
               required>
               <option value="Select" disabled selected>
-              {t('general.select')} 
+                {t("general.select")}
               </option>
-              <option value="Male">{t('registerForm.male')}</option>
-              <option value="Female">{t('registerForm.female')}</option>
+              <option value="Male">{t("registerForm.male")}</option>
+              <option value="Female">{t("registerForm.female")}</option>
             </select>
           </label>
         </div>
@@ -237,7 +253,7 @@ const RegisterForm = () => {
         <div className="phoneSignupContainer">
           <label>
             {" "}
-            * {t('registerForm.contactNumber')}
+            * {t("registerForm.contactNumber")}
             <input
               className="registerPhone"
               id="phone"
@@ -250,7 +266,7 @@ const RegisterForm = () => {
         <div className="citySignupContainer">
           <label>
             {" "}
-            * {t('registerForm.city')}
+            * {t("registerForm.city")}
             <input
               className="registerCity"
               id="city"
@@ -264,7 +280,7 @@ const RegisterForm = () => {
         <div className="addressSignupContainer">
           <label>
             {" "}
-            * {t('registerForm.address')}
+            * {t("registerForm.address")}
             <input
               className="registerAddress"
               id="address"
@@ -278,7 +294,7 @@ const RegisterForm = () => {
         <div className="secondaryAddressSignupContainer">
           <label>
             {" "}
-            {t('registerForm.secondaryAddress')}
+            {t("registerForm.secondaryAddress")}
             <input
               className="registerSecondaryAddress"
               id="secondaryAddress"
@@ -291,7 +307,7 @@ const RegisterForm = () => {
         <div className="bloodTypesContainer">
           <label>
             {" "}
-            {t('registerForm.bloodType')}
+            {t("registerForm.bloodType")}
             <select
               id="bloodType"
               className="registerBloodType"
@@ -312,13 +328,13 @@ const RegisterForm = () => {
           </label>
         </div>
         <div className="madaLabelContainer">
-          <label>{t('registerForm.callMadaPhrase')}</label>
+          <label>{t("registerForm.callMadaPhrase")}</label>
         </div>
 
         <div className="organizationContainer">
           <label>
             {" "}
-            {t('registerForm.organization')}
+            {t("registerForm.organization")}
             <input
               className="registerOrganization"
               id="organization"
@@ -328,10 +344,12 @@ const RegisterForm = () => {
           </label>
         </div>
 
-        <div className="notificationsTitle">{t(t('userProfile.notificationPrefence'))}</div>
+        <div className="notificationsTitle">
+          {t(t("userProfile.notificationPrefence"))}
+        </div>
         <span id="notificationsSpan">
           {" "}
-          {t('notificationOptions.contactPreferencesPhrase')} :{" "}
+          {t("notificationOptions.contactPreferencesPhrase")} :{" "}
         </span>
         <ul className="optionsContainer ">
           <li>
@@ -343,7 +361,7 @@ const RegisterForm = () => {
               onChange={(e) => handleCheckbox(e, isChecked.SMS)}
               checked={isChecked.SMS}
             />
-            <label for="SMS"> {t('notificationOptions.SMS')} </label>
+            <label for="SMS"> {t("notificationOptions.SMS")} </label>
           </li>
 
           <li>
@@ -355,7 +373,7 @@ const RegisterForm = () => {
               onChange={(e) => handleCheckbox(e, isChecked.Whatsapp)}
               checked={isChecked.Whatsapp}
             />
-            <label for="Whatsapp"> {t('notificationOptions.Whatsapp')} </label>
+            <label for="Whatsapp"> {t("notificationOptions.Whatsapp")} </label>
           </li>
 
           <li>
@@ -367,7 +385,10 @@ const RegisterForm = () => {
               onChange={(e) => handleCheckbox(e, isChecked.Phonecall)}
               checked={isChecked.Phonecall}
             />
-            <label for="Phonecall"> {t('notificationOptions.Phonecall')} </label>
+            <label for="Phonecall">
+              {" "}
+              {t("notificationOptions.Phonecall")}{" "}
+            </label>
           </li>
 
           <li>
@@ -378,7 +399,7 @@ const RegisterForm = () => {
               onChange={(e) => handleCheckbox(e, isChecked.Email)}
               checked={isChecked.Email}
             />
-            <label for="Email"> {t('notificationOptions.Email')} </label>
+            <label for="Email"> {t("notificationOptions.Email")} </label>
           </li>
 
           <li>
@@ -390,7 +411,7 @@ const RegisterForm = () => {
               onChange={(e) => handleCheckbox(e, isChecked.inAppAlert)}
               checked={isChecked.inAppAlert}
             />
-            <label for="Email"> {t('notificationOptions.inAppAlert')} </label>
+            <label for="Email"> {t("notificationOptions.inAppAlert")} </label>
           </li>
         </ul>
 
@@ -425,7 +446,8 @@ const RegisterForm = () => {
                       X
                     </a>
 
-                    <div className="content">{t('registerForm.contactingPhrase')}
+                    <div className="content">
+                      {t("registerForm.contactingPhrase")}
                     </div>
 
                     <div className="actions">
@@ -437,7 +459,7 @@ const RegisterForm = () => {
 
                           close();
                         }}>
-                        {t('general.Yes')}
+                        {t("general.Yes")}
                       </button>
 
                       <button
@@ -445,7 +467,7 @@ const RegisterForm = () => {
                         onClick={() => {
                           close();
                         }}>
-                        {t('general.No')}
+                        {t("general.No")}
                       </button>
                     </div>
                   </div>
@@ -454,11 +476,19 @@ const RegisterForm = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <div className="signUpButtonContainer">
-                <button className="signUpButton" type="submit">
-                  {t('registerForm.signUp')}
-                </button>
-              </div>
+              {passValid ? (
+                <div className="signUpButtonContainer">
+                  <button className="signUpButton" type="submit">
+                    {t("registerForm.signUp")}
+                  </button>
+                </div>
+              ) : (
+                <div className="signUpButtonContainer">
+                  <button disabled className="signUpButton" type="submit">
+                    {t("registerForm.signUp")}
+                  </button>
+                </div>
+              )}
             </Fragment>
           )}
         </div>
