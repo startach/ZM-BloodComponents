@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 
 const fallbackLng = ['en'];
 const availableLanguages = ['en', 'ara', 'heb'];
+const selectedLanguage = localStorage.getItem('i18nextLng')
 
 
 const options = {
@@ -42,7 +43,7 @@ const options = {
       debug: true,
       whitelist: availableLanguages,
       detection: options,
-  
+      lng:`${selectedLanguage}`,
       interpolation: {
         escapeValue: false
       },
