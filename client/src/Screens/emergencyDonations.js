@@ -14,6 +14,7 @@ function Login() {
                 <MenuHeader title= {t('burgerMenu.emergencyDonation')}  icon='burger'></MenuHeader>
                 <EmergencyDonations />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
     )
 }

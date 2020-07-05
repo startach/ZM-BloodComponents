@@ -14,6 +14,7 @@ const AdminPage = () => {
                 <MenuHeader title="Admin Controls" icon='burger'/>
                 <Admin />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
     )
 }

@@ -10,14 +10,15 @@ import i18next from 'i18next';
 
 
 const Dashboard = () => {
-     const { t } = useTranslation();
+    const { t } = useTranslation();
     return (
-            <ScreenContainer>
-                <MenuHeader title={t('burgerMenu.dashboard')} icon='burger'></MenuHeader>
-                <MainDashboard> </MainDashboard>
-                <BottomNavBar />
-            </ScreenContainer>
-           
+        <ScreenContainer>
+            <MenuHeader title={t('burgerMenu.dashboard')} icon='burger'></MenuHeader>
+            <MainDashboard> </MainDashboard>
+            <BottomNavBar />
+            <div className="footer"></div>
+        </ScreenContainer>
+
 
     )
 }

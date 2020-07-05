@@ -14,6 +14,7 @@ function DeleteAppointments () {
                 <MenuHeader title={t('burgerMenu.editAppointments')} icon='burger'></MenuHeader>
                 <DeleteElements />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
     )
 }

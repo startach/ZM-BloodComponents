@@ -17,6 +17,7 @@ const User = () => {
                 <MenuHeader title={t('burgerMenu.profile')}  icon='burger'></MenuHeader>
                 <UserPage />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
     )
 }

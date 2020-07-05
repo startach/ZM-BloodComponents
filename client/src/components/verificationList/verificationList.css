@@ -42,7 +42,7 @@
 
 .checkIcon {
     color: #d5068d;
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 #firstHeader {
@@ -55,16 +55,19 @@
     width: 200px;
     background-color: #ff01a2;
     color: #fafafa;
-    height: 70px;
+    height: 40px;
     font-weight: bold;
     border: none;
     margin-left: 15px;
+    margin-bottom: 10px;
+    box-shadow: 5px 10px 18px #888888;
 }
 
 .bookTaxiButtonContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 10px;
    
 }
 
@@ -76,6 +79,7 @@
     color: #fafafa;
     font-weight: bold;
     border: none;
+    box-shadow: 5px 10px 18px #888888;
 
     
 }

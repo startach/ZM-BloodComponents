@@ -19,9 +19,9 @@ const AddAppointment = () => {
                 <MenuHeader title={t('burgerMenu.addAppointment')} icon='burger'></MenuHeader>
                 <AddAppointments />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
             
-       
     )
 }
 

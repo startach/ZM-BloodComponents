@@ -14,11 +14,11 @@ const PreviousAppointments = () => {
     return (
 
             <ScreenContainer>
-                <div className="header"></div>
                 <MenuHeader icon="burger" title={t('burgerMenu.previousAppointments')} />
                 <AppointmentsList />
                 <AppointmentsEntry />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
 
     )
