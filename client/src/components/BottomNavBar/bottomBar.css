@@ -4,7 +4,7 @@
     background-color: #fafafa;
     width: 100vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 80px;
     margin-bottom: 0px;
     border-top: solid black 2px;
