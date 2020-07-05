@@ -47,6 +47,8 @@ export default function UserPage() {
         addressData: false,
     })
 
+    let languageSelected = localStorage.getItem('i18nextLng');
+
 
     //set up refs for data field nodes (to link with the buttons below)
     const emailNode = useRef(null)
@@ -170,7 +172,7 @@ export default function UserPage() {
                         onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
                 <div className="notificationTitle ma3">{t('userProfile.notificationPrefence')}</div>
-                <div className="notifications ma0">
+                <div id={languageSelected==='en'?'ltrNotificationContainer':'rtlNotificationContainer'} className="notifications ma0">
                     <span className="notifiedText ma2">{t('userProfile.notifiedOn')}:</span>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
