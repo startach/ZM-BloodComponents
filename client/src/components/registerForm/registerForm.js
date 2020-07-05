@@ -176,7 +176,7 @@ const RegisterForm = () => {
         <b id="header2">{t("registerForm.becomeDonor")}</b>
       </div>
 
-      <form class="register-form" onSubmit={handleSubmit}>
+      <form className={localStorage.getItem('i18nextLng') === 'en' ? 'ltrFormClass' : 'rtlFormClass'} onSubmit={handleSubmit}>
         <div className="nameSignupContainer">
           <label>
             {" "}

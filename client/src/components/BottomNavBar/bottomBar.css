@@ -4,10 +4,9 @@
     background-color: #fafafa;
     width: 100vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     height: 70px;
-    margin-bottom: 0px;
 }
 
 

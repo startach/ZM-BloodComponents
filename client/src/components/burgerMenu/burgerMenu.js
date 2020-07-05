@@ -96,7 +96,7 @@ const BurgerMenu = () => {
       fontFamily: 'Montserrat',
       outline: 'none',
       textDecoration: 'none',
-      textAlign: 'left',
+      textAlign: languageSelected==='en'?'left':'right',
 
     },
 
@@ -105,7 +105,8 @@ const BurgerMenu = () => {
       position: 'fixed',
       width: '30px',
       height: '30px',
-      left: '12px',
+      left: languageSelected==='en'?'12px':'none',
+      right: languageSelected!=='en'?'12px':'none',
       top: '12px',
     }
   }
