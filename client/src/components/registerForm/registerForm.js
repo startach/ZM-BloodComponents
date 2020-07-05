@@ -93,16 +93,11 @@ const RegisterForm = () => {
      //Check if the user did not choose any type of notifications
 
     } else if (Object.entries(notifications).length === 0) {
-      setNotificationsPopUp(true);
-
-
+      setNotificationsPopUp(false);
 
     } else {
 
-     
-
-
-
+      setNotificationsPopUp(true);
       //update state
       setuserInputs(userInputs);
 
@@ -480,55 +475,7 @@ const RegisterForm = () => {
 
         <div className="mb-4">
           {notificationsPopUp ? (
-            <Fragment>
-              <Popup
-                className="popup2"
-                trigger={
-                  <div className="signUpButtonContainer">
-                    <button className="signUpButton" type="button">
-                      {t("registerForm.signUp")}
-                    </button>
-                  </div>
-                }
-                modal
-                position="left top"
-                closeOnDocumentClick
-                contentStyle={{ width: "20px" }}>
-                {(close) => (
-                  <div className="container">
-                    <a className="close" onClick={close}>
-                      X
-                    </a>
-
-                    <div className="content">
-                      {t("registerForm.contactingPhrase")}
-                    </div>
-
-                    <div className="actions">
-                      <button
-                        type="button"
-                        className="yesButton"
-                        onClick={(e) => {
-                          handleSubmit(e);
-                          close();
-                        }}>
-                        {t("general.Yes")}
-                      </button>
-
-                      <button
-
-                        className="noButton"
-                        onClick={() => {
-                          close();
-                        }}>
-                        {t("general.No")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </Popup>
-            </Fragment>
-          ) : (
+           
               <Fragment>
                 <div className="signUpButtonContainer">
                   <button className="signUpButton" type="submit">
@@ -536,6 +483,56 @@ const RegisterForm = () => {
                   </button>
                 </div>
               </Fragment>
+          ) : (
+
+            <Fragment>
+            <Popup
+              className="popup2"
+              trigger={
+                <div className="signUpButtonContainer">
+                  <button className="signUpButton" type="button">
+                    {t("registerForm.signUp")}
+                  </button>
+                </div>
+              }
+              modal
+              position="left top"
+              closeOnDocumentClick
+              contentStyle={{ width: "20px" }}>
+              {(close) => (
+                <div className="container">
+                  <a className="close" onClick={close}>
+                    X
+                  </a>
+
+                  <div className="content">
+                    {t("registerForm.contactingPhrase")}
+                  </div>
+
+                  <div className="actions">
+                    <button
+                      type="button"
+                      className="yesButton"
+                      onClick={(e) => {
+                        handleSubmit(e);
+                        close();
+                      }}>
+                      {t("general.Yes")}
+                    </button>
+
+                    <button
+
+                      className="noButton"
+                      onClick={() => {
+                        close();
+                      }}>
+                      {t("general.No")}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Popup>
+          </Fragment>
             )}
         </div>
       </form>

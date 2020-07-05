@@ -31,7 +31,6 @@ function App() {
   
   let languageSelected = localStorage.getItem('i18nextLng');
 
-  
   return (
    
     <Router>
