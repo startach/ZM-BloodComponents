@@ -15,7 +15,9 @@ const BurgerMenu = () => {
   const { t } = useTranslation();
 
   const [accessLevel, setAccessLevel] = useState("loading");
-
+ 
+  //setAccessLevel(localStorage.getItem('userLevel'))
+ //comment line 21-33 and uncomment line 19
   useEffect(() => {
     //FIXME: localstorage for userid can be initialized here instead of at signin and register
     auth.onAuthStateChanged(function (user) {
@@ -29,6 +31,7 @@ const BurgerMenu = () => {
       }
     });
  }, [accessLevel])
+ 
 
   const handleLogout = () => {
     // remove localstored userid
