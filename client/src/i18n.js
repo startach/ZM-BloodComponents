@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 
 const fallbackLng = ['en'];
 const availableLanguages = ['en', 'ara', 'heb'];
+const selectedLanguage = localStorage.getItem('i18nextLng')
 
 
 const options = {
@@ -37,11 +38,12 @@ const options = {
     .use(initReactI18next) // pass the i18n instance to react-i18next.
   
     .init({
-      fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
+      fallbackLng,
+       // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
       debug: true,
       whitelist: availableLanguages,
       detection: options,
-  
+      lng:`${selectedLanguage}`,
       interpolation: {
         escapeValue: false
       },

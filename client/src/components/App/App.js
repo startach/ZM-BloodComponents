@@ -30,6 +30,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userid'))
 
 
+  let languageSelected = localStorage.getItem('i18nextLng');
 
   return (
    
@@ -48,8 +49,8 @@ function App() {
         <AdminRoute path='/admin' component={Admin} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
 
         <PublicRoute path='/not-found' component={NotFound} />
-        <PublicRoute path='/login' component={Login} />
-        <PublicRoute path='/register' component={Register} /> 
+        <PublicRoute path='/login' languageSelected={languageSelected} component={Login} />
+        <PublicRoute path='/register' languageSelected={languageSelected} component={Register} /> 
 
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />

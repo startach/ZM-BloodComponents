@@ -26,7 +26,7 @@ export default function UserPage() {
     useEffect(() => {
         //if user has no id (is not logged in) then forward to log in screen
         if (!localStorage.getItem('userid'))
-        history.push('/login')
+            history.push('/login')
 
         //const userData = async ()=> { const data = await
         db.collection('users').doc(id).get()
@@ -70,10 +70,10 @@ export default function UserPage() {
 
         console.log("refed node", currentNode.current)
 
-        if (e.target.textContent == "Save") {
+        if (e.target.textContent == `${t('general.save')}`) {
             //options for non-editable state
-            e.target.textContent = "Edit"
-            e.target.style.backgroundColor = "#d5068d"
+            e.target.textContent = `${t('general.edit')}`
+            e.target.style.backgroundColor = "#DEB675"
             e.target.style.transform = "translateY(+2px) scale(1)";
             currentNode.current.style.backgroundColor = ""
             currentNode.current.style.border = "none";
@@ -90,7 +90,7 @@ export default function UserPage() {
         }
         else {
             //options for editable state
-            e.target.textContent = "Save"
+            e.target.textContent = `${t('general.save')}`
             e.target.style.backgroundColor = "crimson"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
             currentNode.current.style.border = "medium solid #DEB675";
@@ -159,35 +159,35 @@ export default function UserPage() {
                         onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
                 <div className="notificationTitle ma3">Notification Prefences</div>
-                 <div className="notifications ma0">
-                <span className="notifiedText ma2">I want to get notified on:</span>
-                <div className="form-check dib mt3">
-                    <BootstrapSwitchButton 
-                    onlabel='Hide'
-                    onstyle='danger'
-                    offlabel='Show'
-                    offstyle='success'
-                    width={75}
-                    onChange={() => {
-                        setVisible({ ...visible, ["emergency"]: !visible["emergency"] })
-                        handleReload()
-                    }} /> Emergency request that I am suitable to answer 
+                <div className="notifications ma0">
+                    <span className="notifiedText ma2">I want to get notified on:</span>
+                    <div className="form-check dib mt3">
+                        <BootstrapSwitchButton
+                            onlabel='Hide'
+                            onstyle='danger'
+                            offlabel='Show'
+                            offstyle='success'
+                            width={75}
+                            onChange={() => {
+                                setVisible({ ...visible, ["emergency"]: !visible["emergency"] })
+                                handleReload()
+                            }} /> Emergency request that I am suitable to answer
                     {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
-                </div>
-                <div className="form-check dib mt3">
-                <BootstrapSwitchButton 
-                    onlabel='Hide'
-                    onstyle='danger'
-                    offlabel='Show'
-                    offstyle='success'
-                    width={75}
-                    onChange={() => {
-                        setVisible({ ...visible, ["casual"]: !visible["casual"] })
-                        handleReload()
-                    }} /> Casual reminders calling me to donate
+                    </div>
+                    <div className="form-check dib mt3">
+                        <BootstrapSwitchButton
+                            onlabel='Hide'
+                            onstyle='danger'
+                            offlabel='Show'
+                            offstyle='success'
+                            width={75}
+                            onChange={() => {
+                                setVisible({ ...visible, ["casual"]: !visible["casual"] })
+                                handleReload()
+                            }} /> Casual reminders calling me to donate
                     {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
+                    </div>
                 </div>
-            </div>
 
             </div>
         </div>
