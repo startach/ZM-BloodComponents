@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
+import dbIcon from './dbIcon.svg'
 
 ///////
 import { useTranslation } from 'react-i18next';
@@ -19,9 +20,9 @@ import i18next from 'i18next';
 
 function DashboardNoAppoin() {
 
-/////////
+  /////////
   const { t } = useTranslation();
-//////////
+  //////////
 
   const [show, setShow] = useState(false);
 
@@ -198,29 +199,31 @@ function DashboardNoAppoin() {
 
       {checkUserAppointments ? (
         <Fragment>
-          <div id="introSpan" className="introSpan">{t('dashboard.hello')} <b>{userName}</b>,
-            {!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
-          <div className="lineUnderSpan"></div>
-          <div className="userEligibility my-3">
-          {t('dashboard.youAre')} <b style={{ color: "green" }}> {t('dashboard.eligible')} </b>{t('dashboard.toDonate')} 
-      <br />
-            <br />
-            {t('dashboard.fewDetails')}
-    </div>
+
+          <img src={dbIcon} />
+
+          <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
+          <div id="introSpan" className="introSpan pinkBox">{t('dashboard.hello')} <span className="highlight">{userName}</span>,{!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
+          <div className="pinkBox">   {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>{t('dashboard.toDonate')}       {t('dashboard.fewDetails')}</div>
+
+
+
+
+
           <table className="schedulesTables">
             <tr className="headerRow">
+              <th className="headerEntries"> {t('dashboard.Location')}</th>
               <th className="headerEntries"> {t('dashboard.date')}</th>
               <th className="headerEntries"> {t('dashboard.Time')}</th>
-              <th className="headerEntries"> {t('dashboard.Location')}</th>
-              <th className="headerEntries"></th>
+              <th className="headerEntries">{t('dashboard.Time')}</th>
             </tr>
 
             {userAppointmentsDetails.map(appointment => (
               <tr className='rowContainer' id={appointment.id}>
+                <td className='rowClass'>{appointment.hospitalName}</td>
                 <td className='rowClass' >{appointment.date}</td>
                 <td className='rowClass'>{appointment.time}</td>
-                <td className='rowClass'>{appointment.hospitalName}</td>
-                <div className='btnContainer'>
+                <div className='btnContainerCancel'>
                   <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton"> {t('dashboard.Cancel')}</button>
                   }
                     modal position="left top" closeOnDocumentClick
@@ -235,9 +238,9 @@ function DashboardNoAppoin() {
 
                         <div className="content">
 
-                        {t('dashboard.deleteAppointment')}
+                          {t('dashboard.deleteAppointment')}
 
-                                     </div>
+                        </div>
 
                         <div className="actions">
 
@@ -248,16 +251,16 @@ function DashboardNoAppoin() {
                               deleteAppointment(e)
                               close();
                             }}>
-                             {t('general.Yes')}
-                                        </button>
+                            {t('general.Yes')}
+                          </button>
 
                           <button
                             className="noButton"
                             onClick={() => {
                               close();
                             }}>
-                             {t('general.No')}
-                                        </button>
+                            {t('general.No')}
+                          </button>
 
                         </div>
 
@@ -277,7 +280,7 @@ function DashboardNoAppoin() {
           <div className="bottomButtons">
             <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
-            ><Button type="button" text={t('dashboard.getDirections')}  width="150px">
+            ><Button type="button" text={t('dashboard.getDirections')} width="150px">
               </Button></a>
             <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
               {close => <BookTaxi close={close} bookingData={bookingData} />}
@@ -291,56 +294,52 @@ function DashboardNoAppoin() {
 
           <Fragment>
 
-          <div id="introSpan" className="introSpan">{t('dashboard.hello')} <b>{userName}</b>,
+
+            <img src={dbIcon} />
+            <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
+            <div id="introSpan" className="introSpan pinkBox">{t('dashboard.hello')} <span className="highlight">{userName}</span>,
             {!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
-          <div className="lineUnderSpan"></div>
-          <div className="userEligibility my-3">
-          {t('dashboard.youAre')} <b style={{ color: "green" }}> {t('dashboard.eligible')} </b>{t('dashboard.toDonate')} 
-      <br />
-      <br />
-              <br />
-              {t('dashboard.scheduleAppointment')}
-    </div>
+            <div className="pinkBox">   {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>{t('dashboard.toDonate')}  {t('dashboard.scheduleAppointment')}</div>
 
-            <p className="hospitalsOptionsContainer mt-3">
-            {t('dashboard.NearestHospital')}{" "}
+            <div className="hospitalsOptionsContainer mt-3 pinkBox">
+              <div className="hospital">
+                {t('dashboard.NearestHospital')}:{" "}
+              </div>
 
-              <select className="hospitalsOptionsList" onChange={handleChange}>
+              <div>
+                <select className="hospitalsOptionsList" onChange={handleChange}>
+                  <option value="Select" disabled selected> {t('general.select')}</option>
+                  {hospital.map(name => (
+                    <option value={name}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
-                <option value="Select" disabled selected> {t('general.select')}</option>
-
-                {hospital.map(name => (
-
-                  <option value={name}>
-
-                    {name}
-
-                  </option>
-
-                ))}
-
-
-
-              </select>
-            </p>
 
             <table className="schedulesTables">
               <tr className="headerRow">
+                <th className="headerEntries">{t('general.hospital')}</th>
                 <th className="headerEntries">{t('dashboard.date')}</th>
                 <th className="headerEntries">{t('dashboard.Time')}</th>
-                <th className="headerEntries"></th>
+                <th className="headerEntries">{t('general.Register')}</th>
               </tr>
 
               {appointments.map(appointment => (
 
                 <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass' >{chosenOption}</td>
                   <td className='rowClass' >{appointment.date}</td>
                   <td className='rowClass'>{appointment.time}</td>
-                  <Link to='/questions'>
-                    <td className='rowClass'>
+
+                  <td className='rowClass'>
+                    <Link to='/questions'>
                       <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
-                    </td>
-                  </Link>
+                    </Link>
+                  </td>
+
                 </tr>
 
 

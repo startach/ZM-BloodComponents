@@ -5,10 +5,12 @@
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    height: 80px;
+    align-items: center;
+    height: 70px;
     margin-bottom: 0px;
-    border-top: solid black 2px;
 }
+
+
 
 .iconContainer {
     list-style: none;
