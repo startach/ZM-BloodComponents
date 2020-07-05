@@ -1,37 +1,41 @@
-import React from 'react';
-import BackArrow from '../BackArrow';
-import BurgerMenu from '../burgerMenu'
-import './menuHeader.css'
-import LanguageSwitch from '../languageSwich/LanguageSwitch';
-import {MDBBtn, MDBIcon } from "mdbreact";
-
+import React from "react";
+import BackArrow from "../BackArrow";
+import BurgerMenu from "../burgerMenu";
+import "./menuHeader.css";
+import LanguageSwitch from "../languageSwich/LanguageSwitch";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 let styles = {
-    header: {
-        alignItems: "center",
-        backgroundColor: '#d5068d',
-        color: 'black',
-        height: '60px',
-    }
-}
+  header: {
+    alignItems: "center",
+    backgroundColor: "#d5068d",
+    color: "black",
+    // borderBottom: '1px solid black',
+    height: "60px",
+  },
+};
 
 const Menu_header = (props) => {
-  
-    return (
-        <div className="headerBody">
-            <div className="burger">
-                {props.icon === 'backArrow' ? <BackArrow/> : props.icon === 'burger' ? <BurgerMenu/> : null}
-            </div>
+  const { t } = useTranslation();
 
-            <div className="title"> 
-                {props.title}
-            </div>
 
-            <div className="language">
-                <LanguageSwitch />
-            </div>
-        </div>
-    );
-}
+
+  return (
+    <div className="headerBody">
+      <div className="burger">
+        {props.icon === "backArrow" ? (
+          <BackArrow />
+        ) : props.icon === "burger" ? (
+          <BurgerMenu />
+        ) : null}
+      </div>
+
+      <div className="title">{props.title}</div>
+
+      <LanguageSwitch />
+    </div>
+  );
+};
 
 export default Menu_header;

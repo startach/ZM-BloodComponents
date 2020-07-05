@@ -94,11 +94,13 @@
     "clickToLogin": "اضغط لتسجيل الدخول"
   },
   "loginForm":{
-    "bloodComponentsDonation": "تبرّع بمكونّات الدم",
+    "bloodComponents": "تبرّع بمكونّات الدم",
     "email": "البريد الإلكتروني",
     "password": "كلمة السر",
     "forgotPassword": "هل نسيت كلمة السر؟",
-    "notSignedUp": "لم تسجّل كمتبرّع حتى الآن ؟"
+    "notSignedUp": "لم تسجّل كمتبرّع حتى الآن ؟",
+    "login": "تسجيل الدخول",
+    "comeSaveLives": "إنضم وانقذ حياة"
   },
   "notificationOptions":{
     "contactPreferencesPhrase": "من فضلك قم بإختيار الوسائل التي تفضل ",
@@ -110,12 +112,13 @@
   },
   "registerForm": {
     "signUp": "تسجيل",
-    "becomeDonor": "تبرّع الان",
+    "becomeDonor": "تبرّع الآن",
     "fullName": "الاسم الكامل",
     "email": "بريد الكتروني",
     "password": "كلمة السر",
     "confirmPassword": "تأكيد كلمة السر",
     "birthDate": "تاريخ الولادة",
+    "gender": "جنس",
     "male": "ذكر", 
     "female": "انثى",
     "contactNumber": "رقم التواصل",

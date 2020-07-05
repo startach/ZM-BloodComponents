@@ -5,12 +5,16 @@ import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 import { startLogout } from '../../actions/googleAuth'
 import './burgerMenu.css'
+import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 
 const BurgerMenu = () => {
+
+  let languageSelected = localStorage.getItem('i18nextLng');
+
 
   const { t } = useTranslation();
 
@@ -46,8 +50,9 @@ const BurgerMenu = () => {
       position: 'fixed',
       width: '40px',
       height: '30px',
-      left: '10px',
-      top: '20px',
+      left: languageSelected==='en'?'10px':'none',
+      right: languageSelected !=='en'? '10px': 'none',
+      top: '20px'
     },
     bmBurgerBars: {
       background: 'white'
@@ -105,7 +110,8 @@ const BurgerMenu = () => {
     }
   }
   return (
-    <div>
+
+    <div >
       <Menu styles={styles}>
         <Link to='/dashboard' className="link">
         {t('burgerMenu.dashboard')} 
