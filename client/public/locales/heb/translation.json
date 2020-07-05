@@ -91,7 +91,9 @@
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
     "emailSentPhrase": "אימייל נשלח לכתובת שהזנת",
     "checkEmailPhrase": "נא לבדוק את האימייל ולנסות להתחבר לאחר מכן",
-    "clickToLogin": "להתחברות לחץ כאן"
+    "clickToLogin": "להתחברות לחץ כאן",
+    "backBtn": "חזרה",
+    "resetPassBtn": "שינוי סיסמא"
   },
   "loginForm": {
     "bloodComponents": "תרומות מרכיבי דם",
