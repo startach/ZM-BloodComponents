@@ -54,7 +54,9 @@
     "notificationPrefence": "העדפות ההתראות",
     "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
     "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
-    "casualreminder": "תזכורות רגילות לתרומה"
+    "casualreminder": "תזכורות רגילות לתרומה",
+    "show": "הצג",
+    "hide": "הסתר"
   },
   "admin": {
     "accessLevel": "רמת גישה",

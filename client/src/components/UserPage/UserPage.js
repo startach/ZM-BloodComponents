@@ -163,9 +163,9 @@ export default function UserPage() {
                     <span className="notifiedText ma2">{t('userProfile.notifiedOn')}:</span>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
-                            onlabel='Hide'
+                            onlabel={t('userProfile.hide')}
                             onstyle='danger'
-                            offlabel='Show'
+                            offlabel={t('userProfile.show')}
                             offstyle='success'
                             width={75}
                             onChange={() => {
@@ -176,15 +176,15 @@ export default function UserPage() {
                     </div>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
-                            onlabel='Hide'
+                            onlabel={t('userProfile.hide')}
                             onstyle='danger'
-                            offlabel='Show'
+                            offlabel={t('userProfile.show')}
                             offstyle='success'
                             width={75}
                             onChange={() => {
                                 setVisible({ ...visible, ["casual"]: !visible["casual"] })
                                 handleReload()
-                            }} /> {t('userProfile.casualreminders')}
+                            }} /> {t('userProfile.casualreminder')}
                     {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
                     </div>
                 </div>

@@ -54,7 +54,9 @@
     "notificationPrefence": "Notification Preferences",
     "notifiedOn": "I want to get notified on",
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
-    "casualreminder": "Casual reminders calling me to donate"
+    "casualreminder": "Casual reminders calling me to donate",
+    "show": "Show",
+    "hide": "Hide"
   },
   "admin": {
     "accessLevel": "ACCESS LEVEL",
