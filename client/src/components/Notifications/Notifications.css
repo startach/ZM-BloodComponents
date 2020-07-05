@@ -29,3 +29,6 @@
 .notifiedtext {
     margin-bottom: 4%;
 }
+.pinkBox {
+border: solid pink 1px;
+}
