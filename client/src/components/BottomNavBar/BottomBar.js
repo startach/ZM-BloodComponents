@@ -1,16 +1,20 @@
 import React from "react";
-import aboutIcon from "./About.svg";
-import ContactUsIcon from "./Contact_us.svg";
-import DonateIcon from "./Donate.svg";
+// import aboutIcon from "./About.svg";
+// import ContactUsIcon from "./Contact_us.svg";
+// import DonateIcon from "./Donate.svg";
 import "./bottomBar.css"
 
 export default function BottomBar() {
+    const aboutIcon = '/img/Info-Icon.png'
+    const ContactUsIcon = '/img/Contact-Icon.png'
+    const DonateIcon = '/img/Donate-Icon.png'
 
     const addIconClass = (e) => {
         e.target.classList.add('iconClicked')
     }
 
     return (
+        
         <ul className='listContainer'>
             <li className='iconContainer aboutBtn' onClick={(e) => { addIconClass(e) }}>
                 <img className='ion-about' alt="About icon" tabIndex='1' src={aboutIcon}></img>

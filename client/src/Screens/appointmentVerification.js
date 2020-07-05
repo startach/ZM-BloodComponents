@@ -15,6 +15,7 @@ const AppointmentVerification = () => {
                 <MenuHeader title="Appointment Verification" icon='burger'/>
                 <VerificationList />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
 
     )

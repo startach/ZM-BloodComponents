@@ -12,12 +12,16 @@
 
 .iconContainer {
     list-style: none;
-    position: relative;
     cursor: pointer;
     transition: all 0.4s ease-in;
     outline: none;
     margin-top: 15px;
     margin-right: 50px;
+}
+
+.iconContainer li {
+
+    display: inline-block;
 }
 
 .iconContainer:focus {
@@ -43,8 +47,3 @@
         opacity: 0.1;
     }
 }
-
-
-/* .donateIcon{
-  padding: 0 22vw 0 22vw;
-} */
