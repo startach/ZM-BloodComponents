@@ -14,21 +14,21 @@
     "edit": "עריכה",
     "save": "שמירה",
     "Thrombocytes": "טרומבוציטים",
-    "Granulocytes": "Granulocytes",
+    "Granulocytes": "גרנולוציטים",
     "both": "שניהם",
     "on": "ב",
     "at": "ב"
   },
   "dashboard": {
     "hello": "שלום",
-    "intro": " welcome to the App, we look forward to your first donation",
+    "intro": " אנחנו מחכים לתרומתך הראשונה",
     "youDonated": " עד כה תרמת ",
     "donationTimes": " פעמים",
     "wonderful": " וואו! זה מדהים",
     "youAre": "אתה",
     "eligible": "כשיר",
     "toDonate": "להגיע לתרום.",
-    "fewDetails": "Here is few details regarding your upcoming appointment",
+    "fewDetails": "להלן כמה נתונים לגבי התור הקרוב",
     "date": "תאריך",
     "Time": "שעה",
     "Location": "מיקום",
@@ -40,29 +40,29 @@
     "orderTaxi": "הזמן מונית"
   },
   "addAppointments": {
-    "addAppointmentTitle": "Add Appointments",
-    "for": "for",
-    "selectHospital": "Select hospital",
-    "selectAppointmentType": "Select appointment type",
-    "noAppsToSubmit": "Currently no appointments to submit"
+    "addAppointmentTitle": "הוספת מועדים",
+    "for": "ל",
+    "selectHospital": "בחר בית חולים",
+    "selectAppointmentType": "בחר סוג התור",
+    "noAppsToSubmit": "כרגע אין תורים להוספה"
   },
   "editDeleteApp": {
-    "editDeleteTitle": "Edit & Delete Appointments"
+    "editDeleteTitle": "עריכה ומחקית תורים"
   },
   "userProfile": {
     "bloodType": "סוג דם",
-    "notificationPrefence": "Notification Prefernces",
+    "notificationPrefence": "העדפות ההתראות",
     "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
-    "emergencyThatWilling": "Emergency request that I am suitable to answer",
-    "casualreminder": "Casual reminders calling me to donate"
+    "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
+    "casualreminder": "תזכורות רגילות לתרומה"
   },
   "admin": {
-    "accessLevel": "ACCESS LEVEL",
-    "selectToMakeCord": "select user to make cord",
-    "makeCord": "Make Coordinator",
-    "remove": "Remove",
-    "selectMakeAdmin": "select user to make admin",
-    "makeAdmin": "make Admin"
+    "accessLevel": "רמת גישה",
+    "selectToMakeCord": "בחר משתמש כדי להפוך למתאם",
+    "makeCord": "הפוף למתאם",
+    "remove": "הסר",
+    "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
+    "makeAdmin": "הפוך למנהל"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"
@@ -73,25 +73,25 @@
     "pickupTime": "שעת איסוף",
     "from": "מ",
     "backTo": "אל",
-    "forAppointment": "For appointment",
-    "taxiConfirm": "Your taxi has been confirmed for",
-    "editOrCancelPhrase": "If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator"
+    "forAppointment": "לתור",
+    "taxiConfirm": "הסעה הוזמנה לך ל",
+    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם"
   },
   "burgerMenu": {
-    "dashboard": "Dashboard",
-    "addAppointment": "Add Appointment",
-    "editAppointments": "Edit Appointments",
-    "previousAppointments": "Previous Appointments",
-    "profile": "Profile",
-    "emergencyDonation": "Emergency Donation",
-    "Admin": "Admin",
-    "Logout": "Logout"
+    "dashboard": "ראשי",
+    "addAppointment": "הוספת תורים",
+    "editAppointments": "עריכת תורים",
+    "previousAppointments": "תורים קודמים",
+    "profile": "פרופיל",
+    "emergencyDonation": "תרומת חירום",
+    "Admin": "הגדרות מנהל",
+    "Logout": "התנתק"
   },
   "forgotPassword": {
-    "enterEmailPhrase": "Please enter your email address below and an email will with your information will be sent to it.",
-    "emailSentPhrase": "An Email was send to the address you provided us with!",
-    "checkEmailPhrase": "Please check your email and try to login again",
-    "clickToLogin": "Click to login"
+    "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
+    "emailSentPhrase": "אימייל נשלח לכתובת שהזנת",
+    "checkEmailPhrase": "נא לבדוק את האימייל ולנסות להתחבר לאחר מכן",
+    "clickToLogin": "להתחברות לחץ כאן"
   },
   "loginForm": {
     "bloodComponents": "תרומות מרכיבי דם",
@@ -134,7 +134,7 @@
     "submit": "אישור והמשך"
   },
   "addAppointment":{
-    "submit": "Submit",
-    "add": "Add"
+    "submit": "אשר והמשך",
+    "add": "הוספה"
   }
 }
