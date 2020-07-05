@@ -54,7 +54,9 @@
     "notificationPrefence": "העדפות ההתראות",
     "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
     "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
-    "casualreminder": "תזכורות רגילות לתרומה"
+    "casualreminder": "תזכורות רגילות לתרומה",
+    "show": "הצג",
+    "hide": "הסתר"
   },
   "admin": {
     "accessLevel": "רמת גישה",
@@ -91,7 +93,9 @@
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
     "emailSentPhrase": "אימייל נשלח לכתובת שהזנת",
     "checkEmailPhrase": "נא לבדוק את האימייל ולנסות להתחבר לאחר מכן",
-    "clickToLogin": "להתחברות לחץ כאן"
+    "clickToLogin": "להתחברות לחץ כאן",
+    "backBtn": "חזרה",
+    "resetPassBtn": "שינוי סיסמא"
   },
   "loginForm": {
     "bloodComponents": "תרומות מרכיבי דם",

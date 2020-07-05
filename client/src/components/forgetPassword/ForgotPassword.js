@@ -4,13 +4,18 @@ import "./forgotPassword.css";
 import lockPic from "./password.svg";
 import { Redirect, useHistory, Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-
+///
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+///
 export const ForgotPassword = () => {
   const [emailValue, setEmailValue] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   //   const [resetEmailSent, setResetEmailSent] = useState("");
   const [resetPassView, setResetPassView] = useState("beforeSending");
   var history = useHistory();
+
+  const { t } = useTranslation();
 
   const handleChange = (e) => {
     setEmailValue(e.target.value);
@@ -43,8 +48,7 @@ export const ForgotPassword = () => {
         <form className="forgotPassForm" onSubmit={handlePassReset}>
           <img alt="lock" src={lockPic} className="lockPic" />
           <p>
-            Please enter your email address below and an email will with your
-            information will be sent to it.
+            {t('forgotPassword.enterEmailPhrase')}
           </p>
           <div className="forgotPassContainer">
             <label htmlFor="emailFieldForgot">
@@ -64,28 +68,28 @@ export const ForgotPassword = () => {
             <input
               type="submit"
               className="btn btn-small btn-warning mt-2"
-              value="Reset password"
+              value={t('forgotPassword.resetPassBtn')}
             />
             <input
               type="submit"
               className="btn btn-small btn-secondary mt-2 ml-2"
-              value="Back"
+              value={t('forgotPassword.backBtn')}
               onClick={history.goBack}
             />
             </div>
           </div>
         </form>
-      ) : resetPassView == "afterSending" ? (
+      ) : resetPassView === "afterSending" ? (
         <div>
-          <span>An Email was send to the address you provided us with!</span>
+          <span>{t('forgotPassword.emailSentPhrase')}</span>
           <img
             src={require("./mailSent.gif")}
             alt="mailSent"
             className="emailSentVideo"
           />
-          <span>Please check your email and try to login again</span>
+          <span>{t('forgotPassword.checkEmailPhrase')}</span>
           <button > 
-            <Link to="/login">Click to login</Link>
+            <Link to="/login">{t('forgotPassword.clickToLogin')}</Link>
           </button>
         </div>
       ) : (
