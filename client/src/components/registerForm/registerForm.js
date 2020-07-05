@@ -175,7 +175,7 @@ const RegisterForm = () => {
         <div className="passwordsContainer">
           <div className="passwordSignupContainer">
             <label>
-              <img title={titleObj} className="passInfo infoIcon" /> *{" "}
+              {/* <img title={titleObj} className="passInfo infoIcon" /> *{" "} */}
               {t("registerForm.password")}
               <input
                 className="registerPassword"
@@ -210,12 +210,12 @@ const RegisterForm = () => {
                 }></input>
             </label>
           </div>
-          <span
+          {/* <span
             className="hiddenError"
             id="hiddenError"
             style={{ color: "red", textAlign: "center" }}>
             Passwords do not match
-          </span>
+          </span> */}
         </div>
         <div className="birthDateContainer">
           <label id="labelBirth">
