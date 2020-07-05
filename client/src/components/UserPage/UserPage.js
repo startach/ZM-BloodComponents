@@ -70,9 +70,9 @@ export default function UserPage() {
 
         console.log("refed node", currentNode.current)
 
-        if (e.target.textContent == "Save") {
+        if (e.target.textContent == `${t('general.save')}`) {
             //options for non-editable state
-            e.target.textContent = "Edit"
+            e.target.textContent = `${t('general.edit')}`
             e.target.style.backgroundColor = "#DEB675"
             e.target.style.transform = "translateY(+2px) scale(1)";
             currentNode.current.style.backgroundColor = ""
@@ -90,7 +90,7 @@ export default function UserPage() {
         }
         else {
             //options for editable state
-            e.target.textContent = "Save"
+            e.target.textContent = `${t('general.save')}`
             e.target.style.backgroundColor = "crimson"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
             currentNode.current.style.border = "medium solid #DEB675";
