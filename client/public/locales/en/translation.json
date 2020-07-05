@@ -51,10 +51,12 @@
   },
   "userProfile": {
     "bloodType": "Blood Type",
-    "notificationPrefence": "Notification Prefernces",
+    "notificationPrefence": "Notification Preferences",
     "notifiedOn": "I want to get notified on",
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
-    "casualreminder": "Casual reminders calling me to donate"
+    "casualreminder": "Casual reminders calling me to donate",
+    "show": "Show",
+    "hide": "Hide"
   },
   "admin": {
     "accessLevel": "ACCESS LEVEL",
@@ -91,7 +93,9 @@
     "enterEmailPhrase": "Please enter your email address below and an email will with your information will be sent to it.",
     "emailSentPhrase": "An Email was send to the address you provided us with!",
     "checkEmailPhrase": "Please check your email and try to login again",
-    "clickToLogin": "Click to login"
+    "clickToLogin": "Click to login",
+    "backBtn": "Back",
+    "resetPassBtn": "Reset password"
   },
   "loginForm": {
     "bloodComponents": "Blood Components Donations",
@@ -104,7 +108,7 @@
     "comeSaveLives": "Come Save Lives"
   },
   "notificationOptions": {
-    "contactPreferencesPhrase": "please select all methods you are happy to be contacted by",
+    "contactPreferencesPhrase": "Please select all methods you are happy to be contacted by",
     "SMS": "SMS",
     "Whatsapp": "Whatsapp",
     "Phonecall": "Phonecall",
@@ -121,7 +125,7 @@
     "birthDate": "Birth Date",
     "gender": "Gender",
     "male": "Male",
-    "female": "female",
+    "female": "Female",
     "contactNumber": "Contact Number",
     "city": "City",
     "address": "Address",

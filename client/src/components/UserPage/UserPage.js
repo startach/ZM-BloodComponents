@@ -169,41 +169,34 @@ export default function UserPage() {
                         className="editBtn"
                         onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
-
-
-
-
-
-
-
-                <div className="notificationTitle ma3">Notification Prefences</div>
+                <div className="notificationTitle ma3">{t('userProfile.notificationPrefence')}</div>
                 <div className="notifications ma0">
-                    <span className="notifiedText ma2">I want to get notified on:</span>
+                    <span className="notifiedText ma2">{t('userProfile.notifiedOn')}:</span>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
-                            onlabel='Hide'
+                            onlabel={t('userProfile.hide')}
                             onstyle='danger'
-                            offlabel='Show'
+                            offlabel={t('userProfile.show')}
                             offstyle='success'
                             width={75}
                             onChange={() => {
                                 setVisible({ ...visible, ["emergency"]: !visible["emergency"] })
                                 handleReload()
-                            }} /> Emergency request that I am suitable to answer
-                    {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
+                            }} /> {t('userProfile.emergencyThatWilling')}
+                        {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
                     </div>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
-                            onlabel='Hide'
+                            onlabel={t('userProfile.hide')}
                             onstyle='danger'
-                            offlabel='Show'
+                            offlabel={t('userProfile.show')}
                             offstyle='success'
                             width={75}
                             onChange={() => {
                                 setVisible({ ...visible, ["casual"]: !visible["casual"] })
                                 handleReload()
-                            }} /> Casual reminders calling me to donate
-                    {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
+                            }} /> {t('userProfile.casualreminder')}
+                        {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
                     </div>
                 </div>
 

@@ -51,6 +51,7 @@ function App() {
         <PublicRoute path='/not-found' component={NotFound} />
         <PublicRoute path='/login' languageSelected={languageSelected} component={Login} />
         <PublicRoute path='/register' languageSelected={languageSelected} component={Register} /> 
+        <PublicRoute path='/passwordreset' languageSelected={languageSelected} component={ForgotPassword} /> 
 
         <Redirect from='/' exact to="/login" />
         <Redirect to='/not-found' />
