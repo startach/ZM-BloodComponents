@@ -4,11 +4,13 @@
     background-color: #fafafa;
     width: 100vw;
     display: flex;
-    justify-content: space-around;
-    height: 80px;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70px;
     margin-bottom: 0px;
-    border-top: solid black 2px;
 }
+
+
 
 .iconContainer {
     list-style: none;
