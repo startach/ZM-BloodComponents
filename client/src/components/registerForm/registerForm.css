@@ -27,14 +27,23 @@
 .addressSignupContainer, .bloodTypesContainer , .organizationContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: #fafafa;
+}
+
+.ltrFormClass{
+  direction: ltr;
+  text-align: left;
+}
+
+
+.rtlFormClass{
+  direction: rtl;
+  text-align: right;
 }
 
 label {
   font-family: 'Montserrat';
-
-  
 }
 
 
@@ -56,7 +65,13 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 
+}
+
+
+.birthDate{
+  direction: ltr !important;
 }
 
 .react-date-picker__wrapper {
