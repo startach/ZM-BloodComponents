@@ -96,7 +96,6 @@ export default function UserPage() {
             currentNode.current.style.border = "medium solid #DEB675";
             currentNode.current.style.backgroundColor = "white"
         }
-
     }
 
     // in order to show updates to notifications methods without having to refresh the page
