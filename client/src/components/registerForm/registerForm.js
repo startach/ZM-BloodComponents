@@ -144,7 +144,7 @@ const RegisterForm = () => {
         <b id="header2">{t("registerForm.becomeDonor")}</b>
       </div>
 
-      <form class="register-form" onSubmit={handleSubmit}>
+      <form className={localStorage.getItem('i18nextLng') === 'en' ? 'ltrFormClass' : 'rtlFormClass'} onSubmit={handleSubmit}>
         <div className="nameSignupContainer">
           <label>
             {" "}
@@ -226,7 +226,7 @@ const RegisterForm = () => {
               className="birthDate"
               value={date}
               onChange={onClickDayHandler}
-              format="dd/MM/yy"
+              format="dd/MM/yyyy"
               required
             />
           </label>
@@ -273,6 +273,7 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="City"
+              
               required></input>
           </label>
         </div>
