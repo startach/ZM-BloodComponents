@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -12,7 +12,7 @@ import i18next from "i18next";
 
 import './i18n';
 
-// let languageSelected = localStorage.getItem('i18nextLng');
+let languageSelected = localStorage.getItem('i18nextLng');
 // console.log(languageSelected,' languageaaaaa');
 // console.log(i18next.dir(languageSelected).toUpperCase());
 
@@ -21,10 +21,11 @@ import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
-    
+    <DirectionProvider direction={languageSelected==='en'? DIRECTIONS.LTR : DIRECTIONS.RTL}>
     <Suspense fallback={(<div>Loading</div>)}>
-      <App />
+      <App/>
     </Suspense>
+    </DirectionProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

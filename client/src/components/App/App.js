@@ -28,10 +28,10 @@ import i18next from 'i18next';
 function App() {
   const [userClaims, setUserClaims] = useState(localStorage.getItem('userLevel'))
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userid'))
-
-
+  
   let languageSelected = localStorage.getItem('i18nextLng');
 
+  
   return (
    
     <Router>
