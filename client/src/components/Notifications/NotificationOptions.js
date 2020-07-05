@@ -9,6 +9,7 @@ const NotificationOptions = (props) => {
     const [notes, setNotes] = useState('')
 
     const { t } = useTranslation();
+    let languageSelected = localStorage.getItem('i18nextLng');
 
     //user id from localstorage
     const id = localStorage.getItem('userid');
@@ -36,12 +37,12 @@ const NotificationOptions = (props) => {
     return (
         <div className="options">
             <span className="comment">{t('notificationOptions.contactPreferencesPhrase')}:</span>
-            <div className="notificationOptions">
+            <div  className={languageSelected==='en'?'notificationOptions':'notificationOptionsRtl'}>
 
                 <div>
                     <input
                         type="checkbox"
-                        className="form-check-input"
+                        className={`form-check-input ${languageSelected=='en'?'ltrNotifications':'rtlNotifications'}`}
                         id="exampleCheck1"
                         value="SMS"
                         checked={notes.SMS}
