@@ -32,11 +32,14 @@ export default function Questionnaire() {
         Q17: "select",
     })
 
+    let checkedAnswers = [];
     //allow submit only when all questions have been submit TODO:
     const [complete, setComplete] = useState(false)
 
     const [hospital, setHospital] = useState(false)
     const [gender, setGender] = useState(false)
+
+
 
     let languageSelected = localStorage.getItem('i18nextLng');
 
@@ -85,6 +88,7 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         
+        
     }
 
 
@@ -121,6 +125,11 @@ export default function Questionnaire() {
 
     }
 
+    // const handleChecked = (question, index, option) => {
+    //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
+            
+    //     }
+    // }
 
     useEffect(() => {
 
@@ -168,19 +177,25 @@ export default function Questionnaire() {
 
                                         ) : (
                                                 <Fragment>
+                                                    <radiogroup>
                                                     {question.options.map(option => (
                                                         <label>
                                                             <input
                                                                 type="radio"
                                                                 class="options"
-                                                                value=""
-                                                                name="radiobutt"
-                                                                onChange={(e) => handleResults(e, index)}
+                                                                id={index+'@'+option}
+                                                                value={index-option}
+                                                                name={`Question${index}`}
+                                                                // onClick={() => checkedAnswers.push(index+'@'+option)}
+                                                                onChange={(e) => {handleResults(e, index);
+                                                                    // handleChecked(question, index, option)
+                                                                }}
                                                             />
                                                             {" " + option}
                                                         </label>
 
                                                     ))}
+                                                    </radiogroup>
                                                 </Fragment>
                                             )
                                         }
