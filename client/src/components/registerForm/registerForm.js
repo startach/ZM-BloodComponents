@@ -1,7 +1,5 @@
 import React, { useState, Fragment } from "react";
 import "./registerForm.css";
-import Button from "../button";
-import { useHistory } from "react-router-dom";
 import { db, auth } from "../firebase/firebase";
 import DatePicker from "react-date-picker";
 import Popup from "reactjs-popup";
@@ -12,9 +10,12 @@ import LanguageSwitch from "../languageSwich/LanguageSwitch";
 const RegisterForm = () => {
   const [date, setDate] = useState();
   const [error, setError] = useState("");
-  const [passwordError, setPasswordError] = useState(false);
   const [checkError, setCheckError] = useState(false);
-  const [popUp, setPop] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [popUp, setPopUp] = useState(false);
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -23,23 +24,20 @@ const RegisterForm = () => {
     inAppAlert: false,
   });
   const [notifications, setNotifications] = useState({});
-  const history = useHistory();
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState([]);
-  let [flag, setFlag] = useState(false);
-  const [passValid, setPassValid] = useState();
 
   const { t } = useTranslation();
 
   //Prevent the user which is logged in to enter register again
 
-  if (localStorage.getItem("userid")) history.push("/dashboard");
+  if (localStorage.getItem("userid")) window.location.href = "/dashboard";
 
   // Handle change of register form fields
 
   const handleChange = (e) => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
-    
+
   };
 
 
@@ -54,53 +52,87 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    var hasNumber = /\d/;
 
+    //password and confirm password validation
     if (userInputs.password != userInputs.confirmPassword) {
       setCheckError(true);
       setPasswordError(true);
       setError("Password and confirm password do not match");
 
-      // if password and confirm password are matching
+      //phone starting with 05 validation
+
+    } else if (!userInputs.phone.startsWith("05")) {
+
+      setCheckError(true);
+      setPhoneError(true);
+      setError("Phone number must start with 05xxx");
+
+      //phone length validation
+
+    } else if (userInputs.phone.length < 10) {
+
+      setCheckError(true);
+      setPhoneError(true);
+      setError("Phone number must be 10 numbers");
+
+      //city validation
+
+    } else if (hasNumber.test(userInputs.city)) {
+
+      setCheckError(true);
+      setCityError(true);
+      setError("City Field should not contains any number");
+
+      // Address validation
+    } else if (userInputs.address.match(/^\d/)) {
+      setCheckError(true);
+      setAddressError(true);
+      setError("Address Field should start with a letter");
+
+
     } else {
-      //update state
-      if (Object.entries(notifications).length < 1) {
-        //check password and confirm password
-        console.log(Object.entries(notifications).length);
-        setPop(true);
+
+      //Check if the user did not choose any type of notifications
+
+      if (Object.entries(notifications).length === 0 ) {
+        setPopUp(true);
+      } else {
+
+        //update state
+        setuserInputs(userInputs);
+
+        //Insert user into firestore
+        try {
+          const cred = await auth.createUserWithEmailAndPassword(
+            userInputs.email,
+            userInputs.password
+          );
+          //storing the logged in user's id into localStorage variable
+          localStorage.setItem("userid", cred.user.uid);
+          //localStorage.setItem('userLevel', cred.user.userLevel)
+
+          await db.collection("users").doc(cred.user.uid).set(userInputs);
+
+          //Add casualNotifications to the database
+
+          await db.collection("users").doc(cred.user.uid).update({
+            casualNotifications: notifications,
+          });
+
+          //Redirect to Dashboard after registration
+          window.location.href = "/dashboard";
+
+          //Check if there is error with password weakness , etc
+        } catch (err) {
+          setCheckError(true);
+          setError(err.message);
+        }
       }
+    };
+  }
 
-      setuserInputs(userInputs);
-
-      //Insert user into firestore
-      try {
-        const cred = await auth.createUserWithEmailAndPassword(
-          userInputs.email,
-          userInputs.password
-        );
-        //storing the logged in user's id into localStorage variable
-        localStorage.setItem("userid", cred.user.uid);
-        //localStorage.setItem('userLevel', cred.user.userLevel)
-
-        await db.collection("users").doc(cred.user.uid).set(userInputs);
-
-        //Add casualNotifications to the database
-
-        await db.collection("users").doc(cred.user.uid).update({
-          casualNotifications: notifications,
-        });
-
-        //Redirect to Dashboard after registration
-        history.push("/dashboard");
-
-        //Check if there is error with password weakness , etc
-      } catch (err) {
-        setCheckError(true);
-        setError(err.message);
-      }
-    }
-  };
-
-  //Hadle DatePicker State
+  //Handle DatePicker State
 
   const onClickDayHandler = (e) => {
     if (e != null) {
@@ -129,8 +161,8 @@ const RegisterForm = () => {
     setDate(e);
   };
 
-  const titleObj =
-    "Password must contain at least 6 characters, 1 upper case and 1 digit";
+  // const titleObj =
+  //   "Password must contain at least 6 characters, 1 upper case and 1 digit";
 
   return (
     <Fragment>
@@ -176,7 +208,7 @@ const RegisterForm = () => {
           <div className="passwordSignupContainer">
             <label>
               {/* <img title={titleObj} className="passInfo infoIcon" /> *{" "} */}
-              {t("registerForm.password")}
+              * {t("registerForm.password")}
               <input
                 className="registerPassword"
                 id="password"
@@ -227,6 +259,8 @@ const RegisterForm = () => {
               value={date}
               onChange={onClickDayHandler}
               format="dd/MM/yy"
+              minDate={new Date(1929,12,31)}
+              maxDate = {new Date(2002,11,31)}
               required
             />
           </label>
@@ -260,6 +294,11 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="phone"
               name="phone"
+              style={
+                phoneError
+                  ? { border: "1px solid red" }
+                  : { border: "none" }
+              }
               required></input>
           </label>
         </div>
@@ -273,6 +312,11 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="City"
+              style={
+                cityError
+                  ? { border: "1px solid red" }
+                  : { border: "none" }
+              }
               required></input>
           </label>
         </div>
@@ -287,6 +331,11 @@ const RegisterForm = () => {
               onChange={handleChange}
               type="text"
               name="address"
+              style={
+                addressError
+                  ? { border: "1px solid red" }
+                  : { border: "none" }
+              }
               required></input>
           </label>
         </div>
@@ -417,13 +466,14 @@ const RegisterForm = () => {
 
         {checkError ? (
           <Fragment>
-            <span style={{ color: "red", fontSize: "16px", marginTop: "5px" }}>
+            <span id="errorSpan">
               {error}
             </span>
           </Fragment>
         ) : (
-          <Fragment></Fragment>
-        )}
+            <Fragment></Fragment>
+          )}
+
         <div className="mb-4">
           {popUp ? (
             <Fragment>
@@ -432,7 +482,7 @@ const RegisterForm = () => {
                 trigger={
                   <div className="signUpButtonContainer">
                     <button className="signUpButton" type="button">
-                      Signup
+                      {t("registerForm.signUp")}
                     </button>
                   </div>
                 }
@@ -456,13 +506,13 @@ const RegisterForm = () => {
                         className="yesButton"
                         onClick={(e) => {
                           handleSubmit(e);
-
                           close();
                         }}>
                         {t("general.Yes")}
                       </button>
 
                       <button
+
                         className="noButton"
                         onClick={() => {
                           close();
@@ -475,22 +525,14 @@ const RegisterForm = () => {
               </Popup>
             </Fragment>
           ) : (
-            <Fragment>
-              {passValid ? (
+              <Fragment>
                 <div className="signUpButtonContainer">
                   <button className="signUpButton" type="submit">
                     {t("registerForm.signUp")}
                   </button>
                 </div>
-              ) : (
-                <div className="signUpButtonContainer">
-                  <button disabled className="signUpButton" type="submit">
-                    {t("registerForm.signUp")}
-                  </button>
-                </div>
-              )}
-            </Fragment>
-          )}
+              </Fragment>
+            )}
         </div>
       </form>
     </Fragment>

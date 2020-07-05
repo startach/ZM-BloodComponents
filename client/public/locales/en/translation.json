@@ -51,7 +51,7 @@
   },
   "userProfile": {
     "bloodType": "Blood Type",
-    "notificationPrefence": "Notification Prefernces",
+    "notificationPrefence": "Notification Preferences",
     "notifiedOn": "I want to get notified on",
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
     "casualreminder": "Casual reminders calling me to donate"
@@ -104,7 +104,7 @@
     "comeSaveLives": "Come Save Lives"
   },
   "notificationOptions": {
-    "contactPreferencesPhrase": "please select all methods you are happy to be contacted by",
+    "contactPreferencesPhrase": "Please select all methods you are happy to be contacted by",
     "SMS": "SMS",
     "Whatsapp": "Whatsapp",
     "Phonecall": "Phonecall",
@@ -121,7 +121,7 @@
     "birthDate": "Birth Date",
     "gender": "Gender",
     "male": "Male",
-    "female": "female",
+    "female": "Female",
     "contactNumber": "Contact Number",
     "city": "City",
     "address": "Address",

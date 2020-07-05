@@ -185,3 +185,12 @@ li {
 
 
 }
+
+#errorSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 16px;
+   margin-bottom: 10px;
+}
