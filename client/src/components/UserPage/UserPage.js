@@ -4,6 +4,7 @@ import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
 import { useHistory, Redirect } from 'react-router-dom'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import userProfile from './userProfile.svg'
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
@@ -73,9 +74,9 @@ export default function UserPage() {
         if (e.target.textContent == `${t('general.save')}`) {
             //options for non-editable state
             e.target.textContent = `${t('general.edit')}`
-            e.target.style.backgroundColor = "#DEB675"
-            e.target.style.transform = "translateY(+2px) scale(1)";
-            currentNode.current.style.backgroundColor = ""
+            e.target.style.backgroundColor = "#d5068d"
+            e.target.style.transform = "scale(1)";
+
             currentNode.current.style.border = "none";
 
             //save new data to state on click of save
@@ -91,10 +92,10 @@ export default function UserPage() {
         else {
             //options for editable state
             e.target.textContent = `${t('general.save')}`
-            e.target.style.backgroundColor = "crimson"
+            e.target.style.backgroundColor = "gray"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
-            currentNode.current.style.border = "medium solid #DEB675";
-            currentNode.current.style.backgroundColor = "white"
+            currentNode.current.style.border = "medium solid gray";
+
         }
 
     }
@@ -107,7 +108,11 @@ export default function UserPage() {
 
     return (
         <div className="userPage" >
+            <div className="userImage">
+                <img src={userProfile} />
+            </div>
             <div className="topBox">
+
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
                     <span className="bloodType">{t('userProfile.bloodType')}</span>
@@ -119,8 +124,9 @@ export default function UserPage() {
 
             <div className="userDetails" >
                 <div className="dataItem">
-                    <div></div>
-                    <div className="icon"><i className="far fa-envelope"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="far fa-envelope"></i></div>
+                    </div>
                     <div
                         ref={emailNode}
                         className="data"
@@ -132,8 +138,11 @@ export default function UserPage() {
                         className="editBtn"
                         onClick={(e) => handleEdit(e, "emailData")}>{t('general.edit')}</div>
                 </div>
+
                 <div className="dataItem">
-                    <div className="icon"><i className="fas fa-phone"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="fas fa-phone"></i></div>
+                    </div>
                     <div
                         ref={phoneNode}
                         className="data"
@@ -146,7 +155,9 @@ export default function UserPage() {
                         onClick={(e) => handleEdit(e, "phoneData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
-                    <div className="icon"><i className="fas fa-home"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="fas fa-home"></i></div>
+                    </div>
                     <div
                         ref={addressNode}
                         className="data"
@@ -158,6 +169,13 @@ export default function UserPage() {
                         className="editBtn"
                         onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
+
+
+
+
+
+
+
                 <div className="notificationTitle ma3">Notification Prefences</div>
                 <div className="notifications ma0">
                     <span className="notifiedText ma2">I want to get notified on:</span>

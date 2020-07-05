@@ -11,7 +11,7 @@ export default function Notifications() {
     })
 
     return (
-        <div>
+        <div className="pinkBox">
             <div className="notificationTitle">Notification Prefences</div>
             <div className="notifications">
                 <span className="notifiedText my-3">I want to get notified on:</span>
