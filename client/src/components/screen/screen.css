@@ -1,7 +1,7 @@
 .screenContainer {
     height: 100vh;
     background-color: #fafafa;
-    width: 100vw;
+    width: 100vw !important;
     overflow: scroll;
     margin-top: 60px
 }

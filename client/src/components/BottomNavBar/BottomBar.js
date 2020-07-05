@@ -15,7 +15,7 @@ export default function BottomBar() {
 
     return (
 
-        <div className='listContainer fixed-bottom'>
+        <div className='listContainer'>
             <div className='' onClick={(e) => { addIconClass(e) }}>
                 <img className='' alt="About icon" tabIndex='1' src={aboutIcon}></img>
             </div>
