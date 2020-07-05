@@ -68,6 +68,11 @@ label {
 
 }
 
+
+.birthDate{
+  direction: ltr !important;
+}
+
 .react-date-picker__wrapper {
 
   background-color: #ecf8e4;
