@@ -6,6 +6,8 @@ import Popup from "reactjs-popup";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
+import Button from '../button'
+import BackArrow from '../../components/BackArrow'
 
 const RegisterForm = () => {
   const [date, setDate] = useState();
@@ -90,14 +92,11 @@ const RegisterForm = () => {
       setAddressError(true);
       setError("Address Field should start with a letter");
 
-     //Check if the user did not choose any type of notifications
-
-    } else if (Object.entries(notifications).length === 0) {
-      setNotificationsPopUp(false);
 
     } else {
 
-      setNotificationsPopUp(true);
+      //Check if the user did not choose any type of notifications
+      if (Object.entries(notifications).length === 0) setNotificationsPopUp(true);
       //update state
       setuserInputs(userInputs);
 
@@ -165,7 +164,11 @@ const RegisterForm = () => {
 
   return (
     <Fragment>
-      <LanguageSwitch />
+      {console.log(notificationsPopUp)}
+      <div className="registerIcons">
+        <BackArrow size ="3x" marginLeft = "5px" />
+        <LanguageSwitch marginRight = "5px" />
+      </div>
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
       </div>
@@ -475,64 +478,55 @@ const RegisterForm = () => {
 
         <div className="mb-4">
           {notificationsPopUp ? (
-           
-              <Fragment>
-                <div className="signUpButtonContainer">
-                  <button className="signUpButton" type="submit">
-                    {t("registerForm.signUp")}
-                  </button>
-                </div>
-              </Fragment>
-          ) : (
-
             <Fragment>
-            <Popup
-              className="popup2"
-              trigger={
-                <div className="signUpButtonContainer">
-                  <button className="signUpButton" type="button">
-                    {t("registerForm.signUp")}
-                  </button>
-                </div>
-              }
-              modal
-              position="left top"
-              closeOnDocumentClick
-              contentStyle={{ width: "20px" }}>
-              {(close) => (
-                <div className="container">
-                  <a className="close" onClick={close}>
-                    X
-                  </a>
+              <Popup
+                className="popup2"
+                trigger={<Button type="button" text={t("registerForm.signUp")} color='#C71585'></Button>}
+                modal
+                position="left top"
+                closeOnDocumentClick
+                contentStyle={{ width: "20px" }}>
+                {(close) => (
+                  <div className="container">
+                    <a className="close" onClick={close}>
+                      X
+                    </a>
 
-                  <div className="content">
-                    {t("registerForm.contactingPhrase")}
+                    <div className="content">
+                      {t("registerForm.contactingPhrase")}
+                    </div>
+
+                    <div className="actions">
+                      <button
+                        type="button"
+                        className="yesButton"
+                        onClick={(e) => {
+                          handleSubmit(e);
+                          close();
+                        }}>
+                        {t("general.Yes")}
+                      </button>
+
+                      <button
+
+                        className="noButton"
+                        onClick={() => {
+                          close();
+                        }}>
+                        {t("general.No")}
+                      </button>
+                    </div>
                   </div>
+                )}
+              </Popup>
+            </Fragment>
+          ) : (
+              <Fragment>
 
-                  <div className="actions">
-                    <button
-                      type="button"
-                      className="yesButton"
-                      onClick={(e) => {
-                        handleSubmit(e);
-                        close();
-                      }}>
-                      {t("general.Yes")}
-                    </button>
 
-                    <button
+                <Button type="submit" text={t("registerForm.signUp")} color='#C71585'></Button>
 
-                      className="noButton"
-                      onClick={() => {
-                        close();
-                      }}>
-                      {t("general.No")}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </Popup>
-          </Fragment>
+              </Fragment>
             )}
         </div>
       </form>

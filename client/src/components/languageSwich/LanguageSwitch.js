@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import React, { useState } from "react";
 
-const LanguageSwitch = ({ languageSelected }) => {
+const LanguageSwitch = (props, { languageSelected }) => {
   const [lang, setLang] = useState(languageSelected);
 
   const handleChange = (e) => {
@@ -16,7 +16,7 @@ const LanguageSwitch = ({ languageSelected }) => {
   // }, [lang])
 
   return (
-    <div className="language">
+    <div className="language" style = {{'marginRight': props.marginRight}}>
       <div>
         <select
           className="lang"

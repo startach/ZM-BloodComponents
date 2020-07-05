@@ -25,7 +25,7 @@ const Menu_header = (props) => {
     <div className="headerBody">
       <div className="burger">
         {props.icon === "backArrow" ? (
-          <BackArrow />
+        <BackArrow size ="3x" color = "white" marginLeft = "5px" marginTop = "12px" />
         ) : props.icon === "burger" ? (
           <BurgerMenu />
         ) : null}
