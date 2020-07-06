@@ -64,7 +64,9 @@
     "makeCord": "הפוף למתאם",
     "remove": "הסר",
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
-    "makeAdmin": "הפוך למנהל"
+    "makeAdmin": "הפוך למנהל",
+    "admin": "מנהל",
+    "cord": "מתאם"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"

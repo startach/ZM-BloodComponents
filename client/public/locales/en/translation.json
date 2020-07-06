@@ -64,7 +64,9 @@
     "makeCord": "Make Coordinator",
     "remove": "Remove",
     "selectMakeAdmin": "select user to make admin",
-    "makeAdmin": "make Admin"
+    "makeAdmin": "make Admin",
+    "admin": "Admin",
+    "cord": "Coordinator"
   },
   "appointmentsEntry": {
     "noAppoins": "You have no past appointments"

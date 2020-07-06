@@ -64,7 +64,9 @@
     "makeCord": "عيّن منسّق",
     "remove": "حذف",
     "selectMakeAdmin": "قُم بالإختيار لتعيين مدير",
-    "makeAdmin": "عيّن مدير"
+    "makeAdmin": "عيّن مدير",
+    "admin": "مدير",
+    "cord": "منسّق"
   },
   "appointmentsEntry":{
     "noAppoins": "ليس لديك اي مواعيد سابقة"
