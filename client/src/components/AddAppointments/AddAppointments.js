@@ -12,7 +12,6 @@ import TextField from '@material-ui/core/TextField'
 export default function AddAppointments() {
 
     const { t } = useTranslation();
-
     const [hospitalsDetails, setHospitalsDetails] = useState([])
     useEffect(()=>{
         //load hospitals into hospitalsList
@@ -176,7 +175,7 @@ export default function AddAppointments() {
                     <tr className="headerRow" style={{height:'40px'}}>
                       <th className="headerEntries">{t('general.hospital')}</th>
                       <th className="headerEntries">{t('dashboard.date')}</th>
-                      <th className="headerEntries">{t('dashboard.Time')}</th>
+                      <th className="headerEntries">{t('dashboard.time')}</th>
                       {/* <th className="headerEntries">Type</th> */}
                       <th className="headerEntries">Slots</th>
                       <th className="headerEntries"><MDBIcon icon='trash-alt' size="2x"/></th>
