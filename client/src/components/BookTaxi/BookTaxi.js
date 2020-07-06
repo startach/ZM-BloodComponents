@@ -165,13 +165,13 @@ export default function BookTaxi({ close, bookingData }) {
 
 
                 <div className="my-4">
-                        <b>From:</b>  {pickupData.from}
+                        <b><span className="highlight">From: </span></b>  {pickupData.from}
                     </div>
                     <div className="my-4">
-                        <b> Back to: </b>  {pickupData.backto}
+                        <b><span className="highlight">Back to: </span></b>   {pickupData.backto}
                     </div>
                     <div className="my-4">
-                        <b> Time:</b> {pickupData.hour}: {pickupData.min}
+                        <b><span className="highlight">Time: </span></b>   {pickupData.hour}: {pickupData.min}
                     </div>
 
                     If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator.
