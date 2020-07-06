@@ -99,7 +99,6 @@ export default function UserPage() {
             currentNode.current.style.border = "medium solid gray";
 
         }
-
     }
 
     // in order to show updates to notifications methods without having to refresh the page
