@@ -144,7 +144,7 @@ export default function Questionnaire() {
 
 
     return (
-        <div className="questionnairePage">
+        <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
                 <div className="highlight pageTitle">Questionnaire</div>
             </div>
@@ -158,13 +158,13 @@ export default function Questionnaire() {
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
                             gender == "female" && question.id == 15 ? <div></div> :
 
-                                <div className="questions">
-                                    <div className="left">
+                                <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
+                                    <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
                                         <div><b>{question.id}:</b> {question.question}</div>
                                     </div>
 
 
-                                    <div className="right">
+                                    <div  className={`${languageSelected==='en'? 'right' : 'rightRtl'}`}>
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
