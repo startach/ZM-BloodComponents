@@ -154,5 +154,9 @@
     "confirm":"מאשר",
     "needARide": "צריך הסעה לבית חולים",
     "orderRide": "להזמין הסעה עכשיו"
+  },
+  "screens":{
+    "verification": "אישור התור",
+    "questionnaire": "שאלוןd"
   }
 }

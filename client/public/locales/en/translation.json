@@ -155,5 +155,9 @@
     "confirm":"Confirm",
     "needARide": "Need a ride for your visit to the hospital",
     "orderRide": "Order a ride now"
+  },
+  "screens":{
+    "verification": "Appointment Verification",
+    "questionnaire": "Questionnaire"
   }
 }

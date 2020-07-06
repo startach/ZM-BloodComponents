@@ -154,5 +154,9 @@
     "confirm":"اوافق",
     "needARide": "هل تحتاج لسيارة أجرة",
     "orderRide": "اطلب سيارة اجرة"
+  },
+  "screens":{
+    "verification": "تأكيد الموعد",
+    "questionnaire": "إستبيان"
   }
 }
