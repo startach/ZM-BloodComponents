@@ -115,8 +115,8 @@
     "inAppAlert": "עדכונים בתוך האתר"
   },
   "registerForm": {
-    "signUp": "הירשם",
-    "becomeDonor": "ובוא לתרום",
+    "signUp": "הירשם ובוא לתרום",
+    "becomeDonor": "",
     "fullName": "שם מלא",
     "email": "אימייל",
     "password": "סיסמא",
