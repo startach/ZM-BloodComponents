@@ -114,7 +114,7 @@ export default function BookTaxi({ close, bookingData }) {
 
                 <div className="my-3">
                     Pickup Time:
-                <div>
+                <div className="time">
                         <select onChange={handleChange} id="hour">
                             {timelist.map((slot) => (
                                 <option value={slot}>{slot}</option>
@@ -136,7 +136,7 @@ export default function BookTaxi({ close, bookingData }) {
                 <div className="my-3">
                     <b> Back to: </b>  {pickupData.backto ? <span> {pickupData.backto} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
-                <div className="my-3">
+                <div className="my-3 ">
                     <b> Time:</b> {pickupData.min && pickupData.hour ? <span>{pickupData.hour}:{pickupData.min} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
                 <hr />
@@ -165,13 +165,13 @@ export default function BookTaxi({ close, bookingData }) {
 
 
                 <div className="my-4">
-                        <b>From:</b>  {pickupData.from}
+                        <b><span className="highlight">From: </span></b>  {pickupData.from}
                     </div>
                     <div className="my-4">
-                        <b> Back to: </b>  {pickupData.backto}
+                        <b><span className="highlight">Back to: </span></b>   {pickupData.backto}
                     </div>
                     <div className="my-4">
-                        <b> Time:</b> {pickupData.hour}: {pickupData.min}
+                        <b><span className="highlight">Time: </span></b>   {pickupData.hour}: {pickupData.min}
                     </div>
 
                     If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator.
@@ -179,7 +179,7 @@ export default function BookTaxi({ close, bookingData }) {
                 </div>}
 
             <div className="my-3">
-                <Button text="Close" color="red" onClick={() => {
+                <Button text="Close" color="#d5068d;" onClick={() => {
                     close();
                 }}></Button>
             </div>

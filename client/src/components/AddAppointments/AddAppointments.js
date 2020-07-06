@@ -4,9 +4,10 @@ import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from '../button'
 import { db, auth } from '../firebase/firebase'
-
+import { MDBIcon } from "mdbreact";
 import { useTranslation } from 'react-i18next';
 import i18next, {dir} from 'i18next';
+import TextField from '@material-ui/core/TextField'
 
 export default function AddAppointments() {
 
@@ -14,8 +15,6 @@ export default function AddAppointments() {
 
     const [hospitalsDetails, setHospitalsDetails] = useState([])
     useEffect(()=>{
-        //TODO: add authentication check / credentials
-
         //load hospitals into hospitalsList
         const hospitals = []
         db.collection('Hospitals').get()
@@ -107,10 +106,11 @@ export default function AddAppointments() {
     }
 
     return (
-        <div className="addAppContainer tc">
-            <p className="text-center mt-5">
-            {t('addAppointments.addAppointmentTitle')}: {" "}
-                <select className="dropdown ml-3 pa2" id="hospitalName" onChange={handleChangeHospital} style={{width:'300px'}}>
+        <div className="addAppContainer" style={{width:'100%'}}>
+            <div ClassName="addInputs">
+            <div className="hospitalDate">
+            {/* {t('addAppointments.addAppointmentTitle')}: {" "} */}
+                <select className="dropdown ml-3 pa2" id="hospitalName" onChange={handleChangeHospital}>
                 <option selected disabled >{t('addAppointments.selectHospital')}</option>
                     {
                     hospitalsDetails.map( hospital => {
@@ -122,74 +122,96 @@ export default function AddAppointments() {
                     })  
                     }
                 </select>
-            </p>
-
-            <div className="inputContainer vcenter pa2 ma3">
                 <Datepicker
                     required
                     selected={appDate}
                     onChange={handleChangeDate}
                     showTimeSelect
                     dateFormat="Pp"
-                    className="ml-3 pa2"
+                    className="pa2"
                 />
-                <input 
-                id="slots" 
-                type="number"
-                min="1"
-                caption="slots"
-                className="slots ml-3 pa2" 
-                onChange={handleChange} 
-                placeholder="#slots">
-                </input>
-                 <select 
+            </div>
+
+            <div className="typeSlots">
+                <select 
                  className="dropdown ml-3 pa2" 
                  id="appointmentType" 
-                 onChange={handleChange} 
-                 style={{width:'220px'}}>
+                 onChange={handleChange} >
                     <option selected disabled>{t('addAppointments.selectAppointmentType')}</option>
                     <option id="AppointmentType" value="Thrombocytes" className="option"> {t('general.Thrombocytes')} </option>
                     <option id="AppointmentType" value="Granulocytes" className="option"> {t('general.Granulocytes')}</option>
                  </select>
-                <button 
+                <TextField
+                id="slots" 
+                type="number"
+                min={1}
+                defaultValue="1"
+                caption="slots"
+                className="TextField pa2" 
+                onChange={handleChange} 
+                label="number of slots" 
+                InputProps={{ 
+                    inputProps: { min: 1} 
+                 }}
+                InputLabelProps = {{
+                    shrink:true,
+                }}/>
+            </div>
+            <div className='add'>
+                <Button 
+                color="yellowgreen"
                 className="addBtn text-center mx-3" 
-                onClick={handleAdd}>{t('addAppointment.add')}
-                </button>
+                onClick={handleAdd}
+                text={t('addAppointment.add')} >
+                </Button>
+            </div>
+           
             </div>
             <hr/>
-            <div className="display my-5 mx-3">
+             <div className="display">
                 {appList.length === 0 ?
                     <div className="text-center">{t('addAppointments.noAppsToSubmit')}</div>
                     :
-                    <div>
-                        <div className="row heading">
-                            <span className="col-4">{t('general.hospital')} </span>
-                            <span className="col-4">{t('general.date')}</span>
-                            <span className="col-2">{t('general.Time')}</span>
-                            {/* <span className="col-4">Type</span> */}
-                            <span className="col-2">Slots</span>
-                        </div>
-                        {appList.map((appointment, index) => (
-
-                            <div key={index} id={index} className="row">
-                                <span className="col-4">{appointment.hospitalName} </span>
-                                <span className="col-4">{appointment.date}</span>
-                                <span className="col-2">{appointment.time} </span>
-                                {/* <span className="col-4">{appointment.appointmentType}</span> */}
-                                <span className="col-1">{appointment.slots}</span>
-                                <span className="col-1 pointer" style={{ color: "red", fontWeight: "1000" }} onClick={() => handleDelete(index)}>x</span>
-                            </div>
-
-
-                        ))}
-                    </div>}
-            </div>
+                    <table className="schedulesTables" style={{overflowX:'unset'}}>
+                    <tr className="headerRow" style={{height:'40px'}}>
+                      <th className="headerEntries">{t('general.hospital')}</th>
+                      <th className="headerEntries">{t('dashboard.date')}</th>
+                      <th className="headerEntries">{t('dashboard.Time')}</th>
+                      {/* <th className="headerEntries">Type</th> */}
+                      <th className="headerEntries">Slots</th>
+                      <th className="headerEntries"><MDBIcon icon='trash-alt' size="2x"/></th>
+                   </tr>
+                    {appList.map((appointment, index) => (
+      
+                      <tr className='rowContainer' key={index} id={index}>
+                        <td className='rowClass' >{appointment.hospitalName}</td>
+                        <td className='rowClass' >{appointment.date}</td>
+                        <td className='rowClass'>{appointment.time}</td>
+                        {/* <td className='rowClass'>{appointment.appointmentType}</td> */}
+                        <td className='rowClass'>{appointment.slots}</td>
+                        <td className='rowClass'>
+                            <MDBIcon 
+                            icon='trash'
+                            size="2x"
+                            className="deleteBtn"
+                            onClick={() => handleDelete(index)} />
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
+                }
+                
+              </div>
+                
+                    
             <div className="subBtn">
-                <Button type="button" text={t('addAppointment.submit')} onClick={handleSubmit}></Button>
+                <Button 
+                type="button" 
+                text={t('addAppointment.submit')} 
+                onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
         </div>
-
 
     )
 }

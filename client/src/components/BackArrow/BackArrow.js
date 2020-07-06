@@ -21,11 +21,10 @@ const BackArrow = (props) => {
 
   return (
     <MDBIcon 
-    icon="angle-double-left" 
-    className="white" 
-    size="2x"
+    icon="arrow-left"   
+    size={props.size}
     onClick={() => onClickGoBackArrow()}
-    style={styles.image}/>
+    style={{"color" : props.color , "marginLeft" : props.marginLeft , "marginTop" : props.marginTop }}/>
   )
 }
 

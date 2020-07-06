@@ -15,9 +15,6 @@ import i18next from 'i18next';
 
 
 
-
-
-
 function DashboardNoAppoin() {
 
   /////////
@@ -223,7 +220,7 @@ function DashboardNoAppoin() {
                 <td className='rowClass'>{appointment.hospitalName}</td>
                 <td className='rowClass' >{appointment.date}</td>
                 <td className='rowClass'>{appointment.time}</td>
-                <div className='btnContainerCancel'>
+                <td className='rowClass'>
                   <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton"> {t('dashboard.Cancel')}</button>
                   }
                     modal position="left top" closeOnDocumentClick
@@ -238,7 +235,7 @@ function DashboardNoAppoin() {
 
                         <div className="content">
 
-                          {t('dashboard.deleteAppointment')}
+                          {t('dashboard.deleteAppointment')}?
 
                         </div>
 
@@ -270,7 +267,7 @@ function DashboardNoAppoin() {
                     )}
 
                   </Popup>
-                </div>
+                </td>
 
               </tr>
             ))}

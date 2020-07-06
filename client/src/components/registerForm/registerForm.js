@@ -6,6 +6,8 @@ import Popup from "reactjs-popup";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
+import Button from '../button'
+import BackArrow from '../../components/BackArrow'
 
 const RegisterForm = () => {
   const [date, setDate] = useState();
@@ -15,7 +17,7 @@ const RegisterForm = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [addressError, setAddressError] = useState(false);
-  const [popUp, setPopUp] = useState(false);
+  const [notificationsPopUp, setNotificationsPopUp] = useState(false);
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -94,41 +96,37 @@ const RegisterForm = () => {
     } else {
 
       //Check if the user did not choose any type of notifications
+      if (Object.entries(notifications).length === 0) setNotificationsPopUp(true);
+      //update state
+      setuserInputs(userInputs);
 
-      if (Object.entries(notifications).length === 0 ) {
-        setPopUp(true);
-      } else {
+      //Insert user into firestore
+      try {
+        const cred = await auth.createUserWithEmailAndPassword(
+          userInputs.email,
+          userInputs.password
+        );
+        //storing the logged in user's id into localStorage variable
+        localStorage.setItem("userid", cred.user.uid);
+        //localStorage.setItem('userLevel', cred.user.userLevel)
 
-        //update state
-        setuserInputs(userInputs);
+        await db.collection("users").doc(cred.user.uid).set(userInputs);
 
-        //Insert user into firestore
-        try {
-          const cred = await auth.createUserWithEmailAndPassword(
-            userInputs.email,
-            userInputs.password
-          );
-          //storing the logged in user's id into localStorage variable
-          localStorage.setItem("userid", cred.user.uid);
-          //localStorage.setItem('userLevel', cred.user.userLevel)
+        //Add casualNotifications to the database
 
-          await db.collection("users").doc(cred.user.uid).set(userInputs);
+        await db.collection("users").doc(cred.user.uid).update({
+          casualNotifications: notifications,
+        });
 
-          //Add casualNotifications to the database
+        //Redirect to Dashboard after registration
+        window.location.href = "/dashboard";
 
-          await db.collection("users").doc(cred.user.uid).update({
-            casualNotifications: notifications,
-          });
-
-          //Redirect to Dashboard after registration
-          window.location.href = "/dashboard";
-
-          //Check if there is error with password weakness , etc
-        } catch (err) {
-          setCheckError(true);
-          setError(err.message);
-        }
+        //Check if there is error with password weakness , etc
+      } catch (err) {
+        setCheckError(true);
+        setError(err.message);
       }
+
     };
   }
 
@@ -166,7 +164,11 @@ const RegisterForm = () => {
 
   return (
     <Fragment>
-      <LanguageSwitch />
+      {console.log(notificationsPopUp)}
+      <div className="registerIcons">
+        <BackArrow size ="3x" marginLeft = "5px" />
+        <LanguageSwitch marginRight = "5px" />
+      </div>
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
       </div>
@@ -259,8 +261,8 @@ const RegisterForm = () => {
               value={date}
               onChange={onClickDayHandler}
               format="dd/MM/yy"
-              minDate={new Date(1929,12,31)}
-              maxDate = {new Date(2002,11,31)}
+              minDate={new Date(1929, 12, 31)}
+              maxDate={new Date(2002, 11, 31)}
               required
             />
           </label>
@@ -475,17 +477,11 @@ const RegisterForm = () => {
           )}
 
         <div className="mb-4">
-          {popUp ? (
+          {notificationsPopUp ? (
             <Fragment>
               <Popup
                 className="popup2"
-                trigger={
-                  <div className="signUpButtonContainer">
-                    <button className="signUpButton" type="button">
-                      {t("registerForm.signUp")}
-                    </button>
-                  </div>
-                }
+                trigger={<Button type="button" text={t("registerForm.signUp")} color='#C71585'></Button>}
                 modal
                 position="left top"
                 closeOnDocumentClick
@@ -526,11 +522,10 @@ const RegisterForm = () => {
             </Fragment>
           ) : (
               <Fragment>
-                <div className="signUpButtonContainer">
-                  <button className="signUpButton" type="submit">
-                    {t("registerForm.signUp")}
-                  </button>
-                </div>
+
+
+                <Button type="submit" text={t("registerForm.signUp")} color='#C71585'></Button>
+
               </Fragment>
             )}
         </div>

@@ -1,6 +1,5 @@
 .questionnairePage {
 
-    text-align: left;
     padding: 4%;
     }
     
@@ -25,6 +24,15 @@
         margin-top: 6%;
         margin-left: 8%;
         margin-right: 8%;
+    }
+
+    .qIcon {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 2%;
     }
 
 
@@ -76,3 +84,34 @@
         transition: ease-out 0.3s;
     
     }
+
+    @media screen and (max-width: 450px) {
+        .questions{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-items: center;
+        }
+        .right{
+            justify-content: space-evenly;
+        }
+        .left{
+            width: 90%;
+        }
+
+        .questionsRtl{
+            /* display: flex; */
+            flex-direction: column;
+            width: 100%;
+            justify-items: center;
+            direction: rtl !important;
+            
+        }
+        .rightRtl{
+            justify-content: space-evenly;
+        }
+        .leftRtl{
+            width: 90%;
+        }
+      }
+    
