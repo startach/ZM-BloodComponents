@@ -141,5 +141,23 @@
     "submit": "إضافة",
     "add": "أضف"
   }
-  
+  ,"verificationList":{ 
+    "registeredSuccesfully": "قد تمّت عمليّة التسجيل بنجاح",
+    "expectingYou": "شكراً, نلقاك بالساعة",
+    "onThe": "بتاريخ",
+    "at": "في",
+    "hospital": "",
+    "dontForget": "فضلاً, احضر معك",
+    "bringId": "بطاقة هوية شخصيّة",
+    "eatSome": "تناول بعض الفاكهة (ليس الكثير)",
+    "drinkSome": "إشرب ماء",
+    "confirm":"اوافق",
+    "needARide": "هل تحتاج لسيارة أجرة",
+    "orderRide": "اطلب سيارة اجرة"
+  },
+  "screens":{
+    "verification": "تأكيد الموعد",
+    "questionnaire": "إستبيان",
+    "adminControls": "إعدادات المدير"
+  }
 }

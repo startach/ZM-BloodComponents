@@ -142,4 +142,24 @@
     "submit": "Submit",
     "add": "Add"
   }
+  ,"verificationList":{ 
+    "registeredSuccesfully": "You have been registered successfully",
+    "expectingYou": "Thanks, we're expecting you at",
+    "onThe": "on The",
+    "at": "at",
+    "hospital": "Hospital",
+    "dontForget": "Don't Forget to",
+    "bringId": "Bring your ID with you",
+    "eatSome": "Eat some fruit/snack (but not a fatty one)",
+    "drinkSome": "Drink some water",
+    "confirm":"Confirm",
+    "needARide": "Need a ride for your visit to the hospital",
+    "orderRide": "Order a ride now"
+  },
+  "screens":{
+    "verification": "Appointment Verification",
+    "questionnaire": "Questionnaire",
+    "adminControls": "Admin Controls"
+
+  }
 }

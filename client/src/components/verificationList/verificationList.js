@@ -6,47 +6,51 @@ import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 
 import { MDBIcon, MDBBtn } from "mdbreact";
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 const VerificationList = () => {
     const backArrow = "/img/back-button-white.svg"
+    const { t } = useTranslation();
+
     return (
         <div>
             <div className="introContainer">
 
                 <MDBIcon icon="check-circle" className="checkIcon" size="4x" />
 
-                <p id="firstHeader">You have been registered successfully ! </p>
+                <p id="firstHeader">{t('verificationList.registeredSuccesfully')} ! </p>
 
-                <p id="secondHeader">Thanks, we're expecting you at <b>{localStorage.getItem('appointmentTime')} </b> on the <b>{localStorage.getItem('appointmentDate')}</b> at <b> {localStorage.getItem('hospital')} Hospital</b> </p>
+                <p id="secondHeader">{t('verificationList.expectingYou')} <b>{localStorage.getItem('appointmentTime')} </b> {t('verificationList.onThe')} <b>{localStorage.getItem('appointmentDate')}</b> {t('verificationList.at')} <b> {localStorage.getItem('hospital')} {t('verificationList.hospital')}</b> </p>
             </div>
 
 
 
-            <h2 id="forgetText" ><b>Don't Forget to</b></h2>
+            <h2 id="forgetText" ><b>{t('verificationList.dontForget')}</b></h2>
 
 
-            <ul className="bringList">
+            <ul style={{textAlign:(localStorage.getItem('i18nextLng') === 'en')?'left':'right'}} className="bringList">
 
-                <li id="toBring">Bring your ID with you</li>
+                <li id="toBring">{t('verificationList.bringId')}</li>
 
-                <li id="toBring" >Eat some fruit/snack (but not a fatty one)</li>
+                <li id="toBring" >{t('verificationList.eatSome')}</li>
 
-                <li id="toBring">Drink some water</li>
+                <li id="toBring">{t('verificationList.drinkSome')}</li>
 
 
             </ul>
 
             <Link id="link" to="/dashboard">
-                <button className="confirmButton">Confirm</button>
+                <button className="confirmButton">{t('verificationList.confirm')}</button>
             </Link>
 
-            <p id="footer">Need a ride for your visit to the hospital ?</p>
+            <p id="footer">{t('verificationList.needARide')} ?</p>
 
             <div className="my-4">
                 <Popup className="popup1" trigger={<div className="bookTaxiButtonContainer">
                     <button className="bookTaxiButton">
                     <img src={backArrow} id="backArrowVer" />
-                    <span id="BookTaxiSpan">Order a ride now </span>
+                    <span id="BookTaxiSpan">{t('verificationList.orderRide')} </span>
                     </button>
                     
                 </div>} modal position="left top" closeOnDocumentClick>
