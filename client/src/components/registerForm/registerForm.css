@@ -65,9 +65,13 @@ label {
   color: grey;
 }
 
-::placeholder {
+.nameSignupContainer ::placeholder , .emailSignupContainer ::placeholder, .passwordSignupContainer ::placeholder
+, .confirmPasswordSignupContainer ::placeholder,.phoneSignupContainer ::placeholder, .citySignupContainer ::placeholder
+ , .genderContainer ::placeholder, .secondaryAddressSignupContainer ::placeholder,.addressSignupContainer ::placeholder
+ , .bloodTypesContainer ::placeholder , .organizationContainer ::placeholder{
 
   color: grey;
+  padding-right: 10px;
 }
 
 .birthDateContainer {
@@ -83,10 +87,6 @@ label {
 
 }
 
-#labelBirth {
-
-  
-}
 
 
 .birthDate{
