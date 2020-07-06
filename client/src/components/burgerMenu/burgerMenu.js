@@ -21,11 +21,8 @@ const BurgerMenu = () => {
   const [accessLevel, setAccessLevel] = useState("loading");
 
 
-    useEffect(() => {
-
-
-  setAccessLevel(localStorage.getItem('userLevel'))
-
+  useEffect(() => {
+    setAccessLevel(localStorage.getItem('userLevel'))
     },[])
 
   const handleLogout = () => {
