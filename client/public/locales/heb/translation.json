@@ -37,7 +37,8 @@
     "scheduleAppointment": "נא לקבוע תור חדש",
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
-    "orderTaxi": "הזמן מונית"
+    "orderTaxi": "הזמן מונית",
+    "rideDetails": "פרטי ההסעה"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
@@ -64,7 +65,9 @@
     "makeCord": "הפוף למתאם",
     "remove": "הסר",
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
-    "makeAdmin": "הפוך למנהל"
+    "makeAdmin": "הפוך למנהל",
+    "admin": "מנהל",
+    "cord": "מתאם"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"
@@ -77,7 +80,10 @@
     "backTo": "אל",
     "forAppointment": "לתור",
     "taxiConfirm": "הסעה הוזמנה לך ל",
-    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם"
+    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם",
+    "confirm": "אישור",
+    "close": "סגירה",
+    "cancelRide": "ביטול ההסעה"
   },
   "burgerMenu": {
     "dashboard": "ראשי",
