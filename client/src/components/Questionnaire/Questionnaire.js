@@ -5,6 +5,7 @@ import Button from '../button'
 import { db } from '../firebase/firebase'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import qIcon from './questionnaire.svg'
 
 
 export default function Questionnaire() {
@@ -144,6 +145,9 @@ export default function Questionnaire() {
 
     return (
         <div className="questionnairePage">
+            <div className="qIcon"><img src={qIcon} />
+                <div className="highlight pageTitle">Questionnaire</div>
+            </div>
 
             <form onSubmit={handleSubmit}>
                 {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
