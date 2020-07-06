@@ -114,7 +114,7 @@ export default function BookTaxi({ close, bookingData }) {
 
                 <div className="my-3">
                     Pickup Time:
-                <div>
+                <div className="time">
                         <select onChange={handleChange} id="hour">
                             {timelist.map((slot) => (
                                 <option value={slot}>{slot}</option>
@@ -136,7 +136,7 @@ export default function BookTaxi({ close, bookingData }) {
                 <div className="my-3">
                     <b> Back to: </b>  {pickupData.backto ? <span> {pickupData.backto} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
-                <div className="my-3">
+                <div className="my-3 ">
                     <b> Time:</b> {pickupData.min && pickupData.hour ? <span>{pickupData.hour}:{pickupData.min} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
                 <hr />
@@ -179,7 +179,7 @@ export default function BookTaxi({ close, bookingData }) {
                 </div>}
 
             <div className="my-3">
-                <Button text="Close" color="red" onClick={() => {
+                <Button text="Close" color="#d5068d;" onClick={() => {
                     close();
                 }}></Button>
             </div>

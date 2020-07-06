@@ -235,7 +235,7 @@ function DashboardNoAppoin() {
 
                         <div className="content">
 
-                          {t('dashboard.deleteAppointment')}
+                          {t('dashboard.deleteAppointment')}?
 
                         </div>
 

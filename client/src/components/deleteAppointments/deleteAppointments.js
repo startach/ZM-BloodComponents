@@ -182,7 +182,7 @@ function DeleteAppointments() {
 
                 <div className="dateContainer">
                     <p className="text-center mt-5">
-                    {t('general.select')} {t('general.date')}: {" "}
+                        {t('general.select')} {t('general.date')}: {" "}
                         <Datepicker
                             selected={appDate}
                             onChange={handleDateChange}
@@ -194,7 +194,7 @@ function DeleteAppointments() {
 
                 <div className="selectAppointmentTypeContainer">
                     <p className="text-center mt-5">
-                    {t('addAppointments.selectAppointmentType')}: {" "}
+                        {t('addAppointments.selectAppointmentType')}: {" "}
                         <select id="appointmentType" className="appointmentTypeList" onChange={handleChange}>
 
                             <option value="Select" selected disabled>{t('general.select')} </option>
@@ -221,126 +221,127 @@ function DeleteAppointments() {
                 <li className="deleteTableEntries">Hospital</li>
                 <li className="deleteTableEntries"></li>
             </ul>
+            <div className="contain">
+                {selectedInputs.map((Details, id) => (
+                    <ul className='deleteRowContainer' id={Details.id}>
 
-            {selectedInputs.map((Details, id) => (
-                <ul className='deleteRowContainer' id={Details.id}>
+                        {editable.date && editable.id == Details.id ? (
 
-                    {editable.date && editable.id == Details.id ? (
-
-                        <Fragment>
-                            <input className='editableInputsDB'
-                                id="date"
-                                type="text"
-                                defaultValue={Details.data().date}
-                                onChange={handleEditChange}>
-                            </input>
-
-
-                            <input className='editableInputsDB'
-                                id="time"
-                                type="text"
-                                defaultValue={Details.data().time}
-                                onChange={handleEditChange}>
-                            </input>
-
-
-                            <select id="appointmentType" className='editableInputsDB' onChange={handleEditChange}
-                                defaultValue={Details.data().appointmentType}>
-
-                                <option value="Thrombocytes" >Thrombocytes</option>
-                                <option value="Granulocytes">Granulocytes</option>
-
-                            </select>
-
-                            <input className='editableInputsDB'
-                                id="hospitalName"
-                                type="text"
-                                defaultValue={Details.data().hospitalName}
-                                onChange={handleEditChange}>
-                            </input>
-
-
-                        </Fragment>
-
-                    ) : (
                             <Fragment>
-                                <li className='deleteAppRow deleteRowDate' id="date">
-                                    {Details.data().date}</li>
+                                <input className='editableInputsDB'
+                                    id="date"
+                                    type="text"
+                                    defaultValue={Details.data().date}
+                                    onChange={handleEditChange}>
+                                </input>
 
-                                <li className='deleteAppRow deleteRowTime' id="time">
-                                    {Details.data().time}</li>
 
-                                <li className='deleteAppRow deleteRowAppointmentType' id="appointmentType">
-                                    {Details.data().appointmentType}</li>
+                                <input className='editableInputsDB'
+                                    id="time"
+                                    type="text"
+                                    defaultValue={Details.data().time}
+                                    onChange={handleEditChange}>
+                                </input>
 
-                                <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
-                                    {Details.data().hospitalName}</li>
+
+                                <select id="appointmentType" className='editableInputsDB' onChange={handleEditChange}
+                                    defaultValue={Details.data().appointmentType}>
+
+                                    <option value="Thrombocytes" >Thrombocytes</option>
+                                    <option value="Granulocytes">Granulocytes</option>
+
+                                </select>
+
+                                <input className='editableInputsDB'
+                                    id="hospitalName"
+                                    type="text"
+                                    defaultValue={Details.data().hospitalName}
+                                    onChange={handleEditChange}>
+                                </input>
+
+
                             </Fragment>
-                        )
 
-                    }
+                        ) : (
+                                <Fragment>
+                                    <li className='deleteAppRow deleteRowDate' id="date">
+                                        {Details.data().date}</li>
 
-                    <div className='ButtonsContainer ButtonsContainerRow '>
+                                    <li className='deleteAppRow deleteRowTime' id="time">
+                                        {Details.data().time}</li>
+
+                                    <li className='deleteAppRow deleteRowAppointmentType' id="appointmentType">
+                                        {Details.data().appointmentType}</li>
+
+                                    <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
+                                        {Details.data().hospitalName}</li>
+                                </Fragment>
+                            )
+
+                        }
+
+                        <div className='ButtonsContainer ButtonsContainerRow '>
 
 
-                        <Popup className="popup2" trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
-                            modal position="left top" closeOnDocumentClick
-                            contentStyle={{ width: "20px" }}
-                        >
-                            {close => (
-                                <div className="container">
-                                    <a className="close" onClick={close}>
-                                        X
+                            <Popup className="popup2" trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
+                                modal position="left top" closeOnDocumentClick
+                                contentStyle={{ width: "20px" }}
+                            >
+                                {close => (
+                                    <div className="container">
+                                        <a className="close" onClick={close}>
+                                            X
                                 </a>
 
 
-                                    <div className="content">
+                                        <div className="content">
 
-                                        Are you sure that you want to delete the appointment ?
+                                            Are you sure that you want to delete the appointment ?
 
                                      </div>
 
-                                    <div className="actions">
+                                        <div className="actions">
 
-                                        <button
-                                            id={Details.id}
-                                            className="yesButton"
-                                            onClick={(e) => {
-                                                deleteAppointment(e)
-                                                close();
-                                            }}>
-                                            Yes
+                                            <button
+                                                id={Details.id}
+                                                className="yesButton"
+                                                onClick={(e) => {
+                                                    deleteAppointment(e)
+                                                    close();
+                                                }}>
+                                                Yes
                                         </button>
 
-                                        <button
-                                            className="noButton"
-                                            onClick={() => {
-                                                close();
-                                            }}>
-                                            No
+                                            <button
+                                                className="noButton"
+                                                onClick={() => {
+                                                    close();
+                                                }}>
+                                                No
                                         </button>
+
+                                        </div>
+
+
 
                                     </div>
+                                )}
+
+                            </Popup>
 
 
 
-                                </div>
-                            )}
+                            <button
+                                id={Details.id}
+                                className="SaveButton" onClick={handleEdit}>
 
-                        </Popup>
+                                Edit</button>
 
+                        </div>
 
-
-                        <button
-                            id={Details.id}
-                            className="SaveButton" onClick={handleEdit}>
-
-                            Edit</button>
-
-                    </div>
-
-                </ul>
-            ))}
+                    </ul>
+                ))}
+            </div>
 
 
         </Fragment>
