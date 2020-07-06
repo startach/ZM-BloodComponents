@@ -37,7 +37,8 @@
     "scheduleAppointment": "من فضلك, إحجز موعد",
     "NearestHospital": "أقرب مشفى هو",
     "getDirections": "تلقّى إرشادات الطريق",
-    "orderTaxi": "اطلب سيارة اجرة"
+    "orderTaxi": "اطلب سيارة اجرة",
+    "rideDetails": "تفاصيل سيارة الاجرة"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",
@@ -79,7 +80,10 @@
     "backTo": "رجوعا الى",
     "forAppointment": "لموعد",
     "taxiConfirm": "سيارة الأجرة ستقلّك:",
-    "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق"
+    "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق",
+    "confirm": "موافقة",
+    "close": "إغلاق",
+    "cancelRide": "إلغاء"
   },
   "burgerMenu":{
     "dashboard": "الصفحة الرئيسية",

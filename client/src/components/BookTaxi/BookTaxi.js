@@ -107,10 +107,11 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
         setBookingData(null)
 
     }
+    let languageSelected = localStorage.getItem('i18nextLng')
 
 
     return (
-        <div>
+        <div className={languageSelected==='en'?'rideContainer':'rideContainerRtl'}>
             <a className="close" onClick={() => close()}>
                 &times;
         </a>
@@ -176,18 +177,18 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
                 {pickupData.min && pickupData.hour && pickupData.from && pickupData.backto ?
 
                     <div className="my-3">
-                        <Button text="Confirm" onClick={() => {
+                        <Button text={t('bookTaxi.confirm')} onClick={() => {
                             confirm();
                         }}></Button>
                     </div>
                     :
                     <div className="my-3">
-                        <Button text="Confirm" color="grey"></Button>
+                        <Button text={t('bookTaxi.confirm')} color="grey"></Button>
                     </div>
                 }
 
                 <div className="my-3">
-                    <Button text="Close" color="#d5068d;" onClick={() => {
+                    <Button text={t('bookTaxi.close')} color="#d5068d;" onClick={() => {
                         close();
                     }}></Button>
                 </div>
@@ -211,12 +212,12 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
                     <div className="my-3">
                         <div className="my-3">
-                            <Button text="Close" color="#d5068d;" onClick={() => {
+                            <Button text="{t('bookTaxi.close')}" color="#d5068d;" onClick={() => {
                                 close();
                             }}></Button>
                         </div>
                         <div className="my-5">
-                            <Button text="Cancel Ride" color="#adb43a" onClick={() => {
+                            <Button text="{t('bookTaxi.cancelRide')}" color="#adb43a" onClick={() => {
                                 deleteRideFunc(bookingData.appointmentID);
                                 close();
 
