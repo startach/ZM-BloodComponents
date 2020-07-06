@@ -5,6 +5,7 @@ import Button from '../button'
 import { db } from '../firebase/firebase'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import qIcon from './questionnaire.svg'
 
 
 export default function Questionnaire() {
@@ -88,7 +89,7 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result);
-        
+
     }
 
 
@@ -127,7 +128,7 @@ export default function Questionnaire() {
 
     // const handleChecked = (question, index, option) => {
     //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
-            
+
     //     }
     // }
 
@@ -144,9 +145,12 @@ export default function Questionnaire() {
 
     return (
         <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
+            <div className="qIcon"><img src={qIcon} />
+                <div className="highlight pageTitle">Questionnaire</div>
+            </div>
 
             <form onSubmit={handleSubmit}>
-                {(languageSelected==='en'? questionList : questionListHeb).map((question, index) => (
+                {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
 
 
                     //Questionairee Logic
@@ -164,7 +168,7 @@ export default function Questionnaire() {
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
-                                                <option disabled="disabled" selected="selected">{t('general.select')}</option>
+                                                    <option disabled="disabled" selected="selected">{t('general.select')}</option>
                                                     {question.options.map(option => (
                                                         <option>{option}</option>
 
@@ -178,23 +182,24 @@ export default function Questionnaire() {
                                         ) : (
                                                 <Fragment>
                                                     <radiogroup>
-                                                    {question.options.map(option => (
-                                                        <label>
-                                                            <input
-                                                                type="radio"
-                                                                class="options"
-                                                                id={index+'@'+option}
-                                                                value={option}
-                                                                name={`Question${index}`}
-                                                                // onClick={() => checkedAnswers.push(index+'@'+option)}
-                                                                onChange={(e) => {handleResults(e, index);
-                                                                    // handleChecked(question, index, option)
-                                                                }}
-                                                            />
-                                                            {" " + option}
-                                                        </label>
+                                                        {question.options.map(option => (
+                                                            <label>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="options"
+                                                                    id={index + '@' + option}
+                                                                    value={option}
+                                                                    name={`Question${index}`}
+                                                                    // onClick={() => checkedAnswers.push(index+'@'+option)}
+                                                                    onChange={(e) => {
+                                                                        handleResults(e, index);
+                                                                        // handleChecked(question, index, option)
+                                                                    }}
+                                                                />
+                                                                {" " + option}
+                                                            </label>
 
-                                                    ))}
+                                                        ))}
                                                     </radiogroup>
                                                 </Fragment>
                                             )
