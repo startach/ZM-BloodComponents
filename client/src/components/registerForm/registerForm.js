@@ -18,6 +18,7 @@ const RegisterForm = () => {
   const [cityError, setCityError] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [notificationsPopUp, setNotificationsPopUp] = useState(false);
+  let refuseNotifications = false;
   const [isChecked, setIsChecked] = useState({
     SMS: false,
     Whatsapp: false,
@@ -43,6 +44,8 @@ const RegisterForm = () => {
   };
 
 
+
+
   //Handle change of notifications checkboxes
 
   const handleCheckbox = (e, checked) => {
@@ -65,7 +68,7 @@ const RegisterForm = () => {
       //phone starting with 05 validation
 
     } else if (!userInputs.phone.startsWith("05")) {
-
+      handleSubmit(e);
       setCheckError(true);
       setPhoneError(true);
       setError("Phone number must start with 05xxx");
@@ -96,38 +99,47 @@ const RegisterForm = () => {
     } else {
 
       //Check if the user did not choose any type of notifications
-      if (Object.entries(notifications).length === 0) {setNotificationsPopUp(true); return};
-      //update state
-      setuserInputs(userInputs);
+      if (Object.entries(notifications).length === 0) {
 
-      //Insert user into firestore
-      try {
-        const cred = await auth.createUserWithEmailAndPassword(
-          userInputs.email,
-          userInputs.password
-        );
-        //storing the logged in user's id into localStorage variable
-        localStorage.setItem("userid", cred.user.uid);
-        //localStorage.setItem('userLevel', cred.user.userLevel)
+        setNotificationsPopUp(true)
 
-        await db.collection("users").doc(cred.user.uid).set(userInputs);
 
-        //Add casualNotifications to the database
-
-        await db.collection("users").doc(cred.user.uid).update({
-          casualNotifications: notifications,
-        });
-
-        //Redirect to Dashboard after registration
-        window.location.href = "/dashboard";
-
-        //Check if there is error with password weakness , etc
-      } catch (err) {
-        setCheckError(true);
-        setError(err.message);
       }
 
-    };
+      // If the user refused to recieve any kind of notifications continue with the flow of the code
+      if (Object.entries(notifications).length >= 1 || refuseNotifications) {
+        //update state
+        setuserInputs(userInputs);
+
+        //Insert user into firestore
+        try {
+          const cred = await auth.createUserWithEmailAndPassword(
+            userInputs.email,
+            userInputs.password
+          );
+          //storing the logged in user's id into localStorage variable
+          localStorage.setItem("userid", cred.user.uid);
+          //localStorage.setItem('userLevel', cred.user.userLevel)
+
+          await db.collection("users").doc(cred.user.uid).set(userInputs);
+
+          //Add casualNotifications to the database
+
+          await db.collection("users").doc(cred.user.uid).update({
+            casualNotifications: notifications,
+          });
+
+          //Redirect to Dashboard after registration
+          window.location.href = "/dashboard";
+
+          //Check if there is error with password weakness , etc
+        } catch (err) {
+          setCheckError(true);
+          setError(err.message);
+        }
+
+      };
+    }
   }
 
   //Handle DatePicker State
@@ -166,8 +178,8 @@ const RegisterForm = () => {
     <Fragment>
       {console.log(notificationsPopUp)}
       <div className="registerIcons">
-        <BackArrow size ="3x" marginLeft = "5px" />
-        <LanguageSwitch marginRight = "5px" />
+        <BackArrow size="3x" marginLeft="5px" />
+        <LanguageSwitch marginRight="5px" />
       </div>
       <div className="imgContainer">
         <img src={logo} id="register-logo" />
@@ -481,15 +493,23 @@ const RegisterForm = () => {
             <Fragment>
               <Popup
                 className="popup2"
-                trigger={<Button type="button" text={t("registerForm.signUp")} color='#C71585'></Button>}
+                open={true}
+                // trigger={<Button type="button" text={t("registerForm.signUp")} color='#C71585'></Button>}
                 modal
                 position="left top"
                 closeOnDocumentClick
                 contentStyle={{ width: "20px" }}>
                 {(close) => (
                   <div className="container">
-                    <a className="close" onClick={close}>
-                      X
+                    <a className="close"
+                      onClick={() => {
+                        refuseNotifications = false;
+                        setNotificationsPopUp(false)
+                        close();
+                      }
+                      }
+
+                      > X
                     </a>
 
                     <div className="content">
@@ -501,16 +521,17 @@ const RegisterForm = () => {
                         type="button"
                         className="yesButton"
                         onClick={(e) => {
+                          refuseNotifications = true;
                           handleSubmit(e);
-                          close();
                         }}>
                         {t("general.Yes")}
                       </button>
 
                       <button
-
                         className="noButton"
                         onClick={() => {
+                          refuseNotifications = false;
+                          setNotificationsPopUp(false)
                           close();
                         }}>
                         {t("general.No")}
