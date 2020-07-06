@@ -501,8 +501,15 @@ const RegisterForm = () => {
                 contentStyle={{ width: "20px" }}>
                 {(close) => (
                   <div className="container">
-                    <a className="close" onClick={close}>
-                      X
+                    <a className="close"
+                      onClick={() => {
+                        refuseNotifications = false;
+                        setNotificationsPopUp(false)
+                        close();
+                      }
+                      }
+
+                      > X
                     </a>
 
                     <div className="content">
