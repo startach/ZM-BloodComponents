@@ -62,7 +62,7 @@ export default function Questionnaire() {
         { "id": 14, "question": "Do you confirm your age is between 17 and 65?", "options": ["Yes", "No"] },
         { "id": 15, "question": "For women only: Have you been pregnant in the last 6 months?", "options": ["Yes", "No"] },
         { "id": 16, "question": "When was your last donation?", "options": ["Less than one month ago", "Less than one month, more than ten days ago", "Less than 10 days ago", "Never"] },
-        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["I confirm", "I do not confirm"] },
+        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["Confirm", "Dont confirm"] },
     ]
 
     const questionListHeb = [
@@ -86,7 +86,6 @@ export default function Questionnaire() {
     ]
     //saves result of drop down into state by Question/ID number
     const handleResults = (e, index) => {
-      console.log( e.target.value)
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result);
@@ -148,6 +147,8 @@ export default function Questionnaire() {
         <div className="questionnairePage">
           <br></br>
               <img src={logo} className="questionImg" />
+              <div className="tittle">Questionaire </div>
+              <div className="introforUser" >Welcome Amir,<br></br> Please Fill in the Questionaire:</div>
 
             <form onSubmit={handleSubmit}>
                 {(languageSelected==='en'? questionList : questionListHeb).map((question, index) => (

@@ -37,8 +37,6 @@
         display: flex;
         align-items: flex-start;
         justify-content: flex-end;
-
-
     }
 
     
@@ -62,8 +60,6 @@
     }
 
     .submitBtn {
-   
-
         display: flex;
         background: #DEB675;
         border-radius: 50px;
@@ -74,7 +70,6 @@
         justify-content: center;
         align-items: center;
         transition: ease-out 0.3s;
-    
     }
 
  
@@ -87,4 +82,19 @@
         display:block;
         margin:0 auto;
         width: 300px;
+    }
+
+    .introforUser{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        border:2px solid #d5068d;
+
+
+    }
+    .tittle{
+        text-align: center;
+        font-weight: bold;
+
     }
