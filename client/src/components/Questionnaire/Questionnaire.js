@@ -32,12 +32,16 @@ export default function Questionnaire() {
         Q17: "select",
     })
 
+    let checkedAnswers = [];
     //allow submit only when all questions have been submit TODO:
     const [complete, setComplete] = useState(false)
 
     const [hospital, setHospital] = useState(false)
     const [gender, setGender] = useState(false)
 
+
+
+    let languageSelected = localStorage.getItem('i18nextLng');
 
     //questionare questions and options, in english
     const questionList = [
@@ -60,10 +64,30 @@ export default function Questionnaire() {
         { "id": 17, "question": "Reading and truth statement confirmation", "options": ["I confirm", "I do not confirm"] },
     ]
 
+    const questionListHeb = [
+        { "id": 1, "question": "?האם תרמת טרומבוציטים בעבר", "options": ["כן", "לא"] },
+        { "id": 2, "question": "האם משקלך מעל 55 ק\"ג", "options": ["כן", "לא"] },
+        { "id": 3, "question": "האם משקלך מעל 50 ק\"ג", "options": ["כן", "לא"] },
+        { "id": 4, "question": "האם עשית קעקוע/עגיל בחצי שנה האחרונה", "options": ["כן", "לא"] },
+        { "id": 5, "question": "האם יש לך סכרת", "options": ["כן, יציב, ומטופל ע\"י תרופות", "כן, לא יציב, ומטופל ע\"י סכרת", "לא"] },
+        { "id": 6, "question": "האם הינך נוטל תרופות?", "options": ["כן", "לא"] },
+        { "id": 7, "question": "האם היית בחו\"ל בשנה האחרונה", "options": ["כן", "לא"] },
+        { "id": 8, "question": "האם עברת ניתוח בחודש האחרון?", "options": ["כן", "לא"] },
+        { "id": 9, "question": "האם יש לך מחלה כרונית?", "options": ["כן", "לא"] },
+        { "id": 10, "question": "האם הנך או היית בעבר חולה במחלת הסרטן", "options": ["כן", "לא"] },
+        { "id": 11, "question": "האם נטלת אנטיביוטיקה בשלושת הימים האחרונים?", "options": ["כן", "לא"] },
+        { "id": 12, "question": "האם עברת טיפול אצל רופא שיניים בעשרת הימים האחרונים?", "options": ["כן", "לא"] },
+        { "id": 13, "question": "האם יש לך פצע פתוח או שריטה?", "options": ["כן", "לא"] },
+        { "id": 14, "question": "האם אתה בטווח הגילאים 17-65?", "options": ["כן", "לא"] },
+        { "id": 15, "question": "האם היית בהריון במהלך החצי שנה האחרונה?", "options": ["כן", "לא"] },
+        { "id": 16, "question": "מתי בפעם האחרונה תרמת טרומבוציטים?", "options": ["לפני יותר מחודש", "בין עשרה ימים לחודש.", "פחות מעשרה ימים", "לעולם לא"] },
+        { "id": 17, "question": "הצהרה שכל האמור לעיל הינו אמת", "options": ["מצהיר ומאשר", "לא מאשר"] },
+    ]
     //saves result of drop down into state by Question/ID number
     const handleResults = (e, index) => {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
+        console.log(result);
         
     }
 
@@ -101,6 +125,11 @@ export default function Questionnaire() {
 
     }
 
+    // const handleChecked = (question, index, option) => {
+    //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
+            
+    //     }
+    // }
 
     useEffect(() => {
 
@@ -117,7 +146,7 @@ export default function Questionnaire() {
         <div className="questionnairePage">
 
             <form onSubmit={handleSubmit}>
-                {questionList.map((question, index) => (
+                {(languageSelected==='en'? questionList : questionListHeb).map((question, index) => (
 
 
                     //Questionairee Logic
@@ -148,19 +177,25 @@ export default function Questionnaire() {
 
                                         ) : (
                                                 <Fragment>
+                                                    <radiogroup>
                                                     {question.options.map(option => (
                                                         <label>
                                                             <input
                                                                 type="radio"
                                                                 class="options"
-                                                                value=""
-                                                                name="radiobutt"
-                                                                onChange={(e) => handleResults(e, index)}
+                                                                id={index+'@'+option}
+                                                                value={option}
+                                                                name={`Question${index}`}
+                                                                // onClick={() => checkedAnswers.push(index+'@'+option)}
+                                                                onChange={(e) => {handleResults(e, index);
+                                                                    // handleChecked(question, index, option)
+                                                                }}
                                                             />
                                                             {" " + option}
                                                         </label>
 
                                                     ))}
+                                                    </radiogroup>
                                                 </Fragment>
                                             )
                                         }

@@ -10,8 +10,13 @@
 .notificationOptions {
     display: flex;
     flex-direction: column;
-    margin-left: 8%;
-    direction: ltr;
+    margin-left: 2%;
+}
+
+.notificationOptionsRtl{
+    display: flex;
+    flex-direction: column;
+    margin-right: 2%;
 }
 
 .notifications {
@@ -23,7 +28,7 @@
 }
 
 .form-check-label {
-    margin-bottom: 3%;
+    margin-right: 6%;
 }
 
 .notifiedtext {
@@ -31,4 +36,26 @@
 }
 .pinkBox {
 border: solid pink 1px;
+}
+
+#rtlNotifications{ 
+    margin-left: 5%;
+}
+
+#ltrNotifications{
+    text-align: left !important;
+} 
+
+
+.prefOptionContainer{
+    justify-content: flex-start;
+}
+
+
+#ltrNotificationContainer{
+    text-align: left !important;
+}
+
+#rtlNotificationContainer{
+    text-align: right !important;
 }

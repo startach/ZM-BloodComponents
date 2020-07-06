@@ -39,6 +39,16 @@ const { t } = useTranslation();
     auth.signInWithEmailAndPassword(userData.email, userData.password).then((cred) => {
       //storing the logged in user's id into localStorage variable
       localStorage.setItem('userid', cred.user.uid)
+
+      auth.onAuthStateChanged(function (user) {
+        if (user) {
+          user.getIdTokenResult().then(function (data) {
+            localStorage.setItem('userLevel', !data.claims.userLevel ? "none" : data.claims.userLevel)
+            console.log(localStorage.getItem('userLevel'))
+          });
+        }
+      });
+      
       //Redirect to Dashboard after login if the user exists
       window.location.href= '/dashboard';
     }).catch(function (error) {
