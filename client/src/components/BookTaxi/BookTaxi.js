@@ -25,6 +25,11 @@ export default function BookTaxi({ close, bookingData }) {
 
 
     useEffect(() => {
+
+        if (bookingData) {
+            setPickupData(bookingData)
+            setScreen("confirmed")
+        }
         //get address
         db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
             setAddressOptions({
@@ -169,7 +174,7 @@ export default function BookTaxi({ close, bookingData }) {
                         <b> Time:</b> {pickupData.hour}: {pickupData.min}
                     </div>
 
-                    If you have any issues on the day, please contact your coordinator.
+                    If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator.
 
                 </div>}
 

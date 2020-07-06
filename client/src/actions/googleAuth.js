@@ -20,7 +20,6 @@ export const SignInWithGoogle = () => {
             localStorage.setItem('userid', user.uid)
             localStorage.setItem('photoURL', user.photoURL)
             //TODO if userid exists IN USERS db then use update IF NULL use set
-            //HINT use filter to check for it or check google docs for alternative solutions 
             await db.collection('users').doc(user.uid).update({
                // id: user.uid,
                 name: user.displayName,

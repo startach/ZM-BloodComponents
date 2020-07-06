@@ -1,41 +1,87 @@
-.headerRow {
+
+.pinkBox {
+    border: solid #d5068d 1px;
+    margin: 4% 6%;
+    color: gray;
+    text-align: right;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.highlight {
+    color: #d5068d;
+}
+
+.pageTitle {
+    font-size: 18px;;
+}
+
+.hospitalsOptionsList {
+    width: 30vw;
+    height: 100%;;
+    color: white;
+    background-color: darkgray;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.hospital {
+    padding: 0% 2%;
+}
+
+.hospitalsOptionsContainer {
+    margin-top: 10px;
+    padding: 0px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 15px;
-    margin-top: 20px;
-    width: 95%;
-    margin-left: 5px;
-    border: 2px solid #c3b7b1;
-    height: 6vh;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+
+.schedulesTables {
+    width: 88%;
+    margin: 6%;
+}
+
+
+
+
+
+.headerRow {
+    text-align: center;
+    background-color: darkgray;
+    height: 10vh;
+    color:white;
+    font-size: 14px;
 }
 
 
   .headerEntries {
     margin-bottom: 10px;
-    font-size: 18px;
     width: 25%;
+    border: solid white 2px;
 }
 
 
 
+
 .rowContainer {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    border-radius: 15px;
-    height: 6vh;
-    width: 95%;
-    box-shadow: black 1px 1px 2.5px;
-    background-color: #c3b7b1;
-    margin-top: 10px;
-    margin-left: 5px;
+    text-align: center;
+    background-color: lightgray;
+    height: 10vh;
+    color:black;
+    font-size: 14px;
+
   }
 
 
   .rowClass {
-    color: #fafafa;
-    font-size: 18px;
+
+    margin-bottom: 10px;
+    width: 25%;
+    border: solid white 2px;
    
 }
 
@@ -45,9 +91,11 @@
 .cancelButton {
     background-color: #C71585;
     color: white;
+    border: none;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
+
 
 
     
@@ -57,22 +105,20 @@
 
     background-color: #C71585;
     color: white;
+    border: none;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
-    margin-top: 4px;
+
 
 }
 
 .introSpan {
-    padding-right: 2%;
-    padding-left: 2%;
-    text-align: center;
+
+    font-size: 16px;
 }
 
-.hospitalsOptionsContainer {
-    margin-top: 10px;
-}
+
 
 .schedulesTables th {
 
@@ -84,10 +130,7 @@
  
 }
 
-.schedulesTables {
-    width: 100%;
-    color: #212529;
-}
+
 
 .dashboardView {
     text-align: center;
@@ -96,26 +139,13 @@
 
 
 
-#introSpan {
-    font-size: 20px;
-}
-
-.lineUnderSpan {
-    border: 1px inset;
-    width: 100%;
-    margin-top: 10px;
-}
 
 .userEligibility {
     margin-top: 10px;
     font-size: 20px;
 }
 
-.hospitalsOptionsList {
-    width: 30vw;
-    background-color: #C3B7B1;
-    border-radius: 4px;
-}
+
 
 .bottomButtons {
     display: flex;
@@ -124,7 +154,12 @@
     margin-top: 50px;
 }
 
-.btnContainer {
+.btnContainerCancel {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    
 
-    margin-top: 3px;
 }

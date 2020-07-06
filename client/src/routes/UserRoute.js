@@ -4,6 +4,7 @@ import {Route, Redirect} from 'react-router-dom'
 const UserRoute = ({
     component: Component,
     isAuthenticated,
+    userLevel,
     ...rest
 }) => (
    

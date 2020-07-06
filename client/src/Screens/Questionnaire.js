@@ -7,8 +7,6 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 const Questionnaire = () => {
     return (
         <ScreenContainer>
-
-            <div className="header"></div>
             <MenuHeader title="Questionnaire" icon='backArrow'></MenuHeader>
             <QuestionnaireList />
             <BottomNavBar />

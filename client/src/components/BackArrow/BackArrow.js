@@ -1,10 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import {MDBBtn, MDBIcon } from "mdbreact";
 
 const styles = {
-  image: {
+  icon: {
     width: '50px',
-    margin: '5px'
+    margin: '10px'
   }
 };
 
@@ -19,13 +20,12 @@ const BackArrow = (props) => {
   }
 
   return (
-    <img
-      className="pointer"
-      onClick={() => onClickGoBackArrow()}
-      alt="presentation"
-      style={styles.image}
-      src="/img/back-button.svg" />
-    );
+    <MDBIcon 
+    icon="arrow-left"   
+    size={props.size}
+    onClick={() => onClickGoBackArrow()}
+    style={{"color" : props.color , "marginLeft" : props.marginLeft , "marginTop" : props.marginTop }}/>
+  )
 }
 
 export default BackArrow;

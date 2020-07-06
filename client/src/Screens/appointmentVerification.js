@@ -11,15 +11,12 @@ import BottomNavBar from '../components/BottomNavBar/BottomBar'
 const AppointmentVerification = () => {
     return (
 
-        <div>
-            <div className="header"></div>
             <ScreenContainer>
-                <MenuHeader title="Appointment Verification" icon='burger'></MenuHeader>
+                <MenuHeader title="Appointment Verification" icon='burger'/>
                 <VerificationList />
                 <BottomNavBar />
+                <div className="footer"></div>
             </ScreenContainer>
-            <div className="footer"></div>
-        </div>
 
     )
 }

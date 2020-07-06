@@ -4,8 +4,14 @@ import { db } from '../firebase/firebase'
 import Datepicker from "react-datepicker";
 import Popup from "reactjs-popup";
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 
 function DeleteAppointments() {
+
+    const { t } = useTranslation();
+
     const [appDate, setAppDate] = useState(new Date())
     const [hospitals, setHospitals] = useState([])
     const [hospitalAppointments, setHospitalAppointments] = useState({
@@ -155,9 +161,9 @@ function DeleteAppointments() {
 
                 <div className="selectHospitalContainer">
                     <p className="text-center mt-5">
-                        Select Hospital : {" "}
+                        {t('addAppointments.selectHospital')} : {" "}
                         <select id="hospitalName" className="hospitalsList" onChange={handleChange}>
-                            <option value="Select" selected disabled>Select </option>
+                            <option value="Select" selected disabled>{t('general.select')} </option>
                             {hospitals.map(hospital =>
 
 
@@ -176,7 +182,7 @@ function DeleteAppointments() {
 
                 <div className="dateContainer">
                     <p className="text-center mt-5">
-                        Select Date : {" "}
+                    {t('general.select')} {t('general.date')}: {" "}
                         <Datepicker
                             selected={appDate}
                             onChange={handleDateChange}
@@ -188,12 +194,12 @@ function DeleteAppointments() {
 
                 <div className="selectAppointmentTypeContainer">
                     <p className="text-center mt-5">
-                        Select Appointment Type : {" "}
+                    {t('addAppointments.selectAppointmentType')}: {" "}
                         <select id="appointmentType" className="appointmentTypeList" onChange={handleChange}>
 
-                            <option value="Select" selected disabled>Select </option>
-                            <option value="Thrombocytes" >Thrombocytes</option>
-                            <option value="Granulocytes">Granulocytes</option>
+                            <option value="Select" selected disabled>{t('general.select')} </option>
+                            <option value="Thrombocytes" >{t('general.Thrombocytes')}</option>
+                            <option value="Granulocytes">{t('general.Granulocytes')}</option>
                             <option value="Both"> Both </option>
 
                         </select>

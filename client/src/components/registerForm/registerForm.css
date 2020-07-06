@@ -27,23 +27,32 @@
 .addressSignupContainer, .bloodTypesContainer , .organizationContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: #fafafa;
+}
+
+.ltrFormClass{
+  direction: ltr;
+  text-align: left;
+}
+
+
+.rtlFormClass{
+  direction: rtl;
+  text-align: right;
 }
 
 label {
   font-family: 'Montserrat';
-
-  
 }
 
 
 
-#name , #password , #email , #phone , #city , #address, #bloodType , #confirmPassword, #genderType , 
-#secondaryAddress, #organization {
+.registerName , .registerPassword , .registerEmail , .registerPhone ,
+.registerCity , .registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
+.registerSecondaryAddress, .registerOrganization {
   display: flex;
-  border-radius: 2em / 5em;
-  background-color: #C3B7B1;
+  background-color: #ecf8e4;
   margin-left: 35px;
   padding-left: 5px;
   border: none;
@@ -56,18 +65,25 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 
+}
+
+
+.birthDate{
+  direction: ltr !important;
 }
 
 .react-date-picker__wrapper {
 
-  background-color: #C3B7B1;
-  border-radius: 2em / 5em;
+  background-color: #ecf8e4;
   width: 200px;
   margin-left: 35px !important;
   border: none !important; 
 
 }
+
+
 
 .react-date-picker__inputGroup__input {
 
@@ -76,6 +92,11 @@ padding: 0 0 0 0 !important;
 margin-left: 1px !important;
 
 
+}
+
+.react-date-picker__inputGroup ::placeholder {
+
+  color : black !important
 
 }
 
@@ -152,6 +173,48 @@ li {
   justify-content: center;
  margin-left: 300px;  
  border-radius: 10px;
- background-color: #C71585;
+ background-color: #ff01a2;
   
+}
+
+
+.signUpButton {
+
+  width: 300px;
+  background-color: #ff01a2;
+  color: #fafafa;
+  height: 70px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 5px 10px 18px #888888;
+  
+}
+
+
+
+.signUpButtonContainer {
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+#errorSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 16px;
+   margin-bottom: 10px;
+}
+
+
+.registerIcons {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

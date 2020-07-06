@@ -1,0 +1,144 @@
+{
+  "general": {
+    "hospital": "בית חולים",
+    "select": "בחירה",
+    "date": "תאריך",
+    "appointment": "תור",
+    "Type": "סוג",
+    "ichilov": "איכילוב",
+    "talHashomer": "תל השומר",
+    "rambam": "רמב\"ם",
+    "Register": "הרשמה",
+    "Yes": "כן",
+    "No": "לא",
+    "edit": "עריכה",
+    "save": "שמירה",
+    "Thrombocytes": "טרומבוציטים",
+    "Granulocytes": "גרנולוציטים",
+    "both": "שניהם",
+    "on": "ב",
+    "at": "ב"
+  },
+  "dashboard": {
+    "hello": "שלום",
+    "intro": " אנחנו מחכים לתרומתך הראשונה",
+    "youDonated": " עד כה תרמת ",
+    "donationTimes": " פעמים",
+    "wonderful": " וואו! זה מדהים",
+    "youAre": "אתה",
+    "eligible": "כשיר",
+    "toDonate": "להגיע לתרום.",
+    "fewDetails": "להלן כמה נתונים לגבי התור הקרוב",
+    "date": "תאריך",
+    "Time": "שעה",
+    "Location": "מיקום",
+    "Cancel": "ביטול",
+    "deleteAppointment": "אתה בטוח שאתה רוצה לבטל את התור שנקבע לך?",
+    "scheduleAppointment": "נא לקבוע תור חדש",
+    "NearestHospital": "בית החולים הקרוב אליך הוא",
+    "getDirections": "קבל הוראות הגעה",
+    "orderTaxi": "הזמן מונית"
+  },
+  "addAppointments": {
+    "addAppointmentTitle": "הוספת מועדים",
+    "for": "ל",
+    "selectHospital": "בחר בית חולים",
+    "selectAppointmentType": "בחר סוג התור",
+    "noAppsToSubmit": "כרגע אין תורים להוספה"
+  },
+  "editDeleteApp": {
+    "editDeleteTitle": "עריכה ומחקית תורים"
+  },
+  "userProfile": {
+    "bloodType": "סוג דם",
+    "notificationPrefence": "העדפות ההתראות",
+    "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
+    "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
+    "casualreminder": "תזכורות רגילות לתרומה",
+    "show": "הצג",
+    "hide": "הסתר"
+  },
+  "admin": {
+    "accessLevel": "רמת גישה",
+    "selectToMakeCord": "בחר משתמש כדי להפוך למתאם",
+    "makeCord": "הפוף למתאם",
+    "remove": "הסר",
+    "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
+    "makeAdmin": "הפוך למנהל"
+  },
+  "appointmentsEntry": {
+    "noAppoins": "אין לך תורים קודמים"
+  },
+  "bookTaxi": {
+    "rideFrom": "אני צריך הסעה ממקום",
+    "rideBack": "אני רוצה הסעה חזרה אל מקום",
+    "pickupTime": "שעת איסוף",
+    "from": "מ",
+    "backTo": "אל",
+    "forAppointment": "לתור",
+    "taxiConfirm": "הסעה הוזמנה לך ל",
+    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם"
+  },
+  "burgerMenu": {
+    "dashboard": "ראשי",
+    "addAppointment": "הוספת תורים",
+    "editAppointments": "עריכת תורים",
+    "previousAppointments": "תורים קודמים",
+    "profile": "פרופיל",
+    "emergencyDonation": "תרומת חירום",
+    "Admin": "הגדרות מנהל",
+    "Logout": "התנתק"
+  },
+  "forgotPassword": {
+    "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
+    "emailSentPhrase": "אימייל נשלח לכתובת שהזנת",
+    "checkEmailPhrase": "נא לבדוק את האימייל ולנסות להתחבר לאחר מכן",
+    "clickToLogin": "להתחברות לחץ כאן",
+    "backBtn": "חזרה",
+    "resetPassBtn": "שינוי סיסמא"
+  },
+  "loginForm": {
+    "bloodComponents": "תרומות מרכיבי דם",
+    "email": "דוא\"ל",
+    "password": "סיסמא",
+    "forgotPassword": "שכחת סיסמא? לא מצליח להתחבר?",
+    "notSignedUp": "עדיין לא רשום כתורם?",
+    "login": "התחבר",
+    "comeSaveLives": "בוא והצל חיים!"
+  },
+  "notificationOptions": {
+    "contactPreferencesPhrase": "אני מעדיף לקבל תזכורות ועדכונים דרך",
+    "SMS": "SMS",
+    "Whatsapp": "Whatsapp",
+    "Phonecall": "שיחת טלפון מוקלטת",
+    "Email": "אימייל",
+    "inAppAlert": "עדכונים בתוך האתר"
+  },
+  "registerForm": {
+    "signUp": "הירשם",
+    "becomeDonor": "ובוא לתרום",
+    "fullName": "שם מלא",
+    "email": "אימייל",
+    "password": "סיסמא",
+    "confirmPassword": "אימות סיסמא",
+    "birthDate": "תאריך לידה",
+    "gender": "מגדר",
+    "male": "זכר",
+    "female": "נקבה",
+    "contactNumber": "טלפון",
+    "city": "עיר",
+    "address": "כתובת",
+    "secondaryAddress": "כתובת משנית",
+    "bloodType": "סוג דם",
+    "callMadaPhrase": "לא יודע? תתקשר למד\"א 03-5300400",
+    "organization": "חברה",
+    "contactingPhrase": "יצירת קשר איתך בעת חירום יכול להציל חיים,אתה בטוח שאתה לא רוצה לקבל התראות?"
+  },
+  "questionnaire": {
+    "submit": "אישור והמשך"
+  },
+  "addAppointment":{
+    "submit": "אשר והמשך",
+    "add": "הוספה"
+  }
+}

@@ -6,8 +6,24 @@ import { Link, useHistory } from 'react-router-dom'
 import Button from '../button'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
+import dbIcon from './dbIcon.svg'
+
+///////
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+//////
+
+
+
+
+
 
 function DashboardNoAppoin() {
+
+  /////////
+  const { t } = useTranslation();
+  //////////
+
   const [show, setShow] = useState(false);
 
   const history = useHistory();
@@ -50,17 +66,22 @@ function DashboardNoAppoin() {
 
 
   //FIXME:
-  const checkRideBooked = () => {
+  const checkRideBooked = (userid) => {
 
     //get bookings where userID matches.
+    console.log(userid)
 
-    db.collection('taxiBookings').get().then((bookings) => {
+    db.collection('taxiBookings').where('user', '==', userid).get().then((bookings) => {
       const bookingsMap = bookings.docs.map(bookingDetails => {
         return bookingDetails.data()
       })
-      setBookingData(bookingsMap)
+      setBookingData(bookingsMap[0])
+      console.log("booking", bookingsMap[0])
+
     })
   }
+
+
 
   useEffect(() => {
 
@@ -120,7 +141,6 @@ function DashboardNoAppoin() {
           //if non exist
           if (snapShot.empty) {
 
-
             //change state to false - show no appointment screen
             setCheckUserAppointments(false);
             console.log("User doesn't have any Appointment")
@@ -130,7 +150,6 @@ function DashboardNoAppoin() {
 
           } // if user has appointments
           else {
-
 
             const appointmentsDetails = []
             let count = 0
@@ -164,7 +183,7 @@ function DashboardNoAppoin() {
 
             } else {
               setCheckUserAppointments(true);
-              checkRideBooked()
+              checkRideBooked(user.uid)
             }
           }
         })
@@ -176,91 +195,95 @@ function DashboardNoAppoin() {
 
   return (
     <div className="dashboardView mt-3">
+
+
       {checkUserAppointments ? (
         <Fragment>
-          <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
-            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
-          <div className="lineUnderSpan"></div>
-          <div className="userEligibility my-3">
-            You are <b style={{ color: "green" }}> eligible </b> to donate.
-      <br />
-            <br />
-      Here is few details regarding your upcoming appointment
-    </div>
-            <table className="schedulesTables">
-                <tr className="headerRow">
-                  <th className="headerEntries">Date</th>
-                  <th className="headerEntries">Time</th>
-                  <th className="headerEntries">Location</th>
-                  <th className="headerEntries"></th>
-                </tr>
-   
-                {userAppointmentsDetails.map(appointment => (
-                  <tr className='rowContainer' id={appointment.id}>
-                    <td className='rowClass' >{appointment.date}</td>
-                    <td className='rowClass'>{appointment.time}</td>
-                    <td className='rowClass'>{appointment.hospitalName}</td>
-                    <div className='btnContainer'>
-                    <Popup className="popup2" trigger={ <button id={appointment.id} className="cancelButton">Cancel</button>
-}
-                            modal position="left top" closeOnDocumentClick
-                            contentStyle={{ width: "20px" }}
-                        >
-                            {close => (
-                                <div className="container">
-                                    <a className="close" onClick={close}>
-                                        X
+
+          <img src={dbIcon} />
+
+          <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
+          <div id="introSpan" className="introSpan pinkBox">{t('dashboard.hello')} <span className="highlight">{userName}</span>,{!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
+          <div className="pinkBox">   {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>{t('dashboard.toDonate')}       {t('dashboard.fewDetails')}</div>
+
+
+
+
+
+          <table className="schedulesTables">
+            <tr className="headerRow">
+              <th className="headerEntries"> {t('dashboard.Location')}</th>
+              <th className="headerEntries"> {t('dashboard.date')}</th>
+              <th className="headerEntries"> {t('dashboard.Time')}</th>
+              <th className="headerEntries">{t('dashboard.Time')}</th>
+            </tr>
+
+            {userAppointmentsDetails.map(appointment => (
+              <tr className='rowContainer' id={appointment.id}>
+                <td className='rowClass'>{appointment.hospitalName}</td>
+                <td className='rowClass' >{appointment.date}</td>
+                <td className='rowClass'>{appointment.time}</td>
+                <div className='btnContainerCancel'>
+                  <Popup className="popup2" trigger={<button id={appointment.id} className="cancelButton"> {t('dashboard.Cancel')}</button>
+                  }
+                    modal position="left top" closeOnDocumentClick
+                    contentStyle={{ width: "20px" }}
+                  >
+                    {close => (
+                      <div className="container">
+                        <a className="close" onClick={close}>
+                          X
                                 </a>
 
 
-                                    <div className="content">
+                        <div className="content">
 
-                                        Are you sure that you want to delete the appointment ?
+                          {t('dashboard.deleteAppointment')}
 
-                                     </div>
+                        </div>
 
-                                    <div className="actions">
+                        <div className="actions">
 
-                                        <button
-                                            id={appointment.id}
-                                            className="yesButton"
-                                            onClick={(e) => {
-                                                deleteAppointment(e)
-                                                close();
-                                            }}>
-                                            Yes
-                                        </button>
+                          <button
+                            id={appointment.id}
+                            className="yesButton"
+                            onClick={(e) => {
+                              deleteAppointment(e)
+                              close();
+                            }}>
+                            {t('general.Yes')}
+                          </button>
 
-                                        <button
-                                            className="noButton"
-                                            onClick={() => {
-                                                close();
-                                            }}>
-                                            No
-                                        </button>
+                          <button
+                            className="noButton"
+                            onClick={() => {
+                              close();
+                            }}>
+                            {t('general.No')}
+                          </button>
 
-                                    </div>
+                        </div>
 
 
 
-                                </div>
-                            )}
+                      </div>
+                    )}
 
-                        </Popup>
-                    </div>
+                  </Popup>
+                </div>
 
-                  </tr>
-                ))}
-                
+              </tr>
+            ))}
+
 
           </table>
           <div className="bottomButtons">
             <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
-            ><Button type="button" text="Get Directions" width="150px">
+            ><Button type="button" text={t('dashboard.getDirections')} width="150px">
               </Button></a>
-              <Popup className="popup1" trigger={<Button type="button" text="I Need A Ride" color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} />}
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} bookingData={bookingData} />}
             </Popup>
           </div>
 
@@ -271,64 +294,59 @@ function DashboardNoAppoin() {
 
           <Fragment>
 
-            <div id="introSpan" className="introSpan">Hello <b>{userName}</b>,
-            {!pastApp ? <span> welcome to the App, we look forward to your first donation!</span> : <span> so far you have donated <b>{pastApp}</b> times. Wow! That’s wonderful.</span>}</div>
 
-            <div className="lineUnderSpan"></div>
+            <img src={dbIcon} />
+            <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
+            <div id="introSpan" className="introSpan pinkBox">{t('dashboard.hello')} <span className="highlight">{userName}</span>,
+            {!pastApp ? <span> {t('dashboard.intro')} </span> : <span> {t('dashboard.youDonated')} <b>{pastApp}</b> {t('dashboard.donationTimes')}. {t('dashboard.wonderful')}</span>}</div>
+            <div className="pinkBox">   {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>{t('dashboard.toDonate')}  {t('dashboard.scheduleAppointment')}</div>
 
-            <div className="userEligibility my-3">
-              You are <b style={{ color: "green" }}> eligible </b> to donate.
-      <br />
-              <br />
-      Please, schedule a new appointment:
-    </div>
+            <div className="hospitalsOptionsContainer mt-3 pinkBox">
+              <div className="hospital">
+                {t('dashboard.NearestHospital')}:{" "}
+              </div>
 
-            <p className="hospitalsOptionsContainer mt-3">
-              Nearest hospital is{" "}
-
-              <select className="hospitalsOptionsList" onChange={handleChange}>
-
-                <option value="Select" disabled selected>Select</option>
-
-                {hospital.map(name => (
-
-                  <option value={name}>
-
-                    {name}
-
-                  </option>
-
-                ))}
+              <div>
+                <select className="hospitalsOptionsList" onChange={handleChange}>
+                  <option value="Select" disabled selected> {t('general.select')}</option>
+                  {hospital.map(name => (
+                    <option value={name}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
 
+            <table className="schedulesTables">
+              <tr className="headerRow">
+                <th className="headerEntries">{t('general.hospital')}</th>
+                <th className="headerEntries">{t('dashboard.date')}</th>
+                <th className="headerEntries">{t('dashboard.Time')}</th>
+                <th className="headerEntries">{t('general.Register')}</th>
+              </tr>
 
-              </select>
-            </p>
+              {appointments.map(appointment => (
 
-              <table className="schedulesTables">
-                  <tr className="headerRow">
-                    <th className="headerEntries">Date</th>
-                    <th className="headerEntries">Time</th>
-                    <th className="headerEntries"></th>
-                  </tr>
-               
-                  {appointments.map(appointment => (
+                <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass' >{chosenOption}</td>
+                  <td className='rowClass' >{appointment.date}</td>
+                  <td className='rowClass'>{appointment.time}</td>
 
-                    <tr className='rowContainer' id={appointment.id}>
-                      <td className='rowClass' >{appointment.date}</td>
-                      <td className='rowClass'>{appointment.time}</td>
-                      <Link to='/questions'>
-                        <td className='rowClass'>
-                        <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">Register</button>
-                        </td>
-                      </Link>
-                    </tr>
+                  <td className='rowClass'>
+                    <Link to='/questions'>
+                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
+                    </Link>
+                  </td>
+
+                </tr>
 
 
-                ))}
+              ))}
 
-              
-              </table>
+
+            </table>
 
           </Fragment>
 

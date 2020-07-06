@@ -2,8 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './Notifications.css'
 import { db } from '../firebase/firebase'
 
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
 const NotificationOptions = (props) => {
     const [notes, setNotes] = useState('')
+
+    const { t } = useTranslation();
+    let languageSelected = localStorage.getItem('i18nextLng');
 
     //user id from localstorage
     const id = localStorage.getItem('userid');
@@ -30,18 +36,18 @@ const NotificationOptions = (props) => {
     }
     return (
         <div className="options">
-            <span className="comment">please select all methods you are happy to be contacted by:</span>
-            <div className="notificationOptions">
+            <span className="comment">{t('notificationOptions.contactPreferencesPhrase')}:</span>
+            <div  className={languageSelected==='en'?'notificationOptions':'notificationOptionsRtl'}>
 
                 <div>
                     <input
                         type="checkbox"
-                        className="form-check-input"
+                        className={`form-check-input ${languageSelected=='en'?'ltrNotifications':'rtlNotifications'}`}
                         id="exampleCheck1"
                         value="SMS"
                         checked={notes.SMS}
                         onChange={(e) => handleChange(e, notes.SMS)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">SMS</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.SMS')}</label>
                 </div>
                 <div>
                     <input
@@ -51,7 +57,7 @@ const NotificationOptions = (props) => {
                         value="Whatsapp"
                         checked={notes.Whatsapp}
                         onChange={(e) => handleChange(e, notes.Whatsapp)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Whatsapp</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Whatsapp')}</label>
                 </div>
                 <div>
                     <input
@@ -61,7 +67,7 @@ const NotificationOptions = (props) => {
                         value="Phonecall"
                         checked={notes.Phonecall}
                         onChange={(e) => handleChange(e, notes.Phonecall)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Phonecall</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Phonecall')}</label>
                 </div>
                 <div>
                     <input
@@ -71,7 +77,7 @@ const NotificationOptions = (props) => {
                         value="Email"
                         checked={notes.Email}
                         onChange={(e) => handleChange(e, notes.Email)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Email</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Email')}</label>
                 </div>
                 <div>
                     <input
@@ -81,7 +87,7 @@ const NotificationOptions = (props) => {
                         value="inAppAlert"
                         checked={notes.inAppAlert}
                         onChange={(e) => handleChange(e, notes.inAppAlert)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">In-App alert</label>
+                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.inAppAlert')}</label>
                 </div>
             </div>
         </div>

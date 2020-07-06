@@ -1,11 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react'
 import "./UserPage.css"
-//mport Notifications from '../Notifications/Notifications.js'
 import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
 import { useHistory, Redirect } from 'react-router-dom'
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import userProfile from './userProfile.svg'
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 export default function UserPage() {
+
+    const { t } = useTranslation();
 
     //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
@@ -21,7 +27,7 @@ export default function UserPage() {
     useEffect(() => {
         //if user has no id (is not logged in) then forward to log in screen
         if (!localStorage.getItem('userid'))
-        history.push('/login')
+            history.push('/login')
 
         //const userData = async ()=> { const data = await
         db.collection('users').doc(id).get()
@@ -40,6 +46,8 @@ export default function UserPage() {
         phoneData: false,
         addressData: false,
     })
+
+    let languageSelected = localStorage.getItem('i18nextLng');
 
 
     //set up refs for data field nodes (to link with the buttons below)
@@ -65,12 +73,12 @@ export default function UserPage() {
 
         console.log("refed node", currentNode.current)
 
-        if (e.target.textContent == "Save") {
+        if (e.target.textContent == `${t('general.save')}`) {
             //options for non-editable state
-            e.target.textContent = "Edit"
-            e.target.style.backgroundColor = "#DEB675"
-            e.target.style.transform = "translateY(+2px) scale(1)";
-            currentNode.current.style.backgroundColor = ""
+            e.target.textContent = `${t('general.edit')}`
+            e.target.style.backgroundColor = "#d5068d"
+            e.target.style.transform = "scale(1)";
+
             currentNode.current.style.border = "none";
 
             //save new data to state on click of save
@@ -85,11 +93,11 @@ export default function UserPage() {
         }
         else {
             //options for editable state
-            e.target.textContent = "Save"
-            e.target.style.backgroundColor = "crimson"
+            e.target.textContent = `${t('general.save')}`
+            e.target.style.backgroundColor = "gray"
             e.target.style.transform = "scale(1.11) translateY(-2px)";
-            currentNode.current.style.border = "medium solid #DEB675";
-            currentNode.current.style.backgroundColor = "white"
+            currentNode.current.style.border = "medium solid gray";
+
         }
 
     }
@@ -102,10 +110,14 @@ export default function UserPage() {
 
     return (
         <div className="userPage" >
+            <div className="userImage">
+                <img src={userProfile} />
+            </div>
             <div className="topBox">
+
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
-                    <span className="bloodType">Blood Type:</span>
+                    <span className="bloodType">{t('userProfile.bloodType')}</span>
                     <span style={{ color: 'red' }}>{userDetails.bloodType}</span></div>
             </div>
 
@@ -114,7 +126,9 @@ export default function UserPage() {
 
             <div className="userDetails" >
                 <div className="dataItem">
-                    <div className="icon"><i className="far fa-envelope"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="far fa-envelope"></i></div>
+                    </div>
                     <div
                         ref={emailNode}
                         className="data"
@@ -124,10 +138,13 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "emailData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "emailData")}>{t('general.edit')}</div>
                 </div>
+
                 <div className="dataItem">
-                    <div className="icon"><i className="fas fa-phone"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="fas fa-phone"></i></div>
+                    </div>
                     <div
                         ref={phoneNode}
                         className="data"
@@ -137,10 +154,12 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "phoneData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "phoneData")}>{t('general.edit')}</div>
                 </div>
                 <div className="dataItem">
-                    <div className="icon"><i className="fas fa-home"></i></div>
+                    <div class="iconBackground">
+                        <div className="icon"><i className="fas fa-home"></i></div>
+                    </div>
                     <div
                         ref={addressNode}
                         className="data"
@@ -150,32 +169,38 @@ export default function UserPage() {
                     </div>
                     <div
                         className="editBtn"
-                        onClick={(e) => handleEdit(e, "addressData")}>Edit</div>
+                        onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
-                <div className="notificationTitle ma4">Notification Prefences</div>
-                 <div className="notifications ma0">
-                <span className="notifiedText my-3">I want to get notified on:</span>
-                <div className="form-check my-3">
-                    <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    id="exampleCheck1" 
-                    onChange={handleReload}
-                    onClick={() => setVisible({ ...visible, ["emergency"]: !visible["emergency"] })} />
-                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Emergency request that I am suitable to answer</b></label>
-                    {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
+                <div className="notificationTitle ma3">{t('userProfile.notificationPrefence')}</div>
+                <div id={languageSelected==='en'?'ltrNotificationContainer':'rtlNotificationContainer'} className="notifications ma0">
+                    <span className="notifiedText ma2">{t('userProfile.notifiedOn')}:</span>
+                    <div className="form-check dib mt3">
+                        <BootstrapSwitchButton
+                            onlabel={t('userProfile.hide')}
+                            onstyle='danger'
+                            offlabel={t('userProfile.show')}
+                            offstyle='success'
+                            width={75}
+                            onChange={() => {
+                                setVisible({ ...visible, ["emergency"]: !visible["emergency"] })
+                                handleReload()
+                            }} /> {t('userProfile.emergencyThatWilling')}
+                        {visible.emergency ? <NotificationOptions notifications={userDetails.emergencyNotifications} id='emergencyNotifications' /> : null}
+                    </div>
+                    <div className="form-check dib mt3">
+                        <BootstrapSwitchButton
+                            onlabel={t('userProfile.hide')}
+                            onstyle='danger'
+                            offlabel={t('userProfile.show')}
+                            offstyle='success'
+                            width={75}
+                            onChange={() => {
+                                setVisible({ ...visible, ["casual"]: !visible["casual"] })
+                                handleReload()
+                            }} /> {t('userProfile.casualreminder')}
+                        {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
+                    </div>
                 </div>
-                <div className="form-check">
-                    <input 
-                    type="checkbox" 
-                    className="form-check-input" 
-                    id="exampleCheck1" 
-                    onChange={handleReload}
-                    onClick={() => setVisible({ ...visible, ["casual"]: !visible["casual"] })} />
-                    <label className="form-check-label" htmlFor="exampleCheck1"><b>Casual reminders calling me to donate</b></label>
-                    {visible.casual ? <NotificationOptions notifications={userDetails.casualNotifications} id='casualNotifications' /> : null}
-                </div>
-            </div>
 
             </div>
         </div>
