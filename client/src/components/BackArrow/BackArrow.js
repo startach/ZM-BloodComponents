@@ -9,6 +9,8 @@ const styles = {
   }
 };
 
+let languageSelected = localStorage.getItem('i18nextLng');
+
 const BackArrow = (props) => {
   let history = useHistory();
   function onClickGoBackArrow() {
@@ -21,7 +23,7 @@ const BackArrow = (props) => {
 
   return (
     <MDBIcon 
-    icon="arrow-left"   
+    icon={languageSelected==='en'?'arrow-left' : 'arrow-right'}   
     size={props.size}
     onClick={() => onClickGoBackArrow()}
     style={{"color" : props.color , "marginLeft" : props.marginLeft , "marginTop" : props.marginTop }}/>
