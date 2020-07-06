@@ -103,6 +103,7 @@ const RegisterForm = () => {
 
         setNotificationsPopUp(true)
 
+
       }
 
       // If the user refused to recieve any kind of notifications continue with the flow of the code

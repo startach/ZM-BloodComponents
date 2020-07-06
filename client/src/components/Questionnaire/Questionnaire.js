@@ -5,10 +5,12 @@ import Button from '../button'
 import { db } from '../firebase/firebase'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import qIcon from './questionnaire.svg'
 
 
 export default function Questionnaire() {
     const { t } = useTranslation();
+    const logo="/img/questionnaire.svg"
 
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
@@ -61,7 +63,7 @@ export default function Questionnaire() {
         { "id": 14, "question": "Do you confirm your age is between 17 and 65?", "options": ["Yes", "No"] },
         { "id": 15, "question": "For women only: Have you been pregnant in the last 6 months?", "options": ["Yes", "No"] },
         { "id": 16, "question": "When was your last donation?", "options": ["Less than one month ago", "Less than one month, more than ten days ago", "Less than 10 days ago", "Never"] },
-        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["I confirm", "I do not confirm"] },
+        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["Confirm", "Dont confirm"] },
     ]
 
     const questionListHeb = [
@@ -88,7 +90,7 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result);
-        
+
     }
 
 
@@ -127,7 +129,7 @@ export default function Questionnaire() {
 
     // const handleChecked = (question, index, option) => {
     //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
-            
+
     //     }
     // }
 
@@ -143,10 +145,13 @@ export default function Questionnaire() {
 
 
     return (
-        <div className="questionnairePage">
+        <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
+            <div className="qIcon"><img src={qIcon} />
+                <div className="highlight pageTitle">Questionnaire</div>
+            </div>
 
             <form onSubmit={handleSubmit}>
-                {(languageSelected==='en'? questionList : questionListHeb).map((question, index) => (
+                {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
 
 
                     //Questionairee Logic
@@ -154,17 +159,17 @@ export default function Questionnaire() {
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
                             gender == "female" && question.id == 15 ? <div></div> :
 
-                                <div className="questions">
-                                    <div className="left">
+                                <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
+                                    <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
                                         <div><b>{question.id}:</b> {question.question}</div>
                                     </div>
 
 
-                                    <div className="right">
+                                    <div  className={`${languageSelected==='en'? 'right' : 'rightRtl'}`}>
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
-                                                <option disabled="disabled" selected="selected">{t('general.select')}</option>
+                                                    <option disabled="disabled" selected="selected">{t('general.select')}</option>
                                                     {question.options.map(option => (
                                                         <option>{option}</option>
 
@@ -178,23 +183,24 @@ export default function Questionnaire() {
                                         ) : (
                                                 <Fragment>
                                                     <radiogroup>
-                                                    {question.options.map(option => (
-                                                        <label>
-                                                            <input
-                                                                type="radio"
-                                                                class="options"
-                                                                id={index+'@'+option}
-                                                                value={option}
-                                                                name={`Question${index}`}
-                                                                // onClick={() => checkedAnswers.push(index+'@'+option)}
-                                                                onChange={(e) => {handleResults(e, index);
-                                                                    // handleChecked(question, index, option)
-                                                                }}
-                                                            />
-                                                            {" " + option}
-                                                        </label>
+                                                        {question.options.map(option => (
+                                                            <label>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="options"
+                                                                    id={index + '@' + option}
+                                                                    value={option}
+                                                                    name={`Question${index}`}
+                                                                    // onClick={() => checkedAnswers.push(index+'@'+option)}
+                                                                    onChange={(e) => {
+                                                                        handleResults(e, index);
+                                                                        // handleChecked(question, index, option)
+                                                                    }}
+                                                                />
+                                                                {" " + option}
+                                                            </label>
 
-                                                    ))}
+                                                        ))}
                                                     </radiogroup>
                                                 </Fragment>
                                             )
