@@ -76,3 +76,15 @@
         transition: ease-out 0.3s;
     
     }
+
+ 
+    input[type="radio"]{
+        margin: 0 10px 0 10px;
+      }
+    .questionImg{
+        white-space: normal;
+
+        display:block;
+        margin:0 auto;
+        width: 300px;
+    }

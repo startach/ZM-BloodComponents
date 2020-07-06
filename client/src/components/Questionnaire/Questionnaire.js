@@ -9,6 +9,7 @@ import i18next from 'i18next';
 
 export default function Questionnaire() {
     const { t } = useTranslation();
+    const logo="/img/questionnaire.svg"
 
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
@@ -85,6 +86,7 @@ export default function Questionnaire() {
     ]
     //saves result of drop down into state by Question/ID number
     const handleResults = (e, index) => {
+      console.log( e.target.value)
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         
@@ -124,46 +126,6 @@ export default function Questionnaire() {
         e.preventDefault();
 
     }
-    e.preventDefault();
-  };
-
-  useEffect(() => {
-    setHospital(localStorage.getItem("hospital"));
-    setGender(localStorage.getItem("gender"));
-
-    console.log(hospital, gender);
-  }, []);
-
-  return (
-    <div className="questionnairePage">
-      <form onSubmit={handleSubmit}>
-        {questionList.map((question, index) =>
-          //Questionairee Logic
-          hospital == "Ichilov" && question.id == 3 ? (
-            <div></div>
-          ) : hospital !== "Ichilov" && question.id == 2 ? (
-            <div></div>
-          ) : gender == "female" && question.id == 15 ? (
-            <div></div>
-          ) : (
-            <div className="questions">
-              <div className="left">
-                <div>
-                  <b>{question.id}:</b> {question.question}
-                </div>
-              </div>
-
-              <div className="right">
-                  
-                {question.options.map((option) =>
-                ( question.id==(5) || question.id==16)  ? (
-                    console.log(question.options),
-                    <div className="right">
-                    <select class="dropdown" onChange={e => handleResults(e, index)}>
-                        {question.options.map((option) => <option>{option}</option>)}
-                    </select>
-                </div>
-                        
 
     // const handleChecked = (question, index, option) => {
     //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
@@ -184,6 +146,8 @@ export default function Questionnaire() {
 
     return (
         <div className="questionnairePage">
+          <br></br>
+              <img src={logo} className="questionImg" />
 
             <form onSubmit={handleSubmit}>
                 {(languageSelected==='en'? questionList : questionListHeb).map((question, index) => (
@@ -194,6 +158,11 @@ export default function Questionnaire() {
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
                             gender == "female" && question.id == 15 ? <div></div> :
 
+                                <div className="questions">
+
+                                    <div className="left">
+                                        <div><b>{question.id}:</b> {question.question}</div>
+                                    </div>
 
 
                                     <div className="right">
@@ -227,7 +196,7 @@ export default function Questionnaire() {
                                                                     // handleChecked(question, index, option)
                                                                 }}
                                                             />
-                                                            {" " + option}
+                                                            {"" + option +""}
                                                         </label>
 
                                                     ))}
@@ -241,23 +210,13 @@ export default function Questionnaire() {
                                 </div>
                 )
 
-                    <label>
-                      <input
-                        type="radio"
-                        class="options"
-                        value=""
-                        name="radiobutt"
-                        onChange={(e) => handleResults(e, index)}
-                      />
-                      {" "+option}
-                    </label>
-                  )
                 )}
                 <div className="submit">
                     <Button type="submit" text={t('questionnaire.submit')}  ></Button>
                 </div>
 
             </form>
+
         </div>
-  );
- }
+    )
+}
