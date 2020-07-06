@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Link } from 'react'
 import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi({ close, bookingData }) {
+export default function BookTaxi({ close, bookingData, setBookingData }) {
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
@@ -78,8 +78,26 @@ export default function BookTaxi({ close, bookingData }) {
         setScreen("confirm")
         let time = `${pickupData.hour}:${pickupData.min}`
         db.collection('taxiBookings').add({ ...pickupData, ["date"]: localStorage.getItem('appointmentDate'), ['appointmentID']: localStorage.getItem('appointmentID'), ['time']: time })
+        setBookingData({ ...bookingData, ["confirmed"]: true })
     }
 
+
+    const deleteRideFunc = (appId) => {
+
+        console.log("bookingdata is", appId)
+
+        var deleteRide = db.collection('taxiBookings').where("appointmentID", "==", appId);
+
+
+        deleteRide.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                doc.ref.delete();
+            });
+        });
+
+        setBookingData(null)
+
+    }
 
 
     return (
@@ -159,6 +177,12 @@ export default function BookTaxi({ close, bookingData }) {
                     </div>
                 }
 
+                <div className="my-3">
+                    <Button text="Close" color="#d5068d;" onClick={() => {
+                        close();
+                    }}></Button>
+                </div>
+
 
             </div>
                 : <div className="mt-5">Your taxi has been confirmed for:
@@ -174,15 +198,27 @@ export default function BookTaxi({ close, bookingData }) {
                         <b><span className="highlight">Time: </span></b>   {pickupData.hour}: {pickupData.min}
                     </div>
 
-                    If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator.
+                    If you have any issues on the day, please contact your coordinator.
+
+                    <div className="my-3">
+                        <div className="my-3">
+                            <Button text="Close" color="#d5068d;" onClick={() => {
+                                close();
+                            }}></Button>
+                        </div>
+                        <div className="my-5">
+                            <Button text="Cancel Ride" color="#adb43a" onClick={() => {
+                                deleteRideFunc(bookingData.appointmentID);
+                                close();
+
+                            }}></Button>
+                        </div>
+
+                    </div>
 
                 </div>}
 
-            <div className="my-3">
-                <Button text="Close" color="#d5068d;" onClick={() => {
-                    close();
-                }}></Button>
-            </div>
+
 
 
         </div>

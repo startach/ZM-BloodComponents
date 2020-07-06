@@ -50,6 +50,9 @@ function DashboardNoAppoin() {
     db.collection('Appointments').doc(appId).update({
       userID: null
     })
+
+    deleteRideFunc(appId)
+
   }
 
   const setHospitalNames = () => {
@@ -59,6 +62,17 @@ function DashboardNoAppoin() {
       })
       setHospital(hospitalsNames)
     })
+  }
+
+  const deleteRideFunc = (appId) => {
+
+    var deleteRide = db.collection('taxiBookings').where("appointmentID", "==", appId);
+    deleteRide.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        doc.ref.delete();
+      });
+    });
+
   }
 
 
@@ -187,7 +201,7 @@ function DashboardNoAppoin() {
       }
     })
 
-  }, [])
+  }, [bookingData])
 
 
   return (
@@ -280,7 +294,7 @@ function DashboardNoAppoin() {
             ><Button type="button" text={t('dashboard.getDirections')} width="150px">
               </Button></a>
             <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} bookingData={bookingData} />}
+              {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} />}
             </Popup>
           </div>
 
