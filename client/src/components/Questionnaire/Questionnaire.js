@@ -147,7 +147,7 @@ export default function Questionnaire() {
     return (
         <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
-                <div className="highlight pageTitle">Questionnaire</div>
+                <div className="highlight pageTitle">{t('screens.questionnaire')}</div>
             </div>
 
             <form onSubmit={handleSubmit}>

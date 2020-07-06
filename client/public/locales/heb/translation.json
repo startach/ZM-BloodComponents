@@ -157,6 +157,7 @@
   },
   "screens":{
     "verification": "אישור התור",
-    "questionnaire": "שאלוןd"
+    "questionnaire": "שאלון",
+    "adminControls": "הגדרות מנהל"
   }
 }

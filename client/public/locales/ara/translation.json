@@ -157,6 +157,7 @@
   },
   "screens":{
     "verification": "تأكيد الموعد",
-    "questionnaire": "إستبيان"
+    "questionnaire": "إستبيان",
+    "adminControls": "إعدادات المدير"
   }
 }

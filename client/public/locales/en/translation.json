@@ -158,6 +158,8 @@
   },
   "screens":{
     "verification": "Appointment Verification",
-    "questionnaire": "Questionnaire"
+    "questionnaire": "Questionnaire",
+    "adminControls": "Admin Controls"
+
   }
 }
