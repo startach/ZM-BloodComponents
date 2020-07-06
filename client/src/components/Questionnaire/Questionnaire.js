@@ -89,7 +89,7 @@ export default function Questionnaire() {
       console.log( e.target.value)
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
-        
+        console.log(result);
         
     }
 
@@ -189,7 +189,7 @@ export default function Questionnaire() {
                                                                 type="radio"
                                                                 class="options"
                                                                 id={index+'@'+option}
-                                                                value={index-option}
+                                                                value={option}
                                                                 name={`Question${index}`}
                                                                 // onClick={() => checkedAnswers.push(index+'@'+option)}
                                                                 onChange={(e) => {handleResults(e, index);
