@@ -13,7 +13,7 @@ export default function AddAppointments() {
     const { t } = useTranslation();
 
     const [hospitalsDetails, setHospitalsDetails] = useState([])
-    useEffect(()=>{
+    useEffect(()=>{window.location.href = "/dashboard";
         //TODO: add authentication check / credentials
 
         //load hospitals into hospitalsList

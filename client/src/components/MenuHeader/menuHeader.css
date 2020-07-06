@@ -15,7 +15,7 @@
     grid-area: "burger";
     height: 70px;
     width: 50px;
-    padding-top: 20px
+    /* padding-top: 20px */
 }
 
 .headerBody .title {
@@ -54,7 +54,7 @@
         grid-area: "burger";
         height: 70px;
         width: 50px;
-        padding-top: 20px
+        /* padding-top: 20px */
     }
     .headerBody .title {
         grid-area: "title";
@@ -91,7 +91,7 @@
         grid-area: "burger";
         height: 70px;
         width: 50px;
-        padding-top: 20px
+        /* padding-top: 20px */
     }
     .headerBody .title {
         grid-area: "title";
