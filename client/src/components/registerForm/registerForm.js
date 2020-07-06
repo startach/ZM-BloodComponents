@@ -96,7 +96,7 @@ const RegisterForm = () => {
     } else {
 
       //Check if the user did not choose any type of notifications
-      if (Object.entries(notifications).length === 0) setNotificationsPopUp(true);
+      if (Object.entries(notifications).length === 0) {setNotificationsPopUp(true); return};
       //update state
       setuserInputs(userInputs);
 
