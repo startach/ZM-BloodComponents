@@ -171,12 +171,9 @@ const RegisterForm = () => {
     setDate(e);
   };
 
-  // const titleObj =
-  //   "Password must contain at least 6 characters, 1 upper case and 1 digit";
 
   return (
     <Fragment>
-      {console.log(notificationsPopUp)}
       <div className="registerIcons">
         <BackArrow size="3x" marginLeft="5px" />
         <LanguageSwitch marginRight="5px" />
@@ -191,83 +188,63 @@ const RegisterForm = () => {
       </div>
 
       <form className={localStorage.getItem('i18nextLng') === 'en' ? 'ltrFormClass' : 'rtlFormClass'} onSubmit={handleSubmit}>
+
         <div className="nameSignupContainer">
-          <label>
-            {" "}
-            * {t("registerForm.fullName")}
             <input
               className="registerName"
               id="name"
               onChange={handleChange}
               type="text"
               name="name"
+              placeholder={t("registerForm.fullName")} 
               required></input>
-          </label>
+          
         </div>
 
         <div className="emailSignupContainer">
-          <label>
-            {" "}
-            * {t("registerForm.email")}
             <input
               className="registerEmail"
               id="email"
               onChange={handleChange}
               type="email"
               name="email"
+              placeholder={t("registerForm.email")}
               required></input>
-          </label>
+
         </div>
-        <div className="passwordsContainer">
           <div className="passwordSignupContainer">
-            <label>
-              {/* <img title={titleObj} className="passInfo infoIcon" /> *{" "} */}
-              * {t("registerForm.password")}
               <input
                 className="registerPassword"
                 id="password"
                 onChange={handleChange}
                 type="password"
                 name="password"
+                placeholder = {t("registerForm.password")}
                 style={
                   passwordError
                     ? { border: "1px solid red" }
                     : { border: "none" }
                 }
                 required></input>
-            </label>
           </div>
 
           <div className="confirmPasswordSignupContainer">
-            <label>
-              {" "}
-              * {t("registerForm.confirmPassword")}
               <input
                 className="registerConfirmPassword"
                 id="confirmPassword"
                 onChange={handleChange}
                 type="password"
                 name="confirmPassword"
+                placeholder={t("registerForm.confirmPassword")}
                 required
                 style={
                   passwordError
                     ? { border: "1px solid red" }
                     : { border: "none" }
                 }></input>
-            </label>
           </div>
-          {/* <span
-            className="hiddenError"
-            id="hiddenError"
-            style={{ color: "red", textAlign: "center" }}>
-            Passwords do not match
-          </span> */}
-        </div>
-        <div className="birthDateContainer">
-          <label id="labelBirth">
-            {" "}
-            * {t("registerForm.birthDate")}
-            <br></br>
+        <div className="birthDateContainer dib pa3 "> 
+            {t("registerForm.birthDate")} 
             <DatePicker
               className="birthDate"
               value={date}
@@ -277,107 +254,90 @@ const RegisterForm = () => {
               maxDate={new Date(2002, 11, 31)}
               required
             />
-          </label>
+          
         </div>
 
         <div className="genderContainer">
-          <label>
-            {" "}
-            * {t("registerForm.gender")}
             <select
               id="genderType"
               className="registerGenderType"
               onChange={handleChange}
               required>
-              <option value="Select" disabled selected>
-                {t("general.select")}
+              <option value="Select-Gender" disabled selected>
+                {t("registerForm.selectGender")}
               </option>
               <option value="Male">{t("registerForm.male")}</option>
               <option value="Female">{t("registerForm.female")}</option>
             </select>
-          </label>
         </div>
 
         <div className="phoneSignupContainer">
-          <label>
-            {" "}
-            * {t("registerForm.contactNumber")}
             <input
               className="registerPhone"
               id="phone"
               onChange={handleChange}
               type="phone"
               name="phone"
+              placeholder={t("registerForm.contactNumber")}
               style={
                 phoneError
                   ? { border: "1px solid red" }
                   : { border: "none" }
               }
               required></input>
-          </label>
         </div>
         <div className="citySignupContainer">
-          <label>
-            {" "}
-            * {t("registerForm.city")}
             <input
               className="registerCity"
               id="city"
               onChange={handleChange}
               type="text"
               name="City"
+              placeholder={t("registerForm.city")}
               style={
                 cityError
                   ? { border: "1px solid red" }
                   : { border: "none" }
               }
               required></input>
-          </label>
+
         </div>
 
         <div className="addressSignupContainer">
-          <label>
-            {" "}
-            * {t("registerForm.address")}
             <input
               className="registerAddress"
               id="address"
               onChange={handleChange}
               type="text"
               name="address"
+              placeholder={t("registerForm.address")}
               style={
                 addressError
                   ? { border: "1px solid red" }
                   : { border: "none" }
               }
               required></input>
-          </label>
         </div>
 
         <div className="secondaryAddressSignupContainer">
-          <label>
-            {" "}
-            {t("registerForm.secondaryAddress")}
             <input
               className="registerSecondaryAddress"
               id="secondaryAddress"
               onChange={handleChange}
+              placeholder={t("registerForm.secondaryAddress")}
               type="text"
               name="secondaryAddress"></input>
-          </label>
         </div>
 
         <div className="bloodTypesContainer">
-          <label>
-            {" "}
-            {t("registerForm.bloodType")}
+
             <select
               id="bloodType"
               className="registerBloodType"
               onChange={handleChange}
               required>
-              <option value="N/A" selected disabled>
-                N/A
+              <option  value="N/A" selected disabled>
+              {t("registerForm.selectBloodType")}
               </option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -388,23 +348,25 @@ const RegisterForm = () => {
               <option value="O+">O+</option>
               <option value="O-">O-</option>
             </select>
-          </label>
-        </div>
         <div className="madaLabelContainer">
-          <label>{t("registerForm.callMadaPhrase")}</label>
+        <a href="tel:035300400">
+        <label>{t("registerForm.callMadaPhrase")}</label>
+
+        </a>
+          
+        </div>
         </div>
 
         <div className="organizationContainer">
-          <label>
-            {" "}
-            {t("registerForm.organization")}
+           
             <input
               className="registerOrganization"
               id="organization"
               onChange={handleChange}
               type="text"
+              placeholder= {t("registerForm.organization")}
               name="organization"></input>
-          </label>
+        
         </div>
 
         <div className="notificationsTitle">
