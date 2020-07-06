@@ -140,5 +140,19 @@
   "addAppointment":{
     "submit": "אשר והמשך",
     "add": "הוספה"
+  },
+  "verificationList":{ 
+    "registeredSuccesfully": "נרשמת בהצלחה",
+    "expectingYou": " תודה, אנחנו מצפים לראות אותך בשעה",
+    "onThe": "בתאריך",
+    "at": "ב",
+    "hospital": "",
+    "dontForget": "נא לא לשכוח",
+    "bringId": "להביא תעודה מזהה",
+    "eatSome": "לאכול פירות/חטיף",
+    "drinkSome": "לשתות מים",
+    "confirm":"מאשר",
+    "needARide": "צריך הסעה לבית חולים",
+    "orderRide": "להזמין הסעה עכשיו"
   }
 }
