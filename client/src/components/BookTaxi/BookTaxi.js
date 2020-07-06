@@ -3,7 +3,7 @@ import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi({ close, bookingData, setBookingData }) {
+export default function BookTaxi({ close, bookingData, setBookingData, setRideBooked, rideBooked }) {
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
@@ -26,7 +26,7 @@ export default function BookTaxi({ close, bookingData, setBookingData }) {
 
     useEffect(() => {
 
-        if (bookingData) {
+        if (rideBooked) {
             setPickupData(bookingData)
             setScreen("confirmed")
         }
@@ -76,9 +76,10 @@ export default function BookTaxi({ close, bookingData, setBookingData }) {
 
     const confirm = () => {
         setScreen("confirm")
+        setRideBooked(true)
         let time = `${pickupData.hour}:${pickupData.min}`
         db.collection('taxiBookings').add({ ...pickupData, ["date"]: localStorage.getItem('appointmentDate'), ['appointmentID']: localStorage.getItem('appointmentID'), ['time']: time })
-        setBookingData({ ...bookingData, ["confirmed"]: true })
+
     }
 
 
@@ -95,6 +96,8 @@ export default function BookTaxi({ close, bookingData, setBookingData }) {
             });
         });
 
+
+        setRideBooked(false)
         setBookingData(null)
 
     }
@@ -107,7 +110,7 @@ export default function BookTaxi({ close, bookingData, setBookingData }) {
         </a>
 
 
-            {screen === "book" ? <div>
+            {!rideBooked ? <div>
 
                 <div className="my-3">
                     I need a ride from

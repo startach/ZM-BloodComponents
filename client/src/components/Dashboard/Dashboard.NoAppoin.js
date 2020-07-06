@@ -28,6 +28,7 @@ function DashboardNoAppoin() {
   let [hospital, setHospital] = useState([])
   let [pastApp, setPastApp] = useState(0)
   let [bookingData, setBookingData] = useState(false)
+  let [rideBooked, setRideBooked] = useState(false)
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState(null)
   let [checkUserAppointments, setCheckUserAppointments] = useState(false)
@@ -87,7 +88,7 @@ function DashboardNoAppoin() {
         return bookingDetails.data()
       })
       setBookingData(bookingsMap[0])
-      console.log("booking", bookingsMap[0])
+      console.log("booking", bookingsMap[0], "IS RIDE bOOKED", rideBooked)
 
     })
   }
@@ -201,7 +202,10 @@ function DashboardNoAppoin() {
       }
     })
 
-  }, [bookingData])
+  }, [rideBooked])
+
+
+
 
 
   return (
@@ -294,7 +298,7 @@ function DashboardNoAppoin() {
             ><Button type="button" text={t('dashboard.getDirections')} width="150px">
               </Button></a>
             <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} />}
+              {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} rideBooked={rideBooked} setRideBooked={setRideBooked} />}
             </Popup>
           </div>
 
