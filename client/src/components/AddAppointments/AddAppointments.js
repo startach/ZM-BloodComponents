@@ -60,7 +60,7 @@ export default function AddAppointments() {
     const [appointmentTypeDetails, setAppointmentTypeDetails] = useState({
         Granulocytes: {
             bloodType: null,
-            message: "Default message"
+            message: `${t('addAppointments.defaultMessage')}`
         }
     })
 
@@ -170,13 +170,13 @@ export default function AddAppointments() {
     //TRANSLATE
     const emailMessage = `
                     
-    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.<br/>`
+    ${t('addAppointments.emergencyDonationInEmail')} ${currentApp.hospitalName}, ${t('addAppointments.contactCoordEmail')}.<br/>`
 
 
     //TRANSLATE
     const smsMessage = `
                     
-    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.`
+    ${t('addAppointments.emergencyDonationInSMS')} ${currentApp.hospitalName}, ${t('addAppointments.contactCoordSMS')}.`
 
 
 
@@ -213,13 +213,13 @@ export default function AddAppointments() {
             data = data.map((person) => {
 
                 //TRANSLATE
-                if (appointmentTypeDetails.Granulocytes.message !== "Default message") {
+                if (appointmentTypeDetails.Granulocytes.message !== `${t('addAppointments.defaultMessage')}`) {
                     return {
-                        ...person, ["msg"]: `Dear ${person.name}, 
+                        ...person, ["msg"]: `${t('addAppointments.dear')} ${person.name}, 
 
                     ${appointmentTypeDetails.Granulocytes.message}
 
-                    Thank You for continuing to support us`
+                    ${t('addAppointments.thanksForSupport')}`
 
                     }
                 } // return default message if no message entered
@@ -227,11 +227,12 @@ export default function AddAppointments() {
 
 
                     return {
-                        ...person, ["msg"]: `Dear ${person.name}, 
+                        ...person, ["msg"]: `${t('addAppointments.dear')} ${person.name}, 
 
                         ${smsMessage}
             
-                        Thank You for continuing to support us`
+                        ${t('addAppointments.thanksForSupport')}`
+                        
 
                     }
                 }
@@ -269,13 +270,13 @@ export default function AddAppointments() {
             data = data.map((person) => {
 
                 //TRANSLATE
-                if (appointmentTypeDetails.Granulocytes.message !== "Default message") {
+                if (appointmentTypeDetails.Granulocytes.message !== `${t('addAppointments.defaultMessage')}`) {
                     return {
-                        ...person, ["msg"]: `<p> Dear <b> ${person.name} </b>,</p>
+                        ...person, ["msg"]: `<p> ${t('addAppointments.dear')} <b> ${person.name} </b>,</p>
 
                         ${appointmentTypeDetails.Granulocytes.message}
 
-                    <p><b>Thank You for continuing to support us</b></p><br />
+                    <p><b>${t('addAppointments.thanksForSupport')}</b></p><br />
 
                         <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
 
@@ -285,11 +286,11 @@ export default function AddAppointments() {
 
                     //TRANSLATE
                     return {
-                        ...person, ["msg"]: `<p> Dear <b> ${person.name}</b >,</p >
+                        ...person, ["msg"]: `<p> ${t('addAppointments.dear')} <b> ${person.name}</b >,</p >
 
                         ${emailMessage}
 
-                    <p><b>Thank You for continuing to support us</b></p><br />
+                    <p><b>${t('addAppointments.thanksForSupport')}</b></p><br />
 
                         <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
                     }
@@ -410,7 +411,7 @@ export default function AddAppointments() {
                         color="yellowgreen"
                         className="addBtn text-center mx-3"
                         onClick={handleAdd}
-                        text={!matches ? t('addAppointment.add') : "Update"} >
+                        text={!matches ? t('addAppointment.add') : t('addAppointments.update')} >
                     </Button>
                 </div>
 
@@ -469,9 +470,9 @@ export default function AddAppointments() {
                                 <thead>
                                     <tr className="headerRow" style={{ height: '40px' }}>
                                         <th className="headerEntries">{t('general.hospital')}</th>
-                                        <th className="headerEntries">Blood</th>
+                                        <th className="headerEntries">{t('addAppointments.blood')}</th>
                                         <th className="headerEntries">{t('addAppointments.slots')}</th>
-                                        <th className="headerEntries">message</th>
+                                        <th className="headerEntries">{t('addAppointments.message')}</th>
                                         <th className="headerEntries">
                                         </th>
                                     </tr>
@@ -496,23 +497,23 @@ export default function AddAppointments() {
                                     ))}
                                 </tbody>
                             </table>
-                            <div className="text-right mr-4 ml-2"><b>Message Preview:</b></div>
-                            <div className="text-right mt-3 mr-4 ml-2">{appointmentTypeDetails.Granulocytes.message === "Default message" ? smsMessage : appointmentTypeDetails.Granulocytes.message}</div>
+                            <div className="text-right mr-4 ml-2"><b>{t('addAppointments.messagePreview')}:</b></div>
+                            <div className="text-right mt-3 mr-4 ml-2">{appointmentTypeDetails.Granulocytes.message === `${t('addAppointments.defaultMessage')}` ? smsMessage : appointmentTypeDetails.Granulocytes.message}</div>
 
-                            <div className="text-center mt-3"><b>Matches found:</b> {matches}</div>
+                            <div className="text-center mt-3"><b>{t('addAppointments.matchesFound')}:</b> {matches}</div>
 
                             <div className="text-center my-3">
-                                Contact Method:
+                            {t('addAppointments.contactMethod')}:
                                 <select onChange={(e) => setContact(e.target.value)} className="ml-1">
                                     <option value="Email">{t('loginForm.email')}</option>
-                                    <option value="SMS">SMS</option>
+                                    <option value="SMS">{t('notificationOptions.SMS')}</option>
                                 </select>
                             </div>
 
                             <Button
                                 className="mt-4"
                                 type="button"
-                                text="Send Request"
+                                text={t('addAppointments.sendRequest')}
                                 onClick={contact === "Email" ? handleSendEmail : handleSendSMS} ></Button>
                             {/* <button className="text-center my-3 ml-3" onClick={handleSendEmail}>SEND EMAIL TEST</button>
                             <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button> */}

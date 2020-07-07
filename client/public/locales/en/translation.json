@@ -48,7 +48,21 @@
     "selectAppointmentType": "Select appointment type",
     "noAppsToSubmit": "Currently no appointments to submit",
     "type": "Type",
-    "slots": "Slots"
+    "slots": "Slots",
+    "emergencyDonationInEmail": "There is a patient in need of an emergency donation in ",
+    "contactCoordEmail": "and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days",
+    "emergencyDonationInSMS": "There is a patient in need of an emergency donation in ",
+    "contactCoordSMS": "and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days",
+    "dear": "Dear",
+    "thanksForSupport": "Thank You for continuing to support us",
+    "blood": "Blood",
+    "message": "Message",
+    "messagePreview": "Message Preview",
+    "matchesFound": "Matches Found",
+    "contactMethod": "Contact Method",
+    "sendRequest": "Send Request",
+    "update": "Update",
+    "defaultMessage": "Default message"
   },
   "editDeleteApp": {
     "editDeleteTitle": "Edit & Delete Appointments",
@@ -58,7 +72,6 @@
     "expired": "Expired",
     "delete": "Delete",
     "deleteAppConfirm": "Are you sure that you want to delete the appointment"
-
   },
   "userProfile": {
     "bloodType": "Blood Type",
