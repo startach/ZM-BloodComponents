@@ -139,10 +139,12 @@
     "callMadaPhrase": "لا تعرف؟ تواصل مع مادا 035300400",
     "organization": "شركة",
     "contactingPhrase": "التواصل معك في حالة طوارئ يمكنه انقاذ حياة, هل انت متاكد من انك لا تريد تلقّي اشعارات طوارئ؟",
-    "selectGender" : "إختار جنس"
+    "selectGender" : "إختار جنس",
+    "dontKnow" : "لا أعرف"
   },
   "questionnaire": {
-    "submit": "تقديم"
+    "submit": "تقديم",
+    "questionnaireSpan" : "من أجل ضمان الملائمة الرجاء الاجابة على الأسئلة التالية"
   },
   "addAppointment":{
     "submit": "إضافة",

@@ -139,10 +139,12 @@
     "callMadaPhrase": "לא יודע? תתקשר למד\"א 03-5300400",
     "organization": "חברה",
     "contactingPhrase": "יצירת קשר איתך בעת חירום יכול להציל חיים,אתה בטוח שאתה לא רוצה לקבל התראות?",
-    "selectGender" : "בחר מגדר"
+    "selectGender" : "בחר מגדר",
+    "dontKnow" : "לא יודע"
   },
   "questionnaire": {
-    "submit": "אישור והמשך"
+    "submit": "אישור והמשך",
+    "questionnaireSpan" : "על מנת לוודא התאמה בבקשה מלא את השאלון"
   },
   "addAppointment":{
     "submit": "אשר והמשך",

@@ -38,8 +38,8 @@ export default function Questionnaire() {
     //allow submit only when all questions have been submit TODO:
     const [complete, setComplete] = useState(false)
 
-    const [hospital, setHospital] = useState(false)
-    const [gender, setGender] = useState(false)
+    const [hospital, setHospital] = useState()
+    const [gender, setGender] = useState()
 
 
 
@@ -55,13 +55,13 @@ export default function Questionnaire() {
         { "id": 6, "question": "Do you take medicines?", "options": ["Yes", "No"] },
         { "id": 7, "question": "Have you been abroad in the last year?", "options": ["Yes", "No"] },
         { "id": 8, "question": "Have you gone through a medical surgery in the last month?", "options": ["Yes", "No"] },
-        { "id": 9, "question": "Do you suffer from a chronical disease?", "options": ["Yes", "No"] },
+        { "id": 9, "question": "Do you suffer from a Chronic disease?", "options": ["Yes", "No"] },
         { "id": 10, "question": "Have you ever suffered from cancer?", "options": ["Yes", "No"] },
         { "id": 11, "question": "Did you take antibiotics in the last 3 days?", "options": ["Yes", "No"] },
         { "id": 12, "question": "Have you gone through Dentist procedure in the last 10 days?", "options": ["Yes", "No"] },
         { "id": 13, "question": "Do you have an open wound or a scratch?", "options": ["Yes", "No"] },
         { "id": 14, "question": "Do you confirm your age is between 17 and 65?", "options": ["Yes", "No"] },
-        { "id": 15, "question": "For women only: Have you been pregnant in the last 6 months?", "options": ["Yes", "No"] },
+        { "id": 15, "question": "Have you been pregnant in the last 6 months?", "options": ["Yes", "No"] },
         { "id": 16, "question": "When was your last donation?", "options": ["Less than one month ago", "Less than one month, more than ten days ago", "Less than 10 days ago", "Never"] },
         { "id": 17, "question": "Reading and truth statement confirmation", "options": ["Confirm", "Dont confirm"] },
     ]
@@ -96,8 +96,8 @@ export default function Questionnaire() {
 
 
     const handleSubmit = (e) => {
+        //change for question length gender/hospital
         var sum = questionList.length - 1;
-        //changhe for question length gender/hospital
 
         Object.keys(result).forEach(function (key) {
 
@@ -127,18 +127,11 @@ export default function Questionnaire() {
 
     }
 
-    // const handleChecked = (question, index, option) => {
-    //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
-
-    //     }
-    // }
 
     useEffect(() => {
 
         setHospital(localStorage.getItem('hospital'))
         setGender(localStorage.getItem('gender'))
-
-        console.log(hospital, gender)
 
     }, [])
 
@@ -148,22 +141,22 @@ export default function Questionnaire() {
         <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
                 <div className="highlight pageTitle">{t('screens.questionnaire')}</div>
+                <span id ="questionnaireSpan">{t('questionnaire.questionnaireSpan')}</span>
             </div>
-
+        
             <form onSubmit={handleSubmit}>
+                {console.log (gender)}
                 {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
-
 
                     //Questionairee Logic
                     hospital == "Ichilov" && question.id == 3 ? <div></div> :
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
-                            gender == "female" && question.id == 15 ? <div></div> :
-
+                            gender == "Male" && question.id == 15 ? <div></div> :
                                 <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
                                     <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
-                                        <div><b>{question.id}:</b> {question.question}</div>
+                                        <div><b>{question.question} </b></div>
                                     </div>
-
+ 
 
                                     <div  className={`${languageSelected==='en'? 'right' : 'rightRtl'}`}>
                                         {(question.id == (5) || question.id == 16) ? (
