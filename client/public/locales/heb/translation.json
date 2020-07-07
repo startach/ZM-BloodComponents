@@ -37,7 +37,8 @@
     "scheduleAppointment": "נא לקבוע תור חדש",
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
-    "orderTaxi": "הזמן מונית"
+    "orderTaxi": "הזמן מונית",
+    "rideDetails": "פרטי ההסעה"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
@@ -64,7 +65,9 @@
     "makeCord": "הפוף למתאם",
     "remove": "הסר",
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
-    "makeAdmin": "הפוך למנהל"
+    "makeAdmin": "הפוך למנהל",
+    "admin": "מנהל",
+    "cord": "מתאם"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"
@@ -77,7 +80,10 @@
     "backTo": "אל",
     "forAppointment": "לתור",
     "taxiConfirm": "הסעה הוזמנה לך ל",
-    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם"
+    "editOrCancelPhrase": "במידה ותרצה לבטל או לשנות את נתוני ההסעה שנקבעו לך, נא לצור קשר עם המתאם",
+    "confirm": "אישור",
+    "close": "סגירה",
+    "cancelRide": "ביטול ההסעה"
   },
   "burgerMenu": {
     "dashboard": "ראשי",
@@ -115,8 +121,8 @@
     "inAppAlert": "עדכונים בתוך האתר"
   },
   "registerForm": {
-    "signUp": "הירשם",
-    "becomeDonor": "ובוא לתרום",
+    "signUp": "הירשם ובוא לתרום",
+    "becomeDonor": "",
     "fullName": "שם מלא",
     "email": "אימייל",
     "password": "סיסמא",
@@ -129,10 +135,11 @@
     "city": "עיר",
     "address": "כתובת",
     "secondaryAddress": "כתובת משנית",
-    "bloodType": "סוג דם",
+    "selectBloodType": "בחר סוג דם",
     "callMadaPhrase": "לא יודע? תתקשר למד\"א 03-5300400",
     "organization": "חברה",
-    "contactingPhrase": "יצירת קשר איתך בעת חירום יכול להציל חיים,אתה בטוח שאתה לא רוצה לקבל התראות?"
+    "contactingPhrase": "יצירת קשר איתך בעת חירום יכול להציל חיים,אתה בטוח שאתה לא רוצה לקבל התראות?",
+    "selectGender" : "בחר מגדר"
   },
   "questionnaire": {
     "submit": "אישור והמשך"
@@ -140,5 +147,24 @@
   "addAppointment":{
     "submit": "אשר והמשך",
     "add": "הוספה"
+  },
+  "verificationList":{ 
+    "registeredSuccesfully": "נרשמת בהצלחה",
+    "expectingYou": " תודה, אנחנו מצפים לראות אותך בשעה",
+    "onThe": "בתאריך",
+    "at": "ב",
+    "hospital": "",
+    "dontForget": "נא לא לשכוח",
+    "bringId": "להביא תעודה מזהה",
+    "eatSome": "לאכול פירות/חטיף",
+    "drinkSome": "לשתות מים",
+    "confirm":"מאשר",
+    "needARide": "צריך הסעה לבית חולים",
+    "orderRide": "להזמין הסעה עכשיו"
+  },
+  "screens":{
+    "verification": "אישור התור",
+    "questionnaire": "שאלון",
+    "adminControls": "הגדרות מנהל"
   }
 }

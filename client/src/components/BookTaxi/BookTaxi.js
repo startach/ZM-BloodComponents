@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Link } from 'react'
 import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
 
-export default function BookTaxi({ close, bookingData }) {
+///////
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+//////
+
+export default function BookTaxi({ close, bookingData, setBookingData, setRideBooked, rideBooked }) {
+    const { t } = useTranslation();
 
     //object containing pick up info
     const [pickupData, setPickupData] = useState({
@@ -26,7 +32,7 @@ export default function BookTaxi({ close, bookingData }) {
 
     useEffect(() => {
 
-        if (bookingData) {
+        if (rideBooked) {
             setPickupData(bookingData)
             setScreen("confirmed")
         }
@@ -76,36 +82,58 @@ export default function BookTaxi({ close, bookingData }) {
 
     const confirm = () => {
         setScreen("confirm")
+        setRideBooked(true)
         let time = `${pickupData.hour}:${pickupData.min}`
         db.collection('taxiBookings').add({ ...pickupData, ["date"]: localStorage.getItem('appointmentDate'), ['appointmentID']: localStorage.getItem('appointmentID'), ['time']: time })
+
     }
 
 
+    const deleteRideFunc = (appId) => {
+
+        console.log("bookingdata is", appId)
+
+        var deleteRide = db.collection('taxiBookings').where("appointmentID", "==", appId);
+
+
+        deleteRide.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                doc.ref.delete();
+            });
+        });
+
+
+        setRideBooked(false)
+        setBookingData(null)
+
+    }
+    let languageSelected = localStorage.getItem('i18nextLng')
+
 
     return (
-        <div>
+        <div className={languageSelected==='en'?'rideContainer':'rideContainerRtl'}>
             <a className="close" onClick={() => close()}>
                 &times;
         </a>
 
 
-            {screen === "book" ? <div>
+            {!rideBooked ? <div>
 
                 <div className="my-3">
-                    I need a ride from
+                    {t('bookTaxi.rideFrom')}
                 <div>
                         <select className="addressMenu" onChange={handleChange} id="from">
-                            <option>select</option>
+                            <option>{t('general.select')}</option>
                             {Object.values(addressOptions).map((address) => <option>{address}</option>)}
                         </select>
                     </div>
                 </div>
 
                 <div className="my-3">
-                    I need a ride back to
+                {t('bookTaxi.rideBack')}
                 <div>
                         <select className="addressMenu" onChange={handleChange} id="backto">
-                            <option>select</option>
+                            <option>{t('general.select')}</option>
                             {Object.values(addressOptions).map((address) => <option>{address}</option>)}
                         </select>
                     </div>
@@ -113,7 +141,7 @@ export default function BookTaxi({ close, bookingData }) {
 
 
                 <div className="my-3">
-                    Pickup Time:
+                {t('bookTaxi.pickupTime')}:
                 <div className="time">
                         <select onChange={handleChange} id="hour">
                             {timelist.map((slot) => (
@@ -131,58 +159,76 @@ export default function BookTaxi({ close, bookingData }) {
                 <hr />
 
                 <div className="my-3">
-                    <b>From:</b>  {pickupData.from ? <span> {pickupData.from} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+                    <b>{t('bookTaxi.from')}:</b>  {pickupData.from ? <span> {pickupData.from} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
                 <div className="my-3">
-                    <b> Back to: </b>  {pickupData.backto ? <span> {pickupData.backto} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+                    <b> {t('bookTaxi.backTo')}: </b>  {pickupData.backto ? <span> {pickupData.backto} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
                 <div className="my-3 ">
-                    <b> Time:</b> {pickupData.min && pickupData.hour ? <span>{pickupData.hour}:{pickupData.min} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
+                    <b> {t('dashboard.Time')}:</b> {pickupData.min && pickupData.hour ? <span>{pickupData.hour}:{pickupData.min} <i class="fa fa-check" aria-hidden="true"></i> </span> : "....."}
                 </div>
                 <hr />
                 <div className="my-3">
-                    <div><b>For appointment:</b></div>
-                on {localStorage.getItem('appointmentDate')}, at {localStorage.getItem('appointmentTime')} at {localStorage.getItem('hospital')}
+                    <div><b>{t('bookTaxi.forAppointment')}:</b></div>
+                    {t('general.on')} {localStorage.getItem('appointmentDate')}, {t('general.at')} {localStorage.getItem('appointmentTime')} {t('general.at')} {localStorage.getItem('hospital')}
                 </div>
 
 
                 {pickupData.min && pickupData.hour && pickupData.from && pickupData.backto ?
 
                     <div className="my-3">
-                        <Button text="Confirm" onClick={() => {
+                        <Button text={t('bookTaxi.confirm')} onClick={() => {
                             confirm();
                         }}></Button>
                     </div>
                     :
                     <div className="my-3">
-                        <Button text="Confirm" color="grey"></Button>
+                        <Button text={t('bookTaxi.confirm')} color="grey"></Button>
                     </div>
                 }
 
+                <div className="my-3">
+                    <Button text={t('bookTaxi.close')} color="#d5068d;" onClick={() => {
+                        close();
+                    }}></Button>
+                </div>
+
 
             </div>
-                : <div className="mt-5">Your taxi has been confirmed for:
+                : <div className="mt-5">{t('bookTaxi.taxiConfirm')}:
 
 
                 <div className="my-4">
-                        <b><span className="highlight">From: </span></b>  {pickupData.from}
+                        <b><span className="highlight">{t('bookTaxi.from')}: </span></b>  {pickupData.from}
                     </div>
                     <div className="my-4">
-                        <b><span className="highlight">Back to: </span></b>   {pickupData.backto}
+                        <b><span className="highlight">{t('bookTaxi.backTo')}: </span></b>   {pickupData.backto}
                     </div>
                     <div className="my-4">
-                        <b><span className="highlight">Time: </span></b>   {pickupData.hour}: {pickupData.min}
+                        <b><span className="highlight">{t('dashboard.Time')}: </span></b>   {pickupData.hour}: {pickupData.min}
                     </div>
 
-                    If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator.
+                    {t('bookTaxi.editOrCancelPhrase')}.
+
+                    <div className="my-3">
+                        <div className="my-3">
+                            <Button text="{t('bookTaxi.close')}" color="#d5068d;" onClick={() => {
+                                close();
+                            }}></Button>
+                        </div>
+                        <div className="my-5">
+                            <Button text="{t('bookTaxi.cancelRide')}" color="#adb43a" onClick={() => {
+                                deleteRideFunc(bookingData.appointmentID);
+                                close();
+
+                            }}></Button>
+                        </div>
+
+                    </div>
 
                 </div>}
 
-            <div className="my-3">
-                <Button text="Close" color="#d5068d;" onClick={() => {
-                    close();
-                }}></Button>
-            </div>
+
 
 
         </div>

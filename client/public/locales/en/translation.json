@@ -37,7 +37,9 @@
     "scheduleAppointment": "Please, schedule a new appointment",
     "NearestHospital": "Nearest hospital is",
     "getDirections": "Get Directions",
-    "orderTaxi": "Order Taxi"
+    "orderTaxi": "Order Taxi",
+    "rideDetails": "Ride Details"
+
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",
@@ -64,7 +66,9 @@
     "makeCord": "Make Coordinator",
     "remove": "Remove",
     "selectMakeAdmin": "select user to make admin",
-    "makeAdmin": "make Admin"
+    "makeAdmin": "make Admin",
+    "admin": "Admin",
+    "cord": "Coordinator"
   },
   "appointmentsEntry": {
     "noAppoins": "You have no past appointments"
@@ -77,7 +81,10 @@
     "backTo": "Back to",
     "forAppointment": "For appointment",
     "taxiConfirm": "Your taxi has been confirmed for",
-    "editOrCancelPhrase": "If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator"
+    "editOrCancelPhrase": "If you have any issues on the day, or wish to edit or cancel your ride,  please contact your coordinator",
+    "confirm": "Confirm",
+    "close": "Close",
+    "cancelRide": "Cancel Ride"
   },
   "burgerMenu": {
     "dashboard": "Dashboard",
@@ -130,10 +137,12 @@
     "city": "City",
     "address": "Address",
     "secondaryAddress": "Secondary Address",
-    "bloodType": "Blood Type",
+    "selectBloodType": "Select Blood Type",
     "callMadaPhrase": "Don’t know? Call Mada 03-5300400",
     "organization": "Organization",
-    "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?"
+    "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?",
+    "selectGender" : "Select Gender"
+
   },
   "questionnaire": {
     "submit": "Submit"
@@ -141,5 +150,25 @@
   "addAppointment":{
     "submit": "Submit",
     "add": "Add"
+  }
+  ,"verificationList":{ 
+    "registeredSuccesfully": "You have been registered successfully",
+    "expectingYou": "Thanks, we're expecting you at",
+    "onThe": "on The",
+    "at": "at",
+    "hospital": "Hospital",
+    "dontForget": "Don't Forget to",
+    "bringId": "Bring your ID with you",
+    "eatSome": "Eat some fruit/snack (but not a fatty one)",
+    "drinkSome": "Drink some water",
+    "confirm":"Confirm",
+    "needARide": "Need a ride for your visit to the hospital",
+    "orderRide": "Order a ride now"
+  },
+  "screens":{
+    "verification": "Appointment Verification",
+    "questionnaire": "Questionnaire",
+    "adminControls": "Admin Controls"
+
   }
 }

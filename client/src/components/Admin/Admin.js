@@ -86,6 +86,7 @@ export default function Admin() {
     const [userList, setUserList] = useState([]);
 
 
+    let languageSelected = localStorage.getItem('i18nextLng');
     //set drop downs from users in DB
     useEffect(() => {
 
@@ -114,7 +115,8 @@ export default function Admin() {
 
 
 
-            <div className="text-center mt-5"><u>{t('admin.accessLevel')}</u>: <b>{accessLevel}</b></div>
+            <div className="text-center mt-5"><u>{t('admin.accessLevel')}</u>: <b>    { languageSelected==='en'?accessLevel: t(`admin.${accessLevel}`)}
+</b></div>
 
 
 

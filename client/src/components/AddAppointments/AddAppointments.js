@@ -6,7 +6,7 @@ import Button from '../button'
 import { db, auth } from '../firebase/firebase'
 import { MDBIcon } from "mdbreact";
 import { useTranslation } from 'react-i18next';
-import i18next, {dir} from 'i18next';
+import i18next, { dir } from 'i18next';
 import TextField from '@material-ui/core/TextField'
 import AppointmentList from '../appointmentsList/appointmenstList';
 
@@ -19,7 +19,7 @@ export default function AddAppointments() {
     const [visible, setVisible] = useState(false)
 
     const [hospitalsDetails, setHospitalsDetails] = useState([])
-    useEffect(()=>{
+    useEffect(() => {
         //load hospitals into hospitalsList
         const hospitals = []
         db.collection('Hospitals').get()
@@ -28,18 +28,18 @@ export default function AddAppointments() {
                     let currentID = hospital.id
                     let appObj = { ...hospital.data(), ['id']: currentID }
                     hospitals.push(appObj)
+                })
+                setHospitalsDetails(hospitals)
+                console.log(hospitalsDetails)
             })
-            setHospitalsDetails(hospitals)
-            console.log(hospitalsDetails)
-        })
-    },[])
+    }, [])
 
     const [appList, setAppList] = useState([])
     const [appDate, setAppDate] = useState(new Date())
     const displayNode = useRef(null)
     const [currentApp, setCurrentApp] = useState({
         userID: null,
-        hospitalName: null, 
+        hospitalName: null,
         hospitalID: null,
         date: null,
         time: null,
@@ -53,7 +53,7 @@ export default function AddAppointments() {
 
     //set state values for slots & hospital
     const handleChange = (e) => {
-        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value})
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value })
         console.log(currentApp)
     }
     // initialize Granulocytes state 
@@ -92,7 +92,7 @@ export default function AddAppointments() {
     const handleChangeHospital = (e) => {
         //setting hospital ID vs Passing it as props from options
         const hospital = hospitalsDetails.filter(obj => obj.hospitalName === e.target.value)
-        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ['hospitalID'] : hospital[0].id})  
+        setCurrentApp({ ...currentApp, [e.target.id]: e.target.value, ['hospitalID']: hospital[0].id })
     }
 
     //set state values for date
@@ -149,7 +149,7 @@ export default function AddAppointments() {
     }
 
     return (
-        <div className="addAppContainer" style={{width:'100%'}}>
+        <div className="addAppContainer" style={{ width: '100%' }}>
             <div ClassName="addInputs">
             <div className="hospitalDate">
             {/* {t('addAppointments.addAppointmentTitle')}: {" "} */}
