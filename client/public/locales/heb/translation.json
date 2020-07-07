@@ -17,7 +17,8 @@
     "Granulocytes": "גרנולוציטים",
     "both": "שניהם",
     "on": "ב",
-    "at": "ב"
+    "at": "ב",
+    "or": "או"
   },
   "dashboard": {
     "hello": "שלום",
@@ -45,10 +46,19 @@
     "for": "ל",
     "selectHospital": "בחר בית חולים",
     "selectAppointmentType": "בחר סוג התור",
-    "noAppsToSubmit": "כרגע אין תורים להוספה"
+    "noAppsToSubmit": "כרגע אין תורים להוספה",
+    "type": "סוג",
+    "slots": "משבצות"
   },
   "editDeleteApp": {
-    "editDeleteTitle": "עריכה ומחקית תורים"
+    "editDeleteTitle": "עריכה ומחקית תורים",
+    "showingAll": "הצגת הכל",
+    "reservedBy": "התור נקבע על ידי",
+    "notReserved": "התור עדיין פנוי",
+    "expired": "הסתים",
+    "delete": "מחיקה",
+    "deleteAppConfirm": "אתה בטוח שאתה רוצה למחוק את התור"
+
   },
   "userProfile": {
     "bloodType": "סוג דם",

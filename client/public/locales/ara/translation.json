@@ -17,7 +17,8 @@
     "Granulocytes": "خلايا حبيبية (Granulocytes)",
     "both": "كلاهما",
     "on": "عند",
-    "at": "في"
+    "at": "في",
+    "or": "أو"
   },
   "dashboard": {
     "hello": "مرحبا",
@@ -45,10 +46,19 @@
     "for": "ل",
     "selectHospital": "قٌم بإختيار المشفى",
     "selectAppointmentType": "قُم بإختيار نوع الموعد ",
-    "noAppsToSubmit": "حالياً لا يوجد أي مواعيد  للإضافة"
+    "noAppsToSubmit": "حالياً لا يوجد أي مواعيد  للإضافة",
+    "type": "نوع",
+    "slots": "خانات"
   },
   "editDeleteApp": {
-    "editDeleteTitle": "تعديل وحذف المواعيد"
+    "editDeleteTitle": "تعديل وحذف المواعيد",
+    "showingAll": "إظهار الكل",
+    "reservedBy": "تمّ الحجز عن طريق المستخدم:",
+    "notReserved": "لم يحجز بعد",
+    "expired": "إنقضى",
+    "delete": "حذف",
+    "deleteAppConfirm": "هل انت متاكد من انك تريد حذف الموعد"
+
   },
   "userProfile":{
     "bloodType": "نوع الدم",
@@ -79,7 +89,7 @@
     "from": "من",
     "backTo": "رجوعا الى",
     "forAppointment": "لموعد",
-    "taxiConfirm": "سيارة الأجرة ستقلّك:",
+    "taxiConfirm": "سيارة الأجرة ستقلّك",
     "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق",
     "confirm": "موافقة",
     "close": "إغلاق",
