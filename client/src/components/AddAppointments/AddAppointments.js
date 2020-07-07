@@ -122,9 +122,12 @@ export default function AddAppointments() {
 
         //BloodType and message validation 
         if (currentApp.appointmentType !== 'Thrombocytes') {
+            getMatchList()
             if (!appointmentTypeDetails.Granulocytes.bloodType || !appointmentTypeDetails.Granulocytes.message)
                 return
         }
+
+
         setAppList(appList.concat(currentApp))
         displayNode.current.textContent = ""
         console.log(appList)
@@ -153,6 +156,15 @@ export default function AddAppointments() {
 
     ////////////////////////////////////////////EMAIL & SMS///////////////////////////////////////////////
 
+
+    const [contact, setContact] = useState("Email")
+
+    const [matches, setMatches] = useState(null)
+
+
+
+
+
     //get all people in DB with blood type
     const getMatchList = async () => {
 
@@ -165,6 +177,8 @@ export default function AddAppointments() {
                 contactList.push({ ["name"]: doc.data().name, ["phone"]: doc.data().phone, ["email"]: doc.data().email })
             });
         });
+        console.log("matches", contactList)
+        setMatches(contactList.length)
 
         return contactList
 
@@ -223,6 +237,8 @@ export default function AddAppointments() {
 
     const handleSendEmail = async () => {
         try {
+
+            console.log("contact method", contact)
 
             let data = await getMatchList()
 
@@ -467,13 +483,13 @@ export default function AddAppointments() {
 
                             <div className="text-center mt-3">MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT</div>
 
-                            <div className="text-center mt-3"><b>Matches found:</b> 0</div>
+                            <div className="text-center mt-3"><b>Matches found:</b> {matches}</div>
 
                             <div className="text-center my-2">
                                 Contact Method:
-                                <select className="ml-1">
-                                    <option>Email</option>
-                                    <option>SMS</option>
+                                <select onChange={(e) => setContact(e.target.value)} className="ml-1">
+                                    <option value="Email">Email</option>
+                                    <option value="SMS">SMS</option>
                                 </select>
                             </div>
 
@@ -481,7 +497,7 @@ export default function AddAppointments() {
                                 className="mt-4"
                                 type="button"
                                 text="Send Request"
-                                onClick={handleSendEmail} ></Button>
+                                onClick={contact === "Email" ? handleSendEmail : handleSendSMS} ></Button>
                             {/* <button className="text-center my-3 ml-3" onClick={handleSendEmail}>SEND EMAIL TEST</button>
                             <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button> */}
                         </div>
