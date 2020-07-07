@@ -137,3 +137,19 @@ margin-top: 20px;
   font-weight: bold;
 }
 
+
+.socialMediaIconsContainer {
+
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-top: 30px;
+width: 100%;
+
+}
+
+#instagramLogo {
+
+  height: 27px;
+  width: 27px;
+}
