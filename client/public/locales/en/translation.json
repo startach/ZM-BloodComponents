@@ -134,7 +134,8 @@
     "callMadaPhrase": "Don’t know? Call Mada 03-5300400",
     "organization": "Organization",
     "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?",
-    "selectGender" : "Select Gender"
+    "selectGender" : "Select Gender",
+    "dontKnow" : "I don't know"
 
   },
   "questionnaire": {
