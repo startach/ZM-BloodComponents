@@ -11,7 +11,7 @@ import { functions, db, auth } from '../firebase/firebase'
 import AppointmentList from '../appointmentsList/appointmenstList';
 
 
-//TODO: disable past dates, minor modifications to css, SMS, fix issue with first entry for bloodtype
+//TODO: disable past dates, minor modifications to css, SMS
 
 export default function AddAppointments() {
 
@@ -70,9 +70,11 @@ export default function AddAppointments() {
         //if Granulocytes is selected a new component will show and handle the change 
         if (e.target.value === 'Thrombocytes') {
             setVisible(false)
+            setAppList([])
             setCurrentApp({ ...currentApp, [e.target.id]: e.target.value })
         } else {
             setVisible(true)
+            setAppList([])
             setCurrentApp({ ...currentApp, [e.target.id]: null })
         }
     }
@@ -122,7 +124,6 @@ export default function AddAppointments() {
         if (currentApp.appointmentType !== 'Thrombocytes') {
             if (!appointmentTypeDetails.Granulocytes.bloodType || !appointmentTypeDetails.Granulocytes.message)
                 return
-
         }
         setAppList(appList.concat(currentApp))
         displayNode.current.textContent = ""
@@ -270,8 +271,7 @@ export default function AddAppointments() {
             const sendEmail = await functions.httpsCallable('sendEmail');
 
             sendEmail({ "list": data }).then(result => {
-
-                console.log("data", result.data)
+                displayNode.current.textContent = result.data.message
             })
 
             //return to fonrim that the messages have been sent out by the backend
@@ -385,74 +385,121 @@ export default function AddAppointments() {
             </div>
             <hr />
             <div className="display ma0">
+
                 {appList.length === 0 ?
                     <div className="text-center">{t('addAppointments.noAppsToSubmit')}</div>
-                    :
-                    <table className="schedulesTables" style={{ overflowX: 'unset' }}>
-                        <thead>
-                            <tr className="headerRow" style={{ height: '40px' }}>
-                                <th className="headerEntries">{t('general.hospital')}</th>
-                                <th className="headerEntries">{t('dashboard.date')}</th>
-                                <th className="headerEntries">{t('dashboard.Time')}</th>
-                                <th className="headerEntries">Type</th>
-                                <th className="headerEntries">Slots</th>
-                                <th className="headerEntries">
-                                    {/* <MDBIcon icon='trash-alt' size="2x"/> */}
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {appList.map((appointment, index) => (
+                    : currentApp.appointmentType === 'Thrombocytes' ?
+                        <div>
+                            <table className="schedulesTables" style={{ overflowX: 'unset' }}>
+                                <thead>
+                                    <tr className="headerRow" style={{ height: '40px' }}>
+                                        <th className="headerEntries">{t('general.hospital')}</th>
+                                        <th className="headerEntries">{t('dashboard.date')}</th>
+                                        <th className="headerEntries">{t('dashboard.Time')}</th>
+                                        <th className="headerEntries">Type</th>
+                                        <th className="headerEntries">Slots</th>
+                                        <th className="headerEntries">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {appList.map((appointment, index) => (
 
-                                //  appointment.appointmentType === 'Thrombocytes' ? 
-                                //  <tr className='rowContainer bg-yellowgreen' key={index} id={index} style={{height:'60px'}}>
-                                //  : 
-                                <tr className='rowContainer' key={index} id={index} style={{ height: '60px' }}>
-                                    <td className='rowClass' >{appointment.hospitalName}</td>
-                                    <td className='rowClass' >{appointment.date}</td>
-                                    <td className='rowClass'>{appointment.time}</td>
-                                    <td className='rowClass'>
-                                        {appointment.appointmentType === 'Thrombocytes' ? 'Thrombocytes' :
-                                            <div>
-                                                Granulocytes
-                                <h5 style={{ color: 'red' }}>{appointment.appointmentType.Granulocytes.bloodType}</h5>
-                                            </div>
-                                        }
-                                    </td>
-                                    <td className='rowClass'>{appointment.slots}</td>
-                                    <td className='rowClass'>
-                                        <MDBIcon
-                                            icon='trash'
-                                            size="2x"
-                                            className="deleteBtn"
-                                            onClick={() => handleDelete(index)} />
-                                    </td>
-                                </tr>
+                                        <tr className='rowContainer' key={index} id={index} style={{ height: '60px' }}>
+                                            <td className='rowClass' >{appointment.hospitalName}</td>
+                                            <td className='rowClass' >{appointment.date}</td>
+                                            <td className='rowClass'>{appointment.time}</td>
+                                            <td className='rowClass'> {appointment.appointmentType}</td>
+                                            <td className='rowClass'>{appointment.slots}</td>
+                                            <td className='rowClass'>
+                                                <MDBIcon
+                                                    icon='trash'
+                                                    size="2x"
+                                                    className="deleteBtn"
+                                                    onClick={() => handleDelete(index)} />
+                                            </td>
+                                        </tr>
 
-                            ))}
-                        </tbody>
-                    </table>
+                                    ))}
+                                </tbody>
+                            </table>
+
+                            <Button
+                                className="mt-4"
+                                type="button"
+                                text={t('addAppointment.submit')}
+                                onClick={handleSubmit} ></Button>
+
+                        </div>
+                        :
+                        <div>
+                            <table className="schedulesTables" style={{ overflowX: 'unset' }}>
+                                <thead>
+                                    <tr className="headerRow" style={{ height: '40px' }}>
+                                        <th className="headerEntries">{t('general.hospital')}</th>
+                                        <th className="headerEntries">Blood</th>
+                                        <th className="headerEntries">Slots</th>
+                                        <th className="headerEntries">message</th>
+                                        <th className="headerEntries">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {appList.map((appointment, index) => (
+
+                                        <tr className='rowContainer' key={index} id={index} style={{ height: '60px' }}>
+                                            <td className='rowClass' >{appointment.hospitalName}</td>
+                                            <td className='rowClass red' >{appointment.appointmentType.Granulocytes.bloodType}</td>
+                                            <td className='rowClass'>{appointment.slots}</td>
+                                            <td className='rowClass'> {appointment.appointmentType.Granulocytes.message}</td>
+                                            <td className='rowClass'>
+                                                <MDBIcon
+                                                    icon='trash'
+                                                    size="2x"
+                                                    className="deleteBtn"
+                                                    onClick={() => handleDelete(index)} />
+                                            </td>
+                                        </tr>
+
+                                    ))}
+                                </tbody>
+                            </table>
+
+                            <div className="text-center mt-3">MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT</div>
+
+                            <div className="text-center my-3">
+                                <div>  Contact Method:</div>
+                                <select>
+                                    <option>Email</option>
+                                    <option>SMS</option>
+                                </select>
+                            </div>
+
+                            <Button
+                                className="mt-4"
+                                type="button"
+                                text="Send Request"
+                                onClick={handleSendEmail} ></Button>
+                            {/* <button className="text-center my-3 ml-3" onClick={handleSendEmail}>SEND EMAIL TEST</button>
+                            <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button> */}
+                        </div>
+
                 }
-
             </div>
 
 
             <div className="subBtn">
-                <Button
-                    type="button"
-                    text={t('addAppointment.submit')}
-                    onClick={handleSubmit}></Button>
+
                 <div ref={displayNode}
                     className="text-center mt-3 msg"
                     style={{ color: "green", fontWeight: "800" }}>
                 </div>
             </div>
 
-            <button className="text-center my-3 ml-5" onClick={handleSendEmail}>SEND EMAIL TEST</button>
-            <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button>
 
 
-        </div>
+
+        </div >
 
     )
 }
