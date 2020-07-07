@@ -9,6 +9,7 @@ import LanguageSwitch from "../languageSwich/LanguageSwitch";
 import Button from '../button'
 import BackArrow from '../../components/BackArrow'
 
+
 const RegisterForm = () => {
   const [date, setDate] = useState();
   const [error, setError] = useState("");
@@ -116,16 +117,17 @@ const RegisterForm = () => {
       // If the user refused to recieve any kind of notifications continue with the flow of the code
       if (Object.entries(notifications).length >= 1 || refuseNotifications) {
 
+        //update state
+        setuserInputs(userInputs);
+
         //merge phone number with phone starting
 
         userInputs.phone = userInputs.phoneStarting.concat(userInputs.phone)
 
         // Remove phone starting from the object afrer merging 
-        
+
         delete userInputs.phoneStarting
 
-        //update state
-        setuserInputs(userInputs);
 
         //Insert user into firestore
         try {
@@ -135,15 +137,23 @@ const RegisterForm = () => {
           );
           //storing the logged in user's id into localStorage variable
           localStorage.setItem("userid", cred.user.uid);
-          //localStorage.setItem('userLevel', cred.user.userLevel)
 
           await db.collection("users").doc(cred.user.uid).set(userInputs);
 
           //Add casualNotifications to the database
+          
 
           await db.collection("users").doc(cred.user.uid).update({
             casualNotifications: notifications,
           });
+
+          // Remove password and confirm password from database
+
+          // await db.collection("users").doc(cred.user.uid).update({
+          //   password: db.FieldValue.delete(),
+          //   confirmPassword: db.FieldValue.delete()
+          // });
+
 
           //Redirect to Dashboard after registration
           window.location.href = "/dashboard";
@@ -303,14 +313,14 @@ const RegisterForm = () => {
             </option>
             <option value="050">050</option>
             <option value="051">051</option>
-            <option value="050">052</option>
-            <option value="051">053</option>
-            <option value="050">054</option>
-            <option value="051">055</option>
-            <option value="050">056</option>
-            <option value="051">057</option>
-            <option value="050">058</option>
-            <option value="051">059</option>
+            <option value="052">052</option>
+            <option value="053">053</option>
+            <option value="054">054</option>
+            <option value="055">055</option>
+            <option value="056">056</option>
+            <option value="057">057</option>
+            <option value="058">058</option>
+            <option value="059">059</option>
           </select>
           <input
             className="registerPhone"
