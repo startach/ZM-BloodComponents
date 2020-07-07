@@ -212,12 +212,12 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
                     <div className="my-3">
                         <div className="my-3">
-                            <Button text="{t('bookTaxi.close')}" color="#d5068d;" onClick={() => {
+                            <Button text={t('bookTaxi.close')} color="#d5068d;" onClick={() => {
                                 close();
                             }}></Button>
                         </div>
                         <div className="my-5">
-                            <Button text="{t('bookTaxi.cancelRide')}" color="#adb43a" onClick={() => {
+                            <Button text={t('bookTaxi.cancelRide')} color="#adb43a" onClick={() => {
                                 deleteRideFunc(bookingData.appointmentID);
                                 close();
 

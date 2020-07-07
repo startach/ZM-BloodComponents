@@ -390,7 +390,7 @@ export default function AddAppointments() {
                             onChange={handleGranChange}
                             required>
                             <option value="N/A" disabled selected>
-                                Blood type:
+                                {t('userProfile.bloodType')}:
                     </option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
@@ -428,8 +428,8 @@ export default function AddAppointments() {
                                         <th className="headerEntries">{t('general.hospital')}</th>
                                         <th className="headerEntries">{t('dashboard.date')}</th>
                                         <th className="headerEntries">{t('dashboard.Time')}</th>
-                                        <th className="headerEntries">Type</th>
-                                        <th className="headerEntries">Slots</th>
+                                        <th className="headerEntries">{t('addAppointments.type')}</th>
+                                        <th className="headerEntries">{t('addAppointments.slots')}</th>
                                         <th className="headerEntries">
                                         </th>
                                     </tr>
@@ -470,7 +470,7 @@ export default function AddAppointments() {
                                     <tr className="headerRow" style={{ height: '40px' }}>
                                         <th className="headerEntries">{t('general.hospital')}</th>
                                         <th className="headerEntries">Blood</th>
-                                        <th className="headerEntries">Slots</th>
+                                        <th className="headerEntries">{t('addAppointments.slots')}</th>
                                         <th className="headerEntries">message</th>
                                         <th className="headerEntries">
                                         </th>
@@ -504,7 +504,7 @@ export default function AddAppointments() {
                             <div className="text-center my-3">
                                 Contact Method:
                                 <select onChange={(e) => setContact(e.target.value)} className="ml-1">
-                                    <option value="Email">Email</option>
+                                    <option value="Email">{t('loginForm.email')}</option>
                                     <option value="SMS">SMS</option>
                                 </select>
                             </div>

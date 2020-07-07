@@ -17,7 +17,8 @@
     "Granulocytes": "Granulocytes",
     "both": "Both",
     "on": "on",
-    "at": "at"
+    "at": "at",
+    "or": "Or"
   },
   "dashboard": {
     "hello": "Hello",
@@ -39,17 +40,25 @@
     "getDirections": "Get Directions",
     "orderTaxi": "Order Taxi",
     "rideDetails": "Ride Details"
-
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",
     "for": "for",
     "selectHospital": "Select hospital",
     "selectAppointmentType": "Select appointment type",
-    "noAppsToSubmit": "Currently no appointments to submit"
+    "noAppsToSubmit": "Currently no appointments to submit",
+    "type": "Type",
+    "slots": "Slots"
   },
   "editDeleteApp": {
-    "editDeleteTitle": "Edit & Delete Appointments"
+    "editDeleteTitle": "Edit & Delete Appointments",
+    "showingAll": "Showing All",
+    "reservedBy": "Reserved by Donor ID",
+    "notReserved": "Not yet reserved",
+    "expired": "Expired",
+    "delete": "Delete",
+    "deleteAppConfirm": "Are you sure that you want to delete the appointment"
+
   },
   "userProfile": {
     "bloodType": "Blood Type",
