@@ -72,6 +72,7 @@ export default function AddAppointments() {
             setVisible(false)
             setAppList([])
             setCurrentApp({ ...currentApp, [e.target.id]: e.target.value })
+            setMatches(null)
         } else {
             setVisible(true)
             setAppList([])
@@ -123,14 +124,17 @@ export default function AddAppointments() {
         //BloodType and message validation 
         if (currentApp.appointmentType !== 'Thrombocytes') {
             getMatchList()
+            setAppList([currentApp])
+
             if (!appointmentTypeDetails.Granulocytes.bloodType || !appointmentTypeDetails.Granulocytes.message)
                 return
+        } else {
+            setAppList(appList.concat(currentApp))
         }
 
 
-        setAppList(appList.concat(currentApp))
         displayNode.current.textContent = ""
-        console.log(appList)
+        console.log("applist added", appList)
     }
 
     //add free appointments to DB
@@ -406,7 +410,7 @@ export default function AddAppointments() {
                         color="yellowgreen"
                         className="addBtn text-center mx-3"
                         onClick={handleAdd}
-                        text={t('addAppointment.add')} >
+                        text={!matches ? t('addAppointment.add') : "Update"} >
                     </Button>
                 </div>
 
