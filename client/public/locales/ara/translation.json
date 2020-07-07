@@ -37,7 +37,8 @@
     "scheduleAppointment": "من فضلك, إحجز موعد",
     "NearestHospital": "أقرب مشفى هو",
     "getDirections": "تلقّى إرشادات الطريق",
-    "orderTaxi": "اطلب سيارة اجرة"
+    "orderTaxi": "اطلب سيارة اجرة",
+    "rideDetails": "تفاصيل سيارة الاجرة"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",
@@ -64,7 +65,9 @@
     "makeCord": "عيّن منسّق",
     "remove": "حذف",
     "selectMakeAdmin": "قُم بالإختيار لتعيين مدير",
-    "makeAdmin": "عيّن مدير"
+    "makeAdmin": "عيّن مدير",
+    "admin": "مدير",
+    "cord": "منسّق"
   },
   "appointmentsEntry":{
     "noAppoins": "ليس لديك اي مواعيد سابقة"
@@ -77,7 +80,10 @@
     "backTo": "رجوعا الى",
     "forAppointment": "لموعد",
     "taxiConfirm": "سيارة الأجرة ستقلّك:",
-    "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق"
+    "editOrCancelPhrase": "إذا طرأ أي تغييرات بيوم الموعد, او ان تريد تعديل او الغاء الموعد, رجاءاُ قم بالتواصل مع المنسّق",
+    "confirm": "موافقة",
+    "close": "إغلاق",
+    "cancelRide": "إلغاء"
   },
   "burgerMenu":{
     "dashboard": "الصفحة الرئيسية",
@@ -129,10 +135,11 @@
     "city": "مدينة",
     "address": "عنوان",
     "secondaryAddress": "عنوان ثانوي",
-    "bloodType": "فصيلة الدم",
+    "selectBloodType": "إختار فصيلة الدم",
     "callMadaPhrase": "لا تعرف؟ تواصل مع مادا 035300400",
     "organization": "شركة",
-    "contactingPhrase": "التواصل معك في حالة طوارئ يمكنه انقاذ حياة, هل انت متاكد من انك لا تريد تلقّي اشعارات طوارئ؟"
+    "contactingPhrase": "التواصل معك في حالة طوارئ يمكنه انقاذ حياة, هل انت متاكد من انك لا تريد تلقّي اشعارات طوارئ؟",
+    "selectGender" : "إختار جنس"
   },
   "questionnaire": {
     "submit": "تقديم"

@@ -108,13 +108,14 @@ export default function AddAppointments() {
 
 
     const SMSlist = [
-        { "name": "jake", "phone": "+447894547932" },
-        { "name": "bazza", "phone": "+447894547932" }
+        { "name": "jake", "phone": "+447894547932", "email": 'jakepowis@gmail.com' },
+        { "name": "bazza", "phone": "+447894547932", "email": 'jakepowis@gmail.com' }
     ]
     const SMSobject = SMSlist.map((person) => {
         return {
-            ...person, ["msg"]: `Dear ${person.name}, there is a patient in need of an emergency donation in [hospital name], and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.`
+            ...person, ["msg"]: `<p>Dear <b>${person.name}</b>,</p> There is a patient in need of an emergency donation in ${localStorage.getItem('hospital')}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.<br/> <p><b>Thank You for continuing to support us</b></p><br/><img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
         }
+
     })
 
 
@@ -134,9 +135,28 @@ export default function AddAppointments() {
             //return to fonrim that the messages have been sent out by the backend
         }
         catch (error) {
-
             console.log(error)
+        }
+    };
 
+
+    const handleSendEmail = (data) => {
+        try {
+            console.log("sending", data)
+
+            //pass list of names & numers, plus the message into the function
+
+            const sendEmail = functions.httpsCallable('sendEmail');
+
+            sendEmail({ "list": data }).then(result => {
+
+                console.log("data", result.data)
+            })
+
+            //return to fonrim that the messages have been sent out by the backend
+        }
+        catch (error) {
+            console.log(error)
         }
     };
 
@@ -238,7 +258,7 @@ export default function AddAppointments() {
                 }
 
             </div>
-
+            <button className="text-center my-3" onClick={() => handleSendEmail(SMSobject)}>SEND EMAIL TEST</button>
             <button className="text-center my-3" onClick={() => handleSendSMS(SMSobject)}>SEND SMS TEST</button>
 
             <div className="subBtn">

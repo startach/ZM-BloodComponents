@@ -47,3 +47,8 @@
     width: 50%;
 
   }
+
+  .rideContainerRtl{
+      text-align: right;
+      direction: rtl;
+  }
