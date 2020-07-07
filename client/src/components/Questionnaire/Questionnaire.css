@@ -139,3 +139,14 @@
         font-weight: bold;
 
     }
+
+
+    #questionnaireSpan {
+
+        color: grey;
+        border: solid #d5068d 1px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
