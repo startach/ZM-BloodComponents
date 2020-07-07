@@ -3,11 +3,11 @@ import './AddAppointments.css'
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from '../button'
-import { db, auth } from '../firebase/firebase'
 import { MDBIcon } from "mdbreact";
 import { useTranslation } from 'react-i18next';
 import i18next, { dir } from 'i18next';
 import TextField from '@material-ui/core/TextField'
+import { functions, db, auth } from '../firebase/firebase'
 
 export default function AddAppointments() {
 
@@ -104,6 +104,42 @@ export default function AddAppointments() {
     const handleDelete = (index) => {
         setAppList(appList.filter((item, count) => count !== index));
     }
+
+
+
+    const SMSlist = [
+        { "name": "jake", "phone": "+447894547932" },
+        { "name": "bazza", "phone": "+447894547932" }
+    ]
+    const SMSobject = SMSlist.map((person) => {
+        return {
+            ...person, ["msg"]: `Dear ${person.name}, there is a patient in need of an emergency donation in [hospital name], and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.`
+        }
+    })
+
+
+    const handleSendSMS = (data) => {
+        try {
+            console.log("sending", data)
+
+            //pass list of names & numers, plus the message into the function
+
+            const sendSMS = functions.httpsCallable('sendSMS');
+
+            sendSMS({ "list": data }).then(result => {
+
+                console.log("data", result.data)
+            })
+
+            //return to fonrim that the messages have been sent out by the backend
+        }
+        catch (error) {
+
+            console.log(error)
+
+        }
+    };
+
 
     return (
         <div className="addAppContainer" style={{ width: '100%' }}>
@@ -203,6 +239,7 @@ export default function AddAppointments() {
 
             </div>
 
+            <button className="text-center my-3" onClick={() => handleSendSMS(SMSobject)}>SEND SMS TEST</button>
 
             <div className="subBtn">
                 <Button
@@ -211,6 +248,8 @@ export default function AddAppointments() {
                     onClick={handleSubmit}></Button>
                 <div ref={displayNode} className="text-center mt-3 msg" style={{ color: "green", fontWeight: "800" }}></div>
             </div>
+
+
         </div>
 
     )

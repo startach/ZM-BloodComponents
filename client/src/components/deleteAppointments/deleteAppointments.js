@@ -260,6 +260,8 @@ function DeleteAppointments() {
 
                 <hr />
 
+                <div className="mx-4 mb-2 text-right" style={{ fontSize: "12px" }}><span>results:</span><b> {selectedInputs.length}</b></div>
+
 
 
 

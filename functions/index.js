@@ -58,3 +58,45 @@ exports.removeRole = functions.https.onCall((data, context) => {
         return err;
     });
 });
+
+
+
+
+
+
+exports.sendSMS = functions.https.onCall((data, context) => {
+
+    try {
+
+        //info recieved from client
+        console.log("data from app:", data.list)
+
+
+        //pass the info into Twillo to send For Each object in array
+
+
+        data.list.forEach((person) => {
+
+            //send person.msg to person.phone
+
+            console.log(person.msg, ". Send to:", person.phone)
+
+        })
+
+        //return to confirm sent
+
+        return {
+            message: `Success! ${data.list.length} messages sent`
+        }
+
+    }
+    catch (error) {
+        return error.message;
+
+    }
+
+
+
+
+
+});
