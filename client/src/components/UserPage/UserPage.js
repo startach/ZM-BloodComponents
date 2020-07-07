@@ -1,17 +1,19 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, Fragment } from 'react'
 import "./UserPage.css"
 import NotificationOptions from '../Notifications/NotificationOptions'
 import { db, auth } from '../firebase/firebase'
 import { useHistory, Redirect } from 'react-router-dom'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import userProfile from './userProfile.svg'
-
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import Button from '../button'
 
 export default function UserPage() {
 
     const { t } = useTranslation();
+
+    const [bloodType, setBloodType] = useState()
 
     //state for if addtional options are visable or not, set by checkbox click
     const [visible, setVisible] = useState({
@@ -30,15 +32,19 @@ export default function UserPage() {
             history.push('/login')
 
         //const userData = async ()=> { const data = await
-        db.collection('users').doc(id).get()
-            .then(snapshot => setUserDetails(snapshot.data()))
-            .catch(err => {
-                history.push('/not-found')
+        db.collection('users').doc(id).onSnapshot(snapshot => {
 
-            })
+            setUserDetails(snapshot.data())
+
+                
+        })
         //  }
         // userData()
     }, [])
+
+
+
+
 
     //state for if data feild is currently editable or not
     const [editable, setEditable] = useState({
@@ -54,6 +60,22 @@ export default function UserPage() {
     const emailNode = useRef(null)
     const phoneNode = useRef(null)
     const addressNode = useRef(null)
+
+
+    const handleChange = (e) => {
+        setBloodType(e.target.value);
+
+    };
+
+    const handleUpdate = () => {
+
+        db.collection("users").doc(id).update({
+
+            bloodType: bloodType
+        })
+
+    }
+
 
     //run when edit button is clicked
     const handleEdit = (e, dataType) => {
@@ -117,7 +139,47 @@ export default function UserPage() {
                 <div className="name topBox-right">{userDetails.name}</div>
                 <div className="topBox-right">
                     <span className="bloodType">{t('userProfile.bloodType')}</span>
-                    <span style={{ color: 'red' }}>{userDetails.bloodType}</span></div>
+                    {userDetails.bloodType === "dontKnow" ? (
+                        <Fragment>
+                            <select
+                                id="bloodType"
+                                className="userBloodType"
+                                onChange={handleChange}
+                                required>
+                                <option value="" selected disabled>
+                                    {t("registerForm.selectBloodType")}
+                                </option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+
+                            <Button text= {t("general.save")} onClick={handleUpdate} width = "100px" marginTop = "10px"></Button>
+
+
+                        </Fragment>
+                    ) :
+                        (
+                            <Fragment>
+
+                                <span style={{ color: 'red' }}>{userDetails.bloodType}</span>
+
+                            </Fragment>
+
+
+                        )
+
+
+                    }
+
+
+
+                </div>
             </div>
 
             <div className="line2"></div>
@@ -171,7 +233,7 @@ export default function UserPage() {
                         onClick={(e) => handleEdit(e, "addressData")}>{t('general.edit')}</div>
                 </div>
                 <div className="notificationTitle ma3">{t('userProfile.notificationPrefence')}</div>
-                <div id={languageSelected==='en'?'ltrNotificationContainer':'rtlNotificationContainer'} className="notifications ma0">
+                <div id={languageSelected === 'en' ? 'ltrNotificationContainer' : 'rtlNotificationContainer'} className="notifications ma0">
                     <span className="notifiedText ma2">{t('userProfile.notifiedOn')}:</span>
                     <div className="form-check dib mt3">
                         <BootstrapSwitchButton
