@@ -161,7 +161,18 @@ export default function AddAppointments() {
 
     const [matches, setMatches] = useState(null)
 
+    const [message, setMessage] = useState(null)
 
+    //TRANSLATE
+    const emailMessage = `
+                    
+    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.<br/>`
+
+
+    //TRANSLATE
+    const smsMessage = `
+                    
+    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.`
 
 
 
@@ -210,13 +221,13 @@ export default function AddAppointments() {
                 } // return default message if no message entered
                 else {
 
-                    //TRANSLATE
+
                     return {
-                        ...person, ["msg"]: `Dear ${person.name},
-                    
-                    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.<br/> 
-                    
-                    Thank You for continuing to support us`
+                        ...person, ["msg"]: `Dear ${person.name}, 
+
+                        ${smsMessage}
+            
+                        Thank You for continuing to support us`
 
                     }
                 }
@@ -256,12 +267,13 @@ export default function AddAppointments() {
                 //TRANSLATE
                 if (appointmentTypeDetails.Granulocytes.message !== "Default message") {
                     return {
-                        ...person, ["msg"]: `<p>Dear <b>${person.name}</b>,</p>
-                    ${appointmentTypeDetails.Granulocytes.message}
+                        ...person, ["msg"]: `<p> Dear <b> ${person.name} </b>,</p>
 
-                    <p><b>Thank You for continuing to support us</b></p><br/>
-                    
-                    <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
+                        ${appointmentTypeDetails.Granulocytes.message}
+
+                    <p><b>Thank You for continuing to support us</b></p><br />
+
+                        <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
 
                     }
                 } // return default message if no message entered - TRANSLATE
@@ -269,13 +281,13 @@ export default function AddAppointments() {
 
                     //TRANSLATE
                     return {
-                        ...person, ["msg"]: `<p>Dear <b>${person.name}</b>,</p>
-                    
-                    There is a patient in need of an emergency donation in ${currentApp.hospitalName}, and according to our data you are a suitable donor. Please contact [Coordinator name] in [Coordinator phone number] immediately if you can come for a donation today or in the coming days.<br/> 
-                    
-                    <p><b>Thank You for continuing to support us</b></p><br/>
-                    
-                    <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
+                        ...person, ["msg"]: `< p > Dear < b > ${person.name}</b >,</p >
+
+                        ${emailMessage}
+
+                    <p><b>Thank You for continuing to support us</b></p><br />
+
+                        <img src="https://i.ibb.co/WG83Vxd/logoZM.png" />`
                     }
                 }
             })
@@ -480,12 +492,12 @@ export default function AddAppointments() {
                                     ))}
                                 </tbody>
                             </table>
-
-                            <div className="text-center mt-3">MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT</div>
+                            <div className="text-right mr-4 ml-2"><b>Message Preview:</b></div>
+                            <div className="text-right mt-3 mr-4 ml-2">{appointmentTypeDetails.Granulocytes.message === "Default message" ? smsMessage : appointmentTypeDetails.Granulocytes.message}</div>
 
                             <div className="text-center mt-3"><b>Matches found:</b> {matches}</div>
 
-                            <div className="text-center my-2">
+                            <div className="text-center my-3">
                                 Contact Method:
                                 <select onChange={(e) => setContact(e.target.value)} className="ml-1">
                                     <option value="Email">Email</option>
@@ -506,18 +518,19 @@ export default function AddAppointments() {
             </div>
 
 
-            <div className="subBtn">
 
-                <div ref={displayNode}
-                    className="text-center mt-3 msg"
-                    style={{ color: "green", fontWeight: "800" }}>
-                </div>
+
+            <div ref={displayNode}
+                className="text-center mt-3 msg"
+                style={{ color: "green", fontWeight: "800" }}>
             </div>
 
+            <div style={{ height: "100px" }}></div>
 
 
 
-        </div >
+
+        </div>
 
     )
 }
