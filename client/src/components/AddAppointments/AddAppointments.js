@@ -285,7 +285,7 @@ export default function AddAppointments() {
 
                     //TRANSLATE
                     return {
-                        ...person, ["msg"]: `< p > Dear < b > ${person.name}</b >,</p >
+                        ...person, ["msg"]: `<p> Dear <b> ${person.name}</b >,</p >
 
                         ${emailMessage}
 
