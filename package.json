@@ -6,7 +6,8 @@
   "dependencies": {
     "firebase-admin": "^8.12.1",
     "firebase-tools": "^8.4.3",
-    "react-toastify": "^6.0.6"
+    "react-toastify": "^6.0.6",
+    "twilio": "^3.47.0"
   },
   "devDependencies": {},
   "scripts": {

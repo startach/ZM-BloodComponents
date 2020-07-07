@@ -1,7 +1,7 @@
 div.addAppContainer {
     height: 80vh;
     width: 100vw;
-    margin-top: 35px
+    margin-top: 25px
 }
 
 .addAppContainer .addInputs {
@@ -18,6 +18,15 @@ div.hospitalDate {
 }
 
 div.typeSlots {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 5px
+}
+
+div.Gran {
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -43,6 +52,12 @@ div.add {
     padding: 5px
 }
 
+div.message {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
 input {
     border-top: none;
     border-left: none;
@@ -52,10 +67,10 @@ input {
 
 .TextField {
     background-color: rgba(199, 234, 175, 0.651);
+    margin-right: 10px;
 }
 
 select.dropdown {
-    width: 60%;
     background-color: rgba(199, 234, 175, 0.651);
     border-radius: 4px;
     font-size: 14px;
@@ -93,7 +108,7 @@ select.dropdown {
 .display {
     position: relative;
     font-size: 12px;
-    min-height: 45VH;
+    min-height: 30VH;
 }
 
 .appList span {

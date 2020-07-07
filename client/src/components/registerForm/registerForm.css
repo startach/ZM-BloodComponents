@@ -22,7 +22,7 @@
 }
 
 .nameSignupContainer, .emailSignupContainer, .passwordSignupContainer, .confirmPasswordSignupContainer,
- .phoneSignupContainer, .citySignupContainer , .genderContainer, 
+ .citySignupContainer , .genderContainer, 
  .secondaryAddressSignupContainer,
 .addressSignupContainer, .bloodTypesContainer , .organizationContainer {
   display: flex;
@@ -34,6 +34,19 @@
   color: gray;
   min-height: 50px;
   width: 100%;
+}
+
+.phoneSignupContainer {
+
+  display: flex;
+  align-items: center;
+
+  font-size: 16px;
+  background-color:   rgba(199, 234, 175, 0.651);
+  color: gray;
+  min-height: 50px;
+  width: 100%;
+
 }
 
 .ltrFormClass{
@@ -53,7 +66,7 @@ label {
 
 
 
-.registerName , .registerPassword , .registerEmail , .registerPhone ,
+.registerName , .registerPassword , .registerEmail , 
 .registerCity , .registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
 .registerSecondaryAddress, .registerOrganization {
   display: flex;
@@ -63,6 +76,27 @@ label {
   border: none;
   width: 400px;
   color: grey;
+}
+
+.registerPhone {
+  background-color: #ecf8e4;
+  margin-left: 10px;
+  padding-left: 5px;
+  border: none;
+  width: 400px;
+  color: grey;
+
+}
+
+.registerPhoneStarting {
+
+  background-color: #ecf8e4;
+  margin-left: 35px;
+  padding-left: 5px;
+  border: none;
+  width: 100px;
+  color: grey;
+  height: 26px;
 }
 
 .nameSignupContainer ::placeholder , .emailSignupContainer ::placeholder, .passwordSignupContainer ::placeholder
