@@ -106,3 +106,13 @@
     padding-top: 15px;
 
 }
+
+
+.userBloodType {
+
+    display: flex;
+    background-color: #ecf8e4;
+    border: none;
+    width: 200px;
+    color: grey;
+}
