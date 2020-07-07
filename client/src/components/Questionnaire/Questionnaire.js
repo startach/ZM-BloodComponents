@@ -55,7 +55,7 @@ export default function Questionnaire() {
         { "id": 6, "question": "Do you take medicines?", "options": ["Yes", "No"] },
         { "id": 7, "question": "Have you been abroad in the last year?", "options": ["Yes", "No"] },
         { "id": 8, "question": "Have you gone through a medical surgery in the last month?", "options": ["Yes", "No"] },
-        { "id": 9, "question": "Do you suffer from a chronical disease?", "options": ["Yes", "No"] },
+        { "id": 9, "question": "Do you suffer from a Chronic disease?", "options": ["Yes", "No"] },
         { "id": 10, "question": "Have you ever suffered from cancer?", "options": ["Yes", "No"] },
         { "id": 11, "question": "Did you take antibiotics in the last 3 days?", "options": ["Yes", "No"] },
         { "id": 12, "question": "Have you gone through Dentist procedure in the last 10 days?", "options": ["Yes", "No"] },
@@ -97,7 +97,7 @@ export default function Questionnaire() {
 
     const handleSubmit = (e) => {
         var sum = questionList.length - 1;
-        //changhe for question length gender/hospital
+        //change for question length gender/hospital
 
         Object.keys(result).forEach(function (key) {
 
@@ -127,11 +127,6 @@ export default function Questionnaire() {
 
     }
 
-    // const handleChecked = (question, index, option) => {
-    //     if (checkedAnswers.includes(`${index+'@'+option}`)) {
-
-    //     }
-    // }
 
     useEffect(() => {
 
@@ -157,8 +152,7 @@ export default function Questionnaire() {
                     //Questionairee Logic
                     hospital == "Ichilov" && question.id == 3 ? <div></div> :
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
-                            gender == "female" && question.id == 15 ? <div></div> :
-
+                            gender == "Female" && question.id == 15 ? <div></div> :
                                 <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
                                     <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
                                         <div><b>{question.id}:</b> {question.question}</div>

@@ -144,7 +144,7 @@ function DashboardNoAppoin() {
         const userData = await db.collection('users').doc(user.uid).get()
         setUserName(userData.data().name)
 
-        userData.data().gender ? localStorage.setItem('gender', userData.data().gender) : localStorage.setItem('gender', 'unkown');
+        userData.data().genderType ? localStorage.setItem('gender', userData.data().genderType) : localStorage.setItem('gender', 'unknown');
 
 
         //get appointments for that user, if any
