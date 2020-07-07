@@ -1,16 +1,25 @@
 .hospitalsList {
-    width: 229px;
+    width: 35%;;
     background-color: #C3B7B1;
     border-radius: 4px;
     font-size: 14px;
 }
 
 .appointmentTypeList {
-    width: 229px;
+    width: 35%;;
     background-color: #C3B7B1;
     border-radius: 4px;
     font-size: 14px;
 }
+
+.allBtn {
+
+
+    background-color: #adb43a;
+    color: white;
+    border-radius: 4px;;
+}
+
 
 .deleteTableHeader {
     display: flex;
@@ -29,6 +38,11 @@
     font-weight: bold;
 }
 
+.greenhighlight {
+
+    color: #adb43a;
+}
+
 .deleteRowContainer {
     display: flex;
     justify-content: space-evenly;
@@ -44,7 +58,15 @@
 .deleteAppRow {
     width: 10vw;
     color: black;
-    margin-top: 15px;
+    margin-top: 0px;
+}
+
+.selectHospitalContainer, .selectAppointmentTypeContainer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ButtonsContainer {
@@ -82,6 +104,14 @@
 
 .DeleteButton:focus, .SaveButton:focus {
     outline: none;
+}
+
+.selectContainer {
+    padding: 0% 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 .popup2-content {

@@ -10,6 +10,7 @@ import qIcon from './questionnaire.svg'
 
 export default function Questionnaire() {
     const { t } = useTranslation();
+    const logo="/img/questionnaire.svg"
 
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
@@ -62,7 +63,7 @@ export default function Questionnaire() {
         { "id": 14, "question": "Do you confirm your age is between 17 and 65?", "options": ["Yes", "No"] },
         { "id": 15, "question": "For women only: Have you been pregnant in the last 6 months?", "options": ["Yes", "No"] },
         { "id": 16, "question": "When was your last donation?", "options": ["Less than one month ago", "Less than one month, more than ten days ago", "Less than 10 days ago", "Never"] },
-        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["I confirm", "I do not confirm"] },
+        { "id": 17, "question": "Reading and truth statement confirmation", "options": ["Confirm", "Dont confirm"] },
     ]
 
     const questionListHeb = [
@@ -146,7 +147,7 @@ export default function Questionnaire() {
     return (
         <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
-                <div className="highlight pageTitle">Questionnaire</div>
+                <div className="highlight pageTitle">{t('screens.questionnaire')}</div>
             </div>
 
             <form onSubmit={handleSubmit}>

@@ -12,6 +12,8 @@ function DeleteAppointments() {
 
     const { t } = useTranslation();
 
+    let status = "Not yet reserved"
+
     const [appDate, setAppDate] = useState(new Date())
     const [hospitals, setHospitals] = useState([])
     const [hospitalAppointments, setHospitalAppointments] = useState({
@@ -23,6 +25,8 @@ function DeleteAppointments() {
     })
 
     const [selectedInputs, setSelectedInputs] = useState([])
+
+    const [getAll, setGetAll] = useState(true)
 
 
     //state for if data feild is currently editable or not
@@ -88,6 +92,7 @@ function DeleteAppointments() {
 
 
     const handleDateChange = date => {
+        setGetAll(false)
         setAppDate(date)
         let fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
         setHospitalAppointments({ ...hospitalAppointments, ['date']: fullDate })
@@ -125,42 +130,79 @@ function DeleteAppointments() {
 
         if (hospitalAppointments.appointmentType == "Both") {
 
-            console.log('loooop')
-            db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
-                .where('date', '==', hospitalAppointments.date)
-                .onSnapshot(Appointments => {
-                    const hospitalApp = Appointments.docs.map(appointmentsDetails => {
-                        return appointmentsDetails
-                    })
-                    setSelectedInputs(hospitalApp)
+            if (getAll) {
+                db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
+                    .onSnapshot(Appointments => {
+                        const hospitalApp = Appointments.docs.map(appointmentsDetails => {
+                            return appointmentsDetails
+                        })
+                        setSelectedInputs(hospitalApp)
 
-                })
+                    })
+
+
+            } else {
+
+                console.log('loooop')
+                db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
+                    .where('date', '==', hospitalAppointments.date)
+                    .onSnapshot(Appointments => {
+                        const hospitalApp = Appointments.docs.map(appointmentsDetails => {
+                            return appointmentsDetails
+                        })
+                        setSelectedInputs(hospitalApp)
+
+                    })
+            }
 
         } else {
-            console.log('loooop')
-            db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
-                .where('date', '==', hospitalAppointments.date)
-                .where('appointmentType', '==', hospitalAppointments.appointmentType)
-                .onSnapshot(Appointments => {
-                    const hospitalApp = Appointments.docs.map(appointmentsDetails => {
-                        return appointmentsDetails
+
+            if (getAll) {
+
+                db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
+                    .where('appointmentType', '==', hospitalAppointments.appointmentType)
+                    .onSnapshot(Appointments => {
+                        const hospitalApp = Appointments.docs.map(appointmentsDetails => {
+                            return appointmentsDetails
+                        })
+                        setSelectedInputs(hospitalApp)
+
                     })
-                    setSelectedInputs(hospitalApp)
 
-                })
 
+            } else {
+                console.log('loooop')
+                db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
+                    .where('date', '==', hospitalAppointments.date)
+                    .where('appointmentType', '==', hospitalAppointments.appointmentType)
+                    .onSnapshot(Appointments => {
+                        const hospitalApp = Appointments.docs.map(appointmentsDetails => {
+                            return appointmentsDetails
+                        })
+                        setSelectedInputs(hospitalApp)
+
+                    })
+            }
 
         }
 
-    }, [hospitalAppointments])
+    }, [hospitalAppointments, getAll])
+
+    const handleAll = () => {
+
+        setGetAll(true)
+        console.log(getAll)
+    }
+
+
 
 
     return (
         <Fragment>
             <div className="deleteEditAppContainer">
+                <div className="selectContainer">
+                    <div className="selectHospitalContainer mt-5">
 
-                <div className="selectHospitalContainer">
-                    <p className="text-center mt-5">
                         {t('addAppointments.selectHospital')} : {" "}
                         <select id="hospitalName" className="hospitalsList" onChange={handleChange}>
                             <option value="Select" selected disabled>{t('general.select')} </option>
@@ -176,24 +218,14 @@ function DeleteAppointments() {
                             )}
 
                         </select>
-                    </p>
-
-                </div>
-
-                <div className="dateContainer">
-                    <p className="text-center mt-5">
-                        {t('general.select')} {t('general.date')}: {" "}
-                        <Datepicker
-                            selected={appDate}
-                            onChange={handleDateChange}
-                        />
-                    </p>
-
-                </div>
 
 
-                <div className="selectAppointmentTypeContainer">
-                    <p className="text-center mt-5">
+                    </div>
+
+
+
+                    <div className="selectAppointmentTypeContainer mt-3">
+
                         {t('addAppointments.selectAppointmentType')}: {" "}
                         <select id="appointmentType" className="appointmentTypeList" onChange={handleChange}>
 
@@ -203,11 +235,30 @@ function DeleteAppointments() {
                             <option value="Both"> Both </option>
 
                         </select>
-                    </p>
+
+                    </div>
+
                 </div>
 
+                <hr />
 
+                <div className="text-center mt-3">
+                    <button className="allBtn" onClick={handleAll}>Showing All</button>
+                </div>
+                <div className="text-center">or</div>
 
+                <div className="dateContainer">
+                    <p className="text-center">
+                        {t('general.select')} {t('general.date')}: {" "}
+                        <Datepicker
+                            selected={appDate}
+                            onChange={handleDateChange}
+                        />
+                    </p>
+
+                </div>
+
+                <hr />
 
 
 
@@ -224,6 +275,8 @@ function DeleteAppointments() {
             <div className="contain">
                 {selectedInputs.map((Details, id) => (
                     <ul className='deleteRowContainer' id={Details.id}>
+
+                        {console.log("detila are:", Details.data())}
 
                         {editable.date && editable.id == Details.id ? (
 
@@ -260,6 +313,8 @@ function DeleteAppointments() {
                                 </input>
 
 
+
+
                             </Fragment>
 
                         ) : (
@@ -275,6 +330,10 @@ function DeleteAppointments() {
 
                                     <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
                                         {Details.data().hospitalName}</li>
+
+
+                                    <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
+                                        {Details.data().userID ? <span className="highlight text-center"> Reserved by Donor ID: {Details.data().userID} </span> : Details.data().timestamp.seconds > (Date.now() / 1000) ? <span className="greenhighlight"> Not yet reserved</span> : <span style={{ color: "red" }} > Expired</span>}</li>
                                 </Fragment>
                             )
 
@@ -344,7 +403,7 @@ function DeleteAppointments() {
             </div>
 
 
-        </Fragment>
+        </Fragment >
     )
 }
 

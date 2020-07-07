@@ -28,6 +28,7 @@ function DashboardNoAppoin() {
   let [hospital, setHospital] = useState([])
   let [pastApp, setPastApp] = useState(0)
   let [bookingData, setBookingData] = useState(false)
+  let [rideBooked, setRideBooked] = useState(false)
   let [appointments, setAppointments] = useState([])
   let [chosenOption, setChosenOption] = useState(null)
   let [checkUserAppointments, setCheckUserAppointments] = useState(false)
@@ -50,6 +51,9 @@ function DashboardNoAppoin() {
     db.collection('Appointments').doc(appId).update({
       userID: null
     })
+
+    deleteRideFunc(appId)
+
   }
 
   const setHospitalNames = () => {
@@ -59,6 +63,17 @@ function DashboardNoAppoin() {
       })
       setHospital(hospitalsNames)
     })
+  }
+
+  const deleteRideFunc = (appId) => {
+
+    var deleteRide = db.collection('taxiBookings').where("appointmentID", "==", appId);
+    deleteRide.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        doc.ref.delete();
+      });
+    });
+
   }
 
 
@@ -73,7 +88,7 @@ function DashboardNoAppoin() {
         return bookingDetails.data()
       })
       setBookingData(bookingsMap[0])
-      console.log("booking", bookingsMap[0])
+      console.log("booking", bookingsMap[0], "IS RIDE bOOKED", rideBooked)
 
     })
   }
@@ -187,7 +202,10 @@ function DashboardNoAppoin() {
       }
     })
 
-  }, [])
+  }, [rideBooked])
+
+
+
 
 
   return (
@@ -279,8 +297,8 @@ function DashboardNoAppoin() {
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text={t('dashboard.getDirections')} width="150px">
               </Button></a>
-            <Popup className="popup1" trigger={bookingData ? <Button type="button" text="Ride Details" color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
-              {close => <BookTaxi close={close} bookingData={bookingData} />}
+            <Popup className="popup1" trigger={bookingData ? <Button type="button" text={t('dashboard.rideDetails')} color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
+              {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} rideBooked={rideBooked} setRideBooked={setRideBooked} />}
             </Popup>
           </div>
 

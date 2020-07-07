@@ -2,8 +2,9 @@ import React from 'react'
 import './screen.css'
 
 const Screen = (props) => {
+  
     return (
-        <div className="screenContainer">
+        <div  className="screenContainer">
         {props.children}
       </div>
     )
