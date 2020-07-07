@@ -174,6 +174,9 @@ export default function AddAppointments() {
         try {
             let data = await getMatchList();
 
+            //redirect to my account for testing
+            data = [{ ["name"]: "Jake", ["email"]: "jakepowis@gmail.com", ["phone"]: '+447894547932' }]
+
 
             //create SMS messages
 
@@ -221,6 +224,9 @@ export default function AddAppointments() {
         try {
 
             let data = await getMatchList()
+
+            //redirect to my account for testing
+            data = [{ ["name"]: "Jake", ["email"]: "jakepowis@gmail.com", ["phone"]: '+447894547932' }]
 
             //create Email messages
             data = data.map((person) => {

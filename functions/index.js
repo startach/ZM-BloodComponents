@@ -87,8 +87,7 @@ exports.sendSMS = functions.https.onCall((data, context) => {
                 .create({
                     body: person.msg,
                     from: '+12058947917',
-                    to: '+447894547932',
-                    // to: person.phone
+                    to: person.phone
                 })
                 .then(message => console.log(message.sid))
                 .catch(err => console.log("error:", err))
@@ -130,9 +129,7 @@ exports.sendEmail = functions.https.onCall((data, context) => {
             //send person.msg to person.phone
             var mailOptions = {
                 from: google.email,
-                //for testing
-                to: 'jakepowis@gmail.com',
-                // to: person.email,
+                to: person.email,
                 subject: 'Emergency Blood Request - Help Needed',
                 html: person.msg
             };
