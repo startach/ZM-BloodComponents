@@ -62,8 +62,6 @@ exports.removeRole = functions.https.onCall((data, context) => {
 
 
 
-
-
 exports.sendSMS = functions.https.onCall((data, context) => {
 
     try {
