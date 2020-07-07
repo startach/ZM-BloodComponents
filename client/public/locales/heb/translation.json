@@ -143,7 +143,8 @@
     "dontKnow" : "לא יודע"
   },
   "questionnaire": {
-    "submit": "אישור והמשך"
+    "submit": "אישור והמשך",
+    "questionnaireSpan" : "על מנת לוודא התאמה בבקשה מלא את השאלון"
   },
   "addAppointment":{
     "submit": "אשר והמשך",
