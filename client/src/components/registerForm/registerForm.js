@@ -9,10 +9,12 @@ import LanguageSwitch from "../languageSwich/LanguageSwitch";
 import Button from '../button'
 import BackArrow from '../../components/BackArrow'
 
+
 const RegisterForm = () => {
   const [date, setDate] = useState();
   const [error, setError] = useState("");
   const [checkError, setCheckError] = useState(false);
+  const [nameError, setNameError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [cityError, setCityError] = useState(false);
@@ -65,23 +67,32 @@ const RegisterForm = () => {
       setPasswordError(true);
       setError("Password and confirm password do not match");
 
-      //phone starting with 05 validation
 
-    } else if (!userInputs.phone.startsWith("05")) {
-      handleSubmit(e);
+      // Full Name validation (No numbers or special characters)
+
+    } else if (!userInputs.name.match(/^[A-Za-z]+$/)) {
+      setCheckError(true);
+      setNameError(true);
+      setError("Full Name Should include any numbers or special characters");
+
+
+      // Full Name Length (MAX 25 letters)
+
+    } else if (userInputs.name.length > 25) {
+      setCheckError(true);
+      setNameError(true);
+      setError("Full Name should not be more than 25 letters");
+
+
+      //Phone length validation
+
+    } else if (userInputs.phone.length < 7) {
+
       setCheckError(true);
       setPhoneError(true);
-      setError("Phone number must start with 05xxx");
+      setError("Phone must has 7 numbers");
 
-      //phone length validation
-
-    } else if (userInputs.phone.length < 10) {
-
-      setCheckError(true);
-      setPhoneError(true);
-      setError("Phone number must be 10 numbers");
-
-      //city validation
+      //City validation
 
     } else if (hasNumber.test(userInputs.city)) {
 
@@ -95,7 +106,6 @@ const RegisterForm = () => {
       setAddressError(true);
       setError("Address Field should start with a letter");
 
-
     } else {
 
       //Check if the user did not choose any type of notifications
@@ -103,13 +113,21 @@ const RegisterForm = () => {
 
         setNotificationsPopUp(true)
 
-
       }
-
       // If the user refused to recieve any kind of notifications continue with the flow of the code
       if (Object.entries(notifications).length >= 1 || refuseNotifications) {
+
         //update state
         setuserInputs(userInputs);
+
+        //merge phone number with phone starting
+
+        userInputs.phone = userInputs.phoneStarting.concat(userInputs.phone)
+
+        // Remove phone starting from the object afrer merging 
+
+        delete userInputs.phoneStarting
+
 
         //Insert user into firestore
         try {
@@ -119,15 +137,23 @@ const RegisterForm = () => {
           );
           //storing the logged in user's id into localStorage variable
           localStorage.setItem("userid", cred.user.uid);
-          //localStorage.setItem('userLevel', cred.user.userLevel)
 
           await db.collection("users").doc(cred.user.uid).set(userInputs);
 
           //Add casualNotifications to the database
+          
 
           await db.collection("users").doc(cred.user.uid).update({
             casualNotifications: notifications,
           });
+
+          // Remove password and confirm password from database
+
+          // await db.collection("users").doc(cred.user.uid).update({
+          //   password: db.FieldValue.delete(),
+          //   confirmPassword: db.FieldValue.delete()
+          // });
+
 
           //Redirect to Dashboard after registration
           window.location.href = "/dashboard";
@@ -190,183 +216,208 @@ const RegisterForm = () => {
       <form className={localStorage.getItem('i18nextLng') === 'en' ? 'ltrFormClass' : 'rtlFormClass'} onSubmit={handleSubmit}>
 
         <div className="nameSignupContainer">
-            <input
-              className="registerName"
-              id="name"
-              onChange={handleChange}
-              type="text"
-              name="name"
-              placeholder={t("registerForm.fullName")} 
-              required></input>
-          
+          <input
+            className="registerName"
+            id="name"
+            onChange={handleChange}
+            type="text"
+            name="name"
+            placeholder={t("registerForm.fullName")}
+            style={
+              nameError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
+
         </div>
 
         <div className="emailSignupContainer">
-            <input
-              className="registerEmail"
-              id="email"
-              onChange={handleChange}
-              type="email"
-              name="email"
-              placeholder={t("registerForm.email")}
-              required></input>
+          <input
+            className="registerEmail"
+            id="email"
+            onChange={handleChange}
+            type="email"
+            name="email"
+            placeholder={t("registerForm.email")}
+            required></input>
 
         </div>
-          <div className="passwordSignupContainer">
-              <input
-                className="registerPassword"
-                id="password"
-                onChange={handleChange}
-                type="password"
-                name="password"
-                placeholder = {t("registerForm.password")}
-                style={
-                  passwordError
-                    ? { border: "1px solid red" }
-                    : { border: "none" }
-                }
-                required></input>
-          </div>
+        <div className="passwordSignupContainer">
+          <input
+            className="registerPassword"
+            id="password"
+            onChange={handleChange}
+            type="password"
+            name="password"
+            placeholder={t("registerForm.password")}
+            style={
+              passwordError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
+        </div>
 
-          <div className="confirmPasswordSignupContainer">
-              <input
-                className="registerConfirmPassword"
-                id="confirmPassword"
-                onChange={handleChange}
-                type="password"
-                name="confirmPassword"
-                placeholder={t("registerForm.confirmPassword")}
-                required
-                style={
-                  passwordError
-                    ? { border: "1px solid red" }
-                    : { border: "none" }
-                }></input>
-          </div>
-        <div className="birthDateContainer dib pa3 "> 
-            {t("registerForm.birthDate")} 
-            <DatePicker
-              className="birthDate"
-              value={date}
-              onChange={onClickDayHandler}
-              format="dd/MM/yy"
-              minDate={new Date(1929, 12, 31)}
-              maxDate={new Date(2002, 11, 31)}
-              required
-            />
-          
+        <div className="confirmPasswordSignupContainer">
+          <input
+            className="registerConfirmPassword"
+            id="confirmPassword"
+            onChange={handleChange}
+            type="password"
+            name="confirmPassword"
+            placeholder={t("registerForm.confirmPassword")}
+            required
+            style={
+              passwordError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }></input>
+        </div>
+        <div className="birthDateContainer dib pa3 ">
+          {t("registerForm.birthDate")}
+          <DatePicker
+            className="birthDate"
+            value={date}
+            onChange={onClickDayHandler}
+            format="dd/MM/yy"
+            minDate={new Date(1929, 12, 31)}
+            maxDate={new Date(2002, 11, 31)}
+            required
+          />
+
         </div>
 
         <div className="genderContainer">
-            <select
-              id="genderType"
-              className="registerGenderType"
-              onChange={handleChange}
-              required>
-              <option value="Select-Gender" disabled selected>
-                {t("registerForm.selectGender")}
-              </option>
-              <option value="Male">{t("registerForm.male")}</option>
-              <option value="Female">{t("registerForm.female")}</option>
-            </select>
+          <select
+            id="genderType"
+            className="registerGenderType"
+            onChange={handleChange}
+            required>
+            <option value="" disabled selected>
+              {t("registerForm.selectGender")}
+            </option>
+            <option value="Male">{t("registerForm.male")}</option>
+            <option value="Female">{t("registerForm.female")}</option>
+          </select>
         </div>
 
         <div className="phoneSignupContainer">
-            <input
-              className="registerPhone"
-              id="phone"
-              onChange={handleChange}
-              type="phone"
-              name="phone"
-              placeholder={t("registerForm.contactNumber")}
-              style={
-                phoneError
-                  ? { border: "1px solid red" }
-                  : { border: "none" }
-              }
-              required></input>
+          <select
+            id="phoneStarting"
+            className="registerPhoneStarting"
+            onChange={handleChange}
+            required>
+            <option value="" disabled selected>
+              {t("general.select")}
+            </option>
+            <option value="050">050</option>
+            <option value="051">051</option>
+            <option value="052">052</option>
+            <option value="053">053</option>
+            <option value="054">054</option>
+            <option value="055">055</option>
+            <option value="056">056</option>
+            <option value="057">057</option>
+            <option value="058">058</option>
+            <option value="059">059</option>
+          </select>
+          <input
+            className="registerPhone"
+            id="phone"
+            onChange={handleChange}
+            type="phone"
+            name="phone"
+            placeholder={t("registerForm.contactNumber")}
+            style={
+              phoneError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
         </div>
         <div className="citySignupContainer">
-            <input
-              className="registerCity"
-              id="city"
-              onChange={handleChange}
-              type="text"
-              name="City"
-              placeholder={t("registerForm.city")}
-              style={
-                cityError
-                  ? { border: "1px solid red" }
-                  : { border: "none" }
-              }
-              required></input>
+          <input
+            className="registerCity"
+            id="city"
+            onChange={handleChange}
+            type="text"
+            name="City"
+            placeholder={t("registerForm.city")}
+            style={
+              cityError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
 
         </div>
 
         <div className="addressSignupContainer">
-            <input
-              className="registerAddress"
-              id="address"
-              onChange={handleChange}
-              type="text"
-              name="address"
-              placeholder={t("registerForm.address")}
-              style={
-                addressError
-                  ? { border: "1px solid red" }
-                  : { border: "none" }
-              }
-              required></input>
+          <input
+            className="registerAddress"
+            id="address"
+            onChange={handleChange}
+            type="text"
+            name="address"
+            placeholder={t("registerForm.address")}
+            style={
+              addressError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
         </div>
 
         <div className="secondaryAddressSignupContainer">
-            <input
-              className="registerSecondaryAddress"
-              id="secondaryAddress"
-              onChange={handleChange}
-              placeholder={t("registerForm.secondaryAddress")}
-              type="text"
-              name="secondaryAddress"></input>
+          <input
+            className="registerSecondaryAddress"
+            id="secondaryAddress"
+            onChange={handleChange}
+            placeholder={t("registerForm.secondaryAddress")}
+            type="text"
+            name="secondaryAddress"></input>
         </div>
 
         <div className="bloodTypesContainer">
 
-            <select
-              id="bloodType"
-              className="registerBloodType"
-              onChange={handleChange}
-              required>
-              <option  value="N/A" selected disabled>
+          <select
+            id="bloodType"
+            className="registerBloodType"
+            onChange={handleChange}
+            required>
+            <option value="" selected disabled>
               {t("registerForm.selectBloodType")}
-              </option>
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-              <option value="O+">O+</option>
-              <option value="O-">O-</option>
-            </select>
-        <div className="madaLabelContainer">
-        <a href="tel:035300400">
-        <label>{t("registerForm.callMadaPhrase")}</label>
+            </option>
+            <option value="dontKnow"> {t("registerForm.dontKnow")}</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+          </select>
+          <div className="madaLabelContainer">
+            <a href="tel:035300400">
+              <label>{t("registerForm.callMadaPhrase")}</label>
 
-        </a>
-          
-        </div>
+            </a>
+
+          </div>
         </div>
 
         <div className="organizationContainer">
-           
-            <input
-              className="registerOrganization"
-              id="organization"
-              onChange={handleChange}
-              type="text"
-              placeholder= {t("registerForm.organization")}
-              name="organization"></input>
-        
+
+          <input
+            className="registerOrganization"
+            id="organization"
+            onChange={handleChange}
+            type="text"
+            placeholder={t("registerForm.organization")}
+            name="organization"></input>
+
         </div>
 
         <div className="notificationsTitle">
@@ -471,7 +522,7 @@ const RegisterForm = () => {
                       }
                       }
 
-                      > X
+                    > X
                     </a>
 
                     <div className="content">
