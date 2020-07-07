@@ -232,7 +232,7 @@ function DeleteAppointments() {
                             <option value="Select" selected disabled>{t('general.select')} </option>
                             <option value="Thrombocytes" >{t('general.Thrombocytes')}</option>
                             <option value="Granulocytes">{t('general.Granulocytes')}</option>
-                            <option value="Both"> Both </option>
+                            <option value="Both"> {t('general.both')} </option>
 
                         </select>
 
@@ -243,9 +243,9 @@ function DeleteAppointments() {
                 <hr />
 
                 <div className="text-center mt-3">
-                    <button className="allBtn" onClick={handleAll}>Showing All</button>
+                    <button className="allBtn" onClick={handleAll}>{t('editDeleteApp.showingAll')}</button>
                 </div>
-                <div className="text-center">or</div>
+                <div className="text-center">{t('general.or')}</div>
 
                 <div className="dateContainer">
                     <p className="text-center">
@@ -266,10 +266,10 @@ function DeleteAppointments() {
             </div>
 
             <ul className="deleteTableHeader">
-                <li className="deleteTableEntries">Date</li>
-                <li className="deleteTableEntries">Time</li>
-                <li className="deleteTableEntries">Type</li>
-                <li className="deleteTableEntries">Hospital</li>
+                <li className="deleteTableEntries">{t('general.date')}</li>
+                <li className="deleteTableEntries">{t('dashboard.Time')}</li>
+                <li className="deleteTableEntries">{t('general.Type')}</li>
+                <li className="deleteTableEntries">{t('general.hospital')}</li>
                 <li className="deleteTableEntries"></li>
             </ul>
             <div className="contain">
@@ -300,8 +300,8 @@ function DeleteAppointments() {
                                 <select id="appointmentType" className='editableInputsDB' onChange={handleEditChange}
                                     defaultValue={Details.data().appointmentType}>
 
-                                    <option value="Thrombocytes" >Thrombocytes</option>
-                                    <option value="Granulocytes">Granulocytes</option>
+                                    <option value="Thrombocytes" >{t('general.Thrombocytes')}</option>
+                                    <option value="Granulocytes">{t('general.Granulocytes')}</option>
 
                                 </select>
 
@@ -333,7 +333,7 @@ function DeleteAppointments() {
 
 
                                     <li className='deleteAppRow deleteRowHospitalName ' id="hospitalName">
-                                        {Details.data().userID ? <span className="highlight text-center"> Reserved by Donor ID: {Details.data().userID} </span> : Details.data().timestamp.seconds > (Date.now() / 1000) ? <span className="greenhighlight"> Not yet reserved</span> : <span style={{ color: "red" }} > Expired</span>}</li>
+                                        {Details.data().userID ? <span className="highlight text-center"> {t('editDeleteApp.reservedBy')}: {Details.data().userID} </span> : Details.data().timestamp.seconds > (Date.now() / 1000) ? <span className="greenhighlight"> {t('editDeleteApp.notReserved')}</span> : <span style={{ color: "red" }} > {t('editDeleteApp.expired')}</span>}</li>
                                 </Fragment>
                             )
 
@@ -342,7 +342,7 @@ function DeleteAppointments() {
                         <div className='ButtonsContainer ButtonsContainerRow '>
 
 
-                            <Popup className="popup2" trigger={<button id={Details.id} className="DeleteButton">Delete</button>}
+                            <Popup className="popup2" trigger={<button id={Details.id} className="DeleteButton">{t('editDeleteApp.delete')}</button>}
                                 modal position="left top" closeOnDocumentClick
                                 contentStyle={{ width: "20px" }}
                             >
@@ -355,7 +355,7 @@ function DeleteAppointments() {
 
                                         <div className="content">
 
-                                            Are you sure that you want to delete the appointment ?
+                                        {t('editDeleteApp.deleteAppConfirm')} ?
 
                                      </div>
 
@@ -368,7 +368,7 @@ function DeleteAppointments() {
                                                     deleteAppointment(e)
                                                     close();
                                                 }}>
-                                                Yes
+                                                {t('general.Yes')}
                                         </button>
 
                                             <button
@@ -376,7 +376,7 @@ function DeleteAppointments() {
                                                 onClick={() => {
                                                     close();
                                                 }}>
-                                                No
+                                                {t('general.No')}
                                         </button>
 
                                         </div>
@@ -394,7 +394,7 @@ function DeleteAppointments() {
                                 id={Details.id}
                                 className="SaveButton" onClick={handleEdit}>
 
-                                Edit</button>
+                                {t('general.edit')}</button>
 
                         </div>
 

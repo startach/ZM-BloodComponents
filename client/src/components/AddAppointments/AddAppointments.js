@@ -221,7 +221,7 @@ export default function AddAppointments() {
                     onChange={handleGranChange}
                     required>
                     <option value="N/A" disabled selected>
-                        Blood type:
+                        {t('userProfile.bloodType')}:
                     </option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -257,8 +257,8 @@ export default function AddAppointments() {
                       <th className="headerEntries">{t('general.hospital')}</th>
                       <th className="headerEntries">{t('dashboard.date')}</th>
                       <th className="headerEntries">{t('dashboard.Time')}</th>
-                     <th className="headerEntries">Type</th>
-                      <th className="headerEntries">Slots</th>
+                     <th className="headerEntries">{t('addAppointments.type')}</th>
+                      <th className="headerEntries">{t('addAppointments.slots')}</th>
                       <th className="headerEntries">
                           {/* <MDBIcon icon='trash-alt' size="2x"/> */}
                       </th>
@@ -277,7 +277,7 @@ export default function AddAppointments() {
                         <td className='rowClass'>
                             { appointment.appointmentType === 'Thrombocytes' ? 'Thrombocytes' : 
                             <div>
-                                Granulocytes 
+                                {t('general.Granulocytes')} 
                                 <h5 style={{color:'red'}}>{appointment.appointmentType.Granulocytes.bloodType}</h5>
                             </div>
                             }
