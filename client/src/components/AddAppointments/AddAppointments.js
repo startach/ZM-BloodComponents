@@ -150,7 +150,7 @@ export default function AddAppointments() {
         setAppList(appList.filter((item, count) => count !== index));
     }
 
-
+    ////////////////////////////////////////////EMAIL & SMS///////////////////////////////////////////////
 
     //get all people in DB with blood type
     const getMatchList = async () => {
@@ -226,7 +226,12 @@ export default function AddAppointments() {
             let data = await getMatchList()
 
             //redirect to my account for testing
+
             data = [{ ["name"]: "Jake", ["email"]: "jakepowis@gmail.com", ["phone"]: '+447894547932' }]
+
+            // data = [{ ["name"]: "Jake", ["email"]: "jakepowis@gmail.com", ["phone"]: '+447894547932' }, { ["name"]: "Morad", ["email"]: "morad890@gmail.com", ["phone"]: '+447894547932' }, { ["name"]: "Hashem", ["email"]: "hashemab@post.bgu.ac.il", ["phone"]: '+447894547932' }]
+
+
 
             //create Email messages
             data = data.map((person) => {
@@ -258,7 +263,6 @@ export default function AddAppointments() {
                 }
             })
 
-
             console.log("sending", data)
 
             //pass list of names & numers, plus the message into the function
@@ -276,6 +280,9 @@ export default function AddAppointments() {
             console.log(error)
         }
     };
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
     return (
