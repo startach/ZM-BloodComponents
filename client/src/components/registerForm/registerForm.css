@@ -28,7 +28,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px 0px;
   font-size: 16px;
   background-color:   rgba(199, 234, 175, 0.651);
   color: gray;
@@ -40,12 +39,13 @@
 
   display: flex;
   align-items: center;
-
   font-size: 16px;
   background-color:   rgba(199, 234, 175, 0.651);
   color: gray;
   min-height: 50px;
   width: 100%;
+  direction: ltr !important;
+  
 
 }
 
@@ -97,6 +97,7 @@ label {
   width: 100px;
   color: grey;
   height: 26px;
+  
 }
 
 .nameSignupContainer ::placeholder , .emailSignupContainer ::placeholder, .passwordSignupContainer ::placeholder
@@ -271,3 +272,18 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+
+
+#SMS , #Whatsapp  , #Email , #inAppAlert  {
+
+  margin-left: 4px;
+}
+
+
+#Phonecall {
+
+  margin-left: 1px;
+
+}
+
+

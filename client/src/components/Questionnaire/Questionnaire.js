@@ -145,7 +145,6 @@ export default function Questionnaire() {
             </div>
         
             <form onSubmit={handleSubmit}>
-                {console.log (gender)}
                 {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
 
                     //Questionairee Logic
