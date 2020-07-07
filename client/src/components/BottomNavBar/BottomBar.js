@@ -5,9 +5,9 @@ import React from "react";
 import "./bottomBar.css"
 
 export default function BottomBar() {
-    const aboutIcon = '/img/Info-Icon.png'
-    const ContactUsIcon = '/img/Contact-Icon.png'
-    const DonateIcon = '/img/Donate-Icon.png'
+    const aboutIcon = '/img/Info-Icon.svg'
+    const ContactUsIcon = '/img/Contact-Icon.svg'
+    const DonateIcon = '/img/Donate-Icon.svg'
 
     const addIconClass = (e) => {
         e.target.classList.add('iconClicked')

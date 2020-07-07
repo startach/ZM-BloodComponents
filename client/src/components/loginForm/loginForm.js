@@ -14,15 +14,19 @@ import LanguageSwitch from "../languageSwich/LanguageSwitch";
 
 const LoginForm = () => {
   const backArrow = "/img/back-button-white.svg"
+  const facebookLogo = "/img/Facebook-Icon.svg"
+  const youtubeLogo = "/img/Youtube-Icon.svg"
+  const instagramLogo = "/img/Instgram-Icon.png"
+  const websiteLogo = "/img/Website-Icon.svg"
   const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
   let [error, setError] = useState([])
 
 
-/////////
-const { t } = useTranslation();
-//////////
+  /////////
+  const { t } = useTranslation();
+  //////////
 
   //Handle change of login form fields 
 
@@ -48,9 +52,9 @@ const { t } = useTranslation();
           });
         }
       });
-      
+
       //Redirect to Dashboard after login if the user exists
-      window.location.href= '/dashboard';
+      window.location.href = '/dashboard';
     }).catch(function (error) {
       // Handle Errors here.
       var errorMessage = error.message;
@@ -112,19 +116,31 @@ const { t } = useTranslation();
           <Link to='/passwordreset' style={{ textDecoration: 'none' }}>
             <p>
               {t('loginForm.forgotPassword')}
-        </p>
+            </p>
           </Link>
         </div>
         <div class="registerFooter">
           <p id="footertext">{t('loginForm.notSignedUp')}</p>
 
 
-            <Link  to='/register' style={{ textDecoration: 'none' }}>
-          <div className="comeSaveLivesButton">
-            <img src={backArrow} id ="backArrowLogin"/>
-            <span id ="comeSaveLivesSpan">{t('loginForm.comeSaveLives')}</span>
+          <Link to='/register' style={{ textDecoration: 'none' }}>
+            <div className="comeSaveLivesButton">
+              <img src={backArrow} id="backArrowLogin" />
+              <span id="comeSaveLivesSpan">{t('loginForm.comeSaveLives')}</span>
+            </div>
+          </Link>
+
+          <div className="socialMediaIconsContainer">
+
+            <a target="_blank" href="http://facebook.com/zichronmenachem"> <img src={facebookLogo}></img> </a>
+            <a target="_blank" href="http://youtube.com/user/zichronmenachem"><img src={youtubeLogo}></img> </a>
+            <a target="_blank" href="http://instagram.com/zichronmenachem"><img id="instagramLogo" src={instagramLogo}></img> </a>
+            <a target="_blank" href="http://zichron.org"><img src={websiteLogo}></img> </a>
+
+
           </div>
-            </Link>
+
+
         </div>
       </div>
     </div>
