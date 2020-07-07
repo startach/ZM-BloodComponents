@@ -467,9 +467,11 @@ export default function AddAppointments() {
 
                             <div className="text-center mt-3">MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT MESSAGE TEXT</div>
 
-                            <div className="text-center my-3">
-                                <div>  Contact Method:</div>
-                                <select>
+                            <div className="text-center mt-3"><b>Matches found:</b> 0</div>
+
+                            <div className="text-center my-2">
+                                Contact Method:
+                                <select className="ml-1">
                                     <option>Email</option>
                                     <option>SMS</option>
                                 </select>
