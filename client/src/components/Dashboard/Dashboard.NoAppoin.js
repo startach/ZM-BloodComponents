@@ -13,6 +13,9 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 //////
 
+import googlemaps from './googlemaps.png'
+import waze from './waze.png'
+
 
 
 function DashboardNoAppoin() {
@@ -295,10 +298,25 @@ function DashboardNoAppoin() {
 
           </table>
           <div className="bottomButtons">
-            <a target="_blank"
+            {/* <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
             ><Button type="button" text={t('dashboard.getDirections')} width="150px">
-              </Button></a>
+              </Button></a> */}
+
+
+
+            <Popup className="popup3" trigger={<Button type="button" text={t('dashboard.getDirections')} width="150px">
+            </Button>} modal position="left top" closeOnDocumentClick>
+              {<a target="_blank"
+                href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
+              ><img className="mapIcon" src={googlemaps} /></a>}
+              {<a target="_blank"
+                href={`https://www.waze.com/ul?q=${localStorage.getItem('hospital').replace(/\s/g, '%')}`}
+              ><img className="mapIcon" src={waze} /></a>}
+
+            </Popup>
+
+
             <Popup className="popup1" trigger={bookingData ? <Button type="button" text={t('dashboard.rideDetails')} color='#C71585' width="150px"></Button> : <Button type="button" text={t('dashboard.orderTaxi')} color='#C71585' width="150px"></Button>} modal position="left top" closeOnDocumentClick>
               {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} rideBooked={rideBooked} setRideBooked={setRideBooked} />}
             </Popup>

@@ -160,8 +160,21 @@
     justify-content: center;
     align-items: center;
     margin-top: 25px;
-
     
+}
 
-    
+.mapIcon {
+
+    height: 100px;
+    width: 100px;
+    margin: 4% 2%;
+    border: 4px solid black;
+    border-radius: 8px;
+}
+
+.popup3-content {
+
+    border: 6px solid lightgray!important;
+    border-radius: 8px !important;
+
 }
