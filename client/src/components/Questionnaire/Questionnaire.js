@@ -97,10 +97,10 @@ export default function Questionnaire() {
 
 
     const handleSubmit = (e) => {
-    //change questions length depend on hospital name 
+        //change questions length depend on hospital name 
         var sum = questionList.length - 1;
 
-    //change questions length depend on gender 
+        //change questions length depend on gender 
         if (gender == "Male") {
 
             sum = sum - 1;
@@ -109,16 +109,16 @@ export default function Questionnaire() {
 
         Object.keys(result).forEach(function (key) {
 
-        // Decrease the sum if the user answer the question
+            // Decrease the sum if the user answer the question
 
             if (result[key] != 'select') {
                 sum--;
             }
             console.log("sum is", sum)
-           
+
             // setComplete(true)
         });
-        if (sum == 0 && result.Q17 == "Confirm")  {
+        if (sum == 0 && result.Q17 == "Confirm") {
             setComplete(true)
             var appointId = localStorage.getItem('appointmentId');
             var userId = localStorage.getItem('userid')
@@ -131,15 +131,15 @@ export default function Questionnaire() {
 
             history.push('/verfication')
 
-        // Dont allow the user to go forward without accepting the terms
+            // Dont allow the user to go forward without accepting the terms
 
         } else if (result.Q17 !== "Confirm") {
 
             alert("You have to confirm truth statement in order to proceed with your appointment")
-        
+
         } else {
 
-        // Validation if the user answer all of the questions
+            // Validation if the user answer all of the questions
 
             alert("you need to answer all questions before you can submit the questionnare")
         }

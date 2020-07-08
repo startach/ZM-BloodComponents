@@ -232,7 +232,7 @@ export default function AddAppointments() {
                         ${smsMessage}
             
                         ${t('addAppointments.thanksForSupport')}`
-                        
+
 
                     }
                 }
@@ -503,7 +503,7 @@ export default function AddAppointments() {
                             <div className="text-center mt-3"><b>{t('addAppointments.matchesFound')}:</b> {matches}</div>
 
                             <div className="text-center my-3">
-                            {t('addAppointments.contactMethod')}:
+                                {t('addAppointments.contactMethod')}:
                                 <select onChange={(e) => setContact(e.target.value)} className="ml-1">
                                     <option value="Email">{t('loginForm.email')}</option>
                                     <option value="SMS">{t('notificationOptions.SMS')}</option>

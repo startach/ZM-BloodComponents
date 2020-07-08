@@ -163,20 +163,18 @@
     "callMadaPhrase": "Don’t know? Call Mada 03-5300400",
     "organization": "Organization",
     "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?",
-    "selectGender" : "Select Gender",
-    "dontKnow" : "I don't know"
-
+    "selectGender": "Select Gender",
+    "dontKnow": "I don't know"
   },
   "questionnaire": {
     "submit": "Submit",
-    "questionnaireSpan" : "In order to make sure that you fit.Please complete the questionnaire"
-
+    "questionnaireSpan": "In order to make sure that you fit. Please complete the questionnaire"
   },
-  "addAppointment":{
+  "addAppointment": {
     "submit": "Submit",
     "add": "Add"
-  }
-  ,"verificationList":{ 
+  },
+  "verificationList": {
     "registeredSuccesfully": "You have been registered successfully",
     "expectingYou": "Thanks, we're expecting you at",
     "onThe": "on The",
@@ -186,14 +184,13 @@
     "bringId": "Bring your ID with you",
     "eatSome": "Eat some fruit/snack (but not a fatty one)",
     "drinkSome": "Drink some water",
-    "confirm":"Confirm",
+    "confirm": "Confirm",
     "needARide": "Need a ride for your visit to the hospital",
     "orderRide": "Order a ride now"
   },
-  "screens":{
+  "screens": {
     "verification": "Appointment Verification",
     "questionnaire": "Questionnaire",
     "adminControls": "Admin Controls"
-
   }
 }

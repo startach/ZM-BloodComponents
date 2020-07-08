@@ -88,7 +88,9 @@ function DashboardNoAppoin() {
         return bookingDetails.data()
       })
       setBookingData(bookingsMap[0])
+      bookingData ? setRideBooked(true) : setRideBooked(false)
       console.log("booking", bookingsMap[0], "IS RIDE bOOKED", rideBooked)
+
 
     })
   }
@@ -368,7 +370,7 @@ function DashboardNoAppoin() {
         )
       }
 
-    </div >
+    </div>
   );
 }
 

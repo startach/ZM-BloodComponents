@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../button'
 import './verificationList.css'
 import { Link } from 'react-router-dom'
@@ -12,6 +12,9 @@ import i18next from 'i18next';
 const VerificationList = () => {
     const backArrow = "/img/back-button-white.svg"
     const { t } = useTranslation();
+
+    let [bookingData, setBookingData] = useState(false)
+    let [rideBooked, setRideBooked] = useState(false)
 
     return (
         <div>
@@ -29,7 +32,7 @@ const VerificationList = () => {
             <h2 id="forgetText" ><b>{t('verificationList.dontForget')}</b></h2>
 
 
-            <ul style={{textAlign:(localStorage.getItem('i18nextLng') === 'en')?'left':'right'}} className="bringList">
+            <ul style={{ textAlign: (localStorage.getItem('i18nextLng') === 'en') ? 'left' : 'right' }} className="bringList">
 
                 <li id="toBring">{t('verificationList.bringId')}</li>
 
@@ -49,12 +52,12 @@ const VerificationList = () => {
             <div className="my-4">
                 <Popup className="popup1" trigger={<div className="bookTaxiButtonContainer">
                     <button className="bookTaxiButton">
-                    <img src={backArrow} id="backArrowVer" />
-                    <span id="BookTaxiSpan">{t('verificationList.orderRide')} </span>
+                        <img src={backArrow} id="backArrowVer" />
+                        <span id="BookTaxiSpan">{t('verificationList.orderRide')} </span>
                     </button>
-                    
+
                 </div>} modal position="left top" closeOnDocumentClick>
-                    {close => <BookTaxi close={close} />}
+                    {close => <BookTaxi close={close} bookingData={bookingData} setBookingData={setBookingData} rideBooked={rideBooked} setRideBooked={setRideBooked} />}
                 </Popup>
             </div>
 
