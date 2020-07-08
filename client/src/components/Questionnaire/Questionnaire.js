@@ -10,7 +10,7 @@ import qIcon from './questionnaire.svg'
 
 export default function Questionnaire() {
     const { t } = useTranslation();
-    const logo="/img/questionnaire.svg"
+    const logo = "/img/questionnaire.svg"
 
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
@@ -90,24 +90,35 @@ export default function Questionnaire() {
         let thisQ = "Q" + (index + 1);
         setResults({ ...result, [thisQ]: e.target.value })
         console.log(result);
+        console.log(result.Q17)
 
     }
 
 
 
     const handleSubmit = (e) => {
-        //change for question length gender/hospital
+    //change questions length depend on hospital name 
         var sum = questionList.length - 1;
 
+    //change questions length depend on gender 
+        if (gender == "Male") {
+
+            sum = sum - 1;
+
+        }
+
         Object.keys(result).forEach(function (key) {
+
+        // Decrease the sum if the user answer the question
 
             if (result[key] != 'select') {
                 sum--;
             }
             console.log("sum is", sum)
+           
             // setComplete(true)
         });
-        if (sum == 0) {
+        if (sum == 0 && result.Q17 == "Confirm")  {
             setComplete(true)
             var appointId = localStorage.getItem('appointmentId');
             var userId = localStorage.getItem('userid')
@@ -119,7 +130,16 @@ export default function Questionnaire() {
             console.log(appointId, userId)
 
             history.push('/verfication')
+
+        // Dont allow the user to go forward without accepting the terms
+
+        } else if (result.Q17 !== "Confirm") {
+
+            alert("You have to confirm truth statement in order to proceed with your appointment")
+        
         } else {
+
+        // Validation if the user answer all of the questions
 
             alert("you need to answer all questions before you can submit the questionnare")
         }
@@ -138,12 +158,12 @@ export default function Questionnaire() {
 
 
     return (
-        <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
+        <div style={{ textAlign: languageSelected === 'en' ? 'left' : 'right' }} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
                 <div className="highlight pageTitle">{t('screens.questionnaire')}</div>
-                <span id ="questionnaireSpan">{t('questionnaire.questionnaireSpan')}</span>
+                <span id="questionnaireSpan">{t('questionnaire.questionnaireSpan')}</span>
             </div>
-        
+
             <form onSubmit={handleSubmit}>
                 {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
 
@@ -151,13 +171,13 @@ export default function Questionnaire() {
                     hospital == "Ichilov" && question.id == 3 ? <div></div> :
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
                             gender == "Male" && question.id == 15 ? <div></div> :
-                                <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
-                                    <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
+                                <div className={`${languageSelected === 'en' ? "questions" : "questionsRtl"}`}>
+                                    <div className={`${languageSelected === 'en' ? 'left' : 'leftRtl'}`}>
                                         <div><b>{question.question} </b></div>
                                     </div>
- 
 
-                                    <div  className={`${languageSelected==='en'? 'right' : 'rightRtl'}`}>
+
+                                    <div className={`${languageSelected === 'en' ? 'right' : 'rightRtl'}`}>
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
