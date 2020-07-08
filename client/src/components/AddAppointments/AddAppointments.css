@@ -1,11 +1,12 @@
 .addAppContainer {
     height: 80vh;
-    width: 100vw;
-    margin-top: 25px;
+    width: 80vw;
+    margin: auto;
     padding: 2px
 }
 
 div.hospitalDate {
+    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -15,6 +16,7 @@ div.hospitalDate {
 }
 
 div.typeSlots {
+    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -24,6 +26,7 @@ div.typeSlots {
 }
 
 div.Gran {
+    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -107,19 +110,7 @@ select.dropdown {
     min-height: 30VH;
 }
 
-@media only screen and (min-width: 800px) {
-    div.addAppContainer {
-        height: 80vh;
-        width: 80vw;
-        margin: auto;
-        padding: 2px
-    }
-    div.hospitalDate {
-        margin-top: 35px
-    }
-}
-
-@media only screen and (min-width: 1025px) {
+@media only screen and (max-width: 1024px) {
     div.addAppContainer {
         height: 80vh;
         width: 70vw;
@@ -127,6 +118,101 @@ select.dropdown {
         padding: 2px
     }
     div.hospitalDate {
+        direction: ltr !important;
         margin-top: 35px
+    }
+    div.typeSlots {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+    div.Gran {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    div.addAppContainer {
+        height: 80vh;
+        width: 100vw;
+        margin: auto;
+        padding: 2px
+    }
+    div.hospitalDate {
+        direction: ltr !important;
+        margin-top: 35px
+    }
+    div.typeSlots {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+    div.Gran {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    div.addAppContainer {
+        height: 80vh;
+        width: 100vw;
+        padding: 0px;
+        margin: 0px
+    }
+    div.hospitalDate {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin-top: 25px;
+        padding: 5px
+    }
+    div.typeSlots {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+    div.Gran {
+        direction: ltr !important;
+        display: flex;
+        flex-direction: row;
+        align-self: stretch;
+        justify-content: space-between;
+        margin: 15px;
+        padding: 5px
+    }
+    .Datepicker {
+        width: 145px;
+    }
+    .react-datepicker-popper {
+        width: 330px !important;
+    }
+    .TextField {
+        width: 100px
     }
 }
