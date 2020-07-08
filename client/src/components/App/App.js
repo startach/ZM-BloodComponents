@@ -40,9 +40,9 @@ function App() {
         <UserRoute path='/verfication' component={AppointmentVerification} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <UserRoute path='/user' component={User} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <UserRoute path='/questions' component={Questions} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <UserRoute path='/emergency' component={EmergencyDonations} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
 
         <CordRoute path='/add' component={AddAppointment} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
-        <CordRoute path='/emergency' component={EmergencyDonations} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <CordRoute path='/edit-delete' component={DeleteEditAppointments} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
 
         <AdminRoute path='/admin' component={Admin} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
