@@ -10,7 +10,7 @@ import qIcon from './questionnaire.svg'
 
 export default function Questionnaire() {
     const { t } = useTranslation();
-    const logo="/img/questionnaire.svg"
+    const logo = "/img/questionnaire.svg"
 
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
@@ -97,7 +97,8 @@ export default function Questionnaire() {
 
     const handleSubmit = (e) => {
         //change for question length gender/hospital
-        var sum = questionList.length - 1;
+
+        var sum = questionList.length - 2;
 
         Object.keys(result).forEach(function (key) {
 
@@ -138,12 +139,12 @@ export default function Questionnaire() {
 
 
     return (
-        <div style={{textAlign:languageSelected==='en'?'left':'right'}} className="questionnairePage">
+        <div style={{ textAlign: languageSelected === 'en' ? 'left' : 'right' }} className="questionnairePage">
             <div className="qIcon"><img src={qIcon} />
                 <div className="highlight pageTitle">{t('screens.questionnaire')}</div>
-                <span id ="questionnaireSpan">{t('questionnaire.questionnaireSpan')}</span>
+                <span id="questionnaireSpan">{t('questionnaire.questionnaireSpan')}</span>
             </div>
-        
+
             <form onSubmit={handleSubmit}>
                 {(languageSelected === 'en' ? questionList : questionListHeb).map((question, index) => (
 
@@ -151,13 +152,13 @@ export default function Questionnaire() {
                     hospital == "Ichilov" && question.id == 3 ? <div></div> :
                         hospital !== "Ichilov" && question.id == 2 ? <div></div> :
                             gender == "Male" && question.id == 15 ? <div></div> :
-                                <div className={`${languageSelected==='en'? "questions" : "questionsRtl"}`}>
-                                    <div className={`${languageSelected==='en'? 'left' : 'leftRtl'}`}>
+                                <div className={`${languageSelected === 'en' ? "questions" : "questionsRtl"}`}>
+                                    <div className={`${languageSelected === 'en' ? 'left' : 'leftRtl'}`}>
                                         <div><b>{question.question} </b></div>
                                     </div>
- 
 
-                                    <div  className={`${languageSelected==='en'? 'right' : 'rightRtl'}`}>
+
+                                    <div className={`${languageSelected === 'en' ? 'right' : 'rightRtl'}`}>
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
