@@ -83,7 +83,6 @@ const BurgerMenu = () => {
       color: '#E4FDFF',
       paddingTop: '.8em',
       paddingBottom: '.8em',
-      fontFamily: 'Montserrat',
       outline: 'none',
       textDecoration: 'none',
       textAlign: languageSelected==='en'?'left':'right',
