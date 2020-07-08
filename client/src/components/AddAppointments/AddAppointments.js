@@ -119,7 +119,8 @@ export default function AddAppointments() {
 
     //add new Appointment to appoitnment list
     const handleAdd = () => {
-        if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName || !currentApp.appointmentType) return
+        if (!currentApp.date || !currentApp.time || !currentApp.slots || !currentApp.hospitalName || !currentApp.appointmentType) 
+            return alert('Make sure you filled out all data fields')
 
         //BloodType and message validation 
         if (currentApp.appointmentType !== 'Thrombocytes') {
@@ -127,7 +128,7 @@ export default function AddAppointments() {
             setAppList([currentApp])
 
             if (!appointmentTypeDetails.Granulocytes.bloodType || !appointmentTypeDetails.Granulocytes.message)
-                return
+                return alert('Make sure you filled out all data fields')
         } else {
             setAppList(appList.concat(currentApp))
         }
@@ -329,7 +330,20 @@ export default function AddAppointments() {
                         onChange={handleChangeDate}
                         showTimeSelect
                         dateFormat="Pp"
-                        className="pa2"
+                        className="Datepicker pa2"
+                    minDate={new Date()}
+                    placeholderText="Select a date"
+                    popperModifiers={{
+                        offset: {
+                          enabled: true,
+                          offset: "0px, 0px"
+                        },
+                        preventOverflow: {
+                          enabled: true,
+                          escapeWithReference: false,
+                          boundariesElement: "scrollParent"
+                        }
+                      }}
                     />
                     <select className="dropdown ml-3 pa2" id="hospitalName" onChange={handleChangeHospital}>
                         <option selected disabled >{t('addAppointments.selectHospital')}</option>
