@@ -77,6 +77,6 @@ https://hackmd.io/MJ5-e4e5S3m7RtIPn2k5Ng?both
 ## Team
 * [Morad Abed](https://github.com/MoradAbed)
 * [Jake Powis](https://github.com/JakePowis)
-* [Hashem Abed-AlJawad](https://github.com/hashem96)
+* [Hashem Abed AlJawad](https://github.com/hashem96)
 * [Khalid Ahmed](https://github.com/VoJunSoft)
 * [Amir Fahoum](https://github.com/amirfahoum)
