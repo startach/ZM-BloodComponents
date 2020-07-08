@@ -1,11 +1,8 @@
-div.addAppContainer {
+.addAppContainer {
     height: 80vh;
     width: 100vw;
-    margin-top: 25px
-}
-
-.addAppContainer .addInputs {
-    padding: 15px;
+    margin-top: 25px;
+    padding: 2px
 }
 
 div.hospitalDate {
@@ -49,7 +46,7 @@ div.add {
     border-top: none;
     border-left: none;
     border-right: none;
-    padding: 5px
+    padding: 10px
 }
 
 div.message {
@@ -67,14 +64,13 @@ input {
 
 .TextField {
     background-color: rgba(199, 234, 175, 0.651);
-    margin-right: 10px;
 }
 
 select.dropdown {
     background-color: rgba(199, 234, 175, 0.651);
     border-radius: 4px;
     font-size: 14px;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 .msg {
@@ -111,6 +107,26 @@ select.dropdown {
     min-height: 30VH;
 }
 
-.appList span {
-    margin-right: 4%;
+@media only screen and (min-width: 800px) {
+    div.addAppContainer {
+        height: 80vh;
+        width: 80vw;
+        margin: auto;
+        padding: 2px
+    }
+    div.hospitalDate {
+        margin-top: 35px
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    div.addAppContainer {
+        height: 80vh;
+        width: 70vw;
+        margin: auto;
+        padding: 2px
+    }
+    div.hospitalDate {
+        margin-top: 35px
+    }
 }
