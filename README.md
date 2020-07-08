@@ -41,7 +41,9 @@ This mobile web app, will allow donors to view information about available dates
 
 ## Docs
 
-https://hackmd.io/MJ5-e4e5S3m7RtIPn2k5Ng?both
+#### Please find full developer documentation [here](https://hackmd.io/MJ5-e4e5S3m7RtIPn2k5Ng?both)
+
+##
 
 
 ![dashboard](https://i.imgur.com/0jsKek4.png)
