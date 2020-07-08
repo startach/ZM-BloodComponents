@@ -75,6 +75,7 @@ This mobile web app, will allow donors to view information about available dates
 8.  React Bootstrap
 9.  mdbReact
 10.  Firebase
+11. React Helmet
 
 ## Team
 * [Morad Abed](https://github.com/MoradAbed)
