@@ -32,7 +32,7 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
     useEffect(() => {
 
-        if (rideBooked) {
+        if (bookingData) {
             setPickupData(bookingData)
             setScreen("confirmed")
         }
@@ -82,7 +82,7 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
     const confirm = () => {
         setScreen("confirm")
-        setRideBooked(true)
+        setBookingData(pickupData)
         let time = `${pickupData.hour}:${pickupData.min}`
         db.collection('taxiBookings').add({ ...pickupData, ["date"]: localStorage.getItem('appointmentDate'), ['appointmentID']: localStorage.getItem('appointmentID'), ['time']: time })
 
@@ -111,17 +111,17 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
 
     return (
-        <div className={languageSelected==='en'?'rideContainer':'rideContainerRtl'}>
+        <div className={languageSelected === 'en' ? 'rideContainer' : 'rideContainerRtl'}>
             <a className="close" onClick={() => close()}>
                 &times;
         </a>
 
 
-            {!rideBooked ? <div>
+            {!bookingData ? <div>
 
                 <div className="my-3">
                     {t('bookTaxi.rideFrom')}
-                <div>
+                    <div>
                         <select className="addressMenu" onChange={handleChange} id="from">
                             <option>{t('general.select')}</option>
                             {Object.values(addressOptions).map((address) => <option>{address}</option>)}
@@ -130,8 +130,8 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
                 </div>
 
                 <div className="my-3">
-                {t('bookTaxi.rideBack')}
-                <div>
+                    {t('bookTaxi.rideBack')}
+                    <div>
                         <select className="addressMenu" onChange={handleChange} id="backto">
                             <option>{t('general.select')}</option>
                             {Object.values(addressOptions).map((address) => <option>{address}</option>)}
@@ -141,7 +141,7 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
 
                 <div className="my-3">
-                {t('bookTaxi.pickupTime')}:
+                    {t('bookTaxi.pickupTime')}:
                 <div className="time">
                         <select onChange={handleChange} id="hour">
                             {timelist.map((slot) => (
