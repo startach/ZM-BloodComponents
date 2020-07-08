@@ -4,7 +4,6 @@
 }
 
 #secondHeader {
-    font-family: 'Montserrat';
     font-size: 20px;
     margin-top: 30px;
 }
@@ -13,7 +12,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-family: 'Montserrat';
     font-size: 20px;
     padding: 2%;
     border-top: thin inset;
@@ -26,14 +24,12 @@
 }
 
 #toBring {
-    font-family: 'Montserrat';
     font-size: 20px;
     margin-bottom: 5px;
     list-style-type: square;
 }
 
 #footer {
-    font-family: 'Montserrat';
     font-size: 20px;
     text-align: center;
     font-weight: bold;

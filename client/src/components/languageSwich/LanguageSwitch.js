@@ -1,5 +1,6 @@
 import i18next from "i18next";
 import React, { useState } from "react";
+import Helmet from 'react-helmet'
 
 const LanguageSwitch = (props, { languageSelected }) => {
   const [lang, setLang] = useState(languageSelected);
@@ -16,7 +17,7 @@ const LanguageSwitch = (props, { languageSelected }) => {
   // }, [lang])
 
   return (
-    <div className="language" style = {{'marginRight': props.marginRight}}>
+    <div className="language" style={{ 'marginRight': props.marginRight }}>
       <div>
         <select
           className="lang"
@@ -26,8 +27,8 @@ const LanguageSwitch = (props, { languageSelected }) => {
             {i18next.language == "heb"
               ? "עִברִית"
               : i18next.language == "ara"
-              ? "عربى"
-              : "en"}
+                ? "عربى"
+                : "en"}
           </option>
           {i18next.language != "heb" ? (
             <option value="heb" >עִברִית</option>
@@ -36,6 +37,7 @@ const LanguageSwitch = (props, { languageSelected }) => {
           {i18next.language != "en" ? <option value="en">en</option> : null}
         </select>
       </div>{" "}
+      <Helmet htmlAttributes={{ lang: i18next.language }} />
     </div>
   );
 };

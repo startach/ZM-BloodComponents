@@ -1,9 +1,31 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css2?family=Assistant');
+@import url(https://www.fontstatic.com/f=cocon-next-arabic);
 
-*{
+* {
+
   outline: none;
-  font-family: 'Montserrat';
 }
+
+:lang(en) {
+
+  
+  font-family: 'Montserrat' ;
+
+}
+
+:lang(heb) {
+
+  font-family: 'Assistant';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+}
+
+:lang(ara) {
+
+  font-family: 'cocon-next-arabic';
+
+}
+
 .App {
   text-align: center;
 }
@@ -44,4 +66,10 @@ a:hover {
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+
+.fa {
+
+  font-family : "Font Awesome 5 Free" !important
 }

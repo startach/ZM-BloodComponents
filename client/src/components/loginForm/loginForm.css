@@ -15,13 +15,12 @@
 }
 
 #header1, #header2 {
-  font-family: 'Montserrat';
   font-size: 30px;
 
 }
 .login_error{
-  font-size: 15px;
-  color: red;
+font-size: 15px;
+color: red;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -61,8 +60,6 @@ margin-top: 20px;
 }
 
 #footertext {
-
-  font-family: 'Montserrat';
   color: #d5068d;
   font-weight: bold;
   font-size: 25px;
