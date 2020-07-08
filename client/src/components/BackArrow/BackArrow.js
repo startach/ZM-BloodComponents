@@ -26,7 +26,7 @@ const BackArrow = (props) => {
     icon={languageSelected==='en'?'arrow-left' : 'arrow-right'}   
     size={props.size}
     onClick={() => onClickGoBackArrow()}
-    style={{"color" : props.color , "marginLeft" : props.marginLeft , "marginTop" : props.marginTop }}/>
+    style={{"color" : props.color , "marginLeft" : props.marginLeft , "marginTop" : props.marginTop , "fontFamily" : "Font Awesome 5 Free"}}/>
   )
 }
 
