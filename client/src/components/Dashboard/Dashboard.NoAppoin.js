@@ -308,10 +308,10 @@ function DashboardNoAppoin() {
             <Popup className="popup3" trigger={<Button type="button" text={t('dashboard.getDirections')} width="150px">
             </Button>} modal position="left top" closeOnDocumentClick>
               {<a target="_blank"
-                href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
+                href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%20hospital`}
               ><img className="mapIcon" src={googlemaps} /></a>}
               {<a target="_blank"
-                href={`https://www.waze.com/ul?q=${localStorage.getItem('hospital').replace(/\s/g, '%')}`}
+                href={`https://www.waze.com/ul?q=${localStorage.getItem('hospital').replace(/\s/g, '%')}%20hospital`}
               ><img className="mapIcon" src={waze} /></a>}
 
             </Popup>
