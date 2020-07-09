@@ -168,7 +168,9 @@
   },
   "questionnaire": {
     "submit": "אישור והמשך",
-    "questionnaireSpan" : "על מנת לוודא התאמה בבקשה מלא את השאלון"
+    "questionnaireSpan" : "על מנת לוודא התאמה בבקשה מלא את השאלון",
+    "confirm": "מצהיר ומאשר",
+    "select": "בחירה"
   },
   "addAppointment":{
     "submit": "אשר והמשך",

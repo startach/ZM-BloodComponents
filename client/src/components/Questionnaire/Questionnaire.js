@@ -15,23 +15,23 @@ export default function Questionnaire() {
     let history = useHistory()
     //Set results of the questionarre into state from the drop downs
     const [result, setResults] = useState({
-        Q1: "select",
-        Q2: "select",
-        Q3: "select",
-        Q4: "select",
-        Q5: "select",
-        Q6: "select",
-        Q7: "select",
-        Q8: "select",
-        Q9: "select",
-        Q10: "select",
-        Q11: "select",
-        Q12: "select",
-        Q13: "select",
-        Q14: "select",
-        Q15: "select",
-        Q16: "select",
-        Q17: "select",
+        Q1: `${t('questionnaire.select')}`,
+        Q2: `${t('questionnaire.select')}`,
+        Q3: `${t('questionnaire.select')}`,
+        Q4: `${t('questionnaire.select')}`,
+        Q5: `${t('questionnaire.select')}`,
+        Q6: `${t('questionnaire.select')}`,
+        Q7: `${t('questionnaire.select')}`,
+        Q8: `${t('questionnaire.select')}`,
+        Q9: `${t('questionnaire.select')}`,
+        Q10: `${t('questionnaire.select')}`,
+        Q11: `${t('questionnaire.select')}`,
+        Q12: `${t('questionnaire.select')}`,
+        Q13: `${t('questionnaire.select')}`,
+        Q14: `${t('questionnaire.select')}`,
+        Q15: `${t('questionnaire.select')}`,
+        Q16: `${t('questionnaire.select')}`,
+        Q17: `${t('questionnaire.select')}`,
     })
 
     let checkedAnswers = [];
@@ -111,14 +111,14 @@ export default function Questionnaire() {
 
             // Decrease the sum if the user answer the question
 
-            if (result[key] != 'select') {
+            if (result[key] !== `${t('questionnaire.select')}`) {
                 sum--;
             }
             console.log("sum is", sum)
 
             // setComplete(true)
         });
-        if (sum == 0 && result.Q17 == "Confirm") {
+        if (sum === 0 && result.Q17 === `${t('questionnaire.confirm')}`) {
             setComplete(true)
             var appointId = localStorage.getItem('appointmentId');
             var userId = localStorage.getItem('userid')
@@ -133,7 +133,7 @@ export default function Questionnaire() {
 
             // Dont allow the user to go forward without accepting the terms
 
-        } else if (result.Q17 !== "Confirm") {
+        } else if (result.Q17 !== `${t('questionnaire.confirm')}`) {
 
             alert("You have to confirm truth statement in order to proceed with your appointment")
 
@@ -181,7 +181,7 @@ export default function Questionnaire() {
                                         {(question.id == (5) || question.id == 16) ? (
                                             <Fragment>
                                                 <select class="dropdown" onChange={e => handleResults(e, index)}>
-                                                    <option disabled="disabled" selected="selected">{t('general.select')}</option>
+                                                    <option disabled="disabled" selected="selected">{t('questionnaire.select')}</option>
                                                     {question.options.map(option => (
                                                         <option>{option}</option>
 

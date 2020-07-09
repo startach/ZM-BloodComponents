@@ -168,7 +168,9 @@
   },
   "questionnaire": {
     "submit": "Submit",
-    "questionnaireSpan": "In order to make sure that you fit. Please complete the questionnaire"
+    "questionnaireSpan": "In order to make sure that you fit. Please complete the questionnaire",
+    "confirm" :"Confirm",
+    "select": "select"
   },
   "addAppointment": {
     "submit": "Submit",

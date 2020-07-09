@@ -168,7 +168,9 @@
   },
   "questionnaire": {
     "submit": "تقديم",
-    "questionnaireSpan" : "من أجل ضمان الملائمة الرجاء الاجابة على الأسئلة التالية"
+    "questionnaireSpan" : "من أجل ضمان الملائمة الرجاء الاجابة على الأسئلة التالية",
+    "confirm" : "מצהיר ומאשר",
+    "select": "בחירה"
   },
   "addAppointment":{
     "submit": "إضافة",
