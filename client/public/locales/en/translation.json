@@ -13,7 +13,7 @@
     "No": "No",
     "edit": "Edit",
     "save": "Save",
-    "Thrombocytes": "Thrombocytes",
+    "Thrombocytes": "Donate Thrombocytes",
     "Granulocytes": "Granulocytes",
     "both": "Both",
     "on": "on",
@@ -169,7 +169,7 @@
   "questionnaire": {
     "submit": "Submit",
     "questionnaireSpan": "In order to make sure that you fit. Please complete the questionnaire",
-    "confirm" :"Confirm",
+    "confirm": "Confirm",
     "select": "select"
   },
   "addAppointment": {
