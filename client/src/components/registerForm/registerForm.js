@@ -63,7 +63,7 @@ const RegisterForm = () => {
       setError("Password and confirm password do not match");
 
       // Full Name validation (No numbers or special characters)
-    } else if (!userInputs.name.match(/^[a-z\u0590-\u05fe ]+$/i)) {
+    } else if (!userInputs.name.match(/^[a-z\u0590-\u05fe]/i)) {
       setCheckError(true);
       setNameError(true);
       setError("Full Name Should include any numbers or special characters");
