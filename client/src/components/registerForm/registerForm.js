@@ -29,8 +29,9 @@ const RegisterForm = () => {
   });
   const [notifications, setNotifications] = useState({});
   const logo = "/img/Logo.png";
-  let [userInputs, setuserInputs] = useState([]);
-
+  let [userInputs, setuserInputs] = useState();
+  let [userPassword, setUserPassword] = useState();
+  let [confirmPassword, setConfirmPassword] = useState([]);
   const { t } = useTranslation();
 
   //Prevent the user which is logged in to enter register again
@@ -43,6 +44,17 @@ const RegisterForm = () => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
   };
 
+  //handle change password
+
+  const handleUserPassword = (e) => {
+    setUserPassword(e.target.value);
+  };
+
+  //handle change confirm password
+
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
   //Handle change of notifications checkboxes
 
   const handleCheckbox = (e, checked) => {
@@ -57,7 +69,7 @@ const RegisterForm = () => {
     var hasNumber = /\d/;
 
     //password and confirm password validation
-    if (userInputs.password != userInputs.confirmPassword) {
+    if (userPassword != confirmPassword) {
       setCheckError(true);
       setPasswordError(true);
       setError("Password and confirm password do not match");
@@ -113,7 +125,7 @@ const RegisterForm = () => {
         try {
           const cred = await auth.createUserWithEmailAndPassword(
             userInputs.email,
-            userInputs.password
+            userPassword
           );
           //storing the logged in user's id into localStorage variable
           localStorage.setItem("userid", cred.user.uid);
@@ -225,7 +237,7 @@ const RegisterForm = () => {
           <input
             className="registerPassword"
             id="password"
-            onChange={handleChange}
+            onChange={handleUserPassword}
             type="password"
             name="password"
             placeholder={t("registerForm.password")}
@@ -240,7 +252,7 @@ const RegisterForm = () => {
           <input
             className="registerConfirmPassword"
             id="confirmPassword"
-            onChange={handleChange}
+            onChange={handleConfirmPassword}
             type="password"
             name="confirmPassword"
             placeholder={t("registerForm.confirmPassword")}
