@@ -6,8 +6,9 @@ import Popup from "reactjs-popup";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
-import Button from "../button";
-import BackArrow from "../../components/BackArrow";
+import Button from '../button'
+import BackArrow from '../../components/BackArrow'
+
 
 const RegisterForm = () => {
   const [date, setDate] = useState();
@@ -29,9 +30,8 @@ const RegisterForm = () => {
   });
   const [notifications, setNotifications] = useState({});
   const logo = "/img/Logo.png";
-  let [userInputs, setuserInputs] = useState();
-  let [userPassword, setUserPassword] = useState();
-  let [confirmPassword, setConfirmPassword] = useState([]);
+  let [userInputs, setuserInputs] = useState([]);
+
   const { t } = useTranslation();
 
   //Prevent the user which is logged in to enter register again
@@ -42,19 +42,12 @@ const RegisterForm = () => {
 
   const handleChange = (e) => {
     setuserInputs({ ...userInputs, [e.target.id]: e.target.value });
+
   };
 
-  //handle change password
 
-  const handleUserPassword = (e) => {
-    setUserPassword(e.target.value);
-  };
 
-  //handle change confirm password
 
-  const handleConfirmPassword = (e) => {
-    setConfirmPassword(e.target.value);
-  };
   //Handle change of notifications checkboxes
 
   const handleCheckbox = (e, checked) => {
@@ -69,31 +62,40 @@ const RegisterForm = () => {
     var hasNumber = /\d/;
 
     //password and confirm password validation
-    if (userPassword != confirmPassword) {
+    if (userInputs.password != userInputs.confirmPassword) {
       setCheckError(true);
       setPasswordError(true);
       setError("Password and confirm password do not match");
 
+
       // Full Name validation (No numbers or special characters)
-    } else if (!userInputs.name.match(/^[a-z\u0590-\u05fe]/i)) {
+      
+    } else if (!userInputs.name.match(/^[a-z\u0590-\u05fe]+$/i)) {
       setCheckError(true);
       setNameError(true);
       setError("Full Name Should include any numbers or special characters");
 
+
       // Full Name Length (MAX 25 letters)
+
     } else if (userInputs.name.length > 25) {
       setCheckError(true);
       setNameError(true);
       setError("Full Name should not be more than 25 letters");
 
+
       //Phone length validation
+
     } else if (userInputs.phone.length < 7) {
+
       setCheckError(true);
       setPhoneError(true);
       setError("Phone must has 7 numbers");
 
       //City validation
+
     } else if (hasNumber.test(userInputs.city)) {
+
       setCheckError(true);
       setCityError(true);
       setError("City Field should not contains any number");
@@ -103,29 +105,35 @@ const RegisterForm = () => {
       setCheckError(true);
       setAddressError(true);
       setError("Address Field should start with a letter");
+
     } else {
+
       //Check if the user did not choose any type of notifications
       if (Object.entries(notifications).length === 0) {
-        setNotificationsPopUp(true);
+
+        setNotificationsPopUp(true)
+
       }
       // If the user refused to recieve any kind of notifications continue with the flow of the code
       if (Object.entries(notifications).length >= 1 || refuseNotifications) {
+
         //update state
         setuserInputs(userInputs);
 
         //merge phone number with phone starting
 
-        userInputs.phone = userInputs.phoneStarting.concat(userInputs.phone);
+        userInputs.phone = userInputs.phoneStarting.concat(userInputs.phone)
 
-        // Remove phone starting from the object afrer merging
+        // Remove phone starting from the object afrer merging 
 
-        delete userInputs.phoneStarting;
+        delete userInputs.phoneStarting
+
 
         //Insert user into firestore
         try {
           const cred = await auth.createUserWithEmailAndPassword(
             userInputs.email,
-            userPassword
+            userInputs.password
           );
           //storing the logged in user's id into localStorage variable
           localStorage.setItem("userid", cred.user.uid);
@@ -133,6 +141,7 @@ const RegisterForm = () => {
           await db.collection("users").doc(cred.user.uid).set(userInputs);
 
           //Add casualNotifications to the database
+          
 
           await db.collection("users").doc(cred.user.uid).update({
             casualNotifications: notifications,
@@ -145,6 +154,7 @@ const RegisterForm = () => {
           //   confirmPassword: db.FieldValue.delete()
           // });
 
+
           //Redirect to Dashboard after registration
           window.location.href = "/dashboard";
 
@@ -153,9 +163,10 @@ const RegisterForm = () => {
           setCheckError(true);
           setError(err.message);
         }
-      }
+
+      };
     }
-  };
+  }
 
   //Handle DatePicker State
 
@@ -186,6 +197,7 @@ const RegisterForm = () => {
     setDate(e);
   };
 
+
   return (
     <Fragment>
       <div className="registerIcons">
@@ -201,14 +213,8 @@ const RegisterForm = () => {
         <b id="header2">{t("registerForm.becomeDonor")}</b>
       </div>
 
-      <form
-        className={
-          localStorage.getItem("i18nextLng") === "en"
-            ? "ltrFormClass"
-            : "rtlFormClass"
-        }
-        onSubmit={handleSubmit}
-      >
+      <form className={localStorage.getItem('i18nextLng') === 'en' ? 'ltrFormClass' : 'rtlFormClass'} onSubmit={handleSubmit}>
+
         <div className="nameSignupContainer">
           <input
             className="registerName"
@@ -217,9 +223,13 @@ const RegisterForm = () => {
             type="text"
             name="name"
             placeholder={t("registerForm.fullName")}
-            style={nameError ? { border: "1px solid red" } : { border: "none" }}
-            required
-          ></input>
+            style={
+              nameError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
+
         </div>
 
         <div className="emailSignupContainer">
@@ -230,37 +240,39 @@ const RegisterForm = () => {
             type="email"
             name="email"
             placeholder={t("registerForm.email")}
-            required
-          ></input>
+            required></input>
+
         </div>
         <div className="passwordSignupContainer">
           <input
             className="registerPassword"
             id="password"
-            onChange={handleUserPassword}
+            onChange={handleChange}
             type="password"
             name="password"
             placeholder={t("registerForm.password")}
             style={
-              passwordError ? { border: "1px solid red" } : { border: "none" }
+              passwordError
+                ? { border: "1px solid red" }
+                : { border: "none" }
             }
-            required
-          ></input>
+            required></input>
         </div>
 
         <div className="confirmPasswordSignupContainer">
           <input
             className="registerConfirmPassword"
             id="confirmPassword"
-            onChange={handleConfirmPassword}
+            onChange={handleChange}
             type="password"
             name="confirmPassword"
             placeholder={t("registerForm.confirmPassword")}
             required
             style={
-              passwordError ? { border: "1px solid red" } : { border: "none" }
-            }
-          ></input>
+              passwordError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }></input>
         </div>
         <div className="birthDateContainer dib pa3 ">
           {t("registerForm.birthDate")}
@@ -273,6 +285,7 @@ const RegisterForm = () => {
             maxDate={new Date(2002, 11, 31)}
             required
           />
+
         </div>
 
         <div className="genderContainer">
@@ -280,8 +293,7 @@ const RegisterForm = () => {
             id="genderType"
             className="registerGenderType"
             onChange={handleChange}
-            required
-          >
+            required>
             <option value="" disabled selected>
               {t("registerForm.selectGender")}
             </option>
@@ -295,8 +307,7 @@ const RegisterForm = () => {
             id="phoneStarting"
             className="registerPhoneStarting"
             onChange={handleChange}
-            required
-          >
+            required>
             <option value="" disabled selected>
               {t("general.select")}
             </option>
@@ -319,10 +330,11 @@ const RegisterForm = () => {
             name="phone"
             placeholder={t("registerForm.contactNumber")}
             style={
-              phoneError ? { border: "1px solid red" } : { border: "none" }
+              phoneError
+                ? { border: "1px solid red" }
+                : { border: "none" }
             }
-            required
-          ></input>
+            required></input>
         </div>
         <div className="citySignupContainer">
           <input
@@ -332,9 +344,13 @@ const RegisterForm = () => {
             type="text"
             name="City"
             placeholder={t("registerForm.city")}
-            style={cityError ? { border: "1px solid red" } : { border: "none" }}
-            required
-          ></input>
+            style={
+              cityError
+                ? { border: "1px solid red" }
+                : { border: "none" }
+            }
+            required></input>
+
         </div>
 
         <div className="addressSignupContainer">
@@ -346,10 +362,11 @@ const RegisterForm = () => {
             name="address"
             placeholder={t("registerForm.address")}
             style={
-              addressError ? { border: "1px solid red" } : { border: "none" }
+              addressError
+                ? { border: "1px solid red" }
+                : { border: "none" }
             }
-            required
-          ></input>
+            required></input>
         </div>
 
         <div className="secondaryAddressSignupContainer">
@@ -359,17 +376,16 @@ const RegisterForm = () => {
             onChange={handleChange}
             placeholder={t("registerForm.secondaryAddress")}
             type="text"
-            name="secondaryAddress"
-          ></input>
+            name="secondaryAddress"></input>
         </div>
 
         <div className="bloodTypesContainer">
+
           <select
             id="bloodType"
             className="registerBloodType"
             onChange={handleChange}
-            required
-          >
+            required>
             <option value="" selected disabled>
               {t("registerForm.selectBloodType")}
             </option>
@@ -386,19 +402,22 @@ const RegisterForm = () => {
           <div className="madaLabelContainer">
             <a href="tel:035300400">
               <label>{t("registerForm.callMadaPhrase")}</label>
+
             </a>
+
           </div>
         </div>
 
         <div className="organizationContainer">
+
           <input
             className="registerOrganization"
             id="organization"
             onChange={handleChange}
             type="text"
             placeholder={t("registerForm.organization")}
-            name="organization"
-          ></input>
+            name="organization"></input>
+
         </div>
 
         <div className="notificationsTitle">
@@ -474,11 +493,13 @@ const RegisterForm = () => {
 
         {checkError ? (
           <Fragment>
-            <span id="errorSpan">{error}</span>
+            <span id="errorSpan">
+              {error}
+            </span>
           </Fragment>
         ) : (
-          <Fragment></Fragment>
-        )}
+            <Fragment></Fragment>
+          )}
 
         <div className="mb-4">
           {notificationsPopUp ? (
@@ -490,20 +511,18 @@ const RegisterForm = () => {
                 modal
                 position="left top"
                 closeOnDocumentClick
-                contentStyle={{ width: "20px" }}
-              >
+                contentStyle={{ width: "20px" }}>
                 {(close) => (
                   <div className="container">
-                    <a
-                      className="close"
+                    <a className="close"
                       onClick={() => {
                         refuseNotifications = false;
-                        setNotificationsPopUp(false);
+                        setNotificationsPopUp(false)
                         close();
-                      }}
-                    >
-                      {" "}
-                      X
+                      }
+                      }
+
+                    > X
                     </a>
 
                     <div className="content">
@@ -517,8 +536,7 @@ const RegisterForm = () => {
                         onClick={(e) => {
                           refuseNotifications = true;
                           handleSubmit(e);
-                        }}
-                      >
+                        }}>
                         {t("general.Yes")}
                       </button>
 
@@ -526,10 +544,9 @@ const RegisterForm = () => {
                         className="noButton"
                         onClick={() => {
                           refuseNotifications = false;
-                          setNotificationsPopUp(false);
+                          setNotificationsPopUp(false)
                           close();
-                        }}
-                      >
+                        }}>
                         {t("general.No")}
                       </button>
                     </div>
@@ -538,14 +555,13 @@ const RegisterForm = () => {
               </Popup>
             </Fragment>
           ) : (
-            <Fragment>
-              <Button
-                type="submit"
-                text={t("registerForm.signUp")}
-                color="#C71585"
-              ></Button>
-            </Fragment>
-          )}
+              <Fragment>
+
+
+                <Button type="submit" text={t("registerForm.signUp")} color='#C71585'></Button>
+
+              </Fragment>
+            )}
         </div>
       </form>
     </Fragment>

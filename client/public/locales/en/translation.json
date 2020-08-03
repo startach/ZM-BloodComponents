@@ -13,7 +13,7 @@
     "No": "No",
     "edit": "Edit",
     "save": "Save",
-    "Thrombocytes": "Donate Thrombocytes",
+    "Thrombocytes": "Thrombocytes",
     "Granulocytes": "Granulocytes",
     "both": "Both",
     "on": "on",
@@ -161,7 +161,7 @@
     "secondaryAddress": "Secondary Address",
     "selectBloodType": "Select Blood Type",
     "callMadaPhrase": "Don’t know? Call Mada 03-5300400",
-    "organization": "Organization - Optional",
+    "organization": "Organization",
     "contactingPhrase": "contacting you in case of an emergency can save lives. Are you sure you don’t want to be alerted?",
     "selectGender": "Select Gender",
     "dontKnow": "I don't know"
@@ -169,7 +169,7 @@
   "questionnaire": {
     "submit": "Submit",
     "questionnaireSpan": "In order to make sure that you fit. Please complete the questionnaire",
-    "confirm": "Confirm",
+    "confirm" :"Confirm",
     "select": "select"
   },
   "addAppointment": {
