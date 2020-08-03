@@ -13,7 +13,7 @@
     "No": "לא",
     "edit": "עריכה",
     "save": "שמירה",
-    "Thrombocytes": "טרומבוציטים",
+    "Thrombocytes": "תרומת טרומבוציטים",
     "Granulocytes": "גרנולוציטים",
     "both": "שניהם",
     "on": "ב",
@@ -39,7 +39,10 @@
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
     "orderTaxi": "בקש הסעה",
-    "rideDetails": "פרטי ההסעה"
+    "rideDetails": "פרטי ההסעה",
+    "lastDonation": "תרומתך האחרונה בוצעה בתאריך ",
+    "waitOneMonth": "יש לחכות לפחות חודש לפני שניתן לתרום שוב.",
+    "remindMe": "תזכר אותי כשאוכל"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
@@ -72,7 +75,6 @@
     "expired": "הסתים",
     "delete": "מחיקה",
     "deleteAppConfirm": "אתה בטוח שאתה רוצה למחוק את התור"
-
   },
   "userProfile": {
     "bloodType": "סוג דם",
@@ -161,22 +163,22 @@
     "secondaryAddress": "כתובת משנית",
     "selectBloodType": "בחר סוג דם",
     "callMadaPhrase": "לא יודע? תתקשר למד\"א 03-5300400",
-    "organization": "חברה",
+    "organization": " חברה - שדה רשות",
     "contactingPhrase": "יצירת קשר איתך בעת חירום יכול להציל חיים,אתה בטוח שאתה לא רוצה לקבל התראות?",
-    "selectGender" : "בחר מגדר",
-    "dontKnow" : "לא יודע"
+    "selectGender": "בחר מגדר",
+    "dontKnow": "לא יודע"
   },
   "questionnaire": {
     "submit": "אישור והמשך",
-    "questionnaireSpan" : "על מנת לוודא התאמה בבקשה מלא את השאלון",
+    "questionnaireSpan": "על מנת לוודא התאמה בבקשה מלא את השאלון",
     "confirm": "מצהיר ומאשר",
     "select": "בחירה"
   },
-  "addAppointment":{
+  "addAppointment": {
     "submit": "אשר והמשך",
     "add": "הוספה"
   },
-  "verificationList":{ 
+  "verificationList": {
     "registeredSuccesfully": "נרשמת בהצלחה",
     "expectingYou": " תודה, אנחנו מצפים לראות אותך בשעה",
     "onThe": "בתאריך",
@@ -186,11 +188,11 @@
     "bringId": "להביא תעודה מזהה",
     "eatSome": "לאכול פירות/חטיף",
     "drinkSome": "לשתות מים",
-    "confirm":"מאשר",
+    "confirm": "מאשר",
     "needARide": "צריך הסעה לבית חולים",
     "orderRide": "להזמין הסעה עכשיו"
   },
-  "screens":{
+  "screens": {
     "verification": "אישור התור",
     "questionnaire": "שאלון",
     "adminControls": "הגדרות מנהל"

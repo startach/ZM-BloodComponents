@@ -4,7 +4,7 @@ import "../DashHeader/dashHeader.css";
 import dbIcon from '../dbIcon.svg';
 
 export default function DashHeader(props) {
-    const {t, userName, pastAppointments, nextAppointments} = props;
+    const {t, userName, pastAppointments, appointmentLastMonth, nextAppointments} = props;
 
     return (
         <div>
@@ -19,8 +19,12 @@ export default function DashHeader(props) {
                 }
             </div>
             <div className="pinkBox">
+            { appointmentLastMonth ? `${t('dashboard.lastDonation')} ${appointmentLastMonth}. ${t('dashboard.waitOneMonth')}` : 
+            <div>
                 {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>
-                {t('dashboard.toDonate')} { nextAppointments.length > 0 ? t('dashboard.fewDetails') : t('dashboard.scheduleAppointment')}
+                {t('dashboard.toDonate')} {nextAppointments.length > 0 ? t('dashboard.fewDetails') : t('dashboard.scheduleAppointment')}
+            </div> 
+            }
             </div>
         </div>
     )

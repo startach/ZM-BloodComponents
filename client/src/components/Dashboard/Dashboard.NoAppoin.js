@@ -13,7 +13,8 @@ import { getAllAppointments, updateAppointment } from '../../services/appointmen
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import googlemaps from './googlemaps.png'
-import waze from './waze.png'
+import waze from './waze.png';
+import moment from 'moment';
 
 function DashboardNoAppoin() {
   const { t } = useTranslation();
@@ -21,6 +22,7 @@ function DashboardNoAppoin() {
 
   const [hospital, setHospital] = useState([])
   const [pastApp, setPastApp] = useState(0)
+  const [appointmentLastMonth, setAppointmentLastMonth] = useState(false);
   const [bookingData, setBookingData] = useState(false)
   const [rideBooked, setRideBooked] = useState(false)
   const [appointments, setAppointments] = useState([])
@@ -71,21 +73,26 @@ function DashboardNoAppoin() {
             }
             else {
               const appointmentsDetails = []
-              let count = 0
+              let oldAppointments = 0
               //map appointments if not historic
               snapShot.docs.map(userAppointments => {
-                let app = userAppointments.data().timestamp.seconds
-                const today = Date.now() / 1000
-                if (app > today) {
+                let appointmentDate = moment(userAppointments.data().timestamp.seconds * 1000);
+                const today = moment();
+                if (appointmentDate > today) {
                   let currentID = userAppointments.id
                   let appObj = { ...userAppointments.data(), ['id']: currentID }
                   appointmentsDetails.push(appObj)
                   setUserAppointmentsDetails(appointmentsDetails)
                 } else {
-                  //count old appointments
-                  count++
+                  oldAppointments++;
+                  
+                  const monthAgo = moment(new Date());
+                  monthAgo.subtract(1, 'month');
+                  if (appointmentDate > monthAgo) {
+                    setAppointmentLastMonth(appointmentDate.format('D.M'));
+                  }                  
                 }
-                setPastApp(count)
+                setPastApp(oldAppointments)
               })
 
               //if none of the appointments found were in the future, set up page for book new appointment
@@ -138,7 +145,8 @@ function DashboardNoAppoin() {
     <div className="dashboardView mt-3">
       {checkUserAppointments ? (
         <Fragment>
-          <DashHeader t={t} userName={userName} pastAppointment={pastApp} nextAppointments={userAppointmentsDetails} />
+          <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
+            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} />
           <table className="schedulesTables">
             <tr className="headerRow">
               <th className="headerEntries"> {t('dashboard.Location')}</th>
@@ -181,7 +189,8 @@ function DashboardNoAppoin() {
         //no appointments
       ) : (
           <Fragment>
-            <DashHeader t={t} userName={userName} pastAppointment={pastApp} nextAppointments={userAppointmentsDetails} />
+            <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
+            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} />
             <div className="hospitalsOptionsContainer mt-3 pinkBox">
               <div className="hospital">
                 {t('dashboard.NearestHospital')}:{" "}
