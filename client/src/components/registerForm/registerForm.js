@@ -477,18 +477,6 @@ const RegisterForm = () => {
             />
             <label for="Email"> {t("notificationOptions.Email")} </label>
           </li>
-
-          <li>
-            <input
-              name="inAppAlert"
-              type="checkbox"
-              id="inAppAlert"
-              value="inAppAlert"
-              onChange={(e) => handleCheckbox(e, isChecked.inAppAlert)}
-              checked={isChecked.inAppAlert}
-            />
-            <label for="Email"> {t("notificationOptions.inAppAlert")} </label>
-          </li>
         </ul>
 
         {checkError ? (
