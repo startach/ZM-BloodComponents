@@ -39,7 +39,10 @@
     "NearestHospital": "أقرب مشفى هو",
     "getDirections": "تلقّى إرشادات الطريق",
     "orderTaxi": "اطلب سيارة اجرة",
-    "rideDetails": "تفاصيل سيارة الاجرة"
+    "rideDetails": "تفاصيل سيارة الاجرة",
+    "lastDonation": "تم تقديم تبرعك الأخير في ",
+    "waitOneMonth": "يجب الانتظار لمدة شهر على الأقل قبل التبرع مرة أخرى.",
+    "remindMe": "ذكرني عندما أستطيع"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",

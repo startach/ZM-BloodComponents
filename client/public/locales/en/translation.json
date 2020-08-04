@@ -39,7 +39,10 @@
     "NearestHospital": "Nearest hospital is",
     "getDirections": "Get Directions",
     "orderTaxi": "Order Taxi",
-    "rideDetails": "Ride Details"
+    "rideDetails": "Ride Details",
+    "lastDonation": "Your last donation was made on ",
+    "waitOneMonth": "You must wait at least a month before donating again.",
+    "remindMe": "Remind me when I can"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",
