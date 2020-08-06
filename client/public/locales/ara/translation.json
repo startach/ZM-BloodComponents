@@ -43,7 +43,11 @@
     "lastDonation": "تم تقديم تبرعك الأخير في ",
     "waitOneMonth": "يجب الانتظار لمدة شهر على الأقل قبل التبرع مرة أخرى.",
     "remindMe": "ذكرني عندما أستطيع",
-    "viewAvailableAppiontments": "عرض المواعيد المتاحة"
+    "viewAvailableAppiontments": "عرض المواعيد المتاحة",
+    "appointmentTomorrow": "أنت مسجل في موعد غدًا",
+    "lookingForward": "نتطلع إليكم",
+    "verifyArrival": "أؤكد الوصول",
+    "arrivalConfirmed": "تم تأكيد الوصول"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",

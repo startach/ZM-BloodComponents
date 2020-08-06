@@ -43,7 +43,11 @@
     "lastDonation": "Your last donation was made on ",
     "waitOneMonth": "You must wait at least a month before donating again.",
     "remindMe": "Remind me when I can",
-    "viewAvailableAppiontments": "View Available Appiontments"
+    "viewAvailableAppiontments": "View Available Appiontments",
+    "appointmentTomorrow": "You are registered to an appointment tomorrow.",
+    "lookingForward": "Looking forward to you!",
+    "verifyArrival": "I confirm my arrival",
+    "arrivalConfirmed": "Arrival confirmed"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",

@@ -33,6 +33,7 @@ function DashboardNoAppoin() {
   const [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
   const [isLoading, setIsLoading] = useState(true);
   const [viewDates, setViewDates] = useState(false);
+  const [haveAppointmentTomorrow, setHaveAppointmentTomorrow] = useState(false);
 
   const handleHospitalChange = (e) => {
     setChosenHospital(e.target.value)
@@ -74,14 +75,17 @@ function DashboardNoAppoin() {
               snapShot.docs.map(userAppointments => {
                 let appointmentDate = moment(userAppointments.data().timestamp.seconds * 1000);
                 const today = moment();
-                if (appointmentDate > today) {
+                if (appointmentDate.isAfter(today)) {
+                  if (appointmentDate.diff(today, 'hour') <= 24) {
+                    setHaveAppointmentTomorrow(true);
+                  }
+
                   let currentID = userAppointments.id
                   let appObj = { ...userAppointments.data(), ['id']: currentID }
                   appointmentsDetails.push(appObj)
                   setUserAppointmentsDetails(appointmentsDetails)
                 } else {
                   setPastApp(prev => [...prev, appointmentDate.format('D.M')] );
-                  
                   const monthAgo = moment(new Date());
                   monthAgo.subtract(1, 'month');
                   if (appointmentDate > monthAgo) {
@@ -143,7 +147,7 @@ function DashboardNoAppoin() {
       {checkUserAppointments ? (
         <Fragment>
           <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
-            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} />
+            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} haveAppointmentTomorrow={haveAppointmentTomorrow} />
           <AppointmentsTable t={t} appointments={userAppointmentsDetails}/>
           <div className="bottomButtons">
             {/* <a target="_blank"
@@ -168,7 +172,7 @@ function DashboardNoAppoin() {
       ) : (
           <Fragment>
             <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
-            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} handleViewDates={handleViewDates} />
+            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} handleViewDates={handleViewDates} haveAppointmentTomorrow={haveAppointmentTomorrow}/>
             {(!appointmentLastMonth || viewDates) && 
               <SelectHospital t={t} hospitals={hospitals} handleHospitalChange={handleHospitalChange}/> }
             <AppointmentsTable t={t} appointments={availableAppointments} viewDates={viewDates}/>
