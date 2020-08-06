@@ -7,7 +7,6 @@ import Popup from "reactjs-popup";
 import Button from '../button'
 import BookTaxi from '../BookTaxi/BookTaxi'
 import DashHeader from './DashHeader/DashHeader';
-import YesNoPopUp from '../PopUp/YesNoPopUp/YesNoPopUp';
 import { getAllHospitals } from '../../services/hospitalService';
 import { getAllAppointments, updateAppointment } from '../../services/appointmentService';
 import { useTranslation } from 'react-i18next';
@@ -15,34 +14,32 @@ import i18next from 'i18next';
 import googlemaps from './googlemaps.png'
 import waze from './waze.png';
 import moment from 'moment';
+import SelectHospital from './SelectHospital/SelectHospital';
+import AppointmentsTable from './AppointmentsTable/AppointmentsTable';
 
 function DashboardNoAppoin() {
   const { t } = useTranslation();
   const history = useHistory();
 
-  const [hospital, setHospital] = useState([])
-  const [pastApp, setPastApp] = useState(0)
+  const [hospitals, setHospitals] = useState([])
+  const [pastApp, setPastApp] = useState([])
   const [appointmentLastMonth, setAppointmentLastMonth] = useState(false);
   const [bookingData, setBookingData] = useState(false)
   const [rideBooked, setRideBooked] = useState(false)
-  const [appointments, setAppointments] = useState([])
-  const [chosenOption, setChosenOption] = useState(null)
+  const [availableAppointments, setAvailableAppointments] = useState([])
+  const [chosenHospital, setChosenHospital] = useState(null)
   const [checkUserAppointments, setCheckUserAppointments] = useState(false)
   const [userName, setUserName] = useState('')
   const [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const [viewDates, setViewDates] = useState(false);
 
-  const handleChange = (e) => {
-    setChosenOption(e.target.value)
+  const handleHospitalChange = (e) => {
+    setChosenHospital(e.target.value)
   }
 
-  const setlocalStorage = (appointmentID) => {
-    localStorage.setItem('appointmentId', (appointmentID));
-  }
-
-  const deleteAppointment = ({appId}) => {
-    updateAppointment(appId, {
-      userID: null
-    });
+  const handleViewDates = () => {
+    setViewDates(true);
   }
 
   const setHospitalNames = () => {
@@ -50,10 +47,9 @@ function DashboardNoAppoin() {
       const hospitalsNames = hopsitals.docs.map(hospitalDetails => {
         return hospitalDetails.data().hospitalName
       })
-      setHospital(hospitalsNames)
+      setHospitals(hospitalsNames)
     })
   }
-
 
   useEffect(() => {
     //redirect user to login screen if he is not logged in 
@@ -70,10 +66,10 @@ function DashboardNoAppoin() {
             if (snapShot.empty) {
               setCheckUserAppointments(false);
               setHospitalNames()
+              setIsLoading(false); 
             }
             else {
               const appointmentsDetails = []
-              let oldAppointments = 0
               //map appointments if not historic
               snapShot.docs.map(userAppointments => {
                 let appointmentDate = moment(userAppointments.data().timestamp.seconds * 1000);
@@ -84,15 +80,14 @@ function DashboardNoAppoin() {
                   appointmentsDetails.push(appObj)
                   setUserAppointmentsDetails(appointmentsDetails)
                 } else {
-                  oldAppointments++;
+                  setPastApp(prev => [...prev, appointmentDate.format('D.M')] );
                   
                   const monthAgo = moment(new Date());
                   monthAgo.subtract(1, 'month');
                   if (appointmentDate > monthAgo) {
-                    setAppointmentLastMonth(appointmentDate.format('D.M'));
+                    setAppointmentLastMonth(true);
                   }                  
                 }
-                setPastApp(oldAppointments)
               })
 
               //if none of the appointments found were in the future, set up page for book new appointment
@@ -103,18 +98,20 @@ function DashboardNoAppoin() {
                 setCheckUserAppointments(true);
                 //checkRideBooked(user.uid)
               }
+
+              setIsLoading(false); 
             }
           })
         }
       })
-    }  
+    } 
   }, [])
 
   useEffect(() => {
     //only run when hospital chosen
-    if (chosenOption) {
+    if (chosenHospital) {
       const today = Date.now() / 1000
-      const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
+      const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenHospital)
 
       filteredQuery.get()
         .then(querySnapshot => {
@@ -132,41 +129,22 @@ function DashboardNoAppoin() {
             b = new Date(b.timestamp.seconds);
             return a > b ? -1 : a < b ? 1 : 0;
           })
-          setAppointments(Appointments)
+          setAvailableAppointments(Appointments)
         })
         .catch(error => {
           // Catch errors
         });
     }
-  }, [chosenOption])
+  }, [chosenHospital])
 
 
   return (
-    <div className="dashboardView mt-3">
+    !isLoading && <div className="dashboardView mt-3">
       {checkUserAppointments ? (
         <Fragment>
           <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
             appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} />
-          <table className="schedulesTables">
-            <tr className="headerRow">
-              <th className="headerEntries"> {t('dashboard.Location')}</th>
-              <th className="headerEntries"> {t('dashboard.date')}</th>
-              <th className="headerEntries"> {t('dashboard.Time')}</th>
-              <th className="headerEntries"></th>
-            </tr>
-            {userAppointmentsDetails.map(appointment => (
-              <tr className='rowContainer' id={appointment.id}>
-                <td className='rowClass'>{appointment.hospitalName}</td>
-                <td className='rowClass' >{appointment.date}</td>
-                <td className='rowClass'>{appointment.time}</td>
-                <td className='rowClass'>
-                  <YesNoPopUp text={t('dashboard.deleteAppointment')} handleYes={deleteAppointment} appId={appointment.id}>
-                    <button className="cancelButton"> {t('dashboard.Cancel')}</button>
-                  </YesNoPopUp>
-                </td>
-              </tr>
-            ))}
-          </table>
+          <AppointmentsTable t={t} appointments={userAppointmentsDetails}/>
           <div className="bottomButtons">
             {/* <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
@@ -190,40 +168,10 @@ function DashboardNoAppoin() {
       ) : (
           <Fragment>
             <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
-            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} />
-            <div className="hospitalsOptionsContainer mt-3 pinkBox">
-              <div className="hospital">
-                {t('dashboard.NearestHospital')}:{" "}
-              </div>
-              <div>
-                <select className="hospitalsOptionsList" onChange={handleChange}>
-                  <option value="Select" disabled selected> {t('general.select')}</option>
-                  {hospital.map(name => (
-                    <option value={name}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <table className="schedulesTables">
-              <tr className="headerRow">
-                <th className="headerEntries">{t('dashboard.date')}</th>
-                <th className="headerEntries">{t('dashboard.Time')}</th>
-                <th className="headerEntries">{t('general.Register')}</th>
-              </tr>
-              {appointments.map(appointment => (
-                <tr className='rowContainer' id={appointment.id}>
-                  <td className='rowClass' >{appointment.date}</td>
-                  <td className='rowClass'>{appointment.time}</td>
-                  <td className='rowClass'>
-                    <Link to='/questions'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </table>
+            appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} handleViewDates={handleViewDates} />
+            {(!appointmentLastMonth || viewDates) && 
+              <SelectHospital t={t} hospitals={hospitals} handleHospitalChange={handleHospitalChange}/> }
+            <AppointmentsTable t={t} appointments={availableAppointments} viewDates={viewDates}/>
           </Fragment>
         )
       }

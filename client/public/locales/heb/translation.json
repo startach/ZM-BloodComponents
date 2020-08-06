@@ -42,7 +42,8 @@
     "rideDetails": "פרטי ההסעה",
     "lastDonation": "תרומתך האחרונה בוצעה בתאריך ",
     "waitOneMonth": "יש לחכות לפחות חודש לפני שניתן לתרום שוב.",
-    "remindMe": "תזכר אותי כשאוכל"
+    "remindMe": "תזכר אותי כשאוכל",
+    "viewAvailableAppiontments": "צפייה בתורים פנויים"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",

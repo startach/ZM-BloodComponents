@@ -42,7 +42,8 @@
     "rideDetails": "Ride Details",
     "lastDonation": "Your last donation was made on ",
     "waitOneMonth": "You must wait at least a month before donating again.",
-    "remindMe": "Remind me when I can"
+    "remindMe": "Remind me when I can",
+    "viewAvailableAppiontments": "View Available Appiontments"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",

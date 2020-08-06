@@ -42,7 +42,8 @@
     "rideDetails": "تفاصيل سيارة الاجرة",
     "lastDonation": "تم تقديم تبرعك الأخير في ",
     "waitOneMonth": "يجب الانتظار لمدة شهر على الأقل قبل التبرع مرة أخرى.",
-    "remindMe": "ذكرني عندما أستطيع"
+    "remindMe": "ذكرني عندما أستطيع",
+    "viewAvailableAppiontments": "عرض المواعيد المتاحة"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",
