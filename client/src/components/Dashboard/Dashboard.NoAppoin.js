@@ -44,7 +44,8 @@ function DashboardNoAppoin() {
   }
 
 
-  function setlocalStorage(appointmentID) {
+  function onPressRegisterAppointment(hospitalID, appointmentID) {
+    localStorage.setItem('hospitalID', (hospitalID));
     localStorage.setItem('appointmentId', (appointmentID));
   }
 
@@ -104,12 +105,8 @@ function DashboardNoAppoin() {
 
     //only run when hospital chosen
     if (chosenOption) {
-
       const today = Date.now() / 1000
-
       const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenOption)
-
-
       filteredQuery.get()
         .then(querySnapshot => {
           const Appointments = []
@@ -130,7 +127,7 @@ function DashboardNoAppoin() {
           setAppointments(Appointments)
         })
         .catch(error => {
-          // Catch errors
+          console.log("DashboardNoAppoin -> error", error)
         });
     }
   }, [chosenOption])
@@ -157,17 +154,13 @@ function DashboardNoAppoin() {
 
           //if non exist
           if (snapShot.empty) {
-
             //change state to false - show no appointment screen
             setCheckUserAppointments(false);
             console.log("User doesn't have any Appointment")
             //set names for drop down
             setHospitalNames()
-
-
           } // if user has appointments
           else {
-
             const appointmentsDetails = []
             let count = 0
             //map appointments if not historic
@@ -208,9 +201,6 @@ function DashboardNoAppoin() {
     })
 
   }, [rideBooked])
-
-
-
 
 
   return (
@@ -363,23 +353,17 @@ function DashboardNoAppoin() {
               </tr>
 
               {appointments.map(appointment => (
-
                 <tr className='rowContainer' id={appointment.id}>
                   <td className='rowClass' >{chosenOption}</td>
                   <td className='rowClass' >{appointment.date}</td>
                   <td className='rowClass'>{appointment.time}</td>
-
                   <td className='rowClass'>
                     <Link to='/questions'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
+                      <button onClick={() => onPressRegisterAppointment(appointment.hospitalID, appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
                     </Link>
                   </td>
-
                 </tr>
-
-
               ))}
-
 
             </table>
 
