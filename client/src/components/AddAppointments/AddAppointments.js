@@ -39,6 +39,7 @@ export default function AddAppointments() {
     const displayNode = useRef(null)
     const [currentApp, setCurrentApp] = useState({
         userID: null,
+        confirmArrival: false,
         hospitalName: null,
         hospitalID: null,
         date: null,

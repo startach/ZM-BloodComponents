@@ -4,12 +4,14 @@ import "../DashHeader/dashHeader.css";
 import dbIcon from '../dbIcon.svg';
 import Button from '../../button';
 import { Check2 } from 'react-bootstrap-icons';
+import { updateAppointment } from '../../../services/appointmentService';
 
 export default function DashHeader(props) {
     const {t, userName, pastAppointments, appointmentLastMonth, nextAppointments, handleViewDates, haveAppointmentTomorrow} = props;
+    const haveFutureAppointment = nextAppointments.length; 
     const appointmentsCount = pastAppointments.length;
     const [viewDates, setViewDates] = useState(false);
-    const [arrivalVerified, setArrivalVerified] = useState(false);
+    const [arrivalVerified, setArrivalVerified] = useState(haveFutureAppointment && nextAppointments[0].confirmArrival);
 
     const handleViewDatesClick = () => {
         setViewDates(true);
@@ -17,6 +19,9 @@ export default function DashHeader(props) {
     }
 
     const handleVerifiyArrival = () => {
+        updateAppointment(nextAppointments[0].id, {
+            confirmArrival: true
+        });
         setArrivalVerified(true);
     }
 
@@ -39,7 +44,7 @@ export default function DashHeader(props) {
                 !haveAppointmentTomorrow && 
                 <div>
                     {t('dashboard.youAre')} <span className="highlight"> {t('dashboard.eligible')} </span>
-                    {t('dashboard.toDonate')} {nextAppointments.length > 0 ? t('dashboard.fewDetails') : t('dashboard.scheduleAppointment')}
+                    {t('dashboard.toDonate')} {haveFutureAppointment ? t('dashboard.fewDetails') : t('dashboard.scheduleAppointment')}
                 </div> 
             }
             </div>

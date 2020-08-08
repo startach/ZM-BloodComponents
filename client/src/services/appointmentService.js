@@ -7,3 +7,11 @@ export const getAllAppointments = () => {
 export const updateAppointment = (id, content) => {
     db.collection('Appointments').doc(id).update(content);
 }
+
+export const getAppointmentsForUser = (userID) => {
+    return (db.collection('Appointments').where('userID', '==', userID));
+}
+
+export const getAvailableAppointmentsForHospital = (hospitalName) => {
+    return (db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName));
+}

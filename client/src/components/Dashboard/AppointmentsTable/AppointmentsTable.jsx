@@ -9,11 +9,11 @@ export default function AppointmentsTable(props) {
 
     const deleteAppointment = ({appId}) => {
         updateAppointment(appId, {
-          userID: null
+          userID: null,
+          confirmArrival: false
         });
     }
-
-      
+    
     const setlocalStorage = (appointmentID) => {
         localStorage.setItem('appointmentId', (appointmentID));
     }

@@ -8,7 +8,8 @@ import Button from '../button'
 import BookTaxi from '../BookTaxi/BookTaxi'
 import DashHeader from './DashHeader/DashHeader';
 import { getAllHospitals } from '../../services/hospitalService';
-import { getAllAppointments, updateAppointment } from '../../services/appointmentService';
+import { getAppointmentsForUser, getAvailableAppointmentsForHospital } from '../../services/appointmentService';
+import { getUserById } from '../../services/userService';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import googlemaps from './googlemaps.png'
@@ -28,9 +29,8 @@ function DashboardNoAppoin() {
   const [rideBooked, setRideBooked] = useState(false)
   const [availableAppointments, setAvailableAppointments] = useState([])
   const [chosenHospital, setChosenHospital] = useState(null)
-  const [checkUserAppointments, setCheckUserAppointments] = useState(false)
   const [userName, setUserName] = useState('')
-  const [userAppointmentsDetails, setUserAppointmentsDetails] = useState([])
+  const [userAppointmentsDetails, setUserAppointmentsDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [viewDates, setViewDates] = useState(false);
   const [haveAppointmentTomorrow, setHaveAppointmentTomorrow] = useState(false);
@@ -52,6 +52,29 @@ function DashboardNoAppoin() {
     })
   }
 
+  const classifiyAppointment = (userAppointment) => {
+    let nextAppointments = [];
+    let appointmentDate = moment(userAppointment.data().timestamp.seconds * 1000);
+    const today = moment();
+    if (appointmentDate.isAfter(today)) {
+      if (appointmentDate.diff(today, 'hour') <= 24) {
+        setHaveAppointmentTomorrow(true);
+      }
+
+      let currentID = userAppointment.id
+      let appObj = { ...userAppointment.data(), ['id']: currentID }
+      nextAppointments = [...nextAppointments, appObj];
+    } else {
+      setPastApp(prev => [...prev, appointmentDate.format('D.M')]);
+      const monthAgo = moment(new Date());
+      monthAgo.subtract(1, 'month');
+      if (appointmentDate > monthAgo) {
+        setAppointmentLastMonth(true);
+      }
+    }
+    setUserAppointmentsDetails(nextAppointments);
+  }
+
   useEffect(() => {
     //redirect user to login screen if he is not logged in 
     if (!localStorage.getItem('userid')) {
@@ -60,46 +83,22 @@ function DashboardNoAppoin() {
     else {
       auth.onAuthStateChanged(async user => {
         if (user) {
-          const userData = await db.collection('users').doc(user.uid).get()
+          const userData = await getUserById(user.uid);
           setUserName(userData.data().name);
 
-          db.collection('Appointments').where('userID', '==', user.uid).onSnapshot(snapShot => {
+          getAppointmentsForUser(user.uid).onSnapshot(snapShot => {
             if (snapShot.empty) {
-              setCheckUserAppointments(false);
               setHospitalNames()
               setIsLoading(false); 
             }
             else {
-              const appointmentsDetails = []
-              //map appointments if not historic
-              snapShot.docs.map(userAppointments => {
-                let appointmentDate = moment(userAppointments.data().timestamp.seconds * 1000);
-                const today = moment();
-                if (appointmentDate.isAfter(today)) {
-                  if (appointmentDate.diff(today, 'hour') <= 24) {
-                    setHaveAppointmentTomorrow(true);
-                  }
-
-                  let currentID = userAppointments.id
-                  let appObj = { ...userAppointments.data(), ['id']: currentID }
-                  appointmentsDetails.push(appObj)
-                  setUserAppointmentsDetails(appointmentsDetails)
-                } else {
-                  setPastApp(prev => [...prev, appointmentDate.format('D.M')] );
-                  const monthAgo = moment(new Date());
-                  monthAgo.subtract(1, 'month');
-                  if (appointmentDate > monthAgo) {
-                    setAppointmentLastMonth(true);
-                  }                  
-                }
+              snapShot.docs.map(userAppointment => {
+                classifiyAppointment(userAppointment);                  
               })
 
-              //if none of the appointments found were in the future, set up page for book new appointment
-              if (!appointmentsDetails.length) {
-                setCheckUserAppointments(false);
+              if (!userAppointmentsDetails) {
                 setHospitalNames()
               } else {
-                setCheckUserAppointments(true);
                 //checkRideBooked(user.uid)
               }
 
@@ -115,7 +114,7 @@ function DashboardNoAppoin() {
     //only run when hospital chosen
     if (chosenHospital) {
       const today = Date.now() / 1000
-      const filteredQuery = db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', chosenHospital)
+      const filteredQuery = getAvailableAppointmentsForHospital(chosenHospital);
 
       filteredQuery.get()
         .then(querySnapshot => {
@@ -144,7 +143,7 @@ function DashboardNoAppoin() {
 
   return (
     !isLoading && <div className="dashboardView mt-3">
-      {checkUserAppointments ? (
+      {userAppointmentsDetails.length > 0 ? (
         <Fragment>
           <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
             appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} haveAppointmentTomorrow={haveAppointmentTomorrow} />
