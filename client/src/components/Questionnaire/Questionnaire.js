@@ -45,141 +45,144 @@ export default function Questionnaire() {
   const questionList = [
     {
       id: 1,
-      question: "Have you ever donated blood or Thrombocytes?",
-      options: ["Yes", "No"],
-      condition: { hospitals: ['Beilinsohn'], invalidSelection: ['No'], error: t("questionnaire.error_blood_or_thrombocytes") }
+      question: t('questionnaire.q_blood_or_thrombocytes'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_blood_or_thrombocytes") }
     },
     {
-      id: 2, question: `Is your weight above ${hospital != 'Ichilov' ? "50kg?" : "55kg"}`, options: ["Yes", "No"],
-      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
+      id: 2,
+      question: t(hospital != 'Ichilov' ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
     },
     {
       id: 3,
-      question: "Did you do a tattoo/earrings/piercing in the last 6 months?",
-      options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'], error: t("questionnaire.error_tattoo_earrings_piercing") }
+      question: t('questionnaire.q_tattoo_earrings_piercing'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_tattoo_earrings_piercing") }
     },
     {
       id: 4,
-      question: "Do you have diabetes",
+      question: t('questionnaire.q_diabetes'),
       options: [
-        "Yes, but stable treated by medicines",
-        "Yes, but not stable or treated with Insulin",
-        "No",
+        t('questionnaire.q_diabetes_option_yes_stable'),
+        t('questionnaire.q_diabetes_option_yes_not_stable'),
+        t('questionnaire.q_diabetes_option_no'),
       ],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['Yes, but not stable or treated with Insulin'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
         error: t("questionnaire.error_diabetes")
       }
     },
     {
-      id: 5, question: "Do you take medicines?", options: ["Yes", "No"],
+      id: 5, question: t('questionnaire.q_medicines'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_medicines")
       }
     },
     {
       id: 6,
-      question: "Have you been abroad in the last year?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_aboard'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_aboard")
       }
     },
     {
       id: 7,
-      question: "Have you gone through a medical surgery in the last month?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_surgery'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_surgery")
       }
     },
     {
       id: 8,
-      question: "Do you suffer from a Chronic disease?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_chronic_disease'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_chronic_disease")
       }
     },
     {
       id: 9,
-      question: "Have you ever suffered from cancer?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_cancer'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_cancer")
       }
     },
     {
       id: 10,
-      question: "Did you take antibiotics in the last 3 days?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_antibiotics'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_antibiotics")
       }
     },
     {
       id: 11,
-      question: "Have you gone through Dentist procedure in the last 10 days?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_dentist_procedure'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_dentist_procedure")
       }
     },
     {
       id: 12,
-      question: "Do you have an open wound or a scratch?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_open_wound_or_scratch'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: ['Beilinsohn'], invalidSelection: ['No'],
+        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_open_wound_or_scratch")
       }
     },
     {
       id: 13,
-      question: `Do you confirm your age is between ${hospital != 'Ichilov' ? "17 and 65?" : "18 and 62?"}`,
-      options: ["Yes", "No"],
+      question: t(hospital != 'Ichilov' ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'],
+        hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')],
         error: t(hospital != 'Ichilov' ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
       }
     },
     {
       id: 14,
-      question: `${hospital != 'Beilinsohn' ? "Have you ever been pregnant?" : "Have you been pregnant in the last 6 months?"}`,
-      options: ["Yes", "No"],
+      question: t(hospital != 'Beilinsohn' ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Beilinsohn' ? [...HOSPITALS] : ['Beilinsohn'], invalidSelection: ['No'],
+        hospitals: hospital != 'Beilinsohn' ? [...HOSPITALS] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
         error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
       }
     },
     {
       id: 15,
-      question: "When was your last donation?",
+      question: t('questionnaire.q_last_donation'),
       options: [
-        "Over one month ago",
-        "Less than one month, more than 10 days ago",
-        "Less than 10 days ago",
-        "Never",
+        t('questionnaire.q_last_donation_over_month'),
+        t('questionnaire.q_last_donation_less_month_more_10_days'),
+        t('questionnaire.q_last_donation_less_10_days'),
+        t('questionnaire.q_last_donation_never')
       ],
       condition: {
-        hospitals: ['Beilinsohn'], invalidSelection: ['Never'],
+        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.q_last_donation_never')],
         error: t("questionnaire.error_last_donation")
       }
     },
     {
       id: 16,
-      question: "Reading and truth statement confirmation",
-      options: ["Confirm", "Dont confirm"],
+      question: t('questionnaire.q_confirmation'),
+      options: [t('questionnaire.q_confirmation_option_confirm'), t('questionnaire.q_confirmation_option_dont')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: ['Dont confirm'],
+        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
         error: t("questionnaire.error_confirmation")
       }
     },
@@ -323,7 +326,7 @@ export default function Questionnaire() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        {(languageSelected === "en" ? questionList : questionListHeb).map(
+        {questionList.map(
           (question, index) =>
             //Questionairee Logic
             gender == "Male" && question.id == 14 ? (
