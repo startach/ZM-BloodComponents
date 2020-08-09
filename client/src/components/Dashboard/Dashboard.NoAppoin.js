@@ -57,7 +57,7 @@ function DashboardNoAppoin() {
     let appointmentDate = moment(userAppointment.data().timestamp.seconds * 1000);
     const today = moment();
     if (appointmentDate.isAfter(today)) {
-      if (appointmentDate.diff(today, 'hour') <= 24) {
+      if (appointmentDate.diff(today, 'day') === 1 && appointmentDate.diff(today, 'hour') <= 24) {
         setHaveAppointmentTomorrow(true);
       }
 
