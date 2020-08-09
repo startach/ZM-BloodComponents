@@ -30,15 +30,14 @@ export default function Questionnaire() {
     Q14: `${t("questionnaire.select")}`,
     Q15: `${t("questionnaire.select")}`,
     Q16: `${t("questionnaire.select")}`,
-    Q17: `${t("questionnaire.select")}`,
   });
 
-  let checkedAnswers = [];
   //allow submit only when all questions have been submit TODO:
   const [complete, setComplete] = useState(false);
 
   const [hospital, setHospital] = useState();
   const [gender, setGender] = useState();
+  const [errors, setErrors] = useState([]);
 
   let languageSelected = localStorage.getItem("i18nextLng");
 
@@ -48,17 +47,17 @@ export default function Questionnaire() {
       id: 1,
       question: "Have you ever donated blood or Thrombocytes?",
       options: ["Yes", "No"],
-      condition: { hospitals: ['Beilinsohn'], invalidSelection: ['No'] }
+      condition: { hospitals: ['Beilinsohn'], invalidSelection: ['No'], error: t("questionnaire.error_blood_or_thrombocytes") }
     },
     {
       id: 2, question: `Is your weight above ${hospital != 'Ichilov' ? "50kg?" : "55kg"}`, options: ["Yes", "No"],
-      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'] }
+      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
     },
     {
       id: 3,
       question: "Did you do a tattoo/earrings/piercing in the last 6 months?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'], error: t("questionnaire.error_tattoo_earrings_piercing") }
     },
     {
       id: 4,
@@ -68,65 +67,98 @@ export default function Questionnaire() {
         "Yes, but not stable or treated with Insulin",
         "No",
       ],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['Yes, but not stable or treated with Insulin'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['Yes, but not stable or treated with Insulin'],
+        error: t("questionnaire.error_diabetes")
+      }
     },
     {
       id: 5, question: "Do you take medicines?", options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_medicines")
+      }
     },
     {
       id: 6,
       question: "Have you been abroad in the last year?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_aboard")
+      }
     },
     {
       id: 7,
       question: "Have you gone through a medical surgery in the last month?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_surgery")
+      }
     },
     {
       id: 8,
       question: "Do you suffer from a Chronic disease?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_chronic_disease")
+      }
     },
     {
       id: 9,
       question: "Have you ever suffered from cancer?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_cancer")
+      }
     },
     {
       id: 10,
       question: "Did you take antibiotics in the last 3 days?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_antibiotics")
+      }
     },
     {
       id: 11,
       question: "Have you gone through Dentist procedure in the last 10 days?",
       options: ["Yes", "No"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['No'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['No'],
+        error: t("questionnaire.error_dentist_procedure")
+      }
     },
     {
       id: 12,
       question: "Do you have an open wound or a scratch?",
       options: ["Yes", "No"],
-      condition: { hospitals: ['Beilinsohn'], invalidSelection: ['No'] }
+      condition: {
+        hospitals: ['Beilinsohn'], invalidSelection: ['No'],
+        error: t("questionnaire.error_open_wound_or_scratch")
+      }
     },
     {
       id: 13,
       question: `Do you confirm your age is between ${hospital != 'Ichilov' ? "17 and 65?" : "18 and 62?"}`,
       options: ["Yes", "No"],
-      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'] }
+      condition: {
+        hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: ['No'],
+        error: t(hospital != 'Ichilov' ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
+      }
     },
     {
       id: 14,
       question: `${hospital != 'Beilinsohn' ? "Have you ever been pregnant?" : "Have you been pregnant in the last 6 months?"}`,
       options: ["Yes", "No"],
-      condition: { hospitals: hospital != 'Beilinsohn' ? [...HOSPITALS] :['Beilinsohn'], invalidSelection: ['No'] }
+      condition: {
+        hospitals: hospital != 'Beilinsohn' ? [...HOSPITALS] : ['Beilinsohn'], invalidSelection: ['No'],
+        error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
+      }
     },
     {
       id: 15,
@@ -137,16 +169,21 @@ export default function Questionnaire() {
         "Less than 10 days ago",
         "Never",
       ],
-      condition: { hospitals: ['Beilinsohn'], invalidSelection: ['Never'] }
+      condition: {
+        hospitals: ['Beilinsohn'], invalidSelection: ['Never'],
+        error: t("questionnaire.error_last_donation")
+      }
     },
     {
       id: 16,
       question: "Reading and truth statement confirmation",
       options: ["Confirm", "Dont confirm"],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: ['Dont confirm'] }
+      condition: {
+        hospitals: [...HOSPITALS], invalidSelection: ['Dont confirm'],
+        error: t("questionnaire.error_confirmation")
+      }
     },
   ];
-  console.log("Questionnaire -> questionList", questionList)
 
   const questionListHeb = [
     { id: 1, question: "?האם תרמת טרומבוציטים בעבר", options: ["כן", "לא"] },
@@ -211,27 +248,28 @@ export default function Questionnaire() {
 
   //saves result of drop down into state by Question/ID number
   const handleResults = (e, index) => {
-    console.log("handleResults -> questionList[index + 1]", questionList[index])
     let thisQ = "Q" + (index + 1);
     if (questionList[index].condition.hospitals.includes(hospital) && questionList[index].condition.invalidSelection.includes(e.target.value)) {
-      alert('invalid ' + thisQ) //TODO:
+      setErrors([...errors, thisQ])
+    } else if (errors.includes(thisQ)) {
+      let newErrors = errors.slice()
+      newErrors.splice(errors.indexOf(thisQ), 1)
+      setErrors(newErrors)
     }
     setResults({ ...result, [thisQ]: e.target.value });
-    console.log(result, result.Q17);
   };
 
   const handleSubmit = (e) => {
     //change questions length depend on hospital name
-    var sum = questionList.length - 1;
+    var sum = questionList.length;
 
     //change questions length depend on gender
     if (gender == "Male") {
       sum = sum - 1;
     }
 
-    Object.keys(result).forEach(function (key) {
+    Object.keys(result).forEach((key) => {
       // Decrease the sum if the user answer the question
-
       if (result[key] !== `${t("questionnaire.select")}`) {
         sum--;
       }
@@ -239,18 +277,17 @@ export default function Questionnaire() {
     });
     console.log("sum is", sum);
 
-    if (sum === 0 && result.Q17 === `${t("questionnaire.confirm")}`) {
+    if (sum === 0 && errors.length === 0) {
       setComplete(true);
       var appointId = localStorage.getItem("appointmentId");
       var userId = localStorage.getItem("userid");
       db.collection("Appointments").doc(appointId).update({
         userID: userId,
       });
-      console.log(appointId, userId);
+      // console.log(appointId, userId);
       history.push("/verfication");
-
       // Dont allow the user to go forward without accepting the terms
-    } else if (result.Q17 !== `${t("questionnaire.confirm")}`) {
+    } else if (result.Q16 !== `${t("questionnaire.confirm")}`) {
       alert("You have to confirm truth statement in order to proceed with your appointment");
     } else {
       // Validation if the user answer all of the questions
@@ -259,11 +296,19 @@ export default function Questionnaire() {
     e.preventDefault();
   };
 
+  const getInlineError = (index) => {
+    if (errors.includes('Q' + (index + 1))) {
+      return questionList[index].condition.error
+    }
+  }
+
   useEffect(() => {
     setHospital(localStorage.getItem("hospital"));
     setGender(localStorage.getItem("gender"));
   }, []);
 
+  console.log('### result', result)
+  console.log('### errors', errors)
   return (
     <div
       style={{ textAlign: languageSelected === "en" ? "left" : "right" }}
@@ -329,10 +374,8 @@ export default function Questionnaire() {
                                   id={index + "@" + option}
                                   value={option}
                                   name={`Question${index}`}
-                                  // onClick={() => checkedAnswers.push(index+'@'+option)}
                                   onChange={(e) => {
                                     handleResults(e, index);
-                                    // handleChecked(question, index, option)
                                   }}
                                 />
                                 {" " + option}
@@ -342,6 +385,7 @@ export default function Questionnaire() {
                         </Fragment>
                       )}
                   </div>
+                  <p style={{ color: 'darkred', width: '80%' }}>{getInlineError(index)}</p>
                 </div>
               )
         )}
