@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import Button from '../button'
 import BookTaxi from '../BookTaxi/BookTaxi'
-import DashHeader from './DashHeader/DashHeader';
+import DashHeader from './DashContent/DashHeader';
 import { getAllHospitals } from '../../services/hospitalService';
 import { getAppointmentsForUser, getAvailableAppointmentsForHospital } from '../../services/appointmentService';
 import { getUserById } from '../../services/userService';
@@ -85,10 +85,10 @@ function DashboardNoAppoin() {
         if (user) {
           const userData = await getUserById(user.uid);
           setUserName(userData.data().name);
+          setHospitalNames();
 
           getAppointmentsForUser(user.uid).onSnapshot(snapShot => {
             if (snapShot.empty) {
-              setHospitalNames()
               setIsLoading(false); 
             }
             else {
@@ -174,7 +174,7 @@ function DashboardNoAppoin() {
             appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} handleViewDates={handleViewDates} haveAppointmentTomorrow={haveAppointmentTomorrow}/>
             {(!appointmentLastMonth || viewDates) && 
               <SelectHospital t={t} hospitals={hospitals} handleHospitalChange={handleHospitalChange}/> }
-            <AppointmentsTable t={t} appointments={availableAppointments} viewDates={viewDates}/>
+            <AppointmentsTable t={t} appointments={availableAppointments} withActions={!viewDates}/>
           </Fragment>
         )
       }

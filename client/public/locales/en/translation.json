@@ -47,7 +47,10 @@
     "appointmentTomorrow": "You are registered to an appointment tomorrow.",
     "lookingForward": "Looking forward to you!",
     "verifyArrival": "I confirm my arrival",
-    "arrivalConfirmed": "Arrival confirmed"
+    "arrivalConfirmed": "Arrival confirmed",
+    "confirmMadeDonation": "Please confirm that you have made the donation.",
+    "madeDonations": "I made the donation",
+    "notMadeDonation": "I did not made the donation"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",

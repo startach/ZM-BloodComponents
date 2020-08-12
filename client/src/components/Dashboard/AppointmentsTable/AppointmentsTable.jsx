@@ -5,7 +5,7 @@ import { updateAppointment } from '../../../services/appointmentService';
 import "../dashboard.css";
 
 export default function AppointmentsTable(props) {
-    const { t, appointments, viewDates } = props;   
+    const { t, appointments, withActions } = props;   
 
     const deleteAppointment = ({appId}) => {
         updateAppointment(appId, {
@@ -25,7 +25,7 @@ export default function AppointmentsTable(props) {
               <th className="headerEntries"> {t('dashboard.Location')}</th>
               <th className="headerEntries"> {t('dashboard.date')}</th>
               <th className="headerEntries"> {t('dashboard.Time')}</th>
-              { !viewDates && 
+              { withActions && 
               <th className="headerEntries"></th> 
               }
             </tr>
@@ -34,7 +34,7 @@ export default function AppointmentsTable(props) {
                 <td className='rowClass'>{appointment.hospitalName}</td>
                 <td className='rowClass' >{appointment.date}</td>
                 <td className='rowClass'>{appointment.time}</td> 
-                { !viewDates && 
+                { withActions && 
                 <td className='rowClass'>
                     { appointment.userID ?
                     <YesNoPopUp text={t('dashboard.deleteAppointment')} handleYes={deleteAppointment} appId={appointment.id}>

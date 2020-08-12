@@ -47,7 +47,10 @@
     "appointmentTomorrow": "أنت مسجل في موعد غدًا",
     "lookingForward": "نتطلع إليكم",
     "verifyArrival": "أؤكد الوصول",
-    "arrivalConfirmed": "تم تأكيد الوصول"
+    "arrivalConfirmed": "تم تأكيد الوصول",
+    "confirmMadeDonation": "يرجى تأكيد أنك قدمت التبرع.",
+    "madeDonations": "لقد تبرعت",
+    "notMadeDonation": "لم أتبرع"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",

@@ -12,8 +12,8 @@ export default function SelectHospital(props) {
             <div>
             <select className="hospitalsOptionsList" onChange={handleHospitalChange}>
                 <option value="Select" disabled selected> {t('general.select')}</option>
-                {hospitals.map(name => (
-                <option value={name}>
+                {hospitals.map((name, index) => (
+                <option key={index} value={name}>
                     {name}
                 </option>
                 ))}

@@ -47,7 +47,10 @@
     "appointmentTomorrow": "אתה רשום לתרומה מחר.",
     "lookingForward": "מצפים לך!",
     "verifyArrival": "אני מאשר הגעה",
-    "arrivalConfirmed": "הגעה אושרה"
+    "arrivalConfirmed": "הגעה אושרה",
+    "confirmMadeDonation": "אנא אשר שהתרומה אכן התבצעה.",
+    "madeDonations": "תרמתי",
+    "notMadeDonation": "לא תרמתי"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
