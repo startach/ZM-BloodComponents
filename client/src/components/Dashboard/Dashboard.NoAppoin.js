@@ -64,17 +64,13 @@ function DashboardNoAppoin() {
       .then((hopsitals) => {
         const hospitalsNames = hopsitals.docs.map((hospitalData) => {
           const hospitalDetails = hospitalData.data();
-          let hospitalShowName;
           const hospitalEng = hospitalDetails.hospitalName;
-
-          if (languageSelected == "heb")
-            hospitalShowName = hospitalDetails.hebName;
-          else hospitalShowName = hospitalEng;
-
-          return {
-            hospitalEng: hospitalEng,
-            hospitaShowName: hospitalShowName,
-          };
+          return languageSelected == "heb"
+            ? {
+                hospitalEng: hospitalEng,
+                hospitaShowName: hospitalDetails.hebName,
+              }
+            : { hospitalEng: hospitalEng, hospitaShowName: hospitalEng };
         });
         setHospital(hospitalsNames);
       });
