@@ -33,7 +33,6 @@ export default function Questionnaire() {
   });
 
   //allow submit only when all questions have been submit TODO:
-  const [complete, setComplete] = useState(false);
 
   const [hospital, setHospital] = useState();
   const [gender, setGender] = useState();
@@ -276,12 +275,9 @@ export default function Questionnaire() {
       if (result[key] !== `${t("questionnaire.select")}`) {
         sum--;
       }
-      // setComplete(true)
     });
-    console.log("sum is", sum);
 
     if (sum === 0 && errors.length === 0) {
-      // setComplete(true);
       var appointId = localStorage.getItem("appointmentId");
       var userId = localStorage.getItem("userid");
       db.collection("Appointments").doc(appointId).update({
@@ -310,8 +306,6 @@ export default function Questionnaire() {
     setGender(localStorage.getItem("gender"));
   }, []);
 
-  console.log('### result', result)
-  console.log('### errors', errors)
   return (
     <div
       style={{ textAlign: languageSelected === "en" ? "left" : "right" }}
