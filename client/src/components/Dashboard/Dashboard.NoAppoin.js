@@ -10,6 +10,7 @@ import dbIcon from './dbIcon.svg'
 import { useTranslation } from 'react-i18next';
 
 import googlemaps from './googlemaps.png'
+import waze from './waze.png'
 
 function DashboardNoAppoin() {
 

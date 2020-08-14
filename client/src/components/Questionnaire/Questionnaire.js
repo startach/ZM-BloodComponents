@@ -6,7 +6,6 @@ import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
 import qIcon from "./questionnaire.svg";
 
-const HOSPITALS = ['Ichilov', 'Tal Hashomer', 'Hadassah', 'Rambam', 'Beilinsohn', 'Soroka']
 
 export default function Questionnaire() {
   const { t } = useTranslation();
@@ -34,6 +33,7 @@ export default function Questionnaire() {
 
   //allow submit only when all questions have been submit TODO:
 
+  const [hospitalsNames, setHospitalsNames] = useState(['Ichilov', 'Tal Hashomer', 'Beilinsohn', 'Hadassah', 'Rambam', 'Soroka'])
   const [hospital, setHospital] = useState();
   const [gender, setGender] = useState();
   const [errors, setErrors] = useState([]);
@@ -52,13 +52,13 @@ export default function Questionnaire() {
       id: 2,
       question: t(hospital != 'Ichilov' ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
+      condition: { hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
     },
     {
       id: 3,
       question: t('questionnaire.q_tattoo_earrings_piercing'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_tattoo_earrings_piercing") }
+      condition: { hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_tattoo_earrings_piercing") }
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ export default function Questionnaire() {
         t('questionnaire.q_diabetes_option_no'),
       ],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
         error: t("questionnaire.error_diabetes")
       }
     },
@@ -77,7 +77,7 @@ export default function Questionnaire() {
       id: 5, question: t('questionnaire.q_medicines'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_medicines")
       }
     },
@@ -86,7 +86,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_aboard'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_aboard")
       }
     },
@@ -95,7 +95,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_surgery'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_surgery")
       }
     },
@@ -104,7 +104,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_chronic_disease'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_chronic_disease")
       }
     },
@@ -113,7 +113,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_cancer'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_cancer")
       }
     },
@@ -122,7 +122,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_antibiotics'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_antibiotics")
       }
     },
@@ -131,7 +131,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_dentist_procedure'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
         error: t("questionnaire.error_dentist_procedure")
       }
     },
@@ -149,7 +149,7 @@ export default function Questionnaire() {
       question: t(hospital != 'Ichilov' ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Ichilov' ? [...HOSPITALS] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')],
         error: t(hospital != 'Ichilov' ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
       }
     },
@@ -158,7 +158,7 @@ export default function Questionnaire() {
       question: t(hospital != 'Beilinsohn' ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Beilinsohn' ? [...HOSPITALS] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
         error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
       }
     },
@@ -181,7 +181,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_confirmation'),
       options: [t('questionnaire.q_confirmation_option_confirm'), t('questionnaire.q_confirmation_option_dont')],
       condition: {
-        hospitals: [...HOSPITALS], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
         error: t("questionnaire.error_confirmation")
       }
     },
