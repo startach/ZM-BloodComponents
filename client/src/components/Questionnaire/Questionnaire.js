@@ -58,7 +58,7 @@ export default function Questionnaire() {
       id: 3,
       question: t('questionnaire.q_tattoo_earrings_piercing'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_tattoo_earrings_piercing") }
+      condition: { hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')], error: t("questionnaire.error_tattoo_earrings_piercing") }
     },
     {
       id: 4,
@@ -69,7 +69,7 @@ export default function Questionnaire() {
         t('questionnaire.q_diabetes_option_no'),
       ],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_stable'), t('questionnaire.q_diabetes_option_no')],
         error: t("questionnaire.error_diabetes")
       }
     },
@@ -77,7 +77,7 @@ export default function Questionnaire() {
       id: 5, question: t('questionnaire.q_medicines'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_medicines")
       }
     },
@@ -86,7 +86,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_aboard'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_aboard")
       }
     },
@@ -95,7 +95,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_surgery'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_surgery")
       }
     },
@@ -104,7 +104,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_chronic_disease'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_chronic_disease")
       }
     },
@@ -113,7 +113,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_cancer'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_cancer")
       }
     },
@@ -122,7 +122,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_antibiotics'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_antibiotics")
       }
     },
@@ -131,7 +131,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_dentist_procedure'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_dentist_procedure")
       }
     },
@@ -140,7 +140,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_open_wound_or_scratch'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_open_wound_or_scratch")
       }
     },
@@ -158,7 +158,7 @@ export default function Questionnaire() {
       question: t(hospital != 'Beilinsohn' ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')],
+        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
         error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
       }
     },
