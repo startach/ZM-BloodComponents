@@ -7,16 +7,9 @@ import Button from '../button'
 import Popup from "reactjs-popup";
 import BookTaxi from '../BookTaxi/BookTaxi'
 import dbIcon from './dbIcon.svg'
-
-///////
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-//////
 
 import googlemaps from './googlemaps.png'
-import waze from './waze.png'
-
-
 
 function DashboardNoAppoin() {
 
@@ -127,7 +120,7 @@ function DashboardNoAppoin() {
           setAppointments(Appointments)
         })
         .catch(error => {
-          console.log("DashboardNoAppoin -> error", error)
+          // Catch errors
         });
     }
   }, [chosenOption])
