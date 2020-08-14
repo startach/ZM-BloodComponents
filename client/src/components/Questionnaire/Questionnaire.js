@@ -6,7 +6,7 @@ import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
 import qIcon from "./questionnaire.svg";
 
-const HOSPITALS = ['Ichilov', 'Tel HaShomer', 'Hadassah', 'Rambam', 'Beilinsohn', 'Soroka']
+const HOSPITALS = ['Ichilov', 'Tal Hashomer', 'Hadassah', 'Rambam', 'Beilinsohn', 'Soroka']
 
 export default function Questionnaire() {
   const { t } = useTranslation();
@@ -281,7 +281,7 @@ export default function Questionnaire() {
     console.log("sum is", sum);
 
     if (sum === 0 && errors.length === 0) {
-      setComplete(true);
+      // setComplete(true);
       var appointId = localStorage.getItem("appointmentId");
       var userId = localStorage.getItem("userid");
       db.collection("Appointments").doc(appointId).update({
