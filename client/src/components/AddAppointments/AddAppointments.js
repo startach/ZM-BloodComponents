@@ -39,14 +39,15 @@ export default function AddAppointments() {
     const displayNode = useRef(null)
     const [currentApp, setCurrentApp] = useState({
         userID: null,
-        confirmArrival: false,
         hospitalName: null,
         hospitalID: null,
         date: null,
         time: null,
         timestamp: null,
         slots: 1,
-        appointmentType: null
+        appointmentType: null,
+        confirmArrival: false,
+        hasDonated: null
     })
 
     //for counted appointments added

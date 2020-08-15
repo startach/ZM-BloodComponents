@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import "../dashboard.css";
 import "./dashHeader.css";
 import dbIcon from '../dbIcon.svg';
-import Button from '../../button';
-import { Check2 } from 'react-bootstrap-icons';
-import { updateAppointment } from '../../../services/appointmentService';
 import FirstAppointmentIntro from './Header/FirstAppointment/FirstAppointmentIntro';
 import HaveAppointmentsIntro from './Header/FutureAppointment/HaveAppointmentsIntro';
 import TomorrowAppointment from './Content/TomorrowAppointment/TomorrowAppointment';
@@ -13,9 +10,10 @@ import GeneralAppointment from './Content/General/GeneralAppointment';
 
 export default function DashHeader(props) {
     const {t, userName, pastAppointments, appointmentLastMonth, nextAppointments, handleViewDates, haveAppointmentTomorrow} = props;
-    const appointmentsCount = pastAppointments.length;
-    const haveFutureAppointment = nextAppointments.length; 
     
+    const appointmentsCount = pastAppointments.length;
+    const haveFutureAppointment = nextAppointments.length;
+
     return (
         <div>
             <img src={dbIcon} />
@@ -24,8 +22,8 @@ export default function DashHeader(props) {
                 <FirstAppointmentIntro t={t} userName={userName}/> : <HaveAppointmentsIntro t={t} userName={userName} appointmentsCount={appointmentsCount}/>
             }
             {haveAppointmentTomorrow ? <TomorrowAppointment t={t} nextAppointments={nextAppointments}/> :  
-                appointmentLastMonth ? <LastMonthAppointment t={t} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} handleViewDates={handleViewDates}/> : 
-                    <GeneralAppointment t={t} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} haveFutureAppointment={haveFutureAppointment}/>
+                appointmentLastMonth ? <LastMonthAppointment t={t} appointment={appointmentLastMonth} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} handleViewDates={handleViewDates}/>: 
+                    <GeneralAppointment t={t} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} haveFutureAppointment={haveFutureAppointment}/>   
             }
         </div>
     )

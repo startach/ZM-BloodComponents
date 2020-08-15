@@ -49,7 +49,7 @@
     "verifyArrival": "أؤكد الوصول",
     "arrivalConfirmed": "تم تأكيد الوصول",
     "confirmMadeDonation": "يرجى تأكيد أنك قدمت التبرع.",
-    "madeDonations": "لقد تبرعت",
+    "madeDonation": "لقد تبرعت",
     "notMadeDonation": "لم أتبرع"
   },
   "addAppointments":{

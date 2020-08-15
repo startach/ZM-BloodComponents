@@ -49,7 +49,7 @@
     "verifyArrival": "I confirm my arrival",
     "arrivalConfirmed": "Arrival confirmed",
     "confirmMadeDonation": "Please confirm that you have made the donation.",
-    "madeDonations": "I made the donation",
+    "madeDonation": "I made the donation",
     "notMadeDonation": "I did not made the donation"
   },
   "addAppointments": {

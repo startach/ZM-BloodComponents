@@ -24,7 +24,7 @@ function DashboardNoAppoin() {
 
   const [hospitals, setHospitals] = useState([])
   const [pastApp, setPastApp] = useState([])
-  const [appointmentLastMonth, setAppointmentLastMonth] = useState(false);
+  const [appointmentLastMonth, setAppointmentLastMonth] = useState();
   const [bookingData, setBookingData] = useState(false)
   const [rideBooked, setRideBooked] = useState(false)
   const [availableAppointments, setAvailableAppointments] = useState([])
@@ -53,7 +53,6 @@ function DashboardNoAppoin() {
   }
 
   const classifiyAppointment = (userAppointment) => {
-    let nextAppointments = [];
     let appointmentDate = moment(userAppointment.data().timestamp.seconds * 1000);
     const today = moment();
     if (appointmentDate.isAfter(today)) {
@@ -61,18 +60,16 @@ function DashboardNoAppoin() {
         setHaveAppointmentTomorrow(true);
       }
 
-      let currentID = userAppointment.id
-      let appObj = { ...userAppointment.data(), ['id']: currentID }
-      nextAppointments = [...nextAppointments, appObj];
+      let appObj = { ...userAppointment.data(), ['id']: userAppointment.id }
+      setUserAppointmentsDetails(prev => [...prev, appObj]);
     } else {
       setPastApp(prev => [...prev, appointmentDate.format('D.M')]);
       const monthAgo = moment(new Date());
       monthAgo.subtract(1, 'month');
       if (appointmentDate > monthAgo) {
-        setAppointmentLastMonth(true);
+        setAppointmentLastMonth({ ...userAppointment.data(), ['id']: userAppointment.id });
       }
     }
-    setUserAppointmentsDetails(nextAppointments);
   }
 
   useEffect(() => {
@@ -92,6 +89,8 @@ function DashboardNoAppoin() {
               setIsLoading(false); 
             }
             else {
+              setUserAppointmentsDetails([]);
+              setPastApp([]);
               snapShot.docs.map(userAppointment => {
                 classifiyAppointment(userAppointment);                  
               })
