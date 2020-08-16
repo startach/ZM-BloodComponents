@@ -53,17 +53,20 @@ function DashboardNoAppoin() {
   }
 
   const classifiyAppointment = (userAppointment) => {
-    let appointmentDate = moment(userAppointment.data().timestamp.seconds * 1000);
+    let appointmentDate = moment(userAppointment.timestamp.seconds * 1000);
     const today = moment();
     if (appointmentDate.isAfter(today)) {
       if (appointmentDate.diff(today, 'day') === 1 && appointmentDate.diff(today, 'hour') <= 24) {
         setHaveAppointmentTomorrow(true);
       }
 
-      let appObj = { ...userAppointment.data(), ['id']: userAppointment.id }
+      let appObj = { ...userAppointment, ['id']: userAppointment.id }
       setUserAppointmentsDetails(prev => [...prev, appObj]);
     } else {
-      setPastApp(prev => [...prev, appointmentDate.format('D.M')]);
+      if (userAppointment.hasDonated !== false) {
+        setPastApp(prev => [...prev, appointmentDate.format('D.M')]);
+      }
+
       const monthAgo = moment(new Date());
       monthAgo.subtract(1, 'month');
       if (appointmentDate > monthAgo) {
@@ -92,7 +95,7 @@ function DashboardNoAppoin() {
               setUserAppointmentsDetails([]);
               setPastApp([]);
               snapShot.docs.map(userAppointment => {
-                classifiyAppointment(userAppointment);                  
+                classifiyAppointment(userAppointment.data());                  
               })
 
               if (!userAppointmentsDetails) {
