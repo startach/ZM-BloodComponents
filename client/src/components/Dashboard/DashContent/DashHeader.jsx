@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../dashboard.css";
 import "./dashHeader.css";
 import dbIcon from '../dbIcon.svg';

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import YesNoPopUp from '../../PopUp/YesNoPopUp/YesNoPopUp';
 import { updateAppointment } from '../../../services/appointmentService';
