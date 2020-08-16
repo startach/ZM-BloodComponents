@@ -14,9 +14,11 @@ export default function AppointmentsTable(props) {
         });
     }
     
-    const onPressRegisterAppointment = (hospitalID, appointmentID) => {
-      localStorage.setItem('hospitalID', (hospitalID));
-      localStorage.setItem('appointmentId', (appointmentID));
+    const onPressRegisterAppointment = (appointment) => {
+      localStorage.setItem('hospitalID', appointment.hospitalID);
+      localStorage.setItem('appointmentId', appointment.id);
+      localStorage.setItem('appointmentDate', appointment.date)
+      localStorage.setItem('appointmentTime', appointment.time)
     }
 
     return (
@@ -42,7 +44,7 @@ export default function AppointmentsTable(props) {
                         <button className="cancelButton"> {t('dashboard.Cancel')}</button>
                     </YesNoPopUp> : 
                     <Link to='/questions'>
-                      <button onClick={() => onPressRegisterAppointment(appointment.hospitalID, appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
+                      <button onClick={() => onPressRegisterAppointment(appointment)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
                     </Link> }
                 </td> 
                 }   

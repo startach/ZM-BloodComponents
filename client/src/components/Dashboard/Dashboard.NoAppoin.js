@@ -148,7 +148,7 @@ function DashboardNoAppoin() {
         <Fragment>
           <DashHeader t={t} userName={userName} pastAppointments={pastApp} 
             appointmentLastMonth={appointmentLastMonth} nextAppointments={userAppointmentsDetails} haveAppointmentTomorrow={haveAppointmentTomorrow} />
-          <AppointmentsTable t={t} appointments={userAppointmentsDetails}/>
+          <AppointmentsTable t={t} appointments={userAppointmentsDetails} withActions={!viewDates}/>
           <div className="bottomButtons">
             {/* <a target="_blank"
               href={`https://www.google.com/maps/search/?api=1&query=${localStorage.getItem('hospital').replace(/\s/g, '%')}%hospital`}
