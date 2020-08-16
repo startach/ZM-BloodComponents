@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
-import { db, auth } from '../firebase/firebase'
-import { Link, useHistory } from 'react-router-dom'
+import { auth } from '../firebase/firebase'
+import { useHistory } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import Button from '../button'
 import BookTaxi from '../BookTaxi/BookTaxi'
@@ -11,7 +11,6 @@ import { getAllHospitals } from '../../services/hospitalService';
 import { getAppointmentsForUser, getAvailableAppointmentsForHospital } from '../../services/appointmentService';
 import { getUserById } from '../../services/userService';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import googlemaps from './googlemaps.png'
 import waze from './waze.png';
 import moment from 'moment';
@@ -37,6 +36,7 @@ function DashboardNoAppoin() {
 
   const handleHospitalChange = (e) => {
     setChosenHospital(e.target.value)
+    localStorage.setItem('hospital', e.target.value);
   }
 
   const handleViewDates = () => {
@@ -114,7 +114,6 @@ function DashboardNoAppoin() {
     if (chosenHospital) {
       const today = Date.now() / 1000
       const filteredQuery = getAvailableAppointmentsForHospital(chosenHospital);
-
       filteredQuery.get()
         .then(querySnapshot => {
           const Appointments = []

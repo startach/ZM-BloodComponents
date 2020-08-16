@@ -14,8 +14,9 @@ export default function AppointmentsTable(props) {
         });
     }
     
-    const setlocalStorage = (appointmentID) => {
-        localStorage.setItem('appointmentId', (appointmentID));
+    const onPressRegisterAppointment = (hospitalID, appointmentID) => {
+      localStorage.setItem('hospitalID', (hospitalID));
+      localStorage.setItem('appointmentId', (appointmentID));
     }
 
     return (
@@ -41,7 +42,7 @@ export default function AppointmentsTable(props) {
                         <button className="cancelButton"> {t('dashboard.Cancel')}</button>
                     </YesNoPopUp> : 
                     <Link to='/questions'>
-                      <button onClick={() => setlocalStorage(appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
+                      <button onClick={() => onPressRegisterAppointment(appointment.hospitalID, appointment.id)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
                     </Link> }
                 </td> 
                 }   
