@@ -12,6 +12,7 @@ import AddAppointment from '../../Screens/addAppointment'
 import Admin from '../../Screens/admin'
 import Questions from '../../Screens/Questionnaire'
 import EmergencyDonations from '../../Screens/emergencyDonations'
+import UsersBrowsing from '../../Screens/usersBrowsing'
 import { firebase, auth } from '../../components/firebase/firebase'
 import DeleteEditAppointments from '../../Screens/deleteAppointments'
 import UserRoute from '../../routes/UserRoute';
@@ -44,6 +45,7 @@ function App() {
 
         <CordRoute path='/add' component={AddAppointment} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
         <CordRoute path='/edit-delete' component={DeleteEditAppointments} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
+        <CordRoute path='/users' component={UsersBrowsing} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
 
         <AdminRoute path='/admin' component={Admin} isAuthenticated={isAuthenticated} userLevel={userClaims}/>
 
