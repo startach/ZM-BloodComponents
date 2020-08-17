@@ -39,7 +39,18 @@
     "NearestHospital": "Nearest hospital is",
     "getDirections": "Get Directions",
     "orderTaxi": "Order Taxi",
-    "rideDetails": "Ride Details"
+    "rideDetails": "Ride Details",
+    "lastDonation": "Your last donation was made on ",
+    "waitOneMonth": "You must wait at least a month before donating again.",
+    "remindMe": "Remind me when I can",
+    "viewAvailableAppiontments": "View Available Appiontments",
+    "appointmentTomorrow": "You are registered to an appointment tomorrow.",
+    "lookingForward": "Looking forward to you!",
+    "verifyArrival": "I confirm my arrival",
+    "arrivalConfirmed": "Arrival confirmed",
+    "confirmMadeDonation": "Please confirm that you have made the donation.",
+    "madeDonation": "I made the donation",
+    "notMadeDonation": "I did not made the donation"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",

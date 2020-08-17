@@ -45,7 +45,9 @@ export default function AddAppointments() {
         time: null,
         timestamp: null,
         slots: 1,
-        appointmentType: null
+        appointmentType: null,
+        confirmArrival: false,
+        hasDonated: null
     })
 
     //for counted appointments added

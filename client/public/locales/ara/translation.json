@@ -39,7 +39,18 @@
     "NearestHospital": "أقرب مشفى هو",
     "getDirections": "تلقّى إرشادات الطريق",
     "orderTaxi": "اطلب سيارة اجرة",
-    "rideDetails": "تفاصيل سيارة الاجرة"
+    "rideDetails": "تفاصيل سيارة الاجرة",
+    "lastDonation": "تم تقديم تبرعك الأخير في ",
+    "waitOneMonth": "يجب الانتظار لمدة شهر على الأقل قبل التبرع مرة أخرى.",
+    "remindMe": "ذكرني عندما أستطيع",
+    "viewAvailableAppiontments": "عرض المواعيد المتاحة",
+    "appointmentTomorrow": "أنت مسجل في موعد غدًا",
+    "lookingForward": "نتطلع إليكم",
+    "verifyArrival": "أؤكد الوصول",
+    "arrivalConfirmed": "تم تأكيد الوصول",
+    "confirmMadeDonation": "يرجى تأكيد أنك قدمت التبرع.",
+    "madeDonation": "لقد تبرعت",
+    "notMadeDonation": "لم أتبرع"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",

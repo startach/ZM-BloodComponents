@@ -45,7 +45,18 @@
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
     "orderTaxi": "בקש הסעה",
-    "rideDetails": "פרטי ההסעה"
+    "rideDetails": "פרטי ההסעה",
+    "lastDonation": "תרומתך האחרונה בוצעה בתאריך ",
+    "waitOneMonth": "יש לחכות לפחות חודש לפני שניתן לתרום שוב.",
+    "remindMe": "תזכר אותי כשאוכל",
+    "viewAvailableAppiontments": "צפייה בתורים פנויים",
+    "appointmentTomorrow": "אתה רשום לתרומה מחר.",
+    "lookingForward": "מצפים לך!",
+    "verifyArrival": "אני מאשר הגעה",
+    "arrivalConfirmed": "הגעה אושרה",
+    "confirmMadeDonation": "אנא אשר שהתרומה אכן התבצעה.",
+    "madeDonation": "תרמתי",
+    "notMadeDonation": "לא תרמתי"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
