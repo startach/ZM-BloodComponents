@@ -4,12 +4,11 @@ import { useHistory } from "react-router-dom";
 import Button from "../button";
 import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
 import qIcon from "./questionnaire.svg";
+
 
 export default function Questionnaire() {
   const { t } = useTranslation();
-  const logo = "/img/questionnaire.svg";
 
   let history = useHistory();
   //Set results of the questionarre into state from the drop downs
@@ -30,15 +29,14 @@ export default function Questionnaire() {
     Q14: `${t("questionnaire.select")}`,
     Q15: `${t("questionnaire.select")}`,
     Q16: `${t("questionnaire.select")}`,
-    Q17: `${t("questionnaire.select")}`,
   });
 
-  let checkedAnswers = [];
   //allow submit only when all questions have been submit TODO:
-  const [complete, setComplete] = useState(false);
 
+  const [hospitalsNames, setHospitalsNames] = useState(['Ichilov', 'Tal Hashomer', 'Beilinsohn', 'Hadassah', 'Rambam', 'Soroka'])
   const [hospital, setHospital] = useState();
   const [gender, setGender] = useState();
+  const [errors, setErrors] = useState([]);
 
   let languageSelected = localStorage.getItem("i18nextLng");
 
@@ -46,201 +44,201 @@ export default function Questionnaire() {
   const questionList = [
     {
       id: 1,
-      question: "Have you ever donated blood or Thrombocytes?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_blood_or_thrombocytes'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_blood_or_thrombocytes") }
     },
-    { id: 2, question: "Is your weight above 55kg?", options: ["Yes", "No"] },
-    { id: 3, question: "Is your weight above 50kg?", options: ["Yes", "No"] },
+    {
+      id: 2,
+      question: t(hospital != 'Ichilov' ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
+    },
+    {
+      id: 3,
+      question: t('questionnaire.q_tattoo_earrings_piercing'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: { hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')], error: t("questionnaire.error_tattoo_earrings_piercing") }
+    },
     {
       id: 4,
-      question: "Did you do a tattoo/earrings/piercing in the last 6 months?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_diabetes'),
+      options: [
+        t('questionnaire.q_diabetes_option_yes_stable'),
+        t('questionnaire.q_diabetes_option_yes_not_stable'),
+        t('questionnaire.q_diabetes_option_no'),
+      ],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
+        error: t("questionnaire.error_diabetes")
+      }
     },
     {
-      id: 5,
-      question: "Do you have diabetes",
-      options: [
-        "Yes, but stable treated by medicines",
-        "Yes, but not stable or treated with Insulin",
-        "No",
-      ],
+      id: 5, question: t('questionnaire.q_medicines'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_medicines")
+      }
     },
-    { id: 6, question: "Do you take medicines?", options: ["Yes", "No"] },
+    {
+      id: 6,
+      question: t('questionnaire.q_aboard'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_aboard")
+      }
+    },
     {
       id: 7,
-      question: "Have you been abroad in the last year?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_surgery'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_surgery")
+      }
     },
     {
       id: 8,
-      question: "Have you gone through a medical surgery in the last month?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_chronic_disease'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_chronic_disease")
+      }
     },
     {
       id: 9,
-      question: "Do you suffer from a Chronic disease?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_cancer'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_cancer")
+      }
     },
     {
       id: 10,
-      question: "Have you ever suffered from cancer?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_antibiotics'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_antibiotics")
+      }
     },
     {
       id: 11,
-      question: "Did you take antibiotics in the last 3 days?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_dentist_procedure'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_dentist_procedure")
+      }
     },
     {
       id: 12,
-      question: "Have you gone through Dentist procedure in the last 10 days?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_open_wound_or_scratch'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
+        error: t("questionnaire.error_open_wound_or_scratch")
+      }
     },
     {
       id: 13,
-      question: "Do you have an open wound or a scratch?",
-      options: ["Yes", "No"],
+      question: t(hospital != 'Ichilov' ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')],
+        error: t(hospital != 'Ichilov' ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
+      }
     },
     {
       id: 14,
-      question: "Do you confirm your age is between 17 and 65?",
-      options: ["Yes", "No"],
+      question: t(hospital != 'Beilinsohn' ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
+      options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
+      condition: {
+        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
+        error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
+      }
     },
     {
       id: 15,
-      question: "Have you been pregnant in the last 6 months?",
-      options: ["Yes", "No"],
+      question: t('questionnaire.q_last_donation'),
+      options: [
+        t('questionnaire.q_last_donation_over_month'),
+        t('questionnaire.q_last_donation_less_month_more_10_days'),
+        t('questionnaire.q_last_donation_less_10_days'),
+        t('questionnaire.q_last_donation_never')
+      ],
+      condition: {
+        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.q_last_donation_never')],
+        error: t("questionnaire.error_last_donation")
+      }
     },
     {
       id: 16,
-      question: "When was your last donation?",
-      options: [
-        "Over one month ago",
-        "Less than one month, more than 10 days ago",
-        "Less than 10 days ago",
-        "Never",
-      ],
-    },
-    {
-      id: 17,
-      question: "Reading and truth statement confirmation",
-      options: ["Confirm", "Dont confirm"],
+      question: t('questionnaire.q_confirmation'),
+      options: [t('questionnaire.q_confirmation_option_confirm'), t('questionnaire.q_confirmation_option_dont')],
+      condition: {
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
+        error: t("questionnaire.error_confirmation")
+      }
     },
   ];
 
-  const questionListHeb = [
-    { id: 1, question: "?האם תרמת טרומבוציטים בעבר", options: ["כן", "לא"] },
-    { id: 2, question: 'האם משקלך מעל 55 ק"ג', options: ["כן", "לא"] },
-    { id: 3, question: 'האם משקלך מעל 50 ק"ג', options: ["כן", "לא"] },
-    {
-      id: 4,
-      question: "האם עשית קעקוע/עגיל בחצי שנה האחרונה",
-      options: ["כן", "לא"],
-    },
-    {
-      id: 5,
-      question: "האם יש לך סכרת",
-      options: [
-        'כן, יציב, ומטופל ע"י תרופות',
-        'כן, לא יציב, ומטופל ע"י סכרת',
-        "לא",
-      ],
-    },
-    { id: 6, question: "האם הינך נוטל תרופות?", options: ["כן", "לא"] },
-    { id: 7, question: 'האם היית בחו"ל בשנה האחרונה', options: ["כן", "לא"] },
-    { id: 8, question: "האם עברת ניתוח בחודש האחרון?", options: ["כן", "לא"] },
-    { id: 9, question: "האם יש לך מחלה כרונית?", options: ["כן", "לא"] },
-    {
-      id: 10,
-      question: "האם הנך או היית בעבר חולה במחלת הסרטן",
-      options: ["כן", "לא"],
-    },
-    {
-      id: 11,
-      question: "האם נטלת אנטיביוטיקה בשלושת הימים האחרונים?",
-      options: ["כן", "לא"],
-    },
-    {
-      id: 12,
-      question: "האם עברת טיפול אצל רופא שיניים בעשרת הימים האחרונים?",
-      options: ["כן", "לא"],
-    },
-    { id: 13, question: "האם יש לך פצע פתוח או שריטה?", options: ["כן", "לא"] },
-    { id: 14, question: "האם אתה בטווח הגילאים 17-65?", options: ["כן", "לא"] },
-    {
-      id: 15,
-      question: "האם היית בהריון במהלך החצי שנה האחרונה?",
-      options: ["כן", "לא"],
-    },
-    {
-      id: 16,
-      question: "מתי בפעם האחרונה תרמת טרומבוציטים?",
-      options: [
-        "לפני יותר מחודש",
-        "בין עשרה ימים לחודש.",
-        "פחות מעשרה ימים",
-        "לעולם לא",
-      ],
-    },
-    {
-      id: 17,
-      question: "הצהרה שכל האמור לעיל הינו אמת",
-      options: ["מצהיר ומאשר", "לא מאשר"],
-    },
-  ];
   //saves result of drop down into state by Question/ID number
   const handleResults = (e, index) => {
     let thisQ = "Q" + (index + 1);
+    if (questionList[index].condition.hospitals.includes(hospital) && questionList[index].condition.invalidSelection.includes(e.target.value)) {
+      setErrors([...errors, thisQ])
+    } else if (errors.includes(thisQ)) {
+      let newErrors = errors.slice()
+      newErrors.splice(errors.indexOf(thisQ), 1)
+      setErrors(newErrors)
+    }
     setResults({ ...result, [thisQ]: e.target.value });
-    console.log(result);
-    console.log(result.Q17);
   };
 
   const handleSubmit = (e) => {
     //change questions length depend on hospital name
-    var sum = questionList.length - 1;
+    var sum = questionList.length;
 
     //change questions length depend on gender
     if (gender == "Male") {
       sum = sum - 1;
     }
 
-    Object.keys(result).forEach(function (key) {
+    Object.keys(result).forEach((key) => {
       // Decrease the sum if the user answer the question
-
       if (result[key] !== `${t("questionnaire.select")}`) {
         sum--;
       }
-      console.log("sum is", sum);
-
-      // setComplete(true)
     });
-    if (sum === 0 && result.Q17 === `${t("questionnaire.confirm")}`) {
-      setComplete(true);
+
+    if (sum === 0 && errors.length === 0) {
       var appointId = localStorage.getItem("appointmentId");
       var userId = localStorage.getItem("userid");
       db.collection("Appointments").doc(appointId).update({
         userID: userId,
       });
-
-      console.log(appointId, userId);
-
+      // console.log(appointId, userId);
       history.push("/verfication");
-
       // Dont allow the user to go forward without accepting the terms
-    } else if (result.Q17 !== `${t("questionnaire.confirm")}`) {
-      alert(
-        "You have to confirm truth statement in order to proceed with your appointment"
-      );
+    } else if (result.Q16 !== `${t("questionnaire.confirm")}`) {
+      alert("You have to confirm truth statement in order to proceed with your appointment");
     } else {
       // Validation if the user answer all of the questions
-
-      alert(
-        "you need to answer all questions before you can submit the questionnare"
-      );
+      alert("you need to answer all questions before you can submit the questionnare");
     }
     e.preventDefault();
   };
+
+  const getInlineError = (index) => {
+    if (errors.includes('Q' + (index + 1))) {
+      return questionList[index].condition.error
+    }
+  }
 
   useEffect(() => {
     setHospital(localStorage.getItem("hospital"));
@@ -261,76 +259,71 @@ export default function Questionnaire() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        {(languageSelected === "en" ? questionList : questionListHeb).map(
+        {questionList.map(
           (question, index) =>
             //Questionairee Logic
-            hospital == "Ichilov" && question.id == 3 ? (
-              <div></div>
-            ) : hospital !== "Ichilov" && question.id == 2 ? (
-              <div></div>
-            ) : gender == "Male" && question.id == 15 ? (
+            gender == "Male" && question.id == 14 ? (
               <div></div>
             ) : (
-              <div
-                className={`${
-                  languageSelected === "en" ? "questions" : "questionsRtl"
-                }`}
-              >
                 <div
                   className={`${
-                    languageSelected === "en" ? "left" : "leftRtl"
-                  }`}
+                    languageSelected === "en" ? "questions" : "questionsRtl"
+                    }`}
                 >
-                  <div>
-                    <b>{question.question} </b>
+                  <div
+                    className={`${
+                      languageSelected === "en" ? "left" : "leftRtl"
+                      }`}
+                  >
+                    <div>
+                      <b>{question.question} </b>
+                    </div>
                   </div>
-                </div>
 
-                <div
-                  className={`${
-                    languageSelected === "en" ? "right" : "rightRtl"
-                  }`}
-                >
-                  {question.id == 5 || question.id == 16 ? (
-                    <Fragment>
-                      <select
-                        class="dropdown"
-                        onChange={(e) => handleResults(e, index)}
-                      >
-                        <option disabled="disabled" selected="selected">
-                          {t("questionnaire.select")}
-                        </option>
-                        {question.options.map((option) => (
-                          <option>{option}</option>
-                        ))}
-                      </select>
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      <radiogroup>
-                        {question.options.map((option) => (
-                          <label>
-                            <input
-                              type="radio"
-                              class="options"
-                              id={index + "@" + option}
-                              value={option}
-                              name={`Question${index}`}
-                              // onClick={() => checkedAnswers.push(index+'@'+option)}
-                              onChange={(e) => {
-                                handleResults(e, index);
-                                // handleChecked(question, index, option)
-                              }}
-                            />
-                            {" " + option}
-                          </label>
-                        ))}
-                      </radiogroup>
-                    </Fragment>
-                  )}
+                  <div
+                    className={`${
+                      languageSelected === "en" ? "right" : "rightRtl"
+                      }`}
+                  >
+                    {question.id == 4 || question.id == 15 ? (
+                      <Fragment>
+                        <select
+                          class="dropdown"
+                          onChange={(e) => handleResults(e, index)}
+                        >
+                          <option disabled="disabled" selected="selected">
+                            {t("questionnaire.select")}
+                          </option>
+                          {question.options.map((option) => (
+                            <option>{option}</option>
+                          ))}
+                        </select>
+                      </Fragment>
+                    ) : (
+                        <Fragment>
+                          <radiogroup>
+                            {question.options.map((option) => (
+                              <label>
+                                <input
+                                  type="radio"
+                                  class="options"
+                                  id={index + "@" + option}
+                                  value={option}
+                                  name={`Question${index}`}
+                                  onChange={(e) => {
+                                    handleResults(e, index);
+                                  }}
+                                />
+                                {" " + option}
+                              </label>
+                            ))}
+                          </radiogroup>
+                        </Fragment>
+                      )}
+                  </div>
+                  <p style={{ color: 'darkred', width: '80%' }}>{getInlineError(index)}</p>
                 </div>
-              </div>
-            )
+              )
         )}
         <div className="submit">
           <Button type="submit" text={t("questionnaire.submit")}></Button>
