@@ -86,7 +86,10 @@
 
   },
   "userProfile":{
-    "bloodType": "نوع الدم",
+    "youDonated": "So far you have donated",
+    "times": "times",
+    "wonderful": "Wow! That's wonderful.",
+    "seeHistory": "See History",
     "notificationPrefence": "إعدادات الإشعارات",
     "notifiedOn": "اريد تلقي إشعارات بالوسائل التالية",
     "emergencyThatWilling": "افضل تلقي إشعارات الطوارئ من خلال الوسائل التالية",
@@ -128,7 +131,8 @@
     "profile": "الصفحة الشخصية",
     "emergencyDonation": "تبرّع طوارئ",
     "Admin": "مدير",
-    "Logout": "تسجيل الخروج"
+    "Logout": "تسجيل الخروج",
+    "usersBrowsing": "UsersBrowsing"
   },
   "forgotPassword":{
     "enterEmailPhrase": "رجاءاً ادخال عنوان البريد الإلكتروني, وتفاصيل سترسل الى بريدك الشخصي",
@@ -205,5 +209,30 @@
     "verification": "تأكيد الموعد",
     "questionnaire": "إستبيان",
     "adminControls": "إعدادات المدير"
+  },
+  "browseUsers": {
+    "userProfile": "User Profile",
+    "fullName": "الاسم الكامل",
+    "bloodType": "نوع الدم",
+    "hospital": "مشفى",
+    "lastDonation": "Last Donation",
+    "details": "Details",
+    "noUsersFound": "No Users were found"
+  },
+  "userDetails": {
+    "bloodType": "نوع الدم",
+    "email": "بريد الكتروني",
+    "contactNumber": "رقم التواصل",
+    "city": "مدينة",
+    "address": "عنوان",
+    "secondaryAddress": "عنوان ثانوي"
+  },
+  "donationsHistory": {
+    "donationsHistory": "Donations History",
+    "totalDonations": "Total Donations",
+    "verification": "تأكيد الموعد",
+    "notYet": "Not Yet",
+    "verify": "Verify",
+    "donationHappened": "Did the donation happened?"
   }
 }

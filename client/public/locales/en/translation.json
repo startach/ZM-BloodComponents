@@ -85,7 +85,10 @@
     "deleteAppConfirm": "Are you sure that you want to delete the appointment"
   },
   "userProfile": {
-    "bloodType": "Blood Type",
+    "youDonated": "So far you have donated",
+    "times": "times",
+    "wonderful": "Wow! That's wonderful.",
+    "seeHistory": "See History",
     "notificationPrefence": "Notification Preferences",
     "notifiedOn": "I want to get notified on",
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
@@ -127,7 +130,8 @@
     "profile": "Profile",
     "emergencyDonation": "Emergency Donation",
     "Admin": "Admin",
-    "Logout": "Logout"
+    "Logout": "Logout",
+    "usersBrowsing": "Users Browsing"
   },
   "forgotPassword": {
     "enterEmailPhrase": "Please enter your email address below and an email will with your information will be sent to it.",
@@ -254,5 +258,30 @@
     "verification": "Appointment Verification",
     "questionnaire": "Questionnaire",
     "adminControls": "Admin Controls"
+  },
+  "browseUsers": {
+    "userProfile": "User Profile",
+    "fullName": "Full Name",
+    "bloodType": "Blood Type",
+    "hospital": "Hospital",
+    "lastDonation": "Last Donation",
+    "details": "Details",
+    "noUsersFound": "No Users were found"
+  },
+  "userDetails": {
+    "bloodType": "Blood Type",
+    "email": "Email",
+    "contactNumber": "Contact Number",
+    "city": "City",
+    "address": "Address",
+    "secondaryAddress": "Secondary Address"
+  },
+  "donationsHistory": {
+    "donationsHistory": "Donations History",
+    "totalDonations": "Total Donations",
+    "verification": "Appointment Verification",
+    "notYet": "Not Yet",
+    "verify": "Verify",
+    "donationHappened": "Did the donation happened?"
   }
 }

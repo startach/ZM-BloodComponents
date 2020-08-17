@@ -28,6 +28,7 @@ import PublicRoute from "../../routes/PublicRoute";
 import CordRoute from "../../routes/CordRoute";
 import AdminRoute from "../../routes/AdminRoute";
 import { ForgotPassword } from "../forgetPassword/ForgotPassword";
+import UsersBrowsing from '../../Screens/usersBrowsing';
 
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -110,6 +111,12 @@ function App() {
           path="/edit-delete"
           component={DeleteEditAppointments}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
+        />
+        <CordRoute 
+          path='/users' 
+          component={UsersBrowsing} 
+          isAuthenticated={isAuthenticated} 
           userLevel={userClaims}
         />
 

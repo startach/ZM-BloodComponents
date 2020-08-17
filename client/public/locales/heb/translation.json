@@ -91,7 +91,10 @@
     "deleteAppConfirm": "אתה בטוח שאתה רוצה למחוק את התור"
   },
   "userProfile": {
-    "bloodType": "סוג דם",
+    "youDonated": "עד כה תרמת",
+    "times": "פעמים",
+    "wonderful": "וואו! זה מדהים.",
+    "seeHistory": "ראה היסטוריה",
     "notificationPrefence": "העדפות ההתראות",
     "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
     "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
@@ -133,7 +136,8 @@
     "profile": "פרופיל",
     "emergencyDonation": "תרומת חירום",
     "Admin": "הגדרות מנהל",
-    "Logout": "התנתק"
+    "Logout": "התנתק",
+    "usersBrowsing": "חיפוש משתמשים"
   },
   "forgotPassword": {
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
@@ -298,5 +302,30 @@
     "seventhP": "למידע ושאלות מוזמנים ליצור קשר באחת הדרכים בעמוד ",
     "contact": "צור קשר.",
     "eighthP": "צוות \"בנק מרכיבי הדם\" של עמותת זכרון מנחם."
+  },
+  "browseUsers": {
+    "userProfile": "פרופיל משתמש",
+    "fullName": "שם מלא",
+    "bloodType": "סוג דם",
+    "hospital": "בית חולים",
+    "lastDonation": "תרומה אחרונה",
+    "details": "פרטים",
+    "noUsersFound": "לא נמצאו משתמשים"
+  },
+  "userDetails": {
+    "bloodType": "סוג דם",
+    "email": "אימייל",
+    "contactNumber": "טלפון",
+    "city": "עיר",
+    "address": "כתובת",
+    "secondaryAddress": "כתובת משנית"
+  },
+  "donationsHistory": {
+    "donationsHistory": "היסטוריית תרומות",
+    "totalDonations": "סך התרומות",
+    "verification": "אישור התור",
+    "notYet": "טרם",
+    "verify": "אמת",
+    "donationHappened": "האם התרומה התבצעה?"
   }
 }
