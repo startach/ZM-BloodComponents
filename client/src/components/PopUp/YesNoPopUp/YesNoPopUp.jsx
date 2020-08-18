@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import { useTranslation } from 'react-i18next';
 import '../YesNoPopUp/yesNoPopUp.css';
 
-export default function YesNoPopup(props) {
+export default function YesNoPopUp(props) {
     const { t } = useTranslation();
     const { text, handleYes, children, ...other } = props;
 
