@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { updateAppointment } from '../../../services/appointmentService';
 import { getHospitalLangName } from '../../../services/hospitalService';
-import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopup';
+import YesNoPopUp from '../../popUp/YesNoPopup/YesNoPopup';
 import "../dashboard.css";
 
 export default function AppointmentsTable(props) {
