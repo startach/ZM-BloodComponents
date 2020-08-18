@@ -15,9 +15,8 @@ import AppointmentList from "../appointmentsList/appointmenstList";
 export default function AddAppointments() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-  const [textFieldVal, setTextFieldVal] = useState(1);
-
   const [hospitalsDetails, setHospitalsDetails] = useState([]);
+
   useEffect(() => {
     //load hospitals into hospitalsList
     const hospitals = [];
@@ -52,12 +51,15 @@ export default function AddAppointments() {
   let count = 0;
 
   //set state values for slots & hospital
-  const handleChange = (e) => {
+  const changeGranulocytesSlots = (e) => {
     let value = parseInt(e.target.value);
     const max = parseInt(e.target.max);
     if (value > max) value = 500;
-    setTextFieldVal(value);
 
+    setCurrentApp({ ...currentApp, [e.target.id]: value });
+    console.log(currentApp);
+  };
+  const handleChange = (e) => {
     setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
     console.log(currentApp);
   };
@@ -76,7 +78,11 @@ export default function AddAppointments() {
     if (e.target.value === "Thrombocytes") {
       setVisible(false);
       setAppList([]);
-      setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
+      setCurrentApp({
+        ...currentApp,
+        [e.target.id]: e.target.value,
+        slots: "",
+      });
       setMatches(null);
     } else {
       setVisible(true);
@@ -406,7 +412,11 @@ export default function AddAppointments() {
 
         <div className="typeSlots">
           {!visible ? (
-            <select className="dropdown ml-3 pa2" id="slots">
+            <select
+              className="dropdown ml-3 pa2"
+              id="slots"
+              onChange={handleChange}
+            >
               <option selected disabled>
                 number of slots
               </option>
@@ -445,16 +455,14 @@ export default function AddAppointments() {
 
           {visible ? (
             <TextField
-              value={textFieldVal}
+              value={currentApp.slots}
               type="number"
-              min="1"
-              max="250"
               id="slots"
               InputProps={{ inputProps: { min: 1, max: 500 } }}
               type="number"
               className="TextField pa2"
               fullWidth="true"
-              onChange={handleChange}
+              onChange={changeGranulocytesSlots}
               label="number of slots"
               InputLabelProps={{
                 shrink: true,
