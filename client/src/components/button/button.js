@@ -6,7 +6,7 @@ const button = (props) => {
         <div style = {{'marginTop': props.marginTop}} className="buttonContainer">
 
             <button id="btn" type={props.type}  style={{ 'background': props.color , 'width':props.width }}
-                onClick={props.onClick}> {props.text} </button>
+                onClick={props.onClick} disabled={props.disabled}> {props.text} </button>
         </div>
 
     )

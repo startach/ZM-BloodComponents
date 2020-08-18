@@ -5,13 +5,21 @@
     width: 88%;
     margin: 6%;
     color: gray;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .userImage {
 
     text-align: center;
   
+}
+
+.pinkMessageBox {
+    border: solid #d5068d 1px;
+    margin: 4% 6%;
+    color: gray;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 .title {
@@ -27,53 +35,6 @@
     border: 1px solid #000000;
 }
 
-.line2 {
-    border: 1px solid #000000;
-}
-
-.topBox {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 4%;
-    padding-bottom: 4%;
-    margin-right: 2%;
-    font-size: 18px;
-}
-
-.topBox-right {
-    white-space: nowrap;
-}
-
-.bloodType {
-    font-weight: 800;
-    margin-right: 2%;
-}
-
-.userDetails {
-    width: 100%;
-}
-
-.dataItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0px;
-    font-size: 16px;
-    background-color:   rgba(199, 234, 175, 0.651);
-    color: gray;
-    min-height: 50px;
-}
-
-.iconBackground {
-
-    background-color: rgba(236, 248, 228, 0.65);
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(155, 153, 153);
-    min-height: 50px;
-}
 
 .icon,
 .data,
@@ -86,32 +47,4 @@
 .icon {
     font-size: 30px;
     margin: 10px;
-}
-.data { 
-
-    padding: 2%;
-    width: 60%;;
-}
-
-
-.editBtn {
-    background: #d5068d;
-    border-radius: 2px;
-    width: 15%;
-    color: white;
-    justify-content: center;
-    transition: ease-out 0.3s;
-    min-height: 50px;
-    padding-top: 15px;
-
-}
-
-
-.userBloodType {
-
-    display: flex;
-    background-color: #ecf8e4;
-    border: none;
-    width: 200px;
-    color: grey;
 }
