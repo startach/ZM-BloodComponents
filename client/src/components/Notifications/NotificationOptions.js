@@ -20,8 +20,7 @@ const NotificationOptions = (props) => {
                 SMS: false,
                 Whatsapp: false,
                 Phonecall: false,
-                Email: false,
-                inAppAlert: false
+                Email: false
             })
         } else {
             setNotes({ ...props.notifications })
@@ -78,16 +77,6 @@ const NotificationOptions = (props) => {
                         checked={notes.Email}
                         onChange={(e) => handleChange(e, notes.Email)} />
                     <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Email')}</label>
-                </div>
-                <div>
-                    <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="exampleCheck1"
-                        value="inAppAlert"
-                        checked={notes.inAppAlert}
-                        onChange={(e) => handleChange(e, notes.inAppAlert)} />
-                    <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.inAppAlert')}</label>
                 </div>
             </div>
         </div>

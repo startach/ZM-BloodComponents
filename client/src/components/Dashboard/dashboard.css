@@ -1,20 +1,4 @@
 
-.pinkBox {
-    border: solid #d5068d 1px;
-    margin: 4% 6%;
-    color: gray;
-    text-align: right;
-    padding-right: 2%;
-    padding-left: 2%;
-}
-
-.highlight {
-    color: #d5068d;
-}
-
-.pageTitle {
-    font-size: 18px;;
-}
 
 .hospitalsOptionsList {
     width: 30vw;
@@ -111,11 +95,6 @@
     height: fit-content;
 
 
-}
-
-.introSpan {
-
-    font-size: 16px;
 }
 
 
