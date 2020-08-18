@@ -24,7 +24,7 @@ const VerificationList = () => {
 
                 <p id="firstHeader">{t('verificationList.registeredSuccesfully')} ! </p>
 
-                <p id="secondHeader">{t('verificationList.expectingYou')} <b>{localStorage.getItem('appointmentTime')} </b> {t('verificationList.onThe')} <b>{localStorage.getItem('appointmentDate')}</b> {t('verificationList.at')} <b> {localStorage.getItem('hospital')} {t('verificationList.hospital')}</b> </p>
+                <p id="secondHeader">{t('verificationList.expectingYou')} <b>{localStorage.getItem('appointmentTime')} </b> {t('verificationList.onThe')} <b>{localStorage.getItem('appointmentDate')}</b> {t('verificationList.at')} <b> {localStorage.getItem('hospitalLang')} {t('verificationList.hospital')}</b> </p>
             </div>
 
 

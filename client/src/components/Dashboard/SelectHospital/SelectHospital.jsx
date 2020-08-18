@@ -12,9 +12,9 @@ export default function SelectHospital(props) {
             <div>
             <select className="hospitalsOptionsList" onChange={handleHospitalChange}>
                 <option value="Select" disabled selected> {t('general.select')}</option>
-                {hospitals.map((name, index) => (
-                <option key={index} value={name}>
-                    {name}
+                {hospitals.map((names, index) => (
+                <option key={index} value={JSON.stringify(names)}>
+                    {names.currLangName}
                 </option>
                 ))}
             </select>

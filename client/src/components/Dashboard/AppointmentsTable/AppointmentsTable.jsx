@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import YesNoPopUp from '../../PopUp/YesNoPopUp/YesNoPopUp';
+import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopUp';
 import { updateAppointment } from '../../../services/appointmentService';
+import { getHospitalLangName } from '../../../services/hospitalService';
 import "../dashboard.css";
 
 export default function AppointmentsTable(props) {
     const { t, appointments, withActions } = props;   
+    const [hospitalNameLang, setHospitalNameLang] = useState();
+
+    ( appointments.length > 0 ) && getHospitalLangName(appointments[0].hospitalID).then(data => setHospitalNameLang(data));
 
     const deleteAppointment = ({appId}) => {
         updateAppointment(appId, {
@@ -32,9 +36,9 @@ export default function AppointmentsTable(props) {
               <th className="headerEntries"></th> 
               }
             </tr>
-            {appointments.map(appointment => (
+            {appointments.map(appointment => 
               <tr className='rowContainer' id={appointment.id}>
-                <td className='rowClass'>{appointment.hospitalName}</td>
+                <td className='rowClass'>{hospitalNameLang}</td>
                 <td className='rowClass' >{appointment.date}</td>
                 <td className='rowClass'>{appointment.time}</td> 
                 { withActions && 
@@ -49,7 +53,7 @@ export default function AppointmentsTable(props) {
                 </td> 
                 }   
               </tr>
-            ))}
+              )}
           </table>
     )
 }

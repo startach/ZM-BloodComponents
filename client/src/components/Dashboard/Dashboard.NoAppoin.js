@@ -35,8 +35,10 @@ function DashboardNoAppoin() {
   const [haveAppointmentTomorrow, setHaveAppointmentTomorrow] = useState(false);
 
   const handleHospitalChange = (e) => {
-    setChosenHospital(e.target.value)
-    localStorage.setItem('hospital', e.target.value);
+    const hospitalNames = JSON.parse(e.target.value); 
+    setChosenHospital(hospitalNames.name)
+    localStorage.setItem('hospital', hospitalNames.name);
+    localStorage.setItem('hospitalLang', hospitalNames.currLangName)
   }
 
   const handleViewDates = () => {
@@ -45,12 +47,13 @@ function DashboardNoAppoin() {
 
   const setHospitalNames = () => {
     getAllHospitals().then((hopsitals) => {
-      const hospitalsNames = hopsitals.docs.map(hospitalDetails => {
-        return hospitalDetails.data().hospitalName
-      })
-      setHospitals(hospitalsNames)
+      const hospitalsNames = hopsitals.map(hospitalDetails => {
+        return { name: hospitalDetails.hospitalName, currLangName: hospitalDetails.currLangName }
+      });
+
+      setHospitals(hospitalsNames)  
     })
-  }
+  };
 
   const classifiyAppointment = (userAppointment) => {
     const appData = userAppointment.data();
@@ -124,23 +127,27 @@ function DashboardNoAppoin() {
           querySnapshot.docs.forEach(hospitalAppointments => {
             let app = hospitalAppointments.data().timestamp.seconds
             if (app > today) {
-              let currentID = hospitalAppointments.id
-              let appObj = { ...hospitalAppointments.data(), ['id']: currentID }
-              Appointments.push(appObj)
+              let currentID = hospitalAppointments.id;
+              let appObj = {
+                ...hospitalAppointments.data(),
+                ["id"]: currentID,
+              };
+              Appointments.push(appObj);
             }
-          })
+          });
           Appointments.sort(function (b, a) {
             a = new Date(a.timestamp.seconds);
             b = new Date(b.timestamp.seconds);
             return a > b ? -1 : a < b ? 1 : 0;
+
           })
           setAvailableAppointments(Appointments)
         })
-        .catch(error => {
+        .catch((error) => {
           // Catch errors
         });
     }
-  }, [chosenHospital])
+  }, [chosenHospital]);
 
 
   return (
