@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopUp';
+import { YesNoPopUp } from '../../popUp/YesNoPopUp/YesNoPopUp';
 import { updateAppointment } from '../../../services/appointmentService';
 import { getHospitalLangName } from '../../../services/hospitalService';
 import "../dashboard.css";
