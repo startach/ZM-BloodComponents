@@ -461,7 +461,7 @@ export default function AddAppointments() {
               InputProps={{ inputProps: { min: 1, max: 500 } }}
               type="number"
               className="TextField pa2"
-              fullWidth="true"
+              fullWidth={true}
               onChange={changeGranulocytesSlots}
               label="number of slots"
               InputLabelProps={{
