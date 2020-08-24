@@ -29,7 +29,7 @@
     "youAre": "انت",
     "eligible": "مؤهل",
     "toDonate": "للتبرّع",
-    "fewDetails": "بعض التفاصيل حول الموعد القادم الخاص بك",
+    "fewDetails": ".بعض التفاصيل حول الموعد القادم الخاص بك",
     "date": "تاريخ",
     "Time": "ساعة",
     "Location": "موقع الموعد",
@@ -50,7 +50,8 @@
     "arrivalConfirmed": "تم تأكيد الوصول",
     "confirmMadeDonation": "يرجى تأكيد أنك قدمت التبرع.",
     "madeDonation": "لقد تبرعت",
-    "notMadeDonation": "لم أتبرع"
+    "notMadeDonation": "لم أتبرع",
+    "ThankYou": "شكرا جزيلا"
   },
   "addAppointments":{
     "addAppointmentTitle": "أضِف مواعيد",

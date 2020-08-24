@@ -4,7 +4,7 @@ import Button from '../../../../button';
 import ConfirmDonation from '../ConfirmDonation/ConfirmDonation';
 
 export default function LastMonthAppointment(props) {
-    const {t, appointment, pastAppointments, appointmentsCount, handleViewDates} = props;
+    const {t, userName, appointment, pastAppointments, appointmentsCount, handleViewDates} = props;
     const [viewDates, setViewDates] = useState(false);
     const [confirmLastAppointment, setConfirmLastAppointment] = useState(false);
 
@@ -20,11 +20,12 @@ export default function LastMonthAppointment(props) {
     return (
         <div>
             {appointment.hasDonated === null && !confirmLastAppointment ? 
-                <ConfirmDonation t={t} appointment={appointment} appointmentDate={pastAppointments[appointmentsCount - 1]} onConfirm={handleConfirmLastAppointment}/>
+                <ConfirmDonation t={t} userName={userName} appointment={appointment} appointmentDate={pastAppointments[appointmentsCount - 1]} onConfirm={handleConfirmLastAppointment}/>
                 :
                 <div>
                     <div className="pinkBox">
-                    {appointmentsCount > 0 ? `${t('dashboard.lastDonation')} ${pastAppointments[appointmentsCount - 1]}. ` :  undefined }
+                    {t('dashboard.hello')} <span className="highlight">{userName}</span>,
+                    {appointmentsCount > 0 && ` ${t('dashboard.lastDonation')} ${pastAppointments[appointmentsCount - 1]}. ` }
                     {t('dashboard.waitOneMonth')}
                     </div>
                     <div>

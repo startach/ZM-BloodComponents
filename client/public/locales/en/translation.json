@@ -22,14 +22,14 @@
   },
   "dashboard": {
     "hello": "Hello",
-    "intro": " welcome to the App, we look forward to your first donation",
+    "intro": "we look forward to your first donation.",
     "youDonated": " so far you have donated ",
     "donationTimes": " times",
     "wonderful": " Wow! That's wonderful",
     "youAre": "You are",
     "eligible": "eligible",
     "toDonate": "to donate.",
-    "fewDetails": "Here is few details regarding your upcoming appointment",
+    "fewDetails": "Here is few details regarding your upcoming appointment.",
     "date": "Date",
     "Time": "Time",
     "Location": "Location",
@@ -50,7 +50,8 @@
     "arrivalConfirmed": "Arrival confirmed",
     "confirmMadeDonation": "Please confirm that you have made the donation.",
     "madeDonation": "I made the donation",
-    "notMadeDonation": "I did not made the donation"
+    "notMadeDonation": "I did not made the donation",
+    "ThankYou": "Thank You!"
   },
   "addAppointments": {
     "addAppointmentTitle": "Add Appointments",

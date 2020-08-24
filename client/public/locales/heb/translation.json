@@ -28,20 +28,20 @@
   },
   "dashboard": {
     "hello": "שלום",
-    "intro": " אנחנו מחכים לתרומתך הראשונה",
+    "intro": "אנחנו מחכים לתרומתך הראשונה.",
     "youDonated": " עד כה תרמת ",
     "donationTimes": " פעמים",
     "wonderful": " וואו! זה מדהים",
     "youAre": "אתה",
     "eligible": "כשיר",
     "toDonate": "להגיע לתרום.",
-    "fewDetails": "להלן כמה נתונים לגבי התור הקרוב",
+    "fewDetails": "אלו הם פרטי התור הקרוב.",
     "date": "תאריך",
     "Time": "שעה",
     "Location": "מיקום",
     "Cancel": "ביטול",
     "deleteAppointment": "אתה בטוח שאתה רוצה לבטל את התור שנקבע לך?",
-    "scheduleAppointment": "נא לקבוע תור חדש",
+    "scheduleAppointment": "אנא קבע תור לתרומה.",
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
     "orderTaxi": "בקש הסעה",
@@ -56,7 +56,8 @@
     "arrivalConfirmed": "הגעה אושרה",
     "confirmMadeDonation": "אנא אשר שהתרומה אכן התבצעה.",
     "madeDonation": "תרמתי",
-    "notMadeDonation": "לא תרמתי"
+    "notMadeDonation": "לא תרמתי",
+    "ThankYou": "תודה רבה!"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
