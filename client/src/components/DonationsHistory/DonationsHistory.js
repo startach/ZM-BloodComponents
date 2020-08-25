@@ -55,14 +55,14 @@ export default function DonationsHistory(props) {
   const updateDonationHappened = (e) => {
     const appointmentId = e.target.id;
     db.collection('Appointments').doc(appointmentId).update({
-      confirmArrival: true
+      hasDonated: true
     });
     loadAppointments();
   };
   const updateDonationNotHappened = (e) => {
     const appointmentId = e.target.id;
     db.collection('Appointments').doc(appointmentId).update({
-      userID: null
+      hasDonated: false
     });
     loadAppointments();
   };
@@ -74,7 +74,7 @@ export default function DonationsHistory(props) {
   ];
 
   const appointmentsTableRows = appointments.map((appointment) => {
-    const confirmArrivalField = appointment.confirmArrival ? 
+    const confirmArrivalField = appointment.hasDonated ? 
       t('general.Yes') 
     : (
       <div>
