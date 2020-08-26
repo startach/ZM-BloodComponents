@@ -1,25 +1,16 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, {  useState, useEffect } from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
-import { startLogout } from '../../actions/googleAuth'
 import './burgerMenu.css'
-import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
-
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 
 
 const BurgerMenu = () => {
-
-  let languageSelected = localStorage.getItem('i18nextLng');
-
-
+  const languageSelected = localStorage.getItem('i18nextLng');
   const { t } = useTranslation();
-
   const [accessLevel, setAccessLevel] = useState("loading");
-
 
   useEffect(() => {
     setAccessLevel(localStorage.getItem('userLevel'))
@@ -32,7 +23,6 @@ const BurgerMenu = () => {
     localStorage.removeItem('userLevel');
     //email password sign out & google signout
     auth.signOut();
-
   }
 
   var styles = {
@@ -125,10 +115,6 @@ const BurgerMenu = () => {
         <div className="line"></div>
         <Link to='/Emergency' className="link">
         {t('burgerMenu.emergencyDonation')} 
-            </Link>
-        <div className="line"></div>
-        <Link to='/prevapp' className="link">
-        {t('burgerMenu.previousAppointments')}
             </Link>
         <div className="line"></div>
         {accessLevel === "admin" ? <Link to='/admin' className="link">
