@@ -122,10 +122,10 @@ const BurgerMenu = () => {
         <Link to='/user' className="link">
         {t('burgerMenu.profile')} 
             </Link>
-        <div className="line"></div>
+        {/* <div className="line"></div>
         <Link to='/Emergency' className="link">
         {t('burgerMenu.emergencyDonation')} 
-            </Link>
+            </Link> */}
         <div className="line"></div>
         <Link to='/prevapp' className="link">
         {t('burgerMenu.previousAppointments')}
