@@ -1,18 +1,14 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./DonationsHistory.css";
-import { db, auth } from '../firebase/firebase';
-import { useHistory, Redirect } from 'react-router-dom';
+import { db } from '../firebase/firebase';
+import { useHistory } from 'react-router-dom';
 import Popup from "reactjs-popup";
-import i18next from 'i18next';
 import Table from "../Table/Table";
-import Button from '../button'
+import { getAppointmentsForUser } from '../../services/appointmentService';
 
 export default function DonationsHistory(props) {
   const { t, userId, editableMode } = props;
-
   const [appointments, setAppointments] = useState([]);
-  const [reload, setReload] = useState(false);
-
   const history = useHistory();
   const loggedUser = localStorage.getItem("userid");
 
@@ -20,20 +16,14 @@ export default function DonationsHistory(props) {
     history.push("/login");
 
   const loadAppointments = () => {
-    const today = Date.now() / 1000;
-    const filteredQuery = db
-      .collection("Appointments")
-      .where("userID", "==", userId);
+    const filteredQuery = getAppointmentsForUser(userId);
   
     filteredQuery
       .get()
       .then((querySnapshot) => {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointment) => {
-          let app = hospitalAppointment.data().timestamp.seconds;
-          if (app < today) {
             Appointments.push({ ...hospitalAppointment.data(), id: hospitalAppointment.id });
-          }
         });
         
         Appointments.sort(function (a, b) {
@@ -74,9 +64,11 @@ export default function DonationsHistory(props) {
   ];
 
   const appointmentsTableRows = appointments.map((appointment) => {
-    const confirmArrivalField = appointment.hasDonated ? 
+    const confirmArrivalField = appointment.hasDonated === true ? 
       t('general.Yes') 
-    : (
+    : 
+    appointment.hasDonated === null && 
+      (
       <div>
         {t('donationsHistory.notYet')}
         <br />
