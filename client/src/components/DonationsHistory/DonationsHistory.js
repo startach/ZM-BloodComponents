@@ -64,9 +64,12 @@ export default function DonationsHistory(props) {
   ];
 
   const appointmentsTableRows = appointments.map((appointment) => {
-    const confirmArrivalField = appointment.hasDonated === true ? 
+    const confirmArrivalField = appointment.hasDonated ? 
       t('general.Yes') 
     : 
+    appointment.hasDonated === false ? 
+      t('general.No')
+    :
     appointment.hasDonated === null && 
       (
       <div>
@@ -126,7 +129,7 @@ export default function DonationsHistory(props) {
 
   return (
     <div>
-      <h2>{t('donationsHistory.donationsHistory')}</h2>
+      <h3>{t('donationsHistory.donationsHistory')}</h3>
       <span>{t('donationsHistory.totalDonations')}: {appointments.length}</span>
       <Table 
         headerFields={headerFields} 
