@@ -333,21 +333,22 @@ export default function AddAppointments() {
                         showTimeSelect
                         dateFormat="Pp"
                         className="Datepicker pa2"
-                    minDate={new Date()}
-                    placeholderText="Select a date"
-                    popperModifiers={{
-                        offset: {
-                          enabled: true,
-                          offset: "0px, 0px"
-                        },
-                        preventOverflow: {
-                          enabled: true,
-                          escapeWithReference: false,
-                          boundariesElement: "scrollParent"
+                        minDate={new Date()}
+                        placeholderText="Select a date"
+                        popperModifiers={{
+                            offset: {
+                            enabled: true,
+                            offset: "0px, 0px"
+                            },
+                            preventOverflow: {
+                            enabled: true,
+                            escapeWithReference: false,
+                            boundariesElement: "scrollParent"
+                            }
                         }
-                      }}
+                    }
                     />
-                    <select className="dropdown ml-3 pa2" id="hospitalName" onChange={handleChangeHospital}>
+                    <select className="dropdownAdd ml-3 pa2" id="hospitalName" onChange={handleChangeHospital}>
                         <option selected disabled >{t('addAppointments.selectHospital')}</option>
                         {
                             hospitalsDetails.map(hospital => {
@@ -359,10 +360,7 @@ export default function AddAppointments() {
                             })
                         }
                     </select>
-
-
                 </div>
-
                 <div className="typeSlots">
                     <TextField
                         id="slots"
@@ -371,7 +369,7 @@ export default function AddAppointments() {
                         defaultValue="1"
                         className="TextField pa2"
                         onChange={handleChange}
-                        label="number of slots"
+                        label={t('addAppointments.slots')}
                         InputProps={{
                             inputProps: { min: 1 }
                         }}
@@ -379,7 +377,7 @@ export default function AddAppointments() {
                             shrink: true,
                         }} />
                     <select
-                        className="dropdown ml-3 pa2"
+                        className="dropdownAdd ml-3 pa2"
                         id="appointmentType"
                         onChange={handleATChange} >
                         <option selected disabled>{t('addAppointments.selectAppointmentType')}</option>
@@ -387,8 +385,6 @@ export default function AddAppointments() {
                         <option id="AppointmentType" value="Granulocytes" className="option"> {t('general.Granulocytes')}</option>
                     </select>
                 </div>
-
-
                 {visible ? (
                     <div className='Gran'>
                         <TextField
@@ -403,7 +399,7 @@ export default function AddAppointments() {
                             }} />
                         <select
                             id="bloodType"
-                            className="dropdown ml-3 pa2 w-20"
+                            className="dropdownAdd ml-3 pa2 w-20"
                             onChange={handleGranChange}
                             required>
                             <option value="N/A" disabled selected>
@@ -420,8 +416,6 @@ export default function AddAppointments() {
                         </select>
                     </div>
                 ) : null}
-
-
                 <div className='add'>
                     <Button
                         color="yellowgreen"
@@ -430,11 +424,9 @@ export default function AddAppointments() {
                         text={!matches ? t('addAppointment.add') : t('addAppointments.update')} >
                     </Button>
                 </div>
-
             </div>
             <hr />
             <div className="display ma0">
-
                 {appList.length === 0 ?
                     <div className="text-center">{t('addAppointments.noAppsToSubmit')}</div>
                     : currentApp.appointmentType === 'Thrombocytes' ?
@@ -472,7 +464,6 @@ export default function AddAppointments() {
                                     ))}
                                 </tbody>
                             </table>
-
                             <Button
                                 className="mt-4"
                                 type="button"
@@ -515,9 +506,7 @@ export default function AddAppointments() {
                             </table>
                             <div className="text-right mr-4 ml-2"><b>{t('addAppointments.messagePreview')}:</b></div>
                             <div className="text-right mt-3 mr-4 ml-2">{appointmentTypeDetails.Granulocytes.message === `${t('addAppointments.defaultMessage')}` ? smsMessage : appointmentTypeDetails.Granulocytes.message}</div>
-
                             <div className="text-center mt-3"><b>{t('addAppointments.matchesFound')}:</b> {matches}</div>
-
                             <div className="text-center my-3">
                                 {t('addAppointments.contactMethod')}:
                                 <select onChange={(e) => setContact(e.target.value)} className="ml-1">
@@ -525,7 +514,6 @@ export default function AddAppointments() {
                                     <option value="SMS">{t('notificationOptions.SMS')}</option>
                                 </select>
                             </div>
-
                             <Button
                                 className="mt-4"
                                 type="button"
@@ -534,24 +522,13 @@ export default function AddAppointments() {
                             {/* <button className="text-center my-3 ml-3" onClick={handleSendEmail}>SEND EMAIL TEST</button>
                             <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button> */}
                         </div>
-
                 }
             </div>
-
-
-
-
             <div ref={displayNode}
                 className="text-center mt-3 msg"
                 style={{ color: "green", fontWeight: "800" }}>
             </div>
-
             <div style={{ height: "100px" }}></div>
-
-
-
-
         </div>
-
     )
 }
