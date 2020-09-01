@@ -80,7 +80,8 @@
     "contactMethod": "שיטת יצירת הקשר",
     "sendRequest": "שלח בקשה",
     "update": "עדכון",
-    "defaultMessage": "הודעת ברירת מחדל"
+    "defaultMessage": "הודעת ברירת מחדל",
+    "selectBloodType": "בחר סוג דם"
   },
   "editDeleteApp": {
     "editDeleteTitle": "עריכה ומחקית תורים",

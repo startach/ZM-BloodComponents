@@ -74,7 +74,8 @@
     "contactMethod": "Contact Method",
     "sendRequest": "Send Request",
     "update": "Update",
-    "defaultMessage": "Default message"
+    "defaultMessage": "Default message",
+    "selectBloodType": "Select Blood Type"
   },
   "editDeleteApp": {
     "editDeleteTitle": "Edit & Delete Appointments",
