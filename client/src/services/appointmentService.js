@@ -12,6 +12,11 @@ export const getAppointmentsForUser = (userID) => {
     return (db.collection('Appointments').where('userID', '==', userID));
 }
 
+export const getDonationsForUser = (userID) => {
+    return (db.collection('Appointments').where('userID', '==', userID).where("hasDonated", "==", true));
+}
+
 export const getAvailableAppointmentsForHospital = (hospitalName) => {
     return (db.collection('Appointments').where('userID', '==', null).where('hospitalName', '==', hospitalName));
 }
+

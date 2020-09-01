@@ -325,9 +325,9 @@
   "donationsHistory": {
     "donationsHistory": "היסטוריית תרומות",
     "totalDonations": "סך התרומות",
-    "verification": "אישור התור",
-    "notYet": "טרם",
-    "verify": "אמת",
+    "verification": "האם תרם?",
+    "notYet": "לא ידוע",
+    "verify": "עדכן",
     "donationHappened": "האם התרומה התבצעה?"
   }
 }
