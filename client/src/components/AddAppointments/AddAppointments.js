@@ -45,6 +45,8 @@ export default function AddAppointments() {
     timestamp: null,
     slots: 1,
     appointmentType: null,
+    confirmArrival: false,
+    hasDonated: null,
   });
 
   //for counted appointments added
@@ -59,6 +61,7 @@ export default function AddAppointments() {
     setCurrentApp({ ...currentApp, [e.target.id]: value });
     console.log(currentApp);
   };
+
   const handleChange = (e) => {
     setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
     console.log(currentApp);

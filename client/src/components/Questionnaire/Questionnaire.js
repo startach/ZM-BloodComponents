@@ -69,7 +69,7 @@ export default function Questionnaire() {
         t('questionnaire.q_diabetes_option_no'),
       ],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_stable'), t('questionnaire.q_diabetes_option_no')],
+        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
         error: t("questionnaire.error_diabetes")
       }
     },

@@ -28,24 +28,36 @@
   },
   "dashboard": {
     "hello": "שלום",
-    "intro": " אנחנו מחכים לתרומתך הראשונה",
+    "intro": "אנחנו מחכים לתרומתך הראשונה.",
     "youDonated": " עד כה תרמת ",
     "donationTimes": " פעמים",
     "wonderful": " וואו! זה מדהים",
     "youAre": "אתה",
     "eligible": "כשיר",
     "toDonate": "להגיע לתרום.",
-    "fewDetails": "להלן כמה נתונים לגבי התור הקרוב",
+    "fewDetails": "אלו הם פרטי התור הקרוב.",
     "date": "תאריך",
     "Time": "שעה",
     "Location": "מיקום",
     "Cancel": "ביטול",
     "deleteAppointment": "אתה בטוח שאתה רוצה לבטל את התור שנקבע לך?",
-    "scheduleAppointment": "נא לקבוע תור חדש",
+    "scheduleAppointment": "אנא קבע תור לתרומה.",
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
     "orderTaxi": "בקש הסעה",
-    "rideDetails": "פרטי ההסעה"
+    "rideDetails": "פרטי ההסעה",
+    "lastDonation": "תרומתך האחרונה בוצעה בתאריך ",
+    "waitOneMonth": "יש לחכות לפחות חודש לפני שניתן לתרום שוב.",
+    "remindMe": "תזכר אותי כשאוכל",
+    "viewAvailableAppiontments": "צפייה בתורים פנויים",
+    "appointmentTomorrow": "אתה רשום לתרומה מחר.",
+    "lookingForward": "מצפים לך!",
+    "verifyArrival": "אני מאשר הגעה",
+    "arrivalConfirmed": "הגעה אושרה",
+    "confirmMadeDonation": "אנא אשר שהתרומה אכן התבצעה.",
+    "madeDonation": "תרמתי",
+    "notMadeDonation": "לא תרמתי",
+    "ThankYou": "תודה רבה!"
   },
   "addAppointments": {
     "addAppointmentTitle": "הוספת מועדים",
@@ -68,7 +80,8 @@
     "contactMethod": "שיטת יצירת הקשר",
     "sendRequest": "שלח בקשה",
     "update": "עדכון",
-    "defaultMessage": "הודעת ברירת מחדל"
+    "defaultMessage": "הודעת ברירת מחדל",
+    "selectBloodType": "בחר סוג דם"
   },
   "editDeleteApp": {
     "editDeleteTitle": "עריכה ומחקית תורים",
@@ -80,7 +93,10 @@
     "deleteAppConfirm": "אתה בטוח שאתה רוצה למחוק את התור"
   },
   "userProfile": {
-    "bloodType": "סוג דם",
+    "youDonated": "עד כה תרמת",
+    "times": "פעמים",
+    "wonderful": "וואו! זה מדהים.",
+    "seeHistory": "ראה היסטוריה",
     "notificationPrefence": "העדפות ההתראות",
     "notifiedOn": "אני רוצה לקבל תזכורות ועדכונים לגבי התרומות שלי",
     "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
@@ -122,7 +138,8 @@
     "profile": "פרופיל",
     "emergencyDonation": "תרומת חירום",
     "Admin": "הגדרות מנהל",
-    "Logout": "התנתק"
+    "Logout": "התנתק",
+    "usersBrowsing": "חיפוש משתמשים"
   },
   "forgotPassword": {
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
@@ -287,5 +304,30 @@
     "seventhP": "למידע ושאלות מוזמנים ליצור קשר באחת הדרכים בעמוד ",
     "contact": "צור קשר.",
     "eighthP": "צוות \"בנק מרכיבי הדם\" של עמותת זכרון מנחם."
+  },
+  "browseUsers": {
+    "userProfile": "פרופיל משתמש",
+    "fullName": "שם מלא",
+    "bloodType": "סוג דם",
+    "hospital": "בית חולים",
+    "lastDonation": "תרומה אחרונה",
+    "details": "פרטים",
+    "noUsersFound": "לא נמצאו משתמשים"
+  },
+  "userDetails": {
+    "bloodType": "סוג דם",
+    "email": "אימייל",
+    "contactNumber": "טלפון",
+    "city": "עיר",
+    "address": "כתובת",
+    "secondaryAddress": "כתובת משנית"
+  },
+  "donationsHistory": {
+    "donationsHistory": "היסטוריית תרומות",
+    "totalDonations": "סך התרומות",
+    "verification": "האם תרם?",
+    "notYet": "לא ידוע",
+    "verify": "עדכן",
+    "donationHappened": "האם התרומה התבצעה?"
   }
 }

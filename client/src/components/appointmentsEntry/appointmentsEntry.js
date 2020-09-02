@@ -2,11 +2,9 @@ import React from "react";
 import "./appointmentsEntry.css";
 import Button from "../button";
 import { Link, useHistory } from "react-router-dom";
-import { db, auth } from "../firebase/firebase";
-import { useState, useEffect, Fragment } from "react";
-
+import { useState, useEffect } from "react";
+import { getDonationsForUser } from '../../services/appointmentService';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 
 const AppointmentsEntry = () => {
 
@@ -22,9 +20,7 @@ const AppointmentsEntry = () => {
 
     const today = Date.now() / 1000;
 
-    const filteredQuery = db
-      .collection("Appointments")
-      .where("userID", "==", userID);
+    const filteredQuery = getDonationsForUser(userID);
 
     filteredQuery
       .get()

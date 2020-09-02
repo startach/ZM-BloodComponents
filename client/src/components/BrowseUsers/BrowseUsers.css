@@ -1,0 +1,61 @@
+.browseUsers {
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.optionsList {
+    width: 30vw;
+    height: 100%;;
+    color: white;
+    background-color: darkgray;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+
+.usersTable {
+    width: 88%;
+    margin: 6%;
+}
+
+.headerRow {
+    text-align: center;
+    background-color: darkgray;
+    height: 10vh;
+    color:white;
+    font-size: 14px;
+}
+
+.headerEntries {
+    margin-bottom: 10px;
+    width: 25%;
+    border: solid white 2px;
+}
+
+.rowContainer {
+    text-align: center;
+    background-color: lightgray;
+    height: 10vh;
+    color:black;
+    font-size: 14px;
+}
+
+.rowClass {
+    margin-bottom: 10px;
+    width: 25%;
+    border: solid white 2px;
+}
+
+.detailsButton {
+    background-color: #C71585;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

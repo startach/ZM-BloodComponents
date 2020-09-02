@@ -1,12 +1,9 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
   Redirect,
-  useHistory,
 } from "react-router-dom";
-import PreviousAppointments from "../../Screens/previousAppointments";
 import AppointmentVerification from "../../Screens/appointmentVerification";
 import "./App.css";
 import Dashboard from "../../Screens/dashboard";
@@ -21,26 +18,18 @@ import AddAppointment from "../../Screens/addAppointment";
 import Admin from "../../Screens/admin";
 import Questions from "../../Screens/Questionnaire";
 import EmergencyDonations from "../../Screens/emergencyDonations";
-import { firebase, auth } from "../../components/firebase/firebase";
 import DeleteEditAppointments from "../../Screens/deleteAppointments";
 import UserRoute from "../../routes/UserRoute";
 import PublicRoute from "../../routes/PublicRoute";
 import CordRoute from "../../routes/CordRoute";
 import AdminRoute from "../../routes/AdminRoute";
 import { ForgotPassword } from "../forgetPassword/ForgotPassword";
-
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import UsersBrowsing from '../../Screens/usersBrowsing';
 
 function App() {
-  const [userClaims, setUserClaims] = useState(
-    localStorage.getItem("userLevel")
-  );
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!localStorage.getItem("userid")
-  );
-
-  let languageSelected = localStorage.getItem("i18nextLng");
+  const userClaims = localStorage.getItem("userLevel");
+  const isAuthenticated = !!localStorage.getItem("userid");
+  const languageSelected = localStorage.getItem("i18nextLng");
 
   return (
     <Router>
@@ -48,12 +37,6 @@ function App() {
         <UserRoute
           path="/dashboard"
           component={Dashboard}
-          isAuthenticated={isAuthenticated}
-          userLevel={userClaims}
-        />
-        <UserRoute
-          path="/prevapp"
-          component={PreviousAppointments}
           isAuthenticated={isAuthenticated}
           userLevel={userClaims}
         />
@@ -110,6 +93,12 @@ function App() {
           path="/edit-delete"
           component={DeleteEditAppointments}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
+        />
+        <CordRoute 
+          path='/users' 
+          component={UsersBrowsing} 
+          isAuthenticated={isAuthenticated} 
           userLevel={userClaims}
         />
 
