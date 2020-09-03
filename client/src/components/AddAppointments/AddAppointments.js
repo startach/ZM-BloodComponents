@@ -520,7 +520,7 @@ export default function AddAppointments() {
               required
             >
               <option value="N/A" disabled selected>
-                {t("userProfile.bloodType")}:
+                {t("addAppointments.selectBloodType")}:
               </option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
