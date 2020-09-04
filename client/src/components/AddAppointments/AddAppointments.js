@@ -408,7 +408,7 @@ export default function AddAppointments() {
             defaultValue="1"
             className="TextField pa2"
             onChange={handleChange}
-            label="number of slots"
+            label={t('addAppointments.slots')}
             InputProps={{
               inputProps: { min: 1 },
             }}
