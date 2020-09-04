@@ -1,16 +1,16 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import "./UserPage.css"
 import NotificationOptions from '../Notifications/NotificationOptions'
 import UserDetails from '../UserDetails/UserDetails';
 import DonationsHistory from "../DonationsHistory/DonationsHistory";
-import { db, auth } from '../firebase/firebase'
-import { useHistory, Redirect } from 'react-router-dom'
+import { db } from '../firebase/firebase'
+import { useHistory } from 'react-router-dom'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import Popup from "reactjs-popup";
 import userProfile from './userProfile.svg'
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import Button from '../button'
+import { getAppointmentsForUser } from '../../services/appointmentService';
+
 
 export default function UserPage({userId}) {
 
@@ -46,17 +46,15 @@ export default function UserPage({userId}) {
   // Shouldn't be here - fix when doing services
   useEffect(() => {
     const today = Date.now() / 1000;
-    const filteredQuery = db
-      .collection("Appointments")
-      .where("userID", "==", id);
+    const filteredQuery = getAppointmentsForUser(id);
   
     filteredQuery
       .get()
       .then((querySnapshot) => {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointment) => {
-          let app = hospitalAppointment.data().timestamp.seconds;
-          if (app < today) {
+          const appDate = hospitalAppointment.data().timestamp.seconds;
+          if (appDate < today && hospitalAppointment.data().hasDonated !== false) {
             Appointments.push({ ...hospitalAppointment.data(), id: hospitalAppointment.id });
           }
         });
@@ -96,15 +94,15 @@ export default function UserPage({userId}) {
             </span>
             <br />
             <Popup
-              trigger={<button 
-                  //id={id} 
+              trigger={
+              <button 
                   className="detailsButton">
                     {t('userProfile.seeHistory')}
                 </button>
               }
               modal 
-              position="left top" 
               closeOnDocumentClick
+              contentStyle={{width: "80vw"}}
             >
               {close => (
                 <div style={{maxHeight: '70vh', overflow: 'scroll'}}>
