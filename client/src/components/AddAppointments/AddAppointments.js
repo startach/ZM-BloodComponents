@@ -15,8 +15,8 @@ import AppointmentList from "../appointmentsList/appointmenstList";
 export default function AddAppointments() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-
   const [hospitalsDetails, setHospitalsDetails] = useState([]);
+
   useEffect(() => {
     //load hospitals into hospitalsList
     const hospitals = [];
@@ -53,6 +53,15 @@ export default function AddAppointments() {
   let count = 0;
 
   //set state values for slots & hospital
+  const changeGranulocytesSlots = (e) => {
+    let value = parseInt(e.target.value);
+    const max = parseInt(e.target.max);
+    if (value > max) value = 500;
+
+    setCurrentApp({ ...currentApp, [e.target.id]: value });
+    console.log(currentApp);
+  };
+
   const handleChange = (e) => {
     setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
     console.log(currentApp);
@@ -72,7 +81,11 @@ export default function AddAppointments() {
     if (e.target.value === "Thrombocytes") {
       setVisible(false);
       setAppList([]);
-      setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
+      setCurrentApp({
+        ...currentApp,
+        [e.target.id]: e.target.value,
+        slots: "",
+      });
       setMatches(null);
     } else {
       setVisible(true);
@@ -399,23 +412,65 @@ export default function AddAppointments() {
             })}
           </select>
         </div>
-
         <div className="typeSlots">
-          <TextField
-            id="slots"
-            type="number"
-            min={1}
-            defaultValue="1"
-            className="TextField pa2"
-            onChange={handleChange}
-            label={t('addAppointments.slots')}
-            InputProps={{
-              inputProps: { min: 1 },
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
+          {!visible ? (
+            <select
+              className="dropdown ml-3 pa2"
+              id="slots"
+              onChange={handleChange}
+            >
+              <option selected disabled>
+                {t('addAppointments.slots')}
+              </option>
+              <option value="1" className="option">
+                1
+              </option>
+              <option value="2" className="option">
+                2
+              </option>
+              <option value="3" className="option">
+                3
+              </option>
+              <option value="4" className="option">
+                4
+              </option>
+              <option value="5" className="option">
+                5
+              </option>
+              <option value="6" className="option">
+                6
+              </option>
+              <option value="7" className="option">
+                7
+              </option>
+              <option value="8" className="option">
+                8
+              </option>
+              <option value="9" className="option">
+                9
+              </option>
+              <option value="10" className="option">
+                10
+              </option>
+            </select>
+          ) : null}
+
+          {visible ? (
+            <TextField
+              value={currentApp.slots}
+              type="number"
+              id="slots"
+              InputProps={{ inputProps: { min: 1, max: 500 } }}
+              type="number"
+              className="TextField pa2"
+              fullWidth={true}
+              onChange={changeGranulocytesSlots}
+              label="number of slots"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          ) : null}
           <select
             className="dropdown ml-3 pa2"
             id="appointmentType"
