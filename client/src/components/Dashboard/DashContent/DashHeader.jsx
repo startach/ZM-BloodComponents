@@ -18,12 +18,10 @@ export default function DashHeader(props) {
         <div>
             <img src={dbIcon} />
             <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
-            { appointmentsCount === 0 ? 
-                <FirstAppointmentIntro t={t} userName={userName}/> : <HaveAppointmentsIntro t={t} userName={userName} appointmentsCount={appointmentsCount}/>
-            }
-            {haveAppointmentTomorrow ? <TomorrowAppointment t={t} nextAppointments={nextAppointments}/> :  
-                appointmentLastMonth ? <LastMonthAppointment t={t} appointment={appointmentLastMonth} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} handleViewDates={handleViewDates}/>: 
-                    <GeneralAppointment t={t} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} haveFutureAppointment={haveFutureAppointment}/>   
+            { !appointmentsCount && !haveFutureAppointment ? <FirstAppointmentIntro t={t} userName={userName}/> : 
+                haveAppointmentTomorrow ? <TomorrowAppointment t={t} userName={userName} nextAppointments={nextAppointments}/> :  
+                    appointmentLastMonth ? <LastMonthAppointment t={t} userName={userName} appointment={appointmentLastMonth} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} handleViewDates={handleViewDates}/>: 
+                        <GeneralAppointment t={t} userName={userName} pastAppointments={pastAppointments} appointmentsCount={appointmentsCount} haveFutureAppointment={haveFutureAppointment}/>   
             }
         </div>
     )

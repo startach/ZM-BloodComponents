@@ -8,7 +8,9 @@ export default function FirstAppointmentIntro(props) {
         <div>
             <div id="introSpan" className="introSpan pinkBox">
                 {t('dashboard.hello')} <span className="highlight">{userName}</span>,
-                <span>{t('dashboard.intro')}</span>
+                <span> {t('dashboard.intro')}</span>
+                <br/>
+                {t('dashboard.scheduleAppointment')}
             </div>
         </div>
     )
