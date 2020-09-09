@@ -11,6 +11,8 @@ import BackArrow from "../../components/BackArrow";
 
 const RegisterForm = () => {
   const [date, setDate] = useState();
+  const [phoneStarting, setPhoneStarting] = useState();
+  const [phoneEnding, setPhoneEnding] = useState();
   const [error, setError] = useState("");
   const [checkError, setCheckError] = useState(false);
   const [nameError, setNameError] = useState(false);
@@ -62,6 +64,13 @@ const RegisterForm = () => {
     setNotifications({ ...notifications, [e.target.id]: !checked });
   };
 
+  const handlePhoneEnding = (e) => {
+    setPhoneEnding(e.target.value);
+  };
+
+  const handlePhoneStarting = (e) => {
+    setPhoneStarting(e.target.value);
+  };
   //Handle Submit of register fields
 
   const handleSubmit = async (e) => {
@@ -87,7 +96,8 @@ const RegisterForm = () => {
       setError("Full Name should not be more than 25 letters");
 
       //Phone length validation
-    } else if (userInputs.phone.length < 7) {
+    } else if (phoneEnding.length < 7) {
+      debugger;
       setCheckError(true);
       setPhoneError(true);
       setError("Phone must has 7 numbers");
@@ -115,11 +125,7 @@ const RegisterForm = () => {
 
         //merge phone number with phone starting
 
-        userInputs.phone = userInputs.phoneStarting.concat(userInputs.phone);
-
-        // Remove phone starting from the object afrer merging
-
-        delete userInputs.phoneStarting;
+        userInputs.phone = phoneStarting.concat(phoneEnding);
 
         //Insert user into firestore
         try {
@@ -294,7 +300,7 @@ const RegisterForm = () => {
           <select
             id="phoneStarting"
             className="registerPhoneStarting"
-            onChange={handleChange}
+            onChange={handlePhoneStarting}
             required
           >
             <option value="" disabled selected>
@@ -314,9 +320,9 @@ const RegisterForm = () => {
           <input
             className="registerPhone"
             id="phone"
-            onChange={handleChange}
+            onChange={handlePhoneEnding}
             type="phone"
-            name="phone"
+            name="phoneEnding"
             placeholder={t("registerForm.contactNumber")}
             style={
               phoneError ? { border: "1px solid red" } : { border: "none" }

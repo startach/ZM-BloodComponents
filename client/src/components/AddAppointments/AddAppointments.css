@@ -6,7 +6,6 @@
 }
 
 div.hospitalDate {
-  direction: ltr !important;
   display: flex;
   flex-direction: row;
   align-self: stretch;
@@ -16,7 +15,6 @@ div.hospitalDate {
 }
 
 div.typeSlots {
-  direction: ltr !important;
   display: flex;
   flex-direction: row;
   align-self: stretch;
@@ -26,7 +24,6 @@ div.typeSlots {
 }
 
 div.Gran {
-  direction: ltr !important;
   display: flex;
   flex-direction: row;
   align-self: stretch;
@@ -76,6 +73,14 @@ select.dropdown {
   margin-right: 0px;
 }
 
+.dropdownAdd {
+  background-color: rgba(199, 234, 175, 0.651);
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 0px;
+  width: 40%
+}
+
 .msg {
   font-size: 12px;
 }
@@ -121,11 +126,9 @@ select.dropdown {
     padding: 2px;
   }
   div.hospitalDate {
-    direction: ltr !important;
     margin-top: 35px;
   }
   div.typeSlots {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -134,7 +137,6 @@ select.dropdown {
     padding: 5px;
   }
   div.Gran {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -152,11 +154,9 @@ select.dropdown {
     padding: 2px;
   }
   div.hospitalDate {
-    direction: ltr !important;
     margin-top: 35px;
   }
   div.typeSlots {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -165,7 +165,6 @@ select.dropdown {
     padding: 5px;
   }
   div.Gran {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -183,7 +182,6 @@ select.dropdown {
     margin: 0px;
   }
   div.hospitalDate {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -192,7 +190,6 @@ select.dropdown {
     padding: 5px;
   }
   div.typeSlots {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
@@ -201,7 +198,6 @@ select.dropdown {
     padding: 5px;
   }
   div.Gran {
-    direction: ltr !important;
     display: flex;
     flex-direction: row;
     align-self: stretch;
