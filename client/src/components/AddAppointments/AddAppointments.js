@@ -396,7 +396,7 @@ export default function AddAppointments() {
             }}
           />
           <select
-            className="dropdown ml-3 pa2"
+            className="dropdownAdd ml-3 pa2"
             id="hospitalName"
             onChange={handleChangeHospital}
           >
@@ -472,7 +472,7 @@ export default function AddAppointments() {
             />
           ) : null}
           <select
-            className="dropdown ml-3 pa2"
+             className="dropdownAdd ml-3 pa2"
             id="appointmentType"
             onChange={handleATChange}
           >
@@ -513,7 +513,7 @@ export default function AddAppointments() {
             />
             <select
               id="bloodType"
-              className="dropdown ml-3 pa2 w-20"
+              className="dropdownAdd ml-3 pa2 w-20"
               onChange={handleGranChange}
               required
             >
