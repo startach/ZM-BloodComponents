@@ -6,7 +6,7 @@
     border: solid 4px darkgrey !important;
     border-radius: 4px !important;
     color: grey !important;
-    text-align: left !important;
+    text-align: start;
     padding: 0% 8% !important;
 }
 
@@ -49,6 +49,5 @@
   }
 
   .rideContainerRtl{
-      text-align: right;
-      direction: rtl;
+      text-align: start;
   }

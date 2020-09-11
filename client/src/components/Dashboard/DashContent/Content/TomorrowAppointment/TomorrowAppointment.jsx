@@ -5,7 +5,7 @@ import { Check2 } from 'react-bootstrap-icons';
 import { updateAppointment } from '../../../../../services/appointmentService';
 
 export default function TomorrowAppointment(props) {
-    const {t, nextAppointments} = props;
+    const {t, userName, nextAppointments} = props;
     const haveFutureAppointment = nextAppointments.length; 
     const [arrivalVerified, setArrivalVerified] = useState(haveFutureAppointment && nextAppointments[0].confirmArrival);
 
@@ -19,7 +19,8 @@ export default function TomorrowAppointment(props) {
     return (
         <div>
             <div className="pinkBox">
-                {`${t('dashboard.appointmentTomorrow')} ${t('dashboard.lookingForward')}`}
+                {t('dashboard.hello')} <span className="highlight">{userName}</span>,
+                {` ${t('dashboard.appointmentTomorrow')} ${t('dashboard.lookingForward')}`}
             </div>
             {
                 !arrivalVerified ? 

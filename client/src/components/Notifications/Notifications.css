@@ -43,7 +43,7 @@ border: solid pink 1px;
 }
 
 #ltrNotifications{
-    text-align: left !important;
+    text-align: start;
 } 
 
 
@@ -53,9 +53,9 @@ border: solid pink 1px;
 
 
 #ltrNotificationContainer{
-    text-align: left !important;
+    text-align: start;
 }
 
 #rtlNotificationContainer{
-    text-align: right !important;
+    text-align: start;
 }

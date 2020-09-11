@@ -1,18 +1,14 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./DonationsHistory.css";
-import { db, auth } from '../firebase/firebase';
-import { useHistory, Redirect } from 'react-router-dom';
+import { db } from '../firebase/firebase';
+import { useHistory } from 'react-router-dom';
 import Popup from "reactjs-popup";
-import i18next from 'i18next';
 import Table from "../Table/Table";
-import Button from '../button'
+import { getAppointmentsForUser } from '../../services/appointmentService';
 
 export default function DonationsHistory(props) {
   const { t, userId, editableMode } = props;
-
   const [appointments, setAppointments] = useState([]);
-  const [reload, setReload] = useState(false);
-
   const history = useHistory();
   const loggedUser = localStorage.getItem("userid");
 
@@ -20,20 +16,14 @@ export default function DonationsHistory(props) {
     history.push("/login");
 
   const loadAppointments = () => {
-    const today = Date.now() / 1000;
-    const filteredQuery = db
-      .collection("Appointments")
-      .where("userID", "==", userId);
+    const filteredQuery = getAppointmentsForUser(userId);
   
     filteredQuery
       .get()
       .then((querySnapshot) => {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointment) => {
-          let app = hospitalAppointment.data().timestamp.seconds;
-          if (app < today) {
             Appointments.push({ ...hospitalAppointment.data(), id: hospitalAppointment.id });
-          }
         });
         
         Appointments.sort(function (a, b) {
@@ -55,14 +45,14 @@ export default function DonationsHistory(props) {
   const updateDonationHappened = (e) => {
     const appointmentId = e.target.id;
     db.collection('Appointments').doc(appointmentId).update({
-      confirmArrival: true
+      hasDonated: true
     });
     loadAppointments();
   };
   const updateDonationNotHappened = (e) => {
     const appointmentId = e.target.id;
     db.collection('Appointments').doc(appointmentId).update({
-      userID: null
+      hasDonated: false
     });
     loadAppointments();
   };
@@ -74,9 +64,14 @@ export default function DonationsHistory(props) {
   ];
 
   const appointmentsTableRows = appointments.map((appointment) => {
-    const confirmArrivalField = appointment.confirmArrival ? 
+    const confirmArrivalField = appointment.hasDonated ? 
       t('general.Yes') 
-    : (
+    : 
+    appointment.hasDonated === false ? 
+      t('general.No')
+    :
+    appointment.hasDonated === null && 
+      (
       <div>
         {t('donationsHistory.notYet')}
         <br />
@@ -134,7 +129,7 @@ export default function DonationsHistory(props) {
 
   return (
     <div>
-      <h2>{t('donationsHistory.donationsHistory')}</h2>
+      <h3>{t('donationsHistory.donationsHistory')}</h3>
       <span>{t('donationsHistory.totalDonations')}: {appointments.length}</span>
       <Table 
         headerFields={headerFields} 

@@ -60,7 +60,7 @@ function DashboardNoAppoin() {
     let appointmentDate = moment(appData.timestamp.seconds * 1000);
     const today = moment();
     if (appointmentDate.isAfter(today)) {
-      if (appointmentDate.diff(today, 'day') === 1 && appointmentDate.diff(today, 'hour') <= 24) {
+      if (appointmentDate.diff(today, 'day') === 1 && appointmentDate > today) {
         setHaveAppointmentTomorrow(true);
       }
 
@@ -69,12 +69,11 @@ function DashboardNoAppoin() {
     } else {
       if (appData.hasDonated !== false) {
         setPastApp(prev => [...prev, appointmentDate.format('D.M')]);
-      }
-
-      const monthAgo = moment(new Date());
-      monthAgo.subtract(1, 'month');
-      if (appointmentDate > monthAgo) {
-        setAppointmentLastMonth({ ...appData, ['id']: userAppointment.id });
+        const monthAgo = moment(new Date());
+        monthAgo.subtract(1, 'month');
+        if (appointmentDate > monthAgo) {
+          setAppointmentLastMonth({ ...appData, ['id']: userAppointment.id });
+        }
       }
     }
   }
