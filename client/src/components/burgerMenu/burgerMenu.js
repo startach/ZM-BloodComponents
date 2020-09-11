@@ -115,6 +115,10 @@ const BurgerMenu = () => {
         {t('burgerMenu.editAppointments')} 
             </Link> : null}
         {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/donations-management' className="link">
+        {t('burgerMenu.onAirDonations')} 
+            </Link> : null}
+        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
         {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/users' className="link">
         {t('burgerMenu.usersBrowsing')} 
             </Link> : null}

@@ -29,6 +29,7 @@ import CordRoute from "../../routes/CordRoute";
 import AdminRoute from "../../routes/AdminRoute";
 import { ForgotPassword } from "../forgetPassword/ForgotPassword";
 import UsersBrowsing from '../../Screens/usersBrowsing';
+import DonationsManagement from '../../Screens/donationsManagement';
 
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
@@ -111,6 +112,12 @@ function App() {
           path="/edit-delete"
           component={DeleteEditAppointments}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
+        />
+        <CordRoute 
+          path='/donations-management' 
+          component={DonationsManagement} 
+          isAuthenticated={isAuthenticated} 
           userLevel={userClaims}
         />
         <CordRoute 
