@@ -97,7 +97,6 @@ const RegisterForm = () => {
 
       //Phone length validation
     } else if (phoneEnding.length < 7) {
-      debugger;
       setCheckError(true);
       setPhoneError(true);
       setError("Phone must has 7 numbers");
