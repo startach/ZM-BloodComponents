@@ -202,7 +202,7 @@
     "q_medicines": "Do you take medicines?",
     "q_aboard": "Have you been abroad in the last year?",
     "q_surgery": "Have you gone through a medical surgery in the last month?",
-    "q_chronic_disease": "Do you suffer from a Chronic disease?",
+    "q_chronic_disease": "Do you suffer from a chronic disease?",
     "q_cancer": "Have you ever suffered from cancer?",
     "q_antibiotics": "Did you take antibiotics in the last 3 days?",
     "q_dentist_procedure": "Have you gone through Dentist procedure in the last 10 days?",
