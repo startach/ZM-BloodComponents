@@ -133,7 +133,8 @@
     "emergencyDonation": "تبرّع طوارئ",
     "Admin": "مدير",
     "Logout": "تسجيل الخروج",
-    "usersBrowsing": "UsersBrowsing"
+    "usersBrowsing": "UsersBrowsing",
+    "onAirDonations": "On-Air Donations"
   },
   "forgotPassword": {
     "enterEmailPhrase": "رجاءاً ادخال عنوان البريد الإلكتروني, وتفاصيل سترسل الى بريدك الشخصي",
@@ -235,5 +236,16 @@
     "notYet": "Not Yet",
     "verify": "Verify",
     "donationHappened": "Did the donation happened?"
+  },
+  "onAirDonations": {
+    "date": "تاريخ",
+    "time": "ساعة",
+    "totalSlots": "Total Slots",
+    "occupied": "Occupied",
+    "donor": "Donor",
+    "verified": "Verified",
+    "notYet": "Not Yet",
+    "deleteAppointment": "Delete Appointment",
+    "sureDeleteAppointment": "Are you sure you want to delete this appointment"
   }
 }

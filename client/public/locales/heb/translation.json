@@ -139,7 +139,8 @@
     "emergencyDonation": "תרומת חירום",
     "Admin": "הגדרות מנהל",
     "Logout": "התנתק",
-    "usersBrowsing": "חיפוש משתמשים"
+    "usersBrowsing": "חיפוש משתמשים",
+    "onAirDonations": "תורים מתוכננים"
   },
   "forgotPassword": {
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
@@ -329,5 +330,16 @@
     "notYet": "לא ידוע",
     "verify": "עדכן",
     "donationHappened": "האם התרומה התבצעה?"
+  },
+  "onAirDonations": {
+    "date": "תאריך",
+    "time": "שעה",
+    "totalSlots": "סך משבצות",
+    "occupied": "תפוסים",
+    "donor": "תורם",
+    "verified": "אושר",
+    "notYet": "טרם",
+    "deleteAppointment": "מחק תור",
+    "sureDeleteAppointment": "האם אתה בטוח שברצונך למחוק את התור"
   }
 }
