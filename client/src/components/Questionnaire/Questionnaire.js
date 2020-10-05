@@ -5,11 +5,11 @@ import Button from "../button";
 import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
 import qIcon from "./questionnaire.svg";
-
+import {getUserById} from "../../services/userService"
 
 export default function Questionnaire() {
   const { t } = useTranslation();
-
+  const userId = localStorage.getItem("userid");
   let history = useHistory();
   //Set results of the questionarre into state from the drop downs
   const [result, setResults] = useState({
@@ -218,7 +218,7 @@ export default function Questionnaire() {
 
     if (sum === 0 && errors.length === 0) {
       var appointId = localStorage.getItem("appointmentId");
-      var userId = localStorage.getItem("userid");
+      
       db.collection("Appointments").doc(appointId).update({
         userID: userId,
       });
@@ -240,9 +240,11 @@ export default function Questionnaire() {
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
+    const user = await getUserById(userId)
+    
     setHospital(localStorage.getItem("hospital"));
-    setGender(localStorage.getItem("gender"));
+    setGender(user.data().genderType);
   }, []);
 
   return (
@@ -261,7 +263,7 @@ export default function Questionnaire() {
       <form onSubmit={handleSubmit}>
         {questionList.map(
           (question, index) =>
-            //Questionairee Logic
+            //Remove question about pregnancy
             gender == "Male" && question.id == 14 ? (
               <div></div>
             ) : (

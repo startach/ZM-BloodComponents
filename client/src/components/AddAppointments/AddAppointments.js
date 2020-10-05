@@ -5,38 +5,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button";
 import { MDBIcon } from "mdbreact";
 import { useTranslation } from "react-i18next";
-import i18next, { dir } from "i18next";
 import TextField from "@material-ui/core/TextField";
 import { functions, db, auth } from "../firebase/firebase";
-import AppointmentList from "../appointmentsList/appointmenstList";
 
 //TODO: disable past dates, minor modifications to css, SMS
 
 export default function AddAppointments() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-  const [hospitalsDetails, setHospitalsDetails] = useState([]);
-
-  useEffect(() => {
-    //load hospitals into hospitalsList
-    const hospitals = [];
-    db.collection("Hospitals")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((hospital) => {
-          let currentID = hospital.id;
-          let appObj = { ...hospital.data(), ["id"]: currentID };
-          hospitals.push(appObj);
-        });
-        setHospitalsDetails(hospitals);
-        console.log(hospitalsDetails);
-      });
-  }, []);
-
+  const [hospitalDetails, setHospitalDetails] = useState([]);
   const [appList, setAppList] = useState([]);
   const [appDate, setAppDate] = useState(new Date());
   const displayNode = useRef(null);
-  const [currentApp, setCurrentApp] = useState({
+  const [appointment, setAppointment] = useState({
     userID: null,
     hospitalName: null,
     hospitalID: null,
@@ -48,6 +29,30 @@ export default function AddAppointments() {
     confirmArrival: false,
     hasDonated: null,
   });
+  // initialize Granulocytes state
+  const [appointmentTypeDetails, setAppointmentTypeDetails] = useState({
+    Granulocytes: {
+      bloodType: null,
+      message: `${t("addAppointments.defaultMessage")}`,
+    },
+  });
+  
+  useEffect(() => {
+    //load hospitals into hospitalsList
+    const hospitals = [];
+    db.collection("Hospitals")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((hospital) => {
+          let currentID = hospital.id;
+          let appObj = { ...hospital.data(), ["id"]: currentID };
+          hospitals.push(appObj);
+        });
+        setHospitalDetails(hospitals);
+        console.log(hospitalDetails);
+      });
+  }, []);
+
 
   //for counted appointments added
   let count = 0;
@@ -58,21 +63,15 @@ export default function AddAppointments() {
     const max = parseInt(e.target.max);
     if (value > max) value = 500;
 
-    setCurrentApp({ ...currentApp, [e.target.id]: value });
-    console.log(currentApp);
+    setAppointment({ ...appointment, [e.target.id]: value });
+    console.log(appointment);
   };
 
   const handleChange = (e) => {
-    setCurrentApp({ ...currentApp, [e.target.id]: e.target.value });
-    console.log(currentApp);
+    setAppointment({ ...appointment, [e.target.id]: e.target.value });
+    console.log(appointment);
   };
-  // initialize Granulocytes state
-  const [appointmentTypeDetails, setAppointmentTypeDetails] = useState({
-    Granulocytes: {
-      bloodType: null,
-      message: `${t("addAppointments.defaultMessage")}`,
-    },
-  });
+
 
   const handleATChange = (e) => {
     //Hide/show appointment type
@@ -81,16 +80,17 @@ export default function AddAppointments() {
     if (e.target.value === "Thrombocytes") {
       setVisible(false);
       setAppList([]);
-      setCurrentApp({
-        ...currentApp,
+      setAppointment({
+        ...appointment,
         [e.target.id]: e.target.value,
+
         slots: "",
       });
       setMatches(null);
     } else {
       setVisible(true);
       setAppList([]);
-      setCurrentApp({ ...currentApp, [e.target.id]: null });
+      setAppointment({ ...appointment, [e.target.id]: null });
     }
   };
 
@@ -103,22 +103,20 @@ export default function AddAppointments() {
         [e.target.id]: e.target.value,
       },
     });
-    //add Granulocytes details to currentApp state
-    setCurrentApp({
-      ...currentApp,
+    //add Granulocytes details to appointment state
+    setAppointment({
+      ...appointment,
       ["appointmentType"]: appointmentTypeDetails,
     });
-
-    console.log(currentApp);
   };
 
   const handleChangeHospital = (e) => {
     //setting hospital ID vs Passing it as props from options
-    const hospital = hospitalsDetails.filter(
+    const hospital = hospitalDetails.filter(
       (obj) => obj.hospitalName === e.target.value
     );
-    setCurrentApp({
-      ...currentApp,
+    setAppointment({
+      ...appointment,
       [e.target.id]: e.target.value,
       ["hospitalID"]: hospital[0].id,
     });
@@ -128,9 +126,8 @@ export default function AddAppointments() {
   const handleChangeDate = (date) => {
     setAppDate(date);
     console.log(date);
-    let fullDate = `${date.getDate()}.${
-      date.getMonth() + 1
-    }.${date.getFullYear()}`;
+    let fullDate = `${date.getDate()}.${date.getMonth() + 1
+      }.${date.getFullYear()}`;
     let minutes = date.getMinutes();
     if (minutes == 0) {
       minutes = "00";
@@ -141,8 +138,8 @@ export default function AddAppointments() {
       `${date.getMonth() + 1} ${date.getDate()}, ${date.getFullYear()}, ${time}`
     );
 
-    setCurrentApp({
-      ...currentApp,
+    setAppointment({
+      ...appointment,
       ["date"]: fullDate,
       ["time"]: time,
       ["timestamp"]: timestamp,
@@ -152,18 +149,18 @@ export default function AddAppointments() {
   //add new Appointment to appoitnment list
   const handleAdd = () => {
     if (
-      !currentApp.date ||
-      !currentApp.time ||
-      !currentApp.slots ||
-      !currentApp.hospitalName ||
-      !currentApp.appointmentType
+      !appointment.date ||
+      !appointment.time ||
+      !appointment.slots ||
+      !appointment.hospitalName ||
+      !appointment.appointmentType
     )
       return alert("Make sure you filled out all data fields");
 
     //BloodType and message validation
-    if (currentApp.appointmentType !== "Thrombocytes") {
+    if (appointment.appointmentType !== "Thrombocytes") {
       getMatchList();
-      setAppList([currentApp]);
+      setAppList([appointment]);
 
       if (
         !appointmentTypeDetails.Granulocytes.bloodType ||
@@ -171,7 +168,7 @@ export default function AddAppointments() {
       )
         return alert("Make sure you filled out all data fields");
     } else {
-      setAppList(appList.concat(currentApp));
+      setAppList(appList.concat(appointment));
     }
 
     displayNode.current.textContent = "";
@@ -209,16 +206,14 @@ export default function AddAppointments() {
   //TRANSLATE
   const emailMessage = `
                     
-    ${t("addAppointments.emergencyDonationInEmail")} ${
-    currentApp.hospitalName
-  }, ${t("addAppointments.contactCoordEmail")}.<br/>`;
+    ${t("addAppointments.emergencyDonationInEmail")} ${appointment.hospitalName
+    }, ${t("addAppointments.contactCoordEmail")}.<br/>`;
 
   //TRANSLATE
   const smsMessage = `
                     
-    ${t("addAppointments.emergencyDonationInSMS")} ${
-    currentApp.hospitalName
-  }, ${t("addAppointments.contactCoordSMS")}.`;
+    ${t("addAppointments.emergencyDonationInSMS")} ${appointment.hospitalName
+    }, ${t("addAppointments.contactCoordSMS")}.`;
 
   //get all people in DB with blood type
   const getMatchList = async () => {
@@ -323,9 +318,8 @@ export default function AddAppointments() {
         ) {
           return {
             ...person,
-            ["msg"]: `<p> ${t("addAppointments.dear")} <b> ${
-              person.name
-            } </b>,</p>
+            ["msg"]: `<p> ${t("addAppointments.dear")} <b> ${person.name
+              } </b>,</p>
 
                         ${appointmentTypeDetails.Granulocytes.message}
 
@@ -338,9 +332,8 @@ export default function AddAppointments() {
           //TRANSLATE
           return {
             ...person,
-            ["msg"]: `<p> ${t("addAppointments.dear")} <b> ${
-              person.name
-            }</b >,</p >
+            ["msg"]: `<p> ${t("addAppointments.dear")} <b> ${person.name
+              }</b >,</p >
 
                         ${emailMessage}
 
@@ -403,7 +396,7 @@ export default function AddAppointments() {
             <option selected disabled>
               {t("addAppointments.selectHospital")}
             </option>
-            {hospitalsDetails.map((hospital) => {
+            {hospitalDetails.map((hospital) => {
               return (
                 <option value={hospital.hospitalName} className="option">
                   {hospital.hospitalName}
@@ -457,7 +450,7 @@ export default function AddAppointments() {
 
           {visible ? (
             <TextField
-              value={currentApp.slots}
+              value={appointment.slots}
               type="number"
               id="slots"
               InputProps={{ inputProps: { min: 1, max: 500 } }}
@@ -472,7 +465,7 @@ export default function AddAppointments() {
             />
           ) : null}
           <select
-             className="dropdownAdd ml-3 pa2"
+            className="dropdownAdd ml-3 pa2"
             id="appointmentType"
             onChange={handleATChange}
           >
@@ -549,7 +542,7 @@ export default function AddAppointments() {
           <div className="text-center">
             {t("addAppointments.noAppsToSubmit")}
           </div>
-        ) : currentApp.appointmentType === "Thrombocytes" ? (
+        ) : appointment.appointmentType === "Thrombocytes" ? (
           <div>
             <table className="schedulesTables" style={{ overflowX: "unset" }}>
               <thead>
@@ -598,87 +591,85 @@ export default function AddAppointments() {
             ></Button>
           </div>
         ) : (
-          <div>
-            <table className="schedulesTables" style={{ overflowX: "unset" }}>
-              <thead>
-                <tr className="headerRow" style={{ height: "40px" }}>
-                  <th className="headerEntries">{t("general.hospital")}</th>
-                  <th className="headerEntries">
-                    {t("addAppointments.blood")}
-                  </th>
-                  <th className="headerEntries">
-                    {t("addAppointments.slots")}
-                  </th>
-                  <th className="headerEntries">
-                    {t("addAppointments.message")}
-                  </th>
-                  <th className="headerEntries"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {appList.map((appointment, index) => (
-                  <tr
-                    className="rowContainer"
-                    key={index}
-                    id={index}
-                    style={{ height: "60px" }}
-                  >
-                    <td className="rowClass">{appointment.hospitalName}</td>
-                    <td className="rowClass red">
-                      {appointment.appointmentType.Granulocytes.bloodType}
-                    </td>
-                    <td className="rowClass">{appointment.slots}</td>
-                    <td className="rowClass">
-                      {" "}
-                      {appointment.appointmentType.Granulocytes.message}
-                    </td>
-                    <td className="rowClass">
-                      <MDBIcon
-                        icon="trash"
-                        size="2x"
-                        className="deleteBtn"
-                        onClick={() => handleDelete(index)}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="text-right mr-4 ml-2">
-              <b>{t("addAppointments.messagePreview")}:</b>
-            </div>
-            <div className="text-right mt-3 mr-4 ml-2">
-              {appointmentTypeDetails.Granulocytes.message ===
-              `${t("addAppointments.defaultMessage")}`
-                ? smsMessage
-                : appointmentTypeDetails.Granulocytes.message}
-            </div>
+              <div>
+                <table className="schedulesTables" style={{ overflowX: "unset" }}>
+                  <thead>
+                    <tr className="headerRow" style={{ height: "40px" }}>
+                      <th className="headerEntries">{t("general.hospital")}</th>
+                      <th className="headerEntries">
+                        {t("addAppointments.blood")}
+                      </th>
+                      <th className="headerEntries">
+                        {t("addAppointments.slots")}
+                      </th>
+                      <th className="headerEntries">
+                        {t("addAppointments.message")}
+                      </th>
+                      <th className="headerEntries"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {appList.map((appointment, index) => (
+                      <tr
+                        className="rowContainer"
+                        key={index}
+                        id={index}
+                        style={{ height: "60px" }}
+                      >
+                        <td className="rowClass">{appointment.hospitalName}</td>
+                        <td className="rowClass red">
+                          {appointment.appointmentType.Granulocytes.bloodType}
+                        </td>
+                        <td className="rowClass">{appointment.slots}</td>
+                        <td className="rowClass">
+                          {" "}
+                          {appointment.appointmentType.Granulocytes.message}
+                        </td>
+                        <td className="rowClass">
+                          <MDBIcon
+                            icon="trash"
+                            size="2x"
+                            className="deleteBtn"
+                            onClick={() => handleDelete(index)}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="text-right mr-4 ml-2">
+                  <b>{t("addAppointments.messagePreview")}:</b>
+                </div>
+                <div className="text-right mt-3 mr-4 ml-2">
+                  {appointmentTypeDetails.Granulocytes.message ===
+                    `${t("addAppointments.defaultMessage")}`
+                    ? smsMessage
+                    : appointmentTypeDetails.Granulocytes.message}
+                </div>
 
-            <div className="text-center mt-3">
-              <b>{t("addAppointments.matchesFound")}:</b> {matches}
-            </div>
+                <div className="text-center mt-3">
+                  <b>{t("addAppointments.matchesFound")}:</b> {matches}
+                </div>
 
-            <div className="text-center my-3">
-              {t("addAppointments.contactMethod")}:
+                <div className="text-center my-3">
+                  {t("addAppointments.contactMethod")}:
               <select
-                onChange={(e) => setContact(e.target.value)}
-                className="ml-1"
-              >
-                <option value="Email">{t("loginForm.email")}</option>
-                <option value="SMS">{t("notificationOptions.SMS")}</option>
-              </select>
-            </div>
+                    onChange={(e) => setContact(e.target.value)}
+                    className="ml-1"
+                  >
+                    <option value="Email">{t("loginForm.email")}</option>
+                    <option value="SMS">{t("notificationOptions.SMS")}</option>
+                  </select>
+                </div>
 
-            <Button
-              className="mt-4"
-              type="button"
-              text={t("addAppointments.sendRequest")}
-              onClick={contact === "Email" ? handleSendEmail : handleSendSMS}
-            ></Button>
-            {/* <button className="text-center my-3 ml-3" onClick={handleSendEmail}>SEND EMAIL TEST</button>
-                            <button className="text-center my-3" onClick={handleSendSMS}>SEND SMS TEST</button> */}
-          </div>
-        )}
+                <Button
+                  className="mt-4"
+                  type="button"
+                  text={t("addAppointments.sendRequest")}
+                  onClick={contact === "Email" ? handleSendEmail : handleSendSMS}
+                ></Button>
+              </div>
+            )}
       </div>
 
       <div
