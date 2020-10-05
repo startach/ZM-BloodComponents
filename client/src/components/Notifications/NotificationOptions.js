@@ -67,68 +67,73 @@ const NotificationOptions = () => {
     return (
         <div id={languageSelected === 'en' ? 'ltrNotificationContainer' : 'rtlNotificationContainer'} className="notifications ma0">
             {
-                isLoading ? null : <div className="form-check dib mt3">
-                    <input type="checkbox"
-                        width={75}
-                        // if {ShowNotifications: true} && all else false - they didn't choose a notification option
-                        name="ShowNotifications"
-                        checked={chosenNotifications.ShowNotifications}
-                        onChange={(e) => {
-                            handleShowNotifications(e)
-                        }}
-                    />
+                isLoading ? null :
+                    <div className="form-check dib mt3">
+                        <label>
+                            <input type="checkbox"
+                                width={75}
+                                // if {ShowNotifications: true} && all else false - they didn't choose a notification option
+                                name="ShowNotifications"
+                                checked={chosenNotifications.ShowNotifications}
+                                onChange={(e) => {
+                                    handleShowNotifications(e)
+                                }}
+                            />
+                    &nbsp;
                     {t('userProfile.notifiedOn')}
-                    {chosenNotifications.ShowNotifications ?
-                        <div>
-                            {
-                                // show error only if previously opted into notifications && no option chosen
-                                showError && Object.values(chosenNotifications).lastIndexOf(true) < 1 ?
-                                    <span style={{ color: "red" }}>Must choose one</span> :
-                                    null
-                            }
-                            <div className="options">
-                                <div className={languageSelected === 'en' ? 'notificationOptions' : 'notificationOptionsRtl'}>
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            className={`form-check-input ${languageSelected == 'en' ? 'ltrNotifications' : 'rtlNotifications'}`}
-                                            name="SMS"
-                                            checked={chosenNotifications.SMS}
-                                            onChange={(e) => handleChange(e.target.name, e.target.checked)} />
-                                        <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.SMS')}</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            name="Whatsapp"
-                                            checked={chosenNotifications.Whatsapp}
-                                            onChange={(e) => handleChange(e.target.name, e.target.checked)} />
-                                        <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Whatsapp')}</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            name="Phonecall"
-                                            checked={chosenNotifications.Phonecall}
-                                            onChange={(e) => handleChange(e.target.name, e.target.checked)} />
-                                        <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Phonecall')}</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            name="Email"
-                                            checked={chosenNotifications.Email}
-                                            onChange={(e) => handleChange(e.target.name, e.target.checked)} />
-                                        <label className="form-check-label" htmlFor="exampleCheck1">{t('notificationOptions.Email')}</label>
+                        </label>
+                        {chosenNotifications.ShowNotifications ?
+                            <div>
+                                {
+                                    // show error only if previously opted into notifications && no option chosen
+                                    showError && Object.values(chosenNotifications).lastIndexOf(true) < 1 ?
+                                <span style={{ color: "red" }}>{t("userProfile.error_notification_type_not_chosen")}</span> :
+                                        null
+                                }
+                                <div>
+                                    <div className={languageSelected === 'en' ? 'notificationOptions' : 'notificationOptionsRtl'}>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                className={`${languageSelected == 'en' ? 'ltrNotifications' : 'rtlNotifications'}`}
+                                                name="SMS"
+                                                checked={chosenNotifications.SMS}
+                                                onChange={(e) => handleChange(e.target.name, e.target.checked)} />
+                                            &nbsp;
+                                            {t('notificationOptions.SMS')}
+                                        </label>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                name="Whatsapp"
+                                                checked={chosenNotifications.Whatsapp}
+                                                onChange={(e) => handleChange(e.target.name, e.target.checked)} />
+                                                &nbsp;
+                                            {t('notificationOptions.Whatsapp')}
+                                        </label>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                name="Phonecall"
+                                                checked={chosenNotifications.Phonecall}
+                                                onChange={(e) => handleChange(e.target.name, e.target.checked)} />
+                                                &nbsp;
+                                            {t('notificationOptions.Phonecall')}
+                                        </label>
+                                        <label>
+                                            <input
+                                                type="checkbox"
+                                                name="Email"
+                                                checked={chosenNotifications.Email}
+                                                onChange={(e) => handleChange(e.target.name, e.target.checked)} />
+                                                &nbsp;
+                                            {t('notificationOptions.Email')}
+                                        </label>
                                     </div>
                                 </div>
-                            </div>
-                        </div> : null}
-                </div>
-                }
+                            </div> : null}
+                    </div>
+            }
         </div>
     )
 }

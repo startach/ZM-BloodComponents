@@ -96,7 +96,8 @@
     "emergencyThatWilling": "Emergency request that I am suitable to answer",
     "casualreminder": "Casual reminders calling me to donate",
     "show": "Show",
-    "hide": "Hide"
+    "hide": "Hide",
+    "error_notification_type_not_chosen": "Please choose notification preferences"
   },
   "admin": {
     "accessLevel": "ACCESS LEVEL",
