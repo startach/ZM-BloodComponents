@@ -124,8 +124,10 @@ export default function BrowseUsers() {
     const usersToShow = [];
 
     users.forEach((user) => {
-      // filter ny name
-      if (user.name.indexOf(searchName) === -1)
+      // filter by name
+      const userNamelowercase = user.name.toLowerCase()
+      const searchNameLowercase = searchName.toLowerCase()  
+      if (userNamelowercase.indexOf(searchNameLowercase) === -1)
         return;
       if (chosenBloodType !== defaultSelect && chosenBloodType !== user.bloodType)
         return;
@@ -194,7 +196,7 @@ export default function BrowseUsers() {
       <div>
         <input
           type="text"
-          placeholder="Name"
+          placeholder={t('browseUsers.fullName')}
           value={searchName}
           onChange={handleSearchNameChange}
         />
@@ -228,7 +230,6 @@ export default function BrowseUsers() {
       </div>
 
       <Table headerFields={ getUsersTableHeaderRow() } rowsFields={ getUsersTableRows() } />
-          {/* {usersRows.length || true ? createUsersRows() : <tr><td>{t('browseUsers.noUsersFound')} </td></tr>} */}
     </div>
   )
 }
