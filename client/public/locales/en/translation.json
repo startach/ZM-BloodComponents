@@ -2,6 +2,7 @@
   "general": {
     "hospital": "Hospital",
     "select": "Select",
+    "prefix": "Select",
     "date": "Date",
     "appointment": "appointment",
     "Type": "Type",
