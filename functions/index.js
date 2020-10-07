@@ -71,7 +71,6 @@ exports.removeRole = functions.https.onCall((data, context) => {
 
 
 
-
 exports.sendSMS = functions.https.onCall((data, context) => {
 
     try {
@@ -104,8 +103,6 @@ exports.sendSMS = functions.https.onCall((data, context) => {
         return error.message;
     }
 });
-
-
 
 
 
@@ -153,3 +150,11 @@ exports.sendEmail = functions.https.onCall((data, context) => {
         return error.message;
     }
 });
+
+
+// Will performance be an issue?
+exports.scheduledNotifications = functions.pubsub.schedule('59 10 * * *').timeZone('Asia/Jerusalem').onRun(async()=> {
+
+const sendToUsers = await admin.firestore().collection("users").where("notifications.ReminderFrequency", "!=", "0").get()
+
+})

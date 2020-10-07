@@ -29,4 +29,5 @@
     margin-bottom: 10px;
     width: 25%;
     border: solid white 2px;
+    overflow: auto;
 }
