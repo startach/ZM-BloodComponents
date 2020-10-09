@@ -6,7 +6,8 @@ import Button from "../button";
 import { MDBIcon } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import TextField from "@material-ui/core/TextField";
-import { functions, db } from "../firebase/firebase";
+import { functions, db, auth } from "../firebase/firebase";
+import { getUserAccessLevel } from '../../services/userService'
 
 //TODO: disable past dates, minor modifications to css, SMS
 
@@ -36,7 +37,8 @@ export default function AddAppointments() {
       message: `${t("addAppointments.defaultMessage")}`,
     },
   });
-  
+  const [accessLevel, setAccessLevel] = useState({ accessLevel: undefined, hospital: undefined })
+
   useEffect(() => {
     //load hospitals into hospitalsList
     const hospitals = [];
@@ -52,8 +54,14 @@ export default function AddAppointments() {
         console.log(hospitalDetails);
       });
 
-      // initialize chosen date date
-      handleChangeDate(new Date())
+    // initialize chosen date date
+    handleChangeDate(new Date())
+
+    // get access level
+      const getAccessLevel = async () => {
+        setAccessLevel(await getUserAccessLevel())
+      }
+      getAccessLevel()
   }, []);
 
 
@@ -220,8 +228,7 @@ export default function AddAppointments() {
 
   //get all people in DB with blood type
   const getMatchList = async () => {
-    var bloodTypeMatch = await db
-      .collection("users")
+    var bloodTypeMatch = db.collection("users")
       .where("bloodType", "==", appointmentTypeDetails.Granulocytes.bloodType);
 
     let contactList = [];
@@ -365,7 +372,7 @@ export default function AddAppointments() {
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  let normalizedHospitalName = appointment?.hospitalName?.replace(" ","").toLowerCase()
+  let normalizedHospitalName = appointment?.hospitalName?.replace(" ", "").toLowerCase()
 
   return (
     <div className="addAppContainer" style={{ width: "100%" }}>
@@ -396,6 +403,7 @@ export default function AddAppointments() {
             className="dropdownAdd ml-3 pa2"
             id="hospitalName"
             onChange={handleChangeHospital}
+            disabled={accessLevel === "hospitalCord"}
           >
             <option selected disabled>
               {t("addAppointments.selectHospital")}

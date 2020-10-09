@@ -49,7 +49,25 @@ exports.addCordRole = functions.https.onCall((data, context) => {
     });
 });
 
+exports.addHospitalCordRole = functions.https.onCall((data, context) => {
 
+    const { email, hospitalName } = data
+
+    if (email && hospitalName) {
+        return admin.auth().getUserByEmail(email).then(user => {
+            return admin.auth().setCustomUserClaims(user.uid, {
+                userLevel: "hospitalCord",
+                hospital: hospitalName,
+            })
+        }).then(() => {
+            return {
+                message: `Success! ${email} has been made an cordinator.`
+            }
+        }).catch(err => {
+            return err;
+        });
+    }
+});
 
 exports.removeRole = functions.https.onCall((data, context) => {
     // if (context.auth.token.admin !== true) {
@@ -152,9 +170,10 @@ exports.sendEmail = functions.https.onCall((data, context) => {
 });
 
 
-// Will performance be an issue?
+// Waiting for upgraded account to implement
+/*
 exports.scheduledNotifications = functions.pubsub.schedule('59 10 * * *').timeZone('Asia/Jerusalem').onRun(async()=> {
 
 const sendToUsers = await admin.firestore().collection("users").where("notifications.ReminderFrequency", "!=", "0").get()
 
-})
+})*/
