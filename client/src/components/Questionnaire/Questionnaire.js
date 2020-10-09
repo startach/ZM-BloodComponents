@@ -244,11 +244,13 @@ export default function Questionnaire() {
     }
   }
 
-  useEffect(async () => {
-    const user = await getUserById(userId)
-
+  useEffect(() => {
+    const getGender = async () => {
+      const user = await getUserById(userId)
+      setGender(user.data().genderType);
+    }
+    getGender()
     setHospital(localStorage.getItem("hospital"));
-    setGender(user.data().genderType);
   }, []);
 
   return (

@@ -29,15 +29,18 @@ const NotificationOptions = () => {
 
     const userDoc = db.collection('users').doc(id)
 
-    useEffect(async () => {
+    useEffect(() => {
         // initialize choices
         try {
             if (userDoc) {
-                const prevChosenNotifications = (await userDoc.get()).data().notifications
-                setChosenNotifications({ ...chosenNotifications, ...prevChosenNotifications })
+                const getChosenNotifications = async () => {
+                    const prevChosenNotifications = (await userDoc.get()).data().notifications
+                    setChosenNotifications({ ...chosenNotifications, ...prevChosenNotifications })
 
-                // if previously chose to be notified - if no option chosen, will show error
-                setShowError(prevChosenNotifications?.ShowNotifications)
+                    // if previously chose to be notified - if no option chosen, will show error
+                    setShowError(prevChosenNotifications?.ShowNotifications)
+                }
+                getChosenNotifications()
             }
         } catch (err) {
             console.log(err)

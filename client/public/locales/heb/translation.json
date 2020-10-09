@@ -117,7 +117,7 @@
   "admin": {
     "accessLevel": "רמת גישה",
     "selectToMakeCord": "בחר משתמש כדי להפוך למתאם",
-    "makeCord": "הפוף למתאם",
+    "makeCord": "הפוך למתאם",
     "remove": "הסר",
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
     "makeAdmin": "הפוך למנהל",
