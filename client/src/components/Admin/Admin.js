@@ -18,18 +18,18 @@ export default function Admin() {
     const [response, setResponse] = useState(null);
 
     //set person to add
-    const [control, setControl] = useState({
-        admin: null,
-        cord: null
-    });
+    const [userEmail, setUserEmail] = useState("");
 
+    const [hospital, setHospital] = useState("");
+
+    // must be same as {t} file
+    const HOSPITAL_LIST = ["ichilov", "talHashomer", "hadassah", "rambam", "beilinsohn", "soroka"]
 
     useEffect(() => {
 
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 user.getIdTokenResult().then(function (data) {
-                    console.log(data.claims)
                     setAccessLevel(data.claims.userLevel)
                 });
             }
@@ -39,11 +39,28 @@ export default function Admin() {
 
 
     //call backend function with email data from form
-    const handleAdmin = (e) => {
+    const handleAddRole = (e) => {
         e.preventDefault();
-
-        const addAdminRole = functions.httpsCallable('addAdminRole');
-        addAdminRole({ email: control.admin }).then(result => {
+        const role = e.target.name;
+        let functionName = ""
+        let payload = {
+            email: userEmail
+        }
+        switch (role) {
+            case "admin":
+                functionName = 'addAdminRole';
+                break;
+            case "cord":
+            default:
+                functionName = 'addCordRole';
+                break;
+            case "hospitalCord":
+                functionName = 'addHospitalCordRole';
+                payload = { ...payload, hospitalName: hospital }
+                break;
+        }
+        const addAdminRole = functions.httpsCallable(functionName);
+        addAdminRole(payload).then(result => {
             setResponse(result)
             console.log(result)
             console.log(result.data.message)
@@ -51,28 +68,11 @@ export default function Admin() {
 
     }
 
-
-
-    //or include in same as above by passing in which claim to add?
-    const handleCord = (e) => {
-        e.preventDefault();
-
-        const addCordRole = functions.httpsCallable('addCordRole');
-        addCordRole({ email: control.cord }).then(result => {
-            setResponse(result)
-            console.log(result)
-            console.log(result.data.message)
-        });
-
-
-    }
-
-
-    const handleRemove = (e, role) => {
+    const handleRemove = (e) => {
         e.preventDefault();
 
         const removeRole = functions.httpsCallable('removeRole');
-        removeRole({ email: control[role] }).then(result => {
+        removeRole({ email: userEmail }).then(result => {
             setResponse(result)
             console.log(result)
             console.log(result.data.message)
@@ -104,46 +104,47 @@ export default function Admin() {
 
 
     const handleChange = (e) => {
-
-        setControl({ ...control, [e.target.id]: e.target.value })
-        console.log(control)
+        switch (e.target.name) {
+            case "hospital":
+                setHospital(e.target.value)
+                break;
+            case "email":
+            default:
+                setUserEmail(e.target.value)
+                break;
+        }
     }
 
 
     return (
         <div>
-
-
-
-            <div className="text-center mt-5"><u>{t('admin.accessLevel')}</u>: <b>    { languageSelected==='en'?accessLevel: t(`admin.${accessLevel}`)}
-</b></div>
-
-
+            <div className="text-center mt-5">
+                <u>
+                    {t('admin.accessLevel')}
+                </u>:
+                <b>
+                    {languageSelected === 'en' ? accessLevel : t(`admin.${accessLevel}`)}
+                </b>
+            </div>
 
             <form className="mb-5" style={{ margin: "40px auto", maxWidth: "300px" }} >
-                <input type="email" placeholder="User email" id="cord-email" value={control.cord} required />
-
-                <select className="dropdown mt-2" id="cord" onChange={handleChange}>
+                <input type="email" placeholder="User email" id="cord-email" value={userEmail} onChange={handleChange} required />
+                <select className="dropdown mt-2" id="cord" name="email" onChange={handleChange}>
                     <option value="select" className="option">{t('admin.selectToMakeCord')} </option>
                     {userList.map((user) => (
-
                         <option value={user} id="cord" className="option">{user}</option>
 
                     ))}
                 </select>
 
-                <button class="btn btn-small btn-warning mt-2" onClick={handleCord}>{t('admin.makeCord')}</button>
-                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "cord")}>{t('admin.remove')}</button>
+                <button class="btn btn-small btn-warning mt-2" onClick={handleAddRole} name="cord">{t('admin.makeCord')}</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={handleRemove}>{t('admin.remove')}</button>
             </form>
 
-
-
-
-
             <form style={{ margin: "40px auto", maxWidth: "300px" }} >
-                <input type="email" placeholder="User email" id="admin-email" value={control.admin} required />
+                <input type="email" placeholder="User email" id="admin-email" value={userEmail} onChange={handleChange} required />
 
-                <select className="dropdown mt-2" id="admin" onChange={handleChange}>
+                <select className="dropdown mt-2" id="admin" name="email" onChange={handleChange}>
                     <option value="select" className="option">{t('admin.selectMakeAdmin')} </option>
                     {userList.map((user) => (
 
@@ -151,8 +152,28 @@ export default function Admin() {
 
                     ))}
                 </select>
-                <button className="btn btn-small btn-danger mt-2" onClick={handleAdmin}>{t('admin.makeAdmin')}</button>
-                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={(e) => handleRemove(e, "admin")}>{t('admin.remove')}</button>
+                <button className="btn btn-small btn-danger mt-2" onClick={handleAddRole} name="admin">{t('admin.makeAdmin')}</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={handleRemove}>{t('admin.remove')}</button>
+            </form>
+
+
+            <form style={{ margin: "40px auto", maxWidth: "300px" }} >
+                <input type="email" placeholder="User email" id="admin-email" value={userEmail} onChange={handleChange} required />
+
+                <select className="dropdown mt-2" id="admin" name="email" onChange={handleChange}>
+                    <option value="select" className="option">{t('admin.selectMakeHospitalCord')} </option>
+                    {userList.map((user) => (
+                        <option value={user} id="admin" className="option">{user}</option>
+                    ))}
+                </select>
+                <select className="dropdown mt-2" id="admin" name="hospital" onChange={handleChange}>
+                    <option value="select" className="option">{t('admin.selectHospital')} </option>
+                    {HOSPITAL_LIST.map((hospital) => (
+                        <option value={hospital} id="admin" className="option">{t("general." + hospital)}</option>
+                    ))}
+                </select>
+                <button className="btn btn-small btn-primary mt-2" onClick={handleAddRole} name="hospitalCord">{t('admin.makeHospitalCord')}</button>
+                <button className="btn btn-small btn-secondary mt-2 ml-2" onClick={handleRemove}>{t('admin.remove')}</button>
             </form>
 
             {response ? <div className="text-center">{response.data.message}</div> : null}

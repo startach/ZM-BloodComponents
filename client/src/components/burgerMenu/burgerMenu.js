@@ -4,21 +4,19 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebase/firebase'
 import './burgerMenu.css'
 import { useTranslation } from 'react-i18next';
+import { getUserClaims } from '../../services/userService'
 
 const BurgerMenu = () => {
   const languageSelected = localStorage.getItem('i18nextLng');
   const { t } = useTranslation();
-  const [accessLevel, setAccessLevel] = useState("loading");
+  const [userLevel, setUserLevel] = useState("loading");
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        user.getIdTokenResult().then(async function (data) {
-          const userToken = await user.getIdTokenResult()
-          setAccessLevel(userToken?.claims?.accessLevel)
-        })
-      }
-    })
+    const getUserLevel = async () => {
+      const claims = await getUserClaims()
+      setUserLevel(claims.userLevel)
+    }
+    getUserLevel()
   }, [])
 
   const handleLogout = () => {
@@ -99,22 +97,22 @@ const BurgerMenu = () => {
           {t('burgerMenu.dashboard')}
         </Link>
         <div className="line"></div>
-        {accessLevel === "cord" || accessLevel === "admin" || accessLevel === "hospitalCord" ? <Link to='/add' className="link">
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord" ? <Link to='/add' className="link">
           {t('burgerMenu.addAppointment')}
         </Link> : null}
-        {accessLevel === "cord" || accessLevel === "admin" || accessLevel === "hospitalCord" ? <div className="line"></div> : null}
-        {accessLevel === "cord" || accessLevel === "admin" || accessLevel === "hospitalCord" ? <Link to='/edit-delete' className="link">
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord" ? <div className="line"></div> : null}
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord" ? <Link to='/edit-delete' className="link">
           {t('burgerMenu.editAppointments')}
         </Link> : null}
-        {accessLevel === "cord" || accessLevel === "admin" || accessLevel === "hospitalCord" ? <div className="line"></div> : null}
-        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/donations-management' className="link">
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord" ? <div className="line"></div> : null}
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord"? <Link to='/donations-management' className="link">
           {t('burgerMenu.onAirDonations')}
         </Link> : null}
-        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
-        {accessLevel === "cord" || accessLevel === "admin" ? <Link to='/users' className="link">
+        {userLevel === "cord" || userLevel === "admin" || userLevel === "hospitalCord" ? <div className="line"></div> : null}
+        {userLevel === "cord" || userLevel === "admin" ? <Link to='/users' className="link">
           {t('burgerMenu.usersBrowsing')}
         </Link> : null}
-        {accessLevel === "cord" || accessLevel === "admin" ? <div className="line"></div> : null}
+        {userLevel === "cord" || userLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/user' className="link">
           {t('burgerMenu.profile')}
         </Link>
@@ -123,10 +121,10 @@ const BurgerMenu = () => {
         {t('burgerMenu.emergencyDonation')} 
             </Link> */}
         <div className="line"></div>
-        {accessLevel === "admin" ? <Link to='/admin' className="link">
+        {userLevel === "admin" ? <Link to='/admin' className="link">
           {t('burgerMenu.Admin')}
         </Link> : null}
-        {accessLevel === "admin" ? <div className="line"></div> : null}
+        {userLevel === "admin" ? <div className="line"></div> : null}
         <Link to='/login' className="link" onClick={handleLogout}>
           {t('burgerMenu.Logout')}
         </Link>

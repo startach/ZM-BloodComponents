@@ -20,7 +20,8 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
         return admin.auth().setCustomUserClaims(user.uid, {
             userLevel: "admin"
         })
-    }).then(() => {
+    }).then(async () => {
+        functions.logger.info((await admin.auth().getUserByEmail(data.email)).customClaims)
         return {
             message: `Success! ${data.email} has been made an admin.`
         }
@@ -40,7 +41,8 @@ exports.addCordRole = functions.https.onCall((data, context) => {
         return admin.auth().setCustomUserClaims(user.uid, {
             userLevel: "cord"
         })
-    }).then(() => {
+    }).then(async () => {
+        functions.logger.info((await admin.auth().getUserByEmail(data.email)).customClaims)
         return {
             message: `Success! ${data.email} has been made an cordinator.`
         }
@@ -48,6 +50,8 @@ exports.addCordRole = functions.https.onCall((data, context) => {
         return err;
     });
 });
+
+
 
 exports.addHospitalCordRole = functions.https.onCall((data, context) => {
 
@@ -59,15 +63,18 @@ exports.addHospitalCordRole = functions.https.onCall((data, context) => {
                 userLevel: "hospitalCord",
                 hospital: hospitalName,
             })
-        }).then(() => {
+        }).then(async () => {
+            functions.logger.info((await admin.auth().getUserByEmail(data.email)).customClaims)
             return {
-                message: `Success! ${email} has been made an cordinator.`
+                message: `Success! ${email} has been made a hospital cordinator in ${hospitalName}.`
             }
         }).catch(err => {
             return err;
         });
     }
 });
+
+
 
 exports.removeRole = functions.https.onCall((data, context) => {
     // if (context.auth.token.admin !== true) {

@@ -8,24 +8,15 @@ export const getUserById = (userId) => {
     return (db.collection('users').doc(userId).get());
 }
 
-export const getUserAccessLevel = async () => {
-    let authClaims = {}
-    
-    auth.onAuthStateChanged((user) => {
-        const userToken = await user.getIdTokenResult()
-
-        authClaims = userToken.claims
+export const getUserClaims = async () => {
+    let user = {}
+    const getUser = new Promise((resolve, reject) => {
+        auth.onAuthStateChanged(async (user) => {
+            resolve(user)
+        })
     })
-    
-    // Quickfix to make hospitalCord accessLevel
-    if (userToken) {
-        const uid = auth.currentUser.uid
-        const userDoc = await db.collection('users').doc(uid).get()
-        const dbAccessLevel = userDoc.data().accessLevel
-        if (dbAccessLevel) {
-            return dbAccessLevel
-        }
-    }
+    user = await getUser
+    const userToken = await user.getIdTokenResult()
 
-    return authClaims
+    return userToken.claims
 }

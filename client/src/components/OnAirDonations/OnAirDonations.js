@@ -8,10 +8,8 @@ import i18next from 'i18next';
 import { getAllHospitals } from '../../services/hospitalService';
 import HospitalSelect from '../Select/HospitalSelect/HospitalSelect';
 import OnAirTable from "./OnAirTable/OnAirTable";
+import { getUserClaims } from '../../services/userService'
 
-const getAppointmentsForHospital = (hospitalName) => {
-  return (db.collection('Appointments').where('hospitalName', '==', hospitalName));
-};
 
 /*
 const getAppointmentsOfDate = (date) => {
@@ -49,34 +47,73 @@ export default function OnAirDonations() {
   const [taxiBookingsMap, setTaxiBookingsMap] = useState({});
   const [appointmentsMap, setAppointmentsMap] = useState(new Map());
 
+  useEffect(() => {
+
+    //redirect user to login screen if he is not logged in 
+    if (!localStorage.getItem('userid')) {
+      history.push('/login')
+    }
+
+    // get user's hospital - if user is a hospitalCord
+    const getUserHospital = async () => {
+      const userClaims = await getUserClaims()
+      if (userClaims.userLevel === "hospitalCord") {
+        return userClaims.hospital.toLowerCase()
+      }
+      return
+    }
+
+    getUserHospital().then((hospitalName) => {
+      setHospitalNames(hospitalName);
+      fetchUsersMap();
+      fetchTaxiBookingsMap();
+    })
+
+    async function fetchUsersMap() {
+      const users = await getAllUsersMap();
+      setUsersMap(users);
+    }
+
+    async function fetchTaxiBookingsMap() {
+      const taxies = await getAllTaxiBookingsMap();
+      setTaxiBookingsMap(taxies);
+    }
+
+  }, []);
+
+  useEffect(() => {
+    loadAppointmentsMap();
+  }, [chosenHospital]);
+
+  // trigger loadAppointmentsMap() only when hospitals change
+  useEffect(() => {
+    if (hospitals?.length === 1) {
+      setChosenHospital(hospitals[0].name)
+    }
+  }, [hospitals])
 
   const handleHospitalChange = (e) => {
-    const hospitalNames = JSON.parse(e.target.value); 
+    const hospitalNames = JSON.parse(e.target.value);
     setChosenHospital(hospitalNames.name);
   };
 
-  /*
-  const handleDateChange = (date) => {
-    setSearchDate(date)
-    //const fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
-    //setHospitalAppointments({ ...hospitalAppointments, ['date']: fullDate })
-  };
-  */
-
-  const setHospitalNames = () => {
+  const setHospitalNames = async (hospitalName) => {
     getAllHospitals().then((hopsitals) => {
-      const hospitalsNames = hopsitals.map(hospitalDetails => {
+      let hospitalNames = hopsitals.map(hospitalDetails => {
         return { name: hospitalDetails.hospitalName, currLangName: hospitalDetails.currLangName }
       });
-
-      setHospitals(hospitalsNames)  
+      // if user is hospitalCord, show only their hospital
+      if (hospitalName) {
+        hospitalNames = [hospitalNames.find(hospital => hospital.name.replace(" ", "").toLowerCase() === hospitalName)]
+      }
+      setHospitals(hospitalNames)
     })
   };
 
   const deleteTimeAppointments = (date, time) => {
     const timeAppointments = appointmentsMap.get(date).get(time);
     let batch = db.batch();
-    
+
     for (let appointment of timeAppointments) {
       batch.delete(db.collection("Appointments").doc(appointment.id));
 
@@ -89,7 +126,7 @@ export default function OnAirDonations() {
     batch.commit().then(function () {
       loadAppointmentsMap();
       alert("The appointment has been deleted successfully");
-    }).catch(function() {
+    }).catch(function () {
       alert("An Error occured");
     });
   };
@@ -98,16 +135,18 @@ export default function OnAirDonations() {
     //only run when hospital chosen
     if (chosenHospital) {
       const today = Date.now() / 1000
-      const filteredQuery = getAppointmentsForHospital(chosenHospital);
-      filteredQuery.get()
+
+      // firebase queries are not case sensitive -
+      // how should hospital cases be treated?
+      db.collection('Appointments').where("hospitalName", "==", chosenHospital || "").get()
         .then(querySnapshot => {
           const Appointments = [];
-          querySnapshot.docs.forEach(hospitalAppointments => {
-            let app = hospitalAppointments.data().timestamp.seconds
-            if (app > today) {
-              let currentID = hospitalAppointments.id;
+          querySnapshot.docs.forEach(hospitalAppointment => {
+            const appointmentTime = hospitalAppointment.data().timestamp.seconds
+            if (appointmentTime > today) {
+              let currentID = hospitalAppointment.id;
               let appObj = {
-                ...hospitalAppointments.data(),
+                ...hospitalAppointment.data(),
                 ["id"]: currentID,
               };
               Appointments.push(appObj);
@@ -143,43 +182,14 @@ export default function OnAirDonations() {
     }
   };
 
-
-  useEffect(() => {
-    //redirect user to login screen if he is not logged in 
-    if (!localStorage.getItem('userid')) {
-      history.push('/login')
-    }
-
-    setHospitalNames();
-  }, []);
-
-  useEffect(() => {
-    async function fetchUsersMap() {
-      const users = await getAllUsersMap();
-      setUsersMap(users);
-    }
-
-    fetchUsersMap();
-  }, []);
-
-  useEffect(() => {
-    async function fetchTaxiBookingsMap() {
-      const taxies = await getAllTaxiBookingsMap();
-      setTaxiBookingsMap(taxies);
-    }
-
-    fetchTaxiBookingsMap();
-  }, []);
-
-  useEffect(() => {
-    loadAppointmentsMap();
-  }, [chosenHospital]);
-
   return (
     <div className="onAirView mt-3">
       <div>
         <span>{t('general.hospital')}{': '}</span>
-        <HospitalSelect t={t} hospitals={hospitals} handleHospitalChange={handleHospitalChange} />
+        <HospitalSelect t={t}
+          hospitals={hospitals}
+          handleHospitalChange={handleHospitalChange}
+          chosenHospital={chosenHospital} />
       </div>
       <br />
       <br />
@@ -187,10 +197,10 @@ export default function OnAirDonations() {
       {[...appointmentsMap.keys()].map(date => (
         <Fragment key={date}>
           <h3>{t('onAirDonations.date')}: {date}</h3>
-          <OnAirTable 
-            t={t} 
-            date={date} 
-            dateAppointments={appointmentsMap.get(date)} 
+          <OnAirTable
+            t={t}
+            date={date}
+            dateAppointments={appointmentsMap.get(date)}
             usersMap={usersMap}
             deleteTimeAppointments={deleteTimeAppointments}
           />

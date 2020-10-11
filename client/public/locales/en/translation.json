@@ -116,7 +116,11 @@
     "selectMakeAdmin": "select user to make admin",
     "makeAdmin": "Make Admin",
     "admin": "Admin",
-    "cord": "Coordinator"
+    "cord": "Coordinator",
+    "hospitalCord": "Hospital Coordinator",
+    "makeHospitalCord": "Make Hospital Coordinator",
+    "selectMakeHospitalCord": "select user to make Hospital Coordinator",
+    "selectHospital": "select hospital"
   },
   "appointmentsEntry": {
     "noAppoins": "You have no past appointments"

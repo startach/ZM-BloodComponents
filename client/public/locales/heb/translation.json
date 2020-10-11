@@ -122,7 +122,11 @@
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
     "makeAdmin": "הפוך למנהל",
     "admin": "מנהל",
-    "cord": "מתאם"
+    "cord": "מתאם",
+    "hospitalCord": "מתאם בית חולים",
+    "makeHospitalCord": "הפוך למתאם בית חולים",
+    "selectMakeHospitalCord": "בחר משתמש כדי להפוך למתאם בית חולים",
+    "selectHospital": "בחר בית חולים"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"

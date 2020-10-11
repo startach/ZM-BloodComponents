@@ -7,7 +7,7 @@ import { MDBIcon } from "mdbreact";
 import { useTranslation } from "react-i18next";
 import TextField from "@material-ui/core/TextField";
 import { functions, db, auth } from "../firebase/firebase";
-import { getUserAccessLevel } from '../../services/userService'
+import { getUserClaims } from '../../services/userService'
 
 //TODO: disable past dates, minor modifications to css, SMS
 
@@ -37,31 +37,42 @@ export default function AddAppointments() {
       message: `${t("addAppointments.defaultMessage")}`,
     },
   });
-  const [accessLevel, setAccessLevel] = useState({ accessLevel: undefined, hospital: undefined })
+  const [userClaims, setUserClaims] = useState({ userLevel: "", hospital: "" })
 
   useEffect(() => {
-    //load hospitals into hospitalsList
-    const hospitals = [];
-    db.collection("Hospitals")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((hospital) => {
-          let currentID = hospital.id;
-          let appObj = { ...hospital.data(), "id": currentID };
-          hospitals.push(appObj);
-        });
-        setHospitalDetails(hospitals);
-        console.log(hospitalDetails);
-      });
 
     // initialize chosen date date
     handleChangeDate(new Date())
 
+    //load hospitals into hospitalsList
+    let hospitals = [];
+    const getHospitalDetails = async () => {
+
+      const snapshot = await db.collection("Hospitals").get()
+      snapshot.docs.forEach((hospital) => {
+        let currentID = hospital.id;
+        let appObj = { ...hospital.data(), "id": currentID };
+        hospitals.push(appObj);
+      });
+      setHospitalDetails(hospitals);
+    }
+    
+    let userClaims = {}
     // get access level
-      const getAccessLevel = async () => {
-        setAccessLevel(await getUserAccessLevel())
+    const getUserLevel = async () => {
+      userClaims = await getUserClaims()
+      setUserClaims(userClaims)
+    }
+
+    Promise.all([getHospitalDetails(), getUserLevel()]).then(()=>{
+      if (userClaims.userLevel === "hospitalCord") {
+        const userHospital = hospitals.find(hospital => {
+          return hospital.hospitalName.replace(" ", "").toLowerCase() === userClaims.hospital.toLowerCase()
+        })
+        setAppointment({...appointment, hospitalID: userHospital?.id, hospitalName: userHospital?.hospitalName})
       }
-      getAccessLevel()
+    })
+    
   }, []);
 
 
@@ -403,7 +414,8 @@ export default function AddAppointments() {
             className="dropdownAdd ml-3 pa2"
             id="hospitalName"
             onChange={handleChangeHospital}
-            disabled={accessLevel === "hospitalCord"}
+            disabled={userClaims.userLevel === "hospitalCord"}
+            value={appointment.hospitalName}
           >
             <option selected disabled>
               {t("addAppointments.selectHospital")}
