@@ -15,6 +15,7 @@ const ContactUs = () => {
       <div className="introContainer infoPagesAlign">
         <div className="introSpan">{t("contactUs.title")}</div>
         <div className="introSpan">{t("contactUs.firstP")}</div>
+        <div className="introSpan">{t("contactUs.coordinatorDetails")}</div>
         <div className="introSpan">
           {t("contactUs.site")}:
           <span>
