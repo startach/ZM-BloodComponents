@@ -631,7 +631,7 @@ export default function AddAppointments() {
                 </tr>
               </thead>
               <tbody>
-                {appList.map((appointment, index) => (
+                {appointmentList.map((appointment, index) => (
                   <tr
                     className="rowContainer"
                     key={index}
