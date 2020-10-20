@@ -2,6 +2,7 @@
   "general": {
     "hospital": "مشفى",
     "select": "إختار",
+    "prefix": "إختار",
     "date": "تاريخ",
     "appointment": "موعد",
     "Type": "نوع",
