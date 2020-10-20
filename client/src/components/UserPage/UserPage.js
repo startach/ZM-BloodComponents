@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./UserPage.css"
 import NotificationOptions from '../Notifications/NotificationOptions'
 import UserDetails from '../UserDetails/UserDetails';

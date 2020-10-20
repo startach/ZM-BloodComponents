@@ -6,6 +6,7 @@ import Popup from "reactjs-popup";
 
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { getUserClaims } from '../../services/userService'
 
 
 function DeleteAppointments() {
@@ -17,14 +18,12 @@ function DeleteAppointments() {
     const [appDate, setAppDate] = useState(new Date())
     const [hospitals, setHospitals] = useState([])
     const [hospitalAppointments, setHospitalAppointments] = useState({
-
         hospitalName: "",
         date: "",
-        appointmentType: "",
-
+        appointmentType: "Both",
     })
 
-    const [selectedInputs, setSelectedInputs] = useState([])
+    const [results, setResults] = useState([])
 
     const [getAll, setGetAll] = useState(true)
 
@@ -37,13 +36,12 @@ function DeleteAppointments() {
     const [editedInputs, setEditedInputs] = useState({})
 
     useEffect(() => {
+        results.map(result => {
 
-        selectedInputs.map(SingleInput => {
-
-            setEditedInputs(SingleInput.data())
+            setEditedInputs(result.data())
         })
 
-    }, [selectedInputs])
+    }, [results])
 
 
 
@@ -101,77 +99,72 @@ function DeleteAppointments() {
 
 
     const handleChange = e => {
-
         setHospitalAppointments({ ...hospitalAppointments, [e.target.id]: e.target.value });
     }
 
 
     useEffect(() => {
+        let hospitalNames = []
 
-        db.collection('Hospitals').get().then((hopsitals) => {
-            const hospitalsNames = hopsitals.docs.map(hospitalDetails => {
-                return hospitalDetails.data().hospitalName
+        const getHospitals = async () => {
+            db.collection('Hospitals').get().then(async (hopsitals) => {
+                hospitalNames = hopsitals.docs.map(hospitalDetails => {
+                    return hospitalDetails.data().hospitalName
+                })
+
+                const userClaims = await getUserClaims()
+                if (userClaims.userLevel === "hospitalCord") {
+                    const userHospital = userClaims.hospital
+                    hospitalNames = [hospitalNames
+                        .find(hospital => hospital.replace(" ", "").toLowerCase() === userHospital.toLowerCase())]
+                    setHospitalAppointments({ ...hospitalAppointments, hospitalName: hospitalNames[0] })
+                }
+                setHospitals(hospitalNames)
             })
-            setHospitals(hospitalsNames)
-
-        })
+        }
+        getHospitals()
     }, [])
 
 
     const deleteAppointment = (e) => {
-
         db.collection('Appointments').doc(e.target.id).delete()
-
     }
 
-
-
     useEffect(() => {
-
         if (hospitalAppointments.appointmentType == "Both") {
-
             if (getAll) {
+                console.log(1, hospitalAppointments)
                 db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                     .onSnapshot(Appointments => {
                         const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                             return appointmentsDetails
                         })
-                        setSelectedInputs(hospitalApp)
-
+                        setResults(hospitalApp)
                     })
-
-
             } else {
-
-                console.log('loooop')
+                console.log(2, hospitalAppointments)
                 db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                     .where('date', '==', hospitalAppointments.date)
                     .onSnapshot(Appointments => {
                         const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                             return appointmentsDetails
                         })
-                        setSelectedInputs(hospitalApp)
-
+                        setResults(hospitalApp)
                     })
             }
-
         } else {
-
             if (getAll) {
-
+                console.log(3, hospitalAppointments)
                 db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                     .where('appointmentType', '==', hospitalAppointments.appointmentType)
                     .onSnapshot(Appointments => {
                         const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                             return appointmentsDetails
                         })
-                        setSelectedInputs(hospitalApp)
-
+                        setResults(hospitalApp)
                     })
-
-
             } else {
-                console.log('loooop')
+                console.log(4, hospitalAppointments)
                 db.collection('Appointments').where('hospitalName', '==', hospitalAppointments.hospitalName)
                     .where('date', '==', hospitalAppointments.date)
                     .where('appointmentType', '==', hospitalAppointments.appointmentType)
@@ -179,7 +172,7 @@ function DeleteAppointments() {
                         const hospitalApp = Appointments.docs.map(appointmentsDetails => {
                             return appointmentsDetails
                         })
-                        setSelectedInputs(hospitalApp)
+                        setResults(hospitalApp)
 
                     })
             }
@@ -189,7 +182,6 @@ function DeleteAppointments() {
     }, [hospitalAppointments, getAll])
 
     const handleAll = () => {
-
         setGetAll(true)
         console.log(getAll)
     }
@@ -204,8 +196,14 @@ function DeleteAppointments() {
                     <div className="selectHospitalContainer mt-5">
 
                         {t('addAppointments.selectHospital')} : {" "}
-                        <select id="hospitalName" className="hospitalsList" onChange={handleChange}>
-                            <option value="Select" selected disabled>{t('general.select')} </option>
+                        <select
+                            id="hospitalName"
+                            className="hospitalsList"
+                            onChange={handleChange}
+                            value={hospitalAppointments.hospitalName}
+                            disabled={hospitals.length === 1}
+                        >
+                            {hospitals.length === 1 ? null : <option value="Select" selected disabled>{t('general.select')} </option>}
                             {hospitals.map(hospital =>
 
 
@@ -227,12 +225,14 @@ function DeleteAppointments() {
                     <div className="selectAppointmentTypeContainer mt-3">
 
                         {t('addAppointments.selectAppointmentType')}: {" "}
-                        <select id="appointmentType" className="appointmentTypeList" onChange={handleChange}>
-
-                            <option value="Select" selected disabled>{t('general.select')} </option>
+                        <select
+                            id="appointmentType"
+                            className="appointmentTypeList"
+                            onChange={handleChange}
+                            value={hospitalAppointments.appointmentType} >
+                            <option value="Both"> {t('general.both')} </option>
                             <option value="Thrombocytes" >{t('general.Thrombocytes')}</option>
                             <option value="Granulocytes">{t('general.Granulocytes')}</option>
-                            <option value="Both"> {t('general.both')} </option>
 
                         </select>
 
@@ -260,10 +260,10 @@ function DeleteAppointments() {
 
                 <hr />
 
-                <div className="mx-4 mb-2 text-right" style={{ fontSize: "12px" }}><span>results:</span><b> {selectedInputs.length}</b></div>
-
-
-
+                <div className="mx-4 mb-2 text-right" style={{ fontSize: "12px" }}>
+                    <span>results:</span>
+                    <b> {results.length}</b>
+                </div>
 
             </div>
 
@@ -275,7 +275,7 @@ function DeleteAppointments() {
                 <li className="deleteTableEntries"></li>
             </ul>
             <div className="contain">
-                {selectedInputs.map((Details, id) => (
+                {results.map((Details, id) => (
                     <ul className='deleteRowContainer' id={Details.id}>
 
                         {console.log("detila are:", Details.data())}
@@ -357,7 +357,7 @@ function DeleteAppointments() {
 
                                         <div className="content">
 
-                                        {t('editDeleteApp.deleteAppConfirm')} ?
+                                            {t('editDeleteApp.deleteAppConfirm')} ?
 
                                      </div>
 
@@ -371,7 +371,7 @@ function DeleteAppointments() {
                                                     close();
                                                 }}>
                                                 {t('general.Yes')}
-                                        </button>
+                                            </button>
 
                                             <button
                                                 className="noButton"
@@ -379,7 +379,7 @@ function DeleteAppointments() {
                                                     close();
                                                 }}>
                                                 {t('general.No')}
-                                        </button>
+                                            </button>
 
                                         </div>
 

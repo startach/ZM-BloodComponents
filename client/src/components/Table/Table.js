@@ -1,10 +1,10 @@
 import React from "react";
 import "./Table.css"
 
-export default function Table({headerFields, rowsFields}) {
+export default function Table({headerFields, rowsFields, className}) {
 
   return (
-    <table className="appTable">
+    <table className={`appTable ${className}`}>
       <thead>
         <tr className="headerRow">
           {headerFields.map(field => (

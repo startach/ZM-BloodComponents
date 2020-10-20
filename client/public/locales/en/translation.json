@@ -7,8 +7,12 @@
     "appointment": "appointment",
     "Type": "Type",
     "ichilov": "Ichilov",
+    "talhashomer": "Tal Hashomer",
     "talHashomer": "Tal Hashomer",
+    "hadassah": "Hadassah",
     "rambam": "Rambam",
+    "beilinsohn": "Beilinsohn",
+    "soroka":"Soroka",
     "Register": "Register",
     "Yes": "Yes",
     "No": "No",
@@ -98,7 +102,12 @@
     "casualreminder": "Casual reminders calling me to donate",
     "show": "Show",
     "hide": "Hide",
-    "error_notification_type_not_chosen": "Please choose notification preferences"
+    "error_notification_type_not_chosen": "Please choose notification preferences",
+    "please_remind": "Please remind me",
+    "never": "never",
+    "every": "every",
+    "month": "month",
+    "months": "months"
   },
   "admin": {
     "accessLevel": "ACCESS LEVEL",
@@ -106,9 +115,13 @@
     "makeCord": "Make Coordinator",
     "remove": "Remove",
     "selectMakeAdmin": "select user to make admin",
-    "makeAdmin": "make Admin",
+    "makeAdmin": "Make Admin",
     "admin": "Admin",
-    "cord": "Coordinator"
+    "cord": "Coordinator",
+    "hospitalCord": "Hospital Coordinator",
+    "makeHospitalCord": "Make Hospital Coordinator",
+    "selectMakeHospitalCord": "select user to make Hospital Coordinator",
+    "selectHospital": "select hospital"
   },
   "appointmentsEntry": {
     "noAppoins": "You have no past appointments"
@@ -238,7 +251,8 @@
     "error_age_ichilov": "Sorry, according to Ichilov rules, you can only donate if your age is between 18-62. If your age is between 17-65, please try to donate in another Hospital",
     "error_pregnant": "Sorry, according to the Hospital rules, the donation can't take place. Please try to donate at least 6 months after finishing the pregnant",
     "error_pregnant_beilinsohn": "Sorry, according to the Hospital rules, the donation can't take place. If you at least 6 months after finishing the pregnant, please try to donate in another Hospital",
-    "error_last_donation": "Sorry, according to Beilinsohn rules, you can only donate if you already previously donated. Please try to donate in another Hospital",
+    "error_last_donation_beilinsohn": "Sorry, according to Beilinsohn rules, you can only donate if you already previously donated. Please try to donate in another Hospital",
+    "error_last_donation_general": "Sorry, it is not possible to donate if your previous donation was less than a month ago",
     "error_confirmation": "Please confirm the reading statement"
   },
   "addAppointment": {
