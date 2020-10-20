@@ -2,6 +2,7 @@
   "general": {
     "hospital": "בית חולים",
     "select": "בחירה",
+    "prefix": "קידומת",
     "date": "תאריך",
     "appointment": "תור",
     "Type": "סוג",

@@ -75,7 +75,6 @@ export default function AddAppointments() {
     
   }, []);
 
-
   //for counted appointments added
   let count = 0;
 
@@ -93,7 +92,6 @@ export default function AddAppointments() {
     setAppointment({ ...appointment, [e.target.id]: e.target.value });
     console.log(appointment);
   };
-
 
   const handleATChange = (e) => {
     //Hide/show appointment type
@@ -148,8 +146,9 @@ export default function AddAppointments() {
   const handleChangeDate = (date) => {
     setAppointmentDate(date);
     console.log(date);
-    let fullDate = `${date.getDate()}.${date.getMonth() + 1
-      }.${date.getFullYear()}`;
+    let fullDate = `${date.getDate()}.${
+      date.getMonth() + 1
+    }.${date.getFullYear()}`;
     let minutes = date.getMinutes();
     if (minutes === 0) {
       minutes = "00";
@@ -228,14 +227,16 @@ export default function AddAppointments() {
   //TRANSLATE
   const emailMessage = `
                     
-    ${t("addAppointments.emergencyDonationInEmail")} ${appointment.hospitalName
-    }, ${t("addAppointments.contactCoordEmail")}.<br/>`;
+    ${t("addAppointments.emergencyDonationInEmail")} ${
+    appointment.hospitalName
+  }, ${t("addAppointments.contactCoordEmail")}.<br/>`;
 
   //TRANSLATE
   const smsMessage = `
                     
-    ${t("addAppointments.emergencyDonationInSMS")} ${appointment.hospitalName
-    }, ${t("addAppointments.contactCoordSMS")}.`;
+    ${t("addAppointments.emergencyDonationInSMS")} ${
+    appointment.hospitalName
+  }, ${t("addAppointments.contactCoordSMS")}.`;
 
   //get all people in DB with blood type
   const getMatchList = async () => {
@@ -437,7 +438,7 @@ export default function AddAppointments() {
               onChange={handleChange}
             >
               <option selected disabled>
-                {t('addAppointments.slots')}
+                {t("addAppointments.slots")}
               </option>
               <option value="1" className="option">
                 1
@@ -612,85 +613,85 @@ export default function AddAppointments() {
             ></Button>
           </div>
         ) : (
-              <div>
-                <table className="schedulesTables" style={{ overflowX: "unset" }}>
-                  <thead>
-                    <tr className="headerRow" style={{ height: "40px" }}>
-                      <th className="headerEntries">{t("general.hospital")}</th>
-                      <th className="headerEntries">
-                        {t("addAppointments.blood")}
-                      </th>
-                      <th className="headerEntries">
-                        {t("addAppointments.slots")}
-                      </th>
-                      <th className="headerEntries">
-                        {t("addAppointments.message")}
-                      </th>
-                      <th className="headerEntries"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {appointmentList.map((appointment, index) => (
-                      <tr
-                        className="rowContainer"
-                        key={index}
-                        id={index}
-                        style={{ height: "60px" }}
-                      >
-                        <td className="rowClass">{appointment.hospitalName}</td>
-                        <td className="rowClass red">
-                          {appointment.appointmentType.Granulocytes.bloodType}
-                        </td>
-                        <td className="rowClass">{appointment.slots}</td>
-                        <td className="rowClass">
-                          {" "}
-                          {appointment.appointmentType.Granulocytes.message}
-                        </td>
-                        <td className="rowClass">
-                          <MDBIcon
-                            icon="trash"
-                            size="2x"
-                            className="deleteBtn"
-                            onClick={() => handleDelete(index)}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="text-right mr-4 ml-2">
-                  <b>{t("addAppointments.messagePreview")}:</b>
-                </div>
-                <div className="text-right mt-3 mr-4 ml-2">
-                  {appointmentTypeDetails.Granulocytes.message ===
-                    `${t("addAppointments.defaultMessage")}`
-                    ? smsMessage
-                    : appointmentTypeDetails.Granulocytes.message}
-                </div>
-
-                <div className="text-center mt-3">
-                  <b>{t("addAppointments.matchesFound")}:</b> {matches}
-                </div>
-
-                <div className="text-center my-3">
-                  {t("addAppointments.contactMethod")}:
-              <select
-                    onChange={(e) => setContact(e.target.value)}
-                    className="ml-1"
+          <div>
+            <table className="schedulesTables" style={{ overflowX: "unset" }}>
+              <thead>
+                <tr className="headerRow" style={{ height: "40px" }}>
+                  <th className="headerEntries">{t("general.hospital")}</th>
+                  <th className="headerEntries">
+                    {t("addAppointments.blood")}
+                  </th>
+                  <th className="headerEntries">
+                    {t("addAppointments.slots")}
+                  </th>
+                  <th className="headerEntries">
+                    {t("addAppointments.message")}
+                  </th>
+                  <th className="headerEntries"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {appList.map((appointment, index) => (
+                  <tr
+                    className="rowContainer"
+                    key={index}
+                    id={index}
+                    style={{ height: "60px" }}
                   >
-                    <option value="Email">{t("loginForm.email")}</option>
-                    <option value="SMS">{t("notificationOptions.SMS")}</option>
-                  </select>
-                </div>
+                    <td className="rowClass">{appointment.hospitalName}</td>
+                    <td className="rowClass red">
+                      {appointment.appointmentType.Granulocytes.bloodType}
+                    </td>
+                    <td className="rowClass">{appointment.slots}</td>
+                    <td className="rowClass">
+                      {" "}
+                      {appointment.appointmentType.Granulocytes.message}
+                    </td>
+                    <td className="rowClass">
+                      <MDBIcon
+                        icon="trash"
+                        size="2x"
+                        className="deleteBtn"
+                        onClick={() => handleDelete(index)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="text-right mr-4 ml-2">
+              <b>{t("addAppointments.messagePreview")}:</b>
+            </div>
+            <div className="text-right mt-3 mr-4 ml-2">
+              {appointmentTypeDetails.Granulocytes.message ===
+              `${t("addAppointments.defaultMessage")}`
+                ? smsMessage
+                : appointmentTypeDetails.Granulocytes.message}
+            </div>
 
-                <Button
-                  className="mt-4"
-                  type="button"
-                  text={t("addAppointments.sendRequest")}
-                  onClick={contact === "Email" ? handleSendEmail : handleSendSMS}
-                ></Button>
-              </div>
-            )}
+            <div className="text-center mt-3">
+              <b>{t("addAppointments.matchesFound")}:</b> {matches}
+            </div>
+
+            <div className="text-center my-3">
+              {t("addAppointments.contactMethod")}:
+              <select
+                onChange={(e) => setContact(e.target.value)}
+                className="ml-1"
+              >
+                <option value="Email">{t("loginForm.email")}</option>
+                <option value="SMS">{t("notificationOptions.SMS")}</option>
+              </select>
+            </div>
+
+            <Button
+              className="mt-4"
+              type="button"
+              text={t("addAppointments.sendRequest")}
+              onClick={contact === "Email" ? handleSendEmail : handleSendSMS}
+            ></Button>
+          </div>
+        )}
       </div>
 
       <div
