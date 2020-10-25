@@ -3,18 +3,15 @@
     padding-top: 10px;
 }
 
-
 .optionsList {
     width: 30vw;
-    height: 100%;;
+    height: 100%;
     color: white;
     background-color: darkgray;
     border-radius: 0px;
     margin: 0px;
     padding: 0px;
-
 }
-
 
 .usersTable {
     width: 88%;
@@ -25,7 +22,7 @@
     text-align: center;
     background-color: darkgray;
     height: 10vh;
-    color:white;
+    color: white;
     font-size: 14px;
 }
 
@@ -39,7 +36,7 @@
     text-align: center;
     background-color: lightgray;
     height: 10vh;
-    color:black;
+    color: black;
     font-size: 14px;
 }
 
@@ -58,4 +55,12 @@
     height: fit-content;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 450px) {
+    .responsiveTable {
+        width: 100vw;
+        table-layout: fixed;
+        margin: 6% 0;
+    }
 }

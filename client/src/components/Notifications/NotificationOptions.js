@@ -6,13 +6,16 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
 const NotificationOptions = () => {
-    const [chosenNotifications, setChosenNotifications] = useState({
+    const initialSettingsObj = {
         ShowNotifications: false,
         SMS: false,
         Whatsapp: false,
         Phonecall: false,
-        Email: false
-    })
+        Email: false,
+        ReminderFrequency: 0,
+    }
+
+    const [chosenNotifications, setChosenNotifications] = useState(initialSettingsObj)
 
     const [showError, setShowError] = useState(false)
 
@@ -25,15 +28,19 @@ const NotificationOptions = () => {
     const id = localStorage.getItem('userid');
 
     const userDoc = db.collection('users').doc(id)
-    useEffect(async () => {
+
+    useEffect(() => {
         // initialize choices
         try {
             if (userDoc) {
-                const prevChosenNotifications = (await userDoc.get()).data().notifications
-                setChosenNotifications({ ...chosenNotifications, ...prevChosenNotifications })
+                const getChosenNotifications = async () => {
+                    const prevChosenNotifications = (await userDoc.get()).data().notifications
+                    setChosenNotifications({ ...chosenNotifications, ...prevChosenNotifications })
 
-                // if previously chose to be notified - if no option chosen, will show error
-                setShowError(prevChosenNotifications?.ShowNotifications)
+                    // if previously chose to be notified - if no option chosen, will show error
+                    setShowError(prevChosenNotifications?.ShowNotifications)
+                }
+                getChosenNotifications()
             }
         } catch (err) {
             console.log(err)
@@ -53,15 +60,8 @@ const NotificationOptions = () => {
             handleChange(e.target.name, e.target.checked)
         }
         else {
-            const nextChosenNotifications = {
-                ShowNotifications: false,
-                SMS: false,
-                Whatsapp: false,
-                Phonecall: false,
-                Email: false
-            }
-            setChosenNotifications(nextChosenNotifications)
-            userDoc.update({ [`notifications`]: nextChosenNotifications })
+            setChosenNotifications(initialSettingsObj)
+            userDoc.update({ [`notifications`]: initialSettingsObj })
         }
     }
     return (
@@ -84,10 +84,34 @@ const NotificationOptions = () => {
                         </label>
                         {chosenNotifications.ShowNotifications ?
                             <div>
+                                <p>
+                                    {t("userProfile.please_remind")}
+                                    {chosenNotifications.ReminderFrequency != 0 ? <span>&nbsp;{t("userProfile.every")}</span> : null}
+                                &nbsp;
+                                <select
+                                        name="ReminderFrequency"
+                                        value={chosenNotifications.ReminderFrequency}
+                                        onChange={(e) => handleChange(e.target.name, e.target.value)}
+                                        onFocus="this.size=3"
+                                        onBlur="this.size=1">
+                                        <option value={0}>{t("userProfile.never")}</option>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                    </select>
+                                    {chosenNotifications.ReminderFrequency != 0 ?
+                                        <span>
+                                            &nbsp;
+                                {chosenNotifications.ReminderFrequency == 1 ?
+                                                `${t("userProfile.month")}` : `${t("userProfile.months")}`}
+                                        </span> :
+                                        null}
+                                </p>
                                 {
                                     // show error only if previously opted into notifications && no option chosen
                                     showError && Object.values(chosenNotifications).lastIndexOf(true) < 1 ?
-                                <span style={{ color: "red" }}>{t("userProfile.error_notification_type_not_chosen")}</span> :
+                                        <span style={{ color: "red" }}>{t("userProfile.error_notification_type_not_chosen")}</span> :
                                         null
                                 }
                                 <div>
@@ -131,7 +155,8 @@ const NotificationOptions = () => {
                                         </label>
                                     </div>
                                 </div>
-                            </div> : null}
+                            </div>
+                            : null}
                     </div>
             }
         </div>
