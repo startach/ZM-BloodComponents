@@ -49,11 +49,6 @@ export default function OnAirDonations() {
 
   useEffect(() => {
 
-    //redirect user to login screen if he is not logged in 
-    if (!localStorage.getItem('userid')) {
-      history.push('/login')
-    }
-
     // get user's hospital - if user is a hospitalCord
     const getUserHospital = async () => {
       const userClaims = await getUserClaims()

@@ -79,11 +79,6 @@ function DashboardNoAppoin() {
   }
 
   useEffect(() => {
-    //redirect user to login screen if he is not logged in 
-    if (!localStorage.getItem('userid')) {
-      history.push('/login')
-    }
-    else {
       auth.onAuthStateChanged(async user => {
         if (user) {
           const userData = await getUserById(user.uid);
@@ -112,7 +107,6 @@ function DashboardNoAppoin() {
           })
         }
       })
-    } 
   }, [])
 
   useEffect(() => {

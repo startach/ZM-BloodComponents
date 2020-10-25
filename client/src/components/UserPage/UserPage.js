@@ -4,7 +4,6 @@ import NotificationOptions from '../Notifications/NotificationOptions'
 import UserDetails from '../UserDetails/UserDetails';
 import DonationsHistory from "../DonationsHistory/DonationsHistory";
 import { db } from '../firebase/firebase'
-import { useHistory } from 'react-router-dom';
 import Popup from "reactjs-popup";
 import userProfile from './userProfile.svg'
 import { useTranslation } from 'react-i18next';
@@ -30,13 +29,8 @@ export default function UserPage({ userId }) {
   // Get user id from props if exists, else get from localstorage
   const id = userId ? userId : localStorage.getItem('userid');
   const languageSelected = localStorage.getItem('i18nextLng');
-  const history = useHistory();
 
   useEffect(() => {
-    //if user has no id (is not logged in) then forward to log in screen
-    if (!localStorage.getItem('userid'))
-      history.push('/login')
-
     db.collection('users').doc(id).onSnapshot(snapshot => {
       setUserDetails(snapshot.data())
     }, error => {
