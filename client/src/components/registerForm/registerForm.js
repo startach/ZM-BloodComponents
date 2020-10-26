@@ -36,8 +36,9 @@ const RegisterForm = () => {
   let [confirmPassword, setConfirmPassword] = useState([]);
   const { t } = useTranslation();
 
-  // REMOVE THIS WHEN NOTIFICATIONS ARE INCLUDED IN APPLICATION
-  const areNotificationsActiveInApp = false;
+  // REMOVE THIS SECTION WHEN NOTIFICATIONS ARE INCLUDED IN APPLICATION
+  const areNotificationsActiveInApp = false; // SECTIONy
+  refuseNotifications = true; // SECTION
 
   //Prevent the user which is logged in to enter register again
 
