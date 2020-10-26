@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import "./UserPage.css"
 import NotificationOptions from '../Notifications/NotificationOptions'
@@ -5,13 +6,11 @@ import UserDetails from '../UserDetails/UserDetails';
 import DonationsHistory from "../DonationsHistory/DonationsHistory";
 import { db } from '../firebase/firebase'
 import Popup from "reactjs-popup";
-import userProfile from './userProfile.svg'
-import { useTranslation } from 'react-i18next';
-import { getAppointmentsForUser } from '../../services/appointmentService';
-
+import userProfile from "./userProfile.svg";
+import { useTranslation } from "react-i18next";
+import { getAppointmentsForUser } from "../../services/appointmentService";
 
 export default function UserPage({ userId }) {
-
   const { t } = useTranslation();
 
   // State for user
@@ -24,7 +23,7 @@ export default function UserPage({ userId }) {
     casual: false,
   });
 
-  const [notificationsChosen, setNotificationsChosen] = useState({})
+  const [notificationsChosen, setNotificationsChosen] = useState({});
 
   // Get user id from props if exists, else get from localstorage
   const id = userId ? userId : localStorage.getItem('userid');
@@ -49,8 +48,14 @@ export default function UserPage({ userId }) {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointment) => {
           const appDate = hospitalAppointment.data().timestamp.seconds;
-          if (appDate < today && hospitalAppointment.data().hasDonated !== false) {
-            Appointments.push({ ...hospitalAppointment.data(), id: hospitalAppointment.id });
+          if (
+            appDate < today &&
+            hospitalAppointment.data().hasDonated !== false
+          ) {
+            Appointments.push({
+              ...hospitalAppointment.data(),
+              id: hospitalAppointment.id,
+            });
           }
         });
 
@@ -76,45 +81,51 @@ export default function UserPage({ userId }) {
 
       {/* Similar to dashboard, consider Later, plus fix ltr/rtl */}
       <div className="introSpan pinkBox">
-        {t('dashboard.hello')} <span className="highlight">{userDetails.name}</span>,
+        {t("dashboard.hello")}{" "}
+        <span className="highlight">{userDetails.name}</span>,
         <br />
         {!donationsNumber ? (
-          <span> {t('dashboard.intro')} </span>
+          <span> {t("dashboard.intro")} </span>
         ) : (
-            <div>
-              <span>
-                {t('dashboard.youDonated')} <b>{donationsNumber}</b> {t('dashboard.donationTimes')}.
+          <div>
+            <span>
+              {t("dashboard.youDonated")} <b>{donationsNumber}</b>{" "}
+              {t("dashboard.donationTimes")}.
               <br />
-                {t('dashboard.wonderful')}
-              </span>
-              <br />
-              <Popup
-                trigger={
-                  <button
-                    className="detailsButton">
-                    {t('userProfile.seeHistory')}
-                  </button>
-                }
-                modal
-                closeOnDocumentClick
-                contentStyle={{ width: "80vw" }}
-              >
-                {close => (
-                  <div style={{ maxHeight: '70vh', overflow: 'scroll' }}>
-                    <DonationsHistory t={t} userId={id} editableMode={true} />
-                  </div>
-                )}
-              </Popup>
-            </div>
-          )}
+              {t("dashboard.wonderful")}
+            </span>
+            <br />
+            <Popup
+              trigger={
+                <button className="detailsButton">
+                  {t("userProfile.seeHistory")}
+                </button>
+              }
+              modal
+              closeOnDocumentClick
+              contentStyle={{ width: "80vw" }}
+            >
+              {(close) => (
+                <div style={{ maxHeight: "70vh", overflow: "scroll" }}>
+                  <DonationsHistory t={t} userId={id} editableMode={true} />
+                </div>
+              )}
+            </Popup>
+          </div>
+        )}
       </div>
 
-      <UserDetails t={t} userId={id} userDetails={userDetails} editableMode={true} />
+      <UserDetails
+        t={t}
+        userId={id}
+        userDetails={userDetails}
+        editableMode={true}
+      />
 
       <br />
-
+      {/* **************** hide notification preference until further notice****************** */}
       {/* Consider seperate to notifications component */}
-      <div className="notificationTitle ma3">
+      {/* <div className="notificationTitle ma3">
       </div>
 
 
@@ -127,8 +138,7 @@ export default function UserPage({ userId }) {
           } else {
             setNotificationsChosen({ ...notificationsChosen, [type]: true })
           }
-        }} />
-
+        }} /> */}
     </div>
-  )
+  );
 }
