@@ -11,8 +11,8 @@ import i18next from 'i18next';
 // Later seperate these to service
 const maxBy = (array, comparator) => {
   let max = array?.[0];
-  for (const item of array ){
-    if (comparator(item,max)){
+  for (const item of array) {
+    if (comparator(item, max)) {
       max = item;
     }
   }
@@ -39,15 +39,15 @@ const getAllOccupiedAppointments = async () => {
 
 const getLastAppointment = async (userId, userAppointments) => {
   const now = Date.now() / 1000;
-  const pastAppointments = userAppointments.filter(({timestamp: {seconds}}) => (seconds <  now));
-  const lastAppointment = maxBy(pastAppointments, (appA,appB) => appA.timestamp > appB.timestamp);
-  return {id: userId, lastAppointment};
+  const pastAppointments = userAppointments.filter(({ timestamp: { seconds } }) => (seconds < now));
+  const lastAppointment = maxBy(pastAppointments, (appA, appB) => appA.timestamp > appB.timestamp);
+  return { id: userId, lastAppointment };
 }
 
 const getUsersLastAppointments = async (userIds) => {
   const occupiedAppointments = await getAllOccupiedAppointments();
   const lastAppointments = await Promise.all(userIds.map(userId => {
-    const userAppointments = occupiedAppointments.filter(({userID}) => (userID === userId));
+    const userAppointments = occupiedAppointments.filter(({ userID }) => (userID === userId));
     return getLastAppointment(userId, userAppointments)
   }));
   const lastAppointmentsMap = lastAppointments.reduce((acc, appointment) => {
@@ -64,7 +64,7 @@ export default function BrowseUsers() {
   const defaultSelect = "Select";
 
   let [searchName, setsearchName] = useState("")
-  let [bloodTypes, setbloodTypes] = 
+  let [bloodTypes, setbloodTypes] =
     useState(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"])
   let [chosenBloodType, setChosenBloodType] = useState(defaultSelect)
   let [hospitals, setHospitals] = useState([])
@@ -83,7 +83,7 @@ export default function BrowseUsers() {
   function handleBloodTypeChange(e) {
     setChosenBloodType(e.target.value)
   }
-  
+
   function handleHospitalChange(e) {
     setChosenHospital(e.target.value)
   }
@@ -107,7 +107,7 @@ export default function BrowseUsers() {
     }
 
     fetchUsersTableData();
-  },[]);
+  }, []);
 
   const getUsersTableHeaderRow = () => {
     const header = [
@@ -124,13 +124,19 @@ export default function BrowseUsers() {
     const usersToShow = [];
 
     users.forEach((user) => {
-      // filter ny name
-      if (user.name.indexOf(searchName) === -1)
+      // filter by name
+      const userNamelowercase = user.name.toLowerCase()
+      const searchNameLowercase = searchName.toLowerCase()
+      if (userNamelowercase.indexOf(searchNameLowercase) === -1)
         return;
       if (chosenBloodType !== defaultSelect && chosenBloodType !== user.bloodType)
         return;
       if (chosenHospital !== defaultSelect && usersAppointments[user.id]?.hospitalName !== chosenHospital)
         return;
+
+      // present unknown bloodtype as N/A
+      if (user.bloodType === "dontKnow")
+        user = { ...user, bloodType: "N/A" }
 
       usersToShow.push({
         user: user,
@@ -150,21 +156,20 @@ export default function BrowseUsers() {
       const user = shownUser.user;
       const appointment = shownUser.userAppointment;
 
-      const popup = 
-        <Popup 
-          //className="popup1" 
-          trigger={<button 
-              //id={user.id} 
-              className="detailsButton">
-                {t('browseUsers.details')}
-            </button>
+      const popup =
+        <Popup
+          contentStyle={{ width: "auto", minWidth: "50%" }}
+          trigger={<button
+            className="detailsButton">
+            {t('browseUsers.details')}
+          </button>
           }
-          modal 
-          position="left top" 
+          modal
+          position="left top"
           closeOnDocumentClick
         >
           {close => (
-            <div style={{maxHeight: '70vh', overflow: 'scroll'}}>
+            <div style={{ maxHeight: '70vh', overflow: 'scroll' }}>
               <h2>{t('browseUsers.userProfile')}</h2>
               <UserDetails t={t} userId={user.id} userDetails={user} editableMode={false} />
               <br />
@@ -176,9 +181,9 @@ export default function BrowseUsers() {
       return ({
         key: user.id,
         fields: [
-          user.name, 
-          user.bloodType, 
-          appointment?.hospitalName, 
+          user.name,
+          user.bloodType,
+          appointment?.hospitalName,
           appointment?.date,
           popup
         ]
@@ -194,7 +199,7 @@ export default function BrowseUsers() {
       <div>
         <input
           type="text"
-          placeholder="Name"
+          placeholder={t('browseUsers.fullName')}
           value={searchName}
           onChange={handleSearchNameChange}
         />
@@ -203,32 +208,31 @@ export default function BrowseUsers() {
           className="optionsList"
           value={chosenBloodType}
           onChange={handleBloodTypeChange}>
-            <option key={defaultSelect} value={defaultSelect}>
-              {"-- " + t('general.select') + " " + t('browseUsers.bloodType') + " --"}
-            </option>
-            <option key="dontKnow" value="dontKnow"> {t("registerForm.dontKnow")}</option>
-            {bloodTypes.map(type => (
-              <option key={type} value={type}>{type}</option>
-            ))}
+          <option key={defaultSelect} value={defaultSelect}>
+            {"-- " + t('general.select') + " " + t('browseUsers.bloodType') + " --"}
+          </option>
+          <option key="dontKnow" value="dontKnow"> {t("registerForm.dontKnow")}</option>
+          {bloodTypes.map(type => (
+            <option key={type} value={type}>{type}</option>
+          ))}
         </select>
         <br />
-        <select 
-          className="optionsList" 
-          value={chosenHospital} 
+        <select
+          className="optionsList"
+          value={chosenHospital}
           onChange={handleHospitalChange}>
-            <option key={defaultSelect} value={defaultSelect}>
-              {"-- " + t('general.select') + " " + t('browseUsers.hospital') + " --"}
+          <option key={defaultSelect} value={defaultSelect}>
+            {"-- " + t('general.select') + " " + t('browseUsers.hospital') + " --"}
+          </option>
+          {hospitals.map(name => (
+            <option key={name} value={name}>
+              {name}
             </option>
-            {hospitals.map(name => (
-              <option key={name} value={name}>
-                {name}
-              </option>
-            ))}
+          ))}
         </select>
       </div>
 
-      <Table headerFields={ getUsersTableHeaderRow() } rowsFields={ getUsersTableRows() } />
-          {/* {usersRows.length || true ? createUsersRows() : <tr><td>{t('browseUsers.noUsersFound')} </td></tr>} */}
+      <Table headerFields={getUsersTableHeaderRow()} rowsFields={getUsersTableRows()} className="responsiveTable" />
     </div>
   )
 }

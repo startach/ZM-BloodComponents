@@ -97,7 +97,6 @@ const RegisterForm = () => {
 
       //Phone length validation
     } else if (phoneEnding.length < 7) {
-      debugger;
       setCheckError(true);
       setPhoneError(true);
       setError("Phone must has 7 numbers");
@@ -227,7 +226,6 @@ const RegisterForm = () => {
             required
           ></input>
         </div>
-
         <div className="emailSignupContainer">
           <input
             className="registerEmail"
@@ -253,7 +251,6 @@ const RegisterForm = () => {
             required
           ></input>
         </div>
-
         <div className="confirmPasswordSignupContainer">
           <input
             className="registerConfirmPassword"
@@ -280,7 +277,6 @@ const RegisterForm = () => {
             required
           />
         </div>
-
         <div className="genderContainer">
           <select
             id="genderType"
@@ -295,7 +291,6 @@ const RegisterForm = () => {
             <option value="Female">{t("registerForm.female")}</option>
           </select>
         </div>
-
         <div className="phoneSignupContainer">
           <select
             id="phoneStarting"
@@ -342,7 +337,6 @@ const RegisterForm = () => {
             required
           ></input>
         </div>
-
         <div className="addressSignupContainer">
           <input
             className="registerAddress"
@@ -357,7 +351,6 @@ const RegisterForm = () => {
             required
           ></input>
         </div>
-
         <div className="secondaryAddressSignupContainer">
           <input
             className="registerSecondaryAddress"
@@ -368,7 +361,6 @@ const RegisterForm = () => {
             name="secondaryAddress"
           ></input>
         </div>
-
         <div className="bloodTypesContainer">
           <select
             id="bloodType"
@@ -395,7 +387,6 @@ const RegisterForm = () => {
             </a>
           </div>
         </div>
-
         <div className="organizationContainer">
           <input
             className="registerOrganization"
@@ -406,8 +397,8 @@ const RegisterForm = () => {
             name="organization"
           ></input>
         </div>
-
-        <div className="notificationsTitle">
+        {/* **********hide notification preference until further notice - also added margin bottom to organizationContainer************ */}
+        {/* <div className="notificationsTitle">
           {t(t("userProfile.notificationPrefence"))}
         </div>
         <span id="notificationsSpan">
@@ -464,8 +455,7 @@ const RegisterForm = () => {
             />
             <label for="Email"> {t("notificationOptions.Email")} </label>
           </li>
-        </ul>
-
+        </ul> */}
         {checkError ? (
           <Fragment>
             <span id="errorSpan">{error}</span>
@@ -473,7 +463,6 @@ const RegisterForm = () => {
         ) : (
           <Fragment></Fragment>
         )}
-
         <div className="mb-4">
           {notificationsPopUp ? (
             <Fragment>

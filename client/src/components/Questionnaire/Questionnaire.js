@@ -5,11 +5,11 @@ import Button from "../button";
 import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
 import qIcon from "./questionnaire.svg";
-
+import { getUserById } from "../../services/userService"
 
 export default function Questionnaire() {
   const { t } = useTranslation();
-
+  const userId = localStorage.getItem("userid");
   let history = useHistory();
   //Set results of the questionarre into state from the drop downs
   const [result, setResults] = useState({
@@ -172,8 +172,10 @@ export default function Questionnaire() {
         t('questionnaire.q_last_donation_never')
       ],
       condition: {
-        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.q_last_donation_never')],
-        error: t("questionnaire.error_last_donation")
+        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'],
+        invalidSelection: hospital != 'Beilinsohn' ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
+          [t('questionnaire.q_last_donation_never'), t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')],
+        error: hospital != 'Beilinsohn' ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")
       }
     },
     {
@@ -191,7 +193,9 @@ export default function Questionnaire() {
   const handleResults = (e, index) => {
     let thisQ = "Q" + (index + 1);
     if (questionList[index].condition.hospitals.includes(hospital) && questionList[index].condition.invalidSelection.includes(e.target.value)) {
-      setErrors([...errors, thisQ])
+      // if you choose multiple invalid answers they pile up
+      if (!errors.includes(thisQ))
+        setErrors([...errors, thisQ])
     } else if (errors.includes(thisQ)) {
       let newErrors = errors.slice()
       newErrors.splice(errors.indexOf(thisQ), 1)
@@ -218,7 +222,7 @@ export default function Questionnaire() {
 
     if (sum === 0 && errors.length === 0) {
       var appointId = localStorage.getItem("appointmentId");
-      var userId = localStorage.getItem("userid");
+
       db.collection("Appointments").doc(appointId).update({
         userID: userId,
       });
@@ -241,8 +245,12 @@ export default function Questionnaire() {
   }
 
   useEffect(() => {
+    const getGender = async () => {
+      const user = await getUserById(userId)
+      setGender(user.data().genderType);
+    }
+    getGender()
     setHospital(localStorage.getItem("hospital"));
-    setGender(localStorage.getItem("gender"));
   }, []);
 
   return (
@@ -261,18 +269,16 @@ export default function Questionnaire() {
       <form onSubmit={handleSubmit}>
         {questionList.map(
           (question, index) =>
-            //Questionairee Logic
+            //Remove question about pregnancy
             gender == "Male" && question.id == 14 ? (
               <div></div>
             ) : (
                 <div
-                  className={`${
-                    languageSelected === "en" ? "questions" : "questionsRtl"
+                  className={`${languageSelected === "en" ? "questions" : "questionsRtl"
                     }`}
                 >
                   <div
-                    className={`${
-                      languageSelected === "en" ? "left" : "leftRtl"
+                    className={`${languageSelected === "en" ? "left" : "leftRtl"
                       }`}
                   >
                     <div>
@@ -281,8 +287,7 @@ export default function Questionnaire() {
                   </div>
 
                   <div
-                    className={`${
-                      languageSelected === "en" ? "right" : "rightRtl"
+                    className={`${languageSelected === "en" ? "right" : "rightRtl"
                       }`}
                   >
                     {question.id == 4 || question.id == 15 ? (

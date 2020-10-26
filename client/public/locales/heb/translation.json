@@ -2,6 +2,7 @@
   "general": {
     "hospital": "בית חולים",
     "select": "בחירה",
+    "prefix": "קידומת",
     "date": "תאריך",
     "appointment": "תור",
     "Type": "סוג",
@@ -12,8 +13,12 @@
     "Haifa": "חיפה",
     "Beer-Sheva": "באר-שבע",
     "ichilov": "איכילוב",
+    "talhashomer": "תל השומר",
     "talHashomer": "תל השומר",
+    "hadassah" :"הדסה",
     "rambam": "רמב\"ם",
+    "beilinsohn": "בילינסון",
+    "soroka":"סורוקה",
     "Register": "הרשמה",
     "Yes": "כן",
     "No": "לא",
@@ -40,7 +45,7 @@
     "Time": "שעה",
     "Location": "מיקום",
     "Cancel": "ביטול",
-    "deleteAppointment": "אתה בטוח שאתה רוצה לבטל את התור שנקבע לך?",
+    "deleteAppointment": "אתה בטוח שאתה רוצה לבטל את התור שנקבע לך",
     "scheduleAppointment": "אנא קבע תור לתרומה.",
     "NearestHospital": "בית החולים הקרוב אליך הוא",
     "getDirections": "קבל הוראות הגעה",
@@ -102,17 +107,27 @@
     "emergencyThatWilling": "בקשות החירות שמתאים לי לענות להן",
     "casualreminder": "תזכורות רגילות לתרומה",
     "show": "הצג",
-    "hide": "הסתר"
+    "hide": "הסתר",
+    "error_notification_type_not_chosen": "נא לבחור ערוצי תזכורות ועדכונים",
+    "please_remind": "נא לתזכר אותי",
+    "never": "לעולם לא",
+    "every": "כל",
+    "month": "חודש",
+    "months": "חודשים"
   },
   "admin": {
     "accessLevel": "רמת גישה",
     "selectToMakeCord": "בחר משתמש כדי להפוך למתאם",
-    "makeCord": "הפוף למתאם",
+    "makeCord": "הפוך למתאם",
     "remove": "הסר",
     "selectMakeAdmin": "בחר משתמש כדי להפוך למנהל",
     "makeAdmin": "הפוך למנהל",
     "admin": "מנהל",
-    "cord": "מתאם"
+    "cord": "מתאם",
+    "hospitalCord": "מתאם בית חולים",
+    "makeHospitalCord": "הפוך למתאם בית חולים",
+    "selectMakeHospitalCord": "בחר משתמש כדי להפוך למתאם בית חולים",
+    "selectHospital": "בחר בית חולים"
   },
   "appointmentsEntry": {
     "noAppoins": "אין לך תורים קודמים"
@@ -139,7 +154,8 @@
     "emergencyDonation": "תרומת חירום",
     "Admin": "הגדרות מנהל",
     "Logout": "התנתק",
-    "usersBrowsing": "חיפוש משתמשים"
+    "usersBrowsing": "חיפוש משתמשים",
+    "onAirDonations": "תורים מתוכננים"
   },
   "forgotPassword": {
     "enterEmailPhrase": "נא להזין כתובת אימייל, ומייל יישלח אלייך בדקות הקרובות",
@@ -201,7 +217,7 @@
     "q_tattoo_earrings_piercing": "האם עשית קעקוע/עגיל בחצי שנה האחרונה?",
     "q_diabetes": "האם יש לך סכרת",
     "q_diabetes_option_yes_stable": "כן, יציב, ומטופל ע\"י תרופות",
-    "q_diabetes_option_yes_not_stable": "כן, לא יציב, ומטופל ע\"י סכרת",
+    "q_diabetes_option_yes_not_stable": "כן, לא יציב, ומטופל ע\"י אינסולין",
     "q_diabetes_option_no": "לא",
     "q_medicines": "האם הינך נוטל תרופות?",
     "q_aboard": "האם היית בחו\"ל בשנה האחרונה?",
@@ -240,7 +256,8 @@
     "error_age_ichilov": "מתנצלים, לפי נהלי בית החולים איכילוב, ניתן לבצע תרומה רק אם גילך הינו בין 18-62. אם גילך הינו בין 17-65, אנא הירשם לתרומה בבית חולים אחר",
     "error_pregnant": "מתנצלים, לפי נהלי בית החולים, לא ניתן לבצע את התרומה אם עברו מעל 6 חודשים מאז ההריון האחרון, אנא הירשמי לתרומה בבית חולים אחר.",
     "error_pregnant_beilinsohn": "מתנצלים, לפי נהלי בית החולים, לא ניתן לבצע את התרומה. בבקשה הירשמי לתרומה לאחר שיחלפו שישה חודשים ממועד סיום ההריון.",
-    "error_last_donation": "מתנצלים, לפי נהלי בית החולים בילינסון, ניתן לתרום רק אם תרמת בעבר. אנא הירשם לתרומה בבית חולים אחר",
+    "error_last_donation_beilinsohn": "מתנצלים, לפי נהלי בית החולים בילינסון, ניתן לתרום רק אם תרמת בעבר. אנא הירשם לתרומה בבית חולים אחר",
+    "error_last_donation_general": "מתנצלים, לא ניתן לתרום אם כבר תרמת לפני פחות מחודש",
     "error_confirmation": "אנא אשר את ההצהרה"
   },
   "addAppointment": {
@@ -272,6 +289,7 @@
   "contactUs": {
     "title": "תורמי טרומבוציטים יקרים שלום רב!",
     "firstP": " להלן דרכי ההתקשרות עמנו. מוזמנים ליצור קשר בכל שאלה, בקשה או הערה",
+    "coordinatorDetails": "רכז שטח - אמיתי קמיר: 054-2517771",
     "site": "אתר",
     "secondP": "צוות \"בנק מרכיבי הדם\" של עמותת זכרון מנחם"
   },
@@ -329,5 +347,16 @@
     "notYet": "לא ידוע",
     "verify": "עדכן",
     "donationHappened": "האם התרומה התבצעה?"
+  },
+  "onAirDonations": {
+    "date": "תאריך",
+    "time": "שעה",
+    "totalSlots": "סך משבצות",
+    "occupied": "תפוסים",
+    "donor": "תורם",
+    "verified": "אושר",
+    "notYet": "טרם",
+    "deleteAppointment": "מחק תור",
+    "sureDeleteAppointment": "האם אתה בטוח שברצונך למחוק את התור"
   }
 }

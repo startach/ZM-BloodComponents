@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #register-logo {
   height: 150px;
   width: 150px;
-} 
+}
 
-#header1, #header2 {
+#header1,
+#header2 {
   font-size: 30px;
 }
 
@@ -20,29 +20,36 @@
   align-items: center;
 }
 
-.nameSignupContainer, .emailSignupContainer, .passwordSignupContainer, .confirmPasswordSignupContainer,
- .citySignupContainer , .genderContainer, 
- .secondaryAddressSignupContainer,
-.addressSignupContainer, .bloodTypesContainer , .organizationContainer {
+.nameSignupContainer,
+.emailSignupContainer,
+.passwordSignupContainer,
+.confirmPasswordSignupContainer,
+.citySignupContainer,
+.genderContainer,
+.secondaryAddressSignupContainer,
+.addressSignupContainer,
+.bloodTypesContainer,
+.organizationContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
-  background-color:   rgba(199, 234, 175, 0.651);
+  background-color: rgba(199, 234, 175, 0.651);
   color: gray;
   min-height: 50px;
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
   margin-left: 5px;
+  margin-bottom: 10px;
 }
 
 .phoneSignupContainer {
-
+  direction: ltr;
   display: flex;
   align-items: center;
   font-size: 16px;
-  background-color:   rgba(199, 234, 175, 0.651);
+  background-color: rgba(199, 234, 175, 0.651);
   color: gray;
   min-height: 50px;
   width: 100%;
@@ -51,21 +58,24 @@
   margin-left: 5px;
 }
 
-.ltrFormClass{
+.ltrFormClass {
   text-align: start;
 }
 
-
-.rtlFormClass{
+.rtlFormClass {
   text-align: start;
 }
 
-
-
-
-.registerName , .registerPassword , .registerEmail , 
-.registerCity , .registerAddress, .registerBloodType , .registerConfirmPassword, .registerGenderType , 
-.registerSecondaryAddress, .registerOrganization {
+.registerName,
+.registerPassword,
+.registerEmail,
+.registerCity,
+.registerAddress,
+.registerBloodType,
+.registerConfirmPassword,
+.registerGenderType,
+.registerSecondaryAddress,
+.registerOrganization {
   display: flex;
   background-color: #ecf8e4;
   margin-left: 35px;
@@ -73,21 +83,19 @@
   border: none;
   width: 400px;
   color: grey;
-
 }
 
 .registerPhone {
+  direction: rtl;
   background-color: #ecf8e4;
   margin-left: 10px;
   padding-left: 5px;
   border: none;
   width: 400px;
   color: grey;
-
 }
 
 .registerPhoneStarting {
-
   background-color: #ecf8e4;
   margin-left: 35px;
   padding-left: 5px;
@@ -95,14 +103,19 @@
   width: 100px;
   color: grey;
   height: 26px;
-  
 }
 
-.nameSignupContainer ::placeholder , .emailSignupContainer ::placeholder, .passwordSignupContainer ::placeholder
-, .confirmPasswordSignupContainer ::placeholder,.phoneSignupContainer ::placeholder, .citySignupContainer ::placeholder
- , .genderContainer ::placeholder, .secondaryAddressSignupContainer ::placeholder,.addressSignupContainer ::placeholder
- , .bloodTypesContainer ::placeholder , .organizationContainer ::placeholder{
-
+.nameSignupContainer ::placeholder,
+.emailSignupContainer ::placeholder,
+.passwordSignupContainer ::placeholder,
+.confirmPasswordSignupContainer ::placeholder,
+.phoneSignupContainer ::placeholder,
+.citySignupContainer ::placeholder,
+.genderContainer ::placeholder,
+.secondaryAddressSignupContainer ::placeholder,
+.addressSignupContainer ::placeholder,
+.bloodTypesContainer ::placeholder,
+.organizationContainer ::placeholder {
   color: grey;
   padding-right: 10px;
 }
@@ -112,61 +125,42 @@
   justify-content: space-around;
   align-items: center;
   font-size: 16px;
-  background-color:   rgba(199, 234, 175, 0.651);
+  background-color: rgba(199, 234, 175, 0.651);
   color: gray;
   min-height: 50px;
   width: 100%;
   border-radius: 10px;
   margin-top: 10px;
   margin-left: 5px;
-  
-
 }
 
-
-
-.birthDate{
-  
+.birthDate {
 }
 
 .react-date-picker__wrapper {
-
   background-color: #ecf8e4;
   width: 300px;
   margin-left: 35px !important;
-  border: none !important; 
-
+  border: none !important;
 }
 
-
-
 .react-date-picker__inputGroup__input {
+  padding: 0 0 0 0 !important;
 
-padding: 0 0 0 0 !important;
-
-margin-left: 1px !important;
-
-
+  margin-left: 1px !important;
 }
 
 .react-date-picker__inputGroup ::placeholder {
-
-  color : black !important
-
+  color: black !important;
 }
 
 .madaLabelContainer {
-
-
   font-weight: bold;
   margin-left: 15px;
   margin-top: 15px;
-  
 }
 
-
 .notificationsTitle {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,46 +169,35 @@ margin-left: 1px !important;
 }
 
 #notificationsSpan {
-
   display: flex;
   justify-content: center;
   align-items: center;
-  
-
 }
 
 li {
-
   list-style-type: none;
 }
 
 .optionsContainer {
-
-  width : 50vw;
+  width: 50vw;
   margin-left: 30%;
 }
 
-
-.react-date-picker__clear-button  {
-
+.react-date-picker__clear-button {
   outline: none !important;
 }
-
 
 .react-date-picker__calendar-button {
-
   outline: none !important;
 }
 
-
 .react-date-picker__inputGroup__input:invalid {
-
   background: none !important;
 }
 .modal-content1 {
   width: 40%;
   margin: 0 auto;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   padding: 35px;
   border: 2px solid #fff;
   border-radius: 20px/50px;
@@ -224,18 +207,15 @@ li {
   border-radius: 5px;
   position: relative;
 }
-.modelbutt{
+.modelbutt {
   display: flex;
   justify-content: center;
- margin-left: 300px;  
- border-radius: 10px;
- background-color: #ff01a2;
-  
+  margin-left: 300px;
+  border-radius: 10px;
+  background-color: #ff01a2;
 }
 
-
 .signUpButton {
-
   width: 300px;
   background-color: #ff01a2;
   color: #fafafa;
@@ -243,19 +223,12 @@ li {
   font-weight: bold;
   border: none;
   box-shadow: 5px 10px 18px #888888;
-  
 }
 
-
-
 .signUpButtonContainer {
-
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-
 }
 
 #errorSpan {
@@ -264,28 +237,22 @@ li {
   align-items: center;
   color: red;
   font-size: 16px;
-   margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-
 .registerIcons {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-
-#SMS , #Whatsapp  , #Email , #inAppAlert  {
-
+#SMS,
+#Whatsapp,
+#Email,
+#inAppAlert {
   margin-left: 4px;
 }
 
-
 #Phonecall {
-
   margin-left: 1px;
-
 }
-
-
