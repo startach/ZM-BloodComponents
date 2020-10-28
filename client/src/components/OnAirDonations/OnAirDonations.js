@@ -93,8 +93,7 @@ export default function OnAirDonations() {
   }, [hospitals])
 
   const handleHospitalChange = (e) => {
-    const hospitalNames = JSON.parse(e.target.value);
-    setChosenHospital(hospitalNames.name);
+    setChosenHospital(e.target.value);
   };
 
   const setHospitalNames = async (hospitalName) => {
@@ -185,7 +184,7 @@ export default function OnAirDonations() {
   return (
     <div className="onAirView mt-3">
       <div>
-        <span>{t('general.hospital')}{': '}</span>
+        <span>{t('general.hospital')}</span>
         <HospitalSelect t={t}
           hospitals={hospitals}
           handleHospitalChange={handleHospitalChange}
