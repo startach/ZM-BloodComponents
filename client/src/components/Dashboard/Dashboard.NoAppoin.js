@@ -39,7 +39,6 @@ function DashboardNoAppoin() {
 
   const handleHospitalChange = (e) => {
     const hospital = e.target.value;
-    console.log(hospital)
     setChosenHospital(hospital);
     localStorage.setItem("hospital", hospital.name);
     localStorage.setItem("hospitalLang", hospital.currLangName);
