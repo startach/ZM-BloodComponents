@@ -85,11 +85,7 @@ function DashboardNoAppoin() {
   };
 
   useEffect(() => {
-    //redirect user to login screen if he is not logged in
-    if (!localStorage.getItem("userid")) {
-      history.push("/login");
-    } else {
-      auth.onAuthStateChanged(async (user) => {
+      auth.onAuthStateChanged(async user => {
         if (user) {
           const userData = await getUserById(user.uid);
           setUserName(userData.data().name);
@@ -115,9 +111,8 @@ function DashboardNoAppoin() {
             }
           });
         }
-      });
-    }
-  }, []);
+      })
+  }, [])
 
   useEffect(() => {
     //only run when hospital chosen
