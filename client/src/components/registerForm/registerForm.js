@@ -36,6 +36,10 @@ const RegisterForm = () => {
   let [confirmPassword, setConfirmPassword] = useState([]);
   const { t } = useTranslation();
 
+  // REMOVE THIS SECTION WHEN NOTIFICATIONS ARE INCLUDED IN APPLICATION
+  const areNotificationsActiveInApp = false; // SECTIONy
+  refuseNotifications = true; // SECTION
+
   //Prevent the user which is logged in to enter register again
 
   if (localStorage.getItem("userid")) window.location.href = "/dashboard";
@@ -114,7 +118,7 @@ const RegisterForm = () => {
       setError("Address Field should start with a letter");
     } else {
       //Check if the user did not choose any type of notifications
-      if (Object.entries(notifications).length === 0) {
+      if (Object.entries(notifications).length === 0 && areNotificationsActiveInApp) {
         setNotificationsPopUp(true);
       }
       // If the user refused to recieve any kind of notifications continue with the flow of the code

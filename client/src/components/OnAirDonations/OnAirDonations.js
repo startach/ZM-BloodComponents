@@ -49,11 +49,6 @@ export default function OnAirDonations() {
 
   useEffect(() => {
 
-    //redirect user to login screen if he is not logged in 
-    if (!localStorage.getItem('userid')) {
-      history.push('/login')
-    }
-
     // get user's hospital - if user is a hospitalCord
     const getUserHospital = async () => {
       const userClaims = await getUserClaims()
@@ -93,8 +88,7 @@ export default function OnAirDonations() {
   }, [hospitals])
 
   const handleHospitalChange = (e) => {
-    const hospitalNames = JSON.parse(e.target.value);
-    setChosenHospital(hospitalNames.name);
+    setChosenHospital(e.target.value);
   };
 
   const setHospitalNames = async (hospitalName) => {
@@ -185,7 +179,7 @@ export default function OnAirDonations() {
   return (
     <div className="onAirView mt-3">
       <div>
-        <span>{t('general.hospital')}{': '}</span>
+        <span>{t('general.hospital')}</span>
         <HospitalSelect t={t}
           hospitals={hospitals}
           handleHospitalChange={handleHospitalChange}

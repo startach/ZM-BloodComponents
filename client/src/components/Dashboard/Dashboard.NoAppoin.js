@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import googlemaps from "./googlemaps.png";
 import waze from "./waze.png";
 import moment from "moment";
-import SelectHospital from "./SelectHospital/SelectHospital";
+import HospitalSelect from "../Select/HospitalSelect/HospitalSelect";
 import AppointmentsTable from "./AppointmentsTable/AppointmentsTable";
 
 function DashboardNoAppoin() {
@@ -38,10 +38,10 @@ function DashboardNoAppoin() {
   const [haveAppointmentTomorrow, setHaveAppointmentTomorrow] = useState(false);
 
   const handleHospitalChange = (e) => {
-    const hospitalNames = JSON.parse(e.target.value);
-    setChosenHospital(hospitalNames.name);
-    localStorage.setItem("hospital", hospitalNames.name);
-    localStorage.setItem("hospitalLang", hospitalNames.currLangName);
+    const hospital = e.target.value;
+    setChosenHospital(hospital);
+    localStorage.setItem("hospital", hospital.name);
+    localStorage.setItem("hospitalLang", hospital.currLangName);
   };
 
   const handleViewDates = () => {
@@ -85,11 +85,7 @@ function DashboardNoAppoin() {
   };
 
   useEffect(() => {
-    //redirect user to login screen if he is not logged in
-    if (!localStorage.getItem("userid")) {
-      history.push("/login");
-    } else {
-      auth.onAuthStateChanged(async (user) => {
+      auth.onAuthStateChanged(async user => {
         if (user) {
           const userData = await getUserById(user.uid);
           setUserName(userData.data().name);
@@ -115,9 +111,8 @@ function DashboardNoAppoin() {
             }
           });
         }
-      });
-    }
-  }, []);
+      })
+  }, [])
 
   useEffect(() => {
     //only run when hospital chosen
@@ -228,11 +223,18 @@ function DashboardNoAppoin() {
               haveAppointmentTomorrow={haveAppointmentTomorrow}
             />
             {(!appointmentLastMonth || viewDates) && (
-              <SelectHospital
-                t={t}
-                hospitals={hospitals}
-                handleHospitalChange={handleHospitalChange}
-              />
+              <div className="hospitalsOptionsContainer mt-3 pinkBox">
+                <div className="hospital">
+                  {t("dashboard.NearestHospital")}:{" "}
+                </div>
+                <div>
+                  <HospitalSelect
+                    t={t}
+                    hospitals={hospitals}
+                    handleHospitalChange={handleHospitalChange}
+                  />
+                </div>
+              </div>
             )}
             <AppointmentsTable
               t={t}
