@@ -12,6 +12,9 @@ export default function DonationsHistory(props) {
   const history = useHistory();
   const loggedUser = localStorage.getItem("userid");
 
+  if (!loggedUser)
+    history.push("/login");
+
   const loadAppointments = () => {
     const filteredQuery = getAppointmentsForUser(userId);
   

@@ -13,6 +13,8 @@ const AppointmentsEntry = () => {
   let [appointments, setAppointments] = useState([]);
   let history = useHistory();
   var userID = localStorage.getItem("userid");
+  if (!localStorage.getItem('userid'))
+    history.push("/login")
 
   useEffect(() => {
 

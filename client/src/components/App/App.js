@@ -19,85 +19,101 @@ import Admin from "../../Screens/admin";
 import Questions from "../../Screens/Questionnaire";
 import EmergencyDonations from "../../Screens/emergencyDonations";
 import DeleteEditAppointments from "../../Screens/deleteAppointments";
-import ProtectedRoute from "../../routes/ProtectedRoute";
+import UserRoute from "../../routes/UserRoute";
 import PublicRoute from "../../routes/PublicRoute";
+import CordRoute from "../../routes/CordRoute";
+import AdminRoute from "../../routes/AdminRoute";
 import { ForgotPassword } from "../forgetPassword/ForgotPassword";
 import UsersBrowsing from '../../Screens/usersBrowsing';
 import DonationsManagement from '../../Screens/donationsManagement';
 
 function App() {
+  const userClaims = localStorage.getItem("userLevel");
   const isAuthenticated = !!localStorage.getItem("userid");
   const languageSelected = localStorage.getItem("i18nextLng");
 
   return (
     <Router>
       <Switch>
-        <ProtectedRoute
+        <UserRoute
           path="/dashboard"
           component={Dashboard}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/verfication"
           component={AppointmentVerification}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/user"
           component={User}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/questions"
           component={Questions}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/emergency"
           component={EmergencyDonations}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/contactus"
           component={ContactUs}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/about"
           component={About}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <UserRoute
           path="/donateprocess"
           component={DonateProcess}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
 
-        <ProtectedRoute
+        <CordRoute
           path="/add"
           component={AddAppointment}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute
+        <CordRoute
           path="/edit-delete"
           component={DeleteEditAppointments}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
-        <ProtectedRoute 
+        <CordRoute 
           path='/donations-management' 
           component={DonationsManagement} 
           isAuthenticated={isAuthenticated} 
+          userLevel={userClaims}
         />
-        <ProtectedRoute 
+        <CordRoute 
           path='/users' 
           component={UsersBrowsing} 
           isAuthenticated={isAuthenticated} 
+          userLevel={userClaims}
         />
 
-        <ProtectedRoute
+        <AdminRoute
           path="/admin"
           component={Admin}
           isAuthenticated={isAuthenticated}
+          userLevel={userClaims}
         />
 
         <PublicRoute path="/not-found" component={NotFound} />

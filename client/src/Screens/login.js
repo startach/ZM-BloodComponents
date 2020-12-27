@@ -5,14 +5,14 @@ import { useHistory } from 'react-router-dom'
 
 function Login() {
     const history = useHistory();
-    const homePageUrl = localStorage.getItem('homepageUrl')
-    if (localStorage.getItem('userid') && homePageUrl)
-        history.push(homePageUrl)
+    if (localStorage.getItem('userid'))
+        history.push('/dashboard')
 
     return (
 
         <FullScreenContainer>
             <LoginForm />
+
         </FullScreenContainer>
 
     )
