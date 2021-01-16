@@ -22,7 +22,10 @@ module.exports = {
     },
   },
   initialState: {
-    count: 0,
+    id: 0,
+    firstName: "",
+    nextOnboardingStep: 0,
+    nextNewDonationStep: 0,
   },
   channels: {
     messenger: {
@@ -33,9 +36,14 @@ module.exports = {
       appId: process.env.MESSENGER_APP_ID,
       appSecret: process.env.MESSENGER_APP_SECRET,
       verifyToken: process.env.MESSENGER_VERIFY_TOKEN,
+      profile: {
+        getStarted: {
+          payload: "GET_STARTED",
+        },
+      },
     },
     whatsapp: {
-      enabled: true,
+      enabled: false,
       path: "/webhooks/whatsapp",
       accountSid: process.env.WHATSAPP_ACCOUNT_SID,
       authToken: process.env.WHATSAPP_AUTH_TOKEN,

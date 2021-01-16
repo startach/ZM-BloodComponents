@@ -1,28 +1,52 @@
-import { Action, MessengerContext, withProps } from "bottender";
+import { Action, chain, MessengerContext } from "bottender";
 import { payload, router, text } from "bottender/router";
+import SampleHistory from "./History";
+import Onboarding from "./Onboarding";
+import MainFlow from "./MainFlow";
 
 export default async function App(
   context: MessengerContext
 ): Promise<Action<MessengerContext> | void> {
-  let count = context.state.count as number;
-  count++;
+  return chain([Onboarding, MainFlow, Unknown]);
 
-  context.setState({
-    count,
-  });
+  //
+  // let count = context.state.count as number;
+  // count++;
+  //
+  //
+  //
+  // await context.sendButtonTemplate('מה תרצה לעשות?', [
+  //   {
+  //     type: 'postback',
+  //     title: 'קביעת תרומה חדשה',
+  //     payload: 'NEW_DONATION',
+  //   },
+  //   {
+  //     type: 'postback',
+  //     title: 'צפייה בהיסטוריית התרומות',
+  //     payload: 'GET_DONATION_HISTORY',
+  //   },
+  //   {
+  //     type: 'postback',
+  //     title: 'שליחת הודעה לזכרון מנחם',
+  //     payload: 'SEND_MESSAGE',
+  //   },
+  // ]);
 
-  await context.sendText("Message count: " + count);
-  await context.sendText(`Platform: ${context.platform}`);
-  // @ts-ignore
-  await context.sendText(`Session ID: ${context.session.id}`);
-
-  return router([
-    payload("START", Start),
-    text("hi", SayHi),
-    text(/^(my name is).*/i, Welcome),
-
-    text("*", Unknown),
-  ]);
+  // await context.sendText('Hi!', {
+  //   quickReplies: [
+  //     {
+  //       contentType: 'text',
+  //       title: 'red',
+  //       payload: '123',
+  //     },
+  //     {
+  //       contentType: 'text',
+  //       title: 'fef',
+  //       payload: '14142',
+  //     },
+  //   ],
+  // });
 
   //
   // const text = context.event.text as string;
@@ -45,8 +69,40 @@ export default async function App(
 async function SayHi(context: MessengerContext) {
   await context.sendText("Hello there!");
 }
+
+async function NewDonation(context: MessengerContext) {
+  await context.sendText("בוא נקבע תרומה חדשה");
+}
+
+async function ShowHistory(context: MessengerContext) {
+  await context.sendText("התרומות האחרונות שלך:");
+  for (const donation of SampleHistory) {
+    await context.sendText(
+      `תאריך: ${donation.date}
+        מיקום: ${donation.location}
+        `
+    );
+  }
+}
+
 async function Start(context: MessengerContext) {
-  await context.sendText("Let's start!");
+  if (context.state.id == 0) {
+    const user = await context.getUserProfile();
+
+    await context.setState({
+      id: user?.id,
+      firstName: user?.firstName,
+    });
+
+    await context.sendText(
+      `שלום ${context.state.firstName}, ברוך הבא לצ׳אט בוט של זכרון מנחם`
+    );
+  } else {
+    console.log("Handling user", context.state.firstName);
+    await context.sendText(
+      `שלום ${context.state.firstName}, ברוך שובך לצ׳אט בוט של זכרון מנחם`
+    );
+  }
 }
 
 async function Welcome(context: MessengerContext, props: { name: string }) {
@@ -61,5 +117,22 @@ async function Echo(context: MessengerContext) {
   }
 }
 async function Unknown(context: MessengerContext) {
-  await context.sendText("Sorry. I do not understand what you say.");
+  await context.sendText("איך אוכל לעזור היום?");
+  await context.sendButtonTemplate("מה תרצה לעשות?", [
+    {
+      type: "postback",
+      title: "קביעת תרומה חדשה",
+      payload: "NEW_DONATION",
+    },
+    {
+      type: "postback",
+      title: "היסטוריית התרומות",
+      payload: "GET_DONATION_HISTORY",
+    },
+    {
+      type: "postback",
+      title: "שליחת הודעה לזכרון מנחם",
+      payload: "SEND_MESSAGE",
+    },
+  ]);
 }
