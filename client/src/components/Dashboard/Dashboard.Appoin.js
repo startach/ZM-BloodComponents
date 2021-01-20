@@ -17,27 +17,6 @@ export default function DashboardAppoin() {
     "Location",
   ]);
 
-  // async function  availableAppotiment(){
-  //     const allAvailableAppoitments = await db.collection('Appointments')
-  //     allAvailableAppoitments.get().then((temp) => {
-  //         const tempDoc = temp.docs.map((doc) => {
-  //           return { id: doc.id, ...doc.data() }
-  //         })
-  //         console.log(tempDoc)
-  //       })
-  // }
-  // async function addAppoitment(){
-  //   let data = {
-  //     appointmentType: '3',
-  //     date: '10.10.2020',
-  //     hospitalId: 3.14159265,
-  //     location:'jerusalem',
-  //     time: '16:00',
-  // }
-  // let setDoc = db.collection('Appoitments').doc().set(data);
-  // console.log(setDoc)
-  // }
-
   return (
     <div className="dashboardView">
       <div className="userEligibility">

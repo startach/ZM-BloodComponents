@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./DonationsHistory.css";
-import { db } from '../firebase/firebase';
 import { useHistory } from 'react-router-dom';
 import Popup from "reactjs-popup";
 import Table from "../Table/Table";
-import { getAppointmentsForUser } from '../../services/appointmentService';
+import { getAppointmentsForUser, updateAppointment } from '../../services/appointmentService';
 
 export default function DonationsHistory(props) {
   const { t, userId, editableMode } = props;
@@ -27,8 +26,8 @@ export default function DonationsHistory(props) {
         });
         
         Appointments.sort(function (a, b) {
-          a = new Date(a.timestamp.seconds);
-          b = new Date(b.timestamp.seconds);
+          a = new Date(a.datetime.seconds);
+          b = new Date(b.datetime.seconds);
           return a > b ? -1 : a < b ? 1 : 0;
         });
         setAppointments(Appointments);
@@ -44,14 +43,14 @@ export default function DonationsHistory(props) {
 
   const updateDonationHappened = (e) => {
     const appointmentId = e.target.id;
-    db.collection('Appointments').doc(appointmentId).update({
+    updateAppointment(appointmentId, {
       hasDonated: true
     });
     loadAppointments();
   };
   const updateDonationNotHappened = (e) => {
     const appointmentId = e.target.id;
-    db.collection('Appointments').doc(appointmentId).update({
+    updateAppointment(appointmentId, {
       hasDonated: false
     });
     loadAppointments();

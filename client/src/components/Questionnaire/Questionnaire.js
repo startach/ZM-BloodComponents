@@ -1,16 +1,19 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Questionnaire.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Button from "../button";
-import { db } from "../firebase/firebase";
 import { useTranslation } from "react-i18next";
 import qIcon from "./questionnaire.svg";
-import { getUserById } from "../../services/userService"
+import { updateAppointment } from "../../services/appointmentService";
+import { getUserById } from '../../services/userService';
+import { hospitalsENUM, hospitals } from '../../utils/enums/hospitals';
 
 export default function Questionnaire() {
   const { t } = useTranslation();
-  const userId = localStorage.getItem("userid");
   let history = useHistory();
+  const location = useLocation();
+  const { hospitalID, appointmentID, appointmentDate, appointmentTime } = location.state;
+
   //Set results of the questionarre into state from the drop downs
   const [result, setResults] = useState({
     Q1: `${t("questionnaire.select")}`,
@@ -33,12 +36,13 @@ export default function Questionnaire() {
 
   //allow submit only when all questions have been submit TODO:
 
-  const [hospitalsNames, setHospitalsNames] = useState(['Ichilov', 'Tal Hashomer', 'Beilinsohn', 'Hadassah', 'Rambam', 'Soroka'])
-  const [hospital, setHospital] = useState();
+  const hospitalsEnum = hospitalsENUM;
+  const hospitalsIDs = hospitals.map(hospital => hospital.id);
+  const hospital = hospitals.filter(hospital => hospital.id === hospitalID)[0];
   const [gender, setGender] = useState();
   const [errors, setErrors] = useState([]);
-
-  let languageSelected = localStorage.getItem("i18nextLng");
+  const userID = localStorage.getItem("userid");
+  const languageSelected = localStorage.getItem("i18nextLng");
 
   //questionare questions and options, in english
   const questionList = [
@@ -46,19 +50,19 @@ export default function Questionnaire() {
       id: 1,
       question: t('questionnaire.q_blood_or_thrombocytes'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_blood_or_thrombocytes") }
+      condition: { hospitals: [hospitalsEnum.BEILINSON], invalidSelection: [t('questionnaire.option_no')], error: t("questionnaire.error_blood_or_thrombocytes") }
     },
     {
       id: 2,
-      question: t(hospital != 'Ichilov' ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
+      question: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')], error: t(hospital != 'Ichilov' ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
+      condition: { hospitals: hospital.id != hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')], error: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
     },
     {
       id: 3,
       question: t('questionnaire.q_tattoo_earrings_piercing'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')], error: t("questionnaire.error_tattoo_earrings_piercing") }
+      condition: { hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')], error: t("questionnaire.error_tattoo_earrings_piercing") }
     },
     {
       id: 4,
@@ -69,7 +73,7 @@ export default function Questionnaire() {
         t('questionnaire.q_diabetes_option_no'),
       ],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.q_diabetes_option_yes_not_stable')],
         error: t("questionnaire.error_diabetes")
       }
     },
@@ -77,7 +81,7 @@ export default function Questionnaire() {
       id: 5, question: t('questionnaire.q_medicines'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_medicines")
       }
     },
@@ -86,7 +90,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_aboard'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_aboard")
       }
     },
@@ -95,7 +99,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_surgery'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_surgery")
       }
     },
@@ -104,7 +108,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_chronic_disease'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_chronic_disease")
       }
     },
@@ -113,7 +117,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_cancer'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_cancer")
       }
     },
@@ -122,7 +126,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_antibiotics'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_antibiotics")
       }
     },
@@ -131,7 +135,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_dentist_procedure'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_dentist_procedure")
       }
     },
@@ -140,26 +144,26 @@ export default function Questionnaire() {
       question: t('questionnaire.q_open_wound_or_scratch'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
+        hospitals: [hospitalsEnum.BEILINSON], invalidSelection: [t('questionnaire.option_yes')],
         error: t("questionnaire.error_open_wound_or_scratch")
       }
     },
     {
       id: 13,
-      question: t(hospital != 'Ichilov' ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
+      question: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Ichilov' ? [...hospitalsNames] : ['Ichilov'], invalidSelection: [t('questionnaire.option_no')],
-        error: t(hospital != 'Ichilov' ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
+        hospitals: hospital.id != hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')],
+        error: t(hospital.id != hospitalsEnum.ICHILOV ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
       }
     },
     {
       id: 14,
-      question: t(hospital != 'Beilinsohn' ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
+      question: t(hospital.id != hospitalsEnum.BEILINSON ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'], invalidSelection: [t('questionnaire.option_yes')],
-        error: t(hospital != 'Beilinsohn' ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
+        hospitals: hospital.id != hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON], invalidSelection: [t('questionnaire.option_yes')],
+        error: t(hospital.id != hospitalsEnum.BEILINSON ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
       }
     },
     {
@@ -172,10 +176,10 @@ export default function Questionnaire() {
         t('questionnaire.q_last_donation_never')
       ],
       condition: {
-        hospitals: hospital != 'Beilinsohn' ? [...hospitalsNames] : ['Beilinsohn'],
-        invalidSelection: hospital != 'Beilinsohn' ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
+        hospitals: hospital != hospitalsEnum.BEILINSON ? [...hospitalsNames] : [hospitalsEnum.BEILINSON],
+        invalidSelection: hospital != hospitalsEnum.BEILINSON ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
           [t('questionnaire.q_last_donation_never'), t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')],
-        error: hospital != 'Beilinsohn' ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")
+        error: hospital != hospitalsEnum.BEILINSON ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")
       }
     },
     {
@@ -183,7 +187,7 @@ export default function Questionnaire() {
       question: t('questionnaire.q_confirmation'),
       options: [t('questionnaire.q_confirmation_option_confirm'), t('questionnaire.q_confirmation_option_dont')],
       condition: {
-        hospitals: [...hospitalsNames], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
+        hospitals: [...hospitalsIDs], invalidSelection: [t('questionnaire.q_confirmation_option_dont')],
         error: t("questionnaire.error_confirmation")
       }
     },
@@ -192,7 +196,7 @@ export default function Questionnaire() {
   //saves result of drop down into state by Question/ID number
   const handleResults = (e, index) => {
     let thisQ = "Q" + (index + 1);
-    if (questionList[index].condition.hospitals.includes(hospital) && questionList[index].condition.invalidSelection.includes(e.target.value)) {
+    if (questionList[index].condition.hospitals.includes(hospital.id) && questionList[index].condition.invalidSelection.includes(e.target.value)) {
       // if you choose multiple invalid answers they pile up
       if (!errors.includes(thisQ))
         setErrors([...errors, thisQ])
@@ -221,13 +225,17 @@ export default function Questionnaire() {
     });
 
     if (sum === 0 && errors.length === 0) {
-      var appointId = localStorage.getItem("appointmentId");
-
-      db.collection("Appointments").doc(appointId).update({
-        userID: userId,
-      });
-      // console.log(appointId, userId);
-      history.push("/verfication");
+      updateAppointment(appointmentID, {
+        userID: userID,
+      })
+    
+      history.push({
+        pathname: "/verfication",
+        state: {
+          appointmentDate: appointmentDate,
+          appointmentTime: appointmentTime,
+          hospitalID: hospitalID
+        }});
       // Dont allow the user to go forward without accepting the terms
     } else if (result.Q16 !== `${t("questionnaire.confirm")}`) {
       alert("You have to confirm truth statement in order to proceed with your appointment");
@@ -245,12 +253,9 @@ export default function Questionnaire() {
   }
 
   useEffect(() => {
-    const getGender = async () => {
-      const user = await getUserById(userId)
+    getUserById(userID).then(user => {
       setGender(user.data().genderType);
-    }
-    getGender()
-    setHospital(localStorage.getItem("hospital"));
+    })
   }, []);
 
   return (

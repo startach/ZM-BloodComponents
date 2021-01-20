@@ -3,6 +3,7 @@ import "./UserDetails.css"
 import { db, auth } from '../firebase/firebase'
 import i18next from 'i18next';
 import Button from '../button'
+import { updateUser } from '../../services/userService';
 
 export default function UserDetails(props) {
   const { t, userId, userDetails, editableMode } = props;
@@ -59,7 +60,7 @@ export default function UserDetails(props) {
       e.target.style.transform = "scale(1)";
       clickedNode.current.style.border = "none";
       clickedNode.current.contentEditable = false
-      db.collection('users').doc(userId).update({
+      updateUser(userId, {
         [detail]: clickedNode.current.textContent
       });
       setEditingNode(null);
@@ -80,7 +81,7 @@ export default function UserDetails(props) {
 
   const handleBloodTypeUpdate = () => {
     if (chosenBloodType) {
-      db.collection("users").doc(userId).update({
+      updateUser(userId, {
         bloodType: chosenBloodType
       });
     }

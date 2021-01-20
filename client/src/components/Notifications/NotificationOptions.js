@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Notifications.css'
 import { db } from '../firebase/firebase'
-
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import { updateUser } from '../../services/userService';
 
 const NotificationOptions = () => {
     const initialSettingsObj = {

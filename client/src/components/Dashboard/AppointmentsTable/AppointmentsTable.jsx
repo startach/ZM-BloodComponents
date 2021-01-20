@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { updateAppointment } from '../../../services/appointmentService';
-import { getHospitalLangName } from '../../../services/hospitalService';
+import { getHospitalLangName } from '../../../utils/enums/hospitals';
+import moment from 'moment';
 import YesNoPopUp from '../../PopUp/YesNoPopUp/YesNoPopUp';
 import "../dashboard.css";
 
 export default function AppointmentsTable(props) {
-    const { t, appointments, withActions } = props;   
-    const [hospitalNameLang, setHospitalNameLang] = useState();
-
-    ( appointments.length > 0 ) && getHospitalLangName(appointments[0].hospitalID).then(data => setHospitalNameLang(data));
+    const { t, appointments, withActions } = props;  
+    let appointmentDate = null;
+    let appointmentTime = null; 
 
     const deleteAppointment = ({appId}) => {
         updateAppointment(appId, {
@@ -17,13 +17,7 @@ export default function AppointmentsTable(props) {
           confirmArrival: false
         });
     }
-    
-    const onPressRegisterAppointment = (appointment) => {
-      localStorage.setItem('hospitalID', appointment.hospitalID);
-      localStorage.setItem('appointmentId', appointment.id);
-      localStorage.setItem('appointmentDate', appointment.date)
-      localStorage.setItem('appointmentTime', appointment.time)
-    }
+
 
     return (
         appointments.length > 0 &&
@@ -36,23 +30,35 @@ export default function AppointmentsTable(props) {
               <th className="headerEntries"></th> 
               }
             </tr>
-            {appointments.map(appointment => 
-              <tr className='rowContainer' id={appointment.id}>
-                <td className='rowClass'>{hospitalNameLang}</td>
-                <td className='rowClass' >{appointment.date}</td>
-                <td className='rowClass'>{appointment.time}</td> 
-                { withActions && 
-                <td className='rowClass'>
-                    { appointment.userID ?
-                    <YesNoPopUp text={t('dashboard.deleteAppointment')} handleYes={deleteAppointment} appId={appointment.id}>
-                        <button className="cancelButton"> {t('dashboard.Cancel')}</button>
-                    </YesNoPopUp> : 
-                    <Link to='/questions'>
-                      <button onClick={() => onPressRegisterAppointment(appointment)} id={appointment.id} className="registerButton">{t('general.Register')}</button>
-                    </Link> }
-                </td> 
-                }   
-              </tr>
+            {appointments.map(appointment => {
+                appointmentDate = moment(appointment.datetime.toMillis()).format('DD/MM/YY');
+                appointmentTime = moment(appointment.datetime.toMillis()).format('HH:mm');
+
+                return (
+                <tr className='rowContainer' id={appointment.id}>
+                  <td className='rowClass'>{getHospitalLangName(appointment.hospitalID)}</td>
+                  <td className='rowClass' >{appointmentDate}</td>
+                  <td className='rowClass' >{appointmentTime}</td>
+                  { withActions && 
+                  <td className='rowClass'>
+                      { appointment.userID ?
+                      <YesNoPopUp text={t('dashboard.deleteAppointment')} handleYes={deleteAppointment} appId={appointment.id}>
+                          <button className="cancelButton"> {t('dashboard.Cancel')}</button>
+                      </YesNoPopUp> : 
+                      <Link to={{
+                        pathname: '/questions', 
+                        state: {
+                          hospitalID: appointment.hospitalID,
+                          appointmentID: appointment.id,
+                          appointmentDate: appointmentDate,
+                          appointmentTime: appointmentTime
+                        }}} >
+                        <button id={appointment.id} className="registerButton">{t('general.Register')}</button>
+                      </Link> }
+                  </td> 
+                  }   
+                </tr>
+                )}
               )}
           </table>
     )

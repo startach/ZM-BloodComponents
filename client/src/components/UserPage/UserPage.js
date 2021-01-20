@@ -57,15 +57,9 @@ export default function UserPage({ userId }) {
       .then((querySnapshot) => {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointment) => {
-          const appDate = hospitalAppointment.data().timestamp.seconds;
-          if (
-            appDate < today &&
-            hospitalAppointment.data().hasDonated !== false
-          ) {
-            Appointments.push({
-              ...hospitalAppointment.data(),
-              id: hospitalAppointment.id,
-            });
+          const appDate = hospitalAppointment.data().datetime.seconds;
+          if (appDate < today && hospitalAppointment.data().hasDonated !== false) {
+            Appointments.push({ ...hospitalAppointment.data(), id: hospitalAppointment.id });
           }
         });
 
@@ -74,15 +68,8 @@ export default function UserPage({ userId }) {
       .catch((error) => {
         // Catch errors
       });
-  }, [setDonationsNumber]);
+    }, [setDonationsNumber]);
 
-  /*
-    // in order to show updates to notifications methods without having to refresh the page
-    const handleReload = () => {
-      db.collection('users').doc(id).get()
-        .then(snapshot => setUserDetails(snapshot.data()))
-    };
-  */
   return (
     <div className="userPage">
       <div className="userImage">

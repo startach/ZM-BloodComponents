@@ -2,20 +2,14 @@ import React, { useState, useEffect, Fragment } from 'react';
 import "./OnAirDonations.css";
 import { db } from '../firebase/firebase';
 import { useHistory } from 'react-router-dom';
-import Datepicker from "react-datepicker";
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { getAllHospitals } from '../../services/hospitalService';
+import moment from 'moment';
+import { getAppointmentsForHospital } from '../../services/appointmentService';
+import { hospitals, getHospitalLangName } from '../../utils/enums/hospitals';
 import HospitalSelect from '../Select/HospitalSelect/HospitalSelect';
 import OnAirTable from "./OnAirTable/OnAirTable";
 import { getUserClaims } from '../../services/userService'
 
-
-/*
-const getAppointmentsOfDate = (date) => {
-  return (db.collection('Appointments').where('date', '==', date));
-};
-*/
 
 const getAllUsersMap = async () => {
   const usersQuery = await db.collection("users").get();
@@ -38,11 +32,8 @@ const getAllTaxiBookingsMap = async () => {
 export default function OnAirDonations() {
   const { t } = useTranslation();
   const history = useHistory();
-
-  const [hospitals, setHospitals] = useState([]);
+  const hospitalsDetails = hospitals;
   const [chosenHospital, setChosenHospital] = useState(null);
-  //const [searchDate, setSearchDate] = useState(new Date());
-
   const [usersMap, setUsersMap] = useState({});
   const [taxiBookingsMap, setTaxiBookingsMap] = useState({});
   const [appointmentsMap, setAppointmentsMap] = useState(new Map());
@@ -93,7 +84,8 @@ export default function OnAirDonations() {
   }, [hospitals])
 
   const handleHospitalChange = (e) => {
-    setChosenHospital(e.target.value);
+    const hospitalID = e.target.value; 
+    setChosenHospital(hospitalID);
   };
 
   const setHospitalNames = async (hospitalName) => {
@@ -134,16 +126,16 @@ export default function OnAirDonations() {
     //only run when hospital chosen
     if (chosenHospital) {
       const today = Date.now() / 1000
-
-      // firebase queries are not case sensitive -
-      // how should hospital cases be treated?
-      db.collection('Appointments').where("hospitalName", "==", chosenHospital || "").get()
+      const filteredQuery = getAppointmentsForHospital(chosenHospital);
+      let appointmentDate = null;
+      let appointmentTime = null;
+      filteredQuery.get()
         .then(querySnapshot => {
           const Appointments = [];
-          querySnapshot.docs.forEach(hospitalAppointment => {
-            const appointmentTime = hospitalAppointment.data().timestamp.seconds
-            if (appointmentTime > today) {
-              let currentID = hospitalAppointment.id;
+          querySnapshot.docs.forEach(hospitalAppointments => {
+            let app = hospitalAppointments.data().datetime.seconds
+            if (app > today) {
+              let currentID = hospitalAppointments.id;
               let appObj = {
                 ...hospitalAppointment.data(),
                 ["id"]: currentID,
@@ -160,16 +152,18 @@ export default function OnAirDonations() {
 
           let mapOfAppointments = new Map();
           Appointments.forEach(appObj => {
-            if (mapOfAppointments.has(appObj.date)) {
-              if (mapOfAppointments.get(appObj.date).has(appObj.time)) {
-                mapOfAppointments.get(appObj.date).get(appObj.time).push(appObj);
+            appointmentDate = moment(appObj.datetime.toMillis()).format('DD/MM/YY');
+            appointmentTime = moment(appObj.datetime.toMillis()).format('HH:mm');
+            if (mapOfAppointments.has(appointmentDate)) {
+              if (mapOfAppointments.get(appointmentDate).has(appointmentTime)) {
+                mapOfAppointments.get(appointmentDate).get(appointmentTime).push(appObj);
               } else {
-                mapOfAppointments.get(appObj.date).set(appObj.time, [appObj]);
+                mapOfAppointments.get(appointmentDate).set(appointmentTime, [appObj]);
               }
             } else {
               let times = new Map();
-              times.set(appObj.time, [appObj]);
-              mapOfAppointments.set(appObj.date, times);
+              times.set(appointmentTime, [appObj]);
+              mapOfAppointments.set(appointmentDate, times);
             }
           });
 
@@ -192,8 +186,8 @@ export default function OnAirDonations() {
       </div>
       <br />
       <br />
-      {/*<Datepicker selected={searchDate} onChange={handleDateChange} /> */}
-      {[...appointmentsMap.keys()].map(date => (
+      {appointmentsMap.size === 0 ? <h4>{t('onAirDonations.noScheduled')}</h4> :
+       [...appointmentsMap.keys()].map(date => (
         <Fragment key={date}>
           <h3>{t('onAirDonations.date')}: {date}</h3>
           <OnAirTable

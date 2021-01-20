@@ -2,10 +2,12 @@ import React, { useState, useEffect, Link } from 'react'
 import Button from '../button/button'
 import { db } from '../firebase/firebase'
 import './bookTaxi.css'
+import { getUserById } from '../../services/userService';
 
 ///////
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { getAppointment } from '../../services/appointmentService';
 //////
 
 export default function BookTaxi({ close, bookingData, setBookingData, setRideBooked, rideBooked }) {
@@ -37,7 +39,7 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
             setScreen("confirmed")
         }
         //get address
-        db.collection('users').doc(localStorage.getItem('userid')).get().then(user => {
+        getUserById(localStorage.getItem('userid')).then(user => {
             setAddressOptions({
                 main: `${user.data().address}, ${user.data().city}`,
                 second: `${user.data().secondaryAddress}, ${user.data().city}`
@@ -47,8 +49,7 @@ export default function BookTaxi({ close, bookingData, setBookingData, setRideBo
 
         //get appointment details
 
-        db.collection('Appointments').doc(localStorage.getItem('appointmentID')).get().then(app => {
-
+        getAppointment(localStorage.getItem('appointmentID')).then(app => {
             localStorage.setItem('appointmentDate', app.data().date)
             localStorage.setItem('appointmentTime', app.data().time)
         })

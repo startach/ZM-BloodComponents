@@ -312,6 +312,7 @@
     "verified": "Verified",
     "notYet": "Not Yet",
     "deleteAppointment": "Delete Appointment",
-    "sureDeleteAppointment": "Are you sure you want to delete this appointment"
+    "sureDeleteAppointment": "Are you sure you want to delete this appointment",
+    "noScheduled": "There are no scheduled appointments"
   }
 }

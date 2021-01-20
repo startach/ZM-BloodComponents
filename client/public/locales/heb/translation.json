@@ -357,6 +357,7 @@
     "verified": "אושר",
     "notYet": "טרם",
     "deleteAppointment": "מחק תור",
-    "sureDeleteAppointment": "האם אתה בטוח שברצונך למחוק את התור"
+    "sureDeleteAppointment": "האם אתה בטוח שברצונך למחוק את התור",
+    "noScheduled": "אין תורים מתוכננים"
   }
 }

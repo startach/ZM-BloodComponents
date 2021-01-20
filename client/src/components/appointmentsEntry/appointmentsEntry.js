@@ -27,15 +27,15 @@ const AppointmentsEntry = () => {
       .then((querySnapshot) => {
         const Appointments = [];
         querySnapshot.docs.forEach((hospitalAppointments) => {
-          let app = hospitalAppointments.data().timestamp.seconds;
+          let app = hospitalAppointments.data().datetime.seconds;
           if (app < today) {
             Appointments.push(hospitalAppointments.data());
           }
         });
       
         Appointments.sort(function (a, b) {
-          a = new Date(a.timestamp.seconds);
-          b = new Date(b.timestamp.seconds);
+          a = new Date(a.datetime.seconds);
+          b = new Date(b.datetime.seconds);
           return a > b ? -1 : a < b ? 1 : 0;
         });
         setAppointments(Appointments);

@@ -7,6 +7,9 @@ import DonationsHistory from "../DonationsHistory/DonationsHistory";
 import Popup from "reactjs-popup";
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { getAllHospitals } from '../../services/hospitalService';
+import { getAllUsers } from '../../services/userService';
+import { getAllOccupiedAppointments } from '../../services/appointmentService';
 
 // Later seperate these to service
 const maxBy = (array, comparator) => {
@@ -19,29 +22,11 @@ const maxBy = (array, comparator) => {
   return max;
 }
 
-const getAllUsers = async () => {
-  const usersQuery = await db.collection("users").get();
-  return usersQuery.docs.map(user => {
-    return { ...user.data(), id: user.id }
-  });
-}
-
-const getAllOccupiedAppointments = async () => {
-  const appointmentsQuery = await db
-    .collection("Appointments")
-    .where("userID", ">", "")
-    .get();
-
-  return appointmentsQuery.docs.map(occupied => {
-    return { ...occupied.data(), id: occupied.id }
-  });
-}
-
 const getLastAppointment = async (userId, userAppointments) => {
   const now = Date.now() / 1000;
-  const pastAppointments = userAppointments.filter(({ timestamp: { seconds } }) => (seconds < now));
-  const lastAppointment = maxBy(pastAppointments, (appA, appB) => appA.timestamp > appB.timestamp);
-  return { id: userId, lastAppointment };
+  const pastAppointments = userAppointments.filter(({timestamp: {seconds}}) => (seconds <  now));
+  const lastAppointment = maxBy(pastAppointments, (appA,appB) => appA.datetime > appB.datetime);
+  return {id: userId, lastAppointment};
 }
 
 const getUsersLastAppointments = async (userIds) => {
@@ -89,9 +74,9 @@ export default function BrowseUsers() {
   }
 
   const setHospitalNames = () => {
-    db.collection('Hospitals').get().then((hospitals) => {
-      const hospitalsNames = hospitals.docs.map(hospitalDetails => {
-        return hospitalDetails.data().hospitalName
+    getAllHospitals().then((hospitals) => {
+      const hospitalsNames = hospitals.map(hospitalDetails => {
+        return hospitalDetails.hospitalName
       })
       setHospitals(hospitalsNames)
     })
@@ -145,8 +130,8 @@ export default function BrowseUsers() {
     });
 
     usersToShow.sort(function (a, b) {
-      const timestampA = a.userAppointment ? a.userAppointment.timestamp.seconds : 0;
-      const timestampB = b.userAppointment ? b.userAppointment.timestamp.seconds : 0;
+      const timestampA = a.userAppointment ? a.userAppointment.datetime.seconds : 0;
+      const timestampB = b.userAppointment ? b.userAppointment.datetime.seconds : 0;
       a = new Date(timestampA);
       b = new Date(timestampB);
       return a > b ? -1 : a < b ? 1 : 0;

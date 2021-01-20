@@ -1,6 +1,7 @@
 import { firebase, googleProvider, db } from '../components/firebase/firebase'
 import React, {useEffect} from "react";
-import { useHistory, Redirect } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom';
+import { updateUser } from '../services/userService';
 
 
 export const SignInWithGoogle = () => {
@@ -20,13 +21,10 @@ export const SignInWithGoogle = () => {
             localStorage.setItem('userid', user.uid)
             localStorage.setItem('photoURL', user.photoURL)
             //TODO if userid exists IN USERS db then use update IF NULL use set
-            await db.collection('users').doc(user.uid).update({
-               // id: user.uid,
-                name: user.displayName,
+            await updateUser(user.uid ,{ name: user.displayName,
                 email: user.email,
                 phone: user.phoneNumber,
-                photoURL: user.photoURL
-            })
+                photoURL: user.photoURL });
 
         })
         .then(() => {

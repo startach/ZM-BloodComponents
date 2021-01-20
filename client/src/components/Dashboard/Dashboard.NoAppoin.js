@@ -38,32 +38,23 @@ function DashboardNoAppoin() {
   const [haveAppointmentTomorrow, setHaveAppointmentTomorrow] = useState(false);
 
   const handleHospitalChange = (e) => {
-    const hospital = e.target.value;
-    setChosenHospital(hospital);
-    localStorage.setItem("hospital", hospital.name);
-    localStorage.setItem("hospitalLang", hospital.currLangName);
-  };
+    const hospitalID = e.target.value; 
+    setChosenHospital(hospitalID);
+  }
 
   const handleViewDates = () => {
     setViewDates(true);
   };
 
   const setHospitalNames = () => {
-    getAllHospitals().then((hopsitals) => {
-      const hospitalsNames = hopsitals.map((hospitalDetails) => {
-        return {
-          name: hospitalDetails.hospitalName,
-          currLangName: hospitalDetails.currLangName,
-        };
-      });
-
-      setHospitals(hospitalsNames);
-    });
+    getAllHospitals().then((data) => {
+      setHospitals(data)  
+    })
   };
 
   const classifiyAppointment = (userAppointment) => {
     const appData = userAppointment.data();
-    let appointmentDate = moment(appData.timestamp.seconds * 1000);
+    let appointmentDate = moment(appData.datetime.seconds * 1000);
     const today = moment();
     if (appointmentDate.isAfter(today)) {
       if (appointmentDate.diff(today, "day") === 1 && appointmentDate > today) {
@@ -124,12 +115,11 @@ function DashboardNoAppoin() {
     if (chosenHospital) {
       const today = Date.now() / 1000;
       const filteredQuery = getAvailableAppointmentsForHospital(chosenHospital);
-      filteredQuery
-        .get()
-        .then((querySnapshot) => {
-          const Appointments = [];
-          querySnapshot.docs.forEach((hospitalAppointments) => {
-            let app = hospitalAppointments.data().timestamp.seconds;
+      filteredQuery.get()
+        .then(querySnapshot => {
+          const Appointments = []
+          querySnapshot.docs.forEach(hospitalAppointments => {
+            let app = hospitalAppointments.data().datetime.seconds;
             if (app > today) {
               let currentID = hospitalAppointments.id;
               let appObj = {
@@ -140,8 +130,8 @@ function DashboardNoAppoin() {
             }
           });
           Appointments.sort(function (b, a) {
-            a = new Date(a.timestamp.seconds);
-            b = new Date(b.timestamp.seconds);
+            a = new Date(a.datetime.seconds);
+            b = new Date(b.datetime.seconds);
             return a > b ? -1 : a < b ? 1 : 0;
           });
           setAvailableAppointments(Appointments);

@@ -8,6 +8,7 @@ import i18next from "i18next";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
 import Button from "../button";
 import BackArrow from "../../components/BackArrow";
+import { setUser } from "../../services/userService";
 
 const RegisterForm = () => {
   const [date, setDate] = useState();
@@ -139,20 +140,7 @@ const RegisterForm = () => {
           //storing the logged in user's id into localStorage variable
           localStorage.setItem("userid", cred.user.uid);
 
-          await db.collection("users").doc(cred.user.uid).set(userInputs);
-
-          //Add casualNotifications to the database
-
-          await db.collection("users").doc(cred.user.uid).update({
-            casualNotifications: notifications,
-          });
-
-          // Remove password and confirm password from database
-
-          // await db.collection("users").doc(cred.user.uid).update({
-          //   password: db.FieldValue.delete(),
-          //   confirmPassword: db.FieldValue.delete()
-          // });
+          setUser(cred.user.uid, {...userInputs, casualNotifications: notifications});
 
           //Redirect to Dashboard after registration
           window.location.href = "/dashboard";
@@ -283,7 +271,7 @@ const RegisterForm = () => {
         </div>
         <div className="genderContainer">
           <select
-            id="genderType"
+            id="gender"
             className="registerGenderType"
             onChange={handleChange}
             required
