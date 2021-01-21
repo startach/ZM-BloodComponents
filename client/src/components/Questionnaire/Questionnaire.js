@@ -176,7 +176,7 @@ export default function Questionnaire() {
         t('questionnaire.q_last_donation_never')
       ],
       condition: {
-        hospitals: hospital != hospitalsEnum.BEILINSON ? [...hospitalsNames] : [hospitalsEnum.BEILINSON],
+        hospitals: hospital != hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON],
         invalidSelection: hospital != hospitalsEnum.BEILINSON ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
           [t('questionnaire.q_last_donation_never'), t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')],
         error: hospital != hospitalsEnum.BEILINSON ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")

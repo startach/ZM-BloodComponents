@@ -4,6 +4,7 @@ import { functions, db, auth } from '../firebase/firebase'
 ///////
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import {hospitals} from "../../utils/enums/hospitals"
 //////
 
 export default function Admin() {
@@ -21,9 +22,6 @@ export default function Admin() {
     const [userEmail, setUserEmail] = useState("");
 
     const [hospital, setHospital] = useState("");
-
-    // must be same as {t} file
-    const HOSPITAL_LIST = ["ichilov", "talHashomer", "hadassah", "rambam", "beilinsohn", "soroka"]
 
     useEffect(() => {
 
@@ -168,8 +166,8 @@ export default function Admin() {
                 </select>
                 <select className="dropdown mt-2" id="admin" name="hospital" onChange={handleChange}>
                     <option value="select" className="option">{t('admin.selectHospital')} </option>
-                    {HOSPITAL_LIST.map((hospital) => (
-                        <option value={hospital} id="admin" className="option">{t("general." + hospital)}</option>
+                    {hospitals.map((hospital) => (
+                        <option value={hospital.id} id="admin" className="option">{hospital.name}</option>
                     ))}
                 </select>
                 <button className="btn btn-small btn-primary mt-2" onClick={handleAddRole} name="hospitalCord">{t('admin.makeHospitalCord')}</button>

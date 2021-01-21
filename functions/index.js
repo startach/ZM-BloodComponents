@@ -55,18 +55,18 @@ exports.addCordRole = functions.https.onCall((data, context) => {
 
 exports.addHospitalCordRole = functions.https.onCall((data, context) => {
 
-    const { email, hospitalName } = data
+    const { email, hospitalId } = data
 
-    if (email && hospitalName) {
+    if (email && hospitalId) {
         return admin.auth().getUserByEmail(email).then(user => {
             return admin.auth().setCustomUserClaims(user.uid, {
                 userLevel: "hospitalCord",
-                hospital: hospitalName,
+                hospital: hospitalId,
             })
         }).then(async () => {
             functions.logger.info((await admin.auth().getUserByEmail(data.email)).customClaims)
             return {
-                message: `Success! ${email} has been made a hospital cordinator in ${hospitalName}.`
+                message: `Success! ${email} has been made a hospital cordinator in Hospital ID #${hospitalId}.`
             }
         }).catch(err => {
             return err;

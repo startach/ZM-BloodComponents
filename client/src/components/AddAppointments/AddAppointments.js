@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./AddAppointments.css";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -33,8 +33,7 @@ export default function AddAppointments() {
     userID: null 
   });
 
-  const hospitalsDetails = hospitals;
-  let appointmentDate = null;
+  const hospitalsDetails = hospitals;;
   let appointmentTime = null; 
 
   // initialize Granulocytes state
@@ -577,7 +576,7 @@ export default function AddAppointments() {
                 </tr>
               </thead>
               <tbody>
-                {appList.map((appointment, index) => {
+                {appointmentList.map((appointment, index) => {
                   appointmentDate = moment(appointment.datetime.getTime()).format('DD/MM/YY');
                   appointmentTime = moment(appointment.datetime.getTime()).format('HH:mm');
                   
