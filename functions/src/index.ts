@@ -1,11 +1,10 @@
 import * as functions from "firebase-functions";
-import * as express from "express";
+import addNewAppointmentHandler from "./admin/AddNewAppointmentHandler";
+import * as admin from "firebase-admin";
+import { handler } from "./RequestHandleWrapper";
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions.https.onRequest(
-  (request: express.Request, response: express.Response) => {
-    response.send("Hello from Firebase!");
-  }
-);
+admin.initializeApp(functions.config().firebase);
+admin.firestore().settings({ timestampsInSnapshots: true });
+const db = admin.firestore();
+
+export const addNewAppointment = handler(addNewAppointmentHandler, db);
