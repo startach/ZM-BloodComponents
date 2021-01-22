@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { updateAppointment } from '../../../services/appointmentService';
 import { getHospitalLangName } from '../../../utils/enums/hospitals';
 import moment from 'moment';
-import YesNoPopUp from '../../PopUp/YesNoPopUp/YesNoPopUp';
+import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopUp';
 import "../dashboard.css";
 
 export default function AppointmentsTable(props) {

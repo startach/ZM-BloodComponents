@@ -2,7 +2,7 @@ import React, {useState, useEffect, Fragment} from "react";
 import "./OnAirTable.css";
 import collapse from "../collapse-arrow.png";
 import expand from "../expand-arrow.png";
-import YesNoPopUp from '../../PopUp/YesNoPopUp/YesNoPopUp';
+import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopUp';
 
 export default function OnAirTable(props) {
   const { t, date, dateAppointments, usersMap, deleteTimeAppointments } = props;
