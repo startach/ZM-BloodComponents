@@ -8,13 +8,14 @@ export async function validateAppointmentEditPermissions(
   db: FirebaseFirestore.Firestore
 ) {
   if (!userId) {
-    throw Error("User must be authenticated to add new appointments");
+    throw new Error("User must be authenticated to add new appointments");
   }
+  const collection = db.collection(Collections.ADMIN);
 
-  const callingUser = await db.collection(Collections.ADMIN).doc(userId).get();
+  const callingUser = await collection.doc(userId).get();
   if (!callingUser.exists) {
     console.error("Could not find calling user", userId);
-    throw Error("User not admin and can't add appointments");
+    throw Error("User is not an admin and can't add appointments");
   }
 
   const callingAdmin = callingUser.data() as Admin;
@@ -35,8 +36,8 @@ function adminAllowedToAddAppointments(
   callingAdmin: Admin,
   hospitals: Hospital[]
 ) {
-  for (let role in callingAdmin.role) {
-    switch (role) {
+  for (let roleIndex in callingAdmin.role) {
+    switch (callingAdmin.role[roleIndex]) {
       case AdminRole.SYSTEM_USER:
         return true;
 

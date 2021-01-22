@@ -1,3 +1,5 @@
+import * as admin from "firebase-admin";
+
 // Hospital has available machines
 // Admin opens new slots in app
 // Donors sign up in slots - if they are allowed to
@@ -49,8 +51,8 @@ export type Admin = {
 };
 
 export enum Hospital {
-  TEL_HASHOMER,
-  ASAF_HAROFE,
+  TEL_HASHOMER = "TEL_HASHOMER",
+  ASAF_HAROFE = "ASAF_HAROFE",
 }
 
 export enum DonationType {
@@ -62,9 +64,9 @@ export type Appointment = {
   // Slot + donor
   id?: string; // UUID
   // Pre-donor
-  creationTime: Date;
+  creationTime: admin.firestore.Timestamp;
   creatorUserId: string;
-  donationStartTime: Date;
+  donationStartTime: admin.firestore.Timestamp;
   hospital: Hospital;
   // requestedBloodType?: BloodType;
 
