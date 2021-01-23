@@ -8,7 +8,7 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "prettier": "npx prettier --write ",
+    "prettier": "npx prettier --write .",
     "test": "jest --silent"
   },
   "engines": {
