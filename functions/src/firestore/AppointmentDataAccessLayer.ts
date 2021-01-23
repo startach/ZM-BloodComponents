@@ -8,7 +8,7 @@ export async function getAppointmentsByIds(appointmentIds: string[]) {
   // Firebase supports up to 10 ids per "in" request
   const chunks = _.chunk(appointmentIds, 10);
 
-  let promisesArray = chunks.map((chunk) =>
+  const promisesArray = chunks.map((chunk) =>
     collection.where(admin.firestore.FieldPath.documentId(), "in", chunk).get()
   );
 

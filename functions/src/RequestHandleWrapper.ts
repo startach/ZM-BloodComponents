@@ -6,9 +6,9 @@ export type RequestHandler<T> = (
   context: CallableContext
 ) => Promise<any>;
 
-export function handler<T>(handler: RequestHandler<T>) {
+export function handler<T>(requestHandler: RequestHandler<T>) {
   return functions.https.onCall(async (data: any, context: CallableContext) => {
     const request = data as T;
-    return await handler(request, context);
+    return await requestHandler(request, context);
   });
 }

@@ -33,7 +33,7 @@ function adminAllowedToAddAppointments(
   callingAdmin: Admin,
   hospitals: Hospital[]
 ) {
-  for (let roleIndex in callingAdmin.roles) {
+  for (const roleIndex in callingAdmin.roles) {
     switch (callingAdmin.roles[roleIndex]) {
       case AdminRole.SYSTEM_USER:
         return true;
@@ -66,7 +66,7 @@ export async function validateUserCanSetRoleToAnotherUser(
 }
 
 function adminAllowedToSetRoles(callingAdmin: Admin) {
-  for (let roleIndex in callingAdmin.roles) {
+  for (const roleIndex in callingAdmin.roles) {
     switch (callingAdmin.roles[roleIndex]) {
       case AdminRole.SYSTEM_USER:
       case AdminRole.ZM_MANAGER:

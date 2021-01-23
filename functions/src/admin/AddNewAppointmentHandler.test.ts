@@ -11,6 +11,14 @@ const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 const USER_ID = "test_user_id";
 const DONATION_START_TIME = new Date(2021, 3, 11);
 
+beforeAll(async () => {
+  const appointmentsOfUser = await getAppointmentsByUserId(USER_ID);
+  const promises = appointmentsOfUser.map(
+    async (appointment) => await appointment.ref.delete()
+  );
+  await Promise.all(promises);
+});
+
 afterEach(async () => {
   await deleteUser();
 });
@@ -70,8 +78,6 @@ test("User that does not have the right hospital throws exception", async () => 
     [Hospital.TEL_HASHOMER]
   );
 
-  const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
-
   let error;
   try {
     await wrapped(getData(), {
@@ -93,8 +99,6 @@ test("Valid request inserts new appointments", async () => {
     [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
     [Hospital.ASAF_HAROFE]
   );
-
-  const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 
   await wrapped(getData(), {
     auth: {
@@ -135,7 +139,7 @@ async function deleteUser() {
 }
 
 async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
-  const admin: Admin = {
+  const newAdmin: Admin = {
     id: USER_ID,
     phone: "test_phone",
     email: "test_email",
@@ -143,10 +147,10 @@ async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
   };
 
   if (hospitals) {
-    admin.hospitals = hospitals;
+    newAdmin.hospitals = hospitals;
   }
 
-  await setAdmin(admin);
+  await setAdmin(newAdmin);
 }
 
 async function getAppointmentIdsOfUser() {

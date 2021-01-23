@@ -13,7 +13,7 @@ export default async function (
   request: DeleteAppointmentRequest,
   context: CallableContext
 ) {
-  let appointmentIds = request.appointmentIds;
+  const appointmentIds = request.appointmentIds;
 
   const appointments = await getAppointmentsByIds(appointmentIds);
 
