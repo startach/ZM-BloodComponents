@@ -3,6 +3,7 @@ import addNewAppointmentHandler from "./admin/AddNewAppointmentHandler";
 import deleteAppointmentsHandler from "./admin/DeleteAppointmentsHandler";
 import saveAdminRequestHandler from "./admin/SaveAdminHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
+import cancelAppointmentRequest from "./donor/CancelAppointmentHandler";
 import * as admin from "firebase-admin";
 import { handler } from "./RequestHandleWrapper";
 
@@ -16,3 +17,4 @@ export const saveAdmin = handler(saveAdminRequestHandler);
 
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
+export const cancelAppointment = handler(cancelAppointmentRequest);
