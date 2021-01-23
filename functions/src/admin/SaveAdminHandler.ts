@@ -1,6 +1,6 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
 import { Admin, AdminRole } from "../Types";
-import { getAdmin, setAdmin } from "../firestore/AdminDataAccessLayer";
+import { getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
 interface SaveAdminRequest {
   admin: Admin;

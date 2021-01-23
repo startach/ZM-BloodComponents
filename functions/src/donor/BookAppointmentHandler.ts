@@ -1,10 +1,10 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
-import { getDonor } from "../firestore/DonorDataAccessLayer";
+import { getDonor } from "../dal/DonorDataAccessLayer";
 import {
   getAppointmentsByIds,
   getAppointmentsByUserIdInTime,
   updateAppointment,
-} from "../firestore/AppointmentDataAccessLayer";
+} from "../dal/AppointmentDataAccessLayer";
 
 interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available

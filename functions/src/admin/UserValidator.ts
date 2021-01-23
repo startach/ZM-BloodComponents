@@ -1,6 +1,6 @@
 import { Admin, AdminRole, Hospital } from "../Types";
 import * as _ from "lodash";
-import { getAdmin } from "../firestore/AdminDataAccessLayer";
+import { getAdmin } from "../dal/AdminDataAccessLayer";
 
 export async function validateAppointmentEditPermissions(
   userId: string | undefined,

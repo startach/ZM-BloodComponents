@@ -2,7 +2,7 @@ import { CallableContext } from "firebase-functions/lib/providers/https";
 import {
   getAppointmentsByIds,
   updateAppointment,
-} from "../firestore/AppointmentDataAccessLayer";
+} from "../dal/AppointmentDataAccessLayer";
 import * as _ from "lodash";
 
 interface CancelAppointmentRequest {

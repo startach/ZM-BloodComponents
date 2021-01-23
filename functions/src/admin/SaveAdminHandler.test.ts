@@ -5,7 +5,7 @@ import {
   deleteAdmin,
   getAdmin,
   setAdmin,
-} from "../firestore/AdminDataAccessLayer";
+} from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.saveAdmin);

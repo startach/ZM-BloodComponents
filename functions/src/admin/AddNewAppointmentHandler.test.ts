@@ -3,8 +3,8 @@ import { Admin, AdminRole, Appointment, Hospital } from "../Types";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { Collections } from "../Collections";
-import { deleteAdmin, setAdmin } from "../firestore/AdminDataAccessLayer";
-import { getAppointmentsByUserId } from "../firestore/AppointmentDataAccessLayer";
+import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { getAppointmentsByUserId } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);

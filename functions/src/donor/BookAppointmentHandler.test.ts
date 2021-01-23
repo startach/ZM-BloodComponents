@@ -1,12 +1,12 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import { Appointment, BloodType, Donor, Hospital } from "../Types";
 import * as Functions from "../index";
-import { deleteDonor, updateDonor } from "../firestore/DonorDataAccessLayer";
+import { deleteDonor, updateDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
   updateAppointment,
-} from "../firestore/AppointmentDataAccessLayer";
+} from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 

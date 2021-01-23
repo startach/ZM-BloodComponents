@@ -3,7 +3,7 @@ import { validateAppointmentEditPermissions } from "./UserValidator";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
-} from "../firestore/AppointmentDataAccessLayer";
+} from "../dal/AppointmentDataAccessLayer";
 
 interface DeleteAppointmentRequest {
   appointmentIds: string[];
