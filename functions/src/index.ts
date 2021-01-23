@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import addNewAppointmentHandler from "./admin/AddNewAppointmentHandler";
 import deleteAppointmentsHandler from "./admin/DeleteAppointmentsHandler";
+import saveAdminRequestHandler from "./admin/SaveAdminHandler";
 import * as admin from "firebase-admin";
 import { handler } from "./RequestHandleWrapper";
 
@@ -9,3 +10,4 @@ admin.firestore().settings({ timestampsInSnapshots: true });
 
 export const addNewAppointment = handler(addNewAppointmentHandler);
 export const deleteAppointments = handler(deleteAppointmentsHandler);
+export const saveAdmin = handler(saveAdminRequestHandler);

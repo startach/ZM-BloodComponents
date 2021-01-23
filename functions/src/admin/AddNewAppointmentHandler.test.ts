@@ -1,26 +1,12 @@
-import * as firebaseFunctionsTest from "firebase-functions-test";
-import { AdminRole, Appointment, Hospital } from "../Types";
+import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
+import { Admin, AdminRole, Appointment, Hospital } from "../Types";
 import * as admin from "firebase-admin";
-import * as Funcations from "../index";
+import * as Functions from "../index";
 import { Collections } from "../Collections";
+import { setAdmin } from "../firestore/AdminDataAccessLayer";
+import { getAppointmentsByUserId } from "../firestore/AppointmentDataAccessLayer";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC6EDL8gMkZc3GGzGveMqWe5zvAr5DNiL4",
-  authDomain: "blood-components.firebaseapp.com",
-  databaseURL: "https://blood-components.firebaseio.com",
-  projectId: "blood-components",
-  storageBucket: "blood-components.appspot.com",
-  messagingSenderId: "388223113819",
-  appId: "1:388223113819:web:1273570a12add0fedafd7e",
-  measurementId: "G-K6NM078FWD",
-};
-
-const serviceAccountKeyPath = "./blood-components-c3ca9f3e6e03.json";
-const firebaseTest = firebaseFunctionsTest(
-  firebaseConfig,
-  serviceAccountKeyPath
-);
-const wrapped = firebaseTest.wrap(Funcations.addNewAppointment);
+const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 
 const USER_ID = "test_user_id";
 const DONATION_START_TIME = new Date(2021, 3, 11);
@@ -38,7 +24,7 @@ test("Unauthenticated user throws exception", async () => {
   }
 
   expect(error).toEqual(
-    new Error("User must be authenticated to add new appointments")
+    new Error("User must be authenticated to edit appointments")
   );
 });
 
@@ -84,7 +70,7 @@ test("User that does not have the right hospital throws exception", async () => 
     [Hospital.TEL_HASHOMER]
   );
 
-  const wrapped = firebaseTest.wrap(Funcations.addNewAppointment);
+  const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 
   let error;
   try {
@@ -108,7 +94,7 @@ test("Valid request inserts new appointments", async () => {
     [Hospital.ASAF_HAROFE]
   );
 
-  const wrapped = firebaseTest.wrap(Funcations.addNewAppointment);
+  const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 
   await wrapped(getData(), {
     auth: {
@@ -131,8 +117,8 @@ test("Valid request inserts new appointments", async () => {
   );
   expect(sampleAppointment.hospital).toEqual(Hospital.ASAF_HAROFE);
 
-  const deleteAppointmentsWrapped = firebaseTest.wrap(
-    Funcations.deleteAppointments
+  const deleteAppointmentsWrapped = firebaseFunctionsTest.wrap(
+    Functions.deleteAppointments
   );
   await deleteAppointmentsWrapped(
     { appointmentIds: newAppointmentIds },
@@ -148,24 +134,25 @@ async function deleteUser() {
   await admin.firestore().collection(Collections.ADMIN).doc(USER_ID).delete();
 }
 
-async function setUser(role: AdminRole[], hospitals?: Hospital[]) {
-  await admin
-    .firestore()
-    .collection(Collections.ADMIN)
-    .doc(USER_ID)
-    .set({
-      role,
-      hospitals: hospitals || null,
-    });
+async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
+  const admin: Admin = {
+    id: USER_ID,
+    phone: "test_phone",
+    email: "test_email",
+    roles,
+  };
+
+  if (hospitals) {
+    admin.hospitals = hospitals;
+  }
+
+  await setAdmin(admin);
 }
 
 async function getAppointmentIdsOfUser() {
   const res: string[] = [];
-  const appointments = await admin
-    .firestore()
-    .collection(Collections.APPOINTMENTS)
-    .where("creatorUserId", "==", USER_ID)
-    .get();
+
+  const appointments = await getAppointmentsByUserId(USER_ID);
 
   appointments.forEach((app) => res.push(app.id));
 

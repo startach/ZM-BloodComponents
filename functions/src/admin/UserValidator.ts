@@ -7,7 +7,7 @@ export async function validateAppointmentEditPermissions(
   hospitals: Hospital[]
 ) {
   if (!userId) {
-    throw new Error("User must be authenticated to add new appointments");
+    throw new Error("User must be authenticated to edit appointments");
   }
 
   const callingAdmin = await getAdmin(userId);
@@ -33,8 +33,8 @@ function adminAllowedToAddAppointments(
   callingAdmin: Admin,
   hospitals: Hospital[]
 ) {
-  for (let roleIndex in callingAdmin.role) {
-    switch (callingAdmin.role[roleIndex]) {
+  for (let roleIndex in callingAdmin.roles) {
+    switch (callingAdmin.roles[roleIndex]) {
       case AdminRole.SYSTEM_USER:
         return true;
 
@@ -42,6 +42,35 @@ function adminAllowedToAddAppointments(
         if (_.intersection(callingAdmin.hospitals, hospitals).length > 0) {
           return true;
         }
+    }
+  }
+
+  return false;
+}
+
+export async function validateUserCanSetRoleToAnotherUser(
+  callingUser: string | undefined
+) {
+  if (!callingUser) {
+    throw new Error("User must be authenticated to set roles");
+  }
+
+  const callingAdmin = await getAdmin(callingUser);
+  if (!callingAdmin) {
+    throw Error("User is not an admin and can't edit roles");
+  }
+
+  if (!adminAllowedToSetRoles(callingAdmin)) {
+    throw Error("User not authorized to edit roles");
+  }
+}
+
+function adminAllowedToSetRoles(callingAdmin: Admin) {
+  for (let roleIndex in callingAdmin.roles) {
+    switch (callingAdmin.roles[roleIndex]) {
+      case AdminRole.SYSTEM_USER:
+      case AdminRole.ZM_MANAGER:
+        return true;
     }
   }
 

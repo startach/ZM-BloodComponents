@@ -16,6 +16,16 @@ export async function getAppointmentsByIds(appointmentIds: string[]) {
   return _.flatMap(snapshots, (s) => s.docs);
 }
 
+export async function getAppointmentsByUserId(userId: string) {
+  const appointments = await admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("creatorUserId", "==", userId)
+    .get();
+
+  return appointments.docs;
+}
+
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
   const batch = admin.firestore().batch();
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
