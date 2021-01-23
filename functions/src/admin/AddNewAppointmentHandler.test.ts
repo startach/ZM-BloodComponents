@@ -3,7 +3,7 @@ import { Admin, AdminRole, Appointment, Hospital } from "../Types";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { Collections } from "../Collections";
-import { setAdmin } from "../firestore/AdminDataAccessLayer";
+import { deleteAdmin, setAdmin } from "../firestore/AdminDataAccessLayer";
 import { getAppointmentsByUserId } from "../firestore/AppointmentDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
@@ -20,7 +20,7 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
-  await deleteUser();
+  await deleteAdmin(USER_ID);
 });
 
 test("Unauthenticated user throws exception", async () => {
@@ -133,10 +133,6 @@ test("Valid request inserts new appointments", async () => {
     }
   );
 });
-
-async function deleteUser() {
-  await admin.firestore().collection(Collections.ADMIN).doc(USER_ID).delete();
-}
 
 async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
   const newAdmin: Admin = {

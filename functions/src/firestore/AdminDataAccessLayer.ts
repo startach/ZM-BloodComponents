@@ -17,3 +17,8 @@ export async function setAdmin(adminUser: Admin) {
   const collection = admin.firestore().collection(Collections.ADMIN);
   await collection.doc(adminUser.id).set(adminUser);
 }
+
+export async function deleteAdmin(adminId: string) {
+  const collection = admin.firestore().collection(Collections.ADMIN);
+  await collection.doc(adminId).delete();
+}

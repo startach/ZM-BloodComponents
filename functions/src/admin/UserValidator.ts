@@ -52,16 +52,16 @@ export async function validateUserCanSetRoleToAnotherUser(
   callingUser: string | undefined
 ) {
   if (!callingUser) {
-    throw new Error("User must be authenticated to set roles");
+    throw new Error("User must be authenticated to edit admins");
   }
 
   const callingAdmin = await getAdmin(callingUser);
   if (!callingAdmin) {
-    throw Error("User is not an admin and can't edit roles");
+    throw Error("User is not an admin and can't edit admins");
   }
 
   if (!adminAllowedToSetRoles(callingAdmin)) {
-    throw Error("User not authorized to edit roles");
+    throw Error("User role is not authorized to edit admins");
   }
 }
 
