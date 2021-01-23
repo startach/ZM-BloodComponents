@@ -10,13 +10,13 @@ export async function validateAppointmentEditPermissions(
     throw new Error("User must be authenticated to edit appointments");
   }
 
-  const callingAdmin = await getAdmin(userId);
-  if (!callingAdmin) {
+  const admin = await getAdmin(userId);
+  if (!admin) {
     console.error("Could not find calling user", userId);
     throw Error("User is not an admin and can't edit appointments");
   }
 
-  if (!adminAllowedToAddAppointments(callingAdmin, hospitals)) {
+  if (!adminAllowedToAddAppointments(admin, hospitals)) {
     console.error(
       "User",
       userId,
@@ -29,17 +29,24 @@ export async function validateAppointmentEditPermissions(
   return userId;
 }
 
-function adminAllowedToAddAppointments(
-  callingAdmin: Admin,
-  hospitals: Hospital[]
-) {
-  for (const roleIndex in callingAdmin.roles) {
-    switch (callingAdmin.roles[roleIndex]) {
+function adminAllowedToAddAppointments(admin: Admin, hospitals: Hospital[]) {
+  if (admin.roles.includes(AdminRole.SYSTEM_USER)) {
+    return true;
+  }
+
+  if (admin.roles.includes(AdminRole.HOSPITAL_COORDINATOR)) {
+    if (_.intersection(admin.hospitals, hospitals).length == hospitals.length) {
+      return true;
+    }
+  }
+
+  for (const roleIndex in admin.roles) {
+    switch (admin.roles[roleIndex]) {
       case AdminRole.SYSTEM_USER:
         return true;
 
       case AdminRole.HOSPITAL_COORDINATOR:
-        if (_.intersection(callingAdmin.hospitals, hospitals).length > 0) {
+        if (_.intersection(admin.hospitals, hospitals).length > 0) {
           return true;
         }
     }

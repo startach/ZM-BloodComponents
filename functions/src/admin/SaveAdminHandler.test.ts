@@ -1,17 +1,13 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import { Admin, AdminRole, Hospital } from "../Types";
 import * as Functions from "../index";
-import {
-  deleteAdmin,
-  getAdmin,
-  setAdmin,
-} from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.saveAdmin);
 
-const CALLING_USER_ID = "calling_admin_id";
-const TARGET_ADMIN_ID = "new_admin_id";
+const CALLING_USER_ID = "SaveAdminTestCallingUser";
+const TARGET_ADMIN_ID = "SaveAdminTestTargetUser";
 
 beforeAll(async () => {
   await deleteAdmin(TARGET_ADMIN_ID);
@@ -39,7 +35,7 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await setUser([AdminRole.ZM_COORDINATOR]);
+  await createUser([]);
 
   const action = () =>
     wrapped(getSaveAdminRequest(), {
@@ -52,7 +48,7 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("Valid request inserts new admin", async () => {
-  await setUser([AdminRole.ZM_COORDINATOR, AdminRole.ZM_MANAGER]);
+  await createUser([AdminRole.ZM_COORDINATOR, AdminRole.ZM_MANAGER]);
 
   const request = getSaveAdminRequest();
   await wrapped(request, {
@@ -65,7 +61,7 @@ test("Valid request inserts new admin", async () => {
   expect(newAdmin).toEqual(request.admin);
 });
 
-async function setUser(roles: AdminRole[]) {
+async function createUser(roles: AdminRole[]) {
   const newAdmin: Admin = {
     id: CALLING_USER_ID,
     phone: "test_phone",

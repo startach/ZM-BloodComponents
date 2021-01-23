@@ -21,17 +21,20 @@ export async function getAppointmentsByIds(appointmentIds: string[]) {
   return _.map(docs, (a) => a.data());
 }
 
-export async function getAppointmentsByUserId(userId: string) {
+export async function getAppointmentsCreatedByUserId(userId: string) {
   const appointments = await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("creatorUserId", "==", userId)
     .get();
 
-  return appointments.docs;
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as Appointment[];
 }
 
-export async function getAppointmentsByUserIdInTime(
+export async function getAppointmentsByDonorIdInTime(
   donorId: string,
   bufferMiddleDate: Date,
   weeksBufferBack: number
@@ -49,7 +52,10 @@ export async function getAppointmentsByUserIdInTime(
     .where("donationStartTime", "<=", latestStartTime)
     .get()) as FirebaseFirestore.QuerySnapshot<Appointment>;
 
-  return appointments.docs;
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 }
 
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {

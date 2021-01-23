@@ -4,7 +4,10 @@ import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { Collections } from "../Collections";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
-import { getAppointmentsByUserId } from "../dal/AppointmentDataAccessLayer";
+import {
+  deleteAppointmentsByIds,
+  getAppointmentsCreatedByUserId,
+} from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
@@ -13,11 +16,8 @@ const USER_ID = "test_user_id";
 const DONATION_START_TIME = new Date(2021, 3, 11);
 
 beforeAll(async () => {
-  const appointmentsOfUser = await getAppointmentsByUserId(USER_ID);
-  const promises = appointmentsOfUser.map(
-    async (appointment) => await appointment.ref.delete()
-  );
-  await Promise.all(promises);
+  const appointmentsOfUser = await getAppointmentsCreatedByUserId(USER_ID);
+  await deleteAppointmentsByIds(appointmentsOfUser.map((a) => a.id || ""));
 });
 
 afterEach(async () => {
@@ -25,7 +25,7 @@ afterEach(async () => {
 });
 
 test("Unauthenticated user throws exception", async () => {
-  const action = () => wrapped(getData());
+  const action = () => wrapped(getRequest());
   await expectAsyncThrows(
     action,
     "User must be authenticated to edit appointments"
@@ -34,7 +34,7 @@ test("Unauthenticated user throws exception", async () => {
 
 test("User that is not admin throws exception", async () => {
   const action = () =>
-    wrapped(getData(), {
+    wrapped(getRequest(), {
       auth: {
         uid: USER_ID,
       },
@@ -47,10 +47,10 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await setUser([AdminRole.ZM_COORDINATOR]);
+  await createUser([AdminRole.ZM_COORDINATOR]);
 
   const action = () =>
-    wrapped(getData(), {
+    wrapped(getRequest(), {
       auth: {
         uid: USER_ID,
       },
@@ -63,13 +63,13 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await setUser(
+  await createUser(
     [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
     [Hospital.TEL_HASHOMER]
   );
 
   const action = () =>
-    wrapped(getData(), {
+    wrapped(getRequest(), {
       auth: {
         uid: USER_ID,
       },
@@ -82,12 +82,12 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request inserts new appointments", async () => {
-  await setUser(
+  await createUser(
     [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
     [Hospital.ASAF_HAROFE]
   );
 
-  await wrapped(getData(), {
+  await wrapped(getRequest(), {
     auth: {
       uid: USER_ID,
     },
@@ -121,7 +121,7 @@ test("Valid request inserts new appointments", async () => {
   );
 });
 
-async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
+async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
   const newAdmin: Admin = {
     id: USER_ID,
     phone: "test_phone",
@@ -137,16 +137,12 @@ async function setUser(roles: AdminRole[], hospitals?: Hospital[]) {
 }
 
 async function getAppointmentIdsOfUser() {
-  const res: string[] = [];
+  const appointments = await getAppointmentsCreatedByUserId(USER_ID);
 
-  const appointments = await getAppointmentsByUserId(USER_ID);
-
-  appointments.forEach((app) => res.push(app.id));
-
-  return res;
+  return appointments.map((a) => a.id || "");
 }
 
-function getData() {
+function getRequest() {
   return {
     hospital: Hospital.ASAF_HAROFE,
     donationStartTime: DONATION_START_TIME,

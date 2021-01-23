@@ -2,7 +2,7 @@ import { CallableContext } from "firebase-functions/lib/providers/https";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import {
   getAppointmentsByIds,
-  getAppointmentsByUserIdInTime,
+  getAppointmentsByDonorIdInTime,
   updateAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 
@@ -10,6 +10,8 @@ interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available
   appointmentIds: string[];
 }
+
+const WEEKS_BUFFER = 4;
 
 export default async function (
   request: BookAppointmentRequest,
@@ -35,10 +37,10 @@ export default async function (
 
   const appointmentToBook = availableAppointments[0];
 
-  const donorAppointments = await getAppointmentsByUserIdInTime(
+  const donorAppointments = await getAppointmentsByDonorIdInTime(
     donorId,
     appointmentToBook.donationStartTime.toDate(),
-    4
+    WEEKS_BUFFER
   );
   if (donorAppointments.length > 0) {
     throw new Error("Donor has other donations in buffer");

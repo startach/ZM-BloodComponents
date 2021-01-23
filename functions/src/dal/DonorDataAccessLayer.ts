@@ -4,13 +4,13 @@ import { Donor } from "../Types";
 
 export async function getDonor(donorId: string) {
   const collection = admin.firestore().collection(Collections.DONORS);
-  const adminUser = await collection.doc(donorId).get();
+  const donor = await collection.doc(donorId).get();
 
-  if (!adminUser.exists) {
+  if (!donor.exists) {
     return undefined;
   }
 
-  return adminUser.data() as Donor;
+  return donor.data() as Donor;
 }
 
 export async function updateDonor(donor: Donor) {
@@ -18,7 +18,7 @@ export async function updateDonor(donor: Donor) {
   await collection.doc(donor.id).set(donor);
 }
 
-export async function deleteDonor(adminId: string) {
+export async function deleteDonor(donorId: string) {
   const collection = admin.firestore().collection(Collections.DONORS);
-  await collection.doc(adminId).delete();
+  await collection.doc(donorId).delete();
 }
