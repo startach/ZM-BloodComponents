@@ -6,3 +6,4 @@
 typings/
 
 node_modules/
+**/test-service-account-key.json

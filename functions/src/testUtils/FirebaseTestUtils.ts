@@ -11,7 +11,7 @@ const firebaseConfig = {
   measurementId: "G-K6NM078FWD",
 };
 
-const serviceAccountKeyPath = "./blood-components-c3ca9f3e6e03.json";
+const serviceAccountKeyPath = "./src/testUtils/test-service-account-key.json";
 const firebaseTest = firebaseFunctionsTest(
   firebaseConfig,
   serviceAccountKeyPath
