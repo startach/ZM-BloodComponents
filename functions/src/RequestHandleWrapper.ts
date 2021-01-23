@@ -3,16 +3,12 @@ import * as functions from "firebase-functions";
 
 export type RequestHandler<T> = (
   request: T,
-  context: CallableContext,
-  db: FirebaseFirestore.Firestore
+  context: CallableContext
 ) => Promise<any>;
 
-export function handler<T>(
-  handler: RequestHandler<T>,
-  db: FirebaseFirestore.Firestore
-) {
+export function handler<T>(handler: RequestHandler<T>) {
   return functions.https.onCall(async (data: any, context: CallableContext) => {
     const request = data as T;
-    return await handler(request, context, db);
+    return await handler(request, context);
   });
 }

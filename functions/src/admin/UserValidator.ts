@@ -1,24 +1,21 @@
-import { Collections } from "../Collections";
 import { Admin, AdminRole, Hospital } from "../Types";
 import * as _ from "lodash";
+import { getAdmin } from "../firestore/AdminDataAccessLayer";
 
 export async function validateAppointmentEditPermissions(
   userId: string | undefined,
-  hospitals: Hospital[],
-  db: FirebaseFirestore.Firestore
+  hospitals: Hospital[]
 ) {
   if (!userId) {
     throw new Error("User must be authenticated to add new appointments");
   }
-  const collection = db.collection(Collections.ADMIN);
 
-  const callingUser = await collection.doc(userId).get();
-  if (!callingUser.exists) {
+  const callingAdmin = await getAdmin(userId);
+  if (!callingAdmin) {
     console.error("Could not find calling user", userId);
-    throw Error("User is not an admin and can't add appointments");
+    throw Error("User is not an admin and can't edit appointments");
   }
 
-  const callingAdmin = callingUser.data() as Admin;
   if (!adminAllowedToAddAppointments(callingAdmin, hospitals)) {
     console.error(
       "User",
@@ -26,7 +23,7 @@ export async function validateAppointmentEditPermissions(
       "role does not allow adding appointments to",
       hospitals
     );
-    throw Error("User not authorized to add new appointments to " + hospitals);
+    throw Error("User not authorized to edit appointments of " + hospitals);
   }
 
   return userId;
