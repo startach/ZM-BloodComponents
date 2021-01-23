@@ -17,7 +17,7 @@ export default async function (
 
   const appointments = await getAppointmentsByIds(appointmentIds);
 
-  const hospitals = appointments.map((doc) => doc.data().hospital);
+  const hospitals = appointments.map((doc) => doc.hospital);
 
   // validate user is allowed delete appointments of this hospital
   await validateAppointmentEditPermissions(context.auth?.uid, hospitals);

@@ -5,6 +5,7 @@ import * as Functions from "../index";
 import { Collections } from "../Collections";
 import { deleteAdmin, setAdmin } from "../firestore/AdminDataAccessLayer";
 import { getAppointmentsByUserId } from "../firestore/AppointmentDataAccessLayer";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointment);
 
@@ -24,51 +25,40 @@ afterEach(async () => {
 });
 
 test("Unauthenticated user throws exception", async () => {
-  let error;
-  try {
-    await wrapped(getData());
-  } catch (e) {
-    error = e;
-  }
-
-  expect(error).toEqual(
-    new Error("User must be authenticated to edit appointments")
+  const action = () => wrapped(getData());
+  await expectAsyncThrows(
+    action,
+    "User must be authenticated to edit appointments"
   );
 });
 
 test("User that is not admin throws exception", async () => {
-  let error;
-  try {
-    await wrapped(getData(), {
+  const action = () =>
+    wrapped(getData(), {
       auth: {
         uid: USER_ID,
       },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  expect(error).toEqual(
-    new Error("User is not an admin and can't edit appointments")
+  await expectAsyncThrows(
+    action,
+    "User is not an admin and can't edit appointments"
   );
 });
 
 test("User that has wrong role throws exception", async () => {
   await setUser([AdminRole.ZM_COORDINATOR]);
 
-  let error;
-  try {
-    await wrapped(getData(), {
+  const action = () =>
+    wrapped(getData(), {
       auth: {
         uid: USER_ID,
       },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  expect(error).toEqual(
-    new Error("User not authorized to edit appointments of ASAF_HAROFE")
+  await expectAsyncThrows(
+    action,
+    "User not authorized to edit appointments of ASAF_HAROFE"
   );
 });
 
@@ -78,19 +68,16 @@ test("User that does not have the right hospital throws exception", async () => 
     [Hospital.TEL_HASHOMER]
   );
 
-  let error;
-  try {
-    await wrapped(getData(), {
+  const action = () =>
+    wrapped(getData(), {
       auth: {
         uid: USER_ID,
       },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  expect(error).toEqual(
-    new Error("User not authorized to edit appointments of ASAF_HAROFE")
+  await expectAsyncThrows(
+    action,
+    "User not authorized to edit appointments of ASAF_HAROFE"
   );
 });
 

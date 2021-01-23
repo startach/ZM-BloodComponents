@@ -6,6 +6,7 @@ import {
   getAdmin,
   setAdmin,
 } from "../firestore/AdminDataAccessLayer";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.saveAdmin);
 
@@ -22,50 +23,32 @@ afterEach(async () => {
 });
 
 test("Unauthenticated user throws exception", async () => {
-  let error;
-  try {
-    await wrapped(getSaveAdminRequest());
-  } catch (e) {
-    error = e;
-  }
-
-  expect(error).toEqual(new Error("User must be authenticated to edit admins"));
+  const action = () => wrapped(getSaveAdminRequest());
+  await expectAsyncThrows(action, "User must be authenticated to edit admins");
 });
 
 test("User that is not admin throws exception", async () => {
-  let error;
-  try {
-    await wrapped(getSaveAdminRequest(), {
+  const action = () =>
+    wrapped(getSaveAdminRequest(), {
       auth: {
         uid: CALLING_USER_ID,
       },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  expect(error).toEqual(
-    new Error("User is not an admin and can't edit admins")
-  );
+  await expectAsyncThrows(action, "User is not an admin and can't edit admins");
 });
 
 test("User that has wrong role throws exception", async () => {
   await setUser([AdminRole.ZM_COORDINATOR]);
 
-  let error;
-  try {
-    await wrapped(getSaveAdminRequest(), {
+  const action = () =>
+    wrapped(getSaveAdminRequest(), {
       auth: {
         uid: CALLING_USER_ID,
       },
     });
-  } catch (e) {
-    error = e;
-  }
 
-  expect(error).toEqual(
-    new Error("User role is not authorized to edit admins")
-  );
+  await expectAsyncThrows(action, "User role is not authorized to edit admins");
 });
 
 test("Valid request inserts new admin", async () => {
