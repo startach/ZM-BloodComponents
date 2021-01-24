@@ -1,5 +1,5 @@
 import React from 'react';
-import { getHospitalLangName } from '../../../utils/enums/hospitals';
+import {getHospitalLangName} from '../../../utils/enums/hospitals';
 import "./HospitalSelect.css";
 
 export default function SelectHospital({ t, hospitals, handleHospitalChange, chosenHospital }) {

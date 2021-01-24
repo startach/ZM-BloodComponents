@@ -3,7 +3,7 @@ import React from "react";
 // import ContactUsIcon from "./Contact_us.svg";
 // import DonateIcon from "./Donate.svg";
 import "./bottomBar.css";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function BottomBar() {
   const aboutIcon = "/img/Info-Icon.svg";

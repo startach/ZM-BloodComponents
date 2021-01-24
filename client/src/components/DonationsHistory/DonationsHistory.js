@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import "./DonationsHistory.css";
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import Popup from "reactjs-popup";
 import Table from "../Table/Table";
-import { getAppointmentsForUser, updateAppointment } from '../../services/appointmentService';
+import {
+  getAppointmentsForUser,
+  updateAppointment
+} from '../../services/appointmentService';
 
 export default function DonationsHistory(props) {
   const { t, userId, editableMode } = props;

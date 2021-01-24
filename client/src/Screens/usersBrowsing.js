@@ -6,9 +6,7 @@ import "../components/Dashboard/dashboard.css"
 import BrowseUsers from '../components/BrowseUsers/BrowseUsers'
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-
+import {useTranslation} from 'react-i18next';
 
 const UsersBrowsing = () => {
     const { t } = useTranslation();

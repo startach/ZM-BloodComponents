@@ -1,14 +1,15 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import './deleteAppointments.css'
 import Datepicker from "react-datepicker";
 import Popup from "reactjs-popup";
 import moment from 'moment';
-import { useTranslation } from 'react-i18next';
-import { updateAppointment, deleteAppointment, getAppointmentsByFilters } from '../../services/appointmentService';
-import { hospitals, getHospitalLangName } from '../../utils/enums/hospitals';
-import i18next from 'i18next';
-import { getUserClaims } from '../../services/userService'
-
+import {useTranslation} from 'react-i18next';
+import {
+    deleteAppointment,
+    getAppointmentsByFilters,
+    updateAppointment
+} from '../../services/appointmentService';
+import {getHospitalLangName, hospitals} from '../../utils/enums/hospitals';
 
 function DeleteAppointments() {
     const { t } = useTranslation();

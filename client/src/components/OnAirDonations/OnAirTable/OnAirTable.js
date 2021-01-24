@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import "./OnAirTable.css";
 import collapse from "../collapse-arrow.png";
 import expand from "../expand-arrow.png";

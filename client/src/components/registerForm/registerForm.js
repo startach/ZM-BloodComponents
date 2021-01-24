@@ -1,14 +1,13 @@
-import React, { useState, Fragment } from "react";
+import React, {Fragment, useState} from "react";
 import "./registerForm.css";
-import { db, auth } from "../firebase/firebase";
+import {auth} from "../firebase/firebase";
 import DatePicker from "react-date-picker";
 import Popup from "reactjs-popup";
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import {useTranslation} from "react-i18next";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
 import Button from "../button";
 import BackArrow from "../../components/BackArrow";
-import { setUser } from "../../services/userService";
+import {setUser} from "../../services/userService";
 
 const RegisterForm = () => {
   const [date, setDate] = useState();

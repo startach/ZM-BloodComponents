@@ -1,14 +1,14 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import "./OnAirDonations.css";
-import { db } from "../firebase/firebase";
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import {db} from "../firebase/firebase";
+import {useHistory} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import moment from "moment";
-import { getAppointmentsForHospital } from "../../services/appointmentService";
-import { hospitals, getHospitalLangName } from "../../utils/enums/hospitals";
+import {getAppointmentsForHospital} from "../../services/appointmentService";
+import {hospitals} from "../../utils/enums/hospitals";
 import HospitalSelect from "../Select/HospitalSelect/HospitalSelect";
 import OnAirTable from "./OnAirTable/OnAirTable";
-import { getUserClaims } from "../../services/userService";
+import {getUserClaims} from "../../services/userService";
 
 const getAllUsersMap = async () => {
   const usersQuery = await db.collection("users").get();

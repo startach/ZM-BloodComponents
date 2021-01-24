@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { slide as Menu } from 'react-burger-menu'
-import { Link } from 'react-router-dom'
-import { auth } from '../firebase/firebase'
+import React, {useEffect, useState} from 'react'
+import {slide as Menu} from 'react-burger-menu'
+import {Link} from 'react-router-dom'
+import {auth} from '../firebase/firebase'
 import './burgerMenu.css'
-import { useTranslation } from 'react-i18next';
-import { getUserClaims } from '../../services/userService'
+import {useTranslation} from 'react-i18next';
+import {getUserClaims} from '../../services/userService'
 
 const BurgerMenu = () => {
   const languageSelected = localStorage.getItem('i18nextLng');

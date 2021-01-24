@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import './verificationList.css'
-import { Link, useLocation } from 'react-router-dom'
-import Popup from "reactjs-popup";
-import BookTaxi from '../BookTaxi/BookTaxi'
-import { MDBIcon } from "mdbreact";
-import { useTranslation } from 'react-i18next';
-import { getHospitalLangName } from '../../utils/enums/hospitals';
+import {Link, useLocation} from 'react-router-dom'
+import {MDBIcon} from "mdbreact";
+import {useTranslation} from 'react-i18next';
+import {getHospitalLangName} from '../../utils/enums/hospitals';
 
 const VerificationList = () => {
     const backArrow = "/img/back-button-white.svg"

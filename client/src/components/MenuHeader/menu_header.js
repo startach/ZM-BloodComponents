@@ -3,8 +3,7 @@ import BackArrow from "../BackArrow";
 import BurgerMenu from "../burgerMenu";
 import "./menuHeader.css";
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
-import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import {useTranslation} from "react-i18next";
 
 let styles = {
   header: {

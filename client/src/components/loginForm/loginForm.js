@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./loginForm.css";
-import Button from '../button'
-import { useHistory, Link } from 'react-router-dom'
-import { db, auth } from '../firebase/firebase'
-import { SignInWithGoogle } from '../../actions/googleAuth';
-import GoogleButton from 'react-google-button';
-
+import {Link, useHistory} from 'react-router-dom'
+import {auth} from '../firebase/firebase'
 ///////
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import {useTranslation} from 'react-i18next';
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
 //////
 

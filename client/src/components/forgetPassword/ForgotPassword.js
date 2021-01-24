@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { auth } from "../firebase/firebase";
+import React, {useState} from "react";
+import {auth} from "../firebase/firebase";
 import "./forgotPassword.css";
 import lockPic from "./password.svg";
-import { Redirect, useHistory, Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 ///
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import {useTranslation} from 'react-i18next';
 ///
 export const ForgotPassword = () => {
   const [emailValue, setEmailValue] = useState("");

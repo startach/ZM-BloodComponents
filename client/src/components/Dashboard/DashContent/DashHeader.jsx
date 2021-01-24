@@ -2,10 +2,12 @@ import React from 'react';
 import "../dashboard.css";
 import "./dashHeader.css";
 import dbIcon from '../dbIcon.svg';
-import FirstAppointmentIntro from './Header/FirstAppointment/FirstAppointmentIntro';
-import HaveAppointmentsIntro from './Header/FutureAppointment/HaveAppointmentsIntro';
-import TomorrowAppointment from './Content/TomorrowAppointment/TomorrowAppointment';
-import LastMonthAppointment from './Content/LastMonthAppointment/LastMonthAppointment';
+import FirstAppointmentIntro
+  from './Header/FirstAppointment/FirstAppointmentIntro';
+import TomorrowAppointment
+  from './Content/TomorrowAppointment/TomorrowAppointment';
+import LastMonthAppointment
+  from './Content/LastMonthAppointment/LastMonthAppointment';
 import GeneralAppointment from './Content/General/GeneralAppointment';
 
 export default function DashHeader(props) {

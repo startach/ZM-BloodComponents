@@ -1,12 +1,12 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import "./Questionnaire.css";
-import { useHistory, useLocation } from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import Button from "../button";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import qIcon from "./questionnaire.svg";
-import { updateAppointment } from "../../services/appointmentService";
-import { getUserById } from '../../services/userService';
-import { hospitalsENUM, hospitals } from '../../utils/enums/hospitals';
+import {updateAppointment} from "../../services/appointmentService";
+import {getUserById} from '../../services/userService';
+import {hospitals, hospitalsENUM} from '../../utils/enums/hospitals';
 
 export default function Questionnaire() {
   const { t } = useTranslation();

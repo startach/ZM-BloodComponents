@@ -1,17 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./AddAppointments.css";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "../button";
-import { MDBIcon } from "mdbreact";
+import {MDBIcon} from "mdbreact";
 import moment from 'moment';
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
-import { addAppointment } from "../../services/appointmentService";
-import { getUsersByBloodType } from "../../services/userService";
-import { hospitals, getHospitalLangName } from '../../utils/enums/hospitals';
-import { functions, db, auth } from "../firebase/firebase";
-import { getUserClaims } from '../../services/userService'
+import {addAppointment} from "../../services/appointmentService";
+import {getUserClaims, getUsersByBloodType} from "../../services/userService";
+import {getHospitalLangName, hospitals} from '../../utils/enums/hospitals';
+import {db, functions} from "../firebase/firebase";
 
 //TODO: disable past dates, minor modifications to css, SMS
 

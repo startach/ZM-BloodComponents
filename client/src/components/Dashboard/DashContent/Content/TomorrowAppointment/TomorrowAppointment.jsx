@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import "../../../dashboard.css";
 import Button from '../../../../button';
-import { Check2 } from 'react-bootstrap-icons';
-import { updateAppointment } from '../../../../../services/appointmentService';
+import {Check2} from 'react-bootstrap-icons';
+import {updateAppointment} from '../../../../../services/appointmentService';
 
 export default function TomorrowAppointment(props) {
     const {t, userName, nextAppointments} = props;

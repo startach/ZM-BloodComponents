@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Popup from "reactjs-popup";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import './yesNoPopUp.css';
 
 export default function YesNoPopUp(props) {

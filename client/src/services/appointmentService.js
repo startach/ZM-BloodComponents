@@ -1,4 +1,4 @@
-import { db } from '../components/firebase/firebase';
+import {db} from '../components/firebase/firebase';
 
 export const getAllAppointments = () => {
     return (db.collection('appointments').get());

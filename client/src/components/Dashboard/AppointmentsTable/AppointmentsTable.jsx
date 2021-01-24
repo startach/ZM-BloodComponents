@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { updateAppointment } from '../../../services/appointmentService';
-import { getHospitalLangName } from '../../../utils/enums/hospitals';
+import {Link} from 'react-router-dom'
+import {updateAppointment} from '../../../services/appointmentService';
+import {getHospitalLangName} from '../../../utils/enums/hospitals';
 import moment from 'moment';
 import YesNoPopUp from '../../popUp/YesNoPopUp/YesNoPopUp';
 import "../dashboard.css";

@@ -1,14 +1,10 @@
-import React, { Suspense, useEffect } from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { firebase } from './components/firebase/firebase'
-import { Redirect, useHistory } from 'react-router-dom'
-import DirectionProvider, { DIRECTIONS } from 'react-with-direction/dist/DirectionProvider';
-import i18next from "i18next";
-
+import DirectionProvider, {DIRECTIONS} from 'react-with-direction/dist/DirectionProvider';
 
 import './i18n';
 

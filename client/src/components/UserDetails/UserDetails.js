@@ -1,9 +1,7 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react'
+import React, {Fragment, useRef, useState} from 'react'
 import "./UserDetails.css"
-import { db, auth } from '../firebase/firebase'
-import i18next from 'i18next';
 import Button from '../button'
-import { updateUser } from '../../services/userService';
+import {updateUser} from '../../services/userService';
 
 export default function UserDetails(props) {
   const { t, userId, userDetails, editableMode } = props;

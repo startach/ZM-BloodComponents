@@ -1,19 +1,18 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import "./dashboard.css";
 import "../appointmentsEntry/appointmentsEntry.css";
-import { auth } from "../firebase/firebase";
-import { useHistory } from "react-router-dom";
+import {auth} from "../firebase/firebase";
+import {useHistory} from "react-router-dom";
 import Popup from "reactjs-popup";
 import Button from "../button";
-import BookTaxi from "../BookTaxi/BookTaxi";
 import DashHeader from "./DashContent/DashHeader";
-import { getAllHospitals } from "../../services/hospitalService";
+import {getAllHospitals} from "../../services/hospitalService";
 import {
   getAppointmentsForUser,
   getAvailableAppointmentsForHospital,
 } from "../../services/appointmentService";
-import { getUserById } from "../../services/userService";
-import { useTranslation } from "react-i18next";
+import {getUserById} from "../../services/userService";
+import {useTranslation} from "react-i18next";
 import googlemaps from "./googlemaps.png";
 import waze from "./waze.png";
 import moment from "moment";

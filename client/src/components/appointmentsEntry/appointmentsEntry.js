@@ -1,10 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./appointmentsEntry.css";
 import Button from "../button";
-import { Link, useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { getDonationsForUser } from '../../services/appointmentService';
-import { useTranslation } from 'react-i18next';
+import {Link, useHistory} from "react-router-dom";
+import {getDonationsForUser} from '../../services/appointmentService';
+import {useTranslation} from 'react-i18next';
 
 const AppointmentsEntry = () => {
 

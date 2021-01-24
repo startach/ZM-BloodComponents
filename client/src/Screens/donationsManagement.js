@@ -6,9 +6,7 @@ import "../components/Dashboard/dashboard.css"
 import OnAirDonations from '../components/OnAirDonations/OnAirDonations'
 import BottomNavBar from '../components/BottomNavBar/BottomBar'
 
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-
+import {useTranslation} from 'react-i18next';
 
 const DonationsManagement = () => {
     const { t } = useTranslation();

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Switch,} from "react-router-dom";
 import AppointmentVerification from "../../Screens/appointmentVerification";
 import "./App.css";
 import Dashboard from "../../Screens/dashboard";
@@ -23,7 +19,7 @@ import UserRoute from "../../routes/UserRoute";
 import PublicRoute from "../../routes/PublicRoute";
 import CordRoute from "../../routes/CordRoute";
 import AdminRoute from "../../routes/AdminRoute";
-import { ForgotPassword } from "../forgetPassword/ForgotPassword";
+import {ForgotPassword} from "../forgetPassword/ForgotPassword";
 import UsersBrowsing from '../../Screens/usersBrowsing';
 import DonationsManagement from '../../Screens/donationsManagement';
 

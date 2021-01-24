@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import "./BrowseUsers.css"
-import { db, auth } from "../firebase/firebase";
 import Table from "../Table/Table";
 import UserDetails from "../UserDetails/UserDetails";
 import DonationsHistory from "../DonationsHistory/DonationsHistory";
 import Popup from "reactjs-popup";
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { getAllHospitals } from '../../services/hospitalService';
-import { getAllUsers } from '../../services/userService';
-import { getAllOccupiedAppointments } from '../../services/appointmentService';
+import {useTranslation} from 'react-i18next';
+import {getAllHospitals} from '../../services/hospitalService';
+import {getAllUsers} from '../../services/userService';
+import {getAllOccupiedAppointments} from '../../services/appointmentService';
 
 // Later seperate these to service
 const maxBy = (array, comparator) => {

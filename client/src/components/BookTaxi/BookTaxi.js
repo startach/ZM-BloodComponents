@@ -1,13 +1,11 @@
-import React, { useState, useEffect, Link } from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from '../button/button'
-import { db } from '../firebase/firebase'
+import {db} from '../firebase/firebase'
 import './bookTaxi.css'
-import { getUserById } from '../../services/userService';
-
+import {getUserById} from '../../services/userService';
 ///////
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
-import { getAppointment } from '../../services/appointmentService';
+import {useTranslation} from 'react-i18next';
+import {getAppointment} from '../../services/appointmentService';
 //////
 
 export default function BookTaxi({ close, bookingData, setBookingData, setRideBooked, rideBooked }) {

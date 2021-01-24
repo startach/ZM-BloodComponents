@@ -1,4 +1,4 @@
-import { db } from '../components/firebase/firebase';
+import {db} from '../components/firebase/firebase';
 
 export const getAllHospitals = async () => {
     const hospitals = await db.collection('hospitals').get();

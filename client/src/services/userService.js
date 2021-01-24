@@ -1,4 +1,4 @@
-import { db, auth } from '../components/firebase/firebase';
+import {auth, db} from '../components/firebase/firebase';
 
 export const getAllUsers = async () => {
     const usersQuery = await db.collection("users").get();

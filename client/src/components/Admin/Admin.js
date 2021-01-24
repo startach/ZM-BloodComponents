@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { functions, db, auth } from '../firebase/firebase'
-
+import React, {useEffect, useState} from 'react'
+import {auth, db, functions} from '../firebase/firebase'
 ///////
-import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
+import {useTranslation} from 'react-i18next';
 import {hospitals} from "../../utils/enums/hospitals"
 //////
 

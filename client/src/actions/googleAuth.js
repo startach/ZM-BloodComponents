@@ -1,8 +1,7 @@
-import { firebase, googleProvider, db } from '../components/firebase/firebase'
+import {firebase, googleProvider} from '../components/firebase/firebase'
 import React, {useEffect} from "react";
-import { useHistory, Redirect } from 'react-router-dom';
-import { updateUser } from '../services/userService';
-
+import {useHistory} from 'react-router-dom';
+import {updateUser} from '../services/userService';
 
 export const SignInWithGoogle = () => {
     const history = useHistory();

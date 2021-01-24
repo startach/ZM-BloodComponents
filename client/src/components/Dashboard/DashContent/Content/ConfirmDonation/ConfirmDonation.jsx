@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import "../../../dashboard.css";
 import Button from '../../../../button';
-import { updateAppointment } from '../../../../../services/appointmentService';
+import {updateAppointment} from '../../../../../services/appointmentService';
 
 export default function ConfirmDonation(props) {
     const {t, userName, appointment, appointmentDate, onConfirm} = props;

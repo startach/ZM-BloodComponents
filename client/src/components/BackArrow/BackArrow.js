@@ -1,6 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'
-import {MDBBtn, MDBIcon } from "mdbreact";
+import {useHistory} from 'react-router-dom'
+import {MDBIcon} from "mdbreact";
 
 const styles = {
   icon: {
