@@ -66,3 +66,9 @@ node_modules/
 
 # Intellij files
 **/.idea/**
+
+# lib files
+**/lib/**
+
+keys
+**/test-service-account-key.json
