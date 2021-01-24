@@ -47,7 +47,7 @@ export default function BrowseUsers() {
   const defaultSelect = "Select";
 
   let [searchName, setsearchName] = useState("")
-  let [bloodTypes, setbloodTypes] =
+  let [bloodTypes] =
     useState(["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"])
   let [chosenBloodType, setChosenBloodType] = useState(defaultSelect)
   let [hospitals, setHospitals] = useState([])

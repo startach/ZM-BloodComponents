@@ -18,7 +18,7 @@ export default function DashHeader(props) {
 
     return (
         <div>
-            <img src={dbIcon} />
+            <img src={dbIcon} alt="db"/>
             <div className="highlight pageTitle">{t('general.Thrombocytes')}</div>
             { !appointmentsCount && !haveFutureAppointment ? <FirstAppointmentIntro t={t} userName={userName}/> : 
                 haveAppointmentTomorrow ? <TomorrowAppointment t={t} userName={userName} nextAppointments={nextAppointments}/> :  

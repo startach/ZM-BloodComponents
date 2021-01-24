@@ -8,7 +8,7 @@ import moment from 'moment';
 import {useTranslation} from "react-i18next";
 import TextField from "@material-ui/core/TextField";
 import {addAppointment} from "../../services/appointmentService";
-import {getUserClaims, getUsersByBloodType} from "../../services/userService";
+import {getUserClaims} from "../../services/userService";
 import {getHospitalLangName, hospitals} from '../../utils/enums/hospitals';
 import {db, functions} from "../firebase/firebase";
 
@@ -17,7 +17,7 @@ import {db, functions} from "../firebase/firebase";
 export default function AddAppointments() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
-  const [hospitalDetails, setHospitalDetails] = useState([]);
+  const [, setHospitalDetails] = useState([]);
   const [appointmentList, setAppointmentList] = useState([]);
   const [appointmentDate, setAppointmentDate] = useState(new Date());
   const displayNode = useRef(null);
@@ -141,7 +141,7 @@ export default function AddAppointments() {
     
     setAppointment({
       ...appointment,
-      ["hospitalID"]: hospitalID,
+      hospitalID: hospitalID,
     });
   };
 
@@ -149,9 +149,6 @@ export default function AddAppointments() {
   const handleChangeDate = (date) => {
     setAppointmentDate(date);
     console.log(date);
-    let fullDate = `${date.getDate()}.${
-      date.getMonth() + 1
-    }.${date.getFullYear()}`;
     let minutes = date.getMinutes();
     if (minutes === 0) {
       minutes = "00";
@@ -164,7 +161,7 @@ export default function AddAppointments() {
 
     setAppointment({
       ...appointment,
-      ["datetime"]: timestamp,
+      datetime: timestamp,
     });
   };
 
@@ -202,7 +199,7 @@ export default function AddAppointments() {
       let loops = appointment.slots;
       //loop though and add as many appointments for empty spots
       for (let i = 0; i < loops; i++) {
-        addAppointment({ ...appointment, ["slots"]: null });
+        addAppointment({ ...appointment, slots: null });
         count++;
       }
       //reset list
@@ -222,8 +219,6 @@ export default function AddAppointments() {
 
   const [matches, setMatches] = useState(null);
 
-  const [message, setMessage] = useState(null);
-
   //TRANSLATE
   const emailMessage = `
                     
@@ -241,16 +236,16 @@ export default function AddAppointments() {
   //get all people in DB with blood type
   const getMatchList = async () => {
     let contactList = [];
-
-    let buildList = getUsersByBloodType(appointmentTypeDetails.Granulocytes.bloodType).then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        contactList.push({
-          name: doc.data().name,
-          phone: doc.data().phone,
-          email: doc.data().email,
-        });
-      });
-    });
+    //
+    // let buildList = getUsersByBloodType(appointmentTypeDetails.Granulocytes.bloodType).then(function (querySnapshot) {
+    //   querySnapshot.forEach(function (doc) {
+    //     contactList.push({
+    //       name: doc.data().name,
+    //       phone: doc.data().phone,
+    //       email: doc.data().email,
+    //     });
+    //   });
+    // });
     console.log("matches", contactList);
     setMatches(contactList.length);
 
@@ -380,8 +375,6 @@ export default function AddAppointments() {
   };
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  let normalizedHospitalName = appointment?.hospitalName?.replace(" ", "").toLowerCase()
 
   return (
     <div className="addAppContainer" style={{ width: "100%" }}>
@@ -576,7 +569,7 @@ export default function AddAppointments() {
               </thead>
               <tbody>
                 {appointmentList.map((appointment, index) => {
-                  appointmentDate = moment(appointment.datetime.getTime()).format('DD/MM/YY');
+                  setAppointmentDate(moment(appointment.datetime.getTime()).format('DD/MM/YY'));
                   appointmentTime = moment(appointment.datetime.getTime()).format('HH:mm');
                   
                   return (

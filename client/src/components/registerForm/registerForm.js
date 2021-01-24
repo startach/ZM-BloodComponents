@@ -22,14 +22,7 @@ const RegisterForm = () => {
   const [addressError, setAddressError] = useState(false);
   const [notificationsPopUp, setNotificationsPopUp] = useState(false);
   let refuseNotifications = false;
-  const [isChecked, setIsChecked] = useState({
-    SMS: false,
-    Whatsapp: false,
-    Phonecall: false,
-    Email: false,
-    inAppAlert: false,
-  });
-  const [notifications, setNotifications] = useState({});
+  const [notifications] = useState({});
   const logo = "/img/Logo.png";
   let [userInputs, setuserInputs] = useState();
   let [userPassword, setUserPassword] = useState();
@@ -62,11 +55,11 @@ const RegisterForm = () => {
     setConfirmPassword(e.target.value);
   };
   //Handle change of notifications checkboxes
-
-  const handleCheckbox = (e, checked) => {
-    setIsChecked({ ...isChecked, [e.target.id]: !checked });
-    setNotifications({ ...notifications, [e.target.id]: !checked });
-  };
+  //
+  // const handleCheckbox = (e, checked) => {
+  //   setIsChecked({ ...isChecked, [e.target.id]: !checked });
+  //   setNotifications({ ...notifications, [e.target.id]: !checked });
+  // };
 
   const handlePhoneEnding = (e) => {
     setPhoneEnding(e.target.value);
@@ -82,7 +75,7 @@ const RegisterForm = () => {
     var hasNumber = /\d/;
 
     //password and confirm password validation
-    if (userPassword != confirmPassword) {
+    if (userPassword !== confirmPassword) {
       setCheckError(true);
       setPasswordError(true);
       setError("Password and confirm password do not match");
@@ -156,7 +149,7 @@ const RegisterForm = () => {
   //Handle DatePicker State
 
   const onClickDayHandler = (e) => {
-    if (e != null) {
+    if (e !== null) {
       let str = e.toString();
       let parts = str.split(" ");
       let months = {
@@ -177,7 +170,7 @@ const RegisterForm = () => {
 
       setDate(e);
 
-      setuserInputs({ ...userInputs, ["birthDate"]: finalDate });
+      setuserInputs({ ...userInputs, birthDate: finalDate });
     }
     setDate(e);
   };
@@ -189,7 +182,7 @@ const RegisterForm = () => {
         <LanguageSwitch marginRight="5px" />
       </div>
       <div className="imgContainer">
-        <img src={logo} id="register-logo" />
+        <img src={logo} id="register-logo" alt="register"/>
       </div>
 
       <div className="registerHeader">

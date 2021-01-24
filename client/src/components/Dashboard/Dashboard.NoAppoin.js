@@ -26,8 +26,6 @@ function DashboardNoAppoin() {
   const [hospitals, setHospitals] = useState([]);
   const [pastApp, setPastApp] = useState([]);
   const [appointmentLastMonth, setAppointmentLastMonth] = useState();
-  const [bookingData, setBookingData] = useState(false);
-  const [rideBooked, setRideBooked] = useState(false);
   const [availableAppointments, setAvailableAppointments] = useState([]);
   const [chosenHospital, setChosenHospital] = useState(null);
   const [userName, setUserName] = useState("");
@@ -60,7 +58,7 @@ function DashboardNoAppoin() {
         setHaveAppointmentTomorrow(true);
       }
 
-      let appObj = { ...appData, ["id"]: userAppointment.id };
+      let appObj = { ...appData, id: userAppointment.id };
       setUserAppointmentsDetails((prev) => [...prev, appObj]);
     } else {
       if (appData.hasDonated !== false) {
@@ -68,7 +66,7 @@ function DashboardNoAppoin() {
         const monthAgo = moment(new Date());
         monthAgo.subtract(1, "month");
         if (appointmentDate > monthAgo) {
-          setAppointmentLastMonth({ ...appData, ["id"]: userAppointment.id });
+          setAppointmentLastMonth({ ...appData, id: userAppointment.id });
         }
       }
     }
@@ -91,9 +89,8 @@ function DashboardNoAppoin() {
             } else {
               setUserAppointmentsDetails([]);
               setPastApp([]);
-              snapShot.docs.map((userAppointment) => {
-                classifiyAppointment(userAppointment);
-              });
+              snapShot.docs.map((userAppointment) => classifiyAppointment(
+                  userAppointment));
 
               if (!userAppointmentsDetails) {
                 setHospitalNames();
@@ -123,7 +120,7 @@ function DashboardNoAppoin() {
               let currentID = hospitalAppointments.id;
               let appObj = {
                 ...hospitalAppointments.data(),
-                ["id"]: currentID,
+                id: currentID,
               };
               Appointments.push(appObj);
             }
@@ -180,21 +177,23 @@ function DashboardNoAppoin() {
                 {
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={`https://www.google.com/maps/search/?api=1&query=${localStorage
                       .getItem("hospital")
                       .replace(/\s/g, "%")}%20hospital`}
                   >
-                    <img className="mapIcon" src={googlemaps} />
+                    <img className="mapIcon" src={googlemaps} alt="mapIcon"/>
                   </a>
                 }
                 {
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={`https://www.waze.com/ul?q=${localStorage
                       .getItem("hospital")
                       .replace(/\s/g, "%")}%20hospital`}
                   >
-                    <img className="mapIcon" src={waze} />
+                    <img className="mapIcon" src={waze} alt="mapIcon"/>
                   </a>
                 }
               </Popup>

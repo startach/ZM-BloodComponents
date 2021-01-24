@@ -2,13 +2,6 @@ import React from 'react';
 import {useHistory} from 'react-router-dom'
 import {MDBIcon} from "mdbreact";
 
-const styles = {
-  icon: {
-    width: '50px',
-    margin: '10px'
-  }
-};
-
 let languageSelected = localStorage.getItem('i18nextLng');
 
 const BackArrow = (props) => {

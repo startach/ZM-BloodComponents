@@ -54,9 +54,9 @@ export default function Questionnaire() {
     },
     {
       id: 2,
-      question: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
+      question: t(hospital.id !== hospitalsEnum.ICHILOV ? 'questionnaire.q_weight' : 'questionnaire.q_weight_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
-      condition: { hospitals: hospital.id != hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')], error: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
+      condition: { hospitals: hospital.id !== hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')], error: t(hospital.id !== hospitalsEnum.ICHILOV ? 'questionnaire.error_weight' : 'questionnaire.error_weight_ichilov') }
     },
     {
       id: 3,
@@ -150,20 +150,20 @@ export default function Questionnaire() {
     },
     {
       id: 13,
-      question: t(hospital.id != hospitalsEnum.ICHILOV ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
+      question: t(hospital.id !== hospitalsEnum.ICHILOV ? 'questionnaire.q_age' : 'questionnaire.q_age_ichilov'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital.id != hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')],
-        error: t(hospital.id != hospitalsEnum.ICHILOV ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
+        hospitals: hospital.id !== hospitalsEnum.ICHILOV ? [...hospitalsIDs] : [hospitalsEnum.ICHILOV], invalidSelection: [t('questionnaire.option_no')],
+        error: t(hospital.id !== hospitalsEnum.ICHILOV ? "questionnaire.error_age" : "questionnaire.error_age_ichilov")
       }
     },
     {
       id: 14,
-      question: t(hospital.id != hospitalsEnum.BEILINSON ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
+      question: t(hospital.id !== hospitalsEnum.BEILINSON ? 'questionnaire.q_pregnant' : 'questionnaire.q_pregnant_beilinsohn'),
       options: [t('questionnaire.option_yes'), t('questionnaire.option_no')],
       condition: {
-        hospitals: hospital.id != hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON], invalidSelection: [t('questionnaire.option_yes')],
-        error: t(hospital.id != hospitalsEnum.BEILINSON ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
+        hospitals: hospital.id !== hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON], invalidSelection: [t('questionnaire.option_yes')],
+        error: t(hospital.id !== hospitalsEnum.BEILINSON ? "questionnaire.error_pregnant" : "questionnaire.error_pregnant_beilinsohn")
       }
     },
     {
@@ -176,10 +176,10 @@ export default function Questionnaire() {
         t('questionnaire.q_last_donation_never')
       ],
       condition: {
-        hospitals: hospital != hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON],
-        invalidSelection: hospital != hospitalsEnum.BEILINSON ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
+        hospitals: hospital !== hospitalsEnum.BEILINSON ? [...hospitalsIDs] : [hospitalsEnum.BEILINSON],
+        invalidSelection: hospital !== hospitalsEnum.BEILINSON ? [t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')] :
           [t('questionnaire.q_last_donation_never'), t('questionnaire.q_last_donation_less_month_more_10_days'), t('questionnaire.q_last_donation_less_10_days')],
-        error: hospital != hospitalsEnum.BEILINSON ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")
+        error: hospital !== hospitalsEnum.BEILINSON ? t("questionnaire.error_last_donation_general") : t("questionnaire.error_last_donation_beilinsohn")
       }
     },
     {
@@ -213,7 +213,7 @@ export default function Questionnaire() {
     var sum = questionList.length;
 
     //change questions length depend on gender
-    if (gender == "Male") {
+    if (gender === "Male") {
       sum = sum - 1;
     }
 
@@ -264,7 +264,7 @@ export default function Questionnaire() {
       className="questionnairePage"
     >
       <div className="qIcon">
-        <img src={qIcon} />
+        <img src={qIcon} alt="question"/>
         <div className="highlight pageTitle">{t("screens.questionnaire")}</div>
         <span id="questionnaireSpan">
           {t("questionnaire.questionnaireSpan")}
@@ -275,7 +275,7 @@ export default function Questionnaire() {
         {questionList.map(
           (question, index) =>
             //Remove question about pregnancy
-            gender == "Male" && question.id == 14 ? (
+            gender === "Male" && question.id === 14 ? (
               <div></div>
             ) : (
                 <div
@@ -295,7 +295,7 @@ export default function Questionnaire() {
                     className={`${languageSelected === "en" ? "right" : "rightRtl"
                       }`}
                   >
-                    {question.id == 4 || question.id == 15 ? (
+                    {question.id === 4 || question.id === 15 ? (
                       <Fragment>
                         <select
                           class="dropdown"

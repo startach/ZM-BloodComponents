@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import "./loginForm.css";
-import {Link, useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {auth} from '../firebase/firebase'
-///////
 import {useTranslation} from 'react-i18next';
 import LanguageSwitch from "../languageSwich/LanguageSwitch";
-//////
 
 const LoginForm = () => {
   const backArrow = "/img/back-button-white.svg"
@@ -13,15 +11,12 @@ const LoginForm = () => {
   const youtubeLogo = "/img/Youtube-Icon.svg"
   const instagramLogo = "/img/Instgram-Icon.png"
   const websiteLogo = "/img/Website-Icon.svg"
-  const history = useHistory();
   const logo = "/img/Logo.png";
   let [userData, setUserData] = useState([])
   let [error, setError] = useState([])
 
 
-  /////////
   const { t } = useTranslation();
-  //////////
 
   //Handle change of login form fields 
 
@@ -63,7 +58,7 @@ const LoginForm = () => {
     <div className="loginPage">
       <LanguageSwitch />
       <div className="imgContainer">
-        <img src={logo} id="login-logo" />
+        <img src={logo} id="login-logo" alt="login-logo" />
 
       </div>
       <div className="loginHeader">
@@ -120,17 +115,17 @@ const LoginForm = () => {
 
           <Link to='/register' style={{ textDecoration: 'none' }}>
             <div className="comeSaveLivesButton">
-              <img src={backArrow} id="backArrowLogin" />
+              <img src={backArrow} id="backArrowLogin" alt="backArrowLogin" />
               <span id="comeSaveLivesSpan">{t('loginForm.comeSaveLives')}</span>
             </div>
           </Link>
 
           <div className="socialMediaIconsContainer">
 
-            <a target="_blank" href="http://facebook.com/zichronmenachem"> <img src={facebookLogo}></img> </a>
-            <a target="_blank" href="http://youtube.com/user/zichronmenachem"><img src={youtubeLogo}></img> </a>
-            <a target="_blank" href="http://instagram.com/zichronmenachem"><img id="instagramLogo" src={instagramLogo}></img> </a>
-            <a target="_blank" href="http://zichron.org"><img src={websiteLogo}></img> </a>
+            <a target="_blank" rel="noopener noreferrer" href="http://facebook.com/zichronmenachem"> <img src={facebookLogo} alt="facebook"/> </a>
+            <a target="_blank" rel="noopener noreferrer" href="http://youtube.com/user/zichronmenachem"><img src={youtubeLogo} alt="youtube"/> </a>
+            <a target="_blank" rel="noopener noreferrer" href="http://instagram.com/zichronmenachem"><img id="instagramLogo" src={instagramLogo} alt="instagram"/> </a>
+            <a target="_blank" rel="noopener noreferrer" href="http://zichron.org"><img src={websiteLogo} alt="website"/> </a>
 
 
           </div>

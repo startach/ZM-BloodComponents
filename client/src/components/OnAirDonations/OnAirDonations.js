@@ -31,7 +31,6 @@ const getAllTaxiBookingsMap = async () => {
 export default function OnAirDonations() {
   const { t } = useTranslation();
   const history = useHistory();
-  const hospitalsDetails = hospitals;
   // If hospitalCoord, can only see their own hospital
   const [coordHospitalId, setCoordHospitalId] = useState();
   const [chosenHospital, setChosenHospital] = useState(null);
@@ -128,7 +127,7 @@ export default function OnAirDonations() {
               let currentID = hospitalAppointments.id;
               let appObj = {
                 ...hospitalAppointments.data(),
-                ["id"]: currentID,
+                id: currentID,
               };
               Appointments.push(appObj);
             }

@@ -42,7 +42,7 @@ export const hospitalsENUM = {
 
 export const getHospitalLangName = (hospitalId) => {
     const languageSelected = localStorage.getItem("i18nextLng");
-    const hospital = hospitals.find(item => item.id == hospitalId);
+    const hospital = hospitals.find(item => item.id === hospitalId);
 
-    return languageSelected == "en" ? hospital.name : hospital.hebName;
+    return languageSelected === "en" ? hospital.name : hospital.hebName;
 }

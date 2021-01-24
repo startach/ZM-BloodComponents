@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './verificationList.css'
 import {Link, useLocation} from 'react-router-dom'
 import {MDBIcon} from "mdbreact";
@@ -6,10 +6,7 @@ import {useTranslation} from 'react-i18next';
 import {getHospitalLangName} from '../../utils/enums/hospitals';
 
 const VerificationList = () => {
-    const backArrow = "/img/back-button-white.svg"
     const { t } = useTranslation();
-    const [bookingData, setBookingData] = useState(false);
-    const [rideBooked, setRideBooked] = useState(false);
 
     const location = useLocation();
     const { appointmentDate, appointmentTime, hospitalID } = location.state;

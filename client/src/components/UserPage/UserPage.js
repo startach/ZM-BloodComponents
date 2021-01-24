@@ -16,17 +16,8 @@ export default function UserPage({ userId }) {
   const [userDetails, setUserDetails] = useState({});
   const [donationsNumber, setDonationsNumber] = useState(0);
 
-  //state for if addtional options are visable or not, set by checkbox click
-  const [visible, setVisible] = useState({
-    emergency: false,
-    casual: false,
-  });
-
-  const [notificationsChosen, setNotificationsChosen] = useState({});
-
   // Get user id from props if exists, else get from localstorage
   const id = userId ? userId : localStorage.getItem("userid");
-  const languageSelected = localStorage.getItem("i18nextLng");
   const history = useHistory();
 
   useEffect(() => {
@@ -71,7 +62,7 @@ export default function UserPage({ userId }) {
   return (
     <div className="userPage">
       <div className="userImage">
-        <img src={userProfile} />
+        <img src={userProfile} alt="profile"/>
       </div>
 
       {/* Similar to dashboard, consider Later, plus fix ltr/rtl */}

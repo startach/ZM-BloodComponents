@@ -63,7 +63,7 @@ function DeleteAppointments() {
         setGetAll(false)
         setAppDate(date)
         let fullDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
-        setHospitalAppointments({ ...hospitalAppointments, ['date']: fullDate })
+        setHospitalAppointments({ ...hospitalAppointments, date: fullDate })
     }
 
     const handleChange = e => {
@@ -77,9 +77,7 @@ function DeleteAppointments() {
     }, [hospitalAppointments, getAll])
 
     useEffect(() => {
-        selectedInputs.map(SingleInput => {
-            setEditedInputs(SingleInput.data())
-        })
+        selectedInputs.map(SingleInput => setEditedInputs(SingleInput.data()))
     }, [selectedInputs])
 
 //     const getHospitals = async () => {
@@ -183,7 +181,7 @@ function DeleteAppointments() {
 
                     return (
                         <ul className='deleteRowContainer' id={Details.id}>
-                            {editable.date && editable.id == Details.id ? (
+                            {editable.date && editable.id === Details.id ? (
                                 <Fragment>
                                     <input className='editableInputsDB'
                                         id="date"
@@ -233,9 +231,9 @@ function DeleteAppointments() {
                                 >
                                     {close => (
                                         <div className="container">
-                                            <a className="close" onClick={close}>
+                                            <button className="close" onClick={close}>
                                                 X
-                                            </a>
+                                            </button>
                                             <div className="content">
                                             {t('editDeleteApp.deleteAppConfirm')} ?
                                             </div>

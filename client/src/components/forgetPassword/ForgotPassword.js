@@ -4,13 +4,10 @@ import "./forgotPassword.css";
 import lockPic from "./password.svg";
 import {Link, useHistory} from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-///
 import {useTranslation} from 'react-i18next';
-///
+
 export const ForgotPassword = () => {
   const [emailValue, setEmailValue] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  //   const [resetEmailSent, setResetEmailSent] = useState("");
   const [resetPassView, setResetPassView] = useState("beforeSending");
   var history = useHistory();
 
@@ -28,7 +25,7 @@ export const ForgotPassword = () => {
         setResetPassView("afterSending");
       })
       .catch((err) => {
-        setErrorMsg("errorOccured");
+        console.error("errorOccured");
       });
 
     e.preventDefault();

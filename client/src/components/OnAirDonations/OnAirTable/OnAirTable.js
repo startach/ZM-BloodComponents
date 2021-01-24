@@ -70,7 +70,8 @@ export default function OnAirTable(props) {
                 <td key={headerFields[index]} className="onAirRowField">{field}</td>
               ))}
               <td key="details" className="arrowField">
-                <img 
+                <img
+                    alt="arrow"
                   className="arrowButton" 
                   src={rowFields.showDonors ? collapse : expand } 
                   onClick={() => handleArrowClicked(rowIndex)}
