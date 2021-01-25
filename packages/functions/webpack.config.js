@@ -10,7 +10,7 @@ const basePackage = {
   //   start: "yarn run shell"
   // },
   engines: {
-    node: "8",
+    node: "10",
   },
 };
 
