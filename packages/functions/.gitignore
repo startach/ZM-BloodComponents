@@ -4,5 +4,7 @@
 # Typescript v1 declaration files
 typings/
 
+**/dist/**
+
 node_modules/
 **/test-service-account-key.json
