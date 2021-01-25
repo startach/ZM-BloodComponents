@@ -1,0 +1,13 @@
+../donor2/node_modules/p-limit/readme.md
+.expo/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
