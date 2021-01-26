@@ -2,18 +2,17 @@
   "name": "@zm-blood-components/functions",
   "version": "1.0.0",
   "scripts": {
-    "lint": "yarn run prettier && tslint --project tsconfig.json ",
-    "build": "webpack",
+    "lint": "yarn run prettier --write . && tslint --project tsconfig.json ",
+    "build": "yarn run lint && yarn run test && webpack",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "prettier": "yarn run prettier --write .",
     "test": "jest --silent"
   },
   "engines": {
-    "node": "12"
+    "node": ">=12"
   },
   "main": "lib/index.js",
   "dependencies": {
