@@ -1,6 +1,9 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
-import { Collections } from "../Collections";
-import { Hospital, DbAppointment } from "@zm-blood-components/common";
+import {
+  Hospital,
+  DbAppointment,
+  Collections,
+} from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
 

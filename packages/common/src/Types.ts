@@ -75,3 +75,9 @@ export type DbAppointment = {
 
   // post donation
 };
+
+export enum Collections {
+  ADMIN = "admin",
+  DONORS = "donors",
+  APPOINTMENTS = "appointments",
+}
