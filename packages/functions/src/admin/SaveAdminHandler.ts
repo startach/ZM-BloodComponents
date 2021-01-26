@@ -1,13 +1,9 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
-import { DbAdmin, AdminRole } from "@zm-blood-components/common";
+import { DbAdmin, AdminRole, FunctionsApi } from "@zm-blood-components/common";
 import { getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
-interface SaveAdminRequest {
-  admin: DbAdmin;
-}
-
 export default async function (
-  request: SaveAdminRequest,
+  request: FunctionsApi.SaveAdminRequest,
   context: CallableContext
 ) {
   await validateUserCanSetRoleToAnotherUser(context.auth?.uid);

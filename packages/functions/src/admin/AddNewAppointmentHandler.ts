@@ -1,20 +1,14 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
 import {
-  Hospital,
+  FunctionsApi,
   DbAppointment,
   Collections,
 } from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
 
-interface AddAppointmentRequest {
-  hospital: Hospital;
-  donationStartTime: string;
-  slots: number;
-}
-
 export default async function (
-  request: AddAppointmentRequest,
+  request: FunctionsApi.AddAppointmentRequest,
   context: CallableContext
 ) {
   // validate user is allowed to add appointments to this hospital

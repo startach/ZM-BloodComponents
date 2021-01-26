@@ -4,14 +4,10 @@ import {
   updateAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as _ from "lodash";
-
-interface CancelAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
-  appointmentId: string;
-}
+import { FunctionsApi } from "@zm-blood-components/common";
 
 export default async function (
-  request: CancelAppointmentRequest,
+  request: FunctionsApi.CancelAppointmentRequest,
   context: CallableContext
 ) {
   const donorId = context.auth?.uid;

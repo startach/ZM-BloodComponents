@@ -6,16 +6,12 @@ import {
   updateAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-
-interface BookAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
-  appointmentIds: string[];
-}
+import { FunctionsApi } from "@zm-blood-components/common";
 
 const WEEKS_BUFFER = 4;
 
 export default async function (
-  request: BookAppointmentRequest,
+  request: FunctionsApi.BookAppointmentRequest,
   context: CallableContext
 ) {
   const donorId = context.auth?.uid;
