@@ -5,6 +5,7 @@ import {
   getAppointmentsByDonorIdInTime,
   updateAppointment,
 } from "../dal/AppointmentDataAccessLayer";
+import * as admin from "firebase-admin";
 
 interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available
@@ -47,7 +48,7 @@ export default async function (
   }
 
   appointmentToBook.donorId = donorId;
-  appointmentToBook.bookingTime = new Date();
+  appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
 
   await updateAppointment(appointmentToBook);
 }

@@ -1,4 +1,4 @@
-import { Admin, AdminRole, Hospital } from "../Types";
+import { DbAdmin, AdminRole, Hospital } from "@zm-blood-components/common";
 import * as _ from "lodash";
 import { getAdmin } from "../dal/AdminDataAccessLayer";
 
@@ -29,13 +29,15 @@ export async function validateAppointmentEditPermissions(
   return userId;
 }
 
-function adminAllowedToAddAppointments(admin: Admin, hospitals: Hospital[]) {
+function adminAllowedToAddAppointments(admin: DbAdmin, hospitals: Hospital[]) {
   if (admin.roles.includes(AdminRole.SYSTEM_USER)) {
     return true;
   }
 
   if (admin.roles.includes(AdminRole.HOSPITAL_COORDINATOR)) {
-    if (_.intersection(admin.hospitals, hospitals).length == hospitals.length) {
+    if (
+      _.intersection(admin.hospitals, hospitals).length === hospitals.length
+    ) {
       return true;
     }
   }

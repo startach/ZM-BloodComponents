@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { Collections } from "../Collections";
-import { Donor } from "../Types";
+import { DbDonor } from "@zm-blood-components/common";
 
 export async function getDonor(donorId: string) {
   const collection = admin.firestore().collection(Collections.DONORS);
@@ -10,10 +10,10 @@ export async function getDonor(donorId: string) {
     return undefined;
   }
 
-  return donor.data() as Donor;
+  return donor.data() as DbDonor;
 }
 
-export async function updateDonor(donor: Donor) {
+export async function updateDonor(donor: DbDonor) {
   const collection = admin.firestore().collection(Collections.DONORS);
   await collection.doc(donor.id).set(donor);
 }

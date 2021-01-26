@@ -1,5 +1,10 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { Appointment, BloodType, Donor, Hospital } from "../Types";
+import {
+  DbAppointment,
+  BloodType,
+  DbDonor,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, updateDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -128,7 +133,7 @@ test("Valid request books appointment", async () => {
 });
 
 async function setDonor() {
-  const donor: Donor = {
+  const donor: DbDonor = {
     id: DONOR_ID,
     phone: "test_phone",
     email: "test_email",
@@ -145,17 +150,18 @@ async function saveAppointment(
 ) {
   const startTime = new Date();
   startTime.setDate(startTime.getDate() + donationWeeksFromNow * 7);
-  const appointment: Appointment = {
+  const time = admin.firestore.Timestamp.fromDate(startTime);
+  const appointment: DbAppointment = {
     id: id,
-    creationTime: admin.firestore.Timestamp.fromDate(startTime),
+    creationTime: time,
     creatorUserId: "CreatingUserId",
-    donationStartTime: admin.firestore.Timestamp.fromDate(startTime),
+    donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
   };
 
   if (booked) {
     appointment.donorId = DONOR_ID;
-    appointment.bookingTime = startTime;
+    appointment.bookingTime = time;
   }
 
   await updateAppointment(appointment);

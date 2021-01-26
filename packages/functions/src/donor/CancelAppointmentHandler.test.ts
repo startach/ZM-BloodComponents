@@ -1,5 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { Appointment, Hospital } from "../Types";
+import { DbAppointment, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -92,12 +92,12 @@ test("Valid request books appointment", async () => {
 });
 
 async function saveAppointment(donorId: string) {
-  const time = new Date();
-  const appointment: Appointment = {
+  const time = admin.firestore.Timestamp.now();
+  const appointment: DbAppointment = {
     id: APPOINTMENT_TO_CANCEL,
-    creationTime: admin.firestore.Timestamp.fromDate(time),
+    creationTime: time,
     creatorUserId: "creatorUserId",
-    donationStartTime: admin.firestore.Timestamp.fromDate(time),
+    donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,

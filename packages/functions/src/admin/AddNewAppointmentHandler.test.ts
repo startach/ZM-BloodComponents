@@ -1,5 +1,10 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { Admin, AdminRole, Appointment, Hospital } from "../Types";
+import {
+  DbAdmin,
+  AdminRole,
+  DbAppointment,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { Collections } from "../Collections";
@@ -101,10 +106,10 @@ test("Valid request inserts new appointments", async () => {
     .collection(Collections.APPOINTMENTS)
     .doc(newAppointmentIds[0])
     .get()
-    .then((a) => a.data() as Appointment);
+    .then((a) => a.data() as DbAppointment);
   expect(sampleAppointment.creatorUserId).toEqual(USER_ID);
-  expect(sampleAppointment.donationStartTime.toDate()).toEqual(
-    DONATION_START_TIME
+  expect(sampleAppointment.donationStartTime).toEqual(
+    admin.firestore.Timestamp.fromDate(DONATION_START_TIME)
   );
   expect(sampleAppointment.hospital).toEqual(Hospital.ASAF_HAROFE);
 
@@ -122,7 +127,7 @@ test("Valid request inserts new appointments", async () => {
 });
 
 async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
-  const newAdmin: Admin = {
+  const newAdmin: DbAdmin = {
     id: USER_ID,
     phone: "test_phone",
     email: "test_email",

@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
-import { Collections } from "../Collections";
 import * as _ from "lodash";
-import { Appointment } from "../Types";
+import { Collections } from "../Collections";
+import { DbAppointment } from "@zm-blood-components/common";
 
 export async function getAppointmentsByIds(appointmentIds: string[]) {
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
@@ -13,7 +13,7 @@ export async function getAppointmentsByIds(appointmentIds: string[]) {
     (chunk) =>
       collection
         .where(admin.firestore.FieldPath.documentId(), "in", chunk)
-        .get() as Promise<FirebaseFirestore.QuerySnapshot<Appointment>>
+        .get() as Promise<FirebaseFirestore.QuerySnapshot<DbAppointment>>
   );
 
   const snapshots = await Promise.all(promisesArray);
@@ -31,7 +31,7 @@ export async function getAppointmentsCreatedByUserId(userId: string) {
   return appointments.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
-  })) as Appointment[];
+  })) as DbAppointment[];
 }
 
 export async function getAppointmentsByDonorIdInTime(
@@ -50,7 +50,7 @@ export async function getAppointmentsByDonorIdInTime(
     .where("donorId", "==", donorId)
     .where("donationStartTime", ">=", earliestStartTime)
     .where("donationStartTime", "<=", latestStartTime)
-    .get()) as FirebaseFirestore.QuerySnapshot<Appointment>;
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({
     id: doc.id,
@@ -77,7 +77,7 @@ export async function deleteAppointmentsByIds(appointmentIds: string[]) {
 //     .set(appointment);
 // }
 
-export function updateAppointment(appointment: Appointment) {
+export function updateAppointment(appointment: DbAppointment) {
   if (!appointment.id) {
     throw new Error("Cant save appointment without id");
   }

@@ -1,7 +1,6 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
 import { Collections } from "../Collections";
-import { Appointment } from "../Types";
-import { Hospital } from "@zm-blood-components/common";
+import { Hospital, DbAppointment } from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
 
@@ -23,7 +22,7 @@ export default async function (
 
   const slots = request.slots;
 
-  const newAppointment: Appointment = {
+  const newAppointment: DbAppointment = {
     creationTime: admin.firestore.Timestamp.fromDate(new Date()),
     creatorUserId: callingUserId,
     donationStartTime: admin.firestore.Timestamp.fromDate(

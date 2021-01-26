@@ -15,10 +15,14 @@
   "scripts": {
     "build": "tsc",
     "lint": "npm run prettier && tslint --project tsconfig.json ",
+    "prettier": "npx prettier --write .",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/startach/ZM-BloodComponents/issues"
+  },
+  "dependencies": {
+    "firebase": "^8.2.4"
   },
   "devDependencies": {
     "prettier": "^2.2.1",

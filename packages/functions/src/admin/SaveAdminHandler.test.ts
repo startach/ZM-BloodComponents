@@ -1,5 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { Admin, AdminRole, Hospital } from "../Types";
+import { DbAdmin, AdminRole, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -62,7 +62,7 @@ test("Valid request inserts new admin", async () => {
 });
 
 async function createUser(roles: AdminRole[]) {
-  const newAdmin: Admin = {
+  const newAdmin: DbAdmin = {
     id: CALLING_USER_ID,
     phone: "test_phone",
     email: "test_email",
@@ -73,7 +73,7 @@ async function createUser(roles: AdminRole[]) {
 }
 
 function getSaveAdminRequest() {
-  const newAdmin: Admin = {
+  const newAdmin: DbAdmin = {
     id: TARGET_ADMIN_ID,
     email: "target_email",
     phone: "target_phone",

@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { Collections } from "../Collections";
-import { Admin } from "../Types";
+import { DbAdmin } from "@zm-blood-components/common";
 
 export async function getAdmin(adminId: string) {
   const collection = admin.firestore().collection(Collections.ADMIN);
@@ -10,10 +10,10 @@ export async function getAdmin(adminId: string) {
     return undefined;
   }
 
-  return adminUser.data() as Admin;
+  return adminUser.data() as DbAdmin;
 }
 
-export async function setAdmin(adminUser: Admin) {
+export async function setAdmin(adminUser: DbAdmin) {
   const collection = admin.firestore().collection(Collections.ADMIN);
   await collection.doc(adminUser.id).set(adminUser);
 }

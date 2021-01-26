@@ -1,9 +1,9 @@
 import { CallableContext } from "firebase-functions/lib/providers/https";
-import { Admin, AdminRole } from "../Types";
+import { DbAdmin, AdminRole } from "@zm-blood-components/common";
 import { getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
 interface SaveAdminRequest {
-  admin: Admin;
+  admin: DbAdmin;
 }
 
 export default async function (
@@ -32,7 +32,7 @@ async function validateUserCanSetRoleToAnotherUser(
   }
 }
 
-function adminAllowedToSetRoles(callingAdmin: Admin) {
+function adminAllowedToSetRoles(callingAdmin: DbAdmin) {
   for (const roleIndex in callingAdmin.roles) {
     switch (callingAdmin.roles[roleIndex]) {
       case AdminRole.SYSTEM_USER:
