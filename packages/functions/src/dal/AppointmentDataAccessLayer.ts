@@ -1,7 +1,6 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
-import { Collections } from "../Collections";
-import { DbAppointment } from "@zm-blood-components/common";
+import { DbAppointment, Collections } from "@zm-blood-components/common";
 
 export async function getAppointmentsByIds(appointmentIds: string[]) {
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);

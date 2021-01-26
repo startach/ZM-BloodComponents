@@ -1,6 +1,5 @@
 import * as admin from "firebase-admin";
-import { Collections } from "../Collections";
-import { DbAdmin } from "@zm-blood-components/common";
+import { Collections, DbAdmin } from "@zm-blood-components/common";
 
 export async function getAdmin(adminId: string) {
   const collection = admin.firestore().collection(Collections.ADMIN);

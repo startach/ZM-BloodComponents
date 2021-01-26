@@ -4,10 +4,10 @@ import {
   AdminRole,
   DbAppointment,
   Hospital,
+  Collections,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import { Collections } from "../Collections";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,

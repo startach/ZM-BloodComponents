@@ -4,13 +4,10 @@ import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
 } from "../dal/AppointmentDataAccessLayer";
-
-interface DeleteAppointmentRequest {
-  appointmentIds: string[];
-}
+import { FunctionsApi } from "@zm-blood-components/common";
 
 export default async function (
-  request: DeleteAppointmentRequest,
+  request: FunctionsApi.DeleteAppointmentRequest,
   context: CallableContext
 ) {
   const appointmentIds = request.appointmentIds;

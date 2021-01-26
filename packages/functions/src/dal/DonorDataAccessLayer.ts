@@ -1,6 +1,5 @@
 import * as admin from "firebase-admin";
-import { Collections } from "../Collections";
-import { DbDonor } from "@zm-blood-components/common";
+import { DbDonor, Collections } from "@zm-blood-components/common";
 
 export async function getDonor(donorId: string) {
   const collection = admin.firestore().collection(Collections.DONORS);
