@@ -1,37 +1,31 @@
 {
-  "name": "functions",
+  "name": "@zm-blood-components/functions",
+  "version": "1.0.0",
   "scripts": {
-    "lint": "npm run prettier && tslint --project tsconfig.json ",
-    "build": "npm run lint && npm run test && webpack",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
+    "lint": "yarn run prettier && tslint --project tsconfig.json ",
+    "build": "webpack",
+    "serve": "yarn run build && firebase emulators:start --only functions",
+    "shell": "yarn run build && firebase functions:shell",
+    "start": "yarn run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "prettier": "npx prettier --write .",
+    "prettier": "yarn run prettier --write .",
     "test": "jest --silent"
   },
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "main": "lib/index.js",
   "dependencies": {
-    "@zm-blood-components/common": "^0.0.0",
+    "@zm-blood-components/common": "^1.0.0",
     "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1",
-    "lodash": "^4.17.20"
+    "firebase-functions": "^3.6.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.20",
     "copy-webpack-plugin": "^7.0.0",
     "firebase-functions-test": "^0.2.0",
     "generate-package-json-webpack-plugin": "^2.1.2",
-    "jest": "^26.6.3",
-    "prettier": "2.2.1",
-    "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.14",
-    "tslint": "^5.12.0",
-    "typescript": "^3.8.0",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",
     "webpack-node-externals": "^2.5.2"
