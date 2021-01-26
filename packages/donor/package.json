@@ -1,4 +1,6 @@
 {
+  "name": "@zm-blood-components/donor",
+  "version": "1.0.0",
   "main": "../donor2/node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "../donor2/node_modules/.bin/expo start",
@@ -19,8 +21,7 @@
     "@babel/core": "~7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "typescript": "~4.0.0"
+    "@types/react-native": "~0.63.2"
   },
   "private": true
 }
