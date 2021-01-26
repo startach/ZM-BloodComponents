@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "cleanup": "./bin/cleanup.sh",
+    "cleanup": "scripts/cleanup.sh",
     "build": "lerna run build"
   },
   "dependencies": {
