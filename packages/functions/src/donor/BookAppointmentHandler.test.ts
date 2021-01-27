@@ -6,7 +6,7 @@ import {
   Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor, updateDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
@@ -60,7 +60,7 @@ test("Donor not found throws exception", async () => {
 });
 
 test("No such appointments throws exception", async () => {
-  await setDonor();
+  await createDonor();
 
   const action = () =>
     wrapped(bookAppointmentRequest(), {
@@ -73,7 +73,7 @@ test("No such appointments throws exception", async () => {
 });
 
 test("No free appointments throws exception", async () => {
-  await setDonor();
+  await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, 10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, true, 8);
 
@@ -88,7 +88,7 @@ test("No free appointments throws exception", async () => {
 });
 
 test("No free appointments throws exception", async () => {
-  await setDonor();
+  await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, 10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, true, 8);
 
@@ -103,7 +103,7 @@ test("No free appointments throws exception", async () => {
 });
 
 test("Donor has recent donation throws exception", async () => {
-  await setDonor();
+  await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, false, 1);
   await saveAppointment(OTHER_DONATION_OF_USER, true, 3);
 
@@ -118,7 +118,7 @@ test("Donor has recent donation throws exception", async () => {
 });
 
 test("Valid request books appointment", async () => {
-  await setDonor();
+  await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
 
@@ -132,7 +132,7 @@ test("Valid request books appointment", async () => {
   expect(appointment[0].donorId).toEqual(DONOR_ID);
 });
 
-async function setDonor() {
+async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
     phone: "test_phone",
@@ -140,7 +140,7 @@ async function setDonor() {
     bloodType: BloodType.A_MINUS,
   };
 
-  await updateDonor(donor);
+  await setDonor(donor);
 }
 
 async function saveAppointment(

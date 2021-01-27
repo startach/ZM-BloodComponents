@@ -12,7 +12,7 @@ export async function getDonor(donorId: string) {
   return donor.data() as DbDonor;
 }
 
-export async function updateDonor(donor: DbDonor) {
+export async function setDonor(donor: DbDonor) {
   const collection = admin.firestore().collection(Collections.DONORS);
   await collection.doc(donor.id).set(donor);
 }
