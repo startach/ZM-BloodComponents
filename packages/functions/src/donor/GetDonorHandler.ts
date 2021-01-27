@@ -20,10 +20,6 @@ export default async function (
 
   const res = await getDonor(request.donorId);
 
-  if (!res) {
-    throw new Error("Donor not found");
-  }
-
   return res;
 }
 

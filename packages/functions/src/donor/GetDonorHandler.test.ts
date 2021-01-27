@@ -56,15 +56,14 @@ test("Invalid request throws exception", async () => {
   await expectAsyncThrows(action, "Invalid getDonor request");
 });
 
-test("No such donor throws exception", async () => {
-  const action = () =>
-    wrapped(getDonorRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
+test("No such donor returns empty response", async () => {
+  const res: DbDonor = await wrapped(getDonorRequest(), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
 
-  await expectAsyncThrows(action, "Donor not found");
+  expect(res).toBeUndefined();
 });
 
 test("Donor request returns donor", async () => {
