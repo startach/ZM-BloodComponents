@@ -1,6 +1,7 @@
 {
   "packages": [
     "packages/common",
+    "packages/donor",
     "packages/functions"
   ],
   "version": "0.0.0",
