@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.build.json",
+
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@zm-blood-components/common": ["common/src"],
+      "@zm-blood-components/functions": ["functions/src"]
+    },
+    "types": [
+      "jest",
+      "node"
+    ]
+  }
+}

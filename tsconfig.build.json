@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": true,
+    "strict": true,
+    "declaration": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "types": ["node"]
+  }
+}
