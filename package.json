@@ -17,6 +17,8 @@
       "**/react-native-scripts/**",
       "**/expo",
       "**/expo/**",
+      "**/expo-status-bar",
+      "**/expo-status-bar/**",
       "**/jest-expo",
       "**/jest-expo/**"
     ]
