@@ -1,14 +1,14 @@
 {
   "name": "@zm-blood-components/donor",
   "version": "1.0.0",
-  "main": "../../node_modules/expo/AppEntry.js",
+  "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "./node_modules/.bin/expo start",
     "android": "./node_modules/.bin/expo start --android",
     "ios": "./node_modules/.bin/expo start --ios",
-    "web": "./node_modules/.bin/expo start --web",
+    "web": "expo start --web",
     "eject": "./node_modules/.bin/expo eject",
-    "prettier": "yarn prettier --write ."
+    "style": "yarn prettier --write ."
   },
   "dependencies": {
     "expo": "~40.0.0",
