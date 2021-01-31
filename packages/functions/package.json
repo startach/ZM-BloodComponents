@@ -23,12 +23,12 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "@types/jest": "^26.0.20",
     "@zm-blood-components/common": "^1.0.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "copy-webpack-plugin": "^7.0.0",
     "firebase-functions-test": "^0.2.0",
     "generate-package-json-webpack-plugin": "^2.1.2",
