@@ -9,18 +9,6 @@
       "packages/common",
       "packages/donor",
       "packages/functions"
-    ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-native-scripts",
-      "**/react-native-scripts/**",
-      "**/expo",
-      "**/expo/**",
-      "**/expo-status-bar",
-      "**/expo-status-bar/**",
-      "**/jest-expo",
-      "**/jest-expo/**"
     ]
   },
   "scripts": {
