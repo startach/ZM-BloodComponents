@@ -1,13 +1,20 @@
 {
   "name": "@zm-blood-components/functions",
   "version": "1.0.0",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "clean": "rm -rf ./lib && rm -rf ./dist",
     "lint": "yarn run prettier --write . && tslint --project tsconfig.json ",
-    "build": "yarn run lint && yarn run test && webpack",
+    "compile": "tsc -p tsconfig.build.json",
+    "build": "yarn run clean && yarn run lint && yarn run test &&  yarn run compile",
+    "bundle": "yarn run build && webpack",
+    "deploy-functions": "firebase deploy --only functions",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
-    "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "test": "jest --silent"
   },
@@ -16,6 +23,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@types/jest": "^26.0.20",
     "@zm-blood-components/common": "^1.0.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.6.1"

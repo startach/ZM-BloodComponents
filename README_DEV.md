@@ -1,3 +1,14 @@
+Add a new package:
+1) create a new dir under ./packages/
+2) add your package to lerna.json "packages"
+3) add your package as new workspace in root package.json "workspaces" 
+4) add your package as a code-resource in root tsconfig.json "paths"
+
+
+
+
+
+
 
 Clean all lock files and node_modules:
 ```
