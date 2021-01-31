@@ -1,3 +1,2 @@
-export * from "./Types";
-
-export * as FunctionsApi from "./FunctionsApi";
+export * from "./types";
+export * as FunctionsApi from "./functions-api";
