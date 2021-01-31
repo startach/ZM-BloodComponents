@@ -6,7 +6,8 @@
     "baseUrl": "./packages",
     "paths": {
       "@zm-blood-components/common": ["common/src"],
-      "@zm-blood-components/functions": ["functions/src"]
+      "@zm-blood-components/functions": ["functions/src"],
+      "@zm-blood-components/donor": ["donor/src"]
     },
     "types": [
       "jest",

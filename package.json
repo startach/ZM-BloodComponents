@@ -4,10 +4,23 @@
   "description": "",
   "private": true,
   "main": "index.js",
-  "workspaces": [
-    "packages/common",
-    "packages/functions"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/common",
+      "packages/donor",
+      "packages/functions"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-scripts",
+      "**/react-native-scripts/**",
+      "**/expo",
+      "**/expo/**",
+      "**/jest-expo",
+      "**/jest-expo/**"
+    ]
+  },
   "scripts": {
     "cleanup": "scripts/cleanup.sh",
     "bootstrap": "lerna bootstrap --hoist",

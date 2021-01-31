@@ -1,4 +1,4 @@
-../donor2/node_modules/p-limit/readme.md
+/node_modules/p-limit/readme.md
 .expo/
 npm-debug.*
 *.jks
