@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Input from "../components/Input";
+import Input from "../../components/Input";
 import { View } from "react-native";
-import Text from "../components/Text";
-import Button from "../components/Button";
+import Text from "../../components/Text";
+import Button from "../../components/Button";
 
 interface SignInScreenProps {
+  onRegister: () => void;
+  onResetPassword: () => void;
   onSignInWithEmail: (
     email: string,
     password: string,
@@ -33,11 +35,12 @@ export default function (props: SignInScreenProps) {
         value={password}
         placeholder={"סיסמה"}
         textContentType="password"
-        passwordRules="לפחות 6 תווים"
         onSubmitEditing={signIn}
       />
       <Text>{passwordError}</Text>
       <Button title="התחבר" onPress={signIn} />
+      <Button title="איפוס סיסמה" onPress={props.onResetPassword} />
+      <Button title="הרשמה" onPress={props.onRegister} />
     </View>
   );
 }

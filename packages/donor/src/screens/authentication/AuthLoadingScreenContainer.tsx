@@ -3,9 +3,9 @@ import AuthLoadingScreen from "./AuthLoadingScreen";
 import Constants from "expo-constants";
 import { Platform } from "react-native";
 import firebase from "firebase";
-import { initFirebase } from "../firebase/FirebaseInitializer";
-import { INavigation } from "../interfaces/INavigation";
-import { MainNavigationKeys } from "../navigator/app/MainNavigationKeys";
+import { initFirebase } from "../../firebase/FirebaseInitializer";
+import { INavigation } from "../../interfaces/INavigation";
+import { MainNavigationKeys } from "../../navigator/app/MainNavigationKeys";
 
 export default function (props: INavigation<MainNavigationKeys.AuthLoading>) {
   useEffect(() => {

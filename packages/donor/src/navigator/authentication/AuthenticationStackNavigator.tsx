@@ -1,14 +1,14 @@
 import React from "react";
-import { AuthenticationScreenKeys } from "./AuthenticationScreenKeys";
-import { IStack } from "../AppNavigator";
-import SignInScreenContainer from "../../screens/SignInScreenContainer";
-import { View } from "react-native";
+import {AuthenticationScreenKeys} from "./AuthenticationScreenKeys";
+import {IStack} from "../AppNavigator";
+import SignInScreenContainer from "../../screens/authentication/SignInScreenContainer";
+import RegisterScreenContainer from "../../screens/authentication/RegisterScreenContainer";
+import ResetPasswordScreenContainer from "../../screens/authentication/ResetPasswordScreenContainer";
 
 export type AuthenticationStackParamList = {
   [AuthenticationScreenKeys.SignIn]: undefined;
   [AuthenticationScreenKeys.Register]: undefined;
   [AuthenticationScreenKeys.ResetPassword]: undefined;
-  [AuthenticationScreenKeys.SignInWithEmail]: undefined;
 };
 
 export function getAuthenticationScreens(Stack: IStack) {
@@ -25,20 +25,14 @@ export function getAuthenticationScreens(Stack: IStack) {
     <Stack.Screen
       key={AuthenticationScreenKeys.Register}
       name={AuthenticationScreenKeys.Register}
-      component={View}
+      component={RegisterScreenContainer}
       options={{ title: "הרשמה" }}
     />,
     <Stack.Screen
       key={AuthenticationScreenKeys.ResetPassword}
       name={AuthenticationScreenKeys.ResetPassword}
-      component={View}
+      component={ResetPasswordScreenContainer}
       options={{ title: "איפוס סיסמה" }}
-    />,
-    <Stack.Screen
-      key={AuthenticationScreenKeys.SignInWithEmail}
-      name={AuthenticationScreenKeys.SignInWithEmail}
-      component={View}
-      options={{ title: "הרשמה באמצעות דוא״ל" }}
     />,
   ];
 }
