@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { Hospital } from "@zm-blood-components/common";
+import AppNavigator from "./navigator/AppNavigator";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function DonorApp() {
   return (
-    <View>
-      <Text>My favorite hospital is {Hospital.ASAF_HAROFE}</Text>
-    </View>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
