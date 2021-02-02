@@ -76,6 +76,12 @@ export type DbAppointment = {
   // post donation
 };
 
+export type AvailableAppointment = {
+  id: string;
+  donationStartTime: Date;
+  hospital: Hospital;
+};
+
 export enum Collections {
   ADMIN = "admin",
   DONORS = "donors",
