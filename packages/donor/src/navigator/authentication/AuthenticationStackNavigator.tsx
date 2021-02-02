@@ -1,6 +1,6 @@
 import React from "react";
-import {AuthenticationScreenKeys} from "./AuthenticationScreenKeys";
-import {IStack} from "../AppNavigator";
+import { AuthenticationScreenKeys } from "./AuthenticationScreenKeys";
+import { IStack } from "../AppNavigator";
 import SignInScreenContainer from "../../screens/authentication/SignInScreenContainer";
 import RegisterScreenContainer from "../../screens/authentication/RegisterScreenContainer";
 import ResetPasswordScreenContainer from "../../screens/authentication/ResetPasswordScreenContainer";

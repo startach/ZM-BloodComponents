@@ -19,7 +19,7 @@ export default function (
       return;
     }
 
-    if (passwordCopy !== passwordCopy) {
+    if (password !== passwordCopy) {
       passwordError("הסיסמאות אינן תואמות");
       return;
     }
