@@ -16,7 +16,8 @@
     "clean": "rm -rf ./lib",
     "compile": "tsc -p tsconfig.build.json",
     "build": "yarn run clean && yarn run compile",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "style": "yarn prettier --write ."
   },
   "bugs": {
     "url": "https://github.com/startach/ZM-BloodComponents/issues"
