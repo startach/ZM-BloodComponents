@@ -2,7 +2,7 @@ import React from "react";
 import { MainNavigationKeys } from "./MainNavigationKeys";
 import { AuthenticationScreenKeys } from "../authentication/AuthenticationScreenKeys";
 import { IStack } from "../AppNavigator";
-import HomeScreen from "../../screens/HomeScreen";
+import HomeScreenContainer from "../../screens/HomeScreenContainer";
 
 export type StackParamList = {
   [MainNavigationKeys.UpdateApp]: undefined;
@@ -15,7 +15,6 @@ export type StackParamList = {
   [AuthenticationScreenKeys.SignIn]: undefined;
   [AuthenticationScreenKeys.Register]: undefined;
   [AuthenticationScreenKeys.ResetPassword]: undefined;
-  [AuthenticationScreenKeys.SignInWithEmail]: undefined;
 };
 
 export function getAppScreens(AppStack: IStack) {
@@ -23,7 +22,7 @@ export function getAppScreens(AppStack: IStack) {
     <AppStack.Screen
       key={MainNavigationKeys.Home}
       name={MainNavigationKeys.Home}
-      component={HomeScreen}
+      component={HomeScreenContainer}
       options={{
         title: "זכרון מנחם",
         headerTitleAlign: "center" as "center",

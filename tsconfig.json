@@ -13,5 +13,6 @@
       "jest",
       "node"
     ]
-  }
+  },
+  "exclude": ["**/node_modules/**"]
 }

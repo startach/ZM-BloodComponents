@@ -9,7 +9,7 @@ import { getAppScreens, StackParamList } from "./app/AppStackNavigator";
 import { MainNavigationKeys } from "./app/MainNavigationKeys";
 import { StackNavigationState, TypedNavigator } from "@react-navigation/native";
 import UpdateAppScreen from "../screens/UpdateAppScreen";
-import AuthLoadingScreenContainer from "../screens/AuthLoadingScreenContainer";
+import AuthLoadingScreenContainer from "../screens/authentication/AuthLoadingScreenContainer";
 
 export type IStack = TypedNavigator<
   StackParamList,
