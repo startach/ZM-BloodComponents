@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { AvailableAppointment } from "@zm-blood-components/common";
 import Text from "../components/Text";
 
@@ -9,10 +8,10 @@ interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
 }
 
-export default function (props: BookDonationScreenProps) {
+export default function BookDonationScreen(props: BookDonationScreenProps) {
   return (
-    <View>
+    <div>
       <Text>{JSON.stringify(props)}</Text>
-    </View>
+    </div>
   );
 }

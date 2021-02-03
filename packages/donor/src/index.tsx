@@ -1,29 +1,16 @@
-import React, { useEffect } from "react";
-import AppNavigator from "./navigator/AppNavigator";
-import { NavigationContainer } from "@react-navigation/native";
-import { View, StyleSheet, I18nManager } from "react-native";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-export function initRtl() {
-  I18nManager.allowRTL(true);
-  I18nManager.forceRTL(true);
-}
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
-export default function DonorApp() {
-  useEffect(() => initRtl(), []);
-
-  return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flex: 1,
-    writingDirection: "rtl",
-  },
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

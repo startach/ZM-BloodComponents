@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
-import { View } from "react-native";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 
@@ -15,7 +14,7 @@ interface RegisterScreenProps {
   goToSignIn: () => void;
 }
 
-export default function (props: RegisterScreenProps) {
+export default function RegisterScreen(props: RegisterScreenProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCopy, setPasswordCopy] = useState("");
@@ -33,7 +32,7 @@ export default function (props: RegisterScreenProps) {
   };
 
   return (
-    <View>
+    <div>
       <Text>הירשם ובוא לתרום</Text>
       <Input onChangeText={setEmail} value={email} placeholder={"דוא״ל"} />
       <Text>{emailError}</Text>
@@ -48,9 +47,9 @@ export default function (props: RegisterScreenProps) {
         placeholder={"אימות סיסמה"}
       />
       <Text>{passwordError}</Text>
-      <Button title="הירשם" onPress={register} />
+      <Button title="הירשם" onClick={register} />
       <Text>כבר רשום?</Text>
-      <Button title="התחבר" onPress={props.goToSignIn} />
-    </View>
+      <Button title="התחבר" onClick={props.goToSignIn} />
+    </div>
   );
 }

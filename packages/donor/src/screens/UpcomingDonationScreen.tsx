@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { Hospital } from "@zm-blood-components/common";
 import Text from "../components/Text";
 
@@ -9,10 +8,12 @@ interface UpcomingDonationScreenProps {
   onCancel: () => void;
 }
 
-export default function (props: UpcomingDonationScreenProps) {
+export default function UpcomingDonationScreen(
+  props: UpcomingDonationScreenProps
+) {
   return (
-    <View>
+    <div>
       <Text>{JSON.stringify(props)}</Text>
-    </View>
+    </div>
   );
 }

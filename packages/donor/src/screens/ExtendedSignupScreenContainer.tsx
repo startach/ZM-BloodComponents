@@ -1,12 +1,11 @@
 import React from "react";
 import { BloodType } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
-import { INavigation } from "../interfaces/INavigation";
-import { MainNavigationKeys } from "../navigator/app/MainNavigationKeys";
+import { useHistory } from "react-router-dom";
 
-export default function (
-  props: INavigation<MainNavigationKeys.ExtendedSignup>
-) {
+export default function ExtendedSignupScreenContainer() {
+  const history = useHistory();
+
   const onSave = (
     firstName: string,
     lastName: string,
@@ -15,7 +14,7 @@ export default function (
     bloodType: BloodType
   ) => {
     console.log("Save details for", firstName, lastName);
-    props.navigation.goBack();
+    history.goBack();
   };
 
   return <ExtendedSignupScreen onSave={onSave} />;

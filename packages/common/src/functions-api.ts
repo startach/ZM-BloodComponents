@@ -1,9 +1,8 @@
-import {AvailableAppointment, BloodType, DbAdmin, Hospital} from "./types";
+import { AvailableAppointment, BloodType, DbAdmin, Hospital } from "./types";
 
 // Donor functions:
 
-export interface GetAvailableAppointmentsRequest {
-}
+export interface GetAvailableAppointmentsRequest {}
 
 export interface GetAvailableAppointmentsResponse {
   availableAppointments: AvailableAppointment[];

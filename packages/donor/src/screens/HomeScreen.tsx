@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import Button from "../components/Button";
 
 interface HomeScreenProps {
@@ -9,16 +8,17 @@ interface HomeScreenProps {
   goToUpcomingDonationScreen: () => void;
 }
 
-export default function (props: HomeScreenProps) {
+export default function HomeScreen(props: HomeScreenProps) {
   return (
-    <View>
-      <Button title="מסך הזנת פרטים" onPress={props.goToExtendedSignupScreen} />
+    <div>
+      בחר מסך:
+      <Button title="מסך הזנת פרטים" onClick={props.goToExtendedSignupScreen} />
       <Button
         title="מסך תרומה קרובה"
-        onPress={props.goToUpcomingDonationScreen}
+        onClick={props.goToUpcomingDonationScreen}
       />
-      <Button title="מסך קביעת תרומה" onPress={props.goToBookDonationScreen} />
-      <Button title="התנתק" onPress={props.onSignOut} />
-    </View>
+      <Button title="מסך קביעת תרומה" onClick={props.goToBookDonationScreen} />
+      <Button title="התנתק" onClick={props.onSignOut} />
+    </div>
   );
 }

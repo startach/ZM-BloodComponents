@@ -1,11 +1,10 @@
 import React from "react";
-import { View } from "react-native";
 import Text from "../../components/Text";
 
-export default function () {
+export default function AuthLoadingScreen() {
   return (
-    <View>
+    <div>
       <Text>Loading screen</Text>
-    </View>
+    </div>
   );
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import RegisterScreen from "./RegisterScreen";
-import firebase from "firebase";
-import { INavigation } from "../../interfaces/INavigation";
-import { AuthenticationScreenKeys } from "../../navigator/authentication/AuthenticationScreenKeys";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useHistory } from "react-router-dom";
 
-export default function (
-  props: INavigation<AuthenticationScreenKeys.Register>
-) {
+export default function RegisterScreenContainer() {
+  const history = useHistory();
+
   const onRegister = (
     email: string,
     password: string,
@@ -28,7 +28,7 @@ export default function (
   };
 
   const goToSignIn = () => {
-    props.navigation.goBack();
+    history.goBack();
   };
 
   return <RegisterScreen onRegister={onRegister} goToSignIn={goToSignIn} />;

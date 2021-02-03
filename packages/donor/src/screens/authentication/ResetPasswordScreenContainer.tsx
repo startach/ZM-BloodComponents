@@ -1,13 +1,13 @@
 import React from "react";
-import firebase from "firebase";
-import { INavigation } from "../../interfaces/INavigation";
-import { AuthenticationScreenKeys } from "../../navigator/authentication/AuthenticationScreenKeys";
+import firebase from "firebase/app";
+import "firebase/auth";
 import { validateEmail } from "./RegisterScreenContainer";
 import ResetPasswordScreen from "./ResetPasswordScreen";
+import { useHistory } from "react-router-dom";
 
-export default function (
-  props: INavigation<AuthenticationScreenKeys.ResetPassword>
-) {
+export default function ResetPasswordScreenContainer() {
+  const history = useHistory();
+
   const onResetPassword = (email: string, onError: (e: string) => void) => {
     if (!validateEmail(email)) {
       onError("כתובת הדואר אינה תקינה");
@@ -16,7 +16,7 @@ export default function (
     firebase
       .auth()
       .sendPasswordResetEmail(email)
-      .then(() => props.navigation.goBack())
+      .then(() => history.goBack())
       .catch((error: firebase.auth.Error) => {
         switch (error.code) {
           case "auth/invalid-email":

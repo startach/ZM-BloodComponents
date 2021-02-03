@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
-import { View } from "react-native";
 import Text from "../../components/Text";
 import Button from "../../components/Button";
 
@@ -15,7 +14,7 @@ interface SignInScreenProps {
   ) => void;
 }
 
-export default function (props: SignInScreenProps) {
+export default function SignInScreen(props: SignInScreenProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -26,21 +25,19 @@ export default function (props: SignInScreenProps) {
   };
 
   return (
-    <View>
+    <div>
       <Text>התחבר באמצעות דואר אלקטרוני</Text>
-      <Input onChangeText={setEmail} value={email} placeholder={"דוא״ל"} />
+      <Input onChangeText={setEmail} placeholder={"דוא״ל"} />
       <Text>{emailError}</Text>
       <Input
         onChangeText={setPassword}
         value={password}
         placeholder={"סיסמה"}
-        textContentType="password"
-        onSubmitEditing={signIn}
       />
       <Text>{passwordError}</Text>
-      <Button title="התחבר" onPress={signIn} />
-      <Button title="איפוס סיסמה" onPress={props.onResetPassword} />
-      <Button title="הרשמה" onPress={props.onRegister} />
-    </View>
+      <Button title="התחבר" onClick={signIn} />
+      <Button title="איפוס סיסמה" onClick={props.onResetPassword} />
+      <Button title="הרשמה" onClick={props.onRegister} />
+    </div>
   );
 }

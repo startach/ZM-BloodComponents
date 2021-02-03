@@ -1,10 +1,13 @@
 import React from "react";
+import firebase from "firebase/app";
+import "firebase/auth";
 import HomeScreen from "./HomeScreen";
-import firebase from "firebase";
-import { INavigation } from "../interfaces/INavigation";
-import { MainNavigationKeys } from "../navigator/app/MainNavigationKeys";
+import { MainNavigationKeys } from "../navigation/app/MainNavigationKeys";
+import { useHistory } from "react-router-dom";
 
-export default function (props: INavigation<MainNavigationKeys.Home>) {
+export default function HomeScreenContainer() {
+  const history = useHistory();
+
   const signOut = () => {
     return firebase.auth().signOut();
   };
@@ -12,14 +15,14 @@ export default function (props: INavigation<MainNavigationKeys.Home>) {
   return (
     <HomeScreen
       onSignOut={signOut}
-      goToBookDonationScreen={() =>
-        props.navigation.navigate(MainNavigationKeys.BookDonation)
-      }
+      goToBookDonationScreen={() => {
+        history.push(MainNavigationKeys.BookDonation);
+      }}
       goToExtendedSignupScreen={() =>
-        props.navigation.navigate(MainNavigationKeys.ExtendedSignup)
+        history.push(MainNavigationKeys.ExtendedSignup)
       }
       goToUpcomingDonationScreen={() =>
-        props.navigation.navigate(MainNavigationKeys.UpcomingDonation)
+        history.push(MainNavigationKeys.UpcomingDonation)
       }
     />
   );

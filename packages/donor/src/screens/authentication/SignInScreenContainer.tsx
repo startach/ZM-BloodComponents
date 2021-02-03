@@ -1,15 +1,17 @@
 import React from "react";
 import SignInScreen from "./SignInScreen";
-import { INavigation } from "../../interfaces/INavigation";
-import { AuthenticationScreenKeys } from "../../navigator/authentication/AuthenticationScreenKeys";
-import firebase from "firebase";
+import { AuthenticationScreenKeys } from "../../navigation/authentication/AuthenticationScreenKeys";
+import firebase from "firebase/app";
+import "firebase/auth";
+import { useHistory } from "react-router-dom";
 
-export default function (props: INavigation<AuthenticationScreenKeys.SignIn>) {
+export default function SignInScreenContainer() {
+  const history = useHistory();
   const onRegister = () => {
-    props.navigation.navigate(AuthenticationScreenKeys.Register);
+    history.push(AuthenticationScreenKeys.Register);
   };
   const onResetPassword = () => {
-    props.navigation.navigate(AuthenticationScreenKeys.ResetPassword);
+    history.push(AuthenticationScreenKeys.ResetPassword);
   };
 
   return (

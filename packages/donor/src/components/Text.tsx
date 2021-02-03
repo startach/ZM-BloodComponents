@@ -1,16 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TextProps } from "react-native";
 
-export default function (props: TextProps & { children: string }) {
-  return (
-    <Text style={styles.text} {...props}>
-      {props.children}
-    </Text>
-  );
+export default function Text(props: { children: string }) {
+  return <div>{props.children}</div>;
 }
-
-const styles = StyleSheet.create({
-  text: {
-    textAlign: "left",
-  },
-});

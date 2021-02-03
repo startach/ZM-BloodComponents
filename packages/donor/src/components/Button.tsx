@@ -1,6 +1,16 @@
 import React from "react";
-import { Button, ButtonProps } from "react-native";
 
-export default function (props: ButtonProps) {
-  return <Button {...props} />;
+export default function Button(
+  props: React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
+) {
+  return (
+    <div>
+      <button {...props} style={{ height: 100, width: 100 }}>
+        {props.title}
+      </button>
+    </div>
+  );
 }

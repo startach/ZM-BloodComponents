@@ -1,6 +1,5 @@
 import React from "react";
 import { BloodType } from "@zm-blood-components/common";
-import { View } from "react-native";
 import Text from "../components/Text";
 
 interface ExtendedSignupScreenProps {
@@ -13,10 +12,10 @@ interface ExtendedSignupScreenProps {
   ) => void;
 }
 
-export default function (props: ExtendedSignupScreenProps) {
+export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   return (
-    <View>
+    <div>
       <Text>{JSON.stringify(props)}</Text>
-    </View>
+    </div>
   );
 }

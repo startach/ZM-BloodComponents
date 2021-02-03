@@ -2,7 +2,7 @@ import React from "react";
 import BookDonationScreen from "./BookDonationScreen";
 import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
 
-export default function () {
+export default function BookDonationScreenContainer() {
   const availableAppointments: AvailableAppointment[] = [
     {
       id: "availableAppointment1",

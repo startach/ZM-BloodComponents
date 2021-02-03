@@ -1,12 +1,21 @@
 import React from "react";
-import { TextInputProps, TextInput, StyleSheet } from "react-native";
 
-export default function Input(props: TextInputProps) {
-  return <TextInput style={styles.input} {...props} />;
+interface InputProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
+  onChangeText: (newValue: string) => void;
 }
 
-const styles = StyleSheet.create({
-  input: {
-    textAlign: "right",
-  },
-});
+export default function Input(props: InputProps) {
+  const { onChangeText, ...otherProps } = props;
+  return (
+    <div>
+      <input
+        onChange={(e) => onChangeText(e.currentTarget.value)}
+        {...otherProps}
+      />
+    </div>
+  );
+}
