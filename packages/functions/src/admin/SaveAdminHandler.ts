@@ -1,12 +1,11 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
-import { DbAdmin, AdminRole, FunctionsApi } from "@zm-blood-components/common";
+import { AdminRole, DbAdmin, FunctionsApi } from "@zm-blood-components/common";
 import { getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.SaveAdminRequest,
-  context: CallableContext
+  callerId: string
 ) {
-  await validateUserCanSetRoleToAnotherUser(context.auth?.uid);
+  await validateUserCanSetRoleToAnotherUser(callerId);
 
   await setAdmin(request.admin);
 }

@@ -1,4 +1,3 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import {
   deleteAppointmentsByIds,
@@ -8,7 +7,7 @@ import { FunctionsApi } from "@zm-blood-components/common";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
-  context: CallableContext
+  callerId: string
 ) {
   const appointmentIds = request.appointmentIds;
 
@@ -17,7 +16,7 @@ export default async function (
   const hospitals = appointments.map((doc) => doc.hospital);
 
   // validate user is allowed delete appointments of this hospital
-  await validateAppointmentEditPermissions(context.auth?.uid, hospitals);
+  await validateAppointmentEditPermissions(callerId, hospitals);
 
   await deleteAppointmentsByIds(appointmentIds);
 

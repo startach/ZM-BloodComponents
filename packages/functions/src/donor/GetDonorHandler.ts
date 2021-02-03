@@ -1,17 +1,11 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
 import { AdminRole, FunctionsApi } from "@zm-blood-components/common";
 import { getAdmin } from "../dal/AdminDataAccessLayer";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.GetDonorRequest,
-  context: CallableContext
+  callerId: string
 ) {
-  const callerId = context.auth?.uid;
-  if (!callerId) {
-    throw new Error("User must be authenticated to get donor");
-  }
-
   if (!request.donorId) {
     throw new Error("Invalid getDonor request");
   }

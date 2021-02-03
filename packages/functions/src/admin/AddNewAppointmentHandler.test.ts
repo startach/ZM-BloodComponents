@@ -31,10 +31,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(getRequest());
-  await expectAsyncThrows(
-    action,
-    "User must be authenticated to edit appointments"
-  );
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("User that is not admin throws exception", async () => {

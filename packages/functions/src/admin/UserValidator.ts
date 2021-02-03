@@ -3,13 +3,9 @@ import * as _ from "lodash";
 import { getAdmin } from "../dal/AdminDataAccessLayer";
 
 export async function validateAppointmentEditPermissions(
-  userId: string | undefined,
+  userId: string,
   hospitals: Hospital[]
 ) {
-  if (!userId) {
-    throw new Error("User must be authenticated to edit appointments");
-  }
-
   const admin = await getAdmin(userId);
   if (!admin) {
     console.error("Could not find calling user", userId);

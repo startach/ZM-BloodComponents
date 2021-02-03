@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "clean": "rm -rf ./lib && rm -rf ./dist",
-    "lint": "yarn run prettier --write . && tslint --project tsconfig.json ",
+    "lint": "yarn run style && tslint --project tsconfig.json ",
     "compile": "tsc -p tsconfig.build.json",
     "build": "yarn run clean && yarn run lint && yarn run test &&  yarn run compile",
     "bundle": "yarn run build && webpack",
@@ -16,7 +16,8 @@
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
     "logs": "firebase functions:log",
-    "test": "jest --silent"
+    "test": "jest --silent",
+    "style": "yarn run prettier --write . "
   },
   "engines": {
     "node": ">=12"

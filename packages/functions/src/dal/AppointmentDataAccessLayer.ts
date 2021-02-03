@@ -57,24 +57,28 @@ export async function getAppointmentsByDonorIdInTime(
   }));
 }
 
+export async function getAvailableAppointments() {
+  const now = new Date();
+
+  const appointments = (await admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("donorId", "==", "")
+    .where("donationStartTime", ">", now)
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
   const batch = admin.firestore().batch();
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
   appointmentIds.map((id) => batch.delete(collection.doc(id)));
   return await batch.commit();
 }
-
-// export function saveNewAppointment(appointment: Appointment) {
-//   if (appointment.id) {
-//     throw new Error("Cant save new appointment id");
-//   }
-//
-//   return admin
-//     .firestore()
-//     .collection(Collections.APPOINTMENTS)
-//     .doc()
-//     .set(appointment);
-// }
 
 export function updateAppointment(appointment: DbAppointment) {
   if (!appointment.id) {

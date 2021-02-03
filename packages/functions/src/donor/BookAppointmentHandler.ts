@@ -1,8 +1,7 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
-import { getDonor } from "../dal/DonorDataAccessLayer";
+import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import {
-  getAppointmentsByIds,
   getAppointmentsByDonorIdInTime,
+  getAppointmentsByIds,
   updateAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
@@ -12,17 +11,11 @@ const WEEKS_BUFFER = 4;
 
 export default async function (
   request: FunctionsApi.BookAppointmentRequest,
-  context: CallableContext
+  callerId: string
 ) {
-  const donorId = context.auth?.uid;
-  if (!donorId) {
-    throw new Error("User must be authenticated to book donation");
-  }
+  const donorId = callerId;
 
-  const donor = await getDonor(donorId);
-  if (!donor) {
-    throw Error("Donor not found");
-  }
+  await getDonorOrThrow(donorId);
 
   const appointmentsToBook = await getAppointmentsByIds(request.appointmentIds);
   const availableAppointments = appointmentsToBook.filter(
