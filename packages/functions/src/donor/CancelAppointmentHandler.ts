@@ -1,4 +1,3 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
 import {
   getAppointmentsByIds,
   updateAppointment,
@@ -8,12 +7,9 @@ import { FunctionsApi } from "@zm-blood-components/common";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
-  context: CallableContext
+  callerId: string
 ) {
-  const donorId = context.auth?.uid;
-  if (!donorId) {
-    throw new Error("User must be authenticated to cancel appointment");
-  }
+  const donorId = callerId;
 
   if (!request.appointmentId) {
     throw new Error("No appointment to cancel");

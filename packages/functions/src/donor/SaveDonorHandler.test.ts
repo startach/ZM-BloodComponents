@@ -18,7 +18,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(saveDonorRequest());
-  await expectAsyncThrows(action, "User must be authenticated to save donor");
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("Caller is not the donor throws exception", async () => {

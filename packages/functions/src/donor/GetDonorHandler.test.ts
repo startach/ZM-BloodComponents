@@ -28,7 +28,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(getDonorRequest());
-  await expectAsyncThrows(action, "User must be authenticated to get donor");
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("User that is not the donor or admin throws exception", async () => {

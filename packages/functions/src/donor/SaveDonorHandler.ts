@@ -1,16 +1,10 @@
-import { CallableContext } from "firebase-functions/lib/providers/https";
 import { DbDonor, FunctionsApi } from "@zm-blood-components/common";
 import { setDonor } from "../dal/DonorDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.SaveDonorRequest,
-  context: CallableContext
+  callerId: string
 ) {
-  const callerId = context.auth?.uid;
-  if (!callerId) {
-    throw new Error("User must be authenticated to save donor");
-  }
-
   if (callerId !== request.id) {
     throw new Error("Unauthorized saveDonor request");
   }

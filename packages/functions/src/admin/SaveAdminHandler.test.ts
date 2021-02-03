@@ -20,7 +20,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(getSaveAdminRequest());
-  await expectAsyncThrows(action, "User must be authenticated to edit admins");
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("User that is not admin throws exception", async () => {

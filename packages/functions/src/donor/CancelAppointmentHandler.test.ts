@@ -27,10 +27,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped({ appointmentId: APPOINTMENT_TO_CANCEL });
-  await expectAsyncThrows(
-    action,
-    "User must be authenticated to cancel appointment"
-  );
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("Donor not found throws exception", async () => {

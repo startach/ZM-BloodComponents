@@ -42,10 +42,7 @@ afterEach(async () => {
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(bookAppointmentRequest());
-  await expectAsyncThrows(
-    action,
-    "User must be authenticated to book donation"
-  );
+  await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("Donor not found throws exception", async () => {
