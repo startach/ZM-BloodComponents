@@ -64,9 +64,10 @@ test("No appointments returns empty response", async () => {
 
 test("Only available appointment is returned", async () => {
   await createDonor();
-  const now = new Date();
-  const yesterday = new Date(now.getDate() - 1);
-  const tomorrow = new Date(now.getDate() + 1);
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
 
   await saveAppointment(PAST_APPOINTMENT, yesterday, false);
   await saveAppointment(FUTURE_NOT_AVAILABLE_APPOINTMENT, tomorrow, true);
@@ -115,6 +116,7 @@ async function saveAppointment(
     creatorUserId: "CreatingUserId",
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: Hospital.ASAF_HAROFE,
+    donorId: "",
   };
 
   if (booked) {
