@@ -10,13 +10,14 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  updateAppointment,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.getAvailableAppointments);
 
+const CREATING_USER_ID = "GetAvailableAppointmentsHandlerCreatingUserId";
 const DONOR_ID = "GetAvailableAppointmentsHandlerDonorId";
 const PAST_APPOINTMENT = "GetAvailableAppointmentsHandlerAppointment1";
 const FUTURE_NOT_AVAILABLE_APPOINTMENT =
@@ -59,7 +60,16 @@ test("No appointments returns empty response", async () => {
 
   const result = await callTarget();
 
-  expect(result.availableAppointments).toHaveLength(0);
+  // Take only appointments created by this test,
+  // since we may have other appointments in STG DB
+  const availableAppointment = result.availableAppointments.filter(
+    (x) =>
+      x.id === AVAILABLE_APPOINTMENT ||
+      x.id === PAST_APPOINTMENT ||
+      x.id === FUTURE_NOT_AVAILABLE_APPOINTMENT
+  );
+
+  expect(availableAppointment).toHaveLength(0);
 });
 
 test("Only available appointment is returned", async () => {
@@ -74,13 +84,17 @@ test("Only available appointment is returned", async () => {
   await saveAppointment(AVAILABLE_APPOINTMENT, tomorrow, false);
 
   const result = await callTarget();
-
-  expect(result.availableAppointments).toHaveLength(1);
-  expect(result.availableAppointments[0].id).toEqual(AVAILABLE_APPOINTMENT);
-  expect(result.availableAppointments[0].hospital).toEqual(
-    Hospital.ASAF_HAROFE
+  const availableAppointments = result.availableAppointments.filter(
+    (x) =>
+      x.id === AVAILABLE_APPOINTMENT ||
+      x.id === PAST_APPOINTMENT ||
+      x.id === FUTURE_NOT_AVAILABLE_APPOINTMENT
   );
-  expect(result.availableAppointments[0].donationStartTime).toEqual(tomorrow);
+
+  expect(availableAppointments).toHaveLength(1);
+  expect(availableAppointments[0].id).toEqual(AVAILABLE_APPOINTMENT);
+  expect(availableAppointments[0].hospital).toEqual(Hospital.ASAF_HAROFE);
+  expect(availableAppointments[0].donationStartTime).toEqual(tomorrow);
 });
 
 async function callTarget() {
@@ -113,7 +127,7 @@ async function saveAppointment(
   const appointment: DbAppointment = {
     id: id,
     creationTime: admin.firestore.Timestamp.fromDate(donationStartTime),
-    creatorUserId: "CreatingUserId",
+    creatorUserId: CREATING_USER_ID,
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: Hospital.ASAF_HAROFE,
     donorId: "",
@@ -124,6 +138,6 @@ async function saveAppointment(
     appointment.bookingTime = admin.firestore.Timestamp.now();
   }
 
-  await updateAppointment(appointment);
+  await setAppointment(appointment);
   return appointment;
 }

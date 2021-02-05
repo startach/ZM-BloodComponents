@@ -80,7 +80,7 @@ export async function deleteAppointmentsByIds(appointmentIds: string[]) {
   return await batch.commit();
 }
 
-export function updateAppointment(appointment: DbAppointment) {
+export function setAppointment(appointment: DbAppointment) {
   if (!appointment.id) {
     throw new Error("Cant save appointment without id");
   }

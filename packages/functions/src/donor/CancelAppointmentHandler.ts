@@ -1,6 +1,6 @@
 import {
   getAppointmentsByIds,
-  updateAppointment,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as _ from "lodash";
 import { FunctionsApi } from "@zm-blood-components/common";
@@ -33,5 +33,5 @@ export default async function (
     "confirmationTime",
   ]);
 
-  await updateAppointment(updatedAppointment);
+  await setAppointment(updatedAppointment);
 }
