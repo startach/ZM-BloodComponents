@@ -11,6 +11,9 @@ export default async function (
 
   const donor: DbDonor = {
     id: request.id,
+    firstName: request.firstName,
+    lastName: request.lastName,
+    birthDate: request.birthDate,
     email: request.email,
     phone: request.phone,
     bloodType: request.bloodType,

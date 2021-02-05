@@ -29,8 +29,12 @@ export interface GetDonorRequest {
   donorId: string;
 }
 
+export const SaveDonorFunctionName = "saveDonor";
 export interface SaveDonorRequest {
   id: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string; // YYYY-MM-DD
   phone: string;
   email: string;
   bloodType: BloodType;

@@ -10,8 +10,13 @@ import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
+import { UserDetails } from "../App";
 
-export default function AppRouter() {
+interface AppRouterProps {
+  setUserDetails: (userDetails: UserDetails) => void;
+}
+
+export default function AppRouter(props: AppRouterProps) {
   const [loggedInStatus, setLoggedInStatus] = useState({
     isLoading: true,
     isLoggedIn: false,
@@ -20,6 +25,7 @@ export default function AppRouter() {
   if (loggedInStatus.isLoading) {
     return (
       <AuthLoadingScreenContainer
+        setUserDetails={props.setUserDetails}
         setIsLoggedIn={(isLoggedIn: boolean) => {
           setLoggedInStatus({
             isLoggedIn,
@@ -51,10 +57,10 @@ export default function AppRouter() {
   return (
     <Router>
       <Switch>
-        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
+        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
           <ExtendedSignupScreenContainer />
         </Route>
-        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
+        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
           <UpcomingDonationScreenContainer />
         </Route>
         <Route path={"/" + MainNavigationKeys.BookDonation}>

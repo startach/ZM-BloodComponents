@@ -1,10 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {
-  DbAppointment,
-  BloodType,
-  DbDonor,
-  Hospital,
-} from "@zm-blood-components/common";
+import { DbAppointment, DbDonor, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -14,6 +9,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
+import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.bookAppointment);
 
@@ -132,9 +128,7 @@ test("Valid request books appointment", async () => {
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
-    phone: "test_phone",
-    email: "test_email",
-    bloodType: BloodType.A_MINUS,
+    ...sampleUser,
   };
 
   await setDonor(donor);

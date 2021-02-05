@@ -5,8 +5,10 @@ import {
   registerAuthChange,
 } from "../../firebase/FirebaseInitializer";
 import "firebase/auth";
+import { UserDetails } from "../../App";
 
 interface AuthLoadingScreenContainerProps {
+  setUserDetails: (userDetails: UserDetails) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
@@ -18,7 +20,7 @@ export default function AuthLoadingScreenContainer(
   }, []);
 
   useEffect(() => {
-    registerAuthChange(props.setIsLoggedIn);
+    registerAuthChange(props.setIsLoggedIn, props.setUserDetails);
   }, [props.setIsLoggedIn]);
 
   return <AuthLoadingScreen />;
