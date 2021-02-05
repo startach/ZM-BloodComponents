@@ -5,7 +5,7 @@ import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
-  updateAppointment,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
@@ -100,7 +100,7 @@ async function saveAppointment(donorId: string) {
     bookingTime: time,
   };
 
-  await updateAppointment(appointment);
+  await setAppointment(appointment);
 }
 
 function bookAppointmentRequest() {

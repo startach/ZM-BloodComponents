@@ -10,7 +10,7 @@ import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
-  updateAppointment,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
@@ -161,7 +161,7 @@ async function saveAppointment(
     appointment.bookingTime = time;
   }
 
-  await updateAppointment(appointment);
+  await setAppointment(appointment);
 }
 
 function bookAppointmentRequest() {
