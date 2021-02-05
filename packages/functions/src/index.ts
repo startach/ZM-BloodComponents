@@ -7,6 +7,7 @@ import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
+import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
 import * as admin from "firebase-admin";
 import { handler } from "./RequestHandleWrapper";
 
@@ -26,3 +27,4 @@ export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = handler(
   getAvailableAppointmentsHandler
 );
+export const getDonorAppointments = handler(getDonorAppointmentsHandler);

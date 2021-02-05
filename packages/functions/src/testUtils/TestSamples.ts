@@ -1,5 +1,6 @@
 // No user-id by design - caller has to set it
-import { BloodType } from "@zm-blood-components/common";
+import { BloodType, DbDonor } from "@zm-blood-components/common";
+import { setDonor } from "../dal/DonorDataAccessLayer";
 
 export const sampleUser = {
   email: "email",
@@ -9,3 +10,12 @@ export const sampleUser = {
   lastName: "lastName",
   birthDate: "2020-11-13",
 };
+
+export function saveTestDonor(donorId: string) {
+  const donor: DbDonor = {
+    id: donorId,
+    ...sampleUser,
+  };
+
+  return setDonor(donor);
+}

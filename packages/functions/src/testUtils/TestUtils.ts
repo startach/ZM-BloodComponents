@@ -12,3 +12,9 @@ export async function expectAsyncThrows(
   // @ts-ignore
   expect(error).toEqual(new Error(expectedExceptionText));
 }
+
+export function getDate(daysFromNow: number) {
+  const res = new Date();
+  res.setDate(res.getDate() + daysFromNow);
+  return res;
+}

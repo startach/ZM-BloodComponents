@@ -1,9 +1,10 @@
 import firebase from "firebase/app";
 import "firebase/functions";
 import {
-  BloodType,
-  FunctionsApi,
   AvailableAppointment,
+  BloodType,
+  BookedAppointment,
+  FunctionsApi,
 } from "@zm-blood-components/common";
 
 export function getAvailableAppointments() {
@@ -12,14 +13,13 @@ export function getAvailableAppointments() {
     .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
-    const appointments = response.availableAppointments.map<AvailableAppointment>(
-      (appointments) => ({
-        id: appointments.id,
-        donationStartTime: new Date(appointments.donationStartTimeMillis),
-        hospital: appointments.hospital,
+    return response.availableAppointments.map<AvailableAppointment>(
+      (appointment) => ({
+        id: appointment.id,
+        donationStartTime: new Date(appointment.donationStartTimeMillis),
+        hospital: appointment.hospital,
       })
     );
-    return appointments;
   });
 }
 
@@ -52,4 +52,30 @@ export function saveDonor(
   };
 
   saveDonorFunction(request).catch((e) => console.error(e));
+}
+
+export async function getFutureAppointments(): Promise<BookedAppointment[]> {
+  const currentUser = firebase.auth().currentUser;
+
+  if (!currentUser?.uid || !currentUser.email) {
+    console.error("User not authenticated");
+    return [];
+  }
+
+  const getDonorAppointmentsFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetDonorAppointmentsFunctionName);
+
+  const request: FunctionsApi.GetDonorAppointmentsRequest = {
+    donorId: currentUser.uid,
+    fromMillis: new Date().getTime(),
+  };
+
+  try {
+    const response = await getDonorAppointmentsFunction(request);
+    return response.data.futureAppointments;
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
 }
