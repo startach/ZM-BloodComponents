@@ -1,4 +1,9 @@
-import { DbAppointment, Hospital } from "@zm-blood-components/common";
+import {
+  DbAppointment,
+  Hospital,
+  DbDonor,
+  BloodType,
+} from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import {
   deleteAppointmentsByIds,
@@ -6,6 +11,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import * as Functions from "@zm-blood-components/functions";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 
 const USER_ID_OF_TEST_USER = "ZWeoYpX0XsaU0OyOIoINWK4Fcdi2";
 const SAMPLE_CREATING_USER = "SAMPLE_CREATING_USER";
@@ -56,10 +62,19 @@ test.skip("Write sample data", async () => {
     hospital: Hospital.ASAF_HAROFE,
     donorId: USER_ID_OF_TEST_USER,
   };
-  await setAppointment(sampleAvailableAppointment);
-  await setAppointment(sampleBookedFutureAppointment);
-  await setAppointment(samplePastAvailableAppointment);
-  await setAppointment(samplePastBookedAppointment);
+  setAppointment(sampleAvailableAppointment);
+  setAppointment(sampleBookedFutureAppointment);
+  setAppointment(samplePastAvailableAppointment);
+  setAppointment(samplePastBookedAppointment);
+
+  const donor: DbDonor = {
+    id: USER_ID_OF_TEST_USER,
+    email: "email",
+    phone: "phone",
+    bloodType: BloodType.O_PLUS,
+  };
+
+  setDonor(donor);
 });
 
 test.skip("Clear sample data", async () => {
@@ -69,6 +84,8 @@ test.skip("Clear sample data", async () => {
     PAST_AVAILABLE_APPOINTMENT,
     PAST_BOOKED_APPOINTMENT,
   ]);
+
+  await deleteDonor(USER_ID_OF_TEST_USER);
 });
 
 function getDate(daysFromNow: number) {
