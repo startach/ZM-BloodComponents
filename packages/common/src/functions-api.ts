@@ -1,4 +1,4 @@
-import {BloodType, BookedAppointment, DbAdmin, Hospital} from "./types";
+import { BloodType, BookedAppointment, DbAdmin, Hospital } from "./types";
 
 // Donor functions:
 
@@ -17,14 +17,14 @@ export interface GetAvailableAppointmentsResponse {
 
 export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
 export interface GetDonorAppointmentsRequest {
-  donorId: string
+  donorId: string;
   fromMillis?: number;
   toMillis?: number;
 }
 
 export interface GetDonorAppointmentsResponse {
-  completedAppointments: BookedAppointment[]
-  futureAppointments: BookedAppointment[]
+  completedAppointments: BookedAppointment[];
+  futureAppointments: BookedAppointment[];
 }
 
 export interface BookAppointmentRequest {
