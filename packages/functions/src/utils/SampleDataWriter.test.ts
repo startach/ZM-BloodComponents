@@ -22,6 +22,10 @@ const BOOKED_APPOINTMENT = "sampleBookedFutureAppointment";
 const PAST_AVAILABLE_APPOINTMENT = "samplePastAvailableAppointment";
 const PAST_BOOKED_APPOINTMENT = "samplePastBookedAppointment";
 
+/*
+ * Util to add mocked data to DB for client work
+ */
+
 test.skip("Write sample data", async () => {
   const now = new Date();
   const oneMonthFromNow = getDate(31);

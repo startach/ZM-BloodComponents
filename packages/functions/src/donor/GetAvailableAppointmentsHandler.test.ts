@@ -94,7 +94,9 @@ test("Only available appointment is returned", async () => {
   expect(availableAppointments).toHaveLength(1);
   expect(availableAppointments[0].id).toEqual(AVAILABLE_APPOINTMENT);
   expect(availableAppointments[0].hospital).toEqual(Hospital.ASAF_HAROFE);
-  expect(availableAppointments[0].donationStartTime).toEqual(tomorrow);
+  expect(availableAppointments[0].donationStartTimeMillis).toEqual(
+    tomorrow.getTime()
+  );
 });
 
 async function callTarget() {
