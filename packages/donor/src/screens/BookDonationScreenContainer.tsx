@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
-import {
-  AvailableAppointment,
-  FunctionsApi,
-} from "@zm-blood-components/common";
-import firebase from "firebase/app";
-import "firebase/functions";
+import { AvailableAppointment } from "@zm-blood-components/common";
+import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 
 export default function BookDonationScreenContainer() {
   const [availableAppointments, setAvailableAppointments] = useState(
@@ -13,20 +9,9 @@ export default function BookDonationScreenContainer() {
   );
 
   useEffect(() => {
-    const getAvailableAppointmentsFunction = firebase
-      .functions()
-      .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
-    getAvailableAppointmentsFunction().then((res) => {
-      const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
-      const appointments: AvailableAppointment[] = response.availableAppointments.map(
-        (appointments) => ({
-          id: appointments.id,
-          donationStartTime: new Date(appointments.donationStartTimeMillis),
-          hospital: appointments.hospital,
-        })
-      );
-      setAvailableAppointments(appointments);
-    });
+    FirebaseFunctions.getAvailableAppointments().then((appointments) =>
+      setAvailableAppointments(appointments)
+    );
   }, []);
 
   return (

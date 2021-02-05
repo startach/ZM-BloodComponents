@@ -1,9 +1,8 @@
 import React from "react";
-import { BloodType, FunctionsApi } from "@zm-blood-components/common";
+import { BloodType } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import { useHistory } from "react-router-dom";
-import firebase from "firebase/app";
-import "firebase/functions";
+import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import { UserDetailsContext } from "../App";
 
 export default function ExtendedSignupScreenContainer() {
@@ -17,7 +16,7 @@ export default function ExtendedSignupScreenContainer() {
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    saveDonor(
+    FirebaseFunctions.saveDonor(
       userDetails?.userId,
       userDetails?.email,
       firstName,
@@ -30,35 +29,4 @@ export default function ExtendedSignupScreenContainer() {
   };
 
   return <ExtendedSignupScreen onSave={onSave} />;
-}
-
-function saveDonor(
-  userId: string | undefined,
-  email: string | undefined,
-  firstName: string,
-  lastName: string,
-  birthDate: string,
-  phoneNumber: string,
-  bloodType: BloodType
-) {
-  if (!userId || !email) {
-    console.error("User not authenticated");
-    return;
-  }
-
-  const saveDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.SaveDonorFunctionName);
-
-  const request: FunctionsApi.SaveDonorRequest = {
-    id: userId,
-    firstName,
-    lastName,
-    phone: phoneNumber,
-    email,
-    bloodType,
-    birthDate,
-  };
-
-  saveDonorFunction(request).catch((e) => console.error(e));
 }
