@@ -22,7 +22,6 @@
   "engines": {
     "node": ">=12"
   },
-  "main": "lib/index.js",
   "dependencies": {
     "@zm-blood-components/common": "^1.0.0",
     "firebase-admin": "^8.10.0",
