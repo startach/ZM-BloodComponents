@@ -1,3 +1,5 @@
 .idea
 client
 lib
+packages/donor/build
+packages/functions/dist
