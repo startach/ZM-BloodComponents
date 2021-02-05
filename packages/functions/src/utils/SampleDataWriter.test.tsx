@@ -62,10 +62,12 @@ test.skip("Write sample data", async () => {
     hospital: Hospital.ASAF_HAROFE,
     donorId: USER_ID_OF_TEST_USER,
   };
-  setAppointment(sampleAvailableAppointment);
-  setAppointment(sampleBookedFutureAppointment);
-  setAppointment(samplePastAvailableAppointment);
-  setAppointment(samplePastBookedAppointment);
+
+  const promises: Promise<any>[] = [];
+  promises.push(setAppointment(sampleAvailableAppointment));
+  promises.push(setAppointment(sampleBookedFutureAppointment));
+  promises.push(setAppointment(samplePastAvailableAppointment));
+  promises.push(setAppointment(samplePastBookedAppointment));
 
   const donor: DbDonor = {
     id: USER_ID_OF_TEST_USER,
@@ -74,7 +76,9 @@ test.skip("Write sample data", async () => {
     bloodType: BloodType.O_PLUS,
   };
 
-  setDonor(donor);
+  promises.push(setDonor(donor));
+
+  await Promise.all(promises);
 });
 
 test.skip("Clear sample data", async () => {
