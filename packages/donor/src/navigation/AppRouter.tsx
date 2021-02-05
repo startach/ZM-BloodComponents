@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import AuthLoadingScreenContainer from "../screens/authentication/AuthLoadingScreenContainer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenKeys";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {AuthenticationScreenKeys} from "./authentication/AuthenticationScreenKeys";
 import SignInScreenContainer from "../screens/authentication/SignInScreenContainer";
 import RegisterScreenContainer from "../screens/authentication/RegisterScreenContainer";
 import ResetPasswordScreenContainer from "../screens/authentication/ResetPasswordScreenContainer";
-import { MainNavigationKeys } from "./app/MainNavigationKeys";
+import {MainNavigationKeys} from "./app/MainNavigationKeys";
 import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
-import { UserDetails } from "../App";
+import {UserDetails} from "@zm-blood-components/common";
 
 interface AppRouterProps {
   setUserDetails: (userDetails: UserDetails) => void;

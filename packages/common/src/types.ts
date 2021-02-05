@@ -90,3 +90,9 @@ export enum Collections {
   DONORS = "donors",
   APPOINTMENTS = "appointments",
 }
+
+// Used in app context - holds user id and email if user is signed in
+export type UserDetails = {
+  userId?: string;
+  email?: string;
+};

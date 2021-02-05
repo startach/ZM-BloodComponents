@@ -2,7 +2,7 @@ import React from "react";
 import { BloodType, FunctionsApi } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import { useHistory } from "react-router-dom";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/functions";
 import { UserDetailsContext } from "../App";
 
@@ -29,8 +29,6 @@ export default function ExtendedSignupScreenContainer() {
     history.goBack();
   };
 
-  console.log(userDetails);
-
   return <ExtendedSignupScreen onSave={onSave} />;
 }
 
@@ -39,7 +37,7 @@ function saveDonor(
   email: string | undefined,
   firstName: string,
   lastName: string,
-  birthDate: Date,
+  birthDate: string,
   phoneNumber: string,
   bloodType: BloodType
 ) {

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import AppRouter from "./navigation/AppRouter";
-
-export type UserDetails = {
-  userId?: string;
-  email?: string;
-};
+import { UserDetails } from "@zm-blood-components/common";
 
 export const UserDetailsContext = React.createContext<UserDetails>({});
 

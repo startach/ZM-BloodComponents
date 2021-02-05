@@ -5,7 +5,7 @@ import {
   registerAuthChange,
 } from "../../firebase/FirebaseInitializer";
 import "firebase/auth";
-import { UserDetails } from "../../App";
+import { UserDetails } from "@zm-blood-components/common";
 
 interface AuthLoadingScreenContainerProps {
   setUserDetails: (userDetails: UserDetails) => void;

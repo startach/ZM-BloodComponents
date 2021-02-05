@@ -1,4 +1,4 @@
-import {BloodType, DbAdmin, Hospital} from "./types";
+import { BloodType, DbAdmin, Hospital } from "./types";
 
 // Donor functions:
 
