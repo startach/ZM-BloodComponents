@@ -27,8 +27,8 @@ export default async function (
     throw new Error("Appointment to be deleted is not booked by donor");
   }
 
+  appointment.donorId = "";
   const updatedAppointment = _.omit(appointment, [
-    "donorId",
     "bookingTime",
     "confirmationTime",
   ]);

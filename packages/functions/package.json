@@ -6,7 +6,7 @@
     "lib"
   ],
   "scripts": {
-    "clean": "rm -rf ./lib && rm -rf ./dist",
+    "clean": "rimraf ./lib && rimraf ./dist",
     "lint": "yarn run style && tslint --project tsconfig.json ",
     "compile": "tsc -p tsconfig.build.json",
     "build": "yarn run clean && yarn run lint && yarn run test &&  yarn run compile",

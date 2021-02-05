@@ -69,7 +69,7 @@ export type DbAppointment = {
   hospital: Hospital;
 
   // added donor
-  donorId?: string;
+  donorId: string; // Empty string means appointment is available
   bookingTime?: firebase.firestore.Timestamp;
   confirmationTime?: firebase.firestore.Timestamp; // Time donor confirmed they will come
 
