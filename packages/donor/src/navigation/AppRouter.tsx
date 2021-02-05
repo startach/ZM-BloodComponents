@@ -51,10 +51,10 @@ export default function AppRouter() {
   return (
     <Router>
       <Switch>
-        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
+        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
           <ExtendedSignupScreenContainer />
         </Route>
-        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
+        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
           <UpcomingDonationScreenContainer />
         </Route>
         <Route path={"/" + MainNavigationKeys.BookDonation}>

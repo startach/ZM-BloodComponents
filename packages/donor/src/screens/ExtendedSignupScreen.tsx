@@ -6,7 +6,7 @@ interface ExtendedSignupScreenProps {
   onSave: (
     firstName: string,
     lastName: string,
-    birthDay: Date,
+    birthDate: string, // YYYY-MM-DD
     phoneNumber: string,
     bloodType: BloodType
   ) => void;

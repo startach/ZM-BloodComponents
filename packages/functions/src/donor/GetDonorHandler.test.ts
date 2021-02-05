@@ -1,7 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   AdminRole,
-  BloodType,
   DbAdmin,
   DbDonor,
   FunctionsApi,
@@ -10,6 +9,7 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.getDonor);
 
@@ -108,9 +108,7 @@ test("Valid admin request returns donor", async () => {
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
-    email: "email",
-    phone: "phone",
-    bloodType: BloodType.A_MINUS,
+    ...sampleUser,
   };
 
   await setDonor(donor);

@@ -2,6 +2,7 @@ import React from "react";
 import { BloodType } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import { useHistory } from "react-router-dom";
+import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 
 export default function ExtendedSignupScreenContainer() {
   const history = useHistory();
@@ -9,11 +10,17 @@ export default function ExtendedSignupScreenContainer() {
   const onSave = (
     firstName: string,
     lastName: string,
-    birthDay: Date,
+    birthDate: string,
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    console.log("Save details for", firstName, lastName);
+    FirebaseFunctions.saveDonor(
+      firstName,
+      lastName,
+      birthDate,
+      phoneNumber,
+      bloodType
+    );
     history.goBack();
   };
 

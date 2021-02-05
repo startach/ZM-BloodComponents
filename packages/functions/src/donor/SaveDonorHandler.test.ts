@@ -43,6 +43,11 @@ test("Valid request creates donor", async () => {
 
   expect(donor).toBeDefined();
   expect(donor?.id).toEqual(DONOR_ID);
+  expect(donor?.email).toEqual("email");
+  expect(donor?.phone).toEqual("phone");
+  expect(donor?.firstName).toEqual("firstName");
+  expect(donor?.lastName).toEqual("lastName");
+  expect(donor?.birthDate).toEqual("2020-11-13");
 });
 
 function saveDonorRequest(): FunctionsApi.SaveDonorRequest {
@@ -51,5 +56,8 @@ function saveDonorRequest(): FunctionsApi.SaveDonorRequest {
     email: "email",
     phone: "phone",
     bloodType: BloodType.A_MINUS,
+    firstName: "firstName",
+    lastName: "lastName",
+    birthDate: "2020-11-13",
   };
 }

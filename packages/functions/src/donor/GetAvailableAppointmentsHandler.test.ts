@@ -1,6 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  BloodType,
   DbAppointment,
   DbDonor,
   FunctionsApi,
@@ -14,6 +13,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
+import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(Functions.getAvailableAppointments);
 
@@ -113,9 +113,7 @@ async function callTarget() {
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
-    phone: "test_phone",
-    email: "test_email",
-    bloodType: BloodType.A_MINUS,
+    ...sampleUser,
   };
 
   await setDonor(donor);

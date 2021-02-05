@@ -89,7 +89,10 @@ test.skip("Write sample data", async () => {
     id: USER_ID_OF_TEST_USER,
     email: "email",
     phone: "phone",
-    bloodType: BloodType.O_PLUS,
+    bloodType: BloodType.A_MINUS,
+    firstName: "firstName",
+    lastName: "lastName",
+    birthDate: "2020-11-13",
   };
 
   promises.push(setDonor(donor));
