@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
-import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  FunctionsApi,
+} from "@zm-blood-components/common";
+import firebase from "firebase/app";
+import "firebase/functions";
 
 export default function BookDonationScreenContainer() {
-  const availableAppointments: AvailableAppointment[] = [
-    {
-      id: "availableAppointment1",
-      donationStartTime: new Date(2021, 3, 13, 13, 30),
-      hospital: Hospital.TEL_HASHOMER,
-    },
-    {
-      id: "availableAppointment2",
-      donationStartTime: new Date(2021, 3, 13, 14, 30),
-      hospital: Hospital.TEL_HASHOMER,
-    },
-    {
-      id: "availableAppointment3",
-      donationStartTime: new Date(2021, 3, 16, 10, 0),
-      hospital: Hospital.TEL_HASHOMER,
-    },
-  ];
+  const [availableAppointments, setAvailableAppointments] = useState(
+    [] as AvailableAppointment[]
+  );
+
+  useEffect(() => {
+    const getAvailableAppointmentsFunction = firebase
+      .functions()
+      .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
+    getAvailableAppointmentsFunction().then((res) => {
+      const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
+      const appointments: AvailableAppointment[] = response.availableAppointments.map(
+        (appointments) => ({
+          id: appointments.id,
+          donationStartTime: new Date(appointments.donationStartTimeMillis),
+          hospital: appointments.hospital,
+        })
+      );
+      setAvailableAppointments(appointments);
+    });
+  }, []);
 
   return (
     <BookDonationScreen

@@ -1,11 +1,18 @@
-import { AvailableAppointment, BloodType, DbAdmin, Hospital } from "./types";
+import {BloodType, DbAdmin, Hospital} from "./types";
 
 // Donor functions:
 
+export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {}
 
+type AvailableAppointmentEntry = {
+  id: string;
+  donationStartTimeMillis: number; // API returns millis
+  hospital: Hospital;
+};
+
 export interface GetAvailableAppointmentsResponse {
-  availableAppointments: AvailableAppointment[];
+  availableAppointments: AvailableAppointmentEntry[];
 }
 
 export interface BookAppointmentRequest {

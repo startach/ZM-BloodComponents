@@ -74,7 +74,7 @@ test("Donor is not booked on this appointment throws exception", async () => {
   );
 });
 
-test("Valid request books appointment", async () => {
+test("Valid request cancells appointment", async () => {
   await saveAppointment(DONOR_ID);
 
   await wrapped(bookAppointmentRequest(), {
@@ -84,7 +84,7 @@ test("Valid request books appointment", async () => {
   });
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
-  expect(appointment[0].donorId).toBeUndefined();
+  expect(appointment[0].donorId).toEqual("");
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
