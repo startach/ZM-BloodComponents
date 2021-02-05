@@ -65,6 +65,7 @@ export async function getAvailableAppointments() {
     .collection(Collections.APPOINTMENTS)
     .where("donorId", "==", "")
     .where("donationStartTime", ">", now)
+    .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({
