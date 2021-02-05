@@ -15,8 +15,11 @@
     "cleanup": "scripts/cleanup.sh",
     "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build --stream",
-    "watch": "lerna run watch --stream",
-    "deploy-functions": "lerna run deploy-functions --stream"
+    "postinstall": "yarn run build-common",
+    "deploy-functions": "lerna run deploy-functions --stream",
+    "build-common": "yarn workspace @zm-blood-components/common build",
+    "start-donor": "yarn workspace @zm-blood-components/donor start",
+    "style": "yarn run prettier --write . "
   },
   "dependencies": {
     "lodash": "^4.17.20",
