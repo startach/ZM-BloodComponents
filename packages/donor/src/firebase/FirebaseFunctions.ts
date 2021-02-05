@@ -55,11 +55,27 @@ export function saveDonor(
 }
 
 export async function getFutureAppointments(): Promise<BookedAppointment[]> {
+  const response = await getDonorAppointments(new Date());
+  return response.futureAppointments;
+}
+
+export async function getPastAppointments(): Promise<BookedAppointment[]> {
+  const response = await getDonorAppointments(undefined, new Date());
+  return response.completedAppointments;
+}
+
+async function getDonorAppointments(
+  fromTime?: Date,
+  toTime?: Date
+): Promise<FunctionsApi.GetDonorAppointmentsResponse> {
   const currentUser = firebase.auth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return [];
+    return {
+      completedAppointments: [],
+      futureAppointments: [],
+    };
   }
 
   const getDonorAppointmentsFunction = firebase
@@ -68,14 +84,24 @@ export async function getFutureAppointments(): Promise<BookedAppointment[]> {
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: new Date().getTime(),
   };
+
+  if (fromTime) {
+    request.fromMillis = fromTime.getTime();
+  }
+
+  if (toTime) {
+    request.toMillis = toTime.getTime();
+  }
 
   try {
     const response = await getDonorAppointmentsFunction(request);
-    return response.data.futureAppointments;
+    return response.data;
   } catch (e) {
     console.error(e);
-    return [];
+    return {
+      completedAppointments: [],
+      futureAppointments: [],
+    };
   }
 }

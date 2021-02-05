@@ -10,6 +10,7 @@ import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
+import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
 
 export default function AppRouter() {
   const [loggedInStatus, setLoggedInStatus] = useState({
@@ -56,6 +57,9 @@ export default function AppRouter() {
         </Route>
         <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
           <UpcomingDonationScreenContainer />
+        </Route>
+        <Route path={"/" + MainNavigationKeys.DonationHistory}>
+          <DonationHistoryScreenContainer />
         </Route>
         <Route path={"/" + MainNavigationKeys.BookDonation}>
           <BookDonationScreenContainer />
