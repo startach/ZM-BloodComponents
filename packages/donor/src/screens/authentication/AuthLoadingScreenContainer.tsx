@@ -5,10 +5,8 @@ import {
   registerAuthChange,
 } from "../../firebase/FirebaseInitializer";
 import "firebase/auth";
-import { UserDetails } from "@zm-blood-components/common";
 
 interface AuthLoadingScreenContainerProps {
-  setUserDetails: (userDetails: UserDetails) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
 }
 
@@ -20,7 +18,7 @@ export default function AuthLoadingScreenContainer(
   }, []);
 
   useEffect(() => {
-    registerAuthChange(props.setIsLoggedIn, props.setUserDetails);
+    registerAuthChange(props.setIsLoggedIn);
   }, [props.setIsLoggedIn]);
 
   return <AuthLoadingScreen />;

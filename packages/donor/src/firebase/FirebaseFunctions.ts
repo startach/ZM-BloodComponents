@@ -12,7 +12,7 @@ export function getAvailableAppointments() {
     .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
-    const appointments: AvailableAppointment[] = response.availableAppointments.map(
+    const appointments = response.availableAppointments.map<AvailableAppointment>(
       (appointments) => ({
         id: appointments.id,
         donationStartTime: new Date(appointments.donationStartTimeMillis),
@@ -24,15 +24,15 @@ export function getAvailableAppointments() {
 }
 
 export function saveDonor(
-  userId: string | undefined,
-  email: string | undefined,
   firstName: string,
   lastName: string,
   birthDate: string,
   phoneNumber: string,
   bloodType: BloodType
 ) {
-  if (!userId || !email) {
+  const currentUser = firebase.auth().currentUser;
+
+  if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
     return;
   }
@@ -42,11 +42,11 @@ export function saveDonor(
     .httpsCallable(FunctionsApi.SaveDonorFunctionName);
 
   const request: FunctionsApi.SaveDonorRequest = {
-    id: userId,
+    id: currentUser.uid,
+    email: currentUser.email,
     firstName,
     lastName,
     phone: phoneNumber,
-    email,
     bloodType,
     birthDate,
   };

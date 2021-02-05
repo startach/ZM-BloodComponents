@@ -10,13 +10,8 @@ import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
-import { UserDetails } from "@zm-blood-components/common";
 
-interface AppRouterProps {
-  setUserDetails: (userDetails: UserDetails) => void;
-}
-
-export default function AppRouter(props: AppRouterProps) {
+export default function AppRouter() {
   const [loggedInStatus, setLoggedInStatus] = useState({
     isLoading: true,
     isLoggedIn: false,
@@ -25,7 +20,6 @@ export default function AppRouter(props: AppRouterProps) {
   if (loggedInStatus.isLoading) {
     return (
       <AuthLoadingScreenContainer
-        setUserDetails={props.setUserDetails}
         setIsLoggedIn={(isLoggedIn: boolean) => {
           setLoggedInStatus({
             isLoggedIn,
