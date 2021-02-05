@@ -16,7 +16,8 @@
     "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build --stream",
     "watch": "lerna run watch --stream",
-    "deploy-functions": "lerna run deploy-functions --stream"
+    "deploy-functions": "lerna run deploy-functions --stream",
+    "style": "yarn run prettier --write . "
   },
   "dependencies": {
     "lodash": "^4.17.20",

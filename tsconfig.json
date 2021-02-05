@@ -9,10 +9,7 @@
       "@zm-blood-components/functions": ["functions/src"],
       "@zm-blood-components/donor": ["donor/src"]
     },
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"]
   },
   "exclude": ["**/node_modules/**"]
 }
