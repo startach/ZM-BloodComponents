@@ -57,7 +57,7 @@ export async function getAppointmentsByDonorIdInTime(
   }));
 }
 
-export async function getAvailableAppointments() {
+export async function getAvailableAppointments(): Promise<DbAppointment[]> {
   const now = new Date();
 
   const appointments = (await admin

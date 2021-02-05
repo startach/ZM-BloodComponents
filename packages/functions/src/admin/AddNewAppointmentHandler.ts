@@ -24,6 +24,7 @@ export default async function (
       new Date(request.donationStartTime)
     ),
     hospital: request.hospital,
+    donorId: "",
   };
 
   const batch = admin.firestore().batch();

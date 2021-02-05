@@ -154,6 +154,7 @@ async function saveAppointment(
     creatorUserId: "CreatingUserId",
     donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
+    donorId: "",
   };
 
   if (booked) {
