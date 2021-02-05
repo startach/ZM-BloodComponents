@@ -18,6 +18,7 @@ const SAMPLE_CREATING_USER = "SAMPLE_CREATING_USER";
 firebaseFunctionsTest.wrap(Functions.getAvailableAppointments);
 
 const AVAILABLE_APPOINTMENT = "sampleAvailableAppointment";
+const AVAILABLE_APPOINTMENT_2 = "sampleAvailableAppointment2";
 const BOOKED_APPOINTMENT = "sampleBookedFutureAppointment";
 const PAST_AVAILABLE_APPOINTMENT = "samplePastAvailableAppointment";
 const PAST_BOOKED_APPOINTMENT = "samplePastBookedAppointment";
@@ -29,6 +30,7 @@ const PAST_BOOKED_APPOINTMENT = "samplePastBookedAppointment";
 test.skip("Write sample data", async () => {
   const now = new Date();
   const oneMonthFromNow = getDate(31);
+  const oneWeekFromNow = getDate(7);
   const oneMonthAgo = getDate(-31);
 
   const sampleAvailableAppointment: DbAppointment = {
@@ -37,6 +39,15 @@ test.skip("Write sample data", async () => {
     creatorUserId: SAMPLE_CREATING_USER,
     donationStartTime: admin.firestore.Timestamp.fromDate(oneMonthFromNow),
     hospital: Hospital.ASAF_HAROFE,
+    donorId: "",
+  };
+
+  const sampleAvailableAppointment2: DbAppointment = {
+    id: AVAILABLE_APPOINTMENT_2,
+    creationTime: admin.firestore.Timestamp.fromDate(now),
+    creatorUserId: SAMPLE_CREATING_USER,
+    donationStartTime: admin.firestore.Timestamp.fromDate(oneWeekFromNow),
+    hospital: Hospital.TEL_HASHOMER,
     donorId: "",
   };
 
@@ -69,6 +80,7 @@ test.skip("Write sample data", async () => {
 
   const promises: Promise<any>[] = [];
   promises.push(setAppointment(sampleAvailableAppointment));
+  promises.push(setAppointment(sampleAvailableAppointment2));
   promises.push(setAppointment(sampleBookedFutureAppointment));
   promises.push(setAppointment(samplePastAvailableAppointment));
   promises.push(setAppointment(samplePastBookedAppointment));
