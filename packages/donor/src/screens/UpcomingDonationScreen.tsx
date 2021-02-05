@@ -1,10 +1,9 @@
 import React from "react";
-import { Hospital } from "@zm-blood-components/common";
+import { BookedAppointment } from "@zm-blood-components/common";
 import Text from "../components/Text";
 
 interface UpcomingDonationScreenProps {
-  nextDonation: Date;
-  hospital: Hospital;
+  upcomingDonations: BookedAppointment[];
   onCancel: () => void;
 }
 

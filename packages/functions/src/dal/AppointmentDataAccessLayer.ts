@@ -43,12 +43,31 @@ export async function getAppointmentsByDonorIdInTime(
   const latestStartTime = new Date(bufferMiddleDate);
   latestStartTime.setDate(latestStartTime.getDate() + 7 * weeksBufferBack);
 
-  const appointments = (await admin
+  return await getAppointments(donorId, {
+    fromTime: earliestStartTime,
+    toTime: latestStartTime,
+  });
+}
+
+export async function getAppointments(
+  donorId: string,
+  options: { fromTime?: Date; toTime?: Date }
+) {
+  let request = admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
-    .where("donorId", "==", donorId)
-    .where("donationStartTime", ">=", earliestStartTime)
-    .where("donationStartTime", "<=", latestStartTime)
+    .where("donorId", "==", donorId);
+
+  if (options.fromTime) {
+    request = request.where("donationStartTime", ">=", options.fromTime);
+  }
+
+  if (options.toTime) {
+    request = request.where("donationStartTime", "<=", options.toTime);
+  }
+
+  const appointments = (await request
+    .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({

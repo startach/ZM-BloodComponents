@@ -62,9 +62,16 @@ export enum DonationType {
   Granulocytes,
 }
 
+export type BookedAppointment = {
+  id: string;
+  donationStartTimeMillis: number;
+  hospital: Hospital;
+  donorId: string;
+}
+
 export type DbAppointment = {
-  // Slot + donor
-  id?: string; // UUID
+  id?: string;
+
   // Pre-donor
   creationTime: firebase.firestore.Timestamp;
   creatorUserId: string;
@@ -75,8 +82,6 @@ export type DbAppointment = {
   donorId: string; // Empty string means appointment is available
   bookingTime?: firebase.firestore.Timestamp;
   confirmationTime?: firebase.firestore.Timestamp; // Time donor confirmed they will come
-
-  // post donation
 };
 
 export type AvailableAppointment = {
