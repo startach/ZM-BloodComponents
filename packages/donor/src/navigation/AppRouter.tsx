@@ -10,6 +10,7 @@ import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
+import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
 import MyProfileScreenContainer from "../screens/MyProfileScreenContainer";
 
 export default function AppRouter() {
@@ -58,6 +59,8 @@ export default function AppRouter() {
         <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
           <UpcomingDonationScreenContainer />
         </Route>
+        <Route path={"/" + MainNavigationKeys.DonationHistory}>
+          <DonationHistoryScreenContainer />
         <Route path={"/" + MainNavigationKeys.MyProfile}>
           <MyProfileScreenContainer />
         </Route>
