@@ -66,7 +66,7 @@ export async function getAppointments(
     request = request.where("donationStartTime", "<=", options.toTime);
   }
 
-  request.orderBy("donationStartTime");
+  request = request.orderBy("donationStartTime");
 
   const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
