@@ -4,6 +4,7 @@ import {
   AvailableAppointment,
   BloodType,
   BookedAppointment,
+  Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
 
@@ -52,6 +53,34 @@ export function saveDonor(
   };
 
   saveDonorFunction(request).catch((e) => console.error(e));
+}
+
+export async function getDonor(): Promise<Donor | undefined> {
+  const currentUser = firebase.auth().currentUser;
+
+  if (!currentUser?.uid || !currentUser.email) {
+    console.error("User not authenticated");
+    return undefined;
+  }
+
+  const getDonorFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetDonorFunctionName);
+
+  const request: FunctionsApi.GetDonorRequest = {
+    donorId: currentUser.uid,
+  };
+
+  try {
+    const response = await getDonorFunction(
+      request
+    );
+    const data = response.data as FunctionsApi.GetDonorResponse
+    return data.donor;
+  } catch (e) {
+    console.error("Error getting donor", e);
+    return undefined;
+  }
 }
 
 export async function getFutureAppointments(): Promise<BookedAppointment[]> {

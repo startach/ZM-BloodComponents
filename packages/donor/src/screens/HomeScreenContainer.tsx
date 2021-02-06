@@ -24,6 +24,7 @@ export default function HomeScreenContainer() {
       goToUpcomingDonationScreen={() =>
         history.push(MainNavigationKeys.UpcomingDonation)
       }
+      goToMyProfileScreen={() => history.push(MainNavigationKeys.MyProfile)}
     />
   );
 }

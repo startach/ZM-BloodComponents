@@ -11,6 +11,7 @@ import BookDonationScreenContainer from "../screens/BookDonationScreenContainer"
 import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
 import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
+import MyProfileScreenContainer from "../screens/MyProfileScreenContainer";
 
 export default function AppRouter() {
   const [loggedInStatus, setLoggedInStatus] = useState({
@@ -60,6 +61,8 @@ export default function AppRouter() {
         </Route>
         <Route path={"/" + MainNavigationKeys.DonationHistory}>
           <DonationHistoryScreenContainer />
+        <Route path={"/" + MainNavigationKeys.MyProfile}>
+          <MyProfileScreenContainer />
         </Route>
         <Route path={"/" + MainNavigationKeys.BookDonation}>
           <BookDonationScreenContainer />
