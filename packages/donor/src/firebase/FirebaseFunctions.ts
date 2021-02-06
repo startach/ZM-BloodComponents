@@ -72,10 +72,8 @@ export async function getDonor(): Promise<Donor | undefined> {
   };
 
   try {
-    const response = await getDonorFunction(
-      request
-    );
-    const data = response.data as FunctionsApi.GetDonorResponse
+    const response = await getDonorFunction(request);
+    const data = response.data as FunctionsApi.GetDonorResponse;
     return data.donor;
   } catch (e) {
     console.error("Error getting donor", e);

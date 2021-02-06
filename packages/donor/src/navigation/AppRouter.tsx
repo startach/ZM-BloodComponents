@@ -61,6 +61,7 @@ export default function AppRouter() {
         </Route>
         <Route path={"/" + MainNavigationKeys.DonationHistory}>
           <DonationHistoryScreenContainer />
+        </Route>
         <Route path={"/" + MainNavigationKeys.MyProfile}>
           <MyProfileScreenContainer />
         </Route>
