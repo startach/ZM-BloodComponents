@@ -1,4 +1,10 @@
-import { BloodType, BookedAppointment, DbAdmin, Hospital } from "./types";
+import {
+  BloodType,
+  BookedAppointment,
+  DbAdmin,
+  Donor,
+  Hospital,
+} from "./types";
 
 // Donor functions:
 
@@ -37,8 +43,13 @@ export interface CancelAppointmentRequest {
   appointmentId: string;
 }
 
+export const GetDonorFunctionName = "getDonor";
 export interface GetDonorRequest {
   donorId: string;
+}
+
+export interface GetDonorResponse {
+  donor?: Donor;
 }
 
 export const SaveDonorFunctionName = "saveDonor";

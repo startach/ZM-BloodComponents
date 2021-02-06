@@ -27,67 +27,41 @@ afterEach(async () => {
 });
 
 test("Unauthenticated user throws exception", async () => {
-  const action = () => wrapped(getDonorRequest());
+  const action = () => callTarget(DONOR_ID, undefined);
   await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("User that is not the donor or admin throws exception", async () => {
-  const action = () =>
-    wrapped(getDonorRequest(), {
-      auth: {
-        uid: "OtherUser",
-      },
-    });
+  const action = () => callTarget(DONOR_ID, "otherUserId");
 
   await expectAsyncThrows(action, "Unauthorized getDonor request");
 });
 
 test("Invalid request throws exception", async () => {
-  const action = () =>
-    wrapped(
-      { donorId: "" },
-      {
-        auth: {
-          uid: DONOR_ID,
-        },
-      }
-    );
+  const action = () => callTarget("", DONOR_ID);
 
   await expectAsyncThrows(action, "Invalid getDonor request");
 });
 
 test("No such donor returns empty response", async () => {
-  const res: DbDonor = await wrapped(getDonorRequest(), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
+  const res = await callTarget(DONOR_ID, DONOR_ID);
 
-  expect(res).toBeUndefined();
+  expect(res.donor).toBeUndefined();
 });
 
 test("Donor request returns donor", async () => {
   await createDonor();
 
-  const res: DbDonor = await wrapped(getDonorRequest(), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
+  const res = await callTarget(DONOR_ID, DONOR_ID);
 
-  expect(res.id).toEqual(DONOR_ID);
+  expect(res.donor?.id).toEqual(DONOR_ID);
 });
 
 test("Invalid admin throws exception", async () => {
   await createDonor();
   await createAdmin(AdminRole.HOSPITAL_COORDINATOR);
 
-  const action = () =>
-    wrapped(getDonorRequest(), {
-      auth: {
-        uid: ADMIN_ID,
-      },
-    });
+  const action = () => callTarget(DONOR_ID, ADMIN_ID);
 
   await expectAsyncThrows(action, "Unauthorized getDonor request");
 });
@@ -96,13 +70,9 @@ test("Valid admin request returns donor", async () => {
   await createDonor();
   await createAdmin(AdminRole.SYSTEM_USER);
 
-  const res: DbDonor = await wrapped(getDonorRequest(), {
-    auth: {
-      uid: ADMIN_ID,
-    },
-  });
+  const res = await callTarget(DONOR_ID, ADMIN_ID);
 
-  expect(res.id).toEqual(DONOR_ID);
+  expect(res.donor?.id).toEqual(DONOR_ID);
 });
 
 async function createDonor() {
@@ -125,6 +95,13 @@ async function createAdmin(role: AdminRole) {
   await setAdmin(admin);
 }
 
-function getDonorRequest(): FunctionsApi.GetDonorRequest {
-  return { donorId: DONOR_ID };
+async function callTarget(donorId?: string, callingUser?: string) {
+  return (await wrapped(
+    { donorId: donorId },
+    {
+      auth: {
+        uid: callingUser,
+      },
+    }
+  )) as FunctionsApi.GetDonorResponse;
 }
