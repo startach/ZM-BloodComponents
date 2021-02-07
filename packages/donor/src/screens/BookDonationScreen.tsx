@@ -8,10 +8,20 @@ interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
 }
 
-export default function BookDonationScreen(props: BookDonationScreenProps) {
+export default function BookDonationScreen({
+  lastDonation,
+  earliestNextDonationDate,
+  availableAppointments,
+}: BookDonationScreenProps) {
   return (
     <div>
-      <Text>{JSON.stringify(props)}</Text>
+      <Text>
+        {JSON.stringify({
+          lastDonation,
+          earliestNextDonationDate,
+          availableAppointments,
+        })}
+      </Text>
     </div>
   );
 }
