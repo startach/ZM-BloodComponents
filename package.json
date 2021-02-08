@@ -22,11 +22,13 @@
     "style": "yarn run prettier --write . "
   },
   "dependencies": {
+    "firebase": "^8.2.4",
     "lodash": "^4.17.20",
-    "firebase": "^8.2.4"
+    "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.1",
     "jest": "26.6.0",
     "lerna": "^3.22.1",
     "prettier": "^2.2.1",

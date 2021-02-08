@@ -39,11 +39,13 @@ export default function RegisterScreen(props: RegisterScreenProps) {
       <Input
         onChangeText={setPassword}
         value={password}
+        type="password"
         placeholder={"סיסמה"}
       />
       <Input
         onChangeText={setPasswordCopy}
         value={passwordCopy}
+        type="password"
         placeholder={"אימות סיסמה"}
       />
       <Text>{passwordError}</Text>

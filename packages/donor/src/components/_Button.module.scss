@@ -1,0 +1,9 @@
+@import "../constants/colors.module";
+
+button.zm-btn {
+  background: $zm-violet !important;
+  transition: all .1s ease !important;
+  &:hover {
+    background: rgba($zm-violet, 0.8) !important;
+  }
+}

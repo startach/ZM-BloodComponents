@@ -8,7 +8,7 @@ import ResetPasswordScreenContainer from "../screens/authentication/ResetPasswor
 import { MainNavigationKeys } from "./app/MainNavigationKeys";
 import HomeScreenContainer from "../screens/HomeScreenContainer";
 import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
-import ExtendedSignupScreenContainer from "../screens/ExtendedSignupScreenContainer";
+import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
 import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
 import MyProfileScreenContainer from "../screens/MyProfileScreenContainer";

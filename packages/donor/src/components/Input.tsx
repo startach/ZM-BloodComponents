@@ -1,21 +1,23 @@
-import React from "react";
+import { Input } from "semantic-ui-react"
 
-interface InputProps
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
-  onChangeText: (newValue: string) => void;
+type InputProps = {
+  onChangeText: (newValue: string) => void,
+  value?: any,
+  label?: string,
+  type?: string,
+  isDisabled?: boolean,
+  placeholder?: string,
 }
 
-export default function Input(props: InputProps) {
-  const { onChangeText, ...otherProps } = props;
+export default function ZMInput({ placeholder = "", type = "text", label, value, onChangeText }: InputProps) {
+  console.log(type)
   return (
-    <div>
-      <input
-        onChange={(e) => onChangeText(e.currentTarget.value)}
-        {...otherProps}
-      />
-    </div>
+    <Input
+      value={value}
+      type={type}
+      label={label}
+      onChange={(e) => onChangeText(e.currentTarget.value)}
+      placeholder={placeholder}
+    />
   );
 }

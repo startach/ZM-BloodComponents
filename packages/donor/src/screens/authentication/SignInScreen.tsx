@@ -32,6 +32,7 @@ export default function SignInScreen(props: SignInScreenProps) {
       <Input
         onChangeText={setPassword}
         value={password}
+        type="password"
         placeholder={"סיסמה"}
       />
       <Text>{passwordError}</Text>
