@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
 import Text from "../../components/Text";
-import Button from "../../components/Button/Button";
+import Button from "../../components/Button";
 
 interface RegisterScreenProps {
   onRegister: (
@@ -39,13 +39,11 @@ export default function RegisterScreen(props: RegisterScreenProps) {
       <Input
         onChangeText={setPassword}
         value={password}
-        type="password"
         placeholder={"סיסמה"}
       />
       <Input
         onChangeText={setPasswordCopy}
         value={passwordCopy}
-        type="password"
         placeholder={"אימות סיסמה"}
       />
       <Text>{passwordError}</Text>

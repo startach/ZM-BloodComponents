@@ -1,17 +1,23 @@
-import { Input } from "semantic-ui-react"
+import { Input } from "semantic-ui-react";
 
 type InputProps = {
-  onChangeText: (newValue: string) => void,
-  value?: any,
-  label?: string,
-  type?: string,
-  isDisabled?: boolean,
-  placeholder?: string,
-  className: string,
-}
+  onChangeText: (newValue: string) => void;
+  value?: any;
+  label?: string;
+  type?: string;
+  isDisabled?: boolean;
+  placeholder?: string;
+  className?: string;
+};
 
-export default function ZMInput({ placeholder = "", type = "text", label, value, onChangeText, className }: InputProps) {
-  console.log(type)
+export default function ZMInput({
+  placeholder = "",
+  type = "text",
+  label,
+  value,
+  onChangeText,
+  className,
+}: InputProps) {
   return (
     <Input
       value={value}

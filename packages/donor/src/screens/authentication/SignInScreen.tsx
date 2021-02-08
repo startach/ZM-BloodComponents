@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
 import Text from "../../components/Text";
-import Button from "../../components/Button/Button";
+import Button from "../../components/Button";
 
 interface SignInScreenProps {
   onRegister: () => void;
@@ -32,7 +32,6 @@ export default function SignInScreen(props: SignInScreenProps) {
       <Input
         onChangeText={setPassword}
         value={password}
-        type="password"
         placeholder={"סיסמה"}
       />
       <Text>{passwordError}</Text>
