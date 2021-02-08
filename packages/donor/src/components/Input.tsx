@@ -7,9 +7,10 @@ type InputProps = {
   type?: string,
   isDisabled?: boolean,
   placeholder?: string,
+  className: string,
 }
 
-export default function ZMInput({ placeholder = "", type = "text", label, value, onChangeText }: InputProps) {
+export default function ZMInput({ placeholder = "", type = "text", label, value, onChangeText, className }: InputProps) {
   console.log(type)
   return (
     <Input
@@ -18,6 +19,7 @@ export default function ZMInput({ placeholder = "", type = "text", label, value,
       label={label}
       onChange={(e) => onChangeText(e.currentTarget.value)}
       placeholder={placeholder}
+      className={className}
     />
   );
 }
