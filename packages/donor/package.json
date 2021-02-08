@@ -4,8 +4,12 @@
   "private": true,
   "dependencies": {
     "@zm-blood-components/common": "^1.0.0",
+    "classnames": "^2.2.6",
     "node-sass": "^5.0.0",
+    "include-media": "^1.4.9",
+    "normalize.css": "^8.0.1",
     "react": "^17.0.1",
+    "react-div-100vh": "^0.5.6",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
@@ -15,11 +19,13 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
-    "jest": "^26.6.0"
+    "jest": "^26.6.0",
+    "sass": "^1.32.6"
   },
   "scripts": {
     "start": "react-scripts start",

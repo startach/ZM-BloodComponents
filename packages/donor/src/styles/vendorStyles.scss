@@ -1,0 +1,9 @@
+//add all external references here
+
+//make html elements css the same across all browsers -
+@import "~normalize.css";
+
+//allows to easily target different screen sizes
+//https://eduardoboucas.github.io/include-media/
+//https://css-tricks.com/approaches-media-queries-sass/
+@import "~include-media/dist/include-media";
