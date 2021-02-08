@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles/index.scss";
 import AppRouter from "./navigation/AppRouter";
 import Div100vh from "react-div-100vh";
 
