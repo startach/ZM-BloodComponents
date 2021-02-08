@@ -1,5 +1,3 @@
-@import "../../constants/colors.module";
-
 .experiment {
-    background-color: $main-blue;
+    background-color: var(--color-secondary);
 }
