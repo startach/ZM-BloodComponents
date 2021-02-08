@@ -1,6 +1,5 @@
 import React from "react";
 import AppRouter from "./navigation/AppRouter";
-import "./App.scss"
 import Div100vh from "react-div-100vh";
 
 export default function DonorApp() {
