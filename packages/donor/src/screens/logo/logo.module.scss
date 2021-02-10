@@ -1,0 +1,13 @@
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  height: 150px;
+  width: 150px;
+  background-image: url("../../assets/logo.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 20px;
+}
