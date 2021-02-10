@@ -1,6 +1,6 @@
 const hidePassword = (password: string) => {
   const passwordLength = password.length;
-  return '•'.repeat(passwordLength);
-}
+  return "•".repeat(passwordLength);
+};
 
 export default hidePassword;

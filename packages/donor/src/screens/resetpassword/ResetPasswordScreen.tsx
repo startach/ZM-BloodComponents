@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Input from "../register/MyInput";
 import Text from "../../components/Text";
 import Button from "../register/MyButton";
-import Logo from '../logo/Logo';
-import styles from '../register/RegisterScreen.module.scss';
-import classNames from 'classnames';
+import Logo from "../logo/Logo";
+import styles from "../register/RegisterScreen.module.scss";
+import classNames from "classnames";
 
 interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;
@@ -18,11 +18,12 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
     props.onResetPassword(email, setError);
   };
 
-  const EmailError = (error !== "" ?
+  const EmailError =
+    error !== "" ? (
       <div className={styles.errorMessage}>
         <Text>{error}</Text>
-      </div> :
-      null);
+      </div>
+    ) : null;
 
   return (
     <div>
@@ -30,24 +31,26 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
 
       <div className={styles.title}>איפוס סיסמה</div>
 
-      <div className={classNames(styles.screenSection, styles.inputTitleAndField)}>
+      <div
+        className={classNames(styles.screenSection, styles.inputTitleAndField)}
+      >
         <div className={styles.inputTitle}>דוא״ל</div>
         <Input
-            className={styles.inputField}
-            onChangeText={(emailContent) => {
-              setEmail(emailContent);
-              setError("");
-            }}
-            value={email}
+          className={styles.inputField}
+          onChangeText={(emailContent) => {
+            setEmail(emailContent);
+            setError("");
+          }}
+          value={email}
         />
         {EmailError}
       </div>
 
       <div className={styles.screenSection}>
         <Button
-            className={styles.signinButton}
-            title="איפוס סיסמה"
-            onClick={resetPassword}
+          className={styles.signinButton}
+          title="איפוס סיסמה"
+          onClick={resetPassword}
         />
       </div>
     </div>

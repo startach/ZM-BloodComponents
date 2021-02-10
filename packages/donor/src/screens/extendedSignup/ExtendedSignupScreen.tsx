@@ -1,7 +1,7 @@
 import React from "react";
 import { BloodType } from "@zm-blood-components/common";
 import Text from "../../components/Text";
-import Styles from "./_ExtendedSignup.module.scss"
+import Styles from "./_ExtendedSignup.module.scss";
 
 interface ExtendedSignupScreenProps {
   onSave: (
@@ -15,8 +15,14 @@ interface ExtendedSignupScreenProps {
 
 export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   const onSave = () => {
-    props.onSave("Ethan", "Victor", "1996-06-17", "0501234567", BloodType.A_PLUS);
-  }
+    props.onSave(
+      "Ethan",
+      "Victor",
+      "1996-06-17",
+      "0501234567",
+      BloodType.A_PLUS
+    );
+  };
   return (
     <div>
       <Text>{JSON.stringify(props)}</Text>
