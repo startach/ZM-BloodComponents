@@ -35,9 +35,15 @@ function signInWithEmail(
     .catch((error: firebase.auth.Error) => {
       switch (error.code) {
         case "auth/invalid-email":
-        case "auth/user-not-found":
-        case "auth/user-disabled":
           emailError("כתובת הדואר אינה תקינה");
+          return;
+
+        case "auth/user-not-found":
+          emailError("כתובת הדואר אינה רשומה");
+          return;
+
+        case "auth/user-disabled":
+          emailError("כתובת הדואר אינה פעילה");
           return;
 
         case "auth/wrong-password":

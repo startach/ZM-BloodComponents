@@ -1,7 +1,7 @@
 import React from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import { validateEmail } from "./RegisterScreenContainer";
+import { validateEmail } from "../register/RegisterScreenContainer";
 import ResetPasswordScreen from "./ResetPasswordScreen";
 import { useHistory } from "react-router-dom";
 

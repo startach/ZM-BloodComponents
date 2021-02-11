@@ -23,8 +23,14 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   const [bloodType, setBloodType] = useState("")
 
   const onSave = () => {
-    props.onSave("Ethan", "Victor", "1996-06-17", "0501234567", BloodType.A_PLUS);
-  }
+    props.onSave(
+      "Ethan",
+      "Victor",
+      "1996-06-17",
+      "0501234567",
+      BloodType.A_PLUS
+    );
+  };
   return (
     <div className={Styles["extended-signup"]}>
       <Text>{JSON.stringify(props)}</Text>

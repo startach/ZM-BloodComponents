@@ -40,7 +40,7 @@ with Yarn:
 yarn add husky -W
 ```
 
-Add local (dev) dependency to a specific workspace:
+Add local dependency to a specific workspace:
 
 ```
 lerna add @zm-blood-components/common --scope=@zm-blood-components/donor
@@ -49,7 +49,7 @@ lerna add @zm-blood-components/common --scope=@zm-blood-components/donor
 with Yarn:
 
 ```
-yarn workspace @zm-blood-components/common add react --dev
+yarn workspace @zm-blood-components/common add react
 ```
 
 #### We can use lerna (or yarn) to run command within specific package (from project root)
