@@ -7,7 +7,7 @@ import Text from "../Text";
 export interface BookDonationDayEntriesProps {
   title: string;
   appointments: AvailableAppointment[];
-  onAppointmentSelect?(selectedAppointment: AvailableAppointment): void;
+  onAppointmentSelect: (selectedAppointment: AvailableAppointment) => void;
 }
 
 function BookDonationEntriesGroup({
@@ -22,7 +22,7 @@ function BookDonationEntriesGroup({
         {appointments.map((appointment) => (
           <BookDonationEntry
             key={appointment.id}
-            donationDate={appointment.donationStartTime}
+            donationStartTime={appointment.donationStartTime}
             onRegisterClick={() => onAppointmentSelect?.(appointment)}
           />
         ))}

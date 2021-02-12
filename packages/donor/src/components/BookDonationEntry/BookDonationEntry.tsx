@@ -5,19 +5,19 @@ import { ToTimeString } from "../../utils/DateUtil";
 import Text from "../Text";
 
 export interface BookDonationEntryProps {
-  donationDate: Date;
-  onClick?(): void;
-  onRegisterClick?(): void;
+  donationStartTime: Date;
+  onClick?: () => void;
+  onRegisterClick?: () => void;
 }
 
 function BookDonationEntry({
-  donationDate,
+  donationStartTime,
   onClick,
   onRegisterClick,
 }: BookDonationEntryProps) {
   return (
     <Card className={styles.component} onClick={onClick}>
-      <Text>{ToTimeString(donationDate)}</Text>
+      <Text>{ToTimeString(donationStartTime)}</Text>
       <Text className={styles.registerText} onClick={onRegisterClick}>
         הירשם לתור
       </Text>

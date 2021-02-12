@@ -15,8 +15,8 @@ interface BookDonationScreenProps {
   lastDonation: Date;
   earliestNextDonationDate: Date;
   availableAppointments: AvailableAppointment[];
-  firstName?: string;
-  onAppointmentSelect?(appointment: AvailableAppointment): void;
+  firstName: string;
+  onAppointmentSelect: (appointment: AvailableAppointment) => void;
 }
 
 export default function BookDonationScreen({
@@ -54,7 +54,7 @@ export default function BookDonationScreen({
         <Text className={styles.dropdownTitle}>
           נא לבחור בית חולים ומועד לתרום בו
         </Text>
-        <Select<Hospital | "">
+        <Select
           className={styles.dropdown}
           options={hospitalsListOptions}
           value={selectedHospitals}

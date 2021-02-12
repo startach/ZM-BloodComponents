@@ -6,7 +6,7 @@ import { ToDateString } from "../../utils/DateUtil";
 
 export interface BookDonationHeaderProps {
   lastDonation?: Date;
-  firstName?: string;
+  firstName: string;
 }
 
 function BookDonationHeader({

@@ -30,6 +30,7 @@ export default function BookDonationScreenContainer() {
       earliestNextDonationDate={new Date(2021, 1, 13)}
       availableAppointments={availableAppointments}
       onAppointmentSelect={handleRegisterAppointment}
+      firstName={"יוני"}
     />
   );
 }
