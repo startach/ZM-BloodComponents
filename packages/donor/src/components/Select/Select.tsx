@@ -3,7 +3,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
-interface Option<T> {
+export interface SelectOption<T> {
   value: T;
   key: string;
   label: string;
@@ -19,7 +19,7 @@ type SelectProps<T> = {
   className?: string;
   isValid?: boolean;
   variant?: SelectVariant;
-  options: Option<T>[];
+  options: SelectOption<T>[];
 };
 
 export default function ZMSelect<T>({

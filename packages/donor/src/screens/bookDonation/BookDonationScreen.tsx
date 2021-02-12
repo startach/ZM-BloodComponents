@@ -10,6 +10,7 @@ import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup"
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/Select";
 import Text from "../../components/Text";
+import { SelectOption } from "../../components/Select/Select";
 
 interface BookDonationScreenProps {
   lastDonation: Date;
@@ -29,8 +30,7 @@ export default function BookDonationScreen({
   const [selectedHospitals, setSelectedHospitals] = useState<Hospital | "">("");
 
   const hospitalsListOptions = React.useMemo(() => {
-    let options: { label: string; key: string; value: Hospital | "" }[];
-
+    let options: SelectOption<Hospital | "">[];
     options = getHospitalsList(availableAppointments).map((Hospital) => ({
       label: Hospital,
       key: Hospital,
