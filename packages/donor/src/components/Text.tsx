@@ -7,7 +7,7 @@ interface TextProps
   > {}
 
 const Text: React.FunctionComponent<TextProps> = (props) => {
-  return <div>{props.children}</div>;
+  return <div {...props} />;
 };
 
 export default Text;
