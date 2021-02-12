@@ -1,12 +1,12 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
-import classnames from "classnames"
+import classnames from "classnames";
 
-type InputVariant = "standard" | "filled" | "outlined"
+type InputVariant = "standard" | "filled" | "outlined";
 
 type InputProps = {
-  id?: string,
+  id?: string;
   label?: string;
   onChangeText: (newValue: string) => void;
   value?: any;
@@ -21,7 +21,6 @@ type InputProps = {
   isFullWidth?: boolean;
 };
 
-
 export default function ZMInput({
   id,
   label,
@@ -35,25 +34,20 @@ export default function ZMInput({
   isDisabled,
   isValid = true,
   variant = "standard",
-  isFullWidth = false
+  isFullWidth = false,
 }: InputProps) {
-
   let adornments = {
     ...(mainIcon && {
       startAdornment: (
-        <InputAdornment position="start">
-          {mainIcon}
-        </InputAdornment>
-      )
+        <InputAdornment position="start">{mainIcon}</InputAdornment>
+      ),
     }),
     ...(actionIcon && {
       endAdornment: (
-        <InputAdornment position="end">
-          {actionIcon}
-        </InputAdornment>
-      )
-    })
-  }
+        <InputAdornment position="end">{actionIcon}</InputAdornment>
+      ),
+    }),
+  };
   return (
     <TextField
       id={id}

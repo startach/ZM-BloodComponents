@@ -1,11 +1,11 @@
-import Button from "@material-ui/core/Button"
+import Button from "@material-ui/core/Button";
 
-type ButtonVariant = "text" | "outlined" | "contained"
+type ButtonVariant = "text" | "outlined" | "contained";
 
 type ButtonProps = {
   onClick: () => void;
   title: string;
-  variant?: ButtonVariant
+  variant?: ButtonVariant;
   className?: string;
   leftIcon?: any;
   rightIcon?: any;
@@ -19,7 +19,7 @@ export default function ZMButton({
   className,
   leftIcon,
   rightIcon,
-  isDisabled = false
+  isDisabled = false,
 }: ButtonProps) {
   return (
     <Button

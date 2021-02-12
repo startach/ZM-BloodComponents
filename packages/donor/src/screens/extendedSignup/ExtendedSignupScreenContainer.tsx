@@ -10,57 +10,71 @@ export default function ExtendedSignupScreenContainer() {
     lastName: "lastName",
     phoneNumber: "phoneNumber",
     bloodType: "bloodType",
-  } as const
+  } as const;
 
   const history = useHistory();
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [bloodType, setBloodType] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [bloodType, setBloodType] = useState("");
   const [areFieldsValid, setAreFieldsValid] = useState({
     [FieldNames.firstName]: true,
     [FieldNames.lastName]: true,
     [FieldNames.phoneNumber]: true,
-    [FieldNames.bloodType]: true
-  })
+    [FieldNames.bloodType]: true,
+  });
 
   const handleChangeField = (value: string, fieldName: string) => {
-    let isFieldValid = true
+    let isFieldValid = true;
     let consecutiveLetters: number;
     let overTenConsecutiveLetters: boolean;
     let fullNameLength: number;
     switch (fieldName) {
       case FieldNames.firstName:
-        consecutiveLetters = value.indexOf(" ")
-        overTenConsecutiveLetters = consecutiveLetters > 9 || (consecutiveLetters === -1 && value.length > 9)
-        fullNameLength = value.length + lastName.length
-        if (value.length === 0 || overTenConsecutiveLetters || fullNameLength > 20) {
-          isFieldValid = false
+        consecutiveLetters = value.indexOf(" ");
+        overTenConsecutiveLetters =
+          consecutiveLetters > 9 ||
+          (consecutiveLetters === -1 && value.length > 9);
+        fullNameLength = value.length + lastName.length;
+        if (
+          value.length === 0 ||
+          overTenConsecutiveLetters ||
+          fullNameLength > 20
+        ) {
+          isFieldValid = false;
         }
-        setFirstName(value)
+        setFirstName(value);
         break;
       case FieldNames.lastName:
-        consecutiveLetters = value.indexOf(" ")
-        overTenConsecutiveLetters = consecutiveLetters > 9 || (consecutiveLetters === -1 && value.length > 9)
-        fullNameLength = value.length + firstName.length
-        if (value.length === 0 || overTenConsecutiveLetters || fullNameLength > 20) {
-          isFieldValid = false
+        consecutiveLetters = value.indexOf(" ");
+        overTenConsecutiveLetters =
+          consecutiveLetters > 9 ||
+          (consecutiveLetters === -1 && value.length > 9);
+        fullNameLength = value.length + firstName.length;
+        if (
+          value.length === 0 ||
+          overTenConsecutiveLetters ||
+          fullNameLength > 20
+        ) {
+          isFieldValid = false;
         }
-        setLastName(value)
+        setLastName(value);
         break;
       case FieldNames.phoneNumber:
-       const phoneValidator = /^05(?!6)\d{8}$/
-       isFieldValid = phoneValidator.test(value)
-       setPhoneNumber(value)
+        const phoneValidator = /^05(?!6)\d{8}$/;
+        isFieldValid = phoneValidator.test(value);
+        setPhoneNumber(value);
         break;
       case FieldNames.bloodType:
-        isFieldValid = Object.values(BloodType).map(value => value.toString()).includes(value)
-        setBloodType(value)
+        isFieldValid = Object.values(BloodType)
+          .map((value) => value.toString())
+          .includes(value);
+        setBloodType(value);
         break;
     }
 
-    setAreFieldsValid({...areFieldsValid, [fieldName]: isFieldValid})
-  }
+    setAreFieldsValid({ ...areFieldsValid, [fieldName]: isFieldValid });
+  };
 
   const onSave = (
     firstName: string,
@@ -79,7 +93,18 @@ export default function ExtendedSignupScreenContainer() {
     history.goBack();
   };
 
-  return <ExtendedSignupScreen
-    {...{ onSave, firstName, lastName, phoneNumber, bloodType, areFieldsValid, FieldNames, handleChangeField }}
-  />;
+  return (
+    <ExtendedSignupScreen
+      {...{
+        onSave,
+        firstName,
+        lastName,
+        phoneNumber,
+        bloodType,
+        areFieldsValid,
+        FieldNames,
+        handleChangeField,
+      }}
+    />
+  );
 }
