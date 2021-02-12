@@ -1,0 +1,12 @@
+.component{
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--layout-distance-normal);
+  box-sizing: border-box;
+}
