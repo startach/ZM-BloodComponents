@@ -77,7 +77,6 @@ export default function ExtendedSignupScreenContainer() {
   const bloodType = {
     ...bloodTypeInput,
     onChange: (value: BloodType) => {
-      console.log(value);
       setBloodTypeInput({ value, isValid: value !== BloodType.UNSPECIFIED });
     },
   };
