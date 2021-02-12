@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { BloodType } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Select from "../../components/Select";
 import Styles from "./_ExtendedSignup.module.scss";
-import RadioGroup from "../../components/RadioGroup";
 
+type ExtendedSingupField = {
+  value: string;
+  isValid: boolean;
+  onChange: (value: any) => void;
+};
 interface ExtendedSignupScreenProps {
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  bloodType: string;
-  areFieldsValid: { [key: string]: boolean };
-  onSave: (
-    firstName: string,
-    lastName: string,
-    birthDate: string, // YYYY-MM-DD
-    phoneNumber: string,
-    bloodType: BloodType
-  ) => void;
-  FieldNames: { [key: string]: string };
-  handleChangeField: (value: string, fieldName: string) => void;
+  firstName: ExtendedSingupField;
+  lastName: ExtendedSingupField;
+  phoneNumber: ExtendedSingupField;
+  bloodType: ExtendedSingupField;
+  onSave: () => void;
 }
 
 export default function ExtendedSignupScreen({
@@ -28,46 +23,36 @@ export default function ExtendedSignupScreen({
   lastName,
   phoneNumber,
   bloodType,
-  areFieldsValid,
   onSave,
-  FieldNames,
-  handleChangeField,
 }: ExtendedSignupScreenProps) {
-  const [bloodTypeExample, setBloodTypeExample] = useState(BloodType.A_MINUS);
-
-  const Save = () => {
-    onSave("Ethan", "Victor", "1996-06-17", "0501234567", BloodType.A_PLUS);
-  };
   return (
     <div className={Styles["extended-signup"]}>
       <Input
-        value={firstName}
-        onChangeText={(value) => handleChangeField(value, FieldNames.firstName)}
+        value={firstName.value}
+        onChangeText={firstName.onChange}
         label="שם פרטי"
-        isValid={areFieldsValid[FieldNames.firstName]}
+        isValid={firstName.isValid}
       />
       <br />
       <Input
-        value={lastName}
-        onChangeText={(value) => handleChangeField(value, FieldNames.lastName)}
+        value={lastName.value}
+        onChangeText={lastName.onChange}
         label="שם משפחה"
-        isValid={areFieldsValid[FieldNames.lastName]}
+        isValid={lastName.isValid}
       />
       <br />
       <Input
-        value={phoneNumber}
-        onChangeText={(value) =>
-          handleChangeField(value, FieldNames.phoneNumber)
-        }
+        value={phoneNumber.value}
+        onChangeText={phoneNumber.onChange}
         label="מספר טלפון"
-        isValid={areFieldsValid[FieldNames.phoneNumber]}
+        isValid={phoneNumber.isValid}
       />
       <br />
       <Select
-        value={bloodType}
-        onChange={(value) => handleChangeField(value, FieldNames.bloodType)}
+        value={bloodType.value}
+        onChange={bloodType.onChange}
         label="סוג דם"
-        isValid={areFieldsValid[FieldNames.bloodType]}
+        isValid={bloodType.isValid}
         options={Object.values(BloodType).map((type, index) => {
           return {
             key: "ExtendedSignupScreen-" + index,
@@ -78,35 +63,11 @@ export default function ExtendedSignupScreen({
       />
       <br />
       <Button
-        onClick={Save}
+        onClick={onSave}
         title={"שמירה"}
-        isDisabled={Object.values(areFieldsValid).some((value) => !value)}
-      />
-
-      {
-        // Examples go here
-      }
-      <br />
-      <br />
-      <Input
-        type="password"
-        variant="outlined"
-        onChangeText={() => {}}
-        label="ססמא"
-      />
-      <br />
-      <RadioGroup
-        label="סוג דם"
-        onChange={(e, value) => setBloodTypeExample(value as BloodType)}
-        value={bloodTypeExample}
-        name="blood-type-example"
-        options={Object.values(BloodType).map((type, index) => {
-          return {
-            value: type,
-            label: type,
-            isDisabled: index % 2 === 0,
-          };
-        })}
+        isDisabled={[firstName, lastName, phoneNumber, bloodType].some(
+          (field) => !field.isValid
+        )}
       />
     </div>
   );

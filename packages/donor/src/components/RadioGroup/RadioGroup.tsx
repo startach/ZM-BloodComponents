@@ -11,7 +11,7 @@ type RadioOption = {
   isDisabled?: boolean;
 };
 
-type SelectProps = {
+type RadioGroupProps = {
   label?: string;
   onChange: (event: any, value: string) => void;
   value: string;
@@ -28,7 +28,7 @@ export default function ZMRadio({
   value,
   name,
   className,
-}: SelectProps) {
+}: RadioGroupProps) {
   return (
     <div>
       <FormLabel component="legend">{label}</FormLabel>

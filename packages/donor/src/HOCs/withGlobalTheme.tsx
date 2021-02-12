@@ -2,21 +2,22 @@ import { create } from "jss";
 import rtl from "jss-rtl";
 import { StylesProvider, jssPreset } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import colors from "../utils/colors";
 
 const globalTheme = createMuiTheme({
   direction: "rtl", // Both here and <body dir="rtl">
   palette: {
     primary: {
-      light: "#c7007d",
-      main: "#c7007d",
+      light: colors.primary,
+      main: colors.primary,
     },
     secondary: {
-      light: "#347d8d",
-      main: "#347d8d",
+      light: colors.secondary,
+      main: colors.secondary,
     },
     info: {
-      light: "#f3f5f7",
-      main: "#f3f5f7",
+      light: colors.info,
+      main: colors.info,
     },
   },
 });

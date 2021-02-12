@@ -7,8 +7,8 @@ type ButtonProps = {
   title: string;
   variant?: ButtonVariant;
   className?: string;
-  leftIcon?: any;
-  rightIcon?: any;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
   isDisabled?: boolean;
 };
 
@@ -17,8 +17,8 @@ export default function ZMButton({
   title,
   variant = "contained",
   className,
-  leftIcon,
-  rightIcon,
+  startIcon,
+  endIcon,
   isDisabled = false,
 }: ButtonProps) {
   return (
@@ -27,8 +27,8 @@ export default function ZMButton({
       variant={variant}
       color="primary"
       className={className}
-      startIcon={leftIcon}
-      endIcon={rightIcon}
+      startIcon={startIcon}
+      endIcon={endIcon}
       disabled={isDisabled}
     >
       {title}
