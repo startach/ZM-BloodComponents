@@ -26,15 +26,11 @@
 
   // type scale
   --text-scale-ratio: 1.2;
-  --text-size-xs: calc(
-    (1em / var(--text-scale-ratio)) / var(--text-scale-ratio)
-  );
-  --text-size-sm: calc(var(--text-xs) * var(--text-scale-ratio));
-  --text-size-md: calc(
-    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
-  );
-  --text-size-lg: calc(var(--text-md) * var(--text-scale-ratio));
-  --text-size-xl: calc(var(--text-lg) * var(--text-scale-ratio));
-  --text-size-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
-  --text-size-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+  --text-size-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-size-sm: calc(var(--text-size-xs) * var(--text-scale-ratio));
+  --text-size-md: calc(var(--text-size-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-size-lg: calc(var(--text-size-md) * var(--text-scale-ratio));
+  --text-size-xl: calc(var(--text-size-lg) * var(--text-scale-ratio));
+  --text-size-xxl: calc(var(--text-size-xl) * var(--text-scale-ratio));
+  --text-size-xxxl: calc(var(--text-size-xxl) * var(--text-scale-ratio));
 }
