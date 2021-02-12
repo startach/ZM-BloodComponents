@@ -9,6 +9,7 @@ type ButtonProps = {
   className?: string;
   leftIcon?: any;
   rightIcon?: any;
+  isDisabled?: boolean;
 };
 
 export default function ZMButton({
@@ -17,7 +18,8 @@ export default function ZMButton({
   variant = "contained",
   className,
   leftIcon,
-  rightIcon
+  rightIcon,
+  isDisabled = false
 }: ButtonProps) {
   return (
     <Button
@@ -27,6 +29,7 @@ export default function ZMButton({
       className={className}
       startIcon={leftIcon}
       endIcon={rightIcon}
+      disabled={isDisabled}
     >
       {title}
     </Button>

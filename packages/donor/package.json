@@ -7,6 +7,7 @@
     "@zm-blood-components/common": "^1.0.0",
     "classnames": "^2.2.6",
     "include-media": "^1.4.9",
+    "jss-rtl": "^0.3.0",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.1",

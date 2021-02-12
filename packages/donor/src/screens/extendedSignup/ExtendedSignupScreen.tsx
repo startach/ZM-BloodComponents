@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { BloodType } from "@zm-blood-components/common";
-import Text from "../../components/Text";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import Select from "../../components/Select"
 import Styles from "./_ExtendedSignup.module.scss"
+import RadioGroup from "../../components/RadioGroup";
 
 interface ExtendedSignupScreenProps {
+  firstName: string,
+  lastName: string,
+  phoneNumber: string,
+  bloodType: string,
+  areFieldsValid: { [key: string]: boolean },
   onSave: (
     firstName: string,
     lastName: string,
@@ -13,17 +19,19 @@ interface ExtendedSignupScreenProps {
     phoneNumber: string,
     bloodType: BloodType
   ) => void;
+  FieldNames: { [key: string]: string },
+  handleChangeField: (value: string, fieldName: string) => void;
 }
 
-export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
+export default function ExtendedSignupScreen({
+  firstName, lastName, phoneNumber, bloodType,
+  areFieldsValid, onSave, FieldNames, handleChangeField
+}: ExtendedSignupScreenProps) {
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [bloodType, setBloodType] = useState("")
+  const [bloodTypeExample, setBloodTypeExample] = useState(BloodType.A_MINUS)
 
-  const onSave = () => {
-    props.onSave(
+  const Save = () => {
+    onSave(
       "Ethan",
       "Victor",
       "1996-06-17",
@@ -33,26 +41,67 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   };
   return (
     <div className={Styles["extended-signup"]}>
-      <Text>{JSON.stringify(props)}</Text>
       <Input
         value={firstName}
-        onChangeText={(value) => setFirstName(value)}
-        label="שם פרטי" />
+        onChangeText={(value) => handleChangeField(value, FieldNames.firstName)}
+        label="שם פרטי"
+        isValid={areFieldsValid[FieldNames.firstName]}
+      />
+      <br />
       <Input
         value={lastName}
-        onChangeText={(value) => setLastName(value)}
-        label="שם משפחה" />
+        onChangeText={(value) => handleChangeField(value, FieldNames.lastName)}
+        label="שם משפחה"
+        isValid={areFieldsValid[FieldNames.lastName]}
+      />
+      <br />
       <Input
         value={phoneNumber}
-        onChangeText={(value) => setPhoneNumber(value)}
-        label="מספר טלפון" />
-      <Input
+        onChangeText={(value) => handleChangeField(value, FieldNames.phoneNumber)}
+        label="מספר טלפון"
+        isValid={areFieldsValid[FieldNames.phoneNumber]}
+      />
+      <br />
+      <Select
         value={bloodType}
-        onChangeText={(value) => setBloodType(value)}
-        label="סוג דם" />
+        onChange={(value) => handleChangeField(value, FieldNames.bloodType)}
+        label="סוג דם"
+        isValid={areFieldsValid[FieldNames.bloodType]}
+        options={Object.values(BloodType).map((type, index) => {
+          return {
+            key: "ExtendedSignupScreen-" + index,
+            value: type,
+            label: BloodType[type]
+          }
+        })}
+      />
+      <br />
       <Button
-        onClick={onSave}
-        title={"שמירה"} />
+        onClick={Save}
+        title={"שמירה"}
+        isDisabled={Object.values(areFieldsValid).some(value => !value)}
+      />
+
+      {
+        // Examples go here
+      }
+  <br/>
+  <br/>
+      <Input type="password" variant="outlined" onChangeText={() => { }} label="ססמא" />
+      <br/>
+      <RadioGroup
+        label="סוג דם"
+        onChange={((e, value) => setBloodTypeExample(value as BloodType))}
+        value={bloodTypeExample}
+        name="blood-type-example"
+        options={Object.values(BloodType).map((type, index) => {
+          return {
+            value: type,
+            label: type,
+            isDisabled: index % 2 === 0
+          }
+        })}
+      />
     </div>
   );
 }
