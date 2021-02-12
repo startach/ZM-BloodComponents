@@ -8,9 +8,17 @@ body,
   direction: rtl;
 }
 
-#root {
-  overflow-x: hidden;
-  overflow-y: scroll;
+body {
+  overflow: hidden;
+
   background-color: var(--color-bg);
   color: var(--color-text);
+
+  font-family: var(--font-family-content);
+  font-weight: var(--font-content-weight-normal);
+  font-size: var(--text-size-md);
+  line-height: var(--font-line-height);
+  -webkit-font-smoothing: antialiased;
+
+
 }

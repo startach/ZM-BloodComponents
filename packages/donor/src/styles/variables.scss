@@ -3,34 +3,73 @@
 :root {
   --color-primary: #c7007d;
   --color-secondary: #347d8d;
-
   --color-tertiary: #a5d262;
+  --color-black: black;
+  --color-white: white;
 
-  --color-bg: white;
-  --color-text: black;
+  --color-bg: var(--color-white);
+  --color-text: var(--color-black);
 
   --color-statusbar-bg: var(--color-secondary);
   --color-statusbar-text: white;
 
   --color-header-bg: #f3f5f7;
-  --color-header-text: white;
+  --color-header-text: var(--color-black);
+
+  --color-card-bg: var(--color-white);
+  --color-card-text: var(--color-black);
 }
 
-//fonts sizes--------------------------------------------------
+//fonts--------------------------------------------------------
 :root {
+  --font-family-titles: "David Libre", serif;
+  --font-title-weight-normal: 400;
+  --font-title-weight-bold: 500;
+  --font-title-weight-bolder: 700;
+
+  --font-family-content: "Arimo", sans-serif;
+  --font-content-weight-normal: 400;
+  --font-content-weight-bold: 500;
+  --font-content-weight-bolder: 700;
+
+  --font-line-height: 160%;
+
   //copied form here
   //https://codyhouse.co/blog/post/css-custom-properties-vs-sass-variables
 
   // body font size
   --text-base-size: 1em;
 
-  // type scale
-  --text-scale-ratio: 1.2;
-  --text-size-xs: calc((1em / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-scale-ratio: 1.1;
+  --text-size-xs: calc(
+    (1em / var(--text-scale-ratio)) / var(--text-scale-ratio)
+  );
   --text-size-sm: calc(var(--text-size-xs) * var(--text-scale-ratio));
-  --text-size-md: calc(var(--text-size-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-size-md: calc(
+    var(--text-size-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
+  );
   --text-size-lg: calc(var(--text-size-md) * var(--text-scale-ratio));
   --text-size-xl: calc(var(--text-size-lg) * var(--text-scale-ratio));
   --text-size-xxl: calc(var(--text-size-xl) * var(--text-scale-ratio));
   --text-size-xxxl: calc(var(--text-size-xxl) * var(--text-scale-ratio));
+}
+
+//layouts-------------------------------------------------------
+:root {
+  // elements padding/margin
+  --layout-distance-small: 10px;
+  --layout-distance-normal: 15px;
+}
+
+//other styling rules------------------------------------------
+:root {
+  --shadow-normal: rgba(0, 0, 0, 0.2) 0 1px 3px 1px;
+  --shadow-string: rgba(0, 0, 0, 0.3) 0 1px 4px 1px;
+
+  --border-radius-normal: 5px;
+  --border-radius-strong: 10px;
+  --border-radius-stronger: 15px;
+
+  --transition-speed-fast: 100ms;
+  --transition-speed-normal: 200ms;
 }
