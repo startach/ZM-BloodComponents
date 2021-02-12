@@ -3,22 +3,26 @@ import InputLabel from "@material-ui/core/InputLabel";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
-type Option = { value: string; key: string; label: string };
+interface Option<T> {
+  value: T;
+  key: string;
+  label: string;
+}
 
-type SelectProps = {
+type SelectProps<T> = {
   id?: string;
   label?: string;
-  onChange: (value: string) => void;
-  value?: any;
+  onChange: (value: T) => void;
+  value?: T;
   isDisabled?: boolean;
   placeholder?: string;
   className?: string;
   isValid?: boolean;
   variant?: SelectVariant;
-  options: Option[];
+  options: Option<T>[];
 };
 
-export default function ZMSelect({
+export default function ZMSelect<T>({
   id,
   label,
   onChange,
@@ -29,22 +33,26 @@ export default function ZMSelect({
   isValid = true,
   variant = "standard",
   options,
-}: SelectProps) {
+}: SelectProps<T>) {
   return (
     <div>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <NativeSelect
         id={id}
-        onChange={(e) => onChange(e.target.value)}
-        value={value}
+        onChange={(e) =>
+          onChange(
+            options.find((option) => option.key === e.target.value)?.value as T
+          )
+        }
+        value={options.find((option) => option.value === value)?.key}
         disabled={isDisabled}
         placeholder={placeholder}
         className={className}
         error={!isValid}
         variant={variant}
       >
-        {options.map(({ key, value, label }) => (
-          <option key={key} value={value} label={label} />
+        {options.map(({ key, label }) => (
+          <option key={key} value={key} label={label} />
         ))}
       </NativeSelect>
     </div>

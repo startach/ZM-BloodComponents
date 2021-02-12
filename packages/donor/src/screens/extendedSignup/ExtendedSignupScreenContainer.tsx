@@ -19,7 +19,7 @@ export default function ExtendedSignupScreenContainer() {
     isValid: true,
   });
   const [bloodTypeInput, setBloodTypeInput] = useState({
-    value: "",
+    value: BloodType.UNSPECIFIED,
     isValid: true,
   });
 
@@ -49,7 +49,7 @@ export default function ExtendedSignupScreenContainer() {
       lastNameInput.value,
       "", // unused in pilot
       phoneNumberInput.value,
-      bloodTypeInput.value as BloodType
+      bloodTypeInput.value
     );
     history.goBack();
   };
@@ -76,11 +76,9 @@ export default function ExtendedSignupScreenContainer() {
   };
   const bloodType = {
     ...bloodTypeInput,
-    onChange: (value: string) => {
-      const isValid = Object.values(BloodType)
-        .map((value) => value.toString())
-        .includes(value);
-      setBloodTypeInput({ value, isValid });
+    onChange: (value: BloodType) => {
+      console.log(value);
+      setBloodTypeInput({ value, isValid: value !== BloodType.UNSPECIFIED });
     },
   };
 

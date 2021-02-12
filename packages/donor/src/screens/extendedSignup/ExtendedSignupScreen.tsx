@@ -5,16 +5,16 @@ import Input from "../../components/Input";
 import Select from "../../components/Select";
 import Styles from "./_ExtendedSignup.module.scss";
 
-type ExtendedSingupField = {
-  value: string;
+type ExtendedSingupField<T> = {
+  value: T;
   isValid: boolean;
-  onChange: (value: any) => void;
+  onChange: (value: T) => void;
 };
 interface ExtendedSignupScreenProps {
-  firstName: ExtendedSingupField;
-  lastName: ExtendedSingupField;
-  phoneNumber: ExtendedSingupField;
-  bloodType: ExtendedSingupField;
+  firstName: ExtendedSingupField<string>;
+  lastName: ExtendedSingupField<string>;
+  phoneNumber: ExtendedSingupField<string>;
+  bloodType: ExtendedSingupField<BloodType>;
   onSave: () => void;
 }
 
