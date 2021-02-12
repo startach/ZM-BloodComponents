@@ -7,7 +7,7 @@ import RegisterScreenContainer from "../screens/register/RegisterScreenContainer
 import ResetPasswordScreenContainer from "../screens/resetpassword/ResetPasswordScreenContainer";
 import { MainNavigationKeys } from "./app/MainNavigationKeys";
 import HomeScreenContainer from "../screens/HomeScreenContainer";
-import BookDonationScreenContainer from "../screens/BookDonationScreenContainer";
+import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
 import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
