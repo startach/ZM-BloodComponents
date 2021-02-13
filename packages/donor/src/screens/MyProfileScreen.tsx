@@ -14,7 +14,6 @@ interface MyProfileScreenProps {
 }
 
 export default function MyProfileScreen(props: MyProfileScreenProps) {
-  // TODO show loading spinner until donor is defined
 
   return (
     <div>
