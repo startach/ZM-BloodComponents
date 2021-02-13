@@ -1,6 +1,29 @@
 {
   "projects": {
     "staging": "blood-components",
-    "default": "blood-components"
+    "default": "blood-components",
+    "production": "blood-components-9ad48"
+  },
+  "targets": {
+    "blood-components": {
+      "hosting": {
+        "donor": [
+          "zm-donor-qa"
+        ],
+        "admin": [
+          "zm-admin-qa"
+        ]
+      }
+    },
+    "blood-components-9ad48": {
+      "hosting": {
+        "donor": [
+          "zm-donor-prod"
+        ],
+        "admin": [
+          "zm-admin-prod"
+        ]
+      }
+    }
   }
 }

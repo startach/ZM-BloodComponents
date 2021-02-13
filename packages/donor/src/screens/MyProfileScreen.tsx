@@ -14,7 +14,6 @@ interface MyProfileScreenProps {
 }
 
 export default function MyProfileScreen(props: MyProfileScreenProps) {
-
   return (
     <div>
       <Text>{JSON.stringify(props)}</Text>
