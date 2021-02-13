@@ -5,34 +5,36 @@ import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenK
 import SignInScreenContainer from "../screens/signin/SignInScreenContainer";
 import RegisterScreenContainer from "../screens/register/RegisterScreenContainer";
 import ResetPasswordScreenContainer from "../screens/resetpassword/ResetPasswordScreenContainer";
-import { MainNavigationKeys } from "./app/MainNavigationKeys";
-import HomeScreenContainer from "../screens/HomeScreenContainer";
-import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
-import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
-import UpcomingDonationScreenContainer from "../screens/UpcomingDonationScreenContainer";
-import DonationHistoryScreenContainer from "../screens/DonationHistoryScreenContainer";
-import MyProfileScreenContainer from "../screens/MyProfileScreenContainer";
+import LoggedInRouter from "./app/LoggedInRouter";
+import { Donor } from "@zm-blood-components/common";
+
+type AppState = {
+  isLoggedIn: boolean;
+  isLoading: boolean;
+  user?: Donor;
+};
 
 export default function AppRouter() {
-  const [loggedInStatus, setLoggedInStatus] = useState({
+  const [appState, setAppState] = useState<AppState>({
     isLoading: true,
     isLoggedIn: false,
   });
 
-  if (loggedInStatus.isLoading) {
+  if (appState.isLoading) {
     return (
       <AuthLoadingScreenContainer
-        setIsLoggedIn={(isLoggedIn: boolean) => {
-          setLoggedInStatus({
+        onFinishedLoading={(isLoggedIn: boolean, user?: Donor) => {
+          setAppState({
             isLoggedIn,
             isLoading: false,
+            user: user,
           });
         }}
       />
     );
   }
 
-  if (!loggedInStatus.isLoggedIn) {
+  if (!appState.isLoggedIn) {
     return (
       <Router>
         <Switch>
@@ -50,28 +52,5 @@ export default function AppRouter() {
     );
   }
 
-  return (
-    <Router>
-      <Switch>
-        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
-          <ExtendedSignupScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
-          <UpcomingDonationScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.DonationHistory}>
-          <DonationHistoryScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.MyProfile}>
-          <MyProfileScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.BookDonation}>
-          <BookDonationScreenContainer />
-        </Route>
-        <Route path={"*"}>
-          <HomeScreenContainer />
-        </Route>
-      </Switch>
-    </Router>
-  );
+  return <LoggedInRouter user={appState.user} />;
 }

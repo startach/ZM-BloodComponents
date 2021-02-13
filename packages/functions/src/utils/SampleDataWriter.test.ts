@@ -90,8 +90,8 @@ test.skip("Write sample data", async () => {
     email: "email",
     phone: "phone",
     bloodType: BloodType.A_MINUS,
-    firstName: "firstName",
-    lastName: "lastName",
+    firstName: "ירון",
+    lastName: "מלין",
     birthDate: "2020-11-13",
   };
 

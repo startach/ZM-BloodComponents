@@ -3,7 +3,7 @@ import { BloodType, Donor } from "@zm-blood-components/common";
 import Text from "../components/Text";
 
 interface MyProfileScreenProps {
-  donor?: Donor;
+  user?: Donor;
   onSave: (
     firstName: string,
     lastName: string,
