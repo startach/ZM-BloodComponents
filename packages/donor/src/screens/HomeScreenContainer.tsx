@@ -4,8 +4,13 @@ import "firebase/auth";
 import HomeScreen from "./HomeScreen";
 import { MainNavigationKeys } from "../navigation/app/MainNavigationKeys";
 import { useHistory } from "react-router-dom";
+import { Donor } from "@zm-blood-components/common";
 
-export default function HomeScreenContainer() {
+interface HomeScreenContainerProps {
+  user: Donor;
+}
+
+export default function HomeScreenContainer(props: HomeScreenContainerProps) {
   const history = useHistory();
 
   const signOut = () => {
@@ -14,13 +19,11 @@ export default function HomeScreenContainer() {
 
   return (
     <HomeScreen
+      firstName={props.user.firstName}
       onSignOut={signOut}
       goToBookDonationScreen={() => {
         history.push(MainNavigationKeys.BookDonation);
       }}
-      goToExtendedSignupScreen={() =>
-        history.push(MainNavigationKeys.ExtendedSignup)
-      }
       goToUpcomingDonationScreen={() =>
         history.push(MainNavigationKeys.UpcomingDonation)
       }

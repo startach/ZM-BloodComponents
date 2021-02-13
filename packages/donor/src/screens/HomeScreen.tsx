@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "../components/Button";
+import Text from "../components/Text";
 
 interface HomeScreenProps {
+  firstName: string;
   onSignOut: () => void;
-  goToExtendedSignupScreen: () => void;
   goToBookDonationScreen: () => void;
   goToUpcomingDonationScreen: () => void;
   goToMyProfileScreen: () => void;
@@ -12,8 +13,8 @@ interface HomeScreenProps {
 export default function HomeScreen(props: HomeScreenProps) {
   return (
     <div>
+      <Text>שלום {props.firstName}</Text>
       בחר מסך:
-      <Button title="מסך הזנת פרטים" onClick={props.goToExtendedSignupScreen} />
       <Button
         title="מסך תרומה קרובה"
         onClick={props.goToUpcomingDonationScreen}

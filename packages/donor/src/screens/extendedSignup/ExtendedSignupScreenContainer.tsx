@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { BloodType } from "@zm-blood-components/common";
+import { BloodType, Donor } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
-export default function ExtendedSignupScreenContainer() {
+interface ExtendedSignupScreenContainerProps {
+  updateUserInAppState: (user: Donor) => void;
+}
+
+export default function ExtendedSignupScreenContainer(
+  props: ExtendedSignupScreenContainerProps
+) {
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
@@ -42,13 +48,14 @@ export default function ExtendedSignupScreenContainer() {
   };
 
   const onSave = () => {
-    FirebaseFunctions.saveDonor(
+    const newUser = FirebaseFunctions.saveDonor(
       firstNameInput.value,
       lastNameInput.value,
       "", // unused in pilot
       phoneNumberInput.value,
       bloodTypeInput.value
     );
+    props.updateUserInAppState(newUser);
   };
 
   const firstName = {
