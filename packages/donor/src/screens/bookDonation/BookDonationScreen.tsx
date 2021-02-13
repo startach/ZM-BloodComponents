@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styles from "./BookDonationScreen.module.scss";
-import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  Hospital,
+  LocaleUtils,
+} from "@zm-blood-components/common";
 import {
   getHospitalsList,
   groupAndSortAvailableAppointments,
@@ -31,10 +35,10 @@ export default function BookDonationScreen({
 
   const hospitalsListOptions = React.useMemo(() => {
     let options: SelectOption<Hospital | "">[];
-    options = getHospitalsList(availableAppointments).map((Hospital) => ({
-      label: Hospital,
-      key: Hospital,
-      value: Hospital,
+    options = getHospitalsList(availableAppointments).map((hospital) => ({
+      label: LocaleUtils.getHospitalName(hospital),
+      key: hospital,
+      value: hospital,
     }));
     options.unshift({ label: "הכל", key: "all", value: "" });
     return options;

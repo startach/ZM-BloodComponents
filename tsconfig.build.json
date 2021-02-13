@@ -9,5 +9,6 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "types": ["node"]
-  }
+  },
+  "exclude": ["node_modules", "lib", "**/*.test.ts*"]
 }
