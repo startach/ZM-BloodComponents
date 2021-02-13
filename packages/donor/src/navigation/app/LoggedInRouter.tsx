@@ -11,20 +11,17 @@ import { Donor } from "@zm-blood-components/common";
 
 interface LoggedInRouterProps {
   user?: Donor;
+  setUser: (user: Donor) => void;
 }
 
-export default function LoggedInRouter({ user }: LoggedInRouterProps) {
+export default function LoggedInRouter({ user, setUser }: LoggedInRouterProps) {
   if (!user) {
-    return <ExtendedSignupScreenContainer />;
+    return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
   return (
     <Router>
       <Switch>
-        <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
-          {/* TODO this is here for development only */}
-          <ExtendedSignupScreenContainer />
-        </Route>
         <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
           <UpcomingDonationScreenContainer />
         </Route>

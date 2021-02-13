@@ -28,14 +28,14 @@ export function saveDonor(
   firstName: string,
   lastName: string,
   birthDate: string,
-  phoneNumber: string,
+  phone: string,
   bloodType: BloodType
-) {
+): Donor {
   const currentUser = firebase.auth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return;
+    throw Error("Unauthorized to update user");
   }
 
   const saveDonorFunction = firebase
@@ -47,12 +47,21 @@ export function saveDonor(
     email: currentUser.email,
     firstName,
     lastName,
-    phone: phoneNumber,
+    phone,
     bloodType,
     birthDate,
   };
 
   saveDonorFunction(request).catch((e) => console.error(e));
+  return {
+    id: currentUser.uid,
+    email: currentUser.email,
+    firstName,
+    lastName,
+    phone,
+    bloodType,
+    birthDate,
+  };
 }
 
 export async function getDonor(): Promise<Donor | undefined> {

@@ -52,5 +52,15 @@ export default function AppRouter() {
     );
   }
 
-  return <LoggedInRouter user={appState.user} />;
+  return (
+    <LoggedInRouter
+      user={appState.user}
+      setUser={(user: Donor) => {
+        setAppState({
+          ...appState,
+          user: user,
+        });
+      }}
+    />
+  );
 }
