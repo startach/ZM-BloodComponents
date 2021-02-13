@@ -5,5 +5,5 @@ test("DateComparer works", () => {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 
-  expect(DateComparer(yesterday, now)).toBeGreaterThan(0);
+  expect(DateComparer(now, yesterday)).toBeGreaterThan(0);
 });
