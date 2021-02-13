@@ -6,9 +6,11 @@ import Text from "../Text";
 export interface IconButtonProps {
   iconSrc: string;
   label?: string;
+  iconSize?: string | number;
+  children?: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  iconSize?: string | number;
+  titleClassName?: string;
 }
 
 function IconButton({
@@ -16,24 +18,37 @@ function IconButton({
   label,
   onClick,
   className,
-  iconSize = 20,
+  titleClassName,
+  children,
+  iconSize = 40,
 }: IconButtonProps) {
   const iconSizeStr = React.useMemo(
     () => `${iconSize}${typeof iconSize === "number" ? "px" : ""}`,
     [iconSize]
   );
 
+  const componentClassName = React.useMemo(
+    () =>
+      classNames({
+        [styles.component]: true,
+        "anim_onClick--scaleDown": onClick,
+        className,
+      }),
+    [className, onClick]
+  );
+
   return (
-    <button
-      className={classNames(styles.component, className)}
-      onClick={onClick}
-    >
+    <button className={componentClassName} onClick={onClick}>
       <img
         src={iconSrc}
         alt={`${label} button`}
         style={{ width: iconSizeStr, height: iconSizeStr }}
+        className={styles.icon}
       />
-      <Text>{label}</Text>
+      <div className={classNames(styles.titleSection, titleClassName)}>
+        {label && <Text>{label}</Text>}
+        {children}
+      </div>
     </button>
   );
 }
