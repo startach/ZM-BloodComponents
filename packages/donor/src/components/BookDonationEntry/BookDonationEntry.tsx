@@ -3,6 +3,7 @@ import styles from "./BookDonationEntry.module.scss";
 import Card from "../Card";
 import { ToTimeString } from "../../utils/DateUtil";
 import Text from "../Text";
+import classNames from "classnames";
 
 export interface BookDonationEntryProps {
   donationStartTime: Date;
@@ -16,7 +17,10 @@ function BookDonationEntry({
   onRegisterClick,
 }: BookDonationEntryProps) {
   return (
-    <Card className={styles.component} onClick={onClick}>
+    <Card
+      className={classNames(styles.component, "anim_onClick--scaleDown")}
+      onClick={onClick}
+    >
       <Text>{ToTimeString(donationStartTime)}</Text>
       <Text className={styles.registerText} onClick={onRegisterClick}>
         הירשם לתור

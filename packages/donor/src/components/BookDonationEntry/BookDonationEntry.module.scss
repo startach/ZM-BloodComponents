@@ -3,11 +3,6 @@
   justify-content: space-between;
 
   font-family: var(--font-family-titles);
-  transition: all var(--transition-speed-fast) linear;
-}
-
-.component:active {
-  transform: scale(1.01);
 }
 
 .registerText {
