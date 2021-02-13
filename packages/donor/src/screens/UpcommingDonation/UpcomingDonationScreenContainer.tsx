@@ -19,7 +19,7 @@ export default function UpcomingDonationScreenContainer() {
   }, []);
 
   //TODO: ensure that a donation is always available
-  if (!upcomingDonations) return <></>;
+  if (!upcomingDonations) return <>no appointment info were provided :(</>;
 
   return (
     <UpcomingDonationScreen
