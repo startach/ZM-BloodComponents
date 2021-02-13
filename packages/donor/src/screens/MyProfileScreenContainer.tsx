@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
 
-export default function MyProfileScreenContainer() {
-  const [donor, setDonor] = useState<Donor>();
-  const history = useHistory();
+interface MyProfileScreenContainerProps {
+  user: Donor;
+}
 
-  useEffect(() => {
-    FirebaseFunctions.getDonor().then(setDonor);
-  }, [setDonor]);
+export default function MyProfileScreenContainer(
+  props: MyProfileScreenContainerProps
+) {
+  const [user] = useState<Donor>(props.user);
+  const history = useHistory();
 
   const onSave = (
     firstName: string,
@@ -29,5 +31,5 @@ export default function MyProfileScreenContainer() {
     history.goBack();
   };
 
-  return <MyProfileScreen onSave={onSave} donor={donor} />;
+  return <MyProfileScreen onSave={onSave} user={user} />;
 }

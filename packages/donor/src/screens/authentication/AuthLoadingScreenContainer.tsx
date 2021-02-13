@@ -5,9 +5,10 @@ import {
   registerAuthChange,
 } from "../../firebase/FirebaseInitializer";
 import "firebase/auth";
+import { Donor } from "@zm-blood-components/common";
 
 interface AuthLoadingScreenContainerProps {
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
+  onFinishedLoading: (isLoggedIn: boolean, user?: Donor) => void;
 }
 
 export default function AuthLoadingScreenContainer(
@@ -18,8 +19,8 @@ export default function AuthLoadingScreenContainer(
   }, []);
 
   useEffect(() => {
-    registerAuthChange(props.setIsLoggedIn);
-  }, [props.setIsLoggedIn]);
+    registerAuthChange(props.onFinishedLoading);
+  }, [props.onFinishedLoading]);
 
   return <AuthLoadingScreen />;
 }

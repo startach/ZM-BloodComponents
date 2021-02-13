@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
-import { AvailableAppointment } from "@zm-blood-components/common";
+import { AvailableAppointment, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
-export default function BookDonationScreenContainer() {
+interface BookDonationScreenContainerProps {
+  user: Donor;
+}
+
+export default function BookDonationScreenContainer(
+  props: BookDonationScreenContainerProps
+) {
   let history = useHistory();
 
   const [availableAppointments, setAvailableAppointments] = useState(
@@ -30,7 +36,7 @@ export default function BookDonationScreenContainer() {
       earliestNextDonationDate={new Date(2021, 1, 13)}
       availableAppointments={availableAppointments}
       onAppointmentSelect={handleRegisterAppointment}
-      firstName={"יוני"}
+      firstName={props.user.firstName}
     />
   );
 }
