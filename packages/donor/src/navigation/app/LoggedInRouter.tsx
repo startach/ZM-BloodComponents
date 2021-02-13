@@ -35,7 +35,7 @@ export default function LoggedInRouter({ user, setUser }: LoggedInRouterProps) {
           <BookDonationScreenContainer user={user} />
         </Route>
         <Route path={"*"}>
-          <HomeScreenContainer />
+          <HomeScreenContainer user={user} />
         </Route>
       </Switch>
     </Router>

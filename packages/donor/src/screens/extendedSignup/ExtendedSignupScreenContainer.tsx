@@ -47,8 +47,8 @@ export default function ExtendedSignupScreenContainer(
     return isValid;
   };
 
-  const onSave = async () => {
-    const newUser = await FirebaseFunctions.saveDonor(
+  const onSave = () => {
+    const newUser = FirebaseFunctions.saveDonor(
       firstNameInput.value,
       lastNameInput.value,
       "", // unused in pilot
