@@ -9,7 +9,7 @@ import {
   getHospitalsList,
   groupAndSortAvailableAppointments,
 } from "../../utils/AppointmentUtil";
-import BookDonationHeader from "../../components/BookDonationHeader";
+import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/Select";
@@ -53,7 +53,10 @@ export default function BookDonationScreen({
 
   return (
     <div className={styles.component}>
-      <BookDonationHeader firstName={firstName} lastDonation={lastDonation} />
+      <LastDonationDateHeader
+        firstName={firstName}
+        lastDonation={lastDonation}
+      />
 
       <main className={styles.content}>
         <Text className={styles.dropdownTitle}>
