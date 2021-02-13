@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
-type ParsableDateValue = Date | string | number;
+export type ParsableDateValue = Date | string | number;
 
 export const DateDisplayFormat = "D/M/YYYY";
 
@@ -22,4 +22,8 @@ export function ToWeekDayString(date: ParsableDateValue, format?: string) {
 
 export function DateComparer(date1: Date, date2: Date): number {
   return date1.getTime() - date2.getTime();
+}
+
+export function DateFromMilliseconds(milliseconds: number) {
+  return new Date(milliseconds);
 }
