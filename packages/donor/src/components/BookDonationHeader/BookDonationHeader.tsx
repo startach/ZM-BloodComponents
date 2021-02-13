@@ -14,7 +14,7 @@ function BookDonationHeader({
   lastDonation,
 }: BookDonationHeaderProps) {
   return (
-    <HeaderSection>
+    <HeaderSection className={styles.component}>
       <span className={styles.welcomeText}>
         <Text>שלום</Text>
         &nbsp;
