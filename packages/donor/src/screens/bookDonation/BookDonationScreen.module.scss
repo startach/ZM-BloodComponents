@@ -1,9 +1,13 @@
 .component {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
   padding: var(--layout-distance-normal);
+  overflow-y: scroll;
+  flex-grow: 1;
 }
 .dropdownTitle {
   font-size: var(--text-size-md);
