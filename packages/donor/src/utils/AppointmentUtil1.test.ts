@@ -1,5 +1,5 @@
 import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
-import * as AppointmentUtil from "./AppointmentUtil";
+import * as AppointmentUtil from "./AppointmentUtil1";
 import { ToDateString } from "./DateUtil";
 
 test("groupAndSortAvailableAppointments", () => {
