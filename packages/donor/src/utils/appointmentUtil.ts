@@ -6,11 +6,16 @@ export enum SortingOrder {
   desc = "desc",
 }
 
+type AppointmentsGroup = {
+  date: string;
+  appointments: AvailableAppointment[];
+};
+
 export function groupAndSortAvailableAppointments(
   appointments: AvailableAppointment[],
   appointmentsSortingOrder?: SortingOrder,
   groupsSortingOrder?: SortingOrder
-) {
+): AppointmentsGroup[] {
   //clone and sort the appointments ( as sort modifies the original object)
   const sortedAppointments = sortAvailableAppointmentsByDate(
     [...appointments],
@@ -21,7 +26,9 @@ export function groupAndSortAvailableAppointments(
   return res;
 }
 
-function groupAppointmentsByDate(appointments: AvailableAppointment[]) {
+function groupAppointmentsByDate(
+  appointments: AvailableAppointment[]
+): AppointmentsGroup[] {
   const AppointmentsSet = new Map<string, AvailableAppointment[]>();
 
   //go over the list of appointments and sort them by date
@@ -35,26 +42,35 @@ function groupAppointmentsByDate(appointments: AvailableAppointment[]) {
   });
 
   //turn the Map back to an Array and sort the entries by Date
-  return Array.from(AppointmentsSet);
+  return Array.from(AppointmentsSet, (group) => ({
+    date: group[0],
+    appointments: group[1],
+  }));
 }
 
 function sortAppointmentGroupsByDate(
-  appointments: [string, AvailableAppointment[]][],
+  groups: AppointmentsGroup[],
   order: SortingOrder = SortingOrder.asc
 ) {
   //sort by dates in a descending order
   // - sorting by the map key requires converting the key back to a date because values are not in a consistent structure (example: 1/12/2020 and 14/2/2020)
   // - because of that, i'm sorting the data based on the first appointment entry
-  appointments.sort((a, b) => {
+  groups.sort((a, b) => {
     if (order === SortingOrder.asc)
-      return DateComparer(a[1][0].donationStartTime, a[1][0].donationStartTime);
-    return DateComparer(b[1][0].donationStartTime, a[1][0].donationStartTime);
+      return DateComparer(
+        a.appointments[0].donationStartTime,
+        b.appointments[0].donationStartTime
+      );
+    return DateComparer(
+      b.appointments[0].donationStartTime,
+      a.appointments[0].donationStartTime
+    );
   });
 
-  return appointments;
+  return groups;
 }
 
-export function sortAvailableAppointmentsByDate(
+function sortAvailableAppointmentsByDate(
   appointments: AvailableAppointment[],
   order: SortingOrder = SortingOrder.asc
 ) {

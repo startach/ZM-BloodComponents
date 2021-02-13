@@ -8,7 +8,7 @@ import {
 import {
   getHospitalsList,
   groupAndSortAvailableAppointments,
-} from "../../utils/appointmentUtil";
+} from "../../utils/AppointmentUtil";
 import BookDonationHeader from "../../components/BookDonationHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
@@ -66,14 +66,13 @@ export default function BookDonationScreen({
           onChange={setSelectedHospitals}
         />
 
-        {sortedAppointments.map(([donationDate, sameDayDonations]) => (
+        {sortedAppointments.map((group) => (
           <BookDonationEntriesGroup
-            key={donationDate}
-            title={` יום ${ToWeekDayString(
-              donationDate,
-              DateDisplayFormat
-            )}, ${donationDate}`}
-            appointments={sameDayDonations}
+            key={group.date}
+            title={` יום ${ToWeekDayString(group.date, DateDisplayFormat)}, ${
+              group.date
+            }`}
+            appointments={group.appointments}
             onAppointmentSelect={onAppointmentSelect}
           />
         ))}
