@@ -1,22 +1,20 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { Donor, firebaseConfig } from "@zm-blood-components/common";
-import * as FirebaseFunctions from "./FirebaseFunctions";
+import { firebaseConfig } from "@zm-blood-components/common";
+import { LoginStatus } from "../navigation/AppRouter";
 
 export function initFirebase() {
   firebase.initializeApp(firebaseConfig);
 }
 
 export function registerAuthChange(
-  onFinishedLoading: (isLoggedIn: boolean, user?: Donor) => void
+  setLoginState: (isLoggedIn: LoginStatus) => void
 ) {
-  firebase.auth().onAuthStateChanged((user: firebase.User | null) => {
+  firebase.auth().onAuthStateChanged(async (user: firebase.User | null) => {
     if (user) {
-      FirebaseFunctions.getDonor().then((donor) => {
-        onFinishedLoading(true, donor);
-      });
+      setLoginState(LoginStatus.LOGGED_IN);
     } else {
-      onFinishedLoading(false);
+      setLoginState(LoginStatus.LOGGED_OUT);
     }
   });
 }

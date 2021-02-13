@@ -1,64 +1,77 @@
-import React, { useState } from "react";
-import AuthLoadingScreenContainer from "../screens/authentication/AuthLoadingScreenContainer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenKeys";
-import SignInScreenContainer from "../screens/signin/SignInScreenContainer";
-import RegisterScreenContainer from "../screens/register/RegisterScreenContainer";
-import ResetPasswordScreenContainer from "../screens/resetpassword/ResetPasswordScreenContainer";
+import React, { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
 import { Donor } from "@zm-blood-components/common";
+import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
+import {
+  initFirebase,
+  registerAuthChange,
+} from "../firebase/FirebaseInitializer";
+import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
+import AuthenticationRouter from "./AuthenticationRouter";
 
-type AppState = {
-  isLoggedIn: boolean;
-  isLoading: boolean;
-  user?: Donor;
-};
+export enum LoginStatus {
+  UNKNOWN,
+  LOGGED_IN,
+  LOGGED_OUT,
+}
 
 export default function AppRouter() {
-  const [appState, setAppState] = useState<AppState>({
-    isLoading: true,
-    isLoggedIn: false,
+  const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
+  const [donorState, setDonorState] = useState<{
+    donor?: Donor;
+    isFetching: boolean;
+  }>({
+    donor: undefined,
+    isFetching: false,
   });
 
-  if (appState.isLoading) {
-    return (
-      <AuthLoadingScreenContainer
-        onFinishedLoading={(isLoggedIn: boolean, user?: Donor) => {
-          setAppState({
-            isLoggedIn,
-            isLoading: false,
-            user: user,
-          });
-        }}
-      />
-    );
+  useEffect(() => {
+    initFirebase();
+  }, []);
+
+  useEffect(() => {
+    registerAuthChange((newLoginStatus) => {
+      if (newLoginStatus === LoginStatus.LOGGED_IN) {
+        setDonorState({
+          donor: undefined,
+          isFetching: true,
+        });
+      }
+      setLoginStatus(newLoginStatus);
+    });
+  }, [setLoginStatus]);
+
+  useEffect(() => {
+    if (loginStatus === LoginStatus.LOGGED_IN) {
+      FirebaseFunctions.getDonor().then((donor) => {
+        setDonorState({
+          donor,
+          isFetching: false,
+        });
+      });
+    } else if (loginStatus === LoginStatus.LOGGED_OUT) {
+      setDonorState({
+        donor: undefined,
+        isFetching: false,
+      });
+    }
+  }, [loginStatus]);
+
+  if (loginStatus === LoginStatus.LOGGED_OUT) {
+    return <AuthenticationRouter />;
   }
 
-  if (!appState.isLoggedIn) {
-    return (
-      <Router>
-        <Switch>
-          <Route path={"/" + AuthenticationScreenKeys.ResetPassword}>
-            <ResetPasswordScreenContainer />
-          </Route>
-          <Route path={"/" + AuthenticationScreenKeys.Register}>
-            <RegisterScreenContainer />
-          </Route>
-          <Route path={"*"}>
-            <SignInScreenContainer />
-          </Route>
-        </Switch>
-      </Router>
-    );
+  if (loginStatus === LoginStatus.UNKNOWN || donorState.isFetching) {
+    return <AuthLoadingScreen />;
   }
 
   return (
     <LoggedInRouter
-      user={appState.user}
+      user={donorState.donor}
       setUser={(user: Donor) => {
-        setAppState({
-          ...appState,
-          user: user,
+        setDonorState({
+          donor: user,
+          isFetching: false,
         });
       }}
     />
