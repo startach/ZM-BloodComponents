@@ -4,17 +4,19 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
+type ParsableDateValue = Date | string | number;
+
 export const DateDisplayFormat = "D/M/YYYY";
 
-export function ToDateString(date: Date) {
-  return dayjs(date).format(DateDisplayFormat);
+export function ToDateString(date: ParsableDateValue, format?: string) {
+  return dayjs(date, format).format(DateDisplayFormat);
 }
 
-export function ToTimeString(date: Date | string, format?: string) {
+export function ToTimeString(date: ParsableDateValue, format?: string) {
   return dayjs(date, format).format("HH:MM");
 }
 
-export function ToWeekDayString(date: Date | string, format?: string) {
+export function ToWeekDayString(date: ParsableDateValue, format?: string) {
   return dayjs(date, format).locale("he").format("dddd");
 }
 
