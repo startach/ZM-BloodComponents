@@ -1,0 +1,15 @@
+{
+  "hosting": [
+    {
+      "target": "donor",
+      "public": "packages/donor/public",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "blood-components"
+    "staging": "blood-components",
+    "default": "blood-components"
   }
 }
