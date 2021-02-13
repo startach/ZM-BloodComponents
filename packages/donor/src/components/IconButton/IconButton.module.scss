@@ -1,7 +1,6 @@
 @import "../../styles/animations";
 
 .component {
-
   all: unset;
 
   display: flex;
@@ -9,17 +8,14 @@
   align-items: center;
 
   cursor: pointer;
-
-
 }
 
 .icon {
   margin-bottom: 5px;
 }
 
-.titleSection{
+.titleSection {
   font-family: var(--font-family-titles);
   text-align: center;
   line-height: var(--font-line-height-small);
 }
-
