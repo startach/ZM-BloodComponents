@@ -33,6 +33,7 @@ export interface GetDonorAppointmentsResponse {
   futureAppointments: BookedAppointment[];
 }
 
+export const BookAppointmentFunctionName = "bookAppointment";
 export interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available
   appointmentIds: string[];

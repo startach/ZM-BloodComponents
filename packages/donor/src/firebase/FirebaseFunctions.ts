@@ -24,6 +24,18 @@ export function getAvailableAppointments() {
   });
 }
 
+export function bookAppointment(appointmentId: string) {
+  const bookAppointmentFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.BookAppointmentFunctionName);
+
+  const request: FunctionsApi.BookAppointmentRequest = {
+    appointmentIds: [appointmentId],
+  };
+
+  return bookAppointmentFunction(request);
+}
+
 export function saveDonor(
   firstName: string,
   lastName: string,
