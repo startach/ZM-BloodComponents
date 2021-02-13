@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { BloodType } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
-import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
 export default function ExtendedSignupScreenContainer() {
-  const history = useHistory();
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
@@ -51,7 +49,6 @@ export default function ExtendedSignupScreenContainer() {
       phoneNumberInput.value,
       bloodTypeInput.value
     );
-    history.goBack();
   };
 
   const firstName = {
