@@ -16,7 +16,12 @@
     "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build --stream",
     "postinstall": "yarn run build-common",
-    "deploy-functions": "lerna run deploy-functions --stream",
+    "deploy-functions-qa": "firebase deploy --only functions -P staging",
+    "deploy-functions-prod": "firebase deploy --only functions -P production",
+    "deploy-donor-qa": "firebase deploy --only hosting:donor -P staging",
+    "deploy-donor-prod": "firebase deploy --only hosting:donor -P production",
+    "deploy-admin-qa": "firebase deploy --only hosting:admin -P staging",
+    "deploy-admin-prod": "firebase deploy --only hosting:admin -P production",
     "build-common": "yarn workspace @zm-blood-components/common build",
     "start-donor": "yarn workspace @zm-blood-components/donor start",
     "style": "yarn run prettier --write . "
