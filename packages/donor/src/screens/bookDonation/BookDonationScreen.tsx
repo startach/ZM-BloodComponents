@@ -8,7 +8,7 @@ import {
 import {
   getHospitalsList,
   groupAndSortAvailableAppointments,
-} from "../../utils/AppointmentUtil1";
+} from "../../utils/AppointmentUtil";
 import BookDonationHeader from "../../components/BookDonationHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
