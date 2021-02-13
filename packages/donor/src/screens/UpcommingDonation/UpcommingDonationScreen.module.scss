@@ -4,5 +4,39 @@
 
 .content {
   box-sizing: border-box;
-  padding: var(--layout-distance-normal);
+  padding: var(--layout-distance-large);
+}
+
+.registerButton {
+  width: 100%;
+  border-radius: var(--border-radius-circlular) !important;
+  font-family: var(--font-family-titles) !important;
+  font-size: var(--text-size-l) !important;
+  padding-top: var(--layout-distance-normal) !important;
+  padding-bottom: var(--layout-distance-normal) !important;;
+  margin-top: var(--layout-distance-large) !important;
+  box-sizing: border-box;
+}
+
+.cancelButtonContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.cancelButton {
+  @extend .registerButton;
+  border-width: 3px !important;
+  border-color: var(--color-primary) !important;
+  height: 100% -6px;
+  width: 50%;
+}
+
+.donationDetailsText{
+  margin: var(--layout-distance-large) 0;
+  text-align: center;
+}
+.pleaseConfirmText{
+  margin: var(--layout-distance-large) 0;
+  font-family: var(--font-family-titles);
+  font-size: var(--text-size-lg);
 }
