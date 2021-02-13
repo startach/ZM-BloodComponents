@@ -13,16 +13,7 @@ export function registerAuthChange(
   firebase.auth().onAuthStateChanged((user: firebase.User | null) => {
     if (user) {
       FirebaseFunctions.getDonor().then((donor) => {
-        if (donor) {
-          onFinishedLoading(true, donor);
-        } else {
-          console.error(
-            "Could not read user ",
-            firebase.auth().currentUser?.uid
-          );
-          onFinishedLoading(false);
-          firebase.auth().signOut();
-        }
+        onFinishedLoading(true, donor);
       });
     } else {
       onFinishedLoading(false);

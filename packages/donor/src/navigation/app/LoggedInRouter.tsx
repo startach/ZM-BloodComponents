@@ -10,10 +10,14 @@ import HomeScreenContainer from "../../screens/HomeScreenContainer";
 import { Donor } from "@zm-blood-components/common";
 
 interface LoggedInRouterProps {
-  user: Donor;
+  user?: Donor;
 }
 
 export default function LoggedInRouter({ user }: LoggedInRouterProps) {
+  if (!user) {
+    return <ExtendedSignupScreenContainer />;
+  }
+
   return (
     <Router>
       <Switch>

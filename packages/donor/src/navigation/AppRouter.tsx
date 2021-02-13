@@ -52,10 +52,5 @@ export default function AppRouter() {
     );
   }
 
-  if (!appState.user) {
-    console.error("Cannot be in logged in state with no user details");
-    return null;
-  }
-
   return <LoggedInRouter user={appState.user} />;
 }
