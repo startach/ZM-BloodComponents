@@ -22,6 +22,7 @@ export default function LoggedInRouter({ user }: LoggedInRouterProps) {
     <Router>
       <Switch>
         <Route path={"/" + MainNavigationKeys.ExtendedSignup}>
+          {/* TODO this is here for development only */}
           <ExtendedSignupScreenContainer />
         </Route>
         <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
