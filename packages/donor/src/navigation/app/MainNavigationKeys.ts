@@ -4,7 +4,6 @@ export enum MainNavigationKeys {
 
   Home = "Home",
   BookDonation = "BookDonation",
-  ExtendedSignup = "ExtendedSignup",
   UpcomingDonation = "UpcomingDonation",
   DonationHistory = "DonationHistory",
   MyProfile = "MyProfile",

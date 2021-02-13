@@ -24,9 +24,6 @@ export default function HomeScreenContainer(props: HomeScreenContainerProps) {
       goToBookDonationScreen={() => {
         history.push(MainNavigationKeys.BookDonation);
       }}
-      goToExtendedSignupScreen={() =>
-        history.push(MainNavigationKeys.ExtendedSignup)
-      }
       goToUpcomingDonationScreen={() =>
         history.push(MainNavigationKeys.UpcomingDonation)
       }

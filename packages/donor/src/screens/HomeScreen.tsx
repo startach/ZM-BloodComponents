@@ -5,7 +5,6 @@ import Text from "../components/Text";
 interface HomeScreenProps {
   firstName: string;
   onSignOut: () => void;
-  goToExtendedSignupScreen: () => void;
   goToBookDonationScreen: () => void;
   goToUpcomingDonationScreen: () => void;
   goToMyProfileScreen: () => void;
@@ -16,7 +15,6 @@ export default function HomeScreen(props: HomeScreenProps) {
     <div>
       <Text>שלום {props.firstName}</Text>
       בחר מסך:
-      <Button title="מסך הזנת פרטים" onClick={props.goToExtendedSignupScreen} />
       <Button
         title="מסך תרומה קרובה"
         onClick={props.goToUpcomingDonationScreen}
