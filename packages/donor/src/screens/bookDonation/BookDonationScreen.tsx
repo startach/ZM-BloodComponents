@@ -7,9 +7,10 @@ import {
 } from "../../utils/appointmentUtil";
 import BookDonationHeader from "../../components/BookDonationHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
-import { ToWeekDayString } from "../../utils/DateUtil";
+import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/Select";
 import Text from "../../components/Text";
+import { SelectOption } from "../../components/Select/Select";
 
 interface BookDonationScreenProps {
   lastDonation: Date;
@@ -27,18 +28,18 @@ export default function BookDonationScreen({
   onAppointmentSelect,
 }: BookDonationScreenProps) {
   const [selectedHospitals, setSelectedHospitals] = useState<Hospital | "">("");
-  const hospitalsListOptions = React.useMemo(() => {
-    let options: { label: string; key: string; value: Hospital | "" }[];
 
+  const hospitalsListOptions = React.useMemo(() => {
+    let options: SelectOption<Hospital | "">[];
     options = getHospitalsList(availableAppointments).map((Hospital) => ({
       label: Hospital,
       key: Hospital,
       value: Hospital,
     }));
-
     options.unshift({ label: "הכל", key: "all", value: "" });
     return options;
   }, [availableAppointments]);
+
   const sortedAppointments = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
       (x) => x.hospital === selectedHospitals || !selectedHospitals
@@ -64,7 +65,10 @@ export default function BookDonationScreen({
         {sortedAppointments.map(([donationDate, sameDayDonations]) => (
           <BookDonationEntriesGroup
             key={donationDate}
-            title={` יום ${ToWeekDayString(donationDate)}, ${donationDate}`}
+            title={` יום ${ToWeekDayString(
+              donationDate,
+              DateDisplayFormat
+            )}, ${donationDate}`}
             appointments={sameDayDonations}
             onAppointmentSelect={onAppointmentSelect}
           />
