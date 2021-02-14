@@ -1,5 +1,5 @@
 import React from "react";
-import { BookedAppointment, LocaleUtils } from "@zm-blood-components/common";
+import { BookedAppointment } from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
 import Text from "../../components/Text";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
@@ -13,6 +13,7 @@ export enum UpcomingDonationStates {
   afterDonation = "afterDonation",
   beforeDonation = "beforeDonation",
 }
+
 interface UpcomingDonationScreenProps {
   state: UpcomingDonationStates;
   upcomingDonation: BookedAppointment;
@@ -41,6 +42,7 @@ export default function UpcomingDonationScreen({
 
     return <AwaitingYouHeader firstName={firstName} />;
   }
+
   function renderConfirmDonationTitle() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -50,6 +52,7 @@ export default function UpcomingDonationScreen({
       );
     return;
   }
+
   function renderConfirmButton() {
     if (state === UpcomingDonationStates.beforeDonation) return;
 
@@ -66,6 +69,7 @@ export default function UpcomingDonationScreen({
       />
     );
   }
+
   function renderCancelButton() {
     const title =
       state === UpcomingDonationStates.afterDonation ? "לא תרמתי" : "בטל תור";
@@ -94,7 +98,7 @@ export default function UpcomingDonationScreen({
           donationDate={DateFromMilliseconds(
             upcomingDonation.donationStartTimeMillis
           )}
-          hospitalName={LocaleUtils.getHospitalName(upcomingDonation.hospital)}
+          hospital={upcomingDonation.hospital}
         />
 
         {renderConfirmButton()}

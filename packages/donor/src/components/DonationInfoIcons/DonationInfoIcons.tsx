@@ -10,21 +10,19 @@ import {
   ToWeekDayString,
 } from "../../utils/DateUtil";
 import clockIcon from "../../assets/icons/clock.svg";
+import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 
 export interface DonationInfoIconsProps {
   donationDate: Date;
-  hospitalName: string;
+  hospital: Hospital;
 }
 
-function DonationInfoIcons({
-  donationDate,
-  hospitalName,
-}: DonationInfoIconsProps) {
+function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
   return (
     <div className={styles.component}>
       <IconButton
         iconSrc={locationIcon}
-        label={hospitalName}
+        label={LocaleUtils.getHospitalName(hospital)}
         titleClassName={styles.iconTitle}
       />
 
