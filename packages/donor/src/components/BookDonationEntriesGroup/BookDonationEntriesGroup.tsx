@@ -22,6 +22,7 @@ function BookDonationEntriesGroup({
         {appointments.map((appointment) => (
           <BookDonationEntry
             key={appointment.id}
+            hospital={appointment.hospital}
             donationStartTime={appointment.donationStartTime}
             onRegisterClick={() => onAppointmentSelect?.(appointment)}
           />
