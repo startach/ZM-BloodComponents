@@ -3,7 +3,6 @@ import { BookedAppointment } from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
 import Text from "../../components/Text";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
-import { DateFromMilliseconds } from "../../utils/DateUtil";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
@@ -31,6 +30,11 @@ export default function UpcomingDonationScreen({
   upcomingDonation,
   onConfirm,
 }: UpcomingDonationScreenProps) {
+  const donationDate = React.useMemo(
+    () => new Date(upcomingDonation.donationStartTimeMillis),
+    [upcomingDonation.donationStartTimeMillis]
+  );
+
   function renderHeader() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -95,9 +99,7 @@ export default function UpcomingDonationScreen({
         <Text className={styles.donationDetailsText}>פרטי התור</Text>
 
         <DonationInfoIcons
-          donationDate={DateFromMilliseconds(
-            upcomingDonation.donationStartTimeMillis
-          )}
+          donationDate={donationDate}
           hospital={upcomingDonation.hospital}
         />
 
