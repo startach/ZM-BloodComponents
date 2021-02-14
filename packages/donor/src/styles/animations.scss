@@ -1,0 +1,6 @@
+.anim_onClick--scaleDown {
+  transition: transform var(--transition-speed-fast) ease-out;
+  &:active {
+    transform: scale(0.95);
+  }
+}

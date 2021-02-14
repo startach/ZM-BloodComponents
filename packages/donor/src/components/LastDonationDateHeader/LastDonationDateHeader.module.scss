@@ -1,3 +1,8 @@
+.component {
+  padding: var(--layout-distance-large);
+  box-sizing: border-box;
+}
+
 .welcomeText {
   display: flex;
 }

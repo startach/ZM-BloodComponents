@@ -5,14 +5,14 @@
 }
 
 .content {
-  padding: var(--layout-distance-normal);
+  padding: var(--layout-distance-large);
   overflow-y: scroll;
   flex-grow: 1;
 }
 .dropdownTitle {
   font-size: var(--text-size-md);
   font-family: var(--font-family-titles);
-  margin-bottom: var(--layout-distance-normal);
+  margin-bottom: var(--layout-distance-large);
 }
 .dropdown {
   width: 100%;

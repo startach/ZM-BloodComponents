@@ -29,10 +29,10 @@
 
   --font-family-content: "Arimo", sans-serif;
   --font-content-weight-normal: 400;
-  --font-content-weight-bold: 500;
-  --font-content-weight-bolder: 700;
+  --font-content-weight-bold: 700;
 
-  --font-line-height: 160%;
+  --font-line-height-small: 110%;
+  --font-line-height-normal: 160%;
 
   //copied form here
   //https://codyhouse.co/blog/post/css-custom-properties-vs-sass-variables
@@ -59,6 +59,7 @@
   // elements padding/margin
   --layout-distance-small: 10px;
   --layout-distance-normal: 15px;
+  --layout-distance-large: 20px;
 }
 
 //other styling rules------------------------------------------
@@ -67,8 +68,9 @@
   --shadow-string: rgba(0, 0, 0, 0.3) 0 1px 4px 1px;
 
   --border-radius-normal: 5px;
-  --border-radius-strong: 10px;
-  --border-radius-stronger: 15px;
+  --border-radius-strong: 15px;
+  --border-radius-stronger: 20px;
+  --border-radius-circlular: 30px;
 
   --transition-speed-fast: 100ms;
   --transition-speed-normal: 200ms;

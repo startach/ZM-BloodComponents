@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./BookDonationHeader.module.scss";
+import styles from "./LastDonationDateHeader.module.scss";
 import HeaderSection from "../HeaderSection";
 import Text from "../Text";
 import { ToDateString } from "../../utils/DateUtil";
@@ -9,12 +9,12 @@ export interface BookDonationHeaderProps {
   firstName: string;
 }
 
-function BookDonationHeader({
+function LastDonationDateHeader({
   firstName,
   lastDonation,
 }: BookDonationHeaderProps) {
   return (
-    <HeaderSection>
+    <HeaderSection className={styles.component}>
       <span className={styles.welcomeText}>
         <Text>שלום</Text>
         &nbsp;
@@ -31,4 +31,4 @@ function BookDonationHeader({
   );
 }
 
-export default BookDonationHeader;
+export default LastDonationDateHeader;
