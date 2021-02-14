@@ -72,7 +72,7 @@ export default function BookDonationScreen({
         {sortedAppointments.map((group) => (
           <BookDonationEntriesGroup
             key={group.date}
-            title={` יום ${ToWeekDayString(group.date, DateDisplayFormat)}, ${
+            title={`${ToWeekDayString(group.date, DateDisplayFormat)}, ${
               group.date
             }`}
             appointments={group.appointments}

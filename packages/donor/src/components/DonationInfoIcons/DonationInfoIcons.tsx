@@ -27,7 +27,7 @@ function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
       />
 
       <IconButton iconSrc={calendarIcon} titleClassName={styles.iconTitle}>
-        <Text>יום {ToWeekDayString(donationDate)}</Text>
+        <Text>{ToWeekDayString(donationDate)}</Text>
         <Text>{ToDateString(donationDate)}</Text>
       </IconButton>
 

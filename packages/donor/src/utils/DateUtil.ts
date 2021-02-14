@@ -17,7 +17,8 @@ export function ToTimeString(date: ParsableDateValue, format?: string) {
 }
 
 export function ToWeekDayString(date: ParsableDateValue, format?: string) {
-  return dayjs(date, format).locale("he").format("dddd");
+  //TODO: update the word "Day" based on the locale (in ar + en)
+  return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
 }
 
 export function DateComparer(date1: Date, date2: Date): number {
