@@ -26,7 +26,7 @@ function BookDonationEntry({
     >
       <Text>
         {ToTimeString(donationStartTime)}
-        {", "}
+        {" - "}
         {LocaleUtils.getHospitalName(hospital)}
       </Text>
       <Text className={styles.registerText} onClick={onRegisterClick}>
