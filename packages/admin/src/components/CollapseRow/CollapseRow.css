@@ -1,0 +1,31 @@
+.tableRow {
+  background: #e7ecef;
+}
+
+.tableCell {
+  font: normal normal normal 16px/16px Rubik;
+  letter-spacing: 0px;
+  color: #272932;
+  padding: 0;
+}
+
+.singleTableCell {
+  width: 100%;
+}
+
+.arrivalApproved {
+  width: 70px;
+  height: 100%;
+  text-align: center;
+  background: #347d8d 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.arrivalDisapproved {
+  width: 70px;
+  height: 100%;
+
+  text-align: center;
+  background: white 0% 0% no-repeat padding-box;
+  opacity: 1;
+}

@@ -1,0 +1,139 @@
+.loginPage{
+  height: 90vh;
+  background-color: #E7ECEF;
+  display: flex;
+justify-items: center;
+flex-direction: column;
+align-items: center;
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#login-logo {
+  height: 150px;
+  width: 150px;
+} 
+
+.forgotPassword{
+  text-align: center;
+}
+
+#header1, #header2 {
+  font-size: 30px;
+
+}
+.login_error{
+font-size: 15px;
+color: red;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 15px;
+
+}
+
+.loginHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passwordContainer {
+  margin-top: 5px;
+}
+
+.emailLogin , .passwordLogin {
+  background-color: #347D8D;
+  color : #E7ECEF;
+  height: 40px;
+  width: 300px;
+  font-weight: bold;
+  box-shadow: 5px 10px 18px #347D8D;
+}
+
+.loginButton {
+  background-color: #E7ECEF;
+  color: #347D8D;
+  height: 40px;
+  width: 300px;
+  font-size: large;
+  font-weight: bold;
+  border : thin inset #347D8D;
+  box-shadow: 5px 10px 18px #347D8D;
+}
+
+.loginButton:hover {
+  background-color: #347D8D;
+  color: #fafafa93;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.emailContainer ::placeholder , .passwordContainer ::placeholder{
+  color: #fafafa93;
+  padding: 1vw;
+}
+
+#footertext {
+  color: #d5068d;
+  font-weight: bold;
+}
+
+
+.registerFooter {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.comeSaveLivesButton {
+
+  width: 300px;
+  background-color: #E7ECEF;
+  color: #fafafa;
+  height: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+#backArrowLogin {
+  width: 80px;
+  height: 100px;
+}
+
+#comeSaveLivesSpan {
+  color: #347D8D;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.socialMediaIconsContainer {
+display: flex;
+justify-content: space-evenly;
+width: 400px;
+align-items: center;
+margin-top: 10vh;
+}
+
+#instagramLogo {
+  height: 27px;
+  width: 27px;
+}

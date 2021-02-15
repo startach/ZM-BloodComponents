@@ -1,0 +1,25 @@
+.navBarButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 214px;
+  height: 80px;
+  background: #204d5700 0% 0% no-repeat padding-box;
+  opacity: 1;
+  border: none;
+
+  font: normal normal bold 24px/32px Assistant;
+  font-size: large;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.navBarButton:hover {
+  background: #204d57 0% 0% no-repeat padding-box;
+}
+
+.navBarButton:focus {
+  background: #204d57 0% 0% no-repeat padding-box;
+  border-bottom: solid 5px;
+}

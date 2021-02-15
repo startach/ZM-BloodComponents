@@ -1,0 +1,1 @@
+export { addAppoinment } from './db';

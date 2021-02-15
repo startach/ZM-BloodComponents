@@ -1,0 +1,15 @@
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  background: #f3f5f7;
+}
+
+.usersTable {
+  width: 80%;
+}
