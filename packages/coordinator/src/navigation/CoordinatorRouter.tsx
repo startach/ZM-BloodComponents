@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import LoadingScreen from "../screens/loading/LoadingScreen";
 import CoordinatorLoginScreen from "../screens/authentication/CoordinatorLoginScreen";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { CoordinatorScreens } from "./CoordinatorScreens";
+import { Route, Switch } from "react-router-dom";
+import { CoordinatorScreen } from "./CoordinatorScreen";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { LoginStatus } from "@zm-blood-components/common";
 
@@ -18,14 +18,12 @@ export default function CoordinatorRouter() {
   }
 
   return (
-    <Router>
-      <Switch>
-        <Route path={"/" + CoordinatorScreens.SCHEDULED_APPOINTMENTS}></Route>
-        <Route path={"/" + CoordinatorScreens.DONORS}></Route>
-        <Route path={"*"}>
-          <AddAppointmentsScreenContainer />
-        </Route>
-      </Switch>
-    </Router>
+    <Switch>
+      <Route path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}></Route>
+      <Route path={"/" + CoordinatorScreen.DONORS}></Route>
+      <Route path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
+        <AddAppointmentsScreenContainer />
+      </Route>
+    </Switch>
   );
 }
