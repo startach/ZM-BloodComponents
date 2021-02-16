@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import { Hospital } from "@zm-blood-components/common";
+import Header from "./components/Header";
 
 function App() {
-  const [hospital] = React.useState(Hospital.TEL_HASHOMER);
-
-  return <div className="App">{hospital}</div>;
+  return (
+    <div className="App">
+      <Header />
+    </div>
+  );
 }
 
 export default App;
