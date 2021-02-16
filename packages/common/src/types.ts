@@ -112,3 +112,9 @@ export type NewDonationSlots = {
   donationStartTime: string;
   slots: number;
 };
+
+export enum LoginStatus {
+  UNKNOWN,
+  LOGGED_IN,
+  LOGGED_OUT,
+}

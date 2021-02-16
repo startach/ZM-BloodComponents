@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { firebaseConfig } from "@zm-blood-components/common";
-import { LoginStatus } from "../navigation/AppRouter";
+import { firebaseConfig, LoginStatus } from "@zm-blood-components/common";
 
 export function initFirebase() {
   firebase.initializeApp(firebaseConfig);
