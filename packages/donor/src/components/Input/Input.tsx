@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
-import classnames from "classnames";
+import Text from "../Text"
 
 type InputVariant = "standard" | "filled" | "outlined";
 
@@ -15,7 +15,7 @@ type InputProps = {
   placeholder?: string;
   className?: string;
   mainIcon?: any;
-  isValid?: boolean;
+  errorMessage?: string;
   actionIcon?: any;
   variant?: InputVariant;
   isFullWidth?: boolean;
@@ -32,10 +32,11 @@ export default function ZMInput({
   mainIcon,
   actionIcon,
   isDisabled,
-  isValid = true,
+  errorMessage,
   variant = "standard",
   isFullWidth = false,
 }: InputProps) {
+
   let adornments = {
     ...(mainIcon && {
       startAdornment: (
@@ -49,20 +50,23 @@ export default function ZMInput({
     }),
   };
   return (
-    <TextField
-      id={id}
-      value={value}
-      type={type}
-      onChange={(e) => onChangeText(e.currentTarget.value)}
-      placeholder={placeholder}
-      label={label}
-      className={classnames(className, Styles["zm-input"])}
-      disabled={isDisabled}
-      inputProps={adornments}
-      error={!isValid}
-      dir="rtl"
-      variant={variant}
-      fullWidth={isFullWidth}
-    />
+    <div className={Styles["input-container"]}>
+      <TextField
+        id={id}
+        value={value}
+        type={type}
+        onChange={(e) => onChangeText(e.currentTarget.value)}
+        placeholder={placeholder}
+        label={label}
+        className={className}
+        disabled={isDisabled}
+        inputProps={adornments}
+        error={Boolean(errorMessage)}
+        dir="rtl"
+        variant={variant}
+        fullWidth={isFullWidth}
+      />
+      <Text className={Styles["error-message"]}>{errorMessage}</Text>
+    </div>
   );
 }

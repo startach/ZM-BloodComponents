@@ -23,17 +23,6 @@
   border-radius: 8px 8px 0px 0px;
 }
 
-.inputTitle {
-  height: 24px;
-  font-size: 16px;
-  text-align: right;
-  padding-right: 16px;
-  padding-left: 16px;
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .inputField {
   display: block;
   height: 32px;
@@ -112,8 +101,3 @@
   text-decoration-color: #c7007d;
 }
 
-.errorMessage {
-  text-align: right;
-  color: red;
-  background-color: white;
-}

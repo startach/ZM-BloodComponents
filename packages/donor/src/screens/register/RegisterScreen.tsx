@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Input from "./MyInput";
-import Text from "../../components/Text";
-import Button from "./MyButton";
+import Button from "../../components/Button";
 
 import styles from "./RegisterScreen.module.scss";
-import classNames from "classnames";
-import PasswordInput from "../../components/PasswordInput";
+import Input from "../../components/Input";
 import Logo from "../logo/Logo";
 
 interface RegisterScreenProps {
@@ -38,29 +35,10 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
     );
   };
 
-  const EmailError =
-    emailError !== "" ? (
-      <div className={styles.errorMessage}>
-        <Text>{emailError}</Text>
-      </div>
-    ) : null;
-  const PasswordError =
-    passwordError !== "" ? (
-      <div className={styles.errorMessage}>
-        <Text>{passwordError}</Text>
-      </div>
-    ) : null;
-
   return (
-    <div>
+    <div className={styles.screenSection}>
       <Logo />
-
-      <div className={styles.title}>הירשם ובוא לתרום</div>
-
-      <div
-        className={classNames(styles.screenSection, styles.inputTitleAndField)}
-      >
-        <div className={styles.inputTitle}>דוא״ל</div>
+      <div className={styles.title}>הירשם ובוא לתרום!</div>
         <Input
           className={styles.inputField}
           onChangeText={(emailContent) => {
@@ -68,59 +46,46 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
             setEmailError("");
           }}
           value={email}
+          label={`דוא״ל`}
+          variant="filled"
+          errorMessage={emailError}
         />
-        {EmailError}
-      </div>
-
-      <div
-        className={classNames(styles.screenSection, styles.inputTitleAndField)}
-      >
-        <div className={styles.inputTitle}>סיסמה</div>
-        <PasswordInput
+        <Input
+          type="password"
           className={styles.inputField}
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);
             setPasswordError("");
           }}
           value={password}
+          variant="filled"
+          label="ססמא"
+          errorMessage={passwordError}
         />
-        {PasswordError}
-      </div>
-
-      <div
-        className={classNames(styles.screenSection, styles.inputTitleAndField)}
-      >
-        <div className={styles.inputTitle}>אימות סיסמה</div>
-        <PasswordInput
+        <Input
+          type="password"
           className={styles.inputField}
           onChangeText={(passwordCopyContent) => {
             setPasswordCopy(passwordCopyContent);
             setPasswordError("");
           }}
           value={passwordCopy}
+          label="אימות סיסמה"
+          variant="filled"
         />
-      </div>
-
-      <div className={styles.screenSection}>
         <Button
           className={styles.signinButton}
           title="הירשם"
           onClick={register}
         />
-      </div>
-
-      <div
-        className={classNames(
-          styles.screenSection,
-          styles.alreadyRegisteredContainer
-        )}
-      >
-        <span className={styles.alreadyRegisteredTitle}>?כבר רשום כתורם</span>
+      <div className={styles.alreadyRegisteredContainer}>
         <Button
           className={styles.connectButton}
           title="התחבר"
           onClick={props.goToSignIn}
+          variant="text"
         />
+        <span className={styles.alreadyRegisteredTitle}>כבר רשום כתורם?</span>
       </div>
     </div>
   );

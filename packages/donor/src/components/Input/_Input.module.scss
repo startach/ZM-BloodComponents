@@ -1,3 +1,10 @@
-.zm-input {
-  margin: 8px;
+.input-container {
+  height: 3rem;
+  margin: 35px 0;
+}
+
+.error-message { 
+  color: red;
+  margin-top: 20px;
+  font-size: .8rem;
 }

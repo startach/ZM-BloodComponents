@@ -31,21 +31,21 @@ export default function ExtendedSignupScreen({
         value={firstName.value}
         onChangeText={firstName.onChange}
         label="שם פרטי"
-        isValid={firstName.isValid}
+        errorMessage={firstName.isValid ? undefined : " "}
       />
       <br />
       <Input
         value={lastName.value}
         onChangeText={lastName.onChange}
         label="שם משפחה"
-        isValid={lastName.isValid}
+        errorMessage={lastName.isValid? undefined : " "}
       />
       <br />
       <Input
         value={phoneNumber.value}
         onChangeText={phoneNumber.onChange}
         label="מספר טלפון"
-        isValid={phoneNumber.isValid}
+        errorMessage={phoneNumber.isValid ? undefined : " "}
       />
       <br />
       <Select

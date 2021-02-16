@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Text from "../../components/Text";
-import Button from "../register/MyButton";
+import Button from "../../components/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 import myStyles from "./SignInScreen.module.scss";
-import Input from "../register/MyInput";
+import Input from "../../components/Input";
 
 import classNames from "classnames";
-import PasswordInput from "../../components/PasswordInput";
 
 interface SignInScreenProps {
   onRegister: () => void;
@@ -30,29 +28,10 @@ export default function SignInScreen(props: SignInScreenProps) {
     props.onSignInWithEmail(email, password, setEmailError, setPasswordError);
   };
 
-  const EmailError =
-    emailError !== "" ? (
-      <div className={styles.errorMessage}>
-        <Text>{emailError}</Text>
-      </div>
-    ) : null;
-  const PasswordError =
-    passwordError !== "" ? (
-      <div className={styles.errorMessage}>
-        <Text>{passwordError}</Text>
-      </div>
-    ) : null;
-
   return (
-    <div>
+    <div className={styles.screenSection}>
       <Logo />
-
       <div className={styles.title}>התחבר באמצעות דואר אלקטרוני</div>
-
-      <div
-        className={classNames(styles.screenSection, styles.inputTitleAndField)}
-      >
-        <div className={styles.inputTitle}>דוא״ל</div>
         <Input
           className={styles.inputField}
           onChangeText={(emailContent) => {
@@ -60,25 +39,22 @@ export default function SignInScreen(props: SignInScreenProps) {
             setEmailError("");
           }}
           value={email}
+          label={`דוא"\ל`}
+          variant="filled"
+          errorMessage={emailError}
         />
-        {EmailError}
-      </div>
-
-      <div
-        className={classNames(styles.screenSection, styles.inputTitleAndField)}
-      >
-        <div className={styles.inputTitle}>סיסמה</div>
-        <PasswordInput
+        <Input
+          type="password"
           className={styles.inputField}
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);
             setPasswordError("");
           }}
           value={password}
+          label="ססמא"
+          variant="filled"
+          errorMessage={passwordError}
         />
-        {PasswordError}
-      </div>
-
       <div className={styles.screenSection}>
         <Button
           className={styles.signinButton}
@@ -86,7 +62,6 @@ export default function SignInScreen(props: SignInScreenProps) {
           onClick={signIn}
         />
       </div>
-
       <div
         className={classNames(
           styles.screenSection,
@@ -97,23 +72,21 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={classNames(myStyles.resetPasswordButton)}
           title="איפוס סיסמה"
           onClick={props.onResetPassword}
+          variant="text"
         />
       </div>
 
       <div
-        className={classNames(
-          styles.screenSection,
-          styles.alreadyRegisteredContainer
-        )}
-      >
-        <span className={styles.alreadyRegisteredTitle}>
-          ?עדיין לא רשום כתורם
-        </span>
+        className={styles.alreadyRegisteredContainer}>
         <Button
           className={styles.connectButton}
           title="הרשמה"
           onClick={props.onRegister}
+          variant="text"
         />
+        <span className={styles.alreadyRegisteredTitle}>
+          עדיין לא רשום כתורם?
+        </span>
       </div>
     </div>
   );
