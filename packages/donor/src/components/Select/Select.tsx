@@ -1,5 +1,6 @@
 import NativeSelect from "@material-ui/core/NativeSelect";
 import InputLabel from "@material-ui/core/InputLabel";
+import React from 'react';
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
@@ -22,7 +23,7 @@ type SelectProps<T> = {
   options: SelectOption<T>[];
 };
 
-export default function ZMSelect<T>({
+export default function Select<T>({
   id,
   label,
   onChange,

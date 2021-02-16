@@ -2,6 +2,7 @@ import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
 import classnames from "classnames";
+import React from "react";
 
 type InputVariant = "standard" | "filled" | "outlined";
 
@@ -21,7 +22,7 @@ type InputProps = {
   isFullWidth?: boolean;
 };
 
-export default function ZMInput({
+export default function Input({
   id,
   label,
   placeholder,

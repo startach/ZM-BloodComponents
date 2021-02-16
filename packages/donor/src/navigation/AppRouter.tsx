@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
-import {Donor} from "@zm-blood-components/common";
+import { Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import {
   initFirebase,

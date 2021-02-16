@@ -1,4 +1,4 @@
-import Button from "@material-ui/core/Button";
+import MaterialButton from "@material-ui/core/Button";
 
 type ButtonVariant = "text" | "outlined" | "contained";
 
@@ -12,7 +12,7 @@ type ButtonProps = {
   isDisabled?: boolean;
 };
 
-export default function ZMButton({
+export default function Button({
   onClick,
   title,
   variant = "contained",
@@ -22,7 +22,7 @@ export default function ZMButton({
   isDisabled = false,
 }: ButtonProps) {
   return (
-    <Button
+    <MaterialButton
       onClick={onClick}
       variant={variant}
       color="primary"
@@ -32,6 +32,6 @@ export default function ZMButton({
       disabled={isDisabled}
     >
       {title}
-    </Button>
+    </MaterialButton>
   );
 }
