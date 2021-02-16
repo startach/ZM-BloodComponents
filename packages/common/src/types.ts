@@ -106,3 +106,9 @@ export enum Collections {
   DONORS = "donors",
   APPOINTMENTS = "appointments",
 }
+
+export type NewDonationSlots = {
+  hospital: Hospital;
+  donationStartTime: string;
+  slots: number;
+};

@@ -3,8 +3,8 @@ import MaterialButton from "@material-ui/core/Button";
 type ButtonVariant = "text" | "outlined" | "contained";
 
 type ButtonProps = {
-  onClick: () => void;
   title: string;
+  onClick: () => void;
   variant?: ButtonVariant;
   className?: string;
   startIcon?: React.ReactNode;
