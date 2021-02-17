@@ -17,23 +17,6 @@ const MuiGlobalTheme : ThemeOptions = {
         main: colors.info,
       },
     },
-    // Component styles
-    // overrides: {
-    //   // MuiButton: {
-    //   //   root: {
-    //   //     shape: {
-    //   //       borderRadius: 100,
-    //   //     }
-    //   //   }
-    //   // },
-    //   MuiInput: {
-    //     root: {
-    //       shape: {
-    //         borderRadius: 10
-    //       }
-    //     }
-    //   }
-    // }
 } 
 
 export default MuiGlobalTheme
