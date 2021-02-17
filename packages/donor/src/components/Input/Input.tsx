@@ -3,6 +3,7 @@ import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
 import Text from "../Text"
 
+
 type InputVariant = "standard" | "filled" | "outlined";
 
 type InputProps = {
@@ -21,7 +22,7 @@ type InputProps = {
   isFullWidth?: boolean;
 };
 
-export default function ZMInput({
+export default function Input({
   id,
   label,
   placeholder,
