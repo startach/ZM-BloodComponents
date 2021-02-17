@@ -2,10 +2,10 @@ import {
   FormLabel,
   FormControlLabel,
   Radio,
-  RadioGroup,
+  RadioGroup as MaterialRadioGroup,
 } from "@material-ui/core";
 
-type RadioOption = {
+export type RadioOption = {
   value: any;
   label: string;
   isDisabled?: boolean;
@@ -13,26 +13,27 @@ type RadioOption = {
 
 type RadioGroupProps = {
   label?: string;
-  onChange: (event: any, value: string) => void;
+  onChange: (value: string) => void;
   value: string;
-  name: string;
   isDisabled?: boolean;
   className?: string;
   options: RadioOption[];
 };
 
-export default function ZMRadio({
+export default function RadioGroup({
   options,
   label,
   onChange,
   value,
-  name,
   className,
 }: RadioGroupProps) {
   return (
     <div>
       <FormLabel component="legend">{label}</FormLabel>
-      <RadioGroup {...{ name, className, value, onChange }}>
+      <MaterialRadioGroup
+        onChange={(e, newValue) => onChange(newValue)}
+        {...{ className, value }}
+      >
         {options.map((option) => (
           <FormControlLabel
             value={option.value}
@@ -40,7 +41,7 @@ export default function ZMRadio({
             label={option.label}
           />
         ))}
-      </RadioGroup>
+      </MaterialRadioGroup>
     </div>
   );
 }

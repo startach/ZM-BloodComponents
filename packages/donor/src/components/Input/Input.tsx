@@ -21,7 +21,7 @@ type InputProps = {
   isFullWidth?: boolean;
 };
 
-export default function ZMInput({
+export default function Input({
   id,
   label,
   placeholder,
