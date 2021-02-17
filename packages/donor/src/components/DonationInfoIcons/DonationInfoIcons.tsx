@@ -17,7 +17,10 @@ export interface DonationInfoIconsProps {
   hospital: Hospital;
 }
 
-function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
+const DonationInfoIcons: React.FC<DonationInfoIconsProps> = ({
+  donationDate,
+  hospital,
+}: DonationInfoIconsProps) => {
   return (
     <div className={styles.component}>
       <IconButton
@@ -38,6 +41,6 @@ function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
       />
     </div>
   );
-}
+};
 
 export default DonationInfoIcons;
