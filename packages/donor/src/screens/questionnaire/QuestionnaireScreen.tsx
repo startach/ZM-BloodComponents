@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import RadioGroup from "../../components/RadioGroup";
 import { RadioOption } from "../../components/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import { Hospital } from "@zm-blood-components/common";
+import { AvailableAppointment } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/Text";
-import ZMCheckbox from '../../components/Checkbox/Checkbox';
+import ZMCheckbox from "../../components/Checkbox/Checkbox";
 
 interface QuestionnaireScreenProps {
-  donationData: {
-    hospital: Hospital;
-    donationDate: Date;
-  };
+  availableAppointment: AvailableAppointment;
   onSuccess: () => void;
 }
 
@@ -22,7 +19,7 @@ const YesNoOptions: RadioOption[] = [
 ];
 
 export default function QuestionnaireScreen({
-  donationData,
+  availableAppointment,
   onSuccess,
 }: QuestionnaireScreenProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
@@ -179,11 +176,13 @@ export default function QuestionnaireScreen({
   );
 
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const IsConfirmed = (<ZMCheckbox
+  const IsConfirmed = (
+    <ZMCheckbox
       label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
       isChecked={isConfirmed}
       setChecked={() => setIsConfirmed((previous) => !previous)}
-  />)
+    />
+  );
 
   const isVerified =
     hasAlreadyDonated === "yes" &&
@@ -204,14 +203,17 @@ export default function QuestionnaireScreen({
     isConfirmed;
 
   return (
-    <div className={styles.content}>
+    <div>
       <div className={styles.header}>
         <Text className={styles.headerTitle}>שאלון התאמה</Text>
       </div>
 
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
-        <DonationInfoIcons {...donationData} />
+        <DonationInfoIcons
+          hospital={availableAppointment.hospital}
+          donationDate={availableAppointment.donationStartTime}
+        />
       </div>
 
       <div className={styles.questionnaireSection}>

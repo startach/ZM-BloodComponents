@@ -7,4 +7,5 @@ export enum MainNavigationKeys {
   UpcomingDonation = "UpcomingDonation",
   DonationHistory = "DonationHistory",
   MyProfile = "MyProfile",
+  Questionnaire = "Questions",
 }
