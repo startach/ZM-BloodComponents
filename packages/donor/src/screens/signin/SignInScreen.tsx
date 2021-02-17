@@ -32,29 +32,29 @@ export default function SignInScreen(props: SignInScreenProps) {
     <div className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>התחבר באמצעות דואר אלקטרוני</div>
-        <Input
-          className={styles.inputField}
-          onChangeText={(emailContent) => {
-            setEmail(emailContent);
-            setEmailError("");
-          }}
-          value={email}
-          label={`דוא"\ל`}
-          variant="filled"
-          errorMessage={emailError}
-        />
-        <Input
-          type="password"
-          className={styles.inputField}
-          onChangeText={(passwordContent) => {
-            setPassword(passwordContent);
-            setPasswordError("");
-          }}
-          value={password}
-          label="ססמא"
-          variant="filled"
-          errorMessage={passwordError}
-        />
+      <Input
+        className={styles.inputField}
+        onChangeText={(emailContent) => {
+          setEmail(emailContent);
+          setEmailError("");
+        }}
+        value={email}
+        label={`דוא"\ל`}
+        variant="filled"
+        errorMessage={emailError}
+      />
+      <Input
+        type="password"
+        className={styles.inputField}
+        onChangeText={(passwordContent) => {
+          setPassword(passwordContent);
+          setPasswordError("");
+        }}
+        value={password}
+        label="ססמא"
+        variant="filled"
+        errorMessage={passwordError}
+      />
       <div className={styles.screenSection}>
         <Button
           className={styles.signinButton}
@@ -76,8 +76,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
       </div>
 
-      <div
-        className={styles.alreadyRegisteredContainer}>
+      <div className={styles.alreadyRegisteredContainer}>
         <Button
           className={styles.connectButton}
           title="הרשמה"

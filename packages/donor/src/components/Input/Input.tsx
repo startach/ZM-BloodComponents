@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
-import Text from "../Text"
+import Text from "../Text";
 
 type InputVariant = "standard" | "filled" | "outlined";
 
@@ -36,7 +36,6 @@ export default function Input({
   variant = "standard",
   isFullWidth = false,
 }: InputProps) {
-
   let adornments = {
     ...(mainIcon && {
       startAdornment: (

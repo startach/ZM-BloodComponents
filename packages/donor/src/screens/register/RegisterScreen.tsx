@@ -39,45 +39,45 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
     <div className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>הירשם ובוא לתרום!</div>
-        <Input
-          className={styles.inputField}
-          onChangeText={(emailContent) => {
-            setEmail(emailContent);
-            setEmailError("");
-          }}
-          value={email}
-          label={`דוא״ל`}
-          variant="filled"
-          errorMessage={emailError}
-        />
-        <Input
-          type="password"
-          className={styles.inputField}
-          onChangeText={(passwordContent) => {
-            setPassword(passwordContent);
-            setPasswordError("");
-          }}
-          value={password}
-          variant="filled"
-          label="ססמא"
-          errorMessage={passwordError}
-        />
-        <Input
-          type="password"
-          className={styles.inputField}
-          onChangeText={(passwordCopyContent) => {
-            setPasswordCopy(passwordCopyContent);
-            setPasswordError("");
-          }}
-          value={passwordCopy}
-          label="אימות סיסמה"
-          variant="filled"
-        />
-        <Button
-          className={styles.signinButton}
-          title="הירשם"
-          onClick={register}
-        />
+      <Input
+        className={styles.inputField}
+        onChangeText={(emailContent) => {
+          setEmail(emailContent);
+          setEmailError("");
+        }}
+        value={email}
+        label={`דוא״ל`}
+        variant="filled"
+        errorMessage={emailError}
+      />
+      <Input
+        type="password"
+        className={styles.inputField}
+        onChangeText={(passwordContent) => {
+          setPassword(passwordContent);
+          setPasswordError("");
+        }}
+        value={password}
+        variant="filled"
+        label="ססמא"
+        errorMessage={passwordError}
+      />
+      <Input
+        type="password"
+        className={styles.inputField}
+        onChangeText={(passwordCopyContent) => {
+          setPasswordCopy(passwordCopyContent);
+          setPasswordError("");
+        }}
+        value={passwordCopy}
+        label="אימות סיסמה"
+        variant="filled"
+      />
+      <Button
+        className={styles.signinButton}
+        title="הירשם"
+        onClick={register}
+      />
       <div className={styles.alreadyRegisteredContainer}>
         <Button
           className={styles.connectButton}

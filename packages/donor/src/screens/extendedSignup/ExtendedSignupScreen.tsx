@@ -38,7 +38,7 @@ export default function ExtendedSignupScreen({
         value={lastName.value}
         onChangeText={lastName.onChange}
         label="שם משפחה"
-        errorMessage={lastName.isValid? undefined : " "}
+        errorMessage={lastName.isValid ? undefined : " "}
       />
       <br />
       <Input
