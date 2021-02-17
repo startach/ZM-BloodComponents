@@ -6,7 +6,7 @@ import { AvailableAppointment } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/Text";
-import ZMCheckbox from "../../components/Checkbox/Checkbox";
+import Checkbox from "../../components/Checkbox/Checkbox";
 
 interface QuestionnaireScreenProps {
   availableAppointment: AvailableAppointment;
@@ -177,10 +177,10 @@ export default function QuestionnaireScreen({
 
   const [isConfirmed, setIsConfirmed] = useState(false);
   const IsConfirmed = (
-    <ZMCheckbox
+    <Checkbox
       label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
       isChecked={isConfirmed}
-      setChecked={() => setIsConfirmed((previous) => !previous)}
+      onChange={() => setIsConfirmed((previous) => !previous)}
     />
   );
 

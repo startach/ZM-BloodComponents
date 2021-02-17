@@ -2,25 +2,23 @@ import { FormControlLabel } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import React from "react";
 
-export interface IZMCheckboxProps {
+export interface ICheckboxProps {
   label: string;
   isChecked: boolean;
-  setChecked: () => void;
+  onChange: () => void;
 }
 
-const ZMCheckbox: React.FC<IZMCheckboxProps> = ({
+export default function CheckBox({
   label,
   isChecked,
-  setChecked,
-}: IZMCheckboxProps) => {
+  onChange,
+}: ICheckboxProps) {
   return (
     <FormControlLabel
       control={
-        <Checkbox checked={isChecked} onChange={setChecked} color="primary" />
+        <Checkbox checked={isChecked} onChange={onChange} color="primary" />
       }
       label={label}
     />
   );
-};
-
-export default ZMCheckbox;
+}
