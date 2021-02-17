@@ -8,6 +8,7 @@ import MyProfileScreenContainer from "../../screens/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import HomeScreenContainer from "../../screens/HomeScreenContainer";
 import { Donor } from "@zm-blood-components/common";
+import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -33,6 +34,9 @@ export default function LoggedInRouter({ user, setUser }: LoggedInRouterProps) {
         </Route>
         <Route path={"/" + MainNavigationKeys.BookDonation}>
           <BookDonationScreenContainer user={user} />
+        </Route>
+        <Route path={"/" + MainNavigationKeys.Questionnaire}>
+          <QuestionnaireScreenContainer />
         </Route>
         <Route path={"*"}>
           <HomeScreenContainer user={user} />

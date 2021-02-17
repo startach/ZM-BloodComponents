@@ -1,26 +1,14 @@
 import { create } from "jss";
 import rtl from "jss-rtl";
-import { StylesProvider, jssPreset } from "@material-ui/core/styles";
+import {
+  StylesProvider,
+  jssPreset,
+  ThemeOptions,
+} from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import colors from "../utils/colors";
+import MuiGlobalTheme from "../constants/MuiGlobalTheme";
 
-const globalTheme = createMuiTheme({
-  direction: "rtl", // Both here and <body dir="rtl">
-  palette: {
-    primary: {
-      light: colors.primary,
-      main: colors.primary,
-    },
-    secondary: {
-      light: colors.secondary,
-      main: colors.secondary,
-    },
-    info: {
-      light: colors.info,
-      main: colors.info,
-    },
-  },
-});
+const globalTheme = createMuiTheme(MuiGlobalTheme as ThemeOptions);
 
 // Configure JSS
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });

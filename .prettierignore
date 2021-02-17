@@ -4,3 +4,5 @@ lib
 packages/donor/build
 packages/functions/dist
 build
+tsconfig.json
+tsconfig.build.json

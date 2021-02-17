@@ -1,4 +1,5 @@
-import MaterialButton from "@material-ui/core/Button";
+import { Button, makeStyles } from "@material-ui/core";
+import classnames from "classnames";
 
 type ButtonVariant = "text" | "outlined" | "contained";
 
@@ -12,7 +13,13 @@ type ButtonProps = {
   isDisabled?: boolean;
 };
 
-export default function Button({
+const useButtonStyles = makeStyles({
+  root: {
+    borderRadius: 100,
+  },
+});
+
+export default function ZMButton({
   onClick,
   title,
   variant = "contained",
@@ -21,17 +28,18 @@ export default function Button({
   endIcon,
   isDisabled = false,
 }: ButtonProps) {
+  const classes = useButtonStyles();
   return (
-    <MaterialButton
+    <Button
       onClick={onClick}
       variant={variant}
       color="primary"
-      className={className}
+      className={classnames(className, classes.root)}
       startIcon={startIcon}
       endIcon={endIcon}
       disabled={isDisabled}
     >
       {title}
-    </MaterialButton>
+    </Button>
   );
 }
