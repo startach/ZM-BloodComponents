@@ -28,6 +28,7 @@ export default function HomeScreenContainer(props: HomeScreenContainerProps) {
         history.push(MainNavigationKeys.UpcomingDonation)
       }
       goToMyProfileScreen={() => history.push(MainNavigationKeys.MyProfile)}
+      goToQuestionnaire={() => history.push(MainNavigationKeys.Questionnaire)}
     />
   );
 }
