@@ -3,17 +3,17 @@ import "./App.css";
 import Header from "./components/Header";
 import CoordinatorRouter from "./navigation/CoordinatorRouter";
 import { BrowserRouter as Router } from "react-router-dom";
-import WithGlobalTheme from './HOCs/withGlobalTheme';
+import WithGlobalTheme from "./HOCs/withGlobalTheme";
 
 function App() {
   return (
     <div className="App">
       <WithGlobalTheme>
-      <Router>
-        <Header />
+        <Router>
+          <Header />
 
-        <CoordinatorRouter />
-      </Router>
+          <CoordinatorRouter />
+        </Router>
       </WithGlobalTheme>
     </div>
   );

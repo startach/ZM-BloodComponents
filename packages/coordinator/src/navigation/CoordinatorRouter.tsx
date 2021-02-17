@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import LoadingScreen from "../screens/loading/LoadingScreen";
-import CoordinatorLoginScreen from "../screens/authentication/CoordinatorLoginScreen";
 import { Route, Switch } from "react-router-dom";
 import { CoordinatorScreen } from "./CoordinatorScreen";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { LoginStatus } from "@zm-blood-components/common";
+import CoordinatorSignInScreenContainer from "../screens/authentication/CoordinatorSignInScreenContainer";
 
 export default function CoordinatorRouter() {
-  const [loginStatus] = useState(LoginStatus.LOGGED_IN);
+  const [loginStatus] = useState(LoginStatus.LOGGED_OUT);
 
   if (loginStatus === LoginStatus.LOGGED_OUT) {
-    return <CoordinatorLoginScreen />;
+    return <CoordinatorSignInScreenContainer />;
   }
 
   if (loginStatus === LoginStatus.UNKNOWN) {
