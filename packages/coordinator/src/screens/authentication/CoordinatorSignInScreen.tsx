@@ -23,7 +23,6 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
 
   return (
     <div>
-      <div>התחבר באמצעות דואר אלקטרוני</div>
       <Input
         onChangeText={(emailContent) => {
           setEmail(emailContent);

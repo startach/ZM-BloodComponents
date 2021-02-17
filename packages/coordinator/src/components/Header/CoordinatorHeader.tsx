@@ -5,13 +5,21 @@ import "./CoordinatorHeader.css";
 import { useHistory } from "react-router-dom";
 import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
 
-const CoordinatorHeader = () => {
+interface CoordinatorHeaderProps {
+  showSignOutButton: boolean;
+  onSignOut: () => void;
+}
+
+export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
   const history = useHistory();
 
   const navigate = (screen: CoordinatorScreen) => () =>
     history.push("/" + screen);
   return (
     <div className="navBar">
+      <div className="logo">
+        <Logo />
+      </div>
       <div className="buttons">
         <Button
           title="הוספת תורים"
@@ -25,12 +33,10 @@ const CoordinatorHeader = () => {
           title="חיפוש משתמשים"
           onClick={navigate(CoordinatorScreen.DONORS)}
         />
-      </div>
-      <div className="logo">
-        <Logo />
+        {props.showSignOutButton && (
+          <Button title="התנתק" onClick={props.onSignOut} />
+        )}
       </div>
     </div>
   );
-};
-
-export default CoordinatorHeader;
+}
