@@ -180,7 +180,7 @@ export default function QuestionnaireScreen({
     <Checkbox
       label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
       isChecked={isConfirmed}
-      onChange={() => setIsConfirmed((previous) => !previous)}
+      onChange={setIsConfirmed}
     />
   );
 
