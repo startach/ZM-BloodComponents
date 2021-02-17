@@ -6,8 +6,7 @@ import { Hospital } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/Text";
-import Checkbox from "@material-ui/core/Checkbox";
-import { FormControlLabel } from "@material-ui/core";
+import ZMCheckbox from '../../components/Checkbox/Checkbox';
 
 interface QuestionnaireScreenProps {
   donationData: {
@@ -180,17 +179,11 @@ export default function QuestionnaireScreen({
   );
 
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const IsConfirmed = (
-      <FormControlLabel
-          control={
-            <Checkbox
-                checked={isConfirmed}
-                onChange={() => setIsConfirmed((previous) => !previous)}
-            />
-          }
-          label="קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"
-      />
-  );
+  const IsConfirmed = (<ZMCheckbox
+      label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
+      isChecked={isConfirmed}
+      setChecked={() => setIsConfirmed((previous) => !previous)}
+  />)
 
   const isVerified =
     hasAlreadyDonated === "yes" &&
@@ -211,7 +204,7 @@ export default function QuestionnaireScreen({
     isConfirmed;
 
   return (
-    <div>
+    <div className={styles.content}>
       <div className={styles.header}>
         <Text className={styles.headerTitle}>שאלון התאמה</Text>
       </div>
