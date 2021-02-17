@@ -179,6 +179,19 @@ export default function QuestionnaireScreen({
     />
   );
 
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const IsConfirmed = (
+      <FormControlLabel
+          control={
+            <Checkbox
+                checked={isConfirmed}
+                onChange={() => setIsConfirmed((previous) => !previous)}
+            />
+          }
+          label="קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"
+      />
+  );
+
   const isVerified =
     hasAlreadyDonated === "yes" &&
     isWeightOver55 === "yes" &&
@@ -194,20 +207,8 @@ export default function QuestionnaireScreen({
     isWounded === "no" &&
     isRightAge === "yes" &&
     isPregnantEver === "no" &&
-    isLastDonationMoreThanAMonthAgo === "yes";
-
-  const [isConfirmed, setIsConfirmed] = useState(false);
-  const IsConfirmed = (
-    <FormControlLabel
-      control={
-        <Checkbox
-          checked={isConfirmed}
-          onChange={() => setIsConfirmed((previous) => !previous)}
-        />
-      }
-      label="קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"
-    />
-  );
+    isLastDonationMoreThanAMonthAgo === "yes" &&
+    isConfirmed;
 
   return (
     <div>
