@@ -1,4 +1,4 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, CircularProgress, makeStyles } from "@material-ui/core";
 import classnames from "classnames";
 
 type ButtonVariant = "text" | "outlined" | "contained";
@@ -11,6 +11,7 @@ type ButtonProps = {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   isDisabled?: boolean;
+  isLoading?: boolean;
 };
 
 const useButtonStyles = makeStyles({
@@ -27,19 +28,21 @@ export default function ZMButton({
   startIcon,
   endIcon,
   isDisabled = false,
+  isLoading = false,
 }: ButtonProps) {
   const classes = useButtonStyles();
+
   return (
     <Button
       onClick={onClick}
       variant={variant}
       color="primary"
       className={classnames(className, classes.root)}
-      startIcon={startIcon}
-      endIcon={endIcon}
-      disabled={isDisabled}
+      startIcon={!isLoading && startIcon}
+      endIcon={!isLoading && endIcon}
+      disabled={isDisabled || isLoading}
     >
-      {title}
+      {isLoading ? <CircularProgress size="1rem" /> : title}
     </Button>
   );
 }
