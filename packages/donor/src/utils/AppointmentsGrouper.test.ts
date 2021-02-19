@@ -1,6 +1,7 @@
 import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
 import * as AppointmentUtil from "./AppointmentsGrouper";
 import { ToDateString } from "./DateUtil";
+import { DonationSlot } from "./AppointmentsGrouper";
 
 test("groupAndSortAvailableAppointments", () => {
   const appointments = [
@@ -21,11 +22,14 @@ test("groupAndSortAvailableAppointments", () => {
     createAppointment(Hospital.ASAF_HAROFE, 2, 11, 30, 2),
     createAppointment(Hospital.ASAF_HAROFE, 2, 11, 30, 1),
 
-    // Tel Hashomer, 01/02/2021 at 13:30
+    // Tel Hashomer, 02/02/2021 at 10:30 (2)
     createAppointment(Hospital.TEL_HASHOMER, 1, 13, 30, 1),
 
-    // Tel Hashomer, 02/02/2021 at 10:30 (2)
+    // Tel Hashomer, 01/02/2021 at 13:30
     createAppointment(Hospital.TEL_HASHOMER, 2, 10, 30, 2),
+
+    // Tel Hashomer, 02/02/2021 at 10:30 (3)
+    createAppointment(Hospital.TEL_HASHOMER, 2, 10, 30, 3),
   ];
 
   const res = AppointmentUtil.groupDonationDays(appointments);
@@ -35,39 +39,35 @@ test("groupAndSortAvailableAppointments", () => {
   // Monday 01/02/2021
   expect(res[0].day).toEqual(ToDateString(new Date(2021, 2, 1)));
   const mondaySlots = res[0].donationSlots;
-  expect(mondaySlots).toHaveLength(2);
-  expect(mondaySlots[0].appointmentIds.sort()).toEqual([
-    "1.12.30.1.TEL_HASHOMER",
-  ]);
-  expect(mondaySlots[1].appointmentIds.sort()).toEqual([
-    "1.13.30.1.TEL_HASHOMER",
+  expect(getAppointmentIdArrays(mondaySlots)).toEqual([
+    ["1.12.30.1.TEL_HASHOMER"],
+    ["1.13.30.1.TEL_HASHOMER"],
   ]);
 
   // Tuesday 02/02/2021
   expect(res[1].day).toEqual(ToDateString(new Date(2021, 2, 2)));
   const tuesdaySlots = res[1].donationSlots;
-  expect(tuesdaySlots).toHaveLength(3);
-  expect(tuesdaySlots[0].appointmentIds.sort()).toEqual([
-    "2.10.30.1.TEL_HASHOMER",
-    "2.10.30.2.TEL_HASHOMER",
-  ]);
-  expect(tuesdaySlots[1].appointmentIds.sort()).toEqual([
-    "2.11.30.1.TEL_HASHOMER",
-    "2.11.30.2.TEL_HASHOMER",
-  ]);
-  expect(tuesdaySlots[2].appointmentIds.sort()).toEqual([
-    "2.11.30.1.ASAF_HAROFE",
-    "2.11.30.2.ASAF_HAROFE",
+  expect(getAppointmentIdArrays(tuesdaySlots)).toEqual([
+    [
+      "2.10.30.1.TEL_HASHOMER",
+      "2.10.30.2.TEL_HASHOMER",
+      "2.10.30.3.TEL_HASHOMER",
+    ],
+    ["2.11.30.1.TEL_HASHOMER", "2.11.30.2.TEL_HASHOMER"],
+    ["2.11.30.1.ASAF_HAROFE", "2.11.30.2.ASAF_HAROFE"],
   ]);
 
   // Wednesday 01/02/2021
   expect(res[2].day).toEqual(ToDateString(new Date(2021, 2, 3)));
   const wednesdaySlots = res[2].donationSlots;
-  expect(wednesdaySlots).toHaveLength(1);
-  expect(wednesdaySlots[0].appointmentIds.sort()).toEqual([
-    "3.12.45.1.TEL_HASHOMER",
+  expect(getAppointmentIdArrays(wednesdaySlots)).toEqual([
+    ["3.12.45.1.TEL_HASHOMER"],
   ]);
 });
+
+function getAppointmentIdArrays(slots: DonationSlot[]) {
+  return slots.map((slot) => slot.appointmentIds.sort());
+}
 
 function createAppointment(
   hospital: Hospital,
