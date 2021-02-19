@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import RadioGroup from "../../components/basic/RadioGroup";
 import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import { AvailableAppointment } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface QuestionnaireScreenProps {
-  availableAppointment: AvailableAppointment;
+  bookableAppointment: DonationSlot;
   onSuccess: () => void;
   isLoading: boolean;
 }
@@ -20,7 +20,7 @@ const YesNoOptions: RadioOption[] = [
 ];
 
 export default function QuestionnaireScreen({
-  availableAppointment,
+  bookableAppointment,
   onSuccess,
   isLoading,
 }: QuestionnaireScreenProps) {
@@ -213,8 +213,8 @@ export default function QuestionnaireScreen({
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
-          hospital={availableAppointment.hospital}
-          donationDate={availableAppointment.donationStartTime}
+          hospital={bookableAppointment.hospital}
+          donationDate={bookableAppointment.donationStartTime}
         />
       </div>
 
