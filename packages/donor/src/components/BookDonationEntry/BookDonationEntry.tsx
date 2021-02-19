@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./BookDonationEntry.module.scss";
-import Card from "../Card";
+import Card from "../basic/Card";
 import { ToTimeString } from "../../utils/DateUtil";
-import Text from "../Text";
+import Text from "../basic/Text";
 import classNames from "classnames";
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 

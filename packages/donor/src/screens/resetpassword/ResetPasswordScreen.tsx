@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from "../../components/basic/Input";
+import Button from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 

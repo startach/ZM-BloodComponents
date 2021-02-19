@@ -12,9 +12,9 @@ import {
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
-import Select from "../../components/Select";
-import Text from "../../components/Text";
-import { SelectOption } from "../../components/Select/Select";
+import Select from "../../components/basic/Select";
+import Text from "../../components/basic/Text";
+import { SelectOption } from "../../components/basic/Select/Select";
 
 interface BookDonationScreenProps {
   lastDonation: Date;

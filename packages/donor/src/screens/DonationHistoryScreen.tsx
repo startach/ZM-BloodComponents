@@ -1,6 +1,6 @@
 import React from "react";
 import { BookedAppointment } from "@zm-blood-components/common";
-import Text from "../components/Text";
+import Text from "../components/basic/Text";
 
 interface DonationHistoryScreenProps {
   donations: BookedAppointment[];

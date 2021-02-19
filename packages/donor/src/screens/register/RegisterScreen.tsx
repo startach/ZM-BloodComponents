@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Button from "../../components/Button";
+import Button from "../../components/basic/Button";
 
 import styles from "./RegisterScreen.module.scss";
-import Input from "../../components/Input";
+import Input from "../../components/basic/Input";
 import Logo from "../logo/Logo";
 
 interface RegisterScreenProps {

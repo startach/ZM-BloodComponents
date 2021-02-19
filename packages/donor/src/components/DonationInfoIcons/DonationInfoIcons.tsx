@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./DonationInfoIcons.module.scss";
-import IconButton from "../IconButton";
+import IconButton from "../basic/IconButton";
 import locationIcon from "../../assets/icons/locationPin.svg";
 import calendarIcon from "../../assets/icons/calendar.svg";
-import Text from "../Text";
+import Text from "../basic/Text";
 import {
   ToDateString,
   ToTimeString,

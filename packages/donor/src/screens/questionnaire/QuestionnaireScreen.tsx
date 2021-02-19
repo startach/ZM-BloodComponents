@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import RadioGroup from "../../components/RadioGroup";
-import { RadioOption } from "../../components/RadioGroup/RadioGroup";
+import RadioGroup from "../../components/basic/RadioGroup";
+import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import { AvailableAppointment } from "@zm-blood-components/common";
-import Button from "../../components/Button";
+import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
-import Text from "../../components/Text";
-import Checkbox from "../../components/Checkbox/Checkbox";
+import Text from "../../components/basic/Text";
+import Checkbox from "../../components/basic/Checkbox/Checkbox";
 
 interface QuestionnaireScreenProps {
   availableAppointment: AvailableAppointment;

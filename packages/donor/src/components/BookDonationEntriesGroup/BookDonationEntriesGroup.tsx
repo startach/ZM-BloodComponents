@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./BookDonationEntriesGroup.module.scss";
 import BookDonationEntry from "../BookDonationEntry";
 import { AvailableAppointment } from "@zm-blood-components/common";
-import Text from "../Text";
+import Text from "../basic/Text";
 
 export interface BookDonationDayEntriesProps {
   title: string;
