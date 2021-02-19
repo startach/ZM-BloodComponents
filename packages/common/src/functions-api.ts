@@ -38,9 +38,12 @@ export interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available
   appointmentIds: string[];
 }
+export interface BookAppointmentResponse {
+  bookedAppointment: BookedAppointment;
+}
 
+export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
   appointmentId: string;
 }
 

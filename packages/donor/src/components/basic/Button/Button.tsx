@@ -1,5 +1,7 @@
-import { Button, CircularProgress, makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import classnames from "classnames";
+import Spinner from "../Spinner";
+import React from "react";
 
 type ButtonVariant = "text" | "outlined" | "contained";
 
@@ -42,7 +44,7 @@ export default function ZMButton({
       endIcon={!isLoading && endIcon}
       disabled={isDisabled || isLoading}
     >
-      {isLoading ? <CircularProgress size="1rem" /> : title}
+      {isLoading ? <Spinner /> : title}
     </Button>
   );
 }

@@ -15,11 +15,13 @@ import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/basic/Select";
 import Text from "../../components/basic/Text";
 import { SelectOption } from "../../components/basic/Select/Select";
+import Spinner from "../../components/basic/Spinner";
 
 interface BookDonationScreenProps {
   lastDonation: Date;
   earliestNextDonationDate: Date;
   availableAppointments: AvailableAppointment[];
+  isFetching: boolean;
   firstName: string;
   onAppointmentSelect: (appointment: AvailableAppointment) => void;
 }
@@ -28,6 +30,7 @@ export default function BookDonationScreen({
   lastDonation,
   earliestNextDonationDate,
   availableAppointments,
+  isFetching,
   firstName,
   onAppointmentSelect,
 }: BookDonationScreenProps) {
@@ -67,7 +70,10 @@ export default function BookDonationScreen({
           options={hospitalsListOptions}
           value={selectedHospitals}
           onChange={setSelectedHospitals}
+          isDisabled={isFetching}
         />
+
+        {isFetching && <Spinner />}
 
         {sortedAppointments.map((group) => (
           <BookDonationEntriesGroup
