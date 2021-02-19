@@ -1,0 +1,9 @@
+@mixin supported_gap($distance: 0) {
+  gap: $distance;
+  @supports not (gap: $distance) {
+    & > * * {
+      margin-block-start: var(--layout-distance-normal);
+      writing-mode: vertical-lr;
+    }
+  }
+}

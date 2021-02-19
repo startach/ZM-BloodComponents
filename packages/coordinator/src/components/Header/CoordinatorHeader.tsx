@@ -1,7 +1,7 @@
 import Button from "../Button";
 import React from "react";
-import Logo from "../Logo";
-import "./CoordinatorHeader.css";
+import logoImg from "../../assets/logo.svg";
+import styles from "./CoordinatorHeader.module.scss";
 import { useHistory } from "react-router-dom";
 import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
 
@@ -16,11 +16,11 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
   const navigate = (screen: CoordinatorScreen) => () =>
     history.push("/" + screen);
   return (
-    <div className="navBar">
-      <div className="logo">
-        <Logo />
+    <div className={styles.navBar}>
+      <div className={styles.logoContainer}>
+        <img src={logoImg} className={styles.logo} alt={"logo"} />
       </div>
-      <div className="buttons">
+      <div className={styles.buttons}>
         <Button
           title="הוספת תורים"
           onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}

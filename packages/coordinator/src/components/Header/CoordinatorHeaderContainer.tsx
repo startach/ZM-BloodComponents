@@ -1,5 +1,4 @@
 import React from "react";
-import "./CoordinatorHeader.css";
 import firebase from "firebase/app";
 import "firebase/auth";
 import CoordinatorHeader from "./CoordinatorHeader";
