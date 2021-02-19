@@ -4,6 +4,7 @@ import {
   Radio,
   RadioGroup as MaterialRadioGroup,
 } from "@material-ui/core";
+import React from "react";
 
 export type RadioOption = {
   value: any;
@@ -39,6 +40,7 @@ export default function RadioGroup({
             value={option.value}
             control={<Radio disabled={option.isDisabled} color="primary" />}
             label={option.label}
+            key={option.label + option.value}
           />
         ))}
       </MaterialRadioGroup>

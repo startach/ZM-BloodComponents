@@ -4,7 +4,7 @@ import {
   AvailableAppointment,
   BookedAppointment,
 } from "@zm-blood-components/common";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
 interface QuestionnaireScreenContainerProps {
@@ -18,6 +18,7 @@ export interface QuestionnaireLocationState {
 export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
+  const history = useHistory();
   const location = useLocation<QuestionnaireLocationState>();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +28,7 @@ export default function QuestionnaireScreenContainer(
       location.state.availableAppointment.id
     );
     props.setBookedAppointment(bookedAppointment);
+    history.goBack();
   };
 
   return (
