@@ -1,8 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
-import {BookedAppointment, Donor, LoginStatus} from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  Donor,
+  LoginStatus,
+} from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
-import {initFirebase, registerAuthChange,} from "../firebase/FirebaseInitializer";
+import {
+  initFirebase,
+  registerAuthChange,
+} from "../firebase/FirebaseInitializer";
 import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
 import AuthenticationRouter from "./AuthenticationRouter";
 
@@ -86,4 +93,3 @@ export default function AppRouter() {
     />
   );
 }
-
