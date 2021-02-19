@@ -1,6 +1,9 @@
 import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
-import { getAppointments } from "../dal/AppointmentDataAccessLayer";
+import {
+  dbAppointmentToBookedAppointment,
+  getAppointments,
+} from "../dal/AppointmentDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.GetDonorAppointmentsRequest,
@@ -27,12 +30,7 @@ export default async function (
   const completedAppointments: BookedAppointment[] = [];
   const futureAppointments: BookedAppointment[] = [];
   appointments.map((appointment) => {
-    const bookedAppointment: BookedAppointment = {
-      id: appointment.id,
-      donorId: appointment.donorId,
-      hospital: appointment.hospital,
-      donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    };
+    const bookedAppointment = dbAppointmentToBookedAppointment(appointment);
 
     if (appointment.donationStartTime.toDate() < now) {
       completedAppointments.push(bookedAppointment);

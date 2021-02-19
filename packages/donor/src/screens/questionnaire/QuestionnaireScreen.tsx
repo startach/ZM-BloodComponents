@@ -11,6 +11,7 @@ import Checkbox from "../../components/basic/Checkbox/Checkbox";
 interface QuestionnaireScreenProps {
   availableAppointment: AvailableAppointment;
   onSuccess: () => void;
+  isLoading: boolean;
 }
 
 const YesNoOptions: RadioOption[] = [
@@ -21,6 +22,7 @@ const YesNoOptions: RadioOption[] = [
 export default function QuestionnaireScreen({
   availableAppointment,
   onSuccess,
+  isLoading,
 }: QuestionnaireScreenProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
   const HaveYouAlreadyDonated = (
@@ -244,6 +246,7 @@ export default function QuestionnaireScreen({
           isDisabled={!isVerified}
           onClick={onSuccess}
           title={"המשך"}
+          isLoading={isLoading}
         />
       </div>
     </div>

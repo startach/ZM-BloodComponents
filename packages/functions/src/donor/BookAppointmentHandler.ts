@@ -1,5 +1,6 @@
 import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import {
+  dbAppointmentToBookedAppointment,
   getAppointmentsByDonorIdInTime,
   getAppointmentsByIds,
   setAppointment,
@@ -12,7 +13,7 @@ const WEEKS_BUFFER = 4;
 export default async function (
   request: FunctionsApi.BookAppointmentRequest,
   callerId: string
-) {
+): Promise<FunctionsApi.BookAppointmentResponse> {
   const donorId = callerId;
 
   await getDonorOrThrow(donorId);
@@ -40,4 +41,8 @@ export default async function (
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
 
   await setAppointment(appointmentToBook);
+
+  return {
+    bookedAppointment: dbAppointmentToBookedAppointment(appointmentToBook),
+  };
 }

@@ -1,5 +1,10 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { DbAppointment, DbDonor, Hospital } from "@zm-blood-components/common";
+import {
+  DbAppointment,
+  DbDonor,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -115,7 +120,7 @@ test("Valid request books appointment", async () => {
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
 
-  await wrapped(bookAppointmentRequest(), {
+  const response = await wrapped(bookAppointmentRequest(), {
     auth: {
       uid: DONOR_ID,
     },
@@ -123,6 +128,11 @@ test("Valid request books appointment", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
   expect(appointment[0].donorId).toEqual(DONOR_ID);
+
+  const data = response as FunctionsApi.BookAppointmentResponse;
+
+  expect(data.bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
+  expect(data.bookedAppointment.donorId).toEqual(DONOR_ID);
 });
 
 async function createDonor() {
