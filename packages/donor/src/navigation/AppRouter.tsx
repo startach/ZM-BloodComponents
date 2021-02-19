@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
-import { Donor } from "@zm-blood-components/common";
+import { Donor, LoginStatus } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import {
   initFirebase,
@@ -8,12 +8,6 @@ import {
 } from "../firebase/FirebaseInitializer";
 import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
 import AuthenticationRouter from "./AuthenticationRouter";
-
-export enum LoginStatus {
-  UNKNOWN,
-  LOGGED_IN,
-  LOGGED_OUT,
-}
 
 export default function AppRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
