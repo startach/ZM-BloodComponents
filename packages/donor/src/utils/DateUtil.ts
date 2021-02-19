@@ -13,7 +13,7 @@ export function ToDateString(date: ParsableDateValue, format?: string) {
 }
 
 export function ToTimeString(date: ParsableDateValue, format?: string) {
-  return dayjs(date, format).format("HH:MM");
+  return dayjs(date, format).format("HH:mm");
 }
 
 export function ToWeekDayString(date: ParsableDateValue, format?: string) {
