@@ -64,7 +64,7 @@ function allHospitalsAreInAdminHospitalList(
   adminHospitals: Set<Hospital>,
   requestedHospitals: Set<Hospital>
 ) {
-  for (let requestedHospital of requestedHospitals) {
+  for (const requestedHospital of requestedHospitals) {
     if (!adminHospitals.has(requestedHospital)) {
       console.warn("Admin is not allowed to edit", requestedHospital);
       return false;

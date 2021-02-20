@@ -21,9 +21,9 @@ function BookDonationEntriesGroup({
       <div className={styles.entriesContainer}>
         {donationSlots.map((slot) => (
           <BookDonationEntry
-            key={slot.donationStartTime + slot.hospital}
+            key={slot.donationStartTimeMillis + slot.hospital}
             hospital={slot.hospital}
-            donationStartTime={slot.donationStartTime}
+            donationStartTimeMillis={slot.donationStartTimeMillis}
             onRegisterClick={() => onSlotSelected(slot)}
           />
         ))}

@@ -8,7 +8,7 @@ type DonationDay = {
 };
 
 export type DonationSlot = {
-  donationStartTime: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
   appointmentIds: string[];
 };
@@ -17,7 +17,9 @@ export function groupDonationDays(
   appointments: AvailableAppointment[]
 ): DonationDay[] {
   return _.chain(appointments)
-    .groupBy((appointment) => appointment.donationStartTime.toDateString())
+    .groupBy((appointment) =>
+      new Date(appointment.donationStartTimeMillis).toDateString()
+    )
     .map((appointmentsInDay, dateString) => {
       const donationSlotsInDay = getDonationSlotsInDay(appointmentsInDay);
 
@@ -38,7 +40,7 @@ function getDonationSlotsInDay(
   return _.chain(appointmentsInDay)
     .groupBy(
       (appointment) =>
-        appointment.hospital + appointment.donationStartTime.toISOString()
+        appointment.hospital + appointment.donationStartTimeMillis
     )
     .map(appointmentsToDonationSlot)
     .sortBy("donationStartTime")
@@ -51,13 +53,8 @@ function appointmentsToDonationSlot(
   const arbitraryAppointment = appointmentsInSlot[0];
 
   return {
-    donationStartTime: arbitraryAppointment.donationStartTime,
+    donationStartTimeMillis: arbitraryAppointment.donationStartTimeMillis,
     hospital: arbitraryAppointment.hospital,
     appointmentIds: appointmentsInSlot.map((a) => a.id),
   };
-}
-
-export function getHospitalsList(appointments: AvailableAppointment[]) {
-  const uniqueEntries = new Set(appointments.map((x) => x.hospital));
-  return Array.from(uniqueEntries.values());
 }

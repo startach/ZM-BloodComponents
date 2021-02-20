@@ -97,7 +97,7 @@ export type DbAppointment = {
 
 export type AvailableAppointment = {
   id: string;
-  donationStartTime: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
 };
 
