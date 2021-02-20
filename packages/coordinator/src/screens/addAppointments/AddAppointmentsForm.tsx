@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./AppointmentForm.css";
+import styles from "./AppointmentForm.module.scss";
 import Select from "../../components/Select";
 import { SelectOption } from "../../components/Select/Select";
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
@@ -51,7 +51,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   };
 
   return (
-    <div className="appointmentForm">
+    <div className={styles.component}>
       <Select
         label={"בית חולים"}
         options={hospitalOptions}

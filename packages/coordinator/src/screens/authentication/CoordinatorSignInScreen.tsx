@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import styles from "./CoordinatorSigninScreen.module.scss";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import ScreenWrapper from "../../components/ScreenWrapper";
 
 interface SignInScreenProps {
   onSignInWithEmail: (
@@ -22,7 +24,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <div>
+    <ScreenWrapper className={styles.component}>
       <Input
         onChangeText={(emailContent) => {
           setEmail(emailContent);
@@ -44,9 +46,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
         variant="filled"
         errorMessage={passwordError}
       />
-      <div>
-        <Button title="התחבר" onClick={signIn} />
-      </div>
-    </div>
+      <Button title="התחבר" onClick={signIn} />
+    </ScreenWrapper>
   );
 }
