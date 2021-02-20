@@ -1,18 +1,28 @@
-import MaterialButton from "@material-ui/core/Button";
+import { Button, makeStyles } from "@material-ui/core";
+import classnames from "classnames";
+import Spinner from "../Spinner";
+import React from "react";
 
 type ButtonVariant = "text" | "outlined" | "contained";
 
 type ButtonProps = {
-  title: string;
   onClick: () => void;
+  title: string;
   variant?: ButtonVariant;
   className?: string;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   isDisabled?: boolean;
+  isLoading?: boolean;
 };
 
-export default function Button({
+const useButtonStyles = makeStyles({
+  root: {
+    borderRadius: 100,
+  },
+});
+
+export default function ZMButton({
   onClick,
   title,
   variant = "contained",
@@ -20,18 +30,21 @@ export default function Button({
   startIcon,
   endIcon,
   isDisabled = false,
+  isLoading = false,
 }: ButtonProps) {
+  const classes = useButtonStyles();
+
   return (
-    <MaterialButton
+    <Button
       onClick={onClick}
       variant={variant}
       color="primary"
-      className={className}
-      startIcon={startIcon}
-      endIcon={endIcon}
-      disabled={isDisabled}
+      className={classnames(className, classes.root)}
+      startIcon={!isLoading && startIcon}
+      endIcon={!isLoading && endIcon}
+      disabled={isDisabled || isLoading}
     >
-      {title}
-    </MaterialButton>
+      {isLoading ? <Spinner /> : title}
+    </Button>
   );
 }
