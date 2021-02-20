@@ -8,14 +8,14 @@ import * as DateUtils from "../../utils/DateUtil";
 
 export interface BookDonationEntryProps {
   hospital: Hospital;
-  donationStartTime: Date;
+  donationStartTimeMillis: number;
   onClick?: () => void;
   onRegisterClick?: () => void;
 }
 
 function BookDonationEntry({
   hospital,
-  donationStartTime,
+  donationStartTimeMillis,
   onClick,
   onRegisterClick,
 }: BookDonationEntryProps) {
@@ -25,7 +25,7 @@ function BookDonationEntry({
       onClick={onClick}
     >
       <Text>
-        {DateUtils.ToTimeString(donationStartTime)}
+        {DateUtils.ToTimeString(new Date(donationStartTimeMillis))}
         {" - "}
         {LocaleUtils.getHospitalName(hospital)}
       </Text>

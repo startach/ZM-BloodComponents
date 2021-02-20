@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/functions";
 import {
-  AvailableAppointment,
   BloodType,
   BookedAppointment,
   Donor,
@@ -14,13 +13,7 @@ export function getAvailableAppointments() {
     .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
-    return response.availableAppointments.map<AvailableAppointment>(
-      (appointment) => ({
-        id: appointment.id,
-        donationStartTime: new Date(appointment.donationStartTimeMillis),
-        hospital: appointment.hospital,
-      })
-    );
+    return response.availableAppointments;
   });
 }
 

@@ -30,11 +30,6 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
   onConfirm,
 }: UpcomingDonationScreenProps) {
-  const donationDate = React.useMemo(
-    () => new Date(bookedAppointment.donationStartTimeMillis),
-    [bookedAppointment.donationStartTimeMillis]
-  );
-
   function renderHeader() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -83,7 +78,7 @@ export default function UpcomingDonationScreen({
         <Text className={styles.donationDetailsText}>פרטי התור</Text>
 
         <DonationInfoIcons
-          donationDate={donationDate}
+          donationStartTimeMillis={bookedAppointment.donationStartTimeMillis}
           hospital={bookedAppointment.hospital}
         />
 

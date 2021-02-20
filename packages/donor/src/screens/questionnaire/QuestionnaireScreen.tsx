@@ -216,7 +216,7 @@ export default function QuestionnaireScreen({
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
           hospital={bookableAppointment.hospital}
-          donationDate={bookableAppointment.donationStartTime}
+          donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
         />
       </div>
 
