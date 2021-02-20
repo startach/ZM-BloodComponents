@@ -36,6 +36,7 @@ export default function AddAppointmentsScreenContainer() {
     setIsSaving(true);
     await CoordinatorFunctions.addNewAppointments(slotsArray);
     setSlotsArray([]);
+    setIsSaving(false);
   };
 
   return (
