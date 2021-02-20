@@ -5,13 +5,13 @@ import { BloodType, DbAdmin, Donor, Hospital } from "./types";
 export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {}
 
-type AvailableAppointmentApiEntry = {
+export type AvailableAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
 };
 
-type BookedAppointmentApiEntry = {
+export type BookedAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;

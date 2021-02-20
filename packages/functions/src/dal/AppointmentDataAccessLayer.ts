@@ -1,10 +1,6 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
-import {
-  DbAppointment,
-  Collections,
-  BookedAppointment,
-} from "@zm-blood-components/common";
+import { Collections, DbAppointment } from "@zm-blood-components/common";
 
 export async function getAppointmentsByIds(appointmentIds: string[]) {
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
@@ -114,20 +110,4 @@ export function setAppointment(appointment: DbAppointment) {
     .collection(Collections.APPOINTMENTS)
     .doc(appointment.id)
     .set(appointment);
-}
-
-export function dbAppointmentToBookedAppointment(
-  appointment: DbAppointment
-): BookedAppointment {
-  if (!appointment.id) {
-    console.error("Cannot convert DbAppointment with no id");
-    throw new Error("Invalid State");
-  }
-
-  return {
-    id: appointment.id,
-    donorId: appointment.donorId,
-    hospital: appointment.hospital,
-    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-  };
 }

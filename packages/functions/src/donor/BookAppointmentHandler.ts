@@ -1,12 +1,12 @@
 import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import {
-  dbAppointmentToBookedAppointment,
   getAppointmentsByDonorIdInTime,
   getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
 import { FunctionsApi } from "@zm-blood-components/common";
+import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
 const WEEKS_BUFFER = 4;
 
@@ -43,6 +43,8 @@ export default async function (
   await setAppointment(appointmentToBook);
 
   return {
-    bookedAppointment: dbAppointmentToBookedAppointment(appointmentToBook),
+    bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
+      appointmentToBook
+    ),
   };
 }
