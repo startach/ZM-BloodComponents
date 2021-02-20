@@ -22,8 +22,8 @@ const DONATION_START_TIME_1 = new Date(2021, 3, 11, 12, 30);
 const DONATION_START_TIME_2 = new Date(2021, 3, 13, 11, 45);
 
 beforeAll(async () => {
-  const appointmentsOfUser = await getAppointmentsCreatedByUserId(USER_ID);
-  await deleteAppointmentsByIds(appointmentsOfUser.map((a) => a.id || ""));
+  await deleteAllTestUserAppointments();
+  await deleteAdmin(USER_ID);
 });
 
 afterEach(async () => {
@@ -90,7 +90,6 @@ test("Valid request inserts new appointments", async () => {
       admin.firestore.Timestamp.fromDate(expectedStartTime)
     );
   });
-  await deleteNewAppointments(newAppointmentIds);
 });
 
 async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
@@ -137,16 +136,7 @@ function callFunction(userId?: string) {
   });
 }
 
-async function deleteNewAppointments(newAppointmentIds: string[]) {
-  const deleteAppointmentsWrapped = firebaseFunctionsTest.wrap(
-    Functions.deleteAppointments
-  );
-  await deleteAppointmentsWrapped(
-    { appointmentIds: newAppointmentIds },
-    {
-      auth: {
-        uid: USER_ID,
-      },
-    }
-  );
+async function deleteAllTestUserAppointments() {
+  const newAppointmentIds = await getAppointmentIdsOfUser();
+  await deleteAppointmentsByIds(newAppointmentIds);
 }
