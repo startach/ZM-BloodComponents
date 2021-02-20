@@ -68,9 +68,14 @@ export interface SaveDonorRequest {
 }
 
 // Admin functions:
-export interface AddAppointmentRequest {
+export const AddNewAppointmentsFunctionName = "addNewAppointments";
+export interface AddAppointmentsRequest {
+  slotsRequests: NewSlotsRequest[];
+}
+
+export interface NewSlotsRequest {
   hospital: Hospital;
-  donationStartTime: string;
+  donationStartTimeMillis: number;
   slots: number;
 }
 
