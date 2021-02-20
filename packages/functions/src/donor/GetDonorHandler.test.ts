@@ -11,7 +11,9 @@ import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.getDonor);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.GetDonorFunctionName]
+);
 
 const ADMIN_ID = "GetDonorAdminId";
 const DONOR_ID = "GetDonorTestId";
