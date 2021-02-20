@@ -53,6 +53,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   return (
     <div className={styles.component}>
       <Select
+        id={"hospital"}
         label={"בית חולים"}
         options={hospitalOptions}
         onChange={setHospital}
@@ -61,6 +62,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       <Input value={date} onChangeText={setDate} label={"תאריך"} />
       <Input value={hour} onChangeText={setHour} label={"שעה"} />
       <Select
+        id={"donations_count"}
         label={"מספר תורים"}
         options={slotOptions}
         onChange={setSlots}
