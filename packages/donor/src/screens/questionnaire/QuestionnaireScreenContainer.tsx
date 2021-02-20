@@ -13,6 +13,8 @@ export interface QuestionnaireLocationState {
   donationSlot: DonationSlot;
 }
 
+const debugMode = process.env.NODE_ENV === "development";
+
 export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
@@ -22,10 +24,22 @@ export default function QuestionnaireScreenContainer(
 
   const onSuccess = async () => {
     setIsLoading(true);
-    console.log(location.state.donationSlot.appointmentIds);
+
+    if (debugMode) {
+      console.log(
+        "Asked to book one of the following appointments: ",
+        location.state.donationSlot.appointmentIds
+      );
+    }
+
     const bookedAppointment = await FirebaseFunctions.bookAppointment(
       location.state.donationSlot.appointmentIds
     );
+
+    if (debugMode) {
+      console.log("Booked appointment", bookedAppointment.id);
+    }
+
     props.setBookedAppointment(bookedAppointment);
     history.goBack();
   };
@@ -35,6 +49,7 @@ export default function QuestionnaireScreenContainer(
       bookableAppointment={location.state.donationSlot}
       onSuccess={onSuccess}
       isLoading={isLoading}
+      debugMode={debugMode}
     />
   );
 }

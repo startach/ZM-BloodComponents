@@ -12,6 +12,7 @@ interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlot;
   onSuccess: () => void;
   isLoading: boolean;
+  debugMode: boolean;
 }
 
 const YesNoOptions: RadioOption[] = [
@@ -23,6 +24,7 @@ export default function QuestionnaireScreen({
   bookableAppointment,
   onSuccess,
   isLoading,
+  debugMode,
 }: QuestionnaireScreenProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
   const HaveYouAlreadyDonated = (
@@ -243,7 +245,7 @@ export default function QuestionnaireScreen({
 
         <Button
           className={styles.continueButton}
-          isDisabled={!isVerified}
+          isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
           isLoading={isLoading}
