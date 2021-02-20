@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment } from "@zm-blood-components/common";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
@@ -16,6 +16,7 @@ export interface QuestionnaireLocationState {
 export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
+  const history = useHistory();
   const location = useLocation<QuestionnaireLocationState>();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +27,7 @@ export default function QuestionnaireScreenContainer(
       location.state.donationSlot.appointmentIds
     );
     props.setBookedAppointment(bookedAppointment);
-    console.dir(bookedAppointment);
+    history.goBack();
   };
 
   return (
