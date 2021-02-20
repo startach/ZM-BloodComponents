@@ -44,7 +44,10 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   const isButtonDisable = () => !(hospital && date && slots);
 
   const onSave = () => {
-    props.addSlotsRequest(hospital, new Date(), slots);
+    if (!date) {
+      return;
+    }
+    props.addSlotsRequest(hospital, date, slots);
   };
 
   return (
