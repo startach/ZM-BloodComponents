@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import "./AppointmentForm.css";
 import Select from "../../components/Select";
-import { SelectOption } from "../../components/Select/Select";
-import { Hospital, LocaleUtils } from "@zm-blood-components/common";
+import {
+  Hospital,
+  HospitalUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-
-const hospitalOptions: SelectOption<Hospital>[] = [
-  hospitalToOption(Hospital.TEL_HASHOMER),
-  hospitalToOption(Hospital.ASAF_HAROFE),
-];
-
-function hospitalToOption(hospital: Hospital): SelectOption<Hospital> {
-  return {
-    label: LocaleUtils.getHospitalName(hospital),
-    value: hospital,
-    key: hospital,
-  };
-}
 
 const slotOptions: SelectOption<number>[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
   (n) => ({
@@ -36,7 +26,9 @@ interface AddAppointmentsFormProps {
 }
 
 export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
-  const [hospital, setHospital] = useState<Hospital>(Hospital.TEL_HASHOMER);
+  const [hospital, setHospital] = useState<Hospital | "">(
+    Hospital.TEL_HASHOMER
+  );
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("");
   const [slots, setSlots] = useState(1);
@@ -44,6 +36,9 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   const isButtonDisable = () => !(hospital && date && hour && slots);
 
   const onSave = () => {
+    if (!hospital) {
+      return;
+    }
     setDate("");
     setHour("");
     setSlots(1);
@@ -54,7 +49,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
     <div className="appointmentForm">
       <Select
         label={"בית חולים"}
-        options={hospitalOptions}
+        options={HospitalUtils.getAllHospitalOptions()}
         onChange={setHospital}
         value={hospital}
       />

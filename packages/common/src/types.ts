@@ -118,3 +118,9 @@ export enum LoginStatus {
   LOGGED_IN,
   LOGGED_OUT,
 }
+
+export interface SelectOption<T> {
+  value: T;
+  key: string;
+  label: string;
+}
