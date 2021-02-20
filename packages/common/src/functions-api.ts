@@ -1,24 +1,25 @@
-import {
-  BloodType,
-  BookedAppointment,
-  DbAdmin,
-  Donor,
-  Hospital,
-} from "./types";
+import { BloodType, DbAdmin, Donor, Hospital } from "./types";
 
 // Donor functions:
 
 export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {}
 
-type AvailableAppointmentEntry = {
+type AvailableAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
 };
 
+type BookedAppointmentApiEntry = {
+  id: string;
+  donationStartTimeMillis: number; // API returns millis
+  hospital: Hospital;
+  donorId: string;
+};
+
 export interface GetAvailableAppointmentsResponse {
-  availableAppointments: AvailableAppointmentEntry[];
+  availableAppointments: AvailableAppointmentApiEntry[];
 }
 
 export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
@@ -29,8 +30,8 @@ export interface GetDonorAppointmentsRequest {
 }
 
 export interface GetDonorAppointmentsResponse {
-  completedAppointments: BookedAppointment[];
-  futureAppointments: BookedAppointment[];
+  completedAppointments: BookedAppointmentApiEntry[];
+  futureAppointments: BookedAppointmentApiEntry[];
 }
 
 export const BookAppointmentFunctionName = "bookAppointment";
@@ -39,7 +40,7 @@ export interface BookAppointmentRequest {
   appointmentIds: string[];
 }
 export interface BookAppointmentResponse {
-  bookedAppointment: BookedAppointment;
+  bookedAppointment: BookedAppointmentApiEntry;
 }
 
 export const CancelAppointmentFunctionName = "cancelAppointment";
