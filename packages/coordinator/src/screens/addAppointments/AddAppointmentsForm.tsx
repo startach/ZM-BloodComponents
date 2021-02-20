@@ -1,7 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./AddAppointmentsForm.module.scss";
 import Select from "../../components/Select";
-import {Hospital, HospitalUtils, SelectOption} from "@zm-blood-components/common";
+import {
+  Hospital,
+  HospitalUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
@@ -23,7 +27,9 @@ interface AddAppointmentsFormProps {
 }
 
 export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
-  const [hospital, setHospital] = useState<Hospital | "">(Hospital.TEL_HASHOMER);
+  const [hospital, setHospital] = useState<Hospital | "">(
+    Hospital.TEL_HASHOMER
+  );
   const [date, setDate] = useState<Date | null>(getInitialDate());
   const [slots, setSlots] = useState(1);
 
