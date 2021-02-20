@@ -5,6 +5,7 @@ import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import { QuestionnaireLocationState } from "../questionnaire/QuestionnaireScreenContainer";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface BookDonationScreenContainerProps {
   user: Donor;
@@ -29,9 +30,9 @@ export default function BookDonationScreenContainer(
     );
   }, []);
 
-  const onAppointmentSelect = (appointment: AvailableAppointment) => {
+  const onSlotSelected = (donationSlot: DonationSlot) => {
     const routerProps: QuestionnaireLocationState = {
-      availableAppointment: appointment,
+      donationSlot,
     };
     history.push(MainNavigationKeys.Questionnaire, routerProps);
   };
@@ -41,7 +42,7 @@ export default function BookDonationScreenContainer(
       lastDonation={new Date(2021, 0, 13)}
       earliestNextDonationDate={new Date(2021, 1, 13)}
       availableAppointments={fetchingState.availableAppointments}
-      onAppointmentSelect={onAppointmentSelect}
+      onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
       isFetching={fetchingState.isFetching}
     />
