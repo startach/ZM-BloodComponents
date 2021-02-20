@@ -83,6 +83,7 @@ export interface DeleteAppointmentRequest {
   appointmentIds: string[];
 }
 
+export const SaveAdminFunctionName = "saveAdmin";
 export interface SaveAdminRequest {
   admin: DbAdmin;
 }

@@ -1,5 +1,9 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { DbAppointment, Hospital } from "@zm-blood-components/common";
+import {
+  DbAppointment,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -10,7 +14,9 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.cancelAppointment);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.CancelAppointmentFunctionName]
+);
 
 const DONOR_ID = "CancelAppointmentHandlerDonorId";
 const APPOINTMENT_TO_CANCEL = "CancelAppointmentHandlerAppointment";

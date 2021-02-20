@@ -16,7 +16,9 @@ import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.bookAppointment);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.BookAppointmentFunctionName]
+);
 
 const DONOR_ID = "BookingAppointmentHandlerDonorId";
 const APPOINTMENT_TO_BOOK_1 = "BookingAppointmentHandlerAppointment1";

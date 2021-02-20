@@ -24,13 +24,13 @@ export function getAvailableAppointments() {
   });
 }
 
-export async function bookAppointment(appointmentId: string) {
+export async function bookAppointment(appointmentIds: string[]) {
   const bookAppointmentFunction = firebase
     .functions()
     .httpsCallable(FunctionsApi.BookAppointmentFunctionName);
 
   const request: FunctionsApi.BookAppointmentRequest = {
-    appointmentIds: [appointmentId],
+    appointmentIds,
   };
 
   const response = await bookAppointmentFunction(request);

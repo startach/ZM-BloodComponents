@@ -4,7 +4,9 @@ import * as Functions from "../index";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { deleteDonor, getDonor } from "../dal/DonorDataAccessLayer";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.saveDonor);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.SaveDonorFunctionName]
+);
 
 const DONOR_ID = "SaveDonorTestId";
 

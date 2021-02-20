@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import {
-  AvailableAppointment,
-  BookedAppointment,
-} from "@zm-blood-components/common";
+import { BookedAppointment } from "@zm-blood-components/common";
 import { useHistory, useLocation } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
 }
 
 export interface QuestionnaireLocationState {
-  availableAppointment: AvailableAppointment;
+  donationSlot: DonationSlot;
 }
+
+const debugMode = process.env.NODE_ENV === "development";
 
 export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
@@ -24,18 +24,32 @@ export default function QuestionnaireScreenContainer(
 
   const onSuccess = async () => {
     setIsLoading(true);
+
+    if (debugMode) {
+      console.log(
+        "Asked to book one of the following appointments: ",
+        location.state.donationSlot.appointmentIds
+      );
+    }
+
     const bookedAppointment = await FirebaseFunctions.bookAppointment(
-      location.state.availableAppointment.id
+      location.state.donationSlot.appointmentIds
     );
+
+    if (debugMode) {
+      console.log("Booked appointment", bookedAppointment.id);
+    }
+
     props.setBookedAppointment(bookedAppointment);
     history.goBack();
   };
 
   return (
     <QuestionnaireScreen
-      availableAppointment={location.state.availableAppointment}
+      bookableAppointment={location.state.donationSlot}
       onSuccess={onSuccess}
       isLoading={isLoading}
+      debugMode={debugMode}
     />
   );
 }

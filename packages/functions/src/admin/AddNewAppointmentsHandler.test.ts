@@ -15,7 +15,9 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.addNewAppointments);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.AddNewAppointmentsFunctionName]
+);
 
 const USER_ID = "AddAppointmentHandlerTestUser";
 const DONATION_START_TIME_1 = new Date(2021, 3, 11, 12, 30);

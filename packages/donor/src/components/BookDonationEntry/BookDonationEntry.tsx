@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./BookDonationEntry.module.scss";
 import Card from "../basic/Card";
-import { ToTimeString } from "../../utils/DateUtil";
 import Text from "../basic/Text";
 import classNames from "classnames";
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
+import * as DateUtils from "../../utils/DateUtil";
 
 export interface BookDonationEntryProps {
   hospital: Hospital;
@@ -25,7 +25,7 @@ function BookDonationEntry({
       onClick={onClick}
     >
       <Text>
-        {ToTimeString(donationStartTime)}
+        {DateUtils.ToTimeString(donationStartTime)}
         {" - "}
         {LocaleUtils.getHospitalName(hospital)}
       </Text>
