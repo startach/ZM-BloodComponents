@@ -21,14 +21,13 @@ const USER_ID = "AddAppointmentHandlerTestUser";
 const DONATION_START_TIME_1 = new Date(2021, 3, 11, 12, 30);
 const DONATION_START_TIME_2 = new Date(2021, 3, 13, 11, 45);
 
-beforeAll(async () => {
+const reset = async () => {
   await deleteAllTestUserAppointments();
   await deleteAdmin(USER_ID);
-});
+};
 
-afterEach(async () => {
-  await deleteAdmin(USER_ID);
-});
+beforeAll(reset);
+afterEach(reset);
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => callFunction();
