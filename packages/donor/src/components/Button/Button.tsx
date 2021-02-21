@@ -12,6 +12,7 @@ type ButtonProps = {
   endIcon?: React.ReactNode;
   isDisabled?: boolean;
   isLoading?: boolean;
+  isFullWidth?: boolean;
 };
 
 const useButtonStyles = makeStyles({
@@ -29,20 +30,22 @@ export default function ZMButton({
   endIcon,
   isDisabled = false,
   isLoading = false,
+  isFullWidth = false,
 }: ButtonProps) {
   const classes = useButtonStyles();
 
   return (
-    <Button
-      onClick={onClick}
-      variant={variant}
-      color="primary"
-      className={classnames(className, classes.root)}
-      startIcon={!isLoading && startIcon}
-      endIcon={!isLoading && endIcon}
-      disabled={isDisabled || isLoading}
-    >
-      {isLoading ? <CircularProgress size="1rem" /> : title}
-    </Button>
+      <Button
+        onClick={onClick}
+        variant={variant}
+        color="primary"
+        className={classnames(className, classes.root)}
+        startIcon={!isLoading && startIcon}
+        endIcon={!isLoading && endIcon}
+        disabled={isDisabled || isLoading}
+        fullWidth={isFullWidth}
+      >
+        {isLoading ? <CircularProgress size="1rem" /> : title}
+      </Button>
   );
 }

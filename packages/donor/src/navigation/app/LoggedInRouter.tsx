@@ -9,6 +9,8 @@ import BookDonationScreenContainer from "../../screens/bookDonation/BookDonation
 import HomeScreenContainer from "../../screens/HomeScreenContainer";
 import { Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
+import AppHeader from "./AppHeader/AppHeader"
+import Styles from "./LoggedInRouter.module.scss"
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -16,32 +18,39 @@ interface LoggedInRouterProps {
 }
 
 export default function LoggedInRouter({ user, setUser }: LoggedInRouterProps) {
-  if (!user) {
+  const {firstName, lastName, phone, bloodType} = user as Donor
+  
+  if (!user || !firstName || !lastName || !phone || !bloodType) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
   return (
-    <Router>
-      <Switch>
-        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
-          <UpcomingDonationScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.DonationHistory}>
-          <DonationHistoryScreenContainer />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.MyProfile}>
-          <MyProfileScreenContainer user={user} />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.BookDonation}>
-          <BookDonationScreenContainer user={user} />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.Questionnaire}>
-          <QuestionnaireScreenContainer />
-        </Route>
-        <Route path={"*"}>
-          <HomeScreenContainer user={user} />
-        </Route>
-      </Switch>
-    </Router>
+    <>
+      <Router>
+        <AppHeader />
+        <div className={Styles["after-header"]} >
+          <Switch>
+            <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
+              <UpcomingDonationScreenContainer />
+            </Route>
+            <Route path={"/" + MainNavigationKeys.DonationHistory}>
+              <DonationHistoryScreenContainer />
+            </Route>
+            <Route path={"/" + MainNavigationKeys.MyProfile}>
+              <MyProfileScreenContainer user={user} />
+            </Route>
+            <Route path={"/" + MainNavigationKeys.BookDonation}>
+              <BookDonationScreenContainer user={user} />
+            </Route>
+            <Route path={"/" + MainNavigationKeys.Questionnaire}>
+              <QuestionnaireScreenContainer />
+            </Route>
+            <Route path={"*"}>
+              <HomeScreenContainer user={user} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </>
   );
 }

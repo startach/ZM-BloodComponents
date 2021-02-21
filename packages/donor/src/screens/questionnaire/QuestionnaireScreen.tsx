@@ -204,10 +204,6 @@ export default function QuestionnaireScreen({
 
   return (
     <div>
-      <div className={styles.header}>
-        <Text className={styles.headerTitle}>שאלון התאמה</Text>
-      </div>
-
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons

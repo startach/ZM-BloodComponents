@@ -10,25 +10,35 @@ interface ExtendedSignupScreenContainerProps {
 export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
+
+  enum NameValidation {
+    valid,
+    notEnoughSpaces,
+    fullNameTooLong
+  }
+
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
+    errorReason: NameValidation.valid
   });
   const [lastNameInput, setLastNameInput] = useState({
     value: "",
     isValid: true,
+    errorReason: NameValidation.valid
   });
   const [phoneNumberInput, setPhoneNumberInput] = useState({
     value: "",
     isValid: true,
   });
   const [bloodTypeInput, setBloodTypeInput] = useState({
-    value: BloodType.UNSPECIFIED,
+    value: BloodType.O_PLUS,
     isValid: true,
   });
 
-  const validateName = (value: string, isFirstName: boolean) => {
+  const setNameFields = (value: string, isFirstName: boolean) => {
     let isValid = true;
+    let errorReason = NameValidation.valid
     const consecutiveLetters = value.indexOf(" ");
     const overTenConsecutiveLetters =
       consecutiveLetters > 9 || (consecutiveLetters === -1 && value.length > 9);
@@ -36,15 +46,35 @@ export default function ExtendedSignupScreenContainer(
       ? lastNameInput.value
       : firstNameInput.value;
     const fullNameLength = value.length + otherNameValue.length;
-    if (
-      value.length === 0 ||
-      overTenConsecutiveLetters ||
-      fullNameLength > 20
-    ) {
-      isValid = false;
+
+
+    if (fullNameLength > 20) {
+      const firstNameValue = isFirstName ? value : firstNameInput.value
+      const lastNameValue = isFirstName ? lastNameInput.value : value
+      setFirstNameInput({ value: firstNameValue, isValid: false, errorReason: NameValidation.fullNameTooLong });
+      setLastNameInput({ value: lastNameValue, isValid: false, errorReason: NameValidation.fullNameTooLong });
+    } else {
+      if (overTenConsecutiveLetters) {
+        isValid = false;
+        errorReason = NameValidation.notEnoughSpaces
+      }
+
+
+      if (isFirstName) {
+        setFirstNameInput({value, isValid, errorReason})
+        if (lastNameInput.errorReason === NameValidation.fullNameTooLong) {
+          setLastNameInput({value: lastNameInput.value, isValid: true, errorReason: NameValidation.valid})
+        }
+      } else {
+        setLastNameInput({value, isValid, errorReason})
+        if (firstNameInput.errorReason === NameValidation.fullNameTooLong) {
+          setFirstNameInput({value: firstNameInput.value, isValid: true, errorReason: NameValidation.valid})
+        }
+      }
+
     }
 
-    return isValid;
+
   };
 
   const onSave = () => {
@@ -60,15 +90,11 @@ export default function ExtendedSignupScreenContainer(
 
   const firstName = {
     ...firstNameInput,
-    onChange: (value: string) => {
-      setFirstNameInput({ value, isValid: validateName(value, true) });
-    },
+    onChange: (value: string) => setNameFields(value, true),
   };
   const lastName = {
     ...lastNameInput,
-    onChange: (value: string) => {
-      setLastNameInput({ value, isValid: validateName(value, false) });
-    },
+    onChange: (value: string) => setNameFields(value, false),
   };
   const phoneNumber = {
     ...phoneNumberInput,

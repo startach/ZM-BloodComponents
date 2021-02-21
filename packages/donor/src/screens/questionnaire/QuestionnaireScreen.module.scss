@@ -4,21 +4,6 @@ body {
   overflow: auto !important;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-secondary);
-  color: var(--color-white);
-  height: 56px;
-}
-
-.headerTitle {
-  height: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-  font-weight: bold;
-}
-
 .donationInfo {
   text-align: center;
   padding: 16px;
