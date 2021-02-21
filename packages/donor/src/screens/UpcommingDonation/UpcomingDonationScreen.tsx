@@ -71,7 +71,11 @@ export default function UpcomingDonationScreen({
   }
 
   return (
-    <ZMScreen className={styles.component} title="תורים מתוכננים">
+    <ZMScreen
+      hasProfileButton
+      className={styles.component}
+      title="תורים מתוכננים"
+    >
       {renderHeader()}
       <main className={styles.content}>
         {renderConfirmDonationTitle()}
