@@ -45,7 +45,7 @@ export default function BookDonationScreen({
 
   return (
     <ZMScreen
-      title="דף ראשי"
+      title="קביעת תרומה חדשה"
       hasBackButton={false}
       className={styles.component}
     >

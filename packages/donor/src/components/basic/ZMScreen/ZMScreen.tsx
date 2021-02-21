@@ -7,7 +7,7 @@ interface ExtendedSignupScreenProps {
   className?: string;
   hasBackButton?: boolean;
   hasProfileButton?: boolean;
-  title?: string;
+  title: string;
 }
 
 export default function ZMScreen({
@@ -15,7 +15,7 @@ export default function ZMScreen({
   className = "",
   hasBackButton = true,
   hasProfileButton = true,
-  title = "",
+  title,
 }: ExtendedSignupScreenProps) {
   return (
     <>

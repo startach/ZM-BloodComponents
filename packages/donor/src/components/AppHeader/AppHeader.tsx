@@ -46,7 +46,7 @@ export default function ButtonAppBar({
       <Toolbar>
         <Grid container>
           <Grid item xs>
-            {hasBackButton ? (
+            {hasBackButton && (
               <IconButton
                 edge="start"
                 className={classes.menuButton}
@@ -56,7 +56,7 @@ export default function ButtonAppBar({
               >
                 <ArrowForward />
               </IconButton>
-            ) : null}
+            )}
           </Grid>
           <Grid item xs={8}>
             <Typography variant="h6" className={classes.title}>
@@ -64,7 +64,7 @@ export default function ButtonAppBar({
             </Typography>
           </Grid>
           <Grid item xs>
-            {hasProfileButton ? (
+            {hasProfileButton && (
               <IconButton
                 edge="end"
                 className={classes.menuButton}
@@ -74,7 +74,7 @@ export default function ButtonAppBar({
               >
                 <AccountCircle />
               </IconButton>
-            ) : null}
+            )}
           </Grid>
         </Grid>
       </Toolbar>
