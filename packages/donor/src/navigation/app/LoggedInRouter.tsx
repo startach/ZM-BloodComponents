@@ -4,7 +4,7 @@ import { MainNavigationKeys } from "./MainNavigationKeys";
 import ExtendedSignupScreenContainer from "../../screens/extendedSignup/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../../screens/UpcommingDonation/UpcomingDonationScreenContainer";
 import DonationHistoryScreenContainer from "../../screens/DonationHistoryScreenContainer";
-import MyProfileScreenContainer from "../../screens/MyProfileScreenContainer";
+import MyProfileScreenContainer from "../../screens/myProfile/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import HomeScreenContainer from "../../screens/HomeScreenContainer";
 import { Donor } from "@zm-blood-components/common";

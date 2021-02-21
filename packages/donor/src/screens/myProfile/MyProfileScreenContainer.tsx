@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
-import { useHistory } from "react-router-dom";
-import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
+// import { useHistory } from "react-router-dom";
+import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
 
 interface MyProfileScreenContainerProps {
@@ -11,8 +11,17 @@ interface MyProfileScreenContainerProps {
 export default function MyProfileScreenContainer(
   props: MyProfileScreenContainerProps
 ) {
-  const [user] = useState<Donor>(props.user);
-  const history = useHistory();
+  const [user] = useState<Donor>({
+    id: "2",
+    firstName: "מרואן",
+    lastName: "ריזק",
+    birthDate: "1991-11-10",
+    phone: "0509018870",
+    bloodType: BloodType.AB_MINUS,
+    donationCount: "4",
+    email: "zm@gmail.com",
+  });
+  // const history = useHistory();
 
   const onSave = (
     firstName: string,
@@ -28,7 +37,7 @@ export default function MyProfileScreenContainer(
       phoneNumber,
       bloodType
     );
-    history.goBack();
+    // history.goBack();
   };
 
   return <MyProfileScreen onSave={onSave} user={user} />;

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 type ButtonVariant = "text" | "outlined" | "contained";
 
 type ButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   title: string;
   variant?: ButtonVariant;
   className?: string;
