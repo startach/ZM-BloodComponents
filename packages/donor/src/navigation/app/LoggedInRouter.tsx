@@ -22,6 +22,18 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
+  // If user has booked appointment, show it
+  if (bookedAppointment) {
+    return (
+      <UpcomingDonationScreenContainer
+        user={user}
+        bookedAppointment={bookedAppointment}
+        setBookedAppointment={setBookedAppointment}
+      />
+    );
+  }
+
+  // If user has no booked appointment, go to book donation flow
   return (
     <Router>
       <Switch>
@@ -34,15 +46,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
           />
         </Route>
         <Route path={"*"}>
-          {bookedAppointment ? (
-            <UpcomingDonationScreenContainer
-              user={user}
-              bookedAppointment={bookedAppointment}
-              setBookedAppointment={setBookedAppointment}
-            />
-          ) : (
-            <BookDonationScreenContainer user={user} />
-          )}
+          <BookDonationScreenContainer user={user} />
         </Route>
       </Switch>
     </Router>
