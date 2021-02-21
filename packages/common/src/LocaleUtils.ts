@@ -1,4 +1,4 @@
-import { Hospital } from "./types";
+import { Hospital, BloodType } from "./types";
 
 export function getHospitalName(hospital: Hospital) {
   switch (hospital) {
@@ -12,3 +12,25 @@ export function getHospitalName(hospital: Hospital) {
       return hospital;
   }
 }
+export const getBloodTypeTranslation = (bloodType: BloodType) => {
+  switch (bloodType) {
+    case BloodType.AB_MINUS:
+      return "AB-";
+    case BloodType.AB_PLUS:
+      return "AB+";
+    case BloodType.A_MINUS:
+      return "A-";
+    case BloodType.A_PLUS:
+      return "A+";
+    case BloodType.B_MINUS:
+      return "B-";
+    case BloodType.B_PLUS:
+      return "B+";
+    case BloodType.O_MINUS:
+      return "O-";
+    case BloodType.O_PLUS:
+      return "O+";
+    case BloodType.UNSPECIFIED:
+      return "אחר";
+  }
+};
