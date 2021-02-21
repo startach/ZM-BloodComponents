@@ -1,5 +1,6 @@
 import React from "react";
 import { BloodType } from "@zm-blood-components/common";
+import { LocaleUtils } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
@@ -50,18 +51,6 @@ export default function ExtendedSignupScreen({
         : "שם המשפחה ארוך מדי";
   }
 
-  const bloodTypeTranslations = {
-    [BloodType.AB_MINUS]: "AB-",
-    [BloodType.AB_PLUS]: "AB+",
-    [BloodType.A_MINUS]: "A-",
-    [BloodType.A_PLUS]: "A+",
-    [BloodType.B_MINUS]: "B-",
-    [BloodType.B_PLUS]: "B+",
-    [BloodType.O_MINUS]: "O-",
-    [BloodType.O_PLUS]: "O+",
-    [BloodType.UNSPECIFIED]: "סוג דם",
-  };
-
   return (
     <div>
       <HeaderSection>
@@ -98,7 +87,7 @@ export default function ExtendedSignupScreen({
             return {
               key: "ExtendedSignupScreen-" + index,
               value: type,
-              label: bloodTypeTranslations[BloodType[type]],
+              label: LocaleUtils.BloodTypeTranslations[BloodType[type]],
             };
           })}
           errorMessage={bloodType.isValid ? undefined : "נא לבחור סוג דם"}

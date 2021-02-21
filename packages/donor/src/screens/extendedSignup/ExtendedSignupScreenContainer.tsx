@@ -31,8 +31,8 @@ export default function ExtendedSignupScreenContainer(
     isValid: true,
   });
   const [bloodTypeInput, setBloodTypeInput] = useState({
-    value: BloodType.O_PLUS,
-    isValid: true,
+    value: BloodType.UNSPECIFIED,
+    isValid: false,
   });
 
   const setNameFields = (value: string, isFirstName: boolean) => {

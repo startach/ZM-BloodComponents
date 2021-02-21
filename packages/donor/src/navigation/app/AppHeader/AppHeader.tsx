@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const getPathDetails = (path?: string) => {
-  let title: string = "דף ראשי";
+  let title: string = "";
   let hasBackButton: boolean = false;
 
   const pathName = path?.replace("/", "");
@@ -50,9 +50,10 @@ const getPathDetails = (path?: string) => {
     case MainNavigationKeys.UpdateApp:
       break;
     case MainNavigationKeys.Home:
-    default:
       title = "דף ראשי";
       break;
+    default:
+      throw Error("Unknown pathname");
   }
 
   return { title, hasBackButton };

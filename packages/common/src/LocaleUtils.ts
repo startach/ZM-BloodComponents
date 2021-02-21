@@ -1,4 +1,4 @@
-import { Hospital } from "./types";
+import { Hospital, BloodType } from "./types";
 
 export function getHospitalName(hospital: Hospital) {
   switch (hospital) {
@@ -12,3 +12,14 @@ export function getHospitalName(hospital: Hospital) {
       return hospital;
   }
 }
+export const BloodTypeTranslations = {
+  [BloodType.AB_MINUS]: "AB-",
+  [BloodType.AB_PLUS]: "AB+",
+  [BloodType.A_MINUS]: "A-",
+  [BloodType.A_PLUS]: "A+",
+  [BloodType.B_MINUS]: "B-",
+  [BloodType.B_PLUS]: "B+",
+  [BloodType.O_MINUS]: "O-",
+  [BloodType.O_PLUS]: "O+",
+  [BloodType.UNSPECIFIED]: "סוג דם",
+};
