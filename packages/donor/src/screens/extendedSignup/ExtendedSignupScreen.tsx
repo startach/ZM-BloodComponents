@@ -9,14 +9,14 @@ import HeaderSection from "../../components/HeaderSection";
 enum NameValidation {
   valid,
   notEnoughSpaces,
-  fullNameTooLong
+  fullNameTooLong,
 }
 
 type ExtendedSingupField<T> = {
   value: T;
   isValid: boolean;
   onChange: (value: T) => void;
-  errorReason? : NameValidation
+  errorReason?: NameValidation;
 };
 interface ExtendedSignupScreenProps {
   firstName: ExtendedSingupField<string>;
@@ -33,43 +33,47 @@ export default function ExtendedSignupScreen({
   bloodType,
   onSave,
 }: ExtendedSignupScreenProps) {
-  let firstNameErrorMessage: string = ""
-  let lastNameErrorMessage : string = ""
+  let firstNameErrorMessage: string = "";
+  let lastNameErrorMessage: string = "";
 
   if (!firstName.isValid) {
-    firstNameErrorMessage = firstName.errorReason === NameValidation.fullNameTooLong ? "השם המלא ארוך מ20 תווים" : "השם הראשון ארוך מדי"
+    firstNameErrorMessage =
+      firstName.errorReason === NameValidation.fullNameTooLong
+        ? "השם המלא ארוך מ20 תווים"
+        : "השם הראשון ארוך מדי";
   }
 
-if (!lastName.isValid) {
-  lastNameErrorMessage = lastName.errorReason === NameValidation.fullNameTooLong ? "השם המלא ארוך מ20 תווים" : "שם המשפחה ארוך מדי"
-}
+  if (!lastName.isValid) {
+    lastNameErrorMessage =
+      lastName.errorReason === NameValidation.fullNameTooLong
+        ? "השם המלא ארוך מ20 תווים"
+        : "שם המשפחה ארוך מדי";
+  }
 
-const bloodTypeTranslations = {
-  [BloodType.AB_MINUS] : "AB-",
-  [BloodType.AB_PLUS]: "AB+",
-  [BloodType.A_MINUS]: "A-",
-  [BloodType.A_PLUS]: "A+",
-  [BloodType.B_MINUS]: "B-",
-  [BloodType.B_PLUS]: "B+",
-  [BloodType.O_MINUS]: "O-",
-  [BloodType.O_PLUS]: "O+",
-  [BloodType.UNSPECIFIED]: "סוג דם"
-}
+  const bloodTypeTranslations = {
+    [BloodType.AB_MINUS]: "AB-",
+    [BloodType.AB_PLUS]: "AB+",
+    [BloodType.A_MINUS]: "A-",
+    [BloodType.A_PLUS]: "A+",
+    [BloodType.B_MINUS]: "B-",
+    [BloodType.B_PLUS]: "B+",
+    [BloodType.O_MINUS]: "O-",
+    [BloodType.O_PLUS]: "O+",
+    [BloodType.UNSPECIFIED]: "סוג דם",
+  };
 
   return (
     <div>
       <HeaderSection>
-        <h4>משהו אחד אחרון!
-      </h4>
-        <span>פרטים אחרונים להרשמה
-      </span>
+        <h4>משהו אחד אחרון!</h4>
+        <span>פרטים אחרונים להרשמה</span>
       </HeaderSection>
       <div className={Styles["extended-signup"]}>
         <Input
           value={firstName.value}
           onChangeText={firstName.onChange}
           label="שם פרטי"
-          errorMessage={firstName.isValid  ?undefined : firstNameErrorMessage}
+          errorMessage={firstName.isValid ? undefined : firstNameErrorMessage}
         />
         <Input
           value={lastName.value}
@@ -81,7 +85,9 @@ const bloodTypeTranslations = {
           value={phoneNumber.value}
           onChangeText={phoneNumber.onChange}
           label="מספר טלפון"
-          errorMessage={phoneNumber.isValid ? undefined : "מספר הטלפון אינו תקין"}
+          errorMessage={
+            phoneNumber.isValid ? undefined : "מספר הטלפון אינו תקין"
+          }
         />
         <Select
           value={bloodType.value}
@@ -95,7 +101,7 @@ const bloodTypeTranslations = {
               label: bloodTypeTranslations[BloodType[type]],
             };
           })}
-          errorMessage={bloodType.isValid ? undefined: "נא לבחור סוג דם"}
+          errorMessage={bloodType.isValid ? undefined : "נא לבחור סוג דם"}
         />
         <Button
           onClick={onSave}

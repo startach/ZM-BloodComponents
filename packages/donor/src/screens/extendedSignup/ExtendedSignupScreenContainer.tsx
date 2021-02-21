@@ -10,22 +10,21 @@ interface ExtendedSignupScreenContainerProps {
 export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
-
   enum NameValidation {
     valid,
     notEnoughSpaces,
-    fullNameTooLong
+    fullNameTooLong,
   }
 
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
-    errorReason: NameValidation.valid
+    errorReason: NameValidation.valid,
   });
   const [lastNameInput, setLastNameInput] = useState({
     value: "",
     isValid: true,
-    errorReason: NameValidation.valid
+    errorReason: NameValidation.valid,
   });
   const [phoneNumberInput, setPhoneNumberInput] = useState({
     value: "",
@@ -38,7 +37,7 @@ export default function ExtendedSignupScreenContainer(
 
   const setNameFields = (value: string, isFirstName: boolean) => {
     let isValid = true;
-    let errorReason = NameValidation.valid
+    let errorReason = NameValidation.valid;
     const consecutiveLetters = value.indexOf(" ");
     const overTenConsecutiveLetters =
       consecutiveLetters > 9 || (consecutiveLetters === -1 && value.length > 9);
@@ -47,34 +46,45 @@ export default function ExtendedSignupScreenContainer(
       : firstNameInput.value;
     const fullNameLength = value.length + otherNameValue.length;
 
-
     if (fullNameLength > 20) {
-      const firstNameValue = isFirstName ? value : firstNameInput.value
-      const lastNameValue = isFirstName ? lastNameInput.value : value
-      setFirstNameInput({ value: firstNameValue, isValid: false, errorReason: NameValidation.fullNameTooLong });
-      setLastNameInput({ value: lastNameValue, isValid: false, errorReason: NameValidation.fullNameTooLong });
+      const firstNameValue = isFirstName ? value : firstNameInput.value;
+      const lastNameValue = isFirstName ? lastNameInput.value : value;
+      setFirstNameInput({
+        value: firstNameValue,
+        isValid: false,
+        errorReason: NameValidation.fullNameTooLong,
+      });
+      setLastNameInput({
+        value: lastNameValue,
+        isValid: false,
+        errorReason: NameValidation.fullNameTooLong,
+      });
     } else {
       if (overTenConsecutiveLetters) {
         isValid = false;
-        errorReason = NameValidation.notEnoughSpaces
+        errorReason = NameValidation.notEnoughSpaces;
       }
-
 
       if (isFirstName) {
-        setFirstNameInput({value, isValid, errorReason})
+        setFirstNameInput({ value, isValid, errorReason });
         if (lastNameInput.errorReason === NameValidation.fullNameTooLong) {
-          setLastNameInput({value: lastNameInput.value, isValid: true, errorReason: NameValidation.valid})
+          setLastNameInput({
+            value: lastNameInput.value,
+            isValid: true,
+            errorReason: NameValidation.valid,
+          });
         }
       } else {
-        setLastNameInput({value, isValid, errorReason})
+        setLastNameInput({ value, isValid, errorReason });
         if (firstNameInput.errorReason === NameValidation.fullNameTooLong) {
-          setFirstNameInput({value: firstNameInput.value, isValid: true, errorReason: NameValidation.valid})
+          setFirstNameInput({
+            value: firstNameInput.value,
+            isValid: true,
+            errorReason: NameValidation.valid,
+          });
         }
       }
-
     }
-
-
   };
 
   const onSave = () => {

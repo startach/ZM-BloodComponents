@@ -7,8 +7,8 @@ import MyProfileScreenContainer from "../../screens/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
-import AppHeader from "./AppHeader/AppHeader"
-import Styles from "./LoggedInRouter.module.scss"
+import AppHeader from "./AppHeader/AppHeader";
+import Styles from "./LoggedInRouter.module.scss";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -19,9 +19,9 @@ interface LoggedInRouterProps {
 
 export default function LoggedInRouter(props: LoggedInRouterProps) {
   const { user, bookedAppointment, setUser, setBookedAppointment } = props;
-  
-  const {firstName, lastName, phone, bloodType} = user as Donor
-  
+
+  const { firstName, lastName, phone, bloodType } = user as Donor;
+
   if (!user || !firstName || !lastName || !phone || !bloodType) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
@@ -42,20 +42,20 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
     <>
       <Router>
         <AppHeader />
-        <div className={Styles["after-header"]} >
-        <Switch>
-        <Route path={"/" + MainNavigationKeys.MyProfile}>
-          <MyProfileScreenContainer user={user} />
-        </Route>
-        <Route path={"/" + MainNavigationKeys.Questionnaire}>
-          <QuestionnaireScreenContainer
-            setBookedAppointment={props.setBookedAppointment}
-          />
-        </Route>
-        <Route path={"*"}>
-          <BookDonationScreenContainer user={user} />
-        </Route>
-      </Switch>
+        <div className={Styles["after-header"]}>
+          <Switch>
+            <Route path={"/" + MainNavigationKeys.MyProfile}>
+              <MyProfileScreenContainer user={user} />
+            </Route>
+            <Route path={"/" + MainNavigationKeys.Questionnaire}>
+              <QuestionnaireScreenContainer
+                setBookedAppointment={props.setBookedAppointment}
+              />
+            </Route>
+            <Route path={"*"}>
+              <BookDonationScreenContainer user={user} />
+            </Route>
+          </Switch>
         </div>
       </Router>
     </>

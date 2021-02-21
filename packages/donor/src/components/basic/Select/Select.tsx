@@ -1,4 +1,10 @@
-import {NativeSelect, InputLabel, FormHelperText, FormControl, makeStyles} from "@material-ui/core";
+import {
+  NativeSelect,
+  InputLabel,
+  FormHelperText,
+  FormControl,
+  makeStyles,
+} from "@material-ui/core";
 import React from "react";
 
 type SelectVariant = "standard" | "filled" | "outlined";
@@ -20,13 +26,13 @@ type SelectProps<T> = {
   isValid?: boolean;
   variant?: SelectVariant;
   options: SelectOption<T>[];
-  errorMessage? :string 
+  errorMessage?: string;
 };
 
 const useSelectStyles = makeStyles({
   root: {
     height: "3rem",
-    marginBottom: "30px"
+    marginBottom: "30px",
   },
 });
 
@@ -41,7 +47,7 @@ export default function Select<T>({
   isValid = true,
   variant = "standard",
   options,
-  errorMessage
+  errorMessage,
 }: SelectProps<T>) {
   const classes = useSelectStyles();
 
