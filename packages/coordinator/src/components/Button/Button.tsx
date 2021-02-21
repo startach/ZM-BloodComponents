@@ -37,17 +37,17 @@ export default function ZMButton({
   const classes = useButtonStyles();
 
   return (
-      <Button
-        onClick={onClick}
-        variant={variant}
-        color="primary"
-        className={classnames(className, classes.root)}
-        startIcon={!isLoading && startIcon}
-        endIcon={!isLoading && endIcon}
-        disabled={isDisabled || isLoading}
-        fullWidth={isFullWidth}
-      >
-        {isLoading ? <Spinner /> : title}
-      </Button>
+    <Button
+      onClick={onClick}
+      variant={variant}
+      color="primary"
+      className={classnames(className, classes.root)}
+      startIcon={!isLoading && startIcon}
+      endIcon={!isLoading && endIcon}
+      disabled={isDisabled || isLoading}
+      fullWidth={isFullWidth}
+    >
+      {isLoading ? <Spinner /> : title}
+    </Button>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
-import { BloodType } from "@zm-blood-components/common";
-import { LocaleUtils } from "@zm-blood-components/common";
+import { BloodType, LocaleUtils } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
