@@ -32,8 +32,8 @@ export default function MyProfileScreenContainer(
     );
     history.goBack();
   };
-  
+
   const onSignOut = () => firebase.auth().signOut();
 
-  return <MyProfileScreen onSave={onSave} user={user} onSignOut={onSignOut}/>;
+  return <MyProfileScreen onSave={onSave} user={user} onSignOut={onSignOut} />;
 }

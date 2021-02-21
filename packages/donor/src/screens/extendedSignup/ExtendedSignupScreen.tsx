@@ -63,11 +63,7 @@ export default function ExtendedSignupScreen({
   bloodTypeOptions.unshift({ key: "undefined", value: "", label: "בחר" });
 
   return (
-    <ZMScreen
-      hasBackButton={false}
-      hasProfileButton={false}
-      title={"סיום הרשמה"}
-    >
+    <ZMScreen title={"סיום הרשמה"}>
       <HeaderSection>
         <h4>משהו אחד אחרון!</h4>
         <span>פרטים אחרונים להרשמה</span>

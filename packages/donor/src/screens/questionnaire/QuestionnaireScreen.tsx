@@ -208,7 +208,7 @@ export default function QuestionnaireScreen({
     isConfirmed;
 
   return (
-    <ZMScreen title="שאלון התאמה">
+    <ZMScreen title="שאלון התאמה" hasBackButton>
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
