@@ -1,4 +1,4 @@
-import styles from "./logo.module.scss";
+import styles from "./Logo.module.scss";
 
 const Logo: React.FunctionComponent<{}> = (prop) => {
   return (

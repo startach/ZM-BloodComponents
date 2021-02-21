@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { BookedAppointment } from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
-import Text from "../../components/Text";
+import Text from "../../components/basic/Text";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import Button from "../../components/Button";
+import Button from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
 
 export enum UpcomingDonationStates {
@@ -15,7 +15,7 @@ export enum UpcomingDonationStates {
 
 interface UpcomingDonationScreenProps {
   state: UpcomingDonationStates;
-  upcomingDonation: BookedAppointment;
+  bookedAppointment: BookedAppointment;
   lastDonation?: Date;
   firstName: string;
   onConfirm: () => void;
@@ -27,14 +27,9 @@ export default function UpcomingDonationScreen({
   firstName,
   lastDonation,
   onCancel,
-  upcomingDonation,
+  bookedAppointment,
   onConfirm,
 }: UpcomingDonationScreenProps) {
-  const donationDate = React.useMemo(
-    () => new Date(upcomingDonation.donationStartTimeMillis),
-    [upcomingDonation.donationStartTimeMillis]
-  );
-
   function renderHeader() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -74,22 +69,6 @@ export default function UpcomingDonationScreen({
     );
   }
 
-  function renderCancelButton() {
-    const title =
-      state === UpcomingDonationStates.afterDonation ? "לא תרמתי" : "בטל תור";
-
-    return (
-      <div className={styles.cancelButtonContainer}>
-        <Button
-          title={title}
-          className={styles.cancelButton}
-          onClick={onCancel}
-          variant={"outlined"}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className={styles.component}>
       {renderHeader()}
@@ -99,13 +78,34 @@ export default function UpcomingDonationScreen({
         <Text className={styles.donationDetailsText}>פרטי התור</Text>
 
         <DonationInfoIcons
-          donationDate={donationDate}
-          hospital={upcomingDonation.hospital}
+          donationStartTimeMillis={bookedAppointment.donationStartTimeMillis}
+          hospital={bookedAppointment.hospital}
         />
 
         {renderConfirmButton()}
-        {renderCancelButton()}
+        <CancelButton onCancel={onCancel} />
       </main>
+    </div>
+  );
+}
+
+function CancelButton(props: { onCancel: () => void }) {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onCancel = () => {
+    setIsLoading(true);
+    props.onCancel();
+  };
+
+  return (
+    <div className={styles.cancelButtonContainer}>
+      <Button
+        title="בטל תור"
+        className={styles.cancelButton}
+        onClick={onCancel}
+        variant={"outlined"}
+        isLoading={isLoading}
+      />
     </div>
   );
 }

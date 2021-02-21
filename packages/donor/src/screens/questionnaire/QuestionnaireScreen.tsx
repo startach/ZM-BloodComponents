@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import RadioGroup from "../../components/RadioGroup";
-import { RadioOption } from "../../components/RadioGroup/RadioGroup";
+import RadioGroup from "../../components/basic/RadioGroup";
+import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import { AvailableAppointment } from "@zm-blood-components/common";
-import Button from "../../components/Button";
+import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
-import Text from "../../components/Text";
-import Checkbox from "../../components/Checkbox/Checkbox";
+import Text from "../../components/basic/Text";
+import Checkbox from "../../components/basic/Checkbox/Checkbox";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface QuestionnaireScreenProps {
-  availableAppointment: AvailableAppointment;
+  bookableAppointment: DonationSlot;
   onSuccess: () => void;
+  isLoading: boolean;
+  debugMode: boolean;
 }
 
 const YesNoOptions: RadioOption[] = [
@@ -19,8 +21,10 @@ const YesNoOptions: RadioOption[] = [
 ];
 
 export default function QuestionnaireScreen({
-  availableAppointment,
+  bookableAppointment,
   onSuccess,
+  isLoading,
+  debugMode,
 }: QuestionnaireScreenProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
   const HaveYouAlreadyDonated = (
@@ -207,8 +211,8 @@ export default function QuestionnaireScreen({
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
-          hospital={availableAppointment.hospital}
-          donationDate={availableAppointment.donationStartTime}
+          hospital={bookableAppointment.hospital}
+          donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
         />
       </div>
 
@@ -237,9 +241,10 @@ export default function QuestionnaireScreen({
 
         <Button
           className={styles.continueButton}
-          isDisabled={!isVerified}
+          isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
+          isLoading={isLoading}
         />
       </div>
     </div>

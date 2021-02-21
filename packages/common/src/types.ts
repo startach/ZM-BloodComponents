@@ -97,7 +97,7 @@ export type DbAppointment = {
 
 export type AvailableAppointment = {
   id: string;
-  donationStartTime: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
 };
 
@@ -105,4 +105,22 @@ export enum Collections {
   ADMIN = "admin",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
+}
+
+export type NewDonationSlots = {
+  hospital: Hospital;
+  donationStartTime: string;
+  slots: number;
+};
+
+export enum LoginStatus {
+  UNKNOWN,
+  LOGGED_IN,
+  LOGGED_OUT,
+}
+
+export interface SelectOption<T> {
+  value: T;
+  key: string;
+  label: string;
 }

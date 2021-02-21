@@ -1,8 +1,8 @@
 import React from "react";
 import { BloodType } from "@zm-blood-components/common";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
+import Button from "../../components/basic/Button";
+import Input from "../../components/basic/Input";
+import Select from "../../components/basic/Select";
 import Styles from "./_ExtendedSignup.module.scss";
 import HeaderSection from "../../components/HeaderSection";
 

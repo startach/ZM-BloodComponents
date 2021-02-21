@@ -13,7 +13,7 @@ export default async function (
 
   const appointments = await getAppointmentsByIds(appointmentIds);
 
-  const hospitals = appointments.map((doc) => doc.hospital);
+  const hospitals = new Set(appointments.map((doc) => doc.hospital));
 
   // validate user is allowed delete appointments of this hospital
   await validateAppointmentEditPermissions(callerId, hospitals);

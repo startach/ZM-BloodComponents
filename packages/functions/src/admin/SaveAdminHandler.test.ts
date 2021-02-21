@@ -1,11 +1,17 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { DbAdmin, AdminRole, Hospital } from "@zm-blood-components/common";
+import {
+  DbAdmin,
+  AdminRole,
+  Hospital,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.saveAdmin);
-
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.SaveAdminFunctionName]
+);
 const CALLING_USER_ID = "SaveAdminTestCallingUser";
 const TARGET_ADMIN_ID = "SaveAdminTestTargetUser";
 

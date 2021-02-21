@@ -1,38 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { BookedAppointment } from "@zm-blood-components/common";
+import React from "react";
+import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import UpcomingDonationScreen, {
   UpcomingDonationStates,
 } from "./UpcomingDonationScreen";
-import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
-export default function UpcomingDonationScreenContainer() {
-  const history = useHistory();
-  const [upcomingDonations, setUpcomingDonations] = useState<
-    BookedAppointment | undefined
-  >();
+interface UpcomingDonationScreenContainerProps {
+  user: Donor;
+  bookedAppointment: BookedAppointment;
+  setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
+}
 
-  useEffect(() => {
-    FirebaseFunctions.getFutureAppointments().then((futureAppointments) => {
-      setUpcomingDonations(futureAppointments[0]);
-    });
-  }, []);
-
-  //TODO: ensure that a donation is always available
-  if (!upcomingDonations) return <>no appointment info were provided :(</>;
+export default function UpcomingDonationScreenContainer(
+  props: UpcomingDonationScreenContainerProps
+) {
+  const onCancelAppointment = async () => {
+    await FirebaseFunctions.cancelAppointment(props.bookedAppointment.id);
+    props.setBookedAppointment(undefined);
+  };
 
   return (
     <UpcomingDonationScreen
-      state={UpcomingDonationStates.sameDayDonation}
+      state={UpcomingDonationStates.beforeDonation}
       lastDonation={new Date(2021, 0, 13)}
-      upcomingDonation={upcomingDonations}
-      firstName={"יוני"}
+      bookedAppointment={props.bookedAppointment}
+      firstName={props.user.firstName}
+      onCancel={onCancelAppointment}
       onConfirm={() => {
         console.log("donation confirmed");
-      }}
-      onCancel={() => {
-        console.log("Asked to cancel appointment");
-        history.goBack();
       }}
     />
   );

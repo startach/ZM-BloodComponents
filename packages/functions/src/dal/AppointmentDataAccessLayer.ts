@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
-import { DbAppointment, Collections } from "@zm-blood-components/common";
+import { Collections, DbAppointment } from "@zm-blood-components/common";
 
 export async function getAppointmentsByIds(appointmentIds: string[]) {
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
@@ -52,7 +52,7 @@ export async function getAppointmentsByDonorIdInTime(
 export async function getAppointments(
   donorId: string,
   options: { fromTime?: Date; toTime?: Date }
-) {
+): Promise<DbAppointment[]> {
   let request = admin
     .firestore()
     .collection(Collections.APPOINTMENTS)

@@ -23,9 +23,12 @@
       ]
     },
     {
-      "target": "admin",
-      "public": "packages/admin/build",
-      "predeploy": ["yarn run build-common"],
+      "target": "coordinator",
+      "public": "packages/coordinator/build",
+      "predeploy": [
+        "yarn run build-common",
+        "yarn workspace @zm-blood-components/coordinator build"
+      ],
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {

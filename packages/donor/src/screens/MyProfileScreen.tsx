@@ -1,6 +1,6 @@
 import React from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
-import Text from "../components/Text";
+import Text from "../components/basic/Text";
 
 interface MyProfileScreenProps {
   user?: Donor;

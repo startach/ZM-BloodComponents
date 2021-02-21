@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/functions";
 import {
-  AvailableAppointment,
   BloodType,
   BookedAppointment,
   Donor,
@@ -14,26 +13,35 @@ export function getAvailableAppointments() {
     .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
-    return response.availableAppointments.map<AvailableAppointment>(
-      (appointment) => ({
-        id: appointment.id,
-        donationStartTime: new Date(appointment.donationStartTimeMillis),
-        hospital: appointment.hospital,
-      })
-    );
+    return response.availableAppointments;
   });
 }
 
-export function bookAppointment(appointmentId: string) {
+export async function bookAppointment(appointmentIds: string[]) {
   const bookAppointmentFunction = firebase
     .functions()
     .httpsCallable(FunctionsApi.BookAppointmentFunctionName);
 
   const request: FunctionsApi.BookAppointmentRequest = {
-    appointmentIds: [appointmentId],
+    appointmentIds,
   };
 
-  return bookAppointmentFunction(request);
+  const response = await bookAppointmentFunction(request);
+  const data = response.data as FunctionsApi.BookAppointmentResponse;
+  return data.bookedAppointment;
+}
+
+// Remove donor from appointment
+export async function cancelAppointment(appointmentId: string) {
+  const cancelAppointmentFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.CancelAppointmentFunctionName);
+
+  const request: FunctionsApi.CancelAppointmentRequest = {
+    appointmentId,
+  };
+
+  await cancelAppointmentFunction(request);
 }
 
 export function saveDonor(
@@ -102,9 +110,14 @@ export async function getDonor(): Promise<Donor | undefined> {
   }
 }
 
-export async function getFutureAppointments(): Promise<BookedAppointment[]> {
+export async function getBookedAppointment(): Promise<
+  BookedAppointment | undefined
+> {
   const response = await getDonorAppointments(new Date());
-  return response.futureAppointments;
+  if (response.futureAppointments.length == 0) {
+    return undefined;
+  }
+  return response.futureAppointments[0];
 }
 
 export async function getPastAppointments(): Promise<BookedAppointment[]> {
