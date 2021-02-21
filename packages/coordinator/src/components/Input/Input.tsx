@@ -1,7 +1,6 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./_Input.module.scss";
-import Text from "../Text";
 
 type InputVariant = "standard" | "filled" | "outlined";
 
@@ -64,8 +63,8 @@ export default function Input({
         dir="rtl"
         variant={variant}
         fullWidth={isFullWidth}
+        helperText={errorMessage}
       />
-      <Text className={Styles["error-message"]}>{errorMessage}</Text>
     </div>
   );
 }

@@ -1,5 +1,10 @@
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel";
+import {
+  NativeSelect,
+  InputLabel,
+  FormHelperText,
+  FormControl,
+  makeStyles,
+} from "@material-ui/core";
 import React from "react";
 
 type SelectVariant = "standard" | "filled" | "outlined";
@@ -21,7 +26,15 @@ type SelectProps<T> = {
   isValid?: boolean;
   variant?: SelectVariant;
   options: SelectOption<T>[];
+  errorMessage?: string;
 };
+
+const useSelectStyles = makeStyles({
+  root: {
+    height: "3rem",
+    marginBottom: "30px",
+  },
+});
 
 export default function Select<T>({
   id,
@@ -34,9 +47,12 @@ export default function Select<T>({
   isValid = true,
   variant = "standard",
   options,
+  errorMessage,
 }: SelectProps<T>) {
+  const classes = useSelectStyles();
+
   return (
-    <div>
+    <FormControl error={!isValid} className={classes.root}>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <NativeSelect
         id={id}
@@ -56,6 +72,7 @@ export default function Select<T>({
           <option key={key} value={key} label={label} />
         ))}
       </NativeSelect>
-    </div>
+      <FormHelperText>{errorMessage}</FormHelperText>
+    </FormControl>
   );
 }

@@ -34,11 +34,12 @@ export default function RadioGroup({
         onChange={(e, newValue) => onChange(newValue)}
         {...{ className, value }}
       >
-        {options.map((option) => (
+        {options.map((option, index) => (
           <FormControlLabel
             value={option.value}
             control={<Radio disabled={option.isDisabled} color="primary" />}
             label={option.label}
+            key={index + (label || " ")}
           />
         ))}
       </MaterialRadioGroup>

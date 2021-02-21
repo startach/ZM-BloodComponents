@@ -9,7 +9,7 @@ import firebase from "firebase";
 // Admin can make another user admin
 
 export enum BloodType {
-  UNSPECIFIED = "UNSPECIFIED",
+  UNSPECIFIED = "UNSPECIFIED", // The user has not disclosed their blood type
   O_PLUS = "O_PLUS",
   O_MINUS = "O_MINUS",
   A_PLUS = "A_PLUS",
