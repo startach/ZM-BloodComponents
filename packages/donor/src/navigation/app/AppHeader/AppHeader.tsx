@@ -50,10 +50,11 @@ const getPathDetails = (path?: string) => {
     case MainNavigationKeys.UpdateApp:
       break;
     case MainNavigationKeys.Home:
+    case "":
       title = "דף ראשי";
       break;
     default:
-      throw Error("Unknown pathname");
+      console.error("Unknown pathname");
   }
 
   return { title, hasBackButton };

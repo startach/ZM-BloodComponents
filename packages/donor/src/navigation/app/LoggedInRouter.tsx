@@ -20,9 +20,7 @@ interface LoggedInRouterProps {
 export default function LoggedInRouter(props: LoggedInRouterProps) {
   const { user, bookedAppointment, setUser, setBookedAppointment } = props;
 
-  const { firstName, lastName, phone, bloodType } = user as Donor;
-
-  if (!user || !firstName || !lastName || !phone || !bloodType) {
+  if (!user) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 

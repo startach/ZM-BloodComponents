@@ -12,14 +12,25 @@ export function getHospitalName(hospital: Hospital) {
       return hospital;
   }
 }
-export const BloodTypeTranslations = {
-  [BloodType.AB_MINUS]: "AB-",
-  [BloodType.AB_PLUS]: "AB+",
-  [BloodType.A_MINUS]: "A-",
-  [BloodType.A_PLUS]: "A+",
-  [BloodType.B_MINUS]: "B-",
-  [BloodType.B_PLUS]: "B+",
-  [BloodType.O_MINUS]: "O-",
-  [BloodType.O_PLUS]: "O+",
-  [BloodType.UNSPECIFIED]: "סוג דם",
+export const getBloodTypeTranslation = (bloodType: BloodType) => {
+  switch (bloodType) {
+    case BloodType.AB_MINUS:
+      return "AB-";
+    case BloodType.AB_PLUS:
+      return "AB+";
+    case BloodType.A_MINUS:
+      return "A-";
+    case BloodType.A_PLUS:
+      return "A+";
+    case BloodType.B_MINUS:
+      return "B-";
+    case BloodType.B_PLUS:
+      return "B+";
+    case BloodType.O_MINUS:
+      return "O-";
+    case BloodType.O_PLUS:
+      return "O+";
+    case BloodType.UNSPECIFIED:
+      return "אחר";
+  }
 };

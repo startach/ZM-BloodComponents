@@ -7,15 +7,15 @@ interface ExtendedSignupScreenContainerProps {
   updateUserInAppState: (user: Donor) => void;
 }
 
+export enum NameValidation {
+  valid,
+  notEnoughSpaces,
+  fullNameTooLong,
+}
+
 export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
-  enum NameValidation {
-    valid,
-    notEnoughSpaces,
-    fullNameTooLong,
-  }
-
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
@@ -30,8 +30,11 @@ export default function ExtendedSignupScreenContainer(
     value: "",
     isValid: true,
   });
-  const [bloodTypeInput, setBloodTypeInput] = useState({
-    value: BloodType.UNSPECIFIED,
+  const [bloodTypeInput, setBloodTypeInput] = useState<{
+    value: BloodType | "";
+    isValid: boolean;
+  }>({
+    value: "",
     isValid: false,
   });
 
@@ -88,6 +91,8 @@ export default function ExtendedSignupScreenContainer(
   };
 
   const onSave = () => {
+    if (!bloodTypeInput.value) return;
+
     const newUser = FirebaseFunctions.saveDonor(
       firstNameInput.value,
       lastNameInput.value,
@@ -116,8 +121,8 @@ export default function ExtendedSignupScreenContainer(
   };
   const bloodType = {
     ...bloodTypeInput,
-    onChange: (value: BloodType) => {
-      setBloodTypeInput({ value, isValid: value !== BloodType.UNSPECIFIED });
+    onChange: (value: BloodType | "") => {
+      setBloodTypeInput({ value, isValid: value !== "" });
     },
   };
 

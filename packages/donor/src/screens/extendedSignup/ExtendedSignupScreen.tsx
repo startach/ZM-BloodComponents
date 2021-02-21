@@ -1,16 +1,15 @@
 import React from "react";
-import { BloodType, LocaleUtils } from "@zm-blood-components/common";
+import {
+  BloodType,
+  LocaleUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import Styles from "./ExtendedSignupScreen.module.scss";
 import HeaderSection from "../../components/HeaderSection";
-
-enum NameValidation {
-  valid,
-  notEnoughSpaces,
-  fullNameTooLong,
-}
+import { NameValidation } from "./ExtendedSignupScreenContainer";
 
 type ExtendedSingupField<T> = {
   value: T;
@@ -22,7 +21,7 @@ interface ExtendedSignupScreenProps {
   firstName: ExtendedSingupField<string>;
   lastName: ExtendedSingupField<string>;
   phoneNumber: ExtendedSingupField<string>;
-  bloodType: ExtendedSingupField<BloodType>;
+  bloodType: ExtendedSingupField<BloodType | "">;
   onSave: () => void;
 }
 
@@ -49,6 +48,18 @@ export default function ExtendedSignupScreen({
         ? "השם המלא ארוך מ20 תווים"
         : "שם המשפחה ארוך מדי";
   }
+
+  let bloodTypeOptions: SelectOption<BloodType | "">[] = Object.values(
+    BloodType
+  ).map((type, index) => {
+    return {
+      key: "ExtendedSignupScreen-" + index + type,
+      value: type,
+      label: LocaleUtils.getBloodTypeTranslation(BloodType[type]),
+    };
+  });
+
+  bloodTypeOptions.unshift({ key: "undefined", value: "", label: "בחר" });
 
   return (
     <div>
@@ -82,13 +93,7 @@ export default function ExtendedSignupScreen({
           onChange={bloodType.onChange}
           label="סוג דם"
           isValid={bloodType.isValid}
-          options={Object.values(BloodType).map((type, index) => {
-            return {
-              key: "ExtendedSignupScreen-" + index,
-              value: type,
-              label: LocaleUtils.BloodTypeTranslations[BloodType[type]],
-            };
-          })}
+          options={bloodTypeOptions}
           errorMessage={bloodType.isValid ? undefined : "נא לבחור סוג דם"}
         />
         <Button
