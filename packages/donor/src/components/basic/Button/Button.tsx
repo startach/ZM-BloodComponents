@@ -14,6 +14,7 @@ type ButtonProps = {
   endIcon?: React.ReactNode;
   isDisabled?: boolean;
   isLoading?: boolean;
+  isFullWidth?: boolean
 };
 
 const useButtonStyles = makeStyles({
@@ -31,6 +32,7 @@ export default function ZMButton({
   endIcon,
   isDisabled = false,
   isLoading = false,
+  isFullWidth =false
 }: ButtonProps) {
   const classes = useButtonStyles();
 
@@ -43,6 +45,7 @@ export default function ZMButton({
       startIcon={!isLoading && startIcon}
       endIcon={!isLoading && endIcon}
       disabled={isDisabled || isLoading}
+      fullWidth={isFullWidth}
     >
       {isLoading ? <Spinner /> : title}
     </Button>
