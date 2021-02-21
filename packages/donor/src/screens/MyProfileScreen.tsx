@@ -16,7 +16,7 @@ interface MyProfileScreenProps {
 
 export default function MyProfileScreen(props: MyProfileScreenProps) {
   return (
-    <ZMScreen hasProfileButton={false} title="פרופיל משתמש">
+    <ZMScreen hasBackButton title="פרופיל משתמש">
       <Text>{JSON.stringify(props)}</Text>
     </ZMScreen>
   );

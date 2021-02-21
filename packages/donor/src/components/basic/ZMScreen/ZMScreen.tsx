@@ -13,8 +13,8 @@ interface ExtendedSignupScreenProps {
 export default function ZMScreen({
   children,
   className = "",
-  hasBackButton = true,
-  hasProfileButton = true,
+  hasBackButton,
+  hasProfileButton,
   title,
 }: ExtendedSignupScreenProps) {
   return (

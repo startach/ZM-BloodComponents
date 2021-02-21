@@ -31,8 +31,8 @@ interface AppHeaderProps {
 }
 
 export default function ButtonAppBar({
-  hasBackButton = true,
-  hasProfileButton = true,
+  hasBackButton,
+  hasProfileButton,
   title,
 }: AppHeaderProps) {
   const classes = useStyles();
