@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@zm-blood-components/common": "^1.0.0"
+    "@date-io/date-fns": "1.x",
+    "@material-ui/pickers": "^3.2.10",
+    "@zm-blood-components/common": "^1.0.0",
+    "date-fns": "^2.17.0"
   },
   "scripts": {
     "start": "react-scripts start",
