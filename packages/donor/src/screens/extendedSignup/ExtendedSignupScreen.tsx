@@ -10,6 +10,7 @@ import Select from "../../components/basic/Select";
 import Styles from "./ExtendedSignupScreen.module.scss";
 import HeaderSection from "../../components/HeaderSection";
 import { NameValidation } from "./ExtendedSignupScreenContainer";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 type ExtendedSingupField<T> = {
   value: T;
@@ -62,7 +63,11 @@ export default function ExtendedSignupScreen({
   bloodTypeOptions.unshift({ key: "undefined", value: "", label: "בחר" });
 
   return (
-    <div>
+    <ZMScreen
+      hasBackButton={false}
+      hasProfileButton={false}
+      title={"סיום הרשמה"}
+    >
       <HeaderSection>
         <h4>משהו אחד אחרון!</h4>
         <span>פרטים אחרונים להרשמה</span>
@@ -105,6 +110,6 @@ export default function ExtendedSignupScreen({
           isFullWidth
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 }

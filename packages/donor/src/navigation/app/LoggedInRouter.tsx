@@ -7,8 +7,6 @@ import MyProfileScreenContainer from "../../screens/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
-import AppHeader from "./AppHeader/AppHeader";
-import Styles from "./LoggedInRouter.module.scss";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -37,25 +35,20 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
 
   // If user has no booked appointment, go to book donation flow
   return (
-    <>
-      <Router>
-        <AppHeader />
-        <div className={Styles["after-header"]}>
-          <Switch>
-            <Route path={"/" + MainNavigationKeys.MyProfile}>
-              <MyProfileScreenContainer user={user} />
-            </Route>
-            <Route path={"/" + MainNavigationKeys.Questionnaire}>
-              <QuestionnaireScreenContainer
-                setBookedAppointment={props.setBookedAppointment}
-              />
-            </Route>
-            <Route path={"*"}>
-              <BookDonationScreenContainer user={user} />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <Switch>
+        <Route path={"/" + MainNavigationKeys.MyProfile}>
+          <MyProfileScreenContainer user={user} />
+        </Route>
+        <Route path={"/" + MainNavigationKeys.Questionnaire}>
+          <QuestionnaireScreenContainer
+            setBookedAppointment={props.setBookedAppointment}
+          />
+        </Route>
+        <Route path={"*"}>
+          <BookDonationScreenContainer user={user} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }

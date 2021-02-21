@@ -7,6 +7,7 @@ import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlot;
@@ -207,7 +208,7 @@ export default function QuestionnaireScreen({
     isConfirmed;
 
   return (
-    <div>
+    <ZMScreen title="שאלון התאמה">
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
@@ -247,6 +248,6 @@ export default function QuestionnaireScreen({
           isLoading={isLoading}
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 }
