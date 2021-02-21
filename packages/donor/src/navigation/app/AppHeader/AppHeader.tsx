@@ -62,7 +62,16 @@ export default function ButtonAppBar() {
   const classes = useStyles();
   const location = useLocation();
   const history = useHistory();
-  const { title, hasBackButton } = getPathDetails(location?.pathname);
+const { title, hasBackButton } = getPathDetails(location?.pathname);
+
+const handleClickIcon = () => {
+  if (hasBackButton) {
+    history.goBack()
+  } else {
+    history.push("/" + MainNavigationKeys.MyProfile)
+  }
+}
+  
   return (
     <AppBar position="fixed" color="secondary">
       <Toolbar>
@@ -73,13 +82,7 @@ export default function ButtonAppBar() {
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
-              onClick={
-                hasBackButton
-                  ? () => {
-                      history.goBack();
-                    }
-                  : () => {}
-              }
+              onClick={ handleClickIcon }
             >
               {hasBackButton ? <ArrowForward /> : <AccountCircle />}
             </IconButton>
