@@ -1,6 +1,7 @@
 import React from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import Text from "../components/basic/Text";
+import ZMScreen from "../components/basic/ZMScreen";
 
 interface MyProfileScreenProps {
   user?: Donor;
@@ -15,8 +16,8 @@ interface MyProfileScreenProps {
 
 export default function MyProfileScreen(props: MyProfileScreenProps) {
   return (
-    <div>
+    <ZMScreen hasProfileButton={false} title="פרופיל משתמש">
       <Text>{JSON.stringify(props)}</Text>
-    </div>
+    </ZMScreen>
   );
 }

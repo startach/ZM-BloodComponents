@@ -6,6 +6,7 @@ import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 export enum UpcomingDonationStates {
   sameDayDonation = "sameDayDonation",
@@ -70,7 +71,7 @@ export default function UpcomingDonationScreen({
   }
 
   return (
-    <div className={styles.component}>
+    <ZMScreen className={styles.component} title="תורים מתוכננים">
       {renderHeader()}
       <main className={styles.content}>
         {renderConfirmDonationTitle()}
@@ -85,7 +86,7 @@ export default function UpcomingDonationScreen({
         {renderConfirmButton()}
         <CancelButton onCancel={onCancel} />
       </main>
-    </div>
+    </ZMScreen>
   );
 }
 

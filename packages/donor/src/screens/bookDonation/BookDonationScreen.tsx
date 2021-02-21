@@ -15,6 +15,7 @@ import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/basic/Select";
 import Text from "../../components/basic/Text";
 import Spinner from "../../components/basic/Spinner";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 interface BookDonationScreenProps {
   lastDonation: Date;
@@ -43,7 +44,11 @@ export default function BookDonationScreen({
   }, [availableAppointments, selectedHospitals]);
 
   return (
-    <div className={styles.component}>
+    <ZMScreen
+      title="קביעת תרומה חדשה"
+      hasBackButton={false}
+      className={styles.component}
+    >
       <LastDonationDateHeader
         firstName={firstName}
         lastDonation={lastDonation}
@@ -74,6 +79,6 @@ export default function BookDonationScreen({
           />
         ))}
       </main>
-    </div>
+    </ZMScreen>
   );
 }
