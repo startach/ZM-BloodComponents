@@ -80,6 +80,7 @@ export interface NewSlotsRequest {
   slots: number;
 }
 
+export const DeleteAppointmentsFunctionName = "deleteAppointments";
 export interface DeleteAppointmentRequest {
   appointmentIds: string[];
 }
@@ -87,4 +88,15 @@ export interface DeleteAppointmentRequest {
 export const SaveAdminFunctionName = "saveAdmin";
 export interface SaveAdminRequest {
   admin: DbAdmin;
+}
+
+export const GetCoordinatorAppointmentsFunctionName =
+  "getCoordinatorAppointments";
+export interface GetCoordinatorAppointmentsRequest {
+  hospital: Hospital;
+}
+
+export interface GetCoordinatorAppointmentsResponse {
+  availableAppointments: AvailableAppointmentApiEntry[];
+  bookedAppointments: BookedAppointmentApiEntry[];
 }

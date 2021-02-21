@@ -1,6 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/functions";
-import { FunctionsApi } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  BookedAppointment,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 
 export async function addNewAppointments(newSlots: NewSlots[]) {
@@ -21,4 +26,33 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
   };
 
   await addNewAppointmentsFunction(request);
+}
+
+export async function getAppointments(hospital: Hospital) {
+  const getAppointmentsFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetCoordinatorAppointmentsFunctionName);
+
+  const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
+    hospital,
+  };
+
+  const response = await getAppointmentsFunction(request);
+  const data = response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
+  return {
+    availableAppointments: data.availableAppointments as AvailableAppointment[],
+    bookedAppointments: data.bookedAppointments as BookedAppointment[],
+  };
+}
+
+export async function deleteAppointment(appointmentId: string) {
+  const deleteAppointmentsFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.DeleteAppointmentsFunctionName);
+
+  const request: FunctionsApi.DeleteAppointmentRequest = {
+    appointmentIds: [appointmentId],
+  };
+
+  await deleteAppointmentsFunction(request);
 }

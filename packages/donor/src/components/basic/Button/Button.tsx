@@ -1,4 +1,4 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Button as MuiButton, makeStyles } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -22,7 +22,7 @@ const useButtonStyles = makeStyles({
   },
 });
 
-export default function ZMButton({
+export default function Button({
   onClick,
   title,
   variant = "contained",
@@ -35,7 +35,7 @@ export default function ZMButton({
   const classes = useButtonStyles();
 
   return (
-    <Button
+    <MuiButton
       onClick={onClick}
       variant={variant}
       color="primary"
@@ -45,6 +45,6 @@ export default function ZMButton({
       disabled={isDisabled || isLoading}
     >
       {isLoading ? <Spinner /> : title}
-    </Button>
+    </MuiButton>
   );
 }
