@@ -3,6 +3,8 @@ import { BloodType, Donor } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 interface MyProfileScreenContainerProps {
   user: Donor;
@@ -30,6 +32,8 @@ export default function MyProfileScreenContainer(
     );
     history.goBack();
   };
+  
+  const onSignOut = () => firebase.auth().signOut();
 
-  return <MyProfileScreen onSave={onSave} user={user} />;
+  return <MyProfileScreen onSave={onSave} user={user} onSignOut={onSignOut}/>;
 }
