@@ -10,6 +10,7 @@ import {
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
+import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -20,7 +21,7 @@ export default function CoordinatorRouter() {
 
   useEffect(() => {
     registerAuthChange(setLoginStatus);
-  }, [setLoginStatus]);
+  }, [loginStatus]);
 
   let content = <LoadingScreen />;
 
@@ -31,7 +32,9 @@ export default function CoordinatorRouter() {
   if (loginStatus === LoginStatus.LOGGED_IN) {
     content = (
       <Switch>
-        <Route path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}></Route>
+        <Route path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
+          <ManageAppointmentsScreenContainer />
+        </Route>
         <Route path={"/" + CoordinatorScreen.DONORS}></Route>
         <Route path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
           <AddAppointmentsScreenContainer />

@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 
 interface SlotRequestsTableProps {
   slotsArray: NewSlots[];
-  deleteSlotsRequest: (id: string) => void;
+  deleteSlotsRequest: (key: string) => void;
 }
 
 export default function SlotRequestsTable({
@@ -13,11 +13,11 @@ export default function SlotRequestsTable({
   deleteSlotsRequest,
 }: SlotRequestsTableProps) {
   const renderRow = (row: NewSlots) => (
-    <div key={row.id}>
+    <div key={row.key}>
       <span>{LocaleUtils.getHospitalName(row.hospital)}</span> -
       <span>{row.donationStartTime.toDateString()}</span> -
       <span>{row.slots}</span>
-      <Button title="מחק" onClick={() => deleteSlotsRequest(row.id)} />
+      <Button title="מחק" onClick={() => deleteSlotsRequest(row.key)} />
     </div>
   );
 
