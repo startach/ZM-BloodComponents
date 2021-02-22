@@ -43,7 +43,7 @@ function getDonationSlotsInDay(
         appointment.hospital + appointment.donationStartTimeMillis
     )
     .map(appointmentsToDonationSlot)
-    .sortBy("donationStartTime")
+    .sortBy("donationStartTimeMillis")
     .value();
 }
 

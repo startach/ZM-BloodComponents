@@ -81,6 +81,6 @@ function createAppointment(
   return {
     hospital: hospital,
     id: `${day}.${hour}.${minute}.${slotNumber}.${hospital}`,
-    donationStartTime: date,
+    donationStartTimeMillis: date.getTime(),
   };
 }
