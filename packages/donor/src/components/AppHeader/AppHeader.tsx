@@ -7,9 +7,11 @@ import {
   IconButton,
   Grid,
 } from "@material-ui/core";
-import { AccountCircle, ArrowForward } from "@material-ui/icons";
+import {ArrowForward } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
+import ProfileIcon from "../../components/ProfileIcon";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -72,7 +74,7 @@ export default function ButtonAppBar({
                 aria-label="menu"
                 onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
               >
-                <AccountCircle />
+                <ProfileIcon />
               </IconButton>
             )}
           </Grid>
