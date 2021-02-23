@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
-// import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
 
@@ -20,7 +19,6 @@ export default function MyProfileScreenContainer(
     bloodType: BloodType.AB_MINUS,
     email: "zm@gmail.com",
   });
-  // const history = useHistory();
 
   const onSave = (
     firstName: string,
@@ -36,7 +34,6 @@ export default function MyProfileScreenContainer(
       phoneNumber,
       bloodType
     );
-    // history.goBack();
   };
 
   return <MyProfileScreen onSave={onSave} user={user} />;
