@@ -44,7 +44,7 @@ export default function MyProfileScreen({
   user,
   onSave,
 }: MyProfileScreenProps) {
-  const [drawerVisible, setdrawerVisible] = useState(true);
+  const [drawerVisible, setdrawerVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(0);
   const [selectedTempValue, setSelectedTempValue] = useState<
     string | BloodType
@@ -80,9 +80,9 @@ export default function MyProfileScreen({
     [user, selectedTempValue]
   );
 
-  const toggleDrawerVisiblity = React.useCallback(() => {
+  const toggleDrawerVisiblity = () => {
     setdrawerVisible((value) => !value);
-  }, []);
+  };
 
   function handleOnValueChange(value: any) {
     setSelectedTempValue(value);
