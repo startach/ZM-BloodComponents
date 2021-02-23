@@ -23,7 +23,7 @@ export default function MyProfileDrawer(props: MyProfileDrawerProps) {
         {props.children}
         <Button
           className={styles.drawerButton}
-          onClick={props.onSave}
+          onClick={() => props.onSave}
           title="save"
         />
       </div>
