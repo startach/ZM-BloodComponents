@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
@@ -10,15 +10,6 @@ interface MyProfileScreenContainerProps {
 export default function MyProfileScreenContainer(
   props: MyProfileScreenContainerProps
 ) {
-  const [user] = useState<Donor>({
-    id: "2",
-    firstName: "מרואן",
-    lastName: "ריזק",
-    birthDate: "1991-11-10",
-    phone: "0509018870",
-    bloodType: BloodType.AB_MINUS,
-    email: "zm@gmail.com",
-  });
 
   const onSave = (
     firstName: string,
@@ -36,5 +27,5 @@ export default function MyProfileScreenContainer(
     );
   };
 
-  return <MyProfileScreen onSave={onSave} user={user} />;
+  return <MyProfileScreen onSave={onSave} user={props.user} />;
 }
