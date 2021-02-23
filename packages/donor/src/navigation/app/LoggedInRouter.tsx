@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MainNavigationKeys } from "./MainNavigationKeys";
 import ExtendedSignupScreenContainer from "../../screens/extendedSignup/ExtendedSignupScreenContainer";
 import UpcomingDonationScreenContainer from "../../screens/UpcommingDonation/UpcomingDonationScreenContainer";
-import MyProfileScreenContainer from "../../screens/MyProfileScreenContainer";
+import MyProfileScreenContainer from "../../screens/myProfile/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
