@@ -6,8 +6,8 @@ import classNames from "classnames";
 interface MyProfileDrawerProps {
   children?: React.ReactNode;
   visible?: boolean;
-  onCancel?: () => void;
-  onSave?: () => void;
+  onCancel: () => void;
+  onSave: () => void;
 }
 
 export default function MyProfileDrawer(props: MyProfileDrawerProps) {
@@ -23,7 +23,7 @@ export default function MyProfileDrawer(props: MyProfileDrawerProps) {
         {props.children}
         <Button
           className={styles.drawerButton}
-          onClick={() => props.onSave}
+          onClick={props.onSave}
           title="save"
         />
       </div>
