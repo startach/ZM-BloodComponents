@@ -4,17 +4,26 @@ import UpcomingDonationScreen, {
   UpcomingDonationStates,
 } from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
+import { Redirect } from "react-router-dom";
+import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
 interface UpcomingDonationScreenContainerProps {
   user: Donor;
-  bookedAppointment: BookedAppointment;
+  bookedAppointment?: BookedAppointment;
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
 }
 
 export default function UpcomingDonationScreenContainer(
   props: UpcomingDonationScreenContainerProps
 ) {
+  if (!props.bookedAppointment) {
+    return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
+  }
+
   const onCancelAppointment = async () => {
+    if (!props.bookedAppointment) {
+      return;
+    }
     await FirebaseFunctions.cancelAppointment(props.bookedAppointment.id);
     props.setBookedAppointment(undefined);
   };

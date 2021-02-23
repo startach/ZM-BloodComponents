@@ -29,25 +29,25 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
           <MyProfileScreenContainer user={user} />
         </Route>
 
-        <Route path={"*"}>
-          {bookedAppointment ? (
-            <UpcomingDonationScreenContainer
-              user={user}
-              bookedAppointment={bookedAppointment}
-              setBookedAppointment={setBookedAppointment}
-            />
-          ) : (
-            <Switch>
-              <Route path={"/" + MainNavigationKeys.Questionnaire}>
-                <QuestionnaireScreenContainer
-                  setBookedAppointment={props.setBookedAppointment}
-                />
-              </Route>
-              <Route path={"*"}>
-                <BookDonationScreenContainer user={user} />
-              </Route>
-            </Switch>
-          )}
+        <Route path={"/" + MainNavigationKeys.UpcomingDonation}>
+          <UpcomingDonationScreenContainer
+            user={user}
+            bookedAppointment={bookedAppointment}
+            setBookedAppointment={setBookedAppointment}
+          />
+        </Route>
+
+        <Route path={"/" + MainNavigationKeys.Questionnaire}>
+          <QuestionnaireScreenContainer
+            setBookedAppointment={props.setBookedAppointment}
+          />
+        </Route>
+
+        <Route path={["/" + MainNavigationKeys.BookDonation, "*"]}>
+          <BookDonationScreenContainer
+            user={user}
+            bookedAppointment={bookedAppointment}
+          />
         </Route>
       </Switch>
     </Router>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment } from "@zm-blood-components/common";
-import { useHistory, useLocation } from "react-router-dom";
+import { Redirect, useHistory, useLocation } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
@@ -22,15 +23,11 @@ export default function QuestionnaireScreenContainer(
   const location = useLocation<QuestionnaireLocationState>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const clearStateAndHistory = () => {
-    history.replace("/", null);
-  };
+  let donationSlot = location?.state?.donationSlot;
 
-  useState(() => {
-    if (!location.state.donationSlot) {
-      clearStateAndHistory();
-    }
-  });
+  if (!donationSlot) {
+    return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
+  }
 
   const onSuccess = async () => {
     setIsLoading(true);
@@ -38,12 +35,12 @@ export default function QuestionnaireScreenContainer(
     if (debugMode) {
       console.log(
         "Asked to book one of the following appointments: ",
-        location.state.donationSlot.appointmentIds
+        donationSlot.appointmentIds
       );
     }
 
     const bookedAppointment = await FirebaseFunctions.bookAppointment(
-      location.state.donationSlot.appointmentIds
+      donationSlot.appointmentIds
     );
 
     if (debugMode) {
@@ -51,12 +48,12 @@ export default function QuestionnaireScreenContainer(
     }
 
     props.setBookedAppointment(bookedAppointment);
-    clearStateAndHistory();
+    history.replace(MainNavigationKeys.UpcomingDonation);
   };
 
   return (
     <QuestionnaireScreen
-      bookableAppointment={location.state.donationSlot}
+      bookableAppointment={donationSlot}
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}
