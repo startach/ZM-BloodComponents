@@ -38,7 +38,6 @@ export type Donor = {
   birthDate: string; // YYYY-MM-DD
   phone: string;
   bloodType: BloodType;
-  donationCount?: string;
 };
 
 export enum AdminRole {

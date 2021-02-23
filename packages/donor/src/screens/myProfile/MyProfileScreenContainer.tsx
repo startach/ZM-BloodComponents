@@ -18,7 +18,6 @@ export default function MyProfileScreenContainer(
     birthDate: "1991-11-10",
     phone: "0509018870",
     bloodType: BloodType.AB_MINUS,
-    donationCount: "4",
     email: "zm@gmail.com",
   });
   // const history = useHistory();

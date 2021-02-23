@@ -108,7 +108,7 @@ export default function MyProfileScreen({
       </HeaderSection>
       <Card className={styles.donationCountcard}>
         <Text>מספר תרומות</Text>
-        <Text className={styles.donationNumber}>{user.donationCount}</Text>
+        <Text className={styles.donationNumber}>4</Text>
         <Button title="צפייה בהיסטוריה" onClick={() => console.log()} />
       </Card>
       {userData.map(({ value, component, icon }, index) => (
@@ -123,20 +123,6 @@ export default function MyProfileScreen({
           />
         </Card>
       ))}
-      {/* <Card className={styles.card}>
-        <div className={styles.cardContentMerge}>
-        <IconButton iconSrc={bloodIcon} />
-        <Text>סוג דם: {user.bloodType}</Text>
-        </div>
-        <IconButton iconSrc={editIcon} />
-      </Card>
-      <Card className={styles.card}>
-        <div className={styles.cardContentMerge}>
-        <IconButton iconSrc={mailIcon} />
-        <Text>מייל: {user.email}</Text>
-        </div>
-        <IconButton iconSrc={editIcon} />
-      </Card> */}
       <MyProfileDrawer
         visible={drawerVisible}
         onCancel={toggleDrawerVisiblity}
