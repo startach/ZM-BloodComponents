@@ -1,4 +1,3 @@
-// import React from 'react'
 import Button from "../basic/Button";
 import styles from "./MyProfileDrawer.module.scss";
 import classNames from "classnames";
