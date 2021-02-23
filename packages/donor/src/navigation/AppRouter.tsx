@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
-import { Donor } from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  Donor,
+  LoginStatus,
+} from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import {
   initFirebase,
@@ -9,16 +13,11 @@ import {
 import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
 import AuthenticationRouter from "./AuthenticationRouter";
 
-export enum LoginStatus {
-  UNKNOWN,
-  LOGGED_IN,
-  LOGGED_OUT,
-}
-
 export default function AppRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
-  const [donorState, setDonorState] = useState<{
+  const [appState, setAppState] = useState<{
     donor?: Donor;
+    bookedAppointment?: BookedAppointment;
     isFetching: boolean;
   }>({
     donor: undefined,
@@ -32,7 +31,7 @@ export default function AppRouter() {
   useEffect(() => {
     registerAuthChange((newLoginStatus) => {
       if (newLoginStatus === LoginStatus.LOGGED_IN) {
-        setDonorState({
+        setAppState({
           donor: undefined,
           isFetching: true,
         });
@@ -42,36 +41,53 @@ export default function AppRouter() {
   }, [setLoginStatus]);
 
   useEffect(() => {
-    if (loginStatus === LoginStatus.LOGGED_IN) {
-      FirebaseFunctions.getDonor().then((donor) => {
-        setDonorState({
-          donor,
-          isFetching: false,
-        });
-      });
-    } else if (loginStatus === LoginStatus.LOGGED_OUT) {
-      setDonorState({
+    if (loginStatus !== LoginStatus.LOGGED_IN) {
+      setAppState({
         donor: undefined,
         isFetching: false,
       });
+      return;
     }
+
+    async function fetchData() {
+      const donor = await FirebaseFunctions.getDonor();
+      let bookedAppointment: BookedAppointment | undefined = undefined;
+      if (donor) {
+        bookedAppointment = await FirebaseFunctions.getBookedAppointment();
+      }
+
+      setAppState({
+        donor,
+        bookedAppointment,
+        isFetching: false,
+      });
+    }
+
+    fetchData();
   }, [loginStatus]);
 
   if (loginStatus === LoginStatus.LOGGED_OUT) {
     return <AuthenticationRouter />;
   }
 
-  if (loginStatus === LoginStatus.UNKNOWN || donorState.isFetching) {
+  if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
     return <AuthLoadingScreen />;
   }
 
   return (
     <LoggedInRouter
-      user={donorState.donor}
+      user={appState.donor}
+      bookedAppointment={appState.bookedAppointment}
       setUser={(user: Donor) => {
-        setDonorState({
+        setAppState({
+          ...appState,
           donor: user,
-          isFetching: false,
+        });
+      }}
+      setBookedAppointment={(bookedAppointment?: BookedAppointment) => {
+        setAppState({
+          ...appState,
+          bookedAppointment,
         });
       }}
     />

@@ -1,18 +1,17 @@
-import React, { useState, useMemo } from "react";
-import { BloodType, Donor } from "@zm-blood-components/common";
-import Text from "../../components/Text";
+import React, {useMemo, useState} from "react";
+import {BloodType, Donor, SelectOption} from "@zm-blood-components/common";
+import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
 import styles from "./myProfileScreen.module.scss";
-import Card from "../../components/Card";
-import Button from "../../components/Button";
-import IconButton from "../../components/IconButton";
+import Card from "../../components/basic/Card";
+import Button from "../../components/basic/Button";
+import IconButton from "../../components/basic/IconButton";
 import phoneIcon from "../../assets/icons/phone.svg";
 import editIcon from "../../assets/icons/edit.svg";
 import bloodIcon from "../../assets/icons/bloodDrops.svg";
-// import mailIcon from "../../assets/icons/mail.svg";
 import MyProfileDrawer from "../../components/MyProfileDrawer";
-import Input from "../../components/Input";
-import { Select, SelectOption } from "../../components/Select";
+import Input from "../../components/basic/Input";
+import Select from "../../components/basic/Select";
 
 interface MyProfileScreenProps {
   user: Donor;
@@ -23,6 +22,7 @@ interface MyProfileScreenProps {
     phoneNumber: string,
     bloodType: BloodType
   ) => void;
+  onSignOut :() => void;
 }
 
 type UserDataEntry = {

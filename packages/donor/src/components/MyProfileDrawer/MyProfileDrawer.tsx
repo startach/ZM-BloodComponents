@@ -1,5 +1,5 @@
 // import React from 'react'
-import Button from "../Button";
+import Button from "../basic/Button";
 import styles from "./MyProfileDrawer.module.scss";
 import classNames from "classnames";
 
@@ -18,7 +18,7 @@ export default function MyProfileDrawer(props: MyProfileDrawerProps) {
 
   return (
     <div className={componentClassname}>
-      <div className={styles.background} onClick={props.onCancel}></div>
+      <div className={styles.background} onClick={props.onCancel}/>
       <div className={styles.drawer}>
         {props.children}
         <Button

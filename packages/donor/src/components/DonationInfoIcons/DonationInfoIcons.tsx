@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./DonationInfoIcons.module.scss";
-import IconButton from "../IconButton";
+import IconButton from "../basic/IconButton";
 import locationIcon from "../../assets/icons/locationPin.svg";
 import calendarIcon from "../../assets/icons/calendar.svg";
-import Text from "../Text";
+import Text from "../basic/Text";
 import {
   ToDateString,
   ToTimeString,
@@ -13,11 +13,15 @@ import clockIcon from "../../assets/icons/clock.svg";
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 
 export interface DonationInfoIconsProps {
-  donationDate: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
 }
 
-function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
+const DonationInfoIcons: React.FC<DonationInfoIconsProps> = ({
+  donationStartTimeMillis,
+  hospital,
+}: DonationInfoIconsProps) => {
+  const donationDate = new Date(donationStartTimeMillis);
   return (
     <div className={styles.component}>
       <IconButton
@@ -38,6 +42,6 @@ function DonationInfoIcons({ donationDate, hospital }: DonationInfoIconsProps) {
       />
     </div>
   );
-}
+};
 
 export default DonationInfoIcons;

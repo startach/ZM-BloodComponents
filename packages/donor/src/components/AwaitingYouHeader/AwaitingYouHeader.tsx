@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AwaitingYouHeader.module.scss";
 import HeaderSection from "../HeaderSection";
-import Text from "../Text";
+import Text from "../basic/Text";
 
 export interface AwaitingYouHeaderProps {
   firstName: string;

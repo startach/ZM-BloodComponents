@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./LastDonationDateHeader.module.scss";
 import HeaderSection from "../HeaderSection";
-import Text from "../Text";
+import Text from "../basic/Text";
 import { ToDateString } from "../../utils/DateUtil";
 
 export interface BookDonationHeaderProps {

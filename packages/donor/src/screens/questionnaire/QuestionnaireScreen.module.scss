@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+body {
+  overflow: auto !important;
+}
+
+.donationInfo {
+  text-align: center;
+  padding: 16px;
+  background-color: var(--color-light-grey);
+  width: 100%;
+}
+
+.donationInfoTitle {
+  display: inline-block;
+  padding-bottom: 8px;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.questionnaireSection {
+  padding: 20px;
+}
+
+.questionnaireTitle {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.question {
+  margin: 20px 0px;
+}
+
+.confirmButtonContainer {
+  margin-bottom: 8px;
+}
+
+.continueButton {
+  width: 30%;
+}

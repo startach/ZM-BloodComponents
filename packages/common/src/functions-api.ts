@@ -1,24 +1,25 @@
-import {
-  BloodType,
-  BookedAppointment,
-  DbAdmin,
-  Donor,
-  Hospital,
-} from "./types";
+import { BloodType, DbAdmin, Donor, Hospital } from "./types";
 
 // Donor functions:
 
 export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {}
 
-type AvailableAppointmentEntry = {
+export type AvailableAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
 };
 
+export type BookedAppointmentApiEntry = {
+  id: string;
+  donationStartTimeMillis: number; // API returns millis
+  hospital: Hospital;
+  donorId: string;
+};
+
 export interface GetAvailableAppointmentsResponse {
-  availableAppointments: AvailableAppointmentEntry[];
+  availableAppointments: AvailableAppointmentApiEntry[];
 }
 
 export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
@@ -29,8 +30,8 @@ export interface GetDonorAppointmentsRequest {
 }
 
 export interface GetDonorAppointmentsResponse {
-  completedAppointments: BookedAppointment[];
-  futureAppointments: BookedAppointment[];
+  completedAppointments: BookedAppointmentApiEntry[];
+  futureAppointments: BookedAppointmentApiEntry[];
 }
 
 export const BookAppointmentFunctionName = "bookAppointment";
@@ -38,9 +39,12 @@ export interface BookAppointmentRequest {
   // Ids of appointments in the time slot, book first one available
   appointmentIds: string[];
 }
+export interface BookAppointmentResponse {
+  bookedAppointment: BookedAppointmentApiEntry;
+}
 
+export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
   appointmentId: string;
 }
 
@@ -65,16 +69,34 @@ export interface SaveDonorRequest {
 }
 
 // Admin functions:
-export interface AddAppointmentRequest {
+export const AddNewAppointmentsFunctionName = "addNewAppointments";
+export interface AddAppointmentsRequest {
+  slotsRequests: NewSlotsRequest[];
+}
+
+export interface NewSlotsRequest {
   hospital: Hospital;
-  donationStartTime: string;
+  donationStartTimeMillis: number;
   slots: number;
 }
 
+export const DeleteAppointmentsFunctionName = "deleteAppointments";
 export interface DeleteAppointmentRequest {
   appointmentIds: string[];
 }
 
+export const SaveAdminFunctionName = "saveAdmin";
 export interface SaveAdminRequest {
   admin: DbAdmin;
+}
+
+export const GetCoordinatorAppointmentsFunctionName =
+  "getCoordinatorAppointments";
+export interface GetCoordinatorAppointmentsRequest {
+  hospital: Hospital;
+}
+
+export interface GetCoordinatorAppointmentsResponse {
+  availableAppointments: AvailableAppointmentApiEntry[];
+  bookedAppointments: BookedAppointmentApiEntry[];
 }

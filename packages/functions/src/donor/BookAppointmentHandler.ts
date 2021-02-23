@@ -6,13 +6,14 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
 import { FunctionsApi } from "@zm-blood-components/common";
+import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
 const WEEKS_BUFFER = 4;
 
 export default async function (
   request: FunctionsApi.BookAppointmentRequest,
   callerId: string
-) {
+): Promise<FunctionsApi.BookAppointmentResponse> {
   const donorId = callerId;
 
   await getDonorOrThrow(donorId);
@@ -40,4 +41,10 @@ export default async function (
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
 
   await setAppointment(appointmentToBook);
+
+  return {
+    bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
+      appointmentToBook
+    ),
+  };
 }

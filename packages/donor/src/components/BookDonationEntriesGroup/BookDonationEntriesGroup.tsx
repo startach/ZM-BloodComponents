@@ -1,30 +1,30 @@
 import React from "react";
 import styles from "./BookDonationEntriesGroup.module.scss";
 import BookDonationEntry from "../BookDonationEntry";
-import { AvailableAppointment } from "@zm-blood-components/common";
-import Text from "../Text";
+import Text from "../basic/Text";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 export interface BookDonationDayEntriesProps {
   title: string;
-  appointments: AvailableAppointment[];
-  onAppointmentSelect: (selectedAppointment: AvailableAppointment) => void;
+  donationSlots: DonationSlot[];
+  onSlotSelected: (donationSlot: DonationSlot) => void;
 }
 
 function BookDonationEntriesGroup({
-  appointments = [],
-  onAppointmentSelect,
+  donationSlots = [],
+  onSlotSelected,
   title,
 }: BookDonationDayEntriesProps) {
   return (
     <section className={styles.component}>
       <Text>{title}</Text>
       <div className={styles.entriesContainer}>
-        {appointments.map((appointment) => (
+        {donationSlots.map((slot) => (
           <BookDonationEntry
-            key={appointment.id}
-            hospital={appointment.hospital}
-            donationStartTime={appointment.donationStartTime}
-            onRegisterClick={() => onAppointmentSelect?.(appointment)}
+            key={slot.donationStartTimeMillis + slot.hospital}
+            hospital={slot.hospital}
+            donationStartTimeMillis={slot.donationStartTimeMillis}
+            onRegisterClick={() => onSlotSelected(slot)}
           />
         ))}
       </div>
