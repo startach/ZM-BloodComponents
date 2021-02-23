@@ -1,8 +1,8 @@
-import React, {useMemo, useState} from "react";
-import {BloodType, Donor, SelectOption} from "@zm-blood-components/common";
+import React, { useMemo, useState } from "react";
+import { BloodType, Donor, SelectOption } from "@zm-blood-components/common";
 import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
-import styles from "./myProfileScreen.module.scss";
+import styles from "./MyProfileScreen.module.scss";
 import Card from "../../components/basic/Card";
 import Button from "../../components/basic/Button";
 import IconButton from "../../components/basic/IconButton";
@@ -12,6 +12,7 @@ import bloodIcon from "../../assets/icons/bloodDrops.svg";
 import MyProfileDrawer from "../../components/MyProfileDrawer";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
+import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
 interface MyProfileScreenProps {
   user: Donor;
@@ -22,7 +23,7 @@ interface MyProfileScreenProps {
     phoneNumber: string,
     bloodType: BloodType
   ) => void;
-  onSignOut :() => void;
+  onSignOut: () => void;
 }
 
 type UserDataEntry = {
@@ -43,6 +44,7 @@ const bloodTypes: SelectOption<BloodType>[] = Object.entries(BloodType).map(
 export default function MyProfileScreen({
   user,
   onSave,
+  onSignOut,
 }: MyProfileScreenProps) {
   const [drawerVisible, setdrawerVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(0);
@@ -102,7 +104,7 @@ export default function MyProfileScreen({
   }
 
   return (
-    <div>
+    <ZMScreen hasBackButton className={styles.container} title="פרופיל">
       <HeaderSection className={styles.component}>
         <Text>{`${user.firstName} ${user.lastName}`}</Text>
       </HeaderSection>
@@ -123,6 +125,7 @@ export default function MyProfileScreen({
           />
         </Card>
       ))}
+      <Button title={"התנתק"} onClick={onSignOut} />
       <MyProfileDrawer
         visible={drawerVisible}
         onCancel={toggleDrawerVisiblity}
@@ -130,6 +133,6 @@ export default function MyProfileScreen({
       >
         {userData?.[selectedComponent]?.component}
       </MyProfileDrawer>
-    </div>
+    </ZMScreen>
   );
 }

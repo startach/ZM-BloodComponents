@@ -18,7 +18,7 @@ export default function MyProfileDrawer(props: MyProfileDrawerProps) {
 
   return (
     <div className={componentClassname}>
-      <div className={styles.background} onClick={props.onCancel}/>
+      <div className={styles.background} onClick={props.onCancel} />
       <div className={styles.drawer}>
         {props.children}
         <Button
