@@ -22,6 +22,16 @@ export default function QuestionnaireScreenContainer(
   const location = useLocation<QuestionnaireLocationState>();
   const [isLoading, setIsLoading] = useState(false);
 
+  const clearStateAndHistory = () => {
+    history.replace("/", null);
+  };
+
+  useState(() => {
+    if (!location.state.donationSlot) {
+      clearStateAndHistory();
+    }
+  });
+
   const onSuccess = async () => {
     setIsLoading(true);
 
@@ -41,7 +51,7 @@ export default function QuestionnaireScreenContainer(
     }
 
     props.setBookedAppointment(bookedAppointment);
-    history.goBack();
+    clearStateAndHistory();
   };
 
   return (

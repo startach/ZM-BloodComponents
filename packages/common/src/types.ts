@@ -107,12 +107,6 @@ export enum Collections {
   APPOINTMENTS = "appointments",
 }
 
-export type NewDonationSlots = {
-  hospital: Hospital;
-  donationStartTime: string;
-  slots: number;
-};
-
 export enum LoginStatus {
   UNKNOWN,
   LOGGED_IN,
