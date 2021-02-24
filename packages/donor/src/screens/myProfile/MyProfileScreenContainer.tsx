@@ -7,6 +7,7 @@ import "firebase/auth";
 
 interface MyProfileScreenContainerProps {
   user: Donor;
+  updateUserInAppState: (user: Donor) => void;
 }
 
 export default function MyProfileScreenContainer(
@@ -19,13 +20,14 @@ export default function MyProfileScreenContainer(
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    FirebaseFunctions.saveDonor(
+    const updatedUser = FirebaseFunctions.saveDonor(
       firstName,
       lastName,
       birthDate,
       phoneNumber,
       bloodType
     );
+    props.updateUserInAppState(updatedUser);
   };
 
   const onSignOut = () => firebase.auth().signOut();

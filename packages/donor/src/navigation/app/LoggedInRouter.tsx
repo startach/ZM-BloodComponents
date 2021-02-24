@@ -35,7 +35,10 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
     <Router>
       <Switch>
         <Route path={"/" + MainNavigationKeys.MyProfile}>
-          <MyProfileScreenContainer user={user} />
+          <MyProfileScreenContainer
+            user={user}
+            updateUserInAppState={setUser}
+          />
         </Route>
 
         <Route
