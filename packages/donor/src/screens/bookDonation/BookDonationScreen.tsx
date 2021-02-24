@@ -18,8 +18,8 @@ import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
 
 interface BookDonationScreenProps {
-  lastDonation: Date;
-  earliestNextDonationDate: Date;
+  lastDonation?: Date;
+  earliestNextDonationDate?: Date;
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
   firstName: string;

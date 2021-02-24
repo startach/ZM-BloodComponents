@@ -37,8 +37,6 @@ export default function BookDonationScreenContainer(
 
   return (
     <BookDonationScreen
-      lastDonation={new Date(2021, 0, 13)}
-      earliestNextDonationDate={new Date(2021, 1, 13)}
       availableAppointments={fetchingState.availableAppointments}
       onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
