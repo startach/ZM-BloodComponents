@@ -48,6 +48,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         value={email}
         label={`דוא״ל`}
         variant="filled"
+        type={"email"}
         errorMessage={emailError}
       />
       <Input

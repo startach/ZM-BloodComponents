@@ -49,6 +49,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           setEmailError("");
         }}
         value={email}
+        type={"email"}
         label={`דוא"\ל`}
         variant="filled"
         errorMessage={emailError}
