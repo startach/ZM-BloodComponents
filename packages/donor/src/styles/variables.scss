@@ -63,7 +63,12 @@
   --layout-distance-large: 20px;
   --layout-distance-xl: 50px;
   --layout-distance-xxl: 100px;
+
   --text-direction: ltr;
+
+  // this affects the "Input component" when "type == email",
+  // TODO: set the value to "start" when the "Text-direction is "ltr".
+  --input-email-text-align: end;
 }
 
 //other styling rules------------------------------------------
