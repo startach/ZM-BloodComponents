@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 
 import styles from "./RegisterScreen.module.scss";
-import Input from "../../components/basic/Input";
+import Input, { InputVariant } from "../../components/basic/Input";
 import Logo from "../logo/Logo";
 
 interface RegisterScreenProps {
@@ -47,7 +47,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         }}
         value={email}
         label={`דוא״ל`}
-        variant="filled"
+        variant={InputVariant.filled}
         errorMessage={emailError}
       />
       <Input
@@ -58,7 +58,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           setPasswordError("");
         }}
         value={password}
-        variant="filled"
+        variant={InputVariant.filled}
         label="ססמא"
         errorMessage={passwordError}
       />
@@ -71,7 +71,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         }}
         value={passwordCopy}
         label="אימות סיסמה"
-        variant="filled"
+        variant={InputVariant.filled}
       />
       <Button
         className={styles.signinButton}
@@ -83,7 +83,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           className={styles.connectButton}
           title="התחבר"
           onClick={props.goToSignIn}
-          variant="text"
+          variant={ButtonVariant.text}
         />
         <span className={styles.alreadyRegisteredTitle}>כבר רשום כתורם?</span>
       </div>

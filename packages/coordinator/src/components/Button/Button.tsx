@@ -3,11 +3,16 @@ import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
 
-type ButtonVariant = "text" | "outlined" | "contained";
+enum ButtonVariant {
+  text = "text",
+  outlined = "outlined",
+  contained = "contained",
+}
 
 type ButtonProps = {
   onClick: () => void;
   title: string;
+  /** Text - clickable text, Outlined - Inside out, or Contained (Default) */
   variant?: ButtonVariant;
   className?: string;
   startIcon?: React.ReactNode;
@@ -26,7 +31,7 @@ const useButtonStyles = makeStyles({
 export default function Button({
   onClick,
   title,
-  variant = "contained",
+  variant = ButtonVariant.contained,
   className,
   startIcon,
   endIcon,

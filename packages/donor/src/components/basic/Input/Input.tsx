@@ -2,7 +2,11 @@ import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
 import Styles from "./Input.module.scss";
 
-type InputVariant = "standard" | "filled" | "outlined";
+export enum InputVariant {
+  standard = "standard",
+  filled = "filled",
+  outlined = "outlined",
+}
 
 type InputProps = {
   id?: string;
@@ -16,6 +20,7 @@ type InputProps = {
   mainIcon?: any;
   errorMessage?: string;
   actionIcon?: any;
+  /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
   variant?: InputVariant;
   isFullWidth?: boolean;
 };
@@ -32,7 +37,7 @@ export default function Input({
   actionIcon,
   isDisabled,
   errorMessage,
-  variant = "standard",
+  variant = InputVariant.standard,
   isFullWidth = false,
 }: InputProps) {
   let adornments = {
