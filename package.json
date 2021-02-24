@@ -21,8 +21,8 @@
     "deploy-functions-prod": "firebase deploy --only functions -P production",
     "deploy-donor-qa": "firebase deploy --only hosting:donor -P staging",
     "deploy-donor-prod": "firebase deploy --only hosting:donor -P production",
-    "deploy-admin-qa": "firebase deploy --only hosting:admin -P staging",
-    "deploy-admin-prod": "firebase deploy --only hosting:admin -P production",
+    "deploy-coordinator-qa": "firebase deploy --only hosting:coordinator -P staging",
+    "deploy-coordinator-prod": "firebase deploy --only hosting:coordinator -P production",
     "build-common": "yarn workspace @zm-blood-components/common build",
     "start-coordinator": "yarn workspace @zm-blood-components/coordinator start",
     "start-donor": "yarn workspace @zm-blood-components/donor start",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "firebase": "^8.2.4",
     "lodash": "^4.17.20",
     "react": "^17.0.1",

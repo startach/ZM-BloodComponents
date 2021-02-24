@@ -5,7 +5,7 @@ const GeneratePackageJsonPlugin = require("generate-package-json-webpack-plugin"
 const basePackage = {
   name: "functions",
   version: "1.0.0",
-  main: "./index.tsx",
+  main: "./index.js",
   // scripts: {
   //   start: "yarn run shell"
   // },
@@ -31,7 +31,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js", ".json"],
   },
   output: {
-    filename: "index.tsx",
+    filename: "index.js",
     path: path.resolve(__dirname, "./dist"),
     libraryTarget: "commonjs",
   },

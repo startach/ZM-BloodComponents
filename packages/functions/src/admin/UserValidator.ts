@@ -4,7 +4,7 @@ import { getAdmin } from "../dal/AdminDataAccessLayer";
 
 export async function validateAppointmentEditPermissions(
   userId: string,
-  hospitals: Hospital[]
+  hospitals: Set<Hospital>
 ) {
   const admin = await getAdmin(userId);
   if (!admin) {
@@ -19,20 +19,25 @@ export async function validateAppointmentEditPermissions(
       "role does not allow adding appointments to",
       hospitals
     );
-    throw Error("User not authorized to edit appointments of " + hospitals);
+    throw Error("User not authorized to preform action");
   }
 
   return userId;
 }
 
-function adminAllowedToAddAppointments(admin: DbAdmin, hospitals: Hospital[]) {
+function adminAllowedToAddAppointments(
+  admin: DbAdmin,
+  requestedHospitals: Set<Hospital>
+) {
   if (admin.roles.includes(AdminRole.SYSTEM_USER)) {
     return true;
   }
 
+  const adminHospitals = new Set(admin.hospitals);
+
   if (admin.roles.includes(AdminRole.HOSPITAL_COORDINATOR)) {
     if (
-      _.intersection(admin.hospitals, hospitals).length === hospitals.length
+      allHospitalsAreInAdminHospitalList(adminHospitals, requestedHospitals)
     ) {
       return true;
     }
@@ -44,11 +49,27 @@ function adminAllowedToAddAppointments(admin: DbAdmin, hospitals: Hospital[]) {
         return true;
 
       case AdminRole.HOSPITAL_COORDINATOR:
-        if (_.intersection(admin.hospitals, hospitals).length > 0) {
+        if (
+          allHospitalsAreInAdminHospitalList(adminHospitals, requestedHospitals)
+        ) {
           return true;
         }
     }
   }
 
   return false;
+}
+
+function allHospitalsAreInAdminHospitalList(
+  adminHospitals: Set<Hospital>,
+  requestedHospitals: Set<Hospital>
+) {
+  for (const requestedHospital of requestedHospitals) {
+    if (!adminHospitals.has(requestedHospital)) {
+      console.warn("Admin is not allowed to edit", requestedHospital);
+      return false;
+    }
+  }
+
+  return true;
 }

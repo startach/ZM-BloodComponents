@@ -6,6 +6,7 @@ import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 export enum UpcomingDonationStates {
   sameDayDonation = "sameDayDonation",
@@ -30,11 +31,6 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
   onConfirm,
 }: UpcomingDonationScreenProps) {
-  const donationDate = React.useMemo(
-    () => new Date(bookedAppointment.donationStartTimeMillis),
-    [bookedAppointment.donationStartTimeMillis]
-  );
-
   function renderHeader() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -75,7 +71,11 @@ export default function UpcomingDonationScreen({
   }
 
   return (
-    <div className={styles.component}>
+    <ZMScreen
+      hasProfileButton
+      className={styles.component}
+      title="תורים מתוכננים"
+    >
       {renderHeader()}
       <main className={styles.content}>
         {renderConfirmDonationTitle()}
@@ -83,14 +83,14 @@ export default function UpcomingDonationScreen({
         <Text className={styles.donationDetailsText}>פרטי התור</Text>
 
         <DonationInfoIcons
-          donationDate={donationDate}
+          donationStartTimeMillis={bookedAppointment.donationStartTimeMillis}
           hospital={bookedAppointment.hospital}
         />
 
         {renderConfirmButton()}
         <CancelButton onCancel={onCancel} />
       </main>
-    </div>
+    </ZMScreen>
   );
 }
 

@@ -12,7 +12,8 @@ interface AddAppointmentsScreenProps {
     donationStartTime: Date,
     slots: number
   ) => void;
-  deleteSlotsRequest: (id: string) => void;
+  deleteSlotsRequest: (key: string) => void;
+  isSaving: boolean;
   onSave: () => void;
 }
 
@@ -20,6 +21,7 @@ export default function AddAppointmentsScreen({
   slotsArray,
   addSlotsRequest,
   deleteSlotsRequest,
+  isSaving,
   onSave,
 }: AddAppointmentsScreenProps) {
   return (
@@ -30,7 +32,9 @@ export default function AddAppointmentsScreen({
         deleteSlotsRequest={deleteSlotsRequest}
       />
 
-      {slotsArray.length > 0 && <Button title="שמור והמשך" onClick={onSave} />}
+      {slotsArray.length > 0 && (
+        <Button title="שמור והמשך" onClick={onSave} isLoading={isSaving} />
+      )}
     </div>
   );
 }

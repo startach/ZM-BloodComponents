@@ -9,7 +9,7 @@ import firebase from "firebase";
 // Admin can make another user admin
 
 export enum BloodType {
-  UNSPECIFIED = "UNSPECIFIED",
+  UNSPECIFIED = "UNSPECIFIED", // The user has not disclosed their blood type
   O_PLUS = "O_PLUS",
   O_MINUS = "O_MINUS",
   A_PLUS = "A_PLUS",
@@ -97,7 +97,7 @@ export type DbAppointment = {
 
 export type AvailableAppointment = {
   id: string;
-  donationStartTime: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
 };
 
@@ -107,14 +107,14 @@ export enum Collections {
   APPOINTMENTS = "appointments",
 }
 
-export type NewDonationSlots = {
-  hospital: Hospital;
-  donationStartTime: string;
-  slots: number;
-};
-
 export enum LoginStatus {
   UNKNOWN,
   LOGGED_IN,
   LOGGED_OUT,
+}
+
+export interface SelectOption<T> {
+  value: T;
+  key: string;
+  label: string;
 }

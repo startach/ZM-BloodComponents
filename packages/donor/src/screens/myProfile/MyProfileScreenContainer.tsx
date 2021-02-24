@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
-import { useHistory } from "react-router-dom";
-import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
+import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 interface MyProfileScreenContainerProps {
   user: Donor;
+  updateUserInAppState: (user: Donor) => void;
 }
 
 export default function MyProfileScreenContainer(
   props: MyProfileScreenContainerProps
 ) {
-  const [user] = useState<Donor>(props.user);
-  const history = useHistory();
-
   const onSave = (
     firstName: string,
     lastName: string,
@@ -21,15 +20,19 @@ export default function MyProfileScreenContainer(
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    FirebaseFunctions.saveDonor(
+    const updatedUser = FirebaseFunctions.saveDonor(
       firstName,
       lastName,
       birthDate,
       phoneNumber,
       bloodType
     );
-    history.goBack();
+    props.updateUserInAppState(updatedUser);
   };
 
-  return <MyProfileScreen onSave={onSave} user={user} />;
+  const onSignOut = () => firebase.auth().signOut();
+
+  return (
+    <MyProfileScreen onSave={onSave} user={props.user} onSignOut={onSignOut} />
+  );
 }

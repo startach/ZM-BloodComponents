@@ -14,7 +14,9 @@ import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { saveTestDonor } from "../testUtils/TestSamples";
 
-const wrapped = firebaseFunctionsTest.wrap(Functions.getDonorAppointments);
+const wrapped = firebaseFunctionsTest.wrap(
+  Functions[FunctionsApi.GetDonorAppointmentsFunctionName]
+);
 
 const CREATING_USER_ID = "GetDonorAppointmentsHandlerCreatingUserId";
 const DONOR_ID = "GetDonorAppointmentsHandlerDonorId";

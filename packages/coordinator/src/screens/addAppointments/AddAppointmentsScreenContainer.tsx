@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Hospital } from "@zm-blood-components/common";
 import AddAppointmentsScreen from "./AddAppointmentsScreen";
+import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 
 export type NewSlots = {
-  id: string;
+  key: string;
   hospital: Hospital;
   donationStartTime: Date;
   slots: number;
@@ -11,6 +12,7 @@ export type NewSlots = {
 
 export default function AddAppointmentsScreenContainer() {
   const [slotsArray, setSlotsArray] = useState<NewSlots[]>([]);
+  const [isSaving, setIsSaving] = useState(false);
 
   const addSlotsRequest = (
     hospital: Hospital,
@@ -21,13 +23,20 @@ export default function AddAppointmentsScreenContainer() {
       hospital,
       donationStartTime,
       slots,
-      id: guidGenerator(),
+      key: guidGenerator(),
     };
     setSlotsArray([...slotsArray, request]);
   };
 
-  const deleteSlotsRequest = (id: string) => {
-    setSlotsArray(slotsArray.filter((request) => request.id !== id));
+  const deleteSlotsRequest = (key: string) => {
+    setSlotsArray(slotsArray.filter((request) => request.key !== key));
+  };
+
+  const onSave = async () => {
+    setIsSaving(true);
+    await CoordinatorFunctions.addNewAppointments(slotsArray);
+    setSlotsArray([]);
+    setIsSaving(false);
   };
 
   return (
@@ -35,7 +44,8 @@ export default function AddAppointmentsScreenContainer() {
       slotsArray={slotsArray}
       addSlotsRequest={addSlotsRequest}
       deleteSlotsRequest={deleteSlotsRequest}
-      onSave={() => console.log("Save")}
+      isSaving={isSaving}
+      onSave={onSave}
     />
   );
 }

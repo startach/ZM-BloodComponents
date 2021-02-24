@@ -4,10 +4,11 @@ import { AvailableAppointment, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import { QuestionnaireLocationState } from "../questionnaire/QuestionnaireScreenContainer";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface BookDonationScreenContainerProps {
   user: Donor;
+  setDonationSlotToBook: (donationSlot: DonationSlot) => void;
 }
 
 export default function BookDonationScreenContainer(
@@ -29,19 +30,15 @@ export default function BookDonationScreenContainer(
     );
   }, []);
 
-  const onAppointmentSelect = (appointment: AvailableAppointment) => {
-    const routerProps: QuestionnaireLocationState = {
-      availableAppointment: appointment,
-    };
-    history.push(MainNavigationKeys.Questionnaire, routerProps);
+  const onSlotSelected = (donationSlot: DonationSlot) => {
+    props.setDonationSlotToBook(donationSlot);
+    history.push(MainNavigationKeys.Questionnaire);
   };
 
   return (
     <BookDonationScreen
-      lastDonation={new Date(2021, 0, 13)}
-      earliestNextDonationDate={new Date(2021, 1, 13)}
       availableAppointments={fetchingState.availableAppointments}
-      onAppointmentSelect={onAppointmentSelect}
+      onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
       isFetching={fetchingState.isFetching}
     />

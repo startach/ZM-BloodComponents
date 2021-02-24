@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import RadioGroup from "../../components/basic/RadioGroup";
 import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import { AvailableAppointment } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 interface QuestionnaireScreenProps {
-  availableAppointment: AvailableAppointment;
+  bookableAppointment: DonationSlot;
   onSuccess: () => void;
   isLoading: boolean;
+  debugMode: boolean;
 }
 
 const YesNoOptions: RadioOption[] = [
@@ -20,9 +22,10 @@ const YesNoOptions: RadioOption[] = [
 ];
 
 export default function QuestionnaireScreen({
-  availableAppointment,
+  bookableAppointment,
   onSuccess,
   isLoading,
+  debugMode,
 }: QuestionnaireScreenProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
   const HaveYouAlreadyDonated = (
@@ -40,7 +43,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isWeightOver55}
       onChange={setIsWeightOver55}
-      label={"האם משקלך מעל 55 קילוגרם?"}
+      label={"האם משקלך מעל 50 ק״ג?"}
     />
   );
 
@@ -60,7 +63,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isDiabetes}
       onChange={setIsDiabetes}
-      label={"האם אתה סובל מסכרת?"}
+      label={"האם יש לך סכרת שאינה יציבה ומצריכה טיפול ע״י אינסולין?"}
     />
   );
 
@@ -100,7 +103,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isChronicDisease}
       onChange={setIsChronicDisease}
-      label={"האם אתה סובל ממחלה כרונית?"}
+      label={"האם יש לך מחלה כרונית?"}
     />
   );
 
@@ -140,7 +143,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isWounded}
       onChange={setIsWounded}
-      label={"האם יש לך שריטה או פצע פתוח?"}
+      label={"האם יש לך פצע פתוח או שריטה?"}
     />
   );
 
@@ -160,7 +163,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isPregnantEver}
       onChange={setIsPregnantEver}
-      label={"(לנשים) האם היית בהריון בעבר?"}
+      label={"האם היית בהריון במהלך חצי השנה האחרונה?"}
     />
   );
 
@@ -205,16 +208,12 @@ export default function QuestionnaireScreen({
     isConfirmed;
 
   return (
-    <div>
-      <div className={styles.header}>
-        <Text className={styles.headerTitle}>שאלון התאמה</Text>
-      </div>
-
+    <ZMScreen title="שאלון התאמה" hasBackButton>
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
-          hospital={availableAppointment.hospital}
-          donationDate={availableAppointment.donationStartTime}
+          hospital={bookableAppointment.hospital}
+          donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
         />
       </div>
 
@@ -243,12 +242,12 @@ export default function QuestionnaireScreen({
 
         <Button
           className={styles.continueButton}
-          isDisabled={!isVerified}
+          isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
           isLoading={isLoading}
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 }

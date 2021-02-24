@@ -13,14 +13,15 @@ import clockIcon from "../../assets/icons/clock.svg";
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 
 export interface DonationInfoIconsProps {
-  donationDate: Date;
+  donationStartTimeMillis: number;
   hospital: Hospital;
 }
 
 const DonationInfoIcons: React.FC<DonationInfoIconsProps> = ({
-  donationDate,
+  donationStartTimeMillis,
   hospital,
 }: DonationInfoIconsProps) => {
+  const donationDate = new Date(donationStartTimeMillis);
   return (
     <div className={styles.component}>
       <IconButton

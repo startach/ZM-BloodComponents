@@ -10,6 +10,7 @@ import {
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
+import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -20,7 +21,7 @@ export default function CoordinatorRouter() {
 
   useEffect(() => {
     registerAuthChange(setLoginStatus);
-  }, [setLoginStatus]);
+  }, [loginStatus]);
 
   let content = <LoadingScreen />;
 
@@ -31,13 +32,13 @@ export default function CoordinatorRouter() {
   if (loginStatus === LoginStatus.LOGGED_IN) {
     content = (
       <Switch>
-        <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS} />
-        <Route exact path={"/" + CoordinatorScreen.DONORS} />
-
-        <Route
-          path={"/" + CoordinatorScreen.ADD_APPOINTMENTS}
-          component={AddAppointmentsScreenContainer}
-        />
+        <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
+          <ManageAppointmentsScreenContainer />
+        </Route>
+        <Route exact path={"/" + CoordinatorScreen.DONORS}></Route>
+        <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
+          <AddAppointmentsScreenContainer />
+        </Route>
 
         {/*in case no of no match*/}
         <Redirect to={"/" + CoordinatorScreen.ADD_APPOINTMENTS} />

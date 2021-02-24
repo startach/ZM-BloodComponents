@@ -10,7 +10,7 @@
         "donor": [
           "zm-donor-qa"
         ],
-        "admin": [
+        "coordinator": [
           "zm-admin-qa"
         ]
       }
@@ -20,7 +20,7 @@
         "donor": [
           "zm-donor-prod"
         ],
-        "admin": [
+        "coordinator": [
           "zm-admin-prod"
         ]
       }

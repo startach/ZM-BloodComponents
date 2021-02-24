@@ -1,12 +1,14 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
-  DbAppointment,
   Collections,
-  BookedAppointment,
+  DbAppointment,
+  Hospital,
 } from "@zm-blood-components/common";
 
-export async function getAppointmentsByIds(appointmentIds: string[]) {
+export async function getAppointmentsByIds(
+  appointmentIds: string[]
+): Promise<DbAppointment[]> {
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
 
   // Firebase supports up to 10 ids per "in" request
@@ -21,7 +23,10 @@ export async function getAppointmentsByIds(appointmentIds: string[]) {
 
   const snapshots = await Promise.all(promisesArray);
   const docs = _.flatMap(snapshots, (s) => s.docs);
-  return _.map(docs, (a) => a.data());
+  return _.map(docs, (a) => ({
+    ...a.data(),
+    id: a.id,
+  }));
 }
 
 export async function getAppointmentsCreatedByUserId(userId: string) {
@@ -65,11 +70,36 @@ export async function getAppointments(
   if (options.fromTime) {
     request = request.where("donationStartTime", ">=", options.fromTime);
   }
-
   if (options.toTime) {
     request = request.where("donationStartTime", "<=", options.toTime);
   }
 
+  request = request.orderBy("donationStartTime");
+
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
+export async function getAppointmentsByHospital(
+  hospital: Hospital,
+  fromTime?: Date,
+  toTime?: Date
+): Promise<DbAppointment[]> {
+  let request = admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("hospital", "==", hospital);
+
+  if (fromTime) {
+    request = request.where("donationStartTime", ">=", fromTime);
+  }
+  if (toTime) {
+    request = request.where("donationStartTime", "<=", toTime);
+  }
   request = request.orderBy("donationStartTime");
 
   const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
@@ -114,20 +144,4 @@ export function setAppointment(appointment: DbAppointment) {
     .collection(Collections.APPOINTMENTS)
     .doc(appointment.id)
     .set(appointment);
-}
-
-export function dbAppointmentToBookedAppointment(
-  appointment: DbAppointment
-): BookedAppointment {
-  if (!appointment.id) {
-    console.error("Cannot convert DbAppointment with no id");
-    throw new Error("Invalid State");
-  }
-
-  return {
-    id: appointment.id,
-    donorId: appointment.donorId,
-    hospital: appointment.hospital,
-    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-  };
 }

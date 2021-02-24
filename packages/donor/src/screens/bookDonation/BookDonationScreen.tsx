@@ -3,27 +3,27 @@ import styles from "./BookDonationScreen.module.scss";
 import {
   AvailableAppointment,
   Hospital,
-  LocaleUtils,
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import {
-  getHospitalsList,
-  groupAndSortAvailableAppointments,
-} from "../../utils/AppointmentUtil";
+  DonationSlot,
+  groupDonationDays,
+} from "../../utils/AppointmentsGrouper";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import { DateDisplayFormat, ToWeekDayString } from "../../utils/DateUtil";
 import Select from "../../components/basic/Select";
 import Text from "../../components/basic/Text";
-import { SelectOption } from "../../components/basic/Select/Select";
 import Spinner from "../../components/basic/Spinner";
+import ZMScreen from "../../components/basic/ZMScreen";
 
 interface BookDonationScreenProps {
-  lastDonation: Date;
-  earliestNextDonationDate: Date;
+  lastDonation?: Date;
+  earliestNextDonationDate?: Date;
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
   firstName: string;
-  onAppointmentSelect: (appointment: AvailableAppointment) => void;
+  onSlotSelected: (donationSlot: DonationSlot) => void;
 }
 
 export default function BookDonationScreen({
@@ -32,30 +32,23 @@ export default function BookDonationScreen({
   availableAppointments,
   isFetching,
   firstName,
-  onAppointmentSelect,
+  onSlotSelected,
 }: BookDonationScreenProps) {
   const [selectedHospitals, setSelectedHospitals] = useState<Hospital | "">("");
 
-  const hospitalsListOptions = React.useMemo(() => {
-    let options: SelectOption<Hospital | "">[];
-    options = getHospitalsList(availableAppointments).map((hospital) => ({
-      label: LocaleUtils.getHospitalName(hospital),
-      key: hospital,
-      value: hospital,
-    }));
-    options.unshift({ label: "הכל", key: "all", value: "" });
-    return options;
-  }, [availableAppointments]);
-
-  const sortedAppointments = React.useMemo(() => {
+  const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
       (x) => x.hospital === selectedHospitals || !selectedHospitals
     );
-    return groupAndSortAvailableAppointments(filteredResults);
+    return groupDonationDays(filteredResults);
   }, [availableAppointments, selectedHospitals]);
 
   return (
-    <div className={styles.component}>
+    <ZMScreen
+      title="קביעת תרומה חדשה"
+      hasProfileButton
+      className={styles.component}
+    >
       <LastDonationDateHeader
         firstName={firstName}
         lastDonation={lastDonation}
@@ -67,7 +60,7 @@ export default function BookDonationScreen({
         </Text>
         <Select
           className={styles.dropdown}
-          options={hospitalsListOptions}
+          options={HospitalUtils.getAllHospitalOptions("הכל")}
           value={selectedHospitals}
           onChange={setSelectedHospitals}
           isDisabled={isFetching}
@@ -75,17 +68,17 @@ export default function BookDonationScreen({
 
         {isFetching && <Spinner />}
 
-        {sortedAppointments.map((group) => (
+        {sortedDonationDays.map((donationDay) => (
           <BookDonationEntriesGroup
-            key={group.date}
-            title={`${ToWeekDayString(group.date, DateDisplayFormat)}, ${
-              group.date
+            key={donationDay.day}
+            title={`${ToWeekDayString(donationDay.day, DateDisplayFormat)}, ${
+              donationDay.day
             }`}
-            appointments={group.appointments}
-            onAppointmentSelect={onAppointmentSelect}
+            donationSlots={donationDay.donationSlots}
+            onSlotSelected={onSlotSelected}
           />
         ))}
       </main>
-    </div>
+    </ZMScreen>
   );
 }

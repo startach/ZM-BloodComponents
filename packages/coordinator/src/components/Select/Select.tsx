@@ -5,14 +5,9 @@ import {
   FormControl,
 } from "@material-ui/core";
 import React from "react";
+import { SelectOption } from "@zm-blood-components/common";
 
 type SelectVariant = "standard" | "filled" | "outlined";
-
-export interface SelectOption<T> {
-  value: T;
-  key: string;
-  label: string;
-}
 
 type SelectProps<T> = {
   id: string;

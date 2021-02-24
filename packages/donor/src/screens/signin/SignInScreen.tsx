@@ -15,7 +15,7 @@ interface SignInScreenProps {
     password: string,
     emailError: (error: string) => void,
     passwordError: (error: string) => void
-  ) => void;
+  ) => Promise<boolean>;
 }
 
 export default function SignInScreen(props: SignInScreenProps) {
@@ -23,9 +23,19 @@ export default function SignInScreen(props: SignInScreenProps) {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const signIn = () => {
-    props.onSignInWithEmail(email, password, setEmailError, setPasswordError);
+  const signIn = async () => {
+    setIsLoading(true);
+    const success = await props.onSignInWithEmail(
+      email,
+      password,
+      setEmailError,
+      setPasswordError
+    );
+    if (!success) {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -60,6 +70,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={styles.signinButton}
           title="התחבר"
           onClick={signIn}
+          isLoading={isLoading}
         />
       </div>
       <div
