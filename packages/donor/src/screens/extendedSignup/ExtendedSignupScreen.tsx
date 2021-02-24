@@ -29,7 +29,7 @@ export default function ExtendedSignupScreen({
   phoneNumber,
   bloodType,
   onSave,
-  onSignOut
+  onSignOut,
 }: ExtendedSignupScreenProps) {
   let firstNameErrorMessage: string = "";
   let lastNameErrorMessage: string = "";
@@ -93,10 +93,7 @@ export default function ExtendedSignupScreen({
         />
         <br />
         <br />
-        <Button
-          onClick={onSignOut}
-          title={"התנתק"}
-        />
+        <Button onClick={onSignOut} title={"התנתק"} />
       </div>
     </ZMScreen>
   );
