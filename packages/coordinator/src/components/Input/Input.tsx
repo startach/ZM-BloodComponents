@@ -6,7 +6,7 @@ type InputVariant = "standard" | "filled" | "outlined";
 type InputProps = {
   id?: string;
   label?: string;
-  onChangeText: (newValue: string) => void;
+  onChange: (newValue: string) => void;
   value?: any;
   type?: string;
   isDisabled?: boolean;
@@ -26,7 +26,7 @@ export default function Input({
   placeholder,
   type = "text",
   value,
-  onChangeText,
+  onChange,
   className,
   mainIcon,
   actionIcon,
@@ -53,7 +53,7 @@ export default function Input({
       id={id}
       value={value}
       type={type}
-      onChange={(e) => onChangeText(e.currentTarget.value)}
+      onChange={(e) => onChange(e.currentTarget.value)}
       placeholder={placeholder}
       label={label}
       className={className}

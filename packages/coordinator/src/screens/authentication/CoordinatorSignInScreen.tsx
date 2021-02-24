@@ -26,7 +26,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
   return (
     <ScreenWrapper className={styles.component}>
       <Input
-        onChangeText={(emailContent) => {
+        onChange={(emailContent) => {
           setEmail(emailContent);
           setEmailError("");
         }}
@@ -37,7 +37,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
       />
       <Input
         type="password"
-        onChangeText={(passwordContent) => {
+        onChange={(passwordContent) => {
           setPassword(passwordContent);
           setPasswordError("");
         }}

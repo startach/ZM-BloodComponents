@@ -52,16 +52,17 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
 
   return (
     <div className={styles.component}>
-      <Select
+      <Select className={styles.field}
         id={"hospital"}
         label={"בית חולים"}
         options={hospitalOptions}
         onChange={setHospital}
         value={hospital}
       />
-      <Input value={date} onChangeText={setDate} label={"תאריך"} />
-      <Input value={hour} onChangeText={setHour} label={"שעה"} />
+      <Input value={date} onChange={setDate} label={"תאריך"} className={styles.field} />
+      <Input value={hour} onChange={setHour} label={"שעה"} className={styles.field} />
       <Select
+        className={styles.field}
         id={"donations_count"}
         label={"מספר תורים"}
         options={slotOptions}
@@ -69,7 +70,8 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
         value={slots}
       />
 
-      <Button onClick={onSave} title="הוספה" isDisabled={isButtonDisable()} />
+
+      <Button onClick={onSave} title="הוספה" isDisabled={isButtonDisable()} className={styles.field}/>
     </div>
   );
 }
