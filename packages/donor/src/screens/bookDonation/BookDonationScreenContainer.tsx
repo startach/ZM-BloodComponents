@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
-import {
-  AvailableAppointment,
-  BookedAppointment,
-  Donor,
-} from "@zm-blood-components/common";
+import { AvailableAppointment, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import { QuestionnaireLocationState } from "../questionnaire/QuestionnaireScreenContainer";
+import { QuestionnaireRoutingProps } from "../questionnaire/QuestionnaireScreenContainer";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface BookDonationScreenContainerProps {
   user: Donor;
-  bookedAppointment?: BookedAppointment;
 }
 
 export default function BookDonationScreenContainer(
@@ -27,10 +22,6 @@ export default function BookDonationScreenContainer(
   });
 
   useEffect(() => {
-    if (props.bookedAppointment) {
-      return;
-    }
-
     FirebaseFunctions.getAvailableAppointments().then((appointments) =>
       setFetchingState({
         availableAppointments: appointments,
@@ -40,15 +31,11 @@ export default function BookDonationScreenContainer(
   }, []);
 
   const onSlotSelected = (donationSlot: DonationSlot) => {
-    const routerProps: QuestionnaireLocationState = {
+    const routerProps: QuestionnaireRoutingProps = {
       donationSlot,
     };
     history.push(MainNavigationKeys.Questionnaire, routerProps);
   };
-
-  if (props.bookedAppointment) {
-    return <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />;
-  }
 
   return (
     <BookDonationScreen
