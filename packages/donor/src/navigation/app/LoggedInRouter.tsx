@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -11,9 +11,8 @@ import UpcomingDonationScreenContainer from "../../screens/UpcommingDonation/Upc
 import MyProfileScreenContainer from "../../screens/myProfile/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
-import QuestionnaireScreenContainer, {
-  QuestionnaireRoutingProps,
-} from "../../screens/questionnaire/QuestionnaireScreenContainer";
+import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
+import { DonationSlot } from "../../utils/AppointmentsGrouper";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -24,6 +23,9 @@ interface LoggedInRouterProps {
 
 export default function LoggedInRouter(props: LoggedInRouterProps) {
   const { user, bookedAppointment, setUser, setBookedAppointment } = props;
+  const [donationSlotToBook, setDonationSlotToBook] = useState<
+    DonationSlot | undefined
+  >();
 
   if (!user) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
@@ -55,16 +57,15 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
 
         <Route
           path={"/" + MainNavigationKeys.Questionnaire}
-          render={(match) => {
-            const state = match.location.state as QuestionnaireRoutingProps;
-            if (!state.donationSlot) {
+          render={() => {
+            if (!donationSlotToBook) {
               return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
             }
 
             return (
               <QuestionnaireScreenContainer
                 setBookedAppointment={props.setBookedAppointment}
-                donationSlot={state.donationSlot}
+                donationSlot={donationSlotToBook}
               />
             );
           }}
@@ -79,7 +80,12 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               );
             }
 
-            return <BookDonationScreenContainer user={user} />;
+            return (
+              <BookDonationScreenContainer
+                user={user}
+                setDonationSlotToBook={setDonationSlotToBook}
+              />
+            );
           }}
         />
       </Switch>
