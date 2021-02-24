@@ -43,7 +43,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isWeightOver55}
       onChange={setIsWeightOver55}
-      label={"האם משקלך מעל 55 קילוגרם?"}
+      label={"האם משקלך מעל 50 ק״ג?"}
     />
   );
 
@@ -63,7 +63,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isDiabetes}
       onChange={setIsDiabetes}
-      label={"האם אתה סובל מסכרת?"}
+      label={"האם יש לך סכרת שאינה יציבה ומצריכה טיפול ע״י אינסולין?"}
     />
   );
 
@@ -103,7 +103,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isChronicDisease}
       onChange={setIsChronicDisease}
-      label={"האם אתה סובל ממחלה כרונית?"}
+      label={"האם יש לך מחלה כרונית?"}
     />
   );
 
@@ -143,7 +143,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isWounded}
       onChange={setIsWounded}
-      label={"האם יש לך שריטה או פצע פתוח?"}
+      label={"האם יש לך פצע פתוח או שריטה?"}
     />
   );
 
@@ -163,7 +163,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isPregnantEver}
       onChange={setIsPregnantEver}
-      label={"(לנשים) האם היית בהריון בעבר?"}
+      label={"האם היית בהריון במהלך חצי השנה האחרונה?"}
     />
   );
 
