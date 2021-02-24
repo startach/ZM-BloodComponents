@@ -125,7 +125,7 @@ export default function MyProfileScreen({
           />
         </Card>
       ))}
-      <Button title={"התנתק"} onClick={onSignOut} />
+      <Button title={"התנתק"} onClick={onSignOut} isCentered />
       <MyProfileDrawer
         visible={drawerVisible}
         onCancel={toggleDrawerVisiblity}

@@ -6,6 +6,7 @@ import styles from "../register/RegisterScreen.module.scss";
 
 interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;
+  goToSignIn: () => void;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -36,6 +37,14 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         className={styles.signinButton}
         title="איפוס סיסמה"
         onClick={resetPassword}
+      />
+      <br />
+      <Button
+        className={styles.signinButton}
+        title="חזרה"
+        variant="text"
+        onClick={props.goToSignIn}
+        isCentered
       />
     </div>
   );
