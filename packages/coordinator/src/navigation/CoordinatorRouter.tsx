@@ -40,7 +40,7 @@ export default function CoordinatorRouter() {
           <AddAppointmentsScreenContainer />
         </Route>
 
-        {/*in case no of no match*/}
+        {/*in case of no match*/}
         <Redirect to={"/" + CoordinatorScreen.ADD_APPOINTMENTS} />
       </Switch>
     );
