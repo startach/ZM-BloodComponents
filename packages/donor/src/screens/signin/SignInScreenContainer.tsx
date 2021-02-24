@@ -63,5 +63,6 @@ function signInWithEmail(
           console.warn("Sing in error code without translation: " + error.code);
           return;
       }
-    });
+    })
+    .then((user) => Boolean(user));
 }
