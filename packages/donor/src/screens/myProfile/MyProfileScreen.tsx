@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { BloodType, Donor, SelectOption } from "@zm-blood-components/common";
+import { BloodType, Donor, BloodTypeUtils } from "@zm-blood-components/common";
 import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
 import styles from "./MyProfileScreen.module.scss";
@@ -33,20 +33,12 @@ type UserDataEntry = {
   icon: string;
 }[];
 
-const bloodTypes: SelectOption<BloodType>[] = Object.entries(BloodType).map(
-  ([key, value]) => ({
-    key,
-    value,
-    label: key,
-  })
-);
-
 export default function MyProfileScreen({
   user,
   onSave,
   onSignOut,
 }: MyProfileScreenProps) {
-  const [drawerVisible, setdrawerVisible] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState(0);
   const [selectedTempValue, setSelectedTempValue] = useState<
     string | BloodType
@@ -59,7 +51,7 @@ export default function MyProfileScreen({
         component: (
           <Select
             value={selectedTempValue}
-            options={bloodTypes}
+            options={BloodTypeUtils.getBloodTypeSelectOptions()}
             onChange={handleOnValueChange}
             label="סוג דם"
           />
@@ -83,7 +75,7 @@ export default function MyProfileScreen({
   );
 
   const toggleDrawerVisibility = () => {
-    setdrawerVisible((value) => !value);
+    setDrawerVisible((value) => !value);
   };
 
   function handleOnValueChange(value: any) {

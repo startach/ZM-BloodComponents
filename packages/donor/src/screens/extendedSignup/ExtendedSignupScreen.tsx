@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BloodType,
-  LocaleUtils,
-  SelectOption,
-} from "@zm-blood-components/common";
+import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
@@ -50,18 +46,6 @@ export default function ExtendedSignupScreen({
         : "שם המשפחה ארוך מדי";
   }
 
-  let bloodTypeOptions: SelectOption<BloodType | "">[] = Object.values(
-    BloodType
-  ).map((type, index) => {
-    return {
-      key: "ExtendedSignupScreen-" + index + type,
-      value: type,
-      label: LocaleUtils.getBloodTypeTranslation(BloodType[type]),
-    };
-  });
-
-  bloodTypeOptions.unshift({ key: "undefined", value: "", label: "בחר" });
-
   return (
     <ZMScreen title={"סיום הרשמה"}>
       <HeaderSection>
@@ -94,7 +78,7 @@ export default function ExtendedSignupScreen({
           onChange={bloodType.onChange}
           label="סוג דם"
           isValid={bloodType.isValid}
-          options={bloodTypeOptions}
+          options={BloodTypeUtils.getBloodTypeSelectOptionsWithDefault("בחר")}
           errorMessage={bloodType.isValid ? undefined : "נא לבחור סוג דם"}
         />
         <Button
