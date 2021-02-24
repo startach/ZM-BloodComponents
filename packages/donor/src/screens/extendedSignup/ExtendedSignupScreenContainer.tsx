@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
+import firebase from "firebase/app";
 
 interface ExtendedSignupScreenContainerProps {
   updateUserInAppState: (user: Donor) => void;
@@ -16,6 +17,9 @@ export enum NameValidation {
 export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
+
+  const onSignOut = () => firebase.auth().signOut();
+
   const [firstNameInput, setFirstNameInput] = useState({
     value: "",
     isValid: true,
@@ -35,7 +39,7 @@ export default function ExtendedSignupScreenContainer(
     isValid: boolean;
   }>({
     value: "",
-    isValid: false,
+    isValid: true,
   });
 
   const setNameFields = (value: string, isFirstName: boolean) => {
@@ -134,6 +138,7 @@ export default function ExtendedSignupScreenContainer(
         lastName,
         phoneNumber,
         bloodType,
+        onSignOut
       }}
     />
   );

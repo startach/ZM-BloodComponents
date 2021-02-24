@@ -20,6 +20,7 @@ interface ExtendedSignupScreenProps {
   phoneNumber: ExtendedSingupField<string>;
   bloodType: ExtendedSingupField<BloodType | "">;
   onSave: () => void;
+  onSignOut: () => void;
 }
 
 export default function ExtendedSignupScreen({
@@ -28,6 +29,7 @@ export default function ExtendedSignupScreen({
   phoneNumber,
   bloodType,
   onSave,
+  onSignOut
 }: ExtendedSignupScreenProps) {
   let firstNameErrorMessage: string = "";
   let lastNameErrorMessage: string = "";
@@ -88,6 +90,12 @@ export default function ExtendedSignupScreen({
             (field) => !field.isValid || !field.value
           )}
           isFullWidth
+        />
+        <br />
+        <br />
+        <Button
+          onClick={onSignOut}
+          title={"התנתק"}
         />
       </div>
     </ZMScreen>
