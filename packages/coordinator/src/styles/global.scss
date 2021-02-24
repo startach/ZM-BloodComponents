@@ -20,5 +20,5 @@ body {
   line-height: var(--font-line-height-normal);
   -webkit-font-smoothing: antialiased;
 
-  direction: rtl;
+  direction: var(--text-direction);
 }
