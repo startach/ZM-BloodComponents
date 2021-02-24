@@ -1,5 +1,11 @@
-import React, { useMemo, useState } from "react";
-import { BloodType, Donor, SelectOption } from "@zm-blood-components/common";
+import React, { useState } from "react";
+import {
+  BloodType,
+  BloodTypeUtils,
+  Donor,
+  LocaleUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
 import styles from "./MyProfileScreen.module.scss";
@@ -26,113 +32,161 @@ interface MyProfileScreenProps {
   onSignOut: () => void;
 }
 
-type UserDataEntry = {
-  key: keyof Donor;
-  value: any;
-  component: React.ReactNode;
-  icon: string;
-}[];
-
-const bloodTypes: SelectOption<BloodType>[] = Object.entries(BloodType).map(
-  ([key, value]) => ({
-    key,
-    value,
-    label: key,
-  })
-);
+const SHOW_DONATION_COUNT = false;
 
 export default function MyProfileScreen({
   user,
   onSave,
   onSignOut,
 }: MyProfileScreenProps) {
-  const [drawerVisible, setdrawerVisible] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState(0);
-  const [selectedTempValue, setSelectedTempValue] = useState<
-    string | BloodType
-  >();
-  const userData: UserDataEntry = useMemo(
-    () => [
-      {
-        key: "bloodType",
-        value: user?.bloodType,
-        component: (
-          <Select
-            value={selectedTempValue}
-            options={bloodTypes}
-            onChange={handleOnValueChange}
-            label="סוג דם"
-          />
-        ),
-        icon: bloodIcon,
-      },
-      {
-        key: "phone",
-        value: user?.phone,
-        component: (
-          <Input
-            value={selectedTempValue}
-            onChangeText={handleOnValueChange}
-            label="טלפון"
-          />
-        ),
-        icon: phoneIcon,
-      },
-    ],
-    [user, selectedTempValue]
-  );
+  const renderDonationCount = () => {
+    if (!SHOW_DONATION_COUNT) {
+      return null;
+    }
 
-  const toggleDrawerVisiblity = () => {
-    setdrawerVisible((value) => !value);
+    return (
+      <Card className={styles.donationCountcard}>
+        <Text>מספר תרומות</Text>
+        <Text className={styles.donationNumber}>4</Text>
+        <Button title="צפייה בהיסטוריה" onClick={() => console.log()} />
+      </Card>
+    );
   };
 
-  function handleOnValueChange(value: any) {
-    setSelectedTempValue(value);
-  }
-  function handleEditClick(index: number) {
-    setSelectedTempValue(userData[index].value);
-    setSelectedComponent(index);
-    toggleDrawerVisiblity();
-  }
-  function handleOnSave() {
-    const { key } = userData[selectedComponent];
-    const tempVal = { ...user, [key]: selectedTempValue };
-    const { firstName, lastName, birthDate, phone, bloodType } = tempVal;
-    onSave(firstName, lastName, birthDate, phone, bloodType);
+  const onFieldChange = (key: keyof Donor) => (newValue: any) => {
+    const updatedUser = { ...user };
+    updatedUser[key] = newValue;
 
-    toggleDrawerVisiblity();
-  }
+    const { firstName, lastName, birthDate, phone, bloodType } = updatedUser;
+    onSave(firstName, lastName, birthDate, phone, bloodType);
+  };
 
   return (
     <ZMScreen hasBackButton className={styles.container} title="פרופיל">
       <HeaderSection className={styles.component}>
         <Text>{`${user.firstName} ${user.lastName}`}</Text>
       </HeaderSection>
-      <Card className={styles.donationCountcard}>
-        <Text>מספר תרומות</Text>
-        <Text className={styles.donationNumber}>4</Text>
-        <Button title="צפייה בהיסטוריה" onClick={() => console.log()} />
-      </Card>
-      {userData.map(({ value, component, icon }, index) => (
-        <Card key={index} className={styles.card}>
-          <div className={styles.cardContentMerge}>
-            <IconButton iconSrc={icon} />
-            <Text>{value}</Text>
-          </div>
-          <IconButton
-            iconSrc={editIcon}
-            onClick={() => handleEditClick(index)}
-          />
-        </Card>
-      ))}
-      <Button title={"התנתק"} onClick={onSignOut} isCentered />
+
+
+      {renderDonationCount()}
+
+      <ProfileStringField
+        iconSrc={phoneIcon}
+        value={user.firstName}
+        inputLabel={"שם פרטי"}
+        onChange={onFieldChange("firstName")}
+      />
+
+      <ProfileStringField
+        iconSrc={phoneIcon}
+        value={user.lastName}
+        inputLabel={"שם משפחה"}
+        onChange={onFieldChange("lastName")}
+      />
+
+      <ProfileSelectField
+        iconSrc={bloodIcon}
+        value={user.bloodType}
+        onChange={onFieldChange("bloodType")}
+        options={BloodTypeUtils.getBloodTypeSelectOptions()}
+        selectLabel={"סוג דם"}
+        toDisplayString={LocaleUtils.getBloodTypeTranslation}
+      />
+
+      <ProfileStringField
+        iconSrc={phoneIcon}
+        value={user.phone}
+        inputLabel={"טלפון"}
+        onChange={onFieldChange("phone")}
+      />
+
+      <Button title={"התנתק"} onClick={onSignOut} />
+    </ZMScreen>
+  );
+}
+
+interface ProfileStringFieldProps {
+  iconSrc: string;
+  value: string;
+  onChange: (newValue: string) => void;
+  inputLabel: string;
+}
+function ProfileStringField(props: ProfileStringFieldProps) {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [value, setValue] = useState(props.value);
+
+  return (
+    <>
+      <ProfileFieldCard
+        value={props.value}
+        iconSrc={props.iconSrc}
+        onEdit={() => setDrawerVisible(true)}
+      />
       <MyProfileDrawer
         visible={drawerVisible}
-        onCancel={toggleDrawerVisiblity}
-        onSave={handleOnSave}
+        onCancel={() => setDrawerVisible(false)}
+        onSave={() => {
+          props.onChange(value);
+          setDrawerVisible(false);
+        }}
       >
-        {userData?.[selectedComponent]?.component}
+        <Input value={value} onChangeText={setValue} label={props.inputLabel} />
       </MyProfileDrawer>
-    </ZMScreen>
+    </>
+  );
+}
+
+interface ProfileSelectFieldProps<T> {
+  iconSrc: string;
+  value: T;
+  toDisplayString: (value: T) => string;
+  onChange: (newValue: T) => void;
+  selectLabel: string;
+  options: SelectOption<T>[];
+}
+function ProfileSelectField<T>(props: ProfileSelectFieldProps<T>) {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [value, setValue] = useState(props.value);
+
+  return (
+    <>
+      <ProfileFieldCard
+        value={props.toDisplayString(props.value)}
+        iconSrc={props.iconSrc}
+        onEdit={() => setDrawerVisible(true)}
+      />
+      <MyProfileDrawer
+        visible={drawerVisible}
+        onCancel={() => setDrawerVisible(false)}
+        onSave={() => {
+          props.onChange(value);
+          setDrawerVisible(false);
+        }}
+      >
+        <Select
+          value={value}
+          options={props.options}
+          onChange={setValue}
+          label={props.selectLabel}
+        />
+      </MyProfileDrawer>
+    </>
+  );
+}
+
+interface ProfileFieldCardProps {
+  iconSrc: string;
+  value: string;
+  onEdit: () => void;
+}
+function ProfileFieldCard(props: ProfileFieldCardProps) {
+  return (
+    <Card className={styles.card}>
+      <div className={styles.cardContentMerge}>
+        <IconButton iconSrc={props.iconSrc} />
+        <Text>{props.value}</Text>
+      </div>
+      <IconButton iconSrc={editIcon} onClick={props.onEdit} />
+    </Card>
   );
 }
