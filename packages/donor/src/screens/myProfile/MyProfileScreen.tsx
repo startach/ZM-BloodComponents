@@ -82,7 +82,7 @@ export default function MyProfileScreen({
     [user, selectedTempValue]
   );
 
-  const toggleDrawerVisiblity = () => {
+  const toggleDrawerVisibility = () => {
     setdrawerVisible((value) => !value);
   };
 
@@ -92,7 +92,7 @@ export default function MyProfileScreen({
   function handleEditClick(index: number) {
     setSelectedTempValue(userData[index].value);
     setSelectedComponent(index);
-    toggleDrawerVisiblity();
+    toggleDrawerVisibility();
   }
   function handleOnSave() {
     const { key } = userData[selectedComponent];
@@ -100,7 +100,7 @@ export default function MyProfileScreen({
     const { firstName, lastName, birthDate, phone, bloodType } = tempVal;
     onSave(firstName, lastName, birthDate, phone, bloodType);
 
-    toggleDrawerVisiblity();
+    toggleDrawerVisibility();
   }
 
   return (
@@ -128,7 +128,7 @@ export default function MyProfileScreen({
       <Button title={"התנתק"} onClick={onSignOut} />
       <MyProfileDrawer
         visible={drawerVisible}
-        onCancel={toggleDrawerVisiblity}
+        onCancel={toggleDrawerVisibility}
         onSave={handleOnSave}
       >
         {userData?.[selectedComponent]?.component}
