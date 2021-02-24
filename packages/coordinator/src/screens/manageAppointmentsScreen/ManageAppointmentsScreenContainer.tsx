@@ -39,6 +39,8 @@ export default function ManageAppointmentsScreenContainer() {
   return (
     <div>
       <Select
+        id={"hospital"}
+        label={"בית חולים"}
         options={HospitalUtils.getAllHospitalOptions("בחר")}
         value={hospitalFilter}
         onChange={setHospitalFilter}

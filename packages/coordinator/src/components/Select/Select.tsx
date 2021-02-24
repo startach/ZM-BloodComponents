@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { SelectOption } from "@zm-blood-components/common";
+import styles from "./Select.module.scss";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
@@ -36,9 +37,12 @@ export default function Select<T>({
 }: SelectProps<T>) {
   return (
     <FormControl>
-      <InputLabel id={`${id}_label`}>{label}</InputLabel>
+      <InputLabel className={styles.label} id={`${id}_label`}>
+        {label}
+      </InputLabel>
 
       <MUSelect
+        autoWidth={true}
         id={`${id}_select`}
         labelId={`${id}_label`}
         onChange={(e) =>

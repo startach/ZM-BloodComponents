@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
-import Styles from "./_Input.module.scss";
-
+import styles from "./Input.module.scss";
+import classNames from "classnames";
 type InputVariant = "standard" | "filled" | "outlined";
 
 type InputProps = {
@@ -50,15 +50,15 @@ export default function Input({
     }),
   };
   return (
-    <div className={Styles["input-container"]}>
+    <div>
       <TextField
         id={id}
         value={value}
         type={type}
-        onChange={(e) => onChangeText(e.currentTarget.value)}
+        onChange={(e) => onChange?.(e.currentTarget.value)}
         placeholder={placeholder}
         label={label}
-        className={className}
+        className={classNames(styles.component, className)}
         disabled={isDisabled}
         inputProps={adornments}
         error={Boolean(errorMessage)}
