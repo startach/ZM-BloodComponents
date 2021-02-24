@@ -5,8 +5,11 @@
   align-items: center;
   justify-content: center;
   height: 200px;
-  @include supported_gap(var(--layout-distance-normal));
+  @include flex_gap(var(--layout-distance-normal),row);
 }
 
 .fields {
+}
+.field{
+  min-width: 100px;
 }
