@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment } from "@zm-blood-components/common";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-}
-
-export interface QuestionnaireLocationState {
   donationSlot: DonationSlot;
 }
+
+export type QuestionnaireRoutingProps = {
+  donationSlot: DonationSlot;
+};
 
 const debugMode = process.env.NODE_ENV === "development";
 
@@ -19,7 +21,6 @@ export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
   const history = useHistory();
-  const location = useLocation<QuestionnaireLocationState>();
   const [isLoading, setIsLoading] = useState(false);
 
   const onSuccess = async () => {
@@ -28,12 +29,12 @@ export default function QuestionnaireScreenContainer(
     if (debugMode) {
       console.log(
         "Asked to book one of the following appointments: ",
-        location.state.donationSlot.appointmentIds
+        props.donationSlot.appointmentIds
       );
     }
 
     const bookedAppointment = await FirebaseFunctions.bookAppointment(
-      location.state.donationSlot.appointmentIds
+      props.donationSlot.appointmentIds
     );
 
     if (debugMode) {
@@ -41,12 +42,12 @@ export default function QuestionnaireScreenContainer(
     }
 
     props.setBookedAppointment(bookedAppointment);
-    history.goBack();
+    history.replace(MainNavigationKeys.UpcomingDonation);
   };
 
   return (
     <QuestionnaireScreen
-      bookableAppointment={location.state.donationSlot}
+      bookableAppointment={props.donationSlot}
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}

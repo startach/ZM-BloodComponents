@@ -22,7 +22,6 @@ export default function UpcomingDonationScreenContainer(
   return (
     <UpcomingDonationScreen
       state={UpcomingDonationStates.beforeDonation}
-      lastDonation={new Date(2021, 0, 13)}
       bookedAppointment={props.bookedAppointment}
       firstName={props.user.firstName}
       onCancel={onCancelAppointment}
