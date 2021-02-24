@@ -63,7 +63,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={isDiabetes}
       onChange={setIsDiabetes}
-      label={"האם יש לך סכרת?"}
+      label={"האם יש לך סכרת שאינה יציבה ומצריכה טיפול ע״י אינסולין?"}
     />
   );
 
