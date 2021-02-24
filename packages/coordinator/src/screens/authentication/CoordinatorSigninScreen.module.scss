@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @include flex_gap(var(--layout-distance-large),row);
+  @include flex_gap(var(--layout-distance-large), row);
 }
 
 .component > * {
