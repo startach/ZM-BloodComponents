@@ -59,7 +59,9 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (bookedAppointment) {
-              return <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />;
+              return (
+                <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />
+              );
             }
             if (!donationSlotToBook) {
               return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
