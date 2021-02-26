@@ -24,7 +24,7 @@ function BookDonationEntriesGroup({
             key={slot.donationStartTimeMillis + slot.hospital}
             hospital={slot.hospital}
             donationStartTimeMillis={slot.donationStartTimeMillis}
-            onRegisterClick={() => onSlotSelected(slot)}
+            onClick={() => onSlotSelected(slot)}
           />
         ))}
       </div>
