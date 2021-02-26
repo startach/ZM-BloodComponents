@@ -21,8 +21,11 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: "Check Style"
+          name: Check Style
           command: yarn run prettier --check .
+      - run:
+          name: Test Functions
+          command: yarn workspace @zm-blood-components/functions test
 
 workflows:
   blood-components:
