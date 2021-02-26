@@ -93,7 +93,7 @@ export default function ExtendedSignupScreen({
         />
         <br />
         <br />
-        <Button onClick={onSignOut} title={"התנתק"} />
+        <Button onClick={onSignOut} title={"התנתק"} isCentered />
       </div>
     </ZMScreen>
   );

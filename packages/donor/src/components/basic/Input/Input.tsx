@@ -3,7 +3,11 @@ import { InputAdornment } from "@material-ui/core";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
-type InputVariant = "standard" | "filled" | "outlined";
+export enum InputVariant {
+  standard = "standard",
+  filled = "filled",
+  outlined = "outlined",
+}
 
 type InputProps = {
   id?: string;
@@ -17,6 +21,7 @@ type InputProps = {
   mainIcon?: any;
   errorMessage?: string;
   actionIcon?: any;
+  /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
   variant?: InputVariant;
   isFullWidth?: boolean;
 };
@@ -33,7 +38,7 @@ export default function Input({
   actionIcon,
   isDisabled,
   errorMessage,
-  variant = "standard",
+  variant = InputVariant.standard,
   isFullWidth = false,
 }: InputProps) {
   let adornments = {

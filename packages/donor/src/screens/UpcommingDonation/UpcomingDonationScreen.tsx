@@ -4,7 +4,7 @@ import styles from "./UpcommingDonationScreen.module.scss";
 import Text from "../../components/basic/Text";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
 import ZMScreen from "../../components/basic/ZMScreen";
 
@@ -108,8 +108,9 @@ function CancelButton(props: { onCancel: () => void }) {
         title="בטל תור"
         className={styles.cancelButton}
         onClick={onCancel}
-        variant={"outlined"}
+        variant={ButtonVariant.outlined}
         isLoading={isLoading}
+        isCentered
       />
     </div>
   );
