@@ -24,8 +24,8 @@ jobs:
           name: Check Style
           command: yarn run prettier --check .
       - run:
-          name: Test Functions
-          command: yarn workspace @zm-blood-components/functions test
+          name: Test Donor
+          command: yarn workspace @zm-blood-components/donor test
 
 workflows:
   blood-components:
