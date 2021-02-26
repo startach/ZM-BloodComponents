@@ -43,16 +43,31 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   };
 
   return (
-    <div className={styles.appointmentForm}>
+    <div className={styles.component}>
       <Select
+        className={styles.field}
+        id={"hospital"}
         label={"בית חולים"}
         options={HospitalUtils.getAllHospitalOptions()}
         onChange={setHospital}
         value={hospital}
       />
-      <DatePicker value={date} onChange={setDate} label={"תאריך"} disablePast />
-      <TimePicker value={date} onChange={setDate} label={"שעה"} />
+      <DatePicker
+        className={styles.field}
+        value={date}
+        onChange={setDate}
+        label={"תאריך"}
+        disablePast
+      />
+      <TimePicker
+        className={styles.field}
+        value={date}
+        onChange={setDate}
+        label={"שעה"}
+      />
       <Select
+        className={styles.field}
+        id={"donations_count"}
         label={"מספר תורים"}
         options={slotOptions}
         onChange={setSlots}

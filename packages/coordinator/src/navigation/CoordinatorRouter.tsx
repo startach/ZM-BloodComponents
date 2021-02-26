@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoadingScreen from "../screens/loading/LoadingScreen";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { CoordinatorScreen } from "./CoordinatorScreen";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { LoginStatus } from "@zm-blood-components/common";
@@ -32,23 +32,26 @@ export default function CoordinatorRouter() {
   if (loginStatus === LoginStatus.LOGGED_IN) {
     content = (
       <Switch>
-        <Route path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
+        <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
           <ManageAppointmentsScreenContainer />
         </Route>
-        <Route path={"/" + CoordinatorScreen.DONORS}></Route>
-        <Route path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
+        <Route exact path={"/" + CoordinatorScreen.DONORS}></Route>
+        <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
           <AddAppointmentsScreenContainer />
         </Route>
+
+        {/*in case of no match*/}
+        <Redirect to={"/" + CoordinatorScreen.ADD_APPOINTMENTS} />
       </Switch>
     );
   }
 
   return (
-    <div>
+    <>
       <CoordinatorHeaderContainer
         showSignOutButton={loginStatus === LoginStatus.LOGGED_IN}
       />
       {content}
-    </div>
+    </>
   );
 }

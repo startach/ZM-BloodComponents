@@ -6,10 +6,11 @@ import WithGlobalTheme from "./HOCs/withGlobalTheme";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { he } from "date-fns/locale";
+import Div100vh from "react-div-100vh";
 
 function App() {
   return (
-    <div className="App">
+    <Div100vh className="App">
       <WithGlobalTheme>
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
           <Router>
@@ -17,7 +18,7 @@ function App() {
           </Router>
         </MuiPickersUtilsProvider>
       </WithGlobalTheme>
-    </div>
+    </Div100vh>
   );
 }
 

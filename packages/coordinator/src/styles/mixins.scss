@@ -1,0 +1,17 @@
+@mixin flex_gap(
+  $distance: 0,
+  $direction: (
+    row: "margin-inline-start",
+    reverse-row: "margin-inline-end",
+    column: "margin-block-start",
+    revese-column: "margin-block-end",
+  )
+) {
+  gap: $distance;
+
+  @supports not (gap: $distance) {
+    & > * * {
+      #{$direction}: $distance;
+    }
+  }
+}

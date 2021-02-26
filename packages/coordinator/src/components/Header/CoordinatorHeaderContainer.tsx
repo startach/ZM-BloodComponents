@@ -1,5 +1,4 @@
 import React from "react";
-import "./CoordinatorHeader.css";
 import CoordinatorHeader from "./CoordinatorHeader";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 

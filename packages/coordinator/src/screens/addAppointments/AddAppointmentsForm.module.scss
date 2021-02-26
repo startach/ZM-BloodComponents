@@ -1,6 +1,13 @@
-.appointmentForm {
-  align-items: center;
-  height: 15vh;
+@import "../../styles/mixins";
+
+.component {
   display: flex;
+  align-items: center;
   justify-content: center;
+  height: 200px;
+  @include flex_gap(var(--layout-distance-normal), row);
+}
+
+.field {
+  min-width: 100px;
 }

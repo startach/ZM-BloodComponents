@@ -1,12 +1,17 @@
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel";
+import {
+  MenuItem,
+  Select as MUSelect,
+  InputLabel,
+  FormControl,
+} from "@material-ui/core";
 import React from "react";
 import { SelectOption } from "@zm-blood-components/common";
+import styles from "./Select.module.scss";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
 type SelectProps<T> = {
-  id?: string;
+  id: string;
   label?: string;
   onChange: (value: T) => void;
   value?: T;
@@ -31,10 +36,15 @@ export default function Select<T>({
   options,
 }: SelectProps<T>) {
   return (
-    <div>
-      <InputLabel htmlFor={id}>{label}</InputLabel>
-      <NativeSelect
-        id={id}
+    <FormControl>
+      <InputLabel className={styles.label} id={`${id}_label`}>
+        {label}
+      </InputLabel>
+
+      <MUSelect
+        autoWidth={true}
+        id={`${id}_select`}
+        labelId={`${id}_label`}
         onChange={(e) =>
           onChange(
             options.find((option) => option.key === e.target.value)?.value as T
@@ -48,9 +58,11 @@ export default function Select<T>({
         variant={variant}
       >
         {options.map(({ key, label }) => (
-          <option key={key} value={key} label={label} />
+          <MenuItem key={key} value={key}>
+            {label}
+          </MenuItem>
         ))}
-      </NativeSelect>
-    </div>
+      </MUSelect>
+    </FormControl>
   );
 }

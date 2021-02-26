@@ -1,13 +1,13 @@
 import TextField from "@material-ui/core/TextField";
 import { InputAdornment } from "@material-ui/core";
-import Styles from "./_Input.module.scss";
-
+import styles from "./Input.module.scss";
+import classNames from "classnames";
 type InputVariant = "standard" | "filled" | "outlined";
 
 type InputProps = {
   id?: string;
   label?: string;
-  onChangeText: (newValue: string) => void;
+  onChange: (newValue: string) => void;
   value?: any;
   type?: string;
   isDisabled?: boolean;
@@ -18,6 +18,7 @@ type InputProps = {
   actionIcon?: any;
   variant?: InputVariant;
   isFullWidth?: boolean;
+  required?: boolean;
 };
 
 export default function Input({
@@ -26,7 +27,7 @@ export default function Input({
   placeholder,
   type = "text",
   value,
-  onChangeText,
+  onChange,
   className,
   mainIcon,
   actionIcon,
@@ -34,6 +35,7 @@ export default function Input({
   errorMessage,
   variant = "standard",
   isFullWidth = false,
+  required = false,
 }: InputProps) {
   let adornments = {
     ...(mainIcon && {
@@ -48,15 +50,15 @@ export default function Input({
     }),
   };
   return (
-    <div className={Styles["input-container"]}>
+    <div>
       <TextField
         id={id}
         value={value}
         type={type}
-        onChange={(e) => onChangeText(e.currentTarget.value)}
+        onChange={(e) => onChange?.(e.currentTarget.value)}
         placeholder={placeholder}
         label={label}
-        className={className}
+        className={classNames(styles.component, className)}
         disabled={isDisabled}
         inputProps={adornments}
         error={Boolean(errorMessage)}
@@ -64,6 +66,7 @@ export default function Input({
         variant={variant}
         fullWidth={isFullWidth}
         helperText={errorMessage}
+        required={required}
       />
     </div>
   );

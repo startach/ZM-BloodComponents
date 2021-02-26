@@ -1,0 +1,16 @@
+@import "../../styles/mixins";
+
+.component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include flex_gap(var(--layout-distance-large), row);
+}
+
+.component > * {
+  min-width: 350px !important;
+  width: 50%;
+  max-width: 500px;
+  text-align: center;
+}

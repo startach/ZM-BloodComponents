@@ -1,0 +1,34 @@
+@import "../../styles/mixins";
+
+$header_height: 100px;
+
+.navBar {
+  background: var(--color-statusbar-bg);
+  color: var(--color-statusbar-text);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: $header_height;
+}
+
+.logoContainer {
+  padding: 0 var(--layout-distance-normal);
+  box-sizing: border-box;
+  height: 100%;
+}
+.logo {
+  height: 100%;
+  width: auto;
+  right: var(--layout-distance-large);
+}
+
+.buttons {
+  @include flex_gap(var(--layout-distance-normal), row);
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+}
