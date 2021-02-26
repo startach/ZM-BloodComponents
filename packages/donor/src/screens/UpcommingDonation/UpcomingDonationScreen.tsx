@@ -110,6 +110,7 @@ function CancelButton(props: { onCancel: () => void }) {
         onClick={onCancel}
         variant={"outlined"}
         isLoading={isLoading}
+        isCentered
       />
     </div>
   );

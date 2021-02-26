@@ -15,13 +15,16 @@ type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   isFullWidth?: boolean;
+  isCentered?: boolean;
 };
 
-const useButtonStyles = makeStyles({
-  root: {
+const useButtonStyles = makeStyles((theme) => ({
+  buttonStyle: (props: { isCentered: boolean }) => ({
     borderRadius: 100,
-  },
-});
+    ...(props.isCentered && { display: "block" }),
+    ...(props.isCentered && { margin: "0 auto" }),
+  }),
+}));
 
 export default function Button({
   onClick,
@@ -33,15 +36,16 @@ export default function Button({
   isDisabled = false,
   isLoading = false,
   isFullWidth = false,
+  isCentered = false,
 }: ButtonProps) {
-  const classes = useButtonStyles();
+  const classes = useButtonStyles({ isCentered });
 
   return (
     <MuiButton
       onClick={onClick}
       variant={variant}
       color="primary"
-      className={classnames(className, classes.root)}
+      className={classnames(className, classes.buttonStyle)}
       startIcon={!isLoading && startIcon}
       endIcon={!isLoading && endIcon}
       disabled={isDisabled || isLoading}

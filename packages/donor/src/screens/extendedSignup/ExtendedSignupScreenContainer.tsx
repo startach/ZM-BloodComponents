@@ -138,7 +138,7 @@ export default function ExtendedSignupScreenContainer(
         lastName,
         phoneNumber,
         bloodType,
-        onSignOut
+        onSignOut,
       }}
     />
   );

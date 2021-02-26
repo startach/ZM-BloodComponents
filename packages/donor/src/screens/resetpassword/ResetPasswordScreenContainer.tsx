@@ -45,5 +45,14 @@ export default function ResetPasswordScreenContainer() {
       });
   };
 
-  return <ResetPasswordScreen onResetPassword={onResetPassword} />;
+  const goToSignIn = () => {
+    history.goBack();
+  };
+
+  return (
+    <ResetPasswordScreen
+      onResetPassword={onResetPassword}
+      goToSignIn={goToSignIn}
+    />
+  );
 }
