@@ -67,6 +67,7 @@ export default function MyProfileScreen({
         <Text>{`${user.firstName} ${user.lastName}`}</Text>
       </HeaderSection>
 
+
       {renderDonationCount()}
 
       <ProfileStringField
