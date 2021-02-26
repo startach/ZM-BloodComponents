@@ -1,19 +1,15 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
-import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetAvailableAppointmentsFunctionName]
@@ -43,32 +39,10 @@ beforeAll(reset);
 afterEach(reset);
 
 async function reset() {
-  await deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds(ALL_TEST_APPOINTMENTS_IDS);
 }
 
-test("Unauthenticated user throws exception", async () => {
-  const action = () => wrapped({});
-  await expectAsyncThrows(action, "Unauthorized");
-});
-
-test("Donor not found throws exception", async () => {
-  const action = () =>
-    wrapped(
-      {},
-      {
-        auth: {
-          uid: DONOR_ID,
-        },
-      }
-    );
-
-  await expectAsyncThrows(action, "Donor not found");
-});
-
 test("No appointments returns empty response", async () => {
-  await createDonor();
-
   const result = await callTarget();
 
   // Take only appointments created by this test,
@@ -84,7 +58,6 @@ test("No appointments returns empty response", async () => {
 });
 
 test("Only available appointment is returned", async () => {
-  await createDonor();
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   const tomorrow = new Date();
@@ -108,8 +81,6 @@ test("Only available appointment is returned", async () => {
 });
 
 test("Returns available appointments is ascending start time order", async () => {
-  await createDonor();
-
   const in1Day = new Date();
   in1Day.setDate(in1Day.getDate() + 1);
   const in2Days = new Date();
@@ -133,23 +104,7 @@ test("Returns available appointments is ascending start time order", async () =>
 });
 
 async function callTarget() {
-  return (await wrapped(
-    {},
-    {
-      auth: {
-        uid: DONOR_ID,
-      },
-    }
-  )) as FunctionsApi.GetAvailableAppointmentsResponse;
-}
-
-async function createDonor() {
-  const donor: DbDonor = {
-    id: DONOR_ID,
-    ...sampleUser,
-  };
-
-  await setDonor(donor);
+  return (await wrapped({})) as FunctionsApi.GetAvailableAppointmentsResponse;
 }
 
 async function saveAppointment(

@@ -10,7 +10,7 @@ import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
 import * as admin from "firebase-admin";
-import { handler } from "./RequestHandleWrapper";
+import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 
 admin.initializeApp(functions.config().firebase);
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -28,7 +28,7 @@ export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
 export const getDonor = handler(geDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
-export const getAvailableAppointments = handler(
+export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
