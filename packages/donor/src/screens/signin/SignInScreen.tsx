@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 import myStyles from "./SignInScreen.module.scss";
-import Input from "../../components/basic/Input";
+import Input, { InputVariant } from "../../components/basic/Input";
 
 import classNames from "classnames";
 
@@ -50,7 +50,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         }}
         value={email}
         label={`דוא"\ל`}
-        variant="filled"
+        variant={InputVariant.filled}
         errorMessage={emailError}
       />
       <Input
@@ -62,7 +62,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         }}
         value={password}
         label="ססמא"
-        variant="filled"
+        variant={InputVariant.filled}
         errorMessage={passwordError}
       />
       <div className={styles.screenSection}>
@@ -83,7 +83,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={classNames(myStyles.resetPasswordButton)}
           title="איפוס סיסמה"
           onClick={props.onResetPassword}
-          variant="text"
+          variant={ButtonVariant.text}
         />
       </div>
 
@@ -92,7 +92,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={styles.connectButton}
           title="הרשמה"
           onClick={props.onRegister}
-          variant="text"
+          variant={ButtonVariant.text}
         />
         <span className={styles.alreadyRegisteredTitle}>
           עדיין לא רשום כתורם?

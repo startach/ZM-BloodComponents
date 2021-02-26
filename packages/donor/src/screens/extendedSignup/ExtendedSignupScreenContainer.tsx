@@ -18,6 +18,7 @@ export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
 
+  
   const onSignOut = () => firebase.auth().signOut();
 
   const [firstNameInput, setFirstNameInput] = useState({

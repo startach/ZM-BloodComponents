@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Input from "../../components/basic/Input";
-import Button from "../../components/basic/Button";
+import Input, { InputVariant } from "../../components/basic/Input";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 
@@ -28,7 +28,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           setError("");
         }}
         label={`דוא״ל`}
-        variant="filled"
+        variant={InputVariant.filled}
         value={email}
         type="email"
         errorMessage={error}
@@ -42,7 +42,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       <Button
         className={styles.signinButton}
         title="חזרה"
-        variant="text"
+        variant={ButtonVariant.text}
         onClick={props.goToSignIn}
         isCentered
       />
