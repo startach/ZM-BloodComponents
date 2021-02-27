@@ -3,7 +3,38 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  build-zm:
+  Style-Check:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: Check Style
+          command: npx prettier --check .
+
+  Test-Functions:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: echo $TEST_SERVICE_ACCOUNT > ./test-service-account-key.json
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Test Functions
+          command: yarn workspace @zm-blood-components/functions test
+
+  Build-Donor:
     docker:
       - image: circleci/node:12
     steps:
@@ -21,13 +52,34 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: Check Style
-          command: yarn run prettier --check .
+          name: Build Donor
+          command: yarn workspace @zm-blood-components/donor build
+
+  Build-Coordinator:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
-          name: Test Donor
-          command: yarn workspace @zm-blood-components/donor test
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Build Donor
+          command: yarn workspace @zm-blood-components/donor build
 
 workflows:
   blood-components:
     jobs:
-      - build-zm
+      - Style-Check
+      - Test-Functions
+      - Build-Donor
+      - Build-Coordinator
