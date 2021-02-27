@@ -23,7 +23,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Set Envitonment Variable to Production
-        run: REACT_APP_PRODUCTION_FIREBASE=true
+        run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
