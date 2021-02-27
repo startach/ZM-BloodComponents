@@ -1,6 +1,6 @@
 {
   "name": "@zm-blood-components/donor",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
