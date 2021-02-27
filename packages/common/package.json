@@ -13,9 +13,9 @@
     "url": "git+https://github.com/startach/ZM-BloodComponents.git"
   },
   "scripts": {
-    "clean": "rimraf ./lib && yarn run style",
+    "clean": "rimraf ./lib",
     "compile": "tsc -p tsconfig.build.json",
-    "build": "yarn run clean && yarn run test && yarn run compile",
+    "build": "yarn run clean && yarn run compile",
     "test": "jest --silent",
     "style": "yarn prettier --write ."
   },

@@ -1,0 +1,81 @@
+name: Continuous Integration
+
+on: pull_request
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Prettier
+        run: npm i prettier
+      - name: Run prettier
+        run: npx prettier --check .
+
+  common:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn workspace @zm-blood-components/common install
+      - name: Run Typescript
+        run: yarn workspace @zm-blood-components/common test
+
+  coordinator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install
+      - name: Run Typescript
+        run: yarn workspace @zm-blood-components/coordinator tsc
+
+  donor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name: Run Typescript
+        run: yarn workspace @zm-blood-components/donor tsc
+      - name: Test Donor
+        run: yarn workspace @zm-blood-components/donor test
+
+  functions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name: Run Typescript
+        run: yarn workspace @zm-blood-components/functions tsc
+      - name: Write Test Service Account Key
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ./test-service-account-key.json
+          contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
+          write-mode: overwrite
+      - name: Test Functions
+        run: yarn workspace @zm-blood-components/functions test
