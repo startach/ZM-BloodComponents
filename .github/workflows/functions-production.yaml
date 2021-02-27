@@ -1,15 +1,15 @@
-name: Donor Production Deployment
+name: Functions Production Deployment
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Donor version to deploy'
+        description: 'Functions commit to deploy'
         required: true
 
 jobs:
   donor_hosting_qa:
-    name: Donor Production Deployment
+    name: Coordinator Production Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,11 +20,17 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Write Test Service Account Key
+        uses: DamianReeves/write-file-action@v1.0
+        with:
+          path: ./test-service-account-key.json
+          contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
+          write-mode: overwrite
       - name: Install Dependencies
         run: yarn install
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:donor -P production
+          args: deploy --only functions -P production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
