@@ -1,6 +1,9 @@
-import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  Hospital,
+  DateUtils,
+} from "@zm-blood-components/common";
 import * as AppointmentUtil from "./AppointmentsGrouper";
-import { ToDateString } from "./DateUtil";
 import { DonationSlot } from "./AppointmentsGrouper";
 
 test("groupAndSortAvailableAppointments", () => {
@@ -37,7 +40,7 @@ test("groupAndSortAvailableAppointments", () => {
   expect(res).toHaveLength(3);
 
   // Monday 01/02/2021
-  expect(res[0].day).toEqual(ToDateString(new Date(2021, 2, 1)));
+  expect(res[0].day).toEqual(DateUtils.ToDateString(new Date(2021, 2, 1)));
   const mondaySlots = res[0].donationSlots;
   expect(getAppointmentIdArrays(mondaySlots)).toEqual([
     ["1.12.30.1.TEL_HASHOMER"],
@@ -45,7 +48,7 @@ test("groupAndSortAvailableAppointments", () => {
   ]);
 
   // Tuesday 02/02/2021
-  expect(res[1].day).toEqual(ToDateString(new Date(2021, 2, 2)));
+  expect(res[1].day).toEqual(DateUtils.ToDateString(new Date(2021, 2, 2)));
   const tuesdaySlots = res[1].donationSlots;
   expect(getAppointmentIdArrays(tuesdaySlots)).toEqual([
     [
@@ -58,7 +61,7 @@ test("groupAndSortAvailableAppointments", () => {
   ]);
 
   // Wednesday 01/02/2021
-  expect(res[2].day).toEqual(ToDateString(new Date(2021, 2, 3)));
+  expect(res[2].day).toEqual(DateUtils.ToDateString(new Date(2021, 2, 3)));
   const wednesdaySlots = res[2].donationSlots;
   expect(getAppointmentIdArrays(wednesdaySlots)).toEqual([
     ["3.12.45.1.TEL_HASHOMER"],

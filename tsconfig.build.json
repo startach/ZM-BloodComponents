@@ -10,5 +10,5 @@
     "noUnusedLocals": true,
     "types": ["node"]
   },
-  "exclude": ["node_modules", "lib", "**/*.test.ts*"]
+  "exclude": ["**/node_modules", "lib", "**/*.test.ts*"]
 }

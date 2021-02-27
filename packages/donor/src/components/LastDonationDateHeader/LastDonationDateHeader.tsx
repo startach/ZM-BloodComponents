@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./LastDonationDateHeader.module.scss";
 import HeaderSection from "../HeaderSection";
 import Text from "../basic/Text";
-import { ToDateString } from "../../utils/DateUtil";
+import { DateUtils } from "@zm-blood-components/common";
 
 export interface BookDonationHeaderProps {
   lastDonation?: Date;
@@ -24,7 +24,9 @@ function LastDonationDateHeader({
       {lastDonation && (
         <>
           <Text>תאריך אחרון בו תרמת טרומבוציטים</Text>
-          <Text className={styles.dateText}>{ToDateString(lastDonation)}</Text>
+          <Text className={styles.dateText}>
+            {DateUtils.ToDateString(lastDonation)}
+          </Text>
         </>
       )}
     </HeaderSection>

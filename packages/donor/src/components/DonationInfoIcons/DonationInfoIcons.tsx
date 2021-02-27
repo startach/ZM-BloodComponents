@@ -4,13 +4,8 @@ import IconButton from "../basic/IconButton";
 import locationIcon from "../../assets/icons/locationPin.svg";
 import calendarIcon from "../../assets/icons/calendar.svg";
 import Text from "../basic/Text";
-import {
-  ToDateString,
-  ToTimeString,
-  ToWeekDayString,
-} from "../../utils/DateUtil";
 import clockIcon from "../../assets/icons/clock.svg";
-import { Hospital, LocaleUtils } from "@zm-blood-components/common";
+import { Hospital, LocaleUtils, DateUtils } from "@zm-blood-components/common";
 
 export interface DonationInfoIconsProps {
   donationStartTimeMillis: number;
@@ -31,13 +26,13 @@ const DonationInfoIcons: React.FC<DonationInfoIconsProps> = ({
       />
 
       <IconButton iconSrc={calendarIcon} titleClassName={styles.iconTitle}>
-        <Text>{ToWeekDayString(donationDate)}</Text>
-        <Text>{ToDateString(donationDate)}</Text>
+        <Text>{DateUtils.ToWeekDayString(donationDate)}</Text>
+        <Text>{DateUtils.ToDateString(donationDate)}</Text>
       </IconButton>
 
       <IconButton
         iconSrc={clockIcon}
-        label={ToTimeString(donationDate)}
+        label={DateUtils.ToTimeString(donationDate)}
         titleClassName={styles.iconTitle}
       />
     </div>
