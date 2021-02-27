@@ -60,7 +60,7 @@ jobs:
           path: ./test-service-account-key.json
           contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
           write-mode: overwrite
-      - name: Deploy to Firebase Hosting
+      - name: Deploy to Firebase Functions
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions -P staging
