@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Coordinator commit to deploy'
-        required: true
+        description: "Coordinator commit to deploy"
+        required: false
 
 jobs:
   donor_hosting_qa:
