@@ -20,7 +20,7 @@ export function dbAppointmentToAppointmentApiEntry(
 export function dbAppointmentToBookedAppointmentApiEntry(
   appointment: DbAppointment
 ): FunctionsApi.BookedAppointmentApiEntry {
-  if (!appointment.id || !appointment.donorId) {
+  if (!appointment.id || !appointment.donorId || !appointment.bookingTime) {
     console.error(
       "Cannot convert BookedAppointmentApiEntry with no id or donor id"
     );
@@ -32,6 +32,7 @@ export function dbAppointmentToBookedAppointmentApiEntry(
     donorId: appointment.donorId,
     hospital: appointment.hospital,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
+    bookingTimeMillis: appointment.bookingTime?.toMillis(),
   };
 }
 

@@ -16,6 +16,7 @@ export type BookedAppointmentApiEntry = {
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
+  bookingTimeMillis: number;
 };
 
 // Represent an appointment, both available and booked
