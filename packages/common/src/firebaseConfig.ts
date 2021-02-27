@@ -1,3 +1,14 @@
+const isProductionEnvironment = process.env.REACT_APP_PRODUCTION_FIREBASE;
+export function getFirebaseConfig() {
+  if (isProductionEnvironment) {
+    console.log("Using production firebase");
+    return firebaseConfigProd;
+  } else {
+    console.log("Using dev firebase");
+    return firebaseConfigDev;
+  }
+}
+
 export const firebaseConfigDev = {
   apiKey: "AIzaSyBDsPo9-wzaC9dOmb1ypD8iUmEYFEUN_XU",
   authDomain: "blood-components.firebaseapp.com",
