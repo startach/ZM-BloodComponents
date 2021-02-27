@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-import-side-effect
 import "dayjs/locale/he";
-import * as dayjs from "dayjs";
-import * as customParseFormat from "dayjs/plugin/customParseFormat";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 
 type ParsableDateValue = Date | string | number;

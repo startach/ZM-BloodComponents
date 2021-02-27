@@ -10,7 +10,8 @@
       "@zm-blood-components/functions": ["functions/src"],
       "@zm-blood-components/donor": ["donor/src"]
     },
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "esModuleInterop": true
   },
   "exclude": ["**/node_modules/**", "**/*.test.ts*"]
 }

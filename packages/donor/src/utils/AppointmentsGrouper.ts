@@ -1,5 +1,8 @@
-import { AvailableAppointment, Hospital } from "@zm-blood-components/common";
-import * as DateUtils from "../../../common/src/DateUtils";
+import {
+  AvailableAppointment,
+  Hospital,
+  DateUtils,
+} from "@zm-blood-components/common";
 import * as _ from "lodash";
 
 type DonationDay = {
