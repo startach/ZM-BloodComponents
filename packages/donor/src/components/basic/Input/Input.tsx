@@ -41,7 +41,7 @@ export default function Input({
   errorMessage,
   variant = InputVariant.standard,
   isFullWidth = false,
-  onKeyPress = (ev) => undefined
+  onKeyPress = (ev) => undefined,
 }: InputProps) {
   let adornments = {
     ...(mainIcon && {
