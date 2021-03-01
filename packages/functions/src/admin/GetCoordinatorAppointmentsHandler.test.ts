@@ -130,11 +130,9 @@ test("Valid request returns appointments of the right hospital", async () => {
   expect(appointments[2].id).toEqual(FUTURE_BOOKED);
   expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
 
-  expect(res.donorsInAppointments).toHaveLength(2);
-  expect(res.donorsInAppointments.map((donor) => donor.id).sort()).toEqual([
-    DONOR_ID_1,
-    DONOR_ID_2,
-  ]);
+  // May contain other donor ids of other appointments that are not part of this test
+  expect(res.donorsInAppointments).toContain(DONOR_ID_1);
+  expect(res.donorsInAppointments).toContain(DONOR_ID_2);
 });
 
 async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
