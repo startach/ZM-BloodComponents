@@ -20,7 +20,7 @@ import MyProfileDrawer from "../../components/MyProfileDrawer";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
-import { version as appVersion } from "../../../package.json"
+import { version as appVersion } from "../../../package.json";
 
 interface MyProfileScreenProps {
   user: Donor;
@@ -100,7 +100,12 @@ export default function MyProfileScreen({
         inputLabel={"טלפון"}
         onChange={onFieldChange("phone")}
       />
-      <Button className={styles.signOutButton} isCentered={true} title={"התנתק"} onClick={onSignOut} />
+      <Button
+        className={styles.signOutButton}
+        isCentered={true}
+        title={"התנתק"}
+        onClick={onSignOut}
+      />
       <Text className={styles.appVersion}>{appVersion}</Text>
     </ZMScreen>
   );
