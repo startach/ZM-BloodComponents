@@ -1,47 +1,81 @@
 import React from "react";
 import {
-  AvailableAppointment,
-  BookedAppointment,
+  DateUtils,
+  Donor,
+  FunctionsApi,
+  LocaleUtils,
 } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 
 interface ManageAppointmentsScreenProps {
-  availableAppointments: AvailableAppointment[];
-  bookedAppointments: BookedAppointment[];
+  appointments: FunctionsApi.AppointmentApiEntry[];
+  donorsInAppointments: Donor[];
   onDeleteAvailableAppointment: (appointmentId: string) => void;
 }
 
 export default function ManageAppointmentsScreen(
   props: ManageAppointmentsScreenProps
 ) {
+  const getDonor = (donorId?: string) => {
+    if (!donorId) {
+      return undefined;
+    }
+
+    const donors = props.donorsInAppointments.filter(
+      (donor) => donor.id === donorId
+    );
+    if (donors.length !== 1) {
+      console.error("Unexpected number of donors:", donors.length);
+      return undefined;
+    }
+
+    return donors[0];
+  };
+
   return (
     <div>
-      {props.availableAppointments.map((appointment) => (
-        <AvailableAppointmentRow
+      {props.appointments.map((appointment) => (
+        <AppointmentRow
           appointment={appointment}
+          donor={getDonor(appointment.donorId)}
           key={appointment.id}
           onDeleteAvailableAppointment={props.onDeleteAvailableAppointment}
         />
-      ))}
-
-      {props.bookedAppointments.map((appointment) => (
-        <BookedAppointmentRow appointment={appointment} key={appointment.id} />
       ))}
     </div>
   );
 }
 
-function BookedAppointmentRow(props: { appointment: BookedAppointment }) {
-  return <div>Booked: {props.appointment.id}</div>;
-}
-
-function AvailableAppointmentRow(props: {
-  appointment: AvailableAppointment;
+function AppointmentRow(props: {
+  appointment: FunctionsApi.AppointmentApiEntry;
+  donor?: Donor;
   onDeleteAvailableAppointment: (appointmentId: string) => void;
 }) {
+  const dateString = DateUtils.ToDateString(
+    props.appointment.donationStartTimeMillis
+  );
+  const hourString = DateUtils.ToTimeString(
+    props.appointment.donationStartTimeMillis
+  );
+
+  const donor = props.donor;
+
   return (
     <div>
-      Available: {props.appointment.id}
+      <span>יום: {dateString} </span>
+      <span> שעה: {hourString} </span>
+      {donor && (
+        <>
+          <span>
+            תורם: {donor.firstName} {donor.lastName}
+          </span>
+          <span> טלפון: {donor.phone} </span>
+          <span>
+            {" "}
+            סוג דם: {LocaleUtils.getBloodTypeTranslation(donor.bloodType)}{" "}
+          </span>
+        </>
+      )}
       <Button
         title="מחק"
         onClick={() => props.onDeleteAvailableAppointment(props.appointment.id)}

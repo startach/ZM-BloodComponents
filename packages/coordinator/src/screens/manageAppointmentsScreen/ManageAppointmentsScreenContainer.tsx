@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  AvailableAppointment,
-  BookedAppointment,
+  Donor,
   Hospital,
   HospitalUtils,
+  FunctionsApi,
 } from "@zm-blood-components/common";
 import Select from "../../components/Select";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
@@ -29,7 +29,7 @@ export default function ManageAppointmentsScreenContainer() {
   const onDeleteAvailableAppointment = (appointmentId: string) => {
     setAppointmentsResponse({
       ...appointmentsResponse,
-      availableAppointments: appointmentsResponse.availableAppointments.filter(
+      appointments: appointmentsResponse.appointments.filter(
         (x) => x.id !== appointmentId
       ),
     });
@@ -47,8 +47,8 @@ export default function ManageAppointmentsScreenContainer() {
       />
 
       <ManageAppointmentsScreen
-        availableAppointments={appointmentsResponse.availableAppointments}
-        bookedAppointments={appointmentsResponse.bookedAppointments}
+        appointments={appointmentsResponse.appointments}
+        donorsInAppointments={appointmentsResponse.donorsInAppointments}
         onDeleteAvailableAppointment={onDeleteAvailableAppointment}
       />
     </div>
@@ -56,8 +56,8 @@ export default function ManageAppointmentsScreenContainer() {
 }
 
 function getDefaultState(): {
-  availableAppointments: AvailableAppointment[];
-  bookedAppointments: BookedAppointment[];
+  appointments: FunctionsApi.AppointmentApiEntry[];
+  donorsInAppointments: Donor[];
 } {
-  return { availableAppointments: [], bookedAppointments: [] };
+  return { appointments: [], donorsInAppointments: [] };
 }

@@ -3,6 +3,7 @@ import {
   AdminRole,
   DbAdmin,
   DbAppointment,
+  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -14,13 +15,16 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
+import { sampleUser } from "../testUtils/TestSamples";
+import { setDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
 );
 
 const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";
-const DONOR_ID = "GetCoordinatorAppointmentsTestDonorUser";
+const DONOR_ID_1 = "GetCoordinatorAppointmentsTestDonorUser1";
+const DONOR_ID_2 = "GetCoordinatorAppointmentsTestDonorUser2";
 
 const PAST_BOOKED = "GetCoordinatorAppointments_PastBooked";
 const PAST_OTHER_HOSPITAL = "GetCoordinatorAppointments_PastOtherHospital";
@@ -85,48 +89,54 @@ test("Valid request returns appointments of the right hospital", async () => {
     [Hospital.ASAF_HAROFE, Hospital.TEL_HASHOMER]
   );
 
-  await saveAppointment(PAST_BOOKED, getDate(-3), true, Hospital.TEL_HASHOMER);
+  await createDonor(DONOR_ID_1);
+  await createDonor(DONOR_ID_2);
+
+  await saveAppointment(
+    PAST_BOOKED,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_1
+  );
   await saveAppointment(
     PAST_OTHER_HOSPITAL,
     getDate(-2),
-    true,
-    Hospital.ASAF_HAROFE
+    Hospital.ASAF_HAROFE,
+    DONOR_ID_1
   );
+  await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
   await saveAppointment(
-    PAST_NOT_BOOKED,
-    getDate(-1),
-    false,
-    Hospital.TEL_HASHOMER
+    FUTURE_BOOKED,
+    getDate(3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_2
   );
-  await saveAppointment(FUTURE_BOOKED, getDate(3), true, Hospital.TEL_HASHOMER);
   await saveAppointment(
     FUTURE_OTHER_HOSPITAL,
     getDate(4),
-    true,
-    Hospital.ASAF_HAROFE
+    Hospital.ASAF_HAROFE,
+    DONOR_ID_2
   );
-  await saveAppointment(
-    FUTURE_NOT_BOOKED,
-    getDate(5),
-    false,
-    Hospital.TEL_HASHOMER
-  );
+  await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
 
   const res = await callFunction(COORDINATOR_ID);
 
-  let availableAppointments = res.availableAppointments.filter((a) =>
+  let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
   );
-  expect(availableAppointments).toHaveLength(2);
-  expect(availableAppointments[0].id).toEqual(PAST_NOT_BOOKED);
-  expect(availableAppointments[1].id).toEqual(FUTURE_NOT_BOOKED);
+  expect(appointments).toHaveLength(4);
+  expect(appointments[0].id).toEqual(PAST_BOOKED);
+  expect(appointments[1].id).toEqual(PAST_NOT_BOOKED);
+  expect(appointments[2].id).toEqual(FUTURE_BOOKED);
+  expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
 
-  let bookedAppointments = res.bookedAppointments.filter((a) =>
-    ALL_APPOINTMENT_IDS.includes(a.id)
+  // May contain other donor ids of other appointments that are not part of this test
+  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+    DONOR_ID_1
   );
-  expect(bookedAppointments).toHaveLength(2);
-  expect(bookedAppointments[0].id).toEqual(PAST_BOOKED);
-  expect(bookedAppointments[1].id).toEqual(FUTURE_BOOKED);
+  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+    DONOR_ID_2
+  );
 });
 
 async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
@@ -161,8 +171,8 @@ function callFunction(
 async function saveAppointment(
   id: string,
   donationStartTime: Date,
-  booked: boolean,
-  hospital: Hospital
+  hospital: Hospital,
+  donorId?: string
 ) {
   const appointment: DbAppointment = {
     id: id,
@@ -173,11 +183,20 @@ async function saveAppointment(
     donorId: "",
   };
 
-  if (booked) {
-    appointment.donorId = DONOR_ID;
+  if (donorId) {
+    appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
   }
 
   await setAppointment(appointment);
   return appointment;
+}
+
+async function createDonor(donorId: string) {
+  const donor: DbDonor = {
+    id: donorId,
+    ...sampleUser,
+  };
+
+  await setDonor(donor);
 }

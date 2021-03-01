@@ -16,6 +16,18 @@ export type BookedAppointmentApiEntry = {
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
+  bookingTimeMillis: number;
+};
+
+// Represent an appointment, both available and booked
+export type AppointmentApiEntry = {
+  id: string;
+  donationStartTimeMillis: number; // API returns millis
+  hospital: Hospital;
+
+  // If booked
+  donorId?: string;
+  bookingTimeMillis?: number;
 };
 
 export interface GetAvailableAppointmentsResponse {
@@ -97,6 +109,6 @@ export interface GetCoordinatorAppointmentsRequest {
 }
 
 export interface GetCoordinatorAppointmentsResponse {
-  availableAppointments: AvailableAppointmentApiEntry[];
-  bookedAppointments: BookedAppointmentApiEntry[];
+  appointments: AppointmentApiEntry[];
+  donorsInAppointments: Donor[];
 }

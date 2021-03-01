@@ -1,11 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/functions";
-import {
-  AvailableAppointment,
-  BookedAppointment,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 
 export async function addNewAppointments(newSlots: NewSlots[]) {
@@ -39,10 +34,7 @@ export async function getAppointments(hospital: Hospital) {
 
   const response = await getAppointmentsFunction(request);
   const data = response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
-  return {
-    availableAppointments: data.availableAppointments as AvailableAppointment[],
-    bookedAppointments: data.bookedAppointments as BookedAppointment[],
-  };
+  return data;
 }
 
 export async function deleteAppointment(appointmentId: string) {
