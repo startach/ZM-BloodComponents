@@ -46,3 +46,14 @@
 .cardContentMerge > * {
   padding-left: 5px;
 }
+
+.signOutButton {
+  margin-top: var(--layout-distance-small);
+}
+
+.appVersion {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: var(--color-mid-grey);
+}
