@@ -33,7 +33,9 @@ export function groupDonationDays(
 
       return res;
     })
-    .sortBy((donationDay) => new Date(donationDay.day).getTime())
+    .sortBy(
+      (donationDay) => donationDay.donationSlots[0].donationStartTimeMillis
+    )
     .value();
 }
 
