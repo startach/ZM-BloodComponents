@@ -24,7 +24,7 @@ export default function ManageAppointmentsScreen(
     const donors = props.donorsInAppointments.filter(
       (donor) => donor.id === donorId
     );
-    if (donors.length != 1) {
+    if (donors.length !== 1) {
       console.error("Unexpected number of donors:", donors.length);
       return undefined;
     }
