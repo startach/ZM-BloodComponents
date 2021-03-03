@@ -24,6 +24,7 @@ type InputProps = {
   /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
   variant?: InputVariant;
   isFullWidth?: boolean;
+  onKeyPress?: (ev: any) => void;
 };
 
 export default function Input({
@@ -40,6 +41,7 @@ export default function Input({
   errorMessage,
   variant = InputVariant.standard,
   isFullWidth = false,
+  onKeyPress = (ev) => undefined,
 }: InputProps) {
   let adornments = {
     ...(mainIcon && {
@@ -70,6 +72,7 @@ export default function Input({
         variant={variant}
         fullWidth={isFullWidth}
         helperText={errorMessage}
+        onKeyPress={onKeyPress}
       />
     </div>
   );
