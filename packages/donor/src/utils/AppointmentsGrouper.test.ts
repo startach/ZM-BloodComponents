@@ -40,7 +40,6 @@ test("groupAndSortAvailableAppointments", () => {
   expect(res).toHaveLength(3);
 
   // Sunday 28/03/2021
-  console.log(res[0].day);
   expect(res[0].day).toEqual(DateUtils.ToDateString(new Date(2021, 1, 28)));
   const sundaySlots = res[0].donationSlots;
   expect(getAppointmentIdArrays(sundaySlots)).toEqual([

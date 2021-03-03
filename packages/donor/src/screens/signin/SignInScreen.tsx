@@ -66,7 +66,6 @@ export default function SignInScreen(props: SignInScreenProps) {
         variant={InputVariant.filled}
         errorMessage={passwordError}
         onKeyPress={(event) => {
-          console.log(`Pressed keyCode ${event.key}`);
           if (event.key === "Enter") {
             signIn();
           }
