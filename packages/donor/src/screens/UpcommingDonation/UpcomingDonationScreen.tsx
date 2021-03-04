@@ -7,6 +7,7 @@ import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
 import ZMScreen from "../../components/basic/ZMScreen";
+import Popup from "../../components/basic/Popup";
 
 export enum UpcomingDonationStates {
   sameDayDonation = "sameDayDonation",
@@ -96,7 +97,14 @@ export default function UpcomingDonationScreen({
 
 function CancelButton(props: { onCancel: () => void }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   const onCancel = () => {
     setIsLoading(true);
     props.onCancel();
@@ -107,11 +115,21 @@ function CancelButton(props: { onCancel: () => void }) {
       <Button
         title="בטל תור"
         className={styles.cancelButton}
-        onClick={onCancel}
+        onClick={handleClickOpen}
         variant={ButtonVariant.outlined}
         isLoading={isLoading}
-        isCentered
       />
+      <Popup
+        buttonApproveText="אישור"
+        titleFirst="האם אתה בטוח שברצונך"
+        titleSecond="לבטל את התור?"
+        width="90%"
+        height="170px"
+        color="#fff"
+        open={open}
+        onClose={handleClose}
+        onCancel={onCancel}
+      ></Popup>
     </div>
   );
 }
