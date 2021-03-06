@@ -7,42 +7,36 @@ import Text from "../Text";
 
 type PopupProps = {
   buttonApproveText: string;
-  width: string;
-  height: string;
-  color: string;
   open: boolean;
   titleFirst: string;
-  titleSecond: string;
-  onClose: () => void;
-  onCancel: () => void;
+  titleSecond?: string;
   className?: string;
   isLoading?: boolean;
+  onClose: () => void;
+  onApproved: () => void;
 };
 
 export default function Popup({
   buttonApproveText,
-  width,
-  height,
-  color,
   open,
-  onClose,
-  onCancel,
   titleFirst,
   titleSecond,
+  onClose,
+  onApproved,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
   const buttonClicked = () => {
     setIsLoading(true);
-    onCancel();
+    onApproved();
   };
   return (
     <Dialog
       PaperProps={{
         style: {
           backgroundColor: "#272932",
-          color: color,
-          height: height,
-          width: width,
+          color: "#fff",
+          height: "170px",
+          width: "90%",
         },
       }}
       open={open}
