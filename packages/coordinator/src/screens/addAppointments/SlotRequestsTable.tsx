@@ -2,6 +2,23 @@ import React from "react";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { LocaleUtils } from "@zm-blood-components/common";
 import Button from "../../components/Button";
+import Table from "../../components/Table";
+
+const donationTypeText = "סוג תרומה";
+const hospitalText = "בית חולים";
+const dateText = "תאריך";
+const timeText = "שעה";
+const slotsText = "כמות משבצות";
+
+const PlateletsText = "טרומבוציטים";
+
+const tableColumnNames = [
+  donationTypeText,
+  hospitalText,
+  dateText,
+  timeText,
+  slotsText,
+];
 
 interface SlotRequestsTableProps {
   slotsArray: NewSlots[];
@@ -12,14 +29,24 @@ export default function SlotRequestsTable({
   slotsArray,
   deleteSlotsRequest,
 }: SlotRequestsTableProps) {
-  const renderRow = (row: NewSlots) => (
-    <div key={row.key}>
-      <span>{LocaleUtils.getHospitalName(row.hospital)}</span> -
-      <span>{row.donationStartTime.toDateString()}</span> -
-      <span>{row.slots}</span>
-      <Button title="מחק" onClick={() => deleteSlotsRequest(row.key)} />
-    </div>
+  const slotDataToCells = React.useCallback(
+    (data: NewSlots) => {
+      return [
+        PlateletsText,
+        LocaleUtils.getHospitalName(data.hospital),
+        data.donationStartTime.toDateString(),
+        data.slots,
+        <Button title="מחק" onClick={() => deleteSlotsRequest(data.key)} />,
+      ];
+    },
+    [deleteSlotsRequest]
   );
 
-  return <div>{slotsArray.map(renderRow)}</div>;
+  return (
+    <Table
+      headerContent={tableColumnNames}
+      bodyContent={slotsArray}
+      ConvertContentToCells={slotDataToCells}
+    />
+  );
 }
