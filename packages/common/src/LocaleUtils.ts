@@ -30,7 +30,11 @@ export const getBloodTypeTranslation = (bloodType: BloodType) => {
       return "O-";
     case BloodType.O_PLUS:
       return "O+";
-    case BloodType.UNSPECIFIED:
-      return "אחר";
+    case BloodType.NOT_SURE:
+      return "לא יודע";
+
+    default:
+      console.error("No blood type name for", bloodType);
+      return bloodType;
   }
 };
