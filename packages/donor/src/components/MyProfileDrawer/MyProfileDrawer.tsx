@@ -23,7 +23,7 @@ export default function MyProfileDrawer(props: MyProfileDrawerProps) {
         <Button
           className={styles.drawerButton}
           onClick={props.onSave}
-          title="save"
+          title="שמור"
         />
       </div>
     </div>
