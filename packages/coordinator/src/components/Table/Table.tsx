@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "./Table.module.scss";
+import classNames from "classnames";
 import {
   TableBody,
   TableCell,
@@ -43,7 +45,10 @@ function Table<T extends TableEntryData>({
         <TableHead>
           <TableRow>
             {headerContent.map((node, index) => (
-              <TableCell key={index} className={headerCellClassName}>
+              <TableCell
+                key={index}
+                className={classNames(styles.headerCells, headerCellClassName)}
+              >
                 {node}
               </TableCell>
             ))}
