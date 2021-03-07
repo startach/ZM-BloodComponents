@@ -20,6 +20,7 @@ export interface TableProps<T extends TableEntryData> {
   tableContainerClassName?: string;
   headerCellClassName?: string;
   contentCellClassName?: string;
+  "aria-label"?: string;
 }
 
 function Table<T extends TableEntryData>({
@@ -30,10 +31,15 @@ function Table<T extends TableEntryData>({
   headerContent,
   bodyContent = [],
   ConvertContentToCells,
+  ...props
 }: TableProps<T>) {
   return (
     <TableContainer className={tableContainerClassName}>
-      <TableMD className={tableClassName}>
+      <TableMD
+        className={tableClassName}
+        stickyHeader
+        aria-label={props["aria-label"]}
+      >
         <TableHead>
           <TableRow>
             {headerContent.map((node, index) => (

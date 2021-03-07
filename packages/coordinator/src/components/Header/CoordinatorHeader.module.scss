@@ -1,6 +1,6 @@
 @import "../../styles/mixins";
 
-$header_height: 100px;
+$header_height: var(--height-header, 100px);
 
 .navBar {
   background: var(--color-statusbar-bg);

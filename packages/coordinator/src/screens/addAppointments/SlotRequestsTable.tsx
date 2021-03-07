@@ -3,6 +3,7 @@ import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { LocaleUtils } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import Table from "../../components/Table";
+import classnames from "classnames";
 
 const donationTypeText = "סוג תרומה";
 const hospitalText = "בית חולים";
@@ -23,11 +24,13 @@ const tableColumnNames = [
 interface SlotRequestsTableProps {
   slotsArray: NewSlots[];
   deleteSlotsRequest: (key: string) => void;
+  className?: string;
 }
 
 export default function SlotRequestsTable({
   slotsArray,
   deleteSlotsRequest,
+  className,
 }: SlotRequestsTableProps) {
   const slotDataToCells = React.useCallback(
     (data: NewSlots) => {
@@ -47,6 +50,8 @@ export default function SlotRequestsTable({
       headerContent={tableColumnNames}
       bodyContent={slotsArray}
       ConvertContentToCells={slotDataToCells}
+      aria-label={"add donation slots table"}
+      tableContainerClassName={classnames(slotDataToCells, className)}
     />
   );
 }
