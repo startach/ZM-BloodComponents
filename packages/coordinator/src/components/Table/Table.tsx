@@ -16,7 +16,7 @@ export interface TableEntryData extends Object {
 
 export interface TableProps<T extends TableEntryData> {
   headerContent: React.ReactNode[];
-  bodyContent: T[];
+  bodyContent?: T[];
   ConvertContentToCells: (data: T) => React.ReactNode[];
   tableClassName?: string;
   tableContainerClassName?: string;
@@ -31,7 +31,7 @@ function Table<T extends TableEntryData>({
   headerCellClassName,
   contentCellClassName,
   headerContent,
-  bodyContent = [],
+  bodyContent,
   ConvertContentToCells,
   ...props
 }: TableProps<T>) {
@@ -55,7 +55,7 @@ function Table<T extends TableEntryData>({
           </TableRow>
         </TableHead>
         <TableBody>
-          {bodyContent.map((data) => (
+          {bodyContent?.map((data) => (
             <TableRow key={data.key}>
               {ConvertContentToCells(data).map((cell, index) => (
                 <TableCell
