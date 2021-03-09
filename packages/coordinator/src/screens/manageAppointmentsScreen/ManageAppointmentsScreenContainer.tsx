@@ -48,7 +48,7 @@ export default function ManageAppointmentsScreenContainer() {
 
       <ManageAppointmentsScreen
         appointments={appointmentsResponse.appointments}
-        donorsInAppointments={appointmentsResponse.donorsInAppointments}
+        donors={appointmentsResponse.donorsInAppointments}
         onDeleteAvailableAppointment={onDeleteAvailableAppointment}
       />
     </div>

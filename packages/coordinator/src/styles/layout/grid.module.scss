@@ -1,0 +1,48 @@
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-vertical-small: 0.5rem;
+$gutter-horizontal: 6rem;
+
+.has-small-vertical-gutter {
+  margin-bottom: $gutter-vertical-small;
+}
+
+.row {
+  display: flex;
+  max-width: $grid-width;
+  margin: 0 auto;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical-small;
+  }
+
+  *:not(:last-child) {
+    margin-left: $gutter-horizontal;
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+  .col-1-of-3 {
+    width: calc((100% - #{$gutter-horizontal} * 2) / 3);
+  }
+  .col-2-of-3 {
+    width: calc(
+      (100% - #{$gutter-horizontal} * 2) / 3 * 2 + #{$gutter-horizontal}
+    );
+  }
+  .col-1-of-4 {
+    width: calc((100% - #{$gutter-horizontal} * 3) / 4);
+  }
+  .col-2-of-4 {
+    width: calc(
+      (100% - #{$gutter-horizontal} * 3) / 4 * 2 + #{$gutter-horizontal}
+    );
+  }
+  .col-3-of-4 {
+    width: calc(
+      (100% - #{$gutter-horizontal} * 3) / 4 * 3 + (#{$gutter-horizontal} * 2)
+    );
+  }
+}

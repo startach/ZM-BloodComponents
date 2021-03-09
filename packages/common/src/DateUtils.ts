@@ -16,6 +16,10 @@ export function ToTimeString(date: ParsableDateValue, format?: string) {
   return dayjs(date, format).format("HH:mm");
 }
 
+export function ToHourString(date: ParsableDateValue, format?: string) {
+  return dayjs(date, format).format("HH");
+}
+
 export function ToWeekDayString(date: ParsableDateValue, format?: string) {
   //TODO: update the word "Day" based on the locale (in ar + en)
   return `יום ${dayjs(date, format).locale("he").format("dddd")}`;

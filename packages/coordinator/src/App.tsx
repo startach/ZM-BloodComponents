@@ -1,5 +1,4 @@
-import React from "react";
-import "./App.css";
+import "./App.scss";
 import CoordinatorRouter from "./navigation/CoordinatorRouter";
 import { BrowserRouter as Router } from "react-router-dom";
 import WithGlobalTheme from "./HOCs/withGlobalTheme";
