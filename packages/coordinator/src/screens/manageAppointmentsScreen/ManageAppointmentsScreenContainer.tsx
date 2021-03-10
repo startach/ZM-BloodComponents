@@ -14,16 +14,18 @@ export default function ManageAppointmentsScreenContainer() {
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setAppointmentsResponse(getDefaultState());
     if (!hospitalFilter) {
       return;
     }
-
-    CoordinatorFunctions.getAppointments(hospitalFilter).then((res) =>
-      setAppointmentsResponse(res)
-    );
+    setIsLoading(true);
+    CoordinatorFunctions.getAppointments(hospitalFilter).then((res) => {
+      setAppointmentsResponse(res);
+      setIsLoading(false);
+    });
   }, [hospitalFilter]);
 
   const onDeleteAvailableAppointment = (appointmentId: string) => {
@@ -50,6 +52,7 @@ export default function ManageAppointmentsScreenContainer() {
         appointments={appointmentsResponse.appointments}
         donors={appointmentsResponse.donorsInAppointments}
         onDeleteAvailableAppointment={onDeleteAvailableAppointment}
+        isLoading={isLoading}
       />
     </div>
   );

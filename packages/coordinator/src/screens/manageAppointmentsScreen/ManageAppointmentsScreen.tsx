@@ -7,18 +7,31 @@ import TableOfCards, {
   ColumnPositions,
 } from "../../components/CardTable";
 import dayjs from "dayjs";
+import Button, { ButtonVariant } from "../../components/Button";
+import { Delete as DeleteIcon } from "@material-ui/icons";
+import Spinner from "../../components/Spinner";
+import Popup from "../../components/Popup";
+import { useState } from "react";
 
 interface ManageAppointmentsScreenProps {
   appointments: FunctionsApi.AppointmentApiEntry[];
   donors: Donor[];
   onDeleteAvailableAppointment: (appointmentId: string) => void;
+  isLoading: boolean;
 }
 
 export default function ManageAppointmentsScreen({
   appointments,
   donors,
   onDeleteAvailableAppointment,
+  isLoading,
 }: ManageAppointmentsScreenProps) {
+  const [popupData, setPopupData] = useState<{
+    isOpen: boolean;
+    name?: string;
+    phone?: string;
+    bookingId?: string;
+  }>({ isOpen: false });
   interface AppointmentHour {
     hour: string;
     date: string;
@@ -72,8 +85,10 @@ export default function ManageAppointmentsScreen({
     type BookingDetails = {
       name?: string;
       phone?: string;
+      hasDonor: boolean;
       hasConfirmedArrival: boolean;
       date: string;
+      bookingId: string;
     };
 
     let expandedRows: CardTableRow<BookingDetails>[] = appointmentHour.appointments.map(
@@ -82,11 +97,13 @@ export default function ManageAppointmentsScreen({
         let bookingDetails: BookingDetails = {
           hasConfirmedArrival: false,
           date: appointmentHour.date,
+          bookingId: appointment.id,
+          hasDonor: !!donor,
         };
         if (donor) {
           bookingDetails = {
             ...bookingDetails,
-            name: `${donor.lastName}, ${donor.firstName}`,
+            name: `${donor.firstName} ${donor.lastName}`,
             phone: donor.phone,
           };
         }
@@ -111,15 +128,27 @@ export default function ManageAppointmentsScreen({
         isCollapsable: true,
       },
       {
-        cellRenderer: ({ date }) => date,
-      },
-      {
-        cellRenderer: ({ name, phone, hasConfirmedArrival }) =>
-          !name && !phone
+        cellRenderer: ({ hasDonor, hasConfirmedArrival }) =>
+          !hasDonor
             ? "אין רישום"
             : hasConfirmedArrival
             ? "הגעה אושרה"
             : "אין אישור הגעה",
+      },
+      {
+        cellRenderer: ({ bookingId, name, phone, hasDonor }) => (
+          <Button
+            title="מחיקת תור"
+            endIcon={<DeleteIcon />}
+            variant={ButtonVariant.text}
+            onClick={() =>
+              hasDonor
+                ? setPopupData({ isOpen: true, phone, name, bookingId })
+                : onDeleteAvailableAppointment(bookingId)
+            }
+          />
+        ),
+        isUnderRow: true,
       },
     ];
 
@@ -180,6 +209,17 @@ export default function ManageAppointmentsScreen({
 
   return (
     <div className={Styles["screen-grey-background"]}>
+      <Popup
+        buttonApproveText="אישור"
+        open={popupData.isOpen}
+        titleFirst="האם ברצונך לבטל את התור?"
+        titleSecond={`התור שייך ל${popupData.name} במספר ${popupData.phone}`}
+        onApproved={() =>
+          popupData.bookingId &&
+          onDeleteAvailableAppointment(popupData.bookingId)
+        }
+        onClose={() => setPopupData({ isOpen: false })}
+      />
       <TableOfCards
         className={Styles["centered-screen"]}
         hasColumnHeaders
@@ -187,6 +227,7 @@ export default function ManageAppointmentsScreen({
         columns={tableColumns}
         groupBy={groupByDay}
       />
+      {isLoading && <Spinner size="4rem" />}
     </div>
   );
 }

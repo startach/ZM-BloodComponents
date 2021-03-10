@@ -12,6 +12,7 @@ export interface CardTableColumn<T> {
   cellRenderer: (cellData: { [key: string]: any }) => React.ReactNode;
   /** If no data available, ignore col and collapse it in row */
   isCollapsable?: boolean;
+  isUnderRow?: boolean;
 }
 
 export interface CardTableGroup<T> {

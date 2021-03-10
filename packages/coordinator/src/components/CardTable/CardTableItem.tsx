@@ -27,22 +27,36 @@ export default function CardTableItem({
   columns,
   columnPositions = ColumnPositions.centered,
 }: CardTableItemProps) {
-  const CalculatedContent = columns.flatMap((column, i) => {
-    const result = column.cellRenderer(row.rowSummary);
-    if (result || !column.isCollapsable) return [result];
-    return [];
-  }, []);
+  const endColumn = columns.find((column) => column.isUnderRow);
+
+  const CalculatedContent = columns
+    .filter((column) => !column.isUnderRow)
+    .flatMap((column, i) => {
+      const result = column.cellRenderer(row.rowSummary);
+      if (result || !column.isCollapsable) return [result];
+      return [];
+    }, []);
 
   const DisplayedContent = (
     <>
-      {CalculatedContent.map((calculatedNode: React.ReactNode, i) => (
-        <div
-          className={GetColumnStyle(columnPositions, CalculatedContent.length)}
-          key={i}
-        >
-          <div className={Styles["centered-table-cell"]}>{calculatedNode}</div>
-        </div>
-      ))}
+      <div className={classnames(GetRowStyle(columnPositions))}>
+        {CalculatedContent.map((calculatedNode: React.ReactNode, i) => (
+          <div
+            className={GetColumnStyle(
+              columnPositions,
+              CalculatedContent.length
+            )}
+            key={i}
+          >
+            <div className={Styles["centered-table-cell"]}>
+              {calculatedNode}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ minWidth: "fit-content" }}>
+        {endColumn && endColumn.cellRenderer(row.rowSummary)}
+      </div>
     </>
   );
 
@@ -59,22 +73,16 @@ export default function CardTableItem({
   const classes = useAccordionStyles();
 
   if (!row.expandedRow) {
-    return (
-      <Card className={GetRowStyle(columnPositions)}>{DisplayedContent}</Card>
-    );
+    return <Card className={Styles["full-width"]}>{DisplayedContent}</Card>;
   }
 
   return (
     <Accordion className={classes.root}>
-      <AccordionSummary expandIcon={<ExpandMore />}>
-        <div
-          className={classnames(
-            GetRowStyle(columnPositions),
-            Styles["absolute-row"]
-          )}
-        >
-          {DisplayedContent}
-        </div>
+      <AccordionSummary
+        expandIcon={<ExpandMore />}
+        className={Styles["absolute-row"]}
+      >
+        {DisplayedContent}
       </AccordionSummary>
       <AccordionDetails>{row.expandedRow}</AccordionDetails>
     </Accordion>
