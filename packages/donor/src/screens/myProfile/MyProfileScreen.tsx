@@ -101,11 +101,10 @@ export default function MyProfileScreen({
         onChange={onFieldChange("phone")}
       />
       <div className={styles.footer}>
-      <Text
-        className={styles.signOutButton}
-        onClick={onSignOut}
-      >התנתק</Text>
-      <Text className={styles.appVersion}>{appVersion}</Text>
+        <Text className={styles.signOutButton} onClick={onSignOut}>
+          התנתק
+        </Text>
+        <Text className={styles.appVersion}>{appVersion}</Text>
       </div>
     </ZMScreen>
   );
