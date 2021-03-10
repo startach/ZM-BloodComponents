@@ -4,7 +4,7 @@
 
 > Saving Lives
 
-> Faciltating scheduling an appointment process
+> Facilitating scheduling an appointment process
 
 > Modernizing the method
 
