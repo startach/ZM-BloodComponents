@@ -67,16 +67,17 @@
   text-decoration: underline;
 }
 
-.alreadyRegisteredContainer {
+.notRegisteredContainer {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  align-items: center;
   margin-top: 4px;
   text-align: right;
   margin-left: auto;
 }
 
-.alreadyRegisteredTitle {
+.notRegisteredTitle {
   margin: 0px 4px;
   display: inline-block;
   line-height: 24px;

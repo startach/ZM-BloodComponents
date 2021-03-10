@@ -93,16 +93,14 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
       </div>
 
-      <div className={styles.alreadyRegisteredContainer}>
+      <div className={styles.notRegisteredContainer}>
         <Button
           className={styles.connectButton}
           title="הרשמה"
           onClick={props.onRegister}
           variant={ButtonVariant.text}
         />
-        <span className={styles.alreadyRegisteredTitle}>
-          עדיין לא רשום כתורם?
-        </span>
+        <span className={styles.notRegisteredTitle}>עדיין לא רשום כתורם?</span>
       </div>
     </div>
   );
