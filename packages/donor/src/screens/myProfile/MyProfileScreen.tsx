@@ -100,13 +100,13 @@ export default function MyProfileScreen({
         inputLabel={"טלפון"}
         onChange={onFieldChange("phone")}
       />
-      <Button
+      <div className={styles.footer}>
+      <Text
         className={styles.signOutButton}
-        isCentered={true}
-        title={"התנתק"}
         onClick={onSignOut}
-      />
+      >התנתק</Text>
       <Text className={styles.appVersion}>{appVersion}</Text>
+      </div>
     </ZMScreen>
   );
 }
