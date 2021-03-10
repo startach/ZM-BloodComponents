@@ -100,9 +100,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           onClick={props.onRegister}
           variant={ButtonVariant.text}
         />
-        <span className={styles.notRegisteredTitle}>
-          עדיין לא רשום כתורם?
-        </span>
+        <span className={styles.notRegisteredTitle}>עדיין לא רשום כתורם?</span>
       </div>
     </div>
   );
