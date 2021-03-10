@@ -12,6 +12,7 @@ import styles from "./MyProfileScreen.module.scss";
 import Card from "../../components/basic/Card";
 import Button from "../../components/basic/Button";
 import IconButton from "../../components/basic/IconButton";
+import userIcon from "../../assets/icons/user.svg";
 import phoneIcon from "../../assets/icons/phone.svg";
 import editIcon from "../../assets/icons/edit.svg";
 import bloodIcon from "../../assets/icons/bloodDrops.svg";
@@ -19,6 +20,7 @@ import MyProfileDrawer from "../../components/MyProfileDrawer";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
+import { version as appVersion } from "../../../package.json";
 
 interface MyProfileScreenProps {
   user: Donor;
@@ -70,14 +72,14 @@ export default function MyProfileScreen({
       {renderDonationCount()}
 
       <ProfileStringField
-        iconSrc={phoneIcon}
+        iconSrc={userIcon}
         value={user.firstName}
         inputLabel={"שם פרטי"}
         onChange={onFieldChange("firstName")}
       />
 
       <ProfileStringField
-        iconSrc={phoneIcon}
+        iconSrc={userIcon}
         value={user.lastName}
         inputLabel={"שם משפחה"}
         onChange={onFieldChange("lastName")}
@@ -98,8 +100,12 @@ export default function MyProfileScreen({
         inputLabel={"טלפון"}
         onChange={onFieldChange("phone")}
       />
-
-      <Button title={"התנתק"} onClick={onSignOut} />
+      <div className={styles.footer}>
+        <Text className={styles.signOutButton} onClick={onSignOut}>
+          התנתק
+        </Text>
+        <Text className={styles.appVersion}>{appVersion}</Text>
+      </div>
     </ZMScreen>
   );
 }
