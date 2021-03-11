@@ -32,50 +32,11 @@ This mobile web app, will allow donors to view information about available dates
 <!-- ![](https://i.imgur.com/19mCLmm.png) -->
 
 1. Clone the repo
-   `git clone git@github.com:WebAhead5/Blood-Components.git`
-2. Enter to the /client directory
-3. Install the required dependencies
-   `npm install`
-4. Open http://localhost:3000/ and ENJOY!
-
-## Docs
-
-#### Please find full developer documentation [here](https://hackmd.io/MJ5-e4e5S3m7RtIPn2k5Ng?both)
-
-##
-
-![dashboard](https://i.imgur.com/0jsKek4.png)
-
-## Features
-
-1. Mobile first Design
-2. Translation [English, Hebrew, Arabic]
-3. User Levels [Admin, Coord., User]
-4. Appointment booking and management
-5. Sending emergency request
-6. Booking a Taxi
-7. Password reset
-8. Recaptcha
-9. Validations
-
-## Dependencies:
-
-1.  React
-2.  React Routing
-3.  React Date Picker
-4.  React dom
-5.  React google recaptcha
-6.  React i18next
-7.  React with direction
-8.  React Bootstrap
-9.  mdbReact
-10. Firebase
-11. React Helmet
-
-## Team
-
-- [Morad Abed](https://github.com/MoradAbed)
-- [Jake Powis](https://github.com/JakePowis)
-- [Hashem Abed AlJawad](https://github.com/hashem96)
-- [Khalid Ahmed](https://github.com/VoJunSoft)
-- [Amir Fahoum](https://github.com/amirfahoum)
+   `git clone git@github.com:startach/ZM-BloodComponents.git`
+2. Install the required dependencies
+   `yarn install`
+3. To start the Donor app:
+   `yarn run start-donor`
+4. To start the Coordinator app:
+   `yarn run start-coordinator`
+3. ENJOY!

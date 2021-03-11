@@ -46,3 +46,25 @@
 .cardContentMerge > * {
   padding-left: 5px;
 }
+
+.signOutButton {
+  margin-top: var(--layout-distance-small) !important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.signOutButton {
+  color: var(--color-mid-grey);
+  text-decoration: underline;
+}
+
+.appVersion {
+  color: var(--color-mid-grey);
+  align-self: flex-end;
+}
