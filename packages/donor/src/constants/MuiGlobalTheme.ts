@@ -5,7 +5,6 @@ const rubikUrl = "https://fonts.googleapis.com/css2?family=Rubik&display=swap";
 const rubikFontFace = {
   fontFamily: "Rubik",
   fontStyle: "normal",
-  // fontDisplay: 'swap',
   fontWeight: 400,
   src: `
     url(${rubikUrl}) format('woff2')
