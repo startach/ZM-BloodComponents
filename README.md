@@ -39,4 +39,4 @@ This mobile web app, will allow donors to view information about available dates
    `yarn run start-donor`
 4. To start the Coordinator app:
    `yarn run start-coordinator`
-3. ENJOY!
+5. ENJOY!
