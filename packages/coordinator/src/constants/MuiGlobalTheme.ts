@@ -1,6 +1,5 @@
 import { ThemeOptions } from "@material-ui/core";
 import colors from "./colors";
-import { rubik } from "./muiFonts";
 
 const rubikUrl = "https://fonts.googleapis.com/css2?family=Rubik&display=swap";
 const rubikFontFace = {
