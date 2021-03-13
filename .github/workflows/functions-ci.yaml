@@ -1,8 +1,9 @@
 name: Functions Continuous Integration
 
-on: pull_request
-  paths:
-    - "packages/functions/**"
+on:
+  pull_request:
+    paths:
+      - "packages/functions/**"
 
 jobs:
   functions:
