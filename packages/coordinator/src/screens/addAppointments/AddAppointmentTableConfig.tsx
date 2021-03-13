@@ -30,7 +30,8 @@ export const columns = (
   },
   {
     label: dateText,
-    cellRenderer: ({ donationStartTime }) => donationStartTime.toDateString(),
+    cellRenderer: ({ donationStartTime }) =>
+      DateUtils.ToDateString(donationStartTime),
     sortBy: ({ rowSummary: a }, { rowSummary: b }) =>
       dayjs(a.donationStartTime).diff(dayjs(b.donationStartTime)) < 0 ? -1 : 1,
   },
