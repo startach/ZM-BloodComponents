@@ -1,4 +1,4 @@
-export { default, ColumnPositions } from "./CardTable";
+export { default } from "./CardTable";
 export type {
   CardTableColumn,
   CardTableGroup,

@@ -1,18 +1,17 @@
 import Divider from "../Divider";
-import GridStyles from "../../styles/layout/grid.module.scss";
 import Styles from "./CardTable.module.scss";
-import classnames from "classnames";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SortFunction } from "../../utils/types";
 import CardTableItem from "./CardTableItem";
+import { useMemo } from "react";
 
 export interface CardTableColumn<T> {
   label?: string;
   sortBy?: SortFunction<CardTableRow<T>>;
-  cellRenderer: (cellData: { [key: string]: any }) => React.ReactNode;
+  cellRenderer: (cellData: T) => React.ReactNode;
   /** If no data available, ignore col and collapse it in row */
   isCollapsable?: boolean;
-  isUnderRow?: boolean;
+  colRelativeWidth?: number;
 }
 
 export interface CardTableGroup<T> {
@@ -26,65 +25,40 @@ export interface CardTableRow<T> {
   expandedRow?: React.ReactNode;
 }
 
-export enum ColumnPositions {
-  centered = "centered",
-  justify = "justify",
-}
-
 interface CardTableProps<T> {
   columns: CardTableColumn<T>[];
   rows: CardTableRow<T>[];
   groupBy?: CardTableGroup<T>;
   hasColumnHeaders?: boolean;
-  /** default items appear in middle of column, justify acts as justify-content: space-between */
-  columnPositions?: ColumnPositions;
   className?: string;
-  defaultSort?: SortFunction<T>;
+  defaultSort?: SortFunction<CardTableRow<T>>;
 }
 
-const GetColClass = (colCount: number): string => {
-  switch (colCount) {
-    case 2:
-      return "col-1-of-2";
-    case 3:
-      return "col-1-of-3";
-    case 4:
-      return "col-1-of-4";
-    default:
-      return "";
-  }
-};
+function sortInGroup<T>(
+  group: CardTableRow<T>[],
+  sortByFunction: SortFunction<CardTableRow<T>>,
+  isReversedSort: boolean
+) {
+  return group.sort(
+    isReversedSort ? (a, b) => sortByFunction(b, a) : sortByFunction
+  );
+}
 
-export const GetRowStyle = (columnPositions: ColumnPositions): string =>
-  columnPositions === ColumnPositions.centered
-    ? GridStyles["row"]
-    : Styles["justify-row"];
-
-export const GetColumnStyle = (
-  columnPositions: ColumnPositions,
-  activeCols: number
-): string =>
-  columnPositions === ColumnPositions.centered
-    ? GridStyles[GetColClass(activeCols)]
-    : Styles["justify-col"];
-
-export default function CardsTable({
+export default function CardsTable<T>({
   rows,
   columns,
   groupBy,
   hasColumnHeaders,
-  columnPositions = ColumnPositions.centered,
   className,
   defaultSort,
-}: CardTableProps<any>) {
+}: CardTableProps<T>) {
   const [sortByColumnIndex, setSortByColumnIndex] = useState(
     defaultSort ? -1 : 0
   );
   const [isReversedSort, setIsReversedSort] = useState(false);
-  const [groups, setGroups] = useState([rows]);
 
-  useEffect(() => {
-    let nextGroups: CardTableRow<any>[][] = [];
+  const groups = useMemo(() => {
+    let nextGroups: CardTableRow<T>[][] = [];
 
     if (groupBy) {
       rows.forEach((row) => {
@@ -98,82 +72,92 @@ export default function CardsTable({
           nextGroups.push([row]);
         }
       });
+
+      nextGroups = nextGroups
+        .filter((group) => group && group.length > 0)
+        .sort(groupBy?.sortGroupsBy);
     } else {
       nextGroups = [rows];
     }
 
-    const sortByFunction =
-      sortByColumnIndex === -1
-        ? defaultSort
-        : columns[sortByColumnIndex].sortBy;
+    const getSortBy = () => {
+      if (sortByColumnIndex === -1 && defaultSort) {
+        return defaultSort;
+      }
+      let sortByFunction = columns[sortByColumnIndex].sortBy;
 
-    if (sortByFunction !== undefined) {
-      nextGroups = nextGroups.map((group) =>
-        group.sort(
-          isReversedSort ? (a, b) => sortByFunction(b, a) : sortByFunction
+      if (!sortByFunction) {
+        // making sure unsorted columns don't screw things up
+        for (let index = 0; index < columns.length; index++) {
+          if (columns[index].sortBy) {
+            sortByFunction = columns[index].sortBy;
+            if (index !== sortByColumnIndex) {
+              setSortByColumnIndex(index);
+            }
+            break;
+          }
+        }
+      }
+      return sortByFunction;
+    };
+    const sortByFunction = getSortBy();
+
+    nextGroups = sortByFunction
+      ? nextGroups.map((group) =>
+          sortInGroup(group, sortByFunction, isReversedSort)
         )
-      );
-    }
-    setGroups(nextGroups);
+      : nextGroups;
+
+    return nextGroups;
   }, [rows, sortByColumnIndex, isReversedSort]);
 
   const handleChangeSort = (nextIndex: number) => {
-    let nextIsReversedsort = isReversedSort;
-    if (nextIndex === sortByColumnIndex) {
-      nextIsReversedsort = !nextIsReversedsort;
-    } else {
-      nextIsReversedsort = false;
+    if (columns[nextIndex].sortBy) {
+      let nextIsReversedsort = isReversedSort;
+      if (nextIndex === sortByColumnIndex) {
+        nextIsReversedsort = !nextIsReversedsort;
+      } else {
+        nextIsReversedsort = false;
+      }
+      setSortByColumnIndex(nextIndex);
+      setIsReversedSort(nextIsReversedsort);
     }
-    setSortByColumnIndex(nextIndex);
-    setIsReversedSort(nextIsReversedsort);
   };
 
   return (
-    <div
-      className={classnames(
-        className || Styles["full-width"],
-        Styles["card-table"]
-      )}
-    >
-      {hasColumnHeaders && (
-        <div className={Styles["header-bar"]}>
-          <div
-            className={classnames(
-              GetRowStyle(columnPositions),
-              Styles["low-row"]
-            )}
-          >
-            {columns.map((column, i) => (
-              <div
-                className={GetColumnStyle(columnPositions, columns.length)}
-                key={column?.label || i}
-              >
+    <div className={className || Styles["full-width"]}>
+      <div className={Styles["component"]}>
+        {hasColumnHeaders && (
+          <div className={Styles["header"]}>
+            <div className={Styles["row"]}>
+              {columns.map((column, i) => (
                 <div
-                  className={Styles["centered-table-cell"]}
+                  style={{ flexGrow: column.colRelativeWidth ?? 1 }}
+                  className={Styles["cell"]}
+                  key={column?.label || i}
                   onClick={() => handleChangeSort(i)}
                 >
                   {column.label}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <Divider isCentered />
           </div>
-          <Divider />
+        )}
+        <div className={Styles["body"]}>
+          {groups.map((group, i) => (
+            <div key={i} className={Styles["group"]}>
+              {groupBy && <div>{groupBy.label(group)}</div>}
+              {group.map((row, i) => (
+                <CardTableItem
+                  {...{ columns, row }}
+                  key={`${i}${sortByColumnIndex}${isReversedSort}`}
+                />
+              ))}
+            </div>
+          ))}
         </div>
-      )}
-      {groups
-        .sort(groupBy?.sortGroupsBy)
-        .filter((group) => group && group.length > 0)
-        .map((group, i) => (
-          <div key={i} className={Styles["full-width"]}>
-            {groupBy && <div>{groupBy.label(group)}</div>}
-            {group.map((row, i) => (
-              <CardTableItem
-                {...{ columns, row, columnPositions }}
-                key={`${i}${sortByColumnIndex}${isReversedSort}`}
-              />
-            ))}
-          </div>
-        ))}
+      </div>
     </div>
   );
 }

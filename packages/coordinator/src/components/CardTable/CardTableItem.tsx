@@ -1,10 +1,4 @@
-import {
-  CardTableRow,
-  CardTableColumn,
-  ColumnPositions,
-  GetColumnStyle,
-  GetRowStyle,
-} from "./CardTable";
+import { CardTableRow, CardTableColumn } from "./CardTable";
 import {
   Accordion,
   AccordionSummary,
@@ -14,50 +8,36 @@ import {
 import Card from "../Card";
 import { ExpandMore } from "@material-ui/icons";
 import Styles from "./CardTable.module.scss";
-import classnames from "classnames";
 
-type CardTableItemProps = {
-  row: CardTableRow<any>;
-  columns: CardTableColumn<any>[];
-  columnPositions?: ColumnPositions;
+type CardTableItemProps<T> = {
+  row: CardTableRow<T>;
+  columns: CardTableColumn<T>[];
 };
 
-export default function CardTableItem({
+export default function CardTableItem<T>({
   row,
   columns,
-  columnPositions = ColumnPositions.centered,
-}: CardTableItemProps) {
-  const endColumn = columns.find((column) => column.isUnderRow);
-
-  const CalculatedContent = columns
-    .filter((column) => !column.isUnderRow)
-    .flatMap((column, i) => {
-      const result = column.cellRenderer(row.rowSummary);
-      if (result || !column.isCollapsable) return [result];
-      return [];
-    }, []);
+}: CardTableItemProps<T>) {
+  const CalculatedContent = columns.flatMap((column) => {
+    const calculatedNode = column.cellRenderer(row.rowSummary);
+    // collapse column
+    if (calculatedNode || !column.isCollapsable)
+      return [{ calculatedNode, column }];
+    return [];
+  }, []);
 
   const DisplayedContent = (
-    <>
-      <div className={classnames(GetRowStyle(columnPositions))}>
-        {CalculatedContent.map((calculatedNode: React.ReactNode, i) => (
-          <div
-            className={GetColumnStyle(
-              columnPositions,
-              CalculatedContent.length
-            )}
-            key={i}
-          >
-            <div className={Styles["centered-table-cell"]}>
-              {calculatedNode}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ minWidth: "fit-content" }}>
-        {endColumn && endColumn.cellRenderer(row.rowSummary)}
-      </div>
-    </>
+    <div className={Styles["row"]}>
+      {CalculatedContent.map(({ calculatedNode, column }, i) => (
+        <div
+          style={{ flexGrow: column?.colRelativeWidth ?? 1 }}
+          className={Styles["cell"]}
+          key={i}
+        >
+          {calculatedNode}
+        </div>
+      ))}
+    </div>
   );
 
   const useAccordionStyles = makeStyles({
@@ -73,15 +53,12 @@ export default function CardTableItem({
   const classes = useAccordionStyles();
 
   if (!row.expandedRow) {
-    return <Card className={Styles["full-width"]}>{DisplayedContent}</Card>;
+    return <Card>{DisplayedContent}</Card>;
   }
 
   return (
     <Accordion className={classes.root}>
-      <AccordionSummary
-        expandIcon={<ExpandMore />}
-        className={Styles["absolute-row"]}
-      >
+      <AccordionSummary expandIcon={<ExpandMore />}>
         {DisplayedContent}
       </AccordionSummary>
       <AccordionDetails>{row.expandedRow}</AccordionDetails>
