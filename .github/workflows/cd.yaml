@@ -47,33 +47,9 @@ jobs:
           args: deploy --only hosting:donor -P staging
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-  functions_deployent_qa:
-    name: Functions Staging Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies
-        run: yarn install
-      - name: Write Test Service Account Key
-        uses: DamianReeves/write-file-action@v1.0
-        with:
-          path: ./test-service-account-key.json
-          contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
-          write-mode: overwrite
-      - name: Deploy to Firebase Functions
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions -P staging
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   version_bump:
     name: Git Version Bump
-    needs: [coordinator_hosting_qa, donor_hosting_qa, functions_deployent_qa]
+    needs: [coordinator_hosting_qa, donor_hosting_qa]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -84,3 +60,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
+          DEFAULT_BUMP: patch
