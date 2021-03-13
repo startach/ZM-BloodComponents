@@ -8,7 +8,11 @@ import {
   expandedRowContent,
   MainColumns,
 } from "./ManageAppointmentsTableConfig";
-import { AppointmentSlot, DonationDay } from "./CoordinatorAppointmentsGrouper";
+import {
+  AppointmentSlot,
+  DonationDay,
+  ManagedAppointment,
+} from "./CoordinatorAppointmentsGrouper";
 import {
   GroupTable,
   CardTableRow,
@@ -23,14 +27,6 @@ export interface AppointmentHour {
   appointments: FunctionsApi.AppointmentApiEntry[];
 }
 
-export type BookingDetails = {
-  name?: string;
-  phone?: string;
-  hasDonor?: boolean;
-  hasConfirmedArrival?: boolean;
-  date?: string;
-  bookingId: string;
-};
 interface ManageAppointmentsScreenProps {
   donationDays: DonationDay[];
   onDeleteAvailableAppointment: (appointmentId: string) => void;
@@ -44,9 +40,7 @@ export default function ManageAppointmentsScreen({
 }: ManageAppointmentsScreenProps) {
   const [popupData, setPopupData] = useState<{
     isOpen: boolean;
-    name?: string;
-    phone?: string;
-    bookingId?: string;
+    appointment?: ManagedAppointment;
   }>({ isOpen: false });
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
@@ -72,10 +66,10 @@ export default function ManageAppointmentsScreen({
         buttonApproveText="אישור"
         open={popupData.isOpen}
         titleFirst="האם ברצונך לבטל את התור?"
-        titleSecond={`התור שייך ל${popupData.name} במספר ${popupData.phone}`}
+        titleSecond={`התור שייך ל${popupData.appointment?.donorName} במספר ${popupData.appointment?.donorPhoneNumber}`}
         onApproved={() =>
-          popupData.bookingId &&
-          onDeleteAvailableAppointment(popupData.bookingId)
+          popupData.appointment?.appointmentId &&
+          onDeleteAvailableAppointment(popupData.appointment?.appointmentId)
         }
         onClose={() => setPopupData({ isOpen: false })}
       />

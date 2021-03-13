@@ -13,7 +13,10 @@ import {
 } from "./CoordinatorAppointmentsGrouper";
 
 export const GetExpandedColumns = (
-  setPopupData: (popupData: any) => void,
+  setPopupData: (popupData: {
+    isOpen: boolean;
+    appointment?: ManagedAppointment;
+  }) => void,
   onDeleteAvailableAppointment: (bookingId: string) => void
 ): CardTableColumn<ManagedAppointment>[] => [
   {
@@ -38,20 +41,18 @@ export const GetExpandedColumns = (
     },
   },
   {
-    cellRenderer: ({ appointmentId, donorName, donorPhoneNumber, booked }) => (
+    cellRenderer: (appointment) => (
       <IconButton
         aria-label="delete"
         icon={Icon.Delete}
         color={"primary"}
         onClick={() =>
-          booked
+          appointment.booked
             ? setPopupData({
                 isOpen: true,
-                donorPhoneNumber,
-                donorName,
-                appointmentId,
+                appointment,
               })
-            : onDeleteAvailableAppointment(appointmentId)
+            : onDeleteAvailableAppointment(appointment.appointmentId)
         }
       />
     ),
@@ -61,7 +62,10 @@ export const GetExpandedColumns = (
 
 export const expandedRowContent = (
   slot: AppointmentSlot,
-  setPopupData: (popupData: any) => void,
+  setPopupData: (popupData: {
+    isOpen: boolean;
+    appointment?: ManagedAppointment;
+  }) => void,
   onDeleteAvailableAppointment: (bookingId: string) => void
 ) => {
   return (
