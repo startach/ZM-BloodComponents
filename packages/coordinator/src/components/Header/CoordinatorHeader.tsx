@@ -1,8 +1,8 @@
 import Button from "../Button";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logoImg from "../../assets/logo.svg";
 import styles from "./CoordinatorHeader.module.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
 
 interface CoordinatorHeaderProps {
@@ -12,9 +12,21 @@ interface CoordinatorHeaderProps {
 
 export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
   const history = useHistory();
+  const location = useLocation();
+  const currentLocationPathname = location.pathname;
+  const [currentTab, setCurrentTab] = useState("/home");
+
+  useEffect(() => {
+    if (currentLocationPathname === "/") {
+      setCurrentTab("/home");
+      return;
+    }
+    setCurrentTab(currentLocationPathname);
+  }, [currentLocationPathname]);
 
   const navigate = (screen: CoordinatorScreen) => () =>
     history.push("/" + screen);
+
   return (
     <div className={styles.navBar}>
       <div className={styles.logoContainer}>
@@ -22,14 +34,17 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
       </div>
       <div className={styles.buttons}>
         <Button
+          className={currentTab === "/home" ? styles.selected__tab : ""}
           title="הוספת תורים"
           onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
         />
         <Button
           title="תורים מתוכננים"
           onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
+          className={currentTab === "/appointments" ? styles.selected__tab : ""}
         />
         <Button
+          className={currentTab === "/donors" ? styles.selected__tab : ""}
           title="חיפוש משתמשים"
           onClick={navigate(CoordinatorScreen.DONORS)}
         />
