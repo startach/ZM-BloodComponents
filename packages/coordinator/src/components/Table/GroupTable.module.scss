@@ -12,8 +12,8 @@
 
 .header {
   background-color: var(--color-light-grey);
-  padding-inline-end: calc(48px + 16px);
-  padding-inline-start: 16px;
+  padding-inline-end: calc(48px + var(--layout-distance-normal));
+  padding-inline-start: var(--layout-distance-normal);
 }
 
 .body {
@@ -33,7 +33,6 @@
 
 .cell {
   display: flex;
-  flex-grow: 1;
-  flex-shrink: 0;
+  flex: 1 0 0;
   justify-content: center;
 }
