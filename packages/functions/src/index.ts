@@ -15,7 +15,7 @@ import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 admin.initializeApp(functions.config().firebase);
 admin.firestore().settings({ timestampsInSnapshots: true });
 
-// Admin
+// Coordinator
 export const addNewAppointments = handler(addNewAppointmentsHandler);
 export const getCoordinatorAppointments = handler(
   getCoordinatorAppointmentsHandler
