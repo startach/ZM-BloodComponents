@@ -26,9 +26,18 @@ $header_height: var(--height-header, 100px);
 }
 
 .buttons {
-  @include flex_gap(var(--layout-distance-normal), row);
   flex-grow: 1;
-
+  align-self: flex-end;
   display: flex;
   justify-content: center;
+}
+
+.buttons > * {
+  all: unset !important;
+  padding: var(--layout-distance-small) !important;
+}
+
+.selected__tab {
+  background: rgba($color: #b8b6b6, $alpha: 0.2) !important;
+  border-bottom: 5px solid white !important;
 }
