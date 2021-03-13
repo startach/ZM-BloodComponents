@@ -1,8 +1,8 @@
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
-import Button from "../../components/Button";
 import { CardTableColumn, CardTableRow } from "../../components/CardTable";
 import dayjs from "dayjs";
+import { Icon, IconButton } from "../../components/IconButton";
 
 const donationTypeText = "סוג תרומה";
 const hospitalText = "בית חולים";
@@ -50,7 +50,12 @@ export const columns = (
   },
   {
     cellRenderer: ({ key }) => (
-      <Button title="מחק" onClick={() => deleteSlotsRequest(key)} />
+      <IconButton
+        aria-label="delete"
+        icon={Icon.Delete}
+        color={"primary"}
+        onClick={() => deleteSlotsRequest(key)}
+      />
     ),
     colRelativeWidth: 0,
   },

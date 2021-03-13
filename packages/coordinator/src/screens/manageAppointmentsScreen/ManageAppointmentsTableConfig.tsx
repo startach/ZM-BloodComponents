@@ -6,10 +6,9 @@ import {
 } from "coordinator/src/components/CardTable";
 import { AppointmentHour, BookingDetails } from "./ManageAppointmentsScreen";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import { Delete as DeleteIcon } from "@material-ui/icons";
+import { IconButton, Icon } from "../../components/IconButton";
 import CardTable from "../../components/CardTable";
 import dayjs from "dayjs";
-import { IconButton } from "@material-ui/core";
 
 const getDonor = (donors: Donor[], donorId?: string) => {
   if (!donorId) {
@@ -78,14 +77,14 @@ export const GetExpandedColumns = (
     cellRenderer: ({ bookingId, name, phone, hasDonor }) => (
       <IconButton
         aria-label="delete"
+        icon={Icon.Delete}
+        color={"primary"}
         onClick={() =>
           hasDonor
             ? setPopupData({ isOpen: true, phone, name, bookingId })
             : onDeleteAvailableAppointment(bookingId)
         }
-      >
-        <DeleteIcon color="primary" />
-      </IconButton>
+      />
     ),
     colRelativeWidth: 0,
   },
