@@ -34,10 +34,10 @@ export const GetExpandedColumns = (
   },
   {
     cellRenderer: ({ booked, bookingTimeMillis }) => {
-      if (!booked) {
+      if (!booked || !bookingTimeMillis) {
         return "אין רישום";
       }
-      return "אושר בתאריך " + bookingTimeMillis;
+      return "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
     },
   },
   {
