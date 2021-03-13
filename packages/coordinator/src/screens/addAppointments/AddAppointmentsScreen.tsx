@@ -3,8 +3,9 @@ import AddAppointmentsForm from "./AddAppointmentsForm";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { Hospital } from "@zm-blood-components/common";
 import Button from "../../components/Button";
-import { rows, columns } from "./AddAppointmentTableConfig";
-import CardTable from "../../components/CardTable";
+import { columns, rows } from "./AddAppointmentTableConfig";
+import Table from "../../components/Table";
+
 interface AddAppointmentsScreenProps {
   slotsArray: NewSlots[];
   addSlotsRequest: (
@@ -28,7 +29,7 @@ export default function AddAppointmentsScreen({
     <div className={styles.component}>
       <AddAppointmentsForm addSlotsRequest={addSlotsRequest} />
       <main className={styles.content}>
-        <CardTable
+        <Table
           hasColumnHeaders
           columns={columns(deleteSlotsRequest)}
           rows={rows(slotsArray)}

@@ -1,4 +1,5 @@
-import { CardTableRow, CardTableColumn } from "./CardTable";
+import React from "react";
+import { CardTableRow, CardTableColumn } from "./GroupTable";
 import {
   Accordion,
   AccordionSummary,
@@ -7,7 +8,7 @@ import {
 } from "@material-ui/core";
 import Card from "../Card";
 import { ExpandMore } from "@material-ui/icons";
-import Styles from "./CardTable.module.scss";
+import Styles from "./GroupTable.module.scss";
 
 type CardTableItemProps<T> = {
   row: CardTableRow<T>;
@@ -19,22 +20,22 @@ export default function CardTableItem<T>({
   columns,
 }: CardTableItemProps<T>) {
   const CalculatedContent = columns.flatMap((column) => {
-    const calculatedNode = column.cellRenderer(row.rowSummary);
+    const cell = column.cellRenderer(row.rowData);
     // collapse column
-    if (calculatedNode || !column.isCollapsable)
-      return [{ calculatedNode, column }];
+    if (cell || !column.hideIfNoData)
+      return [{ cell, colRelativeWidth: column.colRelativeWidth }];
     return [];
   }, []);
 
   const DisplayedContent = (
     <div className={Styles["row"]}>
-      {CalculatedContent.map(({ calculatedNode, column }, i) => (
+      {CalculatedContent.map(({ cell, colRelativeWidth }, i) => (
         <div
-          style={{ flexGrow: column?.colRelativeWidth ?? 1 }}
+          style={{ flexGrow: colRelativeWidth ?? 1 }}
           className={Styles["cell"]}
           key={i}
         >
-          {calculatedNode}
+          {cell}
         </div>
       ))}
     </div>
@@ -52,16 +53,19 @@ export default function CardTableItem<T>({
   });
   const classes = useAccordionStyles();
 
-  if (!row.expandedRow) {
+  if (!row.expandRow) {
     return <Card>{DisplayedContent}</Card>;
   }
 
   return (
-    <Accordion className={classes.root}>
+    <Accordion
+      className={classes.root}
+      TransitionProps={{ unmountOnExit: true }}
+    >
       <AccordionSummary expandIcon={<ExpandMore />}>
         {DisplayedContent}
       </AccordionSummary>
-      <AccordionDetails>{row.expandedRow}</AccordionDetails>
+      <AccordionDetails>{row.expandRow(row.rowData)}</AccordionDetails>
     </Accordion>
   );
 }

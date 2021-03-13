@@ -8,6 +8,7 @@ import {
 import Select from "../../components/Select";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
+import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
 
 export default function ManageAppointmentsScreenContainer() {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
@@ -38,6 +39,11 @@ export default function ManageAppointmentsScreenContainer() {
     return CoordinatorFunctions.deleteAppointment(appointmentId);
   };
 
+  const donationDays = groupAppointmentDays(
+    appointmentsResponse.appointments,
+    appointmentsResponse.donorsInAppointments
+  );
+
   return (
     <div>
       <Select
@@ -49,8 +55,7 @@ export default function ManageAppointmentsScreenContainer() {
       />
 
       <ManageAppointmentsScreen
-        appointments={appointmentsResponse.appointments}
-        donors={appointmentsResponse.donorsInAppointments}
+        donationDays={donationDays}
         onDeleteAvailableAppointment={onDeleteAvailableAppointment}
         isLoading={isLoading}
       />

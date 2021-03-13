@@ -1,15 +1,19 @@
-import { DateUtils, Donor, FunctionsApi } from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import CardTable from "../../components/CardTable";
 
 import Spinner from "../../components/Spinner";
 import Popup from "../../components/Popup";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
-  GetMainRows,
+  expandedRowContent,
   MainColumns,
-  GroupByDay,
 } from "./ManageAppointmentsTableConfig";
+import { AppointmentSlot, DonationDay } from "./CoordinatorAppointmentsGrouper";
+import {
+  GroupTable,
+  CardTableRow,
+  CardTableRowGroup,
+} from "../../components/Table";
 
 export interface AppointmentHour {
   hour: string;
@@ -28,15 +32,13 @@ export type BookingDetails = {
   bookingId: string;
 };
 interface ManageAppointmentsScreenProps {
-  appointments: FunctionsApi.AppointmentApiEntry[];
-  donors: Donor[];
+  donationDays: DonationDay[];
   onDeleteAvailableAppointment: (appointmentId: string) => void;
   isLoading: boolean;
 }
 
 export default function ManageAppointmentsScreen({
-  appointments,
-  donors,
+  donationDays,
   onDeleteAvailableAppointment,
   isLoading,
 }: ManageAppointmentsScreenProps) {
@@ -46,40 +48,23 @@ export default function ManageAppointmentsScreen({
     phone?: string;
     bookingId?: string;
   }>({ isOpen: false });
-  interface AppointmentHour {
-    hour: string;
-    date: string;
-    slots: number;
-    booked: number;
-    appointments: FunctionsApi.AppointmentApiEntry[];
-  }
 
-  let appointmentHours: AppointmentHour[] = [];
-
-  appointments.forEach((appointment) => {
-    const foundHourIndex: number = appointmentHours.findIndex(
-      (appointmentHour) =>
-        appointmentHour.date ===
-          DateUtils.ToDateString(appointment.donationStartTimeMillis) &&
-        appointmentHour.hour ===
-          DateUtils.ToHourString(appointment.donationStartTimeMillis)
-    );
-
-    if (foundHourIndex !== -1) {
-      const nextHour = appointmentHours[foundHourIndex];
-      nextHour.slots++;
-      if (appointment.donorId) nextHour.booked++;
-      nextHour.appointments.push(appointment);
-    } else {
-      appointmentHours.push({
-        hour: DateUtils.ToHourString(appointment.donationStartTimeMillis),
-        date: DateUtils.ToDateString(appointment.donationStartTimeMillis),
-        slots: 1,
-        booked: appointment.donorId ? 1 : 0,
-        appointments: [appointment],
-      });
-    }
-  });
+  const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
+    (day) => ({
+      groupLabel: day.day,
+      rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
+        (slot) => ({
+          rowData: slot,
+          expandRow: (slot) =>
+            expandedRowContent(
+              slot,
+              setPopupData,
+              onDeleteAvailableAppointment
+            ),
+        })
+      ),
+    })
+  );
 
   return (
     <div className={Styles["screen-grey-background"]}>
@@ -94,17 +79,11 @@ export default function ManageAppointmentsScreen({
         }
         onClose={() => setPopupData({ isOpen: false })}
       />
-      <CardTable
+      <GroupTable
         className={Styles["centered-screen"]}
         hasColumnHeaders
-        rows={GetMainRows(
-          appointmentHours,
-          donors,
-          setPopupData,
-          onDeleteAvailableAppointment
-        )}
         columns={MainColumns}
-        groupBy={GroupByDay}
+        groups={groups}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>
