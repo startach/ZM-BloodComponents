@@ -24,9 +24,9 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
     setCurrentTab(currentLocationPathname);
   }, [currentLocationPathname]);
 
-  const navigate = (screen: CoordinatorScreen) => () => {
+  const navigate = (screen: CoordinatorScreen) => () =>
     history.push("/" + screen);
-  };
+
   return (
     <div className={styles.navBar}>
       <div className={styles.logoContainer}>
