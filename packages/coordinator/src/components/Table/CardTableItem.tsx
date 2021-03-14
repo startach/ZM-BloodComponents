@@ -41,25 +41,27 @@ export default function CardTableItem<T>({
     </div>
   );
 
-  const useAccordionStyles = makeStyles({
+  const useTableItemStyles = makeStyles({
     root: {
       // From styles/layout/grid -> $gutter-vertical-small
       marginBottom: ".5rem",
       // Overriding expanded:last-child
       "&$expanded": {
-        margin: "16px 0",
+        margin: ".5rem 0",
       },
     },
+    // https://stackoverflow.com/questions/54056308/cant-override-a-style-of-a-deeply-nested-component-material-ui-jss-styling#answer-54057124
+    expanded: {},
   });
-  const classes = useAccordionStyles();
+  const classes = useTableItemStyles();
 
   if (!row.expandRow) {
-    return <Card>{DisplayedContent}</Card>;
+    return <Card className={classes.root}>{DisplayedContent}</Card>;
   }
 
   return (
     <Accordion
-      className={classes.root}
+      classes={{ root: classes.root, expanded: classes.expanded }}
       TransitionProps={{ unmountOnExit: true }}
     >
       <AccordionSummary expandIcon={<ExpandMore />}>
