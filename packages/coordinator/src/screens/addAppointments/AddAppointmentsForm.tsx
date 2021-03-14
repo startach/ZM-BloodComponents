@@ -9,6 +9,7 @@ import {
 import Button from "../../components/Button";
 import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
+import HeaderSection from "../../components/HeaderSection";
 
 const slotOptions: SelectOption<number>[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
   (n) => ({
@@ -43,7 +44,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
   };
 
   return (
-    <div className={styles.component}>
+    <HeaderSection className={styles.component}>
       <Select
         className={styles.field}
         id={"hospital"}
@@ -75,7 +76,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       />
 
       <Button onClick={onSave} title="הוספה" isDisabled={isButtonDisable()} />
-    </div>
+    </HeaderSection>
   );
 }
 

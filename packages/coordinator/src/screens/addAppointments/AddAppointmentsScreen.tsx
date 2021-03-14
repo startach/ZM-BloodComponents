@@ -1,9 +1,10 @@
-import React from "react";
+import styles from "./AddAppointmentsScreen.module.scss";
 import AddAppointmentsForm from "./AddAppointmentsForm";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { Hospital } from "@zm-blood-components/common";
-import SlotRequestsTable from "./SlotRequestsTable";
 import Button from "../../components/Button";
+import { columns, rows } from "./AddAppointmentTableConfig";
+import Table from "../../components/Table";
 
 interface AddAppointmentsScreenProps {
   slotsArray: NewSlots[];
@@ -25,16 +26,22 @@ export default function AddAppointmentsScreen({
   onSave,
 }: AddAppointmentsScreenProps) {
   return (
-    <div>
+    <div className={styles.component}>
       <AddAppointmentsForm addSlotsRequest={addSlotsRequest} />
-      <SlotRequestsTable
-        slotsArray={slotsArray}
-        deleteSlotsRequest={deleteSlotsRequest}
-      />
+      <main className={styles.content}>
+        <Table
+          hasColumnHeaders
+          columns={columns(deleteSlotsRequest)}
+          rows={rows(slotsArray)}
+          aria-label={"add donation slots table"}
+        />
+      </main>
 
-      {slotsArray.length > 0 && (
-        <Button title="שמור והמשך" onClick={onSave} isLoading={isSaving} />
-      )}
+      <footer className={styles.footer}>
+        {slotsArray.length > 0 && (
+          <Button title="שמור והמשך" onClick={onSave} isLoading={isSaving} />
+        )}
+      </footer>
     </div>
   );
 }

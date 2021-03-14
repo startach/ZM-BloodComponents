@@ -1,0 +1,38 @@
+.full-width {
+  width: 100%;
+}
+
+.component {
+  width: 100%;
+  display: flex;
+  max-height: 70vh;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.header {
+  background-color: var(--color-light-grey);
+  padding-inline-end: calc(48px + var(--layout-distance-normal));
+  padding-inline-start: var(--layout-distance-normal);
+}
+
+.body {
+  overflow-y: auto;
+}
+
+.group {
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cell {
+  display: flex;
+  flex: 1 0 0;
+  justify-content: center;
+}

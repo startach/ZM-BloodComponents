@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import CoordinatorRouter from "./navigation/CoordinatorRouter";
 import { BrowserRouter as Router } from "react-router-dom";

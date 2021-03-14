@@ -8,22 +8,25 @@ import {
 import Select from "../../components/Select";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
+import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
 
 export default function ManageAppointmentsScreenContainer() {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setAppointmentsResponse(getDefaultState());
     if (!hospitalFilter) {
       return;
     }
-
-    CoordinatorFunctions.getAppointments(hospitalFilter).then((res) =>
-      setAppointmentsResponse(res)
-    );
+    setIsLoading(true);
+    CoordinatorFunctions.getAppointments(hospitalFilter).then((res) => {
+      setAppointmentsResponse(res);
+      setIsLoading(false);
+    });
   }, [hospitalFilter]);
 
   const onDeleteAvailableAppointment = (appointmentId: string) => {
@@ -36,6 +39,11 @@ export default function ManageAppointmentsScreenContainer() {
     return CoordinatorFunctions.deleteAppointment(appointmentId);
   };
 
+  const donationDays = groupAppointmentDays(
+    appointmentsResponse.appointments,
+    appointmentsResponse.donorsInAppointments
+  );
+
   return (
     <div>
       <Select
@@ -47,9 +55,9 @@ export default function ManageAppointmentsScreenContainer() {
       />
 
       <ManageAppointmentsScreen
-        appointments={appointmentsResponse.appointments}
-        donorsInAppointments={appointmentsResponse.donorsInAppointments}
+        donationDays={donationDays}
         onDeleteAvailableAppointment={onDeleteAvailableAppointment}
+        isLoading={isLoading}
       />
     </div>
   );

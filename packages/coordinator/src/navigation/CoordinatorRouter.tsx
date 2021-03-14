@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "./CoordinatorRouter.module.scss";
 import LoadingScreen from "../screens/loading/LoadingScreen";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { CoordinatorScreen } from "./CoordinatorScreen";
@@ -51,7 +52,7 @@ export default function CoordinatorRouter() {
       <CoordinatorHeaderContainer
         showSignOutButton={loginStatus === LoginStatus.LOGGED_IN}
       />
-      {content}
+      <div className={styles.content}>{content}</div>
     </>
   );
 }

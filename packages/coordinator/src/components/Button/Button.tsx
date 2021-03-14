@@ -3,7 +3,7 @@ import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
 
-enum ButtonVariant {
+export enum ButtonVariant {
   text = "text",
   outlined = "outlined",
   contained = "contained",

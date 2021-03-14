@@ -1,0 +1,21 @@
+.component {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  > * {
+    padding: var(--layout-distance-normal);
+  }
+}
+
+.content {
+}
+
+.table {
+  height: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}

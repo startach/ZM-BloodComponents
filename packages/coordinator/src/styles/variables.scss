@@ -5,16 +5,17 @@
   --color-secondary: #347d8d;
   --color-tertiary: #a5d262;
   --color-light-grey: #e7ecef;
+  --color-medium-grey: #60636a;
   --color-black: black;
   --color-white: white;
 
-  --color-bg: var(--color-white);
+  --color-bg: #f3f5f7;
   --color-text: var(--color-black);
 
   --color-statusbar-bg: var(--color-secondary);
   --color-statusbar-text: white;
 
-  --color-header-bg: #f3f5f7;
+  --color-header-bg: var(--color-white);
   --color-header-text: var(--color-black);
 
   --color-card-bg: var(--color-white);
@@ -61,6 +62,8 @@
   --layout-distance-small: 10px;
   --layout-distance-normal: 15px;
   --layout-distance-large: 20px;
+
+  --height-header: 100px;
 }
 
 //other styling rules------------------------------------------

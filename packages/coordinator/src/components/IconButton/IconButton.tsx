@@ -1,55 +1,44 @@
-import React from "react";
-import styles from "./IconButton.module.scss";
-import classNames from "classnames";
-import Text from "../Text";
+import React, { useEffect, useState } from "react";
+import {
+  IconButton as MaterialIcon,
+  PropTypes,
+  SvgIconTypeMap,
+} from "@material-ui/core";
+import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 
-export interface IconButtonProps {
-  iconSrc: string;
-  label?: string;
-  iconSize?: string | number;
-  children?: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  titleClassName?: string;
+export enum IconSize {
+  small = "small",
+  medium = "medium",
 }
 
-function IconButton({
-  iconSrc,
-  label,
-  onClick,
-  className,
-  titleClassName,
-  children,
-  iconSize = 40,
-}: IconButtonProps) {
-  const iconSizeStr = React.useMemo(
-    () => `${iconSize}${typeof iconSize === "number" ? "px" : ""}`,
-    [iconSize]
-  );
+export enum Icon {
+  Delete = "Delete",
+}
 
-  const componentClassName = React.useMemo(
-    () =>
-      classNames({
-        [styles.component]: true,
-        "anim_onClick--scaleDown": onClick,
-        className,
-      }),
-    [className, onClick]
-  );
+export interface IconButtonProps {
+  size?: IconSize;
+  color?: PropTypes.Color;
+  icon: Icon;
+  onClick?: () => void;
+  className?: string;
+  "aria-label"?: string;
+}
+
+function IconButton({ icon, ...props }: IconButtonProps) {
+  const [IconComponent, setIconComponent] = useState<
+    OverridableComponent<SvgIconTypeMap<{}, "svg">>
+  >();
+
+  useEffect(() => {
+    import("@material-ui/icons").then((icons) => setIconComponent(icons[icon]));
+  }, [icon]);
+
+  if (!IconComponent) return <></>;
 
   return (
-    <button className={componentClassName} onClick={onClick}>
-      <img
-        src={iconSrc}
-        alt={`${label} button`}
-        style={{ width: iconSizeStr, height: iconSizeStr }}
-        className={styles.icon}
-      />
-      <div className={classNames(styles.titleSection, titleClassName)}>
-        {label && <Text>{label}</Text>}
-        {children}
-      </div>
-    </button>
+    <MaterialIcon {...props}>
+      <IconComponent />
+    </MaterialIcon>
   );
 }
 

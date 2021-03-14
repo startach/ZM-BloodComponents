@@ -1,5 +1,9 @@
 // add global styling here
 
+:root {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root {
@@ -9,8 +13,6 @@ body,
 }
 
 body {
-  overflow: hidden;
-
   background-color: var(--color-bg);
   color: var(--color-text);
 
