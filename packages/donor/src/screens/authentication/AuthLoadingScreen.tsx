@@ -6,7 +6,7 @@ export default function AuthLoadingScreen() {
   return (
     <div style={{ textAlign: "center" }}>
       <Logo style={{ width: "100%", maxWidth: "320px", height: "400px" }} />
-      <Spinner/>
+      <Spinner />
     </div>
   );
 }
