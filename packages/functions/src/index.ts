@@ -9,6 +9,7 @@ import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
+import getDonorsHandler from "./admin/GetDonorsHandler";
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 
@@ -22,6 +23,7 @@ export const getCoordinatorAppointments = handler(
 );
 export const deleteAppointments = handler(deleteAppointmentsHandler);
 export const saveAdmin = handler(saveAdminRequestHandler);
+export const getDonors = handler(getDonorsHandler)
 
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);

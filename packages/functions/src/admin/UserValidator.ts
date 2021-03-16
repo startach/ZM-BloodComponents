@@ -2,6 +2,17 @@ import { DbAdmin, AdminRole, Hospital } from "@zm-blood-components/common";
 import * as _ from "lodash";
 import { getAdmin } from "../dal/AdminDataAccessLayer";
 
+export async function validateIsCoordinator(
+    userId: string
+) {
+  const admin = await getAdmin(userId);
+  if (!admin) {
+    console.error("Could not find calling user", userId);
+    throw Error(`User ${userId} is not an admin`);
+  }
+}
+
+
 export async function validateAppointmentEditPermissions(
   userId: string,
   hospitals: Set<Hospital>
