@@ -25,8 +25,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn workspace @zm-blood-components/common install
-      - name: Run Typescript
-        run: yarn workspace @zm-blood-components/common test
+      - name: Build Coordinator
+        run: yarn workspace @zm-blood-components/common build
 
   coordinator:
     runs-on: ubuntu-latest
@@ -53,7 +53,5 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install packages
         run: yarn install
-      - name: Run Typescript
-        run: yarn workspace @zm-blood-components/donor tsc
-      - name: Test Donor
-        run: yarn workspace @zm-blood-components/donor test
+      - name: Build Donor
+        run: yarn workspace @zm-blood-components/donor build
