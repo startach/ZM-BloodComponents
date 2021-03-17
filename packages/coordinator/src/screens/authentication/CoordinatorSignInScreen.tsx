@@ -31,7 +31,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
           setEmailError("");
         }}
         value={email}
-        label={`דוא"\ל`}
+        label={`דוא"ל`}
         variant="filled"
         errorMessage={emailError}
       />
