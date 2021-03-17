@@ -1,5 +1,4 @@
 import { Divider, makeStyles } from "@material-ui/core";
-import colors from "../../utils/colors";
 import classnames from "classnames";
 
 export interface ZMDividerProps extends React.HTMLProps<HTMLDivElement> {
@@ -10,7 +9,7 @@ export default function ZMDivider({ className, isCentered }: ZMDividerProps) {
   const useDividerStyles = makeStyles({
     root: {
       height: 2,
-      backgroundColor: colors.colorMediumGrey,
+      backgroundColor: "#60636A",
       margin: isCentered ? "0 auto" : "unset",
     },
   });

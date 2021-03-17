@@ -91,7 +91,7 @@ export default function GroupsTable<T>({
   >(groups);
 
   useEffect(() => {
-    const sortedGroups = internallySortedGroups.map(sortGroup);
+    const sortedGroups = groups.map(sortGroup);
     setInternallySortedGroups(sortedGroups);
   }, [sortByColumnIndex, isReversedSort]);
 
@@ -131,7 +131,7 @@ export default function GroupsTable<T>({
           </div>
         )}
         <div className={Styles["body"]}>
-          {groups.map((group, i) => (
+          {internallySortedGroups.map((group, i) => (
             <div key={i} className={Styles["group"]}>
               <div>{group.groupLabel}</div>
               {group.rowsInGroup.map((row, i) => (

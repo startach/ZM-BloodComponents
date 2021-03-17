@@ -50,7 +50,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         }}
         value={email}
         type={"email"}
-        label={`דוא"\ל`}
+        label={`דוא"ל`}
         variant={InputVariant.filled}
         errorMessage={emailError}
       />
