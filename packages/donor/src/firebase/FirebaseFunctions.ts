@@ -114,7 +114,7 @@ export async function getBookedAppointment(): Promise<
   BookedAppointment | undefined
 > {
   const response = await getDonorAppointments(new Date());
-  if (response.futureAppointments.length == 0) {
+  if (response.futureAppointments.length === 0) {
     return undefined;
   }
   return response.futureAppointments[0];

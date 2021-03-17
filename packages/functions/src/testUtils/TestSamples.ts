@@ -1,4 +1,3 @@
-// No user-id by design - caller has to set it
 import { BloodType, DbDonor } from "@zm-blood-components/common";
 import { setDonor } from "../dal/DonorDataAccessLayer";
 

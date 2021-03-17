@@ -16,7 +16,7 @@ export const columns = (
 ): CardTableColumn<NewSlots>[] => [
   {
     label: donationTypeText,
-    cellRenderer: ({}) => PlateletsText,
+    cellRenderer: () => PlateletsText,
   },
   {
     label: hospitalText,
