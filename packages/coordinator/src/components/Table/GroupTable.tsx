@@ -56,44 +56,47 @@ export default function GroupsTable<T>({
 
   const [isReversedSort, setIsReversedSort] = useState(false);
 
-  const getSortByFunction = () => {
-    if (sortByColumnIndex === undefined) {
-      if (initialRowSorter) {
-        return initialRowSorter;
-      }
-      return undefined;
-    }
-
-    return columns[sortByColumnIndex].sortBy;
-  };
-
-  const sortGroup = (group: CardTableRowGroup<T>) => {
-    const sortingFunction = getSortByFunction();
-    if (!sortingFunction) {
-      return group;
-    }
-
-    const sortedRows = group.rowsInGroup.sort((a, b) => {
-      if (isReversedSort) {
-        return sortingFunction(b.rowData, a.rowData);
-      }
-      return sortingFunction(a.rowData, b.rowData);
-    });
-
-    return {
-      ...group,
-      rowsInGroup: sortedRows,
-    };
-  };
-
   const [internallySortedGroups, setInternallySortedGroups] = useState<
     CardTableRowGroup<T>[]
   >(groups);
 
   useEffect(() => {
+    const sortGroup = (group: CardTableRowGroup<T>) => {
+      if (sortByColumnIndex === undefined && !initialRowSorter) {
+        return group;
+      }
+
+      let sortingFunction: SortFunction<T>;
+      if (sortByColumnIndex === undefined) {
+        if (!initialRowSorter) {
+          return group;
+        } else {
+          sortingFunction = initialRowSorter;
+        }
+      } else {
+        const sortBy = columns[sortByColumnIndex].sortBy;
+        if (sortBy === undefined) {
+          return group;
+        }
+        sortingFunction = sortBy;
+      }
+
+      const sortedRows = group.rowsInGroup.sort((a, b) => {
+        if (isReversedSort) {
+          return sortingFunction(b.rowData, a.rowData);
+        }
+        return sortingFunction(a.rowData, b.rowData);
+      });
+
+      return {
+        ...group,
+        rowsInGroup: sortedRows,
+      };
+    };
+
     const sortedGroups = groups.map(sortGroup);
     setInternallySortedGroups(sortedGroups);
-  }, [sortByColumnIndex, isReversedSort]);
+  }, [sortByColumnIndex, isReversedSort, groups, columns, initialRowSorter]);
 
   const handleChangeSort = (nextIndex: number) => {
     if (!columns[nextIndex].sortBy) {
