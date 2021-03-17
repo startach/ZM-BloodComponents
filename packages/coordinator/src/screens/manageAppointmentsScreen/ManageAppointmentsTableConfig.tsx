@@ -6,7 +6,6 @@ import {
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import { Icon, IconButton } from "../../components/IconButton";
 import Table from "../../components/Table";
-import React from "react";
 import {
   AppointmentSlot,
   ManagedAppointment,

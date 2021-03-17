@@ -1,4 +1,3 @@
-import React from "react";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import UpcomingDonationScreen, {
   UpcomingDonationStates,

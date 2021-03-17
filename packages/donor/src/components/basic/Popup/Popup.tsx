@@ -1,5 +1,5 @@
 import { Dialog } from "@material-ui/core";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Popup.module.scss";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button, { ButtonVariant } from "../Button";

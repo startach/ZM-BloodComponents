@@ -1,6 +1,5 @@
 import { FormControlLabel } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
-import React from "react";
 
 export interface CheckboxProps {
   label: string;

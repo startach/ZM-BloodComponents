@@ -1,4 +1,3 @@
-import React from "react";
 import SignInScreen from "./SignInScreen";
 import { AuthenticationScreenKeys } from "../../navigation/authentication/AuthenticationScreenKeys";
 import firebase from "firebase/app";

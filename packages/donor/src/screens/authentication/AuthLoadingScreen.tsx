@@ -1,4 +1,3 @@
-import React from "react";
 import Spinner from "../../components/basic/Spinner";
 import Logo from "../logo/Logo";
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./AddAppointmentsForm.module.scss";
 import Select from "../../components/Select";
 import {

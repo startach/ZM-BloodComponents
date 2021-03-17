@@ -4,7 +4,6 @@ import {
   Radio,
   RadioGroup as MaterialRadioGroup,
 } from "@material-ui/core";
-import React from "react";
 
 export type RadioOption = {
   value: any;

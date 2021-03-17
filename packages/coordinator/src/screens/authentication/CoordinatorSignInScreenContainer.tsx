@@ -1,4 +1,3 @@
-import React from "react";
 import CoordinatorSignInScreen from "./CoordinatorSignInScreen";
 import { signInWithEmail } from "../../firebase/FirebaseAuthentication";
 

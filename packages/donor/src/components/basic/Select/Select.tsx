@@ -5,7 +5,6 @@ import {
   FormControl,
   makeStyles,
 } from "@material-ui/core";
-import React from "react";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 

@@ -4,7 +4,6 @@ import {
   InputLabel,
   FormControl,
 } from "@material-ui/core";
-import React from "react";
 import { SelectOption } from "@zm-blood-components/common";
 import styles from "./Select.module.scss";
 

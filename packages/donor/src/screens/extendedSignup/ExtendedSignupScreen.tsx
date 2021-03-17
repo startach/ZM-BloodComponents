@@ -1,4 +1,3 @@
-import React from "react";
 import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";

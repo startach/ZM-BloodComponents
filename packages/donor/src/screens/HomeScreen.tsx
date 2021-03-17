@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../components/basic/Button";
 import Text from "../components/basic/Text";
 

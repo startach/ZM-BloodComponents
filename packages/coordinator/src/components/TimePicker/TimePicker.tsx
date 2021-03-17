@@ -1,4 +1,3 @@
-import React from "react";
 import { KeyboardTimePicker } from "@material-ui/pickers";
 
 interface TimePickerProps {

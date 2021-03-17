@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./BookDonationEntry.module.scss";
 import Card from "../basic/Card";
 import Text from "../basic/Text";

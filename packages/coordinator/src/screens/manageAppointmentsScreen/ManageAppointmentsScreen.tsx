@@ -3,7 +3,7 @@ import Styles from "./ManageAppointmentsScreen.module.scss";
 
 import Spinner from "../../components/Spinner";
 import Popup from "../../components/Popup";
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   expandedRowContent,
   MainColumns,

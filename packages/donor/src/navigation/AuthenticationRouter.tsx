@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenKeys";
 import ResetPasswordScreenContainer from "../screens/resetpassword/ResetPasswordScreenContainer";

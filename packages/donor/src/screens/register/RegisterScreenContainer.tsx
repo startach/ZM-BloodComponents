@@ -1,4 +1,3 @@
-import React from "react";
 import RegisterScreen from "./RegisterScreen";
 import firebase from "firebase/app";
 import "firebase/auth";

@@ -1,5 +1,5 @@
 import Button from "../Button";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logoImg from "../../assets/logo.svg";
 import styles from "./CoordinatorHeader.module.scss";
 import { useHistory, useLocation } from "react-router-dom";

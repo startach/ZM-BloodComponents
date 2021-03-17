@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./LastDonationDateHeader.module.scss";
 import HeaderSection from "../HeaderSection";
 import Text from "../basic/Text";

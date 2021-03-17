@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import MuiGlobalTheme from "../constants/MuiGlobalTheme";
-import React from "react";
 
 const globalTheme = createMuiTheme(MuiGlobalTheme as ThemeOptions);
 

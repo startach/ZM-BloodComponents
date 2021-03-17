@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BookedAppointment } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../firebase/FirebaseFunctions";
 import DonationHistoryScreen from "./DonationHistoryScreen";

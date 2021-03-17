@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Hospital } from "@zm-blood-components/common";
 import AddAppointmentsScreen from "./AddAppointmentsScreen";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";

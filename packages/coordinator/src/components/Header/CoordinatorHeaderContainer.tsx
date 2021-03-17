@@ -1,4 +1,3 @@
-import React from "react";
 import CoordinatorHeader from "./CoordinatorHeader";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 
