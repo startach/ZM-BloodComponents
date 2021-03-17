@@ -1,11 +1,11 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {FunctionsApi,} from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import {deleteAdmin} from "../dal/AdminDataAccessLayer";
-import {expectAsyncThrows} from "../testUtils/TestUtils";
+import { deleteAdmin } from "../dal/AdminDataAccessLayer";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
-    Functions[FunctionsApi.GetDonorsFunctionName]
+  Functions[FunctionsApi.GetDonorsFunctionName]
 );
 
 const COORDINATOR_ID = "GetDonorsFunctionNameTestCoordinator";

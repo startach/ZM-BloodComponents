@@ -114,8 +114,7 @@ export interface GetCoordinatorAppointmentsResponse {
 }
 
 export const GetDonorsFunctionName = "getDonors";
-export interface GetDonorsRequest {
-}
+export interface GetDonorsRequest {}
 
 export interface GetDonorsResponse {
   donors: Donor[];

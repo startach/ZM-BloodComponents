@@ -53,6 +53,6 @@ export async function deleteDonor(donorId: string) {
 }
 
 export async function getAllDonors(): Promise<DbDonor[]> {
-  const snapshot = await admin.firestore().collection(Collections.DONORS).get()
-  return snapshot.docs.map<DbDonor>(doc => doc.data() as DbDonor);
+  const snapshot = await admin.firestore().collection(Collections.DONORS).get();
+  return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
 }

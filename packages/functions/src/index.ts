@@ -23,7 +23,7 @@ export const getCoordinatorAppointments = handler(
 );
 export const deleteAppointments = handler(deleteAppointmentsHandler);
 export const saveAdmin = handler(saveAdminRequestHandler);
-export const getDonors = handler(getDonorsHandler)
+export const getDonors = handler(getDonorsHandler);
 
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
