@@ -13,7 +13,13 @@ import {
 import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
 import AuthenticationRouter from "./AuthenticationRouter";
 
+const MINIMUM_LOGIN_SPINNER_TIME_MILLIS = 1_500;
+
 export default function AppRouter() {
+  const [
+    spinnerMinimumTimeoutFinished,
+    setSpinnerMinimumTimeoutFinished,
+  ] = useState(false);
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
   const [appState, setAppState] = useState<{
     donor?: Donor;
@@ -41,6 +47,12 @@ export default function AppRouter() {
   }, [setLoginStatus]);
 
   useEffect(() => {
+    setTimeout(() => {
+      setSpinnerMinimumTimeoutFinished(true);
+    }, MINIMUM_LOGIN_SPINNER_TIME_MILLIS);
+  }, []);
+
+  useEffect(() => {
     if (loginStatus !== LoginStatus.LOGGED_IN) {
       setAppState({
         donor: undefined,
@@ -65,6 +77,10 @@ export default function AppRouter() {
 
     fetchData();
   }, [loginStatus]);
+
+  if (!spinnerMinimumTimeoutFinished) {
+    return <AuthLoadingScreen />;
+  }
 
   if (loginStatus === LoginStatus.LOGGED_OUT) {
     return <AuthenticationRouter />;
