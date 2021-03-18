@@ -38,7 +38,9 @@ export default function SearchDonorsScreen({
     },
     {
       label: "סוג דם",
-      sortBy: SortingUtils.StringComparator<Donor>((d) => d.bloodType),
+      sortBy: SortingUtils.StringComparator<Donor>((d) =>
+        LocaleUtils.getBloodTypeTranslation(d.bloodType)
+      ),
       cellRenderer: ({ bloodType }) =>
         LocaleUtils.getBloodTypeTranslation(bloodType),
     },
