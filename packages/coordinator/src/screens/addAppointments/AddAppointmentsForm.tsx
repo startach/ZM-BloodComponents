@@ -42,10 +42,11 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       return;
     }
     // Populate date with hour
-    date.setHours(hour.getHours());
-    date.setMinutes(hour.getMinutes());
+    const result = new Date(date);
+    result.setHours(hour.getHours());
+    result.setMinutes(hour.getMinutes());
 
-    props.addSlotsRequest(hospital, date, slots);
+    props.addSlotsRequest(hospital, result, slots);
   };
 
   return (
