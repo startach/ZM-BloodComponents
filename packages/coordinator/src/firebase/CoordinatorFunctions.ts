@@ -33,8 +33,7 @@ export async function getAppointments(hospital: Hospital) {
   };
 
   const response = await getAppointmentsFunction(request);
-  const data = response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
-  return data;
+  return response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
 }
 
 export async function deleteAppointment(appointmentId: string) {
@@ -47,4 +46,16 @@ export async function deleteAppointment(appointmentId: string) {
   };
 
   await deleteAppointmentsFunction(request);
+}
+
+export async function getAllDonors() {
+  const getDonorsFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetDonorsFunctionName);
+
+  const request: FunctionsApi.GetDonorsRequest = {};
+
+  const response = await getDonorsFunction(request);
+  const data = response.data as FunctionsApi.GetDonorsResponse;
+  return data.donors;
 }

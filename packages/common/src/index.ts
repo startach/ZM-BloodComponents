@@ -5,3 +5,4 @@ export * as LocaleUtils from "./LocaleUtils";
 export * as HospitalUtils from "./HospitalUtils";
 export * as BloodTypeUtils from "./BloodTypeUtils";
 export * as DateUtils from "./DateUtils";
+export * as SortingUtils from "./SortingUtils";
