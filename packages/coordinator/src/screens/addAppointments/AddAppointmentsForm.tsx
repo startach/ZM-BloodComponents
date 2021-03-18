@@ -32,14 +32,19 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
     Hospital.TEL_HASHOMER
   );
   const [date, setDate] = useState<Date | null>(getInitialDate());
+  const [hour, setHour] = useState<Date | null>(getInitialDate());
   const [slots, setSlots] = useState(1);
 
   const isButtonDisable = () => !(hospital && date && slots);
 
   const onSave = () => {
-    if (!date || !hospital) {
+    if (!date || !hour || !hospital) {
       return;
     }
+    // Populate date with hour
+    date.setHours(hour.getHours());
+    date.setMinutes(hour.getMinutes());
+
     props.addSlotsRequest(hospital, date, slots);
   };
 
@@ -62,8 +67,8 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       />
       <TimePicker
         className={styles.field}
-        value={date}
-        onChange={setDate}
+        value={hour}
+        onChange={setHour}
         label={"שעה"}
       />
       <Select
