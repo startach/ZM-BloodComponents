@@ -12,13 +12,23 @@ on:
 
 jobs:
   donor_hosting_qa:
-    name: Donor Production Deployment
+    name: ${{ github.event.inputs.app }} production deployment
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.app == 'coordinator' || github.event.inputs.app == 'donor' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set Envitonment Variable to Production
+        run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
+
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+
+      - name: Set tag before build
+        run: echo "REACT_APP_VERSION=${{steps.tag.outputs.tag}}" >> "$GITHUB_ENV"
 
       - uses: actions/cache@v2
         with:
@@ -30,12 +40,6 @@ jobs:
 
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
-
-      - name: Set Envitonment Variable to Production
-        run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
-
-      - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${GITHUB_REF#refs/*/}" >> "$GITHUB_ENV"
 
       - name: Build ${{ github.event.inputs.app }}
         run: yarn workspace @zm-blood-components/${{ github.event.inputs.app }} build
