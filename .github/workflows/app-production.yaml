@@ -7,8 +7,8 @@ on:
         description: "Choose 'coordinator' or 'donor'"
         required: true
       version:
-        description: "Donor commit to deploy"
-        required: false
+        description: "Version to deploy"
+        required: true
 
 jobs:
   donor_hosting_qa:
@@ -17,8 +17,10 @@ jobs:
     if: ${{ github.event.inputs.app == 'coordinator' || github.event.inputs.app == 'donor' }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.version }}
 
       - name: Set Envitonment Variable to Production
         run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
