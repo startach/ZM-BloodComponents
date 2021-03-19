@@ -15,8 +15,6 @@ export default function SearchDonorsScreenContainer() {
   }, []);
 
   return (
-    <div>
       <SearchDonorsScreen donors={donors} isLoading={isLoading} />
-    </div>
   );
 }
