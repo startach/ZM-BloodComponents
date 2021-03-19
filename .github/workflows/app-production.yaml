@@ -1,8 +1,11 @@
-name: Donor Production Deployment
+name: App Production Deployment
 
 on:
   workflow_dispatch:
     inputs:
+      app:
+        description: "Choose 'coordinator' or 'donor'"
+        required: true
       version:
         description: "Donor commit to deploy"
         required: false
@@ -11,11 +14,11 @@ jobs:
   donor_hosting_qa:
     name: Donor Production Deployment
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.app == 'coordinator' || github.event.inputs.app == 'donor' }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.version }}
 
       - uses: actions/cache@v2
         with:
@@ -25,9 +28,6 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Test Common
-        run: yarn workspace @zm-blood-components/common test
-
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
 
@@ -35,14 +35,14 @@ jobs:
         run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
 
       - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${{ github.event.release.tag_name }}" >> "$GITHUB_ENV"
+        run: echo "REACT_APP_VERSION=${GITHUB_REF#refs/*/}" >> "$GITHUB_ENV"
 
-      - name: Build Donor
-        run: yarn workspace @zm-blood-components/donor build
+      - name: Build ${{ github.event.inputs.app }}
+        run: yarn workspace @zm-blood-components/${{ github.event.inputs.app }} build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:donor -P production
+          args: deploy --only hosting:${{ github.event.inputs.app }} -P production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
