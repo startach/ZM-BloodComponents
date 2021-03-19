@@ -71,7 +71,7 @@ jobs:
 
   version_bump:
     name: Git Version Bump
-    needs: [prettier, staging_deployment]
+    needs: [staging_deployment]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -8,7 +8,7 @@ on:
         required: true
       version:
         description: "Version to deploy"
-        required: true
+        required: false
 
 jobs:
   donor_hosting_qa:
@@ -25,12 +25,17 @@ jobs:
       - name: Set Envitonment Variable to Production
         run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
 
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1
+      - name: Show GitHub ref
+        run: echo "$GITHUB_REF"
+
+      - name: Show GitHub tags
+        run: echo ${{git tag --points-at HEAD}}
+
+      - name: Show GitHub tags2
+        run: echo ${git tag --points-at HEAD}
 
       - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${{steps.tag.outputs.tag}}" >> "$GITHUB_ENV"
+        run: echo "REACT_APP_VERSION=${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
 
       - uses: actions/cache@v2
         with:
