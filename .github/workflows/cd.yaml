@@ -11,8 +11,22 @@ on:
         required: false
 
 jobs:
-  coordinator_hosting_qa:
-    name: Coordinator Staging Deployment
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Prettier
+        run: npm i prettier
+      - name: Run prettier
+        run: npx prettier --check .
+
+  staging_deployment:
+    strategy:
+      matrix:
+        app: ["donor", "coordinator"]
+    name: ${{ matrix.app }} Staging Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,63 +52,22 @@ jobs:
           DEFAULT_BUMP: patch
           DRY_RUN: true
 
-      - run: echo Coordinator ${{ steps.bumpVersion.outputs.tag }} ${{ steps.bumpVersion.outputs.new_tag }}
-
       - name: Set tag before build
         run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.new_tag }}" >> "$GITHUB_ENV"
 
-      - name: Build Coordinator
-        run: yarn workspace @zm-blood-components/coordinator build
-
-      - name: Deploy Coordinator to Firebase Hosting
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting:coordinator -P staging
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-
-  donor_hosting_qa:
-    name: Donor Staging Deployment
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - uses: actions/cache@v2
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Build Common
-        run: yarn run build-common
-
-      - name: Bump tag version (dry run)
-        id: bumpVersion
-        uses: anothrNick/github-tag-action@1.26.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-          DEFAULT_BUMP: patch
-          DRY_RUN: true
-
-      - run: echo Donor ${{ steps.bumpVersion.outputs.tag }} ${{ steps.bumpVersion.outputs.new_tag }}
-
-      - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.new_tag }}" >> "$GITHUB_ENV"
-
-      - name: Build Donor
-        run: yarn workspace @zm-blood-components/donor build
+      - name: Build ${{ matrix.app }}
+        run: yarn workspace @zm-blood-components/${{ matrix.app }} build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:donor -P staging
+          args: deploy --only hosting:${{ matrix.app }} -P staging
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
   version_bump:
     name: Git Version Bump
-    needs: [coordinator_hosting_qa, donor_hosting_qa]
+    needs: [staging_deployment]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
