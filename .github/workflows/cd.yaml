@@ -17,36 +17,81 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install Dependencies
         run: yarn install
-      - name: Deploy to Firebase Hosting
+
+      - name: Build Common
+        run: yarn run build-common
+
+      - name: Bump tag version (dry run)
+        id: bumpVersion
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          DRY_RUN: true
+
+      - run: echo Coordinator ${{ steps.tagger.outputs.tag }} ${{ steps.tagger.outputs.new_tag }}
+
+      - name: Set tag before build
+        run: echo "REACT_APP_VERSION=${{ steps.tagger.outputs.new_tag }}" >> "$GITHUB_ENV"
+
+      - name: Build Coordinator
+        run: yarn workspace @zm-blood-components/coordinator build
+
+      - name: Deploy Coordinator to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:coordinator -P staging
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
   donor_hosting_qa:
     name: Donor Staging Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install Dependencies
-        run: yarn install
+
+      - name: Build Common
+        run: yarn run build-common
+
+      - name: Bump tag version (dry run)
+        id: bumpVersion
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          DRY_RUN: true
+
+      - run: echo Donor ${{ steps.tagger.outputs.tag }} ${{ steps.tagger.outputs.new_tag }}
+
+      - name: Set tag before build
+        run: echo "REACT_APP_VERSION=${{ steps.tagger.outputs.new_tag }}" >> "$GITHUB_ENV"
+
+      - name: Build Donor
+        run: yarn workspace @zm-blood-components/coordinator donor
+
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:donor -P staging
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
   version_bump:
     name: Git Version Bump
     needs: [coordinator_hosting_qa, donor_hosting_qa]

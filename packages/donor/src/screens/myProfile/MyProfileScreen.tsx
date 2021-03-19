@@ -20,7 +20,6 @@ import MyProfileDrawer from "../../components/MyProfileDrawer";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
-import { version as appVersion } from "../../../package.json";
 
 interface MyProfileScreenProps {
   user: Donor;
@@ -35,6 +34,7 @@ interface MyProfileScreenProps {
 }
 
 const SHOW_DONATION_COUNT = false;
+const appVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function MyProfileScreen({
   user,

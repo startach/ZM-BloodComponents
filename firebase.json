@@ -10,10 +10,6 @@
     {
       "target": "donor",
       "public": "packages/donor/build",
-      "predeploy": [
-        "yarn run build-common",
-        "yarn workspace @zm-blood-components/donor build"
-      ],
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
@@ -25,10 +21,6 @@
     {
       "target": "coordinator",
       "public": "packages/coordinator/build",
-      "predeploy": [
-        "yarn run build-common",
-        "yarn workspace @zm-blood-components/coordinator build"
-      ],
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
