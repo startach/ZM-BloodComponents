@@ -38,10 +38,10 @@ jobs:
           DEFAULT_BUMP: patch
           DRY_RUN: true
 
-      - run: echo Coordinator ${{ steps.tagger.outputs.tag }} ${{ steps.tagger.outputs.new_tag }}
+      - run: echo Coordinator ${{ steps.bumpVersion.outputs.tag }} ${{ steps.bumpVersion.outputs.new_tag }}
 
       - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${{ steps.tagger.outputs.new_tag }}" >> "$GITHUB_ENV"
+        run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.new_tag }}" >> "$GITHUB_ENV"
 
       - name: Build Coordinator
         run: yarn workspace @zm-blood-components/coordinator build
@@ -77,13 +77,13 @@ jobs:
           DEFAULT_BUMP: patch
           DRY_RUN: true
 
-      - run: echo Donor ${{ steps.tagger.outputs.tag }} ${{ steps.tagger.outputs.new_tag }}
+      - run: echo Donor ${{ steps.bumpVersion.outputs.tag }} ${{ steps.bumpVersion.outputs.new_tag }}
 
       - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${{ steps.tagger.outputs.new_tag }}" >> "$GITHUB_ENV"
+        run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.new_tag }}" >> "$GITHUB_ENV"
 
       - name: Build Donor
-        run: yarn workspace @zm-blood-components/coordinator donor
+        run: yarn workspace @zm-blood-components/donor build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@master
