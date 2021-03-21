@@ -19,14 +19,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install Dependencies
         run: yarn workspace @zm-blood-components/common install
+
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
+
       - name: Test Common
         run: yarn workspace @zm-blood-components/common test
 
