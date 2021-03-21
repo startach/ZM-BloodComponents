@@ -50,12 +50,14 @@ export default function Popup({
         </div>
         <hr className={styles.header}></hr>
         <DialogActions>
-          {onClose && <Button
-            onClick={onClose}
-            title="חזרה"
-            className={styles.backButton}
-            variant={ButtonVariant.text}
-          />}
+          {onClose && (
+            <Button
+              onClick={onClose}
+              title="חזרה"
+              className={styles.backButton}
+              variant={ButtonVariant.text}
+            />
+          )}
           <Button
             onClick={buttonClicked}
             title={buttonApproveText}
