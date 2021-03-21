@@ -103,7 +103,7 @@ export type AvailableAppointment = {
 };
 
 export enum Collections {
-  ADMIN = "admin",
+  COORDINATORS = "coordinators",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
 }
