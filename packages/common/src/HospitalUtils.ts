@@ -1,10 +1,10 @@
 import { Hospital, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
-const availableHospitals = [Hospital.BEILINSON];
+const activeHospitals = [Hospital.BEILINSON, Hospital.HADASA];
 
 export function getAllHospitalOptions(defaultLabel?: string) {
-  return getHospitalOptions(availableHospitals, defaultLabel);
+  return getHospitalOptions(activeHospitals, defaultLabel);
 }
 
 // If defaultLabel, will add an option with value ""
