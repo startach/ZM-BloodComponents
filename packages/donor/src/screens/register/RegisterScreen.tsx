@@ -79,14 +79,15 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         title="הירשם"
         onClick={register}
       />
-      <div className={styles.alreadyRegisteredContainer}>
+
+      <div className={styles.alreadyRegistered}>
+        <span>כבר רשום כתורם?</span>
         <Button
           className={styles.connectButton}
           title="התחבר"
           onClick={props.goToSignIn}
           variant={ButtonVariant.text}
         />
-        <span className={styles.alreadyRegisteredTitle}>כבר רשום כתורם?</span>
       </div>
     </div>
   );
