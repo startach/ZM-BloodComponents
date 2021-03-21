@@ -12,7 +12,7 @@ type PopupProps = {
   titleSecond?: string;
   className?: string;
   isLoading?: boolean;
-  onClose?: () => void;
+  onBack?: () => void;
   onApproved: () => void;
 };
 
@@ -21,7 +21,7 @@ export default function Popup({
   open,
   titleFirst,
   titleSecond,
-  onClose,
+  onBack,
   onApproved,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,7 @@ export default function Popup({
         },
       }}
       open={open}
-      onClose={onClose}
+      onClose={onBack}
     >
       <div className={styles.popupContainer}>
         <div className={styles.popupText}>
@@ -50,9 +50,9 @@ export default function Popup({
         </div>
         <hr className={styles.header}></hr>
         <DialogActions>
-          {onClose && (
+          {onBack && (
             <Button
-              onClick={onClose}
+              onClick={onBack}
               title="חזרה"
               className={styles.backButton}
               variant={ButtonVariant.text}
