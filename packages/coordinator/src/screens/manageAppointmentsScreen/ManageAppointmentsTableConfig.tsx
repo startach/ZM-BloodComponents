@@ -87,7 +87,7 @@ export const MainColumns: CardTableColumn<AppointmentSlot>[] = [
       DateUtils.ToTimeString(new Date(donationStartTimeMillis)),
   },
   {
-    label: "מספר התורים",
+    label: "מספר העמדות",
     cellRenderer: ({ appointments }) => appointments.length,
   },
   {
