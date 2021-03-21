@@ -12,7 +12,7 @@ type PopupProps = {
   titleSecond?: string;
   className?: string;
   isLoading?: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   onApproved: () => void;
 };
 
@@ -28,6 +28,7 @@ export default function Popup({
   const buttonClicked = () => {
     setIsLoading(true);
     onApproved();
+    setIsLoading(false);
   };
   return (
     <Dialog
@@ -47,14 +48,14 @@ export default function Popup({
           <Text>{titleFirst}</Text>
           <Text>{titleSecond}</Text>
         </div>
-        <hr className={styles.hr}></hr>
+        <hr className={styles.header}></hr>
         <DialogActions>
-          <Button
+          {onClose && <Button
             onClick={onClose}
             title="חזרה"
             className={styles.backButton}
             variant={ButtonVariant.text}
-          />
+          />}
           <Button
             onClick={buttonClicked}
             title={buttonApproveText}

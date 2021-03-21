@@ -1,13 +1,15 @@
-import { useState } from "react";
+import React from "react";
+import {useState} from "react";
 import RadioGroup from "../../components/basic/RadioGroup";
-import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
+import {RadioOption} from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import {DonationSlot} from "../../utils/AppointmentsGrouper";
 import ZMScreen from "../../components/basic/ZMScreen";
+import Popup from '../../components/basic/Popup';
 
 interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlot;
@@ -27,7 +29,7 @@ export default function QuestionnaireScreen({
   isLoading,
   debugMode,
 }: QuestionnaireScreenProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] = useState("");
+  const [hasAlreadyDonated, setHasAlreadyDonated] = React.useState("");
   const HaveYouAlreadyDonated = (
     <RadioGroup
       options={YesNoOptions}
@@ -189,7 +191,7 @@ export default function QuestionnaireScreen({
     />
   );
 
-  const isVerified =
+  const isCorrectAnswers =
     hasAlreadyDonated === "yes" &&
     isWeightOver55 === "yes" &&
     isRecentTattoo === "no" &&
@@ -204,11 +206,85 @@ export default function QuestionnaireScreen({
     isWounded === "no" &&
     isRightAge === "yes" &&
     isPregnantEver === "no" &&
-    isLastDonationMoreThanAMonthAgo === "yes" &&
+    isLastDonationMoreThanAMonthAgo === "yes"
+
+  const isWrongAnswerChosen =
+      hasAlreadyDonated === "no" ||
+      isWeightOver55 === "no" ||
+      isRecentTattoo === "yes" ||
+      isDiabetes === "yes" ||
+      isTakingMedicine === "yes" ||
+      isAbroadThisYear === "yes" ||
+      isSurgeryLastMonth === "yes" ||
+      isChronicDisease === "yes" ||
+      isCancer === "yes" ||
+      isAntibioticLast3Days === "yes" ||
+      isDentistLast10Days === "yes" ||
+      isWounded === "yes" ||
+      isRightAge === "no" ||
+      isPregnantEver === "yes" ||
+      isLastDonationMoreThanAMonthAgo === "no"
+
+  const isVerified = isCorrectAnswers &&
     isConfirmed;
 
   return (
     <ZMScreen title="שאלון התאמה" hasBackButton>
+
+      <Popup
+          buttonApproveText="אישור"
+          open={isWrongAnswerChosen}
+          titleFirst="נראה כי אינך עומד בתנאים הדרושים לביצוע תרומה"
+          titleSecond="אנא וודא תשובתך"
+          onApproved={() => {
+            if (hasAlreadyDonated === "no") {
+              setHasAlreadyDonated('')
+            }
+            if (isWeightOver55 === 'no') {
+              setIsWeightOver55('')
+            }
+            if (isRecentTattoo === 'yes') {
+              setIsRecentTattoo('')
+            }
+            if (isDiabetes === 'yes') {
+              setIsDiabetes('')
+            }
+            if (isTakingMedicine === 'yes') {
+              setIsTakingMedicine('')
+            }
+            if (isAbroadThisYear === 'yes') {
+              setIsAbroadThisYear('')
+            }
+            if (isSurgeryLastMonth === 'yes') {
+              setIsSurgeryLastMonth('')
+            }
+            if (isChronicDisease === 'yes') {
+              setIsChronicDisease('')
+            }
+            if (isCancer === 'yes') {
+              setIsCancer('')
+            }
+            if (isAntibioticLast3Days === 'yes') {
+              setIsAntibioticLast3Days('')
+            }
+            if (isDentistLast10Days === 'yes') {
+              setIsDentistLast10Days('')
+            }
+            if (isWounded === 'yes') {
+              setIsWounded('')
+            }
+            if (isRightAge === 'no') {
+              setIsRightAge('')
+            }
+            if (isPregnantEver === 'yes') {
+              setIsPregnantEver('')
+            }
+            if (isLastDonationMoreThanAMonthAgo === 'no') {
+              setIsLastDonationMoreThanAMonthAgo('')
+            }
+          }}
+      ></Popup>
+
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
