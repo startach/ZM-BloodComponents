@@ -66,6 +66,8 @@ export type DbAdmin = {
 export enum Hospital {
   TEL_HASHOMER = "TEL_HASHOMER",
   ASAF_HAROFE = "ASAF_HAROFE",
+  BEILINSON = "BEILINSON",
+  HADASA = "HADASA",
 }
 
 export enum DonationType {
