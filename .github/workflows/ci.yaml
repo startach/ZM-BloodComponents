@@ -30,7 +30,6 @@ jobs:
 
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
-
       - name: Test Common
         run: yarn workspace @zm-blood-components/common test
 
