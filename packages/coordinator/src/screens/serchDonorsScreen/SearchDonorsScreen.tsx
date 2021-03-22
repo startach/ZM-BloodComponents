@@ -53,9 +53,7 @@ export default function SearchDonorsScreen({
         hasColumnHeaders
         columns={columns}
         rows={rows}
-        initialRowSorter={SortingUtils.StringComparator<Donor>(
-          (d) => d.firstName
-        )}
+        initialSortByColumnIndex={0}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>
