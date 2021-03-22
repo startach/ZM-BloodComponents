@@ -72,9 +72,9 @@
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  margin-top: 4px;
   text-align: right;
   margin-left: auto;
+  margin-top: -4px;
 }
 
 .notRegisteredTitle {
@@ -94,10 +94,18 @@
   font-weight: bold;
   color: #c7007d;
   border-radius: 16px;
+  height: 100%;
 }
 
 .connectButton:hover,
 .connectButton:active {
   text-decoration: underline;
   text-decoration-color: #c7007d;
+}
+
+.alreadyRegistered {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

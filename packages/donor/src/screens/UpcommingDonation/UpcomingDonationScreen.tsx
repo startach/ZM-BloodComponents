@@ -124,7 +124,7 @@ function CancelButton(props: { onCancel: () => void }) {
         open={open}
         titleFirst="האם אתה בטוח שברצונך"
         titleSecond="לבטל את התור?"
-        onClose={handleClose}
+        onBack={handleClose}
         onApproved={onCancel}
       ></Popup>
     </div>

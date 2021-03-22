@@ -28,9 +28,7 @@ interface AddAppointmentsFormProps {
 }
 
 export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
-  const [hospital, setHospital] = useState<Hospital | "">(
-    Hospital.TEL_HASHOMER
-  );
+  const [hospital, setHospital] = useState<Hospital | "">("");
   const [date, setDate] = useState<Date | null>(getInitialDate());
   const [hour, setHour] = useState<Date | null>(getInitialDate());
   const [slots, setSlots] = useState(1);
@@ -75,7 +73,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       <Select
         className={styles.field}
         id={"donations_count"}
-        label={"מספר תורים"}
+        label={"מספר עמדות"}
         options={slotOptions}
         onChange={setSlots}
         value={slots}

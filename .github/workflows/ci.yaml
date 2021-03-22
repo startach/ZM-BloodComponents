@@ -3,7 +3,7 @@ name: Continuous Integration
 on: pull_request
 
 jobs:
-  prettier:
+  prettier-ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,7 @@ jobs:
       - name: Run prettier
         run: npx prettier --check .
 
-  common:
+  common-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
       - name: Test Common
         run: yarn workspace @zm-blood-components/common test
 
-  coordinator:
+  coordinator-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -44,7 +44,7 @@ jobs:
       - name: Build Coordinator
         run: yarn workspace @zm-blood-components/coordinator build
 
-  donor:
+  donor-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
