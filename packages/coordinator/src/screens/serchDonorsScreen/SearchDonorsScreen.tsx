@@ -53,7 +53,6 @@ export default function SearchDonorsScreen({
         hasColumnHeaders
         columns={columns}
         rows={rows}
-        initialSortByColumnIndex={0}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>
