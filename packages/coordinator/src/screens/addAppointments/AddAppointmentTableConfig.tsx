@@ -7,7 +7,7 @@ const donationTypeText = "סוג תרומה";
 const hospitalText = "בית חולים";
 const dateText = "תאריך";
 const timeText = "שעה";
-const slotsText = "כמות משבצות";
+const slotsText = "עמדות";
 
 const PlateletsText = "טרומבוציטים";
 

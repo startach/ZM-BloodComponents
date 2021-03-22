@@ -25,17 +25,17 @@ jobs:
       - name: Set Envitonment Variable to Production
         run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
 
-      - name: Show GitHub ref
-        run: echo "$GITHUB_REF"
-
-      - name: Show GitHub tags
-        run: echo ${{git tag --points-at HEAD}}
-
-      - name: Show GitHub tags2
-        run: echo ${git tag --points-at HEAD}
+      - name: Bump tag version (dry run)
+        id: bumpVersion
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+          DRY_RUN: true
 
       - name: Set tag before build
-        run: echo "REACT_APP_VERSION=${GITHUB_REF#refs/tags/}" >> "$GITHUB_ENV"
+        run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.tag }}" >> "$GITHUB_ENV"
 
       - uses: actions/cache@v2
         with:
