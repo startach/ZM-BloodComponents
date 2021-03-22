@@ -45,13 +45,10 @@ export const GetExpandedColumns = (
         aria-label="delete"
         icon={Icon.Delete}
         color={"primary"}
-        onClick={() =>
-          appointment.booked
-            ? setPopupData({
+        onClick={() => setPopupData({
                 isOpen: true,
                 appointment,
               })
-            : onDeleteAvailableAppointment(appointment.appointmentId)
         }
       />
     ),

@@ -59,14 +59,20 @@ export default function ManageAppointmentsScreen({
       ),
     })
   );
+  const getPopupTitle = (appointment: ManagedAppointment | undefined) : string => {
+    if (!appointment?.booked) {
+      return "התור טרם אוכלס"
+    }
 
+    return `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`
+  }
   return (
     <div className={Styles["screen-grey-background"]}>
       <Popup
         buttonApproveText="אישור"
         open={popupData.isOpen}
         titleFirst="האם ברצונך לבטל את התור?"
-        titleSecond={`התור שייך ל${popupData.appointment?.donorName} במספר ${popupData.appointment?.donorPhoneNumber}`}
+        titleSecond={getPopupTitle(popupData.appointment)}
         onApproved={() =>
           popupData.appointment?.appointmentId &&
           onDeleteAvailableAppointment(popupData.appointment?.appointmentId)
