@@ -14,7 +14,5 @@ export default function SearchDonorsScreenContainer() {
     });
   }, []);
 
-  return (
-      <SearchDonorsScreen donors={donors} isLoading={isLoading} />
-  );
+  return <SearchDonorsScreen donors={donors} isLoading={isLoading} />;
 }
