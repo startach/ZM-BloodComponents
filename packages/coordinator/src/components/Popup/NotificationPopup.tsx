@@ -15,7 +15,7 @@ type PopupProps = {
   PopupButton?: React.ReactNode;
 };
 
-export  function NotificationPopup({
+export function NotificationPopup({
   buttonApproveText,
   open,
   titleFirst,

@@ -5,7 +5,7 @@ import { Hospital } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import { columns, rows } from "./AddAppointmentTableConfig";
 import Table from "../../components/Table";
-import {NotificationPopup} from "../../components/Popup"
+import { NotificationPopup } from "../../components/Popup";
 
 interface AddAppointmentsScreenProps {
   slotsArray: NewSlots[];
@@ -17,8 +17,8 @@ interface AddAppointmentsScreenProps {
   deleteSlotsRequest: (key: string) => void;
   isSaving: boolean;
   onSave: () => void;
-  showPopup: boolean,
-  closePopup: () => void
+  showPopup: boolean;
+  closePopup: () => void;
 }
 
 export default function AddAppointmentsScreen({
@@ -28,7 +28,7 @@ export default function AddAppointmentsScreen({
   isSaving,
   onSave,
   showPopup,
-  closePopup
+  closePopup,
 }: AddAppointmentsScreenProps) {
   return (
     <div className={styles.component}>

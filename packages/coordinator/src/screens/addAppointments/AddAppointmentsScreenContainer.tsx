@@ -13,7 +13,7 @@ export type NewSlots = {
 export default function AddAppointmentsScreenContainer() {
   const [slotsArray, setSlotsArray] = useState<NewSlots[]>([]);
   const [isSaving, setIsSaving] = useState(false);
-  const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
 
   const addSlotsRequest = (
     hospital: Hospital,
@@ -36,7 +36,7 @@ export default function AddAppointmentsScreenContainer() {
   const onSave = async () => {
     setIsSaving(true);
     await CoordinatorFunctions.addNewAppointments(slotsArray);
-    setShowPopup(true)
+    setShowPopup(true);
     setSlotsArray([]);
     setIsSaving(false);
   };
@@ -49,7 +49,7 @@ export default function AddAppointmentsScreenContainer() {
       isSaving={isSaving}
       onSave={onSave}
       showPopup={showPopup}
-      closePopup={()=> setShowPopup(false)}
+      closePopup={() => setShowPopup(false)}
     />
   );
 }
