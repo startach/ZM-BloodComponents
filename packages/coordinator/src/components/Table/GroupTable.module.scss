@@ -36,3 +36,16 @@
   flex: 1 0 0;
   justify-content: center;
 }
+
+.header-cell {
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.header-cell-active {
+  font-weight: bold;
+  color: var(--color-primary);
+}

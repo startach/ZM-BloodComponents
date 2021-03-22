@@ -3,14 +3,15 @@ import Divider from "../Divider";
 import Styles from "./GroupTable.module.scss";
 import { SortFunction } from "../../utils/types";
 import CardTableItem from "./CardTableItem";
+import classnames from "classnames";
 
 export interface CommonTableProps<T> {
   columns: CardTableColumn<T>[];
   hasColumnHeaders?: boolean;
   className?: string;
-  /** If present, will use this function to initially sort the table.
+  /** If present, will use this column to initially sort the table.
    User can then select a different column to sort by. */
-  initialRowSorter?: SortFunction<T>;
+  initialSortByColumnIndex?: number;
 }
 
 interface GroupTableProps<T> extends CommonTableProps<T> {
@@ -48,11 +49,21 @@ export default function GroupsTable<T>({
   groups = [],
   hasColumnHeaders,
   className,
-  initialRowSorter,
+  initialSortByColumnIndex,
 }: GroupTableProps<T>) {
-  const [sortByColumnIndex, setSortByColumnIndex] = useState<
-    number | undefined
-  >(initialRowSorter ? undefined : 0);
+  const getInitialSortIndex = () => {
+    if (initialSortByColumnIndex) {
+      const initialIndexExists = initialSortByColumnIndex < columns.length;
+      if (initialIndexExists && columns[initialSortByColumnIndex].sortBy) {
+        return initialSortByColumnIndex;
+      }
+    }
+    return 0;
+  };
+
+  const [sortByColumnIndex, setSortByColumnIndex] = useState<number>(
+    getInitialSortIndex()
+  );
 
   const [isReversedSort, setIsReversedSort] = useState(false);
 
@@ -62,24 +73,14 @@ export default function GroupsTable<T>({
 
   useEffect(() => {
     const sortGroup = (group: CardTableRowGroup<T>) => {
-      if (sortByColumnIndex === undefined && !initialRowSorter) {
+      let sortingFunction: SortFunction<T>;
+
+      const sortBy = columns[sortByColumnIndex].sortBy;
+      if (sortBy === undefined) {
         return group;
       }
 
-      let sortingFunction: SortFunction<T>;
-      if (sortByColumnIndex === undefined) {
-        if (!initialRowSorter) {
-          return group;
-        } else {
-          sortingFunction = initialRowSorter;
-        }
-      } else {
-        const sortBy = columns[sortByColumnIndex].sortBy;
-        if (sortBy === undefined) {
-          return group;
-        }
-        sortingFunction = sortBy;
-      }
+      sortingFunction = sortBy;
 
       const sortedRows = group.rowsInGroup.sort((a, b) => {
         if (isReversedSort) {
@@ -96,7 +97,7 @@ export default function GroupsTable<T>({
 
     const sortedGroups = groups.map(sortGroup);
     setInternallySortedGroups(sortedGroups);
-  }, [sortByColumnIndex, isReversedSort, groups, columns, initialRowSorter]);
+  }, [sortByColumnIndex, isReversedSort, groups, columns]);
 
   const handleChangeSort = (nextIndex: number) => {
     if (!columns[nextIndex].sortBy) {
@@ -119,16 +120,23 @@ export default function GroupsTable<T>({
         {hasColumnHeaders && (
           <div className={Styles["header"]}>
             <div className={Styles["row"]}>
-              {columns.map((column, i) => (
-                <div
-                  style={{ flexGrow: column.colRelativeWidth ?? 1 }}
-                  className={Styles["cell"]}
-                  key={column?.label || i}
-                  onClick={() => handleChangeSort(i)}
-                >
-                  {column.label}
-                </div>
-              ))}
+              {columns.map((column, i) => {
+                const headerCellClasses = classnames(
+                  Styles["cell"],
+                  columns[i].sortBy && Styles["header-cell"],
+                  sortByColumnIndex === i && Styles["header-cell-active"]
+                );
+                return (
+                  <div
+                    style={{ flexGrow: column.colRelativeWidth ?? 1 }}
+                    className={headerCellClasses}
+                    key={column?.label || i}
+                    onClick={() => handleChangeSort(i)}
+                  >
+                    {column.label}
+                  </div>
+                );
+              })}
             </div>
             <Divider isCentered />
           </div>

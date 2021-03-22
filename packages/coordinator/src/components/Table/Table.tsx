@@ -13,7 +13,7 @@ export default function Table<T>({
   columns,
   hasColumnHeaders,
   className,
-  initialRowSorter,
+  initialSortByColumnIndex,
 }: TableProps<T>) {
   const theOnlyGroup: CardTableRowGroup<T> = {
     groupLabel: undefined,
@@ -28,7 +28,7 @@ export default function Table<T>({
       columns={columns}
       hasColumnHeaders={hasColumnHeaders}
       className={className}
-      initialRowSorter={initialRowSorter}
+      initialSortByColumnIndex={initialSortByColumnIndex}
     />
   );
 }
