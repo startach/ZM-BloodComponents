@@ -1,5 +1,5 @@
 import Logo from "../logo/Logo";
-import Styles from "./AuthLoadingScreen.module.scss"
+import Styles from "./AuthLoadingScreen.module.scss";
 
 export default function AuthLoadingScreen() {
   return (
