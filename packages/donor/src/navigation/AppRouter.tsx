@@ -13,7 +13,7 @@ import {
 import AuthLoadingScreen from "../screens/authentication/AuthLoadingScreen";
 import AuthenticationRouter from "./AuthenticationRouter";
 
-const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000_000;
+const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
 export default function AppRouter() {
   const [
