@@ -3,7 +3,7 @@ import Divider from "../Divider";
 import Styles from "./GroupTable.module.scss";
 import { SortFunction } from "../../utils/types";
 import CardTableItem from "./CardTableItem";
-import classnames from "classnames"
+import classnames from "classnames";
 
 export interface CommonTableProps<T> {
   columns: CardTableColumn<T>[];
@@ -51,20 +51,19 @@ export default function GroupsTable<T>({
   className,
   initialSortByColumnIndex,
 }: GroupTableProps<T>) {
-
   const getInitialSortIndex = () => {
     if (initialSortByColumnIndex) {
-      const initialIndexExists = initialSortByColumnIndex < columns.length
+      const initialIndexExists = initialSortByColumnIndex < columns.length;
       if (initialIndexExists && columns[initialSortByColumnIndex].sortBy) {
-        return initialSortByColumnIndex
+        return initialSortByColumnIndex;
       }
     }
-    return 0
-  }
+    return 0;
+  };
 
-  const [sortByColumnIndex, setSortByColumnIndex] = useState<
-    number
-  >(getInitialSortIndex());
+  const [sortByColumnIndex, setSortByColumnIndex] = useState<number>(
+    getInitialSortIndex()
+  );
 
   const [isReversedSort, setIsReversedSort] = useState(false);
 
@@ -74,7 +73,6 @@ export default function GroupsTable<T>({
 
   useEffect(() => {
     const sortGroup = (group: CardTableRowGroup<T>) => {
-
       let sortingFunction: SortFunction<T>;
 
       const sortBy = columns[sortByColumnIndex].sortBy;
@@ -123,8 +121,11 @@ export default function GroupsTable<T>({
           <div className={Styles["header"]}>
             <div className={Styles["row"]}>
               {columns.map((column, i) => {
-                const headerCellClasses =
-                  classnames(Styles["cell"], columns[i].sortBy && Styles["header-cell"], sortByColumnIndex === i && Styles["header-cell-active"])
+                const headerCellClasses = classnames(
+                  Styles["cell"],
+                  columns[i].sortBy && Styles["header-cell"],
+                  sortByColumnIndex === i && Styles["header-cell-active"]
+                );
                 return (
                   <div
                     style={{ flexGrow: column.colRelativeWidth ?? 1 }}
@@ -134,7 +135,7 @@ export default function GroupsTable<T>({
                   >
                     {column.label}
                   </div>
-                )
+                );
               })}
             </div>
             <Divider isCentered />
