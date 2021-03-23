@@ -1,11 +1,7 @@
-import { Dialog } from "@material-ui/core";
 import React from "react";
-import styles from "./Popup.module.scss";
-import DialogActions from "@material-ui/core/DialogActions";
-import Button from "../Button";
-import Text from "../Text";
+import DialogBase from "./DialogBase";
 
-type PopupProps = {
+type NotificationProps = {
   buttonApproveText: string;
   open: boolean;
   titleFirst: string;
@@ -22,37 +18,16 @@ export function NotificationPopup({
   titleSecond,
   onClose,
   PopupButton,
-}: PopupProps) {
+}: NotificationProps) {
   return (
-    <>
-      {PopupButton}
-      <Dialog
-        PaperProps={{
-          style: {
-            backgroundColor: "#272932",
-            color: "#fff",
-            height: "170px",
-            width: "90%",
-          },
-        }}
-        open={open}
-        onClose={onClose}
-      >
-        <div className={styles.popupContainer}>
-          <div className={styles.popupText}>
-            <Text>{titleFirst}</Text>
-            <Text>{titleSecond}</Text>
-          </div>
-          <hr className={styles.hr}></hr>
-          <DialogActions>
-            <Button
-              onClick={onClose}
-              title={buttonApproveText}
-              className={styles.approveButton}
-            />
-          </DialogActions>
-        </div>
-      </Dialog>
-    </>
+    <DialogBase
+      buttonApproveText={buttonApproveText}
+      open={open}
+      titleFirst={titleFirst}
+      titleSecond={titleSecond}
+      onClose={onClose}
+      PopupButton={PopupButton}
+      isNotificationPopup={true}
+    />
   );
 }
