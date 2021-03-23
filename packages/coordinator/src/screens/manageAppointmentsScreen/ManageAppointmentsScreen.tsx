@@ -63,7 +63,7 @@ export default function ManageAppointmentsScreen({
     appointment: ManagedAppointment | undefined
   ): string => {
     if (!appointment?.booked) {
-      return "התור טרם אוכלס";
+      return "התור טרם נתפס";
     }
 
     return `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`;
@@ -75,8 +75,8 @@ export default function ManageAppointmentsScreen({
         open={popupData.isOpen}
         titleFirst="האם ברצונך לבטל את התור?"
         titleSecond={getPopupTitle(popupData.appointment)}
-        onApproved={async () => {
-          return await onDeleteAvailableAppointment(
+        onApproved={() => {
+          return onDeleteAvailableAppointment(
             popupData.appointment?.appointmentId || ""
           );
         }}
