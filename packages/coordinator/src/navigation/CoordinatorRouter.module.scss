@@ -6,7 +6,6 @@ $footer_height: var(--height-footer, 30px);
 
 .footer {
   color: var(--color-mid-grey);
-  align-self: flex-end;
   height: $footer_height;
   position: absolute;
   bottom: 0;
