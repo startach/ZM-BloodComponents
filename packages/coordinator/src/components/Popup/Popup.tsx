@@ -13,7 +13,7 @@ type PopupProps = {
   className?: string;
   isLoading?: boolean;
   onClose: () => void;
-  onApproved: () => void;
+  onApproved: () => Promise<void>;
   PopupButton?: React.ReactNode;
 };
 
@@ -27,9 +27,11 @@ export default function Popup({
   PopupButton,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const buttonClicked = () => {
+  const buttonClicked = async () => {
     setIsLoading(true);
-    onApproved();
+    await onApproved();
+    onClose();
+    setIsLoading(false);
   };
   return (
     <>
