@@ -14,6 +14,8 @@ import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderCo
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/serchDonorsScreen/SearchDonorsScreenContainer";
 
+const appVersion = process.env.REACT_APP_VERSION || "dev";
+
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
 
@@ -56,6 +58,7 @@ export default function CoordinatorRouter() {
         showSignOutButton={loginStatus === LoginStatus.LOGGED_IN}
       />
       <div className={styles.content}>{content}</div>
+      <div className={styles.footer}>{appVersion}</div>
     </>
   );
 }
