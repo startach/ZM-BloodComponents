@@ -5,7 +5,7 @@
 .component {
   width: 100%;
   display: flex;
-  max-height: 70vh;
+  max-height: 85vh;
   flex-direction: column;
   justify-content: stretch;
 }
@@ -35,4 +35,17 @@
   display: flex;
   flex: 1 0 0;
   justify-content: center;
+}
+
+.header-cell {
+  cursor: pointer;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.header-cell-active {
+  font-weight: bold;
+  color: var(--color-primary);
 }
