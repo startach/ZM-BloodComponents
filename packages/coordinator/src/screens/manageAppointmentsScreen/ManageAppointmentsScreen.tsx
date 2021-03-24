@@ -29,7 +29,7 @@ export interface AppointmentHour {
 
 interface ManageAppointmentsScreenProps {
   donationDays: DonationDay[];
-  onDeleteAvailableAppointment: (appointmentId: string) => void;
+  onDeleteAvailableAppointment: (appointmentId: string) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -59,18 +59,27 @@ export default function ManageAppointmentsScreen({
       ),
     })
   );
+  const getPopupTitle = (
+    appointment: ManagedAppointment | undefined
+  ): string => {
+    if (!appointment?.booked) {
+      return "התור טרם נתפס";
+    }
 
+    return `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`;
+  };
   return (
     <div className={Styles["screen-grey-background"]}>
       <Popup
         buttonApproveText="אישור"
         open={popupData.isOpen}
         titleFirst="האם ברצונך לבטל את התור?"
-        titleSecond={`התור שייך ל${popupData.appointment?.donorName} במספר ${popupData.appointment?.donorPhoneNumber}`}
-        onApproved={() =>
-          popupData.appointment?.appointmentId &&
-          onDeleteAvailableAppointment(popupData.appointment?.appointmentId)
-        }
+        titleSecond={getPopupTitle(popupData.appointment)}
+        onApproved={() => {
+          return onDeleteAvailableAppointment(
+            popupData.appointment?.appointmentId || ""
+          );
+        }}
         onClose={() => setPopupData({ isOpen: false })}
       />
       <GroupTable

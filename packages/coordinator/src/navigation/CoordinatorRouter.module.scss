@@ -1,3 +1,13 @@
 .content {
-  height: calc(100% - var(--height-header));
+  height: calc(100% - var(--height-header) - var(--height-footer));
+}
+
+$footer_height: var(--height-footer, 30px);
+
+.footer {
+  color: var(--color-mid-grey);
+  height: $footer_height;
+  font-size: 14px;
+  direction: ltr;
+  padding-left: 2px;
 }

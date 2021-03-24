@@ -9,7 +9,7 @@ type PopupProps = {
   className?: string;
   isLoading?: boolean;
   onClose: () => void;
-  onApproved: () => void;
+  onApproved: () => Promise<void>;
   PopupButton?: React.ReactNode;
   isNotificationPopup?: boolean;
 };
@@ -23,6 +23,13 @@ export default function Popup({
   onApproved,
   PopupButton,
 }: PopupProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const buttonClicked = async () => {
+    setIsLoading(true);
+    await onApproved();
+    onClose();
+    setIsLoading(false);
+  };
   return (
     <DialogBase
       buttonApproveText={buttonApproveText}
