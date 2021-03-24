@@ -23,13 +23,6 @@ export default function Popup({
   onApproved,
   PopupButton,
 }: PopupProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const buttonClicked = async () => {
-    setIsLoading(true);
-    await onApproved();
-    onClose();
-    setIsLoading(false);
-  };
   return (
     <DialogBase
       buttonApproveText={buttonApproveText}

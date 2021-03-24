@@ -14,7 +14,7 @@ type DialogProps = {
   isLoading?: boolean;
   onClose: () => void;
   // Does not exist for notification, is required for popup
-  onApproved?: () => void;
+  onApproved?: () => Promise<void>;
   PopupButton?: React.ReactNode;
   isNotificationPopup?: boolean;
 };
@@ -30,11 +30,13 @@ export default function DialogBase({
   isNotificationPopup,
 }: DialogProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const buttonClicked = () => {
-    setIsLoading(true);
+  const buttonClicked = async () => {
     if (onApproved) {
-      onApproved();
+      setIsLoading(true);
+      await onApproved();
+      setIsLoading(false);
     }
+    onClose();
   };
   return (
     <>
