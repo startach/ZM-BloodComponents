@@ -4,10 +4,23 @@
 }
 
 .logo {
-  height: 150px;
-  width: 150px;
   background-image: url("../../assets/icons/logo.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   margin-top: 20px;
+}
+
+.large {
+  height: 200px;
+  width: 200px;
+}
+
+.medium {
+  height: 150px;
+  width: 150px;
+}
+
+.small {
+  height: 100px;
+  width: 100px;
 }
