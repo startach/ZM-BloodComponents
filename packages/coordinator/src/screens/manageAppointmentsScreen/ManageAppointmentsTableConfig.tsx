@@ -46,12 +46,10 @@ export const GetExpandedColumns = (
         icon={Icon.Delete}
         color={"primary"}
         onClick={() =>
-          appointment.booked
-            ? setPopupData({
-                isOpen: true,
-                appointment,
-              })
-            : onDeleteAvailableAppointment(appointment.appointmentId)
+          setPopupData({
+            isOpen: true,
+            appointment,
+          })
         }
       />
     ),
