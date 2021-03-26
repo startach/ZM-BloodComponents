@@ -50,7 +50,7 @@ export default function ManageAppointmentsScreenContainer() {
         return AppointmentUtils.removeDonorFromAppointment(appointment);
       }),
     });
-    return CoordinatorFunctions.deleteAppointment(appointmentId);
+    return CoordinatorFunctions.removeDonorFromAppointment(appointmentId);
   };
 
   const donationDays = groupAppointmentDays(
