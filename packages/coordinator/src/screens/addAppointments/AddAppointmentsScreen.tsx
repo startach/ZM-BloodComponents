@@ -59,7 +59,7 @@ export default function AddAppointmentsScreen({
         open={showPopup}
         buttonApproveText={"המשך"}
         onClose={() => setShowPopup(false)}
-        titleFirst="התור התווסף בהצלחה!"
+        titleFirst="התור נוסף בהצלחה!"
       />
     </div>
   );
