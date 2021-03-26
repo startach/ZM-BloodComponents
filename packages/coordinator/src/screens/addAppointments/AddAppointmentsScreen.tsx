@@ -5,6 +5,8 @@ import { Hospital } from "@zm-blood-components/common";
 import Button from "../../components/Button";
 import { columns, rows } from "./AddAppointmentTableConfig";
 import Table from "../../components/Table";
+import { NotificationPopup } from "../../components/Popup";
+import { useState } from "react";
 
 interface AddAppointmentsScreenProps {
   slotsArray: NewSlots[];
@@ -15,7 +17,7 @@ interface AddAppointmentsScreenProps {
   ) => void;
   deleteSlotsRequest: (key: string) => void;
   isSaving: boolean;
-  onSave: () => void;
+  onSave: () => Promise<void>;
 }
 
 export default function AddAppointmentsScreen({
@@ -25,6 +27,13 @@ export default function AddAppointmentsScreen({
   isSaving,
   onSave,
 }: AddAppointmentsScreenProps) {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSave = async () => {
+    await onSave();
+    setShowPopup(true);
+  };
+
   return (
     <div className={styles.component}>
       <AddAppointmentsForm addSlotsRequest={addSlotsRequest} />
@@ -39,9 +48,19 @@ export default function AddAppointmentsScreen({
 
       <footer className={styles.footer}>
         {slotsArray.length > 0 && (
-          <Button title="שמור והמשך" onClick={onSave} isLoading={isSaving} />
+          <Button
+            title="שמור והמשך"
+            onClick={handleSave}
+            isLoading={isSaving}
+          />
         )}
       </footer>
+      <NotificationPopup
+        open={showPopup}
+        buttonApproveText={"המשך"}
+        onClose={() => setShowPopup(false)}
+        titleFirst="התור נוסף בהצלחה!"
+      />
     </div>
   );
 }
