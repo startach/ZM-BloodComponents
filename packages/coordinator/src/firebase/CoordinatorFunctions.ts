@@ -36,16 +36,32 @@ export async function getAppointments(hospital: Hospital) {
   return response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
 }
 
-export async function deleteAppointment(appointmentId: string) {
+export function removeDonorFromAppointment(appointmentId: string) {
+  const request: FunctionsApi.DeleteAppointmentRequest = {
+    appointmentId: appointmentId,
+    onlyRemoveDonor: true,
+  };
+
+  return callDeleteAppointmentFunction(request);
+}
+
+export function deleteAppointment(appointmentId: string) {
+  const request: FunctionsApi.DeleteAppointmentRequest = {
+    appointmentId: appointmentId,
+    onlyRemoveDonor: false,
+  };
+
+  return callDeleteAppointmentFunction(request);
+}
+
+async function callDeleteAppointmentFunction(
+  request: FunctionsApi.DeleteAppointmentRequest
+) {
   const deleteAppointmentsFunction = firebase
     .functions()
     .httpsCallable(FunctionsApi.DeleteAppointmentsFunctionName);
 
-  const request: FunctionsApi.DeleteAppointmentRequest = {
-    appointmentIds: [appointmentId],
-  };
-
-  await deleteAppointmentsFunction(request);
+  deleteAppointmentsFunction(request);
 }
 
 export async function getAllDonors() {

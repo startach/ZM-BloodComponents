@@ -5,6 +5,7 @@ import {
   SvgIconTypeMap,
 } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export enum IconSize {
   small = "small",
@@ -13,6 +14,7 @@ export enum IconSize {
 
 export enum Icon {
   Delete = "Delete",
+  Clear = "Clear",
 }
 
 export interface IconButtonProps {
@@ -22,9 +24,10 @@ export interface IconButtonProps {
   onClick?: () => void;
   className?: string;
   "aria-label"?: string;
+  tooltipText?: string;
 }
 
-function IconButton({ icon, ...props }: IconButtonProps) {
+function IconButton({ icon, tooltipText, ...props }: IconButtonProps) {
   const [IconComponent, setIconComponent] = useState<
     OverridableComponent<SvgIconTypeMap<{}, "svg">>
   >();
@@ -35,11 +38,17 @@ function IconButton({ icon, ...props }: IconButtonProps) {
 
   if (!IconComponent) return <></>;
 
-  return (
+  const IconElement = (
     <MaterialIcon {...props}>
       <IconComponent />
     </MaterialIcon>
   );
+
+  if (tooltipText) {
+    return <Tooltip title={tooltipText}>{IconElement}</Tooltip>;
+  }
+
+  return IconElement;
 }
 
 export default IconButton;

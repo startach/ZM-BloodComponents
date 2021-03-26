@@ -4,6 +4,7 @@ import {
   Hospital,
   HospitalUtils,
   FunctionsApi,
+  AppointmentUtils,
 } from "@zm-blood-components/common";
 import Select from "../../components/Select";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
@@ -29,12 +30,25 @@ export default function ManageAppointmentsScreenContainer() {
     });
   }, [hospitalFilter]);
 
-  const onDeleteAvailableAppointment = (appointmentId: string) => {
+  const onDeleteAppointment = (appointmentId: string) => {
     setAppointmentsResponse({
       ...appointmentsResponse,
       appointments: appointmentsResponse.appointments.filter(
         (x) => x.id !== appointmentId
       ),
+    });
+    return CoordinatorFunctions.deleteAppointment(appointmentId);
+  };
+
+  const onRemoveDonor = (appointmentId: string) => {
+    setAppointmentsResponse({
+      ...appointmentsResponse,
+      appointments: appointmentsResponse.appointments.map((appointment) => {
+        if (appointment.id !== appointmentId) {
+          return appointment;
+        }
+        return AppointmentUtils.removeDonorFromAppointment(appointment);
+      }),
     });
     return CoordinatorFunctions.deleteAppointment(appointmentId);
   };
@@ -56,7 +70,8 @@ export default function ManageAppointmentsScreenContainer() {
 
       <ManageAppointmentsScreen
         donationDays={donationDays}
-        onDeleteAvailableAppointment={onDeleteAvailableAppointment}
+        onDeleteAppointment={onDeleteAppointment}
+        onRemoveDonor={onRemoveDonor}
         isLoading={isLoading}
       />
     </div>

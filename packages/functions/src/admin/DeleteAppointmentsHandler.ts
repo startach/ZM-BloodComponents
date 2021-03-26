@@ -2,23 +2,40 @@ import { validateAppointmentEditPermissions } from "./UserValidator";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { FunctionsApi } from "@zm-blood-components/common";
+import {
+  AppointmentUtils,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
   callerId: string
 ) {
-  const appointmentIds = request.appointmentIds;
+  const appointmentId = request.appointmentId;
 
-  const appointments = await getAppointmentsByIds(appointmentIds);
+  const appointments = await getAppointmentsByIds([appointmentId]);
+  if (appointments.length !== 1) {
+    throw new Error("Invalid appointment id");
+  }
 
-  const hospitals = new Set(appointments.map((doc) => doc.hospital));
+  const appointment = appointments[0];
 
-  // validate user is allowed delete appointments of this hospital
-  await validateAppointmentEditPermissions(callerId, hospitals);
+  // validate user is allowed to edit appointments of this hospital
+  await validateAppointmentEditPermissions(
+    callerId,
+    new Set<Hospital>([appointment.hospital])
+  );
 
-  await deleteAppointmentsByIds(appointmentIds);
+  if (!request.onlyRemoveDonor) {
+    await deleteAppointmentsByIds([appointmentId]);
+    return;
+  }
 
-  return appointmentIds.length;
+  const updatedAppointment = AppointmentUtils.removeDonorFromDbAppointment(
+    appointment
+  );
+  await setAppointment(updatedAppointment);
 }
