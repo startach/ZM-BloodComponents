@@ -47,7 +47,7 @@ export default function ManageAppointmentsScreenContainer() {
   if (!showPastAppointments) {
     shownAppointments = shownAppointments.filter(
       (appointment) =>
-        appointment.donationStartTimeMillis - new Date().getTime() > 0
+        appointment.donationStartTimeMillis > new Date().getTime()
     );
   }
 
