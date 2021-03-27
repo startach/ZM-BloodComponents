@@ -45,9 +45,9 @@ test("removeDonorFromDbAppointment", () => {
   expect(res.creatorUserId).toEqual(bookedAppointment.creatorUserId);
   expect(res.hospital).toEqual(bookedAppointment.hospital);
   expect(res.donationStartTime).toEqual(bookedAppointment.donationStartTime);
-  expect(res.confirmationTime).toEqual(bookedAppointment.confirmationTime);
   expect(res.creationTime).toEqual(bookedAppointment.creationTime);
 
   expect(res.donorId).toEqual("");
   expect(res.bookingTime).toBeUndefined();
+  expect(res.confirmationTime).toBeUndefined();
 });

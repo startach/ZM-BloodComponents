@@ -14,7 +14,12 @@ export function removeDonorFromAppointment(
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
-  const { donorId, bookingTime, ...otherProperties } = appointment;
+  const {
+    donorId,
+    bookingTime,
+    confirmationTime,
+    ...otherProperties
+  } = appointment;
   return {
     ...otherProperties,
     donorId: "",
