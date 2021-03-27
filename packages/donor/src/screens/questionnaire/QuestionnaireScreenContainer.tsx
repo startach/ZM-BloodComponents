@@ -15,7 +15,7 @@ export type QuestionnaireRoutingProps = {
   donationSlot: DonationSlot;
 };
 
-const debugMode = process.env.NODE_ENV === "development";
+const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
 
 export default function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps

@@ -7,6 +7,8 @@ import {
   AppointmentUtils,
 } from "@zm-blood-components/common";
 import Select from "../../components/Select";
+import { Restore } from "@material-ui/icons";
+import Button, { ButtonVariant } from "../../components/Button";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
 import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
@@ -17,6 +19,7 @@ export default function ManageAppointmentsScreenContainer() {
     getDefaultState()
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [showPastAppointments, setShowPastAppointments] = useState(false);
 
   useEffect(() => {
     setAppointmentsResponse(getDefaultState());
@@ -53,8 +56,17 @@ export default function ManageAppointmentsScreenContainer() {
     return CoordinatorFunctions.removeDonorFromAppointment(appointmentId);
   };
 
+  let shownAppointments = appointmentsResponse.appointments;
+
+  if (!showPastAppointments) {
+    shownAppointments = shownAppointments.filter(
+      (appointment) =>
+        appointment.donationStartTimeMillis > new Date().getTime()
+    );
+  }
+
   const donationDays = groupAppointmentDays(
-    appointmentsResponse.appointments,
+    shownAppointments,
     appointmentsResponse.donorsInAppointments
   );
 
@@ -66,6 +78,19 @@ export default function ManageAppointmentsScreenContainer() {
         options={HospitalUtils.getAllHospitalOptions("בחר")}
         value={hospitalFilter}
         onChange={setHospitalFilter}
+      />
+
+      <Button
+        title="תורים שעברו"
+        onClick={() => {
+          setShowPastAppointments(!showPastAppointments);
+        }}
+        endIcon={<Restore />}
+        variant={
+          showPastAppointments
+            ? ButtonVariant.contained
+            : ButtonVariant.outlined
+        }
       />
 
       <ManageAppointmentsScreen
