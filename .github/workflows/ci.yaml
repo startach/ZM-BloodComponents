@@ -41,10 +41,10 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn install
-      #      - name: Build Common
-      #        run: yarn workspace @zm-blood-components/common build
-      #      - name: Test Coordinator
-      #        run: yarn workspace @zm-blood-components/coordinator test
+      - name: Build Common
+        run: yarn workspace @zm-blood-components/common build
+      - name: Test Coordinator
+        run: yarn workspace @zm-blood-components/coordinator test
       - name: Build Coordinator
         run: yarn workspace @zm-blood-components/coordinator build
 

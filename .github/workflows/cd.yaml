@@ -59,6 +59,9 @@ jobs:
       - name: Set tag before build
         run: echo "REACT_APP_VERSION=${{ steps.bumpVersion.outputs.new_tag }}" >> "$GITHUB_ENV"
 
+      - name: Test ${{ matrix.app }}
+        run: yarn workspace @zm-blood-components/${{ matrix.app }} test
+
       - name: Build ${{ matrix.app }}
         run: yarn workspace @zm-blood-components/${{ matrix.app }} build
 
