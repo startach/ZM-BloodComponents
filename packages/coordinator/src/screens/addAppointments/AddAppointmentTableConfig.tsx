@@ -49,7 +49,7 @@ export const columns = (
       <IconButton
         aria-label="delete"
         icon={Icon.Delete}
-        color={"primary"}
+        color={"default"}
         onClick={() => deleteSlotsRequest(key)}
       />
     ),

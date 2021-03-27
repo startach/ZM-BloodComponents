@@ -4,6 +4,7 @@ import {
   Hospital,
   HospitalUtils,
   FunctionsApi,
+  AppointmentUtils,
 } from "@zm-blood-components/common";
 import Select from "../../components/Select";
 import { Restore } from "@material-ui/icons";
@@ -32,7 +33,7 @@ export default function ManageAppointmentsScreenContainer() {
     });
   }, [hospitalFilter]);
 
-  const onDeleteAvailableAppointment = (appointmentId: string) => {
+  const onDeleteAppointment = (appointmentId: string) => {
     setAppointmentsResponse({
       ...appointmentsResponse,
       appointments: appointmentsResponse.appointments.filter(
@@ -40,6 +41,19 @@ export default function ManageAppointmentsScreenContainer() {
       ),
     });
     return CoordinatorFunctions.deleteAppointment(appointmentId);
+  };
+
+  const onRemoveDonor = (appointmentId: string) => {
+    setAppointmentsResponse({
+      ...appointmentsResponse,
+      appointments: appointmentsResponse.appointments.map((appointment) => {
+        if (appointment.id !== appointmentId) {
+          return appointment;
+        }
+        return AppointmentUtils.removeDonorFromAppointment(appointment);
+      }),
+    });
+    return CoordinatorFunctions.removeDonorFromAppointment(appointmentId);
   };
 
   let shownAppointments = appointmentsResponse.appointments;
@@ -81,7 +95,8 @@ export default function ManageAppointmentsScreenContainer() {
 
       <ManageAppointmentsScreen
         donationDays={donationDays}
-        onDeleteAvailableAppointment={onDeleteAvailableAppointment}
+        onDeleteAppointment={onDeleteAppointment}
+        onRemoveDonor={onRemoveDonor}
         isLoading={isLoading}
       />
     </div>

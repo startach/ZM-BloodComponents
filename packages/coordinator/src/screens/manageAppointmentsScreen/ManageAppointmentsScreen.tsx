@@ -29,19 +29,27 @@ export interface AppointmentHour {
 
 interface ManageAppointmentsScreenProps {
   donationDays: DonationDay[];
-  onDeleteAvailableAppointment: (appointmentId: string) => Promise<void>;
+  onDeleteAppointment: (appointmentId: string) => Promise<void>;
+  onRemoveDonor: (appointmentId: string) => Promise<void>;
   isLoading: boolean;
+}
+
+export interface DeleteAppointmentPopupData {
+  isOpen: boolean;
+  appointment?: ManagedAppointment;
+  onlyRemoveDonor: boolean;
 }
 
 export default function ManageAppointmentsScreen({
   donationDays,
-  onDeleteAvailableAppointment,
+  onDeleteAppointment,
+  onRemoveDonor,
   isLoading,
 }: ManageAppointmentsScreenProps) {
-  const [popupData, setPopupData] = useState<{
-    isOpen: boolean;
-    appointment?: ManagedAppointment;
-  }>({ isOpen: false });
+  const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>({
+    isOpen: false,
+    onlyRemoveDonor: false,
+  });
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
@@ -49,38 +57,51 @@ export default function ManageAppointmentsScreen({
       rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
         (slot) => ({
           rowData: slot,
-          expandRow: (slot) =>
-            expandedRowContent(
-              slot,
-              setPopupData,
-              onDeleteAvailableAppointment
-            ),
+          expandRow: (slot) => expandedRowContent(slot, setPopupData),
         })
       ),
     })
   );
-  const getPopupTitle = (
-    appointment: ManagedAppointment | undefined
-  ): string => {
-    if (!appointment?.booked) {
+
+  const getPopupTitle = (): string => {
+    if (popupData.onlyRemoveDonor) {
+      return "האם ברצונך להסיר את התורם מהתור?";
+    }
+
+    return "האם ברצונך לבטל את התור?";
+  };
+
+  const getPopupSecondTitle = (): string => {
+    if (!popupData.appointment?.booked) {
       return "התור טרם נתפס";
     }
 
-    return `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`;
+    return `התור שייך ל${popupData.appointment.donorName} במספר ${popupData.appointment.donorPhoneNumber}`;
   };
+
+  const onPopupApprove = () => {
+    const appointmentId = popupData.appointment?.appointmentId;
+    if (!appointmentId) {
+      console.warn("No appointment id set");
+      return Promise.resolve();
+    }
+
+    if (popupData.onlyRemoveDonor) {
+      return onRemoveDonor(appointmentId);
+    }
+
+    return onDeleteAppointment(appointmentId);
+  };
+
   return (
     <div className={Styles["screen-grey-background"]}>
       <Popup
         buttonApproveText="אישור"
         open={popupData.isOpen}
-        titleFirst="האם ברצונך לבטל את התור?"
-        titleSecond={getPopupTitle(popupData.appointment)}
-        onApproved={() => {
-          return onDeleteAvailableAppointment(
-            popupData.appointment?.appointmentId || ""
-          );
-        }}
-        onClose={() => setPopupData({ isOpen: false })}
+        titleFirst={getPopupTitle()}
+        titleSecond={getPopupSecondTitle()}
+        onApproved={onPopupApprove}
+        onClose={() => setPopupData({ isOpen: false, onlyRemoveDonor: false })}
       />
       <GroupTable
         className={Styles["centered-screen"]}

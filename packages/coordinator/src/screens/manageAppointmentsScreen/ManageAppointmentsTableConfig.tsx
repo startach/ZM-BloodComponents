@@ -10,13 +10,10 @@ import {
   AppointmentSlot,
   ManagedAppointment,
 } from "./CoordinatorAppointmentsGrouper";
+import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 
 export const GetExpandedColumns = (
-  setPopupData: (popupData: {
-    isOpen: boolean;
-    appointment?: ManagedAppointment;
-  }) => void,
-  onDeleteAvailableAppointment: (bookingId: string) => void
+  setPopupData: (popupData: DeleteAppointmentPopupData) => void
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     cellRenderer: ({ donorName }) => donorName,
@@ -41,17 +38,36 @@ export const GetExpandedColumns = (
   },
   {
     cellRenderer: (appointment) => (
-      <IconButton
-        aria-label="delete"
-        icon={Icon.Delete}
-        color={"primary"}
-        onClick={() =>
-          setPopupData({
-            isOpen: true,
-            appointment,
-          })
-        }
-      />
+      <>
+        {appointment.booked && (
+          <IconButton
+            aria-label="clear"
+            icon={Icon.Clear}
+            color={"default"}
+            tooltipText={"הסר תורם"}
+            onClick={() =>
+              setPopupData({
+                isOpen: true,
+                appointment,
+                onlyRemoveDonor: true,
+              })
+            }
+          />
+        )}
+        <IconButton
+          aria-label="delete"
+          icon={Icon.Delete}
+          color={"default"}
+          tooltipText={"מחק תור"}
+          onClick={() =>
+            setPopupData({
+              isOpen: true,
+              appointment,
+              onlyRemoveDonor: false,
+            })
+          }
+        />
+      </>
     ),
     colRelativeWidth: 0,
   },
@@ -59,11 +75,7 @@ export const GetExpandedColumns = (
 
 export const expandedRowContent = (
   slot: AppointmentSlot,
-  setPopupData: (popupData: {
-    isOpen: boolean;
-    appointment?: ManagedAppointment;
-  }) => void,
-  onDeleteAvailableAppointment: (bookingId: string) => void
+  setPopupData: (popupData: DeleteAppointmentPopupData) => void
 ) => {
   return (
     <Table
@@ -72,7 +84,7 @@ export const expandedRowContent = (
           rowData: managedAppointment,
         })
       )}
-      columns={GetExpandedColumns(setPopupData, onDeleteAvailableAppointment)}
+      columns={GetExpandedColumns(setPopupData)}
     />
   );
 };

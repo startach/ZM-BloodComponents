@@ -94,7 +94,10 @@ export interface NewSlotsRequest {
 
 export const DeleteAppointmentsFunctionName = "deleteAppointments";
 export interface DeleteAppointmentRequest {
-  appointmentIds: string[];
+  appointmentId: string;
+  // If true, will keep the appointment but remove the donor from it.
+  // If false, will delete the appointment completely.
+  onlyRemoveDonor: boolean;
 }
 
 export const SaveAdminFunctionName = "saveAdmin";
