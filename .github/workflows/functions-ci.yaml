@@ -27,3 +27,5 @@ jobs:
           write-mode: overwrite
       - name: Test Functions
         run: yarn workspace @zm-blood-components/functions test
+
+      - uses: codecov/codecov-action@v1

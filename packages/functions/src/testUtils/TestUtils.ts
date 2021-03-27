@@ -9,7 +9,6 @@ export async function expectAsyncThrows(
     error = e;
   }
 
-  // @ts-ignore
   expect(error).toEqual(new Error(expectedExceptionText));
 }
 
