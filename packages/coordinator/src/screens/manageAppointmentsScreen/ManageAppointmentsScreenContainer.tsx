@@ -4,7 +4,6 @@ import {
   Hospital,
   HospitalUtils,
   FunctionsApi,
-  DateUtils,
 } from "@zm-blood-components/common";
 import Select from "../../components/Select";
 import { Restore } from "@material-ui/icons";
@@ -48,10 +47,7 @@ export default function ManageAppointmentsScreenContainer() {
   if (!showPastAppointments) {
     shownAppointments = shownAppointments.filter(
       (appointment) =>
-        DateUtils.DateComparer(
-          new Date(appointment.donationStartTimeMillis),
-          new Date()
-        ) > 0
+        appointment.donationStartTimeMillis - new Date().getTime() > 0
     );
   }
 
