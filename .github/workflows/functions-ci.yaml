@@ -26,6 +26,7 @@ jobs:
           contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
           write-mode: overwrite
       - name: Test Functions
-        run: yarn workspace @zm-blood-components/functions test
+        run: yarn workspace @zm-blood-components/functions test -- --coverage
 
-      - uses: codecov/codecov-action@v1
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
