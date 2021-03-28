@@ -76,9 +76,7 @@ export async function getAppointments(
 
   request = request.orderBy("donationStartTime");
 
-  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<
-    DbAppointment
-  >;
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({
     id: doc.id,
@@ -104,9 +102,7 @@ export async function getAppointmentsByHospital(
   }
   request = request.orderBy("donationStartTime");
 
-  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<
-    DbAppointment
-  >;
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({
     id: doc.id,

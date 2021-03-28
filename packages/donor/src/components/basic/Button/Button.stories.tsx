@@ -27,8 +27,8 @@ TextVariant.args = {
   variant: ButtonVariant.text,
 };
 
-export const Outlinedariant = Template.bind({} as ButtonProps);
-Outlinedariant.args = {
+export const OutlinedVariant = Template.bind({} as ButtonProps);
+OutlinedVariant.args = {
   ...Default.args,
   variant: ButtonVariant.outlined,
 };

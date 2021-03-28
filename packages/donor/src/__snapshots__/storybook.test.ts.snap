@@ -159,7 +159,7 @@ exports[`Storyshots Button Loading 1`] = `
 </button>
 `;
 
-exports[`Storyshots Button Outlinedariant 1`] = `
+exports[`Storyshots Button Outlined Variant 1`] = `
 <button
   className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
   disabled={false}
