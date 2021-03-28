@@ -13,6 +13,7 @@ import BookDonationScreenContainer from "../../screens/bookDonation/BookDonation
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import OnboardingScreen from "../../screens/onboarding/OnboardingScreen";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -28,6 +29,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
   >();
 
   if (!user) {
+    if (true) return <OnboardingScreen />;
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
