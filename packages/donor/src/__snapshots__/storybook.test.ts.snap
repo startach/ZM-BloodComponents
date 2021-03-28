@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Button Basic 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-1 makeStyles-buttonStyle-2 MuiButton-containedPrimary"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Centered 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-13 makeStyles-buttonStyle-14 MuiButton-containedPrimary"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Disabled 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-9 makeStyles-buttonStyle-10 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+  disabled={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={-1}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Full Width 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-11 makeStyles-buttonStyle-12 MuiButton-containedPrimary MuiButton-fullWidth"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Loading 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-15 makeStyles-buttonStyle-16 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+  disabled={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={-1}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    <div
+      className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+      role="progressbar"
+      style={
+        Object {
+          "height": "1rem",
+          "width": "1rem",
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Outlined Variant 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button Text Variant 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-3 makeStyles-buttonStyle-4 MuiButton-textPrimary"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    כפתור
+  </span>
+</button>
+`;
+
+exports[`Storyshots Button With Icons 1`] = `
+<button
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-7 makeStyles-buttonStyle-8 MuiButton-containedPrimary"
+  disabled={false}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onDragLeave={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  onMouseLeave={[Function]}
+  onMouseUp={[Function]}
+  onTouchEnd={[Function]}
+  onTouchMove={[Function]}
+  onTouchStart={[Function]}
+  tabIndex={0}
+  type="button"
+>
+  <span
+    className="MuiButton-label"
+  >
+    <span
+      className="MuiButton-startIcon MuiButton-iconSizeMedium"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+        />
+      </svg>
+    </span>
+    כפתור
+    <span
+      className="MuiButton-endIcon MuiButton-iconSizeMedium"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+        />
+      </svg>
+    </span>
+  </span>
+</button>
+`;
