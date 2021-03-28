@@ -62,6 +62,6 @@ jobs:
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
       - name: Test Donor
-        run: yarn workspace @zm-blood-components/donor test-ci
+        run: yarn workspace @zm-blood-components/donor test
       - name: Build Donor
         run: yarn workspace @zm-blood-components/donor build
