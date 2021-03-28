@@ -19,7 +19,6 @@
     "start": "react-scripts start",
     "build": "yarn run test -- --watchAll=false && react-scripts build",
     "test": "react-scripts test",
-    "test-ci": "jest --silent",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009"
