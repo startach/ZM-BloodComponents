@@ -9,8 +9,10 @@
     "jss-rtl": "^0.3.0"
   },
   "devDependencies": {
+    "@storybook/addon-storyshots": "^6.1.21",
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
+    "react-test-renderer": "^17.0.2",
     "typescript-plugin-css-modules": "^3.2.0"
   },
   "scripts": {
@@ -19,7 +21,8 @@
     "test": "react-scripts test",
     "test-ci": "jest --silent",
     "eject": "react-scripts eject",
-    "style": "yarn prettier --write ."
+    "style": "yarn prettier --write .",
+    "storybook": "start-storybook -p 9009"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.stories\\.tsx$": "@storybook/addon-storyshots/injectFileName",
+      "^.+\\.(js|jsx|ts|tsx)$": "react-scripts/config/jest/babelTransform.js",
+      "^.+\\.css$": "react-scripts/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "react-scripts/config/jest/fileTransform.js"
+    }
   }
 }
