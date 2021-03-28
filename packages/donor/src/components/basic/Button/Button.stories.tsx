@@ -1,66 +1,59 @@
 import Button, { ButtonProps, ButtonVariant } from "./Button";
-import { Story } from "@storybook/react";
-import WithGlobalTheme from "../../../HOCs/withGlobalTheme";
-import { Star, Mail } from "@material-ui/icons";
+import { Mail, Star } from "@material-ui/icons";
 
 export default {
   component: Button,
   title: "Button",
 };
 
-const Template: Story<ButtonProps> = (args) => (
-  <WithGlobalTheme>
-    <Button {...args} />
-  </WithGlobalTheme>
-);
-
-export const Default = Template.bind({} as ButtonProps);
-Default.args = {
+const baseArgs = {
   title: "כפתור",
-  variant: ButtonVariant.contained,
   onClick: () => {},
 };
 
-export const TextVariant = Template.bind({} as ButtonProps);
+export const Basic = (args: ButtonProps) => <Button {...args} />;
+Basic.args = baseArgs;
+
+export const TextVariant = (args: ButtonProps) => <Button {...args} />;
 TextVariant.args = {
-  ...Default.args,
+  ...baseArgs,
   variant: ButtonVariant.text,
 };
 
-export const OutlinedVariant = Template.bind({} as ButtonProps);
+export const OutlinedVariant = (args: ButtonProps) => <Button {...args} />;
 OutlinedVariant.args = {
-  ...Default.args,
+  ...baseArgs,
   variant: ButtonVariant.outlined,
 };
 
-export const WithIcons = Template.bind({});
+export const WithIcons = (args: ButtonProps) => <Button {...args} />;
 WithIcons.args = {
-  ...Default.args,
+  ...baseArgs,
   variant: ButtonVariant.contained,
   startIcon: <Star />,
   endIcon: <Mail />,
 };
 
-export const Disabled = Template.bind({});
+export const Disabled = (args: ButtonProps) => <Button {...args} />;
 Disabled.args = {
-  ...Default.args,
+  ...baseArgs,
   isDisabled: true,
 };
 
-export const FullWidth = Template.bind({});
+export const FullWidth = (args: ButtonProps) => <Button {...args} />;
 FullWidth.args = {
-  ...Default.args,
+  ...baseArgs,
   isFullWidth: true,
 };
 
-export const Centered = Template.bind({});
+export const Centered = (args: ButtonProps) => <Button {...args} />;
 Centered.args = {
-  ...Default.args,
+  ...baseArgs,
   isCentered: true,
 };
 
-export const Loading = Template.bind({});
+export const Loading = (args: ButtonProps) => <Button {...args} />;
 Loading.args = {
-  ...Default.args,
+  ...baseArgs,
   isLoading: true,
 };

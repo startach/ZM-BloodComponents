@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Centered 1`] = `
+exports[`Storyshots Button Basic 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-13 makeStyles-buttonStyle-14 MuiButton-containedPrimary"
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-1 makeStyles-buttonStyle-2 MuiButton-containedPrimary"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
@@ -27,9 +27,9 @@ exports[`Storyshots Button Centered 1`] = `
 </button>
 `;
 
-exports[`Storyshots Button Default 1`] = `
+exports[`Storyshots Button Centered 1`] = `
 <button
-  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-1 makeStyles-buttonStyle-2 MuiButton-containedPrimary"
+  className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-13 makeStyles-buttonStyle-14 MuiButton-containedPrimary"
   disabled={false}
   onBlur={[Function]}
   onClick={[Function]}
