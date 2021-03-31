@@ -33,11 +33,18 @@ $header_height: var(--height-header, 100px);
 }
 
 .buttons > * {
-  all: unset !important;
+  //all: unset !important;
+  background: var(--color-statusbar-bg) !important;
+  border-width: 0;
+  box-shadow: none !important;
   padding: var(--layout-distance-small) !important;
 }
 
+.buttons > button:hover,
+.buttons > button:active {
+  text-decoration: underline solid white;
+}
+
 .selected__tab {
-  background: rgba($color: #b8b6b6, $alpha: 0.2) !important;
-  border-bottom: 5px solid white !important;
+  text-decoration: underline solid white !important;;
 }
