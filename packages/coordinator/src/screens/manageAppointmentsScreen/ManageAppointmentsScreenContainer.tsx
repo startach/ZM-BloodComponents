@@ -12,7 +12,7 @@ import Button, { ButtonVariant } from "../../components/Button";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
 import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
-import styles from './ManageAppointmentsScreenContainer.module.scss'
+import styles from "./ManageAppointmentsScreenContainer.module.scss";
 
 export default function ManageAppointmentsScreenContainer() {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
