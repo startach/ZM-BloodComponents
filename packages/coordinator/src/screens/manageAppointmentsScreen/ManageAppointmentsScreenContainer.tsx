@@ -12,6 +12,7 @@ import Button, { ButtonVariant } from "../../components/Button";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
 import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
+import styles from './ManageAppointmentsScreenContainer.module.scss'
 
 export default function ManageAppointmentsScreenContainer() {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
@@ -72,26 +73,28 @@ export default function ManageAppointmentsScreenContainer() {
 
   return (
     <div>
-      <Select
-        id={"hospital"}
-        label={"בית חולים"}
-        options={HospitalUtils.getAllHospitalOptions("בחר")}
-        value={hospitalFilter}
-        onChange={setHospitalFilter}
-      />
+      <div className={styles.hospital_picker_container}>
+        <Select
+          id={"hospital"}
+          label={"בית חולים"}
+          options={HospitalUtils.getAllHospitalOptions("בחר")}
+          value={hospitalFilter}
+          onChange={setHospitalFilter}
+        />
 
-      <Button
-        title="תורים שעברו"
-        onClick={() => {
-          setShowPastAppointments(!showPastAppointments);
-        }}
-        endIcon={<Restore />}
-        variant={
-          showPastAppointments
-            ? ButtonVariant.contained
-            : ButtonVariant.outlined
-        }
-      />
+        <Button
+          title="תורים שעברו"
+          onClick={() => {
+            setShowPastAppointments(!showPastAppointments);
+          }}
+          endIcon={<Restore />}
+          variant={
+            showPastAppointments
+              ? ButtonVariant.contained
+              : ButtonVariant.outlined
+          }
+        />
+      </div>
 
       <ManageAppointmentsScreen
         donationDays={donationDays}
