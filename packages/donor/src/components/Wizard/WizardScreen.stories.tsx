@@ -1,7 +1,6 @@
 import WizardScreen, { WizardScreenProps } from "./WizardScreen";
 import { ButtonVariant } from "../basic/Button";
 import { action } from "@storybook/addon-actions";
-import WithGlobalTheme from "../../HOCs/withGlobalTheme";
 import { MuiTestWrapper } from "../../__test__/TestUtils";
 
 export default {
