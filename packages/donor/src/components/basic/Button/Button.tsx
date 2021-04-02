@@ -9,7 +9,7 @@ export enum ButtonVariant {
   contained = "contained",
 }
 
-type ButtonProps = {
+export type ButtonProps = {
   title: string;
   onClick: () => void;
   /** Text - clickable text, Outlined - Inside out, or Contained (Default) */
