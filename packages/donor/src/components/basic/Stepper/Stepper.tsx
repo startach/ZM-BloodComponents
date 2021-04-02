@@ -1,4 +1,4 @@
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
@@ -14,13 +14,12 @@ const useStyles = makeStyles({
 interface StepperProps {
   step: number;
   numberOfSteps: number;
-  handleNext: () => void;
-  handleBack: () => void;
+  handleNext?: () => void;
+  handleBack?: () => void;
 }
 
 export default function Stepper(props: StepperProps) {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <MobileStepper
@@ -29,17 +28,14 @@ export default function Stepper(props: StepperProps) {
       position="static"
       activeStep={props.step}
       className={classes.root}
+      dir={"rtl"}
       nextButton={
         <Button
           size="small"
           onClick={props.handleNext}
           disabled={props.step === props.numberOfSteps - 1}
         >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
+          <KeyboardArrowLeft />
         </Button>
       }
       backButton={
@@ -48,11 +44,7 @@ export default function Stepper(props: StepperProps) {
           onClick={props.handleBack}
           disabled={props.step === 0}
         >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
+          <KeyboardArrowRight />
         </Button>
       }
     />

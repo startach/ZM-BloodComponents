@@ -28,7 +28,8 @@
     "start-donor": "yarn workspace @zm-blood-components/donor start",
     "style": "yarn run prettier --write . ",
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test-donor": "yarn workspace @zm-blood-components/donor test"
   },
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",

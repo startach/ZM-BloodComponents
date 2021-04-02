@@ -1,0 +1,389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Wizard Screen First Step 1`] = `
+<div
+  dir="rtl"
+>
+  <div>
+    <img
+      alt="image"
+      src="https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+    />
+    <div>
+      איזה כיף שבאת!
+    </div>
+    <div>
+      אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
+    </div>
+    <div
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-1 MuiPaper-elevation0"
+      dir="rtl"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="MuiMobileStepper-dots"
+      >
+        <div
+          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-2 makeStyles-buttonStyle-3 MuiButton-outlinedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        אישור והמשך
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Wizard Screen Last Step 1`] = `
+<div
+  dir="rtl"
+>
+  <div>
+    <img
+      alt="image"
+      src="https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+    />
+    <div>
+      איזה כיף שבאת!
+    </div>
+    <div>
+      אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
+    </div>
+    <div
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-7 MuiPaper-elevation0"
+      dir="rtl"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="MuiMobileStepper-dots"
+      >
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+        disabled={true}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-8 makeStyles-buttonStyle-9 MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        אישור והמשך
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Wizard Screen Middle Step 1`] = `
+<div
+  dir="rtl"
+>
+  <div>
+    <img
+      alt="image"
+      src="https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+    />
+    <div>
+      איזה כיף שבאת!
+    </div>
+    <div>
+      אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
+    </div>
+    <div
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-4 MuiPaper-elevation0"
+      dir="rtl"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="MuiMobileStepper-dots"
+      >
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+        <div
+          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+        />
+        <div
+          className="MuiMobileStepper-dot"
+        />
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        אישור והמשך
+      </span>
+    </button>
+  </div>
+</div>
+`;
