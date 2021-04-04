@@ -35,7 +35,7 @@ export default function QuestionnaireScreen({
       options={YesNoOptions}
       value={hasAlreadyDonated}
       onChange={setHasAlreadyDonated}
-      label={"האם תרמת טרומבוציטים בעבר?"}
+      label={"האם תרמת דם / טרומבוציטים בעבר?"}
     />
   );
 

@@ -35,6 +35,17 @@ test("User that is not admin throws exception", async () => {
   );
 });
 
+test("Test users are not returned", async () => {
+  await createCoordinator();
+  await createDonor(true);
+
+  const response = await callFunction(COORDINATOR_ID);
+
+  const testDonor = response.donors.filter((donor) => donor.id === DONOR_ID);
+
+  expect(testDonor).toHaveLength(0);
+});
+
 test("All donors are returned", async () => {
   await createCoordinator();
   await createDonor();
@@ -57,10 +68,11 @@ async function createCoordinator() {
   await setAdmin(newAdmin);
 }
 
-async function createDonor() {
+async function createDonor(testUser?: boolean) {
   const donor: DbDonor = {
     id: DONOR_ID,
     ...sampleUser,
+    testUser,
   };
 
   await setDonor(donor);
