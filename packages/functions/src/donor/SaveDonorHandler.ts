@@ -17,6 +17,7 @@ export default async function (
     email: request.email,
     phone: request.phone,
     bloodType: request.bloodType,
+    testUser: false,
   };
 
   await setDonor(donor);

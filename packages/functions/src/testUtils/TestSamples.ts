@@ -8,6 +8,7 @@ export const sampleUser = {
   firstName: "firstName",
   lastName: "lastName",
   birthDate: "2020-11-13",
+  testUser: false,
 };
 
 export function saveTestDonor(donorId: string) {

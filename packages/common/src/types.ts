@@ -29,7 +29,7 @@ export type DbDonor = {
   phone: string;
   bloodType: BloodType;
 
-  testUser?: boolean;
+  testUser: boolean;
 };
 
 export type Donor = {
