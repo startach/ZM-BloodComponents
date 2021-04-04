@@ -72,7 +72,7 @@ async function createDonor(testUser?: boolean) {
   const donor: DbDonor = {
     id: DONOR_ID,
     ...sampleUser,
-    testUser,
+    testUser: !!testUser,
   };
 
   await setDonor(donor);
