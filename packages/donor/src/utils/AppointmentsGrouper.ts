@@ -5,7 +5,7 @@ import {
 } from "@zm-blood-components/common";
 import * as _ from "lodash";
 
-type DonationDay = {
+export type DonationDay = {
   day: string;
   donationSlots: DonationSlot[];
 };

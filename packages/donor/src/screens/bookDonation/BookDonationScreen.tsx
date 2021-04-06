@@ -7,6 +7,7 @@ import {
   DateUtils,
 } from "@zm-blood-components/common";
 import {
+  DonationDay,
   DonationSlot,
   groupDonationDays,
 } from "../../utils/AppointmentsGrouper";
@@ -34,14 +35,14 @@ export default function BookDonationScreen({
   firstName,
   onSlotSelected,
 }: BookDonationScreenProps) {
-  const [selectedHospitals, setSelectedHospitals] = useState<Hospital | "">("");
+  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">("");
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
-      (x) => x.hospital === selectedHospitals || !selectedHospitals
+      (x) => x.hospital === selectedHospital || !selectedHospital
     );
     return groupDonationDays(filteredResults);
-  }, [availableAppointments, selectedHospitals]);
+  }, [availableAppointments, selectedHospital]);
 
   return (
     <ZMScreen
@@ -61,25 +62,43 @@ export default function BookDonationScreen({
         <Select
           className={styles.dropdown}
           options={HospitalUtils.getAllHospitalOptions("הכל")}
-          value={selectedHospitals}
-          onChange={setSelectedHospitals}
+          value={selectedHospital}
+          onChange={setSelectedHospital}
           isDisabled={isFetching}
         />
 
-        {isFetching && <Spinner />}
-
-        {sortedDonationDays.map((donationDay) => (
-          <BookDonationEntriesGroup
-            key={donationDay.day}
-            title={`${DateUtils.ToWeekDayString(
-              donationDay.day,
-              DateUtils.DateDisplayFormat
-            )}, ${donationDay.day}`}
-            donationSlots={donationDay.donationSlots}
-            onSlotSelected={onSlotSelected}
-          />
-        ))}
+        {Donations(selectedHospital, isFetching, sortedDonationDays, onSlotSelected)}
       </main>
     </ZMScreen>
   );
+}
+
+function Donations(
+    selectedHospital: Hospital | "",
+  isFetching: boolean,
+  donationDays: DonationDay[],
+  onSlotSelected: (donationSlot: DonationSlot) => void
+) {
+  if (isFetching) {
+    return <Spinner />;
+  }
+
+  if (donationDays.length === 0) {
+    if(!selectedHospital){
+      return <div>לא קיימים תורים פנויים</div>;
+    }
+    return <div>לא קיימים תורים פנויים לבית חולים זה</div>;
+  }
+
+  return donationDays.map((donationDay) => (
+    <BookDonationEntriesGroup
+      key={donationDay.day}
+      title={`${DateUtils.ToWeekDayString(
+        donationDay.day,
+        DateUtils.DateDisplayFormat
+      )}, ${donationDay.day}`}
+      donationSlots={donationDay.donationSlots}
+      onSlotSelected={onSlotSelected}
+    />
+  ));
 }
