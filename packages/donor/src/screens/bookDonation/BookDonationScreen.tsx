@@ -90,9 +90,19 @@ function Donations(
 
   if (donationDays.length === 0) {
     if (!selectedHospital) {
-      return <div>לא קיימים תורים פנויים</div>;
+      return (
+        <div>
+          <div>לא קיימים תורים פנויים</div>
+          <div>נסו לבדוק שוב בהמשך :)</div>
+        </div>
+      );
     }
-    return <div>לא קיימים תורים פנויים לבית חולים זה</div>;
+    return (
+      <div>
+        <div>לא קיימים תורים פנויים לבית חולים זה</div>
+        <div>נסו לבדוק שוב בהמשך :)</div>
+      </div>
+    );
   }
 
   return donationDays.map((donationDay) => (
