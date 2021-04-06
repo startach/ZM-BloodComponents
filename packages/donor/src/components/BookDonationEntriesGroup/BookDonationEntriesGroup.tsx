@@ -24,6 +24,7 @@ function BookDonationEntriesGroup({
             hospital={slot.hospital}
             donationStartTimeMillis={slot.donationStartTimeMillis}
             onClick={() => onSlotSelected(slot)}
+            appointmentIds={slot.appointmentIds}
           />
         ))}
       </div>

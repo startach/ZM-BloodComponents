@@ -9,6 +9,7 @@ export interface BookDonationEntryProps {
   donationStartTimeMillis: number;
   onClick?: () => void;
   onRegisterClick?: () => void;
+  appointmentIds: string[];
 }
 
 function BookDonationEntry({
@@ -16,10 +17,17 @@ function BookDonationEntry({
   donationStartTimeMillis,
   onClick,
   onRegisterClick,
+  appointmentIds,
 }: BookDonationEntryProps) {
+  const debugAppointmentIds = appointmentIds.map((id) => "id." + id);
+
   return (
     <Card
-      className={classNames(styles.component, "anim_onClick--scaleDown")}
+      className={classNames(
+        styles.component,
+        "anim_onClick--scaleDown",
+        debugAppointmentIds
+      )}
       onClick={onClick}
     >
       <Text>
