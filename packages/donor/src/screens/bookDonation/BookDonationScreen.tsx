@@ -67,14 +67,19 @@ export default function BookDonationScreen({
           isDisabled={isFetching}
         />
 
-        {Donations(selectedHospital, isFetching, sortedDonationDays, onSlotSelected)}
+        {Donations(
+          selectedHospital,
+          isFetching,
+          sortedDonationDays,
+          onSlotSelected
+        )}
       </main>
     </ZMScreen>
   );
 }
 
 function Donations(
-    selectedHospital: Hospital | "",
+  selectedHospital: Hospital | "",
   isFetching: boolean,
   donationDays: DonationDay[],
   onSlotSelected: (donationSlot: DonationSlot) => void
@@ -84,7 +89,7 @@ function Donations(
   }
 
   if (donationDays.length === 0) {
-    if(!selectedHospital){
+    if (!selectedHospital) {
       return <div>לא קיימים תורים פנויים</div>;
     }
     return <div>לא קיימים תורים פנויים לבית חולים זה</div>;
