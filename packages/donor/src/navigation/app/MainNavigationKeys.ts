@@ -3,4 +3,5 @@ export enum MainNavigationKeys {
   UpcomingDonation = "donation",
   MyProfile = "profile",
   Questionnaire = "questions",
+  About = "about",
 }

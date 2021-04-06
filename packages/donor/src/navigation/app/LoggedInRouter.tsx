@@ -10,6 +10,7 @@ import ExtendedSignupScreenContainer from "../../screens/extendedSignup/Extended
 import UpcomingDonationScreenContainer from "../../screens/UpcommingDonation/UpcomingDonationScreenContainer";
 import MyProfileScreenContainer from "../../screens/myProfile/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
+import AboutScreen from "../../screens/about/AboutScreen";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
@@ -39,6 +40,10 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             user={user}
             updateUserInAppState={setUser}
           />
+        </Route>
+
+        <Route path={"/" + MainNavigationKeys.About}>
+          <AboutScreen />
         </Route>
 
         <Route
