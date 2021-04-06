@@ -9,5 +9,7 @@ export default async function (
   await validateIsCoordinator(callerId);
 
   const donors = await getAllDonors();
-  return { donors };
+
+  const res = donors.filter((donor) => !donor.testUser);
+  return { donors: res };
 }

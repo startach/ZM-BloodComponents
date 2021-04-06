@@ -28,6 +28,8 @@ export type DbDonor = {
   birthDate: string; // YYYY-MM-DD
   phone: string;
   bloodType: BloodType;
+
+  testUser: boolean;
 };
 
 export type Donor = {

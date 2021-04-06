@@ -93,6 +93,7 @@ test.skip("Write sample data", async () => {
     firstName: "ירון",
     lastName: "מלין",
     birthDate: "2020-11-13",
+    testUser: false,
   };
 
   promises.push(setDonor(donor));
