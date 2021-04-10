@@ -6,11 +6,11 @@ body,
   padding: 0;
   margin: 0;
   direction: rtl;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  overflow: hidden;
-
   background-color: var(--color-bg);
   color: var(--color-text);
 
