@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SafeScreen from "../../components/basic/SafeScreen";
 import Input, { InputVariant } from "../../components/basic/Input";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
@@ -18,7 +19,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   };
 
   return (
-    <div className={styles.screenSection}>
+    <SafeScreen className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>איפוס סיסמה</div>
       <Input
@@ -46,6 +47,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         onClick={props.goToSignIn}
         isCentered
       />
-    </div>
+    </SafeScreen>
   );
 }
