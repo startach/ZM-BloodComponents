@@ -64,7 +64,7 @@ export default function MyProfileScreen({
   };
 
   return (
-    <ZMScreen hasBackButton className={styles.container} title="פרופיל">
+    <ZMScreen hasBackButton title="פרופיל">
       <HeaderSection className={styles.component}>
         <Text>{`${user.firstName} ${user.lastName}`}</Text>
       </HeaderSection>

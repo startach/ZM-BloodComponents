@@ -28,12 +28,14 @@ interface AppHeaderProps {
   title: string;
   hasBackButton?: boolean;
   hasProfileButton?: boolean;
+  className?: string;
 }
 
 export default function ButtonAppBar({
   hasBackButton,
   hasProfileButton,
   title,
+  className,
 }: AppHeaderProps) {
   const classes = useStyles();
   const history = useHistory();
@@ -42,7 +44,7 @@ export default function ButtonAppBar({
     console.error("Unknown pathname");
   }
   return (
-    <AppBar position="fixed" color="secondary">
+    <AppBar position="static" color="secondary" className={className}>
       <Toolbar>
         <Grid container>
           <Grid item xs>
