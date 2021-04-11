@@ -24,8 +24,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn run test -- --watchAll=false && react-scripts build",
+    "start-ios": "cap run ios",
+    "start-android": "cap run android",
+    "build": "run-s test-nowatch build-web build-mobile",
+    "build-web": "react-scripts build",
+    "build-mobile": "cap copy",
     "test": "react-scripts test",
+    "test-nowatch": "yarn run test --watchAll=false",
+    "update-mobile-deps": "cap update",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009"
