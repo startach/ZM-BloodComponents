@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import RadioGroup from "../../components/basic/RadioGroup";
 import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
@@ -191,6 +191,21 @@ export default function QuestionnaireScreen({
     />
   );
 
+  // For debugging purposes,
+  // upon 5 clicks on the confirmation checkbox within 5 seconds,
+  // the questionnaire can be skipped
+  const [debugClickPool, setDebugClickPool] = useState<number[]>([]);
+
+  useEffect(() => {
+    const nextDebugClick = Date.now();
+    console.log(nextDebugClick);
+    const prevDebugPool = debugClickPool.filter(
+      (prevClickMillis) => nextDebugClick - prevClickMillis < 5_000
+    );
+    setDebugClickPool([...prevDebugPool, nextDebugClick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isConfirmed]);
+
   const isCorrectAnswers =
     hasAlreadyDonated === "yes" &&
     isWeightOver55 === "yes" &&
@@ -313,10 +328,12 @@ export default function QuestionnaireScreen({
         <div className={styles.question}>{IsLastDonationMoreThanAMonthAgo}</div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
-
+        {debugClickPool.length > 4 && (
+          <div className={styles.debugBypassWarning}>נא למלא את שאר השאלון</div>
+        )}
         <Button
           className={styles.continueButton}
-          isDisabled={!debugMode && !isVerified}
+          isDisabled={!debugMode && !isVerified && debugClickPool.length < 5}
           onClick={onSuccess}
           title={"המשך"}
           isLoading={isLoading}
