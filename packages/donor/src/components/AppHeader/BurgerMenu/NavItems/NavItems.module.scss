@@ -1,0 +1,27 @@
+.NavItems {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: auto;
+}
+
+.NavItem {
+  margin: 8px 0;
+  box-sizing: border-box;
+  padding: 0;
+  display: block;
+  width: 100%;
+
+  border-bottom: 4px solid white;
+
+  color: var(--color-secondary);
+  text-decoration: none;
+  display: block;
+}
+
+.NavItem:hover,
+.NavItem:active {
+  border-bottom: 4px solid var(--color-secondary);
+  cursor: pointer;
+}

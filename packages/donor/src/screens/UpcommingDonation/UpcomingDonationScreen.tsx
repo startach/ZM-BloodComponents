@@ -73,9 +73,9 @@ export default function UpcomingDonationScreen({
 
   return (
     <ZMScreen
-      hasProfileButton
       className={styles.component}
       title="תורים מתוכננים"
+      hasBurgerMenu={true}
     >
       {renderHeader()}
       <main className={styles.content}>

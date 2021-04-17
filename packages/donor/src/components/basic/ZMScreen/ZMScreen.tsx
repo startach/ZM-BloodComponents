@@ -6,7 +6,7 @@ interface ExtendedSignupScreenProps {
   children: React.ReactNode;
   className?: string;
   hasBackButton?: boolean;
-  hasProfileButton?: boolean;
+  hasBurgerMenu?: boolean;
   title: string;
 }
 
@@ -14,12 +14,12 @@ export default function ZMScreen({
   children,
   className = "",
   hasBackButton,
-  hasProfileButton,
+  hasBurgerMenu,
   title,
 }: ExtendedSignupScreenProps) {
   return (
     <>
-      <AppHeader {...{ hasBackButton, hasProfileButton, title }} />
+      <AppHeader {...{ hasBurgerMenu, hasBackButton, title }} />
       <div className={classnames(className, Styles["after-header"])}>
         {children}
       </div>
