@@ -27,5 +27,11 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "resolveJsonModule": true
+    }
+  }
 }
