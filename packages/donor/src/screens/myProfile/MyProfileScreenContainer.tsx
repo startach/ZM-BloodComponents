@@ -1,7 +1,6 @@
 import { BloodType, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
-import firebase from "firebase/app";
 import "firebase/auth";
 
 interface MyProfileScreenContainerProps {
@@ -29,9 +28,5 @@ export default function MyProfileScreenContainer(
     props.updateUserInAppState(updatedUser);
   };
 
-  const onSignOut = () => firebase.auth().signOut();
-
-  return (
-    <MyProfileScreen onSave={onSave} user={props.user} onSignOut={onSignOut} />
-  );
+  return <MyProfileScreen onSave={onSave} user={props.user} />;
 }

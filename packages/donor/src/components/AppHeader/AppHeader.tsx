@@ -9,7 +9,6 @@ import {
 import { ArrowForward } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import profileIcon from "../../assets/icons/profile.svg";
 import { BurgerMenu } from "./BurgerMenu";
 import { useState } from "react";
 import { SideDrawer } from "./BurgerMenu/SideDrawer";
@@ -32,13 +31,11 @@ const useStyles = makeStyles((theme: Theme) =>
 interface AppHeaderProps {
   title: string;
   hasBackButton?: boolean;
-  hasProfileButton?: boolean;
   hasBurgerMenu?: boolean;
 }
 
 export default function ButtonAppBar({
   hasBackButton,
-  hasProfileButton,
   title,
   hasBurgerMenu,
 }: AppHeaderProps) {
@@ -78,19 +75,6 @@ export default function ButtonAppBar({
               {title}
             </Typography>
           </Grid>
-          <Grid item xs>
-            {hasProfileButton && (
-              <IconButton
-                edge="end"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="menu"
-                onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
-              >
-                <img style={{ width: 25 }} src={profileIcon} alt={"Profile"} />
-              </IconButton>
-            )}
-          </Grid>
         </Grid>
       </Toolbar>
       <div>
@@ -100,12 +84,16 @@ export default function ButtonAppBar({
           navProps={{
             navItemsProps: [
               {
-                title: "החשבון שלי",
+                title: "הפרופיל שלי",
                 onClick: () => history.push("/" + MainNavigationKeys.MyProfile),
               },
               {
                 title: "התנתק",
                 onClick: () => firebase.auth().signOut(),
+              },
+              {
+                title: "אודות",
+                onClick: () => history.push("/" + MainNavigationKeys.About),
               },
             ],
           }}
