@@ -5,7 +5,7 @@ exports[`Storyshots Buttonv2 Centered 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-29 makeStyles-buttonStyle-30"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -30,7 +30,7 @@ exports[`Storyshots Buttonv2 Centered 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -43,7 +43,7 @@ exports[`Storyshots Buttonv2 Default State 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-25 makeStyles-buttonStyle-26"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -68,7 +68,7 @@ exports[`Storyshots Buttonv2 Default State 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -81,7 +81,7 @@ exports[`Storyshots Buttonv2 Disabled 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-23 makeStyles-buttonStyle-24 Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-disabled-15 MuiButtonBase-disabled-32"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -106,7 +106,7 @@ exports[`Storyshots Buttonv2 Disabled 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -119,7 +119,7 @@ exports[`Storyshots Buttonv2 Loading 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-31 makeStyles-buttonStyle-32 Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-disabled-15 MuiButtonBase-disabled-32"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -144,10 +144,10 @@ exports[`Storyshots Buttonv2 Loading 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       <div
-        className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        className="MuiCircularProgress-root-34 MuiCircularProgress-colorPrimary-38 MuiCircularProgress-indeterminate-36"
         role="progressbar"
         style={
           Object {
@@ -157,11 +157,11 @@ exports[`Storyshots Buttonv2 Loading 1`] = `
         }
       >
         <svg
-          className="MuiCircularProgress-svg"
+          className="MuiCircularProgress-svg-40"
           viewBox="22 22 44 44"
         >
           <circle
-            className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+            className="MuiCircularProgress-circle-41 MuiCircularProgress-circleIndeterminate-43"
             cx={44}
             cy={44}
             fill="none"
@@ -181,7 +181,7 @@ exports[`Storyshots Buttonv2 Main 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-17 makeStyles-buttonStyle-18"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -206,7 +206,7 @@ exports[`Storyshots Buttonv2 Main 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -219,7 +219,7 @@ exports[`Storyshots Buttonv2 Secondary Gray 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-21 makeStyles-buttonStyle-22"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -244,7 +244,7 @@ exports[`Storyshots Buttonv2 Secondary Gray 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -257,7 +257,7 @@ exports[`Storyshots Buttonv2 Secondary Line Pink 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-19 makeStyles-buttonStyle-20"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -282,7 +282,7 @@ exports[`Storyshots Buttonv2 Secondary Line Pink 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
@@ -295,7 +295,7 @@ exports[`Storyshots Buttonv2 State 6 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-27 makeStyles-buttonStyle-28"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -320,7 +320,7 @@ exports[`Storyshots Buttonv2 State 6 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       אישור והמשך
     </span>
