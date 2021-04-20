@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Basic 1`] = `
+exports[`Storyshots Buttonv2 Centered 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-1 makeStyles-buttonStyle-2 MuiButton-containedPrimary"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-29 makeStyles-buttonStyle-30"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -19,24 +19,31 @@ exports[`Storyshots Button Basic 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#4CAF51",
+        "border": "none",
+        "color": "#fff",
+      }
+    }
     tabIndex={0}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      כפתור
+      אישור והמשך
     </span>
   </button>
 </div>
 `;
 
-exports[`Storyshots Button Centered 1`] = `
+exports[`Storyshots Buttonv2 Default State 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-13 makeStyles-buttonStyle-14 MuiButton-containedPrimary"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-25 makeStyles-buttonStyle-26"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -50,24 +57,31 @@ exports[`Storyshots Button Centered 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "border": "1px solid #4CAF51",
+        "color": "#4CAF50",
+      }
+    }
     tabIndex={0}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      כפתור
+      אישור והמשך
     </span>
   </button>
 </div>
 `;
 
-exports[`Storyshots Button Disabled 1`] = `
+exports[`Storyshots Buttonv2 Disabled 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-9 makeStyles-buttonStyle-10 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-23 makeStyles-buttonStyle-24 Mui-disabled Mui-disabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -81,55 +95,31 @@ exports[`Storyshots Button Disabled 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#E7ECEF80",
+        "border": "none",
+        "color": "#cbcdcf",
+      }
+    }
     tabIndex={-1}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      כפתור
+      אישור והמשך
     </span>
   </button>
 </div>
 `;
 
-exports[`Storyshots Button Full Width 1`] = `
+exports[`Storyshots Buttonv2 Loading 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-11 makeStyles-buttonStyle-12 MuiButton-containedPrimary MuiButton-fullWidth"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onDragLeave={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseLeave={[Function]}
-    onMouseUp={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    tabIndex={0}
-    type="button"
-  >
-    <span
-      className="MuiButton-label"
-    >
-      כפתור
-    </span>
-  </button>
-</div>
-`;
-
-exports[`Storyshots Button Loading 1`] = `
-<div
-  dir="rtl"
->
-  <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-15 makeStyles-buttonStyle-16 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-31 makeStyles-buttonStyle-32 Mui-disabled Mui-disabled"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -143,6 +133,13 @@ exports[`Storyshots Button Loading 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#4CAF51",
+        "border": "none",
+        "color": "#fff",
+      }
+    }
     tabIndex={-1}
     type="button"
   >
@@ -179,12 +176,12 @@ exports[`Storyshots Button Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Outlined Variant 1`] = `
+exports[`Storyshots Buttonv2 Main 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-17 makeStyles-buttonStyle-18"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -198,24 +195,31 @@ exports[`Storyshots Button Outlined Variant 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#4CAF51",
+        "border": "none",
+        "color": "#fff",
+      }
+    }
     tabIndex={0}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      כפתור
+      אישור והמשך
     </span>
   </button>
 </div>
 `;
 
-exports[`Storyshots Button Text Variant 1`] = `
+exports[`Storyshots Buttonv2 Secondary Gray 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-3 makeStyles-buttonStyle-4 MuiButton-textPrimary"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-21 makeStyles-buttonStyle-22"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -229,24 +233,31 @@ exports[`Storyshots Button Text Variant 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "border": "1px #9CB2BD80 solid",
+        "color": "#707070",
+      }
+    }
     tabIndex={0}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      כפתור
+      אישור והמשך
     </span>
   </button>
 </div>
 `;
 
-exports[`Storyshots Button With Icons 1`] = `
+exports[`Storyshots Buttonv2 Secondary Line Pink 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-7 makeStyles-buttonStyle-8 MuiButton-containedPrimary"
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-19 makeStyles-buttonStyle-20"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -260,41 +271,58 @@ exports[`Storyshots Button With Icons 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "border": "1px #CB007B solid",
+        "color": "#CB007B",
+      }
+    }
     tabIndex={0}
     type="button"
   >
     <span
       className="MuiButton-label"
     >
-      <span
-        className="MuiButton-startIcon MuiButton-iconSizeMedium"
-      >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-          />
-        </svg>
-      </span>
-      כפתור
-      <span
-        className="MuiButton-endIcon MuiButton-iconSizeMedium"
-      >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-          />
-        </svg>
-      </span>
+      אישור והמשך
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots Buttonv2 State 6 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-27 makeStyles-buttonStyle-28"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#CB007B",
+        "border": "none",
+        "color": "#fff",
+      }
+    }
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label"
+    >
+      אישור והמשך
     </span>
   </button>
 </div>

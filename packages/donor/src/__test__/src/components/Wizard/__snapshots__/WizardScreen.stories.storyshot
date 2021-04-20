@@ -16,7 +16,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-1 MuiPaper-elevation0"
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-33 MuiPaper-elevation0"
       dir="rtl"
     >
       <button
@@ -102,7 +102,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-2 makeStyles-buttonStyle-3 MuiButton-outlinedPrimary"
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-34 makeStyles-buttonStyle-35 MuiButton-outlinedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -145,7 +145,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-7 MuiPaper-elevation0"
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-39 MuiPaper-elevation0"
       dir="rtl"
     >
       <button
@@ -231,7 +231,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-8 makeStyles-buttonStyle-9 MuiButton-containedPrimary"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-40 makeStyles-buttonStyle-41 MuiButton-containedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -274,7 +274,7 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-4 MuiPaper-elevation0"
+      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-36 MuiPaper-elevation0"
       dir="rtl"
     >
       <button
@@ -361,7 +361,7 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-37 makeStyles-buttonStyle-38 MuiButton-outlinedPrimary"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
