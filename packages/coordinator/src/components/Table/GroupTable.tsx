@@ -71,6 +71,8 @@ export default function GroupsTable<T>({
     CardTableRowGroup<T>[]
   >(groups);
 
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
   useEffect(() => {
     const sortGroup = (group: CardTableRowGroup<T>) => {
       let sortingFunction: SortFunction<T>;
@@ -99,6 +101,10 @@ export default function GroupsTable<T>({
     setInternallySortedGroups(sortedGroups);
   }, [sortByColumnIndex, isReversedSort, groups, columns]);
 
+  useEffect(() => {
+    setExpandedItems([]);
+  }, [groups.length]);
+
   const handleChangeSort = (nextIndex: number) => {
     if (!columns[nextIndex].sortBy) {
       return;
@@ -114,6 +120,20 @@ export default function GroupsTable<T>({
     setIsReversedSort(nextIsReversedSort);
   };
 
+  const handleExpandAccordion = (groupIndex: number, rowIndex: number) => {
+    let nextExpandedItems = [...expandedItems];
+
+    const nextRow = "" + groupIndex + rowIndex;
+
+    if (nextExpandedItems.includes(nextRow)) {
+      nextExpandedItems = nextExpandedItems.filter(
+        (expandedIndex) => expandedIndex !== nextRow
+      );
+    } else {
+      nextExpandedItems.push(nextRow);
+    }
+    setExpandedItems([...nextExpandedItems]);
+  };
   return (
     <div className={className || Styles["full-width"]}>
       <div className={Styles["component"]}>
@@ -145,11 +165,13 @@ export default function GroupsTable<T>({
           {internallySortedGroups.map((group, i) => (
             <div key={i} className={Styles["group"]}>
               <div>{group.groupLabel}</div>
-              {group.rowsInGroup.map((row, i) => (
+              {group.rowsInGroup.map((row, j) => (
                 <CardTableItem
                   row={row}
                   columns={columns}
+                  handleExpandAccordion={() => handleExpandAccordion(i, j)}
                   key={`${i}${sortByColumnIndex}${isReversedSort}`}
+                  isExpanded={expandedItems.includes("" + i + j)}
                 />
               ))}
             </div>
