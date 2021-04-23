@@ -11,6 +11,7 @@ import {
   ManagedAppointment,
 } from "./CoordinatorAppointmentsGrouper";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
+import Chip, { StandardChip } from "../../components/Chip";
 
 export const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void
@@ -102,7 +103,28 @@ export const MainColumns: CardTableColumn<AppointmentSlot>[] = [
   },
   {
     label: "רשומים",
-    cellRenderer: ({ appointments }) =>
-      appointments.filter((a) => a.booked).length,
+    cellRenderer: ({ appointments }) => {
+      const bookedAppointments = appointments.filter((a) => a.booked);
+      // alert if booked in the past 24 hours
+      const isNewlyBooked = bookedAppointments.find(
+        (a) => Date.now() - (a.bookingTimeMillis || 0) < 1000 * 60 * 60 * 24
+      );
+
+      return (
+        <div style={{ position: "relative" }}>
+          <div>{bookedAppointments.length}</div>
+          {isNewlyBooked && (
+            <div style={{ position: "absolute", left: "-60px", top: 0 }}>
+              <Chip
+                chipType={StandardChip.New}
+                label="חדש"
+                width="39px"
+                height="22px"
+              />
+            </div>
+          )}
+        </div>
+      );
+    },
   },
 ];
