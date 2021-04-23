@@ -9,7 +9,11 @@ import {
 import { ArrowForward } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import profileIcon from "../../assets/icons/profile.svg";
+import { BurgerMenu } from "./BurgerMenu";
+import { useState } from "react";
+import { SideDrawer } from "./BurgerMenu/SideDrawer";
+import { Backdrop } from "../Backdrop";
+import firebase from "firebase";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,16 +31,17 @@ const useStyles = makeStyles((theme: Theme) =>
 interface AppHeaderProps {
   title: string;
   hasBackButton?: boolean;
-  hasProfileButton?: boolean;
+  hasBurgerMenu?: boolean;
 }
 
 export default function ButtonAppBar({
   hasBackButton,
-  hasProfileButton,
   title,
+  hasBurgerMenu,
 }: AppHeaderProps) {
   const classes = useStyles();
   const history = useHistory();
+  const [showSideBar, setShowSideBar] = useState(false);
 
   if (!title) {
     console.error("Unknown pathname");
@@ -45,6 +50,13 @@ export default function ButtonAppBar({
     <AppBar position="fixed" color="secondary">
       <Toolbar>
         <Grid container>
+          <Grid item xs>
+            {hasBurgerMenu && (
+              <BurgerMenu
+                onClick={() => setShowSideBar((previous) => !previous)}
+              />
+            )}
+          </Grid>
           <Grid item xs>
             {hasBackButton && (
               <IconButton
@@ -63,21 +75,31 @@ export default function ButtonAppBar({
               {title}
             </Typography>
           </Grid>
-          <Grid item xs>
-            {hasProfileButton && (
-              <IconButton
-                edge="end"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="menu"
-                onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
-              >
-                <img style={{ width: 25 }} src={profileIcon} alt={"Profile"} />
-              </IconButton>
-            )}
-          </Grid>
         </Grid>
       </Toolbar>
+      <div>
+        <SideDrawer
+          isOpen={showSideBar}
+          close={() => setShowSideBar(false)}
+          navProps={{
+            navItemsProps: [
+              {
+                title: "הפרופיל שלי",
+                onClick: () => history.push("/" + MainNavigationKeys.MyProfile),
+              },
+              {
+                title: "התנתק",
+                onClick: () => firebase.auth().signOut(),
+              },
+              {
+                title: "אודות",
+                onClick: () => history.push("/" + MainNavigationKeys.About),
+              },
+            ],
+          }}
+        />
+        {showSideBar && <Backdrop close={() => setShowSideBar(false)} />}
+      </div>
     </AppBar>
   );
 }

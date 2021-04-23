@@ -12,6 +12,9 @@
         ],
         "coordinator": [
           "zm-admin-qa"
+        ],
+        "donor-storybook": [
+          "donor-storybook"
         ]
       }
     },

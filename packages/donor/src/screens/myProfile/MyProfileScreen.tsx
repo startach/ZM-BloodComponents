@@ -30,7 +30,6 @@ interface MyProfileScreenProps {
     phoneNumber: string,
     bloodType: BloodType
   ) => void;
-  onSignOut: () => void;
 }
 
 const SHOW_DONATION_COUNT = false;
@@ -39,7 +38,6 @@ const appVersion = process.env.REACT_APP_VERSION || "dev";
 export default function MyProfileScreen({
   user,
   onSave,
-  onSignOut,
 }: MyProfileScreenProps) {
   const renderDonationCount = () => {
     if (!SHOW_DONATION_COUNT) {
@@ -101,9 +99,6 @@ export default function MyProfileScreen({
         onChange={onFieldChange("phone")}
       />
       <div className={styles.footer}>
-        <Text className={styles.signOutButton} onClick={onSignOut}>
-          התנתק
-        </Text>
         <Text className={styles.appVersion}>{appVersion}</Text>
       </div>
     </ZMScreen>

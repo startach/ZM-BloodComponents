@@ -1,0 +1,17 @@
+.BurgerMenu {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.BurgerMenuLine {
+  width: 90%;
+  height: 3px;
+  background-color: white;
+}
