@@ -1,11 +1,11 @@
 import WizardScreen, { WizardScreenProps } from "./WizardScreen";
 import { ButtonVariant } from "../basic/Button";
 import { action } from "@storybook/addon-actions";
-import { MuiTestWrapper } from "../../__test__/TestUtils";
+import { Story } from "@storybook/react";
 
 export default {
   component: WizardScreen,
-  title: "Wizard Screen",
+  title: "Components V2/Wizard Screen",
 };
 
 const baseArgs: WizardScreenProps = {
@@ -23,29 +23,22 @@ const baseArgs: WizardScreenProps = {
   onPrev: action("onPrev"),
   onClick: action("onClick"),
 };
-export const FirstStep = (args: WizardScreenProps) => (
-  <MuiTestWrapper>
-    <WizardScreen {...args} />
-  </MuiTestWrapper>
+
+const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
+  <WizardScreen {...args} />
 );
+
+export const FirstStep = Template.bind({});
 FirstStep.args = {
   ...baseArgs,
   currentStep: 0,
   onPrev: undefined,
 };
 
-export const MiddleStep = (args: WizardScreenProps) => (
-  <MuiTestWrapper>
-    <WizardScreen {...args} />
-  </MuiTestWrapper>
-);
+export const MiddleStep = Template.bind({});
 MiddleStep.args = baseArgs;
 
-export const LastStep = (args: WizardScreenProps) => (
-  <MuiTestWrapper>
-    <WizardScreen {...args} />
-  </MuiTestWrapper>
-);
+export const LastStep = Template.bind({});
 LastStep.args = {
   ...baseArgs,
   currentStep: 3,
