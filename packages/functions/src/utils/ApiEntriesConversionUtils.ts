@@ -72,11 +72,11 @@ const getRecentChangeType = ({
 }: DbAppointment) => {
   let recentChangeType: BookingChange | undefined;
 
-  if (
-    lastChangeTime &&
-    Date.now() - lastChangeTime.toMillis() < 1000 * 60 * 60 * 24
-  ) {
+  const dayInMillis = 1000 * 60 * 60 * 24;
+
+  if (lastChangeTime && Date.now() - lastChangeTime.toMillis() < dayInMillis) {
     recentChangeType = lastChangeType;
   }
+
   return recentChangeType;
 };
