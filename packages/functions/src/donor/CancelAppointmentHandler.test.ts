@@ -14,6 +14,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
+import firebase from "firebase";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CancelAppointmentFunctionName]
@@ -105,7 +106,7 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
-    lastChangeTime: admin.firestore.Timestamp.now(),
+    lastChangeTime: firebase.firestore.Timestamp.now(),
     lastChangeType: BookingChange.BOOKED,
   };
 
