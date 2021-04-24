@@ -90,8 +90,8 @@ test("Valid request inserts new appointments", async () => {
     expect(appointment.donationStartTime).toEqual(
       admin.firestore.Timestamp.fromDate(expectedStartTime)
     );
-    expect(appointment.lastChangeTime).toBeUndefined()
-    expect(appointment.lastChangeType).toBeUndefined()
+    expect(appointment.lastChangeTime).toBeUndefined();
+    expect(appointment.lastChangeType).toBeUndefined();
   });
 });
 

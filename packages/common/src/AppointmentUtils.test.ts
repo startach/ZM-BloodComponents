@@ -26,7 +26,7 @@ test("removeDonorFromAppointment", () => {
   expect(res.donorId).toEqual("");
   expect(res.bookingTimeMillis).toBeUndefined();
 
-  expect(res.recentChangeType).toEqual(BookingChange.CANCELLED)
+  expect(res.recentChangeType).toEqual(BookingChange.CANCELLED);
 });
 
 test("removeDonorFromDbAppointment", () => {
@@ -54,5 +54,5 @@ test("removeDonorFromDbAppointment", () => {
   expect(res.confirmationTime).toBeUndefined();
 
   expect(res.lastChangeType).toEqual(BookingChange.CANCELLED);
-  expect(Date.now() - res.lastChangeTime.toMillis()).toBeLessThan(3_000);
+  expect(Date.now() - res.lastChangeTime?.toMillis() || 0).toBeLessThan(3_000);
 });
