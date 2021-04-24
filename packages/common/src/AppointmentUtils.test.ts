@@ -3,7 +3,7 @@ import {
   removeDonorFromDbAppointment,
 } from "./AppointmentUtils";
 import { AppointmentApiEntry } from "./functions-api";
-import { DbAppointment, Hospital } from "./types";
+import { BookingChange, DbAppointment, Hospital } from "./types";
 import firebase from "firebase";
 
 test("removeDonorFromAppointment", () => {
@@ -25,6 +25,8 @@ test("removeDonorFromAppointment", () => {
 
   expect(res.donorId).toEqual("");
   expect(res.bookingTimeMillis).toBeUndefined();
+
+  expect(res.recentChangeType).toEqual(BookingChange.CANCELLED)
 });
 
 test("removeDonorFromDbAppointment", () => {
@@ -50,4 +52,7 @@ test("removeDonorFromDbAppointment", () => {
   expect(res.donorId).toEqual("");
   expect(res.bookingTime).toBeUndefined();
   expect(res.confirmationTime).toBeUndefined();
+
+  expect(res.lastChangeType).toEqual(BookingChange.CANCELLED);
+  expect(Date.now() - res.lastChangeTime.toMillis()).toBeLessThan(3_000);
 });
