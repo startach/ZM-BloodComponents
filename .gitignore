@@ -74,3 +74,5 @@ node_modules/
 keys
 **/test-service-account-key.json
 .DS_Store
+
+**/storybook-build

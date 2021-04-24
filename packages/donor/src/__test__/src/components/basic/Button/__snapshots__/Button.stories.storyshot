@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Basic 1`] = `
+exports[`Storyshots Components V1/Button Basic 1`] = `
 <div
   dir="rtl"
 >
@@ -31,7 +31,7 @@ exports[`Storyshots Button Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Centered 1`] = `
+exports[`Storyshots Components V1/Button Centered 1`] = `
 <div
   dir="rtl"
 >
@@ -62,7 +62,7 @@ exports[`Storyshots Button Centered 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Disabled 1`] = `
+exports[`Storyshots Components V1/Button Disabled 1`] = `
 <div
   dir="rtl"
 >
@@ -93,7 +93,7 @@ exports[`Storyshots Button Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Full Width 1`] = `
+exports[`Storyshots Components V1/Button Full Width 1`] = `
 <div
   dir="rtl"
 >
@@ -124,7 +124,7 @@ exports[`Storyshots Button Full Width 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Loading 1`] = `
+exports[`Storyshots Components V1/Button Loading 1`] = `
 <div
   dir="rtl"
 >
@@ -179,7 +179,7 @@ exports[`Storyshots Button Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Outlined Variant 1`] = `
+exports[`Storyshots Components V1/Button Outlined Variant 1`] = `
 <div
   dir="rtl"
 >
@@ -210,7 +210,35 @@ exports[`Storyshots Button Outlined Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Text Variant 1`] = `
+exports[`Storyshots Components V1/Button Template 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11"
+    disabled={false}
+    onBlur={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-3"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots Components V1/Button Text Variant 1`] = `
 <div
   dir="rtl"
 >
@@ -241,7 +269,7 @@ exports[`Storyshots Button Text Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button With Icons 1`] = `
+exports[`Storyshots Components V1/Button With Icons 1`] = `
 <div
   dir="rtl"
 >
