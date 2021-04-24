@@ -25,7 +25,7 @@ export function removeDonorFromDbAppointment(
   return {
     ...otherProperties,
     donorId: "",
-    lastChangeTime: firebase.firestore.Timestamp.fromDate(new Date()),
+    lastChangeTime: firebase.firestore.Timestamp.now(),
     lastChangeType: BookingChange.CANCELLED,
   };
 }

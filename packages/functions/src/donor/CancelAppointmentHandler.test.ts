@@ -1,5 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  BookingChange,
   DbAppointment,
   FunctionsApi,
   Hospital,
@@ -104,6 +105,8 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
+    lastChangeTime: admin.firestore.Timestamp.now(),
+    lastChangeType: BookingChange.BOOKED,
   };
 
   await setAppointment(appointment);
