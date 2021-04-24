@@ -139,7 +139,7 @@ test("Valid request books appointment", async () => {
 
   expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
   expect(
-    Date.now() - appointment[0]?.lastChangeTime?.toMillis() || 0
+    Date.now() - (appointment[0]?.lastChangeTime?.toMillis() || 0)
   ).toBeLessThan(3_000);
 
   expect(data.bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
