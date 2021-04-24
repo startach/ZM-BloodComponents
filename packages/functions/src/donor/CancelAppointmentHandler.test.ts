@@ -1,6 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  BookingChange,
   DbAppointment,
   FunctionsApi,
   Hospital,
@@ -14,7 +13,6 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
-import firebase from "firebase";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CancelAppointmentFunctionName]
@@ -106,8 +104,6 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
-    lastChangeTime: firebase.firestore.Timestamp.now(),
-    lastChangeType: BookingChange.BOOKED,
   };
 
   await setAppointment(appointment);
