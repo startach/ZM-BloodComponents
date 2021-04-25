@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Wizard Screen First Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen First Step 1`] = `
 <div
   dir="rtl"
 >
@@ -129,7 +129,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
 </div>
 `;
 
-exports[`Storyshots Wizard Screen Last Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen Last Step 1`] = `
 <div
   dir="rtl"
 >
@@ -258,7 +258,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
 </div>
 `;
 
-exports[`Storyshots Wizard Screen Middle Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen Middle Step 1`] = `
 <div
   dir="rtl"
 >

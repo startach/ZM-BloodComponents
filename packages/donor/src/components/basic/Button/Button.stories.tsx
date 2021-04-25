@@ -1,10 +1,10 @@
 import Button, { ButtonProps, ButtonVariant } from "./Button";
 import { Mail, Star } from "@material-ui/icons";
-import { MuiTestWrapper } from "../../../__test__/TestUtils";
+import { Story } from "@storybook/react";
 
 export default {
   component: Button,
-  title: "Button",
+  title: "Components V1/Button",
 };
 
 const baseArgs = {
@@ -13,39 +13,26 @@ const baseArgs = {
   onClick: () => {},
 };
 
-export const Basic = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
+export const Template: Story<ButtonProps> = (args: ButtonProps) => (
+  <Button {...args} />
 );
 
+export const Basic = Template.bind({});
 Basic.args = baseArgs;
 
-export const TextVariant = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const TextVariant = Template.bind({});
 TextVariant.args = {
   ...baseArgs,
   variant: ButtonVariant.text,
 };
 
-export const OutlinedVariant = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const OutlinedVariant = Template.bind({});
 OutlinedVariant.args = {
   ...baseArgs,
   variant: ButtonVariant.outlined,
 };
 
-export const WithIcons = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const WithIcons = Template.bind({});
 WithIcons.args = {
   ...baseArgs,
   variant: ButtonVariant.contained,
@@ -53,41 +40,25 @@ WithIcons.args = {
   endIcon: <Mail />,
 };
 
-export const Disabled = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const Disabled = Template.bind({});
 Disabled.args = {
   ...baseArgs,
   isDisabled: true,
 };
 
-export const FullWidth = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const FullWidth = Template.bind({});
 FullWidth.args = {
   ...baseArgs,
   isFullWidth: true,
 };
 
-export const Centered = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const Centered = Template.bind({});
 Centered.args = {
   ...baseArgs,
   isCentered: true,
 };
 
-export const Loading = (args: ButtonProps) => (
-  <MuiTestWrapper>
-    <Button {...args} />
-  </MuiTestWrapper>
-);
+export const Loading = Template.bind({});
 Loading.args = {
   ...baseArgs,
   isLoading: true,
