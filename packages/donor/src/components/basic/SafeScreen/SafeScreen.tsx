@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./SafeScreen.module.scss";
 import classNames from "classnames";
+import SafeArea from "../SafeArea";
+
 export interface SafeScreenProps extends React.HTMLProps<HTMLDivElement> {
   disableTopPadding?: boolean;
   disableLeftPadding?: boolean;
@@ -16,14 +18,16 @@ const SafeScreen = ({
   className,
   ...props
 }: SafeScreenProps) => {
-  const componentClassName = classNames(styles.component, className, {
-    "safe-screen-padding-bottom": !disableBottomPadding,
-    "safe-screen-padding-top": !disableTopPadding,
-    "safe-screen-padding-left": !disableLeftPadding,
-    "safe-screen-padding-right": !disableRightPadding,
-  });
-
-  return <div className={componentClassName} {...props} />;
+  return (
+    <SafeArea
+      safePaddingBottom={!disableBottomPadding}
+      safePaddingRight={!disableLeftPadding}
+      safePaddingLeft={!disableRightPadding}
+      safePaddingTop={!disableTopPadding}
+      className={classNames(styles.component, className)}
+      {...props}
+    />
+  );
 };
 
 export default SafeScreen;
