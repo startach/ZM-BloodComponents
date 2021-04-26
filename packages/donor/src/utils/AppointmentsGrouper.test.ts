@@ -4,7 +4,6 @@ import {
   DateUtils,
 } from "@zm-blood-components/common";
 import * as AppointmentUtil from "./AppointmentsGrouper";
-import { DonationSlot } from "./AppointmentsGrouper";
 
 test("groupAndSortAvailableAppointments", () => {
   const appointments = [
@@ -68,7 +67,7 @@ test("groupAndSortAvailableAppointments", () => {
   ]);
 });
 
-function getAppointmentIdArrays(slots: DonationSlot[]) {
+function getAppointmentIdArrays(slots: AppointmentUtil.DonationSlot[]) {
   return slots.map((slot) => slot.appointmentIds.sort());
 }
 
