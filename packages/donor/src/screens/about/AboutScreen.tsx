@@ -39,7 +39,7 @@ export default function ContactUsScreen() {
       </Text>
       <Text className={styles.textContainer}>
         האפליקציה מפותחת ע"י מתנדבי עמותת{" "}
-        <a href="https://www.startach.org.il/">סטארט-אח</a> .מוזמנים לבקר גם
+        <a href="https://www.startach.org.il/">סטארט-אח</a>. מוזמנים לבקר גם
         אותנו! <a href="https://www.facebook.com/StartAchCom">אתר פייסבוק</a>.
       </Text>
       <Text className={styles.textContainer}>
