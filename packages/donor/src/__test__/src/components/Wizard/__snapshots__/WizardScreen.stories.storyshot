@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Wizard Screen First Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen First Step 1`] = `
 <div
   dir="rtl"
 >
@@ -16,11 +16,11 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-1 MuiPaper-elevation0"
+      className="MuiPaper-root-9 MuiMobileStepper-root-1 MuiMobileStepper-positionStatic-4 makeStyles-root-0 MuiPaper-elevation0-12"
       dir="rtl"
     >
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58 MuiButton-disabled-50 MuiButtonBase-disabled-67"
         disabled={true}
         onBlur={[Function]}
         onDragLeave={[Function]}
@@ -37,11 +37,11 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -52,23 +52,23 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
         </span>
       </button>
       <div
-        className="MuiMobileStepper-dots"
+        className="MuiMobileStepper-dots-5"
       >
         <div
-          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+          className="MuiMobileStepper-dot-6 MuiMobileStepper-dotActive-7"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -86,11 +86,11 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -102,7 +102,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-2 makeStyles-buttonStyle-3 MuiButton-outlinedPrimary"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-outlinedPrimary-43"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -120,7 +120,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label"
+        className="MuiButton-label-38"
       >
         אישור והמשך
       </span>
@@ -129,7 +129,7 @@ exports[`Storyshots Wizard Screen First Step 1`] = `
 </div>
 `;
 
-exports[`Storyshots Wizard Screen Last Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen Last Step 1`] = `
 <div
   dir="rtl"
 >
@@ -145,11 +145,11 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-7 MuiPaper-elevation0"
+      className="MuiPaper-root-9 MuiMobileStepper-root-1 MuiMobileStepper-positionStatic-4 makeStyles-root-0 MuiPaper-elevation0-12"
       dir="rtl"
     >
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -167,11 +167,11 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -182,23 +182,23 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
         </span>
       </button>
       <div
-        className="MuiMobileStepper-dots"
+        className="MuiMobileStepper-dots-5"
       >
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+          className="MuiMobileStepper-dot-6 MuiMobileStepper-dotActive-7"
         />
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58 MuiButton-disabled-50 MuiButtonBase-disabled-67"
         disabled={true}
         onBlur={[Function]}
         onDragLeave={[Function]}
@@ -215,11 +215,11 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -231,7 +231,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-8 makeStyles-buttonStyle-9 MuiButton-containedPrimary"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-contained-45 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-containedPrimary-46"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -249,7 +249,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label"
+        className="MuiButton-label-38"
       >
         אישור והמשך
       </span>
@@ -258,7 +258,7 @@ exports[`Storyshots Wizard Screen Last Step 1`] = `
 </div>
 `;
 
-exports[`Storyshots Wizard Screen Middle Step 1`] = `
+exports[`Storyshots Components V2/Wizard Screen Middle Step 1`] = `
 <div
   dir="rtl"
 >
@@ -274,11 +274,11 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
       אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
     </div>
     <div
-      className="MuiPaper-root MuiMobileStepper-root MuiMobileStepper-positionStatic makeStyles-root-4 MuiPaper-elevation0"
+      className="MuiPaper-root-9 MuiMobileStepper-root-1 MuiMobileStepper-positionStatic-4 makeStyles-root-0 MuiPaper-elevation0-12"
       dir="rtl"
     >
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -296,11 +296,11 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -311,23 +311,23 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
         </span>
       </button>
       <div
-        className="MuiMobileStepper-dots"
+        className="MuiMobileStepper-dots-5"
       >
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
         <div
-          className="MuiMobileStepper-dot MuiMobileStepper-dotActive"
+          className="MuiMobileStepper-dot-6 MuiMobileStepper-dotActive-7"
         />
         <div
-          className="MuiMobileStepper-dot"
+          className="MuiMobileStepper-dot-6"
         />
       </div>
       <button
-        className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSizeSmall MuiButton-sizeSmall"
+        className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-text-39 MuiButton-textSizeSmall-52 MuiButton-sizeSmall-58"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -345,11 +345,11 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label"
+          className="MuiButton-label-38"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root-69"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -361,7 +361,7 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-5 makeStyles-buttonStyle-6 MuiButton-outlinedPrimary"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-outlinedPrimary-43"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -379,7 +379,7 @@ exports[`Storyshots Wizard Screen Middle Step 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label"
+        className="MuiButton-label-38"
       >
         אישור והמשך
       </span>

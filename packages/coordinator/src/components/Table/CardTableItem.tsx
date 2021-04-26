@@ -12,11 +12,15 @@ import Styles from "./GroupTable.module.scss";
 type CardTableItemProps<T> = {
   row: CardTableRow<T>;
   columns: CardTableColumn<T>[];
+  isExpanded: boolean;
+  handleExpandAccordion: () => void;
 };
 
 export default function CardTableItem<T>({
   row,
   columns,
+  isExpanded,
+  handleExpandAccordion,
 }: CardTableItemProps<T>) {
   const CalculatedContent = columns.flatMap((column) => {
     const cell = column.cellRenderer(row.rowData);
@@ -62,6 +66,8 @@ export default function CardTableItem<T>({
     <Accordion
       classes={{ root: classes.root, expanded: classes.expanded }}
       TransitionProps={{ unmountOnExit: true }}
+      expanded={isExpanded}
+      onChange={handleExpandAccordion}
     >
       <AccordionSummary expandIcon={<ExpandMore />}>
         {DisplayedContent}

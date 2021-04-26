@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Basic 1`] = `
+exports[`Storyshots Components V1/Button Basic 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-10 makeStyles-buttonStyle-11 MuiButton-containedPrimary"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -23,7 +23,7 @@ exports[`Storyshots Button Basic 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -31,12 +31,12 @@ exports[`Storyshots Button Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Centered 1`] = `
+exports[`Storyshots Components V1/Button Centered 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-22 makeStyles-buttonStyle-23 MuiButton-containedPrimary"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -54,7 +54,7 @@ exports[`Storyshots Button Centered 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -62,12 +62,12 @@ exports[`Storyshots Button Centered 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Disabled 1`] = `
+exports[`Storyshots Components V1/Button Disabled 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-18 makeStyles-buttonStyle-19 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11 MuiButton-disabled-15 MuiButtonBase-disabled-32"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -85,7 +85,7 @@ exports[`Storyshots Button Disabled 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -93,12 +93,12 @@ exports[`Storyshots Button Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Full Width 1`] = `
+exports[`Storyshots Components V1/Button Full Width 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-20 makeStyles-buttonStyle-21 MuiButton-containedPrimary MuiButton-fullWidth"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11 MuiButton-fullWidth-25"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -116,7 +116,7 @@ exports[`Storyshots Button Full Width 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -124,12 +124,12 @@ exports[`Storyshots Button Full Width 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Loading 1`] = `
+exports[`Storyshots Components V1/Button Loading 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-24 makeStyles-buttonStyle-25 MuiButton-containedPrimary Mui-disabled Mui-disabled"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11 MuiButton-disabled-15 MuiButtonBase-disabled-32"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -147,10 +147,10 @@ exports[`Storyshots Button Loading 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       <div
-        className="MuiCircularProgress-root MuiCircularProgress-colorPrimary MuiCircularProgress-indeterminate"
+        className="MuiCircularProgress-root-34 MuiCircularProgress-colorPrimary-38 MuiCircularProgress-indeterminate-36"
         role="progressbar"
         style={
           Object {
@@ -160,11 +160,11 @@ exports[`Storyshots Button Loading 1`] = `
         }
       >
         <svg
-          className="MuiCircularProgress-svg"
+          className="MuiCircularProgress-svg-40"
           viewBox="22 22 44 44"
         >
           <circle
-            className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate"
+            className="MuiCircularProgress-circle-41 MuiCircularProgress-circleIndeterminate-43"
             cx={44}
             cy={44}
             fill="none"
@@ -179,12 +179,12 @@ exports[`Storyshots Button Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Outlined Variant 1`] = `
+exports[`Storyshots Components V1/Button Outlined Variant 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-buttonStyle-14 makeStyles-buttonStyle-15 MuiButton-outlinedPrimary"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-outlined-7 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-outlinedPrimary-8"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -202,7 +202,7 @@ exports[`Storyshots Button Outlined Variant 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -210,12 +210,40 @@ exports[`Storyshots Button Outlined Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button Text Variant 1`] = `
+exports[`Storyshots Components V1/Button Template 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-buttonStyle-12 makeStyles-buttonStyle-13 MuiButton-textPrimary"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11"
+    disabled={false}
+    onBlur={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-3"
+    />
+  </button>
+</div>
+`;
+
+exports[`Storyshots Components V1/Button Text Variant 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-text-4 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-textPrimary-5"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -233,7 +261,7 @@ exports[`Storyshots Button Text Variant 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       כפתור
     </span>
@@ -241,12 +269,12 @@ exports[`Storyshots Button Text Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Button With Icons 1`] = `
+exports[`Storyshots Components V1/Button With Icons 1`] = `
 <div
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-buttonStyle-16 makeStyles-buttonStyle-17 MuiButton-containedPrimary"
+    className="MuiButtonBase-root-31 MuiButton-root-2 MuiButton-contained-10 makeStyles-buttonStyle-0 makeStyles-buttonStyle-1 MuiButton-containedPrimary-11"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -264,14 +292,14 @@ exports[`Storyshots Button With Icons 1`] = `
     type="button"
   >
     <span
-      className="MuiButton-label"
+      className="MuiButton-label-3"
     >
       <span
-        className="MuiButton-startIcon MuiButton-iconSizeMedium"
+        className="MuiButton-startIcon-26 MuiButton-iconSizeMedium-29"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root"
+          className="MuiSvgIcon-root-34"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -282,11 +310,11 @@ exports[`Storyshots Button With Icons 1`] = `
       </span>
       כפתור
       <span
-        className="MuiButton-endIcon MuiButton-iconSizeMedium"
+        className="MuiButton-endIcon-27 MuiButton-iconSizeMedium-29"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root"
+          className="MuiSvgIcon-root-34"
           focusable="false"
           viewBox="0 0 24 24"
         >

@@ -34,10 +34,9 @@ export default function ContactUsScreen() {
         זה מגיע לתורמים שלנו.
       </Text>
       <Text className={styles.textContainer}>
-        האפליקציה מפותחת ע"י מתנדבי עמותת
+        האפליקציה מפותחת ע"י מתנדבי עמותת{" "}
         <a href="https://www.startach.org.il/">סטארט-אח</a>. מוזמנים לבקר גם
-        אותנו!
-        <a href="https://www.facebook.com/StartAchCom">אתר פייסבוק</a>.
+        אותנו! <a href="https://www.facebook.com/StartAchCom">אתר פייסבוק</a>.
       </Text>
       <Text className={styles.textContainer}>
         תודה לכל התורמים, צוות "בנק מרכיבי הדם" של עמותת זכרון מנחם.

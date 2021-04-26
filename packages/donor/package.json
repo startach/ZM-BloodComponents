@@ -46,6 +46,7 @@
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook -o storybook-build",
     "-----------------------------------------------": ""
   },
   "eslintConfig": {

@@ -47,7 +47,7 @@ export default function BookDonationScreen({
   return (
     <ZMScreen
       title="קביעת תרומה חדשה"
-      hasProfileButton
+      hasBurgerMenu={true}
       className={styles.component}
     >
       <LastDonationDateHeader

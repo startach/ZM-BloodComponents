@@ -65,3 +65,25 @@ jobs:
         run: yarn workspace @zm-blood-components/donor test
       - name: Build Donor
         run: yarn workspace @zm-blood-components/donor build
+
+  storybook-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name: Build Common
+        run: yarn workspace @zm-blood-components/common build
+      - name: Build Storybook Donor
+        run: yarn workspace @zm-blood-components/donor build-storybook
+      - name: Deploy Storybook Donor
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:donor-storybook -P staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
