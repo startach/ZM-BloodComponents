@@ -88,12 +88,12 @@ export default function ButtonAppBar({
                 onClick: () => history.push("/" + MainNavigationKeys.MyProfile),
               },
               {
-                title: "התנתק",
-                onClick: () => firebase.auth().signOut(),
-              },
-              {
                 title: "אודות",
                 onClick: () => history.push("/" + MainNavigationKeys.About),
+              },
+              {
+                title: "התנתק",
+                onClick: () => firebase.auth().signOut(),
               },
             ],
           }}
