@@ -9,7 +9,7 @@ export default function ContactUsScreen() {
   return (
     <ZMScreen hasBackButton title="אודות">
       <HeaderSection className={styles.component}>
-        <IconButton iconSrc={infoIcon} iconSize={24}></IconButton>
+        <IconButton iconSrc={infoIcon} iconSize={24} />
         <Text className={styles.textBold}>
           על עמותת "זכרון מנחם" והאפליקציה
         </Text>
