@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components V1/BurgerMenu Basic 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    style={
+      Object {
+        "background": "black",
+        "height": "40px",
+        "margin": "10px",
+        "width": "400px",
+      }
+    }
+  >
+    <div
+      className="BurgerMenu"
+      onClick={[Function]}
+    >
+      <div
+        className="BurgerMenuLine"
+      />
+      <div
+        className="BurgerMenuLine"
+      />
+      <div
+        className="BurgerMenuLine"
+      />
+    </div>
+  </div>
+</div>
+`;
