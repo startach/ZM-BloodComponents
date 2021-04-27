@@ -138,9 +138,9 @@ test("Valid request books appointment", async () => {
   expect(data.bookedAppointment.donorId).toEqual(DONOR_ID);
 
   expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(
-    Date.now() - (appointment[0]?.lastChangeTime?.toMillis() || 0)
-  ).toBeLessThan(3_000);
+  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+    3_000
+  );
 
   expect(data.bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 });

@@ -66,15 +66,18 @@ export function dbAppointmentToAvailableAppointmentApiEntry(
   };
 }
 
-const getRecentChangeType = ({
+export const getRecentChangeType = ({
   lastChangeTime,
   lastChangeType,
 }: DbAppointment) => {
   let recentChangeType: BookingChange | undefined;
 
-  const dayInMillis = 1000 * 60 * 60 * 24;
+  const ONE_DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
 
-  if (lastChangeTime && Date.now() - lastChangeTime.toMillis() < dayInMillis) {
+  if (
+    lastChangeTime &&
+    Date.now() - lastChangeTime.toMillis() < ONE_DAY_IN_MILLIS
+  ) {
     recentChangeType = lastChangeType;
   }
 
