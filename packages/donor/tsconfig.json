@@ -31,7 +31,8 @@
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
-      "resolveJsonModule": true
+      "resolveJsonModule": true,
+      "isolatedModules": false
     }
   }
 }
