@@ -40,7 +40,7 @@
     "update-mobile-deps": "cap update",
     "generate-images:android": "ts-node scripts/generateMobileImages --android --cleanup",
     "generate-images:ios": "ts-node scripts/generateMobileImages --ios --cleanup",
-    "build-dev-apk": "ts-node ./scripts/buildAndroid --alias donor --keystore 'dev.keystore' --output 'dev_<version>.apk'",
+    "build-dev-apk": "ts-node ./scripts/buildAndroid --alias donor --keystore 'dev.keystore' --storepass 11223344  --output 'dev_<version>.apk'",
     "-------------------MISC------------------------": "",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",

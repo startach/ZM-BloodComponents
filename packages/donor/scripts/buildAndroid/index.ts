@@ -10,7 +10,7 @@ import { exec, spawnSync } from "child_process";
 
 // @ts-ignore
 import { version } from "../../package.json";
-import { alias, keystore, output } from "./options";
+import { alias, keystore, output, storepass, keypass } from "./options";
 import inquirer from "inquirer";
 
 const execPromise = util.promisify(exec);
@@ -22,10 +22,12 @@ interface CliArguments extends Arguments {
   alias: string;
   file: string;
   output: string;
+  storepass?: string;
+  keypass?: string;
 }
 
 const cliArgs = yargs(hideBin(process.argv))
-  .options({ alias, keystore, output })
+  .options({ alias, keystore, output, storepass, keypass })
   .demandOption("alias")
   .demandOption("keystore")
   .demandOption("output")
@@ -76,14 +78,20 @@ async function buildAPK() {
 function signAPK() {
   console.log("Signing APK...");
 
-  spawnSync(
-    `jarsigner`,
-    ["-keystore", keystorePath, "app-release-unsigned.apk", cliArgs.alias],
-    {
-      cwd: androidApkDir,
-      stdio: "inherit",
-    }
-  );
+  const commandArgs = [
+    "-keystore",
+    keystorePath,
+    "app-release-unsigned.apk",
+    cliArgs.alias,
+  ];
+
+  if (cliArgs.storepass) commandArgs.push("-storepass", cliArgs.storepass);
+  if (cliArgs.keypass) commandArgs.push("-keypass", cliArgs.keypass);
+
+  spawnSync(`jarsigner`, commandArgs, {
+    cwd: androidApkDir,
+    stdio: "inherit",
+  });
 }
 async function generateProductionAPK() {
   console.log("generating optimized APK...");
