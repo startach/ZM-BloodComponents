@@ -32,8 +32,8 @@ const getValidDBAppointment = (
     donationStartTime: admin.firestore.Timestamp.now(),
     hospital: Hospital.ASAF_HAROFE,
     bookingTime: testNoBookingTime
-      ? admin.firestore.Timestamp.now()
-      : undefined,
+      ? undefined
+      : admin.firestore.Timestamp.now(),
   };
 };
 
