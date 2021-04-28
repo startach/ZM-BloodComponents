@@ -34,6 +34,7 @@
     "generate-mobile-images": "run-s generate-images:**",
     "-------------------TESTING---------------------": "",
     "test": "react-scripts test",
+    "updateSnapshots": "yarn run test -- -u --watchAll=false",
     "-------------------MOBILE----------------------": "",
     "init-mobile:ios": "cap add ios",
     "init-mobile:android": "cap add android",
