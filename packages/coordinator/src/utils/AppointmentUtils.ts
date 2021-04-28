@@ -1,5 +1,5 @@
-import { AppointmentApiEntry } from "common/src/functions-api";
-import { BookingChange } from "common/src/types";
+import { BookingChange } from "@zm-blood-components/common";
+import { AppointmentApiEntry } from "@zm-blood-components/common/lib/functions-api";
 
 export function removeDonorFromAppointment(
   appointment: AppointmentApiEntry
