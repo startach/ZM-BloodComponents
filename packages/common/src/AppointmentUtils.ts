@@ -1,6 +1,6 @@
 import { BookingChange, DbAppointment } from "./types";
 import { AppointmentApiEntry } from "./functions-api";
-import * as admin from "firebase-admin";
+import firebase from "firebase";
 
 export function removeDonorFromAppointment(
   appointment: AppointmentApiEntry
@@ -25,7 +25,7 @@ export function removeDonorFromDbAppointment(
   return {
     ...otherProperties,
     donorId: "",
-    lastChangeTime: admin.firestore.Timestamp.now(),
+    lastChangeTime: firebase.firestore.Timestamp.now(),
     lastChangeType: BookingChange.CANCELLED,
   };
 }
