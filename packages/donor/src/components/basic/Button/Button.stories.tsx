@@ -1,6 +1,7 @@
 import Button, { ButtonProps, ButtonVariant } from "./Button";
 import { Mail, Star } from "@material-ui/icons";
 import { Story } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: Button,
@@ -10,7 +11,7 @@ export default {
 const baseArgs = {
   title: "כפתור",
   variant: ButtonVariant.contained,
-  onClick: () => {},
+  onClick: action("onClick"),
 };
 
 export const Template: Story<ButtonProps> = (args: ButtonProps) => (
