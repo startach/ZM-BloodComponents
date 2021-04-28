@@ -36,7 +36,7 @@ export default function Popup({
         style: {
           backgroundColor: "#272932",
           color: "#fff",
-          height: "170px",
+          height: "min-content",
           width: "90%",
         },
       }}
