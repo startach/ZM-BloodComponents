@@ -4,8 +4,8 @@ import {
   Hospital,
   HospitalUtils,
   FunctionsApi,
-  AppointmentUtils,
 } from "@zm-blood-components/common";
+import * as AppointmentUtils from "../../utils/AppointmentUtils";
 import Select from "../../components/Select";
 import { Restore } from "@material-ui/icons";
 import Button, { ButtonVariant } from "../../components/Button";
