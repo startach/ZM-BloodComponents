@@ -4,7 +4,6 @@ import {
   Hospital,
   BookingChange,
 } from "@zm-blood-components/common";
-import { expectThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import {
   dbAppointmentToAppointmentApiEntry,
@@ -27,7 +26,7 @@ const getValidDBAppointment = (
 ): DbAppointment => {
   return {
     id: "1",
-    donorId: testNoDonorId ? undefined : "CBA",
+    donorId: testNoDonorId ? "" : "CBA",
     creationTime: admin.firestore.Timestamp.now(),
     creatorUserId: "ABC",
     donationStartTime: admin.firestore.Timestamp.now(),
@@ -41,15 +40,15 @@ const getValidDBAppointment = (
 test("DBAppointment does not have an ID", () => {
   const toAppointmentApiEntry = () =>
     dbAppointmentToAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID);
-  expectThrows(toAppointmentApiEntry, "Invalid State");
+  expect(toAppointmentApiEntry).toThrow("Invalid State");
 
   const toBookedAppointmentApiEntry = () =>
     dbAppointmentToBookedAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID);
-  expectThrows(toBookedAppointmentApiEntry, "Invalid State");
+  expect(toBookedAppointmentApiEntry).toThrow("Invalid State");
 
   const toAvailableAppointmentApiEntry = () =>
     dbAppointmentToAvailableAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID);
-  expectThrows(toAvailableAppointmentApiEntry, "Invalid State");
+  expect(toAvailableAppointmentApiEntry).toThrow("Invalid State");
 });
 
 test("BookedAppointmentApiEntry is not booked", () => {
@@ -57,13 +56,13 @@ test("BookedAppointmentApiEntry is not booked", () => {
     dbAppointmentToBookedAppointmentApiEntry(
       getValidDBAppointment(true, false)
     );
-  expectThrows(noBookingTimeAction, "Invalid State");
+  expect(noBookingTimeAction).toThrow("Invalid State");
 
   const noDonorIdAction = () =>
     dbAppointmentToBookedAppointmentApiEntry(
       getValidDBAppointment(false, true)
     );
-  expectThrows(noDonorIdAction, "Invalid State");
+  expect(noDonorIdAction).toThrow("Invalid State");
 });
 
 test("AvailableAppointmentApiEntry is booked", () => {
@@ -71,7 +70,7 @@ test("AvailableAppointmentApiEntry is booked", () => {
     dbAppointmentToAvailableAppointmentApiEntry(
       getValidDBAppointment(false, false)
     );
-  expectThrows(action, "Invalid State");
+  expect(action).toThrow("Invalid State");
 });
 
 test("getRecentChangeType", () => {
@@ -97,10 +96,10 @@ test("getRecentChangeType", () => {
     lastChangeType: BookingChange.CANCELLED,
   };
 
-  const recentChangeType: BookingChange = getRecentChangeType(
+  const recentChangeType: BookingChange | undefined = getRecentChangeType(
     recentlyChangedBooking
   );
-  const recentUnChangedType: BookingChange = getRecentChangeType(
+  const recentUnChangedType: BookingChange | undefined = getRecentChangeType(
     recentlyUnchangedBooking
   );
 

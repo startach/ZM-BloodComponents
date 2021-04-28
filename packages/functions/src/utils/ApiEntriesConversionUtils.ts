@@ -69,7 +69,7 @@ export function dbAppointmentToAvailableAppointmentApiEntry(
 export const getRecentChangeType = ({
   lastChangeTime,
   lastChangeType,
-}: DbAppointment) => {
+}: DbAppointment): BookingChange | undefined => {
   let recentChangeType: BookingChange | undefined;
 
   const ONE_DAY_IN_MILLIS = 1000 * 60 * 60 * 24;
