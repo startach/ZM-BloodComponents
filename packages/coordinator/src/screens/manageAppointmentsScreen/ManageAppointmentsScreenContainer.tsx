@@ -7,7 +7,7 @@ import {
 } from "@zm-blood-components/common";
 import * as AppointmentUtils from "../../utils/AppointmentUtils";
 import Select from "../../components/Select";
-import { Restore } from "@material-ui/icons";
+import { Restore, NewReleases } from "@material-ui/icons";
 import Button, { ButtonVariant } from "../../components/Button";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
@@ -20,6 +20,7 @@ export default function ManageAppointmentsScreenContainer() {
     getDefaultState()
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [showOnlyNewChanges, setShowOnlyNewChanges] = useState(false);
   const [showPastAppointments, setShowPastAppointments] = useState(false);
 
   useEffect(() => {
@@ -64,6 +65,12 @@ export default function ManageAppointmentsScreenContainer() {
       (appointment) =>
         appointment.donationStartTimeMillis > new Date().getTime()
     );
+
+    if (showOnlyNewChanges) {
+      shownAppointments = shownAppointments.filter(
+        (a) => a.recentChangeType || a.recentChangeType === 0
+      );
+    }
   }
 
   const donationDays = groupAppointmentDays(
@@ -83,11 +90,27 @@ export default function ManageAppointmentsScreenContainer() {
         />
 
         <Button
+          title="שינויים חדשים"
+          onClick={() => {
+            setShowOnlyNewChanges(!showOnlyNewChanges);
+            if (!showOnlyNewChanges) {
+              setShowPastAppointments(false);
+            }
+          }}
+          endIcon={<NewReleases />}
+          variant={
+            showOnlyNewChanges
+              ? ButtonVariant.contained
+              : ButtonVariant.outlined
+          }
+        />
+        <Button
           title="תורים שעברו"
           onClick={() => {
             setShowPastAppointments(!showPastAppointments);
           }}
           endIcon={<Restore />}
+          isDisabled={showOnlyNewChanges}
           variant={
             showPastAppointments
               ? ButtonVariant.contained
@@ -101,6 +124,7 @@ export default function ManageAppointmentsScreenContainer() {
         onDeleteAppointment={onDeleteAppointment}
         onRemoveDonor={onRemoveDonor}
         isLoading={isLoading}
+        hasOnlyNewChanges={showOnlyNewChanges}
       />
     </div>
   );

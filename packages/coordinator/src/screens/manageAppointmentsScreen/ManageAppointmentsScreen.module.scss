@@ -11,3 +11,19 @@
   width: "max-content";
   margin: "0 30%";
 }
+
+.relative-div {
+  position: relative;
+}
+
+.inner-card-chip {
+  position: absolute;
+  left: "30px";
+  top: "10px";
+}
+
+.outer-card-chip {
+  position: absolute;
+  left: "-60px";
+  top: 0;
+}

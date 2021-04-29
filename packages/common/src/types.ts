@@ -128,6 +128,6 @@ export interface SelectOption<T> {
 }
 
 export enum BookingChange {
-  BOOKED,
-  CANCELLED,
+  BOOKED = "BOOKED",
+  CANCELLED = "CANCELLED",
 }
