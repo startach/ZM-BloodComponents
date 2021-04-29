@@ -1,4 +1,4 @@
-import { BloodType, DbAdmin, Donor, Hospital } from "./types";
+import { BloodType, DbAdmin, Donor, Hospital, BookingChange } from "./types";
 
 // Donor functions:
 
@@ -9,6 +9,7 @@ export type AvailableAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
+  recentChangeType?: BookingChange;
 };
 
 export type BookedAppointmentApiEntry = {
@@ -17,6 +18,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
+  recentChangeType?: BookingChange;
 };
 
 // Represent an appointment, both available and booked
@@ -24,6 +26,7 @@ export type AppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
+  recentChangeType?: BookingChange;
 
   // If booked
   donorId?: string;
