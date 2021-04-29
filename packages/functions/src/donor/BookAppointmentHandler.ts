@@ -5,7 +5,7 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-import { FunctionsApi } from "@zm-blood-components/common";
+import { BookingChange, FunctionsApi } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
 const WEEKS_BUFFER = 0;
@@ -39,6 +39,8 @@ export default async function (
 
   appointmentToBook.donorId = donorId;
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
+  appointmentToBook.lastChangeTime = admin.firestore.Timestamp.now();
+  appointmentToBook.lastChangeType = BookingChange.BOOKED;
 
   await setAppointment(appointmentToBook);
 

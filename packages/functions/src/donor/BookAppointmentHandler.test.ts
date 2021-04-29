@@ -4,6 +4,7 @@ import {
   DbDonor,
   FunctionsApi,
   Hospital,
+  BookingChange,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
@@ -135,6 +136,13 @@ test("Valid request books appointment", async () => {
 
   expect(data.bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(data.bookedAppointment.donorId).toEqual(DONOR_ID);
+
+  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+    3_000
+  );
+
+  expect(data.bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 });
 
 async function createDonor() {

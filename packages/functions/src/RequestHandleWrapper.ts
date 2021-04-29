@@ -11,7 +11,10 @@ export function handler<T>(requestHandler: RequestHandler<T>) {
       throw new Error("Unauthorized");
     }
 
-    return await requestHandler(data, callerId);
+    functions.logger.info(`Handling request from ${callerId}: ${data}`);
+    const response = await requestHandler(data, callerId);
+    functions.logger.info(`Response: ${JSON.stringify(response)}`);
+    return response;
   });
 }
 

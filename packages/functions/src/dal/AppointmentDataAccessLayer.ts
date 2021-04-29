@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
+  BookingChange,
   Collections,
   DbAppointment,
   Hospital,
@@ -144,4 +145,21 @@ export function setAppointment(appointment: DbAppointment) {
     .collection(Collections.APPOINTMENTS)
     .doc(appointment.id)
     .set(appointment);
+}
+
+export function removeDonorFromDbAppointment(
+  appointment: DbAppointment
+): DbAppointment {
+  const {
+    donorId,
+    bookingTime,
+    confirmationTime,
+    ...otherProperties
+  } = appointment;
+  return {
+    ...otherProperties,
+    donorId: "",
+    lastChangeTime: admin.firestore.Timestamp.now(),
+    lastChangeType: BookingChange.CANCELLED,
+  };
 }

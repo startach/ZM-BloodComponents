@@ -17,11 +17,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "yarn run test -- --watchAll=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009",
+    "updateSnapshots": "yarn run test -- -u --watchAll=false",
     "build-storybook": "build-storybook -o storybook-build"
   },
   "eslintConfig": {
@@ -29,6 +30,9 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "resolutions": {
+    "babel-loader": "8.1.0"
   },
   "browserslist": {
     "production": [
