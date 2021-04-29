@@ -1,9 +1,8 @@
-import { BookingChange } from "@zm-blood-components/common";
-import { AppointmentApiEntry } from "@zm-blood-components/common/lib/functions-api";
+import { BookingChange, FunctionsApi } from "@zm-blood-components/common";
 
 export function removeDonorFromAppointment(
-  appointment: AppointmentApiEntry
-): AppointmentApiEntry {
+  appointment: FunctionsApi.AppointmentApiEntry
+): FunctionsApi.AppointmentApiEntry {
   const { donorId, bookingTimeMillis, ...otherProperties } = appointment;
   return {
     ...otherProperties,
