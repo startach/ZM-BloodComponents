@@ -16,7 +16,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
-import { setDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -45,6 +45,8 @@ const ALL_APPOINTMENT_IDS = [
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
   await deleteAdmin(COORDINATOR_ID);
+  await deleteDonor(DONOR_ID_1);
+  await deleteDonor(DONOR_ID_2);
 };
 
 beforeAll(reset);
