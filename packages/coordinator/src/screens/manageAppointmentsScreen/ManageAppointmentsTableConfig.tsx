@@ -43,9 +43,11 @@ export const GetExpandedColumns = (
           <div>{bookingDate}</div>
           {!hasOnlyNewChanges && (recentChangeType || recentChangeType === 0) && (
             <div
-              className={
-                Styles["inner-card-chip"]
-              }
+              style={{
+                position: "absolute",
+                left: "30px",
+                top: "10px",
+              }}
             >
               <Chip
                 chipType={StandardChip.New}
@@ -109,6 +111,7 @@ export const expandedRowContent = (
         })
       )}
       columns={GetExpandedColumns(setPopupData, hasOnlyNewChanges)}
+      tableIndex={1}
     />
   );
 };
@@ -136,8 +139,11 @@ export const MainColumns = (
             (a) => a.recentChangeType || a.recentChangeType === 0
           ) && (
             <div
-              className={
-                Styles["inner-card-chip"]}
+              style={{
+                position: "absolute",
+                left: "-60px",
+                top: 0,
+              }}
             >
               <Chip
                 chipType={StandardChip.New}
