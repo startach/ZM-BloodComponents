@@ -113,6 +113,7 @@ export enum Collections {
   COORDINATORS = "coordinators",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
+  EMAIL_NOTIFICATIONS = "emailNotifications",
 }
 
 export enum LoginStatus {

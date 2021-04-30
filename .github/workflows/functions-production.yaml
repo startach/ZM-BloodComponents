@@ -12,6 +12,10 @@ jobs:
     name: Coordinator Production Deployment
     runs-on: ubuntu-latest
     steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Jerusalem
       - name: Checkout
         uses: actions/checkout@v2
         with:
