@@ -1,4 +1,4 @@
-import { DateUtils } from "@zm-blood-components/common";
+import { BookingChange, DateUtils } from "@zm-blood-components/common";
 import {
   CardTableColumn,
   CardTableRow,
@@ -37,7 +37,8 @@ export const GetExpandedColumns = (
         bookingDate =
           "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
       }
-
+      const chipLabel =
+        recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
       return (
         <div className={Styles["relative-div"]}>
           <div>{bookingDate}</div>
@@ -51,7 +52,7 @@ export const GetExpandedColumns = (
             >
               <Chip
                 chipType={StandardChip.New}
-                label="חדש"
+                label={chipLabel}
                 width="39px"
                 height="22px"
               />

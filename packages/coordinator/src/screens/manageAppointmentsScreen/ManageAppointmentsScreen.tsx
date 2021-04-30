@@ -111,6 +111,7 @@ export default function ManageAppointmentsScreen({
         hasColumnHeaders
         columns={MainColumns(hasOnlyNewChanges)}
         groups={groups}
+        tableIndex={0}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>
