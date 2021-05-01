@@ -17,6 +17,7 @@ export type ManagedAppointment = {
   donorName?: string;
   donorPhoneNumber?: string;
   bookingTimeMillis?: number;
+  isPastAppointment: boolean;
 };
 
 export function groupAppointmentDays(
@@ -76,6 +77,7 @@ function appointmentsToAppointmentSlot(
         donorName: donor ? `${donor.firstName} ${donor.lastName}` : undefined,
         donorPhoneNumber: donor?.phone,
         bookingTimeMillis: a.bookingTimeMillis,
+        isPastAppointment: a.donationStartTimeMillis < Date.now(),
       };
     }),
   };
