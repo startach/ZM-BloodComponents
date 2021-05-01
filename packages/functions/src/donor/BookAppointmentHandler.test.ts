@@ -4,6 +4,7 @@ import {
   DbDonor,
   FunctionsApi,
   Hospital,
+  BookingChange,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
@@ -20,6 +21,12 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.BookAppointmentFunctionName]
 );
 
+import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
+import { mocked } from "ts-jest/utils";
+
+jest.mock("../notifications/BookAppointmentNotifier");
+const mockedNotifier = mocked(notifyOnAppointmentBooked);
+
 const DONOR_ID = "BookingAppointmentHandlerDonorId";
 const APPOINTMENT_TO_BOOK_1 = "BookingAppointmentHandlerAppointment1";
 const APPOINTMENT_TO_BOOK_2 = "BookingAppointmentHandlerAppointment2";
@@ -32,6 +39,7 @@ beforeAll(async () => {
     APPOINTMENT_TO_BOOK_2,
     OTHER_DONATION_OF_USER,
   ]);
+  mockedNotifier.mockClear();
 });
 
 afterEach(async () => {
@@ -132,15 +140,33 @@ test("Valid request books appointment", async () => {
   expect(appointment[0].donorId).toEqual(DONOR_ID);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
+  const bookedAppointment = data.bookedAppointment;
+  expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
+  expect(bookedAppointment.donorId).toEqual(DONOR_ID);
 
-  expect(data.bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
-  expect(data.bookedAppointment.donorId).toEqual(DONOR_ID);
+  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+    3_000
+  );
+
+  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
+
+  expect(mockedNotifier).toBeCalledWith(
+    new Date(bookedAppointment.donationStartTimeMillis),
+    bookedAppointment.hospital,
+    expect.objectContaining({
+      firstName: "firstName",
+      email: "email@email.com",
+    })
+  );
 });
 
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
     ...sampleUser,
+    firstName: "firstName",
+    email: "email@email.com",
   };
 
   await setDonor(donor);

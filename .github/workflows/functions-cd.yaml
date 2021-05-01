@@ -12,6 +12,10 @@ jobs:
     name: Functions Staging Deployment
     runs-on: ubuntu-latest
     steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Jerusalem
       - name: Checkout
         uses: actions/checkout@v2
       - uses: actions/cache@v2
@@ -26,6 +30,8 @@ jobs:
           path: ./test-service-account-key.json
           contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
           write-mode: overwrite
+      - name: Test Functions
+        run: yarn workspace @zm-blood-components/functions test
       - name: Deploy to Firebase Functions
         uses: w9jds/firebase-action@master
         with:

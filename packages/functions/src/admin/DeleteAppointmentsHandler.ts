@@ -2,13 +2,10 @@ import { validateAppointmentEditPermissions } from "./UserValidator";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
+  removeDonorFromDbAppointment,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import {
-  AppointmentUtils,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -34,8 +31,6 @@ export default async function (
     return;
   }
 
-  const updatedAppointment = AppointmentUtils.removeDonorFromDbAppointment(
-    appointment
-  );
+  const updatedAppointment = removeDonorFromDbAppointment(appointment);
   await setAppointment(updatedAppointment);
 }

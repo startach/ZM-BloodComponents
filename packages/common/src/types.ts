@@ -98,6 +98,9 @@ export type DbAppointment = {
   donorId: string; // Empty string means appointment is available
   bookingTime?: firebase.firestore.Timestamp;
   confirmationTime?: firebase.firestore.Timestamp; // Time donor confirmed they will come
+  /* Represents changes to booking status **/
+  lastChangeTime?: firebase.firestore.Timestamp;
+  lastChangeType?: BookingChange;
 };
 
 export type AvailableAppointment = {
@@ -110,6 +113,7 @@ export enum Collections {
   COORDINATORS = "coordinators",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
+  EMAIL_NOTIFICATIONS = "emailNotifications",
 }
 
 export enum LoginStatus {
@@ -122,4 +126,9 @@ export interface SelectOption<T> {
   value: T;
   key: string;
   label: string;
+}
+
+export enum BookingChange {
+  BOOKED,
+  CANCELLED,
 }
