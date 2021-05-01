@@ -8,8 +8,7 @@ on:
         required: false
 
 jobs:
-  donor_hosting_qa:
-    name: Coordinator Production Deployment
+  functions-prod:
     runs-on: ubuntu-latest
     steps:
       - name: Setup timezone

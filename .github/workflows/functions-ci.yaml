@@ -19,7 +19,7 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install packages
+      - name: Install Dependencies
         run: yarn install
       - name: Run Typescript
         run: yarn workspace @zm-blood-components/functions tsc
