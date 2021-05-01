@@ -1,4 +1,4 @@
-import { DateUtils } from "@zm-blood-components/common";
+import { BookingChange, DateUtils } from "@zm-blood-components/common";
 import {
   CardTableColumn,
   CardTableRow,
@@ -11,9 +11,11 @@ import {
   ManagedAppointment,
 } from "./CoordinatorAppointmentsGrouper";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
+import Chip, { ChipColorScheme } from "../../components/Chip";
 
 export const GetExpandedColumns = (
-  setPopupData: (popupData: DeleteAppointmentPopupData) => void
+  setPopupData: (popupData: DeleteAppointmentPopupData) => void,
+  showOnlyRecentChanges: boolean
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     cellRenderer: ({ donorName }) => donorName,
@@ -30,11 +32,26 @@ export const GetExpandedColumns = (
   },
   {
     cellRenderer: ({ booked, bookingTimeMillis }) => {
-      if (!booked || !bookingTimeMillis) {
-        return "אין רישום";
+      let bookingDate = "אין רישום";
+      if (booked && bookingTimeMillis) {
+        bookingDate =
+          "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
       }
-      return "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
+      return <div className={Styles["booked-at-date"]}>{bookingDate}</div>;
     },
+  },
+  {
+    cellRenderer: ({ recentChangeType }) => {
+      const chipLabel =
+        recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
+      return (
+        !showOnlyRecentChanges &&
+        (recentChangeType || recentChangeType === 0) && (
+          <Chip colorScheme={ChipColorScheme.New} label={chipLabel} />
+        )
+      );
+    },
+    colRelativeWidth: 0.3,
   },
   {
     cellRenderer: (appointment) =>
@@ -76,7 +93,8 @@ export const GetExpandedColumns = (
 
 export const expandedRowContent = (
   slot: AppointmentSlot,
-  setPopupData: (popupData: DeleteAppointmentPopupData) => void
+  setPopupData: (popupData: DeleteAppointmentPopupData) => void,
+  showOnlyRecentChanges: boolean
 ) => {
   return (
     <Table
@@ -85,12 +103,15 @@ export const expandedRowContent = (
           rowData: managedAppointment,
         })
       )}
-      columns={GetExpandedColumns(setPopupData)}
+      columns={GetExpandedColumns(setPopupData, showOnlyRecentChanges)}
+      tableIndex={1}
     />
   );
 };
 
-export const MainColumns: CardTableColumn<AppointmentSlot>[] = [
+export const MainColumns = (
+  showOnlyRecentChanges: boolean
+): CardTableColumn<AppointmentSlot>[] => [
   {
     label: "שעה",
     sortBy: (a, b) => a.donationStartTimeMillis - b.donationStartTimeMillis,
@@ -105,5 +126,16 @@ export const MainColumns: CardTableColumn<AppointmentSlot>[] = [
     label: "רשומים",
     cellRenderer: ({ appointments }) =>
       appointments.filter((a) => a.booked).length,
+  },
+  {
+    cellRenderer: ({ appointments }) => {
+      return (
+        !showOnlyRecentChanges &&
+        appointments.find(
+          (a) => a.recentChangeType || a.recentChangeType === 0
+        ) && <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+      );
+    },
+    colRelativeWidth: 0.3,
   },
 ];

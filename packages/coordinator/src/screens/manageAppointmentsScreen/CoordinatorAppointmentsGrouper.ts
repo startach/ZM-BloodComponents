@@ -1,4 +1,9 @@
-import { DateUtils, Donor, FunctionsApi } from "@zm-blood-components/common";
+import {
+  BookingChange,
+  DateUtils,
+  Donor,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import * as _ from "lodash";
 
 export type DonationDay = {
@@ -17,6 +22,7 @@ export type ManagedAppointment = {
   donorName?: string;
   donorPhoneNumber?: string;
   bookingTimeMillis?: number;
+  recentChangeType?: BookingChange;
   isPastAppointment: boolean;
 };
 
@@ -77,6 +83,7 @@ function appointmentsToAppointmentSlot(
         donorName: donor ? `${donor.firstName} ${donor.lastName}` : undefined,
         donorPhoneNumber: donor?.phone,
         bookingTimeMillis: a.bookingTimeMillis,
+        recentChangeType: a.recentChangeType,
         isPastAppointment: a.donationStartTimeMillis < Date.now(),
       };
     }),
