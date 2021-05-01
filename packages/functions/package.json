@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./lib && rimraf ./dist",
-    "lint": "yarn run style && tslint --project tsconfig.json ",
+    "lint": "tslint --project tsconfig.json ",
     "compile": "tsc -p tsconfig.build.json",
     "build": "yarn run clean && yarn run lint && yarn run compile",
     "bundle": "yarn run build && webpack",
