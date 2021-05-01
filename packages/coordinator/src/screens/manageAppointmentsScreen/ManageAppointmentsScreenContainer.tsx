@@ -20,7 +20,7 @@ export default function ManageAppointmentsScreenContainer() {
     getDefaultState()
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [showOnlyNewChanges, setShowOnlyNewChanges] = useState(false);
+  const [showOnlyRecentChanges, setShowOnlyRecentChanges] = useState(false);
   const [showPastAppointments, setShowPastAppointments] = useState(false);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function ManageAppointmentsScreenContainer() {
         appointment.donationStartTimeMillis > new Date().getTime()
     );
 
-    if (showOnlyNewChanges) {
+    if (showOnlyRecentChanges) {
       shownAppointments = shownAppointments.filter(
         (a) => a.recentChangeType || a.recentChangeType === 0
       );
@@ -92,14 +92,14 @@ export default function ManageAppointmentsScreenContainer() {
         <Button
           title="שינויים חדשים"
           onClick={() => {
-            setShowOnlyNewChanges(!showOnlyNewChanges);
-            if (!showOnlyNewChanges) {
+            setShowOnlyRecentChanges(!showOnlyRecentChanges);
+            if (!showOnlyRecentChanges) {
               setShowPastAppointments(false);
             }
           }}
           endIcon={<NewReleases />}
           variant={
-            showOnlyNewChanges
+            showOnlyRecentChanges
               ? ButtonVariant.contained
               : ButtonVariant.outlined
           }
@@ -110,7 +110,7 @@ export default function ManageAppointmentsScreenContainer() {
             setShowPastAppointments(!showPastAppointments);
           }}
           endIcon={<Restore />}
-          isDisabled={showOnlyNewChanges}
+          isDisabled={showOnlyRecentChanges}
           variant={
             showPastAppointments
               ? ButtonVariant.contained
@@ -124,7 +124,7 @@ export default function ManageAppointmentsScreenContainer() {
         onDeleteAppointment={onDeleteAppointment}
         onRemoveDonor={onRemoveDonor}
         isLoading={isLoading}
-        hasOnlyNewChanges={showOnlyNewChanges}
+        showOnlyRecentChanges={showOnlyRecentChanges}
       />
     </div>
   );

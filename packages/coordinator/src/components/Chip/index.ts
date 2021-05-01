@@ -1,1 +1,1 @@
-export { default, StandardChip } from "./Chip";
+export { default, ChipColorScheme } from "./Chip";

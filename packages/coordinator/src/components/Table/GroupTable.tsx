@@ -173,7 +173,7 @@ export default function GroupsTable<T>({
                   row={row}
                   columns={columns}
                   handleExpandAccordion={() => handleExpandAccordion(i, j)}
-                  key={`${i}${sortByColumnIndex}${isReversedSort}${tableIndex}`}
+                  key={`${i}${j}${sortByColumnIndex}${isReversedSort}${tableIndex}`}
                   isExpanded={expandedItems.includes("" + i + j)}
                 />
               ))}

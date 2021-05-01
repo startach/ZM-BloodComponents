@@ -11,11 +11,11 @@ import {
   ManagedAppointment,
 } from "./CoordinatorAppointmentsGrouper";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
-import Chip, { StandardChip } from "../../components/Chip";
+import Chip, { ChipColorScheme } from "../../components/Chip";
 
 export const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
-  hasOnlyNewChanges: boolean
+  showOnlyRecentChanges: boolean
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     cellRenderer: ({ donorName }) => donorName,
@@ -31,36 +31,27 @@ export const GetExpandedColumns = (
     hideIfNoData: true,
   },
   {
-    cellRenderer: ({ booked, bookingTimeMillis, recentChangeType }) => {
+    cellRenderer: ({ booked, bookingTimeMillis }) => {
       let bookingDate = "אין רישום";
       if (booked && bookingTimeMillis) {
         bookingDate =
           "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
       }
+      return <div className={Styles["booked-at-date"]}>{bookingDate}</div>;
+    },
+  },
+  {
+    cellRenderer: ({ recentChangeType }) => {
       const chipLabel =
         recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
       return (
-        <div className={Styles["relative-div"]}>
-          <div>{bookingDate}</div>
-          {!hasOnlyNewChanges && (recentChangeType || recentChangeType === 0) && (
-            <div
-              style={{
-                position: "absolute",
-                left: "30px",
-                top: "10px",
-              }}
-            >
-              <Chip
-                chipType={StandardChip.New}
-                label={chipLabel}
-                width="39px"
-                height="22px"
-              />
-            </div>
-          )}
-        </div>
+        !showOnlyRecentChanges &&
+        (recentChangeType || recentChangeType === 0) && (
+          <Chip colorScheme={ChipColorScheme.New} label={chipLabel} />
+        )
       );
     },
+    colRelativeWidth: 0.3,
   },
   {
     cellRenderer: (appointment) =>
@@ -103,7 +94,7 @@ export const GetExpandedColumns = (
 export const expandedRowContent = (
   slot: AppointmentSlot,
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
-  hasOnlyNewChanges: boolean
+  showOnlyRecentChanges: boolean
 ) => {
   return (
     <Table
@@ -112,14 +103,14 @@ export const expandedRowContent = (
           rowData: managedAppointment,
         })
       )}
-      columns={GetExpandedColumns(setPopupData, hasOnlyNewChanges)}
+      columns={GetExpandedColumns(setPopupData, showOnlyRecentChanges)}
       tableIndex={1}
     />
   );
 };
 
 export const MainColumns = (
-  hasOnlyNewChanges: boolean
+  showOnlyRecentChanges: boolean
 ): CardTableColumn<AppointmentSlot>[] => [
   {
     label: "שעה",
@@ -133,29 +124,18 @@ export const MainColumns = (
   },
   {
     label: "רשומים",
-    cellRenderer: ({ appointments }) => (
-      <div className={Styles["relative-div"]}>
-        <div>{appointments.filter((a) => a.booked).length}</div>
-        {!hasOnlyNewChanges &&
-          appointments.find(
-            (a) => a.recentChangeType || a.recentChangeType === 0
-          ) && (
-            <div
-              style={{
-                position: "absolute",
-                left: "-60px",
-                top: 0,
-              }}
-            >
-              <Chip
-                chipType={StandardChip.New}
-                label="חדש"
-                width="39px"
-                height="22px"
-              />
-            </div>
-          )}
-      </div>
-    ),
+    cellRenderer: ({ appointments }) =>
+      appointments.filter((a) => a.booked).length,
+  },
+  {
+    cellRenderer: ({ appointments }) => {
+      return (
+        !showOnlyRecentChanges &&
+        appointments.find(
+          (a) => a.recentChangeType || a.recentChangeType === 0
+        ) && <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+      );
+    },
+    colRelativeWidth: 0.3,
   },
 ];

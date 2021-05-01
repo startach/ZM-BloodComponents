@@ -1,26 +1,21 @@
 import { Chip, makeStyles, Theme } from "@material-ui/core";
 
 /* Standard template chips **/
-export enum StandardChip {
+export enum ChipColorScheme {
   New,
 }
 
-const getChipColors = (
-  theme: Theme,
-  color?: string,
-  backgroundColor?: string,
-  chipType?: StandardChip
-) => {
+const getChipColors = (theme: Theme, colorScheme?: ChipColorScheme) => {
   let chipColor: string;
   let chipBackground: string;
-  switch (chipType) {
-    case StandardChip.New:
+  switch (colorScheme) {
+    case ChipColorScheme.New:
       chipColor = theme.palette.warning.main;
       chipBackground = theme.palette.warning.light;
       break;
     default:
-      chipColor = color || "";
-      chipBackground = backgroundColor || "";
+      chipColor = "";
+      chipBackground = "";
       break;
   }
   return {
@@ -30,73 +25,42 @@ const getChipColors = (
 };
 
 interface UseChipStylesProps {
-  color?: string;
-  backgroundColor?: string;
-  chipType?: StandardChip;
+  colorScheme?: ChipColorScheme;
   fontSize?: string;
-  height?: string;
-  width?: string;
 }
 
 const useChipStyles = makeStyles((theme) => ({
-  root: ({
-    color,
-    backgroundColor,
-    chipType,
-    fontSize,
-    height,
-    width,
-  }: UseChipStylesProps) => {
-    const { chipColor, chipBackground } = getChipColors(
-      theme,
-      color,
-      backgroundColor,
-      chipType
-    );
+  root: ({ colorScheme, fontSize }: UseChipStylesProps) => {
+    const { chipColor, chipBackground } = getChipColors(theme, colorScheme);
     return {
       borderRadius: "3px",
       color: chipColor,
       backgroundColor: chipBackground,
       fontSize: fontSize,
-      height: height,
-      width: width,
+      width: "39px",
+      height: "22px",
     };
   },
-  label: ({ width }: UseChipStylesProps) => {
-    return {
-      ...(width && { padding: 0 }),
-    };
+  label: {
+    padding: 0,
   },
 }));
 
 type ChipProps = {
   label: string;
   /* Standard template chips **/
-  chipType?: StandardChip;
-  color?: string;
-  backgroundColor?: string;
+  colorScheme?: ChipColorScheme;
   fontSize?: string;
-  /* Applying width disables default padding on label span **/
-  width?: string;
-  height?: string;
 };
 
 export default function ZMChip({
   label,
-  color,
-  backgroundColor,
-  chipType,
+  colorScheme,
   fontSize = "12px",
-  width,
-  height,
 }: ChipProps) {
   const classes = useChipStyles({
-    color,
-    backgroundColor,
-    chipType,
+    colorScheme,
     fontSize,
-    width,
-    height,
   });
 
   return <Chip label={label} classes={classes} />;

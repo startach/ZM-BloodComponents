@@ -32,7 +32,7 @@ interface ManageAppointmentsScreenProps {
   onDeleteAppointment: (appointmentId: string) => Promise<void>;
   onRemoveDonor: (appointmentId: string) => Promise<void>;
   isLoading: boolean;
-  hasOnlyNewChanges: boolean;
+  showOnlyRecentChanges: boolean;
 }
 
 export interface DeleteAppointmentPopupData {
@@ -46,7 +46,7 @@ export default function ManageAppointmentsScreen({
   onDeleteAppointment,
   onRemoveDonor,
   isLoading,
-  hasOnlyNewChanges,
+  showOnlyRecentChanges,
 }: ManageAppointmentsScreenProps) {
   const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>({
     isOpen: false,
@@ -60,7 +60,7 @@ export default function ManageAppointmentsScreen({
         (slot) => ({
           rowData: slot,
           expandRow: (slot) =>
-            expandedRowContent(slot, setPopupData, hasOnlyNewChanges),
+            expandedRowContent(slot, setPopupData, showOnlyRecentChanges),
         })
       ),
     })
@@ -109,7 +109,7 @@ export default function ManageAppointmentsScreen({
       <GroupTable
         className={Styles["centered-screen"]}
         hasColumnHeaders
-        columns={MainColumns(hasOnlyNewChanges)}
+        columns={MainColumns(showOnlyRecentChanges)}
         groups={groups}
         tableIndex={0}
       />
