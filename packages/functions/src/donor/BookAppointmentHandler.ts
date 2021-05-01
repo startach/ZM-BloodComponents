@@ -7,6 +7,7 @@ import {
 import * as admin from "firebase-admin";
 import { BookingChange, FunctionsApi } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
+import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 
 const WEEKS_BUFFER = 0;
 
@@ -16,7 +17,7 @@ export default async function (
 ): Promise<FunctionsApi.BookAppointmentResponse> {
   const donorId = callerId;
 
-  await getDonorOrThrow(donorId);
+  const donor = await getDonorOrThrow(donorId);
 
   const appointmentsToBook = await getAppointmentsByIds(request.appointmentIds);
   const availableAppointments = appointmentsToBook.filter(
@@ -43,6 +44,12 @@ export default async function (
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
 
   await setAppointment(appointmentToBook);
+
+  await notifyOnAppointmentBooked(
+    appointmentToBook.donationStartTime.toDate(),
+    appointmentToBook.hospital,
+    donor
+  );
 
   return {
     bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(

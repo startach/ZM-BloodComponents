@@ -8,14 +8,16 @@ on:
         required: false
 
 jobs:
-  donor_hosting_qa:
-    name: Coordinator Production Deployment
+  functions-prod:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Jerusalem
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.version }}
+
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"

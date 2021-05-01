@@ -23,6 +23,7 @@ export type ManagedAppointment = {
   donorPhoneNumber?: string;
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
+  isPastAppointment: boolean;
 };
 
 export function groupAppointmentDays(
@@ -83,6 +84,7 @@ function appointmentsToAppointmentSlot(
         donorPhoneNumber: donor?.phone,
         bookingTimeMillis: a.bookingTimeMillis,
         recentChangeType: a.recentChangeType,
+        isPastAppointment: a.donationStartTimeMillis < Date.now(),
       };
     }),
   };

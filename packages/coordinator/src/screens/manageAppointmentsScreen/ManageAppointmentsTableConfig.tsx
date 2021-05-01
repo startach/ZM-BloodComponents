@@ -63,38 +63,39 @@ export const GetExpandedColumns = (
     },
   },
   {
-    cellRenderer: (appointment) => (
-      <>
-        {appointment.booked && (
+    cellRenderer: (appointment) =>
+      !appointment.isPastAppointment && (
+        <div>
+          {appointment.booked && (
+            <IconButton
+              aria-label="clear"
+              icon={Icon.Clear}
+              color={"default"}
+              tooltipText={"הסר תורם"}
+              onClick={() =>
+                setPopupData({
+                  isOpen: true,
+                  appointment,
+                  onlyRemoveDonor: true,
+                })
+              }
+            />
+          )}
           <IconButton
-            aria-label="clear"
-            icon={Icon.Clear}
+            aria-label="delete"
+            icon={Icon.Delete}
             color={"default"}
-            tooltipText={"הסר תורם"}
+            tooltipText={"מחק תור"}
             onClick={() =>
               setPopupData({
                 isOpen: true,
                 appointment,
-                onlyRemoveDonor: true,
+                onlyRemoveDonor: false,
               })
             }
           />
-        )}
-        <IconButton
-          aria-label="delete"
-          icon={Icon.Delete}
-          color={"default"}
-          tooltipText={"מחק תור"}
-          onClick={() =>
-            setPopupData({
-              isOpen: true,
-              appointment,
-              onlyRemoveDonor: false,
-            })
-          }
-        />
-      </>
-    ),
+        </div>
+      ),
     colRelativeWidth: 0,
   },
 ];
