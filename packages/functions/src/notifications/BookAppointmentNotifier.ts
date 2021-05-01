@@ -51,7 +51,7 @@ function sendEmailToDonor(
   return addEmailToQueue(messageToDonor);
 }
 
-export const COORDINATOR_EMAILS: string[] = [];
+export const COORDINATOR_EMAILS: string[] = ["bloodbank.ZM@gmail.com"];
 
 function sendEmailToCoordinator(
   donationTimeString: string,

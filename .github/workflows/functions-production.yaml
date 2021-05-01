@@ -17,7 +17,8 @@ jobs:
           timezone: Asia/Jerusalem
       - name: Checkout
         uses: actions/checkout@v2
-
+        with:
+          ref: ${{ github.event.inputs.version }}
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
