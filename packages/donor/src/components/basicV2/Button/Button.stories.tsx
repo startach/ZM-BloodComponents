@@ -1,9 +1,8 @@
 import Button, { ButtonProps } from "./Button";
-import { MuiTestWrapper } from "../../../__test__/TestUtils";
 
 export default {
   component: Button,
-  title: "Buttonv2",
+  title: "COMPONENTS V2/ Button",
 };
 
 const baseArgs = {
@@ -12,9 +11,7 @@ const baseArgs = {
 };
 
 export const Main = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 
 Main.args = {
@@ -22,9 +19,7 @@ Main.args = {
 };
 
 export const SecondaryLinePink = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 SecondaryLinePink.args = {
   ...baseArgs,
@@ -34,9 +29,7 @@ SecondaryLinePink.args = {
 };
 
 export const SecondaryGray = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 SecondaryGray.args = {
   ...baseArgs,
@@ -46,9 +39,7 @@ SecondaryGray.args = {
 };
 
 export const Disabled = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 Disabled.args = {
   ...baseArgs,
@@ -58,9 +49,7 @@ Disabled.args = {
 };
 
 export const DefaultState = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 DefaultState.args = {
   ...baseArgs,
@@ -70,9 +59,7 @@ DefaultState.args = {
 };
 
 export const State6 = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 State6.args = {
   ...baseArgs,
@@ -81,9 +68,8 @@ State6.args = {
 };
 
 export const Centered = (args: ButtonProps) => (
-  <MuiTestWrapper>
+  
     <Button {...args} />
-  </MuiTestWrapper>
 );
 Centered.args = {
   ...baseArgs,
@@ -91,9 +77,7 @@ Centered.args = {
 };
 
 export const Loading = (args: ButtonProps) => (
-  <MuiTestWrapper>
     <Button {...args} />
-  </MuiTestWrapper>
 );
 Loading.args = {
   ...baseArgs,
