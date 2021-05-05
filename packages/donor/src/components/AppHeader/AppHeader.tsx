@@ -1,9 +1,5 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import { AppBar, Typography, IconButton } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
@@ -13,7 +9,7 @@ import { SideDrawer } from "./BurgerMenu/SideDrawer";
 import { Backdrop } from "../Backdrop";
 import firebase from "firebase";
 
-import styles from './style.module.scss'
+import styles from "./style.module.scss";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,13 +40,13 @@ export default function ButtonAppBar({
   return (
     <AppBar position="fixed" color="secondary">
       <div className={styles.headerContainer}>
-          {hasBurgerMenu && (
-            <div className={styles.headerItem}>
-              <BurgerMenu
-                onClick={() => setShowSideBar((previous) => !previous)}
-              />
-            </div>
-          )}
+        {hasBurgerMenu && (
+          <div className={styles.headerItem}>
+            <BurgerMenu
+              onClick={() => setShowSideBar((previous) => !previous)}
+            />
+          </div>
+        )}
         {hasBackButton && (
           <IconButton
             edge="start"
@@ -68,24 +64,24 @@ export default function ButtonAppBar({
       </div>
       <div>
         <SideDrawer
-            isOpen={showSideBar}
-            close={() => setShowSideBar(false)}
-            navProps={{
-              navItemsProps: [
-                {
-                  title: "הפרופיל שלי",
-                  onClick: () => history.push("/" + MainNavigationKeys.MyProfile),
-                },
-                {
-                  title: "אודות",
-                  onClick: () => history.push("/" + MainNavigationKeys.About),
-                },
-                {
-                  title: "התנתק",
-                  onClick: () => firebase.auth().signOut(),
-                },
-              ],
-            }}
+          isOpen={showSideBar}
+          close={() => setShowSideBar(false)}
+          navProps={{
+            navItemsProps: [
+              {
+                title: "הפרופיל שלי",
+                onClick: () => history.push("/" + MainNavigationKeys.MyProfile),
+              },
+              {
+                title: "אודות",
+                onClick: () => history.push("/" + MainNavigationKeys.About),
+              },
+              {
+                title: "התנתק",
+                onClick: () => firebase.auth().signOut(),
+              },
+            ],
+          }}
         />
         {showSideBar && <Backdrop close={() => setShowSideBar(false)} />}
       </div>
