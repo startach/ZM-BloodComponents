@@ -1,0 +1,26 @@
+.headerContainer {
+  height: 60px;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns:
+      [first] 10%
+      [second] 10%
+      [middle] auto
+      [forth] 10%
+      [fifth] 10%;
+}
+
+.title {
+  height: 100%;
+  grid-column: middle;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.headerItem {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
