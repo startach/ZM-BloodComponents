@@ -1,5 +1,9 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { DbAdmin, DbDonor, FunctionsApi } from "@zm-blood-components/common";
+import {
+  DbCoordinator,
+  DbDonor,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -58,7 +62,7 @@ test("All donors are returned", async () => {
 });
 
 async function createCoordinator() {
-  const newAdmin: DbAdmin = {
+  const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
     phone: "test_phone",
     email: "test_email",

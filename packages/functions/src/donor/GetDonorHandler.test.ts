@@ -1,7 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  AdminRole,
-  DbAdmin,
+  CoordinatorRole,
+  DbCoordinator,
   DbDonor,
   FunctionsApi,
 } from "@zm-blood-components/common";
@@ -61,7 +61,7 @@ test("Donor request returns donor", async () => {
 
 test("Invalid admin throws exception", async () => {
   await createDonor();
-  await createAdmin(AdminRole.HOSPITAL_COORDINATOR);
+  await createAdmin(CoordinatorRole.HOSPITAL_COORDINATOR);
 
   const action = () => callTarget(DONOR_ID, ADMIN_ID);
 
@@ -70,7 +70,7 @@ test("Invalid admin throws exception", async () => {
 
 test("Valid admin request returns donor", async () => {
   await createDonor();
-  await createAdmin(AdminRole.SYSTEM_USER);
+  await createAdmin(CoordinatorRole.SYSTEM_USER);
 
   const res = await callTarget(DONOR_ID, ADMIN_ID);
 
@@ -86,11 +86,9 @@ async function createDonor() {
   await setDonor(donor);
 }
 
-async function createAdmin(role: AdminRole) {
-  const admin: DbAdmin = {
+async function createAdmin(role: CoordinatorRole) {
+  const admin: DbCoordinator = {
     id: ADMIN_ID,
-    email: "email",
-    phone: "phone",
     roles: [role],
   };
 

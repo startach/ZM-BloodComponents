@@ -1,12 +1,16 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  DbAdmin,
-  AdminRole,
+  DbCoordinator,
+  CoordinatorRole,
   Hospital,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteAdmin, getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import {
+  deleteAdmin,
+  getCoordinator,
+  setAdmin,
+} from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
@@ -54,7 +58,10 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("Valid request inserts new admin", async () => {
-  await createUser([AdminRole.ZM_COORDINATOR, AdminRole.ZM_MANAGER]);
+  await createUser([
+    CoordinatorRole.ZM_COORDINATOR,
+    CoordinatorRole.ZM_MANAGER,
+  ]);
 
   const request = getSaveAdminRequest();
   await wrapped(request, {
@@ -63,12 +70,12 @@ test("Valid request inserts new admin", async () => {
     },
   });
 
-  const newAdmin = await getAdmin(TARGET_ADMIN_ID);
+  const newAdmin = await getCoordinator(TARGET_ADMIN_ID);
   expect(newAdmin).toEqual(request.admin);
 });
 
-async function createUser(roles: AdminRole[]) {
-  const newAdmin: DbAdmin = {
+async function createUser(roles: CoordinatorRole[]) {
+  const newAdmin: DbCoordinator = {
     id: CALLING_USER_ID,
     phone: "test_phone",
     email: "test_email",
@@ -79,11 +86,11 @@ async function createUser(roles: AdminRole[]) {
 }
 
 function getSaveAdminRequest() {
-  const newAdmin: DbAdmin = {
+  const newAdmin: DbCoordinator = {
     id: TARGET_ADMIN_ID,
     email: "target_email",
     phone: "target_phone",
-    roles: [AdminRole.HOSPITAL_COORDINATOR],
+    roles: [CoordinatorRole.HOSPITAL_COORDINATOR],
     hospitals: [Hospital.TEL_HASHOMER],
   };
 

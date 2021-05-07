@@ -1,5 +1,9 @@
-import { AdminRole, DbAdmin, FunctionsApi } from "@zm-blood-components/common";
-import { getAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import {
+  CoordinatorRole,
+  DbCoordinator,
+  FunctionsApi,
+} from "@zm-blood-components/common";
+import { getCoordinator, setAdmin } from "../dal/AdminDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.SaveAdminRequest,
@@ -17,7 +21,7 @@ async function validateUserCanSetRoleToAnotherUser(
     throw new Error("User must be authenticated to edit admins");
   }
 
-  const callingAdmin = await getAdmin(callingUser);
+  const callingAdmin = await getCoordinator(callingUser);
   if (!callingAdmin) {
     throw Error("User is not an admin and can't edit admins");
   }
@@ -27,11 +31,10 @@ async function validateUserCanSetRoleToAnotherUser(
   }
 }
 
-function adminAllowedToSetRoles(callingAdmin: DbAdmin) {
+function adminAllowedToSetRoles(callingAdmin: DbCoordinator) {
   for (const roleIndex in callingAdmin.roles) {
     switch (callingAdmin.roles[roleIndex]) {
-      case AdminRole.SYSTEM_USER:
-      case AdminRole.ZM_MANAGER:
+      case CoordinatorRole.SYSTEM_USER:
         return true;
     }
   }
