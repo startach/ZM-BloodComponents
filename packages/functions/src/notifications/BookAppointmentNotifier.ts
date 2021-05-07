@@ -26,8 +26,9 @@ export async function notifyOnAppointmentBooked(
     dateString,
     hourString,
     hospitalName,
-    donor.firstName
-  );
+    donor.firstName,
+  bookedAppointment.id!
+);
 
   const staffEmails = await getStaffRecipients(bookedAppointment);
   await sendEmailToStaff(
@@ -36,7 +37,8 @@ export async function notifyOnAppointmentBooked(
     hourString,
     hospitalName,
     donor.firstName,
-    donor.lastName
+    donor.lastName,
+      bookedAppointment.id!
   );
 }
 
