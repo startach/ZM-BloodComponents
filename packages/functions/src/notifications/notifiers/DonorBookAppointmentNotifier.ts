@@ -25,7 +25,7 @@ export function sendEmailToDonor(
       subject: `הרשמתך לתור לתרומת טרומבוציטים בתאריך ${dateString}`,
       html: html,
     },
-    appointmentId
+    appointmentId,
   };
 
   return addEmailToQueue(messageToDonor);

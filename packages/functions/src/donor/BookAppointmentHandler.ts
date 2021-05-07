@@ -45,7 +45,13 @@ export default async function (
 
   await setAppointment(appointmentToBook);
 
-  notifyOnAppointmentBooked(appointmentToBook, donor).catch(e => console.error("Error notifying on booked appointment", appointmentToBook.id, e));
+  notifyOnAppointmentBooked(appointmentToBook, donor).catch((e) =>
+    console.error(
+      "Error notifying on booked appointment",
+      appointmentToBook.id,
+      e
+    )
+  );
 
   return {
     bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
