@@ -9,7 +9,8 @@ export function sendEmailToDonor(
   dateString: string,
   hourString: string,
   hospitalName: string,
-  donorFirstName: string
+  donorFirstName: string,
+  appointmentId: string
 ) {
   const html = getEmailContent(
     donorFirstName,
@@ -24,6 +25,7 @@ export function sendEmailToDonor(
       subject: `הרשמתך לתור לתרומת טרומבוציטים בתאריך ${dateString}`,
       html: html,
     },
+    appointmentId
   };
 
   return addEmailToQueue(messageToDonor);

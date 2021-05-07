@@ -10,7 +10,8 @@ export function sendEmailToStaff(
   hourString: string,
   hospitalName: string,
   donorFirstName: string,
-  donorLastName: string
+  donorLastName: string,
+  appointmentId: string
 ) {
   const html = getEmailContent(
     donorFirstName,
@@ -26,6 +27,7 @@ export function sendEmailToStaff(
       subject: `רישום חדש לתור ${dateString + " " + hourString}`,
       html: html,
     },
+    appointmentId
   };
 
   return addEmailToQueue(messageToDonor);

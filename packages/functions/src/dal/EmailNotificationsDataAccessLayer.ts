@@ -7,6 +7,7 @@ export type EmailMessage = {
     subject: string;
     html: string;
   };
+  appointmentId: string;
 };
 
 export function addEmailToQueue(message: EmailMessage) {
