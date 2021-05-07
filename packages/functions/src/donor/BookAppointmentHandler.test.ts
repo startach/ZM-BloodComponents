@@ -152,8 +152,7 @@ test("Valid request books appointment", async () => {
   expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 
   expect(mockedNotifier).toBeCalledWith(
-    new Date(bookedAppointment.donationStartTimeMillis),
-    bookedAppointment.hospital,
+    appointment[0],
     expect.objectContaining({
       firstName: "firstName",
       email: "email@email.com",

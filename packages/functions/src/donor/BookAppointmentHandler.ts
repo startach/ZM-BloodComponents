@@ -45,11 +45,7 @@ export default async function (
 
   await setAppointment(appointmentToBook);
 
-  await notifyOnAppointmentBooked(
-    appointmentToBook.donationStartTime.toDate(),
-    appointmentToBook.hospital,
-    donor
-  );
+  await notifyOnAppointmentBooked(appointmentToBook, donor);
 
   return {
     bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(

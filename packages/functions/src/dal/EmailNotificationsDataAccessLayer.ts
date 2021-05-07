@@ -2,10 +2,10 @@ import * as admin from "firebase-admin";
 import { Collections } from "@zm-blood-components/common";
 
 export type EmailMessage = {
-  to: string[];
+  to: string | string[];
   message: {
     subject: string;
-    text: string;
+    html: string;
   };
 };
 
