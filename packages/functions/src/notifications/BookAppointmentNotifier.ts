@@ -7,6 +7,7 @@ import {
 import { sendEmailToDonor } from "./notifiers/DonorBookAppointmentNotifier";
 import { sendEmailToStaff } from "./notifiers/StaffBookAppointmentNotifier";
 import { getDonor } from "../dal/DonorDataAccessLayer";
+import * as functions from "firebase-functions";
 
 export const ZM_LOGO_URL =
   "https://firebasestorage.googleapis.com/v0/b/blood-components.appspot.com/o/Logo_ZM_he.jpg?alt=media&token=aa5e9d8c-d08e-4c80-ad7f-bfd361e36b20";
@@ -42,7 +43,20 @@ export async function notifyOnAppointmentBooked(
 async function getStaffRecipients(
   bookedAppointment: DbAppointment
 ): Promise<string[]> {
-  const res = ["bloodbank.ZM@gmail.com"];
+  const res: string[] = [];
+  switch (functions.config().functions.env) {
+    case "prod":
+      res.push("dam@zichron.org.il");
+      break;
+
+    case "stg":
+      res.push("bloodbank.ZM@gmail.com");
+      break;
+
+    default:
+      console.error("Could not figure env for staff email addresses");
+      break;
+  }
 
   const appointmentCreator = await getDonor(bookedAppointment.creatorUserId); // Because every admin is also saved as donor
   if (appointmentCreator?.email) {
