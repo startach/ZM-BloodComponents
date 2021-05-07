@@ -9,13 +9,13 @@ export async function validateAppointmentEditPermissions(
   userId: string,
   hospitals: Set<Hospital>
 ) {
-  const admin = await getCoordinator(userId);
-  if (!admin) {
+  const coordinator = await getCoordinator(userId);
+  if (!coordinator) {
     console.error("Could not find calling user", userId);
     throw Error("User is not an admin and can't edit appointments");
   }
 
-  if (!adminAllowedToAddAppointments(admin, hospitals)) {
+  if (!adminAllowedToAddAppointments(coordinator, hospitals)) {
     console.error(
       "User",
       userId,
@@ -39,12 +39,11 @@ function adminAllowedToAddAppointments(
   const adminHospitals = new Set(admin.hospitals);
 
   if (admin.role === CoordinatorRole.ZM_COORDINATOR) {
-    if (
-      allHospitalsAreInCoordinatorHospitalList(
-        adminHospitals,
-        requestedHospitals
-      )
-    ) {
+    const validHospitals = allHospitalsAreInCoordinatorHospitalList(
+      adminHospitals,
+      requestedHospitals
+    );
+    if (validHospitals) {
       return true;
     }
   }
