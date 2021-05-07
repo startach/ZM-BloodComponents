@@ -1,5 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  CoordinatorRole,
   DbCoordinator,
   DbDonor,
   FunctionsApi,
@@ -64,9 +65,7 @@ test("All donors are returned", async () => {
 async function createCoordinator() {
   const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
-    phone: "test_phone",
-    email: "test_email",
-    roles: [],
+    role: CoordinatorRole.SYSTEM_USER,
   };
 
   await setAdmin(newAdmin);

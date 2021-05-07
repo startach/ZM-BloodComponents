@@ -1,18 +1,9 @@
 import {
-  DbCoordinator,
   CoordinatorRole,
+  DbCoordinator,
   Hospital,
 } from "@zm-blood-components/common";
-import * as _ from "lodash";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
-
-export async function validateIsCoordinator(userId: string) {
-  const admin = await getCoordinator(userId);
-  if (!admin) {
-    console.error("Could not find calling user", userId);
-    throw Error(`User ${userId} is not an admin`);
-  }
-}
 
 export async function validateAppointmentEditPermissions(
   userId: string,
@@ -41,38 +32,27 @@ function adminAllowedToAddAppointments(
   admin: DbCoordinator,
   requestedHospitals: Set<Hospital>
 ) {
-  if (admin.roles.includes(CoordinatorRole.SYSTEM_USER)) {
+  if (admin.role === CoordinatorRole.SYSTEM_USER) {
     return true;
   }
 
   const adminHospitals = new Set(admin.hospitals);
 
-  if (admin.roles.includes(CoordinatorRole.HOSPITAL_COORDINATOR)) {
+  if (admin.role === CoordinatorRole.ZM_COORDINATOR) {
     if (
-      allHospitalsAreInAdminHospitalList(adminHospitals, requestedHospitals)
+      allHospitalsAreInCoordinatorHospitalList(
+        adminHospitals,
+        requestedHospitals
+      )
     ) {
       return true;
-    }
-  }
-
-  for (const roleIndex in admin.roles) {
-    switch (admin.roles[roleIndex]) {
-      case CoordinatorRole.SYSTEM_USER:
-        return true;
-
-      case CoordinatorRole.HOSPITAL_COORDINATOR:
-        if (
-          allHospitalsAreInAdminHospitalList(adminHospitals, requestedHospitals)
-        ) {
-          return true;
-        }
     }
   }
 
   return false;
 }
 
-function allHospitalsAreInAdminHospitalList(
+function allHospitalsAreInCoordinatorHospitalList(
   adminHospitals: Set<Hospital>,
   requestedHospitals: Set<Hospital>
 ) {

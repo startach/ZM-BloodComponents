@@ -32,11 +32,8 @@ async function validateUserCanSetRoleToAnotherUser(
 }
 
 function adminAllowedToSetRoles(callingAdmin: DbCoordinator) {
-  for (const roleIndex in callingAdmin.roles) {
-    switch (callingAdmin.roles[roleIndex]) {
-      case CoordinatorRole.SYSTEM_USER:
-        return true;
-    }
+  if (callingAdmin.role === CoordinatorRole.SYSTEM_USER) {
+    return true;
   }
 
   return false;
