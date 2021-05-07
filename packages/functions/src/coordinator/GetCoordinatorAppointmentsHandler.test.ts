@@ -57,21 +57,13 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that is not admin throws exception", async () => {
+test("User that is not coordinator throws exception", async () => {
   const action = () => callFunction(COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
-    "User is not an admin and can't edit appointments"
+    "User is not an coordinator and can't edit appointments"
   );
-});
-
-test("User that has wrong role throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR);
-
-  const action = () => callFunction(COORDINATOR_ID);
-
-  await expectAsyncThrows(action, "User not authorized to preform action");
 });
 
 test("User that does not have the right hospital throws exception", async () => {
@@ -79,7 +71,10 @@ test("User that does not have the right hospital throws exception", async () => 
 
   const action = () => callFunction(COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "User not authorized to preform action");
+  await expectAsyncThrows(
+    action,
+    "Coordinator has no permissions for hospital"
+  );
 });
 
 test("Valid request returns appointments of the right hospital", async () => {
