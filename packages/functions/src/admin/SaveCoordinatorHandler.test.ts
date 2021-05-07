@@ -57,7 +57,10 @@ test("User that has wrong role throws exception", async () => {
       },
     });
 
-  await expectAsyncThrows(action, "User role is not authorized to edit admins");
+  await expectAsyncThrows(
+    action,
+    "User role is not authorized to edit coordinators"
+  );
 });
 
 test("Valid request inserts new coordinator", async () => {
