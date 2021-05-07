@@ -109,9 +109,9 @@ export interface DeleteAppointmentRequest {
   onlyRemoveDonor: boolean;
 }
 
-export const SaveAdminFunctionName = "saveAdmin";
-export interface SaveAdminRequest {
-  admin: DbCoordinator;
+export const SaveCoordinatorFunctionName = "saveCoordinator";
+export interface SaveCoordinatorRequest {
+  coordinator: DbCoordinator;
 }
 
 export const GetCoordinatorAppointmentsFunctionName =

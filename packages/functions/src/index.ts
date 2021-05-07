@@ -2,7 +2,7 @@ import * as functions from "firebase-functions";
 import addNewAppointmentsHandler from "./admin/AddNewAppointmentsHandler";
 import getCoordinatorAppointmentsHandler from "./admin/GetCoordinatorAppointmentsHandler";
 import deleteAppointmentsHandler from "./admin/DeleteAppointmentsHandler";
-import saveAdminRequestHandler from "./admin/SaveAdminHandler";
+import saveAdminRequestHandler from "./admin/SaveCoordinatorHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
@@ -22,7 +22,7 @@ export const getCoordinatorAppointments = handler(
   getCoordinatorAppointmentsHandler
 );
 export const deleteAppointments = handler(deleteAppointmentsHandler);
-export const saveAdmin = handler(saveAdminRequestHandler);
+export const saveCoordinator = handler(saveAdminRequestHandler);
 export const getDonors = handler(getDonorsHandler);
 
 // Donor

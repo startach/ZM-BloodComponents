@@ -1,9 +1,9 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  DbCoordinator,
   CoordinatorRole,
-  Hospital,
+  DbCoordinator,
   FunctionsApi,
+  Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import {
@@ -14,41 +14,44 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.SaveAdminFunctionName]
+  Functions[FunctionsApi.SaveCoordinatorFunctionName]
 );
 const CALLING_USER_ID = "SaveAdminTestCallingUser";
-const TARGET_ADMIN_ID = "SaveAdminTestTargetUser";
+const TARGET_COORDINATOR_ID = "SaveAdminTestTargetUser";
 
 beforeAll(async () => {
-  await deleteAdmin(TARGET_ADMIN_ID);
+  await deleteAdmin(TARGET_COORDINATOR_ID);
 });
 
 afterEach(async () => {
   await deleteAdmin(CALLING_USER_ID);
-  await deleteAdmin(TARGET_ADMIN_ID);
+  await deleteAdmin(TARGET_COORDINATOR_ID);
 });
 
 test("Unauthenticated user throws exception", async () => {
-  const action = () => wrapped(getSaveAdminRequest());
+  const action = () => wrapped(getSaveCoordinatorRequest());
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that is not admin throws exception", async () => {
+test("User that is not coordinator throws exception", async () => {
   const action = () =>
-    wrapped(getSaveAdminRequest(), {
+    wrapped(getSaveCoordinatorRequest(), {
       auth: {
         uid: CALLING_USER_ID,
       },
     });
 
-  await expectAsyncThrows(action, "User is not an admin and can't edit admins");
+  await expectAsyncThrows(
+    action,
+    "User is not an coordinator and can't edit coordinators"
+  );
 });
 
 test("User that has wrong role throws exception", async () => {
-  await createUser([]);
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR);
 
   const action = () =>
-    wrapped(getSaveAdminRequest(), {
+    wrapped(getSaveCoordinatorRequest(), {
       auth: {
         uid: CALLING_USER_ID,
       },
@@ -57,42 +60,35 @@ test("User that has wrong role throws exception", async () => {
   await expectAsyncThrows(action, "User role is not authorized to edit admins");
 });
 
-test("Valid request inserts new admin", async () => {
-  await createUser([
-    CoordinatorRole.ZM_COORDINATOR,
-    CoordinatorRole.ZM_MANAGER,
-  ]);
+test("Valid request inserts new coordinator", async () => {
+  await createUser(CoordinatorRole.SYSTEM_USER);
 
-  const request = getSaveAdminRequest();
+  const request = getSaveCoordinatorRequest();
   await wrapped(request, {
     auth: {
       uid: CALLING_USER_ID,
     },
   });
 
-  const newAdmin = await getCoordinator(TARGET_ADMIN_ID);
-  expect(newAdmin).toEqual(request.admin);
+  const newAdmin = await getCoordinator(TARGET_COORDINATOR_ID);
+  expect(newAdmin).toEqual(request.coordinator);
 });
 
-async function createUser(roles: CoordinatorRole[]) {
+async function createUser(role: CoordinatorRole) {
   const newAdmin: DbCoordinator = {
     id: CALLING_USER_ID,
-    phone: "test_phone",
-    email: "test_email",
-    roles,
+    role,
   };
 
   await setAdmin(newAdmin);
 }
 
-function getSaveAdminRequest() {
-  const newAdmin: DbCoordinator = {
-    id: TARGET_ADMIN_ID,
-    email: "target_email",
-    phone: "target_phone",
-    roles: [CoordinatorRole.HOSPITAL_COORDINATOR],
+function getSaveCoordinatorRequest(): FunctionsApi.SaveCoordinatorRequest {
+  const newCoordinator: DbCoordinator = {
+    id: TARGET_COORDINATOR_ID,
+    role: CoordinatorRole.HOSPITAL_COORDINATOR,
     hospitals: [Hospital.TEL_HASHOMER],
   };
 
-  return { admin: newAdmin };
+  return { coordinator: newCoordinator };
 }
