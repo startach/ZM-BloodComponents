@@ -27,7 +27,7 @@ export function sendEmailToStaff(
       subject: `רישום חדש לתור ${dateString + " " + hourString}`,
       html: html,
     },
-    appointmentId
+    appointmentId,
   };
 
   return addEmailToQueue(messageToDonor);
