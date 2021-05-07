@@ -1,5 +1,4 @@
-import { AdminRole, FunctionsApi } from "@zm-blood-components/common";
-import { getAdmin } from "../dal/AdminDataAccessLayer";
+import { FunctionsApi } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 
 export default async function (
@@ -10,35 +9,13 @@ export default async function (
     throw new Error("Invalid getDonor request");
   }
 
-  await validateCallerAllowedToGetDonor(callerId, request.donorId);
+  if (callerId !== request.donorId) {
+    throw new Error("Unauthorized getDonor request");
+  }
 
   const res = await getDonor(request.donorId);
 
   return {
     donor: res,
   };
-}
-
-async function validateCallerAllowedToGetDonor(
-  callerId: string,
-  donorId: string
-) {
-  if (callerId === donorId) {
-    return;
-  }
-
-  // Checking if caller has permissions to get donor:
-  const admin = await getAdmin(callerId);
-  if (!admin) {
-    throw new Error("Unauthorized getDonor request");
-  }
-
-  if (
-    admin.roles.includes(AdminRole.SYSTEM_USER) ||
-    admin.roles.includes(AdminRole.ZM_MANAGER)
-  ) {
-    return;
-  }
-
-  throw new Error("Unauthorized getDonor request");
 }
