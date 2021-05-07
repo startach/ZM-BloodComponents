@@ -98,8 +98,6 @@ test("Valid request inserts new appointments", async () => {
 async function createUser(roles: CoordinatorRole[], hospitals?: Hospital[]) {
   const newAdmin: DbCoordinator = {
     id: USER_ID,
-    phone: "test_phone",
-    email: "test_email",
     roles,
   };
 

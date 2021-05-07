@@ -144,8 +144,6 @@ test("Valid request returns appointments of the right hospital", async () => {
 async function createUser(roles: CoordinatorRole[], hospitals?: Hospital[]) {
   const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
-    phone: "test_phone",
-    email: "test_email",
     roles,
   };
 
