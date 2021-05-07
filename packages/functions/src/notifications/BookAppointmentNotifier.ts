@@ -75,5 +75,7 @@ async function getStaffRecipients(
     });
   }
 
+  // TODO(Yaron) - add hospital coordinator here
+
   return res;
 }
