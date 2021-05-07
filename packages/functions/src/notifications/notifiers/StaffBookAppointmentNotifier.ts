@@ -1,11 +1,12 @@
 import {
-  addEmailToQueue,
+  addEmailsToQueue,
   EmailMessage,
+  StaffRecipient,
 } from "../../dal/EmailNotificationsDataAccessLayer";
 import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
 
 export function sendEmailToStaff(
-  emails: string[],
+  staffRecipients: StaffRecipient[],
   dateString: string,
   hourString: string,
   hospitalName: string,
@@ -13,27 +14,27 @@ export function sendEmailToStaff(
   donorLastName: string,
   appointmentId: string
 ) {
-  const html = getEmailContent(
-    donorFirstName,
-    donorLastName,
-    dateString,
-    hourString,
-    hospitalName
-  );
-
-  const messageToDonor: EmailMessage = {
-    to: emails,
+  const emails = staffRecipients.map<EmailMessage>((recipient) => ({
+    to: recipient.email,
     message: {
       subject: `רישום חדש לתור ${dateString + " " + hourString}`,
-      html: html,
+      html: getEmailContent(
+        recipient.name,
+        donorFirstName,
+        donorLastName,
+        dateString,
+        hourString,
+        hospitalName
+      ),
     },
     appointmentId,
-  };
+  }));
 
-  return addEmailToQueue(messageToDonor);
+  return addEmailsToQueue(emails);
 }
 
 function getEmailContent(
+  recipientName: string,
   donorFirstName: string,
   donorLastName: string,
   dateString: string,
@@ -49,9 +50,9 @@ function getEmailContent(
   </head>
   <body style="text-align: right; direction: rtl">
     <img src="#logo#" alt="זכרון מנחם" />
-    <h2>שלום,</h2>
+    <h2>שלום #שם#,</h2>
     התורם/ת
-    <span style="font-weight: bold">#שם_מלא#</span>
+    <span style="font-weight: bold">#שם_התורם#</span>
     <span style="color: green; font-weight: bold">נרשם/ה</span>
     לתור אשר יתקיים בביה"ח #בית_חולים# בתאריך #תאריך# בשעה #שעה#.
     <br />
@@ -63,7 +64,8 @@ function getEmailContent(
 </html>
 `
     .replace("#logo#", ZM_LOGO_URL)
-    .replace("#שם_מלא#", donorFirstName + " " + donorLastName)
+    .replace("#שם#", recipientName)
+    .replace("#שם_התורם#", donorFirstName + " " + donorLastName)
     .replace("#בית_חולים#", hospitalName)
     .replace("#תאריך#", dateString)
     .replace("#שעה#", hourString);
