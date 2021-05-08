@@ -126,6 +126,7 @@ test.skip("Donor has recent donation throws exception", async () => {
 });
 
 test("Valid request books appointment", async () => {
+  mockedNotifier.mockReturnValue(Promise.resolve());
   await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);

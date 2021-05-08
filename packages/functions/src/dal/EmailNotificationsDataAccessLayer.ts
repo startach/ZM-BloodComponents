@@ -2,11 +2,17 @@ import * as admin from "firebase-admin";
 import { Collections } from "@zm-blood-components/common";
 
 export type EmailMessage = {
-  to: string | string[];
+  to: string;
   message: {
     subject: string;
     html: string;
   };
+  appointmentId: string;
+};
+
+export type StaffRecipient = {
+  email: string;
+  name: string;
 };
 
 export function addEmailToQueue(message: EmailMessage) {
@@ -14,4 +20,8 @@ export function addEmailToQueue(message: EmailMessage) {
     .firestore()
     .collection(Collections.EMAIL_NOTIFICATIONS)
     .add(message);
+}
+
+export function addEmailsToQueue(messages: EmailMessage[]) {
+  return Promise.all(messages.map(addEmailToQueue));
 }
