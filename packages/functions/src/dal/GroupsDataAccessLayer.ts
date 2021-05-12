@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
 import { Collections, DbGroup } from "@zm-blood-components/common";
 
-export async function createGroup(name: string, coordinatorId: string) {
+export async function createGroup(name: string, coordinatorId: string): Promise<DbGroup> {
   const newGroupDoc = admin.firestore().collection(Collections.GROUPS).doc();
   const dbGroup: DbGroup = {
     id: newGroupDoc.id,
@@ -9,6 +9,12 @@ export async function createGroup(name: string, coordinatorId: string) {
     coordinatorId,
   };
   await newGroupDoc.set(dbGroup);
+  return dbGroup
+}
+
+export async function deleteGroup(groupId: string) {
+  const collection = admin.firestore().collection(Collections.GROUPS);
+  await collection.doc(groupId).delete();
 }
 
 export async function getGroup(groupId: string) {
