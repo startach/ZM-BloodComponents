@@ -8,40 +8,40 @@ const getbuttonproperties = (variant: string, color: string) => {
   let border: string;
   let buttonBackgroundColor: string;
 
-  switch (color) {  
-    case 'secondaryPink':
-      color = '#CB007B'
+  switch (color) {
+    case "secondaryPink":
+      color = "#CB007B";
       break;
-    case 'secondaryGrey':
-      color = '#707070'
+    case "secondaryGrey":
+      color = "#707070";
       break;
     default:
-      color = '#4CAF50'
+      color = "#4CAF50";
       break;
   }
   switch (variant) {
-    case 'outlined':
+    case "outlined":
       buttonTxtColor = color;
-      buttonBackgroundColor = '#fff';
-      border = '1px solid '+color;
+      buttonBackgroundColor = "#fff";
+      border = "1px solid " + color;
       break;
- 
-    case 'disabled':
-      buttonTxtColor ='#00000042';
+
+    case "disabled":
+      buttonTxtColor = "#00000042";
       buttonBackgroundColor = "#E7ECEF80";
-      border = 'none';
+      border = "none";
       break;
-      
+
     default:
-      buttonTxtColor = '#fff';
+      buttonTxtColor = "#fff";
       buttonBackgroundColor = color;
-      border = 'none';
+      border = "none";
       break;
   }
   return {
     buttonTxtColor,
     buttonBackgroundColor,
-    border
+    border,
   };
 };
 
@@ -61,20 +61,24 @@ export type ButtonProps = {
 };
 
 const useButtonStyles = makeStyles({
-  root:(props:{variant:string, color:string, isCentered:boolean}) => {
-    const {buttonTxtColor,buttonBackgroundColor,border}= getbuttonproperties(props.variant, props.color);
-   return{
-     color:buttonTxtColor,
-     backgroundColor:buttonBackgroundColor,
-     border: border,
-     borderRadius: 6,
-    fontSize: 18,
-    width: 320,
-    height: 48,
-    ...(props.isCentered && { display: "block" }),
-    ...(props.isCentered && { margin: "0 auto" }),
-   }
-  }
+  root: (props: { variant: string; color: string; isCentered: boolean }) => {
+    const {
+      buttonTxtColor,
+      buttonBackgroundColor,
+      border,
+    } = getbuttonproperties(props.variant, props.color);
+    return {
+      color: buttonTxtColor,
+      backgroundColor: buttonBackgroundColor,
+      border: border,
+      borderRadius: 6,
+      fontSize: 18,
+      width: 320,
+      height: 48,
+      ...(props.isCentered && { display: "block" }),
+      ...(props.isCentered && { margin: "0 auto" }),
+    };
+  },
 });
 
 export default function Button({
