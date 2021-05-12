@@ -12,7 +12,6 @@ import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 
-
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetDonorsFunctionName]
 );
@@ -26,8 +25,8 @@ const reset = async () => {
   await deleteAdmin(COORDINATOR_ID);
   await DonorDAL.deleteDonor(DONOR_ID_1);
   await DonorDAL.deleteDonor(DONOR_ID_2);
-  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID)
-  groups.forEach(groupId => GroupDAL.deleteGroup(groupId))
+  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
+  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
 
 beforeAll(reset);
@@ -71,7 +70,7 @@ test("SYSTEM_USER gets all users", async () => {
 
 test("GROUP_COORDINATOR gets only users in group", async () => {
   await createCoordinator(CoordinatorRole.GROUP_COORDINATOR);
-  const group = await GroupDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID)
+  const group = await GroupDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
 
   await createDonor(DONOR_ID_1, group.id);
   await createDonor(DONOR_ID_2, "other_group_id");

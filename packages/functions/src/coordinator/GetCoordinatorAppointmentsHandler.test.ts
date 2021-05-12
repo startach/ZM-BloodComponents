@@ -17,8 +17,8 @@ import {
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
-import * as GroupsDAL from '../dal/GroupsDataAccessLayer';
-import * as GroupDAL from '../dal/GroupsDataAccessLayer';
+import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
+import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -46,7 +46,7 @@ const ALL_APPOINTMENT_IDS = [
   FUTURE_OTHER_HOSPITAL,
   FUTURE_NOT_BOOKED,
   IN_GROUP_1,
-  IN_GROUP_2
+  IN_GROUP_2,
 ];
 
 const reset = async () => {
@@ -54,8 +54,8 @@ const reset = async () => {
   await deleteAdmin(COORDINATOR_ID);
   await DonorDAL.deleteDonor(DONOR_ID_1);
   await DonorDAL.deleteDonor(DONOR_ID_2);
-  const groups1 = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID)
-  groups1.forEach(groupId => GroupDAL.deleteGroup(groupId))
+  const groups1 = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
+  groups1.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
 
 beforeAll(reset);
@@ -144,29 +144,29 @@ test("Valid request returns appointments of the right hospital", async () => {
 
 test("Valid request for group coordinator returns only users in group", async () => {
   await createUser(CoordinatorRole.GROUP_COORDINATOR);
-  const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID)
+  const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
 
   await createDonor(DONOR_ID_1, group.id);
   await createDonor(DONOR_ID_2, "OTHER_GROUP");
 
   await saveAppointment(
-      IN_GROUP_1,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      DONOR_ID_1
+    IN_GROUP_1,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_1
   );
 
   await saveAppointment(
-      IN_GROUP_2,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      DONOR_ID_2
+    IN_GROUP_2,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_2
   );
 
   const res = await callFunction(COORDINATOR_ID);
 
   let appointments = res.appointments.filter((a) =>
-      ALL_APPOINTMENT_IDS.includes(a.id)
+    ALL_APPOINTMENT_IDS.includes(a.id)
   );
   expect(appointments).toHaveLength(1);
 
@@ -229,7 +229,7 @@ async function createDonor(donorId: string, groupId: string) {
   const donor: DbDonor = {
     ...sampleUser,
     id: donorId,
-    groupId: groupId
+    groupId: groupId,
   };
 
   await DonorDAL.setDonor(donor);
