@@ -36,14 +36,14 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that is not admin throws exception", async () => {
+test("User that is not coordinator throws exception", async () => {
   await saveAppointment();
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
-    "User is not an admin and can't edit appointments"
+    "User is not a coordinator and can't edit appointments"
   );
 });
 
@@ -54,7 +54,10 @@ test("User that has wrong role throws exception", async () => {
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "User not authorized to preform action");
+  await expectAsyncThrows(
+    action,
+    "Coordinator has no permissions for hospital"
+  );
 });
 
 test("User that does not have the right hospital throws exception", async () => {
@@ -64,7 +67,10 @@ test("User that does not have the right hospital throws exception", async () => 
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "User not authorized to preform action");
+  await expectAsyncThrows(
+    action,
+    "Coordinator has no permissions for hospital"
+  );
 });
 
 test("No such appointment throws exception", async () => {
