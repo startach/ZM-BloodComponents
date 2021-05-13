@@ -17,6 +17,10 @@ export default async function (
     email: request.email,
     phone: request.phone,
     bloodType: request.bloodType,
+
+    //TODO add group Id
+    groupId: "",
+
     testUser: false,
   };
 

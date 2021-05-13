@@ -16,15 +16,17 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
-import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import * as DonorDAL from "../dal/DonorDataAccessLayer";
+import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
+import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
 );
-
 const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";
 const DONOR_ID_1 = "GetCoordinatorAppointmentsTestDonorUser1";
 const DONOR_ID_2 = "GetCoordinatorAppointmentsTestDonorUser2";
+const GROUP_NAME_1 = "GetCoordinatorAppointmentsTestgroup1";
 
 const PAST_BOOKED = "GetCoordinatorAppointments_PastBooked";
 const PAST_OTHER_HOSPITAL = "GetCoordinatorAppointments_PastOtherHospital";
@@ -32,6 +34,8 @@ const PAST_NOT_BOOKED = "GetCoordinatorAppointments_PastNotBooked";
 const FUTURE_BOOKED = "GetCoordinatorAppointments_FutureBooked";
 const FUTURE_OTHER_HOSPITAL = "GetCoordinatorAppointments_FutureOtherHospital";
 const FUTURE_NOT_BOOKED = "GetCoordinatorAppointments_FutureNotBooked";
+const IN_GROUP_1 = "GetCoordinatorAppointments_IN_GROUP_1";
+const IN_GROUP_2 = "GetCoordinatorAppointments_IN_GROUP_2";
 
 const ALL_APPOINTMENT_IDS = [
   PAST_BOOKED,
@@ -40,38 +44,33 @@ const ALL_APPOINTMENT_IDS = [
   FUTURE_BOOKED,
   FUTURE_OTHER_HOSPITAL,
   FUTURE_NOT_BOOKED,
+  IN_GROUP_1,
+  IN_GROUP_2,
 ];
 
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
   await deleteAdmin(COORDINATOR_ID);
-  await deleteDonor(DONOR_ID_1);
-  await deleteDonor(DONOR_ID_2);
+  await DonorDAL.deleteDonor(DONOR_ID_1);
+  await DonorDAL.deleteDonor(DONOR_ID_2);
+  const groups1 = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
+  groups1.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
 
 beforeAll(reset);
 afterEach(reset);
-
 test("Unauthenticated user throws exception", async () => {
   const action = () => callFunction();
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that is not admin throws exception", async () => {
+test("User that is not coordinator throws exception", async () => {
   const action = () => callFunction(COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
-    "User is not an admin and can't edit appointments"
+    "User is not an coordinator and can't edit appointments"
   );
-});
-
-test("User that has wrong role throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR);
-
-  const action = () => callFunction(COORDINATOR_ID);
-
-  await expectAsyncThrows(action, "User not authorized to preform action");
 });
 
 test("User that does not have the right hospital throws exception", async () => {
@@ -79,7 +78,10 @@ test("User that does not have the right hospital throws exception", async () => 
 
   const action = () => callFunction(COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "User not authorized to preform action");
+  await expectAsyncThrows(
+    action,
+    "Coordinator has no permissions for hospital"
+  );
 });
 
 test("Valid request returns appointments of the right hospital", async () => {
@@ -88,8 +90,8 @@ test("Valid request returns appointments of the right hospital", async () => {
     Hospital.TEL_HASHOMER,
   ]);
 
-  await createDonor(DONOR_ID_1);
-  await createDonor(DONOR_ID_2);
+  await createDonor(DONOR_ID_1, "group1");
+  await createDonor(DONOR_ID_2, "group1");
 
   await saveAppointment(
     PAST_BOOKED,
@@ -117,9 +119,7 @@ test("Valid request returns appointments of the right hospital", async () => {
     DONOR_ID_2
   );
   await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
-
   const res = await callFunction(COORDINATOR_ID);
-
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
   );
@@ -128,7 +128,6 @@ test("Valid request returns appointments of the right hospital", async () => {
   expect(appointments[1].id).toEqual(PAST_NOT_BOOKED);
   expect(appointments[2].id).toEqual(FUTURE_BOOKED);
   expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
-
   // May contain other donor ids of other appointments that are not part of this test
   expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
     DONOR_ID_1
@@ -138,33 +137,60 @@ test("Valid request returns appointments of the right hospital", async () => {
   );
 });
 
+test("Valid request for group coordinator returns only users in group", async () => {
+  await createUser(CoordinatorRole.GROUP_COORDINATOR);
+  const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
+
+  await createDonor(DONOR_ID_1, group.id);
+  await createDonor(DONOR_ID_2, "OTHER_GROUP");
+
+  await saveAppointment(
+    IN_GROUP_1,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_1
+  );
+
+  await saveAppointment(
+    IN_GROUP_2,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_2
+  );
+
+  const res = await callFunction(COORDINATOR_ID);
+
+  let appointments = res.appointments.filter((a) =>
+    ALL_APPOINTMENT_IDS.includes(a.id)
+  );
+  expect(appointments).toHaveLength(1);
+
+  // May contain other donor ids of other appointments that are not part of this test
+  expect(appointments[0].id).toEqual(IN_GROUP_1);
+});
+
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
   const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
     role,
   };
-
   if (hospitals) {
     newAdmin.hospitals = hospitals;
   }
-
   await setAdmin(newAdmin);
 }
-
 function callFunction(
   userId?: string
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital: Hospital.TEL_HASHOMER,
   };
-
   return wrapped(request, {
     auth: {
       uid: userId,
     },
   });
 }
-
 async function saveAppointment(
   id: string,
   donationStartTime: Date,
@@ -179,21 +205,20 @@ async function saveAppointment(
     hospital: hospital,
     donorId: "",
   };
-
   if (donorId) {
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
   }
-
   await setAppointment(appointment);
   return appointment;
 }
 
-async function createDonor(donorId: string) {
+async function createDonor(donorId: string, groupId: string) {
   const donor: DbDonor = {
-    id: donorId,
     ...sampleUser,
+    id: donorId,
+    groupId: groupId,
   };
 
-  await setDonor(donor);
+  await DonorDAL.setDonor(donor);
 }
