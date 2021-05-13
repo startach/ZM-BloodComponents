@@ -58,12 +58,12 @@ export async function getAllDonors(): Promise<DbDonor[]> {
 }
 
 export async function getDonorsByGroupIds(
-  groupIds: string[]
+  groupIds: Set<string>
 ): Promise<DbDonor[]> {
   const snapshot = await admin
     .firestore()
     .collection(Collections.DONORS)
-    .where("groupId", "in", groupIds)
+    .where("groupId", "in", Array.from(groupIds))
     .get();
   return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
 }

@@ -83,9 +83,7 @@ async function filterDonorsInGroup(
   donorsInAppointments: DbDonor[]
 ) {
   const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(coordinator.id);
-  return donorsInAppointments.filter((donor) =>
-    groupIds.includes(donor.groupId)
-  );
+  return donorsInAppointments.filter((donor) => groupIds.has(donor.groupId));
 }
 
 function filterAppointmentsForDonors(
