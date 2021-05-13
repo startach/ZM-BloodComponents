@@ -33,11 +33,11 @@ export async function getGroup(groupId: string) {
 
 export async function getGroupIdsOfCoordinatorId(
   coordinatorId: string
-): Promise<string[]> {
+): Promise<Set<string>> {
   const querySnapshot = await admin
     .firestore()
     .collection(Collections.GROUPS)
     .where("coordinatorId", "==", coordinatorId)
     .get();
-  return querySnapshot.docs.map((doc) => doc.id);
+  return new Set<string>(querySnapshot.docs.map((doc) => doc.id));
 }
