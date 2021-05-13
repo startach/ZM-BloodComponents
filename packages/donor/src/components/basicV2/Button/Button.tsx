@@ -62,11 +62,8 @@ export type ButtonProps = {
 
 const useButtonStyles = makeStyles({
   root: (props: { variant: string; color: string; isCentered: boolean }) => {
-    const {
-      buttonTxtColor,
-      buttonBackgroundColor,
-      border,
-    } = getbuttonproperties(props.variant, props.color);
+    const { buttonTxtColor, buttonBackgroundColor, border } =
+      getbuttonproperties(props.variant, props.color);
     return {
       color: buttonTxtColor,
       backgroundColor: buttonBackgroundColor,
