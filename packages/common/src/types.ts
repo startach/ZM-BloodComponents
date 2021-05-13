@@ -112,7 +112,7 @@ export enum Collections {
   DONORS = "donors",
   APPOINTMENTS = "appointments",
   EMAIL_NOTIFICATIONS = "emailNotifications",
-  GROUPS = "Groups",
+  GROUPS = "groups",
 }
 
 export enum LoginStatus {
