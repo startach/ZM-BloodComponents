@@ -1,7 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  AdminRole,
-  DbAdmin,
+  CoordinatorRole,
+  DbCoordinator,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -46,7 +46,7 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await createUser([AdminRole.ZM_COORDINATOR]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR);
 
   const action = () => callFunction(USER_ID);
 
@@ -54,10 +54,7 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.TEL_HASHOMER]
-  );
+  await createUser(CoordinatorRole.GROUP_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
   const action = () => callFunction(USER_ID);
 
@@ -65,10 +62,10 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request inserts new appointments", async () => {
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.ASAF_HAROFE, Hospital.TEL_HASHOMER]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+    Hospital.TEL_HASHOMER,
+  ]);
 
   await callFunction(USER_ID);
 
@@ -90,15 +87,15 @@ test("Valid request inserts new appointments", async () => {
     expect(appointment.donationStartTime).toEqual(
       admin.firestore.Timestamp.fromDate(expectedStartTime)
     );
+    expect(appointment.lastChangeTime).toBeUndefined();
+    expect(appointment.lastChangeType).toBeUndefined();
   });
 });
 
-async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
-  const newAdmin: DbAdmin = {
+async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
+  const newAdmin: DbCoordinator = {
     id: USER_ID,
-    phone: "test_phone",
-    email: "test_email",
-    roles,
+    role,
   };
 
   if (hospitals) {

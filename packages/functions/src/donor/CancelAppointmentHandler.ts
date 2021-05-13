@@ -1,9 +1,10 @@
 import {
   getAppointmentsByIds,
+  removeDonorFromDbAppointment,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as _ from "lodash";
-import { AppointmentUtils, FunctionsApi } from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
@@ -28,9 +29,7 @@ export default async function (
   }
 
   appointment.donorId = "";
-  const updatedAppointment = AppointmentUtils.removeDonorFromDbAppointment(
-    appointment
-  );
+  const updatedAppointment = removeDonorFromDbAppointment(appointment);
 
   await setAppointment(updatedAppointment);
 }

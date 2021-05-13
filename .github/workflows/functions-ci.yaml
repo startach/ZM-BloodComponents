@@ -9,13 +9,17 @@ jobs:
   functions:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Jerusalem
       - name: Checkout
         uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install packages
+      - name: Install Dependencies
         run: yarn install
       - name: Run Typescript
         run: yarn workspace @zm-blood-components/functions tsc

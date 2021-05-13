@@ -7,9 +7,9 @@
   ],
   "scripts": {
     "clean": "rimraf ./lib && rimraf ./dist",
-    "lint": "yarn run style && tslint --project tsconfig.json ",
+    "lint": "tslint --project tsconfig.json ",
     "compile": "tsc -p tsconfig.build.json",
-    "build": "yarn run clean && yarn run lint && yarn run test && yarn run compile",
+    "build": "yarn run clean && yarn run lint && yarn run compile",
     "bundle": "yarn run build && webpack",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@zm-blood-components/common": "^1.0.0",
-    "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1"
+    "firebase-admin": "^9.7.0",
+    "firebase-functions": "^3.13.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

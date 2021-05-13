@@ -1,4 +1,10 @@
-import { BloodType, DbAdmin, Donor, Hospital } from "./types";
+import {
+  BloodType,
+  DbCoordinator,
+  Donor,
+  Hospital,
+  BookingChange,
+} from "./types";
 
 // Donor functions:
 
@@ -9,6 +15,7 @@ export type AvailableAppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
+  recentChangeType?: BookingChange;
 };
 
 export type BookedAppointmentApiEntry = {
@@ -17,6 +24,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
+  recentChangeType?: BookingChange;
 };
 
 // Represent an appointment, both available and booked
@@ -24,6 +32,7 @@ export type AppointmentApiEntry = {
   id: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
+  recentChangeType?: BookingChange;
 
   // If booked
   donorId?: string;
@@ -100,9 +109,9 @@ export interface DeleteAppointmentRequest {
   onlyRemoveDonor: boolean;
 }
 
-export const SaveAdminFunctionName = "saveAdmin";
-export interface SaveAdminRequest {
-  admin: DbAdmin;
+export const SaveCoordinatorFunctionName = "saveCoordinator";
+export interface SaveCoordinatorRequest {
+  coordinator: DbCoordinator;
 }
 
 export const GetCoordinatorAppointmentsFunctionName =

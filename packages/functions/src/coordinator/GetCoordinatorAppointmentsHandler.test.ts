@@ -1,7 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  AdminRole,
-  DbAdmin,
+  CoordinatorRole,
+  DbCoordinator,
   DbAppointment,
   DbDonor,
   FunctionsApi,
@@ -16,7 +16,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
-import { setDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -45,6 +45,8 @@ const ALL_APPOINTMENT_IDS = [
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
   await deleteAdmin(COORDINATOR_ID);
+  await deleteDonor(DONOR_ID_1);
+  await deleteDonor(DONOR_ID_2);
 };
 
 beforeAll(reset);
@@ -65,7 +67,7 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await createUser([AdminRole.ZM_COORDINATOR]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR);
 
   const action = () => callFunction(COORDINATOR_ID);
 
@@ -73,10 +75,7 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.ASAF_HAROFE]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
 
   const action = () => callFunction(COORDINATOR_ID);
 
@@ -84,10 +83,10 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request returns appointments of the right hospital", async () => {
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.ASAF_HAROFE, Hospital.TEL_HASHOMER]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+    Hospital.TEL_HASHOMER,
+  ]);
 
   await createDonor(DONOR_ID_1);
   await createDonor(DONOR_ID_2);
@@ -139,12 +138,10 @@ test("Valid request returns appointments of the right hospital", async () => {
   );
 });
 
-async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
-  const newAdmin: DbAdmin = {
+async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
+  const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
-    phone: "test_phone",
-    email: "test_email",
-    roles,
+    role,
   };
 
   if (hospitals) {

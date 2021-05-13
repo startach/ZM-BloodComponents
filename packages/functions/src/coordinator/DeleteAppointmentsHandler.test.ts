@@ -1,7 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
-  AdminRole,
-  DbAdmin,
+  CoordinatorRole,
+  DbCoordinator,
   DbAppointment,
   FunctionsApi,
   Hospital,
@@ -50,7 +50,7 @@ test("User that is not admin throws exception", async () => {
 test("User that has wrong role throws exception", async () => {
   await saveAppointment();
 
-  await createUser([AdminRole.ZM_COORDINATOR]);
+  await createUser(CoordinatorRole.GROUP_COORDINATOR);
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -60,10 +60,7 @@ test("User that has wrong role throws exception", async () => {
 test("User that does not have the right hospital throws exception", async () => {
   await saveAppointment();
 
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.TEL_HASHOMER]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -71,7 +68,7 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("No such appointment throws exception", async () => {
-  await createUser([AdminRole.SYSTEM_USER]);
+  await createUser(CoordinatorRole.SYSTEM_USER);
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -81,10 +78,10 @@ test("No such appointment throws exception", async () => {
 test("Valid delete appointment request", async () => {
   await saveAppointment();
 
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.ASAF_HAROFE, Hospital.BEILINSON]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+    Hospital.BEILINSON,
+  ]);
 
   await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -95,10 +92,10 @@ test("Valid delete appointment request", async () => {
 test("Valid remove donor request", async () => {
   await saveAppointment();
 
-  await createUser(
-    [AdminRole.ZM_COORDINATOR, AdminRole.HOSPITAL_COORDINATOR],
-    [Hospital.ASAF_HAROFE, Hospital.BEILINSON]
-  );
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+    Hospital.BEILINSON,
+  ]);
 
   await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
 
@@ -109,12 +106,10 @@ test("Valid remove donor request", async () => {
   expect(appointments[0].bookingTime).toBeUndefined();
 });
 
-async function createUser(roles: AdminRole[], hospitals?: Hospital[]) {
-  const newAdmin: DbAdmin = {
+async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
+  const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
-    phone: "test_phone",
-    email: "test_email",
-    roles,
+    role,
   };
 
   if (hospitals) {

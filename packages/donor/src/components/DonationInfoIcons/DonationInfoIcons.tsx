@@ -5,7 +5,7 @@ import locationIcon from "../../assets/icons/locationPin.svg";
 import calendarIcon from "../../assets/icons/calendar.svg";
 import Text from "../basic/Text";
 import clockIcon from "../../assets/icons/clock.svg";
-import { Hospital, LocaleUtils, DateUtils } from "@zm-blood-components/common";
+import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 
 export interface DonationInfoIconsProps {
   donationStartTimeMillis: number;
