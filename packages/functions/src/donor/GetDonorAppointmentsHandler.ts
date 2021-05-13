@@ -28,9 +28,8 @@ export default async function (
   const completedAppointments: BookedAppointment[] = [];
   const futureAppointments: BookedAppointment[] = [];
   appointments.map((appointment) => {
-    const bookedAppointment = dbAppointmentToBookedAppointmentApiEntry(
-      appointment
-    );
+    const bookedAppointment =
+      dbAppointmentToBookedAppointmentApiEntry(appointment);
 
     if (appointment.donationStartTime.toDate() < now) {
       completedAppointments.push(bookedAppointment);
