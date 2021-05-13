@@ -54,7 +54,8 @@ export default async function (
   );
 
   return {
-    bookedAppointment:
-      dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
+    bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
+      appointmentToBook
+    ),
   };
 }

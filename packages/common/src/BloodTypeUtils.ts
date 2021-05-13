@@ -2,8 +2,9 @@ import { BloodType, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
 export function getBloodTypeSelectOptionsWithDefault(defaultLabel: string) {
-  const bloodTypeOptions: SelectOption<BloodType | "">[] =
-    getBloodTypeSelectOptions();
+  const bloodTypeOptions: SelectOption<
+    BloodType | ""
+  >[] = getBloodTypeSelectOptions();
   bloodTypeOptions.unshift({
     key: "undefined",
     value: "",
