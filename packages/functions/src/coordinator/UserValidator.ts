@@ -12,7 +12,7 @@ export async function validateAppointmentEditPermissions(
   const admin = await getCoordinator(userId);
   if (!admin) {
     console.error("Could not find calling user", userId);
-    throw Error("User is not an admin and can't edit appointments");
+    throw Error("User is not a coordinator and can't edit appointments");
   }
 
   if (!adminAllowedToAddAppointments(admin, hospitals)) {
@@ -22,7 +22,7 @@ export async function validateAppointmentEditPermissions(
       "role does not allow adding appointments to",
       hospitals
     );
-    throw Error("User not authorized to preform action");
+    throw Error("Coordinator has no permissions for hospital");
   }
 
   return userId;
