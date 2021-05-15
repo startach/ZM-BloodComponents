@@ -132,7 +132,8 @@ export interface GetDonorsRequest {}
 export interface GetDonorsResponse {
   donors: Donor[];
 }
-
+export declare const GetBookedDonationsInHospitalFunctionName =
+  "getBookedDonationsInHospital";
 export interface GetBookedDonationsInHospitalRequest {
   hospital: Hospital;
   fromDateMillis: number;
