@@ -58,7 +58,10 @@ test("User that does not have the right hospital throws exception", async () => 
 
   const action = () => callFunction(COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "User not authorized to preform action");
+  await expectAsyncThrows(
+    action,
+    "Coordinator has no permissions for hospital"
+  );
 });
 
 test("Valid request returns booked appointment of the right hospital", async () => {
