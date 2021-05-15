@@ -34,10 +34,10 @@ const ALL_APPOINTMENT_IDS = [
   FUTURE_BOOKED,
   FUTURE_OTHER_HOSPITAL,
   FUTURE_NOT_BOOKED,
-  FUTURE_DONATION_TOO_FAR
+  FUTURE_DONATION_TOO_FAR,
 ];
 
-const ONE_MONTH_IN_MILLIS = 60 * 60 * 24 * 30
+const ONE_MONTH_IN_MILLIS = 60 * 60 * 24 * 30;
 
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
@@ -62,9 +62,7 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request returns booked appointment of the right hospital", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [
-    Hospital.TEL_HASHOMER,
-  ]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
   await createDonor(DONOR_ID_1);
 
@@ -78,12 +76,12 @@ test("Valid request returns booked appointment of the right hospital", async () 
     FUTURE_NOT_BOOKED,
     getDate(2),
     Hospital.TEL_HASHOMER,
-    "",
+    ""
   );
   await saveAppointment(
     FUTURE_OTHER_HOSPITAL,
     getDate(2),
-    Hospital.ASAF_HAROFE,
+    Hospital.ASAF_HAROFE
   );
   await saveAppointment(
     FUTURE_DONATION_TOO_FAR,
@@ -94,7 +92,7 @@ test("Valid request returns booked appointment of the right hospital", async () 
 
   const res = await callFunction(COORDINATOR_ID);
 
-  let appointments = res.donations
+  let appointments = res.donations;
   expect(appointments).toHaveLength(1);
   expect(appointments[1].donationId).toEqual(FUTURE_NOT_BOOKED);
 });
@@ -118,7 +116,7 @@ function callFunction(
   const request: FunctionsApi.GetBookedDonationsInHospitalRequest = {
     hospital: Hospital.TEL_HASHOMER,
     fromDateMillis: Date.now(),
-    toDateMillis: Date.now() + ONE_MONTH_IN_MILLIS;
+    toDateMillis: Date.now() + ONE_MONTH_IN_MILLIS,
   };
 
   return wrapped(request, {
