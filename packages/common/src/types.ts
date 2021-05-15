@@ -129,3 +129,13 @@ export enum BookingChange {
   BOOKED = "BOOKED",
   CANCELLED = "CANCELLED",
 }
+
+export type BookedDonationWithDonor = {
+  donationId: string;
+  donationStartTimeMillis: number;
+  hospital: Hospital;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  bloodType: BloodType;
+};

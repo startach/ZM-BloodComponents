@@ -4,6 +4,7 @@ import {
   Donor,
   Hospital,
   BookingChange,
+  BookedDonationWithDonor,
 } from "./types";
 
 // Donor functions:
@@ -130,4 +131,13 @@ export interface GetDonorsRequest {}
 
 export interface GetDonorsResponse {
   donors: Donor[];
+}
+
+export interface GetBookedDonationsInHospitalRequest {
+  hospital: Hospital;
+  fromDateMillis: number;
+  toDateMillis: number;
+}
+export interface GetBookedDonationsInHospitalResponse {
+  donations: BookedDonationWithDonor[];
 }
