@@ -19,7 +19,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
+  Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
 );
 
 const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";

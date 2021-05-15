@@ -10,6 +10,7 @@ import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
 import getDonorsHandler from "./coordinator/GetDonorsHandler";
+import getBookedDonationsInHospitalHandler from "./reports/BookedDonationsReport";
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 
@@ -24,6 +25,11 @@ export const getCoordinatorAppointments = handler(
 export const deleteAppointments = handler(deleteAppointmentsHandler);
 export const saveCoordinator = handler(saveAdminRequestHandler);
 export const getDonors = handler(getDonorsHandler);
+
+// Reports
+export const getBookedDonationsInHospital = handler(
+  getBookedDonationsInHospitalHandler
+);
 
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
