@@ -28,8 +28,9 @@ export interface IconButtonProps {
 }
 
 function IconButton({ icon, tooltipText, ...props }: IconButtonProps) {
-  const [IconComponent, setIconComponent] =
-    useState<OverridableComponent<SvgIconTypeMap<{}, "svg">>>();
+  const [IconComponent, setIconComponent] = useState<
+    OverridableComponent<SvgIconTypeMap<{}, "svg">>
+  >();
 
   useEffect(() => {
     import("@material-ui/icons").then((icons) => setIconComponent(icons[icon]));
