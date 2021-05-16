@@ -22,13 +22,13 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
 );
 
-const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";
-const DONOR_ID_1 = "GetCoordinatorAppointmentsTestDonorUser1";
+const COORDINATOR_ID = "BookedDonationsReportTestUser";
+const DONOR_ID_1 = "BookedDonationsReportTestDonorUser1";
 
-const FUTURE_BOOKED = "GetCoordinatorAppointments_FutureBooked";
-const FUTURE_OTHER_HOSPITAL = "GetCoordinatorAppointments_FutureOtherHospital";
-const FUTURE_NOT_BOOKED = "GetCoordinatorAppointments_FutureNotBooked";
-const FUTURE_DONATION_TOO_FAR = "GetCoordinatorAppointments_FutureTooFar";
+const FUTURE_BOOKED = "BookedDonationsReport_FutureBooked";
+const FUTURE_OTHER_HOSPITAL = "BookedDonationsReport_FutureOtherHospital";
+const FUTURE_NOT_BOOKED = "BookedDonationsReport_FutureNotBooked";
+const FUTURE_DONATION_TOO_FAR = "BookedDonationsReport_FutureTooFar";
 
 const ALL_APPOINTMENT_IDS = [
   FUTURE_BOOKED,
@@ -84,7 +84,8 @@ test("Valid request returns booked appointment of the right hospital", async () 
   await saveAppointment(
     FUTURE_OTHER_HOSPITAL,
     getDate(2),
-    Hospital.ASAF_HAROFE
+    Hospital.ASAF_HAROFE,
+    DONOR_ID_1
   );
   await saveAppointment(
     FUTURE_DONATION_TOO_FAR,
@@ -95,9 +96,9 @@ test("Valid request returns booked appointment of the right hospital", async () 
 
   const res = await callFunction(COORDINATOR_ID);
 
-  let appointments = res.donations;
+  let appointments = res.donationsWithDonorDetails;
   expect(appointments).toHaveLength(1);
-  expect(appointments[1].donationId).toEqual(FUTURE_NOT_BOOKED);
+  expect(appointments[0].appointmentId).toEqual(FUTURE_NOT_BOOKED);
 });
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {

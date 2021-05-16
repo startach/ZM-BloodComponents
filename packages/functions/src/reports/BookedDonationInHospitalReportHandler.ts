@@ -1,5 +1,5 @@
 import {
-  BookedDonationWithDonor,
+  BookedDonationWithDonorDetails,
   DbAppointment,
   FunctionsApi,
   Hospital,
@@ -28,26 +28,24 @@ export default async function (
     appointments.map((a) => a.donorId)
   );
 
-  let bookedDonationsWithDonor: BookedDonationWithDonor[] = [];
+  let bookedDonationsWithDonor: BookedDonationWithDonorDetails[] = [];
   appointments.forEach((appointment) => {
     const donor = donorsInAppointments.find(
       (d) => d.id === appointment.donorId
     );
-    if (donor) {
-      const donationWithDonor = {
-        donationId: appointment.id || "",
-        donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-        hospital: appointment.hospital,
-        firstName: donor.firstName,
-        lastName: donor.lastName,
-        phone: donor.phone,
-        bloodType: donor.bloodType,
-      };
-      bookedDonationsWithDonor.push(donationWithDonor);
-    }
+    const donationWithDonor: BookedDonationWithDonorDetails = {
+      appointmentId: appointment.id!,
+      donationStartTimeMillis: appointment.donationStartTime.toMillis(),
+      hospital: appointment.hospital,
+      firstName: donor!.firstName,
+      lastName: donor!.lastName,
+      phone: donor!.phone,
+      bloodType: donor!.bloodType,
+    };
+    bookedDonationsWithDonor.push(donationWithDonor);
   });
 
   return {
-    donations: bookedDonationsWithDonor,
+    donationsWithDonorDetails: bookedDonationsWithDonor,
   };
 }

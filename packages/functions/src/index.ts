@@ -10,7 +10,7 @@ import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
 import getDonorsHandler from "./coordinator/GetDonorsHandler";
-import getBookedDonationsInHospitalHandler from "./reports/BookedDonationsReport";
+import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospitalReportHandler";
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 
