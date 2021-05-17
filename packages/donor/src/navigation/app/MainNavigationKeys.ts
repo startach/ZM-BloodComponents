@@ -4,4 +4,5 @@ export enum MainNavigationKeys {
   MyProfile = "profile",
   Questionnaire = "questions",
   About = "about",
+  Contact = "contact",
 }

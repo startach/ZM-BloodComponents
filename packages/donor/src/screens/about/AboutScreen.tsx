@@ -5,15 +5,11 @@ import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import IconButton from "../../components/basic/IconButton";
 import infoIcon from "../../assets/icons/Info_Icon.svg";
 
-export default function ContactUsScreen() {
+export default function AboutScreen() {
   return (
-    <ZMScreen hasBackButton className={styles.container} title="אודות">
+    <ZMScreen hasBackButton title="אודות">
       <HeaderSection className={styles.component}>
-        <IconButton
-          iconSrc={infoIcon}
-          iconSize={24}
-          className={styles.iconCenter}
-        ></IconButton>
+        <IconButton iconSrc={infoIcon} iconSize={24}></IconButton>
         <Text className={styles.textBold}>
           על עמותת "זכרון מנחם" והאפליקציה
         </Text>
