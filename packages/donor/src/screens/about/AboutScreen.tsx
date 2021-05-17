@@ -7,11 +7,11 @@ export default function ContactUsScreen() {
   return (
     <ZMScreen hasBackButton className={styles.container} title="אודות">
       <HeaderSection className={styles.component}>
-        <img className="blood_bank_logo" src={bloodBankLogo}/>
+        <img className="blood_bank_logo" src={bloodBankLogo} />
       </HeaderSection>
-      <Text className={styles.textBold+' '+styles.textContainer}>
-          על עמותת "זכרון מנחם" והאפליקציה
-        </Text>
+      <Text className={styles.textBold + " " + styles.textContainer}>
+        על עמותת "זכרון מנחם" והאפליקציה
+      </Text>
       <Text className={styles.textContainer}>
         תורמי טרומבוציטים יקרים שלום רב!
       </Text>
