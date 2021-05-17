@@ -14,7 +14,6 @@ import AboutScreen from "../../screens/about/AboutScreen";
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
-import ContactScreen from "../../screens/contact/ContactScreen";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -41,15 +40,13 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             updateUserInAppState={setUser}
           />
         </Route>
-
         <Route path={"/" + MainNavigationKeys.About}>
           <AboutScreen />
         </Route>
-
-        <Route path={"/" + MainNavigationKeys.Contact}>
-          <ContactScreen />
-        </Route>
-
+        // TODO open after icons are added in contact page
+        {/*<Route path={"/" + MainNavigationKeys.Contact}>*/}
+        {/*  <ContactScreen />*/}
+        {/*</Route>*/}
         <Route
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
@@ -66,7 +63,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             );
           }}
         />
-
         <Route
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
@@ -87,7 +83,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             );
           }}
         />
-
         <Route
           path={["/" + MainNavigationKeys.BookDonation, "*"]}
           render={() => {

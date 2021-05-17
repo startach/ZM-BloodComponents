@@ -83,13 +83,13 @@ const ContactContent = () => {
 type ContactLineProps = {
   content: ReactNode;
   iconLocation: string;
-  alt?: string;
+  alt: string;
 };
 
 const IconedContent: React.FC<ContactLineProps> = ({
   content,
   iconLocation,
-  alt = "",
+  alt,
 }) => {
   return (
     <div className={styles.contentLine}>
