@@ -7,7 +7,7 @@ export default function ContactUsScreen() {
   return (
     <ZMScreen hasBackButton className={styles.container} title="אודות">
       <HeaderSection className={styles.component}>
-        <img className="blood_bank_logo" src={bloodBankLogo} />
+        <img alt="בנק הדם של זכרון מנחם" className="blood_bank_logo" src={bloodBankLogo} />
       </HeaderSection>
       <Text className={styles.textBold + " " + styles.textContainer}>
         על עמותת "זכרון מנחם" והאפליקציה
