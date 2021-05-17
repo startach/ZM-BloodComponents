@@ -2,9 +2,8 @@ import {
   BookedDonationWithDonorDetails,
   DbAppointment,
   FunctionsApi,
-  Hospital,
 } from "@zm-blood-components/common";
-import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
+import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import { getDonors } from "../dal/DonorDataAccessLayer";
 
@@ -12,24 +11,27 @@ export default async function (
   request: FunctionsApi.GetBookedDonationsInHospitalRequest,
   callerId: string
 ): Promise<FunctionsApi.GetBookedDonationsInHospitalResponse> {
-  await validateAppointmentEditPermissions(
-    callerId,
-    new Set<Hospital>([request.hospital])
-  );
+  const coordinator = await getCoordinator(callerId);
+  if (!coordinator) {
+    console.error("Could not find calling user", callerId);
+    throw Error(`User ${callerId} is not an admin`);
+  }
+
+  // TODO switch (coordinator.role) && by requested hospital
 
   const appointments: DbAppointment[] = await getAppointmentsByHospital(
     request.hospital,
     new Date(request.fromDateMillis),
-    new Date(request.toDateMillis),
-    true
+    new Date(request.toDateMillis)
   );
 
+  const bookedAppointments = appointments.filter((a) => a.donorId?.length > 0);
   const donorsInAppointments = await getDonors(
-    appointments.map((a) => a.donorId)
+    bookedAppointments.map((a) => a.donorId)
   );
 
   let bookedDonationsWithDonor: BookedDonationWithDonorDetails[] = [];
-  appointments.forEach((appointment) => {
+  bookedAppointments.forEach((appointment) => {
     const donor = donorsInAppointments.find(
       (d) => d.id === appointment.donorId
     );

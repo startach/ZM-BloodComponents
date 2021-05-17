@@ -19,7 +19,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
+  Functions.getBookedDonationsInHospital
 );
 
 const COORDINATOR_ID = "BookedDonationsReportTestUser";
@@ -37,7 +37,7 @@ const ALL_APPOINTMENT_IDS = [
   FUTURE_DONATION_TOO_FAR,
 ];
 
-const ONE_MONTH_IN_MILLIS = 60 * 60 * 24 * 30;
+const FOURTEEN_DAYS_IN_MILLIS = 1000 * 60 * 60 * 24 * 14;
 
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
@@ -53,52 +53,53 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that does not have the right hospital throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
-
-  const action = () => callFunction(COORDINATOR_ID);
-
-  await expectAsyncThrows(
-    action,
-    "Coordinator has no permissions for hospital"
-  );
-});
-
 test("Valid request returns booked appointment of the right hospital", async () => {
   await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
   await createDonor(DONOR_ID_1);
 
+  const IN_TWO_DAYS = getDate(2);
+  const IN_SIXTEEN_DAYS = getDate(16);
+
   await saveAppointment(
     FUTURE_BOOKED,
-    getDate(2),
+    IN_TWO_DAYS,
     Hospital.TEL_HASHOMER,
     DONOR_ID_1
   );
   await saveAppointment(
     FUTURE_NOT_BOOKED,
-    getDate(2),
+    IN_TWO_DAYS,
     Hospital.TEL_HASHOMER,
     ""
   );
   await saveAppointment(
     FUTURE_OTHER_HOSPITAL,
-    getDate(2),
+    IN_TWO_DAYS,
     Hospital.ASAF_HAROFE,
     DONOR_ID_1
   );
   await saveAppointment(
     FUTURE_DONATION_TOO_FAR,
-    getDate(16),
+    IN_SIXTEEN_DAYS,
     Hospital.TEL_HASHOMER,
     DONOR_ID_1
   );
 
   const res = await callFunction(COORDINATOR_ID);
 
-  let appointments = res.donationsWithDonorDetails;
+  const appointments = res.donationsWithDonorDetails;
   expect(appointments).toHaveLength(1);
-  expect(appointments[0].appointmentId).toEqual(FUTURE_NOT_BOOKED);
+  const bookedAppointment = appointments[0];
+  expect(bookedAppointment.appointmentId).toEqual(FUTURE_BOOKED);
+  expect(bookedAppointment.bloodType).toEqual(sampleUser.bloodType);
+  expect(bookedAppointment.donationStartTimeMillis).toEqual(
+    IN_TWO_DAYS.getTime()
+  );
+  expect(bookedAppointment.firstName).toEqual(sampleUser.firstName);
+  expect(bookedAppointment.lastName).toEqual(sampleUser.lastName);
+  expect(bookedAppointment.hospital).toEqual(Hospital.TEL_HASHOMER);
+  expect(bookedAppointment.phone).toEqual(sampleUser.phone);
 });
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
@@ -120,7 +121,7 @@ function callFunction(
   const request: FunctionsApi.GetBookedDonationsInHospitalRequest = {
     hospital: Hospital.TEL_HASHOMER,
     fromDateMillis: Date.now(),
-    toDateMillis: Date.now() + ONE_MONTH_IN_MILLIS,
+    toDateMillis: FOURTEEN_DAYS_IN_MILLIS + Date.now(),
   };
 
   return wrapped(request, {

@@ -89,8 +89,7 @@ export async function getAppointments(
 export async function getAppointmentsByHospital(
   hospital: Hospital,
   fromTime?: Date,
-  toTime?: Date,
-  onlyBooked?: boolean
+  toTime?: Date
 ): Promise<DbAppointment[]> {
   let request = admin
     .firestore()
@@ -102,9 +101,6 @@ export async function getAppointmentsByHospital(
   }
   if (toTime) {
     request = request.where("donationStartTime", "<=", toTime);
-  }
-  if (onlyBooked) {
-    request = request.where("donorId", "!=", "");
   }
   request = request.orderBy("donationStartTime");
 
