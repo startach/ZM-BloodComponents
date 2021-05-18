@@ -1,12 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {
-  AdminRole,
-  DbAdmin,
-  DbDonor,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { DbDonor, FunctionsApi } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
@@ -59,24 +54,6 @@ test("Donor request returns donor", async () => {
   expect(res.donor?.id).toEqual(DONOR_ID);
 });
 
-test("Invalid admin throws exception", async () => {
-  await createDonor();
-  await createAdmin(AdminRole.HOSPITAL_COORDINATOR);
-
-  const action = () => callTarget(DONOR_ID, ADMIN_ID);
-
-  await expectAsyncThrows(action, "Unauthorized getDonor request");
-});
-
-test("Valid admin request returns donor", async () => {
-  await createDonor();
-  await createAdmin(AdminRole.SYSTEM_USER);
-
-  const res = await callTarget(DONOR_ID, ADMIN_ID);
-
-  expect(res.donor?.id).toEqual(DONOR_ID);
-});
-
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
@@ -84,17 +61,6 @@ async function createDonor() {
   };
 
   await setDonor(donor);
-}
-
-async function createAdmin(role: AdminRole) {
-  const admin: DbAdmin = {
-    id: ADMIN_ID,
-    email: "email",
-    phone: "phone",
-    roles: [role],
-  };
-
-  await setAdmin(admin);
 }
 
 async function callTarget(donorId?: string, callingUser?: string) {

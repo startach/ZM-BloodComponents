@@ -32,6 +32,7 @@ interface ManageAppointmentsScreenProps {
   onDeleteAppointment: (appointmentId: string) => Promise<void>;
   onRemoveDonor: (appointmentId: string) => Promise<void>;
   isLoading: boolean;
+  showOnlyRecentChanges: boolean;
 }
 
 export interface DeleteAppointmentPopupData {
@@ -45,6 +46,7 @@ export default function ManageAppointmentsScreen({
   onDeleteAppointment,
   onRemoveDonor,
   isLoading,
+  showOnlyRecentChanges,
 }: ManageAppointmentsScreenProps) {
   const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>({
     isOpen: false,
@@ -57,7 +59,8 @@ export default function ManageAppointmentsScreen({
       rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
         (slot) => ({
           rowData: slot,
-          expandRow: (slot) => expandedRowContent(slot, setPopupData),
+          expandRow: (slot) =>
+            expandedRowContent(slot, setPopupData, showOnlyRecentChanges),
         })
       ),
     })
@@ -106,8 +109,9 @@ export default function ManageAppointmentsScreen({
       <GroupTable
         className={Styles["centered-screen"]}
         hasColumnHeaders
-        columns={MainColumns}
+        columns={MainColumns(showOnlyRecentChanges)}
         groups={groups}
+        tableIndex={0}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>

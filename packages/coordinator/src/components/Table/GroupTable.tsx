@@ -12,6 +12,8 @@ export interface CommonTableProps<T> {
   /** If present, will use this column to initially sort the table.
    User can then select a different column to sort by. */
   initialSortByColumnIndex?: number;
+  /** Index of table in the page, for React Key problems */
+  tableIndex?: number;
 }
 
 interface GroupTableProps<T> extends CommonTableProps<T> {
@@ -50,6 +52,7 @@ export default function GroupsTable<T>({
   hasColumnHeaders,
   className,
   initialSortByColumnIndex,
+  tableIndex,
 }: GroupTableProps<T>) {
   const getInitialSortIndex = () => {
     if (initialSortByColumnIndex) {
@@ -67,9 +70,8 @@ export default function GroupsTable<T>({
 
   const [isReversedSort, setIsReversedSort] = useState(false);
 
-  const [internallySortedGroups, setInternallySortedGroups] = useState<
-    CardTableRowGroup<T>[]
-  >(groups);
+  const [internallySortedGroups, setInternallySortedGroups] =
+    useState<CardTableRowGroup<T>[]>(groups);
 
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
@@ -170,7 +172,7 @@ export default function GroupsTable<T>({
                   row={row}
                   columns={columns}
                   handleExpandAccordion={() => handleExpandAccordion(i, j)}
-                  key={`${i}${sortByColumnIndex}${isReversedSort}`}
+                  key={`${i}${j}${sortByColumnIndex}${isReversedSort}${tableIndex}`}
                   isExpanded={expandedItems.includes("" + i + j)}
                 />
               ))}

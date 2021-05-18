@@ -110,9 +110,8 @@ test("getRecentChangeType", () => {
 test("Valid conversion to booked appointment", () => {
   const DBBookedAppointment = getValidDBAppointment(false, false);
 
-  const bookedAppointment: FunctionsApi.BookedAppointmentApiEntry = dbAppointmentToBookedAppointmentApiEntry(
-    DBBookedAppointment
-  );
+  const bookedAppointment: FunctionsApi.BookedAppointmentApiEntry =
+    dbAppointmentToBookedAppointmentApiEntry(DBBookedAppointment);
 
   expect(bookedAppointment).toBeDefined();
 });
@@ -120,9 +119,8 @@ test("Valid conversion to booked appointment", () => {
 test("Valid conversion to available appointment", () => {
   const DBBookedAppointment = getValidDBAppointment(true, true);
 
-  const availableAppointment: FunctionsApi.AvailableAppointmentApiEntry = dbAppointmentToAvailableAppointmentApiEntry(
-    DBBookedAppointment
-  );
+  const availableAppointment: FunctionsApi.AvailableAppointmentApiEntry =
+    dbAppointmentToAvailableAppointmentApiEntry(DBBookedAppointment);
 
   expect(availableAppointment).toBeDefined();
 });

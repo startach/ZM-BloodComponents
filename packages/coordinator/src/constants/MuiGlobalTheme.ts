@@ -26,6 +26,10 @@ const MuiGlobalTheme: ThemeOptions = {
       light: colors.info,
       main: colors.info,
     },
+    warning: {
+      light: colors.warningLight,
+      main: colors.warning,
+    },
   },
   typography: {
     fontFamily: ["Rubik"].join(","),

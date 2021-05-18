@@ -169,10 +169,8 @@ export default function QuestionnaireScreen({
     />
   );
 
-  const [
-    isLastDonationMoreThanAMonthAgo,
-    setIsLastDonationMoreThanAMonthAgo,
-  ] = useState("");
+  const [isLastDonationMoreThanAMonthAgo, setIsLastDonationMoreThanAMonthAgo] =
+    useState("");
   const IsLastDonationMoreThanAMonthAgo = (
     <RadioGroup
       options={YesNoOptions}

@@ -14,6 +14,7 @@ export default function Table<T>({
   hasColumnHeaders,
   className,
   initialSortByColumnIndex,
+  tableIndex,
 }: TableProps<T>) {
   const theOnlyGroup: CardTableRowGroup<T> = {
     groupLabel: undefined,
@@ -29,6 +30,7 @@ export default function Table<T>({
       hasColumnHeaders={hasColumnHeaders}
       className={className}
       initialSortByColumnIndex={initialSortByColumnIndex}
+      tableIndex={tableIndex}
     />
   );
 }

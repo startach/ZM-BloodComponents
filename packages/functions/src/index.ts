@@ -1,15 +1,15 @@
 import * as functions from "firebase-functions";
-import addNewAppointmentsHandler from "./admin/AddNewAppointmentsHandler";
-import getCoordinatorAppointmentsHandler from "./admin/GetCoordinatorAppointmentsHandler";
-import deleteAppointmentsHandler from "./admin/DeleteAppointmentsHandler";
-import saveAdminRequestHandler from "./admin/SaveAdminHandler";
+import addNewAppointmentsHandler from "./coordinator/AddNewAppointmentsHandler";
+import getCoordinatorAppointmentsHandler from "./coordinator/GetCoordinatorAppointmentsHandler";
+import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
+import saveAdminRequestHandler from "./coordinator/SaveCoordinatorHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
-import getDonorsHandler from "./admin/GetDonorsHandler";
+import getDonorsHandler from "./coordinator/GetDonorsHandler";
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 
@@ -22,7 +22,7 @@ export const getCoordinatorAppointments = handler(
   getCoordinatorAppointmentsHandler
 );
 export const deleteAppointments = handler(deleteAppointmentsHandler);
-export const saveAdmin = handler(saveAdminRequestHandler);
+export const saveCoordinator = handler(saveAdminRequestHandler);
 export const getDonors = handler(getDonorsHandler);
 
 // Donor

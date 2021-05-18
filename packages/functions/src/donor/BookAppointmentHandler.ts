@@ -45,15 +45,16 @@ export default async function (
 
   await setAppointment(appointmentToBook);
 
-  await notifyOnAppointmentBooked(
-    appointmentToBook.donationStartTime.toDate(),
-    appointmentToBook.hospital,
-    donor
+  notifyOnAppointmentBooked(appointmentToBook, donor).catch((e) =>
+    console.error(
+      "Error notifying on booked appointment",
+      appointmentToBook.id,
+      e
+    )
   );
 
   return {
-    bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
-      appointmentToBook
-    ),
+    bookedAppointment:
+      dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
   };
 }

@@ -126,6 +126,7 @@ test.skip("Donor has recent donation throws exception", async () => {
 });
 
 test("Valid request books appointment", async () => {
+  mockedNotifier.mockReturnValue(Promise.resolve());
   await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
@@ -152,8 +153,7 @@ test("Valid request books appointment", async () => {
   expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 
   expect(mockedNotifier).toBeCalledWith(
-    new Date(bookedAppointment.donationStartTimeMillis),
-    bookedAppointment.hospital,
+    appointment[0],
     expect.objectContaining({
       firstName: "firstName",
       email: "email@email.com",
