@@ -4,6 +4,7 @@ import {
   Donor,
   Hospital,
   BookingChange,
+  CoordinatorRole,
 } from "./types";
 
 // Donor functions:
@@ -89,7 +90,14 @@ export interface SaveDonorRequest {
   bloodType: BloodType;
 }
 
-// Admin functions:
+// Coordinator functions:
+export const GetCoordinatorFunctionName = "getCoordinator";
+export interface GetCoordinatorRequest {}
+export interface GetCoordinatorResponse {
+  role: CoordinatorRole;
+  hospitals: Hospital[];
+}
+
 export const AddNewAppointmentsFunctionName = "addNewAppointments";
 export interface AddAppointmentsRequest {
   slotsRequests: NewSlotsRequest[];
