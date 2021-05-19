@@ -3,7 +3,9 @@ import HeaderSection from "../../components/HeaderSection";
 import styles from "./AboutScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import bloodBankLogo from "../../assets/icons/blood_bank_logo.svg";
-export default function ContactUsScreen() {
+import classnames from "classnames";
+
+export default function AboutScreen() {
   return (
     <ZMScreen hasBackButton title="אודות">
       <HeaderSection className={styles.component}>
@@ -13,7 +15,7 @@ export default function ContactUsScreen() {
           src={bloodBankLogo}
         />
       </HeaderSection>
-      <Text className={styles.textBold + " " + styles.textContainer}>
+      <Text className={classnames(styles.textBold, styles.textContainer)}>
         על עמותת "זכרון מנחם" והאפליקציה
       </Text>
       <Text className={styles.textContainer}>

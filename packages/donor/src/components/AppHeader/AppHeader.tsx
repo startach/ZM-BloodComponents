@@ -79,6 +79,10 @@ export default function ButtonAppBar({
                 onClick: () => history.push("/" + MainNavigationKeys.About),
               },
               {
+                title: "צור קשר",
+                onClick: () => history.push("/" + MainNavigationKeys.Contact),
+              },
+              {
                 title: "התנתק",
                 onClick: () => firebase.auth().signOut(),
               },

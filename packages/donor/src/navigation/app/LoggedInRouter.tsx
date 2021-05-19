@@ -40,11 +40,13 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             updateUserInAppState={setUser}
           />
         </Route>
-
         <Route path={"/" + MainNavigationKeys.About}>
           <AboutScreen />
         </Route>
-
+        {/*// TODO open after icons are added in contact page*/}
+        {/*<Route path={"/" + MainNavigationKeys.Contact}>*/}
+        {/*  <ContactScreen />*/}
+        {/*</Route>*/}
         <Route
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
@@ -61,7 +63,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             );
           }}
         />
-
         <Route
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
@@ -82,7 +83,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             );
           }}
         />
-
         <Route
           path={["/" + MainNavigationKeys.BookDonation, "*"]}
           render={() => {
