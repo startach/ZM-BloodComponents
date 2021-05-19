@@ -48,6 +48,11 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
           title="חיפוש משתמשים"
           onClick={navigate(CoordinatorScreen.DONORS)}
         />
+          <Button
+          className={currentTab === "/donors" ? styles.selected__tab : ""}
+          title="תורים תפוסים"
+          onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
+        />
         {props.showSignOutButton && (
           <Button title="התנתק" onClick={props.onSignOut} />
         )}

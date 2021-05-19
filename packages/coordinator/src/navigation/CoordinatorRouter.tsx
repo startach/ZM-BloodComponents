@@ -13,6 +13,7 @@ import {
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/serchDonorsScreen/SearchDonorsScreenContainer";
+import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer"
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
@@ -41,6 +42,9 @@ export default function CoordinatorRouter() {
         </Route>
         <Route exact path={"/" + CoordinatorScreen.DONORS}>
           <SearchDonorsScreenContainer />
+        </Route>
+        <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
+          <ScheduledAppointmentsContainer />
         </Route>
         <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
           <AddAppointmentsScreenContainer />

@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/functions";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
+import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
 
 export async function addNewAppointments(newSlots: NewSlots[]) {
   const addNewAppointmentsFunction = firebase
@@ -74,4 +75,17 @@ export async function getAllDonors() {
   const response = await getDonorsFunction(request);
   const data = response.data as FunctionsApi.GetDonorsResponse;
   return data.donors;
+}
+
+export async function getBookedAppointmentsInHospital(
+  request: GetBookedDonationsInHospitalRequest
+) {
+  const getBookedAppointmentsInHospital = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetBookedDonationsInHospitalFunctionName);
+
+  const response = await getBookedAppointmentsInHospital(request);
+  const data =
+    response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
+  return data.donationsWithDonorDetails;
 }
