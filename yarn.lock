@@ -1324,17 +1324,17 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@capacitor/android@^3.0.0":
+"@capacitor/android@*", "@capacitor/android@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.0.0.tgz#0d8ce965fa19d9f1412a468476525af2b92a151e"
   integrity sha512-qyvI3LzfGvVnSK7Dw3dXXLSJjfj816EfWHiyGzV4Rg5r2XkvPa8IqjHT3lmyxwNJjGdHl3TTn9Q6YvM6XD70cQ==
 
-"@capacitor/app@^0.3.10":
+"@capacitor/app@*", "@capacitor/app@^0.3.10":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
 
-"@capacitor/cli@3.0.0":
+"@capacitor/cli@*", "@capacitor/cli@3.0.0", "@capacitor/cli@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.0.0.tgz#ce2defddbf6ecd40236f8cdfba62a0af84147606"
   integrity sha512-WTU1PqinYSl8jibmWgQBnlHsXZmkYx2BTXtczlKUrZuiCm+He90qFEA2Fmf2uolqurpLWNnj/kfrACIZ/Sfr2Q==
@@ -1356,24 +1356,24 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@^3.0.0":
+"@capacitor/core@*", "@capacitor/core@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.0.0.tgz#c990688d838d523d6d473281b8a74e6b83b187d5"
   integrity sha512-JmKE6QEayo8MqWcApwMP5YFimpVb2mcIEHBwgP/P9nSAOxOcbdpJyd9HhBt5pzZAE1MBngPADWWwZLrdNSjCnA==
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/haptics@^0.3.10":
+"@capacitor/haptics@*", "@capacitor/haptics@^0.3.10":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-0.3.10.tgz#7814546e586ddae6c5e5678796854ef9631ac066"
   integrity sha512-EwI79xSsxl5O1CZWrRhkkAok50tCy78fa4xOK9G++eQCNc2cc5ZmnVubDKA/itvIN1NBAhn5qpIadi8zW26ZZw==
 
-"@capacitor/ios@^3.0.0":
+"@capacitor/ios@*", "@capacitor/ios@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.0.0.tgz#1fa8c7d23810d6e4a0a07b1504270c5484598213"
   integrity sha512-EvWW86hQqmoY0qFV1LJyZujlgfEgl4iEUJVhCv84mshMyS2bXZu5Ip4yuKtJBDsKmTWyA7rfcAnPMEnUfQ6bkw==
 
-"@capacitor/keyboard@^0.6.3":
+"@capacitor/keyboard@*", "@capacitor/keyboard@^0.6.3":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-0.6.3.tgz#0f5844dbfbe59f9bc2efd23466857bca2f0f4517"
   integrity sha512-jf15yaaEVhQ/WCF0doEzzBKWjzbrw5vSsgqlgrP5ldCFhYDU4ZSUtc4xWjyftHjqmGyXBLJAlWEmK1stnz1gdQ==
@@ -8286,9 +8286,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.723:
-  version "1.3.731"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.731.tgz#9f17f7e16f798eaddb21409d80aa755b5b5053dc"
-  integrity sha512-dn1Nyd0DuFa3xhqZJr6/L9phyk+YXJpvrz6Vcu6mFxFqr5TQ9r/F3yvOYFUrEwY4Tbb1YBjN19TDKnSVCQvalA==
+  version "1.3.732"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.732.tgz#2a07a8d61f74f2084b6f6bf2a908605a7a0b2d8d"
+  integrity sha512-qKD5Pbq+QMk4nea4lMuncUMhpEiQwaJyCW7MrvissnRcBDENhVfDmAqQYRQ3X525oTzhar9Zh1cK0L2d1UKYcw==
 
 element-resize-detector@^1.2.2:
   version "1.2.2"
@@ -18210,9 +18210,9 @@ ts-jest@^26.4.4, ts-jest@^26.5.1:
     yargs-parser "20.x"
 
 ts-loader@^8.0.14:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.2.0.tgz#6a3aeaa378aecda543e2ed2c332d3123841d52e0"
-  integrity sha512-ebXBFrNyMSmbWgjnb3WBloUBK+VSx1xckaXsMXxlZRDqce/OPdYBVN5efB0W3V0defq0Gcy4YuzvPGqRgjj85A==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.3.0.tgz#83360496d6f8004fab35825279132c93412edf33"
+  integrity sha512-MgGly4I6cStsJy27ViE32UoqxPTN9Xly4anxxVyaIWR+9BGxboV4EyJBGfR3RePV7Ksjj3rHmPZJeIt+7o4Vag==
   dependencies:
     chalk "^4.1.0"
     enhanced-resolve "^4.0.0"
@@ -19140,9 +19140,9 @@ webpack@4.44.2:
     webpack-sources "^1.4.1"
 
 webpack@^5.17.0:
-  version "5.37.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.37.0.tgz#2ab00f613faf494504eb2beef278dab7493cc39d"
-  integrity sha512-yvdhgcI6QkQkDe1hINBAJ1UNevqNGTVaCkD2SSJcB8rcrNNl922RI8i2DXUAuNfANoxwsiXXEA4ZPZI9q2oGLA==
+  version "5.37.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.37.1.tgz#2deb5acd350583c1ab9338471f323381b0b0c14b"
+  integrity sha512-btZjGy/hSjCAAVHw+cKG+L0M+rstlyxbO2C+BOTaQ5/XAnxkDrP5sVbqWhXgo4pL3X2dcOib6rqCP20Zr9PLow==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.47"

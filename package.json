@@ -52,6 +52,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^3.0.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
@@ -80,7 +81,14 @@
     "yargs": "^16.2.0"
   },
   "resolutions": {
-    "babel-loader": "8.1.0"
+    "babel-loader": "8.1.0",
+    "@capacitor/android": "^3.0.0",
+    "@capacitor/app": "^0.3.10",
+    "@capacitor/cli": "3.0.0",
+    "@capacitor/core": "^3.0.0",
+    "@capacitor/haptics": "^0.3.10",
+    "@capacitor/ios": "^3.0.0",
+    "@capacitor/keyboard": "^0.6.3"
   },
   "repository": {
     "type": "git",
