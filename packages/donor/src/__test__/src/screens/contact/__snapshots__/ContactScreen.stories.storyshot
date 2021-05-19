@@ -5,213 +5,217 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
   dir="rtl"
 >
   <div>
-    <header
-      className="MuiPaper-root-12 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorSecondary-9 mui-fixed MuiPaper-elevation4-19"
-    >
-      <div
-        className="headerContainer"
-      >
-        <button
-          aria-label="menu"
-          className="MuiButtonBase-root-49 MuiIconButton-root-40 makeStyles-menuButton-0 MuiIconButton-colorInherit-43 MuiIconButton-edgeStart-41"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-48"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-52"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-61 title MuiTypography-h6-71"
-        >
-          צור קשר
-        </h6>
-      </div>
-      <div>
-        <div
-          className="SideDrawer Close"
-        >
-          isOpen && 
-          <ul
-            className="NavItems"
-          >
-            <li
-              className="NavItem"
-              onClick={[Function]}
-            >
-              הפרופיל שלי
-            </li>
-            <li
-              className="NavItem"
-              onClick={[Function]}
-            >
-              אודות
-            </li>
-            <li
-              className="NavItem"
-              onClick={[Function]}
-            >
-              צור קשר
-            </li>
-            <li
-              className="NavItem"
-              onClick={[Function]}
-            >
-              התנתק
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
     <div
-      className="after-header"
+      className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
     >
       <header
-        className="component component"
+        className="MuiPaper-root-12 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorSecondary-9 safe-screen-padding-top MuiPaper-elevation4-19"
       >
         <div
-          className="textBold"
+          className="headerContainer"
         >
-          להלן דרכי ההתקשרות עמנו
+          <button
+            aria-label="menu"
+            className="MuiButtonBase-root-49 MuiIconButton-root-40 makeStyles-menuButton-0 MuiIconButton-colorInherit-43 MuiIconButton-edgeStart-41"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label-48"
+            >
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root-52"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </span>
+          </button>
+          <h6
+            className="MuiTypography-root-61 title MuiTypography-h6-71"
+          >
+            צור קשר
+          </h6>
         </div>
         <div>
-          מוזמנים ליצור קשר בכל שאלה, בקשה או הערה
+          <div
+            className="SideDrawer Close"
+          >
+            isOpen && 
+            <ul
+              className="NavItems"
+            >
+              <li
+                className="NavItem"
+                onClick={[Function]}
+              >
+                הפרופיל שלי
+              </li>
+              <li
+                className="NavItem"
+                onClick={[Function]}
+              >
+                אודות
+              </li>
+              <li
+                className="NavItem"
+                onClick={[Function]}
+              >
+                צור קשר
+              </li>
+              <li
+                className="NavItem"
+                onClick={[Function]}
+              >
+                התנתק
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
       <div
-        className="contentContainer"
+        className="content"
       >
-        <div
-          className="contentLine"
+        <header
+          className="component component"
         >
           <div
-            className="iconContainer"
+            className="textBold"
           >
-            <img
-              alt="website"
-              src="phone.svg"
-            />
+            להלן דרכי ההתקשרות עמנו
           </div>
-          <a
-            className="link"
-            href="https://www.zichron.org"
-          >
-            https://www.zichron.org
-          </a>
-        </div>
+          <div>
+            מוזמנים ליצור קשר בכל שאלה, בקשה או הערה
+          </div>
+        </header>
         <div
-          className="contentLine"
+          className="contentContainer"
         >
           <div
-            className="iconContainer"
+            className="contentLine"
           >
-            <img
-              alt="email"
-              src="mail.svg"
-            />
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="website"
+                src="phone.svg"
+              />
+            </div>
+            <a
+              className="link"
+              href="https://www.zichron.org"
+            >
+              https://www.zichron.org
+            </a>
           </div>
-          <a
-            className="link"
-            href="mailto:dam@zichron.org"
-          >
-            dam@zichron.org
-          </a>
-        </div>
-        <div
-          className="contentLine"
-        >
           <div
-            className="iconContainer"
+            className="contentLine"
           >
-            <img
-              alt="phone"
-              src="phone.svg"
-            />
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="email"
+                src="mail.svg"
+              />
+            </div>
+            <a
+              className="link"
+              href="mailto:dam@zichron.org"
+            >
+              dam@zichron.org
+            </a>
           </div>
-          <a
-            className="phonelink"
-            href="tel:+972-58-710-0571"
-          >
-            058-710-0571
-          </a>
-        </div>
-        <div
-          className="contentLine"
-        >
           <div
-            className="iconContainer"
+            className="contentLine"
           >
-            <img
-              alt="facebook"
-              src="phone.svg"
-            />
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="phone"
+                src="phone.svg"
+              />
+            </div>
+            <a
+              className="phonelink"
+              href="tel:+972-58-710-0571"
+            >
+              058-710-0571
+            </a>
           </div>
-          <a
-            className="link"
-            href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
-          >
-            תעקבו אחרינו בפייסבוק
-          </a>
-        </div>
-        <div
-          className="contentLine"
-        >
           <div
-            className="iconContainer"
+            className="contentLine"
           >
-            <img
-              alt="instagram"
-              src="phone.svg"
-            />
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="facebook"
+                src="phone.svg"
+              />
+            </div>
+            <a
+              className="link"
+              href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
+            >
+              תעקבו אחרינו בפייסבוק
+            </a>
           </div>
-          <a
-            className="link"
-            href="https://www.instagram.com/zichronmenachem/"
-          >
-            תעקבו אחרינו באינסטגרם
-          </a>
-        </div>
-        <div
-          className="contentLine"
-        >
           <div
-            className="iconContainer"
+            className="contentLine"
           >
-            <img
-              alt="youtube"
-              src="phone.svg"
-            />
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="instagram"
+                src="phone.svg"
+              />
+            </div>
+            <a
+              className="link"
+              href="https://www.instagram.com/zichronmenachem/"
+            >
+              תעקבו אחרינו באינסטגרם
+            </a>
           </div>
-          <a
-            className="link"
-            href="https://www.youtube.com/user/zichronmenachem"
+          <div
+            className="contentLine"
           >
-            תעקבו אחרינו ביוטיוב
-          </a>
+            <div
+              className="iconContainer"
+            >
+              <img
+                alt="youtube"
+                src="phone.svg"
+              />
+            </div>
+            <a
+              className="link"
+              href="https://www.youtube.com/user/zichronmenachem"
+            >
+              תעקבו אחרינו ביוטיוב
+            </a>
+          </div>
         </div>
       </div>
     </div>
