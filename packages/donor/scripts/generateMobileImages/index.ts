@@ -15,12 +15,6 @@ interface CliArguments extends Arguments {
 }
 const cliArgs = yargs(hideBin(process.argv))
   .options(cliOptions)
-  // @ts-ignore
-  .check(({ android, ios }: CliArguments) => {
-    if (android === undefined && ios === undefined)
-      throw new Error(`"--ios" or/and "--android" must be set`);
-    return true;
-  })
   .fail((msg) => {
     console.error(msg);
     process.exit();
@@ -52,7 +46,7 @@ const cordovaResOptions: Options = {
 };
 
 //generate android images
-if (cliArgs.android) {
+if (fse.pathExistsSync(androidDir) || cliArgs.android) {
   //@ts-ignore - the field is typed as "readonly"
   cordovaResOptions.platforms["android"] = {
     icon: { sources: [logoPath] },
@@ -61,7 +55,7 @@ if (cliArgs.android) {
 }
 
 //generate ios images
-if (cliArgs.ios) {
+if (fse.pathExistsSync(iosDir) || cliArgs.ios) {
   //@ts-ignore - the field is typed as "readonly"
   cordovaResOptions.platforms["ios"] = {
     icon: { sources: [logoPath] },

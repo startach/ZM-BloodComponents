@@ -6,9 +6,12 @@ const config: CapacitorConfig = {
   appName: "donor",
   webDir: "./build",
   bundledWebRuntime: false,
-  server: {
+};
+
+if (process.env.DEV)
+  config.server = {
     url: "http://localhost:3000",
     cleartext: true,
-  },
-};
+  };
+
 export default config;
