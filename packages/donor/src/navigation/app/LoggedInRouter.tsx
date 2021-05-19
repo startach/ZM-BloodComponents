@@ -43,7 +43,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
         <Route path={"/" + MainNavigationKeys.About}>
           <AboutScreen />
         </Route>
-        // TODO open after icons are added in contact page
+        {/*// TODO open after icons are added in contact page*/}
         {/*<Route path={"/" + MainNavigationKeys.Contact}>*/}
         {/*  <ContactScreen />*/}
         {/*</Route>*/}
