@@ -1,0 +1,43 @@
+.component {
+  font-size: var(--text-size-sm);
+}
+
+.textBold {
+  font-weight: var(--font-content-weight-bold);
+}
+
+.contentContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentLine {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.contact {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.phonelink {
+  color: inherit;
+  text-decoration: inherit;
+  direction: ltr;
+}
