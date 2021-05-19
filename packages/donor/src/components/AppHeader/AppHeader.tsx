@@ -40,7 +40,7 @@ export default function ButtonAppBar({
     console.error("Unknown pathname");
   }
   return (
-      <AppBar position="static" color="secondary" className={className}>
+    <AppBar position="static" color="secondary" className={className}>
       <div className={styles.headerContainer}>
         {hasBurgerMenu && (
           <div className={styles.headerItem}>
