@@ -46,7 +46,7 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR);
+  await createUser(CoordinatorRole.GROUP_COORDINATOR);
 
   const action = () => callFunction(USER_ID);
 
@@ -57,7 +57,7 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(CoordinatorRole.GROUP_COORDINATOR, [Hospital.TEL_HASHOMER]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
   const action = () => callFunction(USER_ID);
 

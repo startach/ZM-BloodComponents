@@ -32,21 +32,19 @@ function adminAllowedToAddAppointments(
   admin: DbCoordinator,
   requestedHospitals: Set<Hospital>
 ) {
-  if (admin.role === CoordinatorRole.SYSTEM_USER) {
-    return true;
-  }
+  switch (admin.role) {
+    case CoordinatorRole.SYSTEM_USER:
+      return true;
 
-  const adminHospitals = new Set(admin.hospitals);
-
-  if (admin.role === CoordinatorRole.ZM_COORDINATOR) {
-    if (
-      allHospitalsAreInCoordinatorHospitalList(
+    case CoordinatorRole.ZM_COORDINATOR:
+    case CoordinatorRole.HOSPITAL_COORDINATOR:
+      const adminHospitals = new Set(admin.hospitals);
+      return allHospitalsAreInCoordinatorHospitalList(
         adminHospitals,
         requestedHospitals
-      )
-    ) {
-      return true;
-    }
+      );
+    case CoordinatorRole.GROUP_COORDINATOR:
+      return false;
   }
 
   return false;
