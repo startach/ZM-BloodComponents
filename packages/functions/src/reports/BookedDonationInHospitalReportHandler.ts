@@ -17,7 +17,7 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  // TODO switch (coordinator.role) && by requested hospital
+  // TODO implement switch (coordinator.role) && by requested hospital
 
   const appointments: DbAppointment[] = await getAppointmentsByHospital(
     request.hospital,

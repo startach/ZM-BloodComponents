@@ -6,6 +6,7 @@ import {
   DbDonor,
   FunctionsApi,
   Hospital,
+  BloodType,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -22,7 +23,8 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
 );
 
-const COORDINATOR_ID = "BookedDonationsReportTestUser";
+const COORDINATOR_ID = "BookedDonationsReportTestCoordinator";
+const REGULAR_USER_ID = "BookedDonationsReportTestUser";
 const DONOR_ID_1 = "BookedDonationsReportTestDonorUser1";
 
 const FUTURE_BOOKED = "BookedDonationsReport_FutureBooked";
@@ -53,8 +55,17 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
+test("Non Coordinator role throws exception", async () => {
+  await createDonorUser();
+
+  const action = () => callFunction(REGULAR_USER_ID);
+  await expectAsyncThrows(action, `User ${REGULAR_USER_ID} is not an admin`);
+});
+
 test("Valid request returns booked appointment of the right hospital", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
+  await createCoordinator(CoordinatorRole.ZM_COORDINATOR, [
+    Hospital.TEL_HASHOMER,
+  ]);
 
   await createDonor(DONOR_ID_1);
 
@@ -102,7 +113,10 @@ test("Valid request returns booked appointment of the right hospital", async () 
   expect(bookedAppointment.phone).toEqual(sampleUser.phone);
 });
 
-async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
+async function createCoordinator(
+  role: CoordinatorRole,
+  hospitals?: Hospital[]
+) {
   const newAdmin: DbCoordinator = {
     id: COORDINATOR_ID,
     role,
@@ -113,6 +127,22 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
   }
 
   await setAdmin(newAdmin);
+}
+
+async function createDonorUser() {
+  const newDonorUser: DbDonor = {
+    id: REGULAR_USER_ID,
+    email: "",
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    phone: "",
+    bloodType: BloodType.AB_MINUS,
+    groupId: "",
+    testUser: true,
+  };
+
+  await setDonor(newDonorUser);
 }
 
 function callFunction(
