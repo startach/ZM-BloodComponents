@@ -84,7 +84,6 @@
     "babel-loader": "8.1.0",
     "@capacitor/android": "^3.0.0",
     "@capacitor/app": "^0.3.10",
-    "@capacitor/cli": "3.0.0",
     "@capacitor/core": "^3.0.0",
     "@capacitor/haptics": "^0.3.10",
     "@capacitor/ios": "^3.0.0",

@@ -1334,7 +1334,7 @@
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
 
-"@capacitor/cli@*", "@capacitor/cli@3.0.0", "@capacitor/cli@^3.0.0":
+"@capacitor/cli@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.0.0.tgz#ce2defddbf6ecd40236f8cdfba62a0af84147606"
   integrity sha512-WTU1PqinYSl8jibmWgQBnlHsXZmkYx2BTXtczlKUrZuiCm+He90qFEA2Fmf2uolqurpLWNnj/kfrACIZ/Sfr2Q==
