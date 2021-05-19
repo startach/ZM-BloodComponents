@@ -23,12 +23,14 @@ interface AppHeaderProps {
   title: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
+  className?: string;
 }
 
 export default function ButtonAppBar({
   hasBackButton,
   title,
   hasBurgerMenu,
+  className,
 }: AppHeaderProps) {
   const classes = useStyles();
   const history = useHistory();
@@ -38,7 +40,7 @@ export default function ButtonAppBar({
     console.error("Unknown pathname");
   }
   return (
-    <AppBar position="fixed" color="secondary">
+    <AppBar position="static" color="secondary" className={className}>
       <div className={styles.headerContainer}>
         {hasBurgerMenu && (
           <div className={styles.headerItem}>

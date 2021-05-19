@@ -1,5 +1,6 @@
 import Button from "../components/basic/Button";
 import Text from "../components/basic/Text";
+import SafeScreen from "../components/basic/SafeScreen";
 
 interface HomeScreenProps {
   firstName: string;
@@ -12,7 +13,7 @@ interface HomeScreenProps {
 
 export default function HomeScreen(props: HomeScreenProps) {
   return (
-    <div>
+    <SafeScreen>
       <Text>שלום {props.firstName}</Text>
       בחר מסך:
       <Button
@@ -23,6 +24,6 @@ export default function HomeScreen(props: HomeScreenProps) {
       <Button title="הפרופיל שלי" onClick={props.goToMyProfileScreen} />
       <Button title="שאלון" onClick={props.goToQuestionnaire} />
       <Button title="התנתק" onClick={props.onSignOut} />
-    </div>
+    </SafeScreen>
   );
 }
