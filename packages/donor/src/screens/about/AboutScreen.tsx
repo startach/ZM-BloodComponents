@@ -2,18 +2,22 @@ import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
 import styles from "./AboutScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
-import IconButton from "../../components/basic/IconButton";
-import infoIcon from "../../assets/icons/Info_Icon.svg";
+import bloodBankLogo from "../../assets/icons/blood_bank_logo.svg";
+import classnames from "classnames";
 
 export default function AboutScreen() {
   return (
     <ZMScreen hasBackButton title="אודות">
       <HeaderSection className={styles.component}>
-        <IconButton iconSrc={infoIcon} iconSize={24}></IconButton>
-        <Text className={styles.textBold}>
-          על עמותת "זכרון מנחם" והאפליקציה
-        </Text>
+        <img
+          alt="בנק הדם של זכרון מנחם"
+          className="blood_bank_logo"
+          src={bloodBankLogo}
+        />
       </HeaderSection>
+      <Text className={classnames(styles.textBold, styles.textContainer)}>
+        על עמותת "זכרון מנחם" והאפליקציה
+      </Text>
       <Text className={styles.textContainer}>
         תורמי טרומבוציטים יקרים שלום רב!
       </Text>
