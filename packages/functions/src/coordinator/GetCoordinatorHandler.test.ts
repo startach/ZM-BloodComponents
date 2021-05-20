@@ -34,10 +34,11 @@ test("User that is not admin throws exception", async () => {
   await expectAsyncThrows(action, "User is not a coordinator");
 });
 
-test("Hospital Coordinator gets its hospitals", async () => {
+test("Hospital Coordinator gets active hospitals", async () => {
   await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
     Hospital.BEILINSON,
     Hospital.HADASA,
+    Hospital.TEL_HASHOMER, // not active
   ]);
 
   const response = await callFunction(COORDINATOR_ID);
@@ -63,9 +64,7 @@ test("System User gets all active hospitals", async () => {
 });
 
 test("Group Coordinator gets no hospitals", async () => {
-  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR, [
-    Hospital.ASAF_HAROFE,
-  ]);
+  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR, [Hospital.HADASA]);
 
   const response = await callFunction(COORDINATOR_ID);
 

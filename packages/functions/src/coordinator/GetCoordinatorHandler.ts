@@ -23,7 +23,12 @@ export default async function (
       break;
     case CoordinatorRole.ZM_COORDINATOR:
     case CoordinatorRole.HOSPITAL_COORDINATOR:
-      hospitals = coordinator.hospitals || [];
+      if (coordinator.hospitals && coordinator.hospitals.length > 0) {
+        // Take only active hospitals
+        hospitals = coordinator.hospitals.filter((hospital) =>
+          HospitalUtils.activeHospitals.includes(hospital)
+        );
+      }
       break;
     case CoordinatorRole.GROUP_COORDINATOR:
       break;
