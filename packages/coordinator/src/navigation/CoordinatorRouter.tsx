@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CoordinatorRouter.module.scss";
 import LoadingScreen from "../screens/loading/LoadingScreen";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { CoordinatorScreen } from "./CoordinatorScreen";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
-import { LoginStatus } from "@zm-blood-components/common";
+import { Coordinator, LoginStatus } from "@zm-blood-components/common";
 import CoordinatorSignInScreenContainer from "../screens/authentication/CoordinatorSignInScreenContainer";
 import {
   initFirebase,
@@ -13,37 +13,79 @@ import {
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/serchDonorsScreen/SearchDonorsScreenContainer";
+import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
+  const [appState, setAppState] = useState<{
+    coordinator?: Coordinator;
+    isFetching: boolean;
+  }>({
+    coordinator: undefined,
+    isFetching: false,
+  });
 
   useEffect(() => {
     initFirebase();
   }, []);
 
   useEffect(() => {
-    registerAuthChange(setLoginStatus);
+    registerAuthChange((newLoginStatus) => {
+      if (newLoginStatus === LoginStatus.LOGGED_IN) {
+        setAppState({
+          coordinator: undefined,
+          isFetching: true,
+        });
+      }
+      setLoginStatus(newLoginStatus);
+    });
   }, [loginStatus]);
 
-  let content = <LoadingScreen />;
+  useEffect(() => {
+    if (loginStatus !== LoginStatus.LOGGED_IN) {
+      setAppState({
+        coordinator: undefined,
+        isFetching: false,
+      });
+      return;
+    }
 
-  if (loginStatus === LoginStatus.LOGGED_OUT) {
+    async function fetchData() {
+      const coordinator = await CoordinatorFunctions.getCoordinator();
+
+      setAppState({
+        coordinator,
+        isFetching: false,
+      });
+    }
+
+    fetchData();
+  }, [loginStatus]);
+
+  let content: React.ReactNode;
+  if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
+    content = <LoadingScreen />;
+  } else if (loginStatus === LoginStatus.LOGGED_OUT) {
     content = <CoordinatorSignInScreenContainer />;
-  }
-
-  if (loginStatus === LoginStatus.LOGGED_IN) {
+  } else {
+    const activeHospitalsForCoordinator =
+      appState.coordinator?.activeHospitalsForCoordinator!;
     content = (
       <Switch>
         <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
-          <ManageAppointmentsScreenContainer />
+          <ManageAppointmentsScreenContainer
+            activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+          />
         </Route>
         <Route exact path={"/" + CoordinatorScreen.DONORS}>
           <SearchDonorsScreenContainer />
         </Route>
         <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
-          <AddAppointmentsScreenContainer />
+          <AddAppointmentsScreenContainer
+            activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+          />
         </Route>
 
         {/*in case of no match*/}

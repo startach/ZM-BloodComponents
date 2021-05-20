@@ -42,8 +42,13 @@ test("Hospital Coordinator gets its hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
-  expect(response.role).toEqual(CoordinatorRole.HOSPITAL_COORDINATOR);
-  expect(response.hospitals).toEqual([Hospital.BEILINSON, Hospital.HADASA]);
+  expect(response.coordinator.role).toEqual(
+    CoordinatorRole.HOSPITAL_COORDINATOR
+  );
+  expect(response.coordinator.activeHospitalsForCoordinator).toEqual([
+    Hospital.BEILINSON,
+    Hospital.HADASA,
+  ]);
 });
 
 test("System User gets all active hospitals", async () => {
@@ -51,8 +56,10 @@ test("System User gets all active hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
-  expect(response.role).toEqual(CoordinatorRole.SYSTEM_USER);
-  expect(response.hospitals).toEqual(HospitalUtils.activeHospitals);
+  expect(response.coordinator.role).toEqual(CoordinatorRole.SYSTEM_USER);
+  expect(response.coordinator.activeHospitalsForCoordinator).toEqual(
+    HospitalUtils.activeHospitals
+  );
 });
 
 test("Group Coordinator gets no hospitals", async () => {
@@ -62,8 +69,8 @@ test("Group Coordinator gets no hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
-  expect(response.role).toEqual(CoordinatorRole.GROUP_COORDINATOR);
-  expect(response.hospitals).toEqual([]);
+  expect(response.coordinator.role).toEqual(CoordinatorRole.GROUP_COORDINATOR);
+  expect(response.coordinator.activeHospitalsForCoordinator).toEqual([]);
 });
 
 async function createCoordinator(

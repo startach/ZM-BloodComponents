@@ -30,7 +30,9 @@ export default async function (
   }
 
   return {
-    hospitals,
-    role: coordinator.role,
+    coordinator: {
+      role: coordinator.role,
+      activeHospitalsForCoordinator: hospitals,
+    },
   };
 }
