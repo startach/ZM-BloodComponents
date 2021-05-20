@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+import "firebase/auth";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { AppBar, Typography, IconButton } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
@@ -7,7 +9,6 @@ import { BurgerMenu } from "./BurgerMenu";
 import { useState } from "react";
 import { SideDrawer } from "./BurgerMenu/SideDrawer";
 import { Backdrop } from "../Backdrop";
-import firebase from "firebase";
 
 import styles from "./style.module.scss";
 
