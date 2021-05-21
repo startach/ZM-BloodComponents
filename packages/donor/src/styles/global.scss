@@ -6,11 +6,11 @@ body,
   padding: 0;
   margin: 0;
   direction: rtl;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-  overflow: hidden;
-
   background-color: var(--color-bg);
   color: var(--color-text);
 
@@ -21,4 +21,20 @@ body {
   -webkit-font-smoothing: antialiased;
 
   direction: rtl;
+}
+
+.safe-screen-padding-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-screen-padding-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-screen-padding-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-screen-padding-right {
+  padding-right: env(safe-area-inset-right);
 }

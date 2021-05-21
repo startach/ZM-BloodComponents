@@ -4,8 +4,9 @@ import {
   StylesProvider,
   jssPreset,
   ThemeOptions,
+  createMuiTheme,
+  ThemeProvider,
 } from "@material-ui/core/styles";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import MuiGlobalTheme from "../constants/MuiGlobalTheme";
 
 const globalTheme = createMuiTheme(MuiGlobalTheme as ThemeOptions);

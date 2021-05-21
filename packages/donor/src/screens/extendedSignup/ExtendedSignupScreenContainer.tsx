@@ -1,8 +1,9 @@
+import firebase from "firebase/app";
+import "firebase/auth";
 import { useState } from "react";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
-import firebase from "firebase/app";
 
 interface ExtendedSignupScreenContainerProps {
   updateUserInAppState: (user: Donor) => void;

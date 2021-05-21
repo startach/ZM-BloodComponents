@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+import "firebase/auth";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { AppBar, Typography, IconButton } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
@@ -7,7 +9,6 @@ import { BurgerMenu } from "./BurgerMenu";
 import { useState } from "react";
 import { SideDrawer } from "./BurgerMenu/SideDrawer";
 import { Backdrop } from "../Backdrop";
-import firebase from "firebase";
 
 import styles from "./style.module.scss";
 
@@ -23,12 +24,14 @@ interface AppHeaderProps {
   title: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
+  className?: string;
 }
 
 export default function ButtonAppBar({
   hasBackButton,
   title,
   hasBurgerMenu,
+  className,
 }: AppHeaderProps) {
   const classes = useStyles();
   const history = useHistory();
@@ -38,7 +41,7 @@ export default function ButtonAppBar({
     console.error("Unknown pathname");
   }
   return (
-    <AppBar position="fixed" color="secondary">
+    <AppBar position="static" color="secondary" className={className}>
       <div className={styles.headerContainer}>
         {hasBurgerMenu && (
           <div className={styles.headerItem}>
@@ -75,6 +78,10 @@ export default function ButtonAppBar({
               {
                 title: "אודות",
                 onClick: () => history.push("/" + MainNavigationKeys.About),
+              },
+              {
+                title: "צור קשר",
+                onClick: () => history.push("/" + MainNavigationKeys.Contact),
               },
               {
                 title: "התנתק",

@@ -4,30 +4,19 @@ import {
   StaffRecipient,
 } from "../../dal/EmailNotificationsDataAccessLayer";
 import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
+import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
 export function sendEmailToStaff(
   staffRecipients: StaffRecipient[],
-  dateString: string,
-  hourString: string,
-  hospitalName: string,
-  donorFirstName: string,
-  donorLastName: string,
-  appointmentId: string
+  data: AppointmentNotificationData
 ) {
   const emails = staffRecipients.map<EmailMessage>((recipient) => ({
     to: recipient.email,
     message: {
-      subject: `רישום חדש לתור ${dateString + " " + hourString}`,
-      html: getEmailContent(
-        recipient.name,
-        donorFirstName,
-        donorLastName,
-        dateString,
-        hourString,
-        hospitalName
-      ),
+      subject: `רישום חדש לתור ${data.dateString + " " + data.hourString}`,
+      html: getEmailContent(recipient.name, data),
     },
-    appointmentId,
+    appointmentId: data.appointmentId,
   }));
 
   return addEmailsToQueue(emails);
@@ -35,11 +24,7 @@ export function sendEmailToStaff(
 
 function getEmailContent(
   recipientName: string,
-  donorFirstName: string,
-  donorLastName: string,
-  dateString: string,
-  hourString: string,
-  hospitalName: string
+  data: AppointmentNotificationData
 ) {
   return `
 <!DOCTYPE html>
@@ -65,8 +50,8 @@ function getEmailContent(
 `
     .replace("#logo#", ZM_LOGO_URL)
     .replace("#שם#", recipientName)
-    .replace("#שם_התורם#", donorFirstName + " " + donorLastName)
-    .replace("#בית_חולים#", hospitalName)
-    .replace("#תאריך#", dateString)
-    .replace("#שעה#", hourString);
+    .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
+    .replace("#בית_חולים#", data.hospitalName)
+    .replace("#תאריך#", data.dateString)
+    .replace("#שעה#", data.hourString);
 }
