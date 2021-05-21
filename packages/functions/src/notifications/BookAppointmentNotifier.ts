@@ -1,9 +1,4 @@
-import {
-  DateUtils,
-  DbAppointment,
-  DbDonor,
-  LocaleUtils,
-} from "@zm-blood-components/common";
+import { DbAppointment, DbDonor } from "@zm-blood-components/common";
 import { sendEmailToDonor } from "./notifiers/DonorBookAppointmentNotifier";
 import { sendEmailToStaff } from "./notifiers/StaffBookAppointmentNotifier";
 import { getDonor } from "../dal/DonorDataAccessLayer";
@@ -27,23 +22,11 @@ export async function notifyOnAppointmentBooked(
     bookedAppointment,
     donor
   );
-  const donationStartTime = bookedAppointment.donationStartTime.toDate();
-  const dateString = DateUtils.ToDateString(donationStartTime);
-  const hourString = DateUtils.ToTimeString(donationStartTime);
-  const hospitalName = LocaleUtils.getHospitalName(bookedAppointment.hospital);
 
   await sendEmailToDonor(donor.email, appointmentNotificationData);
 
   const staffEmails = await getStaffRecipients(bookedAppointment);
-  await sendEmailToStaff(
-    staffEmails,
-    dateString,
-    hourString,
-    hospitalName,
-    donor.firstName,
-    donor.lastName,
-    bookedAppointment.id!
-  );
+  await sendEmailToStaff(staffEmails, appointmentNotificationData);
 }
 
 async function getStaffRecipients(
