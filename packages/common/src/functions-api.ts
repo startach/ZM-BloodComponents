@@ -7,7 +7,6 @@ import {
   Hospital,
   BookingChange,
   BookedDonationWithDonorDetails,
-
 } from "./types";
 
 // Donor functions:
