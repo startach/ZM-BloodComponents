@@ -5,7 +5,6 @@ import {
   DbCoordinator,
   Donor,
   Hospital,
-  BookingChange,
   BookedDonationWithDonorDetails,
 } from "./types";
 
