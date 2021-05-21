@@ -9,6 +9,7 @@ import { sendEmailToStaff } from "./notifiers/StaffBookAppointmentNotifier";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import * as functions from "firebase-functions";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
+import { getAppointmentNotificationData } from "./AppointmentNotificationData";
 
 export const ZM_LOGO_URL =
   "https://firebasestorage.googleapis.com/v0/b/blood-components.appspot.com/o/Logo_ZM_he.jpg?alt=media&token=aa5e9d8c-d08e-4c80-ad7f-bfd361e36b20";
@@ -17,19 +18,21 @@ export async function notifyOnAppointmentBooked(
   bookedAppointment: DbAppointment,
   donor: DbDonor
 ) {
+  if (donor.testUser) {
+    console.log("Not sending email to test user");
+    return;
+  }
+
+  const appointmentNotificationData = getAppointmentNotificationData(
+    bookedAppointment,
+    donor
+  );
   const donationStartTime = bookedAppointment.donationStartTime.toDate();
   const dateString = DateUtils.ToDateString(donationStartTime);
   const hourString = DateUtils.ToTimeString(donationStartTime);
   const hospitalName = LocaleUtils.getHospitalName(bookedAppointment.hospital);
 
-  await sendEmailToDonor(
-    donor.email,
-    dateString,
-    hourString,
-    hospitalName,
-    donor.firstName,
-    bookedAppointment.id!
-  );
+  await sendEmailToDonor(donor.email, appointmentNotificationData);
 
   const staffEmails = await getStaffRecipients(bookedAppointment);
   await sendEmailToStaff(

@@ -3,40 +3,27 @@ import {
   EmailMessage,
 } from "../../dal/EmailNotificationsDataAccessLayer";
 import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
+import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
 export function sendEmailToDonor(
   donorEmail: string,
-  dateString: string,
-  hourString: string,
-  hospitalName: string,
-  donorFirstName: string,
-  appointmentId: string
+  data: AppointmentNotificationData
 ) {
-  const html = getEmailContent(
-    donorFirstName,
-    dateString,
-    hourString,
-    hospitalName
-  );
+  const html = getEmailContent(data);
 
   const messageToDonor: EmailMessage = {
     to: donorEmail,
     message: {
-      subject: `הרשמתך לתור לתרומת טרומבוציטים בתאריך ${dateString}`,
+      subject: `הרשמתך לתור לתרומת טרומבוציטים בתאריך ${data.dateString}`,
       html: html,
     },
-    appointmentId,
+    appointmentId: data.appointmentId,
   };
 
   return addEmailToQueue(messageToDonor);
 }
 
-function getEmailContent(
-  donorFirstName: string,
-  dateString: string,
-  hourString: string,
-  hospitalName: string
-) {
+function getEmailContent(data: AppointmentNotificationData) {
   return `
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -61,8 +48,8 @@ function getEmailContent(
 </html>
 `
     .replace("#logo#", ZM_LOGO_URL)
-    .replace("#שם#", donorFirstName)
-    .replace("#בית_חולים#", hospitalName)
-    .replace("#תאריך#", dateString)
-    .replace("#שעה#", hourString);
+    .replace("#שם#", data.donorFirstName)
+    .replace("#בית_חולים#", data.hospitalName)
+    .replace("#תאריך#", data.dateString)
+    .replace("#שעה#", data.hourString);
 }
