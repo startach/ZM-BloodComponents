@@ -8,6 +8,7 @@
   --color-mid-grey: #5a5a5a;
   --color-black: black;
   --color-white: white;
+  --color-info: #f3f5f7;
 
   --color-bg: var(--color-white);
   --color-text: var(--color-black);
@@ -15,7 +16,7 @@
   --color-statusbar-bg: var(--color-secondary);
   --color-statusbar-text: white;
 
-  --color-header-bg: #f3f5f7;
+  --color-header-bg: var(--color-info);
   --color-header-text: var(--color-black);
 
   --color-card-bg: var(--color-white);
@@ -74,8 +75,8 @@
 
 //other styling rules------------------------------------------
 :root {
-  --shadow-normal: rgba(0, 0, 0, 0.2) 0 1px 3px 1px;
-  --shadow-string: rgba(0, 0, 0, 0.3) 0 1px 4px 1px;
+  --shadow-normal: 0 1px 3px 1px rgba(0, 0, 0, 0.2);
+  --shadow-string: 0 1px 4px 1px rgba(0, 0, 0, 0.3);
 
   --border-radius-normal: 5px;
   --border-radius-strong: 15px;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SafeScreen from "../../components/basic/SafeScreen";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
@@ -39,7 +40,7 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <div className={styles.screenSection}>
+    <SafeScreen className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>התחבר באמצעות דואר אלקטרוני</div>
       <Input
@@ -102,6 +103,6 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
         <span className={styles.notRegisteredTitle}>עדיין לא רשום כתורם?</span>
       </div>
-    </div>
+    </SafeScreen>
   );
 }

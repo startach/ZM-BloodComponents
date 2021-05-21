@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button, { ButtonVariant } from "../../components/basic/Button";
-
+import SafeScreen from "../../components/basic/SafeScreen";
 import styles from "./RegisterScreen.module.scss";
 import Input, { InputVariant } from "../../components/basic/Input";
 import Logo from "../logo/Logo";
@@ -36,7 +36,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
   };
 
   return (
-    <div className={styles.screenSection}>
+    <SafeScreen className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>הירשם ובוא לתרום!</div>
       <Input
@@ -89,7 +89,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           variant={ButtonVariant.text}
         />
       </div>
-    </div>
+    </SafeScreen>
   );
 };
 
