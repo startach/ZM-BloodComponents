@@ -14,7 +14,13 @@ import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
 import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
 import styles from "./ManageAppointmentsScreenContainer.module.scss";
 
-export default function ManageAppointmentsScreenContainer() {
+interface ManageAppointmentsScreenContainerProps {
+  activeHospitalsForCoordinator: Hospital[];
+}
+
+export default function ManageAppointmentsScreenContainer(
+  props: ManageAppointmentsScreenContainerProps
+) {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
@@ -84,7 +90,10 @@ export default function ManageAppointmentsScreenContainer() {
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={HospitalUtils.getAllHospitalOptions("בחר")}
+          options={HospitalUtils.getHospitalOptions(
+            props.activeHospitalsForCoordinator,
+            "בחר"
+          )}
           value={hospitalFilter}
           onChange={setHospitalFilter}
         />

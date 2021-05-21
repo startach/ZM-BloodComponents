@@ -9347,7 +9347,7 @@ firebase-admin@^9.7.0:
     "@google-cloud/firestore" "^4.5.0"
     "@google-cloud/storage" "^5.3.0"
 
-firebase-functions-test@^0.2.0:
+firebase-functions-test@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/firebase-functions-test/-/firebase-functions-test-0.2.3.tgz#90d6da662d604ed013a3735c6cdba5984e0d57ea"
   integrity sha512-zYX0QTm53wCazuej7O0xqbHl90r/v1PTXt/hwa0jo1YF8nDM+iBKnLDlkIoW66MDd0R6aGg4BvKzTTdJpvigUA==
@@ -9355,10 +9355,10 @@ firebase-functions-test@^0.2.0:
     "@types/lodash" "^4.14.104"
     lodash "^4.17.5"
 
-firebase-functions@^3.13.2:
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-3.14.1.tgz#3ac5bc70989365874f41d06bca3b42a233dd6039"
-  integrity sha512-hL/qm+i5i1qKYmAFMlQ4mwRngDkP+3YT3F4E4Nd5Hj2QKeawBdZiMGgEt6zqTx08Zq04vHiSnSM0z75UJRSg6Q==
+firebase-functions@3.13.2:
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/firebase-functions/-/firebase-functions-3.13.2.tgz#e5728b91a51f16f538e53c4f50497056b5702d58"
+  integrity sha512-XHgAQZqA62awr4l9mNlJv6qnv5MkMkLuo+hafdW0T7IJj1PgrZtuIo5x+ib2npAcB0XhX5Sg0QR1hMYPAlfbaA==
   dependencies:
     "@types/express" "4.17.3"
     cors "^2.8.5"

@@ -4,6 +4,17 @@ import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
 
+export async function getCoordinator() {
+  const getCoordinatorFunction = firebase
+    .functions()
+    .httpsCallable(FunctionsApi.GetCoordinatorFunctionName);
+  const request: FunctionsApi.GetCoordinatorRequest = {};
+
+  const res = await getCoordinatorFunction(request);
+  const data = res.data as FunctionsApi.GetCoordinatorResponse;
+  return data.coordinator;
+}
+
 export async function addNewAppointments(newSlots: NewSlots[]) {
   const addNewAppointmentsFunction = firebase
     .functions()

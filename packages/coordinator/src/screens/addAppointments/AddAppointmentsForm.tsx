@@ -20,6 +20,7 @@ const slotOptions: SelectOption<number>[] = [
 }));
 
 interface AddAppointmentsFormProps {
+  activeHospitalsForCoordinator: Hospital[];
   addSlotsRequest: (
     hospital: Hospital,
     donationStartTime: Date,
@@ -53,7 +54,9 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
         className={styles.field}
         id={"hospital"}
         label={"בית חולים"}
-        options={HospitalUtils.getAllHospitalOptions()}
+        options={HospitalUtils.getHospitalOptions(
+          props.activeHospitalsForCoordinator
+        )}
         onChange={setHospital}
         value={hospital}
       />

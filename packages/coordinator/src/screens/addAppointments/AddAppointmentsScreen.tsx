@@ -9,6 +9,7 @@ import { NotificationPopup } from "../../components/Popup";
 import { useState } from "react";
 
 interface AddAppointmentsScreenProps {
+  activeHospitalsForCoordinator: Hospital[];
   slotsArray: NewSlots[];
   addSlotsRequest: (
     hospital: Hospital,
@@ -21,6 +22,7 @@ interface AddAppointmentsScreenProps {
 }
 
 export default function AddAppointmentsScreen({
+  activeHospitalsForCoordinator,
   slotsArray,
   addSlotsRequest,
   deleteSlotsRequest,
@@ -36,7 +38,10 @@ export default function AddAppointmentsScreen({
 
   return (
     <div className={styles.component}>
-      <AddAppointmentsForm addSlotsRequest={addSlotsRequest} />
+      <AddAppointmentsForm
+        addSlotsRequest={addSlotsRequest}
+        activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+      />
       <main className={styles.content}>
         <Table
           hasColumnHeaders
