@@ -1,6 +1,7 @@
 import { DateUtils, SortingUtils } from "@zm-blood-components/common";
 import { BookedDonationWithDonorDetails } from "common/src/types";
 import Table, { CardTableColumn, CardTableRow } from "../../components/Table"
+import Spinner from "../../components/Spinner"
 
 export interface ScheduledAppointmentsScreenProps {
     appointmentsWithDonorDetails: BookedDonationWithDonorDetails[],
@@ -45,16 +46,17 @@ export default function ScheduledAppointmentsScreen({ appointmentsWithDonorDetai
     ]
 
     return (
-       <> {
-            isLoading ? null:
-                <Table
-                    rows={appointmentsWithDonorDetails.map<CardTableRow<BookedDonationWithDonorDetails>>(
-                        (appointment) => ({
-                            rowData: appointment,
-                        })
-                    )}
-                    columns={columns}
-                />
-        }</>
+        <>
+            <Table
+                rows={appointmentsWithDonorDetails.map<CardTableRow<BookedDonationWithDonorDetails>>(
+                    (appointment) => ({
+                        rowData: appointment,
+                    })
+                )}
+                columns={columns}
+                hasColumnHeaders
+            />
+            {isLoading && <Spinner size="4rem" />}
+        </>
     )
 }

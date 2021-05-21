@@ -6,6 +6,8 @@ interface DatePickerProps {
   onChange: (newDate: Date | null) => void;
   disablePast?: boolean;
   className?: string;
+  minimumDate?: Date,
+  maximumDate?: Date,
 }
 
 export default function DatePicker({
@@ -14,6 +16,8 @@ export default function DatePicker({
   onChange,
   disablePast,
   className,
+  minimumDate,
+  maximumDate
 }: DatePickerProps) {
   return (
     <KeyboardDatePicker
@@ -23,6 +27,8 @@ export default function DatePicker({
       format="dd/MM/yyyy"
       disablePast={disablePast}
       className={className}
+      minDate={minimumDate}
+      maxDate={maximumDate}
     />
   );
 }
