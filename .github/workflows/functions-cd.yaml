@@ -6,6 +6,11 @@ on:
       - master
     paths:
       - "packages/functions/**"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Commit to deploy to STG"
+        required: false
 
 jobs:
   functions_deployent_qa:
