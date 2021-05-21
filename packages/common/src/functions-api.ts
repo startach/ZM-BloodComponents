@@ -5,6 +5,7 @@ import {
   DbCoordinator,
   Donor,
   Hospital,
+  BookedDonationWithDonorDetails,
 } from "./types";
 
 // Donor functions:
@@ -137,4 +138,14 @@ export interface GetDonorsRequest {}
 
 export interface GetDonorsResponse {
   donors: Donor[];
+}
+export const GetBookedDonationsInHospitalFunctionName =
+  "getBookedDonationsInHospital";
+export interface GetBookedDonationsInHospitalRequest {
+  hospital: Hospital;
+  fromDateMillis: number;
+  toDateMillis: number;
+}
+export interface GetBookedDonationsInHospitalResponse {
+  donationsWithDonorDetails: BookedDonationWithDonorDetails[];
 }
