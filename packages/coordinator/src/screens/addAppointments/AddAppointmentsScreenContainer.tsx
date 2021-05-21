@@ -10,7 +10,13 @@ export type NewSlots = {
   slots: number;
 };
 
-export default function AddAppointmentsScreenContainer() {
+interface AddAppointmentsScreenContainerProps {
+  activeHospitalsForCoordinator: Hospital[];
+}
+
+export default function AddAppointmentsScreenContainer(
+  props: AddAppointmentsScreenContainerProps
+) {
   const [slotsArray, setSlotsArray] = useState<NewSlots[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -41,6 +47,7 @@ export default function AddAppointmentsScreenContainer() {
 
   return (
     <AddAppointmentsScreen
+      activeHospitalsForCoordinator={props.activeHospitalsForCoordinator}
       slotsArray={slotsArray}
       addSlotsRequest={addSlotsRequest}
       deleteSlotsRequest={deleteSlotsRequest}
