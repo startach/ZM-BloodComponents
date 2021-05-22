@@ -25,7 +25,7 @@ export type ManagedAppointment = {
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
   isPastAppointment: boolean;
-  bloodType: BloodType | undefined;
+  bloodType?: BloodType;
 };
 
 export function groupAppointmentDays(
