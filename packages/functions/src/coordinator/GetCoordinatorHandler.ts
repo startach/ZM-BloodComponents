@@ -1,6 +1,6 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
-import { GetCoordinatorHospitals } from "../utils/CoordinatorUtils";
+import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorRequest,
@@ -15,7 +15,7 @@ export default async function (
   return {
     coordinator: {
       role: coordinator.role,
-      activeHospitalsForCoordinator: GetCoordinatorHospitals(coordinator),
+      activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
     },
   };
 }

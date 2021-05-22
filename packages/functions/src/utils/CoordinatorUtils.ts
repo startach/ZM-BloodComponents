@@ -5,7 +5,7 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 
-export function GetCoordinatorHospitals(coordinator: DbCoordinator) {
+export function getCoordinatorHospitals(coordinator: DbCoordinator) {
   let hospitals: Hospital[] = [];
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:

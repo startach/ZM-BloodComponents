@@ -6,7 +6,7 @@ import {
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import { getDonors } from "../dal/DonorDataAccessLayer";
-import { GetCoordinatorHospitals } from "../utils/CoordinatorUtils";
+import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
 export default async function (
   request: FunctionsApi.GetBookedDonationsInHospitalRequest,
@@ -18,7 +18,7 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  const allowedHospitals = GetCoordinatorHospitals(coordinator);
+  const allowedHospitals = getCoordinatorHospitals(coordinator);
   if (!allowedHospitals.includes(request.hospital)) {
     console.error(
       "Coordinator not allowed for requested hospital",
