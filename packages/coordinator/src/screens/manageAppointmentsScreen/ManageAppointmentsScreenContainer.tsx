@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Donor,
-  Hospital,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { Donor, Hospital, FunctionsApi } from "@zm-blood-components/common";
 import * as AppointmentUtils from "../../utils/AppointmentUtils";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
@@ -13,9 +9,9 @@ interface ManageAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
 }
 
-export default function ManageAppointmentsScreenContainer(
-  { activeHospitalsForCoordinator }: ManageAppointmentsScreenContainerProps
-) {
+export default function ManageAppointmentsScreenContainer({
+  activeHospitalsForCoordinator,
+}: ManageAppointmentsScreenContainerProps) {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()

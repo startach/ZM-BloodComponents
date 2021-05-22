@@ -1,4 +1,8 @@
-import { FunctionsApi, Hospital, HospitalUtils } from "@zm-blood-components/common";
+import {
+  FunctionsApi,
+  Hospital,
+  HospitalUtils,
+} from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
 
 import Spinner from "../../components/Spinner";
@@ -37,12 +41,12 @@ interface ManageAppointmentsScreenProps {
   onRemoveDonor: (appointmentId: string) => Promise<void>;
   isLoading: boolean;
   showOnlyRecentChanges: boolean;
-  setShowOnlyRecentChanges: (shouldShow: boolean) => void, 
-  hospitalFilter: Hospital | "",
-  setHospitalFilter: (newHospital: Hospital | "") => void,
-  showPastAppointments: boolean,
-  setShowPastAppointments: (shouldShow: boolean) => void,
-  activeHospitalsForCoordinator: Hospital[],
+  setShowOnlyRecentChanges: (shouldShow: boolean) => void;
+  hospitalFilter: Hospital | "";
+  setHospitalFilter: (newHospital: Hospital | "") => void;
+  showPastAppointments: boolean;
+  setShowPastAppointments: (shouldShow: boolean) => void;
+  activeHospitalsForCoordinator: Hospital[];
 }
 
 export interface DeleteAppointmentPopupData {
@@ -62,7 +66,7 @@ export default function ManageAppointmentsScreen({
   setHospitalFilter,
   showPastAppointments,
   setShowPastAppointments,
-  activeHospitalsForCoordinator
+  activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenProps) {
   const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>({
     isOpen: false,
@@ -115,7 +119,7 @@ export default function ManageAppointmentsScreen({
   return (
     <div className={Styles["screen-grey-background"]}>
       <HeaderSection className={Styles.hospital_picker_container}>
-      <Select
+        <Select
           id={"hospital"}
           label={"בית חולים"}
           options={HospitalUtils.getHospitalOptions(
@@ -162,7 +166,7 @@ export default function ManageAppointmentsScreen({
         groups={groups}
         tableIndex={0}
       />
-         <Popup
+      <Popup
         buttonApproveText="אישור"
         open={popupData.isOpen}
         titleFirst={getPopupTitle()}
