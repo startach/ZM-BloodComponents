@@ -1,9 +1,4 @@
-import {
-  CoordinatorRole,
-  FunctionsApi,
-  Hospital,
-  HospitalUtils,
-} from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
 import { GetCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
