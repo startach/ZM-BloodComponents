@@ -4,6 +4,8 @@ import {
   AccordionSummary,
   AccordionDetails,
   makeStyles,
+  Theme,
+  createStyles,
 } from "@material-ui/core";
 import Card from "../Card";
 import { ExpandMore } from "@material-ui/icons";
@@ -44,18 +46,23 @@ export default function CardTableItem<T>({
     </div>
   );
 
-  const useTableItemStyles = makeStyles({
-    root: {
-      // From styles/layout/grid -> $gutter-vertical-small
-      marginBottom: ".5rem",
-      // Overriding expanded:last-child
-      "&$expanded": {
-        margin: ".5rem 0",
+  const useTableItemStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        // From styles/layout/grid -> $gutter-vertical-small
+        marginBottom: ".5rem",
+        // Overriding expanded:last-child
+        "&$expanded": {
+          margin: ".5rem 0",
+        },
+        [theme.breakpoints.down("sm")]: {
+          width: "max-content",
+        },
       },
-    },
-    // https://stackoverflow.com/questions/54056308/cant-override-a-style-of-a-deeply-nested-component-material-ui-jss-styling#answer-54057124
-    expanded: {},
-  });
+      // https://stackoverflow.com/questions/54056308/cant-override-a-style-of-a-deeply-nested-component-material-ui-jss-styling#answer-54057124
+      expanded: {},
+    })
+  );
   const classes = useTableItemStyles();
 
   if (!row.expandRow) {
