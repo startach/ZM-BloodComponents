@@ -5,6 +5,7 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
+import { GetCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorRequest,
@@ -16,28 +17,10 @@ export default async function (
     throw Error(`User is not a coordinator`);
   }
 
-  let hospitals: Hospital[] = [];
-  switch (coordinator.role) {
-    case CoordinatorRole.SYSTEM_USER:
-      hospitals = HospitalUtils.activeHospitals;
-      break;
-    case CoordinatorRole.ZM_COORDINATOR:
-    case CoordinatorRole.HOSPITAL_COORDINATOR:
-      if (coordinator.hospitals && coordinator.hospitals.length > 0) {
-        // Take only active hospitals
-        hospitals = coordinator.hospitals.filter((hospital) =>
-          HospitalUtils.activeHospitals.includes(hospital)
-        );
-      }
-      break;
-    case CoordinatorRole.GROUP_COORDINATOR:
-      break;
-  }
-
   return {
     coordinator: {
       role: coordinator.role,
-      activeHospitalsForCoordinator: hospitals,
+      activeHospitalsForCoordinator: GetCoordinatorHospitals(coordinator),
     },
   };
 }

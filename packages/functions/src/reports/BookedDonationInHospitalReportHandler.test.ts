@@ -62,8 +62,20 @@ test("Non Coordinator role throws exception", async () => {
   await expectAsyncThrows(action, `User ${REGULAR_USER_ID} is not an admin`);
 });
 
+test("Coordinator does not have permissions for hospital throws exception", async () => {
+  await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.BEILINSON,
+  ]);
+
+  const action = () => callFunction(COORDINATOR_ID);
+  await expectAsyncThrows(
+    action,
+    `Coordinator ${COORDINATOR_ID} is not allowed to view hospital ${Hospital.BEILINSON}`
+  );
+});
+
 test("Valid request returns booked appointment of the right hospital", async () => {
-  await createCoordinator(CoordinatorRole.ZM_COORDINATOR, [
+  await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
     Hospital.TEL_HASHOMER,
   ]);
 
