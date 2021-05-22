@@ -15,3 +15,11 @@
 .booked-at-date {
   text-align: center;
 }
+
+.hospital_picker_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 80%;
+  margin: 20px auto;
+}
