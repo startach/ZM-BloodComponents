@@ -49,7 +49,7 @@ export default function Select<T>({
             options.find((option) => option.key === e.target.value)?.value as T
           )
         }
-        value={options.find((option) => option.value === value)?.key}
+        value={options.find((option) => option.value === value)?.key || ""}
         disabled={isDisabled}
         placeholder={placeholder}
         className={className}
