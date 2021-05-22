@@ -5,7 +5,8 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import timezone from "dayjs/plugin/timezone";
 dayjs.extend(customParseFormat);
 dayjs.extend(timezone);
-dayjs.tz.setDefault("Asia/Jerusalem");
+const IL_TIMEZONE = "Asia/Jerusalem";
+dayjs.tz.setDefault(IL_TIMEZONE);
 
 type ParsableDateValue = Date | string | number;
 
@@ -15,14 +16,14 @@ export function ToDateString(
   date: ParsableDateValue | number,
   format?: string
 ) {
-  return dayjs(date, format).format(DateDisplayFormat);
+  return dayJsWithTimeZone(date, format).format(DateDisplayFormat);
 }
 
 export function ToTimeString(
   date: ParsableDateValue | number,
   format?: string
 ) {
-  return dayjs(date, format).format("HH:mm");
+  return dayJsWithTimeZone(date, format).format("HH:mm");
 }
 
 export function ToWeekDayString(
@@ -30,9 +31,13 @@ export function ToWeekDayString(
   format?: string
 ) {
   //TODO: update the word "Day" based on the locale (in ar + en)
-  return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
+  return `יום ${dayJsWithTimeZone(date, format).locale("he").format("dddd")}`;
 }
 
 export function DateComparer(date1: Date, date2: Date): number {
   return date1.getTime() - date2.getTime();
+}
+
+function dayJsWithTimeZone(date: ParsableDateValue | number, format?: string) {
+  return dayjs(date, format).tz(IL_TIMEZONE);
 }
