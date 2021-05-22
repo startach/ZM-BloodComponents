@@ -9,7 +9,7 @@ test("DateComparer works", () => {
 });
 
 test("ToTimeString works", () => {
-  const time = new Date(2021, 0, 13, 12, 35);
+  const time = new Date(1610534100000); // Wednesday, January 13, 2021 12:35:00 GMT+02:00
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
 

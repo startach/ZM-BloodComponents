@@ -11,12 +11,12 @@ export function getAppointmentNotificationData(
 ): AppointmentNotificationData {
   const donationStartTime = appointment.donationStartTime.toDate();
   return {
+    appointmentId: appointment.id!,
     dateString: DateUtils.ToDateString(donationStartTime),
     hourString: DateUtils.ToTimeString(donationStartTime),
     hospitalName: LocaleUtils.getHospitalName(appointment.hospital),
     donorFirstName: donor.firstName,
     donorLastName: donor.lastName,
-    appointmentId: appointment.id!,
   };
 }
 
