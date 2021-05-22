@@ -16,6 +16,7 @@ import CsvDownloaderButton from "../../components/CsvDownloaderButton";
 import {
   csvColumns,
   formatDataByColumns,
+  getDonorReportFileName,
 } from "./ScheduledAppointmentsCsvConfig";
 
 export interface ScheduledAppointmentsScreenProps {
@@ -54,10 +55,6 @@ export default function ScheduledAppointmentsScreen({
       label: "שעה",
       cellRenderer: ({ donationStartTimeMillis }) =>
         DateUtils.ToTimeString(donationStartTimeMillis),
-    },
-    {
-      label: "בית חולים",
-      cellRenderer: ({ hospital }) => hospital,
     },
     {
       label: "שם תורם",
@@ -127,7 +124,7 @@ export default function ScheduledAppointmentsScreen({
           isDisabled={appointmentsWithDonorDetails.length === 0}
           data={formatDataByColumns(appointmentsWithDonorDetails)}
           columns={csvColumns}
-          fileName="test"
+          fileName={getDonorReportFileName(hospital, fromDate, toDate)}
         />
       </HeaderSection>
       <Table
