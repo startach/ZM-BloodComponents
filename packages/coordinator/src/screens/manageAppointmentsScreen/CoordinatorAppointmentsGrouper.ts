@@ -94,7 +94,6 @@ function getDonor(donors: Donor[], donorId?: string) {
   if (!donorId) {
     return undefined;
   }
-
   const foundDonors = donors.filter((donor) => donor.id === donorId);
   if (foundDonors.length !== 1) {
     console.error("Unexpected number of donors:", donors.length);
