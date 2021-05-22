@@ -12,7 +12,7 @@ import {
 } from "../firebase/FirebaseInitializer";
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
-import SearchDonorsScreenContainer from "../screens/serchDonorsScreen/SearchDonorsScreenContainer";
+import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";

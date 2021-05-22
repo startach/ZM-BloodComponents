@@ -2,24 +2,19 @@ import { useEffect, useState } from "react";
 import {
   Donor,
   Hospital,
-  HospitalUtils,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import * as AppointmentUtils from "../../utils/AppointmentUtils";
-import Select from "../../components/Select";
-import { Restore, NewReleases } from "@material-ui/icons";
-import Button, { ButtonVariant } from "../../components/Button";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
 import { groupAppointmentDays } from "./CoordinatorAppointmentsGrouper";
-import styles from "./ManageAppointmentsScreenContainer.module.scss";
 
 interface ManageAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
 }
 
 export default function ManageAppointmentsScreenContainer(
-  props: ManageAppointmentsScreenContainerProps
+  { activeHospitalsForCoordinator }: ManageAppointmentsScreenContainerProps
 ) {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
   const [appointmentsResponse, setAppointmentsResponse] = useState(
@@ -85,57 +80,19 @@ export default function ManageAppointmentsScreenContainer(
   );
 
   return (
-    <div>
-      <div className={styles.hospital_picker_container}>
-        <Select
-          id={"hospital"}
-          label={"בית חולים"}
-          options={HospitalUtils.getHospitalOptions(
-            props.activeHospitalsForCoordinator,
-            "בחר"
-          )}
-          value={hospitalFilter}
-          onChange={setHospitalFilter}
-        />
-
-        <Button
-          title="שינויים חדשים"
-          onClick={() => {
-            setShowOnlyRecentChanges(!showOnlyRecentChanges);
-            if (!showOnlyRecentChanges) {
-              setShowPastAppointments(false);
-            }
-          }}
-          endIcon={<NewReleases />}
-          variant={
-            showOnlyRecentChanges
-              ? ButtonVariant.contained
-              : ButtonVariant.outlined
-          }
-        />
-        <Button
-          title="תורים שעברו"
-          onClick={() => {
-            setShowPastAppointments(!showPastAppointments);
-          }}
-          endIcon={<Restore />}
-          isDisabled={showOnlyRecentChanges}
-          variant={
-            showPastAppointments
-              ? ButtonVariant.contained
-              : ButtonVariant.outlined
-          }
-        />
-      </div>
-
-      <ManageAppointmentsScreen
-        donationDays={donationDays}
-        onDeleteAppointment={onDeleteAppointment}
-        onRemoveDonor={onRemoveDonor}
-        isLoading={isLoading}
-        showOnlyRecentChanges={showOnlyRecentChanges}
-      />
-    </div>
+    <ManageAppointmentsScreen
+      donationDays={donationDays}
+      onDeleteAppointment={onDeleteAppointment}
+      onRemoveDonor={onRemoveDonor}
+      isLoading={isLoading}
+      showOnlyRecentChanges={showOnlyRecentChanges}
+      setShowOnlyRecentChanges={setShowOnlyRecentChanges}
+      hospitalFilter={hospitalFilter}
+      setHospitalFilter={setHospitalFilter}
+      showPastAppointments={showPastAppointments}
+      setShowPastAppointments={setShowPastAppointments}
+      activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+    />
   );
 }
 
