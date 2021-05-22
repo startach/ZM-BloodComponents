@@ -36,3 +36,9 @@ export function ToWeekDayString(
 export function DateComparer(date1: Date, date2: Date): number {
   return date1.getTime() - date2.getTime();
 }
+
+export function DateToMidnight(date: Date) {
+  let midnight = date;
+  midnight.setHours(0, 0, 0, 0);
+  return midnight;
+}
