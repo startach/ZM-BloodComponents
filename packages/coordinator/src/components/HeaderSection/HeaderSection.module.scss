@@ -1,7 +1,17 @@
+@import "../../styles/mixins";
 .component {
   background-color: var(--color-header-bg);
   color: var(--color-header-text);
   text-align: center;
-
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--layout-distance-normal);
+  @include flex_gap(var(--layout-distance-normal), row);
+
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

@@ -1,13 +1,3 @@
-@import "../../styles/mixins";
-
-.component {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--layout-distance-normal);
-  @include flex_gap(var(--layout-distance-normal), row);
-}
-
 .field {
   min-width: 100px;
 }
