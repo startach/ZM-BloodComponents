@@ -1,4 +1,8 @@
-import { BookingChange, DateUtils } from "@zm-blood-components/common";
+import {
+  BookingChange,
+  DateUtils,
+  LocaleUtils,
+} from "@zm-blood-components/common";
 import {
   CardTableColumn,
   CardTableRow,
@@ -18,10 +22,18 @@ export const GetExpandedColumns = (
   showOnlyRecentChanges: boolean
 ): CardTableColumn<ManagedAppointment>[] => [
   {
+    label: "שם מלא",
     cellRenderer: ({ donorName }) => donorName,
     hideIfNoData: true,
   },
   {
+    label: "סוג דם",
+    cellRenderer: ({ bloodType }) =>
+      bloodType ? LocaleUtils.getBloodTypeTranslation(bloodType) : null,
+    hideIfNoData: true,
+  },
+  {
+    label: "טלפון",
     cellRenderer: ({ donorPhoneNumber }) =>
       donorPhoneNumber && (
         <div className={Styles["phone-cell"]}>
@@ -31,11 +43,11 @@ export const GetExpandedColumns = (
     hideIfNoData: true,
   },
   {
+    label: "נקבע בתאריך",
     cellRenderer: ({ booked, bookingTimeMillis }) => {
       let bookingDate = "אין רישום";
       if (booked && bookingTimeMillis) {
-        bookingDate =
-          "נקבע בתאריך " + DateUtils.ToDateString(bookingTimeMillis);
+        bookingDate = DateUtils.ToDateString(bookingTimeMillis);
       }
       return <div className={Styles["booked-at-date"]}>{bookingDate}</div>;
     },
@@ -105,6 +117,7 @@ export const expandedRowContent = (
       )}
       columns={GetExpandedColumns(setPopupData, showOnlyRecentChanges)}
       tableIndex={1}
+      hasColumnHeaders
     />
   );
 };
