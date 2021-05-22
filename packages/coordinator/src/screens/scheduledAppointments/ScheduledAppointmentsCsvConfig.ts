@@ -1,8 +1,5 @@
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
-import {
-  BloodType,
-  BookedDonationWithDonorDetails,
-} from "@zm-blood-components/common";
+import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
 import { IColumn } from "react-csv-downloader/dist/esm/lib/csv";
 
 enum columnNames {
@@ -39,10 +36,9 @@ export const formatDataByColumns = (
       [columnNames.HOSPITAL]: LocaleUtils.getHospitalName(appointment.hospital),
       [columnNames.FIRST_NAME]: appointment.firstName,
       [columnNames.LAST_NAME]: appointment.lastName,
-      [columnNames.BLOOD_TYPE]:
-        appointment.bloodType === BloodType.NOT_SURE
-          ? "לא יודע/ת"
-          : appointment.bloodType,
+      [columnNames.BLOOD_TYPE]: LocaleUtils.getBloodTypeTranslation(
+        appointment.bloodType
+      ),
       [columnNames.PHONE]: appointment.phone.toString(),
     };
   });

@@ -1,4 +1,8 @@
-import { DateUtils, SortingUtils } from "@zm-blood-components/common";
+import {
+  DateUtils,
+  LocaleUtils,
+  SortingUtils,
+} from "@zm-blood-components/common";
 import { BookedDonationWithDonorDetails } from "common/src/types";
 import Table, { CardTableColumn, CardTableRow } from "../../components/Table";
 import Spinner from "../../components/Spinner";
@@ -47,7 +51,8 @@ export default function ScheduledAppointmentsScreen({
       sortBy: SortingUtils.StringComparator<BookedDonationWithDonorDetails>(
         (d) => d.bloodType
       ),
-      cellRenderer: ({ bloodType }) => bloodType,
+      cellRenderer: ({ bloodType }) =>
+        LocaleUtils.getBloodTypeTranslation(bloodType),
     },
     {
       label: "טלפון",
