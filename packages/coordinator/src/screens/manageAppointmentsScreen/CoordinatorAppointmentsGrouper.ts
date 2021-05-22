@@ -1,4 +1,5 @@
 import {
+  BloodType,
   BookingChange,
   DateUtils,
   Donor,
@@ -24,6 +25,7 @@ export type ManagedAppointment = {
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
   isPastAppointment: boolean;
+  bloodType: BloodType | undefined;
 };
 
 export function groupAppointmentDays(
@@ -85,6 +87,7 @@ function appointmentsToAppointmentSlot(
         bookingTimeMillis: a.bookingTimeMillis,
         recentChangeType: a.recentChangeType,
         isPastAppointment: a.donationStartTimeMillis < Date.now(),
+        bloodType: donor?.bloodType,
       };
     }),
   };
