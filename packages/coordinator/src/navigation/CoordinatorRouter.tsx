@@ -13,6 +13,7 @@ import {
 import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
+import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
@@ -81,6 +82,11 @@ export default function CoordinatorRouter() {
         </Route>
         <Route exact path={"/" + CoordinatorScreen.DONORS}>
           <SearchDonorsScreenContainer />
+        </Route>
+        <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
+          <ScheduledAppointmentsContainer
+            activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+          />
         </Route>
         <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
           <AddAppointmentsScreenContainer
