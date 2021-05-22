@@ -16,7 +16,7 @@ export interface CommonTableProps<T> {
   tableIndex?: number;
 }
 
-interface GroupTableProps<T> extends CommonTableProps<T> {
+export interface GroupTableProps<T> extends CommonTableProps<T> {
   groups?: CardTableRowGroup<T>[];
 }
 
