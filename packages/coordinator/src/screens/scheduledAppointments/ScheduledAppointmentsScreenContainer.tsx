@@ -18,12 +18,18 @@ import {
   formatDataByColumns,
 } from "./ScheduledAppointmentsCsvConfig";
 
-export default function ScheduledAppointmentsScreenContainer() {
+interface ScheduledAppointmentsScreenContainerProps {
+  activeHospitalsForCoordinator: Hospital[];
+}
+
+export default function ScheduledAppointmentsScreenContainer({
+  activeHospitalsForCoordinator,
+}: ScheduledAppointmentsScreenContainerProps) {
   const TWO_WEEKS_IN_MILLIS = 1000 * 60 * 60 * 24 * 14;
   const initialToDate = new Date(Date.now() + TWO_WEEKS_IN_MILLIS);
 
-  const [fromDate, setFromDate] = useState<Date | null>(new Date());
-  const [toDate, setToDate] = useState<Date | null>(initialToDate);
+  const [fromDate, setFromDate] = useState<Date>(new Date());
+  const [toDate, setToDate] = useState<Date>(initialToDate);
   const [hospital, setHospital] = useState<Hospital | "">("");
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
@@ -52,21 +58,24 @@ export default function ScheduledAppointmentsScreenContainer() {
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={HospitalUtils.getAllHospitalOptions()}
+          options={HospitalUtils.getHospitalOptions(
+            activeHospitalsForCoordinator,
+            "בחר"
+          )}
           onChange={setHospital}
           value={hospital}
           className={styles.field}
         />
         <DatePicker
           value={fromDate}
-          onChange={setFromDate}
+          onChange={(newDate) => setFromDate(newDate!)}
           label={"החל מתאריך"}
           className={styles.field}
           maximumDate={toDate!}
         />
         <DatePicker
           value={toDate!}
-          onChange={setToDate}
+          onChange={(newDate) => setToDate(newDate!)}
           label={"עד תאריך"}
           className={styles.field}
           minimumDate={fromDate!}

@@ -49,7 +49,9 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
           onClick={navigate(CoordinatorScreen.DONORS)}
         />
         <Button
-          className={currentTab === "/donors" ? styles.selected__tab : ""}
+          className={
+            currentTab === "/booked-donations" ? styles.selected__tab : ""
+          }
           title="תורים תפוסים"
           onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
         />

@@ -84,7 +84,9 @@ export default function CoordinatorRouter() {
           <SearchDonorsScreenContainer />
         </Route>
         <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
-          <ScheduledAppointmentsContainer />
+          <ScheduledAppointmentsContainer
+            activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+          />
         </Route>
         <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
           <AddAppointmentsScreenContainer
