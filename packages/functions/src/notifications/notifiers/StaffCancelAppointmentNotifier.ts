@@ -17,7 +17,7 @@ export function sendCancellationEmailToStaff(
     PERIOD_48_HOURS_IN_MILLIS;
 
   const tilePrefix = "התפנה תור";
-  const titleForCloseAppointments = appointmentIsClose ? "קרוב!" : "";
+  const titleForCloseAppointments = appointmentIsClose ? " קרוב!" : "";
   let subject = `${tilePrefix}${titleForCloseAppointments} ${
     data.dateString + " " + data.hourString
   }`;
