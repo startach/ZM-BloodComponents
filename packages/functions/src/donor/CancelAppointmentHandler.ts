@@ -3,8 +3,9 @@ import {
   removeDonorFromDbAppointment,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import * as _ from "lodash";
 import { FunctionsApi } from "@zm-blood-components/common";
+import { getDonor } from "../dal/DonorDataAccessLayer";
+import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
@@ -27,6 +28,11 @@ export default async function (
   if (appointment.donorId !== donorId) {
     throw new Error("Appointment to be deleted is not booked by donor");
   }
+
+  const donor = await getDonor(donorId);
+  notifyOnCancelAppointment(appointment, donor!).catch((e) =>
+    console.error("Error notifying on cancelled appointment", appointment.id, e)
+  );
 
   appointment.donorId = "";
   const updatedAppointment = removeDonorFromDbAppointment(appointment);
