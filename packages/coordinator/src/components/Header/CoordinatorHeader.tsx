@@ -60,11 +60,9 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
           />
         </div>
         {props.showSignOutButton && (
-          <Button
-            className={styles.disconnect}
-            title="התנתק"
-            onClick={props.onSignOut}
-          />
+          <div className={styles.disconnect}>
+            <Button title="התנתק" onClick={props.onSignOut} />
+          </div>
         )}
       </div>
     </div>
