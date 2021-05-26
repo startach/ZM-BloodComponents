@@ -52,7 +52,7 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
           className={
             currentTab === "/booked-donations" ? styles.selected__tab : ""
           }
-          title="תורים תפוסים"
+          title={`דו"חות`}
           onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
         />
         {props.showSignOutButton && (
