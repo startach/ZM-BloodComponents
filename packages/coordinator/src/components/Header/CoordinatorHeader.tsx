@@ -33,30 +33,36 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
         <img src={logoImg} className={styles.logo} alt={"logo"} />
       </div>
       <div className={styles.buttons}>
-        <Button
-          className={currentTab === "/home" ? styles.selected__tab : ""}
-          title="הוספת תורים"
-          onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
-        />
-        <Button
-          title="תורים מתוכננים"
-          onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
-          className={currentTab === "/appointments" ? styles.selected__tab : ""}
-        />
-        <Button
-          className={currentTab === "/donors" ? styles.selected__tab : ""}
-          title="חיפוש משתמשים"
-          onClick={navigate(CoordinatorScreen.DONORS)}
-        />
-        <Button
-          className={
-            currentTab === "/booked-donations" ? styles.selected__tab : ""
-          }
-          title={`דו"חות`}
-          onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
-        />
+        <div className={styles.mainButtons}>
+          <Button
+            className={currentTab === "/home" ? styles.selected__tab : ""}
+            title="הוספת תורים"
+            onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
+          />
+          <Button
+            title="תורים מתוכננים"
+            onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
+            className={
+              currentTab === "/appointments" ? styles.selected__tab : ""
+            }
+          />
+          <Button
+            className={currentTab === "/donors" ? styles.selected__tab : ""}
+            title="חיפוש משתמשים"
+            onClick={navigate(CoordinatorScreen.DONORS)}
+          />
+          <Button
+            className={
+              currentTab === "/booked-donations" ? styles.selected__tab : ""
+            }
+            title={`דו"חות`}
+            onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
+          />
+        </div>
         {props.showSignOutButton && (
-          <Button title="התנתק" onClick={props.onSignOut} />
+          <div className={styles.disconnect}>
+            <Button title="התנתק" onClick={props.onSignOut} />
+          </div>
         )}
       </div>
     </div>

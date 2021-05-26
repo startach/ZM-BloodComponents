@@ -17,6 +17,7 @@ export function getAppointmentNotificationData(
     hospitalName: LocaleUtils.getHospitalName(appointment.hospital),
     donorFirstName: donor.firstName,
     donorLastName: donor.lastName,
+    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
   };
 }
 
@@ -27,4 +28,5 @@ export type AppointmentNotificationData = {
   donorFirstName: string;
   donorLastName: string;
   appointmentId: string;
+  donationStartTimeMillis: number;
 };
