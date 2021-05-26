@@ -15,8 +15,9 @@ interface ScheduledAppointmentsScreenContainerProps {
 export default function ScheduledAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ScheduledAppointmentsScreenContainerProps) {
-
-  const [fromDate, setFromDate] = useState<Date>(dayjs().subtract(1, 'month').toDate());
+  const [fromDate, setFromDate] = useState<Date>(
+    dayjs().subtract(1, "month").toDate()
+  );
   const [toDate, setToDate] = useState<Date>(new Date());
   const [hospital, setHospital] = useState<Hospital | "">("");
   const [isLoading, setIsLoading] = useState(false);
