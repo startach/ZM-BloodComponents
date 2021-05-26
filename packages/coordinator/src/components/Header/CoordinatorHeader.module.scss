@@ -61,5 +61,7 @@ $header_height: var(--height-header, 100px);
 }
 
 .disconnect {
-  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: 8px;
+  padding-right: 58px;
 }
