@@ -5,6 +5,10 @@ import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
 import PhoneIcon from "../../assets/icons/phone.svg";
 import MailIcon from "../../assets/icons/mail.svg";
+import FacebookIcon from "../../assets/icons/facebook.svg";
+import InstagramIcon from "../../assets/icons/instagram.svg";
+import WebsiteIcon from "../../assets/icons/website.svg";
+import YoutubeIcon from "../../assets/icons/youtube.svg";
 
 import React, { ReactNode } from "react";
 
@@ -39,7 +43,7 @@ const ContactContent = () => {
   return (
     <div className={styles.contentContainer}>
       <IconedContent
-        iconLocation={PhoneIcon}
+        iconLocation={WebsiteIcon}
         alt={"website"}
         content={<LinkTo url={ZICHRON_URL} text={ZICHRON_URL} />}
       />
@@ -56,21 +60,21 @@ const ContactContent = () => {
         }
       />
       <IconedContent
-        iconLocation={PhoneIcon}
+        iconLocation={FacebookIcon}
         alt={"facebook"}
         content={
           <LinkTo url={ZICHRON_FACEBOOK_URL} text={"תעקבו אחרינו בפייסבוק"} />
         }
       />
       <IconedContent
-        iconLocation={PhoneIcon}
+        iconLocation={InstagramIcon}
         alt={"instagram"}
         content={
           <LinkTo url={ZICHRON_INSTAGRAM_URL} text={"תעקבו אחרינו באינסטגרם"} />
         }
       />
       <IconedContent
-        iconLocation={PhoneIcon}
+        iconLocation={YoutubeIcon}
         alt={"youtube"}
         content={
           <LinkTo url={ZICHRON_YOUTUBE_URL} text={"תעקבו אחרינו ביוטיוב"} />
