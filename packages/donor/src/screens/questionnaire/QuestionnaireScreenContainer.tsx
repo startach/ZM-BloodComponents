@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import { BookedAppointment ,FunctionsApi} from "@zm-blood-components/common";
+import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
@@ -22,7 +22,8 @@ export default function QuestionnaireScreenContainer(
 ) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<FunctionsApi.BookAppointmentStatus | undefined>();
+  const [error, setError] =
+    useState<FunctionsApi.BookAppointmentStatus | undefined>();
 
   const onSuccess = async () => {
     setIsLoading(true);
@@ -64,6 +65,7 @@ export default function QuestionnaireScreenContainer(
       isLoading={isLoading}
       debugMode={debugMode}
       errorCode={error}
+      goToHomePage={history.goBack}
     />
   );
 }

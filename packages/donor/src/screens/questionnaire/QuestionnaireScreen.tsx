@@ -6,12 +6,16 @@ import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
 import ZMScreen from "../../components/basic/ZMScreen";
+import { FunctionsApi } from "@zm-blood-components/common";
+import Popup from "../../components/basic/Popup";
 
 interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlot;
   onSuccess: () => void;
   isLoading: boolean;
   debugMode: boolean;
+  errorCode?: FunctionsApi.BookAppointmentStatus;
+  goToHomePage: () => void;
 }
 
 export default function QuestionnaireScreen({
@@ -19,6 +23,8 @@ export default function QuestionnaireScreen({
   onSuccess,
   isLoading,
   debugMode,
+  errorCode,
+  goToHomePage,
 }: QuestionnaireScreenProps) {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const IsConfirmed = (
@@ -54,7 +60,40 @@ export default function QuestionnaireScreen({
           title={"המשך"}
           isLoading={isLoading}
         />
+
+        <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
       </div>
     </ZMScreen>
+  );
+}
+
+function ErrorPopup(props: {
+  errorCode?: FunctionsApi.BookAppointmentStatus;
+  goToHomePage: () => void;
+}) {
+  if (!props.errorCode) {
+    return null;
+  }
+
+  let text = "";
+  switch (props.errorCode) {
+    case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
+      text =
+        'מצטערים, התור הזה הרגע נתפס ע"י תורם/ת אחר/ת. אנא הירשם/י למועד אחר';
+      break;
+
+    case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:
+      text = "לא ניתן לקבוע שתי תרומות בסמיכות של פחות מחודש";
+      break;
+  }
+
+  return (
+    <Popup
+      titleFirst={"אופס!"}
+      titleSecond={text}
+      buttonApproveText={"בחירת מועד חדש"}
+      open={true}
+      onApproved={props.goToHomePage}
+    />
   );
 }
