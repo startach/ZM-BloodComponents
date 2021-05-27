@@ -28,7 +28,7 @@ export async function bookAppointment(appointmentIds: string[]) {
 
   const response = await bookAppointmentFunction(request);
   const data = response.data as FunctionsApi.BookAppointmentResponse;
-  return data.bookedAppointment;
+  return data;
 }
 
 // Remove donor from appointment
