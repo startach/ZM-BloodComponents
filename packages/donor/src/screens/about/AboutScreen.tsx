@@ -44,6 +44,7 @@ export default function AboutScreen() {
       </Text>
       <Text className={styles.textContainer}>
         תודה לכל התורמים, צוות "בנק מרכיבי הדם" של עמותת זכרון מנחם.
+      
       </Text>
     </ZMScreen>
   );
