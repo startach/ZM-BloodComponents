@@ -16,7 +16,7 @@ const baseArgs: WizardScreenProps = {
   imageUrl:[onboardingImg1,onboardingImg2,onboardingImg3,onboardingImg4],
   title: ["איזה כיף שבאת!","איזה כיף שבאת!","איזה כיף שבאת!","איזה כיף שבאת!"],
   content:['sdfsf','dfddf','sdss','sds'],
-  currentStep: 1,
+  // currentStep: 1,
   totalNumberOfSteps: 4,
   buttonText: "הבא",
   buttonVariant: ButtonVariant.outlined,
@@ -33,7 +33,7 @@ const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
 export const FirstStep = Template.bind({});
 FirstStep.args = {
   ...baseArgs,
-  currentStep: 0,
+  // currentStep: 0,
   onPrev: undefined,
 };
 
@@ -43,7 +43,7 @@ MiddleStep.args = baseArgs;
 export const LastStep = Template.bind({});
 LastStep.args = {
   ...baseArgs,
-  currentStep: 3,
+  // currentStep: 3,
   onNext: undefined,
   buttonVariant: ButtonVariant.contained,
 };
