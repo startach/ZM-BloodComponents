@@ -2,6 +2,10 @@ import WizardScreen, { WizardScreenProps } from "./WizardScreen";
 import { ButtonVariant } from "../basic/Button";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
+import onboardingImg1 from "../../assets/icons/img-Onboarding-1.svg"
+import onboardingImg2 from "../../assets/icons/img-Onboarding-2.svg"
+import onboardingImg3 from "../../assets/icons/img-Onboarding-3.svg"
+import onboardingImg4 from "../../assets/icons/img-Onboarding-4.svg"
 
 export default {
   component: WizardScreen,
@@ -9,14 +13,12 @@ export default {
 };
 
 const baseArgs: WizardScreenProps = {
-  imageUrl:
-    "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  title: "איזה כיף שבאת!",
-  content:
-    "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
-  currentStep: 2,
+  imageUrl:[onboardingImg1,onboardingImg2,onboardingImg3,onboardingImg4],
+  title: ["איזה כיף שבאת!","איזה כיף שבאת!","איזה כיף שבאת!","איזה כיף שבאת!"],
+  content:['sdfsf','dfddf','sdss','sds'],
+  currentStep: 1,
   totalNumberOfSteps: 4,
-  buttonText: "אישור והמשך",
+  buttonText: "הבא",
   buttonVariant: ButtonVariant.outlined,
 
   onNext: action("onNext"),
