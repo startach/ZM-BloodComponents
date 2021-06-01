@@ -278,6 +278,7 @@ export default function QuestionnaireScreen({
           if (isLastDonationMoreThanAMonthAgo === "no") {
             setIsLastDonationMoreThanAMonthAgo("");
           }
+          return Promise.resolve();
         }}
       ></Popup>
 

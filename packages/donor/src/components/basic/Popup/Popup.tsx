@@ -11,9 +11,8 @@ type PopupProps = {
   titleFirst: string;
   titleSecond?: string;
   className?: string;
-  isLoading?: boolean;
   onBack?: () => void;
-  onApproved: () => void;
+  onApproved: () => Promise<void>;
 };
 
 export default function Popup({
@@ -25,9 +24,9 @@ export default function Popup({
   onApproved,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const buttonClicked = () => {
+  const buttonClicked = async () => {
     setIsLoading(true);
-    onApproved();
+    await onApproved();
     setIsLoading(false);
   };
   return (
