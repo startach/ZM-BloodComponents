@@ -57,37 +57,7 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
         <div>
           <div
             className="SideDrawer Close"
-          >
-            isOpen && 
-            <ul
-              className="NavItems"
-            >
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                הפרופיל שלי
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                אודות
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                צור קשר
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                התנתק
-              </li>
-            </ul>
-          </div>
+          />
         </div>
       </header>
       <div
