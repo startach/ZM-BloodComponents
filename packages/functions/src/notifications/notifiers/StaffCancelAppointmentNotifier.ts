@@ -18,7 +18,7 @@ export function sendCancellationEmailToStaff(
 
   const tilePrefix = "התפנה תור";
   const titleForCloseAppointments = appointmentIsClose ? " קרוב!" : "";
-  let subject = `${tilePrefix}${titleForCloseAppointments} ${
+  const subject = `${tilePrefix}${titleForCloseAppointments} ${
     data.dateString + " " + data.hourString
   }`;
 

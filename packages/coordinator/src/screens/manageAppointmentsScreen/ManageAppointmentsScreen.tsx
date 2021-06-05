@@ -52,8 +52,17 @@ interface ManageAppointmentsScreenProps {
 export interface DeleteAppointmentPopupData {
   isOpen: boolean;
   appointment?: ManagedAppointment;
-  onlyRemoveDonor: boolean;
+  title: string;
+  content: string;
+  onApproved: () => Promise<void>;
 }
+
+const emptyPopupData: DeleteAppointmentPopupData = {
+  isOpen: false,
+  title: "",
+  content: "",
+  onApproved: () => Promise.resolve(),
+};
 
 export default function ManageAppointmentsScreen({
   donationDays,
@@ -68,10 +77,8 @@ export default function ManageAppointmentsScreen({
   setShowPastAppointments,
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenProps) {
-  const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>({
-    isOpen: false,
-    onlyRemoveDonor: false,
-  });
+  const [popupData, setPopupData] =
+    useState<DeleteAppointmentPopupData>(emptyPopupData);
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
@@ -80,41 +87,17 @@ export default function ManageAppointmentsScreen({
         (slot) => ({
           rowData: slot,
           expandRow: (slot) =>
-            expandedRowContent(slot, setPopupData, showOnlyRecentChanges),
+            expandedRowContent(
+              slot,
+              setPopupData,
+              onRemoveDonor,
+              onDeleteAppointment,
+              showOnlyRecentChanges
+            ),
         })
       ),
     })
   );
-
-  const getPopupTitle = (): string => {
-    if (popupData.onlyRemoveDonor) {
-      return "האם ברצונך להסיר את התורם מהתור?";
-    }
-
-    return "האם ברצונך לבטל את התור?";
-  };
-
-  const getPopupSecondTitle = (): string => {
-    if (!popupData.appointment?.booked) {
-      return "התור טרם נתפס";
-    }
-
-    return `התור שייך ל${popupData.appointment.donorName} במספר ${popupData.appointment.donorPhoneNumber}`;
-  };
-
-  const onPopupApprove = () => {
-    const appointmentId = popupData.appointment?.appointmentId;
-    if (!appointmentId) {
-      console.warn("No appointment id set");
-      return Promise.resolve();
-    }
-
-    if (popupData.onlyRemoveDonor) {
-      return onRemoveDonor(appointmentId);
-    }
-
-    return onDeleteAppointment(appointmentId);
-  };
 
   return (
     <div className={Styles["screen-grey-background"]}>
@@ -169,10 +152,10 @@ export default function ManageAppointmentsScreen({
       <Popup
         buttonApproveText="אישור"
         open={popupData.isOpen}
-        titleFirst={getPopupTitle()}
-        titleSecond={getPopupSecondTitle()}
-        onApproved={onPopupApprove}
-        onClose={() => setPopupData({ isOpen: false, onlyRemoveDonor: false })}
+        titleFirst={popupData.title}
+        titleSecond={popupData.content}
+        onApproved={popupData.onApproved}
+        onClose={() => setPopupData(emptyPopupData)}
       />
       {isLoading && <Spinner size="4rem" />}
     </div>

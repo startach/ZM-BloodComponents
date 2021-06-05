@@ -5,12 +5,23 @@ import styles from "./CoordinatorHeader.module.scss";
 import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
 
-interface CoordinatorHeaderProps {
+export interface HeaderButtonFlags {
   showSignOutButton: boolean;
-  onSignOut: () => void;
+  showAddAppointments: boolean;
+  showOpenAppointments: boolean;
+  showSearchDonors: boolean;
+  showBookedAppointments: boolean;
 }
 
-export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
+interface CoordinatorHeaderProps {
+  onSignOut: () => void;
+  flags: HeaderButtonFlags;
+}
+
+export default function CoordinatorHeader({
+  flags,
+  onSignOut,
+}: CoordinatorHeaderProps) {
   const history = useHistory();
   const location = useLocation();
   const currentLocationPathname = location.pathname;
@@ -34,34 +45,42 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
       </div>
       <div className={styles.buttons}>
         <div className={styles.mainButtons}>
-          <Button
-            className={currentTab === "/home" ? styles.selected__tab : ""}
-            title="הוספת תורים"
-            onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
-          />
-          <Button
-            title="תורים מתוכננים"
-            onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
-            className={
-              currentTab === "/appointments" ? styles.selected__tab : ""
-            }
-          />
-          <Button
-            className={currentTab === "/donors" ? styles.selected__tab : ""}
-            title="חיפוש משתמשים"
-            onClick={navigate(CoordinatorScreen.DONORS)}
-          />
-          <Button
-            className={
-              currentTab === "/booked-donations" ? styles.selected__tab : ""
-            }
-            title={`דו"חות`}
-            onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
-          />
+          {flags.showAddAppointments && (
+            <Button
+              className={currentTab === "/home" ? styles.selected__tab : ""}
+              title="הוספת תורים"
+              onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
+            />
+          )}
+          {flags.showOpenAppointments && (
+            <Button
+              title="תורים מתוכננים"
+              onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
+              className={
+                currentTab === "/appointments" ? styles.selected__tab : ""
+              }
+            />
+          )}
+          {flags.showSearchDonors && (
+            <Button
+              className={currentTab === "/donors" ? styles.selected__tab : ""}
+              title="חיפוש משתמשים"
+              onClick={navigate(CoordinatorScreen.DONORS)}
+            />
+          )}
+          {flags.showBookedAppointments && (
+            <Button
+              className={
+                currentTab === "/booked-donations" ? styles.selected__tab : ""
+              }
+              title={`דוח"ות`}
+              onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
+            />
+          )}
         </div>
-        {props.showSignOutButton && (
+        {flags.showSignOutButton && (
           <div className={styles.disconnect}>
-            <Button title="התנתק" onClick={props.onSignOut} />
+            <Button title="התנתק" onClick={onSignOut} />
           </div>
         )}
       </div>
