@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import { BookedAppointment } from "@zm-blood-components/common";
+import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { DonationSlot } from "../../utils/AppointmentsGrouper";
@@ -22,6 +22,8 @@ export default function QuestionnaireScreenContainer(
 ) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] =
+    useState<FunctionsApi.BookAppointmentStatus | undefined>();
 
   const onSuccess = async () => {
     setIsLoading(true);
@@ -33,16 +35,29 @@ export default function QuestionnaireScreenContainer(
       );
     }
 
-    const bookedAppointment = await FirebaseFunctions.bookAppointment(
+    const bookAppointmentResponse = await FirebaseFunctions.bookAppointment(
       props.donationSlot.appointmentIds
     );
 
-    if (debugMode) {
-      console.log("Booked appointment", bookedAppointment.id);
-    }
+    switch (bookAppointmentResponse.status) {
+      case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:
+      case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
+      case FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS:
+        setError(bookAppointmentResponse.status);
+        setIsLoading(false);
+        break;
 
-    props.setBookedAppointment(bookedAppointment);
-    history.replace(MainNavigationKeys.UpcomingDonation);
+      case FunctionsApi.BookAppointmentStatus.SUCCESS:
+        if (debugMode) {
+          console.log(
+            "Booked appointment",
+            bookAppointmentResponse.bookedAppointment!.id
+          );
+        }
+
+        props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
+        history.replace(MainNavigationKeys.UpcomingDonation);
+    }
   };
 
   return (
@@ -51,6 +66,8 @@ export default function QuestionnaireScreenContainer(
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}
+      errorCode={error}
+      goToHomePage={history.goBack}
     />
   );
 }
