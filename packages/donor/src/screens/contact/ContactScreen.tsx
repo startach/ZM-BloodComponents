@@ -63,21 +63,21 @@ const ContactContent = () => {
         iconLocation={FacebookIcon}
         alt={"facebook"}
         content={
-          <LinkTo url={ZICHRON_FACEBOOK_URL} text={"תעקבו אחרינו בפייסבוק"} />
+          <LinkTo url={ZICHRON_FACEBOOK_URL} text={"עקבו אחרינו בפייסבוק"} />
         }
       />
       <IconedContent
         iconLocation={InstagramIcon}
         alt={"instagram"}
         content={
-          <LinkTo url={ZICHRON_INSTAGRAM_URL} text={"תעקבו אחרינו באינסטגרם"} />
+          <LinkTo url={ZICHRON_INSTAGRAM_URL} text={"עקבו אחרינו באינסטגרם"} />
         }
       />
       <IconedContent
         iconLocation={YoutubeIcon}
         alt={"youtube"}
         content={
-          <LinkTo url={ZICHRON_YOUTUBE_URL} text={"תעקבו אחרינו ביוטיוב"} />
+          <LinkTo url={ZICHRON_YOUTUBE_URL} text={"עקבו אחרינו ביוטיוב"} />
         }
       />
     </div>

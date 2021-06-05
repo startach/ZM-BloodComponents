@@ -68,7 +68,6 @@ export default function ButtonAppBar({
       <div>
         <SideDrawer
           isOpen={showSideBar}
-          close={() => setShowSideBar(false)}
           navProps={{
             navItemsProps: [
               {
@@ -86,6 +85,7 @@ export default function ButtonAppBar({
               {
                 title: "התנתק",
                 onClick: () => firebase.auth().signOut(),
+                class: styles.disconnect,
               },
             ],
           }}
