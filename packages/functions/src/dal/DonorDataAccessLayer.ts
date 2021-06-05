@@ -1,5 +1,5 @@
 import * as admin from "firebase-admin";
-import { Collections, DbDonor } from "@zm-blood-components/common";
+import { Collections, DbDonor, Hospital } from "@zm-blood-components/common";
 import * as _ from "lodash";
 
 export async function getDonorOrThrow(donorId: string) {
@@ -54,6 +54,17 @@ export async function deleteDonor(donorId: string) {
 
 export async function getAllDonors(): Promise<DbDonor[]> {
   const snapshot = await admin.firestore().collection(Collections.DONORS).get();
+  return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
+}
+
+export async function getDonorsByLastBookedHospital(
+  hospitals: Hospital[]
+): Promise<DbDonor[]> {
+  const snapshot = await admin
+    .firestore()
+    .collection(Collections.DONORS)
+    .where("lastBookedHospital", "in", hospitals)
+    .get();
   return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
 }
 
