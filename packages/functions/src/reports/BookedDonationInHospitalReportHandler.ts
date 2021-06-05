@@ -41,7 +41,7 @@ export default async function (
     bookedAppointments.map((a) => a.donorId)
   );
 
-  let bookedDonationsWithDonor: BookedDonationWithDonorDetails[] = [];
+  const bookedDonationsWithDonor: BookedDonationWithDonorDetails[] = [];
   bookedAppointments.forEach((appointment) => {
     const donor = donorsInAppointments.find(
       (d) => d.id === appointment.donorId

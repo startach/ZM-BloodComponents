@@ -42,7 +42,9 @@ export default function QuestionnaireScreenContainer(
     switch (bookAppointmentResponse.status) {
       case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:
       case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
+      case FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS:
         setError(bookAppointmentResponse.status);
+        setIsLoading(false);
         break;
 
       case FunctionsApi.BookAppointmentStatus.SUCCESS:

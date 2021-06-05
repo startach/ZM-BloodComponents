@@ -22,7 +22,8 @@ export default async function (
 
   const appointmentsToBook = await getAppointmentsByIds(request.appointmentIds);
   if (appointmentsToBook.length === 0) {
-    throw new Error("No appointments to book");
+    // None of the appointment ids was found in the DB
+    return { status: BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
   }
 
   const availableAppointments = appointmentsToBook.filter(

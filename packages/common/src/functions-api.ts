@@ -61,6 +61,7 @@ export const BookAppointmentFunctionName = "bookAppointment";
 export enum BookAppointmentStatus {
   SUCCESS = "SUCCESS",
   NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
+  NO_SUCH_APPOINTMENTS = "NO_SUCH_APPOINTMENTS",
   HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER",
 }
 export interface BookAppointmentRequest {
