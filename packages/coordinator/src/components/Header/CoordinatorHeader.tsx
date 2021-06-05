@@ -73,7 +73,7 @@ export default function CoordinatorHeader({
               className={
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
-              title="תורים תפוסים"
+              title={`דוח"ות`}
               onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
             />
           )}
