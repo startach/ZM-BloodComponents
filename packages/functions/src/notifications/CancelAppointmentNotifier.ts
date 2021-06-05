@@ -1,6 +1,6 @@
 import { DbAppointment, DbDonor } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "./AppointmentNotificationData";
-import { getStaffRecipients } from "./StaffEmailRecepientsCalculator";
+import { getStaffRecipients } from "./StaffEmailRecipientsCalculator";
 import { sendCancellationEmailToStaff } from "./notifiers/StaffCancelAppointmentNotifier";
 
 export const ZM_LOGO_URL =
