@@ -67,7 +67,7 @@ export default function QuestionnaireScreenContainer(
       isLoading={isLoading}
       debugMode={debugMode}
       errorCode={error}
-      goToHomePage={history.goBack}
+      goToHomePage={async () => history.goBack()}
     />
   );
 }

@@ -18,7 +18,7 @@ interface QuestionnaireScreenProps {
   isLoading: boolean;
   debugMode: boolean;
   errorCode?: FunctionsApi.BookAppointmentStatus;
-  goToHomePage: () => void;
+  goToHomePage: () => Promise<void>;
 }
 
 const YesNoOptions: RadioOption[] = [
@@ -185,7 +185,7 @@ export default function QuestionnaireScreen({
 
 function ErrorPopup(props: {
   errorCode?: FunctionsApi.BookAppointmentStatus;
-  goToHomePage: () => void;
+  goToHomePage: () => Promise<void>;
 }) {
   if (!props.errorCode) {
     return null;
