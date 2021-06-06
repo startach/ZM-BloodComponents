@@ -7,7 +7,7 @@ import {
   BookingChange,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
@@ -34,7 +34,7 @@ const APPOINTMENT_TO_BOOK_2 = "BookingAppointmentHandlerAppointment2";
 const OTHER_DONATION_OF_USER = "BookingAppointmentHandlerAppointment3";
 
 beforeAll(async () => {
-  await deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -44,7 +44,7 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
-  await deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -150,6 +150,9 @@ test("Valid request books appointment", async () => {
       email: "email@email.com",
     })
   );
+
+  const updatedDonor = await DonorDataAccessLayer.getDonor(DONOR_ID);
+  expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
 });
 
 async function createDonor() {
@@ -160,7 +163,7 @@ async function createDonor() {
     email: "email@email.com",
   };
 
-  await setDonor(donor);
+  await DonorDataAccessLayer.setDonor(donor);
 }
 
 async function saveAppointment(

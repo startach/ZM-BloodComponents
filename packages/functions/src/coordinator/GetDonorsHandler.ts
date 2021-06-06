@@ -23,11 +23,15 @@ export default async function (
     case CoordinatorRole.SYSTEM_USER:
       donors = await DonorDAL.getAllDonors();
       break;
-    case CoordinatorRole.HOSPITAL_COORDINATOR:
-      //TODO we need hospital field in donors to do this
-      break;
     case CoordinatorRole.ZM_COORDINATOR:
-    //TODO also needs the hospital result
+    // TODO should ZM_COORDINATOR also get donors that are in their group?
+    case CoordinatorRole.HOSPITAL_COORDINATOR:
+      if (coordinator.hospitals) {
+        donors = await DonorDAL.getDonorsByLastBookedHospital(
+          coordinator.hospitals
+        );
+      }
+      break;
     case CoordinatorRole.GROUP_COORDINATOR:
       const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(
         coordinator.id

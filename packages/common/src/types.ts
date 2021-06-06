@@ -30,6 +30,10 @@ export type DbDonor = {
   bloodType: BloodType;
   groupId: string;
 
+  // Fields changing after booking a donation
+  lastBookingTime?: firebase.firestore.Timestamp;
+  lastBookedHospital?: Hospital; // The hospital of the last booked donation of the donor
+
   testUser: boolean;
 };
 
