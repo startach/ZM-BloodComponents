@@ -8,7 +8,6 @@ export default async function (
   callerId: string
 ): Promise<FunctionsApi.GetDonorAppointmentsResponse> {
   if (callerId !== request.donorId) {
-    // TODO Yaron - check if caller is admin and have right permissions
     throw Error("Unauthorized to access user");
   }
 

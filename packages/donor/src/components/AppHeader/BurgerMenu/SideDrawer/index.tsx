@@ -7,13 +7,11 @@ import classNames from "classnames";
 export interface ISideDrawerProps {
   isOpen: boolean;
   navProps: NavItemsProps;
-  close: () => void;
 }
 
 export const SideDrawer: React.FC<ISideDrawerProps> = ({
   isOpen,
   navProps,
-  close,
 }) => {
   return (
     <div
@@ -22,7 +20,7 @@ export const SideDrawer: React.FC<ISideDrawerProps> = ({
         isOpen ? styles.Open : styles.Close
       )}
     >
-      isOpen && <NavItems navItemsProps={navProps.navItemsProps} />
+      {isOpen && <NavItems navItemsProps={navProps.navItemsProps} />}
     </div>
   );
 };

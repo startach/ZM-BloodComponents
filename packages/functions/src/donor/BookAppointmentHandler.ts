@@ -1,13 +1,19 @@
-import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
+import { getDonorOrThrow, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   getAppointmentsByDonorIdInTime,
   getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-import { BookingChange, FunctionsApi } from "@zm-blood-components/common";
+import {
+  BookingChange,
+  DbDonor,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
+import { BookAppointmentStatus } from "../../../common/src/functions-api";
 
 const WEEKS_BUFFER = 0;
 
@@ -20,11 +26,17 @@ export default async function (
   const donor = await getDonorOrThrow(donorId);
 
   const appointmentsToBook = await getAppointmentsByIds(request.appointmentIds);
+  if (appointmentsToBook.length === 0) {
+    // None of the appointment ids was found in the DB
+    return { status: BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
+  }
+
   const availableAppointments = appointmentsToBook.filter(
     (appointment) => !appointment.donorId
   );
   if (availableAppointments.length === 0) {
-    throw new Error("No appointments to book");
+    // None of the requested appointments is available
+    return { status: BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS };
   }
 
   const appointmentToBook = availableAppointments[0];
@@ -35,8 +47,12 @@ export default async function (
     WEEKS_BUFFER
   );
   if (donorAppointments.length > 0) {
-    throw new Error("Donor has other donations in buffer");
+    return { status: BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
   }
+  const updateDonorPromise = updateDonorAsync(
+    donor,
+    appointmentToBook.hospital
+  );
 
   appointmentToBook.donorId = donorId;
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
@@ -44,6 +60,7 @@ export default async function (
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
 
   await setAppointment(appointmentToBook);
+  await updateDonorPromise;
 
   notifyOnAppointmentBooked(appointmentToBook, donor).catch((e) =>
     console.error(
@@ -54,7 +71,18 @@ export default async function (
   );
 
   return {
+    status: BookAppointmentStatus.SUCCESS,
     bookedAppointment:
       dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
   };
+}
+
+function updateDonorAsync(donor: DbDonor, hospital: Hospital) {
+  const updatedDonor: DbDonor = {
+    ...donor,
+    lastBookedHospital: hospital,
+    lastBookingTime: admin.firestore.Timestamp.now(),
+  };
+
+  return setDonor(updatedDonor);
 }

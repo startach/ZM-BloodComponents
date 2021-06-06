@@ -57,37 +57,7 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
         <div>
           <div
             className="SideDrawer Close"
-          >
-            isOpen && 
-            <ul
-              className="NavItems"
-            >
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                הפרופיל שלי
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                אודות
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                צור קשר
-              </li>
-              <li
-                className="NavItem"
-                onClick={[Function]}
-              >
-                התנתק
-              </li>
-            </ul>
-          </div>
+          />
         </div>
       </header>
       <div
@@ -116,7 +86,7 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             >
               <img
                 alt="website"
-                src="phone.svg"
+                src="website.svg"
               />
             </div>
             <a
@@ -170,14 +140,14 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             >
               <img
                 alt="facebook"
-                src="phone.svg"
+                src="facebook.svg"
               />
             </div>
             <a
               className="link"
               href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
             >
-              תעקבו אחרינו בפייסבוק
+              עקבו אחרינו בפייסבוק
             </a>
           </div>
           <div
@@ -188,14 +158,14 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             >
               <img
                 alt="instagram"
-                src="phone.svg"
+                src="instagram.svg"
               />
             </div>
             <a
               className="link"
               href="https://www.instagram.com/zichronmenachem/"
             >
-              תעקבו אחרינו באינסטגרם
+              עקבו אחרינו באינסטגרם
             </a>
           </div>
           <div
@@ -206,14 +176,14 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             >
               <img
                 alt="youtube"
-                src="phone.svg"
+                src="youtube.svg"
               />
             </div>
             <a
               className="link"
               href="https://www.youtube.com/user/zichronmenachem"
             >
-              תעקבו אחרינו ביוטיוב
+              עקבו אחרינו ביוטיוב
             </a>
           </div>
         </div>

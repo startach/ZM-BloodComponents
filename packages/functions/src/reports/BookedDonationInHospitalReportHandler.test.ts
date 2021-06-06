@@ -23,7 +23,11 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
 );
 
-const COORDINATOR_ID = "BookedDonationsReportTestCoordinator";
+const VALID_TEST_HOSPITAL = Hospital.BEILINSON;
+
+const HADASA_COORDINATOR_ID = "BookedDonationsReportTestHadasaCoordinator";
+const BEILINSON_COORDINATOR_ID =
+  "BookedDonationsReportTestBeilinsonCoordinator";
 const REGULAR_USER_ID = "BookedDonationsReportTestUser";
 const DONOR_ID_1 = "BookedDonationsReportTestDonorUser1";
 
@@ -43,7 +47,8 @@ const FOURTEEN_DAYS_IN_MILLIS = 1000 * 60 * 60 * 24 * 14;
 
 const reset = async () => {
   await deleteAppointmentsByIds(ALL_APPOINTMENT_IDS);
-  await deleteAdmin(COORDINATOR_ID);
+  await deleteAdmin(HADASA_COORDINATOR_ID);
+  await deleteAdmin(BEILINSON_COORDINATOR_ID);
   await deleteDonor(DONOR_ID_1);
 };
 
@@ -51,21 +56,37 @@ beforeAll(reset);
 afterEach(reset);
 
 test("Unauthenticated user throws exception", async () => {
-  const action = () => callFunction();
+  const action = () => callFunction(VALID_TEST_HOSPITAL);
   await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("Non Coordinator role throws exception", async () => {
   await createDonorUser();
 
-  const action = () => callFunction(REGULAR_USER_ID);
+  const action = () => callFunction(VALID_TEST_HOSPITAL, REGULAR_USER_ID);
   await expectAsyncThrows(action, `User ${REGULAR_USER_ID} is not an admin`);
 });
 
+test("Coordinator does not have permissions for hospital throws exception", async () => {
+  await createCoordinator(
+    HADASA_COORDINATOR_ID,
+    CoordinatorRole.HOSPITAL_COORDINATOR,
+    [Hospital.HADASA]
+  );
+
+  const action = () => callFunction(VALID_TEST_HOSPITAL, HADASA_COORDINATOR_ID);
+  await expectAsyncThrows(
+    action,
+    `Coordinator ${HADASA_COORDINATOR_ID} is not allowed to view hospital ${VALID_TEST_HOSPITAL}`
+  );
+});
+
 test("Valid request returns booked appointment of the right hospital", async () => {
-  await createCoordinator(CoordinatorRole.ZM_COORDINATOR, [
-    Hospital.TEL_HASHOMER,
-  ]);
+  await createCoordinator(
+    BEILINSON_COORDINATOR_ID,
+    CoordinatorRole.HOSPITAL_COORDINATOR,
+    [VALID_TEST_HOSPITAL]
+  );
 
   await createDonor(DONOR_ID_1);
 
@@ -75,13 +96,13 @@ test("Valid request returns booked appointment of the right hospital", async () 
   await saveAppointment(
     FUTURE_BOOKED,
     IN_TWO_DAYS,
-    Hospital.TEL_HASHOMER,
+    VALID_TEST_HOSPITAL,
     DONOR_ID_1
   );
   await saveAppointment(
     FUTURE_NOT_BOOKED,
     IN_TWO_DAYS,
-    Hospital.TEL_HASHOMER,
+    VALID_TEST_HOSPITAL,
     ""
   );
   await saveAppointment(
@@ -93,11 +114,11 @@ test("Valid request returns booked appointment of the right hospital", async () 
   await saveAppointment(
     FUTURE_DONATION_TOO_FAR,
     IN_SIXTEEN_DAYS,
-    Hospital.TEL_HASHOMER,
+    VALID_TEST_HOSPITAL,
     DONOR_ID_1
   );
 
-  const res = await callFunction(COORDINATOR_ID);
+  const res = await callFunction(VALID_TEST_HOSPITAL, BEILINSON_COORDINATOR_ID);
 
   const appointments = res.donationsWithDonorDetails;
   expect(appointments).toHaveLength(1);
@@ -109,16 +130,17 @@ test("Valid request returns booked appointment of the right hospital", async () 
   );
   expect(bookedAppointment.firstName).toEqual(sampleUser.firstName);
   expect(bookedAppointment.lastName).toEqual(sampleUser.lastName);
-  expect(bookedAppointment.hospital).toEqual(Hospital.TEL_HASHOMER);
+  expect(bookedAppointment.hospital).toEqual(VALID_TEST_HOSPITAL);
   expect(bookedAppointment.phone).toEqual(sampleUser.phone);
 });
 
 async function createCoordinator(
+  id: string,
   role: CoordinatorRole,
   hospitals?: Hospital[]
 ) {
   const newAdmin: DbCoordinator = {
-    id: COORDINATOR_ID,
+    id,
     role,
   };
 
@@ -146,10 +168,11 @@ async function createDonorUser() {
 }
 
 function callFunction(
+  hospital: Hospital,
   userId?: string
 ): Promise<FunctionsApi.GetBookedDonationsInHospitalResponse> {
   const request: FunctionsApi.GetBookedDonationsInHospitalRequest = {
-    hospital: Hospital.TEL_HASHOMER,
+    hospital,
     fromDateMillis: Date.now(),
     toDateMillis: FOURTEEN_DAYS_IN_MILLIS + Date.now(),
   };
@@ -170,7 +193,7 @@ async function saveAppointment(
   const appointment: DbAppointment = {
     id: id,
     creationTime: admin.firestore.Timestamp.fromDate(donationStartTime),
-    creatorUserId: COORDINATOR_ID,
+    creatorUserId: BEILINSON_COORDINATOR_ID,
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: hospital,
     donorId: "",

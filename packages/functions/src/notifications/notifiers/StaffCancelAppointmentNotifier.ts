@@ -6,15 +6,27 @@ import {
 import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
 import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
-export function sendBookingEmailToStaff(
+const PERIOD_48_HOURS_IN_MILLIS = 48 * 60 * 60 * 1000;
+
+export function sendCancellationEmailToStaff(
   staffRecipients: StaffRecipient[],
   data: AppointmentNotificationData
 ) {
+  const appointmentIsClose =
+    data.donationStartTimeMillis - new Date().getTime() <
+    PERIOD_48_HOURS_IN_MILLIS;
+
+  const tilePrefix = "התפנה תור";
+  const titleForCloseAppointments = appointmentIsClose ? " קרוב!" : "";
+  const subject = `${tilePrefix}${titleForCloseAppointments} ${
+    data.dateString + " " + data.hourString
+  }`;
+
   const emails = staffRecipients.map<EmailMessage>((recipient) => ({
     to: recipient.email,
     message: {
-      subject: `רישום חדש לתור ${data.dateString + " " + data.hourString}`,
-      html: getEmailContent(recipient.name, data),
+      subject: subject,
+      html: getEmailContent(recipient.name, data, appointmentIsClose),
     },
     appointmentId: data.appointmentId,
   }));
@@ -24,22 +36,25 @@ export function sendBookingEmailToStaff(
 
 function getEmailContent(
   recipientName: string,
-  data: AppointmentNotificationData
+  data: AppointmentNotificationData,
+  appointmentIsClose: boolean
 ) {
   return `
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <title>תודה על הרשמתך לתרומה</title>
+    <title>תור התפנה</title>
   </head>
   <body style="text-align: right; direction: rtl">
     <img src="#logo#" alt="זכרון מנחם" />
     <h2>שלום #שם#,</h2>
     התורם/ת
     <span style="font-weight: bold">#שם_התורם#</span>
-    <span style="color: green; font-weight: bold">נרשם/ה</span>
-    לתור אשר יתקיים בביה"ח #בית_חולים# בתאריך #תאריך# בשעה #שעה#.
+    <span style="color: deeppink; font-weight: bold">הסיר/ה</span>
+    עצמו/ה מתור
+    <span style="color: red; font-weight: bold">#קרבה#</span>
+    אשר יתקיים בביה"ח #בית_חולים# בתאריך #תאריך# בשעה #שעה#.
     <br />
     <br />
     המשך יום טוב!
@@ -51,6 +66,7 @@ function getEmailContent(
     .replace("#logo#", ZM_LOGO_URL)
     .replace("#שם#", recipientName)
     .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
+    .replace("#קרבה#", appointmentIsClose ? " קרוב " : " ")
     .replace("#בית_חולים#", data.hospitalName)
     .replace("#תאריך#", data.dateString)
     .replace("#שעה#", data.hourString);

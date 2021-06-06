@@ -11,12 +11,13 @@ export function getAppointmentNotificationData(
 ): AppointmentNotificationData {
   const donationStartTime = appointment.donationStartTime.toDate();
   return {
+    appointmentId: appointment.id!,
     dateString: DateUtils.ToDateString(donationStartTime),
     hourString: DateUtils.ToTimeString(donationStartTime),
     hospitalName: LocaleUtils.getHospitalName(appointment.hospital),
     donorFirstName: donor.firstName,
     donorLastName: donor.lastName,
-    appointmentId: appointment.id!,
+    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
   };
 }
 
@@ -27,4 +28,5 @@ export type AppointmentNotificationData = {
   donorFirstName: string;
   donorLastName: string;
   appointmentId: string;
+  donationStartTimeMillis: number;
 };

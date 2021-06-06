@@ -2,7 +2,13 @@
 import "dayjs/locale/he";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 dayjs.extend(customParseFormat);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+const IL_TIMEZONE = "Asia/Jerusalem";
+dayjs.tz.setDefault(IL_TIMEZONE);
 
 type ParsableDateValue = Date | string | number;
 
@@ -12,14 +18,11 @@ export function ToDateString(
   date: ParsableDateValue | number,
   format?: string
 ) {
-  return dayjs(date, format).format(DateDisplayFormat);
+  return dayjs(date, format).tz().format(DateDisplayFormat);
 }
 
-export function ToTimeString(
-  date: ParsableDateValue | number,
-  format?: string
-) {
-  return dayjs(date, format).format("HH:mm");
+export function ToTimeString(date: ParsableDateValue | number) {
+  return dayjs(date).tz(IL_TIMEZONE).format("HH:mm");
 }
 
 export function ToWeekDayString(
@@ -32,4 +35,10 @@ export function ToWeekDayString(
 
 export function DateComparer(date1: Date, date2: Date): number {
   return date1.getTime() - date2.getTime();
+}
+
+export function DateToMidnight(date: Date) {
+  let midnight = date;
+  midnight.setHours(0, 0, 0, 0);
+  return midnight;
 }
