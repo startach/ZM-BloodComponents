@@ -6,7 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
 
 export interface HeaderButtonFlags {
-  showSignOutButton: boolean;
+  isLoggedIn: boolean;
   showAddAppointments: boolean;
   showOpenAppointments: boolean;
   showSearchDonors: boolean;
@@ -16,11 +16,13 @@ export interface HeaderButtonFlags {
 interface CoordinatorHeaderProps {
   onSignOut: () => void;
   flags: HeaderButtonFlags;
+  getEmail: () => string | undefined;
 }
 
 export default function CoordinatorHeader({
   flags,
   onSignOut,
+  getEmail,
 }: CoordinatorHeaderProps) {
   const history = useHistory();
   const location = useLocation();
@@ -37,6 +39,8 @@ export default function CoordinatorHeader({
 
   const navigate = (screen: CoordinatorScreen) => () =>
     history.push("/" + screen);
+
+  const email = getEmail();
 
   return (
     <div className={styles.navBar}>
@@ -78,8 +82,9 @@ export default function CoordinatorHeader({
             />
           )}
         </div>
-        {flags.showSignOutButton && (
-          <div className={styles.disconnect}>
+        {flags.isLoggedIn && (
+          <div className={styles.loggedIn}>
+            <div>{email}</div>
             <Button title="התנתק" onClick={onSignOut} />
           </div>
         )}
