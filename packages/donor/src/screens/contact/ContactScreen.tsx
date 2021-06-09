@@ -10,6 +10,8 @@ import InstagramIcon from "../../assets/icons/instagram.svg";
 import WebsiteIcon from "../../assets/icons/website.svg";
 import YoutubeIcon from "../../assets/icons/youtube.svg";
 
+import classNames from "classnames";
+
 import React, { ReactNode } from "react";
 
 export default function ContactScreen() {
@@ -31,8 +33,9 @@ const Header = () => {
 };
 
 const ZICHRON_URL = "https://www.zichron.org";
+const ZICHRON_URL_TEXT = "zichron.org";
 const ZICHRON_EMAIL = "dam@zichron.org";
-const ZICHRON_PHONE = "+972-58-710-0571";
+const ZICHRON_PHONE_LINK = "https://wa.link/akc04c";
 const ZICHRON_PHONE_TEXT = "058-710-0571";
 const ZICHRON_FACEBOOK_URL =
   "https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem";
@@ -45,7 +48,13 @@ const ContactContent = () => {
       <IconedContent
         iconLocation={WebsiteIcon}
         alt={"website"}
-        content={<LinkTo url={ZICHRON_URL} text={ZICHRON_URL} />}
+        content={
+          <LinkTo
+            url={ZICHRON_URL}
+            text={ZICHRON_URL_TEXT}
+            className={styles.underline}
+          />
+        }
       />
       <IconedContent
         iconLocation={MailIcon}
@@ -55,9 +64,7 @@ const ContactContent = () => {
       <IconedContent
         iconLocation={PhoneIcon}
         alt={"phone"}
-        content={
-          <CallTo phoneNumber={ZICHRON_PHONE} text={ZICHRON_PHONE_TEXT} />
-        }
+        content={<CallTo link={ZICHRON_PHONE_LINK} text={ZICHRON_PHONE_TEXT} />}
       />
       <IconedContent
         iconLocation={FacebookIcon}
@@ -108,11 +115,12 @@ const IconedContent: React.FC<ContactLineProps> = ({
 type ContactLinkProps = {
   url: string;
   text: string;
+  className?: string;
 };
 
-const LinkTo: React.FC<ContactLinkProps> = ({ url, text }) => {
+const LinkTo: React.FC<ContactLinkProps> = ({ url, text, className }) => {
   return (
-    <a className={styles.link} href={url}>
+    <a className={classNames(styles.link, className)} href={url}>
       {text}
     </a>
   );
@@ -132,13 +140,16 @@ const MailTo: React.FC<MailToProps> = ({ email, text }) => {
 };
 
 type CallToProps = {
-  phoneNumber: string;
+  link: string;
   text: string;
 };
 
-const CallTo: React.FC<CallToProps> = ({ phoneNumber, text }) => {
+const CallTo: React.FC<CallToProps> = ({ link, text }) => {
   return (
-    <a className={styles.phonelink} href={`tel:${phoneNumber}`}>
+    <a
+      className={classNames(styles.phonelink, styles.underline)}
+      href={`${link}`}
+    >
       {text}
     </a>
   );
