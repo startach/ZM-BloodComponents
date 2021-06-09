@@ -157,15 +157,17 @@ export default function CoordinatorRouter() {
 
   return (
     <>
-      <CoordinatorHeaderContainer
-        flags={{
-          showSignOutButton: loginStatus === LoginStatus.LOGGED_IN,
-          showAddAppointments: canAddAppointments,
-          showOpenAppointments: canViewOpenAppointments,
-          showSearchDonors: canViewDonors,
-          showBookedAppointments: canViewBookedAppointments,
-        }}
-      />
+      {loginStatus === LoginStatus.LOGGED_IN && (
+        <CoordinatorHeaderContainer
+          flags={{
+            isLoggedIn: loginStatus === LoginStatus.LOGGED_IN,
+            showAddAppointments: canAddAppointments,
+            showOpenAppointments: canViewOpenAppointments,
+            showSearchDonors: canViewDonors,
+            showBookedAppointments: canViewBookedAppointments,
+          }}
+        />
+      )}
       <div className={styles.content}>{content}</div>
       <div className={styles.footer}>{appVersion}</div>
     </>

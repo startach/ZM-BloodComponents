@@ -1,5 +1,5 @@
 import CoordinatorHeader, { HeaderButtonFlags } from "./CoordinatorHeader";
-import { signOut } from "../../firebase/FirebaseAuthentication";
+import { signOut, getEmail } from "../../firebase/FirebaseAuthentication";
 
 interface CoordinatorHeaderContainerProps {
   flags: HeaderButtonFlags;
@@ -8,5 +8,11 @@ interface CoordinatorHeaderContainerProps {
 export default function CoordinatorHeaderContainer(
   props: CoordinatorHeaderContainerProps
 ) {
-  return <CoordinatorHeader flags={props.flags} onSignOut={signOut} />;
+  return (
+    <CoordinatorHeader
+      flags={props.flags}
+      onSignOut={signOut}
+      getEmail={getEmail}
+    />
+  );
 }

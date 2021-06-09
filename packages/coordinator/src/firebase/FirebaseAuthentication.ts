@@ -5,6 +5,10 @@ export function signOut() {
   return firebase.auth().signOut();
 }
 
+export function getEmail() {
+  return firebase.auth().currentUser?.email || undefined;
+}
+
 export function signInWithEmail(
   email: string,
   password: string,
