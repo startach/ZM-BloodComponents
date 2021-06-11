@@ -1,4 +1,5 @@
-import ButtonV2, { ButtonProps } from "./ButtonV2";
+import ButtonV2 from "./ButtonV2";
+import { ButtonProps } from "./Button";
 
 export default {
   component: ButtonV2,
