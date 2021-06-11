@@ -60,7 +60,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         }}
         value={password}
         variant={InputVariant.filled}
-        label="ססמא"
+        label="סיסמה"
         errorMessage={passwordError}
       />
       <Input

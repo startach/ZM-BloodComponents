@@ -63,7 +63,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           setPasswordError("");
         }}
         value={password}
-        label="ססמא"
+        label="סיסמה"
         variant={InputVariant.filled}
         errorMessage={passwordError}
         onKeyPress={(event) => {
