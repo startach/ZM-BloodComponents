@@ -3,7 +3,7 @@ import HeaderSection from "../../components/HeaderSection";
 import styles from "./styles.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
-import WhatsAppIcon from "../../assets/icons/whatsapp-icon.svg";
+import PhoneIcon from "../../assets/icons/phone.svg";
 import MailIcon from "../../assets/icons/mail.svg";
 import FacebookIcon from "../../assets/icons/facebook.svg";
 import InstagramIcon from "../../assets/icons/instagram.svg";
@@ -62,7 +62,7 @@ const ContactContent = () => {
         content={<MailTo email={ZICHRON_EMAIL} text={ZICHRON_EMAIL} />}
       />
       <IconedContent
-        iconLocation={WhatsAppIcon}
+        iconLocation={PhoneIcon}
         alt={"phone"}
         content={<WhatsApp link={WHATSAPP_LINK} text={ZICHRON_PHONE_TEXT} />}
       />
