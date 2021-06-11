@@ -66,11 +66,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         label="סיסמה"
         variant={InputVariant.filled}
         errorMessage={passwordError}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            signIn();
-          }
-        }}
+        onSubmit={signIn}
       />
       <div className={styles.screenSection}>
         <Button
