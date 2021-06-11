@@ -90,10 +90,10 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
               />
             </div>
             <a
-              className="link"
+              className="link underline"
               href="https://www.zichron.org"
             >
-              https://www.zichron.org
+              zichron.org
             </a>
           </div>
           <div
@@ -122,12 +122,12 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             >
               <img
                 alt="phone"
-                src="phone.svg"
+                src="whatsapp-icon.svg"
               />
             </div>
             <a
-              className="phonelink"
-              href="tel:+972-58-710-0571"
+              className="phonelink underline"
+              href="https://wa.link/akc04c"
             >
               058-710-0571
             </a>
