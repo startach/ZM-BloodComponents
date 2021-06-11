@@ -104,7 +104,7 @@ export default function QuestionnaireScreen({
     isWeightValid === "yes" &&
     isSurgeryValid === "no" &&
     isRightAge === "yes" &&
-    wasPregnant === "no";
+    wasPregnant !== "yes";
 
   const isWrongAnswerChosen =
     hasAlreadyDonated === "no" ||
