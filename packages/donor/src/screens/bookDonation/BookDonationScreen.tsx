@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import styles from "./BookDonationScreen.module.scss";
 import {
   AvailableAppointment,
+  DateUtils,
   Hospital,
   HospitalUtils,
-  DateUtils,
 } from "@zm-blood-components/common";
 import {
   DonationDay,
@@ -35,7 +35,9 @@ export default function BookDonationScreen({
   firstName,
   onSlotSelected,
 }: BookDonationScreenProps) {
-  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">("");
+  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
+    Hospital.BEILINSON
+  );
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
@@ -46,7 +48,7 @@ export default function BookDonationScreen({
 
   return (
     <ZMScreen
-      title="קביעת תרומה חדשה"
+      title="הרשמה לתור"
       hasBurgerMenu={true}
       className={styles.component}
     >
@@ -56,9 +58,7 @@ export default function BookDonationScreen({
       />
 
       <main className={styles.content}>
-        <Text className={styles.dropdownTitle}>
-          נא לבחור בית חולים ומועד לתרום בו
-        </Text>
+        <Text className={styles.dropdownTitle}>מתי מתאים לך להגיע לתרום?</Text>
         <Select
           className={styles.dropdown}
           options={HospitalUtils.getAllHospitalOptions("הכל")}
