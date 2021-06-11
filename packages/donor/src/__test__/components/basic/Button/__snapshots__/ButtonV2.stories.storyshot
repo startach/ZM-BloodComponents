@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/ Button Centered 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Centered 1`] = `
 <div
   dir="rtl"
 >
@@ -31,7 +31,7 @@ exports[`Storyshots COMPONENTS V2/ Button Centered 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Default State 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Default State 1`] = `
 <div
   dir="rtl"
 >
@@ -62,7 +62,7 @@ exports[`Storyshots COMPONENTS V2/ Button Default State 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Disabled 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Disabled 1`] = `
 <div
   dir="rtl"
 >
@@ -93,7 +93,7 @@ exports[`Storyshots COMPONENTS V2/ Button Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Loading 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Loading 1`] = `
 <div
   dir="rtl"
 >
@@ -148,7 +148,7 @@ exports[`Storyshots COMPONENTS V2/ Button Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Main 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Main 1`] = `
 <div
   dir="rtl"
 >
@@ -179,7 +179,7 @@ exports[`Storyshots COMPONENTS V2/ Button Main 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Secondary Gray 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Secondary Gray 1`] = `
 <div
   dir="rtl"
 >
@@ -210,7 +210,7 @@ exports[`Storyshots COMPONENTS V2/ Button Secondary Gray 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button Secondary Line Pink 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 Secondary Line Pink 1`] = `
 <div
   dir="rtl"
 >
@@ -241,7 +241,7 @@ exports[`Storyshots COMPONENTS V2/ Button Secondary Line Pink 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/ Button State 6 1`] = `
+exports[`Storyshots COMPONENTS V2/ ButtonV2 State 6 1`] = `
 <div
   dir="rtl"
 >

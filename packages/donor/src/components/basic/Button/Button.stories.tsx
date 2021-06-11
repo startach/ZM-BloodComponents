@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 
 export default {
   component: Button,
-  title: "Components V1/Button",
+  title: "Components V1/ButtonV2",
 };
 
 const baseArgs = {

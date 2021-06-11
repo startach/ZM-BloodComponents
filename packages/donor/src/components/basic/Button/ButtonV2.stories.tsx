@@ -1,8 +1,8 @@
-import Button, { ButtonProps } from "./Button";
+import ButtonV2, { ButtonProps } from "./ButtonV2";
 
 export default {
-  component: Button,
-  title: "COMPONENTS V2/ Button",
+  component: ButtonV2,
+  title: "COMPONENTS V2/ ButtonV2",
 };
 
 const baseArgs = {
@@ -12,54 +12,54 @@ const baseArgs = {
   variant: "contained",
 };
 
-export const Main = (args: ButtonProps) => <Button {...args} />;
+export const Main = (args: ButtonProps) => <ButtonV2 {...args} />;
 
 Main.args = {
   ...baseArgs,
 };
 
-export const SecondaryLinePink = (args: ButtonProps) => <Button {...args} />;
+export const SecondaryLinePink = (args: ButtonProps) => <ButtonV2 {...args} />;
 SecondaryLinePink.args = {
   ...baseArgs,
   color: "secondaryPink",
   variant: "outlined",
 };
 
-export const SecondaryGray = (args: ButtonProps) => <Button {...args} />;
+export const SecondaryGray = (args: ButtonProps) => <ButtonV2 {...args} />;
 SecondaryGray.args = {
   ...baseArgs,
   color: "secondaryGrey",
   variant: "outlined",
 };
 
-export const Disabled = (args: ButtonProps) => <Button {...args} />;
+export const Disabled = (args: ButtonProps) => <ButtonV2 {...args} />;
 Disabled.args = {
   ...baseArgs,
   isDisabled: true,
   variant: "disabled",
 };
 
-export const DefaultState = (args: ButtonProps) => <Button {...args} />;
+export const DefaultState = (args: ButtonProps) => <ButtonV2 {...args} />;
 DefaultState.args = {
   ...baseArgs,
   color: "primary",
   variant: "outlined",
 };
 
-export const State6 = (args: ButtonProps) => <Button {...args} />;
+export const State6 = (args: ButtonProps) => <ButtonV2 {...args} />;
 State6.args = {
   ...baseArgs,
   variant: "contained",
   color: "secondaryPink",
 };
 
-export const Centered = (args: ButtonProps) => <Button {...args} />;
+export const Centered = (args: ButtonProps) => <ButtonV2 {...args} />;
 Centered.args = {
   ...baseArgs,
   isCentered: true,
 };
 
-export const Loading = (args: ButtonProps) => <Button {...args} />;
+export const Loading = (args: ButtonProps) => <ButtonV2 {...args} />;
 Loading.args = {
   ...baseArgs,
   isLoading: true,
