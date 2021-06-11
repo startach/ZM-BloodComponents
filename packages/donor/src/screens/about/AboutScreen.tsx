@@ -39,8 +39,8 @@ export default function AboutScreen() {
       </Text>
       <Text className={styles.textContainer}>
         האפליקציה מפותחת ע"י מתנדבי עמותת{" "}
-        <a href="https://www.startach.org.il/">סטארט-אח</a>. מוזמנים לבקר גם
-        אותנו! <a href="https://www.facebook.com/StartAchCom">אתר פייסבוק</a>.
+        <a href="https://www.startach.org.il/">סטארט-אח</a>. מוזמנים לבקר אותנו
+        גם <a href="https://www.facebook.com/StartAchCom">בפייסבוק</a>!
       </Text>
       <Text className={styles.textContainer}>
         תודה לכל התורמים, צוות "בנק מרכיבי הדם" של עמותת זכרון מנחם.
