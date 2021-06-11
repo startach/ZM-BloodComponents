@@ -16,7 +16,6 @@ export type InputProps = {
   value?: any;
   type?: string;
   className?: string;
-  endIcon?: any;
   errorMessage?: string;
   /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
   variant?: InputVariant;

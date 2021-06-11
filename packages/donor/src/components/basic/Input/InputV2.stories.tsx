@@ -27,13 +27,6 @@ Default.args = {
   ...props,
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  ...props,
-  label: "סיסמה",
-  endIcon: <Visibility />,
-};
-
 export const Error = Template.bind({});
 Error.args = {
   ...props,
