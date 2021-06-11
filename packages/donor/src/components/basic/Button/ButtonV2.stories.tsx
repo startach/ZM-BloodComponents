@@ -1,67 +1,68 @@
 import ButtonV2 from "./ButtonV2";
-import { ButtonProps } from "./Button";
+import { ButtonProps, ButtonVariant } from "./Button";
+import { action } from "@storybook/addon-actions";
+import { Story } from "@storybook/react";
 
 export default {
   component: ButtonV2,
-  title: "COMPONENTS V2/ ButtonV2",
+  title: "COMPONENTS V2/Button V2",
 };
 
-const baseArgs = {
-  title: "אישור והמשך",
-  onClick: () => {},
-
-  variant: "contained",
-};
-
-export const Main = (args: ButtonProps) => <ButtonV2 {...args} />;
-
-Main.args = {
-  ...baseArgs,
-};
-
-export const SecondaryLinePink = (args: ButtonProps) => <ButtonV2 {...args} />;
-SecondaryLinePink.args = {
-  ...baseArgs,
-  color: "secondaryPink",
-  variant: "outlined",
-};
-
-export const SecondaryGray = (args: ButtonProps) => <ButtonV2 {...args} />;
-SecondaryGray.args = {
-  ...baseArgs,
-  color: "secondaryGrey",
-  variant: "outlined",
-};
-
-export const Disabled = (args: ButtonProps) => <ButtonV2 {...args} />;
-Disabled.args = {
-  ...baseArgs,
-  isDisabled: true,
-  variant: "disabled",
-};
-
-export const DefaultState = (args: ButtonProps) => <ButtonV2 {...args} />;
-DefaultState.args = {
-  ...baseArgs,
+const props: ButtonProps = {
+  title: "לאישור לחץ כאן",
   color: "primary",
-  variant: "outlined",
+  onClick: action("onClick"),
+  variant: ButtonVariant.contained,
 };
 
-export const State6 = (args: ButtonProps) => <ButtonV2 {...args} />;
-State6.args = {
-  ...baseArgs,
-  variant: "contained",
-  color: "secondaryPink",
+const Template: Story<ButtonProps> = (args) => <ButtonV2 {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  ...props,
+  color: "primary",
 };
 
-export const Centered = (args: ButtonProps) => <ButtonV2 {...args} />;
-Centered.args = {
-  ...baseArgs,
-  isCentered: true,
+export const Secondary = Template.bind({});
+Secondary.args = {
+  ...props,
+  color: "secondary",
 };
 
-export const Loading = (args: ButtonProps) => <ButtonV2 {...args} />;
+export const Default = Template.bind({});
+Default.args = {
+  ...props,
+  color: "default",
+};
+
+export const Outlined = Template.bind({});
+Outlined.args = {
+  ...props,
+  variant: ButtonVariant.outlined,
+};
+
+export const Text = Template.bind({});
+Text.args = {
+  ...props,
+  variant: ButtonVariant.text,
+  color: "default",
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...props,
+  isDisabled: true,
+};
+
+export const Loading = Template.bind({});
 Loading.args = {
-  ...baseArgs,
+  ...props,
   isLoading: true,
+  color: "secondary",
+};
+
+export const VariantText = Template.bind({});
+VariantText.args = {
+  ...props,
+  variant: ButtonVariant.text,
 };
