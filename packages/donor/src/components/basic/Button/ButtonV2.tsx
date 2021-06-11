@@ -1,7 +1,8 @@
 import { Button as MuiButton, makeStyles } from "@material-ui/core";
 import classnames from "classnames";
-import Spinner from "../../basic/Spinner";
+import Spinner from "../Spinner";
 import React from "react";
+import { ButtonProps, ButtonVariant } from "./Button";
 
 const getbuttonproperties = (variant: string, color: string) => {
   let buttonTxtColor: string;
@@ -45,21 +46,6 @@ const getbuttonproperties = (variant: string, color: string) => {
   };
 };
 
-export type ButtonProps = {
-  title: string;
-  onClick: () => void;
-  backgroundColor?: string;
-  color?: string;
-  variant?: string;
-  border?: string;
-  className?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  isCentered?: boolean;
-};
-
 const useButtonStyles = makeStyles({
   root: (props: { variant: string; color: string; isCentered: boolean }) => {
     const { buttonTxtColor, buttonBackgroundColor, border } =
@@ -78,11 +64,10 @@ const useButtonStyles = makeStyles({
   },
 });
 
-export default function Button({
+export default function ButtonV2({
   onClick,
   title,
-  color = "#fff",
-  variant = "contained",
+  variant = ButtonVariant.contained,
   className,
   startIcon,
   endIcon,
@@ -91,7 +76,7 @@ export default function Button({
   isCentered = false,
 }: ButtonProps) {
   const classes = useButtonStyles({
-    color,
+    color: "#fff",
     variant,
     isCentered,
   });

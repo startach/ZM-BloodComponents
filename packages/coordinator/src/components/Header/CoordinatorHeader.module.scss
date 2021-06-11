@@ -60,8 +60,11 @@ $header_height: var(--height-header, 100px);
   text-decoration: underline solid white !important;
 }
 
-.disconnect {
+.loggedIn {
   box-sizing: border-box;
   padding-left: 8px;
   padding-right: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

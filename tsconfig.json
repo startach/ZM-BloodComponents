@@ -11,7 +11,8 @@
       "@zm-blood-components/donor": ["donor/src"]
     },
     "types": ["jest", "node"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noUnusedLocals": false
   },
   "exclude": ["**/node_modules/**", "**/*.test.ts*", "**/lib/**"]
 }
