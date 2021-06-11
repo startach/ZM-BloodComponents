@@ -48,3 +48,12 @@ Password.args = {
   type: "password",
   value: "password1234",
 };
+
+export const MultipleInput = () => (
+  <div style={{ marginLeft: 20, marginRight: 20 }}>
+    <InputV2 {...props} label={"שדה מספר 1"} value={"תשובה כלשהי"} />
+    <InputV2 {...props} label={"שדה מספר 2"} value={"תשובה כלשהי"} />
+    <InputV2 {...props} label={"שדה מספר 3"} value={"תשובה כלשהי"} />
+    <InputV2 {...props} label={"שדה מספר 4"} value={"תשובה כלשהי"} />
+  </div>
+);

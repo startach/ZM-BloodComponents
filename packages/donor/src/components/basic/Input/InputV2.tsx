@@ -35,6 +35,7 @@ export default function InputV2({
   }
 
   return (
+    <div className={styles.component}>
       <TextField
         id={id}
         value={value}
@@ -54,5 +55,6 @@ export default function InputV2({
           }
         }}
       />
+    </div>
   );
 }
