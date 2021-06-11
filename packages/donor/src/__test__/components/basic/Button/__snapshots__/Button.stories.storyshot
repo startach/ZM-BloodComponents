@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components V1/ButtonV2 Basic 1`] = `
+exports[`Storyshots Components V1/Button Basic 1`] = `
 <div
   dir="rtl"
 >
@@ -31,7 +31,7 @@ exports[`Storyshots Components V1/ButtonV2 Basic 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Centered 1`] = `
+exports[`Storyshots Components V1/Button Centered 1`] = `
 <div
   dir="rtl"
 >
@@ -62,7 +62,7 @@ exports[`Storyshots Components V1/ButtonV2 Centered 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Disabled 1`] = `
+exports[`Storyshots Components V1/Button Disabled 1`] = `
 <div
   dir="rtl"
 >
@@ -93,7 +93,7 @@ exports[`Storyshots Components V1/ButtonV2 Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Full Width 1`] = `
+exports[`Storyshots Components V1/Button Full Width 1`] = `
 <div
   dir="rtl"
 >
@@ -124,7 +124,7 @@ exports[`Storyshots Components V1/ButtonV2 Full Width 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Loading 1`] = `
+exports[`Storyshots Components V1/Button Loading 1`] = `
 <div
   dir="rtl"
 >
@@ -179,7 +179,7 @@ exports[`Storyshots Components V1/ButtonV2 Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Outlined Variant 1`] = `
+exports[`Storyshots Components V1/Button Outlined Variant 1`] = `
 <div
   dir="rtl"
 >
@@ -210,7 +210,7 @@ exports[`Storyshots Components V1/ButtonV2 Outlined Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Template 1`] = `
+exports[`Storyshots Components V1/Button Template 1`] = `
 <div
   dir="rtl"
 >
@@ -238,7 +238,7 @@ exports[`Storyshots Components V1/ButtonV2 Template 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 Text Variant 1`] = `
+exports[`Storyshots Components V1/Button Text Variant 1`] = `
 <div
   dir="rtl"
 >
@@ -269,7 +269,7 @@ exports[`Storyshots Components V1/ButtonV2 Text Variant 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components V1/ButtonV2 With Icons 1`] = `
+exports[`Storyshots Components V1/Button With Icons 1`] = `
 <div
   dir="rtl"
 >
