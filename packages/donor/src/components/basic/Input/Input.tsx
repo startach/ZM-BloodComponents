@@ -1,5 +1,4 @@
 import TextField from "@material-ui/core/TextField";
-import { InputAdornment } from "@material-ui/core";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
