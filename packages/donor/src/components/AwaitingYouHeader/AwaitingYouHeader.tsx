@@ -16,7 +16,7 @@ function AwaitingYouHeader({ firstName }: AwaitingYouHeaderProps) {
         <Text>{firstName}</Text>
       </span>
       <Text>
-        אתה רשום לתרומה הקרובה.
+        נרשמת לתרומה בקרוב.
         <span className={styles.awaitingYouText}> מצפים לך!</span>
       </Text>
     </HeaderSection>

@@ -36,7 +36,7 @@ function BookDonationEntry({
         {LocaleUtils.getHospitalName(hospital)}
       </Text>
       <Text className={styles.registerText} onClick={onRegisterClick}>
-        הירשם לתור
+        הרשמה
       </Text>
     </Card>
   );
