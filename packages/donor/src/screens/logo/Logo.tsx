@@ -1,10 +1,8 @@
 import styles from "./Logo.module.scss";
 import classnames from "classnames";
-interface LogoProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  > {
+import BloodBankLogo from "../../assets/icons/blood_bank_logo.svg";
+
+interface LogoProps {
   size?: "large" | "medium" | "small";
 }
 
@@ -12,11 +10,8 @@ const Logo: React.FunctionComponent<LogoProps> = (props) => {
   const size = props.size || "medium";
 
   return (
-    <div className={styles.logoContainer}>
-      <div
-        className={classnames(styles.logo, size && styles[size])}
-        {...props}
-      />
+    <div className={classnames(styles.logoContainer, size && styles[size])}>
+      <img src={BloodBankLogo} alt={"בנק הדם"} />
     </div>
   );
 };

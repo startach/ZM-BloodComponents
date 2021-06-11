@@ -9,17 +9,11 @@ export default function RegisterScreenContainer() {
   const onRegister = (
     email: string,
     password: string,
-    passwordCopy: string,
     emailError: (error: string) => void,
     passwordError: (error: string) => void
   ) => {
     if (!validateEmail(email)) {
       emailError("כתובת הדואר אינה תקינה");
-      return;
-    }
-
-    if (password !== passwordCopy) {
-      passwordError("הסיסמאות אינן תואמות");
       return;
     }
 
