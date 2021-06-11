@@ -10,6 +10,13 @@
 .popupContainer {
   font-size: 16px;
   margin: 16px;
+  direction: rtl;
+}
+
+.container {
+  margin: 16px;
+  direction: rtl;
+  text-align: center;
 }
 
 .approveButton {
@@ -23,4 +30,8 @@
   font-size: 16px !important;
   font-weight: bold !important;
   color: #fff !important;
+}
+
+.buttonContainer {
+  margin-top: 20px;
 }

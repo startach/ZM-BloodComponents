@@ -1,18 +1,20 @@
 import { Dialog } from "@material-ui/core";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Popup.module.scss";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button, { ButtonVariant } from "../Button";
 import Text from "../Text";
 
-type PopupProps = {
+export type PopupProps = {
   buttonApproveText: string;
   open: boolean;
   titleFirst: string;
   titleSecond?: string;
   className?: string;
   onBack?: () => void;
+  goBackText?: string;
   onApproved: () => Promise<void>;
+  image?: string;
 };
 
 export default function Popup({
