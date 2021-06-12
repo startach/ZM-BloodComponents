@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import SafeScreen from "../../components/basic/SafeScreen";
 import styles from "./RegisterScreen.module.scss";
-import Input, { InputVariant } from "../../components/basic/Input";
+import Input from "../../components/basic/Input";
 import Logo from "../logo/Logo";
 import { Color } from "../../constants/colors";
 

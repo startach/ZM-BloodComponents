@@ -6,22 +6,22 @@ import Button, { ButtonVariant } from "../Button";
 import Text from "../Text";
 
 export type PopupProps = {
-  buttonApproveText: string;
   open: boolean;
-  titleFirst: string;
-  titleSecond?: string;
-  className?: string;
-  onBack?: () => void;
-  goBackText?: string;
+  title: string;
+  content?: string;
+  buttonApproveText: string;
   onApproved: () => Promise<void>;
+  goBackText?: string;
+  onBack?: () => void;
+  className?: string;
   image?: string;
 };
 
 export default function Popup({
   buttonApproveText,
   open,
-  titleFirst,
-  titleSecond,
+  title,
+  content,
   onBack,
   onApproved,
 }: PopupProps) {
@@ -46,8 +46,8 @@ export default function Popup({
     >
       <div className={styles.popupContainer}>
         <div className={styles.popupText}>
-          <Text>{titleFirst}</Text>
-          <Text>{titleSecond}</Text>
+          <Text>{title}</Text>
+          <Text>{content}</Text>
         </div>
         <hr className={styles.header} />
         <DialogActions>

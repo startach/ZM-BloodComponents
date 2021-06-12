@@ -8,8 +8,8 @@ import ButtonV2 from "../Button/ButtonV2";
 export default function PopupV2({
   buttonApproveText,
   open,
-  titleFirst,
-  titleSecond,
+  title,
+  content,
   onBack,
   onApproved,
   goBackText,
@@ -25,10 +25,10 @@ export default function PopupV2({
   return (
     <Dialog fullWidth open={open} onClose={onBack}>
       <div className={styles.container}>
-        {image && <img src={image} alt={"image"} />}
+        {image && <img src={image} alt={"popup image"} />}
         <div className={styles.popupText}>
-          <h2>{titleFirst}</h2>
-          <div>{titleSecond}</div>
+          <h2>{title}</h2>
+          <div>{content}</div>
         </div>
         <div className={styles.buttonContainer}>
           <ButtonV2
@@ -42,7 +42,7 @@ export default function PopupV2({
             <ButtonV2
               onClick={onBack}
               title={goBackText}
-              isLoading={isLoading}
+              isDisabled={isLoading}
               variant={ButtonVariant.text}
               color={"default"}
             />

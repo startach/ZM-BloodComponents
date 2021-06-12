@@ -8,6 +8,7 @@ import Button, { ButtonVariant } from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
+import { Color } from "../../constants/colors";
 
 export enum UpcomingDonationStates {
   sameDayDonation = "sameDayDonation",
@@ -116,14 +117,16 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         title="ביטול תור"
         className={styles.cancelButton}
         onClick={handleClickOpen}
-        variant={ButtonVariant.outlined}
+        variant={ButtonVariant.contained}
+        color={Color.Gray}
         isLoading={isLoading}
       />
       <Popup
         buttonApproveText="אישור"
         open={open}
-        titleFirst="האם אתה בטוח שברצונך"
-        titleSecond="לבטל את התור?"
+        title="רק מוודאים"
+        content="האם את/ה בטוח/ה שברצונך לבטל את התור?"
+        goBackText="בעצם לא"
         onBack={handleClose}
         onApproved={onCancel}
       />

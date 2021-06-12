@@ -124,8 +124,8 @@ export default function QuestionnaireScreen({
       <Popup
         buttonApproveText="אישור"
         open={isWrongAnswerChosen}
-        titleFirst={wrongAnswerPopupTitle}
-        titleSecond={wrongAnswerPopupContent}
+        title={wrongAnswerPopupTitle}
+        content={wrongAnswerPopupContent}
         onApproved={() => {
           if (hasAlreadyDonated === "no") {
             setHasAlreadyDonated("");
@@ -210,8 +210,8 @@ function ErrorPopup(props: {
 
   return (
     <Popup
-      titleFirst={"אופס!"}
-      titleSecond={text}
+      title={"אופס!"}
+      content={text}
       buttonApproveText={"בחירת מועד חדש"}
       open={true}
       onApproved={props.goToHomePage}

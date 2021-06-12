@@ -35,13 +35,13 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       />
       <Button title="איפוס סיסמה" onClick={resetPassword} />
       <br />
-      <div         className={styles.alreadyRegistered}>
-      <Button
-        title="חזרה"
-        variant={ButtonVariant.text}
-        onClick={props.goToSignIn}
-        color={Color.Pink}
-      />
+      <div className={styles.alreadyRegistered}>
+        <Button
+          title="חזרה"
+          variant={ButtonVariant.text}
+          onClick={props.goToSignIn}
+          color={Color.Pink}
+        />
       </div>
     </SafeScreen>
   );

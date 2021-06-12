@@ -20,11 +20,7 @@
 }
 
 .cancelButton {
-  @extend .registerButton;
-  border-width: 3px !important;
-  border-color: var(--color-primary) !important;
-  height: 100% -6px;
-  width: 50%;
+  margin-top: 15px;
 }
 
 .donationDetailsText {
