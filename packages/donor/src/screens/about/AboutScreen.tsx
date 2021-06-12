@@ -2,18 +2,14 @@ import Text from "../../components/basic/Text";
 import HeaderSection from "../../components/HeaderSection";
 import styles from "./AboutScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
-import bloodBankLogo from "../../assets/icons/blood_bank_logo.svg";
 import classnames from "classnames";
+import Logo from "../logo/Logo";
 
 export default function AboutScreen() {
   return (
     <ZMScreen hasBackButton title="אודות">
       <HeaderSection className={styles.component}>
-        <img
-          alt="בנק הדם של זכרון מנחם"
-          className="blood_bank_logo"
-          src={bloodBankLogo}
-        />
+        <Logo />
       </HeaderSection>
       <Text className={classnames(styles.textBold, styles.textContainer)}>
         על עמותת "זכרון מנחם" והאפליקציה
