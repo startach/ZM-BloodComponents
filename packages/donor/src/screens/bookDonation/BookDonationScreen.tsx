@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./BookDonationScreen.module.scss";
 import {
   AvailableAppointment,
-  DateUtils,
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
@@ -12,11 +11,11 @@ import {
   groupDonationDays,
 } from "../../utils/AppointmentsGrouper";
 import LastDonationDateHeader from "../../components/LastDonationDateHeader";
-import BookDonationEntriesGroup from "../../components/BookDonationEntriesGroup";
 import Select from "../../components/basic/Select";
 import Text from "../../components/basic/Text";
 import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
+import AppointmentPicker from "../../components/AppointmentPicker";
 
 interface BookDonationScreenProps {
   lastDonation?: Date;
@@ -106,13 +105,9 @@ function Donations(
   }
 
   return donationDays.map((donationDay) => (
-    <BookDonationEntriesGroup
+    <AppointmentPicker
       key={donationDay.day}
-      title={`${DateUtils.ToWeekDayString(
-        donationDay.day,
-        DateUtils.DateDisplayFormat
-      )}, ${donationDay.day}`}
-      donationSlots={donationDay.donationSlots}
+      donationDay={donationDay}
       onSlotSelected={onSlotSelected}
     />
   ));
