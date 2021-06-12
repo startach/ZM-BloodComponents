@@ -31,8 +31,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 Hamburger 1`] = `
       className="headerContainer"
     >
       <button
-        aria-label="menu"
-        className="MuiButtonBase-root-48 MuiIconButton-root-39 MuiIconButton-colorInherit-42 MuiIconButton-edgeStart-40"
+        className="MuiButtonBase-root-48 MuiIconButton-root-39"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -85,8 +84,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 With Back 1`] = `
       className="headerContainer"
     >
       <button
-        aria-label="menu"
-        className="MuiButtonBase-root-48 MuiIconButton-root-39 MuiIconButton-colorInherit-42 MuiIconButton-edgeStart-40"
+        className="MuiButtonBase-root-48 MuiIconButton-root-39"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}

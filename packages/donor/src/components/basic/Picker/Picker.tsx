@@ -11,7 +11,6 @@ export type PickerProps<T> = {
   onChange: (value: T) => void;
   value?: T;
   itemsPerRow: number;
-  errorMessage?: string;
 };
 
 export default function Picker<T>({
@@ -22,8 +21,8 @@ export default function Picker<T>({
   itemsPerRow,
 }: PickerProps<T>) {
   // We want all buttons to have the same width, and since they have "flex: 1"
-  // we should have every row have the same number of elements.
-  // For this reason we need to "pad" the last row
+  // every row have the same number of elements.
+  // For this reason we need to "pad" the last row, here I am padding it with null items.
   const padOptions: (SelectOption<T> | null)[] = [...options];
   const itemsInTheLastRow = options.length % itemsPerRow;
   const itemsToAdd = (itemsPerRow - itemsInTheLastRow) % itemsPerRow;

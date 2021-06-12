@@ -41,23 +41,13 @@ export default function AppHeader({
   let icon = null;
   if (hasBurgerMenu) {
     icon = (
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={() => setShowSideBar((previous) => !previous)}
-      >
+      <IconButton onClick={() => setShowSideBar((previous) => !previous)}>
         <MenuIcon className={styles.rightButton} />
       </IconButton>
     );
   } else if (hasBackButton) {
     icon = (
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={() => history.goBack()}
-      >
+      <IconButton onClick={() => history.goBack()}>
         <ArrowForward className={styles.rightButton} />
       </IconButton>
     );

@@ -15,8 +15,7 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
           className="headerContainer"
         >
           <button
-            aria-label="menu"
-            className="MuiButtonBase-root-48 MuiIconButton-root-39 MuiIconButton-colorInherit-42 MuiIconButton-edgeStart-40"
+            className="MuiButtonBase-root-48 MuiIconButton-root-39"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
