@@ -88,11 +88,10 @@ export default function ExtendedSignupScreen({
           isDisabled={[firstName, lastName, phoneNumber, bloodType].some(
             (field) => !field.isValid || !field.value
           )}
-          isFullWidth
         />
         <br />
         <br />
-        <Button onClick={onSignOut} title={"התנתק"} isCentered />
+        <Button onClick={onSignOut} title={"התנתק"} />
       </div>
     </ZMScreen>
   );
