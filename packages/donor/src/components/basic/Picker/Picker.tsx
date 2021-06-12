@@ -62,7 +62,7 @@ function OptionButton<T>(props: {
     <div className={styles.pickerButton}>
       <Button
         title={props.option.label}
-        onClick={() => props.onChange(props.option.value)}
+        onClick={() => props.onChange(props.option!.value)}
         variant={ButtonVariant.outlined}
         color={props.value === props.option.value ? "secondary" : "default"}
       />
