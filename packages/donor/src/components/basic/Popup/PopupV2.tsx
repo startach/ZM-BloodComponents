@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./Popup.module.scss";
 import { ButtonVariant } from "../Button";
 import { PopupProps } from "./Popup";
-import ButtonV2 from "../Button/ButtonV2";
+import Button from "../Button";
 
 export default function PopupV2({
   buttonApproveText,
@@ -31,7 +31,7 @@ export default function PopupV2({
           <div>{content}</div>
         </div>
         <div className={styles.buttonContainer}>
-          <ButtonV2
+          <Button
             onClick={buttonClicked}
             title={buttonApproveText}
             isLoading={isLoading}
@@ -39,7 +39,7 @@ export default function PopupV2({
         </div>
         {onBack && goBackText && (
           <div className={styles.buttonContainer}>
-            <ButtonV2
+            <Button
               onClick={onBack}
               title={goBackText}
               isDisabled={isLoading}

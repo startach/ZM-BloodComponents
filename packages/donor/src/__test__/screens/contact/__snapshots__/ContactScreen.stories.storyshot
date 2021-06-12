@@ -9,7 +9,7 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
       className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
     >
       <header
-        className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
+        className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 safe-screen-padding-top MuiPaper-elevation4-18"
       >
         <div
           className="headerContainer"

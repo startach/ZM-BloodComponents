@@ -5,7 +5,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 Default 1`] = `
   dir="rtl"
 >
   <header
-    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 MuiPaper-elevation4-18"
+    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
   >
     <div
       className="headerContainer"
@@ -25,7 +25,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 Hamburger 1`] = `
   dir="rtl"
 >
   <header
-    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 MuiPaper-elevation4-18"
+    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
   >
     <div
       className="headerContainer"
@@ -78,7 +78,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 With Back 1`] = `
   dir="rtl"
 >
   <header
-    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 MuiPaper-elevation4-18"
+    className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
   >
     <div
       className="headerContainer"

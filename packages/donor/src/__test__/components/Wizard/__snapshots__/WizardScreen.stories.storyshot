@@ -102,7 +102,7 @@ exports[`Storyshots Components V2/Wizard Screen First Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-outlinedPrimary-43"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 button MuiButton-outlinedPrimary-43 MuiButton-fullWidth-60"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -231,7 +231,7 @@ exports[`Storyshots Components V2/Wizard Screen Last Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-contained-45 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-containedPrimary-46"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-contained-45 button MuiButton-containedPrimary-46 MuiButton-fullWidth-60"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -361,7 +361,7 @@ exports[`Storyshots Components V2/Wizard Screen Middle Step 1`] = `
       </button>
     </div>
     <button
-      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 makeStyles-buttonStyle-78 makeStyles-buttonStyle-79 MuiButton-outlinedPrimary-43"
+      className="MuiButtonBase-root-66 MuiButton-root-37 MuiButton-outlined-42 button MuiButton-outlinedPrimary-43 MuiButton-fullWidth-60"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
