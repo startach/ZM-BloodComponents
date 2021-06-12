@@ -7,12 +7,16 @@ import * as _ from "lodash";
 
 export type DonationDay = {
   day: string;
-  donationSlots: DonationSlot[];
+  hospitalSlots: HospitalDaySlots[];
+};
+
+export type HospitalDaySlots = {
+  hospital: Hospital;
+  slots: DonationSlot[];
 };
 
 export type DonationSlot = {
   donationStartTimeMillis: number;
-  hospital: Hospital;
   appointmentIds: string[];
 };
 
@@ -23,30 +27,45 @@ export function groupDonationDays(
     .groupBy((appointment) =>
       new Date(appointment.donationStartTimeMillis).toDateString()
     )
-    .map((appointmentsInDay, dateString) => {
-      const donationSlotsInDay = getDonationSlotsInDay(appointmentsInDay);
-
-      const res: DonationDay = {
-        day: DateUtils.ToDateString(new Date(dateString)),
-        donationSlots: donationSlotsInDay,
-      };
-
-      return res;
-    })
+    .map(getDonationDays)
     .sortBy(
-      (donationDay) => donationDay.donationSlots[0].donationStartTimeMillis
+      (donationDay) =>
+        donationDay.hospitalSlots[0].slots[0].donationStartTimeMillis
     )
     .value();
 }
 
-function getDonationSlotsInDay(
-  appointmentsInDay: AvailableAppointment[]
+function getDonationDays(
+  appointmentsInDay: AvailableAppointment[],
+  dateString: string
+): DonationDay {
+  const hospitalSlots: HospitalDaySlots[] = _.chain(appointmentsInDay)
+    .groupBy((appointment) => appointment.hospital)
+    .map((dailyAppointmentsInHospital, h) => {
+      const hospital = h as Hospital;
+      const hospitalDaySlots = getDonationSlotsForHospitalAndDay(
+        dailyAppointmentsInHospital
+      );
+
+      const res: HospitalDaySlots = {
+        hospital,
+        slots: hospitalDaySlots,
+      };
+      return res;
+    })
+    .value();
+
+  return {
+    day: DateUtils.ToDateString(new Date(dateString)),
+    hospitalSlots,
+  };
+}
+
+function getDonationSlotsForHospitalAndDay(
+  appointmentsInDayInHospital: AvailableAppointment[]
 ): DonationSlot[] {
-  return _.chain(appointmentsInDay)
-    .groupBy(
-      (appointment) =>
-        appointment.hospital + appointment.donationStartTimeMillis
-    )
+  return _.chain(appointmentsInDayInHospital)
+    .groupBy((appointment) => appointment.donationStartTimeMillis)
     .map(appointmentsToDonationSlot)
     .sortBy("donationStartTimeMillis")
     .value();
@@ -55,11 +74,8 @@ function getDonationSlotsInDay(
 function appointmentsToDonationSlot(
   appointmentsInSlot: AvailableAppointment[]
 ): DonationSlot {
-  const arbitraryAppointment = appointmentsInSlot[0];
-
   return {
-    donationStartTimeMillis: arbitraryAppointment.donationStartTimeMillis,
-    hospital: arbitraryAppointment.hospital,
+    donationStartTimeMillis: appointmentsInSlot[0].donationStartTimeMillis,
     appointmentIds: appointmentsInSlot.map((a) => a.id),
   };
 }

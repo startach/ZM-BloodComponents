@@ -4,11 +4,11 @@ import { AvailableAppointment, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
+import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
 interface BookDonationScreenContainerProps {
   user: Donor;
-  setDonationSlotToBook: (donationSlot: DonationSlot) => void;
+  setDonationSlotToBook: (donationSlot: DonationSlotToBook) => void;
 }
 
 export default function BookDonationScreenContainer(
@@ -30,7 +30,7 @@ export default function BookDonationScreenContainer(
     );
   }, []);
 
-  const onSlotSelected = (donationSlot: DonationSlot) => {
+  const onSlotSelected = (donationSlot: DonationSlotToBook) => {
     props.setDonationSlotToBook(donationSlot);
     history.push(MainNavigationKeys.Questionnaire);
   };
