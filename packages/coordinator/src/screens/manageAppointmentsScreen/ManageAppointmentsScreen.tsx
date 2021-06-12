@@ -9,8 +9,8 @@ import Spinner from "../../components/Spinner";
 import Popup from "../../components/Popup";
 import { useState } from "react";
 import {
-  expandedRowContent,
-  MainColumns,
+  AppointmentTableExpandedRowContent,
+  MainAppointmentTableColumns,
 } from "./ManageAppointmentsTableConfig";
 import {
   AppointmentSlot,
@@ -87,7 +87,7 @@ export default function ManageAppointmentsScreen({
         (slot) => ({
           rowData: slot,
           expandRow: (slot) =>
-            expandedRowContent(
+            AppointmentTableExpandedRowContent(
               slot,
               setPopupData,
               onRemoveDonor,
@@ -145,7 +145,7 @@ export default function ManageAppointmentsScreen({
       <GroupTable
         className={Styles["centered-screen"]}
         hasColumnHeaders
-        columns={MainColumns(showOnlyRecentChanges)}
+        columns={MainAppointmentTableColumns(showOnlyRecentChanges)}
         groups={groups}
         tableIndex={0}
       />
