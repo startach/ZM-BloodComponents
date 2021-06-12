@@ -1,23 +1,53 @@
-# ZICHRON MENACHEM
+# Zichron Menachem Blood Components App
 
-## BLOOD COMPONENTS DONATIONS
+## The Need
 
-> Saving Lives
+Thousands of Israelis need platelet donations to survive and fight cancer,
+chronic diseases, or traumatic injuries.
 
-> Facilitating scheduling an appointment process
+Platelets are colorless cell fragments called thrombocytes. Their main function
+is to stick to the lining of blood vessels and stop bleeding.
 
-> Modernizing the method
+The process of clotting begins if one of your blood vessels gets damaged. The
+vessel sends out signals that are picked up by platelets. The platelets then
+rush to the site of damage and form a plug, or clot, to repair the damage.
 
-![donations](https://i.imgur.com/OP29OBs.gif)
+Many lifesaving medical treatments for patients require platelet transfusions:
+Cancer patients, those receiving organ or bone marrow transplants, victims of
+traumatic injuries, and patients undergoing open heart surgery. Platelets must
+be transfused within just 5 days after donation - so there is a constant, often
+critical need for new and current donors to give to keep up with hospital
+demand.
+
+## The Apps
+
+Zichron Menachem volunteers are in touch with hundreds of potential platelet donors daily,
+and help to coordinate between them, and the hospitals where the donation machines are located.
+
+These 2 apps were created in order to help them with this sacred task:
+
+- `ZM-Coordinator` app lets the coordinators add available appointments and monitor new bookings.
+- `ZM-Donor` app lets the donors see all available appointments and easily sign up to a donation.
 
 ## Zichron Menachem Background
 
-“Zichron Menachem” supports children with cancer and their families in Israel.The organization was founded in 1990 by Chaim and Miri Ehrental, after their oldest child, Menachem, died of leukemia at the age of 15 after 14 years of a battle. His parents and friends wanted to make use of the experience they gathered, to help other children with cancer and their families. All services are given to the entire citizens of Israel regardless gender or religion. The organization’s activity involves experiential daycare facilities, workshops, fun days, vacation camps in Israel and abroad, as well as recruitment of blood components donors for the sick.
-In 2019 Chaim Ehrental awarded "Israel Prize for Life Work".
+Zichron Menachem provides support for any young person in Israel under the age
+of 25 living with cancer, as well as their parents and siblings.
+
+Families of all religions and backgrounds turn to Zichron Menachem for the help
+they need most, be it information, a second opinion from our “clinic of hope”,
+or a break from the punishing routine of medical appointments.
+
+Zichron Menachem works closely with Israel’s leading medical professionals, who
+strongly believe that no child can be treated comprehensively without the
+support we provide.
 
 ## App Description
 
-This mobile web app, will allow donors to view information about available dates and times for donations, self-register to a donation appointment, and be specifically targeted for emergency requests if he is suitable for a new raised request.
+This mobile web app, will allow donors to view information about available dates
+and times for donations, self-register to a donation appointment, and be
+specifically targeted for emergency requests if he is suitable for a new raised
+request.
 
 #### Porposes:
 
@@ -25,7 +55,8 @@ This mobile web app, will allow donors to view information about available dates
 - Increasing donors' involvement and donors' community.
 - Shortening period between emergency request till suitable donor is found.
 - Make more efficient the process of managing routine donations scheduling.
-- Target audience are donors and potential donors, ages 17-65, from all locations in Israel and any background.
+- Target audience are donors and potential donors, ages 17-65, from all
+  locations in Israel and any background.
 
 ## Installation
 
