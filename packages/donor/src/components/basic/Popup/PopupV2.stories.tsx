@@ -3,7 +3,7 @@ import PopupV2 from "./PopupV2";
 import { useState } from "react";
 import ButtonV2 from "../Button/ButtonV2";
 import { PopupProps } from "./Popup";
-// import BloodBankLogo from "../../../assets/icons/blood_bank_logo.svg";
+import BloodBankLogo from "../../../assets/icons/blood_bank_logo.svg";
 
 export default {
   component: PopupV2,
@@ -37,5 +37,5 @@ Default.args = {
 export const WithImage = Template.bind({});
 WithImage.args = {
   ...props,
-  // image: BloodBankLogo,
+  image: BloodBankLogo,
 };

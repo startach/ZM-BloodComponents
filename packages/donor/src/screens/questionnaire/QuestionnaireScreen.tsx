@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import RadioGroup from "../../components/basic/RadioGroup";
 import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
@@ -7,13 +6,13 @@ import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { FunctionsApi } from "@zm-blood-components/common";
+import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
 interface QuestionnaireScreenProps {
-  bookableAppointment: DonationSlot;
+  bookableAppointment: DonationSlotToBook;
   onSuccess: () => void;
   isLoading: boolean;
   debugMode: boolean;

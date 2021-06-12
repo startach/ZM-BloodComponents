@@ -23,7 +23,9 @@ export default function ZMScreen({
     <SafeScreen disableTopPadding className={styles.component}>
       <AppHeader
         className={"safe-screen-padding-top"}
-        {...{ hasBurgerMenu, hasBackButton, title }}
+        title={title}
+        hasBurgerMenu={hasBurgerMenu}
+        hasBackButton={hasBackButton}
       />
       <div className={classnames(className, styles.content)}>{children}</div>
     </SafeScreen>

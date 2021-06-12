@@ -9,14 +9,14 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
       className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
     >
       <header
-        className="MuiPaper-root-12 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorSecondary-9 safe-screen-padding-top MuiPaper-elevation4-19"
+        className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
       >
         <div
           className="headerContainer"
         >
           <button
             aria-label="menu"
-            className="MuiButtonBase-root-49 MuiIconButton-root-40 makeStyles-menuButton-0 MuiIconButton-colorInherit-43 MuiIconButton-edgeStart-41"
+            className="MuiButtonBase-root-48 MuiIconButton-root-39 MuiIconButton-colorInherit-42 MuiIconButton-edgeStart-40"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -34,11 +34,11 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             type="button"
           >
             <span
-              className="MuiIconButton-label-48"
+              className="MuiIconButton-label-47"
             >
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-52"
+                className="MuiSvgIcon-root-51 rightButton"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -49,15 +49,10 @@ exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
             </span>
           </button>
           <h6
-            className="MuiTypography-root-61 title MuiTypography-h6-71"
+            className="MuiTypography-root-60 title MuiTypography-h6-70"
           >
             צור קשר
           </h6>
-        </div>
-        <div>
-          <div
-            className="SideDrawer Close"
-          />
         </div>
       </header>
       <div
