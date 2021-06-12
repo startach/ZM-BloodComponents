@@ -21,6 +21,7 @@ const COORDINATOR_ID = "GetDonorsFunctionNameTestCoordinator";
 const DONOR_ID_1 = "GetDonorsFunctionNameTestCoordinator1";
 const DONOR_ID_2 = "GetDonorsFunctionNameTestCoordinator2";
 const DONOR_ID_3 = "GetDonorsFunctionNameTestCoordinator3";
+const ALL_DONOR_IDS = [DONOR_ID_1, DONOR_ID_2, DONOR_ID_3];
 const GROUP_NAME_1 = "GetDonorsFunctionNameTestGroup1";
 
 const reset = async () => {
@@ -95,9 +96,12 @@ test("HOSPITAL_COORDINATOR gets only users that had a donation in their hospital
 
   const response = await callFunction(COORDINATOR_ID);
 
-  expect(response.donors).toHaveLength(2);
-  expect(response.donors[0].id).toEqual(DONOR_ID_1);
-  expect(response.donors[1].id).toEqual(DONOR_ID_3);
+  const relevantDonors = response.donors.filter((x) =>
+    ALL_DONOR_IDS.includes(x.id)
+  );
+  expect(relevantDonors).toHaveLength(2);
+  expect(relevantDonors[0].id).toEqual(DONOR_ID_1);
+  expect(relevantDonors[1].id).toEqual(DONOR_ID_3);
 });
 
 async function createCoordinator(

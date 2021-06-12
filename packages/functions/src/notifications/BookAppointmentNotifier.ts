@@ -5,7 +5,7 @@ import { getAppointmentNotificationData } from "./AppointmentNotificationData";
 import { getStaffRecipients } from "./StaffEmailRecipientsCalculator";
 
 export const ZM_LOGO_URL =
-  "https://firebasestorage.googleapis.com/v0/b/blood-components.appspot.com/o/Logo_ZM_he.jpg?alt=media&token=aa5e9d8c-d08e-4c80-ad7f-bfd361e36b20";
+  "https://firebasestorage.googleapis.com/v0/b/blood-components-9ad48.appspot.com/o/blood_bank_logo.svg?alt=media&token=a823db19-51f1-4663-b7ce-c6b9cb0105d0";
 
 export async function notifyOnAppointmentBooked(
   bookedAppointment: DbAppointment,

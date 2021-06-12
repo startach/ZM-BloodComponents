@@ -47,7 +47,7 @@ export default function Popup({
           <Text>{titleFirst}</Text>
           <Text>{titleSecond}</Text>
         </div>
-        <hr className={styles.header}></hr>
+        <hr className={styles.header} />
         <DialogActions>
           {onBack && (
             <Button

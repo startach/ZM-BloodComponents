@@ -15,7 +15,7 @@ function LastDonationDateHeader({
   return (
     <HeaderSection className={styles.component}>
       <span className={styles.welcomeText}>
-        <Text>שלום</Text>
+        <Text>שמחים לראות אותך</Text>
         &nbsp;
         <Text />
         <Text>{firstName}</Text>

@@ -42,7 +42,7 @@ export default function SignInScreen(props: SignInScreenProps) {
   return (
     <SafeScreen className={styles.screenSection}>
       <Logo />
-      <div className={styles.title}>התחבר באמצעות דואר אלקטרוני</div>
+      <div className={styles.title}>התחברות</div>
       <Input
         className={styles.inputField}
         onChangeText={(emailContent) => {
@@ -63,19 +63,15 @@ export default function SignInScreen(props: SignInScreenProps) {
           setPasswordError("");
         }}
         value={password}
-        label="ססמא"
+        label="סיסמה"
         variant={InputVariant.filled}
         errorMessage={passwordError}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") {
-            signIn();
-          }
-        }}
+        onSubmit={signIn}
       />
       <div className={styles.screenSection}>
         <Button
           className={styles.signinButton}
-          title="התחבר"
+          title="כניסה"
           onClick={signIn}
           isLoading={isLoading}
         />
@@ -101,7 +97,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           onClick={props.onRegister}
           variant={ButtonVariant.text}
         />
-        <span className={styles.notRegisteredTitle}>עדיין לא רשום כתורם?</span>
+        <span className={styles.notRegisteredTitle}>עדיין לא נרשמת?</span>
       </div>
     </SafeScreen>
   );

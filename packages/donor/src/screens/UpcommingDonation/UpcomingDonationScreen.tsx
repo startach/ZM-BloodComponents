@@ -113,7 +113,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
   return (
     <div className={styles.cancelButtonContainer}>
       <Button
-        title="בטל תור"
+        title="ביטול תור"
         className={styles.cancelButton}
         onClick={handleClickOpen}
         variant={ButtonVariant.outlined}

@@ -104,7 +104,7 @@ export default function QuestionnaireScreen({
     isWeightValid === "yes" &&
     isSurgeryValid === "no" &&
     isRightAge === "yes" &&
-    wasPregnant === "no";
+    wasPregnant !== "yes";
 
   const isWrongAnswerChosen =
     hasAlreadyDonated === "no" ||
@@ -115,13 +115,18 @@ export default function QuestionnaireScreen({
 
   const isVerified = isCorrectAnswers && isConfirmed;
 
+  const wrongAnswerPopupTitle = "מודים לך על הכוונה הטובה!";
+
+  const wrongAnswerPopupContent =
+    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה.\n לבירור בבקשה ליצור קשר בנק מרכיבי הדם - 058-7100571";
+
   return (
     <ZMScreen title="שאלון התאמה" hasBackButton>
       <Popup
         buttonApproveText="אישור"
         open={isWrongAnswerChosen}
-        titleFirst="נראה כי אינך עומד בתנאים הדרושים לביצוע תרומה"
-        titleSecond="אנא וודא תשובתך"
+        titleFirst={wrongAnswerPopupTitle}
+        titleSecond={wrongAnswerPopupContent}
         onApproved={() => {
           if (hasAlreadyDonated === "no") {
             setHasAlreadyDonated("");
