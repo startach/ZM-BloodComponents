@@ -4,9 +4,8 @@ import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 import myStyles from "./SignInScreen.module.scss";
-import Input, { InputVariant } from "../../components/basic/Input";
-
-import classNames from "classnames";
+import Input from "../../components/basic/Input";
+import { Color } from "../../constants/colors";
 
 interface SignInScreenProps {
   onRegister: () => void;
@@ -44,7 +43,6 @@ export default function SignInScreen(props: SignInScreenProps) {
       <Logo />
       <div className={styles.title}>התחברות</div>
       <Input
-        className={styles.inputField}
         onChangeText={(emailContent) => {
           setEmail(emailContent);
           setEmailError("");
@@ -52,50 +50,40 @@ export default function SignInScreen(props: SignInScreenProps) {
         value={email}
         type={"email"}
         label={`דוא"ל`}
-        variant={InputVariant.filled}
         errorMessage={emailError}
       />
       <Input
-        type="password"
-        className={styles.inputField}
         onChangeText={(passwordContent) => {
           setPassword(passwordContent);
           setPasswordError("");
         }}
         value={password}
         label="סיסמה"
-        variant={InputVariant.filled}
         errorMessage={passwordError}
         onSubmit={signIn}
+        type="password"
       />
-      <div className={styles.screenSection}>
+      <Button
+        className={styles.signinButton}
+        title="כניסה"
+        onClick={signIn}
+        isLoading={isLoading}
+      />
+      <div className={myStyles.resetButtonContainer}>
         <Button
-          className={styles.signinButton}
-          title="כניסה"
-          onClick={signIn}
-          isLoading={isLoading}
-        />
-      </div>
-      <div
-        className={classNames(
-          styles.screenSection,
-          myStyles.resetButtonContainer
-        )}
-      >
-        <Button
-          className={classNames(myStyles.resetPasswordButton)}
           title="איפוס סיסמה"
           onClick={props.onResetPassword}
           variant={ButtonVariant.text}
+          color={Color.Gray}
         />
       </div>
 
       <div className={styles.notRegisteredContainer}>
         <Button
-          className={styles.connectButton}
           title="הרשמה"
           onClick={props.onRegister}
           variant={ButtonVariant.text}
+          color={Color.Pink}
         />
         <span className={styles.notRegisteredTitle}>עדיין לא נרשמת?</span>
       </div>

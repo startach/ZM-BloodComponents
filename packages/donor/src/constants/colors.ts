@@ -15,3 +15,9 @@ export const colors = {
 };
 
 export default colors;
+
+export enum Color {
+  Green = "primary",
+  Pink = "secondary",
+  Gray = "default",
+}

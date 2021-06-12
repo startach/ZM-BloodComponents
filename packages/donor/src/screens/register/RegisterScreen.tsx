@@ -4,6 +4,7 @@ import SafeScreen from "../../components/basic/SafeScreen";
 import styles from "./RegisterScreen.module.scss";
 import Input, { InputVariant } from "../../components/basic/Input";
 import Logo from "../logo/Logo";
+import { Color } from "../../constants/colors";
 
 interface RegisterScreenProps {
   onRegister: (
@@ -32,7 +33,6 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
       <Logo />
       <div className={styles.title}>הרשמה</div>
       <Input
-        className={styles.inputField}
         onChangeText={(emailContent) => {
           setEmail(emailContent);
           setEmailError("");
@@ -40,34 +40,27 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         value={email}
         label={`דוא״ל`}
         type={"email"}
-        variant={InputVariant.filled}
         errorMessage={emailError}
       />
       <Input
         type="password"
-        className={styles.inputField}
         onChangeText={(passwordContent) => {
           setPassword(passwordContent);
           setPasswordError("");
         }}
         value={password}
-        variant={InputVariant.filled}
         label="סיסמה"
         errorMessage={passwordError}
       />
-      <Button
-        className={styles.signinButton}
-        title="הירשם"
-        onClick={register}
-      />
+      <Button title="הירשם" onClick={register} />
 
       <div className={styles.alreadyRegistered}>
         <span>כבר נרשמת?</span>
         <Button
-          className={styles.connectButton}
           title="התחברות"
           onClick={props.goToSignIn}
           variant={ButtonVariant.text}
+          color={Color.Pink}
         />
       </div>
     </SafeScreen>
