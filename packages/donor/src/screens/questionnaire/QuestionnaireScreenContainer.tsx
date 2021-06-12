@@ -3,16 +3,16 @@ import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
+import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-  donationSlot: DonationSlot;
+  donationSlot: DonationSlotToBook;
 }
 
 export type QuestionnaireRoutingProps = {
-  donationSlot: DonationSlot;
+  donationSlot: DonationSlotToBook;
 };
 
 const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;

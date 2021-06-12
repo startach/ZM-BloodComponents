@@ -11,10 +11,11 @@ import {
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
 import { Card } from "@material-ui/core";
+import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
 export interface AppointmentPickerProps {
   donationDay: DonationDay;
-  onSlotSelected: (donationSlot: DonationSlot) => void;
+  onSlotSelected: (donationSlot: DonationSlotToBook) => void;
 }
 
 function AppointmentPicker({
@@ -35,7 +36,12 @@ function AppointmentPicker({
         <HospitalCard
           key={hospitalDaySlots.hospital + hospitalDaySlots.slots.length}
           hospitalDaySlots={hospitalDaySlots}
-          onSlotSelected={onSlotSelected}
+          onSlotSelected={(slot) => {
+            onSlotSelected({
+              ...slot,
+              hospital: hospitalDaySlots.hospital,
+            });
+          }}
         />
       ))}
     </div>
