@@ -1,11 +1,11 @@
 import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
-import Select from "../../components/basic/Select";
 import styles from "./ExtendedSignupScreen.module.scss";
 import HeaderSection from "../../components/HeaderSection";
 import { NameValidation } from "./ExtendedSignupScreenContainer";
 import ZMScreen from "../../components/basic/ZMScreen";
+import Picker from "../../components/basic/Picker";
 
 type ExtendedSingupField<T> = {
   value: T;
@@ -53,7 +53,7 @@ export default function ExtendedSignupScreen({
         <h4>משהו אחד אחרון!</h4>
         <span>פרטים אחרונים להרשמה</span>
       </HeaderSection>
-      <div className={styles["extended-signup"]}>
+      <div className={styles.extendedSignup}>
         <Input
           value={firstName.value}
           onChangeText={firstName.onChange}
@@ -74,15 +74,16 @@ export default function ExtendedSignupScreen({
             phoneNumber.isValid ? undefined : "מספר הטלפון אינו תקין"
           }
         />
-        <Select
+        <Picker
+          label={"סוג דם"}
           value={bloodType.value}
+          options={BloodTypeUtils.getBloodTypeSelectOptions()}
           onChange={bloodType.onChange}
-          label="סוג דם"
-          isValid={bloodType.isValid}
-          options={BloodTypeUtils.getBloodTypeSelectOptionsWithDefault("בחר")}
-          errorMessage={bloodType.isValid ? undefined : "נא לבחור סוג דם"}
+          itemsPerRow={2}
+          buttonClassName={styles.bloodTypeButton}
         />
         <Button
+          className={styles.button}
           onClick={onSave}
           title={"סיום הרשמה"}
           isDisabled={[firstName, lastName, phoneNumber, bloodType].some(

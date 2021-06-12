@@ -11,6 +11,7 @@ export type PickerProps<T> = {
   onChange: (value: T) => void;
   value?: T;
   itemsPerRow: number;
+  buttonClassName?: string;
 };
 
 export default function Picker<T>({
@@ -19,6 +20,7 @@ export default function Picker<T>({
   onChange,
   value,
   itemsPerRow,
+  buttonClassName,
 }: PickerProps<T>) {
   // We want all buttons to have the same width, and since they have "flex: 1"
   // every row have the same number of elements.
@@ -43,6 +45,7 @@ export default function Picker<T>({
                 value={value}
                 onChange={onChange}
                 option={option}
+                buttonClassName={buttonClassName}
                 key={`${groupIndex}.${optionIndex}.${option?.label}`}
               />
             ))}
@@ -57,6 +60,7 @@ function OptionButton<T>(props: {
   value?: T;
   onChange: (value: T) => void;
   option: SelectOption<T> | null;
+  buttonClassName?: string;
 }) {
   if (props.option === null) {
     return <div className={styles.pickerButton} />;
@@ -69,6 +73,7 @@ function OptionButton<T>(props: {
         onClick={() => props.onChange(props.option!.value)}
         variant={ButtonVariant.outlined}
         color={props.value === props.option.value ? "secondary" : "default"}
+        className={props.buttonClassName}
       />
     </div>
   );
