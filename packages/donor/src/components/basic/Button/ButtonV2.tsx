@@ -1,4 +1,4 @@
-import { Button as MuiButton } from "@material-ui/core";
+import { Button as MuiButton, PropTypes } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -8,7 +8,7 @@ import styles from "./ButtonV2.module.scss";
 export default function ButtonV2({
   onClick,
   title,
-  color = "primary",
+  color,
   variant = ButtonVariant.contained,
   className,
   isDisabled = false,
@@ -17,6 +17,15 @@ export default function ButtonV2({
   // We want the button to be full width unless it is text button
   const fullWidth = variant !== "text";
 
+  let selectedColor: PropTypes.Color;
+  if (color) {
+    selectedColor = color;
+  } else if (variant === ButtonVariant.text) {
+    selectedColor = "default";
+  } else {
+    selectedColor = "primary";
+  }
+
   return (
     <MuiButton
       onClick={onClick}
@@ -24,7 +33,7 @@ export default function ButtonV2({
       disabled={isDisabled || isLoading}
       variant={variant}
       fullWidth={fullWidth}
-      color={color}
+      color={selectedColor}
     >
       {isLoading ? <Spinner color={color} /> : title}
     </MuiButton>

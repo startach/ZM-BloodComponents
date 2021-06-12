@@ -54,7 +54,7 @@ export default function AppHeader({
   }
 
   return (
-    <AppBar position="static" color="secondary" className={className}>
+    <AppBar position="static" color="primary" className={className}>
       <div className={styles.headerContainer}>
         {icon}
         <Typography variant="h6" className={styles.title}>

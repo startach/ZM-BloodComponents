@@ -1,8 +1,8 @@
 import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
-import Styles from "./ExtendedSignupScreen.module.scss";
+import styles from "./ExtendedSignupScreen.module.scss";
 import HeaderSection from "../../components/HeaderSection";
 import { NameValidation } from "./ExtendedSignupScreenContainer";
 import ZMScreen from "../../components/basic/ZMScreen";
@@ -53,7 +53,7 @@ export default function ExtendedSignupScreen({
         <h4>משהו אחד אחרון!</h4>
         <span>פרטים אחרונים להרשמה</span>
       </HeaderSection>
-      <div className={Styles["extended-signup"]}>
+      <div className={styles["extended-signup"]}>
         <Input
           value={firstName.value}
           onChangeText={firstName.onChange}
@@ -91,7 +91,13 @@ export default function ExtendedSignupScreen({
         />
         <br />
         <br />
-        <Button onClick={onSignOut} title={"התנתק"} />
+        <div className={styles.signOut}>
+          <Button
+            onClick={onSignOut}
+            title={"התנתק"}
+            variant={ButtonVariant.text}
+          />
+        </div>
       </div>
     </ZMScreen>
   );
