@@ -17,7 +17,6 @@ import {
   Hospital,
 } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
 import ContactScreen from "../../screens/contact/ContactScreen";
 
 interface LoggedInRouterProps {
