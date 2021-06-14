@@ -3,7 +3,7 @@ import {
   EmailMessage,
   StaffRecipient,
 } from "../../dal/EmailNotificationsDataAccessLayer";
-import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
+import { LOGO_IMAGE_TAG } from "../BookAppointmentNotifier";
 import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
 const PERIOD_48_HOURS_IN_MILLIS = 48 * 60 * 60 * 1000;
@@ -47,7 +47,7 @@ function getEmailContent(
     <title>תור התפנה</title>
   </head>
   <body style="text-align: right; direction: rtl">
-    <img src="#logo#" alt="זכרון מנחם" />
+    #logo#
     <h2>שלום #שם#,</h2>
     התורם/ת
     <span style="font-weight: bold">#שם_התורם#</span>
@@ -63,7 +63,7 @@ function getEmailContent(
   </body>
 </html>
 `
-    .replace("#logo#", ZM_LOGO_URL)
+    .replace("#logo#", LOGO_IMAGE_TAG)
     .replace("#שם#", recipientName)
     .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
     .replace("#קרבה#", appointmentIsClose ? " קרוב " : " ")

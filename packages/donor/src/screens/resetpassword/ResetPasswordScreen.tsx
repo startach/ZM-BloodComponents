@@ -45,7 +45,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         title="חזרה"
         variant={ButtonVariant.text}
         onClick={props.goToSignIn}
-        isCentered
       />
     </SafeScreen>
   );

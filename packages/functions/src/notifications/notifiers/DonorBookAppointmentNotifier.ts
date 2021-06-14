@@ -2,7 +2,7 @@ import {
   addEmailToQueue,
   EmailMessage,
 } from "../../dal/EmailNotificationsDataAccessLayer";
-import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
+import { LOGO_IMAGE_TAG } from "../BookAppointmentNotifier";
 import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
 export function sendEmailToDonor(
@@ -32,7 +32,7 @@ function getEmailContent(data: AppointmentNotificationData) {
     <title>תודה על הרשמתך לתרומה</title>
   </head>
   <body style="text-align:right; direction:rtl;">
-    <img src="#logo#" alt="זכרון מנחם" />
+    #logo#
     <h2>שלום #שם#,</h2>
     מודים לך מקרב לב על הרשמתך לתור לתרומת טרומבוציטים!
     <br />
@@ -65,7 +65,7 @@ function getEmailContent(data: AppointmentNotificationData) {
   </body>
 </html>
 `
-    .replace("#logo#", ZM_LOGO_URL)
+    .replace("#logo#", LOGO_IMAGE_TAG)
     .replace("#שם#", data.donorFirstName + " " + data.donorLastName)
     .replace("#בית_חולים#", data.hospitalName)
     .replace("#תאריך#", data.dateString)

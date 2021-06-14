@@ -142,7 +142,7 @@ export default function CoordinatorRouter() {
           </Route>
         )}
         {canAddAppointments && (
-          <Route exact path={["/" + CoordinatorScreen.ADD_APPOINTMENTS, "*"]}>
+          <Route exact path={"/" + CoordinatorScreen.ADD_APPOINTMENTS}>
             <AddAppointmentsScreenContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />

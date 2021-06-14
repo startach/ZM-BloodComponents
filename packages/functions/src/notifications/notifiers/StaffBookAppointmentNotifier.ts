@@ -3,7 +3,7 @@ import {
   EmailMessage,
   StaffRecipient,
 } from "../../dal/EmailNotificationsDataAccessLayer";
-import { ZM_LOGO_URL } from "../BookAppointmentNotifier";
+import { LOGO_IMAGE_TAG } from "../BookAppointmentNotifier";
 import { AppointmentNotificationData } from "../AppointmentNotificationData";
 
 export function sendBookingEmailToStaff(
@@ -34,7 +34,7 @@ function getEmailContent(
     <title>תודה על הרשמתך לתרומה</title>
   </head>
   <body style="text-align: right; direction: rtl">
-    <img src="#logo#" alt="זכרון מנחם" />
+    #logo#
     <h2>שלום #שם#,</h2>
     התורם/ת
     <span style="font-weight: bold">#שם_התורם#</span>
@@ -48,7 +48,7 @@ function getEmailContent(
   </body>
 </html>
 `
-    .replace("#logo#", ZM_LOGO_URL)
+    .replace("#logo#", LOGO_IMAGE_TAG)
     .replace("#שם#", recipientName)
     .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
     .replace("#בית_חולים#", data.hospitalName)

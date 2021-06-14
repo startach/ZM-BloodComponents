@@ -35,7 +35,6 @@ export default function WizardScreen(props: WizardScreenProps) {
         onClick={props.onClick}
         title={props.buttonText}
         variant={props.buttonVariant}
-        isCentered={true}
       />
     </div>
   );

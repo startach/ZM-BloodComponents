@@ -11,9 +11,12 @@ import UpcomingDonationScreenContainer from "../../screens/UpcommingDonation/Upc
 import MyProfileScreenContainer from "../../screens/myProfile/MyProfileScreenContainer";
 import BookDonationScreenContainer from "../../screens/bookDonation/BookDonationScreenContainer";
 import AboutScreen from "../../screens/about/AboutScreen";
-import { BookedAppointment, Donor } from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  Donor,
+  Hospital,
+} from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
-import { DonationSlot } from "../../utils/AppointmentsGrouper";
 import ContactScreen from "../../screens/contact/ContactScreen";
 
 interface LoggedInRouterProps {
@@ -23,10 +26,16 @@ interface LoggedInRouterProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
 }
 
+export type DonationSlotToBook = {
+  hospital: Hospital;
+  donationStartTimeMillis: number;
+  appointmentIds: string[];
+};
+
 export default function LoggedInRouter(props: LoggedInRouterProps) {
   const { user, bookedAppointment, setUser, setBookedAppointment } = props;
   const [donationSlotToBook, setDonationSlotToBook] =
-    useState<DonationSlot | undefined>();
+    useState<DonationSlotToBook | undefined>();
 
   if (!user) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;

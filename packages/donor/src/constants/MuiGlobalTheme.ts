@@ -16,6 +16,7 @@ const MuiGlobalTheme: ThemeOptions = {
   palette: {
     primary: {
       main: colors.primary,
+      contrastText: colors.white,
     },
     secondary: {
       main: colors.secondary,
