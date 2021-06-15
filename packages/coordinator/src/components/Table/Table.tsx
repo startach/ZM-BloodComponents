@@ -4,7 +4,7 @@ import GroupsTable, {
   CommonTableProps,
 } from "./GroupTable";
 
-interface TableProps<T> extends CommonTableProps<T> {
+export interface TableProps<T> extends CommonTableProps<T> {
   rows: CardTableRow<T>[];
 }
 
