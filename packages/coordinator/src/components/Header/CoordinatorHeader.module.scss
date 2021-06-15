@@ -39,7 +39,11 @@ $header_height: var(--height-header, 100px);
   justify-content: center;
 }
 
-.buttons > * {
+.mainButtons {
+  margin: auto;
+}
+
+.buttons button {
   //all: unset !important;
   background: var(--color-statusbar-bg) !important;
   border-width: 0;
@@ -54,4 +58,10 @@ $header_height: var(--height-header, 100px);
 
 .selected__tab {
   text-decoration: underline solid white !important;
+}
+
+.disconnect {
+  box-sizing: border-box;
+  padding-left: 8px;
+  padding-right: 58px;
 }

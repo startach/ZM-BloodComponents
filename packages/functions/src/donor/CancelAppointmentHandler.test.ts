@@ -1,11 +1,12 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   DbAppointment,
+  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
@@ -18,17 +19,28 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CancelAppointmentFunctionName]
 );
 
+import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
+import { mocked } from "ts-jest/utils";
+import { sampleUser } from "../testUtils/TestSamples";
+
+jest.mock("../notifications/CancelAppointmentNotifier");
+const mockedNotifier = mocked(notifyOnCancelAppointment);
+
 const DONOR_ID = "CancelAppointmentHandlerDonorId";
 const APPOINTMENT_TO_CANCEL = "CancelAppointmentHandlerAppointment";
 
-beforeAll(async () => {
+const reset = async () => {
   await deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
+  mockedNotifier.mockClear();
+};
+
+beforeAll(async () => {
+  await reset();
 });
 
 afterEach(async () => {
-  await deleteDonor(DONOR_ID);
-  await deleteAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
+  await reset();
 });
 
 test("Unauthenticated user throws exception", async () => {
@@ -81,6 +93,8 @@ test("Donor is not booked on this appointment throws exception", async () => {
 });
 
 test("Valid request cancells appointment", async () => {
+  await createDonor();
+  mockedNotifier.mockReturnValue(Promise.resolve());
   await saveAppointment(DONOR_ID);
 
   await wrapped(bookAppointmentRequest(), {
@@ -92,6 +106,16 @@ test("Valid request cancells appointment", async () => {
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
   expect(appointment[0].donorId).toEqual("");
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+
+  expect(mockedNotifier).toBeCalledWith(
+    expect.objectContaining({
+      id: APPOINTMENT_TO_CANCEL,
+    }),
+    expect.objectContaining({
+      firstName: "firstName",
+      email: "email@email.com",
+    })
+  );
 });
 
 async function saveAppointment(donorId: string) {
@@ -111,4 +135,15 @@ async function saveAppointment(donorId: string) {
 
 function bookAppointmentRequest() {
   return { appointmentId: APPOINTMENT_TO_CANCEL };
+}
+
+async function createDonor() {
+  const donor: DbDonor = {
+    id: DONOR_ID,
+    ...sampleUser,
+    firstName: "firstName",
+    email: "email@email.com",
+  };
+
+  await setDonor(donor);
 }
