@@ -17,7 +17,7 @@ import {
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 import Chip, { ChipColorScheme } from "../../components/Chip";
 
-export const GetExpandedColumns = (
+const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
@@ -124,7 +124,7 @@ export const GetExpandedColumns = (
   },
 ];
 
-export const expandedRowContent = (
+export const AppointmentTableExpandedRowContent = (
   slot: AppointmentSlot,
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
@@ -150,7 +150,7 @@ export const expandedRowContent = (
   );
 };
 
-export const MainColumns = (
+export const MainAppointmentTableColumns = (
   showOnlyRecentChanges: boolean
 ): CardTableColumn<AppointmentSlot>[] => [
   {
