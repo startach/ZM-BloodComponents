@@ -72,6 +72,12 @@ const useButtonStyles = makeStyles({
       fontSize: 18,
       width: 320,
       height: 48,
+      "&:hover": {
+        backgroundColor: buttonBackgroundColor,
+      },
+      "&:active": {
+        backgroundColor: buttonBackgroundColor,
+      },
       ...(props.isCentered && { display: "block" }),
       ...(props.isCentered && { margin: "0 auto" }),
     };

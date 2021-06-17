@@ -1,5 +1,8 @@
 module.exports = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.tsx'],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.tsx"],
+  typescript: {
+    reactDocgen: "none",
+  },
 
   addons: [
     "@storybook/addon-links",

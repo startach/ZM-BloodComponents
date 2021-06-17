@@ -32,6 +32,7 @@
     "test-donor": "yarn workspace @zm-blood-components/donor test"
   },
   "dependencies": {
+    "@capacitor/core": "^3.0.1",
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -52,13 +53,13 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@capacitor/cli": "^3.0.0",
+    "@capacitor/cli": "^3.0.1",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/node-logger": "^6.1.21",
     "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.1.21",
+    "@storybook/react": "^6.2.9",
     "@types/fs-extra": "^9.0.11",
     "@types/inquirer": "^7.3.1",
     "@types/jest": "^26.0.20",
