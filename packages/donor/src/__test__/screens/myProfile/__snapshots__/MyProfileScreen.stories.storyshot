@@ -592,7 +592,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
         <div
           className="appVersion"
         >
-          dev
+          storybook version
         </div>
       </div>
     </div>

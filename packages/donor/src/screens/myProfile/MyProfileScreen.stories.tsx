@@ -19,6 +19,7 @@ const props: MyProfileScreenProps = {
     birthDate: "2020-01-14",
   },
   onSave: action("onSave"),
+  appVersion: "storybook version",
 };
 
 export const Default = (args: MyProfileScreenProps) => (

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Splash Screen Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="logo"
+  >
+    <div
+      className="logoContainer large"
+    >
+      <img
+        alt="בנק הדם"
+        src="blood_bank_logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
