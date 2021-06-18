@@ -40,7 +40,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           title="חזרה"
           variant={ButtonVariant.text}
           onClick={props.goToSignIn}
-          color={Color.Pink}
+          color={Color.Secondary}
         />
       </div>
     </SafeScreen>

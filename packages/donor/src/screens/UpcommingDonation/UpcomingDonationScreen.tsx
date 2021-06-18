@@ -118,7 +118,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         className={styles.cancelButton}
         onClick={handleClickOpen}
         variant={ButtonVariant.contained}
-        color={Color.Gray}
+        color={Color.Default}
         isLoading={isLoading}
       />
       <Popup

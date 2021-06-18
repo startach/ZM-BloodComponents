@@ -60,7 +60,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           title="התחברות"
           onClick={props.goToSignIn}
           variant={ButtonVariant.text}
-          color={Color.Pink}
+          color={Color.Secondary}
         />
       </div>
     </SafeScreen>

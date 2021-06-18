@@ -74,7 +74,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           title="איפוס סיסמה"
           onClick={props.onResetPassword}
           variant={ButtonVariant.text}
-          color={Color.Gray}
+          color={Color.Default}
         />
       </div>
 
@@ -83,7 +83,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           title="הרשמה"
           onClick={props.onRegister}
           variant={ButtonVariant.text}
-          color={Color.Pink}
+          color={Color.Secondary}
         />
         <span className={styles.notRegisteredTitle}>עדיין לא נרשמת?</span>
       </div>
