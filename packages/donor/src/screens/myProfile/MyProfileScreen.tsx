@@ -21,7 +21,7 @@ import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
-interface MyProfileScreenProps {
+export interface MyProfileScreenProps {
   user: Donor;
   onSave: (
     firstName: string,

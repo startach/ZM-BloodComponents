@@ -1,5 +1,4 @@
 import { SelectOption } from "@zm-blood-components/common";
-import _ from "lodash";
 import { ButtonVariant } from "../Button";
 import styles from "./Picker.module.scss";
 // TODO (Yaron) point to button once V2 is merged

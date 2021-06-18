@@ -1,0 +1,601 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/My Profile Screen Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          פרופיל
+        </h6>
+      </div>
+    </header>
+    <div
+      className="content"
+    >
+      <header
+        className="component component"
+      >
+        <div>
+          משה משה
+        </div>
+      </header>
+      <div
+        className="component card"
+      >
+        <div
+          className="cardContentMerge"
+        >
+          <button
+            className="component"
+          >
+            <img
+              alt="undefined button"
+              className="icon"
+              src="user.svg"
+              style={
+                Object {
+                  "height": "40px",
+                  "width": "40px",
+                }
+              }
+            />
+            <div
+              className="titleSection"
+            />
+          </button>
+          <div>
+            משה
+          </div>
+        </div>
+        <button
+          className="component anim_onClick--scaleDown"
+          onClick={[Function]}
+        >
+          <img
+            alt="undefined button"
+            className="icon"
+            src="edit.svg"
+            style={
+              Object {
+                "height": "40px",
+                "width": "40px",
+              }
+            }
+          />
+          <div
+            className="titleSection"
+          />
+        </button>
+      </div>
+      <div
+        className="component hidden"
+      >
+        <div
+          className="background"
+          onClick={[Function]}
+        />
+        <div
+          className="drawer"
+        >
+          <div
+            className="component"
+          >
+            <div
+              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              dir="rtl"
+              onKeyPress={[Function]}
+            >
+              <label
+                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                data-shrink={true}
+              >
+                שם פרטי
+              </label>
+              <div
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoFocus={false}
+                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  disabled={false}
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  type="text"
+                  value="משה"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-160 MuiButton-containedPrimary-170"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-162"
+            >
+              שמור
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="component card"
+      >
+        <div
+          className="cardContentMerge"
+        >
+          <button
+            className="component"
+          >
+            <img
+              alt="undefined button"
+              className="icon"
+              src="user.svg"
+              style={
+                Object {
+                  "height": "40px",
+                  "width": "40px",
+                }
+              }
+            />
+            <div
+              className="titleSection"
+            />
+          </button>
+          <div>
+            משה
+          </div>
+        </div>
+        <button
+          className="component anim_onClick--scaleDown"
+          onClick={[Function]}
+        >
+          <img
+            alt="undefined button"
+            className="icon"
+            src="edit.svg"
+            style={
+              Object {
+                "height": "40px",
+                "width": "40px",
+              }
+            }
+          />
+          <div
+            className="titleSection"
+          />
+        </button>
+      </div>
+      <div
+        className="component hidden"
+      >
+        <div
+          className="background"
+          onClick={[Function]}
+        />
+        <div
+          className="drawer"
+        >
+          <div
+            className="component"
+          >
+            <div
+              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              dir="rtl"
+              onKeyPress={[Function]}
+            >
+              <label
+                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                data-shrink={true}
+              >
+                שם משפחה
+              </label>
+              <div
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoFocus={false}
+                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  disabled={false}
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  type="text"
+                  value="משה"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-190 MuiButton-containedPrimary-170"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-162"
+            >
+              שמור
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="component card"
+      >
+        <div
+          className="cardContentMerge"
+        >
+          <button
+            className="component"
+          >
+            <img
+              alt="undefined button"
+              className="icon"
+              src="bloodDrops.svg"
+              style={
+                Object {
+                  "height": "40px",
+                  "width": "40px",
+                }
+              }
+            />
+            <div
+              className="titleSection"
+            />
+          </button>
+          <div>
+            A-
+          </div>
+        </div>
+        <button
+          className="component anim_onClick--scaleDown"
+          onClick={[Function]}
+        >
+          <img
+            alt="undefined button"
+            className="icon"
+            src="edit.svg"
+            style={
+              Object {
+                "height": "40px",
+                "width": "40px",
+              }
+            }
+          />
+          <div
+            className="titleSection"
+          />
+        </button>
+      </div>
+      <div
+        className="component hidden"
+      >
+        <div
+          className="background"
+          onClick={[Function]}
+        />
+        <div
+          className="drawer"
+        >
+          <div
+            className="MuiFormControl-root-103 makeStyles-root-191"
+          >
+            <label
+              className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+              data-shrink={true}
+            >
+              סוג דם
+            </label>
+            <div
+              className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+              onClick={[Function]}
+            >
+              <select
+                aria-invalid={false}
+                className="MuiNativeSelect-root-192 MuiNativeSelect-select-193 MuiInputBase-input-152 MuiInput-input-137"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                value="3A_MINUS"
+              >
+                <option
+                  value="0O_PLUS"
+                >
+                  O+
+                </option>
+                <option
+                  value="1O_MINUS"
+                >
+                  O-
+                </option>
+                <option
+                  value="2A_PLUS"
+                >
+                  A+
+                </option>
+                <option
+                  value="3A_MINUS"
+                >
+                  A-
+                </option>
+                <option
+                  value="4B_PLUS"
+                >
+                  B+
+                </option>
+                <option
+                  value="5B_MINUS"
+                >
+                  B-
+                </option>
+                <option
+                  value="6AB_PLUS"
+                >
+                  AB+
+                </option>
+                <option
+                  value="7AB_MINUS"
+                >
+                  AB-
+                </option>
+                <option
+                  value="8NOT_SURE"
+                >
+                  לא ידוע
+                </option>
+              </select>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root-51 MuiNativeSelect-icon-198"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <p
+              className="MuiFormHelperText-root-203 MuiFormHelperText-filled-209"
+            />
+          </div>
+          <button
+            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-211 MuiButton-containedPrimary-170"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-162"
+            >
+              שמור
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="component card"
+      >
+        <div
+          className="cardContentMerge"
+        >
+          <button
+            className="component"
+          >
+            <img
+              alt="undefined button"
+              className="icon"
+              src="phone.svg"
+              style={
+                Object {
+                  "height": "40px",
+                  "width": "40px",
+                }
+              }
+            />
+            <div
+              className="titleSection"
+            />
+          </button>
+          <div>
+            052-1234567
+          </div>
+        </div>
+        <button
+          className="component anim_onClick--scaleDown"
+          onClick={[Function]}
+        >
+          <img
+            alt="undefined button"
+            className="icon"
+            src="edit.svg"
+            style={
+              Object {
+                "height": "40px",
+                "width": "40px",
+              }
+            }
+          />
+          <div
+            className="titleSection"
+          />
+        </button>
+      </div>
+      <div
+        className="component hidden"
+      >
+        <div
+          className="background"
+          onClick={[Function]}
+        />
+        <div
+          className="drawer"
+        >
+          <div
+            className="component"
+          >
+            <div
+              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              dir="rtl"
+              onKeyPress={[Function]}
+            >
+              <label
+                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                data-shrink={true}
+              >
+                טלפון
+              </label>
+              <div
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                onClick={[Function]}
+              >
+                <input
+                  aria-invalid={false}
+                  autoFocus={false}
+                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  disabled={false}
+                  onAnimationStart={[Function]}
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  type="text"
+                  value="052-1234567"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-212 MuiButton-containedPrimary-170"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-162"
+            >
+              שמור
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="footer"
+      >
+        <div
+          className="appVersion"
+        >
+          dev
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,5 +1,7 @@
-import ResetPasswordScreen, {ResetPasswordScreenProps} from "./ResetPasswordScreen";
-import {action} from "@storybook/addon-actions";
+import ResetPasswordScreen, {
+  ResetPasswordScreenProps,
+} from "./ResetPasswordScreen";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: ResetPasswordScreen,
@@ -12,5 +14,7 @@ const props: ResetPasswordScreenProps = {
   goToSignIn: action("goToSignIn"),
 };
 
-export const Default = (args: ResetPasswordScreenProps) => <ResetPasswordScreen {...args} />;
+export const Default = (args: ResetPasswordScreenProps) => (
+  <ResetPasswordScreen {...args} />
+);
 Default.args = props;
