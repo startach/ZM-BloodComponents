@@ -1334,7 +1334,7 @@
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
 
-"@capacitor/cli@^3.0.1":
+"@capacitor/cli@^3.0.0":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@capacitor/cli/-/cli-3.0.1.tgz#54f47962ca03662ffb874145a801900b8f72c9e5"
   integrity sha512-OIzpWgtpg0wshdS60Fz6QgXfsYqnWSfQx/9/bmp0eiiKgvtOJa9QmdfFAaGI2BRVoOyiulTMLetSvOAkuTJBPA==
@@ -3943,7 +3943,7 @@
     react-docgen-typescript-plugin "^0.6.2"
     semver "^7.3.2"
 
-"@storybook/react@^6.2.9":
+"@storybook/react@^6.1.21":
   version "6.2.9"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.2.9.tgz#84f42b3d9a5c8de814f71ae186886076ba377d2c"
   integrity sha512-glvw+o/Vek2oapYIXCYDK6gm3cuSnx0XdOpiJVcXk3KLb8JfLbdzGYYp6dcWUbyOBqGcGFRpXIgMmkcwgn+fvQ==

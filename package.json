@@ -54,13 +54,13 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
-    "@capacitor/cli": "^3.0.1",
+    "@capacitor/cli": "^3.0.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/node-logger": "^6.1.21",
     "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.2.9",
+    "@storybook/react": "^6.1.21",
     "@types/fs-extra": "^9.0.11",
     "@types/inquirer": "^7.3.1",
     "@types/jest": "^26.0.20",

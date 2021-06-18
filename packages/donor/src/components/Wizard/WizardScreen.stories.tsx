@@ -5,6 +5,7 @@ import onboardingImg2 from "../../assets/icons/img-Onboarding-2.svg";
 import onboardingImg3 from "../../assets/icons/img-Onboarding-3.svg";
 import onboardingImg4 from "../../assets/icons/img-Onboarding-4.svg";
 import { ButtonVariant } from "../basic/Button";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: WizardScreen,
@@ -78,29 +79,14 @@ const baseArgs: WizardScreenProps = {
   ],
   currentStep: 0,
   linkRow: { text: "כבר רשום כתורם?", linkText: "התחברות", link: "/" },
-  callBack: () => {
-    return;
-  },
+  callBack: action("Callback"),
 };
 
 const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
   <WizardScreen {...args} />
 );
 
-export const FirstStep = Template.bind({});
-FirstStep.args = {
+export const Wizard = Template.bind({});
+Wizard.args = {
   ...baseArgs,
-  // currentStep: 0,
-  // onPrev: undefined,
-};
-
-export const MiddleStep = Template.bind({});
-MiddleStep.args = baseArgs;
-
-export const LastStep = Template.bind({});
-LastStep.args = {
-  ...baseArgs,
-  currentStep: 1,
-  // onNext: undefined,
-  // buttonVariant: ButtonVariant.contained,
 };
