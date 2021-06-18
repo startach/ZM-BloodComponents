@@ -17,8 +17,10 @@ import {
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 import Chip, { ChipColorScheme } from "../../components/Chip";
 
-export const GetExpandedColumns = (
+const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
+  onRemoveDonor: (appointmentId: string) => Promise<void>,
+  onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean
 ): CardTableColumn<ManagedAppointment>[] => [
   {
@@ -66,46 +68,67 @@ export const GetExpandedColumns = (
     colRelativeWidth: 0.3,
   },
   {
-    cellRenderer: (appointment) =>
-      !appointment.isPastAppointment && (
+    cellRenderer: (appointment) => {
+      if (appointment.isPastAppointment) {
+        return null;
+      }
+
+      const buttons: {
+        tooltip: string;
+        icon: Icon;
+        onClick: () => void;
+      }[] = [];
+
+      if (appointment.booked) {
+        buttons.push({
+          tooltip: "הסר תורם",
+          icon: Icon.Clear,
+          onClick: () =>
+            setPopupData({
+              isOpen: true,
+              appointment,
+              title: "האם ברצונך להסיר את התורם מהתור?",
+              content: `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`,
+              onApproved: () => onRemoveDonor(appointment.appointmentId),
+            }),
+        });
+      }
+
+      buttons.push({
+        tooltip: "מחק תור",
+        icon: Icon.Delete,
+        onClick: () =>
+          setPopupData({
+            isOpen: true,
+            appointment,
+            title: "האם ברצונך לבטל את התור?",
+            content: "התור טרם נתפס",
+            onApproved: () => onDeleteAppointment(appointment.appointmentId),
+          }),
+      });
+
+      return (
         <div>
-          {appointment.booked && (
+          {buttons.map((button) => (
             <IconButton
-              aria-label="clear"
-              icon={Icon.Clear}
-              color={"default"}
-              tooltipText={"הסר תורם"}
-              onClick={() =>
-                setPopupData({
-                  isOpen: true,
-                  appointment,
-                  onlyRemoveDonor: true,
-                })
-              }
+              key={button.tooltip}
+              icon={button.icon}
+              tooltipText={button.tooltip}
+              onClick={button.onClick}
             />
-          )}
-          <IconButton
-            aria-label="delete"
-            icon={Icon.Delete}
-            color={"default"}
-            tooltipText={"מחק תור"}
-            onClick={() =>
-              setPopupData({
-                isOpen: true,
-                appointment,
-                onlyRemoveDonor: false,
-              })
-            }
-          />
+          ))}
         </div>
-      ),
+      );
+    },
     colRelativeWidth: 0,
   },
 ];
 
-export const expandedRowContent = (
+export const AppointmentTableExpandedRowContent = (
   slot: AppointmentSlot,
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
+  onRemoveDonor: (appointmentId: string) => Promise<void>,
+  onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean
 ) => {
   return (
@@ -115,14 +138,19 @@ export const expandedRowContent = (
           rowData: managedAppointment,
         })
       )}
-      columns={GetExpandedColumns(setPopupData, showOnlyRecentChanges)}
+      columns={GetExpandedColumns(
+        setPopupData,
+        onRemoveDonor,
+        onDeleteAppointment,
+        showOnlyRecentChanges
+      )}
       tableIndex={1}
       hasColumnHeaders
     />
   );
 };
 
-export const MainColumns = (
+export const MainAppointmentTableColumns = (
   showOnlyRecentChanges: boolean
 ): CardTableColumn<AppointmentSlot>[] => [
   {

@@ -13,14 +13,14 @@
 
 .header {
   background-color: var(--color-light-grey);
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: var(--width-phone-landscape)) {
     width: max-content;
   }
 }
 
 .body {
   overflow-y: auto;
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: var(--width-phone-landscape)) {
     width: max-content;
   }
 }
@@ -30,7 +30,7 @@
 }
 
 .row {
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: var(--width-phone-landscape)) {
     width: max-content;
   }
   display: flex;

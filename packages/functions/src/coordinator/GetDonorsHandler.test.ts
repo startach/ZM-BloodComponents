@@ -4,6 +4,7 @@ import {
   DbCoordinator,
   DbDonor,
   FunctionsApi,
+  Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
@@ -19,12 +20,15 @@ const wrapped = firebaseFunctionsTest.wrap(
 const COORDINATOR_ID = "GetDonorsFunctionNameTestCoordinator";
 const DONOR_ID_1 = "GetDonorsFunctionNameTestCoordinator1";
 const DONOR_ID_2 = "GetDonorsFunctionNameTestCoordinator2";
+const DONOR_ID_3 = "GetDonorsFunctionNameTestCoordinator3";
+const ALL_DONOR_IDS = [DONOR_ID_1, DONOR_ID_2, DONOR_ID_3];
 const GROUP_NAME_1 = "GetDonorsFunctionNameTestGroup1";
 
 const reset = async () => {
   await deleteAdmin(COORDINATOR_ID);
   await DonorDAL.deleteDonor(DONOR_ID_1);
   await DonorDAL.deleteDonor(DONOR_ID_2);
+  await DonorDAL.deleteDonor(DONOR_ID_3);
   const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
   groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
@@ -77,15 +81,43 @@ test("GROUP_COORDINATOR gets only users in group", async () => {
   const response = await callFunction(COORDINATOR_ID);
 
   expect(response.donors).toHaveLength(1);
+  expect(response.donors[0].id).toEqual(DONOR_ID_1);
 });
 
-async function createCoordinator(role: CoordinatorRole) {
-  const newAdmin: DbCoordinator = {
+test("HOSPITAL_COORDINATOR gets only users that had a donation in their hospitals", async () => {
+  await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.TEL_HASHOMER,
+    Hospital.HADASA,
+  ]);
+
+  await createDonorWithHospital(DONOR_ID_1, Hospital.TEL_HASHOMER);
+  await createDonorWithHospital(DONOR_ID_2, Hospital.ASAF_HAROFE);
+  await createDonorWithHospital(DONOR_ID_3, Hospital.HADASA);
+
+  const response = await callFunction(COORDINATOR_ID);
+
+  const relevantDonors = response.donors.filter((x) =>
+    ALL_DONOR_IDS.includes(x.id)
+  );
+  expect(relevantDonors).toHaveLength(2);
+  expect(relevantDonors[0].id).toEqual(DONOR_ID_1);
+  expect(relevantDonors[1].id).toEqual(DONOR_ID_3);
+});
+
+async function createCoordinator(
+  role: CoordinatorRole,
+  hospitals?: Hospital[]
+) {
+  const newCoordinator: DbCoordinator = {
     id: COORDINATOR_ID,
     role,
   };
 
-  await setAdmin(newAdmin);
+  if (hospitals) {
+    newCoordinator.hospitals = hospitals;
+  }
+
+  await setAdmin(newCoordinator);
 }
 
 async function createDonor(id: string, groupId: string, testUser?: boolean) {
@@ -94,6 +126,16 @@ async function createDonor(id: string, groupId: string, testUser?: boolean) {
     id,
     groupId,
     testUser: !!testUser,
+  };
+
+  await DonorDAL.setDonor(donor);
+}
+
+async function createDonorWithHospital(id: string, hospital: Hospital) {
+  const donor: DbDonor = {
+    ...sampleUser,
+    id,
+    lastBookedHospital: hospital,
   };
 
   await DonorDAL.setDonor(donor);

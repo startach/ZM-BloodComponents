@@ -21,7 +21,7 @@ interface UpcomingDonationScreenProps {
   lastDonation?: Date;
   firstName: string;
   onConfirm: () => void;
-  onCancel: () => void;
+  onCancel: () => Promise<void>;
 }
 
 export default function UpcomingDonationScreen({
@@ -95,7 +95,7 @@ export default function UpcomingDonationScreen({
   );
 }
 
-function CancelButton(props: { onCancel: () => void }) {
+function CancelButton(props: { onCancel: () => Promise<void> }) {
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -105,15 +105,15 @@ function CancelButton(props: { onCancel: () => void }) {
   const handleClose = () => {
     setOpen(false);
   };
-  const onCancel = () => {
+  const onCancel = async () => {
     setIsLoading(true);
-    props.onCancel();
+    await props.onCancel();
   };
 
   return (
     <div className={styles.cancelButtonContainer}>
       <Button
-        title="בטל תור"
+        title="ביטול תור"
         className={styles.cancelButton}
         onClick={handleClickOpen}
         variant={ButtonVariant.outlined}
@@ -126,7 +126,7 @@ function CancelButton(props: { onCancel: () => void }) {
         titleSecond="לבטל את התור?"
         onBack={handleClose}
         onApproved={onCancel}
-      ></Popup>
+      />
     </div>
   );
 }

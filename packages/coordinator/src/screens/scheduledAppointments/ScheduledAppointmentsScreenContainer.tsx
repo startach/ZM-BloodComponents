@@ -6,6 +6,7 @@ import {
 } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ScheduledAppointmentsScreen from "./ScheduledAppointmentsScreen";
+import dayjs from "dayjs";
 
 interface ScheduledAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
@@ -14,11 +15,10 @@ interface ScheduledAppointmentsScreenContainerProps {
 export default function ScheduledAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ScheduledAppointmentsScreenContainerProps) {
-  const TWO_WEEKS_IN_MILLIS = 1000 * 60 * 60 * 24 * 14;
-  const initialToDate = new Date(Date.now() + TWO_WEEKS_IN_MILLIS);
-
-  const [fromDate, setFromDate] = useState<Date>(new Date());
-  const [toDate, setToDate] = useState<Date>(initialToDate);
+  const [fromDate, setFromDate] = useState<Date>(
+    dayjs().subtract(1, "month").toDate()
+  );
+  const [toDate, setToDate] = useState<Date>(new Date());
   const [hospital, setHospital] = useState<Hospital | "">("");
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =

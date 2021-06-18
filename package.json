@@ -28,6 +28,7 @@
     "start-donor": "yarn workspace @zm-blood-components/donor start",
     "style": "yarn run prettier --write . ",
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",
+    "storybook-coordinator": "yarn workspace @zm-blood-components/coordinator storybook",
     "build-storybook": "build-storybook",
     "test-donor": "yarn workspace @zm-blood-components/donor test"
   },

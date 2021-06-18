@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots COMPONENTS V2/Button V2 Default 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-fullWidth-23"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Disabled 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+    disabled={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Loading 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+    disabled={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={-1}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      <div
+        className="MuiCircularProgress-root-32 MuiCircularProgress-colorSecondary-37 MuiCircularProgress-indeterminate-34"
+        role="progressbar"
+        style={
+          Object {
+            "height": "1rem",
+            "width": "1rem",
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-38"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-39 MuiCircularProgress-circleIndeterminate-41"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </div>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Outlined 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button MuiButton-outlinedPrimary-6 MuiButton-fullWidth-23"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Primary 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-fullWidth-23"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Secondary 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-fullWidth-23"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Text 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-text-2 button"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Button V2 Variant Text 1`] = `
+<div
+  dir="rtl"
+>
+  <button
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-text-2 button MuiButton-textPrimary-3"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiButton-label-1"
+    >
+      לאישור לחץ כאן
+    </span>
+  </button>
+</div>
+`;

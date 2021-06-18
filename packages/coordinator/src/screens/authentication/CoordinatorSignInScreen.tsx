@@ -42,7 +42,7 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
           setPasswordError("");
         }}
         value={password}
-        label="ססמא"
+        label="סיסמה"
         variant="filled"
         errorMessage={passwordError}
       />

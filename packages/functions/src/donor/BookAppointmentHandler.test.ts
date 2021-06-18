@@ -7,7 +7,7 @@ import {
   BookingChange,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
@@ -23,6 +23,7 @@ const wrapped = firebaseFunctionsTest.wrap(
 
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
+import { BookAppointmentStatus } from "../../../common/src/functions-api";
 
 jest.mock("../notifications/BookAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnAppointmentBooked);
@@ -33,7 +34,7 @@ const APPOINTMENT_TO_BOOK_2 = "BookingAppointmentHandlerAppointment2";
 const OTHER_DONATION_OF_USER = "BookingAppointmentHandlerAppointment3";
 
 beforeAll(async () => {
-  await deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -43,7 +44,7 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
-  await deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -67,47 +68,32 @@ test("Donor not found throws exception", async () => {
   await expectAsyncThrows(action, "Donor not found");
 });
 
-test("No such appointments throws exception", async () => {
+test("No such appointments", async () => {
   await createDonor();
 
-  const action = () =>
-    wrapped(bookAppointmentRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
-
-  await expectAsyncThrows(action, "No appointments to book");
+  const response = await wrapped(bookAppointmentRequest(), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
+  const data = response as FunctionsApi.BookAppointmentResponse;
+  expect(data.status).toEqual(BookAppointmentStatus.NO_SUCH_APPOINTMENTS);
+  expect(data.bookedAppointment).toBeUndefined();
 });
 
-test("No free appointments throws exception", async () => {
+test("No free appointments ", async () => {
   await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, 10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, true, 8);
 
-  const action = () =>
-    wrapped(bookAppointmentRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
-
-  await expectAsyncThrows(action, "No appointments to book");
-});
-
-test("No free appointments throws exception", async () => {
-  await createDonor();
-  await saveAppointment(APPOINTMENT_TO_BOOK_1, true, 10);
-  await saveAppointment(APPOINTMENT_TO_BOOK_2, true, 8);
-
-  const action = () =>
-    wrapped(bookAppointmentRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
-
-  await expectAsyncThrows(action, "No appointments to book");
+  const response = await wrapped(bookAppointmentRequest(), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
+  const data = response as FunctionsApi.BookAppointmentResponse;
+  expect(data.status).toEqual(BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS);
+  expect(data.bookedAppointment).toBeUndefined();
 });
 
 test.skip("Donor has recent donation throws exception", async () => {
@@ -115,14 +101,17 @@ test.skip("Donor has recent donation throws exception", async () => {
   await saveAppointment(APPOINTMENT_TO_BOOK_1, false, 1);
   await saveAppointment(OTHER_DONATION_OF_USER, true, 3);
 
-  const action = () =>
-    wrapped(bookAppointmentRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
+  const response = await wrapped(bookAppointmentRequest(), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
 
-  await expectAsyncThrows(action, "Donor has other donations in buffer");
+  const data = response as FunctionsApi.BookAppointmentResponse;
+  expect(data.status).toEqual(
+    BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
+  );
+  expect(data.bookedAppointment).toBeUndefined();
 });
 
 test("Valid request books appointment", async () => {
@@ -141,7 +130,9 @@ test("Valid request books appointment", async () => {
   expect(appointment[0].donorId).toEqual(DONOR_ID);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
-  const bookedAppointment = data.bookedAppointment;
+  expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+
+  const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(bookedAppointment.donorId).toEqual(DONOR_ID);
 
@@ -159,6 +150,9 @@ test("Valid request books appointment", async () => {
       email: "email@email.com",
     })
   );
+
+  const updatedDonor = await DonorDataAccessLayer.getDonor(DONOR_ID);
+  expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
 });
 
 async function createDonor() {
@@ -169,7 +163,7 @@ async function createDonor() {
     email: "email@email.com",
   };
 
-  await setDonor(donor);
+  await DonorDataAccessLayer.setDonor(donor);
 }
 
 async function saveAppointment(

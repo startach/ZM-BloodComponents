@@ -1,4 +1,4 @@
-import { Button as MuiButton, makeStyles } from "@material-ui/core";
+import { Button as MuiButton, makeStyles, PropTypes } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -15,19 +15,14 @@ export type ButtonProps = {
   /** Text - clickable text, Outlined - Inside out, or Contained (Default) */
   variant?: ButtonVariant;
   className?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
   isDisabled?: boolean;
   isLoading?: boolean;
-  isFullWidth?: boolean;
-  isCentered?: boolean;
+  color?: PropTypes.Color;
 };
 
-const useButtonStyles = makeStyles((theme) => ({
-  buttonStyle: (props: { isCentered: boolean }) => ({
+const useButtonStyles = makeStyles(() => ({
+  buttonStyle: () => ({
     borderRadius: 100,
-    ...(props.isCentered && { display: "block" }),
-    ...(props.isCentered && { margin: "0 auto" }),
   }),
 }));
 
@@ -36,14 +31,10 @@ export default function Button({
   title,
   variant = ButtonVariant.contained,
   className,
-  startIcon,
-  endIcon,
   isDisabled = false,
   isLoading = false,
-  isFullWidth = false,
-  isCentered = false,
 }: ButtonProps) {
-  const classes = useButtonStyles({ isCentered });
+  const classes = useButtonStyles();
 
   return (
     <MuiButton
@@ -51,10 +42,7 @@ export default function Button({
       variant={variant}
       color="primary"
       className={classnames(className, classes.buttonStyle)}
-      startIcon={!isLoading && startIcon}
-      endIcon={!isLoading && endIcon}
       disabled={isDisabled || isLoading}
-      fullWidth={isFullWidth}
     >
       {isLoading ? <Spinner /> : title}
     </MuiButton>

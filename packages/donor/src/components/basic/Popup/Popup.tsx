@@ -1,19 +1,20 @@
 import { Dialog } from "@material-ui/core";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Popup.module.scss";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button, { ButtonVariant } from "../Button";
 import Text from "../Text";
 
-type PopupProps = {
+export type PopupProps = {
   buttonApproveText: string;
   open: boolean;
   titleFirst: string;
   titleSecond?: string;
   className?: string;
-  isLoading?: boolean;
   onBack?: () => void;
-  onApproved: () => void;
+  goBackText?: string;
+  onApproved: () => Promise<void>;
+  image?: string;
 };
 
 export default function Popup({
@@ -25,9 +26,9 @@ export default function Popup({
   onApproved,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const buttonClicked = () => {
+  const buttonClicked = async () => {
     setIsLoading(true);
-    onApproved();
+    await onApproved();
     setIsLoading(false);
   };
   return (
@@ -48,7 +49,7 @@ export default function Popup({
           <Text>{titleFirst}</Text>
           <Text>{titleSecond}</Text>
         </div>
-        <hr className={styles.header}></hr>
+        <hr className={styles.header} />
         <DialogActions>
           {onBack && (
             <Button
