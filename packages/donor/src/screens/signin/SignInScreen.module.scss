@@ -1,17 +1,46 @@
-.resetButtonContainer {
-  margin-top: 8px;
+.screenSection {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.title {
+  text-align: center;
+  color: var(--color-primary);
+  margin-top: 20px;
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.actionButton {
+  margin-top: 25px;
+}
+
+.textButton {
+  padding-top: 25px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
 }
 
-.resetPasswordButton {
-  background: transparent;
-  border: 0;
+.alternativeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
+  padding-top: 25px;
 }
 
-.resetPasswordButton:hover,
-.resetPasswordButton:active {
+.alternativeTitle {
+  margin: 0 5px;
+  display: inline-block;
+  line-height: 24px;
+  color: var(--color-mid-grey);
+}
+
+.alternativeButton {
   text-decoration: underline;
+  color: var(--color-secondary);
 }

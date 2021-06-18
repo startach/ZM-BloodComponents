@@ -3,8 +3,8 @@ import { IconButton, InputAdornment } from "@material-ui/core";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 import { InputProps, InputVariant } from "./Input";
-import Visibility from "@material-ui/icons/Visibility";
-import { VisibilityOff } from "@material-ui/icons";
+import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
 import { useState } from "react";
 
 export default function InputV2({
@@ -27,7 +27,11 @@ export default function InputV2({
       endAdornment: (
         <InputAdornment position="end">
           <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-            {showPassword ? <VisibilityOff /> : <Visibility />}
+            {showPassword ? (
+              <VisibilityOffOutlinedIcon />
+            ) : (
+              <VisibilityOutlinedIcon />
+            )}
           </IconButton>
         </InputAdornment>
       ),

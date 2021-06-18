@@ -22,7 +22,7 @@ const MuiGlobalTheme: ThemeOptions = {
       main: colors.secondary,
     },
     info: {
-      main: colors.info,
+      main: colors.gray,
     },
   },
   typography: {

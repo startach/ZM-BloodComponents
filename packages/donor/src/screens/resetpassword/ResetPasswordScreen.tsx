@@ -3,7 +3,7 @@ import SafeScreen from "../../components/basic/SafeScreen";
 import Input from "../../components/basic/Input";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
-import styles from "../register/RegisterScreen.module.scss";
+import styles from "../signin//SignInScreen.module.scss";
 import { Color } from "../../constants/colors";
 
 export interface ResetPasswordScreenProps {
@@ -33,9 +33,14 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         type="email"
         errorMessage={error}
       />
-      <Button title="איפוס סיסמה" onClick={resetPassword} />
-      <br />
-      <div className={styles.alreadyRegistered}>
+      <div className={styles.actionButton}>
+        <Button
+          title="איפוס סיסמה"
+          onClick={resetPassword}
+          isDisabled={!email}
+        />
+      </div>
+      <div className={styles.textButton}>
         <Button
           title="חזרה"
           variant={ButtonVariant.text}

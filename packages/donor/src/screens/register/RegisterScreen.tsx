@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import SafeScreen from "../../components/basic/SafeScreen";
-import styles from "./RegisterScreen.module.scss";
+import styles from "../signin//SignInScreen.module.scss";
 import Input from "../../components/basic/Input";
 import Logo from "../logo/Logo";
 import { Color } from "../../constants/colors";
 
-interface RegisterScreenProps {
+export interface RegisterScreenProps {
   onRegister: (
     email: string,
     password: string,
@@ -52,15 +52,22 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         label="סיסמה"
         errorMessage={passwordError}
       />
-      <Button title="הירשם" onClick={register} />
+      <div className={styles.actionButton}>
+        <Button
+          title="הירשם"
+          onClick={register}
+          isDisabled={!(email && password)}
+        />
+      </div>
 
-      <div className={styles.alreadyRegistered}>
-        <span>כבר נרשמת?</span>
+      <div className={styles.alternativeContainer}>
+        <span className={styles.alternativeTitle}>כבר נרשמת?</span>
         <Button
           title="התחברות"
           onClick={props.goToSignIn}
           variant={ButtonVariant.text}
           color={Color.Secondary}
+          className={styles.alternativeButton}
         />
       </div>
     </SafeScreen>

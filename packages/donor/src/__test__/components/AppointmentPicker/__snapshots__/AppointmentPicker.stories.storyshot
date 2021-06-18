@@ -61,7 +61,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  12:00
+                  <div
+                    className="buttonText"
+                  >
+                    12:00
+                  </div>
                 </span>
               </button>
             </div>
@@ -89,7 +93,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  12:45
+                  <div
+                    className="buttonText"
+                  >
+                    12:45
+                  </div>
                 </span>
               </button>
             </div>
@@ -117,7 +125,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  13:30
+                  <div
+                    className="buttonText"
+                  >
+                    13:30
+                  </div>
                 </span>
               </button>
             </div>
@@ -145,7 +157,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  14:15
+                  <div
+                    className="buttonText"
+                  >
+                    14:15
+                  </div>
                 </span>
               </button>
             </div>
@@ -173,7 +189,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  15:00
+                  <div
+                    className="buttonText"
+                  >
+                    15:00
+                  </div>
                 </span>
               </button>
             </div>
@@ -201,7 +221,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  15:45
+                  <div
+                    className="buttonText"
+                  >
+                    15:45
+                  </div>
                 </span>
               </button>
             </div>
@@ -229,7 +253,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  16:30
+                  <div
+                    className="buttonText"
+                  >
+                    16:30
+                  </div>
                 </span>
               </button>
             </div>
@@ -257,7 +285,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  17:15
+                  <div
+                    className="buttonText"
+                  >
+                    17:15
+                  </div>
                 </span>
               </button>
             </div>
@@ -285,7 +317,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  18:00
+                  <div
+                    className="buttonText"
+                  >
+                    18:00
+                  </div>
                 </span>
               </button>
             </div>
@@ -332,7 +368,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  12:00
+                  <div
+                    className="buttonText"
+                  >
+                    12:00
+                  </div>
                 </span>
               </button>
             </div>
@@ -360,7 +400,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  12:45
+                  <div
+                    className="buttonText"
+                  >
+                    12:45
+                  </div>
                 </span>
               </button>
             </div>
@@ -388,7 +432,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  13:30
+                  <div
+                    className="buttonText"
+                  >
+                    13:30
+                  </div>
                 </span>
               </button>
             </div>
@@ -416,7 +464,11 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                 <span
                   className="MuiButton-label-30"
                 >
-                  14:15
+                  <div
+                    className="buttonText"
+                  >
+                    14:15
+                  </div>
                 </span>
               </button>
             </div>

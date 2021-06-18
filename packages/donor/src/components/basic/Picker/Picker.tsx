@@ -8,6 +8,7 @@ export type PickerProps<T> = {
   options: SelectOption<T>[];
   onChange: (value: T) => void;
   value?: T;
+  buttonClassName?: string;
 };
 
 export default function Picker<T>({
@@ -15,6 +16,7 @@ export default function Picker<T>({
   options,
   onChange,
   value,
+  buttonClassName,
 }: PickerProps<T>) {
   return (
     <div>
@@ -26,6 +28,7 @@ export default function Picker<T>({
             onChange={onChange}
             option={option}
             key={option.key}
+            buttonClassName={buttonClassName}
           />
         ))}
       </div>

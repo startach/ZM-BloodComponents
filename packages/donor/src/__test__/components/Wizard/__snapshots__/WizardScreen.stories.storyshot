@@ -122,7 +122,11 @@ exports[`Storyshots Components V2/Wizard Screen First Step 1`] = `
       <span
         className="MuiButton-label-38"
       >
-        אישור והמשך
+        <div
+          className="buttonText"
+        >
+          אישור והמשך
+        </div>
       </span>
     </button>
   </div>
@@ -251,7 +255,11 @@ exports[`Storyshots Components V2/Wizard Screen Last Step 1`] = `
       <span
         className="MuiButton-label-38"
       >
-        אישור והמשך
+        <div
+          className="buttonText"
+        >
+          אישור והמשך
+        </div>
       </span>
     </button>
   </div>
@@ -381,7 +389,11 @@ exports[`Storyshots Components V2/Wizard Screen Middle Step 1`] = `
       <span
         className="MuiButton-label-38"
       >
-        אישור והמשך
+        <div
+          className="buttonText"
+        >
+          אישור והמשך
+        </div>
       </span>
     </button>
   </div>

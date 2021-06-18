@@ -4,7 +4,7 @@ import { wait } from "../../__test__/DonorTestUtils";
 
 export default {
   component: SignInScreen,
-  title: "Screens/Sign In Screen",
+  title: "Screens/Authentication/Sign In Screen",
   parameters: { layout: "fullscreen" },
 };
 

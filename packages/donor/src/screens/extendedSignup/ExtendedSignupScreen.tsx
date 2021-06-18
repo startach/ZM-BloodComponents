@@ -79,7 +79,6 @@ export default function ExtendedSignupScreen({
           value={bloodType.value}
           options={BloodTypeUtils.getBloodTypeSelectOptions()}
           onChange={bloodType.onChange}
-          itemsPerRow={2}
           buttonClassName={styles.bloodTypeButton}
         />
         <Button

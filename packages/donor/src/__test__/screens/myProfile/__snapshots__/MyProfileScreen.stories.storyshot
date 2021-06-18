@@ -8,7 +8,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
     className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
   >
     <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 safe-screen-padding-top MuiPaper-elevation4-18"
     >
       <div
         className="headerContainer"
@@ -125,7 +125,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
               dir="rtl"
               onKeyPress={[Function]}
             >
@@ -136,7 +136,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 שם פרטי
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
                 onClick={[Function]}
               >
                 <input
@@ -156,7 +156,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-160 MuiButton-containedPrimary-170"
+            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -174,9 +174,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-162"
+              className="MuiButton-label-160"
             >
-              שמור
+              <div
+                className="buttonText"
+              >
+                שמור
+              </div>
             </span>
           </button>
         </div>
@@ -243,7 +247,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
               dir="rtl"
               onKeyPress={[Function]}
             >
@@ -254,7 +258,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 שם משפחה
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
                 onClick={[Function]}
               >
                 <input
@@ -274,7 +278,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-190 MuiButton-containedPrimary-170"
+            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -292,9 +296,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-162"
+              className="MuiButton-label-160"
             >
-              שמור
+              <div
+                className="buttonText"
+              >
+                שמור
+              </div>
             </span>
           </button>
         </div>
@@ -358,7 +366,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="drawer"
         >
           <div
-            className="MuiFormControl-root-103 makeStyles-root-191"
+            className="MuiFormControl-root-103 makeStyles-root-188"
           >
             <label
               className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
@@ -372,7 +380,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             >
               <select
                 aria-invalid={false}
-                className="MuiNativeSelect-root-192 MuiNativeSelect-select-193 MuiInputBase-input-152 MuiInput-input-137"
+                className="MuiNativeSelect-root-189 MuiNativeSelect-select-190 MuiInputBase-input-152 MuiInput-input-137"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -429,7 +437,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               </select>
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-51 MuiNativeSelect-icon-198"
+                className="MuiSvgIcon-root-51 MuiNativeSelect-icon-195"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -439,11 +447,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               </svg>
             </div>
             <p
-              className="MuiFormHelperText-root-203 MuiFormHelperText-filled-209"
+              className="MuiFormHelperText-root-200 MuiFormHelperText-filled-206"
             />
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-211 MuiButton-containedPrimary-170"
+            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -461,9 +469,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-162"
+              className="MuiButton-label-160"
             >
-              שמור
+              <div
+                className="buttonText"
+              >
+                שמור
+              </div>
             </span>
           </button>
         </div>
@@ -530,7 +542,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input"
+              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
               dir="rtl"
               onKeyPress={[Function]}
             >
@@ -541,7 +553,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 טלפון
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
                 onClick={[Function]}
               >
                 <input
@@ -561,7 +573,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-161 MuiButton-contained-169 drawerButton makeStyles-buttonStyle-159 makeStyles-buttonStyle-212 MuiButton-containedPrimary-170"
+            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -579,9 +591,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-162"
+              className="MuiButton-label-160"
             >
-              שמור
+              <div
+                className="buttonText"
+              >
+                שמור
+              </div>
             </span>
           </button>
         </div>

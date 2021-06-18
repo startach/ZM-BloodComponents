@@ -1,185 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components V2/ContactScreen Basic 1`] = `
+exports[`Storyshots Screens/Contact Screen Default 1`] = `
 <div
   dir="rtl"
 >
-  <div>
+  <div
+    className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 safe-screen-padding-top MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          צור קשר
+        </h6>
+      </div>
+    </header>
     <div
-      className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+      className="content"
     >
       <header
-        className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 safe-screen-padding-top MuiPaper-elevation4-18"
+        className="component component"
       >
         <div
-          className="headerContainer"
+          className="textBold"
         >
-          <button
-            className="MuiButtonBase-root-48 MuiIconButton-root-39"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiIconButton-label-47"
-            >
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-51 rightButton"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-                />
-              </svg>
-            </span>
-          </button>
-          <h6
-            className="MuiTypography-root-60 title MuiTypography-h6-70"
-          >
-            צור קשר
-          </h6>
+          להלן דרכי ההתקשרות עמנו
+        </div>
+        <div>
+          מוזמנים ליצור קשר בכל שאלה, בקשה או הערה
         </div>
       </header>
       <div
-        className="content"
+        className="contentContainer"
       >
-        <header
-          className="component component"
-        >
-          <div
-            className="textBold"
-          >
-            להלן דרכי ההתקשרות עמנו
-          </div>
-          <div>
-            מוזמנים ליצור קשר בכל שאלה, בקשה או הערה
-          </div>
-        </header>
         <div
-          className="contentContainer"
+          className="contentLine"
         >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="website"
-                src="website.svg"
-              />
-            </div>
-            <a
-              className="link underline"
-              href="https://www.zichron.org"
-            >
-              zichron.org
-            </a>
+            <img
+              alt="website"
+              src="website.svg"
+            />
           </div>
+          <a
+            className="link underline"
+            href="https://www.zichron.org"
+          >
+            zichron.org
+          </a>
+        </div>
+        <div
+          className="contentLine"
+        >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="email"
-                src="mail.svg"
-              />
-            </div>
-            <a
-              className="link"
-              href="mailto:dam@zichron.org"
-            >
-              dam@zichron.org
-            </a>
+            <img
+              alt="email"
+              src="mail.svg"
+            />
           </div>
+          <a
+            className="link"
+            href="mailto:dam@zichron.org"
+          >
+            dam@zichron.org
+          </a>
+        </div>
+        <div
+          className="contentLine"
+        >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="phone"
-                src="phone.svg"
-              />
-            </div>
-            <a
-              className="phonelink underline"
-              href="https://wa.link/akc04c"
-            >
-              058-710-0571
-            </a>
+            <img
+              alt="phone"
+              src="phone.svg"
+            />
           </div>
+          <a
+            className="phonelink underline"
+            href="https://wa.link/akc04c"
+          >
+            058-710-0571
+          </a>
+        </div>
+        <div
+          className="contentLine"
+        >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="facebook"
-                src="facebook.svg"
-              />
-            </div>
-            <a
-              className="link"
-              href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
-            >
-              עקבו אחרינו בפייסבוק
-            </a>
+            <img
+              alt="facebook"
+              src="facebook.svg"
+            />
           </div>
+          <a
+            className="link"
+            href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
+          >
+            עקבו אחרינו בפייסבוק
+          </a>
+        </div>
+        <div
+          className="contentLine"
+        >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="instagram"
-                src="instagram.svg"
-              />
-            </div>
-            <a
-              className="link"
-              href="https://www.instagram.com/zichronmenachem/"
-            >
-              עקבו אחרינו באינסטגרם
-            </a>
+            <img
+              alt="instagram"
+              src="instagram.svg"
+            />
           </div>
+          <a
+            className="link"
+            href="https://www.instagram.com/zichronmenachem/"
+          >
+            עקבו אחרינו באינסטגרם
+          </a>
+        </div>
+        <div
+          className="contentLine"
+        >
           <div
-            className="contentLine"
+            className="iconContainer"
           >
-            <div
-              className="iconContainer"
-            >
-              <img
-                alt="youtube"
-                src="youtube.svg"
-              />
-            </div>
-            <a
-              className="link"
-              href="https://www.youtube.com/user/zichronmenachem"
-            >
-              עקבו אחרינו ביוטיוב
-            </a>
+            <img
+              alt="youtube"
+              src="youtube.svg"
+            />
           </div>
+          <a
+            className="link"
+            href="https://www.youtube.com/user/zichronmenachem"
+          >
+            עקבו אחרינו ביוטיוב
+          </a>
         </div>
       </div>
     </div>

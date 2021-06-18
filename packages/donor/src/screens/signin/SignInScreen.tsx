@@ -2,8 +2,7 @@ import { useState } from "react";
 import SafeScreen from "../../components/basic/SafeScreen";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
-import styles from "../register/RegisterScreen.module.scss";
-import myStyles from "./SignInScreen.module.scss";
+import styles from "./SignInScreen.module.scss";
 import Input from "../../components/basic/Input";
 import { Color } from "../../constants/colors";
 
@@ -61,29 +60,32 @@ export default function SignInScreen(props: SignInScreenProps) {
         onSubmit={signIn}
         type="password"
       />
-      <Button
-        className={styles.signinButton}
-        title="כניסה"
-        onClick={signIn}
-        isLoading={isLoading}
-      />
-      <div className={myStyles.resetButtonContainer}>
+      <div className={styles.actionButton}>
         <Button
-          title="איפוס סיסמה"
+          title="כניסה"
+          onClick={signIn}
+          isLoading={isLoading}
+          isDisabled={!(email && password)}
+        />
+      </div>
+      <div className={styles.textButton}>
+        <Button
+          title="שכחתי סיסמה"
           onClick={props.onResetPassword}
           variant={ButtonVariant.text}
           color={Color.Default}
         />
       </div>
 
-      <div className={styles.notRegisteredContainer}>
+      <div className={styles.alternativeContainer}>
+        <span className={styles.alternativeTitle}>עדיין לא נרשמת?</span>
         <Button
           title="הרשמה"
           onClick={props.onRegister}
           variant={ButtonVariant.text}
           color={Color.Secondary}
+          className={styles.alternativeButton}
         />
-        <span className={styles.notRegisteredTitle}>עדיין לא נרשמת?</span>
       </div>
     </SafeScreen>
   );

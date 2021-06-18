@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 
 export default {
   component: ResetPasswordScreen,
-  title: "Screens/Reset Password Screen",
+  title: "Screens/Authentication/Reset Password Screen",
   parameters: { layout: "fullscreen" },
 };
 

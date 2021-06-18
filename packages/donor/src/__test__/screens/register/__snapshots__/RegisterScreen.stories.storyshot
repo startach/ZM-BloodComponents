@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
+exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
 <div
   dir="rtl"
 >
@@ -18,7 +18,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
     <div
       className="title"
     >
-      התחברות
+      הרשמה
     </div>
     <div
       className="component"
@@ -32,7 +32,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
           className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
           data-shrink={false}
         >
-          דוא"ל
+          דוא״ל
         </label>
         <div
           className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
@@ -154,20 +154,10 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
           <div
             className="buttonText"
           >
-            כניסה
+            הירשם
           </div>
         </span>
       </button>
-    </div>
-    <div
-      className="textButton"
-    >
-      <div
-        className="textButton"
-        onClick={[Function]}
-      >
-        שכחתי סיסמה
-      </div>
     </div>
     <div
       className="alternativeContainer"
@@ -175,13 +165,13 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
       <span
         className="alternativeTitle"
       >
-        עדיין לא נרשמת?
+        כבר נרשמת?
       </span>
       <div
         className="alternativeButton textButton"
         onClick={[Function]}
       >
-        הרשמה
+        התחברות
       </div>
     </div>
   </div>

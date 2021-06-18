@@ -14,14 +14,20 @@ export default function ButtonV2({
   isDisabled = false,
   isLoading = false,
 }: ButtonProps) {
-  // We want the button to be full width unless it is text button
-  const fullWidth = variant !== "text";
+  if (variant === ButtonVariant.text) {
+    return (
+      <div
+        className={classnames(className, styles.textButton)}
+        onClick={isDisabled ? undefined : onClick}
+      >
+        {title}
+      </div>
+    );
+  }
 
   let selectedColor: PropTypes.Color;
   if (color) {
     selectedColor = color;
-  } else if (variant === ButtonVariant.text) {
-    selectedColor = "default";
   } else {
     selectedColor = "primary";
   }
@@ -32,10 +38,14 @@ export default function ButtonV2({
       className={classnames(className, styles.button)}
       disabled={isDisabled || isLoading}
       variant={variant}
-      fullWidth={fullWidth}
+      fullWidth
       color={selectedColor}
     >
-      {isLoading ? <Spinner color={color} /> : title}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className={styles.buttonText}>{title}</div>
+      )}
     </MuiButton>
   );
 }

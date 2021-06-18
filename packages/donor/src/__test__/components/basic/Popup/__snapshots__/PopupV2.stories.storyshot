@@ -32,7 +32,11 @@ exports[`Storyshots COMPONENTS V2/Popup V2 Default 1`] = `
       <span
         className="MuiButton-label-1"
       >
-        פתח
+        <div
+          className="buttonText"
+        >
+          פתח
+        </div>
       </span>
     </button>
   </div>
@@ -71,7 +75,11 @@ exports[`Storyshots COMPONENTS V2/Popup V2 With Image 1`] = `
       <span
         className="MuiButton-label-1"
       >
-        פתח
+        <div
+          className="buttonText"
+        >
+          פתח
+        </div>
       </span>
     </button>
   </div>
