@@ -5,7 +5,7 @@ import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 
-interface ResetPasswordScreenProps {
+export interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;
   goToSignIn: () => void;
 }

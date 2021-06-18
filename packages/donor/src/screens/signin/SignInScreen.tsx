@@ -8,7 +8,7 @@ import Input, { InputVariant } from "../../components/basic/Input";
 
 import classNames from "classnames";
 
-interface SignInScreenProps {
+export interface SignInScreenProps {
   onRegister: () => void;
   onResetPassword: () => void;
   onSignInWithEmail: (
@@ -28,15 +28,13 @@ export default function SignInScreen(props: SignInScreenProps) {
 
   const signIn = async () => {
     setIsLoading(true);
-    const success = await props.onSignInWithEmail(
+    await props.onSignInWithEmail(
       email,
       password,
       setEmailError,
       setPasswordError
     );
-    if (!success) {
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   };
 
   return (

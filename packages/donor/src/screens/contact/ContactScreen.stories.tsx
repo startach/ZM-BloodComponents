@@ -2,19 +2,8 @@ import ContactScreen from "./ContactScreen";
 
 export default {
   component: ContactScreen,
-  title: "Components V2/ContactScreen",
-  decorators: [
-    (Story: any) => (
-      <div>
-        <Story />
-      </div>
-    ),
-  ],
+  title: "Screens/Contact Screen",
+  parameters: { layout: "fullscreen" },
 };
 
-const baseArgs = {
-  onClick: () => {},
-};
-
-export const Basic = (args: {}) => <ContactScreen {...args} />;
-Basic.args = baseArgs;
+export const Default = (args: {}) => <ContactScreen {...args} />;
