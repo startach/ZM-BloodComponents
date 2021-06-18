@@ -4,6 +4,7 @@ import onboardingImg1 from "../../assets/icons/img-Onboarding-1.svg";
 import onboardingImg2 from "../../assets/icons/img-Onboarding-2.svg";
 import onboardingImg3 from "../../assets/icons/img-Onboarding-3.svg";
 import onboardingImg4 from "../../assets/icons/img-Onboarding-4.svg";
+import { ButtonVariant } from "../basic/Button";
 
 export default {
   component: WizardScreen,
@@ -26,8 +27,8 @@ const baseArgs: WizardScreenProps = {
         },
       ],
       buttonText: "הבא",
-      buttonVariant: "outlined",
-      buttonColor: "secondaryGrey",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg2,
@@ -40,8 +41,8 @@ const baseArgs: WizardScreenProps = {
         { text: "", bold: false },
       ],
       buttonText: "הבא",
-      buttonVariant: "outlined",
-      buttonColor: "secondaryGrey",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg3,
@@ -57,8 +58,8 @@ const baseArgs: WizardScreenProps = {
         },
       ],
       buttonText: "הבא",
-      buttonVariant: "outlined",
-      buttonColor: "secondaryGrey",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg4,
@@ -71,8 +72,8 @@ const baseArgs: WizardScreenProps = {
         { text: " יכולים לתרום ולהציל חיים כבר עכשיו!", bold: false },
       ],
       buttonText: "בואו נתחיל",
-      buttonVariant: "contained",
-      buttonColor: "main",
+      buttonVariant: ButtonVariant.contained,
+      buttonColor: "primary",
     },
   ],
   currentStep: 0,

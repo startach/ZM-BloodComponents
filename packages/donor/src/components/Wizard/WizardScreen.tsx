@@ -1,10 +1,12 @@
-import Button from "../basicV2/Button";
+import Button from "../basic/Button/ButtonV2";
 import Text from "../basic/Text";
 import styles from "./WizardScreen.module.scss";
 import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import { BrowserRouter, Link } from "react-router-dom";
+import { PropTypes } from "@material-ui/core";
+import { ButtonVariant } from "../basic/Button";
 
 const useStyles = makeStyles({
   root: {
@@ -31,8 +33,8 @@ interface page {
   title: string;
   content: { text: string; bold: boolean }[];
   buttonText: string;
-  buttonVariant: string;
-  buttonColor: string;
+  buttonVariant: ButtonVariant;
+  buttonColor: PropTypes.Color;
 }
 export interface WizardScreenProps {
   pages: Array<page>;
