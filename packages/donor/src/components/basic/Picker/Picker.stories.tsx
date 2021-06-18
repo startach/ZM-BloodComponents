@@ -2,7 +2,6 @@ import Picker from "./Picker";
 import {
   BloodType,
   BloodTypeUtils,
-  LocaleUtils,
   SelectOption,
 } from "@zm-blood-components/common";
 import { useState } from "react";
@@ -20,7 +19,6 @@ export const BloodTypePicker = () => {
       options={BloodTypeUtils.getBloodTypeSelectOptions()}
       value={selected}
       onChange={setSelected}
-      itemsPerRow={4}
     />
   );
 };
@@ -53,7 +51,6 @@ export const DonationTimesPicker = () => {
       options={options}
       value={selected}
       onChange={setSelected}
-      itemsPerRow={4}
     />
   );
 };

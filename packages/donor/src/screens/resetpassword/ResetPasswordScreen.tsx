@@ -6,7 +6,7 @@ import Logo from "../logo/Logo";
 import styles from "../register/RegisterScreen.module.scss";
 import { Color } from "../../constants/colors";
 
-interface ResetPasswordScreenProps {
+export interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;
   goToSignIn: () => void;
 }

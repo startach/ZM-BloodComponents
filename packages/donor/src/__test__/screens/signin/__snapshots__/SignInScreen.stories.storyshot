@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Sign In Screen Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component screenSection safe-screen-padding-top safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+  >
+    <div
+      className="logoContainer medium"
+    >
+      <img
+        alt="בנק הדם"
+        src="blood_bank_logo.svg"
+      />
+    </div>
+    <div
+      className="title"
+    >
+      התחברות
+    </div>
+    <div
+      className="component"
+    >
+      <div
+        className="MuiFormControl-root-1 MuiTextField-root-0 input inputField"
+        dir="rtl"
+        onKeyPress={[Function]}
+      >
+        <label
+          className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-filled-15"
+          data-shrink={false}
+        >
+          דוא"ל
+        </label>
+        <div
+          className="MuiInputBase-root-41 MuiFilledInput-root-25 MuiFilledInput-underline-27 MuiInputBase-formControl-42"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input-52 MuiFilledInput-input-35"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="email"
+            value=""
+          />
+        </div>
+        
+      </div>
+    </div>
+    <div
+      className="component"
+    >
+      <div
+        className="MuiFormControl-root-1 MuiTextField-root-0 input inputField"
+        dir="rtl"
+        onKeyPress={[Function]}
+      >
+        <label
+          className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-filled-15"
+          data-shrink={false}
+        >
+          סיסמה
+        </label>
+        <div
+          className="MuiInputBase-root-41 MuiFilledInput-root-25 MuiFilledInput-underline-27 MuiInputBase-formControl-42"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input-52 MuiFilledInput-input-35"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="password"
+            value=""
+          />
+        </div>
+        
+      </div>
+    </div>
+    <div
+      className="screenSection"
+    >
+      <button
+        className="MuiButtonBase-root-90 MuiButton-root-61 MuiButton-contained-69 signinButton makeStyles-buttonStyle-59 makeStyles-buttonStyle-60 MuiButton-containedPrimary-70"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label-62"
+        >
+          כניסה
+        </span>
+      </button>
+    </div>
+    <div
+      className="screenSection resetButtonContainer"
+    >
+      <button
+        className="MuiButtonBase-root-90 MuiButton-root-61 MuiButton-text-63 resetPasswordButton makeStyles-buttonStyle-59 makeStyles-buttonStyle-93 MuiButton-textPrimary-64"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label-62"
+        >
+          איפוס סיסמה
+        </span>
+      </button>
+    </div>
+    <div
+      className="notRegisteredContainer"
+    >
+      <button
+        className="MuiButtonBase-root-90 MuiButton-root-61 MuiButton-text-63 connectButton makeStyles-buttonStyle-59 makeStyles-buttonStyle-94 MuiButton-textPrimary-64"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label-62"
+        >
+          הרשמה
+        </span>
+      </button>
+      <span
+        className="notRegisteredTitle"
+      >
+        עדיין לא נרשמת?
+      </span>
+    </div>
+  </div>
+</div>
+`;

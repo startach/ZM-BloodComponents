@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/About Screen Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          אודות
+        </h6>
+      </div>
+    </header>
+    <div
+      className="content"
+    >
+      <header
+        className="component component"
+      >
+        <div
+          className="logoContainer medium"
+        >
+          <img
+            alt="בנק הדם"
+            src="blood_bank_logo.svg"
+          />
+        </div>
+      </header>
+      <div
+        className="textBold textContainer"
+      >
+        על עמותת "זכרון מנחם" והאפליקציה
+      </div>
+      <div
+        className="textContainer"
+      >
+        תורמי טרומבוציטים יקרים שלום רב!
+      </div>
+      <div
+        className="textContainer"
+      >
+         
+        אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם במגוון דרכים: תמיכה נפשית ורפואית, ימי כיף, מחנות נופש, מרכזי יום, סדנאות, תרומות שיער ועוד (היכנסו ל
+        <a
+          href="https://zichron.org"
+        >
+          אתרנו
+        </a>
+         למידע נוסף).
+      </div>
+      <div
+        className="textContainer"
+      >
+        אפליקציה זו יועדה עבור תורמי הטרומבוציטים של העמותה – המגיעים לתרומה חד-פעמית, או באופן קבוע מספר פעמים בשנה – ועוזרים להציל חיים של אנשים.
+      </div>
+      <div
+        className="textContainer"
+      >
+        האפליקציה מאפשרת לכם לצפות במועדים הפנויים לתרומה בבית החולים המועדף עליכם, להירשם לתור, ואף לבקש הסעה ממקום מגוריכם אל בית החולים וחזרה. כי זה מגיע לתורמים שלנו.
+      </div>
+      <div
+        className="textContainer"
+      >
+        האפליקציה מפותחת ע"י מתנדבי עמותת
+         
+        <a
+          href="https://www.startach.org.il/"
+        >
+          סטארט-אח
+        </a>
+        . מוזמנים לבקר אותנו גם 
+        <a
+          href="https://www.facebook.com/StartAchCom"
+        >
+          בפייסבוק
+        </a>
+        !
+      </div>
+      <div
+        className="textContainer"
+      >
+        תודה לכל התורמים, צוות "בנק מרכיבי הדם" של עמותת זכרון מנחם.
+      </div>
+    </div>
+  </div>
+</div>
+`;

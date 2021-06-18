@@ -21,7 +21,7 @@ import Input from "../../components/basic/Input";
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
-interface MyProfileScreenProps {
+export interface MyProfileScreenProps {
   user: Donor;
   onSave: (
     firstName: string,
@@ -30,14 +30,16 @@ interface MyProfileScreenProps {
     phoneNumber: string,
     bloodType: BloodType
   ) => void;
+  appVersion?: string;
 }
 
 const SHOW_DONATION_COUNT = false;
-const appVersion = process.env.REACT_APP_VERSION || "dev";
+const defaultAppVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function MyProfileScreen({
   user,
   onSave,
+  appVersion = defaultAppVersion,
 }: MyProfileScreenProps) {
   const renderDonationCount = () => {
     if (!SHOW_DONATION_COUNT) {
