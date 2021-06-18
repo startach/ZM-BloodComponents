@@ -5,11 +5,13 @@
 
 .buttonRow {
   display: flex;
+  justify-content: center;
   flex-direction: row;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .pickerButton {
   margin: 5px;
-  flex: 1;
+  min-width: 80px;
 }

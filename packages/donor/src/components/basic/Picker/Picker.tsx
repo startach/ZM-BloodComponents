@@ -36,9 +36,9 @@ export default function Picker<T>({
   return (
     <div>
       <div className={styles.pickerLabel}>{label}</div>
-      <div>
+      <div className={styles.buttonRow}>
         {optionGroups.map((group, groupIndex) => (
-          <div key={groupIndex} className={styles.buttonRow}>
+          <>
             {group.map((option, optionIndex) => (
               <OptionButton
                 value={value}
@@ -48,7 +48,7 @@ export default function Picker<T>({
                 key={`${groupIndex}.${optionIndex}.${option?.label}`}
               />
             ))}
-          </div>
+          </>
         ))}
       </div>
     </div>
