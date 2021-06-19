@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          הרשמה לתור
+        </h6>
+      </div>
+    </header>
+    <div
+      className="content"
+    >
+      <div
+        className="welcomeTitle"
+      >
+        שמחים לראות אותך, 
+        משה
+        !
+      </div>
+      <div
+        className="dropdownContainer"
+      >
+        מתי מתאים לך להגיע לתרום?
+        <div
+          className="MuiFormControl-root-103 makeStyles-root-102"
+        >
+          <label
+            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            data-shrink={true}
+          />
+          <div
+            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-formControl-153 MuiInput-formControl-139"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          תורים פנויים
+        </div>
+        <div
+          className="dayTitle"
+        >
+          יום שישי, 13/08/2021
+        </div>
+        <div
+          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+        >
+          <div
+            className="hospitalName"
+          >
+            תל השומר
+             
+          </div>
+          <div>
+            <div
+              className="pickerLabel"
+            />
+            <div
+              className="pickerButtons"
+            >
+              <div
+                className="pickerButton"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      12:00
+                    </div>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+        >
+          <div
+            className="hospitalName"
+          >
+            בילינסון
+             
+          </div>
+          <div>
+            <div
+              className="pickerLabel"
+            />
+            <div
+              className="pickerButtons"
+            >
+              <div
+                className="pickerButton"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      12:00
+                    </div>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          הרשמה לתור
+        </h6>
+      </div>
+    </header>
+    <div
+      className="content"
+    >
+      <div
+        className="welcomeTitle"
+      >
+        שמחים לראות אותך, 
+        משה
+        !
+      </div>
+      <div
+        className="dropdownContainer"
+      >
+        מתי מתאים לך להגיע לתרום?
+        <div
+          className="MuiFormControl-root-103 makeStyles-root-102"
+        >
+          <label
+            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            data-shrink={true}
+          />
+          <div
+            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-formControl-153 MuiInput-formControl-139"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          לא קיימים תורים פנויים
+        </div>
+        <div>
+          כדאי לבדוק שוב בהמשך :)
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

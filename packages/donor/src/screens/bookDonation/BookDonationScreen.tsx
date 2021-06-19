@@ -9,34 +9,29 @@ import {
   DonationDay,
   groupDonationDays,
 } from "../../utils/AppointmentsGrouper";
-import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import Select from "../../components/basic/Select";
-import Text from "../../components/basic/Text";
 import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
-interface BookDonationScreenProps {
-  lastDonation?: Date;
-  earliestNextDonationDate?: Date;
+export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
   firstName: string;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
+  defaultHospital: Hospital | "";
 }
 
 export default function BookDonationScreen({
-  lastDonation,
-  earliestNextDonationDate,
   availableAppointments,
   isFetching,
   firstName,
   onSlotSelected,
+  defaultHospital,
 }: BookDonationScreenProps) {
-  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
-    Hospital.BEILINSON
-  );
+  const [selectedHospital, setSelectedHospital] =
+    useState<Hospital | "">(defaultHospital);
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
@@ -46,18 +41,11 @@ export default function BookDonationScreen({
   }, [availableAppointments, selectedHospital]);
 
   return (
-    <ZMScreen
-      title="הרשמה לתור"
-      hasBurgerMenu={true}
-      className={styles.component}
-    >
-      <LastDonationDateHeader
-        firstName={firstName}
-        lastDonation={lastDonation}
-      />
+    <ZMScreen title="הרשמה לתור" hasBurgerMenu={true}>
+      <div className={styles.welcomeTitle}>שמחים לראות אותך, {firstName}!</div>
 
-      <main className={styles.content}>
-        <Text className={styles.dropdownTitle}>מתי מתאים לך להגיע לתרום?</Text>
+      <div className={styles.dropdownContainer}>
+        מתי מתאים לך להגיע לתרום?
         <Select
           className={styles.dropdown}
           options={HospitalUtils.getAllHospitalOptions("הכל")}
@@ -65,14 +53,14 @@ export default function BookDonationScreen({
           onChange={setSelectedHospital}
           isDisabled={isFetching}
         />
+      </div>
 
-        {Donations(
-          selectedHospital,
-          isFetching,
-          sortedDonationDays,
-          onSlotSelected
-        )}
-      </main>
+      {Donations(
+        selectedHospital,
+        isFetching,
+        sortedDonationDays,
+        onSlotSelected
+      )}
     </ZMScreen>
   );
 }
@@ -92,14 +80,14 @@ function Donations(
       return (
         <div>
           <div>לא קיימים תורים פנויים</div>
-          <div>נסו לבדוק שוב בהמשך :)</div>
+          <div>כדאי לבדוק שוב בהמשך :)</div>
         </div>
       );
     }
     return (
       <div>
         <div>לא קיימים תורים פנויים לבית חולים זה</div>
-        <div>נסו לבדוק שוב בהמשך :)</div>
+        <div>כדאי לבדוק שוב בהמשך :)</div>
       </div>
     );
   }

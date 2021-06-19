@@ -1,18 +1,14 @@
-.component {
+.welcomeTitle {
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.dropdownContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.content {
-  padding: var(--layout-distance-large);
-  overflow-y: scroll;
-  flex-grow: 1;
-}
-.dropdownTitle {
-  font-size: var(--text-size-md);
-  font-family: var(--font-family-titles);
-  margin-bottom: var(--layout-distance-large);
-}
 .dropdown {
   width: 100%;
 }
