@@ -2,102 +2,95 @@ import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import styles from "./ExtendedSignupScreen.module.scss";
-import HeaderSection from "../../components/HeaderSection";
-import { NameValidation } from "./ExtendedSignupScreenContainer";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Picker from "../../components/basic/Picker";
+import { useState } from "react";
 
-type ExtendedSingupField<T> = {
-  value: T;
-  isValid: boolean;
-  onChange: (value: T) => void;
-  errorReason?: NameValidation;
-};
-interface ExtendedSignupScreenProps {
-  firstName: ExtendedSingupField<string>;
-  lastName: ExtendedSingupField<string>;
-  phoneNumber: ExtendedSingupField<string>;
-  bloodType: ExtendedSingupField<BloodType | "">;
-  onSave: () => void;
+export interface ExtendedSignupScreenProps {
+  onSave: (
+    firstName: string,
+    lastName: string,
+    phone: string,
+    bloodType: BloodType
+  ) => void;
   onSignOut: () => void;
 }
 
-export default function ExtendedSignupScreen({
-  firstName,
-  lastName,
-  phoneNumber,
-  bloodType,
-  onSave,
-  onSignOut,
-}: ExtendedSignupScreenProps) {
-  let firstNameErrorMessage: string = "";
-  let lastNameErrorMessage: string = "";
+export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bloodType, setBloodType] = useState<BloodType | "">("");
 
-  if (!firstName.isValid) {
-    firstNameErrorMessage =
-      firstName.errorReason === NameValidation.fullNameTooLong
-        ? "השם המלא ארוך מ20 תווים"
-        : "השם הראשון ארוך מדי";
-  }
+  const [lastNameError, setLastNameError] =
+    useState<string | undefined>(undefined);
 
-  if (!lastName.isValid) {
-    lastNameErrorMessage =
-      lastName.errorReason === NameValidation.fullNameTooLong
-        ? "השם המלא ארוך מ20 תווים"
-        : "שם המשפחה ארוך מדי";
-  }
+  const phoneValidator = /^05(?!6)\d{8}$/;
+  const isValidPhone = phoneValidator.test(phone);
+  const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
+
+  const setLastNameAndValidate = (newLastName: string) => {
+    if (firstName.length + lastName.length > 20) {
+      setLastNameError("השם המלא ארוך מ-20 תווים");
+    } else {
+      setLastNameError("");
+    }
+
+    setLastName(newLastName);
+  };
+
+  const onSave = () => {
+    if (!areAllFieldsValid || !bloodType) {
+      return;
+    }
+
+    props.onSave(firstName, lastName, phone, bloodType);
+  };
 
   return (
-    <ZMScreen title={"סיום הרשמה"}>
-      <HeaderSection>
-        <h4>משהו אחד אחרון!</h4>
-        <span>פרטים אחרונים להרשמה</span>
-      </HeaderSection>
-      <div className={styles.extendedSignup}>
-        <Input
-          value={firstName.value}
-          onChangeText={firstName.onChange}
-          label="שם פרטי"
-          errorMessage={firstName.isValid ? undefined : firstNameErrorMessage}
-        />
-        <Input
-          value={lastName.value}
-          onChangeText={lastName.onChange}
-          label="שם משפחה"
-          errorMessage={lastName.isValid ? undefined : lastNameErrorMessage}
-        />
-        <Input
-          value={phoneNumber.value}
-          onChangeText={phoneNumber.onChange}
-          label="מספר טלפון"
-          errorMessage={
-            phoneNumber.isValid ? undefined : "מספר הטלפון אינו תקין"
-          }
-        />
-        <Picker
-          label={"סוג דם"}
-          value={bloodType.value}
-          options={BloodTypeUtils.getBloodTypeSelectOptions()}
-          onChange={bloodType.onChange}
-          buttonClassName={styles.bloodTypeButton}
-        />
+    <ZMScreen title={"סיום הרשמה"} className={styles.extendedSignup}>
+      <div className={styles.infoText}>
+        תודה שבחרת להירשם כתורמ/ת. רגע לפני שתוכל/י לקבוע תור לתרומה ולהציל
+        חיים,
+        <div className={styles.infoTextBold}>אנחנו צריכים כמה פרטים עליך:</div>
+      </div>
+      <Input value={firstName} onChangeText={setFirstName} label="שם פרטי" />
+      <Input
+        value={lastName}
+        onChangeText={setLastNameAndValidate}
+        label="שם משפחה"
+        errorMessage={lastNameError}
+      />
+      <Input
+        value={phone}
+        onChangeText={setPhone}
+        label="מספר טלפון"
+        errorMessage={
+          phone.length > 0 && !isValidPhone
+            ? "מספר הטלפון אינו תקין"
+            : undefined
+        }
+      />
+      <Picker
+        label={"סוג דם"}
+        value={bloodType}
+        options={BloodTypeUtils.getBloodTypeSelectOptions()}
+        onChange={setBloodType}
+        buttonClassName={styles.bloodTypeButton}
+      />
+      <div className={styles.button}>
         <Button
-          className={styles.button}
           onClick={onSave}
           title={"סיום הרשמה"}
-          isDisabled={[firstName, lastName, phoneNumber, bloodType].some(
-            (field) => !field.isValid || !field.value
-          )}
+          isDisabled={!areAllFieldsValid}
         />
-        <br />
-        <br />
-        <div className={styles.signOut}>
-          <Button
-            onClick={onSignOut}
-            title={"התנתק"}
-            variant={ButtonVariant.text}
-          />
-        </div>
+      </div>
+      <div className={styles.signOut}>
+        <Button
+          onClick={props.onSignOut}
+          title={"התנתק"}
+          variant={ButtonVariant.text}
+        />
       </div>
     </ZMScreen>
   );

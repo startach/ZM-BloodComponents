@@ -2,8 +2,12 @@
   margin: 40px;
 }
 
-.signOut {
-  text-align: center;
+.infoText {
+  margin-bottom: 20px;
+}
+
+.infoTextBold {
+  font-weight: bold;
 }
 
 .button {
@@ -12,4 +16,9 @@
 
 .bloodTypeButton {
   direction: ltr;
+}
+
+.signOut {
+  text-align: center;
+  margin-top: 20px;
 }
