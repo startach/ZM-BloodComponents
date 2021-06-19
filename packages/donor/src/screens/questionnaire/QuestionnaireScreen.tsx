@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import RadioGroup from "../../components/basic/RadioGroup";
-import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
@@ -8,10 +6,11 @@ import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import { FunctionsApi } from "@zm-blood-components/common";
+import { FunctionsApi, SelectOption } from "@zm-blood-components/common";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import Picker from "../../components/basic/Picker";
 
-interface QuestionnaireScreenProps {
+export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
   onSuccess: () => void;
   isLoading: boolean;
@@ -20,15 +19,9 @@ interface QuestionnaireScreenProps {
   goToHomePage: () => Promise<void>;
 }
 
-const YesNoOptions: RadioOption[] = [
-  { value: "yes", label: "כן" },
-  { value: "no", label: "לא" },
-];
-
-const YesNoNotApplicableOptions: RadioOption[] = [
-  { value: "yes", label: "כן" },
-  { value: "no", label: "לא" },
-  { value: "na", label: "לא רלוונטי" },
+const YesNoOptions: SelectOption<boolean>[] = [
+  { value: true, label: "כן", key: "כן" },
+  { value: false, label: "לא", key: "לא" },
 ];
 
 export default function QuestionnaireScreen({
@@ -39,53 +32,63 @@ export default function QuestionnaireScreen({
   errorCode,
   goToHomePage,
 }: QuestionnaireScreenProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] = React.useState("");
+  const [hasAlreadyDonated, setHasAlreadyDonated] =
+    React.useState<boolean | undefined>(undefined);
   const HaveYouAlreadyDonated = (
-    <RadioGroup
+    <Picker
       options={YesNoOptions}
       value={hasAlreadyDonated}
       onChange={setHasAlreadyDonated}
       label={"האם תרמת דם / טרומבוציטים בעבר?"}
+      buttonClassName={styles.pickerButton}
     />
   );
 
-  const [isWeightValid, setIsWeightValid] = useState("");
+  const [isWeightValid, setIsWeightValid] =
+    React.useState<boolean | undefined>(undefined);
   const IsWeightValid = (
-    <RadioGroup
+    <Picker
       options={YesNoOptions}
       value={isWeightValid}
       onChange={setIsWeightValid}
       label={"האם משקלך מעל 50 ק״ג?"}
+      buttonClassName={styles.pickerButton}
     />
   );
 
-  const [isSurgeryValid, setIsSurgeryValid] = useState("");
+  const [isSurgeryValid, setIsSurgeryValid] =
+    React.useState<boolean | undefined>(undefined);
   const IsSurgeryValid = (
-    <RadioGroup
+    <Picker
       options={YesNoOptions}
       value={isSurgeryValid}
       onChange={setIsSurgeryValid}
       label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
+      buttonClassName={styles.pickerButton}
     />
   );
 
-  const [isRightAge, setIsRightAge] = useState("");
+  const [isRightAge, setIsRightAge] =
+    React.useState<boolean | undefined>(undefined);
   const IsRightAge = (
-    <RadioGroup
+    <Picker
       options={YesNoOptions}
       value={isRightAge}
       onChange={setIsRightAge}
       label={"האם הנך מעל גיל 17?"}
+      buttonClassName={styles.pickerButton}
     />
   );
 
-  const [wasPregnant, setWasPregnantEver] = useState("");
+  const [wasPregnant, setWasPregnantEver] =
+    React.useState<boolean | undefined>(undefined);
   const WasPregnant = (
-    <RadioGroup
-      options={YesNoNotApplicableOptions}
+    <Picker
+      options={YesNoOptions}
       value={wasPregnant}
       onChange={setWasPregnantEver}
-      label={"לנשים: האם היית / הנך בהריון?"}
+      label={"האם היית / הנך בהריון?"}
+      buttonClassName={styles.pickerButton}
     />
   );
 
@@ -99,18 +102,18 @@ export default function QuestionnaireScreen({
   );
 
   const isCorrectAnswers =
-    hasAlreadyDonated === "yes" &&
-    isWeightValid === "yes" &&
-    isSurgeryValid === "no" &&
-    isRightAge === "yes" &&
-    wasPregnant !== "yes";
+    hasAlreadyDonated &&
+    isWeightValid &&
+    isSurgeryValid === false &&
+    isRightAge &&
+    wasPregnant === false;
 
   const isWrongAnswerChosen =
-    hasAlreadyDonated === "no" ||
-    isWeightValid === "no" ||
-    isSurgeryValid === "yes" ||
-    isRightAge === "no" ||
-    wasPregnant === "yes";
+    hasAlreadyDonated === false ||
+    isWeightValid === false ||
+    isSurgeryValid ||
+    isRightAge === false ||
+    wasPregnant;
 
   const isVerified = isCorrectAnswers && isConfirmed;
 
@@ -121,31 +124,6 @@ export default function QuestionnaireScreen({
 
   return (
     <ZMScreen title="שאלון התאמה" hasBackButton>
-      <Popup
-        buttonApproveText="אישור"
-        open={isWrongAnswerChosen}
-        title={wrongAnswerPopupTitle}
-        content={wrongAnswerPopupContent}
-        onApproved={() => {
-          if (hasAlreadyDonated === "no") {
-            setHasAlreadyDonated("");
-          }
-          if (isWeightValid === "no") {
-            setIsWeightValid("");
-          }
-          if (isSurgeryValid === "yes") {
-            setIsSurgeryValid("");
-          }
-          if (isRightAge === "no") {
-            setIsRightAge("");
-          }
-          if (wasPregnant === "yes") {
-            setWasPregnantEver("");
-          }
-          return Promise.resolve();
-        }}
-      />
-
       <div className={styles.donationInfo}>
         <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
         <DonationInfoIcons
@@ -172,17 +150,42 @@ export default function QuestionnaireScreen({
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
-
-        <Button
-          className={styles.continueButton}
-          isDisabled={!debugMode && !isVerified}
-          onClick={onSuccess}
-          title={"המשך"}
-          isLoading={isLoading}
-        />
       </div>
 
+      <Button
+        className={styles.continueButton}
+        isDisabled={!debugMode && !isVerified}
+        onClick={onSuccess}
+        title={"המשך"}
+        isLoading={isLoading}
+      />
+
       <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
+
+      <Popup
+        buttonApproveText="אישור"
+        open={!!isWrongAnswerChosen}
+        title={wrongAnswerPopupTitle}
+        content={wrongAnswerPopupContent}
+        onApproved={() => {
+          if (!hasAlreadyDonated) {
+            setHasAlreadyDonated(undefined);
+          }
+          if (!isWeightValid) {
+            setIsWeightValid(undefined);
+          }
+          if (isSurgeryValid) {
+            setIsSurgeryValid(undefined);
+          }
+          if (!isRightAge) {
+            setIsRightAge(undefined);
+          }
+          if (wasPregnant) {
+            setWasPregnantEver(undefined);
+          }
+          return Promise.resolve();
+        }}
+      />
     </ZMScreen>
   );
 }

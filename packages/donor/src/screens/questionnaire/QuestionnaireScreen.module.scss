@@ -1,28 +1,21 @@
 @import "../../styles/variables.scss";
 
-body {
-  overflow: auto !important;
-}
-
 .donationInfo {
   text-align: center;
-  padding: 16px;
-  background-color: var(--color-light-grey);
-  width: 100%;
 }
 
 .donationInfoTitle {
   display: inline-block;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   font-weight: 400;
   font-size: 1rem;
 }
 
 .questionnaireSection {
-  padding: 20px;
 }
 
 .questionnaireTitle {
+  margin-top: 20px;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -40,6 +33,6 @@ body {
   margin-bottom: 8px;
 }
 
-.continueButton {
-  width: 30%;
+.pickerButton {
+  width: 30vw;
 }
