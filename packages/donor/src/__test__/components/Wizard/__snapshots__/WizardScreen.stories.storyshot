@@ -4,9 +4,12 @@ exports[`Storyshots Components V2/Wizard Screen Wizard 1`] = `
 <div
   dir="rtl"
 >
-  <div>
+  <div
+    className="container"
+  >
     <img
       alt=""
+      className="image"
       src="img-Onboarding-1.svg"
     />
     <div
@@ -19,6 +22,7 @@ exports[`Storyshots Components V2/Wizard Screen Wizard 1`] = `
     >
       <div>
         <div
+          className=""
           style={
             Object {
               "fontWeight": "normal",
@@ -30,6 +34,7 @@ exports[`Storyshots Components V2/Wizard Screen Wizard 1`] = `
       </div>
       <div>
         <div
+          className=""
           style={
             Object {
               "fontWeight": "bold",
@@ -39,18 +44,24 @@ exports[`Storyshots Components V2/Wizard Screen Wizard 1`] = `
            העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
         </div>
       </div>
-      <div
-        className="textLink"
-      >
-        כבר רשום כתורם?
-         
-        <a
-          className="link"
-          href="/"
-          onClick={[Function]}
+      <div>
+        <div
+          className="textLink"
+          style={
+            Object {
+              "fontWeight": "bold",
+            }
+          }
         >
-          התחברות
-        </a>
+          כבר רשום כתורם?
+          <a
+            className="link"
+            href="/"
+            onClick={[Function]}
+          >
+            התחברות
+          </a>
+        </div>
       </div>
     </div>
     <div

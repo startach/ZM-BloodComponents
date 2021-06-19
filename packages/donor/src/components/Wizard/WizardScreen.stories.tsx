@@ -20,7 +20,6 @@ const baseArgs: WizardScreenProps = {
       content: [
         {
           text: "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים",
-          bold: false,
         },
         {
           text: " העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
@@ -38,9 +37,8 @@ const baseArgs: WizardScreenProps = {
       content: [
         {
           text: "טרומבוציטים (טסיות דם) הינם מרכיב בדם המהווה חלק מרכזי במנגנון הקרישה של הדם. בשונה מתרומת דם רגילה, בתרומה זו, האורכת כשעתיים, מסננים רק את הטסיות, ושאר הדם מוחזר לגוף.",
-          bold: false,
         },
-        { text: "", bold: false },
+        // { text: ""},
       ],
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
@@ -56,7 +54,6 @@ const baseArgs: WizardScreenProps = {
         },
         {
           text: " באמצעות האפליקציה תוכלו לקבוע תורים בקלות ולפי זמינות התורים בבתי החולים",
-          bold: false,
         },
       ],
       buttonText: "הבא",
@@ -69,9 +66,8 @@ const baseArgs: WizardScreenProps = {
       content: [
         {
           text: "כל מי שמעל גיל 17 ושעברו שאלון התאמה לתרומה בעת הרשמה לתור באפליקציה,",
-          bold: false,
         },
-        { text: " יכולים לתרום ולהציל חיים כבר עכשיו!", bold: false },
+        { text: " יכולים לתרום ולהציל חיים כבר עכשיו!" },
       ],
       buttonText: "בואו נתחיל",
       buttonVariant: ButtonVariant.contained,

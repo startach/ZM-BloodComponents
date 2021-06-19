@@ -27,16 +27,16 @@ const useStyles = makeStyles({
   },
 });
 
-interface wizardPage {
+interface WizardPage {
   imageUrl: string;
   title: string;
-  content: { text: string; bold: boolean; link?: string; linkText?: string }[];
+  content: { text: string; bold?: boolean; link?: string; linkText?: string }[];
   buttonText: string;
   buttonVariant: ButtonVariant;
   buttonColor: PropTypes.Color;
 }
 export interface WizardScreenProps {
-  pages: wizardPage[];
+  pages: WizardPage[];
   linkRow?: { text: string; linkText: string; link: string };
   onFinish: () => void;
 }
