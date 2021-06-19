@@ -5,6 +5,8 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import { useState } from "react";
+import styles from "./Picker.module.scss";
+import { action } from "@storybook/addon-actions";
 
 export default {
   component: Picker,
@@ -18,7 +20,11 @@ export const BloodTypePicker = () => {
       label={"בחר/י את סוג הדם שלך"}
       options={BloodTypeUtils.getBloodTypeSelectOptions()}
       value={selected}
-      onChange={setSelected}
+      onChange={(newValue) => {
+        action("onChange")(newValue);
+        setSelected(newValue);
+      }}
+      buttonClassName={styles.storyBloodTypeButton}
     />
   );
 };
@@ -50,7 +56,10 @@ export const DonationTimesPicker = () => {
       label={"בחר/י תור פנוי"}
       options={options}
       value={selected}
-      onChange={setSelected}
+      onChange={(newValue) => {
+        action("onChange")(newValue);
+        setSelected(newValue);
+      }}
     />
   );
 };

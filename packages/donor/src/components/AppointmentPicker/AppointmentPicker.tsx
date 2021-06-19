@@ -29,7 +29,7 @@ function AppointmentPicker({
 
   return (
     <div>
-      <div>תורים פנויים</div>
+      <div className={styles.title}>תורים פנויים</div>
       <div className={styles.dayTitle}>{dayString}</div>
 
       {donationDay.hospitalSlots.map((hospitalDaySlots) => (

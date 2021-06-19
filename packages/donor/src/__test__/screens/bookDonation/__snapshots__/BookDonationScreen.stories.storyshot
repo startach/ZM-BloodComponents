@@ -1,5 +1,160 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component"
+  >
+    <header
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    >
+      <div
+        className="headerContainer"
+      >
+        <button
+          className="MuiButtonBase-root-48 MuiIconButton-root-39"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-47"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 rightButton"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <h6
+          className="MuiTypography-root-60 title MuiTypography-h6-70"
+        >
+          הרשמה לתור
+        </h6>
+      </div>
+    </header>
+    <div
+      className="bookDonationScreen content"
+    >
+      <div
+        className="welcomeTitle"
+      >
+        שמחים לראות אותך, 
+        משה
+        !
+      </div>
+      <div
+        className="dropdownContainer"
+      >
+        מתי מתאים לך להגיע לתרום?
+        <div
+          className="MuiFormControl-root-103 makeStyles-root-102"
+        >
+          <label
+            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            data-shrink={true}
+          />
+          <div
+            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-disabled-155 MuiInput-disabled-141 MuiInputBase-formControl-153 MuiInput-formControl-139"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148 MuiInputBase-disabled-155 MuiInput-disabled-141 MuiNativeSelect-disabled-132"
+              disabled={true}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133 MuiNativeSelect-disabled-132"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+          />
+        </div>
+      </div>
+      <div
+        className="spinner"
+      >
+        <div
+          className="MuiCircularProgress-root-178 MuiCircularProgress-colorPrimary-182 MuiCircularProgress-indeterminate-180"
+          role="progressbar"
+          style={
+            Object {
+              "height": "2rem",
+              "width": "2rem",
+            }
+          }
+        >
+          <svg
+            className="MuiCircularProgress-svg-184"
+            viewBox="22 22 44 44"
+          >
+            <circle
+              className="MuiCircularProgress-circle-185 MuiCircularProgress-circleIndeterminate-187"
+              cx={44}
+              cy={44}
+              fill="none"
+              r={20.2}
+              strokeWidth={3.6}
+              style={Object {}}
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
 <div
   dir="rtl"
@@ -54,7 +209,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
       </div>
     </header>
     <div
-      className="content"
+      className="bookDonationScreen content"
     >
       <div
         className="welcomeTitle"
@@ -122,7 +277,9 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         </div>
       </div>
       <div>
-        <div>
+        <div
+          className="title"
+        >
           תורים פנויים
         </div>
         <div
@@ -147,10 +304,10 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
               className="pickerButtons"
             >
               <div
-                className="pickerButton"
+                className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -178,6 +335,166 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   </span>
                 </button>
               </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      12:16
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      12:33
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      12:50
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      13:06
+                    </div>
+                  </span>
+                </button>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <button
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label-180"
+                  >
+                    <div
+                      className="buttonText"
+                    >
+                      13:23
+                    </div>
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -198,10 +515,10 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
               className="pickerButtons"
             >
               <div
-                className="pickerButton"
+                className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -292,7 +609,7 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
       </div>
     </header>
     <div
-      className="content"
+      className="bookDonationScreen content"
     >
       <div
         className="welcomeTitle"

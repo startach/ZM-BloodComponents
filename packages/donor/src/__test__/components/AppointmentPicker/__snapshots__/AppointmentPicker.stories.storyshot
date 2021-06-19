@@ -13,7 +13,9 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
     }
   >
     <div>
-      <div>
+      <div
+        className="title"
+      >
         תורים פנויים
       </div>
       <div
@@ -38,10 +40,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
             className="pickerButtons"
           >
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -70,10 +72,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -102,10 +104,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -134,10 +136,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -166,10 +168,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -198,10 +200,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -230,10 +232,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -262,10 +264,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -294,10 +296,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -345,10 +347,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
             className="pickerButtons"
           >
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -377,10 +379,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -409,10 +411,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -441,10 +443,10 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
               </button>
             </div>
             <div
-              className="pickerButton"
+              className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}

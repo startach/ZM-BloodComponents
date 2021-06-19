@@ -1,4 +1,9 @@
+.bookDonationScreen {
+  background-color: var(--color-light-grey);
+}
+
 .welcomeTitle {
+  width: 100%;
   font-size: 22px;
   padding-bottom: 20px;
 }
@@ -11,4 +16,8 @@
 
 .dropdown {
   width: 100%;
+}
+
+.spinner {
+  text-align: center;
 }

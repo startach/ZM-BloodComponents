@@ -41,7 +41,11 @@ export default function BookDonationScreen({
   }, [availableAppointments, selectedHospital]);
 
   return (
-    <ZMScreen title="הרשמה לתור" hasBurgerMenu={true}>
+    <ZMScreen
+      title="הרשמה לתור"
+      hasBurgerMenu={true}
+      className={styles.bookDonationScreen}
+    >
       <div className={styles.welcomeTitle}>שמחים לראות אותך, {firstName}!</div>
 
       <div className={styles.dropdownContainer}>
@@ -72,7 +76,11 @@ function Donations(
   onSlotSelected: (donationSlot: DonationSlotToBook) => void
 ) {
   if (isFetching) {
-    return <Spinner />;
+    return (
+      <div className={styles.spinner}>
+        <Spinner size={"2rem"} />
+      </div>
+    );
   }
 
   if (donationDays.length === 0) {
