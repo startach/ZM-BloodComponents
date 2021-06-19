@@ -55,6 +55,26 @@ const sampleAppointments: AvailableAppointment[] = [
     donationStartTimeMillis: 1628845200000,
     hospital: Hospital.BEILINSON,
   },
+  {
+    id: "appointment-8",
+    donationStartTimeMillis: 1628948200000,
+    hospital: Hospital.TEL_HASHOMER,
+  },
+  {
+    id: "appointment-9",
+    donationStartTimeMillis: 1628949200000,
+    hospital: Hospital.TEL_HASHOMER,
+  },
+  {
+    id: "appointment-10",
+    donationStartTimeMillis: 1628950200000,
+    hospital: Hospital.TEL_HASHOMER,
+  },
+  {
+    id: "appointment-11",
+    donationStartTimeMillis: 1628945200000,
+    hospital: Hospital.BEILINSON,
+  },
 ];
 
 const Template: Story<BookDonationScreenProps> = (args) => (

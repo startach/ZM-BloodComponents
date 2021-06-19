@@ -100,12 +100,17 @@ function Donations(
     );
   }
 
-  return donationDays.map((donationDay) => (
-    <AppointmentPicker
-      key={donationDay.day}
-      donationDay={donationDay}
-      onSlotSelected={onSlotSelected}
-      showHospitalName={selectedHospital === ""}
-    />
-  ));
+  return (
+    <>
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
+      {donationDays.map((donationDay) => (
+        <AppointmentPicker
+          key={donationDay.day}
+          donationDay={donationDay}
+          onSlotSelected={onSlotSelected}
+          showHospitalName={selectedHospital === ""}
+        />
+      ))}
+    </>
+  );
 }

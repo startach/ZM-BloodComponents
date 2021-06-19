@@ -7,12 +7,9 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
   <div
     className="storyBackground"
   >
-    <div>
-      <div
-        className="title"
-      >
-        תורים פנויים
-      </div>
+    <div
+      className="dayContainer"
+    >
       <div
         className="dayTitle"
       >
@@ -484,12 +481,9 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker No Hospital Name 1`] = `
   <div
     className="storyBackground"
   >
-    <div>
-      <div
-        className="title"
-      >
-        תורים פנויים
-      </div>
+    <div
+      className="dayContainer"
+    >
       <div
         className="dayTitle"
       >
