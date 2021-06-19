@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Input from "../../../components/basic/Input";
 import Button, { ButtonVariant } from "../../../components/basic/Button";
 import Logo from "../../logo/Logo";
 import styles from "../signin//SignInScreen.module.scss";
 import { Color } from "../../../constants/colors";
+import ZMScreen from "../../../components/basic/ZMScreen";
 
 export interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;
@@ -19,7 +20,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   };
 
   return (
-    <div className={styles.screenSection}>
+    <ZMScreen className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>איפוס סיסמה</div>
       <Input
@@ -47,6 +48,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           color={Color.Secondary}
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 }

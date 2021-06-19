@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button, { ButtonVariant } from "../../../components/basic/Button";
-import Logo from "../../logo/Logo";
 import styles from "./SignInScreen.module.scss";
 import Input from "../../../components/basic/Input";
 import { Color } from "../../../constants/colors";
+import ZMScreen from "../../../components/basic/ZMScreen";
+import LoginIllustration from "../../../assets/images/LogIn-illustration.svg";
 
 export interface SignInScreenProps {
   onRegister: () => void;
@@ -35,45 +36,51 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <div className={styles.screenSection}>
-      <Logo />
-      <div className={styles.title}>התחברות</div>
-      <Input
-        onChangeText={(emailContent) => {
-          setEmail(emailContent);
-          setEmailError("");
-        }}
-        value={email}
-        type={"email"}
-        label={`דוא"ל`}
-        errorMessage={emailError}
-      />
-      <Input
-        onChangeText={(passwordContent) => {
-          setPassword(passwordContent);
-          setPasswordError("");
-        }}
-        value={password}
-        label="סיסמה"
-        errorMessage={passwordError}
-        onSubmit={signIn}
-        type="password"
-      />
-      <div className={styles.actionButton}>
-        <Button
-          title="כניסה"
-          onClick={signIn}
-          isLoading={isLoading}
-          isDisabled={!(email && password)}
+    <ZMScreen className={styles.screenSection}>
+      <div className={styles.screenContent}>
+        <img
+          src={LoginIllustration}
+          className={styles.loginIllustration}
+          alt="illustration"
         />
-      </div>
-      <div className={styles.textButton}>
-        <Button
-          title="שכחתי סיסמה"
-          onClick={props.onResetPassword}
-          variant={ButtonVariant.text}
-          color={Color.Default}
+        <div className={styles.title}>טוב לראותך שוב</div>
+        <Input
+          onChangeText={(emailContent) => {
+            setEmail(emailContent);
+            setEmailError("");
+          }}
+          value={email}
+          type={"email"}
+          label={`דוא"ל`}
+          errorMessage={emailError}
         />
+        <Input
+          onChangeText={(passwordContent) => {
+            setPassword(passwordContent);
+            setPasswordError("");
+          }}
+          value={password}
+          label="סיסמה"
+          errorMessage={passwordError}
+          onSubmit={signIn}
+          type="password"
+        />
+        <div className={styles.actionButton}>
+          <Button
+            title="התחברות"
+            onClick={signIn}
+            isLoading={isLoading}
+            isDisabled={!(email && password)}
+          />
+        </div>
+        <div className={styles.textButton}>
+          <Button
+            title="שכחתי סיסמה"
+            onClick={props.onResetPassword}
+            variant={ButtonVariant.text}
+            color={Color.Default}
+          />
+        </div>
       </div>
 
       <div className={styles.alternativeContainer}>
@@ -86,6 +93,6 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={styles.alternativeButton}
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 }

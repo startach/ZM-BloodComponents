@@ -5,173 +5,191 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
   dir="rtl"
 >
   <div
-    className="screenSection"
+    className="component"
   >
     <div
-      className="logoContainer medium"
-    >
-      <img
-        alt="בנק הדם"
-        src="blood_bank_logo.svg"
-      />
-    </div>
-    <div
-      className="title"
-    >
-      הרשמה
-    </div>
-    <div
-      className="component"
+      className="appHeader"
     >
       <div
-        className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-        dir="rtl"
-        onKeyPress={[Function]}
+        className="title"
       >
-        <label
-          className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
-          data-shrink={false}
-        >
-          דוא״ל
-        </label>
-        <div
-          className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input-50 MuiInput-input-35"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="email"
-            value=""
-          />
-        </div>
-        
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
       </div>
     </div>
     <div
-      className="component"
+      className="screenSection content"
     >
       <div
-        className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-        dir="rtl"
-        onKeyPress={[Function]}
+        className="screenContent"
       >
-        <label
-          className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
-          data-shrink={false}
-        >
-          סיסמה
-        </label>
+        <img
+          alt="illustration"
+          className="loginIllustration"
+          src="SignUp-illustration.svg"
+        />
         <div
-          className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26 MuiInputBase-adornedEnd-44"
-          onClick={[Function]}
+          className="title"
         >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input-50 MuiInput-input-35 MuiInputBase-inputAdornedEnd-55"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="password"
-            value=""
-          />
+          הרשמה
+        </div>
+        <div
+          className="component"
+        >
           <div
-            className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"
+            className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
+            dir="rtl"
+            onKeyPress={[Function]}
           >
-            <button
-              className="MuiButtonBase-root-73 MuiIconButton-root-64 MuiIconButton-edgeEnd-66"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
+            <label
+              className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+              data-shrink={false}
             >
-              <span
-                className="MuiIconButton-label-72"
-              >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root-76"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"
-                  />
-                </svg>
-              </span>
-            </button>
+              דוא״ל
+            </label>
+            <div
+              className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input-62 MuiInput-input-47"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="email"
+                value=""
+              />
+            </div>
+            
           </div>
         </div>
-        
+        <div
+          className="component"
+        >
+          <div
+            className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
+            dir="rtl"
+            onKeyPress={[Function]}
+          >
+            <label
+              className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+              data-shrink={false}
+            >
+              סיסמה
+            </label>
+            <div
+              className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38 MuiInputBase-adornedEnd-56"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input-62 MuiInput-input-47 MuiInputBase-inputAdornedEnd-67"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="password"
+                value=""
+              />
+              <div
+                className="MuiInputAdornment-root-69 MuiInputAdornment-positionEnd-72"
+              >
+                <button
+                  className="MuiButtonBase-root-85 MuiIconButton-root-76 MuiIconButton-edgeEnd-78"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiIconButton-label-84"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root-88"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          className="actionButton"
+        >
+          <button
+            className="MuiButtonBase-root-85 MuiButton-root-97 MuiButton-contained-105 button MuiButton-containedPrimary-106 MuiButton-disabled-110 MuiButton-fullWidth-120 MuiButtonBase-disabled-86"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={-1}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-98"
+            >
+              <div
+                className="buttonText"
+              >
+                הירשם
+              </div>
+            </span>
+          </button>
+        </div>
       </div>
-    </div>
-    <div
-      className="actionButton"
-    >
-      <button
-        className="MuiButtonBase-root-73 MuiButton-root-85 MuiButton-contained-93 button MuiButton-containedPrimary-94 MuiButton-disabled-98 MuiButton-fullWidth-108 MuiButtonBase-disabled-74"
-        disabled={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="button"
+      <div
+        className="alternativeContainer"
       >
         <span
-          className="MuiButton-label-86"
+          className="alternativeTitle"
         >
-          <div
-            className="buttonText"
-          >
-            הירשם
-          </div>
+          כבר נרשמת?
         </span>
-      </button>
-    </div>
-    <div
-      className="alternativeContainer"
-    >
-      <span
-        className="alternativeTitle"
-      >
-        כבר נרשמת?
-      </span>
-      <div
-        className="alternativeButton textButton"
-        onClick={[Function]}
-      >
-        התחברות
+        <div
+          className="alternativeButton textButton"
+          onClick={[Function]}
+        >
+          התחברות
+        </div>
       </div>
     </div>
   </div>

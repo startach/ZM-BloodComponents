@@ -4,6 +4,8 @@ import styles from "../signin//SignInScreen.module.scss";
 import Input from "../../../components/basic/Input";
 import Logo from "../../logo/Logo";
 import { Color } from "../../../constants/colors";
+import ZMScreen from "../../../components/basic/ZMScreen";
+import SignUpIllustration from "../../../assets/images/SignUp-illustration.svg";
 
 export interface RegisterScreenProps {
   onRegister: (
@@ -28,35 +30,41 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
   };
 
   return (
-    <div className={styles.screenSection}>
-      <Logo />
-      <div className={styles.title}>הרשמה</div>
-      <Input
-        onChangeText={(emailContent) => {
-          setEmail(emailContent);
-          setEmailError("");
-        }}
-        value={email}
-        label={`דוא״ל`}
-        type={"email"}
-        errorMessage={emailError}
-      />
-      <Input
-        type="password"
-        onChangeText={(passwordContent) => {
-          setPassword(passwordContent);
-          setPasswordError("");
-        }}
-        value={password}
-        label="סיסמה"
-        errorMessage={passwordError}
-      />
-      <div className={styles.actionButton}>
-        <Button
-          title="הירשם"
-          onClick={register}
-          isDisabled={!(email && password)}
+    <ZMScreen className={styles.screenSection}>
+      <div className={styles.screenContent}>
+        <img
+          src={SignUpIllustration}
+          className={styles.loginIllustration}
+          alt="illustration"
         />
+        <div className={styles.title}>הרשמה</div>
+        <Input
+          onChangeText={(emailContent) => {
+            setEmail(emailContent);
+            setEmailError("");
+          }}
+          value={email}
+          label={`דוא״ל`}
+          type={"email"}
+          errorMessage={emailError}
+        />
+        <Input
+          type="password"
+          onChangeText={(passwordContent) => {
+            setPassword(passwordContent);
+            setPasswordError("");
+          }}
+          value={password}
+          label="סיסמה"
+          errorMessage={passwordError}
+        />
+        <div className={styles.actionButton}>
+          <Button
+            title="הירשם"
+            onClick={register}
+            isDisabled={!(email && password)}
+          />
+        </div>
       </div>
 
       <div className={styles.alternativeContainer}>
@@ -69,7 +77,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           className={styles.alternativeButton}
         />
       </div>
-    </div>
+    </ZMScreen>
   );
 };
 

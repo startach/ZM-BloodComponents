@@ -8,7 +8,7 @@ interface ExtendedSignupScreenProps {
   className?: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
-  title: string;
+  title?: string;
 }
 
 export default function ZMScreen({
