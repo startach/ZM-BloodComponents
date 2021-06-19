@@ -1,2 +1,2 @@
 export { InputVariant } from "./Input";
-export { default } from "./InputV2";
+export { default } from "./Input";

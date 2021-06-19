@@ -9,7 +9,7 @@ import { action } from "@storybook/addon-actions";
 
 export default {
   component: WizardScreen,
-  title: "Components V2/Wizard Screen",
+  title: "Components/Wizard",
 };
 
 const baseArgs: WizardScreenProps = {

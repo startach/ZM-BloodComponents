@@ -1,12 +1,10 @@
-import InputV2 from "./InputV2";
-import { action } from "@storybook/addon-actions";
-import { InputProps } from "./Input";
-import { Story } from "@storybook/react";
-import Visibility from "@material-ui/icons/Visibility";
+import InputV2, {InputProps} from "./Input";
+import {action} from "@storybook/addon-actions";
+import {Story} from "@storybook/react";
 
 export default {
   component: InputV2,
-  title: "COMPONENTS V2/Input V2",
+  title: "Components/Input",
 };
 
 const props: InputProps = {

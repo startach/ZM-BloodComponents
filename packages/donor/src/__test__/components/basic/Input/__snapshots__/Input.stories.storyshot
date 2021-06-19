@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/Input V2 Default 1`] = `
+exports[`Storyshots Components/Input Default 1`] = `
 <div
   dir="rtl"
 >
@@ -49,7 +49,7 @@ exports[`Storyshots COMPONENTS V2/Input V2 Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Input V2 Error 1`] = `
+exports[`Storyshots Components/Input Error 1`] = `
 <div
   dir="rtl"
 >
@@ -104,7 +104,7 @@ exports[`Storyshots COMPONENTS V2/Input V2 Error 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Input V2 Multiple Input 1`] = `
+exports[`Storyshots Components/Input Multiple Input 1`] = `
 <div
   dir="rtl"
 >
@@ -256,7 +256,7 @@ exports[`Storyshots COMPONENTS V2/Input V2 Multiple Input 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Input V2 Password 1`] = `
+exports[`Storyshots Components/Input Password 1`] = `
 <div
   dir="rtl"
 >

@@ -1,7 +1,8 @@
-import { Button as MuiButton, makeStyles, PropTypes } from "@material-ui/core";
+import { Button as MuiButton, PropTypes } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
+import styles from "./Button.module.scss";
 
 export enum ButtonVariant {
   text = "text",
@@ -20,31 +21,47 @@ export type ButtonProps = {
   color?: PropTypes.Color;
 };
 
-const useButtonStyles = makeStyles(() => ({
-  buttonStyle: () => ({
-    borderRadius: 100,
-  }),
-}));
-
 export default function Button({
   onClick,
   title,
+  color,
   variant = ButtonVariant.contained,
   className,
   isDisabled = false,
   isLoading = false,
 }: ButtonProps) {
-  const classes = useButtonStyles();
+  if (variant === ButtonVariant.text) {
+    return (
+      <div
+        className={classnames(className, styles.textButton)}
+        onClick={isDisabled ? undefined : onClick}
+      >
+        {title}
+      </div>
+    );
+  }
+
+  let selectedColor: PropTypes.Color;
+  if (color) {
+    selectedColor = color;
+  } else {
+    selectedColor = "primary";
+  }
 
   return (
     <MuiButton
       onClick={onClick}
-      variant={variant}
-      color="primary"
-      className={classnames(className, classes.buttonStyle)}
+      className={classnames(className, styles.button)}
       disabled={isDisabled || isLoading}
+      variant={variant}
+      fullWidth
+      color={selectedColor}
     >
-      {isLoading ? <Spinner /> : title}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className={styles.buttonText}>{title}</div>
+      )}
     </MuiButton>
   );
 }

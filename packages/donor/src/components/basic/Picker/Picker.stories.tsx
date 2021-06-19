@@ -10,7 +10,7 @@ import { action } from "@storybook/addon-actions";
 
 export default {
   component: Picker,
-  title: "COMPONENTS V2/Picker",
+  title: "Components/Picker",
 };
 
 export const BloodTypePicker = () => {

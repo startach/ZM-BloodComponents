@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/Picker Blood Type Picker 1`] = `
+exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
 <div
   dir="rtl"
 >
@@ -306,7 +306,7 @@ exports[`Storyshots COMPONENTS V2/Picker Blood Type Picker 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Picker Donation Times Picker 1`] = `
+exports[`Storyshots Components/Picker Donation Times Picker 1`] = `
 <div
   dir="rtl"
 >

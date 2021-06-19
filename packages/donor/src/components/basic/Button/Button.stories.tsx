@@ -1,11 +1,11 @@
-import ButtonV2 from "./ButtonV2";
+import ButtonV2 from "./Button";
 import { ButtonProps, ButtonVariant } from "./Button";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 
 export default {
   component: ButtonV2,
-  title: "COMPONENTS V2/Button V2",
+  title: "Components/Button",
 };
 
 const props: ButtonProps = {

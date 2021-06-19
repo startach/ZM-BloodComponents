@@ -3,7 +3,7 @@ import AppHeader, { AppHeaderProps } from "./AppHeader";
 
 export default {
   component: AppHeader,
-  title: "COMPONENTS V2/App Header V2",
+  title: "Components/App Header",
   parameters: { layout: "fullscreen" },
 };
 

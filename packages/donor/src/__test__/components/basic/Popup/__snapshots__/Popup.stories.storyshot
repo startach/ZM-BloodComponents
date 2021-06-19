@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/Popup V2 Default 1`] = `
+exports[`Storyshots Components/Popup Default 1`] = `
 <div
   dir="rtl"
 >
@@ -43,7 +43,7 @@ exports[`Storyshots COMPONENTS V2/Popup V2 Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Popup V2 With Image 1`] = `
+exports[`Storyshots Components/Popup With Image 1`] = `
 <div
   dir="rtl"
 >

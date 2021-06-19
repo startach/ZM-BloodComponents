@@ -1,13 +1,13 @@
 import { Story } from "@storybook/react";
-import PopupV2 from "./PopupV2";
+import PopupV2 from "./Popup";
 import { useState } from "react";
-import ButtonV2 from "../Button/ButtonV2";
+import ButtonV2 from "../Button/Button";
 import { PopupProps } from "./Popup";
 import BloodBankLogo from "../../../assets/icons/blood_bank_logo.svg";
 
 export default {
   component: PopupV2,
-  title: "COMPONENTS V2/Popup V2",
+  title: "Components/Popup",
 };
 
 const props = {

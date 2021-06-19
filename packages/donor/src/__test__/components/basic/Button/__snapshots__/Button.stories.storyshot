@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/Button V2 Default 1`] = `
+exports[`Storyshots Components/Button Default 1`] = `
 <div
   dir="rtl"
 >
@@ -35,7 +35,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Disabled 1`] = `
+exports[`Storyshots Components/Button Disabled 1`] = `
 <div
   dir="rtl"
 >
@@ -70,7 +70,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Loading 1`] = `
+exports[`Storyshots Components/Button Loading 1`] = `
 <div
   dir="rtl"
 >
@@ -125,7 +125,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Outlined 1`] = `
+exports[`Storyshots Components/Button Outlined 1`] = `
 <div
   dir="rtl"
 >
@@ -160,7 +160,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Outlined 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Primary 1`] = `
+exports[`Storyshots Components/Button Primary 1`] = `
 <div
   dir="rtl"
 >
@@ -195,7 +195,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Primary 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Secondary 1`] = `
+exports[`Storyshots Components/Button Secondary 1`] = `
 <div
   dir="rtl"
 >
@@ -230,7 +230,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Secondary 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Text 1`] = `
+exports[`Storyshots Components/Button Text 1`] = `
 <div
   dir="rtl"
 >
@@ -243,7 +243,7 @@ exports[`Storyshots COMPONENTS V2/Button V2 Text 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Button V2 Variant Text 1`] = `
+exports[`Storyshots Components/Button Variant Text 1`] = `
 <div
   dir="rtl"
 >

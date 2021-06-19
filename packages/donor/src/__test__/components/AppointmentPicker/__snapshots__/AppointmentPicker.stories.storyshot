@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
+exports[`Storyshots Components/Appointment Picker Default 1`] = `
 <div
   dir="rtl"
 >
@@ -474,7 +474,7 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/Appointment Picker No Hospital Name 1`] = `
+exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
 <div
   dir="rtl"
 >

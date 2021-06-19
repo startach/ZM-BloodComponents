@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots COMPONENTS V2/App Header V2 Default 1`] = `
+exports[`Storyshots Components/App Header Default 1`] = `
 <div
   dir="rtl"
 >
@@ -20,7 +20,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/App Header V2 Hamburger 1`] = `
+exports[`Storyshots Components/App Header Hamburger 1`] = `
 <div
   dir="rtl"
 >
@@ -73,7 +73,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 Hamburger 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/App Header V2 With Back 1`] = `
+exports[`Storyshots Components/App Header With Back 1`] = `
 <div
   dir="rtl"
 >
@@ -126,7 +126,7 @@ exports[`Storyshots COMPONENTS V2/App Header V2 With Back 1`] = `
 </div>
 `;
 
-exports[`Storyshots COMPONENTS V2/App Header V2 With Text 1`] = `
+exports[`Storyshots Components/App Header With Text 1`] = `
 <div
   dir="rtl"
 >

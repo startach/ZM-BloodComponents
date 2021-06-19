@@ -6,7 +6,7 @@ import styles from "./AppointmentPicker.module.scss";
 
 export default {
   component: AppointmentPicker,
-  title: "COMPONENTS V2/Appointment Picker",
+  title: "Components/Appointment Picker",
   parameters: { layout: "fullscreen" },
 };
 
