@@ -7,52 +7,48 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          הרשמה לתור
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        הרשמה לתור
+      </h6>
+    </div>
     <div
       className="bookDonationScreen content"
     >
@@ -68,19 +64,19 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
       >
         מתי מתאים לך להגיע לתרום?
         <div
-          className="MuiFormControl-root-103 makeStyles-root-102"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
           <label
-            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
             data-shrink={true}
           />
           <div
-            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-disabled-155 MuiInput-disabled-141 MuiInputBase-formControl-153 MuiInput-formControl-139"
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-disabled-86 MuiInput-disabled-72 MuiInputBase-formControl-84 MuiInput-formControl-70"
             onClick={[Function]}
           >
             <select
               aria-invalid={false}
-              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148 MuiInputBase-disabled-155 MuiInput-disabled-141 MuiNativeSelect-disabled-132"
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79 MuiInputBase-disabled-86 MuiInput-disabled-72 MuiNativeSelect-disabled-63"
               disabled={true}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -107,7 +103,7 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
             </select>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133 MuiNativeSelect-disabled-132"
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64 MuiNativeSelect-disabled-63"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -117,7 +113,7 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
           />
         </div>
       </div>
@@ -125,7 +121,7 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
         className="spinner"
       >
         <div
-          className="MuiCircularProgress-root-178 MuiCircularProgress-colorPrimary-182 MuiCircularProgress-indeterminate-180"
+          className="MuiCircularProgress-root-109 MuiCircularProgress-colorPrimary-113 MuiCircularProgress-indeterminate-111"
           role="progressbar"
           style={
             Object {
@@ -135,11 +131,11 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
           }
         >
           <svg
-            className="MuiCircularProgress-svg-184"
+            className="MuiCircularProgress-svg-115"
             viewBox="22 22 44 44"
           >
             <circle
-              className="MuiCircularProgress-circle-185 MuiCircularProgress-circleIndeterminate-187"
+              className="MuiCircularProgress-circle-116 MuiCircularProgress-circleIndeterminate-118"
               cx={44}
               cy={44}
               fill="none"
@@ -162,52 +158,48 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          הרשמה לתור
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        הרשמה לתור
+      </h6>
+    </div>
     <div
       className="bookDonationScreen content"
     >
@@ -223,19 +215,19 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
       >
         מתי מתאים לך להגיע לתרום?
         <div
-          className="MuiFormControl-root-103 makeStyles-root-102"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
           <label
-            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
             data-shrink={true}
           />
           <div
-            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-formControl-153 MuiInput-formControl-139"
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
             onClick={[Function]}
           >
             <select
               aria-invalid={false}
-              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148"
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -262,7 +254,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             </select>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133"
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -272,7 +264,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
           />
         </div>
       </div>
@@ -290,7 +282,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           יום שישי, 13/08/2021
         </div>
         <div
-          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+          className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
         >
           <div
             className="hospitalName"
@@ -309,7 +301,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -327,7 +319,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -341,7 +333,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -359,7 +351,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -373,7 +365,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -391,7 +383,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -405,7 +397,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -423,7 +415,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -437,7 +429,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -455,7 +447,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -469,7 +461,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -487,7 +479,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -501,7 +493,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           </div>
         </div>
         <div
-          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+          className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
         >
           <div
             className="hospitalName"
@@ -520,7 +512,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -538,7 +530,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -561,7 +553,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           יום שבת, 14/08/2021
         </div>
         <div
-          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+          className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
         >
           <div
             className="hospitalName"
@@ -580,7 +572,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -598,7 +590,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -612,7 +604,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -630,7 +622,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -644,7 +636,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -662,7 +654,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -676,7 +668,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           </div>
         </div>
         <div
-          className="MuiPaper-root-11 MuiCard-root-178 hospitalCard MuiPaper-elevation1-15 MuiPaper-rounded-12"
+          className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
         >
           <div
             className="hospitalName"
@@ -695,7 +687,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-179 MuiButton-outlined-184 pickerButton button MuiButton-fullWidth-202"
+                  className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -713,7 +705,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-180"
+                    className="MuiButton-label-139"
                   >
                     <div
                       className="buttonText"
@@ -739,52 +731,48 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          הרשמה לתור
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        הרשמה לתור
+      </h6>
+    </div>
     <div
       className="bookDonationScreen content"
     >
@@ -800,19 +788,19 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
       >
         מתי מתאים לך להגיע לתרום?
         <div
-          className="MuiFormControl-root-103 makeStyles-root-102"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
           <label
-            className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
             data-shrink={true}
           />
           <div
-            className="MuiInputBase-root-152 MuiInput-root-138 MuiInput-underline-143 dropdown MuiInputBase-formControl-153 MuiInput-formControl-139"
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
             onClick={[Function]}
           >
             <select
               aria-invalid={false}
-              className="MuiNativeSelect-root-127 MuiNativeSelect-select-128 MuiInputBase-input-163 MuiInput-input-148"
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -839,7 +827,7 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
             </select>
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root-51 MuiNativeSelect-icon-133"
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -849,7 +837,7 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root-170 MuiFormHelperText-filled-176"
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
           />
         </div>
       </div>

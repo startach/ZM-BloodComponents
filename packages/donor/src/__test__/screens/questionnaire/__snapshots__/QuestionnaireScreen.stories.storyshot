@@ -7,52 +7,48 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          שאלון התאמה
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        שאלון התאמה
+      </h6>
+    </div>
     <div
       className="content"
     >
@@ -162,7 +158,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -180,7 +176,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -194,7 +190,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -212,7 +208,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -241,7 +237,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -259,7 +255,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -273,7 +269,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -291,7 +287,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -320,7 +316,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -338,7 +334,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -352,7 +348,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -370,7 +366,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -399,7 +395,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -417,7 +413,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -431,7 +427,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -449,7 +445,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -478,7 +474,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -496,7 +492,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -510,7 +506,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 className="pickerButtonContainer"
               >
                 <button
-                  className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-outlined-107 pickerButton pickerButton button MuiButton-fullWidth-125"
+                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-fullWidth-56"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -528,7 +524,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiButton-label-103"
+                    className="MuiButton-label-34"
                   >
                     <div
                       className="buttonText"
@@ -552,11 +548,11 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           className="confirmButtonContainer"
         >
           <label
-            className="MuiFormControlLabel-root-131"
+            className="MuiFormControlLabel-root-62"
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-48 MuiIconButton-root-39 PrivateSwitchBase-root-143 MuiCheckbox-root-137 MuiCheckbox-colorPrimary-141 MuiIconButton-colorPrimary-43"
+              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-74 MuiCheckbox-root-68 MuiCheckbox-colorPrimary-72 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -571,18 +567,18 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
               tabIndex={null}
             >
               <span
-                className="MuiIconButton-label-47"
+                className="MuiIconButton-label-8"
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-146"
+                  className="PrivateSwitchBase-input-77"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-51"
+                  className="MuiSvgIcon-root-12"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -593,7 +589,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
               </span>
             </span>
             <span
-              className="MuiTypography-root-60 MuiFormControlLabel-label-136 MuiTypography-body1-62"
+              className="MuiTypography-root-78 MuiFormControlLabel-label-67 MuiTypography-body1-80"
             >
               קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן
             </span>
@@ -601,7 +597,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         </div>
       </div>
       <button
-        className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-contained-110 continueButton button MuiButton-containedPrimary-111 MuiButton-disabled-115 MuiButton-fullWidth-125 MuiButtonBase-disabled-49"
+        className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 continueButton button MuiButton-containedPrimary-42 MuiButton-disabled-46 MuiButton-fullWidth-56 MuiButtonBase-disabled-10"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -619,7 +615,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-103"
+          className="MuiButton-label-34"
         >
           <div
             className="buttonText"

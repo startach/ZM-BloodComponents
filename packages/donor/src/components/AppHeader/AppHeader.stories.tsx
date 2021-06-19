@@ -8,7 +8,6 @@ export default {
 };
 
 const props: AppHeaderProps = {
-  title: "כותרת",
   hasBackButton: false,
   hasBurgerMenu: false,
 };
@@ -18,6 +17,12 @@ const Template: Story<AppHeaderProps> = (args) => <AppHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+export const WithText = Template.bind({});
+WithText.args = {
+  ...props,
+  title: "כותרת",
 };
 
 export const WithBack = Template.bind({});

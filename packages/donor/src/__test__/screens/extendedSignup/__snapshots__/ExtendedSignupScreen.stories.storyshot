@@ -7,19 +7,15 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <h6
+        className="title"
       >
-        <h6
-          className="MuiTypography-root-39 title MuiTypography-h6-49"
-        >
-          סיום הרשמה
-        </h6>
-      </div>
-    </header>
+        סיום הרשמה
+      </h6>
+    </div>
     <div
       className="extendedSignup content"
     >
@@ -37,24 +33,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-82 MuiTextField-root-81 input MuiFormControl-fullWidth-85"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-98 MuiInputLabel-root-86 MuiInputLabel-formControl-92 MuiInputLabel-animated-95"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             שם פרטי
           </label>
           <div
-            className="MuiInputBase-root-120 MuiInput-root-106 MuiInput-underline-111 MuiInputBase-fullWidth-130 MuiInput-fullWidth-115 MuiInputBase-formControl-121 MuiInput-formControl-107"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-131 MuiInput-input-116"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -71,24 +67,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-82 MuiTextField-root-81 input MuiFormControl-fullWidth-85"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-98 MuiInputLabel-root-86 MuiInputLabel-formControl-92 MuiInputLabel-animated-95"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             שם משפחה
           </label>
           <div
-            className="MuiInputBase-root-120 MuiInput-root-106 MuiInput-underline-111 MuiInputBase-fullWidth-130 MuiInput-fullWidth-115 MuiInputBase-formControl-121 MuiInput-formControl-107"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-131 MuiInput-input-116"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -105,24 +101,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-82 MuiTextField-root-81 input MuiFormControl-fullWidth-85"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-98 MuiInputLabel-root-86 MuiInputLabel-formControl-92 MuiInputLabel-animated-95"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             מספר טלפון
           </label>
           <div
-            className="MuiInputBase-root-120 MuiInput-root-106 MuiInput-underline-111 MuiInputBase-fullWidth-130 MuiInput-fullWidth-115 MuiInputBase-formControl-121 MuiInput-formControl-107"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-131 MuiInput-input-116"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -148,7 +144,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -166,7 +162,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -180,7 +176,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -198,7 +194,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -212,7 +208,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -230,7 +226,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -244,7 +240,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -262,7 +258,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -276,7 +272,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -294,7 +290,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -308,7 +304,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -326,7 +322,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -340,7 +336,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -358,7 +354,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -372,7 +368,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -390,7 +386,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -404,7 +400,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-outlined-143 pickerButton bloodTypeButton button MuiButton-fullWidth-161"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -422,7 +418,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-139"
+                className="MuiButton-label-70"
               >
                 <div
                   className="buttonText"
@@ -438,7 +434,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="button"
       >
         <button
-          className="MuiButtonBase-root-167 MuiButton-root-138 MuiButton-contained-146 button MuiButton-containedPrimary-147 MuiButton-disabled-151 MuiButton-fullWidth-161 MuiButtonBase-disabled-168"
+          className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-contained-77 button MuiButton-containedPrimary-78 MuiButton-disabled-82 MuiButton-fullWidth-92 MuiButtonBase-disabled-99"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -456,7 +452,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-139"
+            className="MuiButton-label-70"
           >
             <div
               className="buttonText"

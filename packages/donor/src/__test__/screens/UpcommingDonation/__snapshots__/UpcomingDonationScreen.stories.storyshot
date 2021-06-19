@@ -7,52 +7,48 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          פרטי תור עתידי
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        פרטי תור עתידי
+      </h6>
+    </div>
     <div
       className="content"
     >
@@ -162,7 +158,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           className="cancelButtonContainer"
         >
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-102 MuiButton-contained-110 cancelButton button MuiButton-fullWidth-125"
+            className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 cancelButton button MuiButton-fullWidth-56"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -180,7 +176,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-103"
+              className="MuiButton-label-34"
             >
               <div
                 className="buttonText"

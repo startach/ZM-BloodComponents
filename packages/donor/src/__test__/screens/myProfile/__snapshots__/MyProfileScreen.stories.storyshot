@@ -7,52 +7,48 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
   <div
     className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
     >
-      <div
-        className="headerContainer"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <span
+          className="MuiIconButton-label-8"
         >
-          <span
-            className="MuiIconButton-label-47"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          פרופיל
-        </h6>
-      </div>
-    </header>
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        פרופיל
+      </h6>
+    </div>
     <div
       className="content"
     >
@@ -125,24 +121,24 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
+              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
               dir="rtl"
               onKeyPress={[Function]}
             >
               <label
-                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
                 data-shrink={true}
               >
                 שם פרטי
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
                 onClick={[Function]}
               >
                 <input
                   aria-invalid={false}
                   autoFocus={false}
-                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  className="MuiInputBase-input-83 MuiInput-input-68"
                   disabled={false}
                   onAnimationStart={[Function]}
                   onBlur={[Function]}
@@ -156,7 +152,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -174,7 +170,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-160"
+              className="MuiButton-label-91"
             >
               <div
                 className="buttonText"
@@ -247,24 +243,24 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
+              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
               dir="rtl"
               onKeyPress={[Function]}
             >
               <label
-                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
                 data-shrink={true}
               >
                 שם משפחה
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
                 onClick={[Function]}
               >
                 <input
                   aria-invalid={false}
                   autoFocus={false}
-                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  className="MuiInputBase-input-83 MuiInput-input-68"
                   disabled={false}
                   onAnimationStart={[Function]}
                   onBlur={[Function]}
@@ -278,7 +274,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -296,7 +292,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-160"
+              className="MuiButton-label-91"
             >
               <div
                 className="buttonText"
@@ -366,21 +362,21 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="drawer"
         >
           <div
-            className="MuiFormControl-root-103 makeStyles-root-188"
+            className="MuiFormControl-root-34 makeStyles-root-119"
           >
             <label
-              className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
               data-shrink={true}
             >
               סוג דם
             </label>
             <div
-              className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-formControl-142 MuiInput-formControl-128"
+              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-formControl-73 MuiInput-formControl-59"
               onClick={[Function]}
             >
               <select
                 aria-invalid={false}
-                className="MuiNativeSelect-root-189 MuiNativeSelect-select-190 MuiInputBase-input-152 MuiInput-input-137"
+                className="MuiNativeSelect-root-120 MuiNativeSelect-select-121 MuiInputBase-input-83 MuiInput-input-68"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -437,7 +433,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               </select>
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-51 MuiNativeSelect-icon-195"
+                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-126"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -447,11 +443,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               </svg>
             </div>
             <p
-              className="MuiFormHelperText-root-200 MuiFormHelperText-filled-206"
+              className="MuiFormHelperText-root-131 MuiFormHelperText-filled-137"
             />
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -469,7 +465,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-160"
+              className="MuiButton-label-91"
             >
               <div
                 className="buttonText"
@@ -542,24 +538,24 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             className="component"
           >
             <div
-              className="MuiFormControl-root-103 MuiTextField-root-102 input MuiFormControl-fullWidth-106"
+              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
               dir="rtl"
               onKeyPress={[Function]}
             >
               <label
-                className="MuiFormLabel-root-119 MuiInputLabel-root-107 MuiInputLabel-formControl-113 MuiInputLabel-animated-116 MuiInputLabel-shrink-115 MuiFormLabel-filled-124"
+                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
                 data-shrink={true}
               >
                 טלפון
               </label>
               <div
-                className="MuiInputBase-root-141 MuiInput-root-127 MuiInput-underline-132 MuiInputBase-fullWidth-151 MuiInput-fullWidth-136 MuiInputBase-formControl-142 MuiInput-formControl-128"
+                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
                 onClick={[Function]}
               >
                 <input
                   aria-invalid={false}
                   autoFocus={false}
-                  className="MuiInputBase-input-152 MuiInput-input-137"
+                  className="MuiInputBase-input-83 MuiInput-input-68"
                   disabled={false}
                   onAnimationStart={[Function]}
                   onBlur={[Function]}
@@ -573,7 +569,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-48 MuiButton-root-159 MuiButton-contained-167 drawerButton button MuiButton-containedPrimary-168 MuiButton-fullWidth-182"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -591,7 +587,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-160"
+              className="MuiButton-label-91"
             >
               <div
                 className="buttonText"
