@@ -30,6 +30,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         </div>
       </div>
       <div
+        className="subtitle"
+      >
+        פרטים אישיים
+      </div>
+      <div
         className="component"
       >
         <div
@@ -130,6 +135,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             />
           </div>
         </div>
+      </div>
+      <div
+        className="subtitle"
+      >
+        מידע חיוני לתרומה
       </div>
       <div>
         <div
@@ -457,7 +467,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             <div
               className="buttonText"
             >
-              סיום הרשמה
+              רשמו אותי
             </div>
           </span>
         </button>

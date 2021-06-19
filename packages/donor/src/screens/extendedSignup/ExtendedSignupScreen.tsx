@@ -54,6 +54,7 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
         חיים,
         <div className={styles.infoTextBold}>אנחנו צריכים כמה פרטים עליך:</div>
       </div>
+      <div className={styles.subtitle}>פרטים אישיים</div>
       <Input value={firstName} onChangeText={setFirstName} label="שם פרטי" />
       <Input
         value={lastName}
@@ -71,6 +72,7 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
             : undefined
         }
       />
+      <div className={styles.subtitle}>מידע חיוני לתרומה</div>
       <Picker
         label={"סוג דם"}
         value={bloodType}
@@ -81,7 +83,7 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
       <div className={styles.button}>
         <Button
           onClick={onSave}
-          title={"סיום הרשמה"}
+          title={"רשמו אותי"}
           isDisabled={!areAllFieldsValid}
         />
       </div>
