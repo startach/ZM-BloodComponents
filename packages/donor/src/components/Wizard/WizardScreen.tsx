@@ -11,7 +11,6 @@ import { ButtonVariant } from "../basic/Button";
 const useStyles = makeStyles({
   root: {
     flexDirection: "column",
-    fontFamily: "Rubik",
     backgroundColor: "#fff",
   },
 
@@ -28,55 +27,56 @@ const useStyles = makeStyles({
   },
 });
 
-interface page {
+interface wizardPage {
   imageUrl: string;
   title: string;
-  content: { text: string; bold: boolean }[];
+  content: { text: string; bold: boolean; link?: string; linkText?: string }[];
   buttonText: string;
   buttonVariant: ButtonVariant;
   buttonColor: PropTypes.Color;
 }
 export interface WizardScreenProps {
-  pages: Array<page>;
-  currentStep: number;
+  pages: wizardPage[];
   linkRow?: { text: string; linkText: string; link: string };
-  callBack: () => void;
+  onFinish: () => void;
 }
 
 export default function WizardScreen(props: WizardScreenProps) {
   const classes = useStyles();
-  const [currentStep, setCurrentStep] = useState(props.currentStep);
+  const [currentStep, setCurrentStep] = useState(0);
   const onNext = () => {
     if (currentStep < props.pages.length - 1) setCurrentStep(currentStep + 1);
-    else props.callBack();
+    else props.onFinish();
   };
   return (
-    <div>
-      <img src={props.pages[currentStep].imageUrl} alt="" />
+    <div className={styles.container}>
+      <img
+        className={styles.image}
+        src={props.pages[currentStep].imageUrl}
+        alt=""
+      />
       <Text className={styles.title}>{props.pages[currentStep].title}</Text>
       <div className={styles.content}>
         {props.pages[currentStep].content.map((key, index) => (
           <div>
             <Text
               key={index}
+              className={key.link ? styles.textLink : ""}
               style={
                 key.bold ? { fontWeight: "bold" } : { fontWeight: "normal" }
               }
             >
               {key.text}
+              {key.link ? (
+                <BrowserRouter>
+                  <Link className={styles.link} to={key.link}>
+                    {key.linkText}
+                  </Link>
+                </BrowserRouter>
+              ) : null}
             </Text>
           </div>
         ))}
-        {currentStep === 0 && props.linkRow ? (
-          <Text className={styles.textLink}>
-            {props.linkRow.text}{" "}
-            <BrowserRouter>
-              <Link className={styles.link} to={props.linkRow.link}>
-                {props.linkRow.linkText}
-              </Link>
-            </BrowserRouter>
-          </Text>
-        ) : null}
       </div>
       <MobileStepper
         variant="dots"

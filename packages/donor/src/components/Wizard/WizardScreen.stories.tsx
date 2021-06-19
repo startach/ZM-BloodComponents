@@ -26,6 +26,7 @@ const baseArgs: WizardScreenProps = {
           text: " העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
           bold: true,
         },
+        { text: "כבר רשום כתורם?", bold: true, link: "/", linkText: "התחברות" },
       ],
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
@@ -77,9 +78,8 @@ const baseArgs: WizardScreenProps = {
       buttonColor: "primary",
     },
   ],
-  currentStep: 0,
-  linkRow: { text: "כבר רשום כתורם?", linkText: "התחברות", link: "/" },
-  callBack: action("Callback"),
+
+  onFinish: action("Callback"),
 };
 
 const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
