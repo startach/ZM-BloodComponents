@@ -1,8 +1,3 @@
-.content {
-  box-sizing: border-box;
-  padding: var(--layout-distance-large);
-}
-
 .registerButton {
   width: 100%;
   border-radius: var(--border-radius-circlular) !important;
@@ -31,4 +26,12 @@
   margin: var(--layout-distance-large) 0;
   font-family: var(--font-family-titles);
   font-size: var(--text-size-lg);
+}
+
+.welcomeText {
+  display: flex;
+}
+
+.awaitingYouText {
+  font-weight: var(--font-content-weight-bold);
 }

@@ -4,7 +4,6 @@ import styles from "./UpcommingDonationScreen.module.scss";
 import Text from "../../components/basic/Text";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button, { ButtonVariant } from "../../components/basic/Button";
-import AwaitingYouHeader from "../../components/AwaitingYouHeader";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
@@ -15,7 +14,7 @@ export enum UpcomingDonationStates {
   beforeDonation = "beforeDonation",
 }
 
-interface UpcomingDonationScreenProps {
+export interface UpcomingDonationScreenProps {
   state: UpcomingDonationStates;
   bookedAppointment: BookedAppointment;
   lastDonation?: Date;
@@ -32,10 +31,6 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
   onConfirm,
 }: UpcomingDonationScreenProps) {
-  function renderHeader() {
-    return <AwaitingYouHeader firstName={firstName} />;
-  }
-
   function renderConfirmDonationTitle() {
     if (state === UpcomingDonationStates.afterDonation)
       return (
@@ -64,12 +59,17 @@ export default function UpcomingDonationScreen({
   }
 
   return (
-    <ZMScreen
-      className={styles.component}
-      title="תורים מתוכננים"
-      hasBurgerMenu={true}
-    >
-      {renderHeader()}
+    <ZMScreen title="פרטי תור עתידי" hasBurgerMenu={true}>
+      <span className={styles.welcomeText}>
+        <Text>שלום</Text>
+        &nbsp;
+        <Text />
+        <Text>{firstName},</Text>
+      </span>
+      <Text>
+        נרשמת לתרומה בקרוב.
+        <span className={styles.awaitingYouText}> מצפים לך!</span>
+      </Text>
       <main className={styles.content}>
         {renderConfirmDonationTitle()}
 
