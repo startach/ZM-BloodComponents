@@ -1,7 +1,11 @@
 import WizardScreen, { WizardScreenProps } from "./WizardScreen";
+import { Story } from "@storybook/react";
+import onboardingImg1 from "../../assets/icons/img-Onboarding-1.svg";
+import onboardingImg2 from "../../assets/icons/img-Onboarding-2.svg";
+import onboardingImg3 from "../../assets/icons/img-Onboarding-3.svg";
+import onboardingImg4 from "../../assets/icons/img-Onboarding-4.svg";
 import { ButtonVariant } from "../basic/Button";
 import { action } from "@storybook/addon-actions";
-import { Story } from "@storybook/react";
 
 export default {
   component: WizardScreen,
@@ -9,39 +13,76 @@ export default {
 };
 
 const baseArgs: WizardScreenProps = {
-  imageUrl:
-    "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60",
-  title: "איזה כיף שבאת!",
-  content:
-    "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
-  currentStep: 2,
-  totalNumberOfSteps: 4,
-  buttonText: "אישור והמשך",
-  buttonVariant: ButtonVariant.outlined,
+  pages: [
+    {
+      imageUrl: onboardingImg1,
+      title: "איזה כיף שבאת!",
+      content: [
+        {
+          text: "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים",
+        },
+        {
+          text: " העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
+          bold: true,
+        },
+        { text: "כבר רשום כתורם?", bold: true, link: "/", linkText: "התחברות" },
+      ],
+      buttonText: "הבא",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
+    },
+    {
+      imageUrl: onboardingImg2,
+      title: "רגע, מה זה בכלל?",
+      content: [
+        {
+          text: "טרומבוציטים (טסיות דם) הינם מרכיב בדם המהווה חלק מרכזי במנגנון הקרישה של הדם. בשונה מתרומת דם רגילה, בתרומה זו, האורכת כשעתיים, מסננים רק את הטסיות, ושאר הדם מוחזר לגוף.",
+        },
+        // { text: ""},
+      ],
+      buttonText: "הבא",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
+    },
+    {
+      imageUrl: onboardingImg3,
+      title: "רגע, מה זה בכלל? 2",
+      content: [
+        {
+          text: "מנת טרומבוציטים טובה לחמישה ימים בלבד, ולכן הצורך התמידי בתרומות שוטפות.",
+          bold: true,
+        },
+        {
+          text: " באמצעות האפליקציה תוכלו לקבוע תורים בקלות ולפי זמינות התורים בבתי החולים",
+        },
+      ],
+      buttonText: "הבא",
+      buttonVariant: ButtonVariant.outlined,
+      buttonColor: "default",
+    },
+    {
+      imageUrl: onboardingImg4,
+      title: "מי יכולים לתרום?",
+      content: [
+        {
+          text: "כל מי שמעל גיל 17 ושעברו שאלון התאמה לתרומה בעת הרשמה לתור באפליקציה,",
+        },
+        { text: " יכולים לתרום ולהציל חיים כבר עכשיו!" },
+      ],
+      buttonText: "בואו נתחיל",
+      buttonVariant: ButtonVariant.contained,
+      buttonColor: "primary",
+    },
+  ],
 
-  onNext: action("onNext"),
-  onPrev: action("onPrev"),
-  onClick: action("onClick"),
+  onFinish: action("Callback"),
 };
 
 const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
   <WizardScreen {...args} />
 );
 
-export const FirstStep = Template.bind({});
-FirstStep.args = {
+export const Wizard = Template.bind({});
+Wizard.args = {
   ...baseArgs,
-  currentStep: 0,
-  onPrev: undefined,
-};
-
-export const MiddleStep = Template.bind({});
-MiddleStep.args = baseArgs;
-
-export const LastStep = Template.bind({});
-LastStep.args = {
-  ...baseArgs,
-  currentStep: 3,
-  onNext: undefined,
-  buttonVariant: ButtonVariant.contained,
 };
