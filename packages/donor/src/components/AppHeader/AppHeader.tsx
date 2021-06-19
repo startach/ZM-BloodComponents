@@ -36,10 +36,6 @@ export default function AppHeader({
   const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
 
-  if (!title) {
-    console.error("Unknown pathname");
-  }
-
   let icon = null;
   if (hasBurgerMenu) {
     icon = (

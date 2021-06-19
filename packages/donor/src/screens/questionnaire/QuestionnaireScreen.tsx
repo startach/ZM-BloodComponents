@@ -13,6 +13,7 @@ import {
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Picker from "../../components/basic/Picker";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
+import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -124,7 +125,7 @@ export default function QuestionnaireScreen({
   const wrongAnswerPopupTitle = "מודים לך על הכוונה הטובה!";
 
   const wrongAnswerPopupContent =
-    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה.\n לבירור בבקשה ליצור קשר בנק מרכיבי הדם - 058-7100571";
+    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
 
   const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
 
@@ -196,6 +197,9 @@ export default function QuestionnaireScreen({
         open={!!isWrongAnswerChosen}
         title={wrongAnswerPopupTitle}
         content={wrongAnswerPopupContent}
+        image={WhatsappIcon}
+        goBackText={"חזרה לרשימת התורים"}
+        onBack={goToHomePage}
         onApproved={() => {
           if (!hasAlreadyDonated) {
             setHasAlreadyDonated(undefined);

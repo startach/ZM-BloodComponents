@@ -25,9 +25,9 @@ export default function PopupV2({
   return (
     <Dialog fullWidth open={open} onClose={onBack}>
       <div className={styles.container}>
-        {image && <img src={image} alt={"popup"} />}
+        {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
-          <h2>{title}</h2>
+          <div className={styles.popupTextTitle}>{title}</div>
           <div>{content}</div>
         </div>
         <div className={styles.buttonContainer}>

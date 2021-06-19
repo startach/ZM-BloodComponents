@@ -24,7 +24,7 @@ export default function Picker<T>({
       <div className={styles.pickerLabel}>{label}</div>
       <div className={styles.pickerButtons}>
         {options.map((option) => (
-          <div className={styles.pickerButtonContainer}>
+          <div className={styles.pickerButtonContainer} key={option.key}>
             <Button
               title={option.label}
               onClick={() => onChange(option!.value)}

@@ -8,7 +8,6 @@ import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenK
 import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
 import RegisterScreenContainer from "../screens/authentication/register/RegisterScreenContainer";
 import SignInScreenContainer from "../screens/authentication/signin/SignInScreenContainer";
-import { MainNavigationKeys } from "./app/MainNavigationKeys";
 
 export default function AuthenticationRouter() {
   return (
