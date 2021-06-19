@@ -2,6 +2,7 @@ import { DateUtils, Hospital } from "@zm-blood-components/common";
 import AppointmentPicker from "./AppointmentPicker";
 import { action } from "@storybook/addon-actions";
 import { DonationDay, DonationSlot } from "../../utils/AppointmentsGrouper";
+import styles from "./AppointmentPicker.module.scss";
 
 export default {
   component: AppointmentPicker,
@@ -25,10 +26,33 @@ export const Default = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "lightgray", padding: 20 }}>
+    <div className={styles.storyBackground}>
       <AppointmentPicker
         onSlotSelected={action("Selected")}
         donationDay={donationDay}
+        showHospitalName={true}
+      />
+    </div>
+  );
+};
+
+export const NoHospitalName = () => {
+  const donationDay: DonationDay = {
+    day: DateUtils.ToDateString(new Date(2021, 5, 13)),
+    hospitalSlots: [
+      {
+        hospital: Hospital.TEL_HASHOMER,
+        slots: generateSlots(9),
+      },
+    ],
+  };
+
+  return (
+    <div className={styles.storyBackground}>
+      <AppointmentPicker
+        onSlotSelected={action("Selected")}
+        donationDay={donationDay}
+        showHospitalName={false}
       />
     </div>
   );

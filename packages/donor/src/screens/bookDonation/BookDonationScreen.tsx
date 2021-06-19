@@ -105,6 +105,7 @@ function Donations(
       key={donationDay.day}
       donationDay={donationDay}
       onSlotSelected={onSlotSelected}
+      showHospitalName={selectedHospital === ""}
     />
   ));
 }

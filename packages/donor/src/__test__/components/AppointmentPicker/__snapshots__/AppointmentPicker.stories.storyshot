@@ -5,12 +5,7 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
   dir="rtl"
 >
   <div
-    style={
-      Object {
-        "backgroundColor": "lightgray",
-        "padding": 20,
-      }
-    }
+    className="storyBackground"
   >
     <div>
       <div
@@ -470,6 +465,330 @@ exports[`Storyshots COMPONENTS V2/Appointment Picker Default 1`] = `
                     className="buttonText"
                   >
                     14:15
+                  </div>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots COMPONENTS V2/Appointment Picker No Hospital Name 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="storyBackground"
+  >
+    <div>
+      <div
+        className="title"
+      >
+        תורים פנויים
+      </div>
+      <div
+        className="dayTitle"
+      >
+        יום ראשון, 13/06/2021
+      </div>
+      <div
+        className="MuiPaper-root-1 MuiCard-root-0 hospitalCard MuiPaper-elevation1-5 MuiPaper-rounded-2"
+      >
+        <div>
+          <div
+            className="pickerLabel"
+          />
+          <div
+            className="pickerButtons"
+          >
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    12:00
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    12:45
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    13:30
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    14:15
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    15:00
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    15:45
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    16:30
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    17:15
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-30"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    18:00
                   </div>
                 </span>
               </button>

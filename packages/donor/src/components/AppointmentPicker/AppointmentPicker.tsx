@@ -16,11 +16,13 @@ import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 export interface AppointmentPickerProps {
   donationDay: DonationDay;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
+  showHospitalName: boolean;
 }
 
 function AppointmentPicker({
   donationDay,
   onSlotSelected,
+  showHospitalName,
 }: AppointmentPickerProps) {
   const dayString = `${DateUtils.ToWeekDayString(
     donationDay.day,
@@ -36,6 +38,7 @@ function AppointmentPicker({
         <HospitalCard
           key={hospitalDaySlots.hospital + hospitalDaySlots.slots.length}
           hospitalDaySlots={hospitalDaySlots}
+          showHospitalName={showHospitalName}
           onSlotSelected={(slot) => {
             onSlotSelected({
               ...slot,
@@ -51,6 +54,7 @@ function AppointmentPicker({
 function HospitalCard(props: {
   hospitalDaySlots: HospitalDaySlots;
   onSlotSelected: (donationSlot: DonationSlot) => void;
+  showHospitalName: boolean;
 }) {
   const options = props.hospitalDaySlots.slots.map<SelectOption<DonationSlot>>(
     (slot) => ({
@@ -66,7 +70,9 @@ function HospitalCard(props: {
 
   return (
     <Card className={styles.hospitalCard}>
-      <div className={styles.hospitalName}>{hospitalName} </div>
+      {props.showHospitalName && (
+        <div className={styles.hospitalName}>{hospitalName} </div>
+      )}
       <Picker options={options} onChange={props.onSlotSelected} />
     </Card>
   );
