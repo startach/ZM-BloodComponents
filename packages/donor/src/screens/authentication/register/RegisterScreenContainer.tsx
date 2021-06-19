@@ -2,6 +2,7 @@ import RegisterScreen from "./RegisterScreen";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { useHistory } from "react-router-dom";
+import { AuthenticationScreenKeys } from "../../../navigation/authentication/AuthenticationScreenKeys";
 
 export default function RegisterScreenContainer() {
   const history = useHistory();
@@ -21,7 +22,7 @@ export default function RegisterScreenContainer() {
   };
 
   const goToSignIn = () => {
-    history.goBack();
+    history.push(AuthenticationScreenKeys.Login);
   };
 
   return <RegisterScreen onRegister={onRegister} goToSignIn={goToSignIn} />;

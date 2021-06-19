@@ -18,7 +18,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
-import FeedbackOutlinedIcon from '@material-ui/icons/FeedbackOutlined';
+import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 
 export interface AppHeaderProps {
   title?: string;
