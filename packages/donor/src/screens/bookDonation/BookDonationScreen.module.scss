@@ -1,11 +1,48 @@
 .bookDonationScreen {
-  background-color: var(--color-light-grey);
+  background-color: var(--color-background-gray);
 }
 
 .welcomeTitle {
   width: 100%;
+  position: relative;
   font-size: 22px;
-  padding-bottom: 20px;
+  padding-right: 20px;
+  background-image: linear-gradient(
+    54deg,
+    #fbbae2,
+    #fbc5e5,
+    #fcd9eb,
+    #fce5ee,
+    #fdeaf0
+  );
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.illustration {
+  position: absolute;
+  height: 160px;
+  left: 20px;
+}
+
+.name {
+  z-index: 10;
+  max-width: 60%;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+.welcomeText {
+  z-index: 10;
+  max-width: 60%;
+}
+
+.screenContent {
+  margin: 20px;
 }
 
 .dropdownContainer {
@@ -23,5 +60,6 @@
 }
 
 .availableAppointmentsTitle {
+  color: var(--color-info);
   font-size: 14px;
 }

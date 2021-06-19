@@ -14,6 +14,7 @@ import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import Illustration from "../../assets/images/home page-illustration.png";
 
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
@@ -42,29 +43,43 @@ export default function BookDonationScreen({
 
   return (
     <ZMScreen
-      title="הרשמה לתור"
       hasBurgerMenu={true}
       className={styles.bookDonationScreen}
+      fullWidth={true}
     >
-      <div className={styles.welcomeTitle}>שמחים לראות אותך, {firstName}!</div>
-
-      <div className={styles.dropdownContainer}>
-        מתי מתאים לך להגיע לתרום?
-        <Select
-          className={styles.dropdown}
-          options={HospitalUtils.getAllHospitalOptions("הכל")}
-          value={selectedHospital}
-          onChange={setSelectedHospital}
-          isDisabled={isFetching}
+      <div className={styles.welcomeTitle}>
+        <img
+          src={Illustration}
+          alt={"illustration"}
+          className={styles.illustration}
         />
+        <div className={styles.name}>היי {firstName}</div>
+        <div className={styles.welcomeText}>
+          איזה כיף שבאת!
+          <br />
+          מתי מתאים לך לתרום?
+        </div>
       </div>
 
-      {Donations(
-        selectedHospital,
-        isFetching,
-        sortedDonationDays,
-        onSlotSelected
-      )}
+      <div className={styles.screenContent}>
+        <div className={styles.dropdownContainer}>
+          <Select
+            label={"הצג תורים ב:"}
+            className={styles.dropdown}
+            options={HospitalUtils.getAllHospitalOptions("הכל")}
+            value={selectedHospital}
+            onChange={setSelectedHospital}
+            isDisabled={isFetching}
+          />
+        </div>
+
+        {Donations(
+          selectedHospital,
+          isFetching,
+          sortedDonationDays,
+          onSlotSelected
+        )}
+      </div>
     </ZMScreen>
   );
 }

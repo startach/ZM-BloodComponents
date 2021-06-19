@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button, { ButtonVariant } from "../../../components/basic/Button";
 import styles from "../signin//SignInScreen.module.scss";
 import Input from "../../../components/basic/Input";
-import Logo from "../../logo/Logo";
 import { Color } from "../../../constants/colors";
 import ZMScreen from "../../../components/basic/ZMScreen";
 import SignUpIllustration from "../../../assets/images/SignUp-illustration.svg";

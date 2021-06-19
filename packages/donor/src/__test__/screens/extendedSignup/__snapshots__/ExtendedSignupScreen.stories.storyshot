@@ -17,7 +17,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
       </h6>
     </div>
     <div
-      className="extendedSignup content"
+      className="extendedSignup content padding"
     >
       <div
         className="infoText"

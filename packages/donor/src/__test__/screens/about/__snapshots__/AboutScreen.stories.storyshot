@@ -50,7 +50,7 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
       </h6>
     </div>
     <div
-      className="content"
+      className="content padding"
     >
       <div
         className="logoContainer medium"

@@ -9,6 +9,7 @@ interface ExtendedSignupScreenProps {
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
   title?: string;
+  fullWidth?: boolean;
 }
 
 export default function ZMScreen({
@@ -17,7 +18,13 @@ export default function ZMScreen({
   hasBackButton,
   hasBurgerMenu,
   title,
+  fullWidth = false,
 }: ExtendedSignupScreenProps) {
+  const contentClassNames = [className, styles.content];
+  if (!fullWidth) {
+    contentClassNames.push(styles.padding);
+  }
+
   return (
     <div className={styles.component}>
       <AppHeader
@@ -25,7 +32,7 @@ export default function ZMScreen({
         hasBurgerMenu={hasBurgerMenu}
         hasBackButton={hasBackButton}
       />
-      <div className={classnames(className, styles.content)}>{children}</div>
+      <div className={classnames(contentClassNames)}>{children}</div>
     </div>
   );
 }

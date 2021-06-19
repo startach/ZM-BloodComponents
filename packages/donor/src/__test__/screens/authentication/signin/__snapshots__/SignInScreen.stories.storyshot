@@ -21,7 +21,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
       </div>
     </div>
     <div
-      className="screenSection content"
+      className="screenSection content padding"
     >
       <div
         className="screenContent"

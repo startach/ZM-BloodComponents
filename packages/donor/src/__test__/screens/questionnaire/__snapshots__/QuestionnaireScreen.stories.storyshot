@@ -50,88 +50,35 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
       </h6>
     </div>
     <div
-      className="content"
+      className="screen content"
     >
       <div
         className="donationInfo"
       >
+        <img
+          alt="Appointment"
+          className="illustration"
+          src="AppointmentCalendar.svg"
+        />
         <div
-          className="donationInfoTitle"
+          className="donationInfoText"
         >
-          פרטי התור הנבחר
-        </div>
-        <div
-          className="component"
-        >
-          <button
-            className="component"
+          <div
+            className="infoTitle"
           >
-            <img
-              alt="בילינסון button"
-              className="icon"
-              src="locationPin.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                בילינסון
-              </div>
-            </div>
-          </button>
-          <button
-            className="component"
+            פרטי התור הנבחר
+          </div>
+          <div
+            className="appointmentDetails"
           >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="calendar.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                יום שישי
-              </div>
-              <div>
-                13/08/2021
-              </div>
-            </div>
-          </button>
-          <button
-            className="component"
-          >
-            <img
-              alt="12:00 button"
-              className="icon"
-              src="clock.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                12:00
-              </div>
-            </div>
-          </button>
+            יום שישי
+            ,
+             
+            13/08/2021
+            ,
+             
+            בילינסון
+          </div>
         </div>
       </div>
       <div
@@ -140,7 +87,12 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         <div
           className="questionnaireTitle"
         >
-          על מנת לוודא התאמה יש למלא את השאלון
+          שאלון התאמה לתרומת טרומבוציטים
+        </div>
+        <div
+          className="questionnaireText"
+        >
+          עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
         </div>
         <div
           className="question"
@@ -538,11 +490,29 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           </div>
         </div>
         <div
+          className="notesTitle"
+        >
+          ידוע לי שאוכל לתרום רק אם:
+        </div>
+        <div
           className="notesText"
         >
-          נציין שבהמשך מתאמ/ת בית החולים ת/יצור עמך קשר להמשך וידוא התאמה.
+          <li>
+            אין לי פצע פתוח/שריטה.
+          </li>
+          <li>
+            לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.
+          </li>
+          <li>
+            לא עברת טיפול שיניים ב-10 ימים שלפני התרומה.
+          </li>
+        </div>
+        <div
+          className="notesDetails"
+        >
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
           <br />
-          כמו כן, ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
+          אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
         </div>
         <div
           className="confirmButtonContainer"
@@ -595,35 +565,35 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             </span>
           </label>
         </div>
-      </div>
-      <button
-        className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 continueButton button MuiButton-containedPrimary-42 MuiButton-disabled-46 MuiButton-fullWidth-56 MuiButtonBase-disabled-10"
-        disabled={true}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={-1}
-        type="button"
-      >
-        <span
-          className="MuiButton-label-34"
+        <button
+          className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 button MuiButton-containedPrimary-42 MuiButton-disabled-46 MuiButton-fullWidth-56 MuiButtonBase-disabled-10"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
         >
-          <div
-            className="buttonText"
+          <span
+            className="MuiButton-label-34"
           >
-            המשך
-          </div>
-        </span>
-      </button>
+            <div
+              className="buttonText"
+            >
+              המשך
+            </div>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

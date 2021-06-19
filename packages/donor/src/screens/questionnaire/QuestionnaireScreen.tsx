@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
-import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import { FunctionsApi, SelectOption } from "@zm-blood-components/common";
+import {
+  DateUtils,
+  FunctionsApi,
+  LocaleUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Picker from "../../components/basic/Picker";
+import Calendar from "../../assets/images/AppointmentCalendar.svg";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -122,20 +126,38 @@ export default function QuestionnaireScreen({
   const wrongAnswerPopupContent =
     "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה.\n לבירור בבקשה ליצור קשר בנק מרכיבי הדם - 058-7100571";
 
+  const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
+
   return (
-    <ZMScreen title="שאלון התאמה" hasBackButton>
+    <ZMScreen
+      title="שאלון התאמה"
+      hasBackButton
+      fullWidth
+      className={styles.screen}
+    >
       <div className={styles.donationInfo}>
-        <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
-        <DonationInfoIcons
-          hospital={bookableAppointment.hospital}
-          donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
+        <img
+          src={Calendar}
+          alt={"Appointment"}
+          className={styles.illustration}
         />
+        <div className={styles.donationInfoText}>
+          <div className={styles.infoTitle}>פרטי התור הנבחר</div>
+          <div className={styles.appointmentDetails}>
+            {DateUtils.ToWeekDayString(donationDate)},{" "}
+            {DateUtils.ToDateString(donationDate)},{" "}
+            {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
+          </div>
+        </div>
       </div>
 
       <div className={styles.questionnaireSection}>
-        <Text className={styles.questionnaireTitle}>
-          על מנת לוודא התאמה יש למלא את השאלון
-        </Text>
+        <div className={styles.questionnaireTitle}>
+          שאלון התאמה לתרומת טרומבוציטים
+        </div>
+        <div className={styles.questionnaireText}>
+          עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
+        </div>
 
         <div className={styles.question}>{WasPregnant}</div>
         <div className={styles.question}>{HaveYouAlreadyDonated}</div>
@@ -143,22 +165,29 @@ export default function QuestionnaireScreen({
         <div className={styles.question}>{IsWeightValid}</div>
         <div className={styles.question}>{IsSurgeryValid}</div>
 
+        <div className={styles.notesTitle}>ידוע לי שאוכל לתרום רק אם:</div>
+
         <div className={styles.notesText}>
-          נציין שבהמשך מתאמ/ת בית החולים ת/יצור עמך קשר להמשך וידוא התאמה.
+          <li>אין לי פצע פתוח/שריטה.</li>
+          <li>לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.</li>
+          <li>לא עברת טיפול שיניים ב-10 ימים שלפני התרומה.</li>
+        </div>
+
+        <div className={styles.notesDetails}>
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
           <br />
-          כמו כן, ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
+          אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
-      </div>
 
-      <Button
-        className={styles.continueButton}
-        isDisabled={!debugMode && !isVerified}
-        onClick={onSuccess}
-        title={"המשך"}
-        isLoading={isLoading}
-      />
+        <Button
+          isDisabled={!debugMode && !isVerified}
+          onClick={onSuccess}
+          title={"המשך"}
+          isLoading={isLoading}
+        />
+      </div>
 
       <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
 
