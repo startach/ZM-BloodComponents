@@ -170,7 +170,7 @@ export default function QuestionnaireScreen({
         <div className={styles.notesText}>
           <li>אין לי פצע פתוח/שריטה.</li>
           <li>לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.</li>
-          <li>לא עברת טיפול שיניים ב-10 ימים שלפני התרומה.</li>
+          <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
         </div>
 
         <div className={styles.notesDetails}>

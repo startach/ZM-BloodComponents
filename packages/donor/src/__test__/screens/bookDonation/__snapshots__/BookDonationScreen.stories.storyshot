@@ -75,7 +75,7 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
         >
           איזה כיף שבאת!
           <br />
-          מתי מתאים לך לתרום?
+          מתי יתאים לך לתרום?
         </div>
       </div>
       <div
@@ -250,7 +250,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         >
           איזה כיף שבאת!
           <br />
-          מתי מתאים לך לתרום?
+          מתי יתאים לך לתרום?
         </div>
       </div>
       <div
@@ -847,7 +847,7 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
         >
           איזה כיף שבאת!
           <br />
-          מתי מתאים לך לתרום?
+          מתי יתאים לך לתרום?
         </div>
       </div>
       <div

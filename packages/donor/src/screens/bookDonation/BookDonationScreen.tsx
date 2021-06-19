@@ -57,7 +57,7 @@ export default function BookDonationScreen({
         <div className={styles.welcomeText}>
           איזה כיף שבאת!
           <br />
-          מתי מתאים לך לתרום?
+          מתי יתאים לך לתרום?
         </div>
       </div>
 
