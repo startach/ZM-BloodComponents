@@ -12,14 +12,13 @@ const props: MyProfileScreenProps = {
   user: {
     id: "123",
     firstName: "משה",
-    lastName: "משה",
+    lastName: "כהן",
     email: "email",
     phone: "052-1234567",
     bloodType: BloodType.A_MINUS,
     birthDate: "2020-01-14",
   },
   onSave: action("onSave"),
-  appVersion: "storybook version",
 };
 
 export const Default = (args: MyProfileScreenProps) => (

@@ -56,8 +56,8 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
     <div
       className="content"
     >
-      <header
-        className="component component"
+      <div
+        className="component"
       >
         <div
           className="textBold"
@@ -67,7 +67,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
         <div>
           מוזמנים ליצור קשר בכל שאלה, בקשה או הערה
         </div>
-      </header>
+      </div>
       <div
         className="contentContainer"
       >

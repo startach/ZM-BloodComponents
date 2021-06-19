@@ -25,6 +25,8 @@ export interface AppHeaderProps {
   className?: string;
 }
 
+const appVersion = process.env.REACT_APP_VERSION || "dev";
+
 export default function AppHeader({
   hasBackButton,
   title,
@@ -90,6 +92,8 @@ export default function AppHeader({
           onClick={() => firebase.auth().signOut()}
           icon={<LockOutlinedIcon />}
         />
+
+        <div className={styles.version}>{appVersion}</div>
       </Drawer>
     </AppBar>
   );

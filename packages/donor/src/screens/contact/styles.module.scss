@@ -1,5 +1,6 @@
 .component {
   font-size: var(--text-size-sm);
+  text-align: center;
 }
 
 .textBold {
@@ -7,9 +8,9 @@
 }
 
 .contentContainer {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
 }
 
 .contentLine {

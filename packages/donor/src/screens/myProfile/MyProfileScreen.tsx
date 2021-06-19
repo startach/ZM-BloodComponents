@@ -7,7 +7,6 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import Text from "../../components/basic/Text";
-import HeaderSection from "../../components/HeaderSection";
 import styles from "./MyProfileScreen.module.scss";
 import Card from "../../components/basic/Card";
 import Button from "../../components/basic/Button";
@@ -34,12 +33,10 @@ export interface MyProfileScreenProps {
 }
 
 const SHOW_DONATION_COUNT = false;
-const defaultAppVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function MyProfileScreen({
   user,
   onSave,
-  appVersion = defaultAppVersion,
 }: MyProfileScreenProps) {
   const renderDonationCount = () => {
     if (!SHOW_DONATION_COUNT) {
@@ -65,9 +62,9 @@ export default function MyProfileScreen({
 
   return (
     <ZMScreen hasBackButton title="פרופיל">
-      <HeaderSection className={styles.component}>
+      <div className={styles.title}>
         <Text>{`${user.firstName} ${user.lastName}`}</Text>
-      </HeaderSection>
+      </div>
 
       {renderDonationCount()}
 
@@ -100,9 +97,6 @@ export default function MyProfileScreen({
         inputLabel={"טלפון"}
         onChange={onFieldChange("phone")}
       />
-      <div className={styles.footer}>
-        <Text className={styles.appVersion}>{appVersion}</Text>
-      </div>
     </ZMScreen>
   );
 }

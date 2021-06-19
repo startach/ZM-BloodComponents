@@ -56,13 +56,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
     <div
       className="content"
     >
-      <header
-        className="component component"
+      <div
+        className="title"
       >
         <div>
-          משה משה
+          משה כהן
         </div>
-      </header>
+      </div>
       <div
         className="component card"
       >
@@ -210,7 +210,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             />
           </button>
           <div>
-            משה
+            כהן
           </div>
         </div>
         <button
@@ -272,7 +272,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                   onFocus={[Function]}
                   required={false}
                   type="text"
-                  value="משה"
+                  value="כהן"
                 />
               </div>
             </div>
@@ -600,15 +600,6 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               </div>
             </span>
           </button>
-        </div>
-      </div>
-      <div
-        className="footer"
-      >
-        <div
-          className="appVersion"
-        >
-          storybook version
         </div>
       </div>
     </div>
