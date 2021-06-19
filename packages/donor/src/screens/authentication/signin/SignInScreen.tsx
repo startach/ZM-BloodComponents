@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Button, { ButtonVariant } from "../../components/basic/Button";
-import Logo from "../logo/Logo";
+import Button, { ButtonVariant } from "../../../components/basic/Button";
+import Logo from "../../logo/Logo";
 import styles from "./SignInScreen.module.scss";
-import Input from "../../components/basic/Input";
-import { Color } from "../../constants/colors";
+import Input from "../../../components/basic/Input";
+import { Color } from "../../../constants/colors";
 
 export interface SignInScreenProps {
   onRegister: () => void;

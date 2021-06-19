@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Input from "../../components/basic/Input";
-import Button, { ButtonVariant } from "../../components/basic/Button";
-import Logo from "../logo/Logo";
+import Input from "../../../components/basic/Input";
+import Button, { ButtonVariant } from "../../../components/basic/Button";
+import Logo from "../../logo/Logo";
 import styles from "../signin//SignInScreen.module.scss";
-import { Color } from "../../constants/colors";
+import { Color } from "../../../constants/colors";
 
 export interface ResetPasswordScreenProps {
   onResetPassword: (email: string, error: (error: string) => void) => void;

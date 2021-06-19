@@ -1,5 +1,5 @@
 import SignInScreen from "./SignInScreen";
-import { AuthenticationScreenKeys } from "../../navigation/authentication/AuthenticationScreenKeys";
+import { AuthenticationScreenKeys } from "../../../navigation/authentication/AuthenticationScreenKeys";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { useHistory } from "react-router-dom";

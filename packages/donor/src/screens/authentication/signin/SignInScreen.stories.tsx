@@ -1,6 +1,6 @@
 import SignInScreen, { SignInScreenProps } from "./SignInScreen";
 import { action } from "@storybook/addon-actions";
-import { wait } from "../../__test__/DonorTestUtils";
+import { wait } from "../../../__test__/DonorTestUtils";
 
 export default {
   component: SignInScreen,

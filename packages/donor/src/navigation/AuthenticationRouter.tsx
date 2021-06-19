@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenKeys";
-import ResetPasswordScreenContainer from "../screens/resetpassword/ResetPasswordScreenContainer";
-import RegisterScreenContainer from "../screens/register/RegisterScreenContainer";
-import SignInScreenContainer from "../screens/signin/SignInScreenContainer";
+import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
+import RegisterScreenContainer from "../screens/authentication/register/RegisterScreenContainer";
+import SignInScreenContainer from "../screens/authentication/signin/SignInScreenContainer";
 
 export default function AuthenticationRouter() {
   return (
