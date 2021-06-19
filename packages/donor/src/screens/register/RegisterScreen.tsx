@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button, { ButtonVariant } from "../../components/basic/Button";
-import SafeScreen from "../../components/basic/SafeScreen";
 import styles from "../signin//SignInScreen.module.scss";
 import Input from "../../components/basic/Input";
 import Logo from "../logo/Logo";
@@ -29,7 +28,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
   };
 
   return (
-    <SafeScreen className={styles.screenSection}>
+    <div className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>הרשמה</div>
       <Input
@@ -70,7 +69,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           className={styles.alternativeButton}
         />
       </div>
-    </SafeScreen>
+    </div>
   );
 };
 

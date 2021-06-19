@@ -5,7 +5,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
   dir="rtl"
 >
   <div
-    className="component screenSection safe-screen-padding-top safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+    className="screenSection"
   >
     <div
       className="logoContainer medium"

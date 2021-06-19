@@ -5,10 +5,10 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
   dir="rtl"
 >
   <div
-    className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+    className="component"
   >
     <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 safe-screen-padding-top MuiPaper-elevation4-18"
+      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorPrimary-7 MuiPaper-elevation4-18"
     >
       <div
         className="headerContainer"

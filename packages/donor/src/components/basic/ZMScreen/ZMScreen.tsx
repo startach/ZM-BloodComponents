@@ -2,7 +2,6 @@ import React from "react";
 import AppHeader from "../../AppHeader";
 import styles from "./ZMScreen.module.scss";
 import classnames from "classnames";
-import SafeScreen from "../SafeScreen";
 
 interface ExtendedSignupScreenProps {
   children: React.ReactNode;
@@ -20,14 +19,13 @@ export default function ZMScreen({
   title,
 }: ExtendedSignupScreenProps) {
   return (
-    <SafeScreen disableTopPadding className={styles.component}>
+    <div className={styles.component}>
       <AppHeader
-        className={"safe-screen-padding-top"}
         title={title}
         hasBurgerMenu={hasBurgerMenu}
         hasBackButton={hasBackButton}
       />
       <div className={classnames(className, styles.content)}>{children}</div>
-    </SafeScreen>
+    </div>
   );
 }

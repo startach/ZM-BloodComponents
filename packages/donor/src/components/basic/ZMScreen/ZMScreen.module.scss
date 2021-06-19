@@ -1,8 +1,10 @@
 .component {
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 .content {
-  flex-grow: 1;
-  overflow: auto;
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
 }

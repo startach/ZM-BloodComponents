@@ -1,10 +1,9 @@
-import { useState } from "react";
-import SafeScreen from "../../components/basic/SafeScreen";
-import Button, { ButtonVariant } from "../../components/basic/Button";
+import {useState} from "react";
+import Button, {ButtonVariant} from "../../components/basic/Button";
 import Logo from "../logo/Logo";
 import styles from "./SignInScreen.module.scss";
 import Input from "../../components/basic/Input";
-import { Color } from "../../constants/colors";
+import {Color} from "../../constants/colors";
 
 export interface SignInScreenProps {
   onRegister: () => void;
@@ -36,7 +35,7 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <SafeScreen className={styles.screenSection}>
+    <div className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>התחברות</div>
       <Input
@@ -87,6 +86,6 @@ export default function SignInScreen(props: SignInScreenProps) {
           className={styles.alternativeButton}
         />
       </div>
-    </SafeScreen>
+    </div>
   );
 }

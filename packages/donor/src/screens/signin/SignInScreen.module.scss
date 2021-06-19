@@ -1,7 +1,10 @@
 .screenSection {
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-y: auto;
+  padding: 10px 30px;
 }
 
 .title {
@@ -30,7 +33,7 @@
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  padding-top: 25px;
+  padding: 25px 0;
 }
 
 .alternativeTitle {

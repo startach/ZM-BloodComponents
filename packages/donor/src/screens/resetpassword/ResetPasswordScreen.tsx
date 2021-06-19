@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SafeScreen from "../../components/basic/SafeScreen";
 import Input from "../../components/basic/Input";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import Logo from "../logo/Logo";
@@ -20,7 +19,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   };
 
   return (
-    <SafeScreen className={styles.screenSection}>
+    <div className={styles.screenSection}>
       <Logo />
       <div className={styles.title}>איפוס סיסמה</div>
       <Input
@@ -48,6 +47,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           color={Color.Secondary}
         />
       </div>
-    </SafeScreen>
+    </div>
   );
 }
