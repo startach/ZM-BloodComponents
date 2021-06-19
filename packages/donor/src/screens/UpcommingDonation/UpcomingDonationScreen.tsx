@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BookedAppointment } from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
 import Text from "../../components/basic/Text";
-import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import AwaitingYouHeader from "../../components/AwaitingYouHeader";
@@ -34,14 +33,6 @@ export default function UpcomingDonationScreen({
   onConfirm,
 }: UpcomingDonationScreenProps) {
   function renderHeader() {
-    if (state === UpcomingDonationStates.afterDonation)
-      return (
-        <LastDonationDateHeader
-          firstName={firstName}
-          lastDonation={lastDonation}
-        />
-      );
-
     return <AwaitingYouHeader firstName={firstName} />;
   }
 
