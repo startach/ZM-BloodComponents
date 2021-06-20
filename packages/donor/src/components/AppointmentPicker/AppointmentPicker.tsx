@@ -11,6 +11,7 @@ import {
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import React from "react";
 
 export interface AppointmentPickerProps {
   donationDay: DonationDay;
@@ -30,6 +31,7 @@ function AppointmentPicker({
 
   return (
     <div className={styles.dayContainer}>
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       <div className={styles.dayTitle}>{dayString}</div>
 
       {donationDay.hospitalSlots.map((hospitalDaySlots) => (

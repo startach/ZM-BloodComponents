@@ -11,6 +11,11 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
       className="dayContainer"
     >
       <div
+        className="availableAppointmentsTitle"
+      >
+        תורים פנויים
+      </div>
+      <div
         className="dayTitle"
       >
         יום ראשון, 13/06/2021
@@ -484,6 +489,11 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
     <div
       className="dayContainer"
     >
+      <div
+        className="availableAppointmentsTitle"
+      >
+        תורים פנויים
+      </div>
       <div
         className="dayTitle"
       >

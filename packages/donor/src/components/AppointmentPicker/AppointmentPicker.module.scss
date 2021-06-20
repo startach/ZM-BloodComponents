@@ -1,5 +1,4 @@
 .dayContainer {
-  padding-bottom: 20px;
 }
 
 .hospitalCard {
@@ -23,4 +22,9 @@
   background-color: var(--color-light-grey);
   padding: 20px;
   height: 100vh;
+}
+
+.availableAppointmentsTitle {
+  color: var(--color-info);
+  font-size: 14px;
 }

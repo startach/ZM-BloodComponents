@@ -41,13 +41,13 @@
 }
 
 .screenContent {
-  margin: 20px;
 }
 
 .dropdownContainer {
-  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .dropdown {
@@ -58,7 +58,7 @@
   text-align: center;
 }
 
-.availableAppointmentsTitle {
-  color: var(--color-info);
-  font-size: 14px;
+.donationDayContainer {
+  padding: 40px 20px;
+  border-bottom: 1px solid var(--color-info);
 }

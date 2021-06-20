@@ -117,14 +117,14 @@ function Donations(
 
   return (
     <>
-      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       {donationDays.map((donationDay) => (
-        <AppointmentPicker
-          key={donationDay.day}
-          donationDay={donationDay}
-          onSlotSelected={onSlotSelected}
-          showHospitalName={selectedHospital === ""}
-        />
+        <div className={styles.donationDayContainer} key={donationDay.day}>
+          <AppointmentPicker
+            donationDay={donationDay}
+            onSlotSelected={onSlotSelected}
+            showHospitalName={selectedHospital === ""}
+          />
+        </div>
       ))}
     </>
   );
