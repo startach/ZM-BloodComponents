@@ -1,14 +1,15 @@
 import { SelectOption } from "@zm-blood-components/common";
 import { ButtonVariant } from "../Button";
 import styles from "./Picker.module.scss";
-// TODO (Yaron) point to button once V2 is merged
-import Button from "../Button/ButtonV2";
+import Button from "../Button";
+import classNames from "classnames";
 
 export type PickerProps<T> = {
   label?: string;
   options: SelectOption<T>[];
   onChange: (value: T) => void;
   value?: T;
+  buttonClassName?: string;
 };
 
 export default function Picker<T>({
@@ -16,41 +17,24 @@ export default function Picker<T>({
   options,
   onChange,
   value,
+  buttonClassName,
 }: PickerProps<T>) {
   return (
     <div>
       <div className={styles.pickerLabel}>{label}</div>
       <div className={styles.pickerButtons}>
         {options.map((option) => (
-          <OptionButton
-            value={value}
-            onChange={onChange}
-            option={option}
-            key={option.key}
-          />
+          <div className={styles.pickerButtonContainer} key={option.key}>
+            <Button
+              title={option.label}
+              onClick={() => onChange(option!.value)}
+              variant={ButtonVariant.outlined}
+              color={value === option.value ? "primary" : "default"}
+              className={classNames(styles.pickerButton, buttonClassName)}
+            />
+          </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function OptionButton<T>(props: {
-  value?: T;
-  onChange: (value: T) => void;
-  option: SelectOption<T> | null;
-}) {
-  if (props.option === null) {
-    return <div className={styles.pickerButton} />;
-  }
-
-  return (
-    <div className={styles.pickerButton}>
-      <Button
-        title={props.option.label}
-        onClick={() => props.onChange(props.option!.value)}
-        variant={ButtonVariant.outlined}
-        color={props.value === props.option.value ? "secondary" : "default"}
-      />
     </div>
   );
 }

@@ -1,66 +1,19 @@
-.component {
-  padding: var(--layout-distance-xl);
+.title {
   box-sizing: border-box;
-  font-size: var(--text-size-xxl);
-  font-weight: var(--font-title-weight-bold);
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-secondary);
+  padding: 40px;
+  background-image: linear-gradient(
+    63deg,
+    #fbbae2,
+    #fbc5e5,
+    #fcd9eb,
+    #fce5ee,
+    #fdeaf0
+  );
 }
 
-.donationCountcard {
-  margin-left: var(--layout-distance-xl);
-  margin-right: var(--layout-distance-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 5px;
-  margin-top: calc(var(--layout-distance-xl) * (-1));
-}
-
-.card {
-  margin-left: var(--layout-distance-large);
-  margin-right: var(--layout-distance-large);
-  margin-top: var(--layout-distance-small);
-  padding: var(--layout-distance-small) !important;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.donationNumber {
-  font-weight: var(--font-content-weight-bold);
-  font-size: calc(var(--text-size-xxxl) * (1.5));
-  box-sizing: border-box;
-  padding: var(--layout-distance-normal);
-}
-
-.cardContentMerge {
-  display: flex;
-  align-items: center;
-}
-
-.cardContentMerge > * {
-  padding-left: 5px;
-}
-
-.signOutButton {
-  margin-top: var(--layout-distance-small) !important;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.signOutButton {
-  color: var(--color-mid-grey);
-  text-decoration: underline;
-}
-
-.appVersion {
-  color: var(--color-mid-grey);
-  align-self: flex-end;
+.content {
+  padding: 40px;
 }

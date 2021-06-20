@@ -9,34 +9,30 @@ import {
   DonationDay,
   groupDonationDays,
 } from "../../utils/AppointmentsGrouper";
-import LastDonationDateHeader from "../../components/LastDonationDateHeader";
 import Select from "../../components/basic/Select";
-import Text from "../../components/basic/Text";
 import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import Illustration from "../../assets/images/home page-illustration.png";
 
-interface BookDonationScreenProps {
-  lastDonation?: Date;
-  earliestNextDonationDate?: Date;
+export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
   firstName: string;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
+  defaultHospital: Hospital | "";
 }
 
 export default function BookDonationScreen({
-  lastDonation,
-  earliestNextDonationDate,
   availableAppointments,
   isFetching,
   firstName,
   onSlotSelected,
+  defaultHospital,
 }: BookDonationScreenProps) {
-  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
-    Hospital.BEILINSON
-  );
+  const [selectedHospital, setSelectedHospital] =
+    useState<Hospital | "">(defaultHospital);
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
@@ -47,24 +43,35 @@ export default function BookDonationScreen({
 
   return (
     <ZMScreen
-      title="הרשמה לתור"
       hasBurgerMenu={true}
-      className={styles.component}
+      className={styles.bookDonationScreen}
+      fullWidth={true}
     >
-      <LastDonationDateHeader
-        firstName={firstName}
-        lastDonation={lastDonation}
-      />
-
-      <main className={styles.content}>
-        <Text className={styles.dropdownTitle}>מתי מתאים לך להגיע לתרום?</Text>
-        <Select
-          className={styles.dropdown}
-          options={HospitalUtils.getAllHospitalOptions("הכל")}
-          value={selectedHospital}
-          onChange={setSelectedHospital}
-          isDisabled={isFetching}
+      <div className={styles.welcomeTitle}>
+        <img
+          src={Illustration}
+          alt={"illustration"}
+          className={styles.illustration}
         />
+        <div className={styles.name}>היי {firstName}</div>
+        <div className={styles.welcomeText}>
+          איזה כיף שבאת!
+          <br />
+          מתי יתאים לך לתרום?
+        </div>
+      </div>
+
+      <div className={styles.screenContent}>
+        <div className={styles.dropdownContainer}>
+          <Select
+            label={"הצג תורים ב:"}
+            className={styles.dropdown}
+            options={HospitalUtils.getAllHospitalOptions("הכל")}
+            value={selectedHospital}
+            onChange={setSelectedHospital}
+            isDisabled={isFetching}
+          />
+        </div>
 
         {Donations(
           selectedHospital,
@@ -72,7 +79,7 @@ export default function BookDonationScreen({
           sortedDonationDays,
           onSlotSelected
         )}
-      </main>
+      </div>
     </ZMScreen>
   );
 }
@@ -84,7 +91,11 @@ function Donations(
   onSlotSelected: (donationSlot: DonationSlotToBook) => void
 ) {
   if (isFetching) {
-    return <Spinner />;
+    return (
+      <div className={styles.spinner}>
+        <Spinner size={"2rem"} />
+      </div>
+    );
   }
 
   if (donationDays.length === 0) {
@@ -92,23 +103,29 @@ function Donations(
       return (
         <div>
           <div>לא קיימים תורים פנויים</div>
-          <div>נסו לבדוק שוב בהמשך :)</div>
+          <div>כדאי לבדוק שוב בהמשך :)</div>
         </div>
       );
     }
     return (
       <div>
         <div>לא קיימים תורים פנויים לבית חולים זה</div>
-        <div>נסו לבדוק שוב בהמשך :)</div>
+        <div>כדאי לבדוק שוב בהמשך :)</div>
       </div>
     );
   }
 
-  return donationDays.map((donationDay) => (
-    <AppointmentPicker
-      key={donationDay.day}
-      donationDay={donationDay}
-      onSlotSelected={onSlotSelected}
-    />
-  ));
+  return (
+    <>
+      {donationDays.map((donationDay) => (
+        <div className={styles.donationDayContainer} key={donationDay.day}>
+          <AppointmentPicker
+            donationDay={donationDay}
+            onSlotSelected={onSlotSelected}
+            showHospitalName={selectedHospital === ""}
+          />
+        </div>
+      ))}
+    </>
+  );
 }

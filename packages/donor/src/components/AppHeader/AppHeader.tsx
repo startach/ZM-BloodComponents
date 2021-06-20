@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import { AppBar, IconButton, Typography } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
@@ -17,50 +17,61 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
+import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 
 export interface AppHeaderProps {
-  title: string;
+  title?: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
-  className?: string;
 }
+
+const appVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function AppHeader({
   hasBackButton,
   title,
   hasBurgerMenu,
-  className,
 }: AppHeaderProps) {
   const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
 
-  if (!title) {
-    console.error("Unknown pathname");
-  }
-
   let icon = null;
   if (hasBurgerMenu) {
     icon = (
-      <IconButton onClick={() => setShowSideBar((previous) => !previous)}>
-        <MenuIcon className={styles.rightButton} />
+      <IconButton
+        onClick={() => setShowSideBar((previous) => !previous)}
+        className={styles.rightButton}
+      >
+        <MenuIcon />
       </IconButton>
     );
   } else if (hasBackButton) {
     icon = (
-      <IconButton onClick={() => history.goBack()}>
-        <ArrowForward className={styles.rightButton} />
+      <IconButton
+        onClick={() => history.goBack()}
+        className={styles.rightButton}
+      >
+        <ArrowForward />
       </IconButton>
     );
   }
 
-  return (
-    <AppBar position="static" color="secondary" className={className}>
-      <div className={styles.headerContainer}>
-        {icon}
-        <Typography variant="h6" className={styles.title}>
-          {title}
-        </Typography>
+  let headerContent;
+  if (title) {
+    headerContent = <h6 className={styles.title}>{title}</h6>;
+  } else {
+    headerContent = (
+      <div className={styles.title}>
+        <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
       </div>
+    );
+  }
+
+  return (
+    <div className={styles.appHeader}>
+      {icon}
+      {headerContent}
       <Drawer
         open={showSideBar}
         onClose={() => setShowSideBar(false)}
@@ -71,6 +82,11 @@ export default function AppHeader({
             title={"הפרופיל שלי"}
             onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
             icon={<AccountCircleOutlinedIcon />}
+          />
+          <MenuItem
+            title={"משוב"}
+            onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
+            icon={<FeedbackOutlinedIcon />}
           />
           <MenuItem
             title={"אודות"}
@@ -90,8 +106,10 @@ export default function AppHeader({
           onClick={() => firebase.auth().signOut()}
           icon={<LockOutlinedIcon />}
         />
+
+        <div className={styles.version}>{appVersion}</div>
       </Drawer>
-    </AppBar>
+    </div>
   );
 }
 

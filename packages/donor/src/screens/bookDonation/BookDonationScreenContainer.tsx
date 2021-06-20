@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
-import { AvailableAppointment, Donor } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  Donor,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
@@ -41,6 +45,7 @@ export default function BookDonationScreenContainer(
       onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
       isFetching={fetchingState.isFetching}
+      defaultHospital={Hospital.BEILINSON}
     />
   );
 }

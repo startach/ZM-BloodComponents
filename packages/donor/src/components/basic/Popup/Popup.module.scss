@@ -1,22 +1,29 @@
-.header {
-  width: 90%;
+.container {
+  margin: 30px;
+  direction: rtl;
+  text-align: center;
+}
+
+.image {
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .popupText {
+  font-size: 16px;
   text-align: center;
   white-space: pre-line;
 }
 
-.popupContainer {
-  font-size: 16px;
-  margin: 16px;
-  direction: rtl;
+.popupTextTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  line-height: 25px;
 }
 
-.container {
-  margin: 16px;
-  direction: rtl;
-  text-align: center;
+.popupTextContent {
+  line-height: 20px;
 }
 
 .approveButton {

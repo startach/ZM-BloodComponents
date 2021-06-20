@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.label {
+  padding-top: 10px;
+  line-height: 20px;
+  font-size: 16px;
+}

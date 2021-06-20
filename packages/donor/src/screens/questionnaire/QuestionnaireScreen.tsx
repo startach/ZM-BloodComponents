@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import RadioGroup from "../../components/basic/RadioGroup";
-import { RadioOption } from "../../components/basic/RadioGroup/RadioGroup";
-import DonationInfoIcons from "../../components/DonationInfoIcons";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
-import Text from "../../components/basic/Text";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import { FunctionsApi } from "@zm-blood-components/common";
+import {
+  DateUtils,
+  FunctionsApi,
+  LocaleUtils,
+  SelectOption,
+} from "@zm-blood-components/common";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import Calendar from "../../assets/images/AppointmentCalendar.svg";
+import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 
-interface QuestionnaireScreenProps {
+export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
   onSuccess: () => void;
   isLoading: boolean;
@@ -20,15 +23,9 @@ interface QuestionnaireScreenProps {
   goToHomePage: () => Promise<void>;
 }
 
-const YesNoOptions: RadioOption[] = [
-  { value: "yes", label: "כן" },
-  { value: "no", label: "לא" },
-];
-
-const YesNoNotApplicableOptions: RadioOption[] = [
-  { value: "yes", label: "כן" },
-  { value: "no", label: "לא" },
-  { value: "na", label: "לא רלוונטי" },
+const YesNoOptions: SelectOption<boolean>[] = [
+  { value: true, label: "כן", key: "כן" },
+  { value: false, label: "לא", key: "לא" },
 ];
 
 export default function QuestionnaireScreen({
@@ -39,125 +36,118 @@ export default function QuestionnaireScreen({
   errorCode,
   goToHomePage,
 }: QuestionnaireScreenProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] = React.useState("");
+  const [hasAlreadyDonated, setHasAlreadyDonated] =
+    React.useState<boolean | undefined>(undefined);
   const HaveYouAlreadyDonated = (
-    <RadioGroup
-      options={YesNoOptions}
+    <Question
       value={hasAlreadyDonated}
       onChange={setHasAlreadyDonated}
       label={"האם תרמת דם / טרומבוציטים בעבר?"}
     />
   );
 
-  const [isWeightValid, setIsWeightValid] = useState("");
+  const [isWeightValid, setIsWeightValid] =
+    React.useState<boolean | undefined>(undefined);
   const IsWeightValid = (
-    <RadioGroup
-      options={YesNoOptions}
+    <Question
       value={isWeightValid}
       onChange={setIsWeightValid}
       label={"האם משקלך מעל 50 ק״ג?"}
     />
   );
 
-  const [isSurgeryValid, setIsSurgeryValid] = useState("");
+  const [isSurgeryValid, setIsSurgeryValid] =
+    React.useState<boolean | undefined>(undefined);
   const IsSurgeryValid = (
-    <RadioGroup
-      options={YesNoOptions}
+    <Question
       value={isSurgeryValid}
       onChange={setIsSurgeryValid}
       label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
     />
   );
 
-  const [isRightAge, setIsRightAge] = useState("");
+  const [isRightAge, setIsRightAge] =
+    React.useState<boolean | undefined>(undefined);
   const IsRightAge = (
-    <RadioGroup
-      options={YesNoOptions}
+    <Question
       value={isRightAge}
       onChange={setIsRightAge}
       label={"האם הנך מעל גיל 17?"}
     />
   );
 
-  const [wasPregnant, setWasPregnantEver] = useState("");
+  const [wasPregnant, setWasPregnantEver] =
+    React.useState<boolean | undefined>(undefined);
   const WasPregnant = (
-    <RadioGroup
-      options={YesNoNotApplicableOptions}
+    <Question
       value={wasPregnant}
       onChange={setWasPregnantEver}
-      label={"לנשים: האם היית / הנך בהריון?"}
+      label={"האם היית / הנך בהריון?"}
     />
   );
 
   const [isConfirmed, setIsConfirmed] = useState(false);
   const IsConfirmed = (
     <Checkbox
-      label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
+      label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
       isChecked={isConfirmed}
       onChange={setIsConfirmed}
     />
   );
 
   const isCorrectAnswers =
-    hasAlreadyDonated === "yes" &&
-    isWeightValid === "yes" &&
-    isSurgeryValid === "no" &&
-    isRightAge === "yes" &&
-    wasPregnant !== "yes";
+    hasAlreadyDonated &&
+    isWeightValid &&
+    isSurgeryValid === false &&
+    isRightAge &&
+    wasPregnant === false;
 
   const isWrongAnswerChosen =
-    hasAlreadyDonated === "no" ||
-    isWeightValid === "no" ||
-    isSurgeryValid === "yes" ||
-    isRightAge === "no" ||
-    wasPregnant === "yes";
+    hasAlreadyDonated === false ||
+    isWeightValid === false ||
+    isSurgeryValid ||
+    isRightAge === false ||
+    wasPregnant;
 
   const isVerified = isCorrectAnswers && isConfirmed;
 
   const wrongAnswerPopupTitle = "מודים לך על הכוונה הטובה!";
 
   const wrongAnswerPopupContent =
-    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה.\n לבירור בבקשה ליצור קשר בנק מרכיבי הדם - 058-7100571";
+    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
+
+  const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
 
   return (
-    <ZMScreen title="שאלון התאמה" hasBackButton>
-      <Popup
-        buttonApproveText="אישור"
-        open={isWrongAnswerChosen}
-        titleFirst={wrongAnswerPopupTitle}
-        titleSecond={wrongAnswerPopupContent}
-        onApproved={() => {
-          if (hasAlreadyDonated === "no") {
-            setHasAlreadyDonated("");
-          }
-          if (isWeightValid === "no") {
-            setIsWeightValid("");
-          }
-          if (isSurgeryValid === "yes") {
-            setIsSurgeryValid("");
-          }
-          if (isRightAge === "no") {
-            setIsRightAge("");
-          }
-          if (wasPregnant === "yes") {
-            setWasPregnantEver("");
-          }
-          return Promise.resolve();
-        }}
-      />
-
+    <ZMScreen
+      title="שאלון התאמה"
+      hasBackButton
+      fullWidth
+      className={styles.screen}
+    >
       <div className={styles.donationInfo}>
-        <Text className={styles.donationInfoTitle}>פרטי התור הנבחר</Text>
-        <DonationInfoIcons
-          hospital={bookableAppointment.hospital}
-          donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
+        <img
+          src={Calendar}
+          alt={"Appointment"}
+          className={styles.illustration}
         />
+        <div className={styles.donationInfoText}>
+          <div className={styles.infoTitle}>פרטי התור הנבחר</div>
+          <div className={styles.appointmentDetails}>
+            {DateUtils.ToWeekDayString(donationDate)},{" "}
+            {DateUtils.ToDateString(donationDate)},{" "}
+            {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
+          </div>
+        </div>
       </div>
 
       <div className={styles.questionnaireSection}>
-        <Text className={styles.questionnaireTitle}>
-          על מנת לוודא התאמה יש למלא את השאלון
-        </Text>
+        <div className={styles.questionnaireTitle}>
+          שאלון התאמה לתרומת טרומבוציטים
+        </div>
+        <div className={styles.questionnaireText}>
+          עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
+        </div>
 
         <div className={styles.question}>{WasPregnant}</div>
         <div className={styles.question}>{HaveYouAlreadyDonated}</div>
@@ -165,16 +155,22 @@ export default function QuestionnaireScreen({
         <div className={styles.question}>{IsWeightValid}</div>
         <div className={styles.question}>{IsSurgeryValid}</div>
 
+        <div className={styles.notesTitle}>ידוע לי שאוכל לתרום רק אם:</div>
+
         <div className={styles.notesText}>
-          נציין שבהמשך מתאמ/ת בית החולים ת/יצור עמך קשר להמשך וידוא התאמה.
-          <br />
-          כמו כן, ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
+          <li>אין לי פצע פתוח/שריטה.</li>
+          <li>לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.</li>
+          <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
+        </div>
+
+        <div className={styles.notesDetails}>
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך
+          ואיך יכול/ה לתרום אנא בטל/י את התור.
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
 
         <Button
-          className={styles.continueButton}
           isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
@@ -183,6 +179,34 @@ export default function QuestionnaireScreen({
       </div>
 
       <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
+
+      <Popup
+        buttonApproveText="אישור"
+        open={!!isWrongAnswerChosen}
+        title={wrongAnswerPopupTitle}
+        content={wrongAnswerPopupContent}
+        image={WhatsappIcon}
+        goBackText={"חזרה לרשימת התורים"}
+        onBack={goToHomePage}
+        onApproved={() => {
+          if (!hasAlreadyDonated) {
+            setHasAlreadyDonated(undefined);
+          }
+          if (!isWeightValid) {
+            setIsWeightValid(undefined);
+          }
+          if (isSurgeryValid) {
+            setIsSurgeryValid(undefined);
+          }
+          if (!isRightAge) {
+            setIsRightAge(undefined);
+          }
+          if (wasPregnant) {
+            setWasPregnantEver(undefined);
+          }
+          return Promise.resolve();
+        }}
+      />
     </ZMScreen>
   );
 }
@@ -210,11 +234,37 @@ function ErrorPopup(props: {
 
   return (
     <Popup
-      titleFirst={"אופס!"}
-      titleSecond={text}
+      title={"אופס!"}
+      content={text}
       buttonApproveText={"בחירת מועד חדש"}
       open={true}
       onApproved={props.goToHomePage}
     />
+  );
+}
+
+function Question(props: {
+  label?: string;
+  options?: SelectOption<boolean>[];
+  onChange: (value: boolean) => void;
+  value?: boolean;
+}) {
+  const options = props.options || YesNoOptions;
+  return (
+    <>
+      <div className={styles.questionLabel}>{props.label}</div>
+      <div className={styles.questionButtons}>
+        {options.map((option) => (
+          <div className={styles.questionButton} key={option.key}>
+            <Button
+              title={option.label}
+              onClick={() => props.onChange(option.value)}
+              variant={ButtonVariant.outlined}
+              color={props.value === option.value ? "primary" : "default"}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

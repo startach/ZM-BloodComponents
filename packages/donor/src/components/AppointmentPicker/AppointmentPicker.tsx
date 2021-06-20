@@ -10,17 +10,19 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
-import { Card } from "@material-ui/core";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import React from "react";
 
 export interface AppointmentPickerProps {
   donationDay: DonationDay;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
+  showHospitalName: boolean;
 }
 
 function AppointmentPicker({
   donationDay,
   onSlotSelected,
+  showHospitalName,
 }: AppointmentPickerProps) {
   const dayString = `${DateUtils.ToWeekDayString(
     donationDay.day,
@@ -28,14 +30,15 @@ function AppointmentPicker({
   )}, ${donationDay.day}`;
 
   return (
-    <div>
-      <div>תורים פנויים</div>
+    <div className={styles.dayContainer}>
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       <div className={styles.dayTitle}>{dayString}</div>
 
       {donationDay.hospitalSlots.map((hospitalDaySlots) => (
         <HospitalCard
           key={hospitalDaySlots.hospital + hospitalDaySlots.slots.length}
           hospitalDaySlots={hospitalDaySlots}
+          showHospitalName={showHospitalName}
           onSlotSelected={(slot) => {
             onSlotSelected({
               ...slot,
@@ -51,6 +54,7 @@ function AppointmentPicker({
 function HospitalCard(props: {
   hospitalDaySlots: HospitalDaySlots;
   onSlotSelected: (donationSlot: DonationSlot) => void;
+  showHospitalName: boolean;
 }) {
   const options = props.hospitalDaySlots.slots.map<SelectOption<DonationSlot>>(
     (slot) => ({
@@ -65,10 +69,14 @@ function HospitalCard(props: {
   );
 
   return (
-    <Card className={styles.hospitalCard}>
-      <div className={styles.hospitalName}>{hospitalName} </div>
-      <Picker options={options} onChange={props.onSlotSelected} />
-    </Card>
+    <>
+      {props.showHospitalName && (
+        <div className={styles.hospitalName}>{hospitalName} </div>
+      )}
+      <div className={styles.hospitalCard}>
+        <Picker options={options} onChange={props.onSlotSelected} />
+      </div>
+    </>
   );
 }
 

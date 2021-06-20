@@ -1,29 +1,32 @@
 import { Dialog } from "@material-ui/core";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Popup.module.scss";
-import DialogActions from "@material-ui/core/DialogActions";
 import Button, { ButtonVariant } from "../Button";
-import Text from "../Text";
+import { Color } from "../../../constants/colors";
 
 export type PopupProps = {
-  buttonApproveText: string;
   open: boolean;
-  titleFirst: string;
-  titleSecond?: string;
-  className?: string;
-  onBack?: () => void;
-  goBackText?: string;
+  title: string;
+  content?: string;
+  buttonApproveText: string;
   onApproved: () => Promise<void>;
+  goBackText?: string;
+  onBack?: () => void;
+  className?: string;
   image?: string;
+  buttonColor?: Color;
 };
 
 export default function Popup({
   buttonApproveText,
   open,
-  titleFirst,
-  titleSecond,
+  title,
+  content,
   onBack,
   onApproved,
+  goBackText,
+  image,
+  buttonColor = Color.Primary,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
   const buttonClicked = async () => {
@@ -31,41 +34,34 @@ export default function Popup({
     await onApproved();
     setIsLoading(false);
   };
+
   return (
-    <Dialog
-      PaperProps={{
-        style: {
-          backgroundColor: "#272932",
-          color: "#fff",
-          height: "min-content",
-          width: "90%",
-        },
-      }}
-      open={open}
-      onClose={onBack}
-    >
-      <div className={styles.popupContainer}>
+    <Dialog fullWidth open={open} onClose={onBack}>
+      <div className={styles.container}>
+        {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
-          <Text>{titleFirst}</Text>
-          <Text>{titleSecond}</Text>
+          <div className={styles.popupTextTitle}>{title}</div>
+          <div className={styles.popupTextContent}>{content}</div>
         </div>
-        <hr className={styles.header} />
-        <DialogActions>
-          {onBack && (
-            <Button
-              onClick={onBack}
-              title="חזרה"
-              className={styles.backButton}
-              variant={ButtonVariant.text}
-            />
-          )}
+        <div className={styles.buttonContainer}>
           <Button
             onClick={buttonClicked}
             title={buttonApproveText}
-            className={styles.approveButton}
             isLoading={isLoading}
+            color={buttonColor}
           />
-        </DialogActions>
+        </div>
+        {onBack && goBackText && (
+          <div className={styles.buttonContainer}>
+            <Button
+              onClick={onBack}
+              title={goBackText}
+              isDisabled={isLoading}
+              variant={ButtonVariant.text}
+              color={"default"}
+            />
+          </div>
+        )}
       </div>
     </Dialog>
   );

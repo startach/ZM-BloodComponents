@@ -1,5 +1,4 @@
 import Text from "../../components/basic/Text";
-import HeaderSection from "../../components/HeaderSection";
 import styles from "./styles.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 
@@ -25,10 +24,10 @@ export default function ContactScreen() {
 
 const Header = () => {
   return (
-    <HeaderSection className={styles.component}>
+    <div className={styles.component}>
       <Text className={styles.textBold}>להלן דרכי ההתקשרות עמנו</Text>
       <Text>מוזמנים ליצור קשר בכל שאלה, בקשה או הערה</Text>
-    </HeaderSection>
+    </div>
   );
 };
 

@@ -1,17 +1,26 @@
 .pickerLabel {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   margin-inline-start: 5px;
+  color: var(--color-info);
+  font-size: 16px;
 }
 
 .pickerButtons {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.pickerButton {
+.pickerButtonContainer {
   margin: 5px;
   min-width: 80px;
+}
+
+.pickerButton {
+}
+
+.storyBloodTypeButton {
+  direction: ltr;
 }

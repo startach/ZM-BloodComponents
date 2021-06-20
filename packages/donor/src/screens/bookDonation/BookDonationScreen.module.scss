@@ -1,18 +1,65 @@
-.component {
-  display: flex;
-  flex-direction: column;
+.bookDonationScreen {
+  background-color: var(--color-background-gray);
 }
 
-.content {
-  padding: var(--layout-distance-large);
-  overflow-y: scroll;
-  flex-grow: 1;
+.welcomeTitle {
+  position: relative;
+  font-size: 22px;
+  padding-right: 20px;
+  background-image: linear-gradient(
+    54deg,
+    #fbbae2,
+    #fbc5e5,
+    #fcd9eb,
+    #fce5ee,
+    #fdeaf0
+  );
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.dropdownTitle {
-  font-size: var(--text-size-md);
-  font-family: var(--font-family-titles);
-  margin-bottom: var(--layout-distance-large);
+
+.illustration {
+  position: absolute;
+  height: 160px;
+  left: 0;
 }
+
+.name {
+  z-index: 10;
+  max-width: 60%;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+.welcomeText {
+  z-index: 10;
+  max-width: 60%;
+}
+
+.screenContent {
+}
+
+.dropdownContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
 .dropdown {
   width: 100%;
+}
+
+.spinner {
+  padding: 40px;
+  text-align: center;
+}
+
+.donationDayContainer {
+  padding: 40px 20px;
+  border-bottom: 1px solid var(--color-info);
 }

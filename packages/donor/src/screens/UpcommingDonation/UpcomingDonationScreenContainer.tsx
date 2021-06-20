@@ -1,7 +1,5 @@
 import { BookedAppointment, Donor } from "@zm-blood-components/common";
-import UpcomingDonationScreen, {
-  UpcomingDonationStates,
-} from "./UpcomingDonationScreen";
+import UpcomingDonationScreen from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
 interface UpcomingDonationScreenContainerProps {
@@ -20,13 +18,9 @@ export default function UpcomingDonationScreenContainer(
 
   return (
     <UpcomingDonationScreen
-      state={UpcomingDonationStates.beforeDonation}
       bookedAppointment={props.bookedAppointment}
       firstName={props.user.firstName}
       onCancel={onCancelAppointment}
-      onConfirm={() => {
-        console.log("donation confirmed");
-      }}
     />
   );
 }

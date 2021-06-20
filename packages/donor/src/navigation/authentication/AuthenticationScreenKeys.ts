@@ -1,5 +1,5 @@
 export enum AuthenticationScreenKeys {
-  Login = "Login",
+  Login = "login",
   Register = "register",
   ResetPassword = "reset-password",
 }

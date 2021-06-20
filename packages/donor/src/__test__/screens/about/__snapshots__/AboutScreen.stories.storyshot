@@ -5,69 +5,61 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
   dir="rtl"
 >
   <div
-    className="component component safe-screen-padding-left safe-screen-padding-right safe-screen-padding-bottom"
+    className="component"
   >
-    <header
-      className="MuiPaper-root-11 MuiAppBar-root-0 MuiAppBar-positionStatic-4 MuiAppBar-colorSecondary-8 safe-screen-padding-top MuiPaper-elevation4-18"
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-8"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        אודות
+      </h6>
+    </div>
+    <div
+      className="content padding"
     >
       <div
-        className="headerContainer"
+        className="logoContainer medium"
       >
-        <button
-          className="MuiButtonBase-root-48 MuiIconButton-root-39"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-47"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-51 rightButton"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
-            </svg>
-          </span>
-        </button>
-        <h6
-          className="MuiTypography-root-60 title MuiTypography-h6-70"
-        >
-          אודות
-        </h6>
+        <img
+          alt="בנק הדם"
+          src="blood_bank_logo.svg"
+        />
       </div>
-    </header>
-    <div
-      className="content"
-    >
-      <header
-        className="component component"
-      >
-        <div
-          className="logoContainer medium"
-        >
-          <img
-            alt="בנק הדם"
-            src="blood_bank_logo.svg"
-          />
-        </div>
-      </header>
       <div
         className="textBold textContainer"
       >

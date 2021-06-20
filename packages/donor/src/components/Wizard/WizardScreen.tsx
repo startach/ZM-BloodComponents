@@ -1,4 +1,4 @@
-import Button from "../basic/Button/ButtonV2";
+import Button from "../basic/Button/Button";
 import Text from "../basic/Text";
 import styles from "./WizardScreen.module.scss";
 import { useState } from "react";

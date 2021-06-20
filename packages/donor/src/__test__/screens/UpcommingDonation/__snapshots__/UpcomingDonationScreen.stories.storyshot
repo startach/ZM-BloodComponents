@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-8"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <h6
+        className="title"
+      >
+        פרטי תור עתידי
+      </h6>
+    </div>
+    <div
+      className="content"
+    >
+      <div
+        className="welcome"
+      >
+        <img
+          alt="illustration"
+          className="illustration"
+          src="home page-illustration.png"
+        />
+        <div
+          className="welcomeTitle"
+        >
+          איזה כיף
+        </div>
+        <div
+          className="welcomeText"
+        >
+          בקרוב נפגשים
+        </div>
+      </div>
+      <div
+        className="appointmentDetails"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="detailsTitle"
+          >
+            פרטי התור הקרוב
+            <div
+              className="cancelButton"
+              onClick={[Function]}
+            >
+              <div
+                className="textButton"
+                onClick={[Function]}
+              >
+                ביטול תור
+              </div>
+              <img
+                alt="Cancel"
+                className="cancelIcon"
+                src="trash.svg"
+              />
+            </div>
+          </div>
+          <div
+            className="detailsText"
+          >
+            <div
+              className="detailLabel"
+            >
+              איפה
+            </div>
+            <div
+              className="detailValue"
+            >
+              בית החולים
+               בילינסון
+            </div>
+            <div
+              className="detailLabel"
+            >
+              מתי
+            </div>
+            <div
+              className="detailValue"
+            >
+              יום שישי
+              ,
+               
+              13/08/2021 בשעה 
+              12:00
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="moreInfo"
+      >
+        <div
+          className="moreInfoTitle"
+        >
+          טיפים ומידע נוסף
+        </div>
+        <li>
+          משך התרומה היא בין שעה וחצי לשעתיים.
+        </li>
+        <li>
+          יש להביא תעודת זהות.
+        </li>
+        <li>
+          יש לשתות מים ולאכול פירות לפני התרומה.
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -3,12 +3,11 @@ import AppHeader, { AppHeaderProps } from "./AppHeader";
 
 export default {
   component: AppHeader,
-  title: "COMPONENTS V2/App Header V2",
+  title: "Components/App Header",
   parameters: { layout: "fullscreen" },
 };
 
 const props: AppHeaderProps = {
-  title: "כותרת",
   hasBackButton: false,
   hasBurgerMenu: false,
 };
@@ -18,6 +17,12 @@ const Template: Story<AppHeaderProps> = (args) => <AppHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+export const WithText = Template.bind({});
+WithText.args = {
+  ...props,
+  title: "כותרת",
 };
 
 export const WithBack = Template.bind({});

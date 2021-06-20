@@ -9,3 +9,18 @@ button.zm-btn {
     transform: translateY(-1px);
   }
 }
+
+.button {
+  font-size: 16px;
+  height: 44px;
+  border-radius: 6px !important;
+}
+
+.textButton {
+  font-size: 14px;
+  color: var(--color-info);
+}
+
+.buttonText {
+  font-size: 18px;
+}
