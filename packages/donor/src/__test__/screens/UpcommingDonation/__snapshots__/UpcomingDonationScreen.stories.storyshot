@@ -50,143 +50,108 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
       </h6>
     </div>
     <div
-      className="content padding"
+      className="content"
     >
-      <span
-        className="welcomeText"
+      <div
+        className="welcome"
       >
-        <div>
-          שלום
-        </div>
-         
-        <div />
-        <div>
-          משה
-          ,
-        </div>
-      </span>
-      <div>
-        נרשמת לתרומה בקרוב.
-        <span
-          className="awaitingYouText"
+        <img
+          alt="illustration"
+          className="illustration"
+          src="home page-illustration.png"
+        />
+        <div
+          className="welcomeTitle"
         >
-           מצפים לך!
-        </span>
+          איזה כיף
+        </div>
+        <div
+          className="welcomeText"
+        >
+          בקרוב נפגשים
+        </div>
       </div>
-      <main
-        className="content"
+      <div
+        className="appointmentDetails"
       >
         <div
-          className="donationDetailsText"
+          className="card"
         >
-          פרטי התור
-        </div>
-        <div
-          className="component"
-        >
-          <button
-            className="component"
+          <div
+            className="detailsTitle"
           >
-            <img
-              alt="בילינסון button"
-              className="icon"
-              src="locationPin.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
+            פרטי התור הקרוב
             <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                בילינסון
-              </div>
-            </div>
-          </button>
-          <button
-            className="component"
-          >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="calendar.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                יום שישי
-              </div>
-              <div>
-                13/08/2021
-              </div>
-            </div>
-          </button>
-          <button
-            className="component"
-          >
-            <img
-              alt="12:00 button"
-              className="icon"
-              src="clock.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection iconTitle"
-            >
-              <div>
-                12:00
-              </div>
-            </div>
-          </button>
-        </div>
-        <div
-          className="cancelButtonContainer"
-        >
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 cancelButton button MuiButton-fullWidth-56"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label-34"
+              className="cancelButton"
+              onClick={[Function]}
             >
               <div
-                className="buttonText"
+                className="textButton"
+                onClick={[Function]}
               >
                 ביטול תור
               </div>
-            </span>
-          </button>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root-12 MuiSvgIcon-colorSecondary-14"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            className="detailsText"
+          >
+            <div
+              className="detailLabel"
+            >
+              איפה
+            </div>
+            <div
+              className="detailValue"
+            >
+              בית החולים
+               בילינסון
+            </div>
+            <div
+              className="detailLabel"
+            >
+              מתי
+            </div>
+            <div
+              className="detailValue"
+            >
+              יום שישי
+              ,
+               
+              13/08/2021 בשעה 
+              12:00
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
+      <div
+        className="moreInfo"
+      >
+        <div
+          className="moreInfoTitle"
+        >
+          טיפים ומידע נוסף
+        </div>
+        <li>
+          משך התרומה היא בין שעה וחצי לשעתיים.
+        </li>
+        <li>
+          יש להביא תעודת זהות.
+        </li>
+        <li>
+          יש לשתות מים ולאכול פירות לפני התרומה.
+        </li>
+      </div>
     </div>
   </div>
 </div>

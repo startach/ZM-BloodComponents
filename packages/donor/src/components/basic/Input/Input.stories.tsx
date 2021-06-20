@@ -1,6 +1,6 @@
-import InputV2, {InputProps} from "./Input";
-import {action} from "@storybook/addon-actions";
-import {Story} from "@storybook/react";
+import InputV2, { InputProps } from "./Input";
+import { action } from "@storybook/addon-actions";
+import { Story } from "@storybook/react";
 
 export default {
   component: InputV2,

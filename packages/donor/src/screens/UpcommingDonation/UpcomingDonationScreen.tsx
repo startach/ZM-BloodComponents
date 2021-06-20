@@ -1,88 +1,72 @@
 import React, { useState } from "react";
-import { BookedAppointment } from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  DateUtils,
+  LocaleUtils,
+} from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
-import Text from "../../components/basic/Text";
-import DonationInfoIcons from "../../components/DonationInfoIcons";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
-
-export enum UpcomingDonationStates {
-  sameDayDonation = "sameDayDonation",
-  afterDonation = "afterDonation",
-  beforeDonation = "beforeDonation",
-}
+import Illustration from "../../assets/images/home page-illustration.png";
+import Card from "../../components/basic/Card";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 export interface UpcomingDonationScreenProps {
-  state: UpcomingDonationStates;
   bookedAppointment: BookedAppointment;
-  lastDonation?: Date;
   firstName: string;
-  onConfirm: () => void;
   onCancel: () => Promise<void>;
 }
 
 export default function UpcomingDonationScreen({
-  state,
   firstName,
-  lastDonation,
   onCancel,
   bookedAppointment,
-  onConfirm,
 }: UpcomingDonationScreenProps) {
-  function renderConfirmDonationTitle() {
-    if (state === UpcomingDonationStates.afterDonation)
-      return (
-        <Text className={styles.pleaseConfirmText}>
-          נא אשר שהתרומה אכן התבצעה
-        </Text>
-      );
-    return;
-  }
-
-  function renderConfirmButton() {
-    if (state === UpcomingDonationStates.beforeDonation) return;
-
-    const title =
-      state === UpcomingDonationStates.afterDonation
-        ? "אישור והמשך"
-        : "מאשר הגעה";
-
-    return (
-      <Button
-        title={title}
-        className={styles.registerButton}
-        onClick={onConfirm}
-      />
-    );
-  }
-
+  const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
   return (
-    <ZMScreen title="פרטי תור עתידי" hasBurgerMenu={true}>
-      <span className={styles.welcomeText}>
-        <Text>שלום</Text>
-        &nbsp;
-        <Text />
-        <Text>{firstName},</Text>
-      </span>
-      <Text>
-        נרשמת לתרומה בקרוב.
-        <span className={styles.awaitingYouText}> מצפים לך!</span>
-      </Text>
-      <main className={styles.content}>
-        {renderConfirmDonationTitle()}
-
-        <Text className={styles.donationDetailsText}>פרטי התור</Text>
-
-        <DonationInfoIcons
-          donationStartTimeMillis={bookedAppointment.donationStartTimeMillis}
-          hospital={bookedAppointment.hospital}
+    <ZMScreen title="פרטי תור עתידי" hasBurgerMenu fullWidth>
+      <div className={styles.welcome}>
+        <img
+          src={Illustration}
+          alt={"illustration"}
+          className={styles.illustration}
         />
+        <div className={styles.welcomeTitle}>איזה כיף</div>
+        <div className={styles.welcomeText}>בקרוב נפגשים</div>
+      </div>
 
-        {renderConfirmButton()}
-        <CancelButton onCancel={onCancel} />
-      </main>
+      <div className={styles.appointmentDetails}>
+        <div className={styles.card}>
+          <div className={styles.detailsTitle}>
+            פרטי התור הקרוב
+            <CancelButton onCancel={onCancel} />
+          </div>
+
+          <div className={styles.detailsText}>
+            <div className={styles.detailLabel}>איפה</div>
+            <div className={styles.detailValue}>
+              בית החולים
+              {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
+            </div>
+
+            <div className={styles.detailLabel}>מתי</div>
+            <div className={styles.detailValue}>
+              {DateUtils.ToWeekDayString(donationDate)},{" "}
+              {DateUtils.ToDateString(donationDate) + " בשעה "}
+              {DateUtils.ToTimeString(donationDate)}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.moreInfo}>
+        <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
+        <li>משך התרומה היא בין שעה וחצי לשעתיים.</li>
+        <li>יש להביא תעודת זהות.</li>
+        <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
+      </div>
     </ZMScreen>
   );
 }
@@ -103,15 +87,17 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
   };
 
   return (
-    <div className={styles.cancelButtonContainer}>
-      <Button
-        title="ביטול תור"
-        className={styles.cancelButton}
-        onClick={handleClickOpen}
-        variant={ButtonVariant.contained}
-        color={Color.Default}
-        isLoading={isLoading}
-      />
+    <>
+      <div className={styles.cancelButton} onClick={handleClickOpen}>
+        <Button
+          title="ביטול תור"
+          onClick={handleClickOpen}
+          variant={ButtonVariant.text}
+          color={Color.Default}
+          isLoading={isLoading}
+        />
+        <DeleteOutlineOutlinedIcon color={"secondary"} />
+      </div>
       <Popup
         buttonApproveText="אישור"
         open={open}
@@ -121,6 +107,6 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         onBack={handleClose}
         onApproved={onCancel}
       />
-    </div>
+    </>
   );
 }

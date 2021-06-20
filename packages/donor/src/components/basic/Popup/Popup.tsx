@@ -1,7 +1,7 @@
-import {Dialog} from "@material-ui/core";
-import {useState} from "react";
+import { Dialog } from "@material-ui/core";
+import { useState } from "react";
 import styles from "./Popup.module.scss";
-import Button, {ButtonVariant} from "../Button";
+import Button, { ButtonVariant } from "../Button";
 
 export type PopupProps = {
   open: boolean;
