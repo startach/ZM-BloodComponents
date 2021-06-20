@@ -10,7 +10,6 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/home page-illustration.png";
-import Card from "../../components/basic/Card";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 
 export interface UpcomingDonationScreenProps {

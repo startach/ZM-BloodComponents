@@ -21,9 +21,6 @@ export default function UpcomingDonationScreenContainer(
       bookedAppointment={props.bookedAppointment}
       firstName={props.user.firstName}
       onCancel={onCancelAppointment}
-      onConfirm={() => {
-        console.log("donation confirmed");
-      }}
     />
   );
 }
