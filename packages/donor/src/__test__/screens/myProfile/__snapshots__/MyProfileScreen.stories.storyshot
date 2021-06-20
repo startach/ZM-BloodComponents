@@ -46,11 +46,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
       <h6
         className="title"
       >
-        פרופיל
+        הפרופיל שלי
       </h6>
     </div>
     <div
-      className="content padding"
+      className="content"
     >
       <div
         className="title"
@@ -60,516 +60,424 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
         </div>
       </div>
       <div
-        className="component card"
+        className="content"
       >
         <div
-          className="cardContentMerge"
+          className="subtitle"
         >
-          <button
-            className="component"
-          >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="user.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection"
-            />
-          </button>
-          <div>
-            משה
-          </div>
+          פרטים אישיים
         </div>
-        <button
-          className="component anim_onClick--scaleDown"
-          onClick={[Function]}
-        >
-          <img
-            alt="undefined button"
-            className="icon"
-            src="edit.svg"
-            style={
-              Object {
-                "height": "40px",
-                "width": "40px",
-              }
-            }
-          />
-          <div
-            className="titleSection"
-          />
-        </button>
-      </div>
-      <div
-        className="component hidden"
-      >
         <div
-          className="background"
-          onClick={[Function]}
-        />
-        <div
-          className="drawer"
+          className="component"
         >
           <div
-            className="component"
-          >
-            <div
-              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-              dir="rtl"
-              onKeyPress={[Function]}
-            >
-              <label
-                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-                data-shrink={true}
-              >
-                שם פרטי
-              </label>
-              <div
-                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-                onClick={[Function]}
-              >
-                <input
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input-83 MuiInput-input-68"
-                  disabled={false}
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  type="text"
-                  value="משה"
-                />
-              </div>
-            </div>
-          </div>
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label-91"
-            >
-              <div
-                className="buttonText"
-              >
-                שמור
-              </div>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div
-        className="component card"
-      >
-        <div
-          className="cardContentMerge"
-        >
-          <button
-            className="component"
-          >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="user.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection"
-            />
-          </button>
-          <div>
-            כהן
-          </div>
-        </div>
-        <button
-          className="component anim_onClick--scaleDown"
-          onClick={[Function]}
-        >
-          <img
-            alt="undefined button"
-            className="icon"
-            src="edit.svg"
-            style={
-              Object {
-                "height": "40px",
-                "width": "40px",
-              }
-            }
-          />
-          <div
-            className="titleSection"
-          />
-        </button>
-      </div>
-      <div
-        className="component hidden"
-      >
-        <div
-          className="background"
-          onClick={[Function]}
-        />
-        <div
-          className="drawer"
-        >
-          <div
-            className="component"
-          >
-            <div
-              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-              dir="rtl"
-              onKeyPress={[Function]}
-            >
-              <label
-                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-                data-shrink={true}
-              >
-                שם משפחה
-              </label>
-              <div
-                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-                onClick={[Function]}
-              >
-                <input
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input-83 MuiInput-input-68"
-                  disabled={false}
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  type="text"
-                  value="כהן"
-                />
-              </div>
-            </div>
-          </div>
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label-91"
-            >
-              <div
-                className="buttonText"
-              >
-                שמור
-              </div>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div
-        className="component card"
-      >
-        <div
-          className="cardContentMerge"
-        >
-          <button
-            className="component"
-          >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="bloodDrops.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection"
-            />
-          </button>
-          <div>
-            A-
-          </div>
-        </div>
-        <button
-          className="component anim_onClick--scaleDown"
-          onClick={[Function]}
-        >
-          <img
-            alt="undefined button"
-            className="icon"
-            src="edit.svg"
-            style={
-              Object {
-                "height": "40px",
-                "width": "40px",
-              }
-            }
-          />
-          <div
-            className="titleSection"
-          />
-        </button>
-      </div>
-      <div
-        className="component hidden"
-      >
-        <div
-          className="background"
-          onClick={[Function]}
-        />
-        <div
-          className="drawer"
-        >
-          <div
-            className="MuiFormControl-root-34 makeStyles-root-119"
+            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            dir="rtl"
+            onKeyPress={[Function]}
           >
             <label
               className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
               data-shrink={true}
             >
-              סוג דם
+              שם פרטי
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
               onClick={[Function]}
             >
-              <select
+              <input
                 aria-invalid={false}
-                className="MuiNativeSelect-root-120 MuiNativeSelect-select-121 MuiInputBase-input-83 MuiInput-input-68"
+                autoFocus={false}
+                className="MuiInputBase-input-83 MuiInput-input-68"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
                 required={false}
-                value="3A_MINUS"
-              >
-                <option
-                  value="0O_PLUS"
-                >
-                  O+
-                </option>
-                <option
-                  value="1O_MINUS"
-                >
-                  O-
-                </option>
-                <option
-                  value="2A_PLUS"
-                >
-                  A+
-                </option>
-                <option
-                  value="3A_MINUS"
-                >
-                  A-
-                </option>
-                <option
-                  value="4B_PLUS"
-                >
-                  B+
-                </option>
-                <option
-                  value="5B_MINUS"
-                >
-                  B-
-                </option>
-                <option
-                  value="6AB_PLUS"
-                >
-                  AB+
-                </option>
-                <option
-                  value="7AB_MINUS"
-                >
-                  AB-
-                </option>
-                <option
-                  value="8NOT_SURE"
-                >
-                  לא ידוע לי
-                </option>
-              </select>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-126"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
+                type="text"
+                value="משה"
+              />
             </div>
-            <p
-              className="MuiFormHelperText-root-131 MuiFormHelperText-filled-137"
-            />
-          </div>
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label-91"
-            >
-              <div
-                className="buttonText"
-              >
-                שמור
-              </div>
-            </span>
-          </button>
-        </div>
-      </div>
-      <div
-        className="component card"
-      >
-        <div
-          className="cardContentMerge"
-        >
-          <button
-            className="component"
-          >
-            <img
-              alt="undefined button"
-              className="icon"
-              src="phone.svg"
-              style={
-                Object {
-                  "height": "40px",
-                  "width": "40px",
-                }
-              }
-            />
-            <div
-              className="titleSection"
-            />
-          </button>
-          <div>
-            052-1234567
           </div>
         </div>
-        <button
-          className="component anim_onClick--scaleDown"
-          onClick={[Function]}
-        >
-          <img
-            alt="undefined button"
-            className="icon"
-            src="edit.svg"
-            style={
-              Object {
-                "height": "40px",
-                "width": "40px",
-              }
-            }
-          />
-          <div
-            className="titleSection"
-          />
-        </button>
-      </div>
-      <div
-        className="component hidden"
-      >
         <div
-          className="background"
-          onClick={[Function]}
-        />
-        <div
-          className="drawer"
+          className="component"
         >
           <div
-            className="component"
+            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            dir="rtl"
+            onKeyPress={[Function]}
+          >
+            <label
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
+            >
+              שם משפחה
+            </label>
+            <div
+              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input-83 MuiInput-input-68"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value="כהן"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="component"
+        >
+          <div
+            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            dir="rtl"
+            onKeyPress={[Function]}
+          >
+            <label
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
+            >
+              מספר טלפון
+            </label>
+            <div
+              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input-83 MuiInput-input-68"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="text"
+                value="0521234567"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="subtitle crucialInformation"
+        >
+          מידע חיוני לתרומה
+        </div>
+        <div>
+          <div
+            className="pickerLabel"
+          >
+            סוג דם
+          </div>
+          <div
+            className="pickerButtons"
           >
             <div
-              className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-              dir="rtl"
-              onKeyPress={[Function]}
+              className="pickerButtonContainer"
             >
-              <label
-                className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-                data-shrink={true}
-              >
-                טלפון
-              </label>
-              <div
-                className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <input
-                  aria-invalid={false}
-                  autoFocus={false}
-                  className="MuiInputBase-input-83 MuiInput-input-68"
-                  disabled={false}
-                  onAnimationStart={[Function]}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  required={false}
-                  type="text"
-                  value="052-1234567"
-                />
-              </div>
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    O+
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    O-
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    A+
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-outlinedPrimary-96 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    A-
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    B+
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    B-
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    AB+
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    AB-
+                  </div>
+                </span>
+              </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 pickerButton bloodTypeButton button MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-91"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    לא ידוע לי
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
+        </div>
+        <div
+          className="button"
+        >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -592,7 +500,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               <div
                 className="buttonText"
               >
-                שמור
+                עדכון פרטים
               </div>
             </span>
           </button>

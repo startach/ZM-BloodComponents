@@ -14,7 +14,7 @@ const props: MyProfileScreenProps = {
     firstName: "משה",
     lastName: "כהן",
     email: "email",
-    phone: "052-1234567",
+    phone: "0521234567",
     bloodType: BloodType.A_MINUS,
     birthDate: "2020-01-14",
   },

@@ -1,11 +1,8 @@
-import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
+import { BloodType } from "@zm-blood-components/common";
 import Button, { ButtonVariant } from "../../components/basic/Button";
-import Input from "../../components/basic/Input";
 import styles from "./ExtendedSignupScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
-import Picker from "../../components/basic/Picker";
-import { useState } from "react";
-import classnames from "classnames";
+import PersonalDetails from "./PersonalDetails";
 
 export interface ExtendedSignupScreenProps {
   onSave: (
@@ -18,36 +15,6 @@ export interface ExtendedSignupScreenProps {
 }
 
 export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [bloodType, setBloodType] = useState<BloodType | "">("");
-
-  const [lastNameError, setLastNameError] =
-    useState<string | undefined>(undefined);
-
-  const phoneValidator = /^05(?!6)\d{8}$/;
-  const isValidPhone = phoneValidator.test(phone);
-  const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
-
-  const setLastNameAndValidate = (newLastName: string) => {
-    if (firstName.length + lastName.length > 20) {
-      setLastNameError("השם המלא ארוך מ-20 תווים");
-    } else {
-      setLastNameError("");
-    }
-
-    setLastName(newLastName);
-  };
-
-  const onSave = () => {
-    if (!areAllFieldsValid || !bloodType) {
-      return;
-    }
-
-    props.onSave(firstName, lastName, phone, bloodType);
-  };
-
   return (
     <ZMScreen title={"סיום הרשמה"} className={styles.extendedSignup}>
       <div className={styles.infoText}>
@@ -55,41 +22,9 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
         חיים,
         <div className={styles.infoTextBold}>אנחנו צריכים כמה פרטים עליך:</div>
       </div>
-      <div className={styles.subtitle}>פרטים אישיים</div>
-      <Input value={firstName} onChangeText={setFirstName} label="שם פרטי" />
-      <Input
-        value={lastName}
-        onChangeText={setLastNameAndValidate}
-        label="שם משפחה"
-        errorMessage={lastNameError}
-      />
-      <Input
-        value={phone}
-        onChangeText={setPhone}
-        label="מספר טלפון"
-        errorMessage={
-          phone.length > 0 && !isValidPhone
-            ? "מספר הטלפון אינו תקין"
-            : undefined
-        }
-      />
-      <div className={classnames(styles.subtitle, styles.crucialInformation)}>
-        מידע חיוני לתרומה
-      </div>
-      <Picker
-        label={"סוג דם"}
-        value={bloodType}
-        options={BloodTypeUtils.getBloodTypeSelectOptions()}
-        onChange={setBloodType}
-        buttonClassName={styles.bloodTypeButton}
-      />
-      <div className={styles.button}>
-        <Button
-          onClick={onSave}
-          title={"רשמו אותי"}
-          isDisabled={!areAllFieldsValid}
-        />
-      </div>
+
+      <PersonalDetails buttonText={"רשמו אותי"} onSave={props.onSave} />
+
       <div className={styles.signOut}>
         <Button
           onClick={props.onSignOut}
