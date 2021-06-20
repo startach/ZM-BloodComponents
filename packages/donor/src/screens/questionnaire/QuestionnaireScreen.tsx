@@ -100,7 +100,7 @@ export default function QuestionnaireScreen({
   const [isConfirmed, setIsConfirmed] = useState(false);
   const IsConfirmed = (
     <Checkbox
-      label={"קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן"}
+      label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
       isChecked={isConfirmed}
       onChange={setIsConfirmed}
     />
@@ -175,9 +175,8 @@ export default function QuestionnaireScreen({
         </div>
 
         <div className={styles.notesDetails}>
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
-          <br />
-          אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך
+          ואיך יכול/ה לתרום אנא בטל/י את התור.
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>

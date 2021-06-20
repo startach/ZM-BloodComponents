@@ -1,8 +1,9 @@
 //colors-------------------------------------------------------
 // See also : src/utils/colors for tsx colors
 :root {
-  --color-primary: #4caf50;
-  --color-secondary: #cb007b;
+  --color-primary: #4caf51;
+  --color-secondary: #c7007d;
+
   --color-tertiary: #a5d262;
   --color-light-grey: #f6f6f6;
   --color-mid-grey: #474747;
@@ -10,12 +11,10 @@
   --color-black: black;
   --color-white: white;
   --color-info: #7e7e7e;
+  --color-gray: #dadee0;
 
   --color-bg: var(--color-white);
   --color-text: var(--color-black);
-
-  --color-statusbar-bg: var(--color-secondary);
-  --color-statusbar-text: white;
 
   --color-header-bg: var(--color-info);
   --color-header-text: var(--color-black);

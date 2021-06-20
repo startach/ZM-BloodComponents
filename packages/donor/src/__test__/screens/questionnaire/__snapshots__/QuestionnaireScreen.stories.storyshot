@@ -510,19 +510,17 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         <div
           className="notesDetails"
         >
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב.
-          <br />
-          אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
         </div>
         <div
           className="confirmButtonContainer"
         >
-          <label
-            className="MuiFormControlLabel-root-62"
+          <div
+            className="container"
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-74 MuiCheckbox-root-68 MuiCheckbox-colorPrimary-72 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-68 MuiCheckbox-root-62 MuiCheckbox-colorPrimary-66 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -541,7 +539,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-77"
+                  className="PrivateSwitchBase-input-71"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -558,12 +556,12 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 </svg>
               </span>
             </span>
-            <span
-              className="MuiTypography-root-78 MuiFormControlLabel-label-67 MuiTypography-body1-80"
+            <div
+              className="label"
             >
-              קראתי ומאשר שכל המידע הנמסר לעיל נכון ומעודכן
-            </span>
-          </label>
+              קראתי ומאשר/ת שכל המידע לעיל נכון
+            </div>
+          </div>
         </div>
         <button
           className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 button MuiButton-containedPrimary-42 MuiButton-disabled-46 MuiButton-fullWidth-56 MuiButtonBase-disabled-10"

@@ -68,12 +68,14 @@ function HospitalCard(props: {
   );
 
   return (
-    <Card className={styles.hospitalCard}>
+    <>
       {props.showHospitalName && (
         <div className={styles.hospitalName}>{hospitalName} </div>
       )}
-      <Picker options={options} onChange={props.onSlotSelected} />
-    </Card>
+      <div className={styles.hospitalCard}>
+        <Picker options={options} onChange={props.onSlotSelected} />
+      </div>
+    </>
   );
 }
 

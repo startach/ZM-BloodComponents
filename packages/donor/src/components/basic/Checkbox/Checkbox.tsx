@@ -1,5 +1,6 @@
 import { FormControlLabel } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
+import styles from "./Checkbox.module.scss";
 
 export interface CheckboxProps {
   label: string;
@@ -13,15 +14,13 @@ export default function CheckBox({
   onChange,
 }: CheckboxProps) {
   return (
-    <FormControlLabel
-      control={
-        <Checkbox
-          checked={isChecked}
-          onChange={(e) => onChange(e.target.checked)}
-          color="primary"
-        />
-      }
-      label={label}
-    />
+    <div className={styles.container}>
+      <Checkbox
+        checked={isChecked}
+        onChange={(e) => onChange(e.target.checked)}
+        color="primary"
+      />
+      <div className={styles.label}>{label}</div>
+    </div>
   );
 }

@@ -137,7 +137,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         </div>
       </div>
       <div
-        className="subtitle"
+        className="subtitle crucialInformation"
       >
         מידע חיוני לתרומה
       </div>
@@ -433,7 +433,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
                 <div
                   className="buttonText"
                 >
-                  לא ידוע
+                  לא ידוע לי
                 </div>
               </span>
             </button>

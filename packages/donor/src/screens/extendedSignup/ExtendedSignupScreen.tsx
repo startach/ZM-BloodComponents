@@ -5,6 +5,7 @@ import styles from "./ExtendedSignupScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Picker from "../../components/basic/Picker";
 import { useState } from "react";
+import classnames from "classnames";
 
 export interface ExtendedSignupScreenProps {
   onSave: (
@@ -72,7 +73,9 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
             : undefined
         }
       />
-      <div className={styles.subtitle}>מידע חיוני לתרומה</div>
+      <div className={classnames(styles.subtitle, styles.crucialInformation)}>
+        מידע חיוני לתרומה
+      </div>
       <Picker
         label={"סוג דם"}
         value={bloodType}

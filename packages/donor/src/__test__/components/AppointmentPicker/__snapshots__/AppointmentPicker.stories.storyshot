@@ -16,14 +16,14 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
         יום ראשון, 13/06/2021
       </div>
       <div
-        className="MuiPaper-root-1 MuiCard-root-0 hospitalCard MuiPaper-elevation1-5 MuiPaper-rounded-2"
+        className="hospitalName"
       >
-        <div
-          className="hospitalName"
-        >
-          תל השומר
-           
-        </div>
+        תל השומר
+         
+      </div>
+      <div
+        className="hospitalCard"
+      >
         <div>
           <div
             className="pickerLabel"
@@ -35,7 +35,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -53,7 +53,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -67,7 +67,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -85,7 +85,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -99,7 +99,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -117,7 +117,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -131,7 +131,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -149,7 +149,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -163,7 +163,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -181,7 +181,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -195,7 +195,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -213,7 +213,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -227,7 +227,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -245,7 +245,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -259,7 +259,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -277,7 +277,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -291,7 +291,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -309,7 +309,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -323,14 +323,14 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
         </div>
       </div>
       <div
-        className="MuiPaper-root-1 MuiCard-root-0 hospitalCard MuiPaper-elevation1-5 MuiPaper-rounded-2"
+        className="hospitalName"
       >
-        <div
-          className="hospitalName"
-        >
-          הדסה
-           
-        </div>
+        הדסה
+         
+      </div>
+      <div
+        className="hospitalCard"
+      >
         <div>
           <div
             className="pickerLabel"
@@ -342,7 +342,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -360,7 +360,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -374,7 +374,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -392,7 +392,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -406,7 +406,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -424,7 +424,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -438,7 +438,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -456,7 +456,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -490,7 +490,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
         יום ראשון, 13/06/2021
       </div>
       <div
-        className="MuiPaper-root-1 MuiCard-root-0 hospitalCard MuiPaper-elevation1-5 MuiPaper-rounded-2"
+        className="hospitalCard"
       >
         <div>
           <div
@@ -503,7 +503,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -521,7 +521,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -535,7 +535,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -553,7 +553,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -567,7 +567,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -585,7 +585,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -599,7 +599,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -617,7 +617,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -631,7 +631,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -649,7 +649,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -663,7 +663,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -681,7 +681,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -695,7 +695,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -713,7 +713,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -727,7 +727,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -745,7 +745,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"
@@ -759,7 +759,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
               className="pickerButtonContainer"
             >
               <button
-                className="MuiButtonBase-root-58 MuiButton-root-29 MuiButton-outlined-34 pickerButton button MuiButton-fullWidth-52"
+                className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 pickerButton button MuiButton-fullWidth-23"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -777,7 +777,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
                 type="button"
               >
                 <span
-                  className="MuiButton-label-30"
+                  className="MuiButton-label-1"
                 >
                   <div
                     className="buttonText"

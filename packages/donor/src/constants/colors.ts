@@ -3,7 +3,7 @@ const documentStyle = getComputedStyle(document.documentElement);
 
 const info = documentStyle.getPropertyValue("--color-info").trim() || "#7E7E7E";
 const primary =
-  documentStyle.getPropertyValue("--color-primary").trim() || "#4CAF50";
+  documentStyle.getPropertyValue("--color-primary").trim() || "#4CAF51";
 const secondary =
   documentStyle.getPropertyValue("--color-secondary").trim() || "#CB007B";
 const gray = "#FF0000";

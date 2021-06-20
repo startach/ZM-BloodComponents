@@ -428,7 +428,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 <option
                   value="8NOT_SURE"
                 >
-                  לא ידוע
+                  לא ידוע לי
                 </option>
               </select>
               <svg

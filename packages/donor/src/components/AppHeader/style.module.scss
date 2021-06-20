@@ -1,15 +1,16 @@
 .appHeader {
-  border-bottom: 1px solid var(--color-secondary);
+  border-bottom: 1px solid var(--color-gray);
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 64px;
+  padding: 0 5px;
 }
 
 .title {
   flex: 1;
   text-align: center;
-  font-size: 16pt;
+  font-size: 14pt;
   color: var(--color-secondary);
   position: fixed;
   width: 100%;
@@ -30,5 +31,6 @@
 .version {
   margin-top: auto;
   font-size: 14px;
-  text-align: center;
+  margin-right: 20px;
+  padding-bottom: 10px;
 }

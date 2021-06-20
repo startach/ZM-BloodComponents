@@ -10,7 +10,8 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/home page-illustration.png";
-import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+import Cancellation from "../../assets/images/cancelation.svg";
+import TrashIcon from "../../assets/icons/trash.svg";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -95,16 +96,18 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
           color={Color.Default}
           isLoading={isLoading}
         />
-        <DeleteOutlineOutlinedIcon color={"secondary"} />
+        <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
       </div>
       <Popup
-        buttonApproveText="אישור"
         open={open}
         title="רק מוודאים"
-        content="האם את/ה בטוח/ה שברצונך לבטל את התור?"
-        goBackText="בעצם לא"
+        content="בטוח/ה שברצונך לבטל את התור?"
+        buttonApproveText="כן, בטלו לי את התור"
+        goBackText="התחרטתי, אל תבטלו לי את התור"
         onBack={handleClose}
         onApproved={onCancel}
+        image={Cancellation}
+        buttonColor={Color.Secondary}
       />
     </>
   );

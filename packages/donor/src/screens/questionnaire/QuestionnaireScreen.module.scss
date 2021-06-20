@@ -9,14 +9,15 @@
   flex-direction: row;
   align-items: center;
   padding: 20px 0;
-  background-image: linear-gradient(
-    63deg,
-    #fbbae2,
-    #fbc5e5,
-    #fcd9eb,
-    #fce5ee,
-    #fdeaf0
-  );
+  background-color: white;
+  //background-image: linear-gradient(
+  //  63deg,
+  //  #fbbae2,
+  //  #fbc5e5,
+  //  #fcd9eb,
+  //  #fce5ee,
+  //  #fdeaf0
+  //);
 }
 
 .illustration {
@@ -46,9 +47,12 @@
 
 .questionnaireTitle {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .questionnaireText {
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .question {
@@ -57,15 +61,20 @@
 
 .notesTitle {
   font-weight: bold;
+  margin-top: 30px;
 }
+
 .notesText {
   margin: 8px 0;
   font-size: 0.9rem;
+  margin-right: 10px;
 }
 
 .notesDetails {
   font-size: 14px;
+  line-height: 20px;
   color: var(--color-mid-grey);
+  margin-right: 10px;
 }
 
 .confirmButtonContainer {

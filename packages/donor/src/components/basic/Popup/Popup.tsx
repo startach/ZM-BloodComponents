@@ -2,6 +2,7 @@ import { Dialog } from "@material-ui/core";
 import { useState } from "react";
 import styles from "./Popup.module.scss";
 import Button, { ButtonVariant } from "../Button";
+import { Color } from "../../../constants/colors";
 
 export type PopupProps = {
   open: boolean;
@@ -13,6 +14,7 @@ export type PopupProps = {
   onBack?: () => void;
   className?: string;
   image?: string;
+  buttonColor?: Color;
 };
 
 export default function Popup({
@@ -24,6 +26,7 @@ export default function Popup({
   onApproved,
   goBackText,
   image,
+  buttonColor = Color.Primary,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
   const buttonClicked = async () => {
@@ -38,13 +41,14 @@ export default function Popup({
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
           <div className={styles.popupTextTitle}>{title}</div>
-          <div>{content}</div>
+          <div className={styles.popupTextContent}>{content}</div>
         </div>
         <div className={styles.buttonContainer}>
           <Button
             onClick={buttonClicked}
             title={buttonApproveText}
             isLoading={isLoading}
+            color={buttonColor}
           />
         </div>
         {onBack && goBackText && (

@@ -296,7 +296,7 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
             <div
               className="buttonText"
             >
-              לא ידוע
+              לא ידוע לי
             </div>
           </span>
         </button>

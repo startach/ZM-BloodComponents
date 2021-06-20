@@ -329,14 +329,14 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             יום שישי, 13/08/2021
           </div>
           <div
-            className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
+            className="hospitalName"
           >
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
+            תל השומר
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
             <div>
               <div
                 className="pickerLabel"
@@ -348,7 +348,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -366,7 +366,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -380,7 +380,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -398,7 +398,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -412,7 +412,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -430,7 +430,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -444,7 +444,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -462,7 +462,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -476,7 +476,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -494,7 +494,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -508,7 +508,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -526,7 +526,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -540,14 +540,14 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             </div>
           </div>
           <div
-            className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
+            className="hospitalName"
           >
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
+            בילינסון
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
             <div>
               <div
                 className="pickerLabel"
@@ -559,7 +559,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -577,7 +577,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -600,14 +600,14 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             יום שבת, 14/08/2021
           </div>
           <div
-            className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
+            className="hospitalName"
           >
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
+            תל השומר
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
             <div>
               <div
                 className="pickerLabel"
@@ -619,7 +619,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -637,7 +637,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -651,7 +651,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -669,7 +669,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -683,7 +683,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -701,7 +701,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
@@ -715,14 +715,14 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             </div>
           </div>
           <div
-            className="MuiPaper-root-110 MuiCard-root-109 hospitalCard MuiPaper-elevation1-114 MuiPaper-rounded-111"
+            className="hospitalName"
           >
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
+            בילינסון
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
             <div>
               <div
                 className="pickerLabel"
@@ -734,7 +734,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                   className="pickerButtonContainer"
                 >
                   <button
-                    className="MuiButtonBase-root-9 MuiButton-root-138 MuiButton-outlined-143 pickerButton button MuiButton-fullWidth-161"
+                    className="MuiButtonBase-root-9 MuiButton-root-109 MuiButton-outlined-114 pickerButton button MuiButton-fullWidth-132"
                     disabled={false}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -752,7 +752,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                     type="button"
                   >
                     <span
-                      className="MuiButton-label-139"
+                      className="MuiButton-label-110"
                     >
                       <div
                         className="buttonText"
