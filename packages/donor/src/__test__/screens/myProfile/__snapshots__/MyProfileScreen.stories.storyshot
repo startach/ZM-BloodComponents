@@ -152,7 +152,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -274,7 +274,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -447,7 +447,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             />
           </div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -569,7 +569,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             </div>
           </div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 drawerButton button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}

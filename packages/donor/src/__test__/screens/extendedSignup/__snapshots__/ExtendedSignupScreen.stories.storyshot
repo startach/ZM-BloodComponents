@@ -154,7 +154,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -186,7 +186,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -218,7 +218,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -250,7 +250,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -282,7 +282,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -314,7 +314,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -346,7 +346,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -378,7 +378,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -410,7 +410,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
             className="pickerButtonContainer"
           >
             <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-fullWidth-92"
+              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -444,7 +444,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="button"
       >
         <button
-          className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-contained-77 button MuiButton-containedPrimary-78 MuiButton-disabled-82 MuiButton-fullWidth-92 MuiButtonBase-disabled-99"
+          className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-contained-77 button MuiButton-containedPrimary-78 MuiButton-disableElevation-80 MuiButton-disabled-82 MuiButton-fullWidth-92 MuiButtonBase-disabled-99"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}

@@ -147,7 +147,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
           className="actionButton"
         >
           <button
-            className="MuiButtonBase-root-85 MuiButton-root-97 MuiButton-contained-105 button MuiButton-containedPrimary-106 MuiButton-disabled-110 MuiButton-fullWidth-120 MuiButtonBase-disabled-86"
+            className="MuiButtonBase-root-85 MuiButton-root-97 MuiButton-contained-105 button MuiButton-containedPrimary-106 MuiButton-disableElevation-108 MuiButton-disabled-110 MuiButton-fullWidth-120 MuiButtonBase-disabled-86"
             disabled={true}
             onBlur={[Function]}
             onClick={[Function]}

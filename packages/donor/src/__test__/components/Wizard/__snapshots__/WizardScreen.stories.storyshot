@@ -84,7 +84,7 @@ exports[`Storyshots Components/Wizard Wizard 1`] = `
         />
       </div>
       <button
-        className="MuiButtonBase-root-69 MuiButton-root-40 MuiButton-outlined-45 button MuiButton-fullWidth-63"
+        className="MuiButtonBase-root-69 MuiButton-root-40 MuiButton-outlined-45 button MuiButton-disableElevation-51 MuiButton-fullWidth-63"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}

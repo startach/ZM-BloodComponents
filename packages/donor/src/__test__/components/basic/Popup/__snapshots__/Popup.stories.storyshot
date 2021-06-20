@@ -12,7 +12,7 @@ exports[`Storyshots Components/Popup Default 1`] = `
     }
   >
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-fullWidth-23"
+      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -55,7 +55,7 @@ exports[`Storyshots Components/Popup With Image 1`] = `
     }
   >
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-fullWidth-23"
+      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}

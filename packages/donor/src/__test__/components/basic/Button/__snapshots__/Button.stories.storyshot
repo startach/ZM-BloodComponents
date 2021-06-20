@@ -5,7 +5,7 @@ exports[`Storyshots Components/Button Default 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-fullWidth-23"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-disableElevation-11 MuiButton-fullWidth-23"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -40,7 +40,7 @@ exports[`Storyshots Components/Button Disabled 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -75,7 +75,7 @@ exports[`Storyshots Components/Button Loading 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-disableElevation-11 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
     disabled={true}
     onBlur={[Function]}
     onClick={[Function]}
@@ -130,7 +130,7 @@ exports[`Storyshots Components/Button Outlined 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button MuiButton-outlinedPrimary-6 MuiButton-fullWidth-23"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button MuiButton-outlinedPrimary-6 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -165,7 +165,7 @@ exports[`Storyshots Components/Button Primary 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-fullWidth-23"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
@@ -200,7 +200,7 @@ exports[`Storyshots Components/Button Secondary 1`] = `
   dir="rtl"
 >
   <button
-    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-fullWidth-23"
+    className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedSecondary-10 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}

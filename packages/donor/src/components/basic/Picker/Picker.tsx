@@ -29,7 +29,7 @@ export default function Picker<T>({
               title={option.label}
               onClick={() => onChange(option!.value)}
               variant={ButtonVariant.outlined}
-              color={value === option.value ? "secondary" : "default"}
+              color={value === option.value ? "primary" : "default"}
               className={classNames(styles.pickerButton, buttonClassName)}
             />
           </div>

@@ -56,6 +56,7 @@ export default function Button({
       variant={variant}
       fullWidth
       color={selectedColor}
+      disableElevation
     >
       {isLoading ? (
         <Spinner />
