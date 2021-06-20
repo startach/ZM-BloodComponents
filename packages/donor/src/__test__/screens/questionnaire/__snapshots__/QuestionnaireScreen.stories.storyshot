@@ -97,395 +97,385 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         <div
           className="question"
         >
-          <div>
+          <div
+            className="questionLabel"
+          >
+            האם היית / הנך בהריון?
+          </div>
+          <div
+            className="questionButtons"
+          >
             <div
-              className="pickerLabel"
+              className="questionButton"
             >
-              האם היית / הנך בהריון?
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    כן
+                  </div>
+                </span>
+              </button>
             </div>
             <div
-              className="pickerButtons"
+              className="questionButton"
             >
-              <div
-                className="pickerButtonContainer"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
+                <span
+                  className="MuiButton-label-34"
                 >
-                  <span
-                    className="MuiButton-label-34"
+                  <div
+                    className="buttonText"
                   >
-                    <div
-                      className="buttonText"
-                    >
-                      כן
-                    </div>
-                  </span>
-                </button>
-              </div>
-              <div
-                className="pickerButtonContainer"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-34"
-                  >
-                    <div
-                      className="buttonText"
-                    >
-                      לא
-                    </div>
-                  </span>
-                </button>
-              </div>
+                    לא
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
         </div>
         <div
           className="question"
         >
-          <div>
+          <div
+            className="questionLabel"
+          >
+            האם תרמת דם / טרומבוציטים בעבר?
+          </div>
+          <div
+            className="questionButtons"
+          >
             <div
-              className="pickerLabel"
+              className="questionButton"
             >
-              האם תרמת דם / טרומבוציטים בעבר?
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    כן
+                  </div>
+                </span>
+              </button>
             </div>
             <div
-              className="pickerButtons"
+              className="questionButton"
             >
-              <div
-                className="pickerButtonContainer"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
+                <span
+                  className="MuiButton-label-34"
                 >
-                  <span
-                    className="MuiButton-label-34"
+                  <div
+                    className="buttonText"
                   >
-                    <div
-                      className="buttonText"
-                    >
-                      כן
-                    </div>
-                  </span>
-                </button>
-              </div>
-              <div
-                className="pickerButtonContainer"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-34"
-                  >
-                    <div
-                      className="buttonText"
-                    >
-                      לא
-                    </div>
-                  </span>
-                </button>
-              </div>
+                    לא
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
         </div>
         <div
           className="question"
         >
-          <div>
+          <div
+            className="questionLabel"
+          >
+            האם הנך מעל גיל 17?
+          </div>
+          <div
+            className="questionButtons"
+          >
             <div
-              className="pickerLabel"
+              className="questionButton"
             >
-              האם הנך מעל גיל 17?
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    כן
+                  </div>
+                </span>
+              </button>
             </div>
             <div
-              className="pickerButtons"
+              className="questionButton"
             >
-              <div
-                className="pickerButtonContainer"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
+                <span
+                  className="MuiButton-label-34"
                 >
-                  <span
-                    className="MuiButton-label-34"
+                  <div
+                    className="buttonText"
                   >
-                    <div
-                      className="buttonText"
-                    >
-                      כן
-                    </div>
-                  </span>
-                </button>
-              </div>
-              <div
-                className="pickerButtonContainer"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-34"
-                  >
-                    <div
-                      className="buttonText"
-                    >
-                      לא
-                    </div>
-                  </span>
-                </button>
-              </div>
+                    לא
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
         </div>
         <div
           className="question"
         >
-          <div>
+          <div
+            className="questionLabel"
+          >
+            האם משקלך מעל 50 ק״ג?
+          </div>
+          <div
+            className="questionButtons"
+          >
             <div
-              className="pickerLabel"
+              className="questionButton"
             >
-              האם משקלך מעל 50 ק״ג?
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    כן
+                  </div>
+                </span>
+              </button>
             </div>
             <div
-              className="pickerButtons"
+              className="questionButton"
             >
-              <div
-                className="pickerButtonContainer"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
+                <span
+                  className="MuiButton-label-34"
                 >
-                  <span
-                    className="MuiButton-label-34"
+                  <div
+                    className="buttonText"
                   >
-                    <div
-                      className="buttonText"
-                    >
-                      כן
-                    </div>
-                  </span>
-                </button>
-              </div>
-              <div
-                className="pickerButtonContainer"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-34"
-                  >
-                    <div
-                      className="buttonText"
-                    >
-                      לא
-                    </div>
-                  </span>
-                </button>
-              </div>
+                    לא
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
         </div>
         <div
           className="question"
         >
-          <div>
+          <div
+            className="questionLabel"
+          >
+            האם עברת ניתוח כירורגי בחצי השנה האחרונה?
+          </div>
+          <div
+            className="questionButtons"
+          >
             <div
-              className="pickerLabel"
+              className="questionButton"
             >
-              האם עברת ניתוח כירורגי בחצי השנה האחרונה?
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    כן
+                  </div>
+                </span>
+              </button>
             </div>
             <div
-              className="pickerButtons"
+              className="questionButton"
             >
-              <div
-                className="pickerButtonContainer"
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
+                <span
+                  className="MuiButton-label-34"
                 >
-                  <span
-                    className="MuiButton-label-34"
+                  <div
+                    className="buttonText"
                   >
-                    <div
-                      className="buttonText"
-                    >
-                      כן
-                    </div>
-                  </span>
-                </button>
-              </div>
-              <div
-                className="pickerButtonContainer"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 pickerButton pickerButton button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiButton-label-34"
-                  >
-                    <div
-                      className="buttonText"
-                    >
-                      לא
-                    </div>
-                  </span>
-                </button>
-              </div>
+                    לא
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
         </div>

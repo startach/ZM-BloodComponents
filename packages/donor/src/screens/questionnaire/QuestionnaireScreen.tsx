@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../components/basic/Button";
+import Button, { ButtonVariant } from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
@@ -11,7 +11,6 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
-import Picker from "../../components/basic/Picker";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 
@@ -40,60 +39,50 @@ export default function QuestionnaireScreen({
   const [hasAlreadyDonated, setHasAlreadyDonated] =
     React.useState<boolean | undefined>(undefined);
   const HaveYouAlreadyDonated = (
-    <Picker
-      options={YesNoOptions}
+    <Question
       value={hasAlreadyDonated}
       onChange={setHasAlreadyDonated}
       label={"האם תרמת דם / טרומבוציטים בעבר?"}
-      buttonClassName={styles.pickerButton}
     />
   );
 
   const [isWeightValid, setIsWeightValid] =
     React.useState<boolean | undefined>(undefined);
   const IsWeightValid = (
-    <Picker
-      options={YesNoOptions}
+    <Question
       value={isWeightValid}
       onChange={setIsWeightValid}
       label={"האם משקלך מעל 50 ק״ג?"}
-      buttonClassName={styles.pickerButton}
     />
   );
 
   const [isSurgeryValid, setIsSurgeryValid] =
     React.useState<boolean | undefined>(undefined);
   const IsSurgeryValid = (
-    <Picker
-      options={YesNoOptions}
+    <Question
       value={isSurgeryValid}
       onChange={setIsSurgeryValid}
       label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
-      buttonClassName={styles.pickerButton}
     />
   );
 
   const [isRightAge, setIsRightAge] =
     React.useState<boolean | undefined>(undefined);
   const IsRightAge = (
-    <Picker
-      options={YesNoOptions}
+    <Question
       value={isRightAge}
       onChange={setIsRightAge}
       label={"האם הנך מעל גיל 17?"}
-      buttonClassName={styles.pickerButton}
     />
   );
 
   const [wasPregnant, setWasPregnantEver] =
     React.useState<boolean | undefined>(undefined);
   const WasPregnant = (
-    <Picker
-      options={YesNoOptions}
+    <Question
       value={wasPregnant}
       onChange={setWasPregnantEver}
       label={"האם היית / הנך בהריון?"}
-      buttonClassName={styles.pickerButton}
     />
   );
 
@@ -251,5 +240,31 @@ function ErrorPopup(props: {
       open={true}
       onApproved={props.goToHomePage}
     />
+  );
+}
+
+function Question(props: {
+  label?: string;
+  options?: SelectOption<boolean>[];
+  onChange: (value: boolean) => void;
+  value?: boolean;
+}) {
+  const options = props.options || YesNoOptions;
+  return (
+    <>
+      <div className={styles.questionLabel}>{props.label}</div>
+      <div className={styles.questionButtons}>
+        {options.map((option) => (
+          <div className={styles.questionButton} key={option.key}>
+            <Button
+              title={option.label}
+              onClick={() => props.onChange(option.value)}
+              variant={ButtonVariant.outlined}
+              color={props.value === option.value ? "primary" : "default"}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

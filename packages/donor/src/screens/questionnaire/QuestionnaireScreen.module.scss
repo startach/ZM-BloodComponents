@@ -1,8 +1,11 @@
 .screen {
   background-color: var(--color-background-gray);
+  display: flex;
+  flex-direction: column;
 }
 
 .donationInfo {
+  height: 60px;
   text-align: center;
   width: 100%;
   display: flex;
@@ -43,6 +46,7 @@
 
 .questionnaireSection {
   padding: 30px;
+  overflow-y: scroll;
 }
 
 .questionnaireTitle {
@@ -82,8 +86,19 @@
   margin-bottom: 8px;
 }
 
-.pickerButton {
-  width: 30vw;
+.questionLabel {
+  font-size: 16px;
+}
+
+.questionButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.questionButton {
+  margin: 10px;
+  width: 100%;
 }
 
 .continueButton {
