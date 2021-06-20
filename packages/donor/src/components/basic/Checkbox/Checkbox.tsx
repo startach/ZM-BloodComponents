@@ -1,4 +1,3 @@
-import { FormControlLabel } from "@material-ui/core";
 import Checkbox from "@material-ui/core/Checkbox";
 import styles from "./Checkbox.module.scss";
 

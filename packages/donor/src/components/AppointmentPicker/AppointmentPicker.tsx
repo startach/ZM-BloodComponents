@@ -10,7 +10,6 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
-import { Card } from "@material-ui/core";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 
 export interface AppointmentPickerProps {
