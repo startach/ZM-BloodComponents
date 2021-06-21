@@ -59,7 +59,7 @@ export default function Button({
       disableElevation
     >
       {isLoading ? (
-        <Spinner />
+        <Spinner color={selectedColor} />
       ) : (
         <div className={styles.buttonText}>{title}</div>
       )}
