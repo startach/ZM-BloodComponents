@@ -169,6 +169,38 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
                 </span>
               </button>
             </div>
+            <div
+              className="questionButton"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiButton-label-34"
+                >
+                  <div
+                    className="buttonText"
+                  >
+                    לא רלוונטי
+                  </div>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
         <div

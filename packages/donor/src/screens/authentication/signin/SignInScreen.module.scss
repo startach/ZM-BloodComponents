@@ -15,7 +15,7 @@
 
 .title {
   text-align: center;
-  color: var(--color-primary);
+  color: var(--donor-primary);
   margin-top: 20px;
   margin-bottom: 24px;
   font-size: 32px;
@@ -32,6 +32,11 @@
   justify-content: center;
 }
 
+.textButtonColor {
+  color: var(--donor-gray);
+  text-decoration: none;
+}
+
 .alternativeContainer {
   display: flex;
   flex-direction: row;
@@ -45,10 +50,10 @@
   margin: 0 5px;
   display: inline-block;
   line-height: 24px;
-  color: var(--color-mid-grey);
+  color: var(--donor-dark-gray);
 }
 
 .alternativeButton {
   text-decoration: underline;
-  color: var(--color-secondary);
+  color: var(--donor-secondary);
 }

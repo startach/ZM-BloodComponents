@@ -179,7 +179,7 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
           className="textButton"
         >
           <div
-            className="textButton"
+            className="textButtonColor textButton"
             onClick={[Function]}
           >
             שכחתי סיסמה

@@ -1,5 +1,5 @@
 button.zm-btn {
-  background: var(--color-primary) !important;
+  background: var(--donor-primary) !important;
   transition: all 0.1s ease !important;
   &:hover {
     opacity: 0.9;
@@ -18,7 +18,8 @@ button.zm-btn {
 
 .textButton {
   font-size: 14px;
-  color: var(--color-info);
+  color: var(--donor-link);
+  text-decoration: underline;
 }
 
 .buttonText {

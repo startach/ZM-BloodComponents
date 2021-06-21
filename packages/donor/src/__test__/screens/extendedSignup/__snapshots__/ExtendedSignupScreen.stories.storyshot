@@ -479,7 +479,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
           className="textButton"
           onClick={[Function]}
         >
-          התנתק
+          התנתקות
         </div>
       </div>
     </div>

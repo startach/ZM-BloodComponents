@@ -1,17 +1,18 @@
 // See also : src/styles/variables for CSS colors
 const documentStyle = getComputedStyle(document.documentElement);
 
-const info = documentStyle.getPropertyValue("--color-info").trim() || "#7E7E7E";
 const primary =
-  documentStyle.getPropertyValue("--color-primary").trim() || "#4CAF51";
+  documentStyle.getPropertyValue("--donor-primary").trim() || "#4CAF51";
 const secondary =
-  documentStyle.getPropertyValue("--color-secondary").trim() || "#CB007B";
-const gray = "#FF0000";
+  documentStyle.getPropertyValue("--donor-secondary").trim() || "#CB007B";
+const light =
+  documentStyle.getPropertyValue("--donor-light").trim() || "#F6F6F6";
+const gray = documentStyle.getPropertyValue("--donor-gray").trim() || "#7E7E7E";
 
 export const colors = {
   primary,
   secondary,
-  info,
+  light,
   gray,
   white: "#FFFFFF",
 };

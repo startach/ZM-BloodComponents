@@ -1,26 +1,18 @@
 //colors-------------------------------------------------------
 // See also : src/utils/colors for tsx colors
 :root {
-  --color-primary: #4caf51;
-  --color-secondary: #c7007d;
-
-  --color-tertiary: #a5d262;
-  --color-light-grey: #f6f6f6;
-  --color-mid-grey: #474747;
-  --color-background-gray: #f6f6f6;
-  --color-black: black;
-  --color-white: white;
-  --color-info: #7e7e7e;
-  --color-gray: #dadee0;
-
-  --color-bg: var(--color-white);
-  --color-text: var(--color-black);
-
-  --color-header-bg: var(--color-info);
-  --color-header-text: var(--color-black);
-
-  --color-card-bg: var(--color-white);
-  --color-card-text: var(--color-black);
+  --donor-primary: #4caf51;
+  --donor-bright-green: #a2d45e;
+  --donor-secondary: #c7007d;
+  --donor-pink: #fde9f0;
+  --donor-light-black: #1e1f1e;
+  --donor-dark-gray: #474747;
+  --donor-gray: #7e7e7e;
+  --donor-light-gray: #dadee0;
+  --donor-light: #f6f6f6;
+  --donor-white: #ffffff;
+  --donor-error: #cb0027;
+  --donor-link: #1e88e5;
 }
 
 //fonts--------------------------------------------------------

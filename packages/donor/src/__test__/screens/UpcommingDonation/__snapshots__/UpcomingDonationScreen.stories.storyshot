@@ -43,88 +43,98 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           </svg>
         </span>
       </button>
-      <h6
+      <div
         className="title"
       >
-        פרטי תור עתידי
-      </h6>
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+      </div>
     </div>
     <div
       className="content"
     >
       <div
-        className="welcome"
-      >
-        <img
-          alt="illustration"
-          className="illustration"
-          src="home page-illustration.png"
-        />
-        <div
-          className="welcomeTitle"
-        >
-          איזה כיף
-        </div>
-        <div
-          className="welcomeText"
-        >
-          בקרוב נפגשים
-        </div>
-      </div>
-      <div
-        className="appointmentDetails"
+        className="pinkContainer"
       >
         <div
-          className="card"
+          className="welcome"
         >
+          <img
+            alt="illustration"
+            className="illustration"
+            src="home page-illustration.png"
+          />
           <div
-            className="detailsTitle"
+            className="welcomeTitle"
           >
-            פרטי התור הקרוב
+            <div>
+              איזה כיף
+            </div>
             <div
-              className="cancelButton"
-              onClick={[Function]}
+              className="welcomeText"
             >
-              <div
-                className="textButton"
-                onClick={[Function]}
-              >
-                ביטול תור
-              </div>
-              <img
-                alt="Cancel"
-                className="cancelIcon"
-                src="trash.svg"
-              />
+              בקרוב נפגשים
             </div>
           </div>
+        </div>
+        <div
+          className="appointmentDetails"
+        >
           <div
-            className="detailsText"
+            className="card"
           >
             <div
-              className="detailLabel"
+              className="detailsTitle"
             >
-              איפה
+              פרטי התור הקרוב
+              <div
+                className="cancelButton"
+                onClick={[Function]}
+              >
+                <div
+                  className="cancelButtonColor textButton"
+                  onClick={[Function]}
+                >
+                  ביטול תור
+                </div>
+                <img
+                  alt="Cancel"
+                  className="cancelIcon"
+                  src="trash.svg"
+                />
+              </div>
             </div>
             <div
-              className="detailValue"
+              className="detailsText"
             >
-              בית החולים
-               בילינסון
-            </div>
-            <div
-              className="detailLabel"
-            >
-              מתי
-            </div>
-            <div
-              className="detailValue"
-            >
-              יום שישי
-              ,
-               
-              13/08/2021 בשעה 
-              12:00
+              <div
+                className="detailLabel"
+              >
+                איפה
+              </div>
+              <div
+                className="detailValue"
+              >
+                בית החולים
+                 בילינסון
+              </div>
+              <div
+                className="detailLabel"
+              >
+                מתי
+              </div>
+              <div
+                className="detailValue"
+              >
+                יום שישי
+                ,
+                 
+                13/08/2021 בשעה 
+                12:00
+              </div>
             </div>
           </div>
         </div>

@@ -28,6 +28,12 @@ const YesNoOptions: SelectOption<boolean>[] = [
   { value: false, label: "לא", key: "לא" },
 ];
 
+const YesNoNotRelevantOptions: SelectOption<string>[] = [
+  { value: "yes", label: "כן", key: "כן" },
+  { value: "no", label: "לא", key: "לא" },
+  { value: "not-relevant", label: "לא רלוונטי", key: "לא רלוונטי" },
+];
+
 export default function QuestionnaireScreen({
   bookableAppointment,
   onSuccess,
@@ -43,6 +49,7 @@ export default function QuestionnaireScreen({
       value={hasAlreadyDonated}
       onChange={setHasAlreadyDonated}
       label={"האם תרמת דם / טרומבוציטים בעבר?"}
+      options={YesNoOptions}
     />
   );
 
@@ -53,6 +60,7 @@ export default function QuestionnaireScreen({
       value={isWeightValid}
       onChange={setIsWeightValid}
       label={"האם משקלך מעל 50 ק״ג?"}
+      options={YesNoOptions}
     />
   );
 
@@ -63,6 +71,7 @@ export default function QuestionnaireScreen({
       value={isSurgeryValid}
       onChange={setIsSurgeryValid}
       label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
+      options={YesNoOptions}
     />
   );
 
@@ -73,16 +82,18 @@ export default function QuestionnaireScreen({
       value={isRightAge}
       onChange={setIsRightAge}
       label={"האם הנך מעל גיל 17?"}
+      options={YesNoOptions}
     />
   );
 
   const [wasPregnant, setWasPregnantEver] =
-    React.useState<boolean | undefined>(undefined);
+    React.useState<string | undefined>(undefined);
   const WasPregnant = (
     <Question
       value={wasPregnant}
       onChange={setWasPregnantEver}
       label={"האם היית / הנך בהריון?"}
+      options={YesNoNotRelevantOptions}
     />
   );
 
@@ -100,14 +111,14 @@ export default function QuestionnaireScreen({
     isWeightValid &&
     isSurgeryValid === false &&
     isRightAge &&
-    wasPregnant === false;
+    wasPregnant !== "yes";
 
   const isWrongAnswerChosen =
     hasAlreadyDonated === false ||
     isWeightValid === false ||
     isSurgeryValid ||
     isRightAge === false ||
-    wasPregnant;
+    wasPregnant === "yes";
 
   const isVerified = isCorrectAnswers && isConfirmed;
 
@@ -182,7 +193,7 @@ export default function QuestionnaireScreen({
 
       <Popup
         buttonApproveText="אישור"
-        open={!!isWrongAnswerChosen}
+        open={isWrongAnswerChosen}
         title={wrongAnswerPopupTitle}
         content={wrongAnswerPopupContent}
         image={WhatsappIcon}
@@ -243,18 +254,17 @@ function ErrorPopup(props: {
   );
 }
 
-function Question(props: {
+function Question<T>(props: {
   label?: string;
-  options?: SelectOption<boolean>[];
-  onChange: (value: boolean) => void;
-  value?: boolean;
+  options: SelectOption<T>[];
+  onChange: (value: T) => void;
+  value?: T;
 }) {
-  const options = props.options || YesNoOptions;
   return (
     <>
       <div className={styles.questionLabel}>{props.label}</div>
       <div className={styles.questionButtons}>
-        {options.map((option) => (
+        {props.options.map((option) => (
           <div className={styles.questionButton} key={option.key}>
             <Button
               title={option.label}

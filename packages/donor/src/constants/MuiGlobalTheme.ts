@@ -24,6 +24,10 @@ const MuiGlobalTheme: ThemeOptions = {
     info: {
       main: colors.gray,
     },
+    action: {
+      disabled: colors.gray,
+      disabledBackground: colors.light,
+    },
   },
   typography: {
     fontFamily: ["Rubik"].join(","),

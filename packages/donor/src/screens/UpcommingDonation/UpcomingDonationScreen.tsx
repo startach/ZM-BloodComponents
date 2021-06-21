@@ -26,36 +26,40 @@ export default function UpcomingDonationScreen({
 }: UpcomingDonationScreenProps) {
   const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
   return (
-    <ZMScreen title="פרטי תור עתידי" hasBurgerMenu fullWidth>
-      <div className={styles.welcome}>
-        <img
-          src={Illustration}
-          alt={"illustration"}
-          className={styles.illustration}
-        />
-        <div className={styles.welcomeTitle}>איזה כיף</div>
-        <div className={styles.welcomeText}>בקרוב נפגשים</div>
-      </div>
-
-      <div className={styles.appointmentDetails}>
-        <div className={styles.card}>
-          <div className={styles.detailsTitle}>
-            פרטי התור הקרוב
-            <CancelButton onCancel={onCancel} />
+    <ZMScreen hasBurgerMenu fullWidth>
+      <div className={styles.pinkContainer}>
+        <div className={styles.welcome}>
+          <img
+            src={Illustration}
+            alt={"illustration"}
+            className={styles.illustration}
+          />
+          <div className={styles.welcomeTitle}>
+            <div>איזה כיף</div>
+            <div className={styles.welcomeText}>בקרוב נפגשים</div>
           </div>
+        </div>
 
-          <div className={styles.detailsText}>
-            <div className={styles.detailLabel}>איפה</div>
-            <div className={styles.detailValue}>
-              בית החולים
-              {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
+        <div className={styles.appointmentDetails}>
+          <div className={styles.card}>
+            <div className={styles.detailsTitle}>
+              פרטי התור הקרוב
+              <CancelButton onCancel={onCancel} />
             </div>
 
-            <div className={styles.detailLabel}>מתי</div>
-            <div className={styles.detailValue}>
-              {DateUtils.ToWeekDayString(donationDate)},{" "}
-              {DateUtils.ToDateString(donationDate) + " בשעה "}
-              {DateUtils.ToTimeString(donationDate)}
+            <div className={styles.detailsText}>
+              <div className={styles.detailLabel}>איפה</div>
+              <div className={styles.detailValue}>
+                בית החולים
+                {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
+              </div>
+
+              <div className={styles.detailLabel}>מתי</div>
+              <div className={styles.detailValue}>
+                {DateUtils.ToWeekDayString(donationDate)},{" "}
+                {DateUtils.ToDateString(donationDate) + " בשעה "}
+                {DateUtils.ToTimeString(donationDate)}
+              </div>
             </div>
           </div>
         </div>
@@ -95,6 +99,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
           variant={ButtonVariant.text}
           color={Color.Default}
           isLoading={isLoading}
+          className={styles.cancelButtonColor}
         />
         <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
       </div>

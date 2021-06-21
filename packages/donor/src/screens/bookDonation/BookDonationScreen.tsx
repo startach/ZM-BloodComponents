@@ -101,14 +101,14 @@ function Donations(
   if (donationDays.length === 0) {
     if (!selectedHospital) {
       return (
-        <div>
+        <div className={styles.noAppointments}>
           <div>לא קיימים תורים פנויים</div>
           <div>כדאי לבדוק שוב בהמשך :)</div>
         </div>
       );
     }
     return (
-      <div>
+      <div className={styles.noAppointments}>
         <div>לא קיימים תורים פנויים לבית חולים זה</div>
         <div>כדאי לבדוק שוב בהמשך :)</div>
       </div>

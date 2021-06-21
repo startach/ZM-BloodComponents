@@ -1,5 +1,4 @@
 .screen {
-  background-color: var(--color-background-gray);
   display: flex;
   flex-direction: column;
 }
@@ -13,6 +12,7 @@
   align-items: center;
   padding: 20px 0;
   background-color: white;
+  border-bottom: 1px solid var(--donor-light);
   //background-image: linear-gradient(
   //  63deg,
   //  #fbbae2,
@@ -52,11 +52,13 @@
 .questionnaireTitle {
   font-weight: bold;
   font-size: 18px;
+  color: var(--donor-light-black);
 }
 
 .questionnaireText {
   font-size: 16px;
   line-height: 22px;
+  color: var(--donor-gray);
 }
 
 .question {
@@ -66,28 +68,31 @@
 .notesTitle {
   font-weight: bold;
   margin-top: 30px;
+  color: var(--donor-light-black);
 }
 
 .notesText {
-  margin: 8px 0;
+  margin: 8px 10px 8px 0;
   font-size: 0.9rem;
-  margin-right: 10px;
+  color: var(--donor-dark-gray);
 }
 
 .notesDetails {
   font-size: 14px;
   line-height: 20px;
-  color: var(--color-mid-grey);
+  color: var(--donor-gray);
   margin-right: 10px;
 }
 
 .confirmButtonContainer {
   margin-top: 8px;
   margin-bottom: 8px;
+  color: var(--donor-dark-gray);
 }
 
 .questionLabel {
   font-size: 16px;
+  color: var(--donor-dark-gray);
 }
 
 .questionButtons {
@@ -97,8 +102,9 @@
 }
 
 .questionButton {
-  margin: 10px;
-  width: 100%;
+  margin-left: 10px;
+  margin-top: 10px;
+  flex-grow: 1;
 }
 
 .continueButton {

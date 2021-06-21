@@ -28,7 +28,7 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
       <div className={styles.signOut}>
         <Button
           onClick={props.onSignOut}
-          title={"התנתק"}
+          title={"התנתקות"}
           variant={ButtonVariant.text}
         />
       </div>
