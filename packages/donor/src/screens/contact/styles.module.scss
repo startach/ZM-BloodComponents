@@ -1,6 +1,7 @@
 .component {
   font-size: var(--text-size-sm);
   text-align: center;
+  color: var(--donor-light-black);
 }
 
 .textBold {
@@ -39,7 +40,7 @@
 
 .underline {
   text-decoration: underline;
-  color: blue;
+  color: var(--donor-link);
 }
 
 .phonelink {

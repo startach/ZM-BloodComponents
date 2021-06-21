@@ -132,7 +132,10 @@ type MailToProps = {
 
 const MailTo: React.FC<MailToProps> = ({ email, text }) => {
   return (
-    <a className={styles.link} href={`mailto:${email}`}>
+    <a
+      className={classNames(styles.link, styles.underline)}
+      href={`mailto:${email}`}
+    >
       {text}
     </a>
   );

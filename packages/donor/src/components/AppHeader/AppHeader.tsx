@@ -15,10 +15,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./style.module.scss";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
+import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 
 export interface AppHeaderProps {
   title?: string;
@@ -96,7 +96,7 @@ export default function AppHeader({
           <MenuItem
             title={"צור קשר"}
             onClick={() => history.push("/" + MainNavigationKeys.Contact)}
-            icon={<EmailOutlinedIcon />}
+            icon={<WhatsAppIcon />}
           />
         </List>
         <Divider />
@@ -104,7 +104,7 @@ export default function AppHeader({
         <MenuItem
           title={"התנתק"}
           onClick={() => firebase.auth().signOut()}
-          icon={<LockOutlinedIcon />}
+          icon={<ExitToAppIcon />}
         />
 
         <div className={styles.version}>{appVersion}</div>

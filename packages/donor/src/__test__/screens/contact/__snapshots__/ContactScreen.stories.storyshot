@@ -97,7 +97,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             />
           </div>
           <a
-            className="link"
+            className="link underline"
             href="mailto:dam@zichron.org"
           >
             dam@zichron.org
