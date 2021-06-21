@@ -96,7 +96,7 @@ exports[`Storyshots Components/Button Loading 1`] = `
       className="MuiButton-label-1"
     >
       <div
-        className="MuiCircularProgress-root-32 MuiCircularProgress-colorPrimary-36 MuiCircularProgress-indeterminate-34"
+        className="MuiCircularProgress-root-32 MuiCircularProgress-colorSecondary-37 MuiCircularProgress-indeterminate-34"
         role="progressbar"
         style={
           Object {
