@@ -10,6 +10,7 @@ import { action } from "@storybook/addon-actions";
 export default {
   component: WizardScreen,
   title: "Components/Wizard",
+  parameters: { layout: "fullscreen" },
 };
 
 const baseArgs: WizardScreenProps = {

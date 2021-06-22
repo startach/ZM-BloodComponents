@@ -3,6 +3,7 @@ import styles from "./WizardScreen.module.scss";
 import { useState } from "react";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import { PropTypes } from "@material-ui/core";
+import ZMScreen from "../basic/ZMScreen";
 
 interface WizardPage {
   imageUrl: string;
@@ -29,7 +30,7 @@ export default function WizardScreen(props: WizardScreenProps) {
     else props.onFinish();
   };
   return (
-    <div className={styles.container}>
+    <ZMScreen className={styles.container}>
       <img
         className={styles.image}
         src={props.pages[currentStep].imageUrl}
@@ -82,6 +83,6 @@ export default function WizardScreen(props: WizardScreenProps) {
         variant={props.pages[currentStep].buttonVariant}
         onClick={onNext}
       />
-    </div>
+    </ZMScreen>
   );
 }
