@@ -1,4 +1,3 @@
-import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { getAppointments } from "../dal/AppointmentDataAccessLayer";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
@@ -10,8 +9,6 @@ export default async function (
   if (callerId !== request.donorId) {
     throw Error("Unauthorized to access user");
   }
-
-  await getDonorOrThrow(request.donorId);
 
   const options: { fromTime?: Date; toTime?: Date } = {};
   if (request.fromMillis) {

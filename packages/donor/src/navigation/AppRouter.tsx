@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
 import {
+  AvailableAppointment,
   BookedAppointment,
   Donor,
   LoginStatus,
@@ -22,10 +23,11 @@ export default function AppRouter() {
   const [appState, setAppState] = useState<{
     donor?: Donor;
     bookedAppointment?: BookedAppointment;
+    availableAppointments: AvailableAppointment[];
     isFetching: boolean;
   }>({
-    donor: undefined,
     isFetching: false,
+    availableAppointments: [],
   });
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export default function AppRouter() {
         setAppState({
           donor: undefined,
           isFetching: true,
+          availableAppointments: [],
         });
       }
       setLoginStatus(newLoginStatus);
@@ -55,25 +58,25 @@ export default function AppRouter() {
       setAppState({
         donor: undefined,
         isFetching: false,
+        availableAppointments: [],
       });
       return;
     }
 
-    async function fetchData() {
-      const donor = await FirebaseFunctions.getDonor();
-      let bookedAppointment: BookedAppointment | undefined = undefined;
-      if (donor) {
-        bookedAppointment = await FirebaseFunctions.getBookedAppointment();
-      }
+    FirebaseFunctions.getDonorStartupData().then((res) => {
+      const futureAppointments =
+        res.getDonorAppointmentsResponse.futureAppointments;
+      const bookedAppointment =
+        futureAppointments.length === 0 ? undefined : futureAppointments[0];
 
       setAppState({
-        donor,
-        bookedAppointment,
         isFetching: false,
+        donor: res.getDonorResponse.donor,
+        bookedAppointment: bookedAppointment,
+        availableAppointments:
+          res.getAvailableAppointmentsResponse.availableAppointments,
       });
-    }
-
-    fetchData();
+    });
   }, [loginStatus]);
 
   if (!splashMinimumTimeoutFinished) {
@@ -92,6 +95,7 @@ export default function AppRouter() {
     <LoggedInRouter
       user={appState.donor}
       bookedAppointment={appState.bookedAppointment}
+      availableAppointments={appState.availableAppointments}
       setUser={(user: Donor) => {
         setAppState({
           ...appState,

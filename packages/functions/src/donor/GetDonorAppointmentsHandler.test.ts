@@ -40,17 +40,6 @@ async function reset() {
   await deleteAppointmentsByIds(ALL_TEST_APPOINTMENTS_IDS);
 }
 
-test("Donor not found throws exception", async () => {
-  const action = () =>
-    callTarget({
-      donorId: DONOR_ID,
-      fromMillis: getDate(-1).getTime(),
-      toMillis: getDate(1).getTime(),
-    });
-
-  await expectAsyncThrows(action, "Donor not found");
-});
-
 test("No appointments returns empty response", async () => {
   await saveTestDonor(DONOR_ID);
 
