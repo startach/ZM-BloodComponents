@@ -9,7 +9,7 @@ import Button, { ButtonVariant } from "../../components/basic/Button";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
-import Illustration from "../../assets/images/home page-illustration.png";
+import Illustration from "../../assets/images/upcoming_appointment.svg";
 import Cancellation from "../../assets/images/cancelation.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 
