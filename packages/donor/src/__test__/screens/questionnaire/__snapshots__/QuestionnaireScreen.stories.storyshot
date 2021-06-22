@@ -71,10 +71,13 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           <div
             className="appointmentDetails"
           >
+            13/08/2021
+            ,
+             
             יום שישי
             ,
              
-            13/08/2021
+            12:00
             ,
              
             בילינסון

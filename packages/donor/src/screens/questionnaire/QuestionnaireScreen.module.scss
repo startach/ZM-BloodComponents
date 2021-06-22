@@ -38,10 +38,13 @@
 
 .infoTitle {
   font-size: 12px;
+  color: var(--donor-gray);
 }
 
 .appointmentDetails {
   font-size: 16px;
+  color: var(--donor-light-black);
+  text-align: start;
 }
 
 .questionnaireSection {
