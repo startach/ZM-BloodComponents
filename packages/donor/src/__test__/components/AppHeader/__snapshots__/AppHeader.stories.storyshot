@@ -133,11 +133,11 @@ exports[`Storyshots Components/App Header With Text 1`] = `
   <div
     className="appHeader"
   >
-    <h6
+    <div
       className="title"
     >
       כותרת
-    </h6>
+    </div>
   </div>
 </div>
 `;

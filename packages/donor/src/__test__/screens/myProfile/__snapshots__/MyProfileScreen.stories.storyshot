@@ -43,11 +43,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           </svg>
         </span>
       </button>
-      <h6
+      <div
         className="title"
       >
         הפרופיל שלי
-      </h6>
+      </div>
     </div>
     <div
       className="content"

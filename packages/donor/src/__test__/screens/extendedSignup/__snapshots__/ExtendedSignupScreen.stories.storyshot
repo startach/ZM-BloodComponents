@@ -10,11 +10,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
     <div
       className="appHeader"
     >
-      <h6
+      <div
         className="title"
       >
         סיום הרשמה
-      </h6>
+      </div>
     </div>
     <div
       className="extendedSignup content padding"

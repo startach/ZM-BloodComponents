@@ -43,11 +43,11 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           </svg>
         </span>
       </button>
-      <h6
+      <div
         className="title"
       >
         שאלון התאמה
-      </h6>
+      </div>
     </div>
     <div
       className="screen content"
