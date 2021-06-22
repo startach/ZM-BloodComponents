@@ -19,13 +19,17 @@ const baseArgs: WizardScreenProps = {
       title: "איזה כיף שבאת!",
       content: [
         {
-          text: "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים",
+          text: "אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם",
         },
         {
           text: " העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!",
           bold: true,
         },
-        { text: "כבר רשום כתורם?", bold: true, link: "/", linkText: "התחברות" },
+        {
+          text: "כבר נרשמת?",
+          bold: true,
+          button: { onClick: action("Login"), text: "התחברות" },
+        },
       ],
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,

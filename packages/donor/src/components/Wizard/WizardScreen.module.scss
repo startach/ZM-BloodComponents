@@ -1,22 +1,27 @@
 .container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #515151;
+  padding: 20px;
 }
 
 .image {
-  max-height: 200px;
+  max-height: 30vh;
 }
 
 .title {
-  color: #4caf50;
+  color: var(--donor-primary);
   font-size: 32px;
   font-weight: bold;
   margin: 16px 0;
 }
 
 .content {
-  margin: 0 46px 0 46px;
   line-height: 24px;
+  color: var(--donor-dark-gray);
 }
 
 .link {
@@ -24,7 +29,31 @@
   font-weight: normal;
 }
 
-.textLink {
+.buttonText {
   margin-top: 10px;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  color: var(--donor-secondary);
+  margin-right: 5px;
+}
+
+.stepper {
+  background-color: var(--donor-white) !important;
+}
+
+.dots {
+  margin: 20px 0;
+}
+
+.dot {
+  margin: 8px !important;
+}
+
+.dotActive {
+  background-color: var(--donor-bright-green);
 }
