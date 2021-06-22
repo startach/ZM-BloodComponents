@@ -111,7 +111,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
           >
             <img
               alt="phone"
-              src="phone.svg"
+              src="whatsapp-icon.svg"
             />
           </div>
           <a
