@@ -63,20 +63,28 @@ export default function AppRouter() {
       return;
     }
 
-    FirebaseFunctions.getDonorStartupData().then((res) => {
-      const futureAppointments =
-        res.getDonorAppointmentsResponse.futureAppointments;
-      const bookedAppointment =
-        futureAppointments.length === 0 ? undefined : futureAppointments[0];
+    async function fetchData() {
+      const startTime = new Date().getTime();
+        const donorPromise = FirebaseFunctions.getDonor();
+        const bookedAppointmentPromise =
+          FirebaseFunctions.getBookedAppointment();
+        const availableAppointmentsPromise =
+          FirebaseFunctions.getAvailableAppointments();
 
-      setAppState({
-        isFetching: false,
-        donor: res.getDonorResponse.donor,
-        bookedAppointment: bookedAppointment,
-        availableAppointments:
-          res.getAvailableAppointmentsResponse.availableAppointments,
-      });
-    });
+        const donor = await donorPromise;
+        const bookedAppointment = await bookedAppointmentPromise;
+        const availableAppointments = await availableAppointmentsPromise;
+
+        setAppState({
+          isFetching: false,
+          donor: donor,
+          bookedAppointment: bookedAppointment,
+          availableAppointments: availableAppointments,
+        });
+      console.log("t", new Date().getTime() - startTime);
+    }
+
+    fetchData();
   }, [loginStatus]);
 
   if (!splashMinimumTimeoutFinished) {
