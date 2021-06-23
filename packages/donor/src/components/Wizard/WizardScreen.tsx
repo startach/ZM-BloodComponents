@@ -52,7 +52,7 @@ export default function WizardScreen(props: WizardScreenProps) {
               {key.button && (
                 <Button
                   title={key.button.text}
-                  onClick={key.button.onClick!}
+                  onClick={key.button.onClick}
                   variant={ButtonVariant.text}
                   className={styles.button}
                 />
