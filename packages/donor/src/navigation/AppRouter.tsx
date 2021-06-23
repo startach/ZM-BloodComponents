@@ -65,22 +65,21 @@ export default function AppRouter() {
 
     async function fetchData() {
       const startTime = new Date().getTime();
-        const donorPromise = FirebaseFunctions.getDonor();
-        const bookedAppointmentPromise =
-          FirebaseFunctions.getBookedAppointment();
-        const availableAppointmentsPromise =
-          FirebaseFunctions.getAvailableAppointments();
+      const donorPromise = FirebaseFunctions.getDonor();
+      const bookedAppointmentPromise = FirebaseFunctions.getBookedAppointment();
+      const availableAppointmentsPromise =
+        FirebaseFunctions.getAvailableAppointments();
 
-        const donor = await donorPromise;
-        const bookedAppointment = await bookedAppointmentPromise;
-        const availableAppointments = await availableAppointmentsPromise;
+      const donor = await donorPromise;
+      const bookedAppointment = await bookedAppointmentPromise;
+      const availableAppointments = await availableAppointmentsPromise;
 
-        setAppState({
-          isFetching: false,
-          donor: donor,
-          bookedAppointment: bookedAppointment,
-          availableAppointments: availableAppointments,
-        });
+      setAppState({
+        isFetching: false,
+        donor: donor,
+        bookedAppointment: bookedAppointment,
+        availableAppointments: availableAppointments,
+      });
       console.log("t", new Date().getTime() - startTime);
     }
 

@@ -1,11 +1,11 @@
 import {
   BloodType,
-  BookedDonationWithDonorDetails,
   BookingChange,
   Coordinator,
   DbCoordinator,
   Donor,
   Hospital,
+  BookedDonationWithDonorDetails,
 } from "./types";
 
 // Donor functions:
@@ -82,6 +82,7 @@ export const GetDonorFunctionName = "getDonor";
 export interface GetDonorRequest {
   donorId: string;
 }
+
 export interface GetDonorResponse {
   donor?: Donor;
 }
@@ -95,14 +96,6 @@ export interface SaveDonorRequest {
   phone: string;
   email: string;
   bloodType: BloodType;
-}
-
-export const DonorStartupFunctionName = "donorStartup";
-export interface DonorStartupRequest {}
-export interface DonorStartupResponse {
-  getDonorResponse: GetDonorResponse;
-  getDonorAppointmentsResponse: GetDonorAppointmentsResponse;
-  getAvailableAppointmentsResponse: GetAvailableAppointmentsResponse;
 }
 
 // Coordinator functions:

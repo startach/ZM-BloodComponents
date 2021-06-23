@@ -7,9 +7,7 @@ import {
   FunctionsApi,
 } from "@zm-blood-components/common";
 
-export function getAvailableAppointments(): Promise<
-  FunctionsApi.AvailableAppointmentApiEntry[]
-> {
+export function getAvailableAppointments() {
   const getAvailableAppointmentsFunction = firebase
     .functions()
     .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
@@ -167,27 +165,4 @@ async function getDonorAppointments(
       futureAppointments: [],
     };
   }
-}
-
-export async function getDonorStartupData(): Promise<FunctionsApi.DonorStartupResponse> {
-  const currentUser = firebase.auth().currentUser;
-
-  if (!currentUser?.uid || !currentUser.email) {
-    console.error("User not authenticated");
-    return {
-      getDonorResponse: {},
-      getAvailableAppointmentsResponse: { availableAppointments: [] },
-      getDonorAppointmentsResponse: {
-        completedAppointments: [],
-        futureAppointments: [],
-      },
-    };
-  }
-
-  const callable = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.DonorStartupFunctionName);
-
-  const response = await callable({});
-  return response.data;
 }

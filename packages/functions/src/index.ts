@@ -5,7 +5,6 @@ import getCoordinatorAppointmentsHandler from "./coordinator/GetCoordinatorAppoi
 import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
 import saveAdminRequestHandler from "./coordinator/SaveCoordinatorHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
-import donorStartupHandler from "./donor/DonorStartupHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
@@ -35,7 +34,6 @@ export const getBookedDonationsInHospital = handler(
 );
 
 // Donor
-export const donorStartup = handler(donorStartupHandler);
 export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
 export const getDonor = handler(geDonorHandler);
