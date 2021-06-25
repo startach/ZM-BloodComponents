@@ -1,7 +1,5 @@
 import { SelectOption } from "@zm-blood-components/common";
-import { ButtonVariant } from "../Button";
 import styles from "./Picker.module.scss";
-import Button from "../Button";
 import classNames from "classnames";
 
 export type PickerProps<T> = {
@@ -24,16 +22,41 @@ export default function Picker<T>({
       <div className={styles.pickerLabel}>{label}</div>
       <div className={styles.pickerButtons}>
         {options.map((option) => (
-          <div className={styles.pickerButtonContainer} key={option.key}>
-            <Button
-              title={option.label}
-              onClick={() => onChange(option!.value)}
-              variant={ButtonVariant.outlined}
-              color={value === option.value ? "primary" : "default"}
-              className={classNames(styles.pickerButton, buttonClassName)}
-            />
-          </div>
+          <PickerButton
+            key={option.key}
+            label={option.label}
+            onClick={() => onChange(option!.value)}
+            selected={value === option.value}
+            buttonClassName={buttonClassName}
+          />
         ))}
+      </div>
+    </div>
+  );
+}
+
+function PickerButton(props: {
+  label: string;
+  onClick: () => void;
+  selected: boolean;
+  buttonClassName?: string;
+}) {
+  const buttonClassNames = [styles.pickerButton];
+  if (props.buttonClassName) {
+    buttonClassNames.push(props.buttonClassName);
+  }
+  if (props.selected) {
+    buttonClassNames.push(styles.selectedButton);
+  }
+
+  return (
+    <div className={styles.pickerButtonContainer}>
+      <div
+        onClick={props.onClick}
+        color={props.selected ? "primary" : "default"}
+        className={classNames(buttonClassNames)}
+      >
+        {props.label}
       </div>
     </div>
   );
