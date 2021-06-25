@@ -1,8 +1,10 @@
 import firebase from "firebase/app";
 import "firebase/functions";
-import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import { FunctionsApi, Hospital, DateUtils } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
+
+const TwoWeeksMillis = 14 * 24 * 60 * 60 * 1000;
 
 export async function getCoordinator() {
   const getCoordinatorFunction = firebase
@@ -42,6 +44,8 @@ export async function getAppointments(hospital: Hospital) {
 
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital,
+    earliestStartTimeMillis:
+      DateUtils.TodayAdMidnight().getTime() - TwoWeeksMillis,
   };
 
   const response = await getAppointmentsFunction(request);

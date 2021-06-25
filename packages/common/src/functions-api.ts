@@ -133,6 +133,7 @@ export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
   hospital: Hospital;
+  earliestStartTimeMillis: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {

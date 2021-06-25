@@ -42,3 +42,9 @@ export function DateToMidnight(date: Date) {
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
+
+export function TodayAdMidnight() {
+  const midnight = new Date();
+  midnight.setHours(0, 0, 0, 0);
+  return midnight;
+}
