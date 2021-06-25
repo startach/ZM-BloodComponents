@@ -95,7 +95,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
           }}
         />
         <Route
-          path={["/" + MainNavigationKeys.BookDonation, "*"]}
+          path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
             if (bookedAppointment) {
               return (
@@ -112,6 +112,9 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
             );
           }}
         />
+        <Route path={"*"}>
+          <Redirect to={"/" + MainNavigationKeys.BookDonation} />
+        </Route>
       </Switch>
     </Router>
   );
