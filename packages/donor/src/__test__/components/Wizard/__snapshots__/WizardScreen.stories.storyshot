@@ -5,86 +5,102 @@ exports[`Storyshots Components/Wizard Wizard 1`] = `
   dir="rtl"
 >
   <div
-    className="container"
+    className="component"
   >
-    <img
-      alt=""
-      className="image"
-      src="img-Onboarding-1.svg"
-    />
     <div
-      className="title"
-    >
-      איזה כיף שבאת!
-    </div>
-    <div
-      className="content"
-    >
-      <div>
-        <div
-          className=""
-          style={
-            Object {
-              "fontWeight": "normal",
-            }
-          }
-        >
-          אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם המגיעים
-        </div>
-      </div>
-      <div>
-        <div
-          className=""
-          style={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-        >
-           העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
-        </div>
-      </div>
-      <div>
-        <div
-          className="textLink"
-          style={
-            Object {
-              "fontWeight": "bold",
-            }
-          }
-        >
-          כבר רשום כתורם?
-          <a
-            className="link"
-            href="/"
-            onClick={[Function]}
-          >
-            התחברות
-          </a>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiPaper-root-12 MuiMobileStepper-root-4 makeStyles-root-0 MuiMobileStepper-positionStatic-7 MuiPaper-elevation0-15"
+      className="appHeader"
     >
       <div
-        className="MuiMobileStepper-dots-8 makeStyles-dots-2"
+        className="title"
       >
-        <div
-          className="MuiMobileStepper-dot-9 makeStyles-dot-1 MuiMobileStepper-dotActive-10 makeStyles-dotActive-3"
-        />
-        <div
-          className="MuiMobileStepper-dot-9 makeStyles-dot-1"
-        />
-        <div
-          className="MuiMobileStepper-dot-9 makeStyles-dot-1"
-        />
-        <div
-          className="MuiMobileStepper-dot-9 makeStyles-dot-1"
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
         />
       </div>
+    </div>
+    <div
+      className="container content padding"
+    >
+      <img
+        alt=""
+        className="image"
+        src="img-Onboarding-1.svg"
+      />
+      <div
+        className="title"
+      >
+        איזה כיף שבאת!
+      </div>
+      <div
+        className="content"
+      >
+        <div>
+          <div
+            className=""
+            style={
+              Object {
+                "fontWeight": "normal",
+              }
+            }
+          >
+            אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם
+          </div>
+        </div>
+        <div>
+          <div
+            className=""
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+             העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
+          </div>
+        </div>
+        <div>
+          <div
+            className="buttonText"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            כבר נרשמת?
+            <div
+              className="button textButton"
+              onClick={[Function]}
+            >
+              התחברות
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiPaper-root-20 MuiMobileStepper-root-12 stepper MuiMobileStepper-positionStatic-15 MuiPaper-elevation0-23"
+      >
+        <div
+          className="MuiMobileStepper-dots-16 dots"
+        >
+          <div
+            className="MuiMobileStepper-dot-17 dot MuiMobileStepper-dotActive-18 dotActive"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+        </div>
+      </div>
       <button
-        className="MuiButtonBase-root-69 MuiButton-root-40 MuiButton-outlined-45 button MuiButton-disableElevation-51 MuiButton-fullWidth-63"
+        className="MuiButtonBase-root-77 MuiButton-root-48 MuiButton-outlined-53 button MuiButton-disableElevation-59 MuiButton-fullWidth-71"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -102,7 +118,7 @@ exports[`Storyshots Components/Wizard Wizard 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-41"
+          className="MuiButton-label-49"
         >
           <div
             className="buttonText"
