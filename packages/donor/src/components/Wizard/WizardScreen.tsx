@@ -5,7 +5,7 @@ import MobileStepper from "@material-ui/core/MobileStepper";
 import { PropTypes } from "@material-ui/core";
 import ZMScreen from "../basic/ZMScreen";
 
-interface WizardPage {
+export interface WizardPage {
   imageUrl: string;
   title: string;
   content: {

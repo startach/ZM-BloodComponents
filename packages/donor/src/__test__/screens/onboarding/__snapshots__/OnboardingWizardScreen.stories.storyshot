@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Wizard Wizard 1`] = `
+exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
 <div
   dir="rtl"
 >

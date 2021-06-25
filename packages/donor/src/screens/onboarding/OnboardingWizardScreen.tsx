@@ -1,20 +1,19 @@
-import WizardScreen, { WizardScreenProps } from "./WizardScreen";
-import { Story } from "@storybook/react";
 import onboardingImg1 from "../../assets/icons/img-Onboarding-1.svg";
 import onboardingImg2 from "../../assets/icons/img-Onboarding-2.svg";
 import onboardingImg3 from "../../assets/icons/img-Onboarding-3.svg";
 import onboardingImg4 from "../../assets/icons/img-Onboarding-4.svg";
-import { ButtonVariant } from "../basic/Button";
-import { action } from "@storybook/addon-actions";
+import WizardScreen, { WizardPage } from "../../components/Wizard/WizardScreen";
+import { ButtonVariant } from "../../components/basic/Button";
 
-export default {
-  component: WizardScreen,
-  title: "Components/Wizard",
-  parameters: { layout: "fullscreen" },
-};
+export interface OnboardingWizardScreenProps {
+  goToLogin: () => void;
+  onFinish: () => void;
+}
 
-const baseArgs: WizardScreenProps = {
-  pages: [
+export default function OnboardingWizardScreen(
+  props: OnboardingWizardScreenProps
+) {
+  const onboardingScreens: WizardPage[] = [
     {
       imageUrl: onboardingImg1,
       title: "איזה כיף שבאת!",
@@ -29,7 +28,10 @@ const baseArgs: WizardScreenProps = {
         {
           text: "כבר נרשמת?",
           bold: true,
-          button: { onClick: action("Login"), text: "התחברות" },
+          button: {
+            onClick: props.goToLogin,
+            text: "התחברות",
+          },
         },
       ],
       buttonText: "הבא",
@@ -43,7 +45,6 @@ const baseArgs: WizardScreenProps = {
         {
           text: "טרומבוציטים (טסיות דם) הינם מרכיב בדם המהווה חלק מרכזי במנגנון הקרישה של הדם. בשונה מתרומת דם רגילה, בתרומה זו, האורכת כשעתיים, מסננים רק את הטסיות, ושאר הדם מוחזר לגוף.",
         },
-        // { text: ""},
       ],
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
@@ -51,14 +52,14 @@ const baseArgs: WizardScreenProps = {
     },
     {
       imageUrl: onboardingImg3,
-      title: "רגע, מה זה בכלל? 2",
+      title: "למה זה חשוב?",
       content: [
         {
-          text: "מנת טרומבוציטים טובה לחמישה ימים בלבד, ולכן הצורך התמידי בתרומות שוטפות.",
+          text: "מנת טרומבוציטים טובה לחמישה ימים בלבד, ולכן קיים צורך תמידי בתרומות שוטפות.",
           bold: true,
         },
         {
-          text: " באמצעות האפליקציה תוכלו לקבוע תורים בקלות ולפי זמינות התורים בבתי החולים",
+          text: " באמצעות האפליקציה תוכלו לקבוע תורים בקלות ולפי זמינות התורים בבתי החולים.",
         },
       ],
       buttonText: "הבא",
@@ -70,24 +71,14 @@ const baseArgs: WizardScreenProps = {
       title: "מי יכולים לתרום?",
       content: [
         {
-          text: "כל מי שמעל גיל 17 ושעברו שאלון התאמה לתרומה בעת הרשמה לתור באפליקציה,",
+          text: "כל מי שמעל גיל 17 ושעברו שאלון התאמה לתרומה בעת הרשמה לתור באפליקציה, יכולים לתרום ולהציל חיים כבר עכשיו!",
         },
-        { text: " יכולים לתרום ולהציל חיים כבר עכשיו!" },
       ],
       buttonText: "בואו נתחיל",
       buttonVariant: ButtonVariant.contained,
       buttonColor: "primary",
     },
-  ],
+  ];
 
-  onFinish: action("Callback"),
-};
-
-const Template: Story<WizardScreenProps> = (args: WizardScreenProps) => (
-  <WizardScreen {...args} />
-);
-
-export const Wizard = Template.bind({});
-Wizard.args = {
-  ...baseArgs,
-};
+  return <WizardScreen pages={onboardingScreens} onFinish={props.onFinish} />;
+}
