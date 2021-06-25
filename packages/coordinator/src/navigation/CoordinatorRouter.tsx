@@ -95,6 +95,14 @@ export default function CoordinatorRouter() {
     fetchData();
   }, [loginStatus]);
 
+  if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
+    return <LoadingScreen />;
+  }
+
+  if (loginStatus === LoginStatus.LOGGED_OUT) {
+    return <CoordinatorSignInScreenContainer />;
+  }
+
   const canAddAppointments = !!(
     appState.coordinator?.role &&
     ROLES_THAT_ADD_APPOINTMENTS.includes(appState.coordinator?.role)
@@ -112,63 +120,53 @@ export default function CoordinatorRouter() {
     ROLES_THAT_VIEW_DONORS.includes(appState.coordinator?.role)
   );
 
-  let content: React.ReactNode;
-  if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
-    content = <LoadingScreen />;
-  } else if (loginStatus === LoginStatus.LOGGED_OUT) {
-    content = <CoordinatorSignInScreenContainer />;
-  } else {
-    const activeHospitalsForCoordinator =
-      appState.coordinator?.activeHospitalsForCoordinator!;
-    content = (
-      <Switch>
-        {canViewOpenAppointments && (
-          <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
-            <ManageAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
-        )}
-        {canViewDonors && (
-          <Route exact path={"/" + CoordinatorScreen.DONORS}>
-            <SearchDonorsScreenContainer />
-          </Route>
-        )}
-        {canViewBookedAppointments && (
-          <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
-            <ScheduledAppointmentsContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
-        )}
-        {canAddAppointments && (
-          <Route exact path={"/" + CoordinatorScreen.ADD_APPOINTMENTS}>
-            <AddAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
-        )}
-
-        {/*in case of no match*/}
-        <Redirect to={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS} />
-      </Switch>
-    );
-  }
+  const activeHospitalsForCoordinator =
+    appState.coordinator?.activeHospitalsForCoordinator!;
 
   return (
     <>
-      {loginStatus === LoginStatus.LOGGED_IN && (
-        <CoordinatorHeaderContainer
-          flags={{
-            isLoggedIn: loginStatus === LoginStatus.LOGGED_IN,
-            showAddAppointments: canAddAppointments,
-            showOpenAppointments: canViewOpenAppointments,
-            showSearchDonors: canViewDonors,
-            showBookedAppointments: canViewBookedAppointments,
-          }}
-        />
-      )}
-      <div className={styles.content}>{content}</div>
+      <CoordinatorHeaderContainer
+        flags={{
+          isLoggedIn: true,
+          showAddAppointments: canAddAppointments,
+          showOpenAppointments: canViewOpenAppointments,
+          showSearchDonors: canViewDonors,
+          showBookedAppointments: canViewBookedAppointments,
+        }}
+      />
+      <div className={styles.content}>
+        <Switch>
+          {canViewOpenAppointments && (
+            <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
+              <ManageAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            </Route>
+          )}
+          {canViewDonors && (
+            <Route exact path={"/" + CoordinatorScreen.DONORS}>
+              <SearchDonorsScreenContainer />
+            </Route>
+          )}
+          {canViewBookedAppointments && (
+            <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
+              <ScheduledAppointmentsContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            </Route>
+          )}
+          {canAddAppointments && (
+            <Route exact path={"/" + CoordinatorScreen.ADD_APPOINTMENTS}>
+              <AddAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            </Route>
+          )}
+
+          {/*in case of no match*/}
+          <Redirect to={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS} />
+        </Switch>
+      </div>
       <div className={styles.footer}>{appVersion}</div>
     </>
   );
