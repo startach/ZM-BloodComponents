@@ -1,0 +1,24 @@
+.component {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  //background-color: red;
+  background-color: var(--color-light-grey);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.padding {
+  padding: 40px;
+}
+
+.footer {
+  color: var(--color-mid-grey);
+  height: var(--height-footer, 30px);
+  font-size: 14px;
+  direction: ltr;
+  padding-left: 2px;
+}

@@ -1,4 +1,4 @@
-export enum CoordinatorScreen {
+export enum CoordinatorScreenKey {
   ADD_APPOINTMENTS = "home",
   SCHEDULED_APPOINTMENTS = "appointments",
   DONORS = "donors",

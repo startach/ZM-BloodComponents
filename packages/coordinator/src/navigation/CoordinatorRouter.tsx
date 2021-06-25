@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./CoordinatorRouter.module.scss";
 import LoadingScreen from "../screens/loading/LoadingScreen";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { CoordinatorScreen } from "./CoordinatorScreen";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import {
   Coordinator,
@@ -19,14 +17,15 @@ import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScre
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
-
-const appVersion = process.env.REACT_APP_VERSION || "dev";
+import CoordinatorScreen from "../components/CoordinatorScreen";
+import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
   CoordinatorRole.ZM_COORDINATOR,
   CoordinatorRole.HOSPITAL_COORDINATOR,
 ];
+
 const ROLES_THAT_VIEW_OPEN_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
   CoordinatorRole.ZM_COORDINATOR,
@@ -124,50 +123,50 @@ export default function CoordinatorRouter() {
     appState.coordinator?.activeHospitalsForCoordinator!;
 
   return (
-    <>
-      <CoordinatorHeaderContainer
-        flags={{
-          isLoggedIn: true,
-          showAddAppointments: canAddAppointments,
-          showOpenAppointments: canViewOpenAppointments,
-          showSearchDonors: canViewDonors,
-          showBookedAppointments: canViewBookedAppointments,
-        }}
-      />
-      <div className={styles.content}>
-        <Switch>
-          {canViewOpenAppointments && (
-            <Route exact path={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS}>
-              <ManageAppointmentsScreenContainer
-                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-              />
-            </Route>
-          )}
-          {canViewDonors && (
-            <Route exact path={"/" + CoordinatorScreen.DONORS}>
-              <SearchDonorsScreenContainer />
-            </Route>
-          )}
-          {canViewBookedAppointments && (
-            <Route exact path={"/" + CoordinatorScreen.BOOKED_DONATIONS}>
-              <ScheduledAppointmentsContainer
-                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-              />
-            </Route>
-          )}
-          {canAddAppointments && (
-            <Route exact path={"/" + CoordinatorScreen.ADD_APPOINTMENTS}>
-              <AddAppointmentsScreenContainer
-                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-              />
-            </Route>
-          )}
+    <CoordinatorScreen
+      header={
+        <CoordinatorHeaderContainer
+          flags={{
+            isLoggedIn: true,
+            showAddAppointments: canAddAppointments,
+            showOpenAppointments: canViewOpenAppointments,
+            showSearchDonors: canViewDonors,
+            showBookedAppointments: canViewBookedAppointments,
+          }}
+        />
+      }
+    >
+      <Switch>
+        {canViewOpenAppointments && (
+          <Route exact path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
+            <ManageAppointmentsScreenContainer
+              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+            />
+          </Route>
+        )}
+        {canViewDonors && (
+          <Route exact path={"/" + CoordinatorScreenKey.DONORS}>
+            <SearchDonorsScreenContainer />
+          </Route>
+        )}
+        {canViewBookedAppointments && (
+          <Route exact path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
+            <ScheduledAppointmentsContainer
+              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+            />
+          </Route>
+        )}
+        {canAddAppointments && (
+          <Route exact path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
+            <AddAppointmentsScreenContainer
+              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+            />
+          </Route>
+        )}
 
-          {/*in case of no match*/}
-          <Redirect to={"/" + CoordinatorScreen.SCHEDULED_APPOINTMENTS} />
-        </Switch>
-      </div>
-      <div className={styles.footer}>{appVersion}</div>
-    </>
+        {/*in case of no match*/}
+        <Redirect to={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
+      </Switch>
+    </CoordinatorScreen>
   );
 }

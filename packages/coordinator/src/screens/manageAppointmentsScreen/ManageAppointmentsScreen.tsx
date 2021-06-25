@@ -100,7 +100,7 @@ export default function ManageAppointmentsScreen({
   );
 
   return (
-    <div className={Styles["screen-grey-background"]}>
+    <>
       <HeaderSection className={Styles.hospital_picker_container}>
         <Select
           id={"hospital"}
@@ -158,6 +158,6 @@ export default function ManageAppointmentsScreen({
         onClose={() => setPopupData(emptyPopupData)}
       />
       {isLoading && <Spinner size="4rem" />}
-    </div>
+    </>
   );
 }

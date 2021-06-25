@@ -1,10 +1,12 @@
-import SignInScreen, { SignInScreenProps } from "./SignInScreen";
+import CoordinatorSignInScreen, {
+  SignInScreenProps,
+} from "./CoordinatorSignInScreen";
 import { action } from "@storybook/addon-actions";
 import { TestUtils } from "@zm-blood-components/common";
 
 export default {
-  component: SignInScreen,
-  title: "Screens/Authentication/Sign In Screen",
+  component: CoordinatorSignInScreen,
+  title: "Screens/Sign In Screen",
   parameters: { layout: "fullscreen" },
 };
 
@@ -21,10 +23,10 @@ const onSignInWithEmail = async (
 };
 
 const props: SignInScreenProps = {
-  onRegister: action("onRegister"),
-  onResetPassword: action("onResetPassword"),
   onSignInWithEmail: onSignInWithEmail,
 };
 
-export const Default = (args: SignInScreenProps) => <SignInScreen {...args} />;
+export const Default = (args: SignInScreenProps) => (
+  <CoordinatorSignInScreen {...args} />
+);
 Default.args = props;

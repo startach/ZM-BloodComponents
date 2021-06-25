@@ -30,7 +30,8 @@
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",
     "storybook-coordinator": "yarn workspace @zm-blood-components/coordinator storybook",
     "build-storybook": "build-storybook",
-    "test-donor": "yarn workspace @zm-blood-components/donor test"
+    "test-donor": "yarn workspace @zm-blood-components/donor test",
+    "test-coordinator": "yarn workspace @zm-blood-components/coordinator test"
   },
   "dependencies": {
     "@capacitor/core": "^3.0.1",
