@@ -1,16 +1,24 @@
-@import "../../styles/mixins";
-
 .component {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  @include flex_gap(var(--layout-distance-large), row);
+  margin-top: 20px;
 }
 
-.component > * {
-  min-width: 350px !important;
-  width: 50%;
-  max-width: 500px;
-  text-align: center;
+.card {
+  padding: 50px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.input {
+  margin-top: 20px !important;
+  width: 100%;
+}
+
+.button {
+  margin-top: 20px !important;
+  width: 100%;
 }
