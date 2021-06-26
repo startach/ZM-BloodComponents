@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { Donor, Hospital, FunctionsApi } from "@zm-blood-components/common";
+import {
+  DateUtils,
+  Donor,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as AppointmentUtils from "../../utils/AppointmentUtils";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ManageAppointmentsScreen from "./ManageAppointmentsScreen";
@@ -12,7 +17,9 @@ interface ManageAppointmentsScreenContainerProps {
 export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
-  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
+  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">(
+    Hospital.BEILINSON
+  );
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
   );
@@ -60,7 +67,8 @@ export default function ManageAppointmentsScreenContainer({
   if (!showPastAppointments) {
     shownAppointments = shownAppointments.filter(
       (appointment) =>
-        appointment.donationStartTimeMillis > new Date().getTime()
+        appointment.donationStartTimeMillis >
+        DateUtils.TodayAdMidnight().getTime()
     );
 
     if (showOnlyRecentChanges) {

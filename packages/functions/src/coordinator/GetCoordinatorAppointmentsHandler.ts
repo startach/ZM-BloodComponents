@@ -19,7 +19,13 @@ export default async function (
   const coordinator = await fetchCoordinator(callerId);
   await validate(coordinator, hospital);
 
-  const appointmentsByHospital = await getAppointmentsByHospital(hospital);
+  const startTimeFilter = request.earliestStartTimeMillis
+    ? new Date(request.earliestStartTimeMillis)
+    : undefined;
+  const appointmentsByHospital = await getAppointmentsByHospital(
+    hospital,
+    startTimeFilter
+  );
 
   let appointments = appointmentsByHospital.map(
     dbAppointmentToAppointmentApiEntry

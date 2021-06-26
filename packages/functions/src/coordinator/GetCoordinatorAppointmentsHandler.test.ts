@@ -137,6 +137,44 @@ test("Valid request returns appointments of the right hospital", async () => {
   );
 });
 
+test("Valid request returns appointments with right time filtering", async () => {
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
+
+  await createDonor(DONOR_ID_1, "group1");
+  await createDonor(DONOR_ID_2, "group1");
+
+  await saveAppointment(
+    PAST_BOOKED,
+    getDate(-20),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_1
+  );
+  await saveAppointment(
+    PAST_OTHER_HOSPITAL,
+    getDate(-15),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_1
+  );
+  await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
+  await saveAppointment(
+    FUTURE_BOOKED,
+    getDate(3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_2
+  );
+  await saveAppointment(FUTURE_NOT_BOOKED, getDate(35), Hospital.TEL_HASHOMER);
+
+  const res = await callFunction(COORDINATOR_ID, 14);
+
+  let appointments = res.appointments.filter((a) =>
+    ALL_APPOINTMENT_IDS.includes(a.id)
+  );
+  expect(appointments).toHaveLength(3);
+  expect(appointments[0].id).toEqual(PAST_NOT_BOOKED);
+  expect(appointments[1].id).toEqual(FUTURE_BOOKED);
+  expect(appointments[2].id).toEqual(FUTURE_NOT_BOOKED);
+});
+
 test("Valid request for group coordinator returns only users in group", async () => {
   await createUser(CoordinatorRole.GROUP_COORDINATOR);
   const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
@@ -179,11 +217,18 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
   }
   await setAdmin(newAdmin);
 }
+
 function callFunction(
-  userId?: string
+  userId?: string,
+  earliestTimeDays?: number
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
+  const earliestStartTimeMillis = earliestTimeDays
+    ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
+    : undefined;
+
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital: Hospital.TEL_HASHOMER,
+    earliestStartTimeMillis,
   };
   return wrapped(request, {
     auth: {
@@ -191,6 +236,7 @@ function callFunction(
     },
   });
 }
+
 async function saveAppointment(
   id: string,
   donationStartTime: Date,
