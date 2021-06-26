@@ -35,7 +35,7 @@ export default function UpcomingDonationScreen({
             className={styles.illustration}
           />
           <div className={styles.welcomeTitle}>
-            <div>איזה כיף</div>
+            <div>!איזה כיף</div>
             <div className={styles.welcomeText}>בקרוב נפגשים</div>
           </div>
         </div>
@@ -43,18 +43,18 @@ export default function UpcomingDonationScreen({
         <div className={styles.appointmentDetails}>
           <div className={styles.card}>
             <div className={styles.detailsTitle}>
-              פרטי התור הקרוב
+              :פרטי התור הקרוב
               <CancelButton onCancel={onCancel} />
             </div>
 
             <div className={styles.detailsText}>
-              <div className={styles.detailLabel}>איפה</div>
+              <div className={styles.detailLabel}>איפה?</div>
               <div className={styles.detailValue}>
                 בית החולים
                 {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
               </div>
 
-              <div className={styles.detailLabel}>מתי</div>
+              <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
                 {DateUtils.ToWeekDayString(donationDate)},{" "}
                 {DateUtils.ToDateString(donationDate) + " בשעה "}
