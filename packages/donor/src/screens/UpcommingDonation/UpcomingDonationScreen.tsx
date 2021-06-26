@@ -67,7 +67,7 @@ export default function UpcomingDonationScreen({
 
       <div className={styles.moreInfo}>
         <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-        <li>משך התרומה היא בין שעה וחצי לשעתיים.</li>
+        <li>משך התרומה הוא בין שעה וחצי לשעתיים.</li>
         <li>יש להביא תעודת זהות.</li>
         <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
       </div>
