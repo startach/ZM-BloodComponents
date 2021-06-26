@@ -43,7 +43,7 @@ export default function UpcomingDonationScreen({
         <div className={styles.appointmentDetails}>
           <div className={styles.card}>
             <div className={styles.detailsTitle}>
-              :פרטי התור הקרוב
+              פרטי התור הקרוב
               <CancelButton onCancel={onCancel} />
             </div>
 
