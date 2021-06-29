@@ -9,7 +9,7 @@ export enum ButtonVariant {
   contained = "contained",
 }
 
-type ButtonProps = {
+export type ButtonProps = {
   onClick: () => void;
   title: string;
   /** Text - clickable text, Outlined - Inside out, or Contained (Default) */
@@ -45,7 +45,7 @@ export default function Button({
     <MuiButton
       onClick={onClick}
       variant={variant}
-      color="primary"
+      color={variant === ButtonVariant.text ? "inherit" : "primary"}
       className={classnames(className, classes.root)}
       startIcon={!isLoading && startIcon}
       endIcon={!isLoading && endIcon}
