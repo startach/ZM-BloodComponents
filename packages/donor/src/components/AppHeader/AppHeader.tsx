@@ -59,7 +59,7 @@ export default function AppHeader({
 
   let headerContent;
   if (title) {
-    headerContent = <h6 className={styles.title}>{title}</h6>;
+    headerContent = <div className={styles.title}>{title}</div>;
   } else {
     headerContent = (
       <div className={styles.title}>

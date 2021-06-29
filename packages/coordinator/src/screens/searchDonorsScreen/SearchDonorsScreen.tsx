@@ -47,7 +47,7 @@ export default function SearchDonorsScreen({
   }));
 
   return (
-    <div className={Styles["screen-grey-background"]}>
+    <>
       <Table
         className={Styles["centered-screen"]}
         hasColumnHeaders
@@ -55,6 +55,6 @@ export default function SearchDonorsScreen({
         rows={rows}
       />
       {isLoading && <Spinner size="4rem" />}
-    </div>
+    </>
   );
 }

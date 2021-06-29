@@ -8,6 +8,7 @@ import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenK
 import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
 import RegisterScreenContainer from "../screens/authentication/register/RegisterScreenContainer";
 import SignInScreenContainer from "../screens/authentication/signin/SignInScreenContainer";
+import OnboardingWizardScreenContainer from "../screens/onboarding/OnboardingWizardScreenContainer";
 
 export default function AuthenticationRouter() {
   return (
@@ -22,8 +23,11 @@ export default function AuthenticationRouter() {
         <Route path={"/" + AuthenticationScreenKeys.Login}>
           <SignInScreenContainer />
         </Route>
+        <Route path={"/" + AuthenticationScreenKeys.OnboardingWizard}>
+          <OnboardingWizardScreenContainer />
+        </Route>
         <Route path={"*"}>
-          <Redirect to={"/" + AuthenticationScreenKeys.Register} />
+          <Redirect to={"/" + AuthenticationScreenKeys.OnboardingWizard} />
         </Route>
       </Switch>
     </Router>

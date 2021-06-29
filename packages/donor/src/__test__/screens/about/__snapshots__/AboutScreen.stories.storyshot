@@ -43,11 +43,11 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
           </svg>
         </span>
       </button>
-      <h6
+      <div
         className="title"
       >
         אודות
-      </h6>
+      </div>
     </div>
     <div
       className="content padding"

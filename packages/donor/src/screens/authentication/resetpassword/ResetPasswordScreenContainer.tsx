@@ -7,7 +7,11 @@ import { useHistory } from "react-router-dom";
 export default function ResetPasswordScreenContainer() {
   const history = useHistory();
 
-  const onResetPassword = (email: string, onError: (e: string) => void) => {
+  const onResetPassword = (
+    email: string,
+    onSuccess: () => void,
+    onError: (e: string) => void
+  ) => {
     if (!validateEmail(email)) {
       onError("כתובת הדואר אינה תקינה");
       return;
@@ -15,7 +19,7 @@ export default function ResetPasswordScreenContainer() {
     firebase
       .auth()
       .sendPasswordResetEmail(email)
-      .then(() => history.goBack())
+      .then(onSuccess)
       .catch((error: firebase.auth.Error) => {
         switch (error.code) {
           case "auth/invalid-email":

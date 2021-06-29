@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
+<div
+  dir="rtl"
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+      </div>
+    </div>
+    <div
+      className="container content padding"
+    >
+      <img
+        alt=""
+        className="image"
+        src="img-Onboarding-1.svg"
+      />
+      <div
+        className="title"
+      >
+        איזה כיף שבאת!
+      </div>
+      <div
+        className="content"
+      >
+        <div>
+          <div
+            className=""
+            style={
+              Object {
+                "fontWeight": "normal",
+              }
+            }
+          >
+            אפליקציה זו מיועדת עבור תורמי הטרומבוציטים של זכרון מנחם
+          </div>
+        </div>
+        <div>
+          <div
+            className=""
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+             העוזרים להציל חיים של ילדים חולי סרטן, וחולים במחלות קשות נוספות!
+          </div>
+        </div>
+        <div>
+          <div
+            className="buttonText"
+            style={
+              Object {
+                "fontWeight": "bold",
+              }
+            }
+          >
+            כבר נרשמת?
+            <div
+              className="button textButton"
+              onClick={[Function]}
+            >
+              התחברות
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiPaper-root-20 MuiMobileStepper-root-12 stepper MuiMobileStepper-positionStatic-15 MuiPaper-elevation0-23"
+      >
+        <div
+          className="MuiMobileStepper-dots-16 dots"
+        >
+          <div
+            className="MuiMobileStepper-dot-17 dot MuiMobileStepper-dotActive-18 dotActive"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+          <div
+            className="MuiMobileStepper-dot-17 dot"
+          />
+        </div>
+      </div>
+      <button
+        className="MuiButtonBase-root-77 MuiButton-root-48 MuiButton-outlined-53 button MuiButton-disableElevation-59 MuiButton-fullWidth-71"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label-49"
+        >
+          <div
+            className="buttonText"
+          >
+            הבא
+          </div>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

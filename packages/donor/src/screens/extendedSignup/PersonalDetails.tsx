@@ -5,6 +5,8 @@ import styles from "./PersonalDetails.module.scss";
 import Picker from "../../components/basic/Picker";
 import { useState } from "react";
 import classnames from "classnames";
+import Popup from "../../components/basic/Popup";
+import Illustration from "../../assets/images/whatsapp-computer.svg";
 
 export interface PersonalDetailsProps {
   firstName?: string;
@@ -27,6 +29,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [bloodType, setBloodType] = useState<BloodType | "">(
     props.bloodType || ""
   );
+  const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
 
   const [lastNameError, setLastNameError] =
     useState<string | undefined>(undefined);
@@ -80,7 +83,12 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         label={"סוג דם"}
         value={bloodType}
         options={BloodTypeUtils.getBloodTypeSelectOptions()}
-        onChange={setBloodType}
+        onChange={(bloodType) => {
+          if (bloodType === BloodType.NOT_SURE) {
+            setBloodTypePopupOpen(true);
+          }
+          setBloodType(bloodType);
+        }}
         buttonClassName={styles.bloodTypeButton}
       />
       <div className={styles.button}>
@@ -90,6 +98,20 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
           isDisabled={!areAllFieldsValid}
         />
       </div>
+
+      <Popup
+        open={bloodTypePopupOpen}
+        title="לא ידוע לך סוג הדם שלך?"
+        content="אין שום בעיה! ניתן לברר את סוג הדם בקלות בכל זמן במענה הטלפוני הממוחשב בטלפון 03−5300400"
+        buttonApproveText="חיוג למענה הממוחשב"
+        onApproved={async () => {
+          window.open("tel:035300400");
+          setBloodTypePopupOpen(false);
+        }}
+        goBackText="בעצם לא צריך"
+        onBack={() => setBloodTypePopupOpen(false)}
+        image={Illustration}
+      />
     </>
   );
 }

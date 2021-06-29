@@ -1,6 +1,6 @@
 import SignInScreen, { SignInScreenProps } from "./SignInScreen";
 import { action } from "@storybook/addon-actions";
-import { wait } from "../../../__test__/DonorTestUtils";
+import { TestUtils } from "@zm-blood-components/common";
 
 export default {
   component: SignInScreen,
@@ -15,7 +15,7 @@ const onSignInWithEmail = async (
   passwordError: (error: string) => void
 ) => {
   action("onSignInWithEmail")();
-  await wait(3000);
+  await TestUtils.wait(3000);
   passwordError("שגיאה כלשהי");
   return false;
 };

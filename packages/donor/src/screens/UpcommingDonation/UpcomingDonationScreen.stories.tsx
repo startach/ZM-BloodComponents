@@ -1,9 +1,8 @@
-import { Hospital } from "@zm-blood-components/common";
+import { Hospital, TestUtils } from "@zm-blood-components/common";
 import UpcomingDonationScreen, {
   UpcomingDonationScreenProps,
 } from "./UpcomingDonationScreen";
 import { action } from "@storybook/addon-actions";
-import { wait } from "../../__test__/DonorTestUtils";
 
 export default {
   component: UpcomingDonationScreen,
@@ -22,7 +21,7 @@ const props: UpcomingDonationScreenProps = {
   firstName: "משה",
   onCancel: async () => {
     action("onCancel")();
-    await wait(3000);
+    await TestUtils.wait(3000);
   },
 };
 

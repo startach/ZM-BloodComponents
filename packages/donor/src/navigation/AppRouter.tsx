@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import LoggedInRouter from "./app/LoggedInRouter";
 import {
+  AvailableAppointment,
   BookedAppointment,
   Donor,
   LoginStatus,
@@ -22,10 +23,11 @@ export default function AppRouter() {
   const [appState, setAppState] = useState<{
     donor?: Donor;
     bookedAppointment?: BookedAppointment;
+    availableAppointments: AvailableAppointment[];
     isFetching: boolean;
   }>({
-    donor: undefined,
     isFetching: false,
+    availableAppointments: [],
   });
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export default function AppRouter() {
         setAppState({
           donor: undefined,
           isFetching: true,
+          availableAppointments: [],
         });
       }
       setLoginStatus(newLoginStatus);
@@ -55,22 +58,29 @@ export default function AppRouter() {
       setAppState({
         donor: undefined,
         isFetching: false,
+        availableAppointments: [],
       });
       return;
     }
 
     async function fetchData() {
-      const donor = await FirebaseFunctions.getDonor();
-      let bookedAppointment: BookedAppointment | undefined = undefined;
-      if (donor) {
-        bookedAppointment = await FirebaseFunctions.getBookedAppointment();
-      }
+      const startTime = new Date().getTime();
+      const donorPromise = FirebaseFunctions.getDonor();
+      const bookedAppointmentPromise = FirebaseFunctions.getBookedAppointment();
+      const availableAppointmentsPromise =
+        FirebaseFunctions.getAvailableAppointments();
+
+      const donor = await donorPromise;
+      const bookedAppointment = await bookedAppointmentPromise;
+      const availableAppointments = await availableAppointmentsPromise;
 
       setAppState({
-        donor,
-        bookedAppointment,
         isFetching: false,
+        donor: donor,
+        bookedAppointment: bookedAppointment,
+        availableAppointments: availableAppointments,
       });
+      console.log("t", new Date().getTime() - startTime);
     }
 
     fetchData();
@@ -92,6 +102,7 @@ export default function AppRouter() {
     <LoggedInRouter
       user={appState.donor}
       bookedAppointment={appState.bookedAppointment}
+      availableAppointments={appState.availableAppointments}
       setUser={(user: Donor) => {
         setAppState({
           ...appState,

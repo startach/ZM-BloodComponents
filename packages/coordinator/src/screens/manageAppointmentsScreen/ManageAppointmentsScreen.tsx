@@ -4,7 +4,6 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-
 import Spinner from "../../components/Spinner";
 import Popup from "../../components/Popup";
 import { useState } from "react";
@@ -100,7 +99,7 @@ export default function ManageAppointmentsScreen({
   );
 
   return (
-    <div className={Styles["screen-grey-background"]}>
+    <>
       <HeaderSection className={Styles.hospital_picker_container}>
         <Select
           id={"hospital"}
@@ -129,7 +128,7 @@ export default function ManageAppointmentsScreen({
           }
         />
         <Button
-          title="תורים שעברו"
+          title="14 ימים אחרונים"
           onClick={() => {
             setShowPastAppointments(!showPastAppointments);
           }}
@@ -157,7 +156,11 @@ export default function ManageAppointmentsScreen({
         onApproved={popupData.onApproved}
         onClose={() => setPopupData(emptyPopupData)}
       />
-      {isLoading && <Spinner size="4rem" />}
-    </div>
+      {isLoading && (
+        <div className={Styles.spinner}>
+          <Spinner size="40px" />
+        </div>
+      )}
+    </>
   );
 }

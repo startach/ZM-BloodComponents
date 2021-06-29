@@ -65,7 +65,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           <img
             alt="illustration"
             className="illustration"
-            src="home page-illustration.png"
+            src="upcoming_appointment.svg"
           />
           <div
             className="welcomeTitle"

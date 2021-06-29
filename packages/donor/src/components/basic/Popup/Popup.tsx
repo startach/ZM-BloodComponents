@@ -9,7 +9,7 @@ export type PopupProps = {
   title: string;
   content?: string;
   buttonApproveText: string;
-  onApproved: () => Promise<void>;
+  onApproved: () => void | Promise<void>;
   goBackText?: string;
   onBack?: () => void;
   className?: string;

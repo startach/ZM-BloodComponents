@@ -14,6 +14,7 @@ import AboutScreen from "../../screens/about/AboutScreen";
 import {
   BookedAppointment,
   Donor,
+  FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
@@ -22,6 +23,7 @@ import ContactScreen from "../../screens/contact/ContactScreen";
 interface LoggedInRouterProps {
   user?: Donor;
   bookedAppointment?: BookedAppointment;
+  availableAppointments: FunctionsApi.AvailableAppointmentApiEntry[];
   setUser: (user: Donor) => void;
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
 }
@@ -93,7 +95,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
           }}
         />
         <Route
-          path={["/" + MainNavigationKeys.BookDonation, "*"]}
+          path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
             if (bookedAppointment) {
               return (
@@ -105,10 +107,14 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               <BookDonationScreenContainer
                 user={user}
                 setDonationSlotToBook={setDonationSlotToBook}
+                availableAppointments={props.availableAppointments}
               />
             );
           }}
         />
+        <Route path={"*"}>
+          <Redirect to={"/" + MainNavigationKeys.BookDonation} />
+        </Route>
       </Switch>
     </Router>
   );

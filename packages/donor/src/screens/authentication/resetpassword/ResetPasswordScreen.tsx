@@ -4,18 +4,39 @@ import Button from "../../../components/basic/Button";
 import styles from "../signin//SignInScreen.module.scss";
 import ZMScreen from "../../../components/basic/ZMScreen";
 import ResetPasswordIllustration from "../../../assets/images/password reset-illustration.svg";
+import Popup from "../../../components/basic/Popup";
+import EmailError from "../../../assets/images/Email not found.svg";
+import ResetSuccess from "../../../assets/images/Email on the way.svg";
 
 export interface ResetPasswordScreenProps {
-  onResetPassword: (email: string, error: (error: string) => void) => void;
+  onResetPassword: (
+    email: string,
+    onSuccess: () => void,
+    onError: (error: string) => void
+  ) => void;
   goToSignIn: () => void;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
 
-  const resetPassword = () => {
-    props.onResetPassword(email, setError);
+  const resetPassword = async () => {
+    setLoading(true);
+    const onError = (newError: string) => {
+      setError(newError);
+      setPopupOpen(true);
+    };
+
+    const onSuccess = () => {
+      setError("");
+      setPopupOpen(true);
+    };
+
+    await props.onResetPassword(email, onSuccess, onError);
+    setLoading(false);
   };
 
   return (
@@ -35,16 +56,32 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           label={`דוא״ל`}
           value={email}
           type="email"
-          errorMessage={error}
         />
         <div className={styles.actionButton}>
           <Button
             title="איפוס סיסמה"
             onClick={resetPassword}
             isDisabled={!email}
+            isLoading={loading}
           />
         </div>
       </div>
+
+      <Popup
+        open={popupOpen}
+        title={error ? "אופס" : "מייל איפוס בדרך אליך"}
+        content={error || "ברגעים הקרובים ישלח אליך מייל עם לינק לאיפוס הסיסמה"}
+        buttonApproveText={error ? "חזרה" : "סבבה"}
+        onApproved={
+          error
+            ? () => setPopupOpen(false)
+            : () => {
+                props.goToSignIn();
+                setPopupOpen(false);
+              }
+        }
+        image={error ? EmailError : ResetSuccess}
+      />
     </ZMScreen>
   );
 }

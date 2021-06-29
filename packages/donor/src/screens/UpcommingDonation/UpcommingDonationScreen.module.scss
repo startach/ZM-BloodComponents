@@ -24,18 +24,20 @@
 .illustration {
   height: 160px;
   position: absolute;
-  left: 0;
+  left: 40px;
 }
 
 .welcomeTitle {
-  z-index: 10;
-  max-width: 60%;
+  margin-right: 10px;
   font-size: 40px;
   font-weight: bold;
   color: var(--donor-secondary);
-  margin-right: 10px;
+  max-width: 60%;
   margin-top: 50px;
   line-height: 35px;
+
+  position: relative;
+  z-index: 10;
 }
 
 .welcomeText {

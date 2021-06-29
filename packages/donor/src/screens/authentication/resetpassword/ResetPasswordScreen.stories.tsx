@@ -2,6 +2,12 @@ import ResetPasswordScreen, {
   ResetPasswordScreenProps,
 } from "./ResetPasswordScreen";
 import { action } from "@storybook/addon-actions";
+import { TestUtils } from "@zm-blood-components/common";
+import { Story } from "@storybook/react";
+import GroupsTable, {
+  GroupTableProps,
+} from "../../../../../coordinator/src/components/Table/GroupTable";
+import { AppointmentSlot } from "../../../../../coordinator/src/screens/manageAppointmentsScreen/CoordinatorAppointmentsGrouper";
 
 export default {
   component: ResetPasswordScreen,
@@ -9,12 +15,36 @@ export default {
   parameters: { layout: "fullscreen" },
 };
 
-const props: ResetPasswordScreenProps = {
-  onResetPassword: action("onResetPassword"),
+const props = {
   goToSignIn: action("goToSignIn"),
 };
 
-export const Default = (args: ResetPasswordScreenProps) => (
+const Template: Story<ResetPasswordScreenProps> = (args) => (
   <ResetPasswordScreen {...args} />
 );
-Default.args = props;
+
+export const Success = Template.bind({});
+Success.args = {
+  ...props,
+  onResetPassword: async (email: string, onSuccess: () => void) => {
+    action("onResetPassword")();
+    await TestUtils.wait(2000);
+    onSuccess();
+    return true;
+  },
+};
+
+export const NoSuchEmail = Template.bind({});
+NoSuchEmail.args = {
+  ...props,
+  onResetPassword: async (
+    email: string,
+    onSuccess: () => void,
+    error: (error: string) => void
+  ) => {
+    action("onResetPassword")();
+    await TestUtils.wait(2000);
+    error("כתובת הדואר אינה תקינה");
+    return false;
+  },
+};

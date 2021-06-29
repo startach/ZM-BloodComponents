@@ -10,11 +10,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
     <div
       className="appHeader"
     >
-      <h6
+      <div
         className="title"
       >
         סיום הרשמה
-      </h6>
+      </div>
     </div>
     <div
       className="extendedSignup content padding"
@@ -153,290 +153,101 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  O+
-                </div>
-              </span>
-            </button>
+              O+
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  O-
-                </div>
-              </span>
-            </button>
+              O-
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  A+
-                </div>
-              </span>
-            </button>
+              A+
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  A-
-                </div>
-              </span>
-            </button>
+              A-
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  B+
-                </div>
-              </span>
-            </button>
+              B+
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  B-
-                </div>
-              </span>
-            </button>
+              B-
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  AB+
-                </div>
-              </span>
-            </button>
+              AB+
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  AB-
-                </div>
-              </span>
-            </button>
+              AB-
+            </div>
           </div>
           <div
             className="pickerButtonContainer"
           >
-            <button
-              className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-outlined-74 pickerButton bloodTypeButton button MuiButton-disableElevation-80 MuiButton-fullWidth-92"
-              disabled={false}
-              onBlur={[Function]}
+            <div
+              className="pickerButton bloodTypeButton"
+              color="default"
               onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
             >
-              <span
-                className="MuiButton-label-70"
-              >
-                <div
-                  className="buttonText"
-                >
-                  לא ידוע לי
-                </div>
-              </span>
-            </button>
+              לא ידוע
+            </div>
           </div>
         </div>
       </div>

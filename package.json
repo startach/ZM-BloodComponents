@@ -30,7 +30,8 @@
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",
     "storybook-coordinator": "yarn workspace @zm-blood-components/coordinator storybook",
     "build-storybook": "build-storybook",
-    "test-donor": "yarn workspace @zm-blood-components/donor test"
+    "test-donor": "yarn workspace @zm-blood-components/donor test",
+    "test-coordinator": "yarn workspace @zm-blood-components/coordinator test"
   },
   "dependencies": {
     "@capacitor/core": "^3.0.1",
@@ -74,7 +75,7 @@
     "jest": "26.6.0",
     "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.0",
+    "prettier": "2.3.0",
     "sass": "^1.32.6",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",

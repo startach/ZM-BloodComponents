@@ -2,9 +2,10 @@ import { useState } from "react";
 import styles from "./CoordinatorSigninScreen.module.scss";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
-import ScreenWrapper from "../../components/ScreenWrapper";
+import CoordinatorScreen from "../../components/CoordinatorScreen";
+import Card from "../../components/Card";
 
-interface SignInScreenProps {
+export interface SignInScreenProps {
   onSignInWithEmail: (
     email: string,
     password: string,
@@ -24,29 +25,34 @@ export default function CoordinatorSignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <ScreenWrapper className={styles.component}>
-      <Input
-        onChange={(emailContent) => {
-          setEmail(emailContent);
-          setEmailError("");
-        }}
-        value={email}
-        label={`דוא"ל`}
-        variant="filled"
-        errorMessage={emailError}
-      />
-      <Input
-        type="password"
-        onChange={(passwordContent) => {
-          setPassword(passwordContent);
-          setPasswordError("");
-        }}
-        value={password}
-        label="סיסמה"
-        variant="filled"
-        errorMessage={passwordError}
-      />
-      <Button title="התחבר" onClick={signIn} />
-    </ScreenWrapper>
+    <CoordinatorScreen className={styles.component}>
+      <Card className={styles.card}>
+        <div className={styles.title}>כניסה למערכת ניהול תורים</div>
+        <Input
+          onChange={(emailContent) => {
+            setEmail(emailContent);
+            setEmailError("");
+          }}
+          value={email}
+          label={`דוא"ל`}
+          variant="filled"
+          errorMessage={emailError}
+          className={styles.input}
+        />
+        <Input
+          type="password"
+          onChange={(passwordContent) => {
+            setPassword(passwordContent);
+            setPasswordError("");
+          }}
+          value={password}
+          label="סיסמה"
+          variant="filled"
+          errorMessage={passwordError}
+          className={styles.input}
+        />
+        <Button title="התחבר" onClick={signIn} className={styles.button} />
+      </Card>
+    </CoordinatorScreen>
   );
 }

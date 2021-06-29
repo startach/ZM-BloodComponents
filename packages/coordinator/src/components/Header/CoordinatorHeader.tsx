@@ -1,9 +1,9 @@
 import Button from "../Button";
-import { useState, useEffect } from "react";
-import logoImg from "../../assets/logo.svg";
+import { useEffect, useState } from "react";
 import styles from "./CoordinatorHeader.module.scss";
 import { useHistory, useLocation } from "react-router-dom";
-import { CoordinatorScreen } from "../../navigation/CoordinatorScreen";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
+import EmptyCoordinatorHeader from "./EmptyCoordinatorHeader";
 
 export interface HeaderButtonFlags {
   isLoggedIn: boolean;
@@ -37,29 +37,26 @@ export default function CoordinatorHeader({
     setCurrentTab(currentLocationPathname);
   }, [currentLocationPathname]);
 
-  const navigate = (screen: CoordinatorScreen) => () =>
+  const navigate = (screen: CoordinatorScreenKey) => () =>
     history.push("/" + screen);
 
   const email = getEmail();
 
   return (
-    <div className={styles.navBar}>
-      <div className={styles.logoContainer}>
-        <img src={logoImg} className={styles.logo} alt={"logo"} />
-      </div>
+    <EmptyCoordinatorHeader>
       <div className={styles.buttons}>
         <div className={styles.mainButtons}>
           {flags.showAddAppointments && (
             <Button
               className={currentTab === "/home" ? styles.selected__tab : ""}
               title="הוספת תורים"
-              onClick={navigate(CoordinatorScreen.ADD_APPOINTMENTS)}
+              onClick={navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
             />
           )}
           {flags.showOpenAppointments && (
             <Button
               title="תורים מתוכננים"
-              onClick={navigate(CoordinatorScreen.SCHEDULED_APPOINTMENTS)}
+              onClick={navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)}
               className={
                 currentTab === "/appointments" ? styles.selected__tab : ""
               }
@@ -69,7 +66,7 @@ export default function CoordinatorHeader({
             <Button
               className={currentTab === "/donors" ? styles.selected__tab : ""}
               title="חיפוש משתמשים"
-              onClick={navigate(CoordinatorScreen.DONORS)}
+              onClick={navigate(CoordinatorScreenKey.DONORS)}
             />
           )}
           {flags.showBookedAppointments && (
@@ -78,7 +75,7 @@ export default function CoordinatorHeader({
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
               title={`דוח"ות`}
-              onClick={navigate(CoordinatorScreen.BOOKED_DONATIONS)}
+              onClick={navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
             />
           )}
         </div>
@@ -89,6 +86,6 @@ export default function CoordinatorHeader({
           </div>
         )}
       </div>
-    </div>
+    </EmptyCoordinatorHeader>
   );
 }
