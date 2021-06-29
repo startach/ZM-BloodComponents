@@ -16,8 +16,8 @@ export default function AuthLoadingScreen() {
         style={{ height: "300px", width: "300px" }}
       ></Player>
       <div className={styles.bottomContainer}>
-        <img src={startachLogo}></img>
-        <img src={zmLogo}></img>
+        <img alt={"סטארט אח"}src={startachLogo}></img>
+        <img alt={"זיכרון מנחם"}src={zmLogo}></img>
       </div>
     </div>
   );
