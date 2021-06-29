@@ -177,7 +177,7 @@ export default function QuestionnaireScreen({
 
         <div className={styles.notesDetails}>
           ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך
-          ואיך יכול/ה לתרום אנא בטל/י את התור.
+          ואין ביכולתך לתרום אנא בטל/י את התור.
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>

@@ -35,7 +35,7 @@ export default function UpcomingDonationScreen({
             className={styles.illustration}
           />
           <div className={styles.welcomeTitle}>
-            <div>איזה כיף</div>
+            <div>איזה כיף!</div>
             <div className={styles.welcomeText}>בקרוב נפגשים</div>
           </div>
         </div>
@@ -48,13 +48,13 @@ export default function UpcomingDonationScreen({
             </div>
 
             <div className={styles.detailsText}>
-              <div className={styles.detailLabel}>איפה</div>
+              <div className={styles.detailLabel}>איפה?</div>
               <div className={styles.detailValue}>
                 בית החולים
                 {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
               </div>
 
-              <div className={styles.detailLabel}>מתי</div>
+              <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
                 {DateUtils.ToWeekDayString(donationDate)},{" "}
                 {DateUtils.ToDateString(donationDate) + " בשעה "}
@@ -67,7 +67,7 @@ export default function UpcomingDonationScreen({
 
       <div className={styles.moreInfo}>
         <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-        <li>משך התרומה היא בין שעה וחצי לשעתיים.</li>
+        <li>משך התרומה - בין שעה וחצי לשעתיים.</li>
         <li>יש להביא תעודת זהות.</li>
         <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
       </div>
@@ -108,7 +108,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         title="רק מוודאים"
         content="בטוח/ה שברצונך לבטל את התור?"
         buttonApproveText="כן, בטלו לי את התור"
-        goBackText="התחרטתי, אל תבטלו לי את התור"
+        goBackText="אל תבטלו לי את התור"
         onBack={handleClose}
         onApproved={onCancel}
         image={Cancellation}
