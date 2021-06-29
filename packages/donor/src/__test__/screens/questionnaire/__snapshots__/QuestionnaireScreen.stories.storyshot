@@ -535,7 +535,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
         <div
           className="notesDetails"
         >
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך ואיך יכול/ה לתרום אנא בטל/י את התור.
+          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
         </div>
         <div
           className="confirmButtonContainer"

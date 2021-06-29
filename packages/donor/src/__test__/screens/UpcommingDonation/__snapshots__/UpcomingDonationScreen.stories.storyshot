@@ -71,7 +71,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
             className="welcomeTitle"
           >
             <div>
-              איזה כיף
+              איזה כיף!
             </div>
             <div
               className="welcomeText"
@@ -113,7 +113,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               <div
                 className="detailLabel"
               >
-                איפה
+                איפה?
               </div>
               <div
                 className="detailValue"
@@ -124,7 +124,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               <div
                 className="detailLabel"
               >
-                מתי
+                מתי?
               </div>
               <div
                 className="detailValue"
@@ -148,7 +148,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           טיפים ומידע נוסף
         </div>
         <li>
-          משך התרומה היא בין שעה וחצי לשעתיים.
+          משך התרומה - בין שעה וחצי לשעתיים.
         </li>
         <li>
           יש להביא תעודת זהות.
