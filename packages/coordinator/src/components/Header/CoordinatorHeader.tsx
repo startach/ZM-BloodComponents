@@ -1,9 +1,12 @@
-import Button from "../Button";
+import Button, { ButtonVariant, ButtonProps } from "../Button";
 import { useEffect, useState } from "react";
 import styles from "./CoordinatorHeader.module.scss";
 import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import EmptyCoordinatorHeader from "./EmptyCoordinatorHeader";
+import { Units } from "../../constants/Units";
+import logoImg from "../../assets/logo.svg";
+import titleImg from "../../assets/blood-bank-zichron-Little-logo.svg";
 
 export interface HeaderButtonFlags {
   isLoggedIn: boolean;
@@ -42,19 +45,37 @@ export default function CoordinatorHeader({
 
   const email = getEmail();
 
-  return (
-    <EmptyCoordinatorHeader>
-      <div className={styles.buttons}>
-        <div className={styles.mainButtons}>
+  const TextButton = (buttonProps: ButtonProps) => (
+    <Button variant={ButtonVariant.text} {...buttonProps} />
+  );
+
+  if (window.innerWidth < Units.phoneWidth) {
+    return (
+      <div className={styles.navBar}>
+        <div className={styles.logoContainer}>
+          <img src={logoImg} className={styles.logo} alt={"logo"} />
+          <img src={titleImg} alt={"title"} className={styles.title} />
+          {flags.isLoggedIn && (
+            <div className={styles.loggedIn}>
+              <div className={styles.name}>{email}</div>
+              <TextButton
+                className={styles.selected__tab}
+                title="התנתק"
+                onClick={onSignOut}
+              />
+            </div>
+          )}
+        </div>
+        <div className={styles.buttons}>
           {flags.showAddAppointments && (
-            <Button
+            <TextButton
               className={currentTab === "/home" ? styles.selected__tab : ""}
               title="הוספת תורים"
               onClick={navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
             />
           )}
           {flags.showOpenAppointments && (
-            <Button
+            <TextButton
               title="תורים מתוכננים"
               onClick={navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)}
               className={
@@ -63,14 +84,55 @@ export default function CoordinatorHeader({
             />
           )}
           {flags.showSearchDonors && (
-            <Button
+            <TextButton
               className={currentTab === "/donors" ? styles.selected__tab : ""}
               title="חיפוש משתמשים"
               onClick={navigate(CoordinatorScreenKey.DONORS)}
             />
           )}
           {flags.showBookedAppointments && (
-            <Button
+            <TextButton
+              className={
+                currentTab === "/booked-donations" ? styles.selected__tab : ""
+              }
+              title={`דוח"ות`}
+              onClick={navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
+            />
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <EmptyCoordinatorHeader>
+      <div className={styles.buttons}>
+        <div className={styles.mainButtons}>
+          {flags.showAddAppointments && (
+            <TextButton
+              className={currentTab === "/home" ? styles.selected__tab : ""}
+              title="הוספת תורים"
+              onClick={navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
+            />
+          )}
+          {flags.showOpenAppointments && (
+            <TextButton
+              title="תורים מתוכננים"
+              onClick={navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)}
+              className={
+                currentTab === "/appointments" ? styles.selected__tab : ""
+              }
+            />
+          )}
+          {flags.showSearchDonors && (
+            <TextButton
+              className={currentTab === "/donors" ? styles.selected__tab : ""}
+              title="חיפוש משתמשים"
+              onClick={navigate(CoordinatorScreenKey.DONORS)}
+            />
+          )}
+          {flags.showBookedAppointments && (
+            <TextButton
               className={
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
@@ -82,7 +144,7 @@ export default function CoordinatorHeader({
         {flags.isLoggedIn && (
           <div className={styles.loggedIn}>
             <div>{email}</div>
-            <Button title="התנתק" onClick={onSignOut} />
+            <TextButton title="התנתק" onClick={onSignOut} />
           </div>
         )}
       </div>
