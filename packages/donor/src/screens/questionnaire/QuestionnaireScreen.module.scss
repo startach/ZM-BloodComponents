@@ -50,10 +50,11 @@
 .questionnaireSection {
   padding: 30px;
   overflow-y: scroll;
+  background-color: var(--donor-light);
 }
 
 .questionnaireTitle {
-  font-weight: bold;
+  font-weight: 500;
   font-size: 18px;
   color: var(--donor-light-black);
 }
@@ -69,7 +70,7 @@
 }
 
 .notesTitle {
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 30px;
   color: var(--donor-light-black);
 }

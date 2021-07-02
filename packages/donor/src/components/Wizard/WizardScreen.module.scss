@@ -37,6 +37,10 @@
   justify-content: center;
 }
 
+.boldText {
+  font-weight: 400;
+}
+
 .button {
   color: var(--donor-secondary);
   margin-right: 5px;
@@ -53,8 +57,10 @@
 
 .dot {
   margin: 8px !important;
+  background-color: var(--donor-bright-green);
+  opacity: 0.3;
 }
 
 .dotActive {
-  background-color: var(--donor-bright-green);
+  opacity: 1;
 }
