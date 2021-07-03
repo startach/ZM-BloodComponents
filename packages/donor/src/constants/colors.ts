@@ -6,7 +6,7 @@ const primary =
 const secondary =
   documentStyle.getPropertyValue("--donor-secondary").trim() || "#CB007B";
 const light =
-  documentStyle.getPropertyValue("--donor-light").trim() || "#F6F6F6";
+  documentStyle.getPropertyValue("--donor-light-gray").trim() || "#dadee0";
 const gray = documentStyle.getPropertyValue("--donor-gray").trim() || "#7E7E7E";
 
 export const colors = {
