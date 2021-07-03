@@ -102,7 +102,6 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               </div>
               <div
                 className="cancelButton"
-                onClick={[Function]}
               >
                 <div
                   className="cancelButtonColor textButton"
@@ -130,6 +129,12 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               >
                 בית החולים
                  בילינסון
+              </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                אני צריכ/ה הסעה
               </div>
               <div
                 className="detailLabel"

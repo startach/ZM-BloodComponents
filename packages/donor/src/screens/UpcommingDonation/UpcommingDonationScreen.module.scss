@@ -74,14 +74,21 @@
 
 .detailLabel {
   font-size: 14px;
-  line-height: 10px;
+  line-height: 12px;
   color: var(--donor-gray);
 }
 
 .detailValue {
   font-size: 18px;
-  margin-bottom: 15px;
   color: var(--donor-light-black);
+}
+
+.link {
+  font-size: 14px;
+  line-height: 15px;
+  text-decoration: underline;
+  color: var(--donor-link);
+  margin-bottom: 25px;
 }
 
 .cancelButton {

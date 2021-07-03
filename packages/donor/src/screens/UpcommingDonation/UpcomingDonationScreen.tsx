@@ -11,7 +11,9 @@ import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/upcoming_appointment.svg";
 import Cancellation from "../../assets/images/cancelation.svg";
+import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
+import { WHATSAPP_LINK } from "../contact/ContactScreen";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -53,6 +55,7 @@ export default function UpcomingDonationScreen({
                 בית החולים
                 {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
               </div>
+              <NeedRideButton />
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
@@ -75,27 +78,46 @@ export default function UpcomingDonationScreen({
   );
 }
 
+function NeedRideButton() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <div className={styles.link} onClick={() => setOpen(true)}>
+        אני צריכ/ה הסעה
+      </div>
+      <Popup
+        open={open}
+        title="אין לך איך להגיע?"
+        content="ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף"
+        buttonApproveText="בקשת הסעה"
+        goBackText="בעצם לא צריך"
+        onBack={() => setOpen(false)}
+        onApproved={() => {
+          window.open(WHATSAPP_LINK);
+        }}
+        image={Whatsapp}
+        buttonColor={Color.Primary}
+      />
+    </>
+  );
+}
+
 function CancelButton(props: { onCancel: () => Promise<void> }) {
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const onCancel = async () => {
+  const onCancelAppointment = async () => {
     setIsLoading(true);
     await props.onCancel();
   };
 
   return (
     <>
-      <div className={styles.cancelButton} onClick={handleClickOpen}>
+      <div className={styles.cancelButton}>
         <Button
           title="ביטול תור"
-          onClick={handleClickOpen}
+          onClick={() => setOpen(true)}
           variant={ButtonVariant.text}
           color={Color.Default}
           isLoading={isLoading}
@@ -109,8 +131,8 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         content="בטוח/ה שברצונך לבטל את התור?"
         buttonApproveText="כן, בטלו לי את התור"
         goBackText="אל תבטלו לי את התור"
-        onBack={handleClose}
-        onApproved={onCancel}
+        onBack={() => setOpen(false)}
+        onApproved={onCancelAppointment}
         image={Cancellation}
         buttonColor={Color.Secondary}
       />
