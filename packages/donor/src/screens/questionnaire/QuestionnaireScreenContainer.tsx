@@ -9,11 +9,8 @@ import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
   donationSlot: DonationSlotToBook;
+  refreshAppointments: () => void;
 }
-
-export type QuestionnaireRoutingProps = {
-  donationSlot: DonationSlotToBook;
-};
 
 const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
 
@@ -67,7 +64,10 @@ export default function QuestionnaireScreenContainer(
       isLoading={isLoading}
       debugMode={debugMode}
       errorCode={error}
-      goToHomePage={async () => history.goBack()}
+      goToHomePage={async () => {
+        props.refreshAppointments();
+        history.goBack();
+      }}
     />
   );
 }

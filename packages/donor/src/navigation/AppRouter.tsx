@@ -25,8 +25,10 @@ export default function AppRouter() {
     bookedAppointment?: BookedAppointment;
     availableAppointments: AvailableAppointment[];
     isFetching: boolean;
+    isFetchingAppointments: boolean;
   }>({
     isFetching: false,
+    isFetchingAppointments: false,
     availableAppointments: [],
   });
 
@@ -40,6 +42,7 @@ export default function AppRouter() {
         setAppState({
           donor: undefined,
           isFetching: true,
+          isFetchingAppointments: true,
           availableAppointments: [],
         });
       }
@@ -58,6 +61,7 @@ export default function AppRouter() {
       setAppState({
         donor: undefined,
         isFetching: false,
+        isFetchingAppointments: false,
         availableAppointments: [],
       });
       return;
@@ -76,6 +80,7 @@ export default function AppRouter() {
 
       setAppState({
         isFetching: false,
+        isFetchingAppointments: false,
         donor: donor,
         bookedAppointment: bookedAppointment,
         availableAppointments: availableAppointments,
@@ -85,6 +90,20 @@ export default function AppRouter() {
 
     fetchData();
   }, [loginStatus]);
+
+  const refreshAppointments = async () => {
+    setAppState({
+      ...appState,
+      isFetchingAppointments: true,
+    });
+    const newAvailableAppointments =
+      await FirebaseFunctions.getAvailableAppointments();
+    setAppState({
+      ...appState,
+      isFetchingAppointments: false,
+      availableAppointments: newAvailableAppointments,
+    });
+  };
 
   if (!splashMinimumTimeoutFinished) {
     return <AuthLoadingScreen />;
@@ -103,6 +122,8 @@ export default function AppRouter() {
       user={appState.donor}
       bookedAppointment={appState.bookedAppointment}
       availableAppointments={appState.availableAppointments}
+      refreshAppointments={refreshAppointments}
+      isFetchingAppointments={appState.isFetchingAppointments}
       setUser={(user: Donor) => {
         setAppState({
           ...appState,

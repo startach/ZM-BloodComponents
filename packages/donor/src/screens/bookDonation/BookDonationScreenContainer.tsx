@@ -12,6 +12,7 @@ interface BookDonationScreenContainerProps {
   user: Donor;
   setDonationSlotToBook: (donationSlot: DonationSlotToBook) => void;
   availableAppointments: AvailableAppointment[];
+  isFetchingAppointments: boolean;
 }
 
 export default function BookDonationScreenContainer(
@@ -29,7 +30,7 @@ export default function BookDonationScreenContainer(
       availableAppointments={props.availableAppointments}
       onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
-      isFetching={false}
+      isFetching={props.isFetchingAppointments}
       defaultHospital={Hospital.BEILINSON}
     />
   );
