@@ -49,40 +49,40 @@ export default function BookDonationScreen({
       className={styles.bookDonationScreen}
       fullWidth={true}
     >
-      <div className={styles.welcomeTitle}>
+      <div className={styles.welcomeBox}>
+        <div className={styles.welcomeTitle}>
+          <div className={styles.name}>היי {firstName}</div>
+          <div className={styles.welcomeText}>
+            איזה כיף שבאת!
+            <br />
+            מתי יתאים לך לתרום?
+          </div>
+        </div>
         <img
           src={Illustration}
           alt={"illustration"}
           className={styles.illustration}
         />
-        <div className={styles.name}>היי {firstName}</div>
-        <div className={styles.welcomeText}>
-          איזה כיף שבאת!
-          <br />
-          מתי יתאים לך לתרום?
-        </div>
       </div>
 
-      <div className={styles.screenContent}>
-        <div className={styles.dropdownContainer}>
-          <Select
-            label={"הצג תורים ב:"}
-            className={styles.dropdown}
-            options={HospitalUtils.getAllHospitalOptions("הכל")}
-            value={selectedHospital}
-            onChange={setSelectedHospital}
-            isDisabled={isFetching}
-          />
-        </div>
+      <div className={styles.dropdownContainer}>
+        <Select
+          label={"הצג תורים ב:"}
+          className={styles.dropdown}
+          options={HospitalUtils.getAllHospitalOptions("הכל")}
+          value={selectedHospital}
+          onChange={setSelectedHospital}
+          isDisabled={isFetching}
+        />
+      </div>
 
-        <div className={styles.donationsCard}>
-          {Donations(
-            selectedHospital,
-            isFetching,
-            sortedDonationDays,
-            onSlotSelected
-          )}
-        </div>
+      <div className={styles.donationsCard}>
+        {Donations(
+          selectedHospital,
+          isFetching,
+          sortedDonationDays,
+          onSlotSelected
+        )}
       </div>
     </ZMScreen>
   );

@@ -62,116 +62,116 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
       className="bookDonationScreen content"
     >
       <div
-        className="welcomeTitle"
+        className="welcomeBox"
       >
+        <div
+          className="welcomeTitle"
+        >
+          <div
+            className="name"
+          >
+            היי 
+            משה
+          </div>
+          <div
+            className="welcomeText"
+          >
+            איזה כיף שבאת!
+            <br />
+            מתי יתאים לך לתרום?
+          </div>
+        </div>
         <img
           alt="illustration"
           className="illustration"
           src="home page-illustration.png"
         />
+      </div>
+      <div
+        className="dropdownContainer"
+      >
         <div
-          className="name"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
-          היי 
-          משה
-        </div>
-        <div
-          className="welcomeText"
-        >
-          איזה כיף שבאת!
-          <br />
-          מתי יתאים לך לתרום?
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+            data-shrink={true}
+          >
+            הצג תורים ב:
+          </label>
+          <div
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-disabled-86 MuiInput-disabled-72 MuiInputBase-formControl-84 MuiInput-formControl-70"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79 MuiInputBase-disabled-86 MuiInput-disabled-72 MuiNativeSelect-disabled-63"
+              disabled={true}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64 MuiNativeSelect-disabled-63"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
+          />
         </div>
       </div>
       <div
-        className="screenContent"
+        className="donationsCard"
       >
         <div
-          className="dropdownContainer"
+          className="loading"
         >
           <div
-            className="MuiFormControl-root-34 makeStyles-root-33"
+            className="lf-player-container"
           >
-            <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-              data-shrink={true}
-            >
-              הצג תורים ב:
-            </label>
             <div
-              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-disabled-86 MuiInput-disabled-72 MuiInputBase-formControl-84 MuiInput-formControl-70"
-              onClick={[Function]}
-            >
-              <select
-                aria-invalid={false}
-                className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79 MuiInputBase-disabled-86 MuiInput-disabled-72 MuiNativeSelect-disabled-63"
-                disabled={true}
-                onAnimationStart={[Function]}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                value="הכל"
-              >
-                <option
-                  value="הכל"
-                >
-                  הכל
-                </option>
-                <option
-                  value="BEILINSON"
-                >
-                  בילינסון
-                </option>
-                <option
-                  value="HADASA"
-                >
-                  הדסה
-                </option>
-              </select>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64 MuiNativeSelect-disabled-63"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-            </div>
-            <p
-              className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
+              className="dropAnimation"
+              id="lottie"
+              style={
+                Object {
+                  "background": "transparent",
+                  "margin": "0 auto",
+                  "outline": "none",
+                  "overflow": "hidden",
+                }
+              }
             />
           </div>
-        </div>
-        <div
-          className="donationsCard"
-        >
           <div
-            className="loading"
+            className="loadingText"
           >
-            <div
-              className="lf-player-container"
-            >
-              <div
-                className="dropAnimation"
-                id="lottie"
-                style={
-                  Object {
-                    "background": "transparent",
-                    "margin": "0 auto",
-                    "outline": "none",
-                    "overflow": "hidden",
-                  }
-                }
-              />
-            </div>
-            <div
-              className="loadingText"
-            >
-              מחפש תורים קרובים...
-            </div>
+            מחפש תורים קרובים...
           </div>
         </div>
       </div>
@@ -242,339 +242,339 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
       className="bookDonationScreen content"
     >
       <div
-        className="welcomeTitle"
+        className="welcomeBox"
       >
+        <div
+          className="welcomeTitle"
+        >
+          <div
+            className="name"
+          >
+            היי 
+            משה
+          </div>
+          <div
+            className="welcomeText"
+          >
+            איזה כיף שבאת!
+            <br />
+            מתי יתאים לך לתרום?
+          </div>
+        </div>
         <img
           alt="illustration"
           className="illustration"
           src="home page-illustration.png"
         />
+      </div>
+      <div
+        className="dropdownContainer"
+      >
         <div
-          className="name"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
-          היי 
-          משה
-        </div>
-        <div
-          className="welcomeText"
-        >
-          איזה כיף שבאת!
-          <br />
-          מתי יתאים לך לתרום?
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+            data-shrink={true}
+          >
+            הצג תורים ב:
+          </label>
+          <div
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
+          />
         </div>
       </div>
       <div
-        className="screenContent"
+        className="donationsCard"
       >
         <div
-          className="dropdownContainer"
+          className="donationDayContainer"
         >
           <div
-            className="MuiFormControl-root-34 makeStyles-root-33"
+            className="dayContainer"
           >
-            <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-              data-shrink={true}
-            >
-              הצג תורים ב:
-            </label>
             <div
-              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
-              onClick={[Function]}
+              className="availableAppointmentsTitle"
             >
-              <select
-                aria-invalid={false}
-                className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
-                disabled={false}
-                onAnimationStart={[Function]}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                value="הכל"
-              >
-                <option
-                  value="הכל"
-                >
-                  הכל
-                </option>
-                <option
-                  value="BEILINSON"
-                >
-                  בילינסון
-                </option>
-                <option
-                  value="HADASA"
-                >
-                  הדסה
-                </option>
-              </select>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
+              תורים פנויים
             </div>
-            <p
-              className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
-            />
+            <div
+              className="dayTitle"
+            >
+              יום שישי, 13/08/2021
+            </div>
+            <div
+              className="hospitalName"
+            >
+              תל השומר
+               
+            </div>
+            <div
+              className="hospitalCard"
+            >
+              <div>
+                <div
+                  className="pickerLabel"
+                />
+                <div
+                  className="pickerButtons"
+                >
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:00
+                    </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:16
+                    </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:33
+                    </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:50
+                    </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      13:06
+                    </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      13:23
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="hospitalName"
+            >
+              בילינסון
+               
+            </div>
+            <div
+              className="hospitalCard"
+            >
+              <div>
+                <div
+                  className="pickerLabel"
+                />
+                <div
+                  className="pickerButtons"
+                >
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:00
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div
-          className="donationsCard"
+          className="donationDayContainer"
         >
           <div
-            className="donationDayContainer"
+            className="dayContainer"
           >
             <div
-              className="dayContainer"
+              className="availableAppointmentsTitle"
             >
-              <div
-                className="availableAppointmentsTitle"
-              >
-                תורים פנויים
-              </div>
-              <div
-                className="dayTitle"
-              >
-                יום שישי, 13/08/2021
-              </div>
-              <div
-                className="hospitalName"
-              >
-                תל השומר
-                 
-              </div>
-              <div
-                className="hospitalCard"
-              >
-                <div>
+              תורים פנויים
+            </div>
+            <div
+              className="dayTitle"
+            >
+              יום שבת, 14/08/2021
+            </div>
+            <div
+              className="hospitalName"
+            >
+              תל השומר
+               
+            </div>
+            <div
+              className="hospitalCard"
+            >
+              <div>
+                <div
+                  className="pickerLabel"
+                />
+                <div
+                  className="pickerButtons"
+                >
                   <div
-                    className="pickerLabel"
-                  />
-                  <div
-                    className="pickerButtons"
+                    className="pickerButtonContainer"
                   >
                     <div
-                      className="pickerButtonContainer"
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
                     >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        12:00
-                      </div>
+                      16:36
                     </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
                     <div
-                      className="pickerButtonContainer"
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
                     >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        12:16
-                      </div>
+                      16:53
                     </div>
+                  </div>
+                  <div
+                    className="pickerButtonContainer"
+                  >
                     <div
-                      className="pickerButtonContainer"
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
                     >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        12:33
-                      </div>
-                    </div>
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        12:50
-                      </div>
-                    </div>
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        13:06
-                      </div>
-                    </div>
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        13:23
-                      </div>
+                      17:10
                     </div>
                   </div>
                 </div>
               </div>
-              <div
-                className="hospitalName"
-              >
-                בילינסון
-                 
-              </div>
-              <div
-                className="hospitalCard"
-              >
-                <div>
+            </div>
+            <div
+              className="hospitalName"
+            >
+              בילינסון
+               
+            </div>
+            <div
+              className="hospitalCard"
+            >
+              <div>
+                <div
+                  className="pickerLabel"
+                />
+                <div
+                  className="pickerButtons"
+                >
                   <div
-                    className="pickerLabel"
-                  />
-                  <div
-                    className="pickerButtons"
+                    className="pickerButtonContainer"
                   >
                     <div
-                      className="pickerButtonContainer"
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
                     >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        12:00
-                      </div>
+                      15:46
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="donationDayContainer"
-          >
-            <div
-              className="dayContainer"
-            >
-              <div
-                className="availableAppointmentsTitle"
-              >
-                תורים פנויים
-              </div>
-              <div
-                className="dayTitle"
-              >
-                יום שבת, 14/08/2021
-              </div>
-              <div
-                className="hospitalName"
-              >
-                תל השומר
-                 
-              </div>
-              <div
-                className="hospitalCard"
-              >
-                <div>
-                  <div
-                    className="pickerLabel"
-                  />
-                  <div
-                    className="pickerButtons"
-                  >
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        16:36
-                      </div>
-                    </div>
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        16:53
-                      </div>
-                    </div>
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        17:10
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="hospitalName"
-              >
-                בילינסון
-                 
-              </div>
-              <div
-                className="hospitalCard"
-              >
-                <div>
-                  <div
-                    className="pickerLabel"
-                  />
-                  <div
-                    className="pickerButtons"
-                  >
-                    <div
-                      className="pickerButtonContainer"
-                    >
-                      <div
-                        className="pickerButton"
-                        color="default"
-                        onClick={[Function]}
-                      >
-                        15:46
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        </div>
+        <div
+          className="noMoreAppointments"
+        >
+          <img
+            alt="No more appointments"
+            className="noAppointmentsImage"
+            src="NO Appointments.svg"
+          />
+          <div>
+            זה הכל בינתיים :)
           </div>
-          <div
-            className="noMoreAppointments"
-          >
-            <img
-              alt="No more appointments"
-              className="noAppointmentsImage"
-              src="NO Appointments.svg"
-            />
-            <div>
-              זה הכל בינתיים :)
-            </div>
-            <div>
-              התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
-            </div>
+          <div>
+            התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
           </div>
         </div>
       </div>
@@ -645,106 +645,106 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
       className="bookDonationScreen content"
     >
       <div
-        className="welcomeTitle"
+        className="welcomeBox"
       >
+        <div
+          className="welcomeTitle"
+        >
+          <div
+            className="name"
+          >
+            היי 
+            משה
+          </div>
+          <div
+            className="welcomeText"
+          >
+            איזה כיף שבאת!
+            <br />
+            מתי יתאים לך לתרום?
+          </div>
+        </div>
         <img
           alt="illustration"
           className="illustration"
           src="home page-illustration.png"
         />
+      </div>
+      <div
+        className="dropdownContainer"
+      >
         <div
-          className="name"
+          className="MuiFormControl-root-34 makeStyles-root-33"
         >
-          היי 
-          משה
-        </div>
-        <div
-          className="welcomeText"
-        >
-          איזה כיף שבאת!
-          <br />
-          מתי יתאים לך לתרום?
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+            data-shrink={true}
+          >
+            הצג תורים ב:
+          </label>
+          <div
+            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
+            onClick={[Function]}
+          >
+            <select
+              aria-invalid={false}
+              className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              value="הכל"
+            >
+              <option
+                value="הכל"
+              >
+                הכל
+              </option>
+              <option
+                value="BEILINSON"
+              >
+                בילינסון
+              </option>
+              <option
+                value="HADASA"
+              >
+                הדסה
+              </option>
+            </select>
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+          <p
+            className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
+          />
         </div>
       </div>
       <div
-        className="screenContent"
+        className="donationsCard"
       >
         <div
-          className="dropdownContainer"
+          className="noAppointments"
         >
-          <div
-            className="MuiFormControl-root-34 makeStyles-root-33"
-          >
-            <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
-              data-shrink={true}
-            >
-              הצג תורים ב:
-            </label>
-            <div
-              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-formControl-84 MuiInput-formControl-70"
-              onClick={[Function]}
-            >
-              <select
-                aria-invalid={false}
-                className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79"
-                disabled={false}
-                onAnimationStart={[Function]}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                value="הכל"
-              >
-                <option
-                  value="הכל"
-                >
-                  הכל
-                </option>
-                <option
-                  value="BEILINSON"
-                >
-                  בילינסון
-                </option>
-                <option
-                  value="HADASA"
-                >
-                  הדסה
-                </option>
-              </select>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
-            </div>
-            <p
-              className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
-            />
+          <img
+            alt="No more appointments"
+            className="noAppointmentsImage"
+            src="NO Appointments.svg"
+          />
+          <div>
+            לא קיימים תורים פנויים בקרוב
           </div>
-        </div>
-        <div
-          className="donationsCard"
-        >
-          <div
-            className="noAppointments"
-          >
-            <img
-              alt="No more appointments"
-              className="noAppointmentsImage"
-              src="NO Appointments.svg"
-            />
-            <div>
-              לא קיימים תורים פנויים בקרוב
-            </div>
-            <div>
-              מומלץ לחזור שוב מחר לבדוק מה התחדש :)
-            </div>
+          <div>
+            מומלץ לחזור שוב מחר לבדוק מה התחדש :)
           </div>
         </div>
       </div>
