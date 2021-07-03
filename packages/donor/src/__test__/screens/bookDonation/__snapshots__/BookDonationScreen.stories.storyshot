@@ -141,32 +141,36 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
           </div>
         </div>
         <div
-          className="spinner"
+          className="donationsCard"
         >
           <div
-            className="MuiCircularProgress-root-109 MuiCircularProgress-colorPrimary-113 MuiCircularProgress-indeterminate-111"
-            role="progressbar"
-            style={
-              Object {
-                "height": "2rem",
-                "width": "2rem",
-              }
-            }
+            className="spinner"
           >
-            <svg
-              className="MuiCircularProgress-svg-115"
-              viewBox="22 22 44 44"
+            <div
+              className="MuiCircularProgress-root-109 MuiCircularProgress-colorPrimary-113 MuiCircularProgress-indeterminate-111"
+              role="progressbar"
+              style={
+                Object {
+                  "height": "2rem",
+                  "width": "2rem",
+                }
+              }
             >
-              <circle
-                className="MuiCircularProgress-circle-116 MuiCircularProgress-circleIndeterminate-118"
-                cx={44}
-                cy={44}
-                fill="none"
-                r={20.2}
-                strokeWidth={3.6}
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                className="MuiCircularProgress-svg-115"
+                viewBox="22 22 44 44"
+              >
+                <circle
+                  className="MuiCircularProgress-circle-116 MuiCircularProgress-circleIndeterminate-118"
+                  cx={44}
+                  cy={44}
+                  fill="none"
+                  r={20.2}
+                  strokeWidth={3.6}
+                  style={Object {}}
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -316,235 +320,254 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           </div>
         </div>
         <div
-          className="donationDayContainer"
+          className="donationsCard"
         >
           <div
-            className="dayContainer"
+            className="donationDayContainer"
           >
             <div
-              className="availableAppointmentsTitle"
+              className="dayContainer"
             >
-              תורים פנויים
-            </div>
-            <div
-              className="dayTitle"
-            >
-              יום שישי, 13/08/2021
-            </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
-                <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
-                >
+              <div
+                className="availableAppointmentsTitle"
+              >
+                תורים פנויים
+              </div>
+              <div
+                className="dayTitle"
+              >
+                יום שישי, 13/08/2021
+              </div>
+              <div
+                className="hospitalName"
+              >
+                תל השומר
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
                   >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      12:00
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:00
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      12:16
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:16
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      12:33
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:33
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      12:50
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:50
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      13:06
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        13:06
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      13:23
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        13:23
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
-                <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
-                >
+              <div
+                className="hospitalName"
+              >
+                בילינסון
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
                   >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      12:00
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:00
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="donationDayContainer"
-        >
           <div
-            className="dayContainer"
+            className="donationDayContainer"
           >
             <div
-              className="availableAppointmentsTitle"
+              className="dayContainer"
             >
-              תורים פנויים
-            </div>
-            <div
-              className="dayTitle"
-            >
-              יום שבת, 14/08/2021
-            </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
-                <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
-                >
+              <div
+                className="availableAppointmentsTitle"
+              >
+                תורים פנויים
+              </div>
+              <div
+                className="dayTitle"
+              >
+                יום שבת, 14/08/2021
+              </div>
+              <div
+                className="hospitalName"
+              >
+                תל השומר
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
                   >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      16:36
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        16:36
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        16:53
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        17:10
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div
+                className="hospitalName"
+              >
+                בילינסון
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
                   >
                     <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
+                      className="pickerButtonContainer"
                     >
-                      16:53
-                    </div>
-                  </div>
-                  <div
-                    className="pickerButtonContainer"
-                  >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      17:10
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        15:46
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
+          </div>
+          <div
+            className="noMoreAppointments"
+          >
+            <img
+              alt="No more appointments"
+              className="noAppointmentsImage"
+              src="NO Appointments.svg"
+            />
+            <div>
+              זה הכל בינתיים :)
             </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
-                <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
-                >
-                  <div
-                    className="pickerButtonContainer"
-                  >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      15:46
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div>
+              התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
             </div>
           </div>
         </div>
@@ -695,13 +718,22 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
           </div>
         </div>
         <div
-          className="noAppointments"
+          className="donationsCard"
         >
-          <div>
-            לא קיימים תורים פנויים
-          </div>
-          <div>
-            כדאי לבדוק שוב בהמשך :)
+          <div
+            className="noAppointments"
+          >
+            <img
+              alt="No more appointments"
+              className="noAppointmentsImage"
+              src="NO Appointments.svg"
+            />
+            <div>
+              לא קיימים תורים פנויים בקרוב
+            </div>
+            <div>
+              מומלץ לחזור שוב מחר לבדוק מה התחדש :)
+            </div>
           </div>
         </div>
       </div>

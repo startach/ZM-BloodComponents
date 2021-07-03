@@ -15,6 +15,7 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Illustration from "../../assets/images/home page-illustration.png";
+import NoAppointments from "../../assets/images/NO Appointments.svg";
 
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
@@ -73,12 +74,14 @@ export default function BookDonationScreen({
           />
         </div>
 
-        {Donations(
-          selectedHospital,
-          isFetching,
-          sortedDonationDays,
-          onSlotSelected
-        )}
+        <div className={styles.donationsCard}>
+          {Donations(
+            selectedHospital,
+            isFetching,
+            sortedDonationDays,
+            onSlotSelected
+          )}
+        </div>
       </div>
     </ZMScreen>
   );
@@ -102,15 +105,25 @@ function Donations(
     if (!selectedHospital) {
       return (
         <div className={styles.noAppointments}>
-          <div>לא קיימים תורים פנויים</div>
-          <div>כדאי לבדוק שוב בהמשך :)</div>
+          <img
+            className={styles.noAppointmentsImage}
+            src={NoAppointments}
+            alt={"No more appointments"}
+          />
+          <div>לא קיימים תורים פנויים בקרוב</div>
+          <div>מומלץ לחזור שוב מחר לבדוק מה התחדש :)</div>
         </div>
       );
     }
     return (
       <div className={styles.noAppointments}>
+        <img
+          className={styles.noAppointmentsImage}
+          src={NoAppointments}
+          alt={"No more appointments"}
+        />
         <div>לא קיימים תורים פנויים לבית חולים זה</div>
-        <div>כדאי לבדוק שוב בהמשך :)</div>
+        <div>מומלץ לחזור שוב מחר לבדוק מה התחדש :)</div>
       </div>
     );
   }
@@ -126,6 +139,16 @@ function Donations(
           />
         </div>
       ))}
+
+      <div className={styles.noMoreAppointments}>
+        <img
+          className={styles.noAppointmentsImage}
+          src={NoAppointments}
+          alt={"No more appointments"}
+        />
+        <div>זה הכל בינתיים :)</div>
+        <div>התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש</div>
+      </div>
     </>
   );
 }

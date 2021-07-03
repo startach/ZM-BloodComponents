@@ -44,17 +44,22 @@
 }
 
 .screenContent {
+  background-color: var(--donor-light-pink);
 }
 
 .dropdownContainer {
   padding: 20px 20px 0 20px;
   display: flex;
   flex-direction: column;
-  background-color: white;
 }
 
 .dropdown {
   width: 100%;
+}
+
+.donationsCard {
+  background-color: white;
+  border-radius: 16px 16px 0 0;
 }
 
 .spinner {
@@ -65,9 +70,26 @@
 .noAppointments {
   padding: 40px;
   text-align: center;
+  font-size: 16px;
+  color: var(--donor-light-black);
 }
 
 .donationDayContainer {
-  padding: 40px 20px;
-  border-bottom: 3px solid var(--donor-light);
+  padding: 20px 20px;
+  border-bottom: 3px solid var(--donor-light-pink);
+}
+
+.noMoreAppointments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 50px;
+  font-size: 16px;
+  color: var(--donor-light-black);
+}
+
+.noAppointmentsImage {
+  width: 64px;
+  margin-bottom: 15px;
 }
