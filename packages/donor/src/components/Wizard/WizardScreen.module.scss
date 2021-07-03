@@ -16,12 +16,16 @@
   color: var(--donor-primary);
   font-size: 32px;
   font-weight: bold;
-  margin: 16px 0;
+  margin: 20px 0;
 }
 
 .content {
   line-height: 24px;
   color: var(--donor-dark-gray);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .link {
@@ -57,7 +61,7 @@
 
 .dot {
   margin: 8px !important;
-  background-color: var(--donor-bright-green);
+  background-color: var(--donor-bright-green) !important;
   opacity: 0.3;
 }
 

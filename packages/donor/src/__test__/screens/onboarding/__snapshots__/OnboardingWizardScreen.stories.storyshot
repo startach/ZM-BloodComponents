@@ -29,13 +29,13 @@ exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
         src="img-Onboarding-1.svg"
       />
       <div
-        className="title"
-      >
-        איזה כיף שבאת!
-      </div>
-      <div
         className="content"
       >
+        <div
+          className="title"
+        >
+          איזה כיף שבאת!
+        </div>
         <div>
           <div
             className=""
@@ -53,7 +53,7 @@ exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
             className=""
             style={
               Object {
-                "fontWeight": "bold",
+                "fontWeight": 500,
               }
             }
           >
@@ -65,7 +65,7 @@ exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
             className="buttonText"
             style={
               Object {
-                "fontWeight": "bold",
+                "fontWeight": 500,
               }
             }
           >

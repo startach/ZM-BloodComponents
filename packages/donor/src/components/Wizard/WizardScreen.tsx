@@ -36,15 +36,13 @@ export default function WizardScreen(props: WizardScreenProps) {
         src={props.pages[currentStep].imageUrl}
         alt=""
       />
-      <div className={styles.title}>{props.pages[currentStep].title}</div>
       <div className={styles.content}>
+        <div className={styles.title}>{props.pages[currentStep].title}</div>
         {props.pages[currentStep].content.map((key, index) => (
           <div key={key.text + index}>
             <div
               className={key.button ? styles.buttonText : ""}
-              style={
-                key.bold ? { fontWeight: "bold" } : { fontWeight: "normal" }
-              }
+              style={key.bold ? { fontWeight: 500 } : { fontWeight: "normal" }}
             >
               {key.text}
 
