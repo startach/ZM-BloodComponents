@@ -8,7 +8,7 @@ import styles from "./UpcommingDonationScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
-import Illustration from "../../assets/images/upcoming_appointment.svg";
+import Illustration from "../../assets/images/exists appointment.svg";
 import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
@@ -36,6 +36,7 @@ export default function UpcomingDonationScreen({
             className={styles.illustration}
           />
           <div className={styles.welcomeTitle}>
+            <div>היי</div>
             <div>{fullName},</div>
             <div className={styles.welcomeText}>בקרוב נפגש</div>
           </div>

@@ -70,11 +70,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           <img
             alt="illustration"
             className="illustration"
-            src="upcoming_appointment.svg"
+            src="exists appointment.svg"
           />
           <div
             className="welcomeTitle"
           >
+            <div>
+              היי
+            </div>
             <div>
               משה כהן
               ,
