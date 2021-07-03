@@ -76,7 +76,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
             dir="rtl"
             onKeyPress={[Function]}
           >
@@ -87,13 +87,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               שם פרטי
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInputBase-input-94 MuiInput-input-79"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -110,7 +110,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
             dir="rtl"
             onKeyPress={[Function]}
           >
@@ -121,13 +121,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               שם משפחה
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInputBase-input-94 MuiInput-input-79"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -144,7 +144,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
             dir="rtl"
             onKeyPress={[Function]}
           >
@@ -155,13 +155,13 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               מספר טלפון
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInputBase-input-94 MuiInput-input-79"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -293,7 +293,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="button"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-1 MuiButton-contained-9 button MuiButton-containedPrimary-10 MuiButton-disableElevation-12 MuiButton-fullWidth-24"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -311,7 +311,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-91"
+              className="MuiButton-label-2"
             >
               <div
                 className="buttonText"

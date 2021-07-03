@@ -62,9 +62,19 @@
   border-radius: 16px 16px 0 0;
 }
 
-.spinner {
+.loading {
   padding: 40px;
   text-align: center;
+}
+
+.dropAnimation {
+  height: 86px;
+}
+
+.loadingText {
+  margin-top: 15px;
+  color: var(--donor-light-black);
+  font-size: 16px;
 }
 
 .noAppointments {

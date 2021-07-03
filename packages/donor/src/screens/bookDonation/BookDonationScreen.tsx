@@ -16,6 +16,8 @@ import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Illustration from "../../assets/images/home page-illustration.png";
 import NoAppointments from "../../assets/images/NO Appointments.svg";
+import { Player } from "@lottiefiles/react-lottie-player";
+import DropAnimation from "../../assets/animations/drop.json";
 
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
@@ -95,8 +97,14 @@ function Donations(
 ) {
   if (isFetching) {
     return (
-      <div className={styles.spinner}>
-        <Spinner size={"2rem"} />
+      <div className={styles.loading}>
+        <Player
+          autoplay
+          loop
+          src={DropAnimation}
+          className={styles.dropAnimation}
+        />
+        <div className={styles.loadingText}>מחפש תורים קרובים...</div>
       </div>
     );
   }
