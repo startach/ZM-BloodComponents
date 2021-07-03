@@ -1,4 +1,4 @@
-import 'jest-canvas-mock';
+import "jest-canvas-mock";
 
 import initStoryshots, {
   multiSnapshotWithOptions,

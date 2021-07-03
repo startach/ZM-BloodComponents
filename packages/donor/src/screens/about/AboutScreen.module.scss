@@ -1,17 +1,33 @@
-.component {
-  font-size: var(--text-size-sm);
+.imageContainer {
+  width: 100%;
+  background: transparent
+    linear-gradient(
+      66deg,
+      #fbbae2 0%,
+      #fbc5e5 13%,
+      #fcd9eb 42%,
+      #fce5ee 57%,
+      #fdfdfd 100%
+    )
+    0% 0% no-repeat padding-box;
+}
+
+.image {
+  width: 100%;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .textContainer {
-  margin: 24px 16px 20px 16px;
-  font-size: var(--text-size-sm);
+  font-size: 16px;
+  color: var(--donor-light-black);
+  margin: 40px;
 }
 
-.textBold {
+.link {
   font-weight: 500;
-}
-
-.blood_bank_logo {
-  height: 119px;
-  width: 90px;
+  color: var(--donor-secondary);
 }

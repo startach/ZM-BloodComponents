@@ -55,69 +55,62 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
       </div>
     </div>
     <div
-      className="content padding"
+      className="content"
     >
       <div
-        className="logoContainer medium"
+        className="imageContainer"
       >
         <img
-          alt="בנק הדם"
-          src="blood_bank_logo.svg"
+          alt="logo"
+          className="image"
+          src="all logos.svg"
         />
       </div>
       <div
-        className="textBold textContainer"
-      >
-        על עמותת "זכרון מנחם" והאפליקציה
-      </div>
-      <div
         className="textContainer"
       >
-        תורמי טרומבוציטים יקרים שלום רב!
-      </div>
-      <div
-        className="textContainer"
-      >
-         
+        <div
+          className="title"
+        >
+          על עמותת "זכרון מנחם" והאפליקציה
+        </div>
+        <br />
         אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם במגוון דרכים: תמיכה נפשית ורפואית, ימי כיף, מחנות נופש, מרכזי יום, סדנאות, תרומות שיער ועוד (היכנסו ל
         <a
+          className="link"
           href="https://zichron.org"
         >
           אתרנו
         </a>
-         למידע נוסף).
-      </div>
-      <div
-        className="textContainer"
-      >
+         
+        למידע נוסף).
+        <br />
+        <br />
         אפליקציה זו יועדה עבור תורמי הטרומבוציטים של העמותה – המגיעים לתרומה חד-פעמית, או באופן קבוע מספר פעמים בשנה – ועוזרים להציל חיים של אנשים.
-      </div>
-      <div
-        className="textContainer"
-      >
+        <br />
+        <br />
         האפליקציה מאפשרת לכם לצפות במועדים הפנויים לתרומה בבית החולים המועדף עליכם, להירשם לתור, ואף לבקש הסעה ממקום מגוריכם אל בית החולים וחזרה. כי זה מגיע לתורמים שלנו.
-      </div>
-      <div
-        className="textContainer"
-      >
+        <br />
+        <br />
         האפליקציה מפותחת ע"י מתנדבי עמותת
          
         <a
+          className="link"
           href="https://www.startach.org.il/"
         >
           סטארט-אח
         </a>
-        . מוזמנים לבקר אותנו גם 
+        . מוזמנים לבקר אותנו גם
+         
         <a
+          className="link"
           href="https://www.facebook.com/StartAchCom"
         >
           בפייסבוק
         </a>
         !
-      </div>
-      <div
-        className="textContainer"
-      >
+        <br />
+        <br />
         תודה לכל התורמים, צוות "בנק מרכיבי הדם" של עמותת זכרון מנחם.
       </div>
     </div>
