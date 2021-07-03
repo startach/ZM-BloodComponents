@@ -32,7 +32,7 @@ export default function WithStableMuiClassnames(props: {
 
 const withMuiProvider = (Story: Story, context: StoryContext) => {
   return (
-    <div dir="rtl">
+    <div dir="rtl" style={{ height: "100vh" }}>
       <WithStableMuiClassnames>
         <WithGlobalTheme>
           <Story {...context} />

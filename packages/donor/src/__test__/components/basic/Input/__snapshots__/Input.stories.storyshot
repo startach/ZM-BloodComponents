@@ -3,6 +3,11 @@
 exports[`Storyshots Components/Input Default 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={
@@ -52,6 +57,11 @@ exports[`Storyshots Components/Input Default 1`] = `
 exports[`Storyshots Components/Input Error 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={
@@ -107,6 +117,11 @@ exports[`Storyshots Components/Input Error 1`] = `
 exports[`Storyshots Components/Input Multiple Input 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={
@@ -259,6 +274,11 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
 exports[`Storyshots Components/Input Password 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={

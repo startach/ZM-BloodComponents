@@ -3,6 +3,11 @@
 exports[`Storyshots Components/Appointment Picker Default 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="storyBackground"
@@ -209,6 +214,11 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
 exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="storyBackground"

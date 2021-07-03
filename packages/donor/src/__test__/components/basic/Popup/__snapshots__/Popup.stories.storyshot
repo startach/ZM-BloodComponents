@@ -3,6 +3,11 @@
 exports[`Storyshots Components/Popup Default 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={
@@ -46,6 +51,11 @@ exports[`Storyshots Components/Popup Default 1`] = `
 exports[`Storyshots Components/Popup With Image 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     style={

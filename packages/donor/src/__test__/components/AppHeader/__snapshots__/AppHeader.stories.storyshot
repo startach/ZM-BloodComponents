@@ -3,6 +3,11 @@
 exports[`Storyshots Components/App Header Default 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="appHeader"
@@ -23,6 +28,11 @@ exports[`Storyshots Components/App Header Default 1`] = `
 exports[`Storyshots Components/App Header Hamburger 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="appHeader"
@@ -76,6 +86,11 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
 exports[`Storyshots Components/App Header With Back 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="appHeader"
@@ -129,6 +144,11 @@ exports[`Storyshots Components/App Header With Back 1`] = `
 exports[`Storyshots Components/App Header With Text 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="appHeader"

@@ -3,6 +3,11 @@
 exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="component"
@@ -182,6 +187,11 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
 exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="component"
@@ -580,6 +590,11 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
 exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="component"

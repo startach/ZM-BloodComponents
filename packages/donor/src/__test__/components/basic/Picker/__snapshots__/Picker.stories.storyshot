@@ -3,6 +3,11 @@
 exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div>
     <div
@@ -120,6 +125,11 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
 exports[`Storyshots Components/Picker Donation Times Picker 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div>
     <div

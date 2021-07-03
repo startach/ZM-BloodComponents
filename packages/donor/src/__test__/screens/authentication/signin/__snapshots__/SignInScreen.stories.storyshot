@@ -3,6 +3,11 @@
 exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
 <div
   dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
 >
   <div
     className="component"
