@@ -10,7 +10,6 @@ import {
   groupDonationDays,
 } from "../../utils/AppointmentsGrouper";
 import Select from "../../components/basic/Select";
-import Spinner from "../../components/basic/Spinner";
 import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";

@@ -1,5 +1,185 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-8"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+      </div>
+    </div>
+    <div
+      className="bookDonationScreen content"
+    >
+      <div
+        className="welcomeTitle"
+      >
+        <img
+          alt="illustration"
+          className="illustration"
+          src="home page-illustration.png"
+        />
+        <div
+          className="name"
+        >
+          היי 
+          משה
+        </div>
+        <div
+          className="welcomeText"
+        >
+          איזה כיף שבאת!
+          <br />
+          מתי יתאים לך לתרום?
+        </div>
+      </div>
+      <div
+        className="screenContent"
+      >
+        <div
+          className="dropdownContainer"
+        >
+          <div
+            className="MuiFormControl-root-34 makeStyles-root-33"
+          >
+            <label
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
+            >
+              הצג תורים ב:
+            </label>
+            <div
+              className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 dropdown MuiInputBase-disabled-86 MuiInput-disabled-72 MuiInputBase-formControl-84 MuiInput-formControl-70"
+              onClick={[Function]}
+            >
+              <select
+                aria-invalid={false}
+                className="MuiNativeSelect-root-58 MuiNativeSelect-select-59 MuiInputBase-input-94 MuiInput-input-79 MuiInputBase-disabled-86 MuiInput-disabled-72 MuiNativeSelect-disabled-63"
+                disabled={true}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                value="הכל"
+              >
+                <option
+                  value="הכל"
+                >
+                  הכל
+                </option>
+                <option
+                  value="BEILINSON"
+                >
+                  בילינסון
+                </option>
+                <option
+                  value="HADASA"
+                >
+                  הדסה
+                </option>
+              </select>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root-12 MuiNativeSelect-icon-64 MuiNativeSelect-disabled-63"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <p
+              className="MuiFormHelperText-root-101 MuiFormHelperText-filled-107"
+            />
+          </div>
+        </div>
+        <div
+          className="donationsCard"
+        >
+          <div
+            className="loading"
+          >
+            <div
+              className="lf-player-container"
+            >
+              <div
+                className="dropAnimation"
+                id="lottie"
+                style={
+                  Object {
+                    "background": "transparent",
+                    "margin": "0 auto",
+                    "outline": "none",
+                    "overflow": "hidden",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="loadingText"
+            >
+              מחפש תורים קרובים...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
 <div
   dir="rtl"

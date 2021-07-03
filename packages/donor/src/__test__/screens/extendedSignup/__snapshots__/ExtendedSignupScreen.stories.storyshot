@@ -43,24 +43,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             שם פרטי
           </label>
           <div
-            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-94 MuiInput-input-79"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -77,24 +77,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             שם משפחה
           </label>
           <div
-            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-94 MuiInput-input-79"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -111,24 +111,24 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-0 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
             data-shrink={false}
           >
             מספר טלפון
           </label>
           <div
-            className="MuiInputBase-root-83 MuiInput-root-69 MuiInput-underline-74 MuiInputBase-fullWidth-93 MuiInput-fullWidth-78 MuiInputBase-formControl-84 MuiInput-formControl-70"
+            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-94 MuiInput-input-79"
+              className="MuiInputBase-input-62 MuiInput-input-47"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -260,7 +260,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="button"
       >
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-1 MuiButton-contained-9 button MuiButton-containedPrimary-10 MuiButton-disableElevation-12 MuiButton-disabled-14 MuiButton-fullWidth-24 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-contained-77 button MuiButton-containedPrimary-78 MuiButton-disableElevation-80 MuiButton-disabled-82 MuiButton-fullWidth-92 MuiButtonBase-disabled-99"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -278,7 +278,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-2"
+            className="MuiButton-label-70"
           >
             <div
               className="buttonText"

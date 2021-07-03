@@ -85,27 +85,27 @@ exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
         </div>
       </div>
       <div
-        className="MuiPaper-root-8 MuiMobileStepper-root-0 stepper MuiMobileStepper-positionStatic-3 MuiPaper-elevation0-11"
+        className="MuiPaper-root-20 MuiMobileStepper-root-12 stepper MuiMobileStepper-positionStatic-15 MuiPaper-elevation0-23"
       >
         <div
-          className="MuiMobileStepper-dots-4 dots"
+          className="MuiMobileStepper-dots-16 dots"
         >
           <div
-            className="MuiMobileStepper-dot-5 dot MuiMobileStepper-dotActive-6 dotActive"
+            className="MuiMobileStepper-dot-17 dot MuiMobileStepper-dotActive-18 dotActive"
           />
           <div
-            className="MuiMobileStepper-dot-5 dot"
+            className="MuiMobileStepper-dot-17 dot"
           />
           <div
-            className="MuiMobileStepper-dot-5 dot"
+            className="MuiMobileStepper-dot-17 dot"
           />
           <div
-            className="MuiMobileStepper-dot-5 dot"
+            className="MuiMobileStepper-dot-17 dot"
           />
         </div>
       </div>
       <button
-        className="MuiButtonBase-root-9 MuiButton-root-36 MuiButton-outlined-41 button MuiButton-disableElevation-47 MuiButton-fullWidth-59"
+        className="MuiButtonBase-root-77 MuiButton-root-48 MuiButton-outlined-53 button MuiButton-disableElevation-59 MuiButton-fullWidth-71"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -123,7 +123,7 @@ exports[`Storyshots Screens/Onboarding Wizard Default 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-37"
+          className="MuiButton-label-49"
         >
           <div
             className="buttonText"
