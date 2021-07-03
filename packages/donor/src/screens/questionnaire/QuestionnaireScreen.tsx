@@ -130,6 +130,25 @@ export default function QuestionnaireScreen({
 
   const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
 
+  const onWrongAnswerPopupApprove = () => {
+    if (!hasAlreadyDonated) {
+      setHasAlreadyDonated(undefined);
+    }
+    if (!isWeightValid) {
+      setIsWeightValid(undefined);
+    }
+    if (isSurgeryValid) {
+      setIsSurgeryValid(undefined);
+    }
+    if (!isRightAge) {
+      setIsRightAge(undefined);
+    }
+    if (wasPregnant) {
+      setWasPregnantEver(undefined);
+    }
+    return Promise.resolve();
+  };
+
   return (
     <ZMScreen
       title="שאלון התאמה"
@@ -201,24 +220,8 @@ export default function QuestionnaireScreen({
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
         onBack={goToHomePage}
-        onApproved={() => {
-          if (!hasAlreadyDonated) {
-            setHasAlreadyDonated(undefined);
-          }
-          if (!isWeightValid) {
-            setIsWeightValid(undefined);
-          }
-          if (isSurgeryValid) {
-            setIsSurgeryValid(undefined);
-          }
-          if (!isRightAge) {
-            setIsRightAge(undefined);
-          }
-          if (wasPregnant) {
-            setWasPregnantEver(undefined);
-          }
-          return Promise.resolve();
-        }}
+        onApproved={onWrongAnswerPopupApprove}
+        onClose={onWrongAnswerPopupApprove}
       />
     </ZMScreen>
   );

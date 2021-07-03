@@ -11,7 +11,10 @@ export type PopupProps = {
   buttonApproveText: string;
   onApproved: () => void | Promise<void>;
   goBackText?: string;
+  // Called when pressing the (optional) go back button
   onBack?: () => void;
+  // Called when pressing outside the popup
+  onClose?: () => void;
   className?: string;
   image?: string;
   buttonColor?: Color;
@@ -23,8 +26,9 @@ export default function Popup({
   title,
   content,
   onBack,
-  onApproved,
   goBackText,
+  onClose,
+  onApproved,
   image,
   buttonColor = Color.Primary,
 }: PopupProps) {
@@ -35,8 +39,13 @@ export default function Popup({
     setIsLoading(false);
   };
 
+  if (!onClose && onBack) {
+    // If no specific onClose, use onBack
+    onClose = onBack;
+  }
+
   return (
-    <Dialog fullWidth open={open} onClose={onBack}>
+    <Dialog fullWidth open={open} onClose={onClose}>
       <div className={styles.container}>
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
