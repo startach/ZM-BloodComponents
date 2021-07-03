@@ -19,7 +19,7 @@ export default function UpcomingDonationScreenContainer(
   return (
     <UpcomingDonationScreen
       bookedAppointment={props.bookedAppointment}
-      firstName={props.user.firstName}
+      fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
     />
   );

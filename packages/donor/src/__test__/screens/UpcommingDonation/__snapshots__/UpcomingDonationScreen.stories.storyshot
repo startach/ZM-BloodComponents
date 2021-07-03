@@ -71,12 +71,13 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
             className="welcomeTitle"
           >
             <div>
-              איזה כיף!
+              משה כהן
+              ,
             </div>
             <div
               className="welcomeText"
             >
-              בקרוב נפגשים
+              בקרוב נפגש
             </div>
           </div>
         </div>
@@ -87,9 +88,13 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
             className="card"
           >
             <div
-              className="detailsTitle"
+              className="detailsTitleContainer"
             >
-              פרטי התור הקרוב
+              <div
+                className="detailsTitle"
+              >
+                פרטי התור שלך
+              </div>
               <div
                 className="cancelButton"
                 onClick={[Function]}

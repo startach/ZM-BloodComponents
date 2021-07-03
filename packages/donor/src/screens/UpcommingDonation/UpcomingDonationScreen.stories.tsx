@@ -3,6 +3,7 @@ import UpcomingDonationScreen, {
   UpcomingDonationScreenProps,
 } from "./UpcomingDonationScreen";
 import { action } from "@storybook/addon-actions";
+import { Story } from "@storybook/react";
 
 export default {
   component: UpcomingDonationScreen,
@@ -18,11 +19,16 @@ const props: UpcomingDonationScreenProps = {
     hospital: Hospital.BEILINSON,
     id: "appointmentId",
   },
-  firstName: "משה",
+  fullName: "משה כהן",
   onCancel: async () => {
     action("onCancel")();
     await TestUtils.wait(3000);
   },
 };
 
-export const Default = () => <UpcomingDonationScreen {...props} />;
+const Template: Story<UpcomingDonationScreenProps> = (args) => (
+  <UpcomingDonationScreen {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = props;

@@ -15,12 +15,12 @@ import TrashIcon from "../../assets/icons/trash.svg";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
-  firstName: string;
+  fullName: string;
   onCancel: () => Promise<void>;
 }
 
 export default function UpcomingDonationScreen({
-  firstName,
+  fullName,
   onCancel,
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
@@ -35,15 +35,15 @@ export default function UpcomingDonationScreen({
             className={styles.illustration}
           />
           <div className={styles.welcomeTitle}>
-            <div>איזה כיף!</div>
-            <div className={styles.welcomeText}>בקרוב נפגשים</div>
+            <div>{fullName},</div>
+            <div className={styles.welcomeText}>בקרוב נפגש</div>
           </div>
         </div>
 
         <div className={styles.appointmentDetails}>
           <div className={styles.card}>
-            <div className={styles.detailsTitle}>
-              פרטי התור הקרוב
+            <div className={styles.detailsTitleContainer}>
+              <div className={styles.detailsTitle}>פרטי התור שלך</div>
               <CancelButton onCancel={onCancel} />
             </div>
 
