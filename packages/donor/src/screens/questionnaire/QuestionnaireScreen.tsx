@@ -14,6 +14,7 @@ import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 import { PickerButton } from "../../components/basic/Picker/Picker";
+import { WHATSAPP_LINK } from "../contact/ContactScreen";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -123,31 +124,10 @@ export default function QuestionnaireScreen({
 
   const isVerified = isCorrectAnswers && isConfirmed;
 
-  const wrongAnswerPopupTitle = "מודים לך על הכוונה הטובה!";
-
   const wrongAnswerPopupContent =
     "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
 
   const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
-
-  const onWrongAnswerPopupApprove = () => {
-    if (!hasAlreadyDonated) {
-      setHasAlreadyDonated(undefined);
-    }
-    if (!isWeightValid) {
-      setIsWeightValid(undefined);
-    }
-    if (isSurgeryValid) {
-      setIsSurgeryValid(undefined);
-    }
-    if (!isRightAge) {
-      setIsRightAge(undefined);
-    }
-    if (wasPregnant) {
-      setWasPregnantEver(undefined);
-    }
-    return Promise.resolve();
-  };
 
   return (
     <ZMScreen
@@ -213,15 +193,34 @@ export default function QuestionnaireScreen({
       <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
 
       <Popup
-        buttonApproveText="אישור"
         open={isWrongAnswerChosen}
-        title={wrongAnswerPopupTitle}
+        title={"מודים לך על הכוונה הטובה!"}
         content={wrongAnswerPopupContent}
+        buttonApproveText="שלח/י ואטסאפ לרכז שלך"
+        onApproved={() => {
+          window.open(WHATSAPP_LINK);
+        }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
         onBack={goToHomePage}
-        onApproved={onWrongAnswerPopupApprove}
-        onClose={onWrongAnswerPopupApprove}
+        onClose={() => {
+          if (!hasAlreadyDonated) {
+            setHasAlreadyDonated(undefined);
+          }
+          if (!isWeightValid) {
+            setIsWeightValid(undefined);
+          }
+          if (isSurgeryValid) {
+            setIsSurgeryValid(undefined);
+          }
+          if (!isRightAge) {
+            setIsRightAge(undefined);
+          }
+          if (wasPregnant) {
+            setWasPregnantEver(undefined);
+          }
+          return Promise.resolve();
+        }}
       />
     </ZMScreen>
   );
