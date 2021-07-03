@@ -35,7 +35,7 @@ export default function Picker<T>({
   );
 }
 
-function PickerButton(props: {
+export function PickerButton(props: {
   label: string;
   onClick: () => void;
   selected: boolean;

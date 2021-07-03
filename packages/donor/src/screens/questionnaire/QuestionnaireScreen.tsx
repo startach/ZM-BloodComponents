@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button, { ButtonVariant } from "../../components/basic/Button";
+import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
@@ -13,6 +13,7 @@ import {
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
+import { PickerButton } from "../../components/basic/Picker/Picker";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -267,11 +268,10 @@ function Question<T>(props: {
       <div className={styles.questionButtons}>
         {props.options.map((option) => (
           <div className={styles.questionButton} key={option.key}>
-            <Button
-              title={option.label}
+            <PickerButton
+              label={option.label}
               onClick={() => props.onChange(option.value)}
-              variant={ButtonVariant.outlined}
-              color={props.value === option.value ? "primary" : "default"}
+              selected={props.value === option.value}
             />
           </div>
         ))}

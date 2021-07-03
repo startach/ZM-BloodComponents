@@ -116,98 +116,47 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    כן
-                  </div>
-                </span>
-              </button>
+                  כן
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא
-                  </div>
-                </span>
-              </button>
+                  לא
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא רלוונטי
-                  </div>
-                </span>
-              </button>
+                  לא רלוונטי
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -225,66 +174,32 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    כן
-                  </div>
-                </span>
-              </button>
+                  כן
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא
-                  </div>
-                </span>
-              </button>
+                  לא
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -302,66 +217,32 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    כן
-                  </div>
-                </span>
-              </button>
+                  כן
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא
-                  </div>
-                </span>
-              </button>
+                  לא
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -379,66 +260,32 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    כן
-                  </div>
-                </span>
-              </button>
+                  כן
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא
-                  </div>
-                </span>
-              </button>
+                  לא
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -456,66 +303,32 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    כן
-                  </div>
-                </span>
-              </button>
+                  כן
+                </div>
+              </div>
             </div>
             <div
               className="questionButton"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-disableElevation-44 MuiButton-fullWidth-56"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <div
+                className="pickerButtonContainer"
               >
-                <span
-                  className="MuiButton-label-34"
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    לא
-                  </div>
-                </span>
-              </button>
+                  לא
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -550,7 +363,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-68 MuiCheckbox-root-62 MuiCheckbox-colorPrimary-66 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-39 MuiCheckbox-root-33 MuiCheckbox-colorPrimary-37 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -569,7 +382,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-71"
+                  className="PrivateSwitchBase-input-42"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
@@ -594,7 +407,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-contained-41 button MuiButton-containedPrimary-42 MuiButton-disableElevation-44 MuiButton-disabled-46 MuiButton-fullWidth-56 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-9 MuiButton-root-43 MuiButton-contained-51 button MuiButton-containedPrimary-52 MuiButton-disableElevation-54 MuiButton-disabled-56 MuiButton-fullWidth-66 MuiButtonBase-disabled-10"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -612,7 +425,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-34"
+            className="MuiButton-label-44"
           >
             <div
               className="buttonText"
