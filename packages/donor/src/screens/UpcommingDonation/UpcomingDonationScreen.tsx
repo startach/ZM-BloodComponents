@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BookedAppointment,
   DateUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcommingDonationScreen.module.scss";
-import Button, { ButtonVariant } from "../../components/basic/Button";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
@@ -104,25 +103,16 @@ function NeedRideButton() {
 }
 
 function CancelButton(props: { onCancel: () => Promise<void> }) {
-  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
 
   const onCancelAppointment = async () => {
-    setIsLoading(true);
     await props.onCancel();
   };
 
   return (
     <>
-      <div className={styles.cancelButton}>
-        <Button
-          title="ביטול תור"
-          onClick={() => setOpen(true)}
-          variant={ButtonVariant.text}
-          color={Color.Default}
-          isLoading={isLoading}
-          className={styles.cancelButtonColor}
-        />
+      <div className={styles.cancelButton} onClick={() => setOpen(true)}>
+        ביטול תור
         <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
       </div>
       <Popup

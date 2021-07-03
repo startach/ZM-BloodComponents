@@ -95,11 +95,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.cancelButtonColor {
   color: var(--donor-secondary);
-  text-decoration: none;
+  font-size: 14px;
 }
 
 .cancelIcon {

@@ -102,13 +102,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               </div>
               <div
                 className="cancelButton"
+                onClick={[Function]}
               >
-                <div
-                  className="cancelButtonColor textButton"
-                  onClick={[Function]}
-                >
-                  ביטול תור
-                </div>
+                ביטול תור
                 <img
                   alt="Cancel"
                   className="cancelIcon"
