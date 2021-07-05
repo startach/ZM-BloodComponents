@@ -42,7 +42,7 @@ jobs:
         run: yarn install
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
-      - name: Build Storybook Donor
+      - name: Build Storybook Coordinator
         run: yarn workspace @zm-blood-components/coordinator build-storybook
       - name: Deploy Storybook Coordinator
         uses: w9jds/firebase-action@master
