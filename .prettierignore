@@ -3,6 +3,7 @@ client
 lib
 packages/donor/build
 packages/donor/storybook-build
+packages/coordinator/storybook-build
 packages/functions/dist
 build
 tsconfig.json

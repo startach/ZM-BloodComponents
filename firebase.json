@@ -39,6 +39,17 @@
           "destination": "/index.html"
         }
       ]
+    },
+    {
+      "target": "coordinator-storybook",
+      "public": "packages/coordinator/storybook-build",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }

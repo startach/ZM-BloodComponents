@@ -15,6 +15,9 @@
         ],
         "donor-storybook": [
           "donor-storybook"
+        ],
+        "coordinator-storybook": [
+          "coordinator-storybook"
         ]
       }
     },

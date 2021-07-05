@@ -1,0 +1,52 @@
+name: Storybook CD
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  storybook-donor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name: Build Common
+        run: yarn workspace @zm-blood-components/common build
+      - name: Build Storybook Donor
+        run: yarn workspace @zm-blood-components/donor build-storybook
+      - name: Deploy Storybook Donor
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:donor-storybook -P staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+  storybook-coordinator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name: Build Common
+        run: yarn workspace @zm-blood-components/common build
+      - name: Build Storybook Donor
+        run: yarn workspace @zm-blood-components/coordinator build-storybook
+      - name: Deploy Storybook Coordinator
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:coordinator-storybook -P staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
