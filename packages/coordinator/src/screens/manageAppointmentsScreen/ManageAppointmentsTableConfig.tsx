@@ -102,7 +102,9 @@ const GetExpandedColumns = (
             isOpen: true,
             appointment,
             title: "האם ברצונך לבטל את התור?",
-            content: "התור טרם נתפס",
+            content: appointment.booked
+              ? `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`
+              : "התור טרם נתפס",
             onApproved: () => onDeleteAppointment(appointment.appointmentId),
           }),
       });
