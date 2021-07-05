@@ -6,7 +6,7 @@ import { action } from "@storybook/addon-actions";
 
 export default {
   component: OnboardingWizardScreen,
-  title: "Screens/Onboarding Wizard",
+  title: "Screens/Onboarding Wizard DontTest",
   parameters: { layout: "fullscreen" },
 };
 
