@@ -19,6 +19,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined";
 
 export interface AppHeaderProps {
   title?: string;
@@ -82,6 +83,11 @@ export default function AppHeader({
             title={"הפרופיל שלי"}
             onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
             icon={<AccountCircleOutlinedIcon />}
+          />
+          <MenuItem
+            title={"תהליך התרומה"}
+            onClick={() => history.push("/" + MainNavigationKeys.Process)}
+            icon={<LocalHospitalOutlinedIcon />}
           />
           <MenuItem
             title={"משוב"}

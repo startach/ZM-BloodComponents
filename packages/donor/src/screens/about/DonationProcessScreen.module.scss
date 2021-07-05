@@ -1,0 +1,33 @@
+.imageContainer {
+  width: 100%;
+  background: transparent
+    linear-gradient(
+      66deg,
+      #fbbae2 0%,
+      #fbc5e5 13%,
+      #fcd9eb 42%,
+      #fce5ee 57%,
+      #fdfdfd 100%
+    )
+    0% 0% no-repeat padding-box;
+  text-align: center;
+}
+
+.image {
+}
+
+.title {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.textContainer {
+  font-size: 16px;
+  color: var(--donor-light-black);
+  margin: 40px;
+}
+
+.link {
+  font-weight: 500;
+  color: var(--donor-secondary);
+}

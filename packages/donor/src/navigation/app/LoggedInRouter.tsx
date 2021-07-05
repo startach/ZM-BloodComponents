@@ -19,6 +19,7 @@ import {
 } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 import ContactScreen from "../../screens/contact/ContactScreen";
+import DonationProcessScreen from "../../screens/about/DonationProcessScreen";
 
 interface LoggedInRouterProps {
   user?: Donor;
@@ -56,6 +57,9 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
         </Route>
         <Route path={"/" + MainNavigationKeys.About}>
           <AboutScreen />
+        </Route>
+        <Route path={"/" + MainNavigationKeys.Process}>
+          <DonationProcessScreen />
         </Route>
         <Route path={"/" + MainNavigationKeys.Contact}>
           <ContactScreen />
