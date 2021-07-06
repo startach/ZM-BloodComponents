@@ -76,7 +76,7 @@ exports[`Storyshots Screens/Questionnaire Default 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             , 
             בילינסון
           </div>
