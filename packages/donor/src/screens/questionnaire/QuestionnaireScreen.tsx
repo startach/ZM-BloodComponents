@@ -145,10 +145,14 @@ export default function QuestionnaireScreen({
         <div className={styles.donationInfoText}>
           <div className={styles.infoTitle}>פרטי התור הנבחר</div>
           <div className={styles.appointmentDetails}>
-            {DateUtils.ToDateString(donationDate)},{" "}
-            {DateUtils.ToWeekDayString(donationDate)},{" "}
-            {DateUtils.ToTimeString(donationDate)},{" "}
-            {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
+            {donationDate.toLocaleDateString("he-He", {
+              weekday: "short",
+              month: "numeric",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            })}
+            , {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
           </div>
         </div>
       </div>
