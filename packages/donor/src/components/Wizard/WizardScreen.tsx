@@ -4,6 +4,7 @@ import { useState } from "react";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import { PropTypes } from "@material-ui/core";
 import ZMScreen from "../basic/ZMScreen";
+import SwipeableViews from "react-swipeable-views";
 
 export interface WizardPage {
   imageUrl: string;
@@ -25,39 +26,25 @@ export interface WizardScreenProps {
 
 export default function WizardScreen(props: WizardScreenProps) {
   const [currentStep, setCurrentStep] = useState(0);
+
   const onNext = () => {
     if (currentStep < props.pages.length - 1) setCurrentStep(currentStep + 1);
     else props.onFinish();
   };
   return (
     <ZMScreen className={styles.container}>
-      <img
-        className={styles.image}
-        src={props.pages[currentStep].imageUrl}
-        alt=""
-      />
-      <div className={styles.content}>
-        <div className={styles.title}>{props.pages[currentStep].title}</div>
-        {props.pages[currentStep].content.map((key, index) => (
-          <div key={key.text + index}>
-            <div
-              className={key.button ? styles.buttonText : ""}
-              style={key.bold ? { fontWeight: 500 } : { fontWeight: "normal" }}
-            >
-              {key.text}
-
-              {key.button && (
-                <Button
-                  title={key.button.text}
-                  onClick={key.button.onClick}
-                  variant={ButtonVariant.text}
-                  className={styles.button}
-                />
-              )}
-            </div>
+      <SwipeableViews
+        axis={"x-reverse"}
+        index={currentStep}
+        onChangeIndex={setCurrentStep}
+        enableMouseEvents
+      >
+        {props.pages.map((page, index) => (
+          <div key={page.title}>
+            {Math.abs(currentStep - index) <= 2 ? <Page page={page} /> : null}
           </div>
         ))}
-      </div>
+      </SwipeableViews>
 
       <MobileStepper
         variant="dots"
@@ -81,5 +68,34 @@ export default function WizardScreen(props: WizardScreenProps) {
         onClick={onNext}
       />
     </ZMScreen>
+  );
+}
+
+function Page(props: { page: WizardPage }) {
+  const page = props.page;
+  return (
+    <div className={styles.content}>
+      <img className={styles.image} src={page.imageUrl} alt="" />
+      <div className={styles.title}>{page.title}</div>
+      {page.content.map((key, index) => (
+        <div key={key.text + index}>
+          <div
+            className={key.button ? styles.buttonText : ""}
+            style={key.bold ? { fontWeight: 500 } : { fontWeight: "normal" }}
+          >
+            {key.text}
+
+            {key.button && (
+              <Button
+                title={key.button.text}
+                onClick={key.button.onClick}
+                variant={ButtonVariant.text}
+                className={styles.button}
+              />
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }
