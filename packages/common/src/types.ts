@@ -77,6 +77,7 @@ export enum Hospital {
   ASAF_HAROFE = "ASAF_HAROFE",
   BEILINSON = "BEILINSON",
   HADASA = "HADASA",
+  ICHILOV = "ICHILOV",
 }
 
 export enum DonationType {

@@ -10,6 +10,8 @@ export function getHospitalName(hospital: Hospital) {
       return "בילינסון";
     case Hospital.HADASA:
       return "הדסה";
+    case Hospital.ICHILOV:
+      return "איכילוב";
 
     default:
       console.error("No hospital name for", hospital);
