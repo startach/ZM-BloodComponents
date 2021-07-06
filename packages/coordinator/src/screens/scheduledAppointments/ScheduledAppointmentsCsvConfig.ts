@@ -3,6 +3,7 @@ import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
 import { IColumn } from "react-csv-downloader/dist/esm/lib/csv";
 
 enum columnNames {
+  HOSPITAL = "hospital",
   DATE = "date",
   HOUR = "hour",
   FIRST_NAME = "firstName",
@@ -14,6 +15,7 @@ enum columnNames {
 export const csvColumns: IColumn[] = [
   { id: columnNames.DATE, displayName: "תאריך" },
   { id: columnNames.HOUR, displayName: "שעה" },
+  { id: columnNames.HOSPITAL, displayName: "בית חולים" },
   { id: columnNames.FIRST_NAME, displayName: "שם פרטי" },
   { id: columnNames.LAST_NAME, displayName: "שם משפחה" },
   { id: columnNames.BLOOD_TYPE, displayName: "סוג דם" },
@@ -31,6 +33,7 @@ export const formatDataByColumns = (
       [columnNames.HOUR]: DateUtils.ToTimeString(
         new Date(appointment.donationStartTimeMillis)
       ),
+      [columnNames.HOSPITAL]: LocaleUtils.getHospitalName(appointment.hospital),
       [columnNames.FIRST_NAME]: appointment.firstName,
       [columnNames.LAST_NAME]: appointment.lastName,
       [columnNames.BLOOD_TYPE]: LocaleUtils.getBloodTypeTranslation(
