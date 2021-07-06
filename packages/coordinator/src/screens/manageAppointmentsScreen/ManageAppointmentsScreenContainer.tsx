@@ -17,9 +17,7 @@ interface ManageAppointmentsScreenContainerProps {
 export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
-  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">(
-    Hospital.BEILINSON
-  );
+  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
   );

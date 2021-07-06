@@ -1,7 +1,7 @@
 import { Hospital, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
-export const activeHospitals = [Hospital.BEILINSON, Hospital.HADASA];
+export const activeHospitals = [Hospital.ICHILOV, Hospital.BEILINSON];
 
 export function getAllHospitalOptions(defaultLabel?: string) {
   return getHospitalOptions(activeHospitals, defaultLabel);

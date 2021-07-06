@@ -120,14 +120,14 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
                 הכל
               </option>
               <option
+                value="ICHILOV"
+              >
+                איכילוב
+              </option>
+              <option
                 value="BEILINSON"
               >
                 בילינסון
-              </option>
-              <option
-                value="HADASA"
-              >
-                הדסה
               </option>
             </select>
             <svg
@@ -300,14 +300,14 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 הכל
               </option>
               <option
+                value="ICHILOV"
+              >
+                איכילוב
+              </option>
+              <option
                 value="BEILINSON"
               >
                 בילינסון
-              </option>
-              <option
-                value="HADASA"
-              >
-                הדסה
               </option>
             </select>
             <svg
@@ -703,14 +703,14 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
                 הכל
               </option>
               <option
+                value="ICHILOV"
+              >
+                איכילוב
+              </option>
+              <option
                 value="BEILINSON"
               >
                 בילינסון
-              </option>
-              <option
-                value="HADASA"
-              >
-                הדסה
               </option>
             </select>
             <svg

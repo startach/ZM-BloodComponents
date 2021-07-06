@@ -10,6 +10,12 @@ export function getHospitalName(hospital: Hospital) {
       return "בילינסון";
     case Hospital.HADASA:
       return "הדסה";
+    case Hospital.ICHILOV:
+      return "איכילוב";
+    case Hospital.RAMBAM:
+      return 'רמב"ם';
+    case Hospital.SOROKA:
+      return "סורוקה";
 
     default:
       console.error("No hospital name for", hospital);

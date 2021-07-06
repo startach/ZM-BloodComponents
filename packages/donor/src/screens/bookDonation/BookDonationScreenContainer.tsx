@@ -1,9 +1,5 @@
 import BookDonationScreen from "./BookDonationScreen";
-import {
-  AvailableAppointment,
-  Donor,
-  Hospital,
-} from "@zm-blood-components/common";
+import { AvailableAppointment, Donor } from "@zm-blood-components/common";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
@@ -31,7 +27,7 @@ export default function BookDonationScreenContainer(
       onSlotSelected={onSlotSelected}
       firstName={props.user.firstName}
       isFetching={props.isFetchingAppointments}
-      defaultHospital={Hospital.BEILINSON}
+      defaultHospital={""}
     />
   );
 }
