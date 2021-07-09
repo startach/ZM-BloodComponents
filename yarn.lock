@@ -1332,9 +1332,9 @@
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
 "@capacitor/android@*", "@capacitor/android@^3.0.0":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.0.2.tgz#818c98006456e00b34d11c231a8a53ec971b2ee2"
-  integrity sha512-sn2FGCMscXr8q413gSz8p1TAw69D3i4Hb2Bcd0S0SSDbvXwHCtDgwKQfD777+wmLifSkt8fwWVFIOKdbiGVRHw==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.1.1.tgz#7bfca661a7aacd162694d7e7a81747da79ed20ae"
+  integrity sha512-f4QA0wlhr3uRFzHArSQRfgSGXiAFUlCXYOt/TyYwhKIweyrpfzXtHkgqCC4ATqN9Rp7yrrLRnz8JDXBUjff3iw==
 
 "@capacitor/app@*", "@capacitor/app@^0.3.10":
   version "0.3.10"
@@ -1364,9 +1364,9 @@
     xml2js "^0.4.23"
 
 "@capacitor/core@*", "@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.0.2.tgz#57d20aab346804fdc0499185537c6cb0f8394a25"
-  integrity sha512-uvKvX++uj17pK2LYekPJlxsEprUTmqPk/SdDwczj5I/pmloAV8TkQ/zqwI+yOC9h6hEwRBZ689TGTS1GfPnYuA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.1.1.tgz#61e1ad8b9f532ee5bc5e5c680b0fd71a00492765"
+  integrity sha512-VTOdy2GZPLxMGDmwXWfhQWoP7G+0XE8gx2er2uo8e8Y6K8YjT8bxqlOL4VJ8gC5X8Wq281SR4OsajzhdgDazgQ==
   dependencies:
     tslib "^2.1.0"
 
@@ -1376,9 +1376,9 @@
   integrity sha512-EwI79xSsxl5O1CZWrRhkkAok50tCy78fa4xOK9G++eQCNc2cc5ZmnVubDKA/itvIN1NBAhn5qpIadi8zW26ZZw==
 
 "@capacitor/ios@*", "@capacitor/ios@^3.0.0":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.0.2.tgz#49b3690ce38911ce4254a74860f6ca9dd0ed0303"
-  integrity sha512-BEEwQ7TSGdmTusDPB2+WOOkOFCxYc9C36uzDNNLfwhSdgaDjoKJmVxj0oPb7wpfC1xMPGnTxYPmSjKj5AyKQ/Q==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.1.1.tgz#aec035e78a0586c60053a19c06397b794c4fbc7b"
+  integrity sha512-T8HWF2QNhMPb8EjO3Fn6Gmxg7llDPdb8K4mDe977Ufxq0WFuwlQw+VbSDzVXCHhkd2askyDCbpVUh5npONVwTQ==
 
 "@capacitor/keyboard@*", "@capacitor/keyboard@^0.6.3":
   version "0.6.3"
@@ -13353,6 +13353,16 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+mobx-react-lite@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-3.2.0.tgz#331d7365a6b053378dfe9c087315b4e41c5df69f"
+  integrity sha512-q5+UHIqYCOpBoFm/PElDuOhbcatvTllgRp3M1s+Hp5j0Z6XNgDbgqxawJ0ZAUEyKM8X1zs70PCuhAIzX1f4Q/g==
+
+mobx@^6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.3.2.tgz#125590961f702a572c139ab69392bea416d2e51b"
+  integrity sha512-xGPM9dIE1qkK9Nrhevp0gzpsmELKU4MFUJRORW/jqxVFIHHWIoQrjDjL8vkwoJYY3C2CeVJqgvl38hgKTalTWg==
 
 modify-values@^1.0.0:
   version "1.0.1"

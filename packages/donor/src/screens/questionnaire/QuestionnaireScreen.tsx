@@ -4,15 +4,19 @@ import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import { FunctionsApi, SelectOption } from "@zm-blood-components/common";
-import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import {
+  FunctionsApi,
+  Hospital,
+  SelectOption,
+} from "@zm-blood-components/common";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 import { PickerButton } from "../../components/basic/Picker/Picker";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
 
 export interface QuestionnaireScreenProps {
-  bookableAppointment: DonationSlotToBook;
+  hospital: Hospital;
+  donationStartTimeMillis: number;
   onSuccess: () => void;
   isLoading: boolean;
   debugMode: boolean;
@@ -32,7 +36,8 @@ const YesNoNotRelevantOptions: SelectOption<string>[] = [
 ];
 
 export default function QuestionnaireScreen({
-  bookableAppointment,
+  hospital,
+  donationStartTimeMillis,
   onSuccess,
   isLoading,
   debugMode,
@@ -125,8 +130,8 @@ export default function QuestionnaireScreen({
   return (
     <ZMScreen title="שאלון התאמה" hasBackButton className={styles.screen}>
       <DonationToBookInfo
-        donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
-        hospital={bookableAppointment.hospital}
+        donationStartTimeMillis={donationStartTimeMillis}
+        hospital={hospital}
       />
 
       <div className={styles.questionnaireSection}>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -14,7 +13,6 @@ import AboutScreen from "../../screens/about/AboutScreen";
 import {
   BookedAppointment,
   Donor,
-  FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
@@ -24,11 +22,8 @@ import DonationProcessScreen from "../../screens/about/DonationProcessScreen";
 interface LoggedInRouterProps {
   user?: Donor;
   bookedAppointment?: BookedAppointment;
-  availableAppointments: FunctionsApi.AvailableAppointmentApiEntry[];
   setUser: (user: Donor) => void;
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-  refreshAppointments: () => void;
-  isFetchingAppointments: boolean;
 }
 
 export type DonationSlotToBook = {
@@ -37,11 +32,12 @@ export type DonationSlotToBook = {
   appointmentIds: string[];
 };
 
-export default function LoggedInRouter(props: LoggedInRouterProps) {
-  const { user, bookedAppointment, setUser, setBookedAppointment } = props;
-  const [donationSlotToBook, setDonationSlotToBook] =
-    useState<DonationSlotToBook | undefined>();
-
+export default function LoggedInRouter({
+  user,
+  bookedAppointment,
+  setUser,
+  setBookedAppointment,
+}: LoggedInRouterProps) {
   if (!user) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
@@ -88,15 +84,10 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
                 <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />
               );
             }
-            if (!donationSlotToBook) {
-              return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
-            }
 
             return (
               <QuestionnaireScreenContainer
-                setBookedAppointment={props.setBookedAppointment}
-                donationSlot={donationSlotToBook}
-                refreshAppointments={props.refreshAppointments}
+                setBookedAppointment={setBookedAppointment}
               />
             );
           }}
@@ -110,14 +101,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               );
             }
 
-            return (
-              <BookDonationScreenContainer
-                user={user}
-                setDonationSlotToBook={setDonationSlotToBook}
-                isFetchingAppointments={props.isFetchingAppointments}
-                availableAppointments={props.availableAppointments}
-              />
-            );
+            return <BookDonationScreenContainer user={user} />;
           }}
         />
         <Route path={"*"}>

@@ -13,6 +13,8 @@
     "@zm-blood-components/common": "^1.0.0",
     "dayjs": "^1.10.4",
     "jss-rtl": "^0.3.0",
+    "mobx": "^6.3.2",
+    "mobx-react-lite": "^3.2.0",
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {

@@ -1,26 +1,35 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import {
+  useAppointmentToBookStore,
+  useAvailableAppointmentsStore,
+} from "../../state/Providers";
+import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
+import { observer } from "mobx-react-lite";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-  donationSlot: DonationSlotToBook;
-  refreshAppointments: () => void;
 }
 
 const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
 
-export default function QuestionnaireScreenContainer(
+export function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] =
     useState<FunctionsApi.BookAppointmentStatus | undefined>();
+  const availableAppointmentsStore = useAvailableAppointmentsStore();
+  const appointmentToBookStore = useAppointmentToBookStore();
+
+  if (!appointmentToBookStore.hasBookedAppointment()) {
+    return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
+  }
 
   const onSuccess = async () => {
     setIsLoading(true);
@@ -28,12 +37,12 @@ export default function QuestionnaireScreenContainer(
     if (debugMode) {
       console.log(
         "Asked to book one of the following appointments: ",
-        props.donationSlot.appointmentIds
+        appointmentToBookStore.appointmentIds
       );
     }
 
     const bookAppointmentResponse = await FirebaseFunctions.bookAppointment(
-      props.donationSlot.appointmentIds
+      appointmentToBookStore.appointmentIds
     );
 
     switch (bookAppointmentResponse.status) {
@@ -59,15 +68,18 @@ export default function QuestionnaireScreenContainer(
 
   return (
     <QuestionnaireScreen
-      bookableAppointment={props.donationSlot}
+      hospital={appointmentToBookStore.hospital}
+      donationStartTimeMillis={appointmentToBookStore.donationStartTimeMillis}
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}
       errorCode={error}
       goToHomePage={async () => {
-        props.refreshAppointments();
+        refreshAvailableAppointments(availableAppointmentsStore);
         history.goBack();
       }}
     />
   );
 }
+
+export default observer(QuestionnaireScreenContainer);

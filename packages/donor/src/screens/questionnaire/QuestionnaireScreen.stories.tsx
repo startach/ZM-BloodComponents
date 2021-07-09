@@ -11,11 +11,8 @@ export default {
 };
 
 const props: QuestionnaireScreenProps = {
-  bookableAppointment: {
-    hospital: Hospital.BEILINSON,
-    appointmentIds: ["AppointmentId1", "AppointmentId2"],
-    donationStartTimeMillis: 1628845200000,
-  },
+  hospital: Hospital.BEILINSON,
+  donationStartTimeMillis: 1628845200000,
   onSuccess: action("onSuccess"),
   goToHomePage: async () => action("goToHomePage")(),
   isLoading: false,
