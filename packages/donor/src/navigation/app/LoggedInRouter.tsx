@@ -18,13 +18,9 @@ import {
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
 import ContactScreen from "../../screens/contact/ContactScreen";
 import DonationProcessScreen from "../../screens/about/DonationProcessScreen";
-
-interface LoggedInRouterProps {
-  user?: Donor;
-  bookedAppointment?: BookedAppointment;
-  setUser: (user: Donor) => void;
-  setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-}
+import { useEffect, useState } from "react";
+import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
+import AuthLoadingScreen from "../../screens/authentication/AuthLoadingScreen";
 
 export type DonationSlotToBook = {
   hospital: Hospital;
@@ -32,13 +28,60 @@ export type DonationSlotToBook = {
   appointmentIds: string[];
 };
 
-export default function LoggedInRouter({
-  user,
-  bookedAppointment,
-  setUser,
-  setBookedAppointment,
-}: LoggedInRouterProps) {
-  if (!user) {
+export default function LoggedInRouter() {
+  const [appState, setAppState] = useState<{
+    donor?: Donor;
+    bookedAppointment?: BookedAppointment;
+    isFetching: boolean;
+  }>({
+    isFetching: false,
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      setAppState({
+        isFetching: true,
+        donor: undefined,
+        bookedAppointment: undefined,
+      });
+
+      const startTime = new Date().getTime();
+      const donorPromise = FirebaseFunctions.getDonor();
+      const bookedAppointmentPromise = FirebaseFunctions.getBookedAppointment();
+
+      const donor = await donorPromise;
+      const bookedAppointment = await bookedAppointmentPromise;
+
+      setAppState({
+        isFetching: false,
+        donor: donor,
+        bookedAppointment: bookedAppointment,
+      });
+      console.log("D", new Date().getTime() - startTime);
+    }
+
+    fetchData();
+  }, []);
+
+  if (appState.isFetching) {
+    return <AuthLoadingScreen />;
+  }
+
+  const setUser = (user: Donor) => {
+    setAppState({
+      ...appState,
+      donor: user,
+    });
+  };
+
+  const setBookedAppointment = (bookedAppointment?: BookedAppointment) => {
+    setAppState({
+      ...appState,
+      bookedAppointment,
+    });
+  };
+
+  if (!appState.donor) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
@@ -47,7 +90,7 @@ export default function LoggedInRouter({
       <Switch>
         <Route path={"/" + MainNavigationKeys.MyProfile}>
           <MyProfileScreenContainer
-            user={user}
+            user={appState.donor}
             updateUserInAppState={setUser}
           />
         </Route>
@@ -63,14 +106,14 @@ export default function LoggedInRouter({
         <Route
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
-            if (!bookedAppointment) {
+            if (!appState.bookedAppointment) {
               return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
             }
 
             return (
               <UpcomingDonationScreenContainer
-                user={user}
-                bookedAppointment={bookedAppointment}
+                user={appState.donor!}
+                bookedAppointment={appState.bookedAppointment}
                 setBookedAppointment={setBookedAppointment}
               />
             );
@@ -79,7 +122,7 @@ export default function LoggedInRouter({
         <Route
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
-            if (bookedAppointment) {
+            if (appState.bookedAppointment) {
               return (
                 <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />
               );
@@ -95,13 +138,13 @@ export default function LoggedInRouter({
         <Route
           path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
-            if (bookedAppointment) {
+            if (appState.bookedAppointment) {
               return (
                 <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />
               );
             }
 
-            return <BookDonationScreenContainer user={user} />;
+            return <BookDonationScreenContainer user={appState.donor} />;
           }}
         />
         <Route path={"*"}>
