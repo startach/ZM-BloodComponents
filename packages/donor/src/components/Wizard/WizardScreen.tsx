@@ -1,10 +1,10 @@
 import Button, { ButtonVariant } from "../basic/Button";
 import styles from "./WizardScreen.module.scss";
 import { useState } from "react";
-import MobileStepper from "@material-ui/core/MobileStepper";
 import { PropTypes } from "@material-ui/core";
 import ZMScreen from "../basic/ZMScreen";
 import SwipeableViews from "react-swipeable-views";
+import classNames from "classnames";
 
 export interface WizardPage {
   imageUrl: string;
@@ -32,7 +32,7 @@ export default function WizardScreen(props: WizardScreenProps) {
     else props.onFinish();
   };
   return (
-    <ZMScreen className={styles.container} padding>
+    <ZMScreen className={styles.container}>
       <SwipeableViews
         axis={"x-reverse"}
         index={currentStep}
@@ -46,27 +46,16 @@ export default function WizardScreen(props: WizardScreenProps) {
         ))}
       </SwipeableViews>
 
-      <MobileStepper
-        variant="dots"
-        steps={props.pages.length}
-        position="static"
-        activeStep={currentStep}
-        classes={{
-          root: styles.stepper,
-          dot: styles.dot,
-          dots: styles.dots,
-          dotActive: styles.dotActive,
-        }}
-        nextButton={null}
-        backButton={null}
-      />
+      <Dots steps={props.pages.length} activeStep={currentStep} />
 
-      <Button
-        color={props.pages[currentStep].buttonColor}
-        title={props.pages[currentStep].buttonText}
-        variant={props.pages[currentStep].buttonVariant}
-        onClick={onNext}
-      />
+      <div className={styles.actionButton}>
+        <Button
+          color={props.pages[currentStep].buttonColor}
+          title={props.pages[currentStep].buttonText}
+          variant={props.pages[currentStep].buttonVariant}
+          onClick={onNext}
+        />
+      </div>
     </ZMScreen>
   );
 }
@@ -77,25 +66,45 @@ function Page(props: { page: WizardPage }) {
     <div className={styles.content}>
       <img className={styles.image} src={page.imageUrl} alt="" />
       <div className={styles.title}>{page.title}</div>
-      {page.content.map((key, index) => (
-        <div key={key.text + index}>
-          <div
-            className={key.button ? styles.buttonText : ""}
-            style={key.bold ? { fontWeight: 500 } : { fontWeight: "normal" }}
-          >
-            {key.text}
+      <div className={styles.pageText}>
+        {page.content.map((key, index) => (
+          <div key={key.text + index}>
+            <div
+              className={key.button ? styles.buttonText : ""}
+              style={key.bold ? { fontWeight: 500 } : { fontWeight: "normal" }}
+            >
+              {key.text}
 
-            {key.button && (
-              <Button
-                title={key.button.text}
-                onClick={key.button.onClick}
-                variant={ButtonVariant.text}
-                className={styles.button}
-              />
-            )}
+              {key.button && (
+                <Button
+                  title={key.button.text}
+                  onClick={key.button.onClick}
+                  variant={ButtonVariant.text}
+                  className={styles.textButton}
+                />
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Dots(props: { steps: number; activeStep: number }) {
+  const values: boolean[] = Array(props.steps).fill(false);
+  values[props.activeStep] = true;
+  console.log(values);
+
+  return (
+    <div className={styles.dots}>
+      {values.map((value, index) => {
+        const classes = [styles.dot];
+        if (value) {
+          classes.push(styles.dotActive);
+        }
+        return <div className={classNames(classes)} key={"" + value + index} />;
+      })}
     </div>
   );
 }
