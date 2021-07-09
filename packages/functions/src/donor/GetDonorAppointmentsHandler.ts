@@ -1,6 +1,7 @@
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { getAppointments } from "../dal/AppointmentDataAccessLayer";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
+import { getDonor } from "../dal/DonorDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.GetDonorAppointmentsRequest,
@@ -18,6 +19,7 @@ export default async function (
     options.toTime = new Date(request.toMillis);
   }
 
+  const donorPromise = getDonor(request.donorId);
   const appointments = await getAppointments(request.donorId, options);
 
   const now = new Date();
@@ -35,6 +37,7 @@ export default async function (
   });
 
   return {
+    donor: await donorPromise,
     completedAppointments,
     futureAppointments,
   };

@@ -24,7 +24,9 @@ export async function refreshAvailableAppointments(
   store: AvailableAppointmentsStore
 ) {
   store.setFetchingStarted();
+  const startTime = new Date().getTime();
   const newAvailableAppointments =
     await FirebaseFunctions.getAvailableAppointments();
+  console.log("A", new Date().getTime() - startTime);
   store.setAvailableAppointments(newAvailableAppointments);
 }

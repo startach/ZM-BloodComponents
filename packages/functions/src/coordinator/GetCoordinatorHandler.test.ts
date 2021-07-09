@@ -36,8 +36,7 @@ test("User that is not admin throws exception", async () => {
 
 test("Hospital Coordinator gets active hospitals", async () => {
   await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
-    Hospital.BEILINSON,
-    Hospital.HADASA,
+    ...HospitalUtils.activeHospitals,
     Hospital.TEL_HASHOMER, // not active
   ]);
 
@@ -46,10 +45,9 @@ test("Hospital Coordinator gets active hospitals", async () => {
   expect(response.coordinator.role).toEqual(
     CoordinatorRole.HOSPITAL_COORDINATOR
   );
-  expect(response.coordinator.activeHospitalsForCoordinator).toEqual([
-    Hospital.BEILINSON,
-    Hospital.HADASA,
-  ]);
+  expect(response.coordinator.activeHospitalsForCoordinator).toEqual(
+    HospitalUtils.activeHospitals
+  );
 });
 
 test("System User gets all active hospitals", async () => {
