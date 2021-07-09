@@ -10,7 +10,7 @@ import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
+import { getDate } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { saveTestDonor } from "../testUtils/TestSamples";
 
@@ -40,6 +40,18 @@ async function reset() {
   await deleteAppointmentsByIds(ALL_TEST_APPOINTMENTS_IDS);
 }
 
+test("No donor returns empty response", async () => {
+  const result = await callTarget({
+    donorId: DONOR_ID,
+    fromMillis: getDate(-1).getTime(),
+    toMillis: getDate(1).getTime(),
+  });
+
+  expect(result.donor).toBeUndefined();
+  expect(result.completedAppointments).toHaveLength(0);
+  expect(result.futureAppointments).toHaveLength(0);
+});
+
 test("No appointments returns empty response", async () => {
   await saveTestDonor(DONOR_ID);
 
@@ -49,6 +61,7 @@ test("No appointments returns empty response", async () => {
     toMillis: getDate(1).getTime(),
   });
 
+  expect(result.donor?.id).toEqual(DONOR_ID);
   expect(result.completedAppointments).toHaveLength(0);
   expect(result.futureAppointments).toHaveLength(0);
 });
@@ -70,6 +83,8 @@ test("Only appointment in time frame are returned", async () => {
     fromMillis: getDate(-3).getTime(),
     toMillis: getDate(3).getTime(),
   });
+
+  expect(result.donor?.id).toEqual(DONOR_ID);
 
   expect(result.completedAppointments).toHaveLength(1);
   expect(result.completedAppointments[0].id).toEqual(PAST_APPOINTMENT_2);

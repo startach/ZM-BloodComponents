@@ -27,8 +27,7 @@ export async function bookAppointment(appointmentIds: string[]) {
   };
 
   const response = await bookAppointmentFunction(request);
-  const data = response.data as FunctionsApi.BookAppointmentResponse;
-  return data;
+  return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
 // Remove donor from appointment
@@ -84,85 +83,39 @@ export function saveDonor(
   };
 }
 
-export async function getDonor(): Promise<Donor | undefined> {
+export async function getDonorDetails(): Promise<{
+  donor?: Donor;
+  bookedAppointment?: BookedAppointment;
+}> {
   const currentUser = firebase.auth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return undefined;
+    return {};
   }
 
   const getDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetDonorFunctionName);
-
-  const request: FunctionsApi.GetDonorRequest = {
-    donorId: currentUser.uid,
-  };
-
-  try {
-    const response = await getDonorFunction(request);
-    const data = response.data as FunctionsApi.GetDonorResponse;
-    return data.donor;
-  } catch (e) {
-    console.error("Error getting donor", e);
-    return undefined;
-  }
-}
-
-export async function getBookedAppointment(): Promise<
-  BookedAppointment | undefined
-> {
-  const response = await getDonorAppointments(new Date());
-  if (response.futureAppointments.length === 0) {
-    return undefined;
-  }
-  return response.futureAppointments[0];
-}
-
-export async function getPastAppointments(): Promise<BookedAppointment[]> {
-  const response = await getDonorAppointments(undefined, new Date());
-  return response.completedAppointments;
-}
-
-async function getDonorAppointments(
-  fromTime?: Date,
-  toTime?: Date
-): Promise<FunctionsApi.GetDonorAppointmentsResponse> {
-  const currentUser = firebase.auth().currentUser;
-
-  if (!currentUser?.uid || !currentUser.email) {
-    console.error("User not authenticated");
-    return {
-      completedAppointments: [],
-      futureAppointments: [],
-    };
-  }
-
-  const getDonorAppointmentsFunction = firebase
     .functions()
     .httpsCallable(FunctionsApi.GetDonorAppointmentsFunctionName);
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
+    fromMillis: new Date().getTime(),
   };
 
-  if (fromTime) {
-    request.fromMillis = fromTime.getTime();
-  }
-
-  if (toTime) {
-    request.toMillis = toTime.getTime();
-  }
-
   try {
-    const response = await getDonorAppointmentsFunction(request);
-    return response.data;
-  } catch (e) {
-    console.error(e);
+    const response = await getDonorFunction(request);
+    const data = response.data as FunctionsApi.GetDonorAppointmentsResponse;
+
+    if (data.futureAppointments.length === 0) {
+      return { donor: data.donor };
+    }
     return {
-      completedAppointments: [],
-      futureAppointments: [],
+      donor: data.donor,
+      bookedAppointment: data.futureAppointments[0],
     };
+  } catch (e) {
+    console.error("Error getting donor", e);
+    return {};
   }
 }

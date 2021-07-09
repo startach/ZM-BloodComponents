@@ -53,6 +53,7 @@ export interface GetDonorAppointmentsRequest {
 }
 
 export interface GetDonorAppointmentsResponse {
+  donor?: Donor;
   completedAppointments: BookedAppointmentApiEntry[];
   futureAppointments: BookedAppointmentApiEntry[];
 }

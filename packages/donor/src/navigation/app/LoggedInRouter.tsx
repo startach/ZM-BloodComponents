@@ -46,16 +46,12 @@ export default function LoggedInRouter() {
       });
 
       const startTime = new Date().getTime();
-      const donorPromise = FirebaseFunctions.getDonor();
-      const bookedAppointmentPromise = FirebaseFunctions.getBookedAppointment();
-
-      const donor = await donorPromise;
-      const bookedAppointment = await bookedAppointmentPromise;
+      const donorDetails = await FirebaseFunctions.getDonorDetails();
 
       setAppState({
         isFetching: false,
-        donor: donor,
-        bookedAppointment: bookedAppointment,
+        donor: donorDetails.donor,
+        bookedAppointment: donorDetails.bookedAppointment,
       });
       console.log("D", new Date().getTime() - startTime);
     }
