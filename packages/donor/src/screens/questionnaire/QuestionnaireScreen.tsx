@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import {
-  FunctionsApi,
-  LocaleUtils,
-  SelectOption,
-} from "@zm-blood-components/common";
-import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
-import Calendar from "../../assets/images/AppointmentCalendar.svg";
+import {FunctionsApi, SelectOption,} from "@zm-blood-components/common";
+import {DonationSlotToBook} from "../../navigation/app/LoggedInRouter";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
-import { PickerButton } from "../../components/basic/Picker/Picker";
-import { WHATSAPP_LINK } from "../contact/ContactScreen";
-import { ShortDateFormat } from "../../utils/Date.consts";
+import {PickerButton} from "../../components/basic/Picker/Picker";
+import {WHATSAPP_LINK} from "../contact/ContactScreen";
+import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -127,24 +122,12 @@ export default function QuestionnaireScreen({
   const wrongAnswerPopupContent =
     "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
 
-  const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
-
   return (
     <ZMScreen title="שאלון התאמה" hasBackButton className={styles.screen}>
-      <div className={styles.donationInfo}>
-        <img
-          src={Calendar}
-          alt={"Appointment"}
-          className={styles.illustration}
-        />
-        <div className={styles.donationInfoText}>
-          <div className={styles.infoTitle}>פרטי התור הנבחר</div>
-          <div className={styles.appointmentDetails}>
-            {donationDate.toLocaleDateString("he-He", ShortDateFormat)},{" "}
-            {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
-          </div>
-        </div>
-      </div>
+      <DonationToBookInfo
+        donationStartTimeMillis={bookableAppointment.donationStartTimeMillis}
+        hospital={bookableAppointment.hospital}
+      />
 
       <div className={styles.questionnaireSection}>
         <div className={styles.questionnaireTitle}>

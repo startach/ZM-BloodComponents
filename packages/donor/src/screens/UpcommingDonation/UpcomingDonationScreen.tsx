@@ -13,7 +13,6 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
-import { ShortDateFormat } from "../../utils/Date.consts";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -60,7 +59,7 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {donationDate.toLocaleDateString("he-He", ShortDateFormat)}
+                {donationDate.toLocaleDateString("he-He", DateUtils.ShortDateFormat)}
               </div>
             </div>
           </div>

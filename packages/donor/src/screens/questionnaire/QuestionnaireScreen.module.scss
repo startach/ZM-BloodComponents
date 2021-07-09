@@ -3,44 +3,6 @@
   flex-direction: column;
 }
 
-.donationInfo {
-  text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px 0;
-  background-color: white;
-  border-bottom: 1px solid var(--donor-light);
-  box-shadow: 0px 6px 8px #0000001a;
-  z-index: 10;
-  position: relative;
-}
-
-.illustration {
-  height: 40px;
-  margin-left: 15px;
-  margin-right: 20px;
-}
-
-.donationInfoText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 20px;
-}
-
-.infoTitle {
-  font-size: 12px;
-  color: var(--donor-gray);
-}
-
-.appointmentDetails {
-  font-size: 16px;
-  color: var(--donor-light-black);
-  text-align: start;
-}
-
 .questionnaireSection {
   padding: 30px;
   overflow-y: scroll;

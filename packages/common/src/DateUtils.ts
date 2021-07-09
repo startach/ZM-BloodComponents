@@ -48,3 +48,11 @@ export function TodayAdMidnight() {
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
+
+export const ShortDateFormat: Intl.DateTimeFormatOptions = {
+  weekday: "short",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+};
