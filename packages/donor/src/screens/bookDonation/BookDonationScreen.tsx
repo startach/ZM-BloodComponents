@@ -21,7 +21,7 @@ import DropAnimation from "../../assets/animations/drop.json";
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
-  firstName: string;
+  firstName?: string;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
   defaultHospital: Hospital | "";
 }

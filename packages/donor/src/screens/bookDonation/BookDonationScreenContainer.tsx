@@ -10,7 +10,7 @@ import {
 import { observer } from "mobx-react-lite";
 
 interface BookDonationScreenContainerProps {
-  user: Donor;
+  user?: Donor;
 }
 
 export function BookDonationScreenContainer(
@@ -29,7 +29,7 @@ export function BookDonationScreenContainer(
     <BookDonationScreen
       availableAppointments={availableAppointmentsStore.availableAppointments}
       onSlotSelected={onSlotSelected}
-      firstName={props.user.firstName}
+      firstName={props?.user?.firstName}
       isFetching={availableAppointmentsStore.isFetching}
       defaultHospital={""}
     />
