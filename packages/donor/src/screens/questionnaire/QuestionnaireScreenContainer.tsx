@@ -5,11 +5,12 @@ import { useHistory } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
+import { useAvailableAppointmentsStore } from "../../state/Providers";
+import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
 
 interface QuestionnaireScreenContainerProps {
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
   donationSlot: DonationSlotToBook;
-  refreshAppointments: () => void;
 }
 
 const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
@@ -21,6 +22,7 @@ export default function QuestionnaireScreenContainer(
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] =
     useState<FunctionsApi.BookAppointmentStatus | undefined>();
+  const availableAppointmentsStore = useAvailableAppointmentsStore();
 
   const onSuccess = async () => {
     setIsLoading(true);
@@ -65,7 +67,7 @@ export default function QuestionnaireScreenContainer(
       debugMode={debugMode}
       errorCode={error}
       goToHomePage={async () => {
-        props.refreshAppointments();
+        refreshAvailableAppointments(availableAppointmentsStore);
         history.goBack();
       }}
     />

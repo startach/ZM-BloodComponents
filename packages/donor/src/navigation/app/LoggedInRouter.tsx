@@ -14,7 +14,6 @@ import AboutScreen from "../../screens/about/AboutScreen";
 import {
   BookedAppointment,
   Donor,
-  FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import QuestionnaireScreenContainer from "../../screens/questionnaire/QuestionnaireScreenContainer";
@@ -24,11 +23,8 @@ import DonationProcessScreen from "../../screens/about/DonationProcessScreen";
 interface LoggedInRouterProps {
   user?: Donor;
   bookedAppointment?: BookedAppointment;
-  availableAppointments: FunctionsApi.AvailableAppointmentApiEntry[];
   setUser: (user: Donor) => void;
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
-  refreshAppointments: () => void;
-  isFetchingAppointments: boolean;
 }
 
 export type DonationSlotToBook = {
@@ -96,7 +92,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               <QuestionnaireScreenContainer
                 setBookedAppointment={props.setBookedAppointment}
                 donationSlot={donationSlotToBook}
-                refreshAppointments={props.refreshAppointments}
               />
             );
           }}
@@ -114,8 +109,6 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               <BookDonationScreenContainer
                 user={user}
                 setDonationSlotToBook={setDonationSlotToBook}
-                isFetchingAppointments={props.isFetchingAppointments}
-                availableAppointments={props.availableAppointments}
               />
             );
           }}
