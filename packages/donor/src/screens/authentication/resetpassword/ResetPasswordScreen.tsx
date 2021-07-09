@@ -40,7 +40,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   };
 
   return (
-    <ZMScreen className={styles.screenSection} hasBackButton>
+    <ZMScreen className={styles.screenSection} padding hasBackButton>
       <div className={styles.screenContent}>
         <img
           src={ResetPasswordIllustration}

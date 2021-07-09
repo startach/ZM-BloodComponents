@@ -32,7 +32,7 @@ export default function WizardScreen(props: WizardScreenProps) {
     else props.onFinish();
   };
   return (
-    <ZMScreen className={styles.container}>
+    <ZMScreen className={styles.container} padding>
       <SwipeableViews
         axis={"x-reverse"}
         index={currentStep}

@@ -129,12 +129,7 @@ export default function QuestionnaireScreen({
   const donationDate = new Date(bookableAppointment.donationStartTimeMillis);
 
   return (
-    <ZMScreen
-      title="שאלון התאמה"
-      hasBackButton
-      fullWidth
-      className={styles.screen}
-    >
+    <ZMScreen title="שאלון התאמה" hasBackButton className={styles.screen}>
       <div className={styles.donationInfo}>
         <img
           src={Calendar}

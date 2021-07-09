@@ -8,7 +8,7 @@ export default function DonationProcessScreen() {
   const history = useHistory();
 
   return (
-    <ZMScreen hasBackButton title="תהליך התרומה" fullWidth>
+    <ZMScreen hasBackButton title="תהליך התרומה">
       <div className={styles.imageContainer}>
         <img src={Illustration} alt={"logo"} className={styles.image} />
       </div>

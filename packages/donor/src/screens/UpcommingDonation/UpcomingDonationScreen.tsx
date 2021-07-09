@@ -27,7 +27,7 @@ export default function UpcomingDonationScreen({
 }: UpcomingDonationScreenProps) {
   const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
   return (
-    <ZMScreen hasBurgerMenu fullWidth>
+    <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
         <div className={styles.welcome}>
           <img

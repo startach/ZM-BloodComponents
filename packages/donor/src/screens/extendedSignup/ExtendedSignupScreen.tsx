@@ -16,7 +16,7 @@ export interface ExtendedSignupScreenProps {
 
 export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   return (
-    <ZMScreen title={"סיום הרשמה"} className={styles.extendedSignup}>
+    <ZMScreen title={"סיום הרשמה"} className={styles.extendedSignup} padding>
       <div className={styles.infoText}>
         תודה שבחרת להירשם כתורמ/ת. רגע לפני שתוכל/י לקבוע תור לתרומה ולהציל
         חיים,

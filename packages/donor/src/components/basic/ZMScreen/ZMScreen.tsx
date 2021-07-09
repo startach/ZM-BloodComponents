@@ -9,7 +9,7 @@ interface ExtendedSignupScreenProps {
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
   title?: string;
-  fullWidth?: boolean;
+  padding?: boolean;
 }
 
 export default function ZMScreen({
@@ -18,10 +18,10 @@ export default function ZMScreen({
   hasBackButton,
   hasBurgerMenu,
   title,
-  fullWidth = false,
+  padding = false,
 }: ExtendedSignupScreenProps) {
   const contentClassNames = [className, styles.content];
-  if (!fullWidth) {
+  if (padding) {
     contentClassNames.push(styles.padding);
   }
 

@@ -44,11 +44,7 @@ export default function BookDonationScreen({
   }, [availableAppointments, selectedHospital]);
 
   return (
-    <ZMScreen
-      hasBurgerMenu={true}
-      className={styles.bookDonationScreen}
-      fullWidth={true}
-    >
+    <ZMScreen hasBurgerMenu className={styles.bookDonationScreen}>
       <div className={styles.welcomeBox}>
         <div className={styles.welcomeTitle}>
           <div className={styles.name}>היי {firstName}</div>

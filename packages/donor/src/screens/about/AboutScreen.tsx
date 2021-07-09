@@ -4,7 +4,7 @@ import AllLogos from "./../../assets/images/all logos.svg";
 
 export default function AboutScreen() {
   return (
-    <ZMScreen hasBackButton title="אודות" fullWidth>
+    <ZMScreen hasBackButton title="אודות">
       <div className={styles.imageContainer}>
         <img src={AllLogos} alt={"logo"} className={styles.image} />
       </div>

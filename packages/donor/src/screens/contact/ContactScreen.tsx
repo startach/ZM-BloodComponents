@@ -14,7 +14,7 @@ import React, { ReactNode } from "react";
 
 export default function ContactScreen() {
   return (
-    <ZMScreen hasBackButton title="צור קשר">
+    <ZMScreen hasBackButton title="צור קשר" padding>
       <Header />
       <ContactContent />
     </ZMScreen>

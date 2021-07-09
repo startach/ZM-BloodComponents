@@ -19,7 +19,7 @@ export default function MyProfileScreen({
   onSave,
 }: MyProfileScreenProps) {
   return (
-    <ZMScreen hasBackButton title="הפרופיל שלי" fullWidth>
+    <ZMScreen hasBackButton title="הפרופיל שלי">
       <div className={styles.title}>
         <div>{`${user.firstName} ${user.lastName}`}</div>
       </div>
