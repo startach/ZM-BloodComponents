@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -33,11 +32,12 @@ export type DonationSlotToBook = {
   appointmentIds: string[];
 };
 
-export default function LoggedInRouter(props: LoggedInRouterProps) {
-  const { user, bookedAppointment, setUser, setBookedAppointment } = props;
-  const [donationSlotToBook, setDonationSlotToBook] =
-    useState<DonationSlotToBook | undefined>();
-
+export default function LoggedInRouter({
+  user,
+  bookedAppointment,
+  setUser,
+  setBookedAppointment,
+}: LoggedInRouterProps) {
   if (!user) {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
@@ -84,14 +84,10 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
                 <Redirect to={"/" + MainNavigationKeys.UpcomingDonation} />
               );
             }
-            if (!donationSlotToBook) {
-              return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
-            }
 
             return (
               <QuestionnaireScreenContainer
-                setBookedAppointment={props.setBookedAppointment}
-                donationSlot={donationSlotToBook}
+                setBookedAppointment={setBookedAppointment}
               />
             );
           }}
@@ -105,12 +101,7 @@ export default function LoggedInRouter(props: LoggedInRouterProps) {
               );
             }
 
-            return (
-              <BookDonationScreenContainer
-                user={user}
-                setDonationSlotToBook={setDonationSlotToBook}
-              />
-            );
+            return <BookDonationScreenContainer user={user} />;
           }}
         />
         <Route path={"*"}>
