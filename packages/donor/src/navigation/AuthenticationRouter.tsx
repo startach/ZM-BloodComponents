@@ -4,30 +4,30 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { AuthenticationScreenKeys } from "./authentication/AuthenticationScreenKeys";
 import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
 import RegisterScreenContainer from "../screens/authentication/register/RegisterScreenContainer";
 import SignInScreenContainer from "../screens/authentication/signin/SignInScreenContainer";
 import OnboardingWizardScreenContainer from "../screens/onboarding/OnboardingWizardScreenContainer";
+import { MainNavigationKeys } from "./app/MainNavigationKeys";
 
 export default function AuthenticationRouter() {
   return (
     <Router>
       <Switch>
-        <Route path={"/" + AuthenticationScreenKeys.ResetPassword}>
+        <Route path={"/" + MainNavigationKeys.ResetPassword}>
           <ResetPasswordScreenContainer />
         </Route>
-        <Route path={"/" + AuthenticationScreenKeys.Register}>
+        <Route path={"/" + MainNavigationKeys.Register}>
           <RegisterScreenContainer />
         </Route>
-        <Route path={"/" + AuthenticationScreenKeys.Login}>
+        <Route path={"/" + MainNavigationKeys.Login}>
           <SignInScreenContainer />
         </Route>
-        <Route path={"/" + AuthenticationScreenKeys.OnboardingWizard}>
+        <Route path={"/" + MainNavigationKeys.OnboardingWizard}>
           <OnboardingWizardScreenContainer />
         </Route>
         <Route path={"*"}>
-          <Redirect to={"/" + AuthenticationScreenKeys.OnboardingWizard} />
+          <Redirect to={"/" + MainNavigationKeys.OnboardingWizard} />
         </Route>
       </Switch>
     </Router>

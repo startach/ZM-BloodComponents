@@ -6,4 +6,10 @@ export enum MainNavigationKeys {
   About = "about",
   Process = "process",
   Contact = "contact",
+
+  // Authentication
+  Login = "login",
+  Register = "register",
+  ResetPassword = "reset-password",
+  OnboardingWizard = "welcome",
 }
