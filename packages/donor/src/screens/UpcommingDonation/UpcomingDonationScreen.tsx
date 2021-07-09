@@ -59,7 +59,10 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {donationDate.toLocaleDateString("he-He", DateUtils.ShortDateFormat)}
+                {donationDate.toLocaleDateString(
+                  "he-He",
+                  DateUtils.ShortDateFormat
+                )}
               </div>
             </div>
           </div>

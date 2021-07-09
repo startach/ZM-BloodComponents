@@ -1,6 +1,6 @@
 import styles from "./DonationToBookInfo.module.scss";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
-import {DateUtils, Hospital, LocaleUtils} from "@zm-blood-components/common";
+import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 import React from "react";
 
 export interface DonationToBookInfoProps {
