@@ -26,13 +26,16 @@ export default function SignInScreen(props: SignInScreenProps) {
 
   const signIn = async () => {
     setIsLoading(true);
-    await props.onSignInWithEmail(
+    const success = await props.onSignInWithEmail(
       email,
       password,
       setEmailError,
       setPasswordError
     );
-    setIsLoading(false);
+
+    if (!success) {
+      setIsLoading(false);
+    }
   };
 
   return (
