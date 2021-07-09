@@ -14,6 +14,7 @@ import Calendar from "../../assets/images/AppointmentCalendar.svg";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
 import { PickerButton } from "../../components/basic/Picker/Picker";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
+import { ShortDateFormat } from "../../utils/Date.consts";
 
 export interface QuestionnaireScreenProps {
   bookableAppointment: DonationSlotToBook;
@@ -139,14 +140,8 @@ export default function QuestionnaireScreen({
         <div className={styles.donationInfoText}>
           <div className={styles.infoTitle}>פרטי התור הנבחר</div>
           <div className={styles.appointmentDetails}>
-            {donationDate.toLocaleDateString("he-He", {
-              weekday: "short",
-              month: "numeric",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-            })}
-            , {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
+            {donationDate.toLocaleDateString("he-He", ShortDateFormat)},{" "}
+            {LocaleUtils.getHospitalName(bookableAppointment.hospital)}
           </div>
         </div>
       </div>
