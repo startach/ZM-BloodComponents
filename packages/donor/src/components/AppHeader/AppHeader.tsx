@@ -25,12 +25,14 @@ export interface AppHeaderProps {
   title?: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
+  onBack?: () => void;
 }
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function AppHeader({
   hasBackButton,
+  onBack,
   title,
   hasBurgerMenu,
 }: AppHeaderProps) {
@@ -50,7 +52,7 @@ export default function AppHeader({
   } else if (hasBackButton) {
     icon = (
       <IconButton
-        onClick={() => history.goBack()}
+        onClick={onBack ? onBack : () => history.goBack()}
         className={styles.rightButton}
       >
         <ArrowForward />

@@ -13,6 +13,7 @@ export default {
 const props: QuestionnaireScreenProps = {
   hospital: Hospital.BEILINSON,
   donationStartTimeMillis: 1628845200000,
+  onBack: action("onBack"),
   onSuccess: action("onSuccess"),
   goToHomePage: async () => action("goToHomePage")(),
   isLoading: false,
