@@ -1,6 +1,6 @@
 import styles from "./DonationToBookInfo.module.scss";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
-import { Hospital, LocaleUtils } from "@zm-blood-components/common";
+import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 import React from "react";
 
 export interface DonationToBookInfoProps {
@@ -20,14 +20,8 @@ export default function DonationToBookInfo({
       <div className={styles.donationInfoText}>
         <div className={styles.infoTitle}>פרטי התור הנבחר</div>
         <div className={styles.appointmentDetails}>
-          {donationDate.toLocaleDateString("he-He", {
-            weekday: "short",
-            month: "numeric",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-          })}
-          , {LocaleUtils.getHospitalName(hospital)}
+          {donationDate.toLocaleDateString("he-He", DateUtils.ShortDateFormat)},{" "}
+          {LocaleUtils.getHospitalName(hospital)}
         </div>
       </div>
     </div>

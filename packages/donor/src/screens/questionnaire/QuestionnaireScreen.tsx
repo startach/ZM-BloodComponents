@@ -1,14 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import {FunctionsApi, SelectOption,} from "@zm-blood-components/common";
-import {DonationSlotToBook} from "../../navigation/app/LoggedInRouter";
+import { FunctionsApi, SelectOption } from "@zm-blood-components/common";
+import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
-import {PickerButton} from "../../components/basic/Picker/Picker";
-import {WHATSAPP_LINK} from "../contact/ContactScreen";
+import { PickerButton } from "../../components/basic/Picker/Picker";
+import { WHATSAPP_LINK } from "../contact/ContactScreen";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
 
 export interface QuestionnaireScreenProps {

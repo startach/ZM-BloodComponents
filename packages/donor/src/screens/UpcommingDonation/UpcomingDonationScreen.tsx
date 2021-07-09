@@ -59,9 +59,10 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {DateUtils.ToWeekDayString(donationDate)},{" "}
-                {DateUtils.ToDateString(donationDate) + " בשעה "}
-                {DateUtils.ToTimeString(donationDate)}
+                {donationDate.toLocaleDateString(
+                  "he-He",
+                  DateUtils.ShortDateFormat
+                )}
               </div>
             </div>
           </div>
