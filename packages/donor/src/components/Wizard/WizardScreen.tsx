@@ -94,7 +94,6 @@ function Page(props: { page: WizardPage }) {
 function Dots(props: { steps: number; activeStep: number }) {
   const values: boolean[] = Array(props.steps).fill(false);
   values[props.activeStep] = true;
-  console.log(values);
 
   return (
     <div className={styles.dots}>
