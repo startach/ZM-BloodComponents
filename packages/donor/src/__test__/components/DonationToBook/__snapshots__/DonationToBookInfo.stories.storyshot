@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Donation to Book Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="donationInfo"
+  >
+    <img
+      alt="Appointment"
+      className="illustration"
+      src="AppointmentCalendar.svg"
+    />
+    <div
+      className="donationInfoText"
+    >
+      <div
+        className="infoTitle"
+      >
+        פרטי התור הנבחר
+      </div>
+      <div
+        className="appointmentDetails"
+      >
+        יום ו׳, 9.7, 12:35
+        , 
+        איכילוב
+      </div>
+    </div>
+  </div>
+</div>
+`;
