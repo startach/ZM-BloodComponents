@@ -5,6 +5,7 @@
   align-items: center;
   height: 64px;
   padding: 0 5px;
+  justify-content: space-between;
 }
 
 .title {
@@ -34,4 +35,10 @@
   font-size: 14px;
   margin-right: 20px;
   padding-bottom: 10px;
+}
+
+.login {
+  z-index: 20;
+  margin-left: 15px;
+  margin-top: 5px;
 }

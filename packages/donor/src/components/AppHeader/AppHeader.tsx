@@ -20,6 +20,8 @@ import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined";
+import { isLoggedIn } from "../../firebase/FirebaseInitializer";
+import { LockOpenOutlined } from "@material-ui/icons";
 
 export interface AppHeaderProps {
   title?: string;
@@ -38,6 +40,7 @@ export default function AppHeader({
 }: AppHeaderProps) {
   const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
+  const loggedIn = isLoggedIn();
 
   let icon = null;
   if (hasBurgerMenu) {
@@ -71,10 +74,23 @@ export default function AppHeader({
     );
   }
 
+  let loginIcon = null;
+  if (hasBurgerMenu && !loggedIn) {
+    loginIcon = (
+      <div
+        className={styles.login}
+        onClick={() => history.push("/" + MainNavigationKeys.Login)}
+      >
+        <LockOpenOutlined />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.appHeader}>
       {icon}
       {headerContent}
+      {loginIcon}
       <Drawer
         open={showSideBar}
         onClose={() => setShowSideBar(false)}
@@ -107,13 +123,21 @@ export default function AppHeader({
             icon={<WhatsAppIcon />}
           />
         </List>
-        <Divider />
 
-        <MenuItem
-          title={"התנתק"}
-          onClick={() => firebase.auth().signOut()}
-          icon={<ExitToAppIcon />}
-        />
+        {loggedIn && (
+          <>
+            <Divider />
+
+            <MenuItem
+              title={"התנתק"}
+              onClick={() => {
+                firebase.auth().signOut();
+                setShowSideBar(false);
+              }}
+              icon={<ExitToAppIcon />}
+            />
+          </>
+        )}
 
         <div className={styles.version}>{appVersion}</div>
       </Drawer>
