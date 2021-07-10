@@ -21,6 +21,7 @@ export interface QuestionnaireScreenProps {
   isLoading: boolean;
   debugMode: boolean;
   errorCode?: FunctionsApi.BookAppointmentStatus;
+  onBack: () => void;
   goToHomePage: () => Promise<void>;
 }
 
@@ -39,6 +40,7 @@ export default function QuestionnaireScreen({
   hospital,
   donationStartTimeMillis,
   onSuccess,
+  onBack,
   isLoading,
   debugMode,
   errorCode,
@@ -128,7 +130,12 @@ export default function QuestionnaireScreen({
     "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
 
   return (
-    <ZMScreen title="שאלון התאמה" hasBackButton className={styles.screen}>
+    <ZMScreen
+      title="שאלון התאמה"
+      hasBackButton
+      onBack={onBack}
+      className={styles.screen}
+    >
       <DonationToBookInfo
         donationStartTimeMillis={donationStartTimeMillis}
         hospital={hospital}

@@ -8,7 +8,7 @@ export default function OnboardingWizardScreenContainer() {
   return (
     <OnboardingWizardScreen
       goToLogin={() => history.push(MainNavigationKeys.Login)}
-      onFinish={() => history.push(MainNavigationKeys.Register)}
+      onFinish={() => history.push(MainNavigationKeys.BookDonation)}
     />
   );
 }

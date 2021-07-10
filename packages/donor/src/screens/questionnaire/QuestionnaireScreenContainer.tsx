@@ -27,7 +27,7 @@ export function QuestionnaireScreenContainer(
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
-  if (!appointmentToBookStore.hasBookedAppointment()) {
+  if (!appointmentToBookStore.hasAppointmentToBook()) {
     return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
   }
 
@@ -63,7 +63,13 @@ export function QuestionnaireScreenContainer(
 
         props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
         history.replace(MainNavigationKeys.UpcomingDonation);
+        appointmentToBookStore.clear();
     }
+  };
+
+  const onBack = () => {
+    appointmentToBookStore.clear();
+    history.goBack();
   };
 
   return (
@@ -74,6 +80,7 @@ export function QuestionnaireScreenContainer(
       isLoading={isLoading}
       debugMode={debugMode}
       errorCode={error}
+      onBack={onBack}
       goToHomePage={async () => {
         refreshAvailableAppointments(availableAppointmentsStore);
         history.goBack();

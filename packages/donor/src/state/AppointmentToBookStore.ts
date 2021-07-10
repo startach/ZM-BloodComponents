@@ -1,6 +1,11 @@
 import { makeAutoObservable } from "mobx";
-import { DonationSlotToBook } from "../navigation/app/LoggedInRouter";
 import { Hospital } from "@zm-blood-components/common";
+
+export type DonationSlotToBook = {
+  hospital: Hospital;
+  donationStartTimeMillis: number;
+  appointmentIds: string[];
+};
 
 export class AppointmentToBookStore {
   hospital: Hospital = Hospital.BEILINSON; // Just random value
@@ -11,11 +16,11 @@ export class AppointmentToBookStore {
     makeAutoObservable(this);
   }
 
-  hasBookedAppointment() {
+  hasAppointmentToBook() {
     return this.appointmentIds.length > 0;
   }
 
-  cancelAppointment() {
+  clear() {
     this.appointmentIds = [];
     this.donationStartTimeMillis = -1;
   }

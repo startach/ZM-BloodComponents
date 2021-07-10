@@ -39,7 +39,7 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <ZMScreen className={styles.screenSection} padding>
+    <ZMScreen className={styles.screenSection} padding hasBackButton>
       <div className={styles.screenContent}>
         <img
           src={LoginIllustration}
