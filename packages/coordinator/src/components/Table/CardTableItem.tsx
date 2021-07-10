@@ -50,7 +50,7 @@ export default function CardTableItem<T>({
     createStyles({
       root: {
         // From styles/layout/grid -> $gutter-vertical-small
-        marginBottom: ".5rem",
+        margin: ".5rem 0",
         // Overriding expanded:last-child
         "&$expanded": {
           margin: ".5rem 0",
