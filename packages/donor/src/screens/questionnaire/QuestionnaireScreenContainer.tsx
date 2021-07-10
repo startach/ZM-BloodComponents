@@ -82,6 +82,7 @@ export function QuestionnaireScreenContainer(
       errorCode={error}
       onBack={onBack}
       goToHomePage={async () => {
+        appointmentToBookStore.clear();
         refreshAvailableAppointments(availableAppointmentsStore);
         history.goBack();
       }}
