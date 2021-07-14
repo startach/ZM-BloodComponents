@@ -7,6 +7,7 @@ import Popup from "../../components/basic/Popup";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
 import QuestionnaireQuestions from "./questions/QuestionnaireQuestions";
+import QuestionnaireNotes from './notes/QuestionnaireNotes';
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;
@@ -60,18 +61,7 @@ export default function QuestionnaireScreen({
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
         />
 
-        <div className={styles.notesTitle}>ידוע לי שאוכל לתרום רק אם:</div>
-
-        <div className={styles.notesText}>
-          <li>אין לי פצע פתוח/שריטה.</li>
-          <li>לא נטלתי אנטיביוטיקה, אדויל ונורופן ב-3 הימים שלפני התרומה.</li>
-          <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
-        </div>
-
-        <div className={styles.notesDetails}>
-          ינתן שירות הסעה במונית / חניה בחניוני עובדי בילינסון למגיעים ברכב. אם
-          חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
-        </div>
+        <QuestionnaireNotes hospital={hospital}/>
 
         <div className={styles.confirmButtonContainer}>
           <Checkbox
