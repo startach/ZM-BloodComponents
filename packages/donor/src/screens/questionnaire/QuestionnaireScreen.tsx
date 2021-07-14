@@ -6,7 +6,7 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
-import QuestionsBeilinson from "./QuestionsBeilinson";
+import QuestionsBeilinson from "./questions/QuestionsBeilinson";
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;

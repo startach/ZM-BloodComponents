@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./QuestionnaireScreen.module.scss";
+import styles from "./Question.module.scss";
 import { SelectOption } from "@zm-blood-components/common";
-import { PickerButton } from "../../components/basic/Picker/Picker";
+import { PickerButton } from "../../../components/basic/Picker/Picker";
 
 export interface QuestionProps<T> {
   label?: string;

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Popup from "../../components/basic/Popup";
+import Popup from "../../../components/basic/Popup";
 import { Hospital } from "@zm-blood-components/common";
-import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
-import { WHATSAPP_LINK } from "../contact/ContactScreen";
+import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
+import { WHATSAPP_LINK } from "../../contact/ContactScreen";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
 
 export interface QuestionsBeilinsonProps {
@@ -43,6 +43,7 @@ export default function QuestionsBeilinson({
     isSurgeryValid,
     isRightAge,
     wasPregnant,
+    setAreAllAnswersCorrect,
   ]);
 
   const isWrongAnswerChosen =
@@ -58,34 +59,34 @@ export default function QuestionsBeilinson({
   return (
     <>
       <Question
-          value={wasPregnant}
-          onChange={setWasPregnantEver}
-          label={"האם היית / הנך בהריון?"}
-          options={YesNoNotRelevantOptions}
+        value={wasPregnant}
+        onChange={setWasPregnantEver}
+        label={"האם היית / הנך בהריון?"}
+        options={YesNoNotRelevantOptions}
       />
       <Question
-          value={hasAlreadyDonated}
-          onChange={setHasAlreadyDonated}
-          label={"האם תרמת דם / טרומבוציטים בעבר?"}
-          options={YesNoOptions}
+        value={hasAlreadyDonated}
+        onChange={setHasAlreadyDonated}
+        label={"האם תרמת דם / טרומבוציטים בעבר?"}
+        options={YesNoOptions}
       />
       <Question
-          value={isRightAge}
-          onChange={setIsRightAge}
-          label={"האם הנך מעל גיל 17?"}
-          options={YesNoOptions}
+        value={isRightAge}
+        onChange={setIsRightAge}
+        label={"האם הנך מעל גיל 17?"}
+        options={YesNoOptions}
       />
       <Question
-          value={isWeightValid}
-          onChange={setIsWeightValid}
-          label={"האם משקלך מעל 50 ק״ג?"}
-          options={YesNoOptions}
+        value={isWeightValid}
+        onChange={setIsWeightValid}
+        label={"האם משקלך מעל 50 ק״ג?"}
+        options={YesNoOptions}
       />
       <Question
-          value={isSurgeryValid}
-          onChange={setIsSurgeryValid}
-          label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
-          options={YesNoOptions}
+        value={isSurgeryValid}
+        onChange={setIsSurgeryValid}
+        label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
+        options={YesNoOptions}
       />
 
       <Popup

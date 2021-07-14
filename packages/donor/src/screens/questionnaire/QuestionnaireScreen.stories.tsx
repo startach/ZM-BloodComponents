@@ -20,4 +20,14 @@ const props: QuestionnaireScreenProps = {
   debugMode: false,
 };
 
-export const Default = () => <QuestionnaireScreen {...props} />;
+export const Beilinson = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.BEILINSON} />
+);
+
+export const Ichilov = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.ICHILOV} />
+);
+
+export const OtherHospital = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.TEL_HASHOMER} />
+);
