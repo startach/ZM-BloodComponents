@@ -13,7 +13,7 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
-import UpcomingDonationInfo from './UpcomingDonationInfo';
+import UpcomingDonationInfo from "./UpcomingDonationInfo";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -70,7 +70,7 @@ export default function UpcomingDonationScreen({
         </div>
       </div>
 
-      <UpcomingDonationInfo hospital={bookedAppointment.hospital}/>
+      <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
     </ZMScreen>
   );
 }
