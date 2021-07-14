@@ -15,20 +15,14 @@ import React, { ReactNode } from "react";
 export default function ContactScreen() {
   return (
     <ZMScreen hasBackButton title="צור קשר" padding>
-      <Header />
+      <div className={styles.component}>
+        <Text className={styles.textBold}>להלן דרכי ההתקשרות עמנו</Text>
+        <Text>מוזמנים ליצור קשר בכל שאלה, בקשה או הערה</Text>
+      </div>
       <ContactContent />
     </ZMScreen>
   );
 }
-
-const Header = () => {
-  return (
-    <div className={styles.component}>
-      <Text className={styles.textBold}>להלן דרכי ההתקשרות עמנו</Text>
-      <Text>מוזמנים ליצור קשר בכל שאלה, בקשה או הערה</Text>
-    </div>
-  );
-};
 
 const ZICHRON_URL = "https://www.zichron.org";
 const ZICHRON_URL_TEXT = "zichron.org";

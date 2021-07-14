@@ -1,4 +1,8 @@
-import DonationProcessScreen from "./DonationProcessScreen";
+import DonationProcessScreen, {
+  DonationProcessScreenProps,
+} from "./DonationProcessScreen";
+import { action } from "@storybook/addon-actions";
+import { Story } from "@storybook/react";
 
 export default {
   component: DonationProcessScreen,
@@ -6,4 +10,15 @@ export default {
   parameters: { layout: "fullscreen" },
 };
 
-export const Default = () => <DonationProcessScreen />;
+const props: DonationProcessScreenProps = {
+  onContact: action("onContact"),
+};
+
+const Template: Story<DonationProcessScreenProps> = (args) => (
+  <DonationProcessScreen {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  ...props,
+};
