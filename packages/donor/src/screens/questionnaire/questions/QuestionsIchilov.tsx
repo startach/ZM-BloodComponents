@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
+import {WHATSAPP_LINK} from '../../contact/ContactScreen';
 
-export interface QuestionsBeilinsonProps {
+export interface QuestionsIchilovProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
   goToHomePage: () => Promise<void>;
 }
 
-export default function QuestionsBeilinson({
+export default function QuestionsIchilov({
   setAreAllAnswersCorrect,
   goToHomePage,
-}: QuestionsBeilinsonProps) {
+}: QuestionsIchilovProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] =
     React.useState<boolean | undefined>(undefined);
   const [isWeightValid, setIsWeightValid] =
@@ -22,12 +23,15 @@ export default function QuestionsBeilinson({
     React.useState<boolean | undefined>(undefined);
   const [wasPregnant, setWasPregnantEver] =
     React.useState<string | undefined>(undefined);
+  const [isTattooValid, setIsTattooValid] =
+    React.useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const res =
       (hasAlreadyDonated &&
         isWeightValid &&
         isSurgeryValid === false &&
+        isTattooValid === false &&
         isRightAge &&
         wasPregnant !== "yes") ||
       false;
@@ -39,6 +43,7 @@ export default function QuestionsBeilinson({
     isSurgeryValid,
     isRightAge,
     wasPregnant,
+    isTattooValid,
     setAreAllAnswersCorrect,
   ]);
 
@@ -46,6 +51,7 @@ export default function QuestionsBeilinson({
     hasAlreadyDonated === false ||
     isWeightValid === false ||
     isSurgeryValid ||
+    isTattooValid ||
     isRightAge === false ||
     wasPregnant === "yes";
 
@@ -69,19 +75,25 @@ export default function QuestionsBeilinson({
       <Question
         value={isRightAge}
         onChange={setIsRightAge}
-        label={"האם הנך מעל גיל 17?"}
+        label={"האם הנך מעל גיל 18?"}
         options={YesNoOptions}
       />
       <Question
         value={isWeightValid}
         onChange={setIsWeightValid}
-        label={"האם משקלך מעל 50 ק״ג?"}
+        label={"האם משקלך מעל 55 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
+        options={YesNoOptions}
+      />
+      <Question
+        value={isTattooValid}
+        onChange={setIsTattooValid}
+        label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
 
@@ -91,9 +103,7 @@ export default function QuestionsBeilinson({
         content={wrongAnswerPopupContent}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
-          const whatsappLink =
-            "https://api.whatsapp.com/send?phone=972524214291";
-          window.open(whatsappLink);
+          window.open(WHATSAPP_LINK);
         }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
@@ -107,6 +117,9 @@ export default function QuestionsBeilinson({
           }
           if (isSurgeryValid) {
             setIsSurgeryValid(undefined);
+          }
+          if (isTattooValid) {
+            setIsTattooValid(undefined);
           }
           if (!isRightAge) {
             setIsRightAge(undefined);

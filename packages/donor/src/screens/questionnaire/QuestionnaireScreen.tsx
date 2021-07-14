@@ -6,7 +6,7 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
-import QuestionsBeilinson from "./questions/QuestionsBeilinson";
+import QuestionnaireQuestions from "./questions/QuestionnaireQuestions";
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;
@@ -54,7 +54,7 @@ export default function QuestionnaireScreen({
           עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
         </div>
 
-        <QuestionsBeilinson
+        <QuestionnaireQuestions
           hospital={hospital}
           goToHomePage={goToHomePage}
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
