@@ -55,9 +55,6 @@ export default function QuestionsIchilov({
     isRightAge === false ||
     wasPregnant === "yes";
 
-  const wrongAnswerPopupContent =
-    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
-
   return (
     <>
       <Question
@@ -100,7 +97,9 @@ export default function QuestionsIchilov({
       <Popup
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
-        content={wrongAnswerPopupContent}
+        content={
+          "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז"
+        }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
           window.open(WHATSAPP_LINK);

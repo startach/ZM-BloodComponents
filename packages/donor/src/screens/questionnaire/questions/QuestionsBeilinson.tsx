@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
+import { WHATSAPP_LINK } from "../../contact/ContactScreen";
 
 export interface QuestionsBeilinsonProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
@@ -49,9 +50,6 @@ export default function QuestionsBeilinson({
     isRightAge === false ||
     wasPregnant === "yes";
 
-  const wrongAnswerPopupContent =
-    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
-
   return (
     <>
       <Question
@@ -88,12 +86,12 @@ export default function QuestionsBeilinson({
       <Popup
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
-        content={wrongAnswerPopupContent}
+        content={
+          "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז"
+        }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
-          const whatsappLink =
-            "https://api.whatsapp.com/send?phone=972524214291";
-          window.open(whatsappLink);
+          window.open(WHATSAPP_LINK);
         }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}

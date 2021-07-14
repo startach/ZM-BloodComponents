@@ -18,7 +18,10 @@ export default function QuestionnaireNotes({
           <div className={styles.notesText}>
             <li>אין לי פצע פתוח/שריטה.</li>
             <li>לא נטלתי אנטיביוטיקה, אדויל ונורופן ב-3 הימים שלפני התרומה.</li>
-            <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
+            <li>
+              לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24
+              שעות).
+            </li>
           </div>
 
           <div className={styles.notesDetails}>
