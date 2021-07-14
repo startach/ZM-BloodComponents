@@ -159,13 +159,13 @@ export default function QuestionnaireScreen({
 
         <div className={styles.notesText}>
           <li>אין לי פצע פתוח/שריטה.</li>
-          <li>לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.</li>
+          <li>לא נטלתי אנטיביוטיקה, אדויל ונורופן ב-3 הימים שלפני התרומה.</li>
           <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
         </div>
 
         <div className={styles.notesDetails}>
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך
-          ואין ביכולתך לתרום אנא בטל/י את התור.
+          ינתן שירות הסעה במונית / חניה בחניוני עובדי בילינסון למגיעים ברכב. אם
+          חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
         </div>
 
         <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
@@ -186,7 +186,11 @@ export default function QuestionnaireScreen({
         content={wrongAnswerPopupContent}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
-          window.open(WHATSAPP_LINK);
+          const whatsappLink =
+            hospital === Hospital.BEILINSON
+              ? "https://api.whatsapp.com/send?phone=972524214291"
+              : WHATSAPP_LINK;
+          window.open(whatsappLink);
         }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
