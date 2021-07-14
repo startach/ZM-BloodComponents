@@ -32,7 +32,7 @@ export default function QuestionnaireQuestions({
   }
 
   return (
-    <QuestionsBeilinson
+    <QuestionsIchilov
       setAreAllAnswersCorrect={setAreAllAnswersCorrect}
       goToHomePage={goToHomePage}
     />

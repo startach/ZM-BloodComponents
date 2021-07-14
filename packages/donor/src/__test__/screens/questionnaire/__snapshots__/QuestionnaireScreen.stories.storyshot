@@ -1114,7 +1114,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           <div
             className="questionLabel"
           >
-            האם הנך מעל גיל 17?
+            האם הנך מעל גיל 18?
           </div>
           <div
             className="questionButtons"
@@ -1157,7 +1157,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           <div
             className="questionLabel"
           >
-            האם משקלך מעל 50 ק״ג?
+            האם משקלך מעל 55 ק״ג?
           </div>
           <div
             className="questionButtons"
@@ -1201,6 +1201,49 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
             className="questionLabel"
           >
             האם עברת ניתוח כירורגי בחצי השנה האחרונה?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם עשית קעקוע או עגילים בחצי השנה האחרונה?
           </div>
           <div
             className="questionButtons"
