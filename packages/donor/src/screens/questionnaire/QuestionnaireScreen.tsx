@@ -7,7 +7,7 @@ import Popup from "../../components/basic/Popup";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
 import QuestionnaireQuestions from "./questions/QuestionnaireQuestions";
-import QuestionnaireNotes from './notes/QuestionnaireNotes';
+import QuestionnaireNotes from "./notes/QuestionnaireNotes";
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;
@@ -61,7 +61,7 @@ export default function QuestionnaireScreen({
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
         />
 
-        <QuestionnaireNotes hospital={hospital}/>
+        <QuestionnaireNotes hospital={hospital} />
 
         <div className={styles.confirmButtonContainer}>
           <Checkbox

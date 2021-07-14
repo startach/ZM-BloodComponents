@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
-import {WHATSAPP_LINK} from '../../contact/ContactScreen';
+import { WHATSAPP_LINK } from "../../contact/ContactScreen";
 
 export interface QuestionsIchilovProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
