@@ -8,6 +8,7 @@ import {
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { saveTestDonor } from "../testUtils/TestSamples";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
@@ -15,6 +16,9 @@ const wrapped = firebaseFunctionsTest.wrap(
 );
 
 const COORDINATOR_ID = "GetCoordinatorFunctionTestCoordinator";
+const COORDINATOR_FIRST_NAME = "TestFirstName";
+const COORDINATOR_LAST_NAME = "TestLastName";
+const COORDINATOR_FULL_NAME = `${COORDINATOR_FIRST_NAME} ${COORDINATOR_LAST_NAME}`;
 
 const reset = async () => {
   await deleteAdmin(COORDINATOR_ID);
@@ -42,6 +46,7 @@ test("Hospital Coordinator gets active hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
+  expect(response.coordinator.name).toEqual(COORDINATOR_FULL_NAME);
   expect(response.coordinator.role).toEqual(
     CoordinatorRole.HOSPITAL_COORDINATOR
   );
@@ -55,6 +60,7 @@ test("System User gets all active hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
+  expect(response.coordinator.name).toEqual(COORDINATOR_FULL_NAME);
   expect(response.coordinator.role).toEqual(CoordinatorRole.SYSTEM_USER);
   expect(response.coordinator.activeHospitalsForCoordinator).toEqual(
     HospitalUtils.activeHospitals
@@ -66,6 +72,7 @@ test("Group Coordinator gets no hospitals", async () => {
 
   const response = await callFunction(COORDINATOR_ID);
 
+  expect(response.coordinator.name).toEqual(COORDINATOR_FULL_NAME);
   expect(response.coordinator.role).toEqual(CoordinatorRole.GROUP_COORDINATOR);
   expect(response.coordinator.activeHospitalsForCoordinator).toEqual([]);
 });
@@ -84,6 +91,11 @@ async function createCoordinator(
   }
 
   await setAdmin(newAdmin);
+
+  await saveTestDonor(COORDINATOR_ID, {
+    firstName: COORDINATOR_FIRST_NAME,
+    lastName: COORDINATOR_LAST_NAME,
+  });
 }
 
 function callFunction(

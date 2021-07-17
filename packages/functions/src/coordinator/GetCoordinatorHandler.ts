@@ -1,5 +1,6 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
+import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
 export default async function (
@@ -11,11 +12,15 @@ export default async function (
     console.error("Could not find calling user", callerId);
     throw Error(`User is not a coordinator`);
   }
+  const coordinatorDonorUser = await DonorDAL.getDonor(callerId);
 
   return {
     coordinator: {
       role: coordinator.role,
       activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
+      name: coordinatorDonorUser
+        ? `${coordinatorDonorUser.firstName} ${coordinatorDonorUser.lastName}`
+        : undefined,
     },
   };
 }

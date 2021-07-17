@@ -12,10 +12,11 @@ export const sampleUser = {
   testUser: false,
 };
 
-export function saveTestDonor(donorId: string) {
+export function saveTestDonor(donorId: string, donorFields?: Partial<DbDonor>) {
   const donor: DbDonor = {
     id: donorId,
     ...sampleUser,
+    ...donorFields,
   };
 
   return setDonor(donor);
