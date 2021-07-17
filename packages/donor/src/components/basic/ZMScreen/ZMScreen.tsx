@@ -7,6 +7,7 @@ interface ExtendedSignupScreenProps {
   children: React.ReactNode;
   className?: string;
   hasBackButton?: boolean;
+  onBack?: () => void;
   hasBurgerMenu?: boolean;
   title?: string;
   padding?: boolean;
@@ -16,6 +17,7 @@ export default function ZMScreen({
   children,
   className = "",
   hasBackButton,
+  onBack,
   hasBurgerMenu,
   title,
   padding = false,
@@ -31,6 +33,7 @@ export default function ZMScreen({
         title={title}
         hasBurgerMenu={hasBurgerMenu}
         hasBackButton={hasBackButton}
+        onBack={onBack}
       />
       <div className={classnames(contentClassNames)}>{children}</div>
     </div>

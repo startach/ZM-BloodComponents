@@ -29,7 +29,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
   };
 
   return (
-    <ZMScreen className={styles.screenSection} padding>
+    <ZMScreen className={styles.screenSection} padding hasBackButton>
       <div className={styles.screenContent}>
         <img
           src={SignUpIllustration}

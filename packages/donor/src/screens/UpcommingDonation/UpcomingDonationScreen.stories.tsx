@@ -30,5 +30,38 @@ const Template: Story<UpcomingDonationScreenProps> = (args) => (
   <UpcomingDonationScreen {...args} />
 );
 
+export const Beilinson = Template.bind({});
+Beilinson.args = {
+  ...props,
+  bookedAppointment: {
+    bookingTimeMillis: 1628845200000,
+    donationStartTimeMillis: 1628845200000,
+    donorId: "donorId",
+    hospital: Hospital.BEILINSON,
+    id: "appointmentId",
+  },
+};
+
+export const Ichilov = Template.bind({});
+Ichilov.args = {
+  ...props,
+  bookedAppointment: {
+    bookingTimeMillis: 1628845200000,
+    donationStartTimeMillis: 1628845200000,
+    donorId: "donorId",
+    hospital: Hospital.ICHILOV,
+    id: "appointmentId",
+  },
+};
+
 export const Default = Template.bind({});
-Default.args = props;
+Default.args = {
+  ...props,
+  bookedAppointment: {
+    bookingTimeMillis: 1628845200000,
+    donationStartTimeMillis: 1628845200000,
+    donorId: "donorId",
+    hospital: Hospital.TEL_HASHOMER,
+    id: "appointmentId",
+  },
+};

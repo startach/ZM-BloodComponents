@@ -13,10 +13,21 @@ export default {
 const props: QuestionnaireScreenProps = {
   hospital: Hospital.BEILINSON,
   donationStartTimeMillis: 1628845200000,
+  onBack: action("onBack"),
   onSuccess: action("onSuccess"),
   goToHomePage: async () => action("goToHomePage")(),
   isLoading: false,
   debugMode: false,
 };
 
-export const Default = () => <QuestionnaireScreen {...props} />;
+export const Beilinson = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.BEILINSON} />
+);
+
+export const Ichilov = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.ICHILOV} />
+);
+
+export const OtherHospital = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.TEL_HASHOMER} />
+);

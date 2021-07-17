@@ -10,8 +10,8 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
-import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import React from "react";
+import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 
 export interface AppointmentPickerProps {
   donationDay: DonationDay;

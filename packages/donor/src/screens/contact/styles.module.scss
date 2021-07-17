@@ -1,11 +1,31 @@
-.component {
-  font-size: var(--text-size-sm);
+.imageContainer {
+  width: 100%;
+  height: 160px;
+  background: transparent
+    linear-gradient(
+      66deg,
+      #fbbae2 0%,
+      #fbc5e5 13%,
+      #fcd9eb 42%,
+      #fce5ee 57%,
+      #fdfdfd 100%
+    )
+    0% 0% no-repeat padding-box;
   text-align: center;
+}
+
+.illustration {
+  height: 160px;
+}
+
+.content {
+  font-size: 16px;
+  padding: 20px 40px;
   color: var(--donor-light-black);
 }
 
-.textBold {
-  font-weight: var(--font-content-weight-bold);
+.title {
+  font-weight: 500;
 }
 
 .contentContainer {

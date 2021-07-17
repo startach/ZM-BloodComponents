@@ -4,7 +4,7 @@ import {
   DateUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import styles from "./UpcommingDonationScreen.module.scss";
+import styles from "./UpcomingDonationScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
@@ -13,6 +13,7 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
+import UpcomingDonationInfo from "./UpcomingDonationInfo";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -69,12 +70,7 @@ export default function UpcomingDonationScreen({
         </div>
       </div>
 
-      <div className={styles.moreInfo}>
-        <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-        <li>משך התרומה - בין שעה וחצי לשעתיים.</li>
-        <li>יש להביא תעודת זהות.</li>
-        <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
-      </div>
+      <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
     </ZMScreen>
   );
 }

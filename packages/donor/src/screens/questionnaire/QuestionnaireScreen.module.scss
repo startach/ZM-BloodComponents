@@ -21,50 +21,10 @@
   color: var(--donor-gray);
 }
 
-.question {
-  margin: 20px 0;
-}
-
-.notesTitle {
-  font-weight: 500;
-  margin-top: 30px;
-  color: var(--donor-light-black);
-}
-
-.notesText {
-  margin: 8px 10px 8px 0;
-  font-size: 0.9rem;
-  color: var(--donor-dark-gray);
-}
-
-.notesDetails {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--donor-gray);
-  margin-right: 10px;
-}
-
 .confirmButtonContainer {
   margin-top: 8px;
   margin-bottom: 8px;
   color: var(--donor-dark-gray);
-}
-
-.questionLabel {
-  font-size: 16px;
-  color: var(--donor-dark-gray);
-  margin-bottom: -5px;
-}
-
-.questionButtons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.questionButton {
-  margin-top: 10px;
-  flex-grow: 1;
 }
 
 .continueButton {

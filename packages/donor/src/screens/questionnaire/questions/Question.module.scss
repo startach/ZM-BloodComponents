@@ -1,0 +1,20 @@
+.question {
+  margin: 20px 0;
+}
+
+.questionLabel {
+  font-size: 16px;
+  color: var(--donor-dark-gray);
+  margin-bottom: -5px;
+}
+
+.questionButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.questionButton {
+  margin-top: 10px;
+  flex-grow: 1;
+}

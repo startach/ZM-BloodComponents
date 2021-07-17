@@ -12,11 +12,11 @@ import {
 import Select from "../../components/basic/Select";
 import ZMScreen from "../../components/basic/ZMScreen";
 import AppointmentPicker from "../../components/AppointmentPicker";
-import { DonationSlotToBook } from "../../navigation/app/LoggedInRouter";
 import Illustration from "../../assets/images/home page-illustration.png";
 import NoAppointments from "../../assets/images/NO Appointments.svg";
 import { Player } from "@lottiefiles/react-lottie-player";
 import DropAnimation from "../../assets/animations/drop.json";
+import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
