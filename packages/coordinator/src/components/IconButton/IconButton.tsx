@@ -1,45 +1,53 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import {
   IconButton as MaterialIcon,
   PropTypes,
-  SvgIconTypeMap,
+  // SvgIconTypeMap,
 } from "@material-ui/core";
-import { OverridableComponent } from "@material-ui/core/OverridableComponent";
+// import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import Tooltip from "@material-ui/core/Tooltip";
+// import trashIcon from "../../assets/trash.svg";
+// import userMinusIcon from "../../assets/user-minus.svg";
 
 export enum IconSize {
   small = "small",
   medium = "medium",
 }
 
-export enum Icon {
-  Delete = "Delete",
-  Clear = "Clear",
-}
+// export enum Icon {
+//   Delete = "Delete",
+//   Clear = "Clear",
+// }
 
 export interface IconButtonProps {
   size?: IconSize;
   color?: PropTypes.Color;
-  icon: Icon;
+  iconUrl: string;
   onClick?: () => void;
   className?: string;
   "aria-label"?: string;
   tooltipText?: string;
 }
 
-function IconButton({ icon, tooltipText, ...props }: IconButtonProps) {
-  const [IconComponent, setIconComponent] =
-    useState<OverridableComponent<SvgIconTypeMap<{}, "svg">>>();
+function IconButton({ iconUrl, tooltipText, ...props }: IconButtonProps) {
+  // let iconUrl = '';
+  // () => {
+  //   if (icon == Icon.Delete) iconUrl = trashIcon
+  //   if (icon == Icon.Clear) iconUrl = userMinusIcon
 
-  useEffect(() => {
-    import("@material-ui/icons").then((icons) => setIconComponent(icons[icon]));
-  }, [icon]);
+  // }
+  // const [IconComponent, setIconComponent] =
+  //   useState<OverridableComponent<SvgIconTypeMap<{}, "svg">>>();
 
-  if (!IconComponent) return <></>;
+  // useEffect(() => {
+  //   import("@material-ui/icons").then((icons) => setIconComponent(icons[icon]));
+  // }, [icon]);
+
+  // if (!IconComponent) return <></>;
 
   const IconElement = (
     <MaterialIcon {...props}>
-      <IconComponent />
+      <img src={iconUrl} alt={"Blood Bank"} />
     </MaterialIcon>
   );
 
