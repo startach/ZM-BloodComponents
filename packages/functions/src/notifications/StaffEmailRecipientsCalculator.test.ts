@@ -40,7 +40,7 @@ describe("Staff Email Recipients Calculator", () => {
     expect(res).toHaveLength(3);
     expect(res).toEqual([
       {
-        email: "dam@zichron.org.il",
+        email: "dam@zichron.org",
         name: "בנק הדם",
       },
       {
@@ -84,7 +84,7 @@ describe("Staff Email Recipients Calculator", () => {
 
     expect(res).toHaveLength(1);
     expect(res[0]).toEqual({
-      email: "dam@zichron.org.il",
+      email: "dam@zichron.org",
       name: "בנק הדם",
     });
   });
