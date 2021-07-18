@@ -18,6 +18,7 @@ export function sendEmailToDonor(
       html: html,
     },
     appointmentId: data.appointmentId,
+    date: new Date(),
   };
 
   return addEmailToQueue(messageToDonor);

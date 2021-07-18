@@ -8,6 +8,7 @@ export type EmailMessage = {
     html: string;
   };
   appointmentId: string;
+  date: Date;
 };
 
 export type StaffRecipient = {
