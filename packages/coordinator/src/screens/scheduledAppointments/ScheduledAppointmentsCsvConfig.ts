@@ -10,7 +10,6 @@ enum columnNames {
   BLOOD_TYPE = "bloodType",
   PHONE = "phone",
   HOSPITAL = "hospital",
-
 }
 
 export const csvColumns: IColumn[] = [
@@ -46,6 +45,7 @@ export const formatDataByColumns = (
 };
 
 export const getDonorReportFileName = (
+  hospital: Hospital | "",
   fromDate: Date,
   toDate: Date
 ): string => {
