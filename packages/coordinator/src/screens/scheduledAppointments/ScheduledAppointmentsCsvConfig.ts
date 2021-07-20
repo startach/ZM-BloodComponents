@@ -3,23 +3,24 @@ import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
 import { IColumn } from "react-csv-downloader/dist/esm/lib/csv";
 
 enum columnNames {
-  HOSPITAL = "hospital",
   DATE = "date",
   HOUR = "hour",
   FIRST_NAME = "firstName",
   LAST_NAME = "lastName",
   BLOOD_TYPE = "bloodType",
   PHONE = "phone",
+  HOSPITAL = "hospital",
+
 }
 
 export const csvColumns: IColumn[] = [
   { id: columnNames.DATE, displayName: "תאריך" },
   { id: columnNames.HOUR, displayName: "שעה" },
-  { id: columnNames.HOSPITAL, displayName: "בית חולים" },
   { id: columnNames.FIRST_NAME, displayName: "שם פרטי" },
   { id: columnNames.LAST_NAME, displayName: "שם משפחה" },
   { id: columnNames.BLOOD_TYPE, displayName: "סוג דם" },
   { id: columnNames.PHONE, displayName: "טלפון" },
+  { id: columnNames.HOSPITAL, displayName: "בית חולים" },
 ];
 
 export const formatDataByColumns = (
@@ -33,19 +34,18 @@ export const formatDataByColumns = (
       [columnNames.HOUR]: DateUtils.ToTimeString(
         new Date(appointment.donationStartTimeMillis)
       ),
-      [columnNames.HOSPITAL]: LocaleUtils.getHospitalName(appointment.hospital),
       [columnNames.FIRST_NAME]: appointment.firstName,
       [columnNames.LAST_NAME]: appointment.lastName,
       [columnNames.BLOOD_TYPE]: LocaleUtils.getBloodTypeTranslation(
         appointment.bloodType
       ),
       [columnNames.PHONE]: appointment.phone.toString(),
+      [columnNames.HOSPITAL]: LocaleUtils.getHospitalName(appointment.hospital),
     };
   });
 };
 
 export const getDonorReportFileName = (
-  hospital: Hospital | "",
   fromDate: Date,
   toDate: Date
 ): string => {
