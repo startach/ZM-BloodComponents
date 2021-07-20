@@ -112,7 +112,7 @@ const GetExpandedColumns = (
         });
 
         return (
-          <div>
+          <div className={Styles["icons-container"]}>
             {buttons.map((button) => (
               <IconButton
                 key={button.tooltip}

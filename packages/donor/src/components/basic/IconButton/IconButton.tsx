@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Text from "../Text";
 
 export interface IconButtonProps {
-  iconUrl?: string;
+  iconSrc: string;
   label?: string;
   iconSize?: string | number;
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ export interface IconButtonProps {
 }
 
 function IconButton({
-  iconUrl,
+  iconSrc,
   label,
   onClick,
   className,
@@ -40,10 +40,10 @@ function IconButton({
   return (
     <button className={componentClassName} onClick={onClick}>
       <img
-        src={iconUrl}
-        alt={`${label} button`}
-        style={{ width: iconSizeStr, height: iconSizeStr }}
-        className={styles.icon}
+        src={iconSrc}
+        Url}
+SizeStr }}
+      className={styles.icon}
       />
       <div className={classNames(styles.titleSection, titleClassName)}>
         {label && <Text>{label}</Text>}
