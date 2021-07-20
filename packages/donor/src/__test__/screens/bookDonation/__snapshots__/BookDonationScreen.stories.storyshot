@@ -144,6 +144,11 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
               >
                 בילינסון
               </option>
+              <option
+                value="SOROKA"
+              >
+                סורוקה
+              </option>
             </select>
             <svg
               aria-hidden={true}
@@ -338,6 +343,11 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 value="BEILINSON"
               >
                 בילינסון
+              </option>
+              <option
+                value="SOROKA"
+              >
+                סורוקה
               </option>
             </select>
             <svg
@@ -756,6 +766,11 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
                 value="BEILINSON"
               >
                 בילינסון
+              </option>
+              <option
+                value="SOROKA"
+              >
+                סורוקה
               </option>
             </select>
             <svg
