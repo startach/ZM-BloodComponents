@@ -28,6 +28,10 @@ export const Ichilov = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.ICHILOV} />
 );
 
+export const Soroka = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.SOROKA} />
+);
+
 export const OtherHospital = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.TEL_HASHOMER} />
 );

@@ -22,6 +22,7 @@ import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined";
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
 import { LockOpenOutlined } from "@material-ui/icons";
+import ZMLogo from "../../assets/mobile/zm_logo.svg";
 
 export interface AppHeaderProps {
   title?: string;
@@ -139,6 +140,7 @@ export default function AppHeader({
           </>
         )}
 
+        <img src={ZMLogo} alt={"logo"} className={styles.zmLogoImage} />
         <div className={styles.version}>{appVersion}</div>
       </Drawer>
     </div>
