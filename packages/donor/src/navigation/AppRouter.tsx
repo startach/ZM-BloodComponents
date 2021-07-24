@@ -92,6 +92,7 @@ export default function AppRouter() {
         bookedAppointment: donorDetails.bookedAppointment,
       });
       console.log("D", new Date().getTime() - startTime);
+      console.log("D", donorDetails.bookedAppointment);
     }
 
     fetchData();
@@ -204,12 +205,15 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.BookDonation}
-          render={() => (
-            <BookDonationScreenContainer
-              user={appState.donor}
-              isLoggedIn={loggedIn}
-            />
-          )}
+          render={() => {
+            if (appState.bookedAppointment) return redirectToUpcomingDonation();
+            return (
+              <BookDonationScreenContainer
+                user={appState.donor}
+                isLoggedIn={loggedIn}
+              />
+            );
+          }}
         />
 
         <Route path={"*"}>
