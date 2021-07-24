@@ -2,9 +2,10 @@ import React from "react";
 import {
   BookedAppointment,
   DateUtils,
+  Hospital,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import styles from "./UpcommingDonationScreen.module.scss";
+import styles from "./UpcomingDonationScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
@@ -13,6 +14,7 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import { WHATSAPP_LINK } from "../contact/ContactScreen";
+import UpcomingDonationInfo from "./UpcomingDonationInfo";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -55,7 +57,7 @@ export default function UpcomingDonationScreen({
                 בית החולים
                 {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
               </div>
-              <NeedRideButton />
+              <NeedRideButton hospital={bookedAppointment.hospital} />
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
@@ -69,18 +71,25 @@ export default function UpcomingDonationScreen({
         </div>
       </div>
 
-      <div className={styles.moreInfo}>
-        <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-        <li>משך התרומה - בין שעה וחצי לשעתיים.</li>
-        <li>יש להביא תעודת זהות.</li>
-        <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
-      </div>
+      <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
     </ZMScreen>
   );
 }
 
-function NeedRideButton() {
+function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
+
+  let content = "";
+  switch (props.hospital) {
+    case Hospital.BEILINSON:
+      content =
+        "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052, או לשלוח הודעה בוואטסאפ לרכז שלך עם מיקום וזמני האיסוף";
+      break;
+
+    default:
+      content =
+        "ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף";
+  }
 
   return (
     <>
@@ -90,7 +99,7 @@ function NeedRideButton() {
       <Popup
         open={open}
         title="אין לך איך להגיע?"
-        content="ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף"
+        content={content}
         buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}

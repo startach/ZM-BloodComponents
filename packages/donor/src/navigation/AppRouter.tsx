@@ -25,12 +25,12 @@ import SignInScreenContainer from "../screens/authentication/signin/SignInScreen
 import OnboardingWizardScreenContainer from "../screens/onboarding/OnboardingWizardScreenContainer";
 import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
 import AboutScreen from "../screens/about/AboutScreen";
-import DonationProcessScreen from "../screens/about/DonationProcessScreen";
 import ContactScreen from "../screens/contact/ContactScreen";
 import UpcomingDonationScreenContainer from "../screens/UpcommingDonation/UpcomingDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
 import QuestionnaireScreenContainer from "../screens/questionnaire/QuestionnaireScreenContainer";
 import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContainer";
+import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -92,6 +92,7 @@ export default function AppRouter() {
         bookedAppointment: donorDetails.bookedAppointment,
       });
       console.log("D", new Date().getTime() - startTime);
+      console.log("D", donorDetails.bookedAppointment);
     }
 
     fetchData();
@@ -159,7 +160,7 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.Process}
-          render={() => <DonationProcessScreen />}
+          render={() => <DonationProcessScreenContainer />}
         />
         <Route
           path={"/" + MainNavigationKeys.Contact}
@@ -204,12 +205,15 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.BookDonation}
-          render={() => (
-            <BookDonationScreenContainer
-              user={appState.donor}
-              isLoggedIn={loggedIn}
-            />
-          )}
+          render={() => {
+            if (appState.bookedAppointment) return redirectToUpcomingDonation();
+            return (
+              <BookDonationScreenContainer
+                user={appState.donor}
+                isLoggedIn={loggedIn}
+              />
+            );
+          }}
         />
 
         <Route path={"*"}>

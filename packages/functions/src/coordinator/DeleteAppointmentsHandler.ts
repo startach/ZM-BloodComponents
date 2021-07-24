@@ -1,11 +1,10 @@
 import { validateAppointmentEditPermissions } from "./UserValidator";
-import {
-  deleteAppointmentsByIds,
-  getAppointmentsByIds,
-  removeDonorFromDbAppointment,
-  setAppointment,
-} from "../dal/AppointmentDataAccessLayer";
+import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
+import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import { sendAppointmentDeletedEmailToDonor } from "../notifications/notifiers/DonorDeletedAppointmentNotifier";
+import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
+import * as functions from "firebase-functions";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -13,12 +12,17 @@ export default async function (
 ) {
   const appointmentId = request.appointmentId;
 
-  const appointments = await getAppointmentsByIds([appointmentId]);
+  const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
+    appointmentId,
+  ]);
   if (appointments.length !== 1) {
     throw new Error("Invalid appointment id");
   }
 
   const appointment = appointments[0];
+  const donorPromise = appointment.donorId
+    ? DonorDataAccessLayer.getDonor(appointment.donorId)
+    : undefined;
 
   // validate user is allowed to edit appointments of this hospital
   await validateAppointmentEditPermissions(
@@ -27,10 +31,31 @@ export default async function (
   );
 
   if (!request.onlyRemoveDonor) {
-    await deleteAppointmentsByIds([appointmentId]);
+    await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
+  } else {
+    const updatedAppointment =
+      AppointmentDataAccessLayer.removeDonorFromDbAppointment(appointment);
+    await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
+  }
+
+  // Handle notification to the donor
+  if (!appointment.donorId || appointment.donorId === "") {
     return;
   }
 
-  const updatedAppointment = removeDonorFromDbAppointment(appointment);
-  await setAppointment(updatedAppointment);
+  const donor = await donorPromise;
+  if (!donor) {
+    functions.logger.error(
+      "Could not send deletion email to donor " + appointment.donorId
+    );
+    return;
+  }
+  const appointmentNotificationData = getAppointmentNotificationData(
+    appointment,
+    donor
+  );
+  await sendAppointmentDeletedEmailToDonor(
+    donor.email,
+    appointmentNotificationData
+  );
 }

@@ -19,7 +19,10 @@ export function addEmailToQueue(message: EmailMessage) {
   return admin
     .firestore()
     .collection(Collections.EMAIL_NOTIFICATIONS)
-    .add(message);
+    .add({
+      ...message,
+      date: admin.firestore.Timestamp.now(),
+    });
 }
 
 export function addEmailsToQueue(messages: EmailMessage[]) {

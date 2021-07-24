@@ -1,12 +1,14 @@
 import styles from "./DonationProcessScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import Illustration from "./../../assets/images/donation_proccess.svg";
-import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import { useHistory } from "react-router-dom";
 
-export default function DonationProcessScreen() {
-  const history = useHistory();
+export interface DonationProcessScreenProps {
+  onContact: () => void;
+}
 
+export default function DonationProcessScreen({
+  onContact,
+}: DonationProcessScreenProps) {
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
       <div className={styles.imageContainer}>
@@ -40,10 +42,7 @@ export default function DonationProcessScreen() {
         שיתרום יחד אתכם ויעזור להעביר את הזמן בנעימים.
         <br />
         למידע ושאלות מוזמנים ליצור קשר באחת הדרכים בעמוד {""}
-        <span
-          onClick={() => history.replace("/" + MainNavigationKeys.Contact)}
-          className={styles.link}
-        >
+        <span onClick={onContact} className={styles.link}>
           צור קשר
         </span>
         .

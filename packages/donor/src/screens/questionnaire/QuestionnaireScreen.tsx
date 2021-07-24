@@ -4,15 +4,10 @@ import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
-import {
-  FunctionsApi,
-  Hospital,
-  SelectOption,
-} from "@zm-blood-components/common";
-import WhatsappIcon from "../../assets/images/whatsup-color-big.svg";
-import { PickerButton } from "../../components/basic/Picker/Picker";
-import { WHATSAPP_LINK } from "../contact/ContactScreen";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
+import QuestionnaireQuestions from "./questions/QuestionnaireQuestions";
+import QuestionnaireNotes from "./notes/QuestionnaireNotes";
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;
@@ -25,17 +20,6 @@ export interface QuestionnaireScreenProps {
   goToHomePage: () => Promise<void>;
 }
 
-const YesNoOptions: SelectOption<boolean>[] = [
-  { value: true, label: "כן", key: "כן" },
-  { value: false, label: "לא", key: "לא" },
-];
-
-const YesNoNotRelevantOptions: SelectOption<string>[] = [
-  { value: "yes", label: "כן", key: "כן" },
-  { value: "no", label: "לא", key: "לא" },
-  { value: "not-relevant", label: "לא רלוונטי", key: "לא רלוונטי" },
-];
-
 export default function QuestionnaireScreen({
   hospital,
   donationStartTimeMillis,
@@ -46,88 +30,10 @@ export default function QuestionnaireScreen({
   errorCode,
   goToHomePage,
 }: QuestionnaireScreenProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] =
-    React.useState<boolean | undefined>(undefined);
-  const HaveYouAlreadyDonated = (
-    <Question
-      value={hasAlreadyDonated}
-      onChange={setHasAlreadyDonated}
-      label={"האם תרמת דם / טרומבוציטים בעבר?"}
-      options={YesNoOptions}
-    />
-  );
-
-  const [isWeightValid, setIsWeightValid] =
-    React.useState<boolean | undefined>(undefined);
-  const IsWeightValid = (
-    <Question
-      value={isWeightValid}
-      onChange={setIsWeightValid}
-      label={"האם משקלך מעל 50 ק״ג?"}
-      options={YesNoOptions}
-    />
-  );
-
-  const [isSurgeryValid, setIsSurgeryValid] =
-    React.useState<boolean | undefined>(undefined);
-  const IsSurgeryValid = (
-    <Question
-      value={isSurgeryValid}
-      onChange={setIsSurgeryValid}
-      label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
-      options={YesNoOptions}
-    />
-  );
-
-  const [isRightAge, setIsRightAge] =
-    React.useState<boolean | undefined>(undefined);
-  const IsRightAge = (
-    <Question
-      value={isRightAge}
-      onChange={setIsRightAge}
-      label={"האם הנך מעל גיל 17?"}
-      options={YesNoOptions}
-    />
-  );
-
-  const [wasPregnant, setWasPregnantEver] =
-    React.useState<string | undefined>(undefined);
-  const WasPregnant = (
-    <Question
-      value={wasPregnant}
-      onChange={setWasPregnantEver}
-      label={"האם היית / הנך בהריון?"}
-      options={YesNoNotRelevantOptions}
-    />
-  );
-
+  const [areAllAnswersCorrect, setAreAllAnswersCorrect] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const IsConfirmed = (
-    <Checkbox
-      label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
-      isChecked={isConfirmed}
-      onChange={setIsConfirmed}
-    />
-  );
 
-  const isCorrectAnswers =
-    hasAlreadyDonated &&
-    isWeightValid &&
-    isSurgeryValid === false &&
-    isRightAge &&
-    wasPregnant !== "yes";
-
-  const isWrongAnswerChosen =
-    hasAlreadyDonated === false ||
-    isWeightValid === false ||
-    isSurgeryValid ||
-    isRightAge === false ||
-    wasPregnant === "yes";
-
-  const isVerified = isCorrectAnswers && isConfirmed;
-
-  const wrongAnswerPopupContent =
-    "אך לצערנו נראה שאי אפשר לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז";
+  const isVerified = areAllAnswersCorrect && isConfirmed;
 
   return (
     <ZMScreen
@@ -149,26 +55,21 @@ export default function QuestionnaireScreen({
           עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
         </div>
 
-        <div className={styles.question}>{WasPregnant}</div>
-        <div className={styles.question}>{HaveYouAlreadyDonated}</div>
-        <div className={styles.question}>{IsRightAge}</div>
-        <div className={styles.question}>{IsWeightValid}</div>
-        <div className={styles.question}>{IsSurgeryValid}</div>
+        <QuestionnaireQuestions
+          hospital={hospital}
+          goToHomePage={goToHomePage}
+          setAreAllAnswersCorrect={setAreAllAnswersCorrect}
+        />
 
-        <div className={styles.notesTitle}>ידוע לי שאוכל לתרום רק אם:</div>
+        <QuestionnaireNotes hospital={hospital} />
 
-        <div className={styles.notesText}>
-          <li>אין לי פצע פתוח/שריטה.</li>
-          <li>לא נטלתי אטיביוטיקה ב-3 הימים שלפני התרומה.</li>
-          <li>לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.</li>
+        <div className={styles.confirmButtonContainer}>
+          <Checkbox
+            label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
+            isChecked={isConfirmed}
+            onChange={setIsConfirmed}
+          />
         </div>
-
-        <div className={styles.notesDetails}>
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך
-          ואין ביכולתך לתרום אנא בטל/י את התור.
-        </div>
-
-        <div className={styles.confirmButtonContainer}>{IsConfirmed}</div>
 
         <Button
           isDisabled={!debugMode && !isVerified}
@@ -179,37 +80,6 @@ export default function QuestionnaireScreen({
       </div>
 
       <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
-
-      <Popup
-        open={isWrongAnswerChosen}
-        title={"מודים לך על הכוונה הטובה!"}
-        content={wrongAnswerPopupContent}
-        buttonApproveText="שלח/י ואטסאפ לרכז שלך"
-        onApproved={() => {
-          window.open(WHATSAPP_LINK);
-        }}
-        image={WhatsappIcon}
-        goBackText={"חזרה לרשימת התורים"}
-        onBack={goToHomePage}
-        onClose={() => {
-          if (!hasAlreadyDonated) {
-            setHasAlreadyDonated(undefined);
-          }
-          if (!isWeightValid) {
-            setIsWeightValid(undefined);
-          }
-          if (isSurgeryValid) {
-            setIsSurgeryValid(undefined);
-          }
-          if (!isRightAge) {
-            setIsRightAge(undefined);
-          }
-          if (wasPregnant) {
-            setWasPregnantEver(undefined);
-          }
-          return Promise.resolve();
-        }}
-      />
     </ZMScreen>
   );
 }
@@ -243,29 +113,5 @@ function ErrorPopup(props: {
       open={true}
       onApproved={props.goToHomePage}
     />
-  );
-}
-
-function Question<T>(props: {
-  label?: string;
-  options: SelectOption<T>[];
-  onChange: (value: T) => void;
-  value?: T;
-}) {
-  return (
-    <>
-      <div className={styles.questionLabel}>{props.label}</div>
-      <div className={styles.questionButtons}>
-        {props.options.map((option) => (
-          <div className={styles.questionButton} key={option.key}>
-            <PickerButton
-              label={option.label}
-              onClick={() => props.onChange(option.value)}
-              selected={props.value === option.value}
-            />
-          </div>
-        ))}
-      </div>
-    </>
   );
 }

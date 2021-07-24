@@ -1,3 +1,8 @@
+:root {
+  caret-color: transparent; /* Hides blinking cursor */
+  -webkit-user-select: none; /* Prevents selecting text */
+}
+
 //colors-------------------------------------------------------
 // See also : src/utils/colors for tsx colors
 :root {

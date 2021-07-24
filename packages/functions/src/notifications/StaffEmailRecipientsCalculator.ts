@@ -41,7 +41,7 @@ export function getStaffRecipientsInternal(
   switch (env) {
     case "prod":
       res.push({
-        email: "dam@zichron.org.il",
+        email: "dam@zichron.org",
         name: "בנק הדם",
       });
       break;
