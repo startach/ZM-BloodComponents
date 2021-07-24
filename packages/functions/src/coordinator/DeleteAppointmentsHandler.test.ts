@@ -5,6 +5,7 @@ import {
   DbAppointment,
   FunctionsApi,
   Hospital,
+  DbDonor,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -15,17 +16,28 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { sendAppointmentDeletedEmailToDonor } from "../notifications/notifiers/DonorDeletedAppointmentNotifier";
+import { mocked } from "ts-jest/utils";
+import { sampleUser } from "../testUtils/TestSamples";
+import * as DonorDAL from "../dal/DonorDataAccessLayer";
+import { deleteDonor } from "../dal/DonorDataAccessLayer";
+
+jest.mock("../notifications/notifiers/DonorDeletedAppointmentNotifier");
+const mockedNotifier = mocked(sendAppointmentDeletedEmailToDonor);
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DeleteAppointmentsFunctionName]
 );
 
+const DONOR_ID = "DeleteAppointmentHandlerTestDonorUser";
 const COORDINATOR_ID = "DeleteAppointmentHandlerTestUser";
 const APPOINTMENT_ID = "DeleteAppointmentHandlerTestAppointmentId";
 
 const reset = async () => {
   await deleteAppointmentsByIds([APPOINTMENT_ID]);
   await deleteAdmin(COORDINATOR_ID);
+  await deleteDonor(DONOR_ID);
+  mockedNotifier.mockClear();
 };
 
 beforeAll(reset);
@@ -36,16 +48,19 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("User that is not coordinator throws exception", async () => {
-  await saveAppointment();
+test.each([true, false])(
+  "User that is not coordinator throws exception",
+  async () => {
+    await saveAppointment();
 
-  const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
+    const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(
-    action,
-    "User is not a coordinator and can't edit appointments"
-  );
-});
+    await expectAsyncThrows(
+      action,
+      "User is not a coordinator and can't edit appointments"
+    );
+  }
+);
 
 test("User that has wrong role throws exception", async () => {
   await saveAppointment();
@@ -81,36 +96,72 @@ test("No such appointment throws exception", async () => {
   await expectAsyncThrows(action, "Invalid appointment id");
 });
 
-test("Valid delete appointment request", async () => {
-  await saveAppointment();
+test.each([true, false])(
+  "Valid delete appointment request - booked: %p",
+  async (booked) => {
+    await saveAppointment(booked);
+    if (booked) {
+      await createDonor();
+    }
 
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [
-    Hospital.ASAF_HAROFE,
-    Hospital.BEILINSON,
-  ]);
+    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+      Hospital.ASAF_HAROFE,
+      Hospital.BEILINSON,
+    ]);
 
-  await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
+    await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-  expect(appointments).toHaveLength(0);
-});
+    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
+    expect(appointments).toHaveLength(0);
 
-test("Valid remove donor request", async () => {
-  await saveAppointment();
+    // Check notification is sent
+    if (booked) {
+      expect(mockedNotifier).toHaveBeenCalledWith(
+        "email",
+        expect.objectContaining({
+          appointmentId: APPOINTMENT_ID,
+        })
+      );
+    } else {
+      expect(mockedNotifier).toHaveBeenCalledTimes(0);
+    }
+  }
+);
 
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [
-    Hospital.ASAF_HAROFE,
-    Hospital.BEILINSON,
-  ]);
+test.each([true, false])(
+  "Valid remove donor request - booked: %p",
+  async (booked) => {
+    await saveAppointment(booked);
+    if (booked) {
+      await createDonor();
+    }
 
-  await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
+    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+      Hospital.ASAF_HAROFE,
+      Hospital.BEILINSON,
+    ]);
 
-  const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-  expect(appointments).toHaveLength(1);
-  expect(appointments[0].id).toEqual(APPOINTMENT_ID);
-  expect(appointments[0].donorId).toEqual("");
-  expect(appointments[0].bookingTime).toBeUndefined();
-});
+    await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
+
+    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
+    expect(appointments).toHaveLength(1);
+    expect(appointments[0].id).toEqual(APPOINTMENT_ID);
+    expect(appointments[0].donorId).toEqual("");
+    expect(appointments[0].bookingTime).toBeUndefined();
+
+    // Check notification is sent
+    if (booked) {
+      expect(mockedNotifier).toHaveBeenCalledWith(
+        "email",
+        expect.objectContaining({
+          appointmentId: APPOINTMENT_ID,
+        })
+      );
+    } else {
+      expect(mockedNotifier).toHaveBeenCalledTimes(0);
+    }
+  }
+);
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
   const newAdmin: DbCoordinator = {
@@ -142,17 +193,30 @@ function callFunction(
   });
 }
 
-async function saveAppointment() {
+async function saveAppointment(booked?: boolean) {
   const appointment: DbAppointment = {
     id: APPOINTMENT_ID,
     creationTime: admin.firestore.Timestamp.now(),
     creatorUserId: COORDINATOR_ID,
     donationStartTime: admin.firestore.Timestamp.now(),
     hospital: Hospital.BEILINSON,
-    donorId: "DONOR_ID",
-    bookingTime: admin.firestore.Timestamp.now(),
+    donorId: "",
   };
+
+  if (booked) {
+    appointment.donorId = DONOR_ID;
+    appointment.bookingTime = admin.firestore.Timestamp.now();
+  }
 
   await setAppointment(appointment);
   return appointment;
+}
+
+async function createDonor() {
+  const donor: DbDonor = {
+    ...sampleUser,
+    id: DONOR_ID,
+  };
+
+  await DonorDAL.setDonor(donor);
 }

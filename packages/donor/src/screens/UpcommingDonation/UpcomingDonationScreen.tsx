@@ -2,6 +2,7 @@ import React from "react";
 import {
   BookedAppointment,
   DateUtils,
+  Hospital,
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
@@ -56,7 +57,7 @@ export default function UpcomingDonationScreen({
                 בית החולים
                 {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
               </div>
-              <NeedRideButton />
+              <NeedRideButton hospital={bookedAppointment.hospital} />
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
@@ -75,8 +76,20 @@ export default function UpcomingDonationScreen({
   );
 }
 
-function NeedRideButton() {
+function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
+
+  let content = "";
+  switch (props.hospital) {
+    case Hospital.BEILINSON:
+      content =
+        "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052, או לשלוח הודעה בוואטסאפ לרכז שלך עם מיקום וזמני האיסוף";
+      break;
+
+    default:
+      content =
+        "ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף";
+  }
 
   return (
     <>
@@ -86,7 +99,7 @@ function NeedRideButton() {
       <Popup
         open={open}
         title="אין לך איך להגיע?"
-        content="ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף"
+        content={content}
         buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
