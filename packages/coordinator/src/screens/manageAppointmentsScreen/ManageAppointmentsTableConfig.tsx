@@ -25,108 +25,108 @@ const GetExpandedColumns = (
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean
 ): CardTableColumn<ManagedAppointment>[] => [
-    {
-      label: "שם מלא",
-      cellRenderer: ({ donorName }) => donorName,
-      hideIfNoData: true,
+  {
+    label: "שם מלא",
+    cellRenderer: ({ donorName }) => donorName,
+    hideIfNoData: true,
+  },
+  {
+    label: "סוג דם",
+    cellRenderer: ({ bloodType }) =>
+      bloodType ? LocaleUtils.getBloodTypeTranslation(bloodType) : null,
+    hideIfNoData: true,
+  },
+  {
+    label: "טלפון",
+    cellRenderer: ({ donorPhoneNumber }) =>
+      donorPhoneNumber && (
+        <div className={Styles["phone-cell"]}>
+          {donorPhoneNumber.slice(0, 3) + "-" + donorPhoneNumber.slice(3)}
+        </div>
+      ),
+    hideIfNoData: true,
+  },
+  {
+    label: "נקבע בתאריך",
+    cellRenderer: ({ booked, bookingTimeMillis }) => {
+      let bookingDate = "אין רישום";
+      if (booked && bookingTimeMillis) {
+        bookingDate = DateUtils.ToDateString(bookingTimeMillis);
+      }
+      return <div className={Styles["booked-at-date"]}>{bookingDate}</div>;
     },
-    {
-      label: "סוג דם",
-      cellRenderer: ({ bloodType }) =>
-        bloodType ? LocaleUtils.getBloodTypeTranslation(bloodType) : null,
-      hideIfNoData: true,
+  },
+  {
+    cellRenderer: ({ recentChangeType }) => {
+      const chipLabel =
+        recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
+      return (
+        !showOnlyRecentChanges &&
+        (recentChangeType || recentChangeType === 0) && (
+          <Chip colorScheme={ChipColorScheme.New} label={chipLabel} />
+        )
+      );
     },
-    {
-      label: "טלפון",
-      cellRenderer: ({ donorPhoneNumber }) =>
-        donorPhoneNumber && (
-          <div className={Styles["phone-cell"]}>
-            {donorPhoneNumber.slice(0, 3) + "-" + donorPhoneNumber.slice(3)}
-          </div>
-        ),
-      hideIfNoData: true,
-    },
-    {
-      label: "נקבע בתאריך",
-      cellRenderer: ({ booked, bookingTimeMillis }) => {
-        let bookingDate = "אין רישום";
-        if (booked && bookingTimeMillis) {
-          bookingDate = DateUtils.ToDateString(bookingTimeMillis);
-        }
-        return <div className={Styles["booked-at-date"]}>{bookingDate}</div>;
-      },
-    },
-    {
-      cellRenderer: ({ recentChangeType }) => {
-        const chipLabel =
-          recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
-        return (
-          !showOnlyRecentChanges &&
-          (recentChangeType || recentChangeType === 0) && (
-            <Chip colorScheme={ChipColorScheme.New} label={chipLabel} />
-          )
-        );
-      },
-      colRelativeWidth: 0.3,
-    },
-    {
-      cellRenderer: (appointment) => {
-        if (appointment.isPastAppointment) {
-          return null;
-        }
+    colRelativeWidth: 0.3,
+  },
+  {
+    cellRenderer: (appointment) => {
+      if (appointment.isPastAppointment) {
+        return null;
+      }
 
-        const buttons: {
-          tooltip: string;
-          iconUrl: string;
-          onClick: () => void;
-        }[] = [];
+      const buttons: {
+        tooltip: string;
+        iconUrl: string;
+        onClick: () => void;
+      }[] = [];
 
-        if (appointment.booked) {
-          buttons.push({
-            tooltip: "הסר תורם",
-            iconUrl: userMinusIcon,
-            onClick: () =>
-              setPopupData({
-                isOpen: true,
-                appointment,
-                title: "האם ברצונך להסיר את התורם מהתור?",
-                content: `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`,
-                onApproved: () => onRemoveDonor(appointment.appointmentId),
-              }),
-          });
-        }
-
+      if (appointment.booked) {
         buttons.push({
-          tooltip: "מחק תור",
-          iconUrl: trashIcon,
+          tooltip: "הסר תורם",
+          iconUrl: userMinusIcon,
           onClick: () =>
             setPopupData({
               isOpen: true,
               appointment,
-              title: "האם ברצונך לבטל את התור?",
-              content: appointment.booked
-                ? `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`
-                : "התור טרם נתפס",
-              onApproved: () => onDeleteAppointment(appointment.appointmentId),
+              title: "האם ברצונך להסיר את התורם מהתור?",
+              content: `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`,
+              onApproved: () => onRemoveDonor(appointment.appointmentId),
             }),
         });
+      }
 
-        return (
-          <div className={Styles["icons-container"]}>
-            {buttons.map((button) => (
-              <IconButton
-                key={button.tooltip}
-                iconUrl={button.iconUrl}
-                tooltipText={button.tooltip}
-                onClick={button.onClick}
-              />
-            ))}
-          </div>
-        );
-      },
-      colRelativeWidth: 0,
+      buttons.push({
+        tooltip: "מחק תור",
+        iconUrl: trashIcon,
+        onClick: () =>
+          setPopupData({
+            isOpen: true,
+            appointment,
+            title: "האם ברצונך לבטל את התור?",
+            content: appointment.booked
+              ? `התור שייך ל${appointment.donorName} במספר ${appointment.donorPhoneNumber}`
+              : "התור טרם נתפס",
+            onApproved: () => onDeleteAppointment(appointment.appointmentId),
+          }),
+      });
+
+      return (
+        <div className={Styles["icons-container"]}>
+          {buttons.map((button) => (
+            <IconButton
+              key={button.tooltip}
+              iconUrl={button.iconUrl}
+              tooltipText={button.tooltip}
+              onClick={button.onClick}
+            />
+          ))}
+        </div>
+      );
     },
-  ];
+    colRelativeWidth: 0,
+  },
+];
 
 export const AppointmentTableExpandedRowContent = (
   slot: AppointmentSlot,
@@ -157,30 +157,30 @@ export const AppointmentTableExpandedRowContent = (
 export const MainAppointmentTableColumns = (
   showOnlyRecentChanges: boolean
 ): CardTableColumn<AppointmentSlot>[] => [
-    {
-      label: "שעה",
-      sortBy: (a, b) => a.donationStartTimeMillis - b.donationStartTimeMillis,
-      cellRenderer: ({ donationStartTimeMillis }) =>
-        DateUtils.ToTimeString(new Date(donationStartTimeMillis)),
+  {
+    label: "שעה",
+    sortBy: (a, b) => a.donationStartTimeMillis - b.donationStartTimeMillis,
+    cellRenderer: ({ donationStartTimeMillis }) =>
+      DateUtils.ToTimeString(new Date(donationStartTimeMillis)),
+  },
+  {
+    label: "מספר העמדות",
+    cellRenderer: ({ appointments }) => appointments.length,
+  },
+  {
+    label: "רשומים",
+    cellRenderer: ({ appointments }) =>
+      appointments.filter((a) => a.booked).length,
+  },
+  {
+    cellRenderer: ({ appointments }) => {
+      return (
+        !showOnlyRecentChanges &&
+        appointments.find(
+          (a) => a.recentChangeType || a.recentChangeType === 0
+        ) && <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+      );
     },
-    {
-      label: "מספר העמדות",
-      cellRenderer: ({ appointments }) => appointments.length,
-    },
-    {
-      label: "רשומים",
-      cellRenderer: ({ appointments }) =>
-        appointments.filter((a) => a.booked).length,
-    },
-    {
-      cellRenderer: ({ appointments }) => {
-        return (
-          !showOnlyRecentChanges &&
-          appointments.find(
-            (a) => a.recentChangeType || a.recentChangeType === 0
-          ) && <Chip colorScheme={ChipColorScheme.New} label="חדש" />
-        );
-      },
-      colRelativeWidth: 0.3,
-    },
-  ];
+    colRelativeWidth: 0.3,
+  },
+];

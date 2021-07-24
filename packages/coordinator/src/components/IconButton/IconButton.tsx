@@ -1,7 +1,4 @@
-import {
-  IconButton as MaterialIcon,
-  PropTypes,
-} from "@material-ui/core";
+import { IconButton as MaterialIcon, PropTypes } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 
 export enum IconSize {
@@ -20,7 +17,6 @@ export interface IconButtonProps {
 }
 
 function IconButton({ iconUrl, tooltipText, ...props }: IconButtonProps) {
-
   const IconElement = (
     <MaterialIcon {...props}>
       <img src={iconUrl} alt={tooltipText} />
