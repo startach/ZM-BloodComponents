@@ -56,7 +56,7 @@ export default function CardTableItem<T>({
           margin: ".5rem 0",
         },
         [theme.breakpoints.down("sm")]: {
-          width: "max-content",
+          width: "100%",
         },
       },
       // https://stackoverflow.com/questions/54056308/cant-override-a-style-of-a-deeply-nested-component-material-ui-jss-styling#answer-54057124
