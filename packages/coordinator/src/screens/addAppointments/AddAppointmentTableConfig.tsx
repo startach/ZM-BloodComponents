@@ -1,7 +1,8 @@
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { CardTableColumn, CardTableRow } from "../../components/Table";
-import { Icon, IconButton } from "../../components/IconButton";
+import { IconButton } from "../../components/IconButton";
+import trashIcon from "../../assets/trash.svg";
 
 const donationTypeText = "סוג תרומה";
 const hospitalText = "בית חולים";
@@ -48,7 +49,7 @@ export const columns = (
     cellRenderer: ({ key }) => (
       <IconButton
         aria-label="delete"
-        icon={Icon.Delete}
+        iconUrl={trashIcon}
         color={"default"}
         onClick={() => deleteSlotsRequest(key)}
       />

@@ -8,7 +8,7 @@ import {
   CardTableRow,
 } from "coordinator/src/components/Table";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import { Icon, IconButton } from "../../components/IconButton";
+import IconButton from "../../components/IconButton";
 import Table from "../../components/Table";
 import {
   AppointmentSlot,
@@ -16,6 +16,8 @@ import {
 } from "./CoordinatorAppointmentsGrouper";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 import Chip, { ChipColorScheme } from "../../components/Chip";
+import userMinusIcon from "../../assets/user-minus.svg";
+import trashIcon from "../../assets/trash.svg";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
@@ -75,14 +77,14 @@ const GetExpandedColumns = (
 
       const buttons: {
         tooltip: string;
-        icon: Icon;
+        iconUrl: string;
         onClick: () => void;
       }[] = [];
 
       if (appointment.booked) {
         buttons.push({
           tooltip: "הסר תורם",
-          icon: Icon.Clear,
+          iconUrl: userMinusIcon,
           onClick: () =>
             setPopupData({
               isOpen: true,
@@ -96,7 +98,7 @@ const GetExpandedColumns = (
 
       buttons.push({
         tooltip: "מחק תור",
-        icon: Icon.Delete,
+        iconUrl: trashIcon,
         onClick: () =>
           setPopupData({
             isOpen: true,
@@ -110,11 +112,11 @@ const GetExpandedColumns = (
       });
 
       return (
-        <div>
+        <div className={Styles["icons-container"]}>
           {buttons.map((button) => (
             <IconButton
               key={button.tooltip}
-              icon={button.icon}
+              iconUrl={button.iconUrl}
               tooltipText={button.tooltip}
               onClick={button.onClick}
             />
