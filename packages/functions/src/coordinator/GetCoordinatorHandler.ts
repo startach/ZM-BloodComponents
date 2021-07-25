@@ -7,12 +7,14 @@ export default async function (
   request: FunctionsApi.GetCoordinatorRequest,
   callerId: string
 ): Promise<FunctionsApi.GetCoordinatorResponse> {
+  const getCoordinatorDonorUser = DonorDAL.getDonor(callerId);
   const coordinator = await CoordinatorDAL.getCoordinator(callerId);
   if (!coordinator) {
     console.error("Could not find calling user", callerId);
     throw Error(`User is not a coordinator`);
   }
-  const coordinatorDonorUser = await DonorDAL.getDonor(callerId);
+
+  var coordinatorDonorUser = await getCoordinatorDonorUser;
 
   return {
     coordinator: {

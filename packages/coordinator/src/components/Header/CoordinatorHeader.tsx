@@ -1,7 +1,6 @@
 import Button, { ButtonVariant, ButtonProps } from "../Button";
 import { useEffect, useState } from "react";
 import styles from "./CoordinatorHeader.module.scss";
-import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import EmptyCoordinatorHeader from "./EmptyCoordinatorHeader";
 import { Units } from "../../constants/Units";
@@ -17,11 +16,13 @@ export interface HeaderButtonFlags {
   showBookedAppointments: boolean;
 }
 
-interface CoordinatorHeaderProps {
+export interface CoordinatorHeaderProps {
   onSignOut: () => void;
   flags: HeaderButtonFlags;
   getEmail: () => string | undefined;
   coordinator: Coordinator | undefined;
+  currentLocationPathname: string;
+  navigate: (screen: CoordinatorScreenKey) => () => void;
 }
 
 export default function CoordinatorHeader({
@@ -29,10 +30,9 @@ export default function CoordinatorHeader({
   onSignOut,
   getEmail,
   coordinator,
+  currentLocationPathname,
+  navigate,
 }: CoordinatorHeaderProps) {
-  const history = useHistory();
-  const location = useLocation();
-  const currentLocationPathname = location.pathname;
   const [currentTab, setCurrentTab] = useState("/home");
 
   useEffect(() => {
@@ -42,9 +42,6 @@ export default function CoordinatorHeader({
     }
     setCurrentTab(currentLocationPathname);
   }, [currentLocationPathname]);
-
-  const navigate = (screen: CoordinatorScreenKey) => () =>
-    history.push("/" + screen);
 
   const name = coordinator?.name || getEmail();
 
