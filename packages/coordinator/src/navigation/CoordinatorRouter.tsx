@@ -133,6 +133,7 @@ export default function CoordinatorRouter() {
             showSearchDonors: canViewDonors,
             showBookedAppointments: canViewBookedAppointments,
           }}
+          coordinator={appState.coordinator}
         />
       }
     >

@@ -436,7 +436,7 @@ const baseArgs: GroupTableProps<AppointmentSlot> = {
   hasColumnHeaders: true,
 };
 
-export const Template: Story<GroupTableProps<AppointmentSlot>> = (
+const Template: Story<GroupTableProps<AppointmentSlot>> = (
   args: GroupTableProps<AppointmentSlot>
 ) => <GroupsTable {...args} />;
 

@@ -64,6 +64,7 @@ export type DbCoordinator = {
 export type Coordinator = {
   role: CoordinatorRole;
   activeHospitalsForCoordinator: Hospital[];
+  name: string | undefined;
 };
 
 export type DbGroup = {

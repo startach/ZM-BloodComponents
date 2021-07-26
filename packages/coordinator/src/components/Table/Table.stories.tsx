@@ -249,7 +249,7 @@ const baseArgs: TableProps<Donor> = {
   hasColumnHeaders: true,
 };
 
-export const Template: Story<TableProps<Donor>> = (args: TableProps<Donor>) => (
+const Template: Story<TableProps<Donor>> = (args: TableProps<Donor>) => (
   <Table {...args} />
 );
 
