@@ -47,7 +47,7 @@ export default function BookDonationScreen({
     <ZMScreen hasBurgerMenu className={styles.bookDonationScreen}>
       <div className={styles.welcomeBox}>
         <div className={styles.welcomeTitle}>
-          <div className={styles.name}>היי {firstName}</div>
+          <div className={styles.name}>היי{firstName ?" "+firstName:"!"}</div>
           <div className={styles.welcomeText}>
             איזה כיף שבאת!
             <br />
