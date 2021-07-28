@@ -85,8 +85,8 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
           <div
             className="name"
           >
-            היי 
-            משה
+            היי
+             משה
           </div>
           <div
             className="welcomeText"
@@ -285,8 +285,8 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           <div
             className="name"
           >
-            היי 
-            משה
+            היי
+             משה
           </div>
           <div
             className="welcomeText"
@@ -708,8 +708,8 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
           <div
             className="name"
           >
-            היי 
-            משה
+            היי
+             משה
           </div>
           <div
             className="welcomeText"
