@@ -1331,12 +1331,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@capacitor/android@*", "@capacitor/android@^3.0.0":
+"@capacitor/android@*":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.1.1.tgz#7bfca661a7aacd162694d7e7a81747da79ed20ae"
   integrity sha512-f4QA0wlhr3uRFzHArSQRfgSGXiAFUlCXYOt/TyYwhKIweyrpfzXtHkgqCC4ATqN9Rp7yrrLRnz8JDXBUjff3iw==
 
-"@capacitor/app@*", "@capacitor/app@^0.3.10":
+"@capacitor/app@*":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
@@ -1363,24 +1363,24 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@*", "@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1":
+"@capacitor/core@*", "@capacitor/core@^3.0.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.1.1.tgz#61e1ad8b9f532ee5bc5e5c680b0fd71a00492765"
   integrity sha512-VTOdy2GZPLxMGDmwXWfhQWoP7G+0XE8gx2er2uo8e8Y6K8YjT8bxqlOL4VJ8gC5X8Wq281SR4OsajzhdgDazgQ==
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/haptics@*", "@capacitor/haptics@^0.3.10":
+"@capacitor/haptics@*":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-0.3.10.tgz#7814546e586ddae6c5e5678796854ef9631ac066"
   integrity sha512-EwI79xSsxl5O1CZWrRhkkAok50tCy78fa4xOK9G++eQCNc2cc5ZmnVubDKA/itvIN1NBAhn5qpIadi8zW26ZZw==
 
-"@capacitor/ios@*", "@capacitor/ios@^3.0.0":
+"@capacitor/ios@*":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.1.1.tgz#aec035e78a0586c60053a19c06397b794c4fbc7b"
   integrity sha512-T8HWF2QNhMPb8EjO3Fn6Gmxg7llDPdb8K4mDe977Ufxq0WFuwlQw+VbSDzVXCHhkd2askyDCbpVUh5npONVwTQ==
 
-"@capacitor/keyboard@*", "@capacitor/keyboard@^0.6.3":
+"@capacitor/keyboard@*":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-0.6.3.tgz#0f5844dbfbe59f9bc2efd23466857bca2f0f4517"
   integrity sha512-jf15yaaEVhQ/WCF0doEzzBKWjzbrw5vSsgqlgrP5ldCFhYDU4ZSUtc4xWjyftHjqmGyXBLJAlWEmK1stnz1gdQ==
@@ -3362,6 +3362,29 @@
   dependencies:
     exenv "^1.2.2"
     prop-types "^15.6.2"
+
+"@sendgrid/client@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.4.3.tgz#bc71aae05de2cd9aa607f4eb1d886711d09f9595"
+  integrity sha512-tTaHx893w5iqG0sVtUnMyRchuwYF95k4UOkmov1MouMIeMUbNvbalITo7cG7YSXUTY9rT2t4eBY6HcEBCVeqfg==
+  dependencies:
+    "@sendgrid/helpers" "^7.4.3"
+    axios "^0.21.1"
+
+"@sendgrid/helpers@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.4.3.tgz#231a4405266cfa291054df8b668fe3a4dc9387aa"
+  integrity sha512-Wt+68g1sVEM5UspJh34O/cxtv6BBbtAIk7U9B3PB2ySOtPs9e6hI1QkgYVwpNmkt7k2p86muUNyma/Aig25agg==
+  dependencies:
+    deepmerge "^4.2.2"
+
+"@sendgrid/mail@^7.4.5":
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.4.5.tgz#22cef36e793134833b36aff5d3f4f53e8f81dd52"
+  integrity sha512-adXMvrTUOlYr7+UTigZRGSYR9vheBv1y4fF2mugn29NBdQMfcQPGLQ5vIHgSAfcboBFCagZdamZqM5FeSGU0Hw==
+  dependencies:
+    "@sendgrid/client" "^7.4.3"
+    "@sendgrid/helpers" "^7.4.3"
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
@@ -5706,6 +5729,13 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.2.tgz#0c987d82c8b82b4b9b7a945f1b5ef0d8fed586ed"
   integrity sha512-OKRkKM4ojMEZRJ5UNJHmq9tht7cEnRnqKG6KyB/trYws00Xtkv12mHtlJ0SK7cmuNbrU8dPUova3ELTuilfBbw==
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -5744,7 +5774,7 @@ babel-jest@^26.6.0, babel-jest@^26.6.3:
     graceful-fs "^4.2.4"
     slash "^3.0.0"
 
-babel-loader@8.1.0, babel-loader@^8.2.2:
+babel-loader@8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
   integrity sha512-7q7nC1tYOrqvUrN3LQK4GwSk/TQorZSOlO9C+RZDZpODgyN4ZlCqE5q9cDsyWOliN+aU9B4JX01xK9eJXowJLw==
@@ -5753,6 +5783,16 @@ babel-loader@8.1.0, babel-loader@^8.2.2:
     loader-utils "^1.4.0"
     mkdirp "^0.5.3"
     pify "^4.0.1"
+    schema-utils "^2.6.5"
+
+babel-loader@^8.2.2:
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.2.tgz#9363ce84c10c9a40e6c753748e1441b60c8a0b81"
+  integrity sha512-JvTd0/D889PQBtUXJ2PXaKU/pjZDMtHA9V2ecm+eNRmmBCMR09a+fmpGTNwnJtFmFl5Ei7Vy47LjBb+L0wQ99g==
+  dependencies:
+    find-cache-dir "^3.3.1"
+    loader-utils "^1.4.0"
+    make-dir "^3.1.0"
     schema-utils "^2.6.5"
 
 babel-plugin-add-react-displayname@^0.0.5:
@@ -9492,7 +9532,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
@@ -12853,7 +12893,7 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-make-dir@^3.0.0, make-dir@^3.0.2:
+make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
