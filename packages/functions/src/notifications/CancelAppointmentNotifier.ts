@@ -1,7 +1,12 @@
 import { DbAppointment, DbDonor } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "./AppointmentNotificationData";
 import { getStaffRecipients } from "./StaffEmailRecipientsCalculator";
-import { sendCancellationEmailToStaff } from "./notifiers/StaffCancelAppointmentNotifier";
+import {
+  NotificationToCoordinator,
+  sendEmailToCoordinators,
+} from "./NotificationSender";
+
+const PERIOD_48_HOURS_IN_MILLIS = 48 * 60 * 60 * 1000;
 
 export async function notifyOnCancelAppointment(
   appointment: DbAppointment,
@@ -18,5 +23,12 @@ export async function notifyOnCancelAppointment(
   );
 
   const staffEmails = await getStaffRecipients(appointment);
-  await sendCancellationEmailToStaff(staffEmails, appointmentNotificationData);
+
+  const type =
+    appointmentNotificationData.donationStartTimeMillis - new Date().getTime() <
+    PERIOD_48_HOURS_IN_MILLIS
+      ? NotificationToCoordinator.CLOSE_APPOINTMENT_CANCELLED_BY_DONOR
+      : NotificationToCoordinator.APPOINTMENT_CANCELLED_BY_DONOR;
+
+  await sendEmailToCoordinators(type, appointmentNotificationData, staffEmails);
 }

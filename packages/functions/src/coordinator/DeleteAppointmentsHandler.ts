@@ -2,9 +2,12 @@ import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
-import { sendAppointmentDeletedEmailToDonor } from "../notifications/notifiers/DonorDeletedAppointmentNotifier";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
+import {
+  NotificationToDonor,
+  sendEmailToDonor,
+} from "../notifications/NotificationSender";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -54,8 +57,10 @@ export default async function (
     appointment,
     donor
   );
-  await sendAppointmentDeletedEmailToDonor(
-    donor.email,
-    appointmentNotificationData
+
+  await sendEmailToDonor(
+    NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR,
+    appointmentNotificationData,
+    donor.email
   );
 }

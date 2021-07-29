@@ -16,14 +16,17 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
-import { sendAppointmentDeletedEmailToDonor } from "../notifications/notifiers/DonorDeletedAppointmentNotifier";
+import {
+  NotificationToDonor,
+  sendEmailToDonor,
+} from "../notifications/NotificationSender";
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 
-jest.mock("../notifications/notifiers/DonorDeletedAppointmentNotifier");
-const mockedNotifier = mocked(sendAppointmentDeletedEmailToDonor);
+jest.mock("../notifications/NotificationSender");
+const mockedNotifier = mocked(sendEmailToDonor);
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DeleteAppointmentsFunctionName]
@@ -117,10 +120,11 @@ test.each([true, false])(
     // Check notification is sent
     if (booked) {
       expect(mockedNotifier).toHaveBeenCalledWith(
-        "email",
+        NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR,
         expect.objectContaining({
           appointmentId: APPOINTMENT_ID,
-        })
+        }),
+        "email"
       );
     } else {
       expect(mockedNotifier).toHaveBeenCalledTimes(0);
@@ -152,10 +156,11 @@ test.each([true, false])(
     // Check notification is sent
     if (booked) {
       expect(mockedNotifier).toHaveBeenCalledWith(
-        "email",
+        NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR,
         expect.objectContaining({
           appointmentId: APPOINTMENT_ID,
-        })
+        }),
+        "email"
       );
     } else {
       expect(mockedNotifier).toHaveBeenCalledTimes(0);
