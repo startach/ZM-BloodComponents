@@ -13,7 +13,7 @@ export function sendBookingEmailToStaff(
   const emails = staffRecipients.map<EmailMessage>((recipient) => ({
     to: recipient.email,
     message: {
-      subject: `רישום חדש לתור ${data.dateString + " " + data.hourString}`,
+      subject: `רישום חדש לתור ${data.date + " " + data.time}`,
       html: getEmailContent(recipient.name, data),
     },
     appointmentId: data.appointmentId,
@@ -50,8 +50,8 @@ function getEmailContent(
 `
     .replace("#logo#", LOGO_IMAGE_TAG)
     .replace("#שם#", recipientName)
-    .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
-    .replace("#בית_חולים#", data.hospitalName)
-    .replace("#תאריך#", data.dateString)
-    .replace("#שעה#", data.hourString);
+    .replace("#שם_התורם#", data.donorName)
+    .replace("#בית_חולים#", data.hospital)
+    .replace("#תאריך#", data.date)
+    .replace("#שעה#", data.time);
 }

@@ -5,6 +5,16 @@ import {
   LocaleUtils,
 } from "@zm-blood-components/common";
 
+export type AppointmentNotificationData = {
+  date: string;
+  time: string;
+  hospital: string;
+  donorName: string;
+  donorPhone: string;
+  appointmentId: string;
+  donationStartTimeMillis: number;
+};
+
 export function getAppointmentNotificationData(
   appointment: DbAppointment,
   donor: DbDonor
@@ -12,21 +22,11 @@ export function getAppointmentNotificationData(
   const donationStartTime = appointment.donationStartTime.toDate();
   return {
     appointmentId: appointment.id!,
-    dateString: DateUtils.ToDateString(donationStartTime),
-    hourString: DateUtils.ToTimeString(donationStartTime),
-    hospitalName: LocaleUtils.getHospitalName(appointment.hospital),
-    donorFirstName: donor.firstName,
-    donorLastName: donor.lastName,
+    date: DateUtils.ToDateString(donationStartTime),
+    time: DateUtils.ToTimeString(donationStartTime),
+    hospital: LocaleUtils.getHospitalName(appointment.hospital),
+    donorName: donor.firstName + " " + donor.lastName,
+    donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
   };
 }
-
-export type AppointmentNotificationData = {
-  dateString: string;
-  hourString: string;
-  hospitalName: string;
-  donorFirstName: string;
-  donorLastName: string;
-  appointmentId: string;
-  donationStartTimeMillis: number;
-};

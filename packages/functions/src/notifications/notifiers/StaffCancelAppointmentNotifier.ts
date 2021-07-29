@@ -19,7 +19,7 @@ export function sendCancellationEmailToStaff(
   const tilePrefix = "התפנה תור";
   const titleForCloseAppointments = appointmentIsClose ? " קרוב!" : "";
   const subject = `${tilePrefix}${titleForCloseAppointments} ${
-    data.dateString + " " + data.hourString
+    data.date + " " + data.time
   }`;
 
   const emails = staffRecipients.map<EmailMessage>((recipient) => ({
@@ -65,9 +65,9 @@ function getEmailContent(
 `
     .replace("#logo#", LOGO_IMAGE_TAG)
     .replace("#שם#", recipientName)
-    .replace("#שם_התורם#", data.donorFirstName + " " + data.donorLastName)
+    .replace("#שם_התורם#", data.donorName)
     .replace("#קרבה#", appointmentIsClose ? " קרוב " : " ")
-    .replace("#בית_חולים#", data.hospitalName)
-    .replace("#תאריך#", data.dateString)
-    .replace("#שעה#", data.hourString);
+    .replace("#בית_חולים#", data.hospital)
+    .replace("#תאריך#", data.date)
+    .replace("#שעה#", data.time);
 }

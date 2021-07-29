@@ -14,7 +14,7 @@ export function sendAppointmentDeletedEmailToDonor(
   const messageToDonor: EmailMessage = {
     to: donorEmail,
     message: {
-      subject: `ביטול תור לתרומת טרומבוציטים בתאריך ${data.dateString}`,
+      subject: `ביטול תור לתרומת טרומבוציטים בתאריך ${data.date}`,
       html: html,
     },
     appointmentId: data.appointmentId,
@@ -44,8 +44,8 @@ function getEmailContent(data: AppointmentNotificationData) {
 </html>
 `
     .replace("#logo#", LOGO_IMAGE_TAG)
-    .replace("#שם#", data.donorFirstName + " " + data.donorLastName)
-    .replace("#בית_חולים#", data.hospitalName)
-    .replace("#תאריך#", data.dateString)
-    .replace("#שעה#", data.hourString);
+    .replace("#שם#", data.donorName)
+    .replace("#בית_חולים#", data.hospital)
+    .replace("#תאריך#", data.date)
+    .replace("#שעה#", data.time);
 }
