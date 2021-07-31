@@ -2,7 +2,9 @@ import * as functions from "firebase-functions";
 import sgMail from "@sendgrid/mail";
 import { AppointmentNotificationData } from "./AppointmentNotificationData";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
+import { MailDataRequired } from "@sendgrid/helpers/classes/mail";
 
+const FROM_NAME = "בנק מרכיבי הדם של זכרון מנחם";
 const FROM_EMAIL = "no-reply@zichron.org";
 
 export enum NotificationToDonor {
@@ -32,11 +34,14 @@ export async function sendEmailToDonor(
       return;
   }
 
-  const msg = {
+  const msg: MailDataRequired = {
     to: donorEmail,
-    from: FROM_EMAIL,
+    from: {
+      name: FROM_NAME,
+      email: FROM_EMAIL,
+    },
     templateId: templateId,
-    dynamic_template_data: data,
+    dynamicTemplateData: data,
   };
 
   await sgMail.send(msg);
@@ -75,11 +80,14 @@ export async function sendEmailToCoordinators(
       return;
   }
 
-  const messages = staffRecipients.map((recipient) => ({
+  const messages = staffRecipients.map<MailDataRequired>((recipient) => ({
     to: recipient.email,
-    from: FROM_EMAIL,
+    from: {
+      name: FROM_NAME,
+      email: FROM_EMAIL,
+    },
     templateId: templateId,
-    dynamic_template_data: {
+    dynamicTemplateData: {
       ...data,
       coordinatorName: recipient.name,
     },
