@@ -120,7 +120,9 @@ test("Valid request returns booked appointment of the right hospital", async () 
 
   const res = await callFunction(VALID_TEST_HOSPITAL, BEILINSON_COORDINATOR_ID);
 
-  const appointments = res.donationsWithDonorDetails;
+  const appointments = res.donationsWithDonorDetails.filter(
+    (a) => a.donorId === DONOR_ID_1
+  );
   expect(appointments).toHaveLength(1);
   const bookedAppointment = appointments[0];
   expect(bookedAppointment.appointmentId).toEqual(FUTURE_BOOKED);

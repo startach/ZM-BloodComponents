@@ -147,6 +147,7 @@ export enum BookingChange {
 
 export type BookedDonationWithDonorDetails = {
   appointmentId: string;
+  donorId: string;
   donationStartTimeMillis: number;
   hospital: Hospital;
   firstName: string;

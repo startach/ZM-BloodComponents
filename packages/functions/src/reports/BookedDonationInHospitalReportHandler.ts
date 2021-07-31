@@ -48,6 +48,7 @@ export default async function (
     );
     const donationWithDonor: BookedDonationWithDonorDetails = {
       appointmentId: appointment.id!,
+      donorId: appointment.donorId,
       donationStartTimeMillis: appointment.donationStartTime.toMillis(),
       hospital: appointment.hospital,
       firstName: donor!.firstName,
