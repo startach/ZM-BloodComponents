@@ -109,7 +109,7 @@ export default function QuestionsBeilinson({
           if (!isRightAge) {
             setIsRightAge(undefined);
           }
-          if (wasPregnant) {
+          if (wasPregnant === "yes") {
             setWasPregnantEver(undefined);
           }
           return Promise.resolve();
