@@ -21,7 +21,7 @@ import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined";
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
-import { LockOpenOutlined } from "@material-ui/icons";
+import profileIcon from "../../assets/mobile/profile-icon.svg";
 import ZMLogo from "../../assets/mobile/zm_logo.svg";
 
 export interface AppHeaderProps {
@@ -82,7 +82,8 @@ export default function AppHeader({
         className={styles.login}
         onClick={() => history.push("/" + MainNavigationKeys.Login)}
       >
-        <LockOpenOutlined />
+        <p className={styles.login_text}>{"כניסה"}</p>
+        <img alt={"התחבר"} src={profileIcon} />
       </div>
     );
   }
