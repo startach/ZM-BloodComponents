@@ -82,7 +82,7 @@ export default function AppHeader({
         className={styles.login}
         onClick={() => history.push("/" + MainNavigationKeys.Login)}
       >
-        <p className={styles.login_text}>{'כניסה'}</p>
+        <p className={styles.login_text}>{"כניסה"}</p>
         <img alt={"התחבר"} src={profileIcon} />
       </div>
     );
