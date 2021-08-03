@@ -67,7 +67,7 @@ export default function QuestionnaireNotes({
           </div>
 
           <div className={styles.notesDetails}>
-            ינתן כרטיס חניה בחניות סורוקה בעת התרומה. אם חל שינוי במצבך ואין
+            ינתן כרטיס חניה בחניון סורוקה בעת התרומה. אם חל שינוי במצבך ואין
             ביכולתך לתרום אנא בטל/י את התור.
           </div>
         </>
