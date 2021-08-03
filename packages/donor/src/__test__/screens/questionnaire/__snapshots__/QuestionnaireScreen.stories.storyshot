@@ -1778,7 +1778,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
         <div
           className="notesDetails"
         >
-          ינתן כרטיס חניה בחניות סורוקה בעת התרומה. אם חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
+          ינתן כרטיס חניה בחניון סורוקה בעת התרומה. אם חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
         </div>
         <div
           className="confirmButtonContainer"
