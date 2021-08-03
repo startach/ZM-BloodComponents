@@ -73,6 +73,14 @@ export default function OnboardingWizardScreen(
         {
           text: "כל מי שמעל גיל 17 ושעברו שאלון התאמה לתרומה בעת הרשמה לתור באפליקציה, יכולים לתרום ולהציל חיים כבר עכשיו!",
         },
+        {
+          text: "כבר נרשמת?",
+          bold: true,
+          button: {
+            onClick: props.goToLogin,
+            text: "התחברות",
+          },
+        },
       ],
       buttonText: "בואו נתחיל",
       buttonVariant: ButtonVariant.contained,
