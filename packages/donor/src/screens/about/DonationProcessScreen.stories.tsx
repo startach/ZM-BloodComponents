@@ -11,7 +11,7 @@ export default {
 };
 
 const props: DonationProcessScreenProps = {
-  firstName:"",
+  firstName: "",
   onContact: action("onContact"),
 };
 
@@ -20,4 +20,4 @@ const Template: Story<DonationProcessScreenProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = props
+Default.args = props;

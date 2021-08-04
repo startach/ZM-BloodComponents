@@ -11,9 +11,9 @@ export default function DonationProcessScreen({
   firstName,
   onContact,
 }: DonationProcessScreenProps) {
-
-  let welcome_text : string = firstName ? `${firstName}, הנה מידע חשוב לקראת התרומה` 
-                              : 'תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!';
+  let welcome_text: string = firstName
+    ? `${firstName}, הנה מידע חשוב לקראת התרומה`
+    : "תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!";
 
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
