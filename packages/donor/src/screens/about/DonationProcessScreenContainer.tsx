@@ -1,8 +1,12 @@
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import { useHistory } from "react-router-dom";
 import DonationProcessScreen from "./DonationProcessScreen";
+import { Donor } from "common/src/types";
 
-interface DonationProcessScreenContainerProps {}
+interface DonationProcessScreenContainerProps {
+  isLoggedIn: boolean;
+  user?: Donor;
+}
 
 export default function DonationProcessScreenContainer(
   props: DonationProcessScreenContainerProps
@@ -12,6 +16,7 @@ export default function DonationProcessScreenContainer(
   return (
     <DonationProcessScreen
       onContact={() => history.replace("/" + MainNavigationKeys.Contact)}
+      firstName={props.user?.firstName}
     />
   );
 }

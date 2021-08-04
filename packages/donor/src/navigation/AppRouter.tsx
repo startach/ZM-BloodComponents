@@ -160,7 +160,14 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.Process}
-          render={() => <DonationProcessScreenContainer />}
+          render={() => {
+            return (
+              <DonationProcessScreenContainer
+                isLoggedIn={loggedIn}
+                user={appState.donor}
+              />
+            );
+          }} // <DonationProcessScreenContainer />}
         />
         <Route
           path={"/" + MainNavigationKeys.Contact}

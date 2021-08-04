@@ -4,11 +4,17 @@ import Illustration from "./../../assets/images/donation_proccess.svg";
 
 export interface DonationProcessScreenProps {
   onContact: () => void;
+  firstName?: string;
 }
 
 export default function DonationProcessScreen({
+  firstName,
   onContact,
 }: DonationProcessScreenProps) {
+
+  let welcome_text : string = firstName ? `${firstName}, הנה מידע חשוב לקראת התרומה` 
+                              : 'תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!';
+
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
       <div className={styles.imageContainer}>
@@ -16,9 +22,7 @@ export default function DonationProcessScreen({
       </div>
 
       <div className={styles.textContainer}>
-        <div className={styles.title}>
-          תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!
-        </div>
+        <div className={styles.title}>{welcome_text}</div>
         <br />
         לפניכם/ן הסבר על תהליך התרומה. ראשית, השתמשו באפליקציה על מנת להרשם
         למועד שמתאים לכם בבית החולים הרצוי.
