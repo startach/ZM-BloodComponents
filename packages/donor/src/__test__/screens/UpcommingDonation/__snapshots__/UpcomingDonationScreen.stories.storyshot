@@ -171,15 +171,25 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
         >
           טיפים ומידע נוסף
         </div>
-        <li>
-          משך התרומה - בין שעה וחצי לשעתיים.
-        </li>
-        <li>
-          יש להביא תעודת זהות.
-        </li>
-        <li>
-          יש לשתות מים ולאכול פירות לפני התרומה.
-        </li>
+        <ul
+          className="tipList"
+        >
+          <li
+            className="listItem"
+          >
+            משך התרומה - בין שעה וחצי לשעתיים.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש להביא תעודת זהות.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש לשתות מים ולאכול פירות לפני התרומה.
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -357,15 +367,25 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
         >
           טיפים ומידע נוסף
         </div>
-        <li>
-          משך התרומה - בין שעה וחצי לשעתיים.
-        </li>
-        <li>
-          יש להביא תעודת זהות.
-        </li>
-        <li>
-          יש לשתות מים ולאכול פירות לפני התרומה.
-        </li>
+        <ul
+          className="tipList"
+        >
+          <li
+            className="listItem"
+          >
+            משך התרומה - בין שעה וחצי לשעתיים.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש להביא תעודת זהות.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש לשתות מים ולאכול פירות לפני התרומה.
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -543,12 +563,221 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
         >
           טיפים ומידע נוסף
         </div>
-        <li>
-          תרומה אורכת כשעה וחצי.
-        </li>
-        <li>
-          ניתן לאכול ולשתות כרגיל לפני התרומה.
-        </li>
+        <ul
+          className="tipList"
+        >
+          <li
+            className="listItem"
+          >
+            תרומה אורכת כשעה וחצי.
+          </li>
+          <li
+            className="listItem"
+          >
+            ניתן לאכול ולשתות כרגיל לפני התרומה.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-8"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+      </div>
+      <div
+        className="login"
+        onClick={[Function]}
+      >
+        <p
+          className="login_text"
+        >
+          כניסה
+        </p>
+        <img
+          alt="התחבר"
+          src="profile-icon.svg"
+        />
+      </div>
+    </div>
+    <div
+      className="content"
+    >
+      <div
+        className="pinkContainer"
+      >
+        <div
+          className="welcome"
+        >
+          <img
+            alt="illustration"
+            className="illustration"
+            src="exists appointment.svg"
+          />
+          <div
+            className="welcomeTitle"
+          >
+            <div>
+              היי
+            </div>
+            <div>
+              משה כהן
+              ,
+            </div>
+            <div
+              className="welcomeText"
+            >
+              בקרוב נפגש
+            </div>
+          </div>
+        </div>
+        <div
+          className="appointmentDetails"
+        >
+          <div
+            className="card"
+          >
+            <div
+              className="detailsTitleContainer"
+            >
+              <div
+                className="detailsTitle"
+              >
+                פרטי התור שלך
+              </div>
+              <div
+                className="cancelButton"
+                onClick={[Function]}
+              >
+                ביטול תור
+                <img
+                  alt="Cancel"
+                  className="cancelIcon"
+                  src="trash.svg"
+                />
+              </div>
+            </div>
+            <div
+              className="detailsText"
+            >
+              <div
+                className="detailLabel"
+              >
+                איפה?
+              </div>
+              <div
+                className="detailValue"
+              >
+                בית החולים
+                 סורוקה
+              </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                אני צריכ/ה הסעה
+              </div>
+              <div
+                className="detailLabel"
+              >
+                מתי?
+              </div>
+              <div
+                className="detailValue"
+              >
+                יום ו׳, 13.8, 12:00
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="moreInfo"
+      >
+        <div
+          className="moreInfoTitle"
+        >
+          טיפים ומידע נוסף
+        </div>
+        <ul
+          className="tipList"
+        >
+          <li
+            className="listItem"
+          >
+            לשאלות ובירורים ניתן לפנות ליחידת ההתרמות של סורוקה בטלפון 08−6400138.
+          </li>
+          <li
+            className="listItem"
+          >
+            משך התרומה - בין שעה וחצי לשעתיים.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש להביא תעודת זהות.
+          </li>
+          <li
+            className="listItem"
+          >
+            יש לשתות מים ולאכול פירות לפני התרומה.
+          </li>
+        </ul>
       </div>
     </div>
   </div>

@@ -11,12 +11,14 @@ export default {
   parameters: { layout: "fullscreen" },
 };
 
-const props: UpcomingDonationScreenProps = {
+const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
+  hospital
+) => ({
   bookedAppointment: {
     bookingTimeMillis: 1628845200000,
     donationStartTimeMillis: 1628845200000,
     donorId: "donorId",
-    hospital: Hospital.BEILINSON,
+    hospital: hospital,
     id: "appointmentId",
   },
   fullName: "משה כהן",
@@ -24,44 +26,20 @@ const props: UpcomingDonationScreenProps = {
     action("onCancel")();
     await TestUtils.wait(3000);
   },
-};
+});
 
 const Template: Story<UpcomingDonationScreenProps> = (args) => (
   <UpcomingDonationScreen {...args} />
 );
 
 export const Beilinson = Template.bind({});
-Beilinson.args = {
-  ...props,
-  bookedAppointment: {
-    bookingTimeMillis: 1628845200000,
-    donationStartTimeMillis: 1628845200000,
-    donorId: "donorId",
-    hospital: Hospital.BEILINSON,
-    id: "appointmentId",
-  },
-};
+Beilinson.args = props(Hospital.BEILINSON);
 
 export const Ichilov = Template.bind({});
-Ichilov.args = {
-  ...props,
-  bookedAppointment: {
-    bookingTimeMillis: 1628845200000,
-    donationStartTimeMillis: 1628845200000,
-    donorId: "donorId",
-    hospital: Hospital.ICHILOV,
-    id: "appointmentId",
-  },
-};
+Ichilov.args = props(Hospital.ICHILOV);
+
+export const Soroka = Template.bind({});
+Soroka.args = props(Hospital.SOROKA);
 
 export const Default = Template.bind({});
-Default.args = {
-  ...props,
-  bookedAppointment: {
-    bookingTimeMillis: 1628845200000,
-    donationStartTimeMillis: 1628845200000,
-    donorId: "donorId",
-    hospital: Hospital.TEL_HASHOMER,
-    id: "appointmentId",
-  },
-};
+Default.args = props(Hospital.TEL_HASHOMER);

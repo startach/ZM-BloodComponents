@@ -9,32 +9,47 @@ export interface UpcomingDonationInfoProps {
 export default function UpcomingDonationInfo({
   hospital,
 }: UpcomingDonationInfoProps) {
+  let tips: string[];
+
   switch (hospital) {
     case Hospital.BEILINSON:
-      return (
-        <div className={styles.moreInfo}>
-          <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-          <li>משך התרומה - בין שעה וחצי לשעתיים.</li>
-          <li>יש להביא תעודת זהות.</li>
-          <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
-        </div>
-      );
+      tips = [
+        "משך התרומה - בין שעה וחצי לשעתיים.",
+        "יש להביא תעודת זהות.",
+        "יש לשתות מים ולאכול פירות לפני התרומה.",
+      ];
+      break;
+
     case Hospital.ICHILOV:
-      return (
-        <div className={styles.moreInfo}>
-          <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-          <li>תרומה אורכת כשעה וחצי.</li>
-          <li>ניתן לאכול ולשתות כרגיל לפני התרומה.</li>
-        </div>
-      );
+      tips = ["תרומה אורכת כשעה וחצי.", "ניתן לאכול ולשתות כרגיל לפני התרומה."];
+      break;
+
+    case Hospital.SOROKA:
+      tips = [
+        "לשאלות ובירורים ניתן לפנות ליחידת ההתרמות של סורוקה בטלפון 08−6400138.",
+        "משך התרומה - בין שעה וחצי לשעתיים.",
+        "יש להביא תעודת זהות.",
+        "יש לשתות מים ולאכול פירות לפני התרומה.",
+      ];
+      break;
+    default:
+      tips = [
+        "משך התרומה - בין שעה וחצי לשעתיים.",
+        "יש להביא תעודת זהות.",
+        "יש לשתות מים ולאכול פירות לפני התרומה.",
+      ];
   }
 
   return (
     <div className={styles.moreInfo}>
       <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
-      <li>משך התרומה - בין שעה וחצי לשעתיים.</li>
-      <li>יש להביא תעודת זהות.</li>
-      <li>יש לשתות מים ולאכול פירות לפני התרומה.</li>
+      <ul className={styles.tipList}>
+        {tips.map((tip, index) => (
+          <li className={styles.listItem} key={index}>
+            {tip}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
