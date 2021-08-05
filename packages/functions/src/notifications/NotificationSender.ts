@@ -1,5 +1,6 @@
 import * as functions from "firebase-functions";
 import sgMail from "@sendgrid/mail";
+import { createEvent, EventAttributes, EventStatus } from "ics";
 import { AppointmentNotificationData } from "./AppointmentNotificationData";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import { MailDataRequired } from "@sendgrid/helpers/classes/mail";
@@ -8,8 +9,8 @@ const FROM_NAME = "בנק מרכיבי הדם של זכרון מנחם";
 const FROM_EMAIL = "no-reply@zichron.org";
 
 export enum NotificationToDonor {
-  APPOINTMENT_BOOKED,
-  APPOINTMENT_CANCELLED_BY_COORDINATOR,
+  APPOINTMENT_BOOKED = "APPOINTMENT_BOOKED",
+  APPOINTMENT_CANCELLED_BY_COORDINATOR = "APPOINTMENT_CANCELLED_BY_COORDINATOR",
 }
 
 export async function sendEmailToDonor(
@@ -43,6 +44,8 @@ export async function sendEmailToDonor(
     templateId: templateId,
     dynamicTemplateData: data,
   };
+
+  addCalendarEventToDonor(msg, type, data, donorEmail);
 
   await sgMail.send(msg);
 }
@@ -94,4 +97,78 @@ export async function sendEmailToCoordinators(
   }));
 
   await sgMail.send(messages);
+}
+
+function addCalendarEventToDonor(
+  msg: MailDataRequired,
+  type: NotificationToDonor,
+  data: AppointmentNotificationData,
+  donorEmail: string
+) {
+  const donationTime = new Date(data.donationStartTimeMillis);
+
+  let status: EventStatus;
+  switch (type) {
+    case NotificationToDonor.APPOINTMENT_BOOKED:
+      status = "CONFIRMED";
+      break;
+    case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
+    default:
+      return;
+  }
+
+  const event: EventAttributes = {
+    start: [
+      donationTime.getFullYear(),
+      donationTime.getMonth() + 1,
+      donationTime.getDate(),
+      donationTime.getHours(),
+      donationTime.getMinutes(),
+    ],
+    duration: { hours: 2, minutes: 0 },
+    title: "תרומת טרומבוציטים",
+    location: "בית החולים " + data.hospital,
+    status: status,
+    busyStatus: "BUSY",
+    organizer: { name: "זכרון מנחם", email: "dam@zichron.org" },
+    attendees: [
+      {
+        name: data.donorName,
+        email: donorEmail,
+        rsvp: true,
+        partstat: "NEEDS-ACTION",
+        role: "REQ-PARTICIPANT",
+      },
+    ],
+  };
+
+  const { value } = createEvent(event);
+
+  if (!msg.content) {
+    msg.content = [];
+  }
+
+  msg.content.push({
+    type: "text/plain",
+    value: "Plain Content",
+  });
+  msg.content.push({
+    type: "text/html",
+    value: "HTML Content",
+  });
+  msg.content.push({
+    type: "text/calendar; method=REQUEST",
+    value: value!,
+  });
+
+  if (!msg.attachments) {
+    msg.attachments = [];
+  }
+
+  msg.attachments.push({
+    content: Buffer.from(value!).toString("base64"),
+    type: "application/ics",
+    filename: "invite.ics",
+    disposition: "attachment",
+  });
 }
