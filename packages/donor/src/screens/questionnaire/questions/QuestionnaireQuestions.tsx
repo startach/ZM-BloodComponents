@@ -2,6 +2,7 @@ import React from "react";
 import { Hospital } from "@zm-blood-components/common";
 import QuestionsBeilinson from "./QuestionsBeilinson";
 import QuestionsIchilov from "./QuestionsIchilov";
+import QuestionsSoroka from "./QuestionsSoroka";
 
 export interface QuestionnaireQuestionsProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
@@ -25,6 +26,13 @@ export default function QuestionnaireQuestions({
     case Hospital.ICHILOV:
       return (
         <QuestionsIchilov
+          setAreAllAnswersCorrect={setAreAllAnswersCorrect}
+          goToHomePage={goToHomePage}
+        />
+      );
+    case Hospital.SOROKA:
+      return (
+        <QuestionsSoroka
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
           goToHomePage={goToHomePage}
         />

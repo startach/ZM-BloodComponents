@@ -1548,49 +1548,6 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           <div
             className="questionLabel"
           >
-            האם תרמת דם / טרומבוציטים בעבר?
-          </div>
-          <div
-            className="questionButtons"
-          >
-            <div
-              className="questionButton"
-            >
-              <div
-                className="pickerButtonContainer"
-              >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  כן
-                </div>
-              </div>
-            </div>
-            <div
-              className="questionButton"
-            >
-              <div
-                className="pickerButtonContainer"
-              >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  לא
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="question"
-        >
-          <div
-            className="questionLabel"
-          >
             האם הנך מעל גיל 18?
           </div>
           <div
