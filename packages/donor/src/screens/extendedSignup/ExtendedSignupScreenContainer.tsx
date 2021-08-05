@@ -13,13 +13,13 @@ export default function ExtendedSignupScreenContainer(
 ) {
   const onSignOut = () => firebase.auth().signOut();
 
-  const onSave = (
+  const onSave = async (
     firstName: string,
     lastName: string,
     phone: string,
     bloodType: BloodType
   ) => {
-    const newUser = FirebaseFunctions.saveDonor(
+    const newUser = await FirebaseFunctions.saveDonor(
       firstName,
       lastName,
       "", // unused in pilot

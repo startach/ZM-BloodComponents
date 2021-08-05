@@ -43,13 +43,13 @@ export async function cancelAppointment(appointmentId: string) {
   await cancelAppointmentFunction(request);
 }
 
-export function saveDonor(
+export async function saveDonor(
   firstName: string,
   lastName: string,
   birthDate: string,
   phone: string,
   bloodType: BloodType
-): Donor {
+): Promise<Donor> {
   const currentUser = firebase.auth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
@@ -71,7 +71,7 @@ export function saveDonor(
     birthDate,
   };
 
-  saveDonorFunction(request).catch((e) => console.error(e));
+  await saveDonorFunction(request).catch((e) => console.error(e));
   return {
     id: currentUser.uid,
     email: currentUser.email,

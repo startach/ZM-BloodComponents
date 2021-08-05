@@ -14,13 +14,13 @@ export default function MyProfileScreenContainer(
 ) {
   const history = useHistory();
 
-  const onSave = (
+  const onSave = async (
     firstName: string,
     lastName: string,
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    const updatedUser = FirebaseFunctions.saveDonor(
+    const updatedUser = await FirebaseFunctions.saveDonor(
       firstName,
       lastName,
       "",

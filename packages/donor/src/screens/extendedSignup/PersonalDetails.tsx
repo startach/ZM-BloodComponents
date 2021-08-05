@@ -30,6 +30,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     props.bloodType || ""
   );
   const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [lastNameError, setLastNameError] =
     useState<string | undefined>(undefined);
@@ -53,6 +54,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       return;
     }
 
+    setLoading(true);
     props.onSave(firstName, lastName, phone, bloodType);
   };
 
@@ -96,6 +98,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
           onClick={onSave}
           title={props.buttonText}
           isDisabled={!areAllFieldsValid}
+          isLoading={loading}
         />
       </div>
 
