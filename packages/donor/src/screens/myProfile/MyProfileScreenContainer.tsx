@@ -26,7 +26,7 @@ export default function MyProfileScreenContainer(
       "",
       phoneNumber,
       bloodType,
-      props.user.notificationSettings.disableEmailNotifications // TODO - take from toggle
+      props.user.notificationSettings.disableEmailNotifications // TODO - https://trello.com/c/RhcOnqU3/311-unsubscribe-fe-add-notifications-radio-button-in-profile-page
     );
     props.updateUserInAppState(updatedUser);
     history.goBack();

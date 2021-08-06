@@ -21,7 +21,7 @@ export async function sendEmailToDonor(
 ) {
   if (donor.notificationSettings?.disableEmailNotifications) {
     functions.logger.info(
-      `NOT ending ${type} notification to donor ${data.donorName}.`
+      `NOT sending ${type} notification to donor ${data.donorName}.`
     );
     return;
   }
