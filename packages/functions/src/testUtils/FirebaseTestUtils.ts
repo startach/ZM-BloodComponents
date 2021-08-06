@@ -8,4 +8,5 @@ const firebaseTest = firebaseFunctionsTest(
   serviceAccountKeyPath
 );
 
+firebaseTest.mockConfig({ functions: { env: "stg" } });
 export default firebaseTest;

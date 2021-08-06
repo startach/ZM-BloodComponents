@@ -4,7 +4,6 @@ import {
   DbDonor,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import * as functions from "firebase-functions";
 import { isProd } from "../utils/EnvUtils";
 
 export type AppointmentNotificationData = {

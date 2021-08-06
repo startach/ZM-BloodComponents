@@ -23,6 +23,7 @@ export async function getStaffRecipients(
 ): Promise<StaffRecipient[]> {
   const appointmentCreator = await getDonor(bookedAppointment.creatorUserId); // Because every admin is also saved as donor
   return getStaffRecipientsInternal(
+    isProd(),
     bookedAppointment.hospital,
     appointmentCreator
   );
@@ -30,13 +31,13 @@ export async function getStaffRecipients(
 
 // For easier testing
 export function getStaffRecipientsInternal(
+  isProd: boolean,
   hospital: Hospital,
   appointmentCreatorUser?: DbDonor
 ): StaffRecipient[] {
   const res: StaffRecipient[] = [];
 
-  const prod = isProd();
-  if (prod) {
+  if (isProd) {
     res.push({
       email: "dam@zichron.org",
       name: "בנק הדם",
@@ -56,7 +57,7 @@ export function getStaffRecipientsInternal(
   }
 
   const hospitalCoordinator = getProductionHospitalCoordinator(hospital);
-  if (prod && hospitalCoordinator) {
+  if (isProd && hospitalCoordinator) {
     res.push(hospitalCoordinator);
   }
 
