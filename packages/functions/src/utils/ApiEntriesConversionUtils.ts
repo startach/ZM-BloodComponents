@@ -1,5 +1,4 @@
 import {
-  BloodType,
   BookingChange,
   DbAppointment,
   DbDonor,
