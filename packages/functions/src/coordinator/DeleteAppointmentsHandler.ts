@@ -61,6 +61,6 @@ export default async function (
   await sendEmailToDonor(
     NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR,
     appointmentNotificationData,
-    donor.email
+    donor
   );
 }

@@ -17,6 +17,9 @@ const props: MyProfileScreenProps = {
     phone: "0521234567",
     bloodType: BloodType.A_MINUS,
     birthDate: "2020-01-14",
+    notificationSettings: {
+      disableEmailNotifications: false,
+    },
   },
   onSave: action("onSave"),
 };

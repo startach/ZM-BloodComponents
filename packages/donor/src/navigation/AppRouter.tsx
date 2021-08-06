@@ -92,7 +92,6 @@ export default function AppRouter() {
         bookedAppointment: donorDetails.bookedAppointment,
       });
       console.log("D", new Date().getTime() - startTime);
-      console.log("D", donorDetails.bookedAppointment);
     }
 
     fetchData();

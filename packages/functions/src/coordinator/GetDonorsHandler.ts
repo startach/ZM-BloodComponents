@@ -6,6 +6,7 @@ import {
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
+import { dbDonorToDonor } from "../utils/ApiEntriesConversionUtils";
 
 export default async function (
   request: FunctionsApi.GetDonorsRequest,
@@ -40,6 +41,6 @@ export default async function (
       break;
   }
 
-  const res = donors.filter((donor) => !donor.testUser);
+  const res = donors.filter((donor) => !donor.testUser).map(dbDonorToDonor);
   return { donors: res };
 }

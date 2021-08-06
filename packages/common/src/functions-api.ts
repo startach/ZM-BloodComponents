@@ -6,6 +6,7 @@ import {
   Donor,
   Hospital,
   BookedDonationWithDonorDetails,
+  DonorNotificationSettings,
 } from "./types";
 
 // Donor functions:
@@ -97,6 +98,10 @@ export interface SaveDonorRequest {
   phone: string;
   email: string;
   bloodType: BloodType;
+  notificationSettings: DonorNotificationSettings;
+}
+export interface SaveDonorResponse {
+  donor: Donor;
 }
 
 // Coordinator functions:

@@ -14,6 +14,7 @@ import getDonorsHandler from "./coordinator/GetDonorsHandler";
 import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospitalReportHandler";
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
+import { unsubscribeHandler } from "./notifications/UnsubscribeHandler";
 
 admin.initializeApp(functions.config().firebase);
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -42,3 +43,4 @@ export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
+export const unsubscribe = unsubscribeHandler;

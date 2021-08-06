@@ -1,5 +1,6 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
+import { dbDonorToDonor } from "../utils/ApiEntriesConversionUtils";
 
 export default async function (
   request: FunctionsApi.GetDonorRequest,
@@ -13,7 +14,8 @@ export default async function (
     throw new Error("Unauthorized getDonor request");
   }
 
-  const res = await getDonor(request.donorId);
+  const dbDonor = await getDonor(request.donorId);
+  const res = dbDonor ? dbDonorToDonor(dbDonor) : undefined;
 
   return {
     donor: res,

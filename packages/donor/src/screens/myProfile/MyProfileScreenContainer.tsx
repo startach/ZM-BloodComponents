@@ -25,7 +25,8 @@ export default function MyProfileScreenContainer(
       lastName,
       "",
       phoneNumber,
-      bloodType
+      bloodType,
+      props.user.notificationSettings.disableEmailNotifications // TODO - take from toggle
     );
     props.updateUserInAppState(updatedUser);
     history.goBack();

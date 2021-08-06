@@ -12,7 +12,7 @@ describe("Staff Email Recipients Calculator", () => {
 
   test("stg env sends email to stg user and not to hospital coordinator", () => {
     const res = getStaffRecipientsInternal(
-      "stg",
+      false,
       Hospital.BEILINSON,
       creatorUser
     );
@@ -32,7 +32,7 @@ describe("Staff Email Recipients Calculator", () => {
 
   test("prod env sends email to prod user, creator and hospital coordinator", () => {
     const res = getStaffRecipientsInternal(
-      "prod",
+      true,
       Hospital.BEILINSON,
       creatorUser
     );
@@ -63,7 +63,7 @@ describe("Staff Email Recipients Calculator", () => {
     };
 
     const res = getStaffRecipientsInternal(
-      "stg",
+      false,
       Hospital.BEILINSON,
       creatorUser
     );
@@ -77,7 +77,7 @@ describe("Staff Email Recipients Calculator", () => {
 
   test("Only one recipient when no creator user and no hospital coordinator", () => {
     const res = getStaffRecipientsInternal(
-      "prod",
+      true,
       Hospital.TEL_HASHOMER,
       undefined
     );

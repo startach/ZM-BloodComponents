@@ -6,7 +6,10 @@ import {
   Hospital,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import { dbAppointmentToAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
+import {
+  dbAppointmentToAppointmentApiEntry,
+  dbDonorToDonor,
+} from "../utils/ApiEntriesConversionUtils";
 import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
@@ -52,7 +55,7 @@ export default async function (
 
   const res: FunctionsApi.GetCoordinatorAppointmentsResponse = {
     appointments,
-    donorsInAppointments,
+    donorsInAppointments: donorsInAppointments.map(dbDonorToDonor),
   };
   return res;
 }
