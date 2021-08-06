@@ -126,6 +126,13 @@ export default function AppRouter() {
     return <ExtendedSignupScreenContainer updateUserInAppState={setUser} />;
   }
 
+  const getUser = () => {
+    if (appState.donor) {
+      return appState.donor.firstName;
+    }
+    return "";
+  };
+
   return (
     <Router>
       <Switch>
@@ -160,7 +167,12 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.Process}
-          render={() => <DonationProcessScreenContainer />}
+          render={() => (
+            <DonationProcessScreenContainer
+              userLoggedIn={loginStatus}
+              userName={getUser()}
+            />
+          )}
         />
         <Route
           path={"/" + MainNavigationKeys.Contact}

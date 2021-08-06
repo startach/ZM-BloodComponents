@@ -1,23 +1,30 @@
 import styles from "./DonationProcessScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import Illustration from "./../../assets/images/donation_proccess.svg";
+import { LoginStatus } from "@zm-blood-components/common";
 
 export interface DonationProcessScreenProps {
   onContact: () => void;
+  userLoggedIn: LoginStatus;
+  userName: string;
 }
 
 export default function DonationProcessScreen({
   onContact,
+  userLoggedIn,
+  userName,
 }: DonationProcessScreenProps) {
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
       <div className={styles.imageContainer}>
-        <img src={Illustration} alt={"logo"} className={styles.image} />
+        <img src={Illustration} alt={"logo"} className="" />
       </div>
 
       <div className={styles.textContainer}>
         <div className={styles.title}>
-          תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!
+          {userLoggedIn === LoginStatus.LOGGED_IN
+            ? `${userName}, הנה מידע חשוב לקראת התרומה`
+            : "תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!"}
         </div>
         <br />
         לפניכם/ן הסבר על תהליך התרומה. ראשית, השתמשו באפליקציה על מנת להרשם

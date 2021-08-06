@@ -3,6 +3,7 @@ import DonationProcessScreen, {
 } from "./DonationProcessScreen";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
+import { LoginStatus } from "@zm-blood-components/common";
 
 export default {
   component: DonationProcessScreen,
@@ -12,6 +13,8 @@ export default {
 
 const props: DonationProcessScreenProps = {
   onContact: action("onContact"),
+  userLoggedIn: LoginStatus.LOGGED_IN,
+  userName: "test user",
 };
 
 const Template: Story<DonationProcessScreenProps> = (args) => (
