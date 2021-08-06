@@ -4,6 +4,7 @@ import { createEvent, EventAttributes, EventStatus } from "ics";
 import { AppointmentNotificationData } from "./AppointmentNotificationData";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import { MailDataRequired } from "@sendgrid/helpers/classes/mail";
+import { DbDonor } from "@zm-blood-components/common";
 
 const FROM_NAME = "בנק מרכיבי הדם של זכרון מנחם";
 const FROM_EMAIL = "no-reply@zichron.org";
@@ -16,8 +17,15 @@ export enum NotificationToDonor {
 export async function sendEmailToDonor(
   type: NotificationToDonor,
   data: AppointmentNotificationData,
-  donorEmail: string
+  donor: DbDonor
 ) {
+  if (donor.notificationSettings?.disableEmailNotifications) {
+    functions.logger.info(
+      `NOT ending ${type} notification to donor ${data.donorName}.`
+    );
+    return;
+  }
+
   sgMail.setApiKey(functions.config().sendgrid.key);
   functions.logger.info(
     `Sending ${type} notification to donor ${data.donorName} for appointment ${data.appointmentId} `
@@ -36,7 +44,7 @@ export async function sendEmailToDonor(
   }
 
   const msg: MailDataRequired = {
-    to: donorEmail,
+    to: donor.email,
     from: {
       name: FROM_NAME,
       email: FROM_EMAIL,
@@ -45,7 +53,7 @@ export async function sendEmailToDonor(
     dynamicTemplateData: data,
   };
 
-  addCalendarEventToDonor(msg, type, data, donorEmail);
+  addCalendarEventToDonor(msg, type, data, donor.email);
 
   await sgMail.send(msg);
 }

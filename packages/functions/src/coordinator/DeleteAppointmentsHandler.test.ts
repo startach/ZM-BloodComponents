@@ -160,7 +160,9 @@ test.each([true, false])(
         expect.objectContaining({
           appointmentId: APPOINTMENT_ID,
         }),
-        "email"
+        expect.objectContaining({
+          email: "email",
+        })
       );
     } else {
       expect(mockedNotifier).toHaveBeenCalledTimes(0);

@@ -1,8 +1,24 @@
 import {
+  BloodType,
   BookingChange,
   DbAppointment,
+  DbDonor,
+  Donor,
+  DonorNotificationSettings,
   FunctionsApi,
 } from "@zm-blood-components/common";
+
+export function dbDonorToDonor(dbDonor: DbDonor): Donor {
+  const notificationSettings: DonorNotificationSettings =
+    dbDonor.notificationSettings || {
+      disableEmailNotifications: false,
+    };
+
+  return {
+    ...dbDonor,
+    notificationSettings: notificationSettings,
+  };
+}
 
 export function dbAppointmentToAppointmentApiEntry(
   appointment: DbAppointment

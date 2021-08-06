@@ -25,7 +25,7 @@ export async function notifyOnAppointmentBooked(
   await sendEmailToDonor(
     NotificationToDonor.APPOINTMENT_BOOKED,
     appointmentNotificationData,
-    donor.email
+    donor
   );
 
   const staffEmails = await getStaffRecipients(bookedAppointment);

@@ -50,6 +50,7 @@ test("Valid request creates donor", async () => {
   expect(donor?.firstName).toEqual("firstName");
   expect(donor?.lastName).toEqual("lastName");
   expect(donor?.birthDate).toEqual("2020-11-13");
+  expect(donor?.notificationSettings?.disableEmailNotifications).toBeTruthy();
 });
 
 function saveDonorRequest(): FunctionsApi.SaveDonorRequest {
@@ -61,5 +62,8 @@ function saveDonorRequest(): FunctionsApi.SaveDonorRequest {
     firstName: "firstName",
     lastName: "lastName",
     birthDate: "2020-11-13",
+    notificationSettings: {
+      disableEmailNotifications: true,
+    },
   };
 }

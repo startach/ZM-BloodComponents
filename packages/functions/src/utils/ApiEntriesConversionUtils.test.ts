@@ -3,14 +3,17 @@ import {
   FunctionsApi,
   Hospital,
   BookingChange,
+  DbDonor,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import {
   dbAppointmentToAppointmentApiEntry,
   dbAppointmentToAvailableAppointmentApiEntry,
   dbAppointmentToBookedAppointmentApiEntry,
+  dbDonorToDonor,
   getRecentChangeType,
 } from "./ApiEntriesConversionUtils";
+import { sampleUser } from "../testUtils/TestSamples";
 
 const DB_APPOINTMENT_WITHOUT_ID: DbAppointment = {
   donorId: "CBA",
@@ -36,6 +39,34 @@ const getValidDBAppointment = (
       : admin.firestore.Timestamp.now(),
   };
 };
+
+test("DbDonor is converted to Donor", () => {
+  const dbDonor: DbDonor = {
+    id: "donorId",
+    ...sampleUser,
+    notificationSettings: {
+      disableEmailNotifications: true,
+    },
+  };
+
+  const res = dbDonorToDonor(dbDonor);
+  expect(res).toEqual(dbDonor);
+});
+
+test("NotificationSettings are added to donor without any", () => {
+  const dbDonor: DbDonor = {
+    id: "donorId",
+    ...sampleUser,
+  };
+
+  const res = dbDonorToDonor(dbDonor);
+  expect(res).toEqual({
+    ...dbDonor,
+    notificationSettings: {
+      disableEmailNotifications: false,
+    },
+  });
+});
 
 test("DBAppointment does not have an ID", () => {
   const toAppointmentApiEntry = () =>
