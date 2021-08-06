@@ -18,9 +18,7 @@ export default async function (
     email: request.email,
     phone: request.phone,
     bloodType: request.bloodType,
-    notificationSettings: {
-      disableEmailNotifications: false,
-    },
+    notificationSettings: request.notificationSettings,
 
     //TODO add group Id
     groupId: "",

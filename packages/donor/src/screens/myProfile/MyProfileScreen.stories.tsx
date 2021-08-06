@@ -19,7 +19,7 @@ const props: MyProfileScreenProps = {
     birthDate: "2020-01-14",
     notificationSettings: {
       disableEmailNotifications: false,
-    }
+    },
   },
   onSave: action("onSave"),
 };
