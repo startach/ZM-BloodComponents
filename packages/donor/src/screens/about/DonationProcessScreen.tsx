@@ -17,7 +17,7 @@ export default function DonationProcessScreen({
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
       <div className={styles.imageContainer}>
-        <img src={Illustration} alt={"logo"} className="" />
+        <img src={Illustration} alt={"logo"} className={styles.image} />
       </div>
 
       <div className={styles.textContainer}>
