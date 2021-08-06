@@ -48,7 +48,8 @@ export async function saveDonor(
   lastName: string,
   birthDate: string,
   phone: string,
-  bloodType: BloodType
+  bloodType: BloodType,
+  disableEmailNotifications: boolean
 ): Promise<Donor> {
   const currentUser = firebase.auth().currentUser;
 
@@ -69,18 +70,14 @@ export async function saveDonor(
     phone,
     bloodType,
     birthDate,
+    notificationSettings: {
+      disableEmailNotifications: disableEmailNotifications,
+    },
   };
 
-  await saveDonorFunction(request).catch((e) => console.error(e));
-  return {
-    id: currentUser.uid,
-    email: currentUser.email,
-    firstName,
-    lastName,
-    phone,
-    bloodType,
-    birthDate,
-  };
+  const res = await saveDonorFunction(request);
+  const data = res.data as FunctionsApi.SaveDonorResponse;
+  return data.donor;
 }
 
 export async function getDonorDetails(): Promise<{
