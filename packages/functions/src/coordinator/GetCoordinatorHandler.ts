@@ -14,7 +14,7 @@ export default async function (
     throw Error(`User is not a coordinator`);
   }
 
-  var coordinatorDonorUser = await getCoordinatorDonorUser;
+  const coordinatorDonorUser = await getCoordinatorDonorUser;
 
   return {
     coordinator: {

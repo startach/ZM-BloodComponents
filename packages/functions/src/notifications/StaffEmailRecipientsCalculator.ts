@@ -31,13 +31,13 @@ export async function getStaffRecipients(
 
 // For easier testing
 export function getStaffRecipientsInternal(
-  isProd: boolean,
+  prod: boolean,
   hospital: Hospital,
   appointmentCreatorUser?: DbDonor
 ): StaffRecipient[] {
   const res: StaffRecipient[] = [];
 
-  if (isProd) {
+  if (prod) {
     res.push({
       email: "dam@zichron.org",
       name: "בנק הדם",
@@ -57,7 +57,7 @@ export function getStaffRecipientsInternal(
   }
 
   const hospitalCoordinator = getProductionHospitalCoordinator(hospital);
-  if (isProd && hospitalCoordinator) {
+  if (prod && hospitalCoordinator) {
     res.push(hospitalCoordinator);
   }
 

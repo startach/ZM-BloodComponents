@@ -38,7 +38,7 @@ export function DateComparer(date1: Date, date2: Date): number {
 }
 
 export function DateToMidnight(date: Date) {
-  let midnight = date;
+  const midnight = date;
   midnight.setHours(0, 0, 0, 0);
   return midnight;
 }
