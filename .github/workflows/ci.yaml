@@ -28,7 +28,9 @@ jobs:
       - name: Build Common
         run: yarn workspace @zm-blood-components/common build
       - name: Test Common
-        if: ${{ secrets.SOME_MISSING_SECRET }}
+        env:
+          SOME_MISSING_SECRET: ${{ secrets.SOME_MISSING_SECRET }}
+        if: ${{ env.SOME_MISSING_SECRET != ''  }}
         run: yarn workspace @zm-blood-components/common test
 
   coordinator-ci:
