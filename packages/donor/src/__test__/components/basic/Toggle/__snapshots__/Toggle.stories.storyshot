@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Toggle Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="container"
+  >
+    <span
+      className="MuiSwitch-root-0"
+    >
+      <span
+        aria-disabled={false}
+        className="MuiButtonBase-root-25 MuiIconButton-root-16 PrivateSwitchBase-root-12 MuiSwitch-switchBase-3 MuiSwitch-colorPrimary-4"
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <span
+          className="MuiIconButton-label-24"
+        >
+          <input
+            checked={false}
+            className="PrivateSwitchBase-input-15 MuiSwitch-input-9"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="MuiSwitch-thumb-10"
+          />
+        </span>
+      </span>
+      <span
+        className="MuiSwitch-track-11"
+      />
+    </span>
+    <div
+      className="label"
+    >
+      קבלת תזכורות למייל
+    </div>
+  </div>
+</div>
+`;

@@ -18,7 +18,8 @@ export default function MyProfileScreenContainer(
     firstName: string,
     lastName: string,
     phoneNumber: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    enableEmailNotifications: boolean
   ) => {
     const updatedUser = await FirebaseFunctions.saveDonor(
       firstName,
@@ -26,7 +27,7 @@ export default function MyProfileScreenContainer(
       "",
       phoneNumber,
       bloodType,
-      props.user.notificationSettings.disableEmailNotifications // TODO - https://trello.com/c/RhcOnqU3/311-unsubscribe-fe-add-notifications-radio-button-in-profile-page
+      enableEmailNotifications
     );
     props.updateUserInAppState(updatedUser);
     history.goBack();

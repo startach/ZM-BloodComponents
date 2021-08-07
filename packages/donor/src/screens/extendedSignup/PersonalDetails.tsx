@@ -7,6 +7,7 @@ import { useState } from "react";
 import classnames from "classnames";
 import Popup from "../../components/basic/Popup";
 import Illustration from "../../assets/images/whatsapp-computer.svg";
+import Toggle from "../../components/basic/Toggle/Toggle";
 
 export interface PersonalDetailsProps {
   firstName?: string;
@@ -14,11 +15,14 @@ export interface PersonalDetailsProps {
   phone?: string;
   bloodType?: BloodType;
   buttonText: string;
+  enableEmailNotifications?: boolean;
+  showNotificationToggle: boolean;
   onSave: (
     firstName: string,
     lastName: string,
     phone: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    enableEmailNotifications: boolean
   ) => void;
 }
 
@@ -28,6 +32,9 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [phone, setPhone] = useState(props.phone || "");
   const [bloodType, setBloodType] = useState<BloodType | "">(
     props.bloodType || ""
+  );
+  const [enableEmailNotifications, setEnableEmailNotifications] = useState(
+    !!props.enableEmailNotifications
   );
   const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,7 +62,13 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     }
 
     setLoading(true);
-    props.onSave(firstName, lastName, phone, bloodType);
+    props.onSave(
+      firstName,
+      lastName,
+      phone,
+      bloodType,
+      enableEmailNotifications
+    );
   };
 
   return (
@@ -93,6 +106,18 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         }}
         buttonClassName={styles.bloodTypeButton}
       />
+
+      {props.showNotificationToggle && (
+        <>
+          <div className={styles.subtitle}> הגדרות נוספות </div>
+          <Toggle
+            label={"קבלת תזכורות למייל"}
+            value={enableEmailNotifications}
+            onChange={setEnableEmailNotifications}
+          />
+        </>
+      )}
+
       <div className={styles.button}>
         <Button
           onClick={onSave}

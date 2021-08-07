@@ -290,10 +290,61 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           </div>
         </div>
         <div
+          className="subtitle"
+        >
+           הגדרות נוספות 
+        </div>
+        <div
+          className="container"
+        >
+          <span
+            className="MuiSwitch-root-90"
+          >
+            <span
+              aria-disabled={false}
+              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-102 MuiSwitch-switchBase-93 MuiSwitch-colorPrimary-94 PrivateSwitchBase-checked-103 MuiSwitch-checked-97"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label-8"
+              >
+                <input
+                  checked={true}
+                  className="PrivateSwitchBase-input-105 MuiSwitch-input-99"
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <span
+                  className="MuiSwitch-thumb-100"
+                />
+              </span>
+            </span>
+            <span
+              className="MuiSwitch-track-101"
+            />
+          </span>
+          <div
+            className="label"
+          >
+            קבלת תזכורות למייל
+          </div>
+        </div>
+        <div
           className="button"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button MuiButton-containedPrimary-99 MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-fullWidth-129"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
@@ -311,7 +362,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-91"
+              className="MuiButton-label-107"
             >
               <div
                 className="buttonText"

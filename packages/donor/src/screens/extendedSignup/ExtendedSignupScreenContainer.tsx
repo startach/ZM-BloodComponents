@@ -17,7 +17,8 @@ export default function ExtendedSignupScreenContainer(
     firstName: string,
     lastName: string,
     phone: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    enableEmailNotifications: boolean
   ) => {
     const newUser = await FirebaseFunctions.saveDonor(
       firstName,

@@ -9,7 +9,8 @@ export interface MyProfileScreenProps {
     firstName: string,
     lastName: string,
     phoneNumber: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    enableEmailNotifications: boolean
   ) => void;
   appVersion?: string;
 }
@@ -30,6 +31,10 @@ export default function MyProfileScreen({
           lastName={user.lastName}
           phone={user.phone}
           bloodType={user.bloodType}
+          enableEmailNotifications={
+            !user.notificationSettings.disableEmailNotifications
+          }
+          showNotificationToggle={true}
           buttonText={"עדכון פרטים"}
           onSave={onSave}
         />

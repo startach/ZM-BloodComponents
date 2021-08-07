@@ -9,21 +9,26 @@ export interface ExtendedSignupScreenProps {
     firstName: string,
     lastName: string,
     phone: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    enableEmailNotifications: boolean
   ) => void;
   onSignOut: () => void;
 }
 
 export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
   return (
-    <ZMScreen title={"סיום הרשמה"} className={styles.extendedSignup} padding>
+    <ZMScreen title={"סיום הרשמה"} padding>
       <div className={styles.infoText}>
         תודה שבחרת להירשם כתורמ/ת. רגע לפני שתוכל/י לקבוע תור לתרומה ולהציל
         חיים,
         <div className={styles.infoTextBold}>אנחנו צריכים כמה פרטים עליך:</div>
       </div>
 
-      <PersonalDetails buttonText={"רשמו אותי"} onSave={props.onSave} />
+      <PersonalDetails
+        buttonText={"רשמו אותי"}
+        onSave={props.onSave}
+        showNotificationToggle={false}
+      />
 
       <div className={styles.signOut}>
         <Button

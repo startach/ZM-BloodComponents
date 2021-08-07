@@ -49,7 +49,7 @@ export async function saveDonor(
   birthDate: string,
   phone: string,
   bloodType: BloodType,
-  disableEmailNotifications: boolean
+  enableEmailNotifications: boolean
 ): Promise<Donor> {
   const currentUser = firebase.auth().currentUser;
 
@@ -71,7 +71,7 @@ export async function saveDonor(
     bloodType,
     birthDate,
     notificationSettings: {
-      disableEmailNotifications: disableEmailNotifications,
+      disableEmailNotifications: !enableEmailNotifications,
     },
   };
 

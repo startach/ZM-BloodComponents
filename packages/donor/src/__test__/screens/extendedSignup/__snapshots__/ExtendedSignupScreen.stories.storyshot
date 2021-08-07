@@ -22,7 +22,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
       </div>
     </div>
     <div
-      className="extendedSignup content padding"
+      className="content padding"
     >
       <div
         className="infoText"
