@@ -82,8 +82,9 @@ jobs:
       - name: Build Storybook Donor
         run: yarn workspace @zm-blood-components/donor build-storybook
       - name: Deploy Storybook Donor
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        if: ${{ env.FIREBASE_TOKEN != ''  }}
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:donor-storybook -P staging
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
