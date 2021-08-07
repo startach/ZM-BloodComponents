@@ -72,7 +72,7 @@ exports[`Storyshots Screens/Donation Process Screen Default 1`] = `
         <div
           className="title"
         >
-          תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!
+          test user, הנה מידע חשוב לקראת התרומה
         </div>
         <br />
         לפניכם/ן הסבר על תהליך התרומה. ראשית, השתמשו באפליקציה על מנת להרשם למועד שמתאים לכם בבית החולים הרצוי.
