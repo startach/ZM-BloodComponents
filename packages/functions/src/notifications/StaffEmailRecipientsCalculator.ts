@@ -10,7 +10,7 @@ function getProductionHospitalCoordinator(
   switch (hospital) {
     case Hospital.BEILINSON:
       return {
-        email: "bankbloodbl@clalit.org.il",
+        email: "bloodbankbl@clalit.org.il",
         name: "בית החולים בילינסון",
       };
   }
