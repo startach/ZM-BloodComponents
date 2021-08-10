@@ -48,7 +48,7 @@ describe("Staff Email Recipients Calculator", () => {
         name: "myFirstName",
       },
       {
-        email: "bankbloodbl@clalit.org.il",
+        email: "bloodbankbl@clalit.org.il",
         name: "בית החולים בילינסון",
       },
     ]);
