@@ -22,8 +22,8 @@ import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined"
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
 import profileIcon from "../../assets/mobile/profile-icon.svg";
 import ZMLogo from "../../assets/mobile/zm_logo.svg";
-import {ReactComponent as FeatherLogOut} from "../../assets/icons/feather_log_out.svg";
-import {ReactComponent as FeatherLogIn} from "../../assets/icons/feather_log_in.svg";
+import { ReactComponent as FeatherLogOut } from "../../assets/icons/feather_log_out.svg";
+import { ReactComponent as FeatherLogIn } from "../../assets/icons/feather_log_in.svg";
 
 export interface AppHeaderProps {
   title?: string;
@@ -137,7 +137,7 @@ export default function AppHeader({
                 firebase.auth().signOut();
                 setShowSideBar(false);
               }}
-              icon={<FeatherLogOut/>}
+              icon={<FeatherLogOut />}
             />
           </>
         )}
@@ -151,7 +151,7 @@ export default function AppHeader({
                 history.push("/" + MainNavigationKeys.Login);
                 setShowSideBar(false);
               }}
-              icon={<FeatherLogIn/>}
+              icon={<FeatherLogIn />}
             />
           </>
         )}
