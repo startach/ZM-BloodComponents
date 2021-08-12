@@ -126,11 +126,10 @@ export default function AppHeader({
             icon={<WhatsAppIcon />}
           />
         </List>
+        <Divider />
 
-        {loggedIn && (
+        {loggedIn ? (
           <>
-            <Divider />
-
             <MenuItem
               title={"התנתקות"}
               onClick={() => {
@@ -140,11 +139,8 @@ export default function AppHeader({
               icon={<FeatherLogOut />}
             />
           </>
-        )}
-        {!loggedIn && (
+        ) : (
           <>
-            <Divider />
-
             <MenuItem
               title={"כניסה"}
               onClick={() => {
