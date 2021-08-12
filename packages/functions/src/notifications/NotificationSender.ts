@@ -72,7 +72,7 @@ export async function sendEmailToCoordinators(
   sgMail.setApiKey(functions.config().sendgrid.key);
   functions.logger.info(
     `Sending ${type} notification to coordinators ${staffRecipients.map(
-      (x) => x.name
+      (x) => x.email
     )} for appointment ${data.appointmentId} `
   );
 
