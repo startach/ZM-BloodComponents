@@ -79,7 +79,7 @@ export default function ContactScreen() {
 const ZICHRON_URL = "https://www.zichron.org";
 const ZICHRON_URL_TEXT = "zichron.org";
 const ZICHRON_EMAIL = "dam@zichron.org";
-export const WHATSAPP_LINK = "https://wa.link/akc04c";
+export const WHATSAPP_LINK = "https://wa.me/9720587100571";
 const ZICHRON_PHONE_TEXT = "058-710-0571";
 const ZICHRON_FACEBOOK_URL =
   "https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem";

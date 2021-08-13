@@ -104,7 +104,11 @@ function NeedRideButton(props: { hospital: Hospital }) {
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {
-          window.open(WHATSAPP_LINK);
+          window.open(
+            `${WHATSAPP_LINK}?text=אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
+              props.hospital
+            )} ואצטרך הסעה`
+          );
         }}
         image={Whatsapp}
         buttonColor={Color.Primary}

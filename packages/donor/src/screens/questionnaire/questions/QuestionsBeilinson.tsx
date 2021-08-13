@@ -91,7 +91,9 @@ export default function QuestionsBeilinson({
         }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
-          window.open(WHATSAPP_LINK);
+          window.open(
+            `${WHATSAPP_LINK}?text=אהלן, לפי השאלון באפליקציה אין לי יכולת לתרום טרומבוציטים כרגע, כיצד אוכל לשנות זאת?`
+          );
         }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
