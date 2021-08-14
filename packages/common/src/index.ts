@@ -7,3 +7,4 @@ export * as BloodTypeUtils from "./BloodTypeUtils";
 export * as DateUtils from "./DateUtils";
 export * as SortingUtils from "./SortingUtils";
 export * as TestUtils from "./TestUtils";
+export * as LinkUtils from "./LinkUtils";

@@ -129,7 +129,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="phonelink underline"
-              href="https://wa.me/9720587100571"
+              href="https://wa.me/9720587100571?text="
             >
               058-710-0571
             </a>
