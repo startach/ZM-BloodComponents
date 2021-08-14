@@ -3,6 +3,7 @@ import {
   BookedAppointment,
   DateUtils,
   Hospital,
+  LinkUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
@@ -13,7 +14,6 @@ import Illustration from "../../assets/images/exists appointment.svg";
 import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
-import { WHATSAPP_LINK } from "../contact/ContactScreen";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 
 export interface UpcomingDonationScreenProps {
@@ -104,7 +104,13 @@ function NeedRideButton(props: { hospital: Hospital }) {
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {
-          window.open(WHATSAPP_LINK);
+          window.open(
+            LinkUtils.getWhatsAppLinkWithText(
+              `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
+                props.hospital
+              )} ואצטרך הסעה`
+            )
+          );
         }}
         image={Whatsapp}
         buttonColor={Color.Primary}

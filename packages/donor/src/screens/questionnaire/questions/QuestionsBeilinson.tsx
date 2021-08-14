@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
-import { WHATSAPP_LINK } from "../../contact/ContactScreen";
+import { LinkUtils } from "@zm-blood-components/common";
 
 export interface QuestionsBeilinsonProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
@@ -91,7 +91,11 @@ export default function QuestionsBeilinson({
         }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
-          window.open(WHATSAPP_LINK);
+          window.open(
+            LinkUtils.getWhatsAppLinkWithText(
+              "אהלן, לפי השאלון באפליקציה אין לי יכולת לתרום טרומבוציטים כרגע, כיצד אוכל לשנות זאת?"
+            )
+          );
         }}
         image={WhatsappIcon}
         goBackText={"חזרה לרשימת התורים"}
