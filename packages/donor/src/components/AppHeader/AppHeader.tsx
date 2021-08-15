@@ -15,7 +15,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./style.module.scss";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
@@ -23,6 +22,8 @@ import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined"
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
 import profileIcon from "../../assets/mobile/profile-icon.svg";
 import ZMLogo from "../../assets/mobile/zm_logo.svg";
+import { ReactComponent as FeatherLogOut } from "../../assets/icons/feather_log_out.svg";
+import { ReactComponent as FeatherLogIn } from "../../assets/icons/feather_log_in.svg";
 
 export interface AppHeaderProps {
   title?: string;
@@ -125,18 +126,28 @@ export default function AppHeader({
             icon={<WhatsAppIcon />}
           />
         </List>
+        <Divider />
 
-        {loggedIn && (
+        {loggedIn ? (
           <>
-            <Divider />
-
             <MenuItem
-              title={"התנתק"}
+              title={"התנתקות"}
               onClick={() => {
                 firebase.auth().signOut();
                 setShowSideBar(false);
               }}
-              icon={<ExitToAppIcon />}
+              icon={<FeatherLogOut />}
+            />
+          </>
+        ) : (
+          <>
+            <MenuItem
+              title={"כניסה"}
+              onClick={() => {
+                history.push("/" + MainNavigationKeys.Login);
+                setShowSideBar(false);
+              }}
+              icon={<FeatherLogIn />}
             />
           </>
         )}
