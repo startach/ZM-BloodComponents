@@ -22,7 +22,7 @@ import { MainNavigationKeys } from "./app/MainNavigationKeys";
 import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
 import RegisterScreenContainer from "../screens/authentication/register/RegisterScreenContainer";
 import SignInScreenContainer from "../screens/authentication/signin/SignInScreenContainer";
-import OnboardingWizardScreenContainer from "../screens/onboarding/OnboardingWizardScreenContainer";
+import OnboardingWizardScreenContainer, {WIZARD_SEEN_KEY} from "../screens/onboarding/OnboardingWizardScreenContainer";
 import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
 import AboutScreen from "../screens/about/AboutScreen";
 import ContactScreen from "../screens/contact/ContactScreen";
@@ -152,7 +152,7 @@ export default function AppRouter() {
         <Route
           path={"/" + MainNavigationKeys.OnboardingWizard}
           render={() => {
-            if (localStorage.getItem("sawWizardScreen")) {
+            if (localStorage.getItem(WIZARD_SEEN_KEY)) {
               return redirectToBookDonation();
             } else return <OnboardingWizardScreenContainer />;
           }}
