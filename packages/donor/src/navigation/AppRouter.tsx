@@ -151,7 +151,11 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.OnboardingWizard}
-          render={() => <OnboardingWizardScreenContainer />}
+          render={() => {
+            if (localStorage.getItem("sawWizardScreen")) {
+              return redirectToBookDonation();
+            } else return <OnboardingWizardScreenContainer />;
+          }}
         />
         <Route
           path={"/" + MainNavigationKeys.About}

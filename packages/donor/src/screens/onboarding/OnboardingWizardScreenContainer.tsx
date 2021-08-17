@@ -4,6 +4,7 @@ import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
 export default function OnboardingWizardScreenContainer() {
   const history = useHistory();
+  localStorage.setItem("sawWizardScreen", "true");
 
   return (
     <OnboardingWizardScreen
