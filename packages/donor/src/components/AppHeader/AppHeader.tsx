@@ -13,17 +13,17 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./style.module.scss";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
-import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
-import WhatsAppIcon from "@material-ui/icons/WhatsApp";
-import LocalHospitalOutlinedIcon from "@material-ui/icons/LocalHospitalOutlined";
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
 import profileIcon from "../../assets/mobile/profile-icon.svg";
 import ZMLogo from "../../assets/mobile/zm_logo.svg";
 import { ReactComponent as FeatherLogOut } from "../../assets/icons/feather_log_out.svg";
 import { ReactComponent as FeatherLogIn } from "../../assets/icons/feather_log_in.svg";
+import { ReactComponent as ZMLineIcon } from "../../assets/icons/ZM_line_icon.svg";
+import { ReactComponent as SimpleWhatsapp } from "../../assets/icons/simple-whatsapp.svg";
+import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.svg";
+import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
+import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
 
 export interface AppHeaderProps {
   title?: string;
@@ -103,27 +103,27 @@ export default function AppHeader({
           <MenuItem
             title={"הפרופיל שלי"}
             onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
-            icon={<AccountCircleOutlinedIcon />}
+            icon={<ProfileIcon />}
           />
           <MenuItem
             title={"תהליך התרומה"}
             onClick={() => history.push("/" + MainNavigationKeys.Process)}
-            icon={<LocalHospitalOutlinedIcon />}
+            icon={<ZMLineIcon />}
           />
           <MenuItem
             title={"משוב"}
             onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
-            icon={<FeedbackOutlinedIcon />}
+            icon={<FeedBackIcon />}
           />
           <MenuItem
             title={"אודות"}
             onClick={() => history.push("/" + MainNavigationKeys.About)}
-            icon={<InfoOutlinedIcon />}
+            icon={<FeatherInfo />}
           />
           <MenuItem
             title={"צור קשר"}
             onClick={() => history.push("/" + MainNavigationKeys.Contact)}
-            icon={<WhatsAppIcon />}
+            icon={<SimpleWhatsapp />}
           />
         </List>
         <Divider />
