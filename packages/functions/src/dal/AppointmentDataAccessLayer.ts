@@ -161,3 +161,14 @@ export function removeDonorFromDbAppointment(
     lastChangeType: BookingChange.CANCELLED,
   };
 }
+
+export function ConfirmArrivedFromDbAppointment(
+  appointment: DbAppointment
+): DbAppointment {
+  const { ...otherProperties } =
+    appointment;
+  return {
+    ...otherProperties,
+    donationDoneTimeMillis : admin.firestore.Timestamp.now(),
+  };
+}

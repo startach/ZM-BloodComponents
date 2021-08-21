@@ -118,6 +118,8 @@ export type DbAppointment = {
   /* Represents changes to booking status **/
   lastChangeTime?: firebase.firestore.Timestamp;
   lastChangeType?: BookingChange;
+
+  donationDoneTimeMillis?: firebase.firestore.Timestamp; // Time donor confirmed they donated
 };
 
 export type AvailableAppointment = {

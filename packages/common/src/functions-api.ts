@@ -80,6 +80,11 @@ export interface CancelAppointmentRequest {
   appointmentId: string;
 }
 
+export const ConfirmAppointmentFunctionName = "confirmedAppointment";
+export interface ConfirmAppointmentRequest {
+  appointmentId: string;
+}
+
 export const GetDonorFunctionName = "getDonor";
 export interface GetDonorRequest {
   donorId: string;

@@ -62,6 +62,7 @@ export enum NotificationToCoordinator {
   APPOINTMENT_BOOKED,
   APPOINTMENT_CANCELLED_BY_DONOR,
   CLOSE_APPOINTMENT_CANCELLED_BY_DONOR,
+  APPOINTMENT_CONFIRMED
 }
 
 export async function sendEmailToCoordinators(
