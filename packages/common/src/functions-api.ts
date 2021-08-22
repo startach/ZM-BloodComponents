@@ -7,6 +7,7 @@ import {
   Hospital,
   BookedDonationWithDonorDetails,
   DonorNotificationSettings,
+  DbAppointment,
 } from "./types";
 
 // Donor functions:
@@ -80,9 +81,13 @@ export interface CancelAppointmentRequest {
   appointmentId: string;
 }
 
-export const ConfirmAppointmentFunctionName = "confirmedAppointment";
+export const ConfirmAppointmentFunctionName = "confirmAppointment";
 export interface ConfirmAppointmentRequest {
   appointmentId: string;
+}
+
+export interface ConfirmAppointmentResponse {
+  appointment: DbAppointment;
 }
 
 export const GetDonorFunctionName = "getDonor";

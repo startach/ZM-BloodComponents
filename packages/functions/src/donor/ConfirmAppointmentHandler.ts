@@ -1,14 +1,14 @@
 import {
   getAppointmentsByIds,
-  ConfirmArrivedFromDbAppointment,
-  setAppointment
+  confirmArrivedFromDbAppointment,
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
-import { getDonor } from "../dal/DonorDataAccessLayer";
+import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import { NotificationToCoordinator } from "../notifications/NotificationSender";
 import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
 
-export default async function(
+export default async function (
   request: FunctionsApi.ConfirmAppointmentRequest,
   callerId: string
 ) {
@@ -19,7 +19,7 @@ export default async function(
   }
 
   const appointmentToConfirm = await getAppointmentsByIds([
-    request.appointmentId
+    request.appointmentId,
   ]);
   if (appointmentToConfirm.length !== 1) {
     throw new Error("Appointment not found");
@@ -30,13 +30,18 @@ export default async function(
     throw new Error("Appointment to be confirmed is not booked by donor");
   }
 
-  const donor = await getDonor(donorId);
-  notifyOnAppointmentWithType(appointment, donor!, NotificationToCoordinator.APPOINTMENT_CONFIRMED).catch((e) =>
-    console.error("Error notifying on confirmed appointment", appointment.id, e)
-  );
+  // TODO add notification
 
-  appointment.donorId = "";
-  const updatedAppointment = ConfirmArrivedFromDbAppointment(appointment);
+  //const donor = await getDonorOrThrow(donorId);
+  // notifyOnAppointmentWithType(appointment, donor!, NotificationToCoordinator.APPOINTMENT_CONFIRMED).catch((e) =>
+  //   console.error("Error notifying on confirmed appointment", appointment.id, e)
+  // );
 
-  await setAppointment(updatedAppointment);
+  const updatedAppointment = confirmArrivedFromDbAppointment(appointment);
+
+  const confirmedAppointment = await setAppointment(updatedAppointment);
+
+  return {
+    appointment: confirmedAppointment,
+  };
 }

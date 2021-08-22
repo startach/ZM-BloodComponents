@@ -162,13 +162,12 @@ export function removeDonorFromDbAppointment(
   };
 }
 
-export function ConfirmArrivedFromDbAppointment(
+export function confirmArrivedFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
-  const { ...otherProperties } =
-    appointment;
+  const { ...otherProperties } = appointment;
   return {
     ...otherProperties,
-    donationDoneTimeMillis : admin.firestore.Timestamp.now(),
+    donationDoneTimeMillis: admin.firestore.Timestamp.now(),
   };
 }

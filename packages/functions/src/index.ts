@@ -38,7 +38,7 @@ export const getBookedDonationsInHospital = handler(
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
-export const confirmedAppointment = handler(confirmAppointmentHandler);
+export const confirmAppointment = handler(confirmAppointmentHandler);
 export const getDonor = handler(geDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = unauthenticatedHandler(
