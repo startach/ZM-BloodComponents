@@ -19,13 +19,13 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.ConfirmAppointmentFunctionName]
 );
 
-import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
+//import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
-import { NotificationToCoordinator } from "../notifications/NotificationSender";
+//import { NotificationToCoordinator } from "../notifications/NotificationSender";
 
 jest.mock("../notifications/SendAppointmentNotifier");
-const mockedNotifier = mocked(notifyOnAppointmentWithType);
+// mockedNotifier = mocked(notifyOnAppointmentWithType);
 
 const DONOR_ID = "ConfirmAppointmentHandlerDonorId";
 const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
@@ -33,7 +33,7 @@ const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
 const reset = async () => {
   await deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
-  mockedNotifier.mockClear();
+  // mockedNotifier.mockClear();
 };
 
 beforeAll(async () => {
@@ -95,7 +95,7 @@ test("Donor is not booked on this appointment throws exception", async () => {
 
 test("Valid request confirm appointment", async () => {
   await createDonor();
-  mockedNotifier.mockReturnValue(Promise.resolve());
+  //mockedNotifier.mockReturnValue(Promise.resolve());
   await saveAppointment(DONOR_ID);
 
   await wrapped(confirmAppointmentRequest(), {

@@ -6,7 +6,7 @@ import {
 import { FunctionsApi } from "@zm-blood-components/common";
 import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
 import { NotificationToCoordinator } from "../notifications/NotificationSender";
-import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
+//import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
 
 export default async function (
   request: FunctionsApi.ConfirmAppointmentRequest,
