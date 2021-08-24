@@ -165,9 +165,6 @@ export function removeDonorFromDbAppointment(
 export function confirmArrivedFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
-  const { ...otherProperties } = appointment;
-  return {
-    ...otherProperties,
-    donationDoneTimeMillis: admin.firestore.Timestamp.now(),
-  };
+  appointment.donationDoneTimeMillis = admin.firestore.Timestamp.now();
+  return appointment;
 }

@@ -29,6 +29,7 @@ export type BookedAppointmentApiEntry = {
   donorId: string;
   bookingTimeMillis: number;
   recentChangeType?: BookingChange;
+  donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
 
 // Represent an appointment, both available and booked
@@ -87,7 +88,7 @@ export interface ConfirmAppointmentRequest {
 }
 
 export interface ConfirmAppointmentResponse {
-  appointment: DbAppointment;
+  confirmAppointment: BookedAppointmentApiEntry;
 }
 
 export const GetDonorFunctionName = "getDonor";

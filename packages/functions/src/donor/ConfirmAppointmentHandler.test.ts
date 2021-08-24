@@ -81,7 +81,7 @@ test("Donor is not booked on this appointment throws exception", async () => {
   await saveAppointment("OTHER_DONOR");
 
   const action = () =>
-    wrapped(bookAppointmentRequest(), {
+    wrapped(confirmAppointmentRequest(), {
       auth: {
         uid: DONOR_ID,
       },
@@ -98,7 +98,7 @@ test("Valid request confirm appointment", async () => {
   mockedNotifier.mockReturnValue(Promise.resolve());
   await saveAppointment(DONOR_ID);
 
-  await wrapped(bookAppointmentRequest(), {
+  await wrapped(confirmAppointmentRequest(), {
     auth: {
       uid: DONOR_ID,
     },
@@ -135,7 +135,7 @@ async function saveAppointment(donorId: string) {
   await setAppointment(appointment);
 }
 
-function bookAppointmentRequest() {
+function confirmAppointmentRequest() {
   return { appointmentId: APPOINTMENT_TO_CONFIRM };
 }
 
