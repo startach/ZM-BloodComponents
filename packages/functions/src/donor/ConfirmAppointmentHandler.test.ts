@@ -19,13 +19,7 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.ConfirmAppointmentFunctionName]
 );
 
-//import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
-import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
-//import { NotificationToCoordinator } from "../notifications/NotificationSender";
-
-jest.mock("../notifications/SendAppointmentNotifier");
-// mockedNotifier = mocked(notifyOnAppointmentWithType);
 
 const DONOR_ID = "ConfirmAppointmentHandlerDonorId";
 const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
@@ -33,7 +27,6 @@ const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
 const reset = async () => {
   await deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
-  // mockedNotifier.mockClear();
 };
 
 beforeAll(async () => {
@@ -95,7 +88,6 @@ test("Donor is not booked on this appointment throws exception", async () => {
 
 test("Valid request confirm appointment", async () => {
   await createDonor();
-  //mockedNotifier.mockReturnValue(Promise.resolve());
   await saveAppointment(DONOR_ID);
 
   await wrapped(confirmAppointmentRequest(), {
@@ -107,17 +99,6 @@ test("Valid request confirm appointment", async () => {
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
-
-  // expect(mockedNotifier).toBeCalledWith(
-  //   expect.objectContaining({
-  //     id: APPOINTMENT_TO_CONFIRM,
-  //   }),
-  //   expect.objectContaining({
-  //     firstName: "firstName",
-  //     email: "email@email.com",
-  //   }),
-  //   NotificationToCoordinator.APPOINTMENT_CONFIRMED
-  // );
 });
 
 async function saveAppointment(donorId: string) {

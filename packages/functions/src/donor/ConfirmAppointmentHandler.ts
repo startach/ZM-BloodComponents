@@ -4,9 +4,6 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
-import { getDonorOrThrow } from "../dal/DonorDataAccessLayer";
-import { NotificationToCoordinator } from "../notifications/NotificationSender";
-//import { notifyOnAppointmentWithType } from "../notifications/SendAppointmentNotifier";
 
 export default async function (
   request: FunctionsApi.ConfirmAppointmentRequest,
@@ -31,11 +28,6 @@ export default async function (
   }
 
   // TODO add notification
-
-  //const donor = await getDonorOrThrow(donorId);
-  // notifyOnAppointmentWithType(appointment, donor!, NotificationToCoordinator.APPOINTMENT_CONFIRMED).catch((e) =>
-  //   console.error("Error notifying on confirmed appointment", appointment.id, e)
-  // );
 
   const updatedAppointment = confirmArrivedFromDbAppointment(appointment);
 
