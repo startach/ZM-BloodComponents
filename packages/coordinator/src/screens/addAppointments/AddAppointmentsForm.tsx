@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
 import HeaderSection from "../../components/HeaderSection";
+import { NewSlots } from "./AddAppointmentsScreenContainer";
 
 const slotOptions: SelectOption<number>[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -21,11 +22,8 @@ const slotOptions: SelectOption<number>[] = [
 
 interface AddAppointmentsFormProps {
   activeHospitalsForCoordinator: Hospital[];
-  addSlotsRequest: (
-    hospital: Hospital,
-    donationStartTime: Date,
-    slots: number
-  ) => void;
+  slotsArray: NewSlots[];
+  setSlotsArray: (newSlots: NewSlots[]) => void;
 }
 
 export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
@@ -36,16 +34,60 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
 
   const isButtonDisable = () => !(hospital && date && slots);
 
-  const onSave = () => {
+  /*
+   * This is a cheat added for Beilinson hospital.
+   * They asked to be able to add appointments, with specific hours, to the whole day in a single click.
+   */
+  const onAddWholeDay = () => {
+    if (!date || hospital !== Hospital.BEILINSON) {
+      return;
+    }
+
+    const hoursAndSlots = [
+      [8, 1],
+      [9, 1],
+      [10, 1],
+      [11, 1],
+      [12, 1],
+      [13, 1],
+      [14, 1],
+      [15, 2],
+      [16, 2],
+      [17, 2],
+    ];
+
+    const newSlots = hoursAndSlots.map<NewSlots>((hourAndSlots) => {
+      const donationStartTime = new Date(date);
+      donationStartTime.setHours(hourAndSlots[0]);
+      donationStartTime.setMinutes(0);
+      return {
+        hospital,
+        donationStartTime,
+        slots: hourAndSlots[1],
+        key: guidGenerator(),
+      };
+    });
+
+    props.setSlotsArray([...props.slotsArray, ...newSlots]);
+  };
+
+  const onAdd = () => {
     if (!date || !hour || !hospital) {
       return;
     }
     // Populate date with hour
-    const result = new Date(date);
-    result.setHours(hour.getHours());
-    result.setMinutes(hour.getMinutes());
+    const donationStartTime = new Date(date);
+    donationStartTime.setHours(hour.getHours());
+    donationStartTime.setMinutes(hour.getMinutes());
 
-    props.addSlotsRequest(hospital, result, slots);
+    const newSlot: NewSlots = {
+      hospital,
+      donationStartTime,
+      slots,
+      key: guidGenerator(),
+    };
+
+    props.setSlotsArray([...props.slotsArray, newSlot]);
   };
 
   return (
@@ -82,7 +124,14 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
         value={slots}
       />
 
-      <Button onClick={onSave} title="הוספה" isDisabled={isButtonDisable()} />
+      <Button onClick={onAdd} title="הוספה" isDisabled={isButtonDisable()} />
+      {hospital == Hospital.BEILINSON && (
+        <Button
+          onClick={onAddWholeDay}
+          title="יום שלם"
+          isDisabled={isButtonDisable()}
+        />
+      )}
     </HeaderSection>
   );
 }
@@ -96,4 +145,25 @@ function getInitialDate() {
   date.setMilliseconds(0);
 
   return date;
+}
+
+// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
+function guidGenerator() {
+  const S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+  const res =
+    S4() +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    S4() +
+    S4();
+  return res;
 }
