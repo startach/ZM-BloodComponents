@@ -6,7 +6,7 @@ import {
   Donor,
   Hospital,
   BookedDonationWithDonorDetails,
-  DonorNotificationSettings
+  DonorNotificationSettings,
 } from "./types";
 
 // Donor functions:
