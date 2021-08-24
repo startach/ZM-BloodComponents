@@ -43,7 +43,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       return;
     }
 
-    const hoursAndSlots = [
+    const weekdayHoursAndSlots = [
       [8, 1],
       [9, 1],
       [10, 1],
@@ -55,6 +55,16 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       [16, 2],
       [17, 2],
     ];
+
+    const fridayHoursAndSlots = [
+      [8, 2],
+      [9, 2],
+      [10, 2],
+      [11, 2],
+    ];
+
+    const hoursAndSlots =
+      date.getDay() === 5 ? fridayHoursAndSlots : weekdayHoursAndSlots;
 
     const newSlots = hoursAndSlots.map<NewSlots>((hourAndSlots) => {
       const donationStartTime = new Date(date);
@@ -125,7 +135,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       />
 
       <Button onClick={onAdd} title="הוספה" isDisabled={isButtonDisable()} />
-      {hospital == Hospital.BEILINSON && (
+      {hospital === Hospital.BEILINSON && (
         <Button
           onClick={onAddWholeDay}
           title="יום שלם"
@@ -152,7 +162,7 @@ function guidGenerator() {
   const S4 = function () {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   };
-  const res =
+  return (
     S4() +
     S4() +
     "-" +
@@ -164,6 +174,6 @@ function guidGenerator() {
     "-" +
     S4() +
     S4() +
-    S4();
-  return res;
+    S4()
+  );
 }
