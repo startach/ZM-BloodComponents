@@ -41,14 +41,7 @@ const GetExpandedColumns = (
     cellRenderer: ({ donorPhoneNumber }) =>
       donorPhoneNumber && (
         <div className={Styles["phone-cell"]}>
-          <a
-            href={
-              "tel:" +
-              donorPhoneNumber.slice(0, 3) +
-              "-" +
-              donorPhoneNumber.slice(3)
-            }
-          >
+          <a href={"tel:" + donorPhoneNumber}>
             {donorPhoneNumber.slice(0, 3) + "-" + donorPhoneNumber.slice(3)}
           </a>
         </div>
