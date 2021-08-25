@@ -11,6 +11,7 @@ import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
 import HeaderSection from "../../components/HeaderSection";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
+import * as uuid from "uuid";
 
 const slotOptions: SelectOption<number>[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -74,7 +75,7 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
         hospital,
         donationStartTime,
         slots: hourAndSlots[1],
-        key: guidGenerator(),
+        key: uuid.v4(),
       };
     });
 
@@ -94,8 +95,10 @@ export default function AddAppointmentsForm(props: AddAppointmentsFormProps) {
       hospital,
       donationStartTime,
       slots,
-      key: guidGenerator(),
+      key: uuid.v4(),
     };
+
+    console.log(props.slotsArray);
 
     props.setSlotsArray([...props.slotsArray, newSlot]);
   };
@@ -155,25 +158,4 @@ function getInitialDate() {
   date.setMilliseconds(0);
 
   return date;
-}
-
-// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
-function guidGenerator() {
-  const S4 = function () {
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  };
-  return (
-    S4() +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    S4() +
-    S4()
-  );
 }
