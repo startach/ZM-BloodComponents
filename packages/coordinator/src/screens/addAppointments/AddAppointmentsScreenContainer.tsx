@@ -20,20 +20,6 @@ export default function AddAppointmentsScreenContainer(
   const [slotsArray, setSlotsArray] = useState<NewSlots[]>([]);
   const [isSaving, setIsSaving] = useState(false);
 
-  const addSlotsRequest = (
-    hospital: Hospital,
-    donationStartTime: Date,
-    slots: number
-  ) => {
-    const request = {
-      hospital,
-      donationStartTime,
-      slots,
-      key: guidGenerator(),
-    };
-    setSlotsArray([...slotsArray, request]);
-  };
-
   const deleteSlotsRequest = (key: string) => {
     setSlotsArray(slotsArray.filter((request) => request.key !== key));
   };
@@ -49,31 +35,10 @@ export default function AddAppointmentsScreenContainer(
     <AddAppointmentsScreen
       activeHospitalsForCoordinator={props.activeHospitalsForCoordinator}
       slotsArray={slotsArray}
-      addSlotsRequest={addSlotsRequest}
+      setSlotsArray={setSlotsArray}
       deleteSlotsRequest={deleteSlotsRequest}
       isSaving={isSaving}
       onSave={onSave}
     />
-  );
-}
-
-// https://stackoverflow.com/questions/6860853/generate-random-string-for-div-id
-function guidGenerator() {
-  const S4 = function () {
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-  };
-  return (
-    S4() +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    "-" +
-    S4() +
-    S4() +
-    S4()
   );
 }

@@ -11,11 +11,7 @@ import { useState } from "react";
 interface AddAppointmentsScreenProps {
   activeHospitalsForCoordinator: Hospital[];
   slotsArray: NewSlots[];
-  addSlotsRequest: (
-    hospital: Hospital,
-    donationStartTime: Date,
-    slots: number
-  ) => void;
+  setSlotsArray: (newSlots: NewSlots[]) => void;
   deleteSlotsRequest: (key: string) => void;
   isSaving: boolean;
   onSave: () => Promise<void>;
@@ -24,7 +20,7 @@ interface AddAppointmentsScreenProps {
 export default function AddAppointmentsScreen({
   activeHospitalsForCoordinator,
   slotsArray,
-  addSlotsRequest,
+  setSlotsArray,
   deleteSlotsRequest,
   isSaving,
   onSave,
@@ -39,7 +35,8 @@ export default function AddAppointmentsScreen({
   return (
     <div className={styles.component}>
       <AddAppointmentsForm
-        addSlotsRequest={addSlotsRequest}
+        slotsArray={slotsArray}
+        setSlotsArray={setSlotsArray}
         activeHospitalsForCoordinator={activeHospitalsForCoordinator}
       />
       <main className={styles.content}>
