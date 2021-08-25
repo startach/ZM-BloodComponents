@@ -22,7 +22,7 @@ export const searchDonorColumns: CardTableColumn<Donor>[] = [
   },
   {
     label: "טלפון",
-    cellRenderer: ({ phone }) => phone,
+    cellRenderer: ({ phone }) => <a href={"tel:" + phone}>{phone}</a>,
   },
   {
     label: `דוא"ל`,

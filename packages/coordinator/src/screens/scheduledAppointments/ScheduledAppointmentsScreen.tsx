@@ -80,7 +80,7 @@ export default function ScheduledAppointmentsScreen({
     },
     {
       label: "טלפון",
-      cellRenderer: ({ phone }) => phone,
+      cellRenderer: ({ phone }) => <a href={"tel:" + phone}>{phone}</a>,
     },
   ];
 
