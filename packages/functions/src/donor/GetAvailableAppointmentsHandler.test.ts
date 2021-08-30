@@ -10,6 +10,7 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetAvailableAppointmentsFunctionName]
@@ -119,6 +120,7 @@ async function saveAppointment(
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: Hospital.ASAF_HAROFE,
     donorId: "",
+    status: booked? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE
   };
 
   if (booked) {

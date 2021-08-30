@@ -1,29 +1,23 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
   DbAppointment,
-  FunctionsApi,
-  Hospital,
+  DbCoordinator,
   DbDonor,
+  FunctionsApi,
+  Hospital
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
-import {
-  deleteAppointmentsByIds,
-  getAppointmentsByIds,
-  setAppointment,
-} from "../dal/AppointmentDataAccessLayer";
+import { deleteAppointmentsByIds, getAppointmentsByIds, setAppointment } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
-import {
-  NotificationToDonor,
-  sendEmailToDonor,
-} from "../notifications/NotificationSender";
+import { NotificationToDonor, sendEmailToDonor } from "../notifications/NotificationSender";
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);
@@ -210,6 +204,7 @@ async function saveAppointment(booked?: boolean) {
     donationStartTime: admin.firestore.Timestamp.now(),
     hospital: Hospital.BEILINSON,
     donorId: "",
+    status: booked? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE
   };
 
   if (booked) {

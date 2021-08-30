@@ -94,6 +94,7 @@ export enum DonationType {
   Granulocytes,
 }
 
+
 export type BookedAppointment = {
   id: string;
   donationStartTimeMillis: number;
@@ -118,6 +119,8 @@ export type DbAppointment = {
   /* Represents changes to booking status **/
   lastChangeTime?: firebase.firestore.Timestamp;
   lastChangeType?: BookingChange;
+
+  status?: AppointmentStatus; // TODO: remove ? once db migration happens
 };
 
 export type AvailableAppointment = {
@@ -161,3 +164,12 @@ export type BookedDonationWithDonorDetails = {
   phone: string;
   bloodType: BloodType;
 };
+
+
+export enum AppointmentStatus {
+  AVAILABLE = "AVAILABLE",
+  BOOKED = "BOOKED",
+  CONFIRMED = "Confirmed",
+  COMPLETED = "Completed",
+  NOSHOW = "NoShow",
+}

@@ -13,6 +13,7 @@ import {
 import { getDate } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { saveTestDonor } from "../testUtils/TestSamples";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetDonorAppointmentsFunctionName]
@@ -141,6 +142,7 @@ async function saveAppointment(id: string, donationStartTime: Date) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: DONOR_ID,
     bookingTime: admin.firestore.Timestamp.now(),
+    status: AppointmentStatus.BOOKED
   };
 
   await setAppointment(appointment);

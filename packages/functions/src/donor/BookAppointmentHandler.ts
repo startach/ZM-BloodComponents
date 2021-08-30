@@ -2,15 +2,10 @@ import { getDonorOrThrow, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   getAppointmentsByDonorIdInTime,
   getAppointmentsByIds,
-  setAppointment,
+  setAppointment
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-import {
-  BookingChange,
-  DbDonor,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { AppointmentStatus, BookingChange, DbDonor, FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
@@ -58,6 +53,7 @@ export default async function (
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
   appointmentToBook.lastChangeTime = admin.firestore.Timestamp.now();
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
+  appointmentToBook.status = AppointmentStatus.BOOKED;
 
   await setAppointment(appointmentToBook);
   await updateDonorPromise;
