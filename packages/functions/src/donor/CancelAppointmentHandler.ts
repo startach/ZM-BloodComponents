@@ -1,4 +1,8 @@
-import { getAppointmentsByIds, removeDonorFromDbAppointment, setAppointment } from "../dal/AppointmentDataAccessLayer";
+import {
+  getAppointmentsByIds,
+  removeDonorFromDbAppointment,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
 import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";

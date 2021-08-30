@@ -1,4 +1,9 @@
-import { AppointmentStatus, Collections, DbAppointment, FunctionsApi } from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  Collections,
+  DbAppointment,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
 
@@ -40,7 +45,7 @@ function addAppointmentsToBatch(
     ),
     hospital: slotsRequest.hospital,
     donorId: "",
-    status : AppointmentStatus.AVAILABLE,
+    status: AppointmentStatus.AVAILABLE,
   };
 
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);

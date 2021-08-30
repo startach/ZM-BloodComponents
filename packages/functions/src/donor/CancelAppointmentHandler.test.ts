@@ -130,7 +130,7 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
-    status: AppointmentStatus.BOOKED
+    status: AppointmentStatus.BOOKED,
   };
 
   await setAppointment(appointment);

@@ -142,7 +142,7 @@ async function saveAppointment(id: string, donationStartTime: Date) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: DONOR_ID,
     bookingTime: admin.firestore.Timestamp.now(),
-    status: AppointmentStatus.BOOKED
+    status: AppointmentStatus.BOOKED,
   };
 
   await setAppointment(appointment);

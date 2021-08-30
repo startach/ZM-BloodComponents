@@ -1,8 +1,18 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { BookingChange, DbAppointment, DbDonor, FunctionsApi, Hospital } from "@zm-blood-components/common";
+import {
+  BookingChange,
+  DbAppointment,
+  DbDonor,
+  FunctionsApi,
+  Hospital,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import { deleteAppointmentsByIds, getAppointmentsByIds, setAppointment } from "../dal/AppointmentDataAccessLayer";
+import {
+  deleteAppointmentsByIds,
+  getAppointmentsByIds,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
@@ -127,8 +137,6 @@ test("Valid request books appointment", async () => {
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(bookedAppointment.donorId).toEqual(DONOR_ID);
 
-
-
   expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
   expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
     3_000
@@ -174,7 +182,7 @@ async function saveAppointment(
     donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
     donorId: "",
-    status: booked? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE
+    status: booked ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
   };
 
   if (booked) {

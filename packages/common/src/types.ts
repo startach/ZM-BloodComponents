@@ -94,7 +94,6 @@ export enum DonationType {
   Granulocytes,
 }
 
-
 export type BookedAppointment = {
   id: string;
   donationStartTimeMillis: number;
@@ -165,11 +164,10 @@ export type BookedDonationWithDonorDetails = {
   bloodType: BloodType;
 };
 
-
 export enum AppointmentStatus {
   AVAILABLE = "AVAILABLE",
   BOOKED = "BOOKED",
-  CONFIRMED = "Confirmed",
-  COMPLETED = "Completed",
-  NOSHOW = "NoShow",
+  CONFIRMED = "CONFIRMED",
+  COMPLETED = "COMPLETED",
+  NOSHOW = "NOSHOW",
 }
