@@ -36,7 +36,6 @@ export default async function (
 
   appointment.donorId = "";
   const updatedAppointment = removeDonorFromDbAppointment(appointment);
-  updatedAppointment.status = AppointmentStatus.AVAILABLE;
 
   await setAppointment(updatedAppointment);
 }

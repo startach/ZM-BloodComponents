@@ -154,6 +154,7 @@ test.each([true, false])(
     expect(appointments).toHaveLength(1);
     expect(appointments[0].id).toEqual(APPOINTMENT_ID);
     expect(appointments[0].donorId).toEqual("");
+    expect(appointments[0].status).toEqual(AppointmentStatus.AVAILABLE);
     expect(appointments[0].bookingTime).toBeUndefined();
 
     // Check notification is sent

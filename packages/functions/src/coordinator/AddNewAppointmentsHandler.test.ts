@@ -14,6 +14,7 @@ import {
   getAppointmentsCreatedByUserId,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.AddNewAppointmentsFunctionName]
@@ -95,6 +96,7 @@ test("Valid request inserts new appointments", async () => {
     );
     expect(appointment.lastChangeTime).toBeUndefined();
     expect(appointment.lastChangeType).toBeUndefined();
+    expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
   });
 });
 
