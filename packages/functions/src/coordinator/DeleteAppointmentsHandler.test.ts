@@ -1,11 +1,11 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
   DbAppointment,
+  DbCoordinator,
+  DbDonor,
   FunctionsApi,
   Hospital,
-  DbDonor,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -24,6 +24,7 @@ import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);
@@ -153,6 +154,7 @@ test.each([true, false])(
     expect(appointments).toHaveLength(1);
     expect(appointments[0].id).toEqual(APPOINTMENT_ID);
     expect(appointments[0].donorId).toEqual("");
+    expect(appointments[0].status).toEqual(AppointmentStatus.AVAILABLE);
     expect(appointments[0].bookingTime).toBeUndefined();
 
     // Check notification is sent
@@ -210,6 +212,7 @@ async function saveAppointment(booked?: boolean) {
     donationStartTime: admin.firestore.Timestamp.now(),
     hospital: Hospital.BEILINSON,
     donorId: "",
+    status: booked ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
   };
 
   if (booked) {

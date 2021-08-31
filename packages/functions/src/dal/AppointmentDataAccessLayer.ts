@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
+  AppointmentStatus,
   BookingChange,
   Collections,
   DbAppointment,
@@ -159,5 +160,6 @@ export function removeDonorFromDbAppointment(
     donorId: "",
     lastChangeTime: admin.firestore.Timestamp.now(),
     lastChangeType: BookingChange.CANCELLED,
+    status: AppointmentStatus.AVAILABLE,
   };
 }

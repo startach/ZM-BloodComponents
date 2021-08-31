@@ -118,6 +118,8 @@ export type DbAppointment = {
   /* Represents changes to booking status **/
   lastChangeTime?: firebase.firestore.Timestamp;
   lastChangeType?: BookingChange;
+
+  status?: AppointmentStatus; // TODO: remove ? once db migration happens
 };
 
 export type AvailableAppointment = {
@@ -161,3 +163,11 @@ export type BookedDonationWithDonorDetails = {
   phone: string;
   bloodType: BloodType;
 };
+
+export enum AppointmentStatus {
+  AVAILABLE = "AVAILABLE",
+  BOOKED = "BOOKED",
+  CONFIRMED = "CONFIRMED",
+  COMPLETED = "COMPLETED",
+  NOSHOW = "NOSHOW",
+}

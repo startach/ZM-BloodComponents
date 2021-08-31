@@ -1,10 +1,10 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  BookingChange,
   DbAppointment,
   DbDonor,
   FunctionsApi,
   Hospital,
-  BookingChange,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
@@ -16,14 +16,14 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
+import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
+import { mocked } from "ts-jest/utils";
+import { BookAppointmentStatus } from "../../../common/src/functions-api";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.BookAppointmentFunctionName]
 );
-
-import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
-import { mocked } from "ts-jest/utils";
-import { BookAppointmentStatus } from "../../../common/src/functions-api";
 
 jest.mock("../notifications/BookAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnAppointmentBooked);
@@ -128,6 +128,7 @@ test("Valid request books appointment", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
   expect(appointment[0].donorId).toEqual(DONOR_ID);
+  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
@@ -181,6 +182,7 @@ async function saveAppointment(
     donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
     donorId: "",
+    status: booked ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
   };
 
   if (booked) {

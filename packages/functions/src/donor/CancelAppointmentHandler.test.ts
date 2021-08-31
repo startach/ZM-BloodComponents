@@ -22,6 +22,7 @@ const wrapped = firebaseFunctionsTest.wrap(
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 
 jest.mock("../notifications/CancelAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnCancelAppointment);
@@ -105,6 +106,7 @@ test("Valid request cancells appointment", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
   expect(appointment[0].donorId).toEqual("");
+  expect(appointment[0].status).toEqual(AppointmentStatus.AVAILABLE);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 
   expect(mockedNotifier).toBeCalledWith(
@@ -128,6 +130,7 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
+    status: AppointmentStatus.BOOKED,
   };
 
   await setAppointment(appointment);
