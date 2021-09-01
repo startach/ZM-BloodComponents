@@ -5,7 +5,7 @@ import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
 import { LinkUtils } from "@zm-blood-components/common";
 import { QuestionsProps } from "./QuestionnaireQuestions";
 
-export default function QuestionsIchilov({
+export default function QuestionsDefault({
   setAreAllAnswersCorrect,
   goToHomePage,
 }: QuestionsProps) {
@@ -19,15 +19,12 @@ export default function QuestionsIchilov({
     React.useState<boolean | undefined>(undefined);
   const [wasPregnant, setWasPregnantEver] =
     React.useState<string | undefined>(undefined);
-  const [isTattooValid, setIsTattooValid] =
-    React.useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const res =
       (hasAlreadyDonated &&
         isWeightValid &&
         isSurgeryValid === false &&
-        isTattooValid === false &&
         isRightAge &&
         wasPregnant !== "yes") ||
       false;
@@ -39,7 +36,6 @@ export default function QuestionsIchilov({
     isSurgeryValid,
     isRightAge,
     wasPregnant,
-    isTattooValid,
     setAreAllAnswersCorrect,
   ]);
 
@@ -47,7 +43,6 @@ export default function QuestionsIchilov({
     hasAlreadyDonated === false ||
     isWeightValid === false ||
     isSurgeryValid ||
-    isTattooValid ||
     isRightAge === false ||
     wasPregnant === "yes";
 
@@ -68,25 +63,19 @@ export default function QuestionsIchilov({
       <Question
         value={isRightAge}
         onChange={setIsRightAge}
-        label={"האם הנך מעל גיל 18?"}
+        label={"האם הנך מעל גיל 17?"}
         options={YesNoOptions}
       />
       <Question
         value={isWeightValid}
         onChange={setIsWeightValid}
-        label={"האם משקלך מעל 55 ק״ג?"}
+        label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
-        options={YesNoOptions}
-      />
-      <Question
-        value={isTattooValid}
-        onChange={setIsTattooValid}
-        label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
 
@@ -116,9 +105,6 @@ export default function QuestionsIchilov({
           }
           if (isSurgeryValid) {
             setIsSurgeryValid(undefined);
-          }
-          if (isTattooValid) {
-            setIsTattooValid(undefined);
           }
           if (!isRightAge) {
             setIsRightAge(undefined);

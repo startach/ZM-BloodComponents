@@ -3,10 +3,16 @@ import { Hospital } from "@zm-blood-components/common";
 import QuestionsBeilinson from "./QuestionsBeilinson";
 import QuestionsIchilov from "./QuestionsIchilov";
 import QuestionsSoroka from "./QuestionsSoroka";
+import QuestionsDefault from "./QuestionsDefault";
 
 export interface QuestionnaireQuestionsProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
   hospital: Hospital;
+  goToHomePage: () => Promise<void>;
+}
+
+export interface QuestionsProps {
+  setAreAllAnswersCorrect: (correct: boolean) => void;
   goToHomePage: () => Promise<void>;
 }
 
@@ -40,7 +46,7 @@ export default function QuestionnaireQuestions({
   }
 
   return (
-    <QuestionsIchilov
+    <QuestionsDefault
       setAreAllAnswersCorrect={setAreAllAnswersCorrect}
       goToHomePage={goToHomePage}
     />

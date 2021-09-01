@@ -1114,7 +1114,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           <div
             className="questionLabel"
           >
-            האם הנך מעל גיל 18?
+            האם הנך מעל גיל 17?
           </div>
           <div
             className="questionButtons"
@@ -1157,7 +1157,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           <div
             className="questionLabel"
           >
-            האם משקלך מעל 55 ק״ג?
+            האם משקלך מעל 50 ק״ג?
           </div>
           <div
             className="questionButtons"
@@ -1238,49 +1238,6 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           </div>
         </div>
         <div
-          className="question"
-        >
-          <div
-            className="questionLabel"
-          >
-            האם עשית קעקוע או עגילים בחצי השנה האחרונה?
-          </div>
-          <div
-            className="questionButtons"
-          >
-            <div
-              className="questionButton"
-            >
-              <div
-                className="pickerButtonContainer"
-              >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  כן
-                </div>
-              </div>
-            </div>
-            <div
-              className="questionButton"
-            >
-              <div
-                className="pickerButtonContainer"
-              >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  לא
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
           className="notesTitle"
         >
           ידוע לי שאוכל לתרום רק אם:
@@ -1295,13 +1252,13 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
             לא נטלתי אנטיביוטיקה, אדויל ונורופן ב-3 הימים שלפני התרומה.
           </li>
           <li>
-            לא עברתי טיפול שיניים ב-10 ימים שלפני התרומה.
+            לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24 שעות).
           </li>
         </div>
         <div
           className="notesDetails"
         >
-          ינתן שירות הסעה במונית / פתרון חניה למגיעים ברכב. אם חל שינוי במצבך ואין ביכולתך לתרום אנא בטל/י את התור.
+          ינתן פתרון הסעה למגיעים. אם אין ביכולתך להגיע לתרום, אבא בטל/י את התור.
         </div>
         <div
           className="confirmButtonContainer"

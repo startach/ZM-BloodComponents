@@ -45,9 +45,7 @@ export default function UpcomingDonationInfo({
       <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
       <ul className={styles.tipList}>
         {tips.map((tip, index) => (
-          <li className={styles.listItem} key={index}>
-            {tip}
-          </li>
+          <li key={index}>{tip}</li>
         ))}
       </ul>
     </div>
