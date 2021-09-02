@@ -174,19 +174,13 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
         <ul
           className="tipList"
         >
-          <li
-            className="listItem"
-          >
+          <li>
             משך התרומה - בין שעה וחצי לשעתיים.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש להביא תעודת זהות.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש לשתות מים ולאכול פירות לפני התרומה.
           </li>
         </ul>
@@ -370,19 +364,13 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
         <ul
           className="tipList"
         >
-          <li
-            className="listItem"
-          >
+          <li>
             משך התרומה - בין שעה וחצי לשעתיים.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש להביא תעודת זהות.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש לשתות מים ולאכול פירות לפני התרומה.
           </li>
         </ul>
@@ -566,14 +554,10 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
         <ul
           className="tipList"
         >
-          <li
-            className="listItem"
-          >
+          <li>
             תרומה אורכת כשעה וחצי.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             ניתן לאכול ולשתות כרגיל לפני התרומה.
           </li>
         </ul>
@@ -757,24 +741,16 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
         <ul
           className="tipList"
         >
-          <li
-            className="listItem"
-          >
+          <li>
             לשאלות ובירורים ניתן לפנות ליחידת ההתרמות של סורוקה בטלפון 08−6400138.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             משך התרומה - בין שעה וחצי לשעתיים.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש להביא תעודת זהות.
           </li>
-          <li
-            className="listItem"
-          >
+          <li>
             יש לשתות מים ולאכול פירות לפני התרומה.
           </li>
         </ul>
