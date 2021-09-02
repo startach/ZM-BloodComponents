@@ -88,7 +88,7 @@ export default function QuestionnaireNotes({
       </div>
 
       <div className={styles.notesDetails}>
-        ינתן פתרון הסעה למגיעים. אם אין ביכולתך להגיע לתרום, אבא בטל/י את התור.
+        ינתן פתרון הסעה למגיעים. אם אין ביכולתך להגיע לתרום, אנא בטל/י את התור.
       </div>
     </>
   );
