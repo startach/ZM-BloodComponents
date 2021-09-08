@@ -131,6 +131,22 @@ export async function getAvailableAppointments() {
   }));
 }
 
+export async function getAllLatestAppointments() {
+  const setDate = new Date();
+  setDate.setDate(setDate.getDate()-30);  // set date 30 days back
+
+  const appointments = (await admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("donationStartTime", ">", setDate)
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
   const batch = admin.firestore().batch();
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
