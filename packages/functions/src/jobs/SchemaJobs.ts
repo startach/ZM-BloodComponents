@@ -22,10 +22,10 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
       response = await DbMigrationAddAppointmentStatus();
       break;
     default:
-      return res.send(404);
+      res.send(404);
   }
 
-  res.status(response.status || 400).send(response.message);
+  res.status(response!.status).send(response!.message);
 });
 
 const DbMigrationAddAppointmentStatus = async (): Promise<JobResponse> => {
