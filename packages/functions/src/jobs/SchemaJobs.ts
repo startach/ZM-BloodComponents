@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 
 enum Jobs {
   DbMigrationAddAppointmentStatus = "DB_MIGRATION_ADD_APPOINTMENT_STATUS",
@@ -11,11 +10,14 @@ type JobResponse = {
 };
 
 export const jobHandler = functions.https.onRequest(async (request, res) => {
-  if (request.query?.token !== functions.config().jobHandlerToken) {
+  if (request.query?.token !== functions.config().job_handler_token.key) {
     res.status(403);
   }
 
-  let response: JobResponse;
+  let response: JobResponse = {
+      message: "",
+      status: 400
+  };
 
   switch (request.query?.jobName) {
     case Jobs.DbMigrationAddAppointmentStatus:
@@ -25,7 +27,7 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
       res.send(404);
   }
 
-  res.status(response!.status).send(response!.message);
+  res.status(response.status).send(response.message);
 });
 
 const DbMigrationAddAppointmentStatus = async (): Promise<JobResponse> => {
