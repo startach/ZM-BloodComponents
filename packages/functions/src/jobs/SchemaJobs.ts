@@ -11,7 +11,8 @@ type JobResponse = {
 
 export const jobHandler = functions.https.onRequest(async (request, res) => {
   if (request.query?.token !== functions.config().job_handler_token.key) {
-    res.status(403);
+    res.status(403).send();
+    return
   }
 
   let response: JobResponse = {
