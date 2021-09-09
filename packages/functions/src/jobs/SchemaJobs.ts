@@ -12,12 +12,12 @@ type JobResponse = {
 export const jobHandler = functions.https.onRequest(async (request, res) => {
   if (request.query?.token !== functions.config().job_handler_token.key) {
     res.status(403).send();
-    return
+    return;
   }
 
   let response: JobResponse = {
-      message: "",
-      status: 400
+    message: "",
+    status: 400,
   };
 
   switch (request.query?.jobName) {

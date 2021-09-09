@@ -1,10 +1,7 @@
 {
   "functions": {
     "source": "packages/functions/dist",
-    "predeploy": [
-      "yarn run build-common",
-      "yarn run build-functions"
-    ]
+    "predeploy": ["yarn run build-common", "yarn run build-functions"]
   },
   "hosting": [
     {
