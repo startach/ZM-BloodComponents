@@ -5,6 +5,7 @@ export const activeHospitals = [
   Hospital.ICHILOV,
   Hospital.BEILINSON,
   Hospital.SOROKA,
+  Hospital.TEL_HASHOMER,
 ];
 
 export function getAllHospitalOptions(defaultLabel?: string) {
