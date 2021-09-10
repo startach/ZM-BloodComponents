@@ -41,7 +41,7 @@ test("User that is not admin throws exception", async () => {
 test("Hospital Coordinator gets active hospitals", async () => {
   await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
     ...HospitalUtils.activeHospitals,
-    Hospital.TEL_HASHOMER, // not active
+    Hospital.RAMBAM, // not active
   ]);
 
   const response = await callFunction(COORDINATOR_ID);
