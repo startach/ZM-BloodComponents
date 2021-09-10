@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - "packages/functions/**"
+      - "packages/common/**"
   workflow_dispatch:
     inputs:
       version:
