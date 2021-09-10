@@ -26,6 +26,7 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
       break;
     default:
       res.send(404);
+      return;
   }
 
   res.status(response.status).send(response.message);
