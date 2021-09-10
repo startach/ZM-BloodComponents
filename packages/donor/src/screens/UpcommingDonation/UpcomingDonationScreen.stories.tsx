@@ -41,5 +41,8 @@ Ichilov.args = props(Hospital.ICHILOV);
 export const Soroka = Template.bind({});
 Soroka.args = props(Hospital.SOROKA);
 
+export const TelHashomer = Template.bind({});
+TelHashomer.args = props(Hospital.TEL_HASHOMER);
+
 export const Default = Template.bind({});
-Default.args = props(Hospital.TEL_HASHOMER);
+Default.args = props(Hospital.RAMBAM);
