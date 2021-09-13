@@ -89,11 +89,15 @@ const GetExpandedColumns = (
           tooltip: "העתק פרטים",
           iconUrl: copyIcon,
           onClick: () => {
-            let bookingDate = (appointment.appointmentTimeMilis) ?  DateUtils.ToDateString(appointment.appointmentTimeMilis) : 'missing-date';
-            let copyString = `${appointment.donorName}, ${String(appointment.donorPhoneNumber)}, ${bookingDate}`;
+            let bookingDate = appointment.appointmentTimeMilis
+              ? DateUtils.ToDateString(appointment.appointmentTimeMilis)
+              : "missing-date";
+            let copyString = `${appointment.donorName}, ${String(
+              appointment.donorPhoneNumber
+            )}, ${bookingDate}`;
             navigator.clipboard.writeText(copyString);
             console.log(copyString);
-          }
+          },
         });
 
         buttons.push({
