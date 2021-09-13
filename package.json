@@ -29,6 +29,7 @@
     "-----------------FUNCTIONS---------------------": "",
     "test-functions": "yarn workspace @zm-blood-components/functions test",
     "deploy-functions-qa": "firebase deploy --only functions -P staging",
+    "build-functions": "yarn workspace @zm-blood-components/functions bundle",
     "-------------------OTHER-------------------------": "",
     "cleanup": "scripts/cleanup.sh",
     "bootstrap": "lerna bootstrap --hoist",

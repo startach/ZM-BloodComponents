@@ -1,10 +1,7 @@
 {
   "functions": {
     "source": "packages/functions/dist",
-    "predeploy": [
-      "yarn run build-common",
-      "yarn workspace @zm-blood-components/functions bundle"
-    ]
+    "predeploy": ["yarn run build-common", "yarn run build-functions"]
   },
   "hosting": [
     {
