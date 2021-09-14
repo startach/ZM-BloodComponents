@@ -21,6 +21,7 @@ export type ManagedAppointment = {
   appointmentId: string;
   booked: boolean;
   donorName?: string;
+  donationStartTimeMillis?: number;
   donorPhoneNumber?: string;
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
@@ -80,6 +81,7 @@ function appointmentsToAppointmentSlot(
       const donor = getDonor(donorsInAppointments, a.donorId);
 
       return {
+        appointmentTimeMilis: a.donationStartTimeMillis,
         appointmentId: a.id,
         booked: !!a.donorId,
         donorName: donor ? `${donor.firstName} ${donor.lastName}` : undefined,

@@ -18,6 +18,7 @@ import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
+import copyIcon from "../../assets/copy.svg";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
@@ -84,6 +85,20 @@ const GetExpandedColumns = (
       }[] = [];
 
       if (appointment.booked) {
+        buttons.push({
+          tooltip: "העתק",
+          iconUrl: copyIcon,
+          onClick: () => {
+            let bookingDate = appointment.donationStartTimeMillis
+              ? DateUtils.ToDateString(appointment.donationStartTimeMillis)
+              : "";
+            let copyString = `${appointment.donorName}, ${String(
+              appointment.donorPhoneNumber
+            )}, ${bookingDate}`;
+            navigator.clipboard.writeText(copyString);
+          },
+        });
+
         buttons.push({
           tooltip: "הסר תורם",
           iconUrl: userMinusIcon,
