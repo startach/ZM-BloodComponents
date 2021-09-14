@@ -131,10 +131,8 @@ export async function getAvailableAppointments() {
   }));
 }
 
-export async function getAllLatestAppointments() {
+export async function getAllAppointments() {
   const setDate = new Date();
-  setDate.setDate(setDate.getDate()-30);  // set date 30 days back
-
   const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
