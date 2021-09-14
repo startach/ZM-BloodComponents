@@ -18,6 +18,7 @@ const baseUser = {
   notificationSettings: {
     disableEmailNotifications: false,
   },
+  completedDonationsCount: 0,
 };
 
 const rows: CardTableRow<Donor>[] = [
