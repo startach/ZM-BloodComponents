@@ -86,18 +86,13 @@ const GetExpandedColumns = (
 
       if (appointment.booked) {
         buttons.push({
-          tooltip: "העתק פרטים",
+          tooltip: "העתק",
           iconUrl: copyIcon,
           onClick: () => {
-            let bookingDate = appointment.appointmentTimeMilis
-              ? DateUtils.ToDateString(appointment.appointmentTimeMilis)
-              : "missing-date";
-            let copyString = `${appointment.donorName}, ${String(
-              appointment.donorPhoneNumber
-            )}, ${bookingDate}`;
+            let bookingDate = (appointment.donationStartTimeMillis) ?  DateUtils.ToDateString(appointment.donationStartTimeMillis) : "";
+            let copyString = `${appointment.donorName}, ${String(appointment.donorPhoneNumber)}, ${bookingDate}`;
             navigator.clipboard.writeText(copyString);
-            console.log(copyString);
-          },
+          }
         });
 
         buttons.push({

@@ -21,7 +21,7 @@ export type ManagedAppointment = {
   appointmentId: string;
   booked: boolean;
   donorName?: string;
-  appointmentTimeMilis?: number;
+  donationStartTimeMillis?: number;
   donorPhoneNumber?: string;
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
