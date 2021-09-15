@@ -20,6 +20,7 @@ const props: MyProfileScreenProps = {
     notificationSettings: {
       disableEmailNotifications: false,
     },
+    completedDonationsCount: 0,
   },
   onSave: action("onSave"),
 };
