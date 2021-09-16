@@ -80,7 +80,7 @@ export default function QuestionnaireNotes({
 
           <div className={styles.notesText}>
             <li>אין לי פצע פתוח/שריטה.</li>
-            <li>לא נטלתי אנטיביוטיקה ב-3 הימים שלפני התרומה</li>
+            <li>לא נטלתי אנטיביוטיקה ב-3 הימים שלפני התרומה.</li>
             <li>
               לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24
               שעות).
@@ -88,7 +88,7 @@ export default function QuestionnaireNotes({
           </div>
 
           <div className={styles.notesDetails}>
-            ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב
+            ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב.
           </div>
         </>
       );

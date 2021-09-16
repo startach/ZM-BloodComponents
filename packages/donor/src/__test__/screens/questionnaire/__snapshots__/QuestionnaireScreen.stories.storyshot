@@ -2117,7 +2117,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
             אין לי פצע פתוח/שריטה.
           </li>
           <li>
-            לא נטלתי אנטיביוטיקה ב-3 הימים שלפני התרומה
+            לא נטלתי אנטיביוטיקה ב-3 הימים שלפני התרומה.
           </li>
           <li>
             לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24 שעות).
@@ -2126,7 +2126,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
         <div
           className="notesDetails"
         >
-          ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב
+          ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב.
         </div>
         <div
           className="confirmButtonContainer"
