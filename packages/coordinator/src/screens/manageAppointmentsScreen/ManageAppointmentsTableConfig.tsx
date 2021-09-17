@@ -29,7 +29,7 @@ const GetExpandedColumns = (
   {
     label: "שם מלא",
     cellRenderer: ({ donorName, booked }) => {
-      return booked && donorName? donorName : "אין רישום";
+      return booked && donorName ? donorName : "אין רישום";
     },
     hideIfNoData: true,
   },
@@ -198,10 +198,17 @@ export const MainAppointmentTableColumns = (
   {
     label: "",
     cellRenderer: ({ appointments }) => {
-      var visable = !showOnlyRecentChanges && 
-        appointments.find((a) => a.recentChangeType || a.recentChangeType === 0);
+      var visable =
+        !showOnlyRecentChanges &&
+        appointments.find(
+          (a) => a.recentChangeType || a.recentChangeType === 0
+        );
 
-      return <div style={ {visibility: visable? 'visible' : 'hidden'} } ><Chip colorScheme={ChipColorScheme.New} label="חדש" /></div>;
+      return (
+        <div style={{ visibility: visable ? "visible" : "hidden" }}>
+          <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+        </div>
+      );
     },
     colRelativeWidth: 0,
   },

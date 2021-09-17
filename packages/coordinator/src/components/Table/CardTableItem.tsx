@@ -29,24 +29,32 @@ export default function CardTableItem<T>({
     const cell = column.cellRenderer(row.rowData);
     // collapse column
     if (cell || !column.hideIfNoData)
-      return [{ cell, colRelativeWidth: column.colRelativeWidth, aditionalCardClass: column.aditionalCardClass }];
+      return [
+        {
+          cell,
+          colRelativeWidth: column.colRelativeWidth,
+          aditionalCardClass: column.aditionalCardClass,
+        },
+      ];
     return [];
   }, []);
 
   const DisplayedContent = (
     <div className={Styles["row"]}>
-      {CalculatedContent.map(({ cell, colRelativeWidth, aditionalCardClass }, i) => (
-        <div
-          style={{ flexGrow: colRelativeWidth ?? 1 }}
-          className={ classnames(
-            Styles["cell"],
-            aditionalCardClass && Styles[aditionalCardClass]
-          )} // need to change
-          key={i}
-        >
-          {cell}
-        </div>
-      ))}
+      {CalculatedContent.map(
+        ({ cell, colRelativeWidth, aditionalCardClass }, i) => (
+          <div
+            style={{ flexGrow: colRelativeWidth ?? 1 }}
+            className={classnames(
+              Styles["cell"],
+              aditionalCardClass && Styles[aditionalCardClass]
+            )}
+            key={i}
+          >
+            {cell}
+          </div>
+        )
+      )}
     </div>
   );
 

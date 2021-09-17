@@ -147,7 +147,7 @@ export default function GroupsTable<T>({
                 const headerCellClasses = classnames(
                   Styles["cell"],
                   columns[i].sortBy && Styles["header-cell"],
-                  sortByColumnIndex === i && Styles["header-cell-active"],
+                  sortByColumnIndex === i && Styles["header-cell-active"]
                 );
                 return (
                   <div
