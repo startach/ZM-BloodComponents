@@ -28,6 +28,7 @@ export interface CardTableRow<T> {
 }
 
 export interface CardTableColumn<T> {
+  aditionalCardClass?: string;
   label?: string;
   /** When user asks to sort by this column, use this function */
   sortBy?: SortFunction<T>;
@@ -146,7 +147,7 @@ export default function GroupsTable<T>({
                 const headerCellClasses = classnames(
                   Styles["cell"],
                   columns[i].sortBy && Styles["header-cell"],
-                  sortByColumnIndex === i && Styles["header-cell-active"]
+                  sortByColumnIndex === i && Styles["header-cell-active"],
                 );
                 return (
                   <div

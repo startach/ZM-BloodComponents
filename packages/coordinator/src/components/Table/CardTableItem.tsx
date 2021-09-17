@@ -10,6 +10,7 @@ import {
 import Card from "../Card";
 import { ExpandMore } from "@material-ui/icons";
 import Styles from "./GroupTable.module.scss";
+import classnames from "classnames";
 
 type CardTableItemProps<T> = {
   row: CardTableRow<T>;
@@ -28,16 +29,19 @@ export default function CardTableItem<T>({
     const cell = column.cellRenderer(row.rowData);
     // collapse column
     if (cell || !column.hideIfNoData)
-      return [{ cell, colRelativeWidth: column.colRelativeWidth }];
+      return [{ cell, colRelativeWidth: column.colRelativeWidth, aditionalCardClass: column.aditionalCardClass }];
     return [];
   }, []);
 
   const DisplayedContent = (
     <div className={Styles["row"]}>
-      {CalculatedContent.map(({ cell, colRelativeWidth }, i) => (
+      {CalculatedContent.map(({ cell, colRelativeWidth, aditionalCardClass }, i) => (
         <div
           style={{ flexGrow: colRelativeWidth ?? 1 }}
-          className={Styles["cell"]}
+          className={ classnames(
+            Styles["cell"],
+            aditionalCardClass && Styles[aditionalCardClass]
+          )} // need to change
           key={i}
         >
           {cell}
