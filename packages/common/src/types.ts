@@ -34,7 +34,6 @@ export type DbDonor = {
   bloodType: BloodType;
   groupId: string;
   notificationSettings?: DonorNotificationSettings;
-  completedDonationsCount: number;
 
   // Fields changing after booking a donation
   lastBookingTime?: firebase.firestore.Timestamp;
@@ -52,7 +51,6 @@ export type Donor = {
   phone: string;
   bloodType: BloodType;
   notificationSettings: DonorNotificationSettings;
-  completedDonationsCount: number;
 };
 
 //https://docs.google.com/document/d/1Y3ovMRJhdHlJEd4rS3FCgxxY3qdpmk2WLaR45nL8IT8
