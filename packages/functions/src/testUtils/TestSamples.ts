@@ -10,6 +10,7 @@ export const sampleUser = {
   birthDate: "2020-11-13",
   groupId: "group1",
   testUser: false,
+  completedDonationsCount: 0,
 };
 
 export function saveTestDonor(donorId: string, donorFields?: Partial<DbDonor>) {
