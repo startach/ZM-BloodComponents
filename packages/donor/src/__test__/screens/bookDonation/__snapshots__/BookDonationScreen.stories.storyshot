@@ -148,6 +148,11 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
               >
                 סורוקה
               </option>
+              <option
+                value="TEL_HASHOMER"
+              >
+                תל השומר
+              </option>
             </select>
             <svg
               aria-hidden={true}
@@ -346,6 +351,11 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 value="SOROKA"
               >
                 סורוקה
+              </option>
+              <option
+                value="TEL_HASHOMER"
+              >
+                תל השומר
               </option>
             </select>
             <svg
@@ -768,6 +778,11 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
                 value="SOROKA"
               >
                 סורוקה
+              </option>
+              <option
+                value="TEL_HASHOMER"
+              >
+                תל השומר
               </option>
             </select>
             <svg

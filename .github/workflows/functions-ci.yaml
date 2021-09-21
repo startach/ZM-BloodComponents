@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "packages/functions/**"
+      - "packages/common/**"
 
 jobs:
   functions:
