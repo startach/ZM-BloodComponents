@@ -131,12 +131,12 @@ export async function getAvailableAppointments() {
   }));
 }
 
-export async function getAllAppointments() {
+export async function getPastAppointments() {
   const setDate = new Date();
   const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
-    .where("donationStartTime", ">", setDate)
+    .where("donationStartTime", "<", setDate)
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return appointments.docs.map((doc) => ({
