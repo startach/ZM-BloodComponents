@@ -1,4 +1,5 @@
 import * as functions from "firebase-functions";
+import { migrateAppointmentStatus } from "../dal/migrationScripts/ChangeAppointmentStatusMigration";
 
 enum Jobs {
   DbMigrationAddAppointmentStatus = "DB_MIGRATION_ADD_APPOINTMENT_STATUS",
@@ -33,8 +34,5 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
 });
 
 const DbMigrationAddAppointmentStatus = async (): Promise<JobResponse> => {
-  return {
-    message: "success!",
-    status: 200,
-  };
+  return migrateAppointmentStatus();
 };

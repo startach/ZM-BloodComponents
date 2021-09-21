@@ -13,10 +13,7 @@ export async function addStatusForAppointments() {
     let newStatus = AppointmentStatus.AVAILABLE;
     const now = new Date();
     if (appointment.donorId !== "") {
-      if (appointment.donationStartTime.toDate() < now)
-        newStatus = AppointmentStatus.COMPLETED;
-      // should this be completed?
-      else newStatus = AppointmentStatus.BOOKED;
+      newStatus = AppointmentStatus.BOOKED;
     }
     return {
       status: newStatus,
@@ -36,4 +33,8 @@ export async function migrateAppointmentStatus() {
     );
     await setAppointment(appointment);
   }
+  return {
+    message: "success!",
+    status: 200,
+  };
 }
