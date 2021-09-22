@@ -1,5 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  AppointmentStatus,
   DbAppointment,
   DbDonor,
   FunctionsApi,
@@ -98,6 +99,7 @@ test("Valid request confirm appointment", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
+  expect(appointment[0].status).toEqual(AppointmentStatus.CONFIRMED);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 

@@ -182,5 +182,6 @@ export function confirmArrivedFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
   appointment.donationDoneTimeMillis = admin.firestore.Timestamp.now();
+  appointment.status = AppointmentStatus.CONFIRMED;
   return appointment;
 }

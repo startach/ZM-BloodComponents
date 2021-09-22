@@ -14,10 +14,13 @@ export default async function (
   if (!request.appointmentId) {
     throw new Error("No appointment to confirm");
   }
+  return {
+    appointment: await confirmAppointment(request.appointmentId, donorId),
+  };
+}
 
-  const appointmentToConfirm = await getAppointmentsByIds([
-    request.appointmentId,
-  ]);
+async function confirmAppointment(appointmentId: string, donorId: string) {
+  const appointmentToConfirm = await getAppointmentsByIds([appointmentId]);
   if (appointmentToConfirm.length !== 1) {
     throw new Error("Appointment not found");
   }
@@ -31,9 +34,5 @@ export default async function (
 
   const updatedAppointment = confirmArrivedFromDbAppointment(appointment);
 
-  const confirmedAppointment = await setAppointment(updatedAppointment);
-
-  return {
-    appointment: confirmedAppointment,
-  };
+  return await setAppointment(updatedAppointment);
 }
