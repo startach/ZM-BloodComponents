@@ -4,7 +4,6 @@ import {
 } from "../AppointmentDataAccessLayer";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import * as functions from "firebase-functions";
-const fs = require("fs");
 
 export async function addStatusForAppointments() {
   const appointments = await getPastAppointments();
