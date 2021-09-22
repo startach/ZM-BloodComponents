@@ -15,12 +15,11 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
+import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.ConfirmAppointmentFunctionName]
 );
-
-import { sampleUser } from "../testUtils/TestSamples";
 
 const DONOR_ID = "ConfirmAppointmentHandlerDonorId";
 const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
@@ -113,6 +112,7 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
+    status: AppointmentStatus.BOOKED,
   };
 
   await setAppointment(appointment);
