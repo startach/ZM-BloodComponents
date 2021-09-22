@@ -6,6 +6,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
 import {
+  AppointmentStatus,
   BookingChange,
   DbDonor,
   FunctionsApi,
@@ -58,6 +59,7 @@ export default async function (
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
   appointmentToBook.lastChangeTime = admin.firestore.Timestamp.now();
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
+  appointmentToBook.status = AppointmentStatus.BOOKED;
 
   await setAppointment(appointmentToBook);
   await updateDonorPromise;

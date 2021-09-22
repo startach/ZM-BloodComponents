@@ -16,6 +16,7 @@ import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospi
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 import { unsubscribeHandler } from "./notifications/UnsubscribeHandler";
+import { jobHandler } from "./jobs/SchemaJobs";
 
 admin.initializeApp(functions.config().firebase);
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -46,3 +47,6 @@ export const getAvailableAppointments = unauthenticatedHandler(
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
 export const unsubscribe = unsubscribeHandler;
+
+// Jobs
+export const jobs = jobHandler;

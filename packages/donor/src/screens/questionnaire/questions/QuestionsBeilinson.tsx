@@ -3,16 +3,12 @@ import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
 import { LinkUtils } from "@zm-blood-components/common";
-
-export interface QuestionsBeilinsonProps {
-  setAreAllAnswersCorrect: (correct: boolean) => void;
-  goToHomePage: () => Promise<void>;
-}
+import { QuestionsProps } from "./QuestionnaireQuestions";
 
 export default function QuestionsBeilinson({
   setAreAllAnswersCorrect,
   goToHomePage,
-}: QuestionsBeilinsonProps) {
+}: QuestionsProps) {
   const [hasAlreadyDonated, setHasAlreadyDonated] =
     React.useState<boolean | undefined>(undefined);
   const [isWeightValid, setIsWeightValid] =

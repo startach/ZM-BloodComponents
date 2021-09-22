@@ -1,4 +1,5 @@
 import {
+  AppointmentStatus,
   Collections,
   DbAppointment,
   FunctionsApi,
@@ -44,6 +45,7 @@ function addAppointmentsToBatch(
     ),
     hospital: slotsRequest.hospital,
     donorId: "",
+    status: AppointmentStatus.AVAILABLE,
   };
 
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);

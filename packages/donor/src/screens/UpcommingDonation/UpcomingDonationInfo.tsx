@@ -32,6 +32,15 @@ export default function UpcomingDonationInfo({
         "יש לשתות מים ולאכול פירות לפני התרומה.",
       ];
       break;
+
+    case Hospital.TEL_HASHOMER:
+      tips = [
+        "לשאלות ובירורים ניתן לפנות ליחידת ההתרמות של תל השומר בטלפון 03−5305375.",
+        "משך התרומה - בין שעה וחצי לשעתיים.",
+        "יש להביא תעודת זהות.",
+        "מומלץ לאכול ולשתות כרגיל לפני התרומה.",
+      ];
+      break;
     default:
       tips = [
         "משך התרומה - בין שעה וחצי לשעתיים.",
@@ -45,9 +54,7 @@ export default function UpcomingDonationInfo({
       <div className={styles.moreInfoTitle}>טיפים ומידע נוסף</div>
       <ul className={styles.tipList}>
         {tips.map((tip, index) => (
-          <li className={styles.listItem} key={index}>
-            {tip}
-          </li>
+          <li key={index}>{tip}</li>
         ))}
       </ul>
     </div>

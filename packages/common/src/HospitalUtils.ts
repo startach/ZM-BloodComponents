@@ -5,6 +5,7 @@ export const activeHospitals = [
   Hospital.ICHILOV,
   Hospital.BEILINSON,
   Hospital.SOROKA,
+  Hospital.TEL_HASHOMER,
 ];
 
 export function getAllHospitalOptions(defaultLabel?: string) {
@@ -18,6 +19,7 @@ export function getHospitalOptions(
 ) {
   const options: SelectOption<Hospital | "">[] =
     hospitals.map(hospitalToOption);
+
   if (defaultLabel) {
     options.unshift({ label: defaultLabel, key: defaultLabel, value: "" });
   }

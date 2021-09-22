@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
+  AppointmentStatus,
   BookingChange,
   Collections,
   DbAppointment,
@@ -130,6 +131,20 @@ export async function getAvailableAppointments() {
   }));
 }
 
+export async function getPastAppointments() {
+  const setDate = new Date();
+  const appointments = (await admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("donationStartTime", "<", setDate)
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
   const batch = admin.firestore().batch();
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
@@ -159,6 +174,7 @@ export function removeDonorFromDbAppointment(
     donorId: "",
     lastChangeTime: admin.firestore.Timestamp.now(),
     lastChangeType: BookingChange.CANCELLED,
+    status: AppointmentStatus.AVAILABLE,
   };
 }
 

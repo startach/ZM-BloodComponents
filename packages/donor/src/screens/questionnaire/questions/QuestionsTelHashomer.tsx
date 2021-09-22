@@ -5,12 +5,10 @@ import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
 import { LinkUtils } from "@zm-blood-components/common";
 import { QuestionsProps } from "./QuestionnaireQuestions";
 
-export default function QuestionsIchilov({
+export default function QuestionsTelHashomer({
   setAreAllAnswersCorrect,
   goToHomePage,
 }: QuestionsProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] =
-    React.useState<boolean | undefined>(undefined);
   const [isWeightValid, setIsWeightValid] =
     React.useState<boolean | undefined>(undefined);
   const [isSurgeryValid, setIsSurgeryValid] =
@@ -24,8 +22,7 @@ export default function QuestionsIchilov({
 
   useEffect(() => {
     const res =
-      (hasAlreadyDonated &&
-        isWeightValid &&
+      (isWeightValid &&
         isSurgeryValid === false &&
         isTattooValid === false &&
         isRightAge &&
@@ -34,7 +31,6 @@ export default function QuestionsIchilov({
 
     setAreAllAnswersCorrect(res);
   }, [
-    hasAlreadyDonated,
     isWeightValid,
     isSurgeryValid,
     isRightAge,
@@ -44,7 +40,6 @@ export default function QuestionsIchilov({
   ]);
 
   const isWrongAnswerChosen =
-    hasAlreadyDonated === false ||
     isWeightValid === false ||
     isSurgeryValid ||
     isTattooValid ||
@@ -56,14 +51,8 @@ export default function QuestionsIchilov({
       <Question
         value={wasPregnant}
         onChange={setWasPregnantEver}
-        label={"האם היית / הנך בהריון?"}
+        label={"האם ילדת בחצי השנה האחרונה?"}
         options={YesNoNotRelevantOptions}
-      />
-      <Question
-        value={hasAlreadyDonated}
-        onChange={setHasAlreadyDonated}
-        label={"האם תרמת דם / טרומבוציטים בעבר?"}
-        options={YesNoOptions}
       />
       <Question
         value={isRightAge}
@@ -108,9 +97,6 @@ export default function QuestionsIchilov({
         goBackText={"חזרה לרשימת התורים"}
         onBack={goToHomePage}
         onClose={() => {
-          if (!hasAlreadyDonated) {
-            setHasAlreadyDonated(undefined);
-          }
           if (!isWeightValid) {
             setIsWeightValid(undefined);
           }
