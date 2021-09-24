@@ -31,13 +31,13 @@ const GetExpandedColumns = (
     cellRenderer: ({ donorName, booked }) => {
       return booked && donorName ? donorName : "אין רישום";
     },
-    hideIfNoData: true,
+    hideIfNoData: false,
   },
   {
     label: "סוג דם",
     cellRenderer: ({ bloodType }) =>
       bloodType ? LocaleUtils.getBloodTypeTranslation(bloodType) : null,
-    hideIfNoData: true,
+    hideIfNoData: false,
   },
   {
     label: "טלפון",
@@ -49,7 +49,7 @@ const GetExpandedColumns = (
           </a>
         </div>
       ),
-    hideIfNoData: true,
+    hideIfNoData: false,
   },
   {
     label: "נקבע בתאריך",
