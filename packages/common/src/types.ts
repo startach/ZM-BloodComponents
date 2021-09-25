@@ -151,6 +151,7 @@ export interface SelectOption<T> {
 export enum BookingChange {
   BOOKED = "BOOKED",
   CANCELLED = "CANCELLED",
+  COMPLETED = "COMPLETED",
 }
 
 export type BookedDonationWithDonorDetails = {
