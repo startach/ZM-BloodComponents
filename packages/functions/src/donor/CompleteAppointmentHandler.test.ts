@@ -1,6 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   AppointmentStatus,
+  BookingChange,
   DbAppointment,
   DbDonor,
   FunctionsApi,
@@ -99,6 +100,7 @@ test("Valid request complete appointment", async () => {
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
   expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
+  expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
@@ -113,6 +115,7 @@ async function saveAppointment(donorId: string) {
     donorId: donorId,
     bookingTime: time,
     status: AppointmentStatus.BOOKED,
+    lastChangeType: BookingChange.BOOKED,
   };
 
   await setAppointment(appointment);
