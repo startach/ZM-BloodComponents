@@ -1,21 +1,27 @@
 import {
-  getPastAppointments,
+  getAllAppointments,
   setAppointment,
 } from "../AppointmentDataAccessLayer";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import * as functions from "firebase-functions";
 
 export async function addStatusForAppointments() {
-  const appointments = await getPastAppointments();
+  const appointments = await getAllAppointments();
 
   return appointments.map((appointment) => {
     let newStatus = AppointmentStatus.AVAILABLE;
     if (appointment.donorId !== "") {
       newStatus = AppointmentStatus.BOOKED;
     }
+    if (newStatus !== appointment.status) {
+      functions.logger.warn(
+        `status appointment after change is different old status :${appointment.status}, new ${newStatus}`
+      );
+    }
+
     return {
-      status: newStatus,
       ...appointment,
+      status: newStatus,
     };
   });
 }
