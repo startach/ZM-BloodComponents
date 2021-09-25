@@ -18,15 +18,15 @@ import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.ConfirmAppointmentFunctionName]
+  Functions[FunctionsApi.CompleteAppointmentFunctionName]
 );
 
-const DONOR_ID = "ConfirmAppointmentHandlerDonorId";
-const APPOINTMENT_TO_CONFIRM = "ConfirmAppointmentHandlerAppointment";
+const DONOR_ID = "CompleteAppointmentHandlerDonorId";
+const APPOINTMENT_TO_COMPLETE = "CompleteAppointmentHandlerAppointment";
 
 const reset = async () => {
   await deleteDonor(DONOR_ID);
-  await deleteAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
+  await deleteAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
 };
 
 beforeAll(async () => {
@@ -38,7 +38,7 @@ afterEach(async () => {
 });
 
 test("Unauthenticated user throws exception", async () => {
-  const action = () => wrapped({ appointmentId: APPOINTMENT_TO_CONFIRM });
+  const action = () => wrapped({ appointmentId: APPOINTMENT_TO_COMPLETE });
   await expectAsyncThrows(action, "Unauthorized");
 });
 
@@ -53,13 +53,13 @@ test("Donor not found throws exception", async () => {
       }
     );
 
-  await expectAsyncThrows(action, "No appointment to confirm");
+  await expectAsyncThrows(action, "No appointment to complete");
 });
 
 test("No such appointments throws exception", async () => {
   const action = () =>
     wrapped(
-      { appointmentId: APPOINTMENT_TO_CONFIRM },
+      { appointmentId: APPOINTMENT_TO_COMPLETE },
       {
         auth: {
           uid: DONOR_ID,
@@ -74,7 +74,7 @@ test("Donor is not booked on this appointment throws exception", async () => {
   await saveAppointment("OTHER_DONOR");
 
   const action = () =>
-    wrapped(confirmAppointmentRequest(), {
+    wrapped(completeAppointmentRequest(), {
       auth: {
         uid: DONOR_ID,
       },
@@ -82,30 +82,30 @@ test("Donor is not booked on this appointment throws exception", async () => {
 
   await expectAsyncThrows(
     action,
-    "Appointment to be confirmed is not booked by donor"
+    "Appointment to be completed is not booked by donor"
   );
 });
 
-test("Valid request confirm appointment", async () => {
+test("Valid request complete appointment", async () => {
   await createDonor();
   await saveAppointment(DONOR_ID);
 
-  await wrapped(confirmAppointmentRequest(), {
+  await wrapped(completeAppointmentRequest(), {
     auth: {
       uid: DONOR_ID,
     },
   });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CONFIRM]);
+  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.CONFIRMED);
+  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
 async function saveAppointment(donorId: string) {
   const time = admin.firestore.Timestamp.now();
   const appointment: DbAppointment = {
-    id: APPOINTMENT_TO_CONFIRM,
+    id: APPOINTMENT_TO_COMPLETE,
     creationTime: time,
     creatorUserId: "creatorUserId",
     donationStartTime: time,
@@ -118,8 +118,8 @@ async function saveAppointment(donorId: string) {
   await setAppointment(appointment);
 }
 
-function confirmAppointmentRequest() {
-  return { appointmentId: APPOINTMENT_TO_CONFIRM };
+function completeAppointmentRequest() {
+  return { appointmentId: APPOINTMENT_TO_COMPLETE };
 }
 
 async function createDonor() {

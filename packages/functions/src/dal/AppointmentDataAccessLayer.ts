@@ -178,10 +178,10 @@ export function removeDonorFromDbAppointment(
   };
 }
 
-export function confirmArrivedFromDbAppointment(
+export function completeArrivedFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
   appointment.donationDoneTimeMillis = admin.firestore.Timestamp.now();
-  appointment.status = AppointmentStatus.CONFIRMED;
+  appointment.status = AppointmentStatus.COMPLETED;
   return appointment;
 }

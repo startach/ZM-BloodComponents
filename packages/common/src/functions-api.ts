@@ -81,13 +81,13 @@ export interface CancelAppointmentRequest {
   appointmentId: string;
 }
 
-export const ConfirmAppointmentFunctionName = "confirmAppointment";
-export interface ConfirmAppointmentRequest {
+export const CompleteAppointmentFunctionName = "completeAppointment";
+export interface CompleteAppointmentRequest {
   appointmentId: string;
 }
 
-export interface ConfirmAppointmentResponse {
-  confirmAppointment: BookedAppointmentApiEntry;
+export interface CompleteAppointmentResponse {
+  completedAppointment: BookedAppointmentApiEntry;
 }
 
 export const GetDonorFunctionName = "getDonor";

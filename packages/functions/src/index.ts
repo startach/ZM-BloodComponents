@@ -6,7 +6,7 @@ import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
 import saveAdminRequestHandler from "./coordinator/SaveCoordinatorHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
-import confirmAppointmentHandler from "./donor/ConfirmAppointmentHandler";
+import completeAppointmentHandler from "./donor/CompleteAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
@@ -39,7 +39,7 @@ export const getBookedDonationsInHospital = handler(
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
-export const confirmAppointment = handler(confirmAppointmentHandler);
+export const completeAppointment = handler(completeAppointmentHandler);
 export const getDonor = handler(geDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = unauthenticatedHandler(
