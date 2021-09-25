@@ -28,6 +28,7 @@ export type BookedAppointmentApiEntry = {
   donorId: string;
   bookingTimeMillis: number;
   recentChangeType?: BookingChange;
+  donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
 
 // Represent an appointment, both available and booked
@@ -78,6 +79,15 @@ export interface BookAppointmentResponse {
 export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
   appointmentId: string;
+}
+
+export const CompleteAppointmentFunctionName = "completeAppointment";
+export interface CompleteAppointmentRequest {
+  appointmentId: string;
+}
+
+export interface CompleteAppointmentResponse {
+  completedAppointment: BookedAppointmentApiEntry;
 }
 
 export const GetDonorFunctionName = "getDonor";

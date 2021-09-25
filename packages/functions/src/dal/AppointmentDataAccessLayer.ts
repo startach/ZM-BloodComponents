@@ -177,3 +177,11 @@ export function removeDonorFromDbAppointment(
     status: AppointmentStatus.AVAILABLE,
   };
 }
+
+export function completeArrivedFromDbAppointment(
+  appointment: DbAppointment
+): DbAppointment {
+  appointment.donationDoneTimeMillis = admin.firestore.Timestamp.now();
+  appointment.status = AppointmentStatus.COMPLETED;
+  return appointment;
+}
