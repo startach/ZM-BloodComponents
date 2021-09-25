@@ -121,6 +121,7 @@ export async function getAvailableAppointments() {
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("donorId", "==", "")
+    .where("status", "==", AppointmentStatus.AVAILABLE)
     .where("donationStartTime", ">", now)
     .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
