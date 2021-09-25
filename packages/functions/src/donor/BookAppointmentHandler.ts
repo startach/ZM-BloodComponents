@@ -33,7 +33,7 @@ export default async function (
   }
 
   const availableAppointments = appointmentsToBook.filter(
-    (appointment) => !appointment.donorId
+    (appointment) => appointment.status === AppointmentStatus.AVAILABLE
   );
   if (availableAppointments.length === 0) {
     // None of the requested appointments is available
