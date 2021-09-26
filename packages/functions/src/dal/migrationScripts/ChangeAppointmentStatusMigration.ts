@@ -26,7 +26,7 @@ export async function addStatusForAppointments() {
   });
 }
 
-export async function migrateAppointmentStatus() {
+export async function migrateAppointmentStatus(wetRun: boolean) {
   const updatedAppointments = await addStatusForAppointments();
 
   for (const appointment of updatedAppointments) {
@@ -35,7 +35,9 @@ export async function migrateAppointmentStatus() {
         appointment.donorId
       },${appointment.donationStartTime.toDate()},${appointment.status}`
     );
-    await setAppointment(appointment);
+    if (wetRun) {
+      await setAppointment(appointment);
+    }
   }
   return {
     message: "success!",
