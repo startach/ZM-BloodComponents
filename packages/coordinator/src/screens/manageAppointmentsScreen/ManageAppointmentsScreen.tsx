@@ -90,7 +90,7 @@ export default function ManageAppointmentsScreen({
 
     setTimeout(() => {
       setShowFlash(false);
-    }, 1400);
+    }, 500);
   };
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(

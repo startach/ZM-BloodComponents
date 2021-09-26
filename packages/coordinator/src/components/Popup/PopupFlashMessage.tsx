@@ -23,11 +23,12 @@ export default function PopupFlashMessage({
       <Fade in={showFlash} timeout={{ enter: 300, exit: 800 }}>
         <div
           style={{
-            backgroundColor: "palegoldenrod",
-            padding: "5px",
-            border: "2px solid gray",
-            borderRadius: "5px",
+            backgroundColor: "#008CBA",
+            padding: "15px",
+            border: "none",
+            borderRadius: "15px",
             fontSize: "24px",
+            color: "white",
           }}
         >
           {message}
