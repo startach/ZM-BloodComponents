@@ -120,7 +120,7 @@ export async function getAvailableAppointments() {
   const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
-    .where("donorId", "==", "")
+    .where("status", "==", AppointmentStatus.AVAILABLE)
     .where("donationStartTime", ">", now)
     .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;

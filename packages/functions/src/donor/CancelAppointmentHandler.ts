@@ -34,7 +34,6 @@ export default async function (
     console.error("Error notifying on cancelled appointment", appointment.id, e)
   );
 
-  appointment.donorId = "";
   const updatedAppointment = removeDonorFromDbAppointment(appointment);
 
   await setAppointment(updatedAppointment);
