@@ -19,6 +19,7 @@ import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/Sch
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import CoordinatorScreen from "../components/CoordinatorScreen";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
+import { signOut } from "../firebase/FirebaseAuthentication";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -83,6 +84,10 @@ export default function CoordinatorRouter() {
 
     async function fetchData() {
       const coordinator = await CoordinatorFunctions.getCoordinator();
+      if (!coordinator) {
+        signOut();
+        return;
+      }
       coordinator.role = CoordinatorRole.SYSTEM_USER;
 
       setAppState({

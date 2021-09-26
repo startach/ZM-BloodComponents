@@ -12,9 +12,14 @@ export async function getCoordinator() {
     .httpsCallable(FunctionsApi.GetCoordinatorFunctionName);
   const request: FunctionsApi.GetCoordinatorRequest = {};
 
-  const res = await getCoordinatorFunction(request);
-  const data = res.data as FunctionsApi.GetCoordinatorResponse;
-  return data.coordinator;
+  try {
+    const res = await getCoordinatorFunction(request);
+    const data = res.data as FunctionsApi.GetCoordinatorResponse;
+    return data.coordinator;
+  } catch (e) {
+    console.warn("User is not a coordinator");
+    return undefined;
+  }
 }
 
 export async function addNewAppointments(newSlots: NewSlots[]) {

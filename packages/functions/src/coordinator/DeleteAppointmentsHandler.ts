@@ -42,7 +42,7 @@ export default async function (
   }
 
   // Handle notification to the donor
-  if (!appointment.donorId || appointment.donorId === "") {
+  if (!appointment.donorId) {
     return;
   }
 
