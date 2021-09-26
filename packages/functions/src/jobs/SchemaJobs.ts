@@ -12,7 +12,7 @@ type JobResponse = {
 
 export const jobHandler = functions
   .runWith({
-    timeoutSeconds: 600,
+    timeoutSeconds: 540,
     memory: "1GB",
   })
   .https.onRequest(async (request, res) => {
