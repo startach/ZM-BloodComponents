@@ -26,7 +26,7 @@ const GetExpandedColumns = (
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean,
-  popupFlashMessageTrigger: (message: string) => void,
+  popupFlashMessageTrigger: (message: string) => void
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     label: "שם מלא",
@@ -98,9 +98,9 @@ const GetExpandedColumns = (
               appointment.donorPhoneNumber
             )}, ${bookingDate}`;
             navigator.clipboard.writeText(copyString);
-            
+
             // flash a message to user
-            popupFlashMessageTrigger('הפרטים הועתקו')
+            popupFlashMessageTrigger("הפרטים הועתקו");
           },
         });
 
@@ -161,7 +161,7 @@ export const AppointmentTableExpandedRowContent = (
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean,
-  popupFlashMessageTrigger: (message: string) => void,
+  popupFlashMessageTrigger: (message: string) => void
 ) => {
   return (
     <Table
