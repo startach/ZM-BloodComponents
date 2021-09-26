@@ -115,7 +115,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך
+                :פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
