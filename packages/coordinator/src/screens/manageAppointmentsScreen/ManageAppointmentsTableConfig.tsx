@@ -19,12 +19,14 @@ import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";
+import { Fade } from "@material-ui/core";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void,
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     label: "שם מלא",
@@ -96,6 +98,9 @@ const GetExpandedColumns = (
               appointment.donorPhoneNumber
             )}, ${bookingDate}`;
             navigator.clipboard.writeText(copyString);
+            
+            // flash a message to user
+            popupFlashMessageTrigger('הפרטים הועתקו')
           },
         });
 
@@ -130,6 +135,11 @@ const GetExpandedColumns = (
 
       return (
         <div className={Styles["icons-container"]}>
+          <div>
+            <Fade in={false} timeout={{ enter: 300, exit: 1000 }}>
+              <h1>Header</h1>
+            </Fade>
+          </div>
           {buttons.map((button) => (
             <IconButton
               key={button.tooltip}
@@ -150,7 +160,8 @@ export const AppointmentTableExpandedRowContent = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void,
 ) => {
   return (
     <Table
@@ -163,7 +174,8 @@ export const AppointmentTableExpandedRowContent = (
         setPopupData,
         onRemoveDonor,
         onDeleteAppointment,
-        showOnlyRecentChanges
+        showOnlyRecentChanges,
+        popupFlashMessageTrigger
       )}
       tableIndex={1}
       hasColumnHeaders
