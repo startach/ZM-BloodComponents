@@ -21,9 +21,11 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
     status: 400,
   };
 
+  const wetRun = request.query?.wetRun === "true";
+
   switch (request.query?.jobName) {
     case Jobs.DbMigrationAddAppointmentStatus:
-      response = await DbMigrationAddAppointmentStatus();
+      response = await migrateAppointmentStatus(wetRun);
       break;
     default:
       res.send(404);
@@ -32,7 +34,3 @@ export const jobHandler = functions.https.onRequest(async (request, res) => {
 
   res.status(response.status).send(response.message);
 });
-
-const DbMigrationAddAppointmentStatus = async (): Promise<JobResponse> => {
-  return migrateAppointmentStatus();
-};
