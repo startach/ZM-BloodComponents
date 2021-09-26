@@ -132,7 +132,6 @@ export async function getAvailableAppointments() {
 }
 
 export async function getAllAppointments() {
-  const setDate = new Date();
   const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
