@@ -198,7 +198,7 @@ export const MainAppointmentTableColumns = (
   {
     label: "",
     cellRenderer: ({ appointments }) => {
-      var visable =
+      const visable =
         !showOnlyRecentChanges &&
         appointments.find(
           (a) => a.recentChangeType || a.recentChangeType === 0
