@@ -58,7 +58,7 @@ export default function DialogBase({
             <Text>{titleFirst}</Text>
             <Text>{titleSecond}</Text>
           </div>
-          <hr className={styles.hr}></hr>
+          <hr className={styles.popup_hr}></hr>
           <DialogActions>
             {!isNotificationPopup && (
               <Button
