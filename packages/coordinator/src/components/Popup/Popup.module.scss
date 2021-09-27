@@ -24,8 +24,15 @@ hr {
   color: #fff !important;
 }
 
+.flashMessageContainer {
+  z-index: 100;
+  position: absolute;
+  bottom: 50px;
+  left: 5%;
+}
+
 .flashMessage {
-  background: #008CBA;
+  background: #008cba;
   padding: 15px;
   border: none;
   border-radius: 15px;

@@ -11,14 +11,7 @@ export default function PopupFlashMessage({
   showFlash,
 }: PopupFlashMessageProps) {
   return (
-    <div
-      style={{
-        zIndex: 100,
-        position: "absolute",
-        bottom: "50px",
-        left: "5%",
-      }}
-    >
+    <div className={styles.flashMessageContainer}>
       <Fade in={showFlash} timeout={{ enter: 300, exit: 800 }}>
         <div className={styles.flashMessage}>{message}</div>
       </Fade>
