@@ -1,15 +1,14 @@
 import { Fade } from "@material-ui/core";
+import styles from "./Popup.module.scss";
 
 type PopupFlashMessageProps = {
   message: string;
   showFlash: boolean;
-  styleType?: string;
 };
 
 export default function PopupFlashMessage({
   message,
   showFlash,
-  styleType,
 }: PopupFlashMessageProps) {
   return (
     <div
@@ -17,22 +16,11 @@ export default function PopupFlashMessage({
         zIndex: 100,
         position: "absolute",
         bottom: "50px",
-        left: "100px",
+        left: "5%",
       }}
     >
       <Fade in={showFlash} timeout={{ enter: 300, exit: 800 }}>
-        <div
-          style={{
-            backgroundColor: "#008CBA",
-            padding: "15px",
-            border: "none",
-            borderRadius: "15px",
-            fontSize: "24px",
-            color: "white",
-          }}
-        >
-          {message}
-        </div>
+        <div className={styles.flashMessage}>{message}</div>
       </Fade>
     </div>
   );
