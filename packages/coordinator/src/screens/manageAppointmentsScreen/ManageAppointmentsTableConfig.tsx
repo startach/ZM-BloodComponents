@@ -100,7 +100,7 @@ const GetExpandedColumns = (
             navigator.clipboard.writeText(copyString);
 
             // flash a message to user
-            popupFlashMessageTrigger("הפרטים הועתקו");
+            popupFlashMessageTrigger("הפרטים הועתקו בהצלחה");
           },
         });
 
