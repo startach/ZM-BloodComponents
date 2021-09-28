@@ -24,24 +24,17 @@ export async function getAppointmentsByIds(
   );
 
   const snapshots = await Promise.all(promisesArray);
-  const docs = _.flatMap(snapshots, (s) => s.docs);
-  return _.map(docs, (a) => ({
-    ...a.data(),
-    id: a.id,
-  }));
+  return _.flatMap(snapshots, (s) => toDbAppointments(s));
 }
 
 export async function getAppointmentsCreatedByUserId(userId: string) {
-  const appointments = await admin
+  const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("creatorUserId", "==", userId)
-    .get();
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as DbAppointment[];
+  return toDbAppointments(appointments);
 }
 
 export async function getAppointmentsByDonorIdInTime(
@@ -81,10 +74,7 @@ export async function getAppointments(
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function getAppointmentsByHospital(
@@ -108,10 +98,7 @@ export async function getAppointmentsByHospital(
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function getAvailableAppointments() {
@@ -125,10 +112,7 @@ export async function getAvailableAppointments() {
     .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function getAllAppointments() {
@@ -137,10 +121,7 @@ export async function getAllAppointments() {
     .collection(Collections.APPOINTMENTS)
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
@@ -184,4 +165,13 @@ export function completeArrivedFromDbAppointment(
   appointment.lastChangeType = BookingChange.COMPLETED;
   appointment.status = AppointmentStatus.COMPLETED;
   return appointment;
+}
+
+function toDbAppointments(
+  appointments: FirebaseFirestore.QuerySnapshot<DbAppointment>
+): DbAppointment[] {
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 }
