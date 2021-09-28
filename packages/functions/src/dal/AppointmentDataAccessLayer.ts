@@ -131,6 +131,33 @@ export async function getAvailableAppointments() {
   }));
 }
 
+export async function getAppointmentsByStatus(
+  status: AppointmentStatus,
+  fromTime?: Date,
+  toTime?: Date
+) {
+  let request = admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("status", "==", status);
+
+  if (fromTime) {
+    request = request.where("donationStartTime", ">=", fromTime);
+  }
+  if (toTime) {
+    request = request.where("donationStartTime", "<=", toTime);
+  }
+  request = request.orderBy("donationStartTime");
+
+  const appointments =
+    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+}
+
 export async function getAllAppointments() {
   const appointments = (await admin
     .firestore()
