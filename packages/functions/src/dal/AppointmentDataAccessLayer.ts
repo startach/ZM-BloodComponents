@@ -138,10 +138,7 @@ export async function getAppointmentsByStatus(
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments)
 }
 
 export async function getAllAppointments() {
