@@ -1,11 +1,11 @@
 import {
   getAppointmentsByIds,
-  removeDonorFromDbAppointment,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
@@ -34,7 +34,8 @@ export default async function (
     console.error("Error notifying on cancelled appointment", appointment.id, e)
   );
 
-  const updatedAppointment = removeDonorFromDbAppointment(appointment);
+  const updatedAppointment =
+    DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
 
   await setAppointment(updatedAppointment);
 }

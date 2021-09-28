@@ -1,9 +1,9 @@
 import {
   getAppointmentsByIds,
-  completeArrivedFromDbAppointment,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -32,7 +32,8 @@ async function completeAppointment(appointmentId: string, donorId: string) {
 
   // TODO add notification
 
-  const updatedAppointment = completeArrivedFromDbAppointment(appointment);
+  const updatedAppointment =
+    DbAppointmentUtils.completeArrivedFromDbAppointment(appointment);
 
   return await setAppointment(updatedAppointment);
 }
