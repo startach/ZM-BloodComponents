@@ -23,22 +23,21 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
     );
   });
 
-export const ConfirmationReminderOnNextDay =
-  functions// Run every day at 11 AM Israel Time
-  //https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  .pubsub
-    .schedule("* 11 * * *")
-    .timeZone("Asia/Jerusalem")
-    .onRun(() => {
-      const midnightOfToday = new Date().setHours(0, 0, 0, 0);
-      const oneDayInMillis = 1000 * 60 * 60 * 24;
-      const midnightOfYesterday = midnightOfToday - oneDayInMillis;
+// Run every day at 11 AM Israel Time
+//https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+export const ConfirmationReminderOnNextDay = functions.pubsub
+  .schedule("* 11 * * *")
+  .timeZone("Asia/Jerusalem")
+  .onRun(() => {
+    const midnightOfToday = new Date().setHours(0, 0, 0, 0);
+    const oneDayInMillis = 1000 * 60 * 60 * 24;
+    const midnightOfYesterday = midnightOfToday - oneDayInMillis;
 
-      SendConfirmationReminders(
-        new Date(midnightOfYesterday),
-        new Date(midnightOfToday)
-      );
-    });
+    SendConfirmationReminders(
+      new Date(midnightOfYesterday),
+      new Date(midnightOfToday)
+    );
+  });
 
 export const SendConfirmationReminders = async (from: Date, to: Date) => {
   const appointments = await getAppointmentsByStatus(
