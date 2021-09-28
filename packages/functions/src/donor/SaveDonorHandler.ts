@@ -19,6 +19,7 @@ export default async function (
     phone: request.phone,
     bloodType: request.bloodType,
     notificationSettings: request.notificationSettings,
+    completedDonationsCount: 0,
 
     //TODO add group Id
     groupId: "",
