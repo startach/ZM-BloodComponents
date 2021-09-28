@@ -56,10 +56,8 @@ export async function sendEmailToDonor(
     templateId: templateId,
     dynamicTemplateData: data,
   };
-  if (
-    type == NotificationToDonor.APPOINTMENT_BOOKED ||
-    type == NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR
-  ) {
+
+  if (shouldAddCalendarEventToDonor(type)) {
     addCalendarEventToDonor(msg, type, data, donor.email);
   }
 
@@ -113,6 +111,16 @@ export async function sendEmailToCoordinators(
   }));
 
   await sgMail.send(messages);
+}
+
+function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
+  switch (type) {
+    case NotificationToDonor.APPOINTMENT_BOOKED:
+    case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
+      return true;
+    default:
+      return false;
+  }
 }
 
 function addCalendarEventToDonor(

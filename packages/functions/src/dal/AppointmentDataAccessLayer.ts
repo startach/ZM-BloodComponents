@@ -89,19 +89,21 @@ export async function getAppointments(
 
 export async function getAppointmentsByHospital(
   hospital: Hospital,
-  fromTime?: Date,
-  toTime?: Date
+  options: {
+    fromTime?: Date;
+    toTime?: Date;
+  }
 ): Promise<DbAppointment[]> {
   let request = admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("hospital", "==", hospital);
 
-  if (fromTime) {
-    request = request.where("donationStartTime", ">=", fromTime);
+  if (options.fromTime) {
+    request = request.where("donationStartTime", ">=", options.fromTime);
   }
-  if (toTime) {
-    request = request.where("donationStartTime", "<=", toTime);
+  if (options.toTime) {
+    request = request.where("donationStartTime", "<=", options.toTime);
   }
   request = request.orderBy("donationStartTime");
 

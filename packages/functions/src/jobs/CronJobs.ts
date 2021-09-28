@@ -55,7 +55,7 @@ export const SendConfirmationReminders = async (from: Date, to: Date) => {
       (donor) => donor.id == appointment.donorId
     );
 
-    if (donor == undefined) {
+    if (!donor) {
       console.error("Donor not found for donation: " + appointment.id);
       return;
     }
