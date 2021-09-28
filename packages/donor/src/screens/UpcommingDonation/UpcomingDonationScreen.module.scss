@@ -106,3 +106,12 @@
   height: 14px;
   margin-right: 4px;
 }
+
+.menuItemCalendar {
+  padding: 10px;
+  direction: ltr;
+}
+
+.menuItemCalendar > a {
+  all: unset;
+}

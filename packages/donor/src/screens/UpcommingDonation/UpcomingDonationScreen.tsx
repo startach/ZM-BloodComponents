@@ -15,6 +15,10 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
+import makeUrls, { TCalendarEvent } from "add-event-to-calendar";
+import ICalendarLink from "react-icalendar-link";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -22,12 +26,59 @@ export interface UpcomingDonationScreenProps {
   onCancel: () => Promise<void>;
 }
 
+interface CalendarType {
+  type: string;
+  label: string;
+}
+
+const calendarTypeList: CalendarType[] = [
+  { type: "google", label: "Google" },
+  { type: "ics", label: "Apple" },
+];
+
 export default function UpcomingDonationScreen({
   fullName,
   onCancel,
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
-  const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
+  const eventDateStart = new Date(bookedAppointment.donationStartTimeMillis);
+  const eventDateEnd = new Date(eventDateStart.getTime() + 90*60000);
+  const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(bookedAppointment.hospital)}`
+  const eventDescription = `זכרון מנחם - ${eventLocation} - ${eventDateStart.toLocaleDateString("he-He", DateUtils.ShortDateFormat)}`
+
+  const getGoogleCalendarEvent = (): TCalendarEvent => ({
+    name: `תרומת טרומבוציטים`,
+    location: eventLocation,
+    details: eventDescription,
+    startsAt: eventDateStart.toString(),
+    endsAt: eventDateEnd.toString(),
+  });
+
+  const getAppleCalendarEvent = (): any => ({
+    title: "תרומת טרומבוציטים",
+    location: eventLocation,
+    description: eventDescription,
+    startTime: eventDateStart.toString(),
+    endTime: eventDateEnd.toString(),
+  });
+
+  const [anchorEl, setAnchorEl] = React.useState<Boolean>(false);
+
+  const handleClick = () => {
+    setAnchorEl(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(false);
+  };
+
+  const addToCalendarByType = (calendar: CalendarType) => {
+    const calendarEvents: any = makeUrls(getGoogleCalendarEvent());
+    const url = calendarEvents[calendar.type];
+    window.open(url, "_blank");
+    handleClose();
+  };
+
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -61,11 +112,29 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {donationDate.toLocaleDateString(
+                {eventDateStart.toLocaleDateString(
                   "he-He",
                   DateUtils.ShortDateFormat
                 )}
               </div>
+              <div className={styles.link} onClick={handleClick}>
+                הוספה ליומן
+              </div>
+              <Menu
+                id="simple-menu"
+                // anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {calendarTypeList.map((calendar, index) => (
+                  <MenuItem onClick={() => addToCalendarByType(calendar)} className={styles.menuItemCalendar}>
+                    {calendar.type === 'ics' ? <ICalendarLink event={getAppleCalendarEvent()}>
+                      {calendar.label}
+                    </ICalendarLink> : calendar.label}
+                  </MenuItem>
+                ))}
+              </Menu>
             </div>
           </div>
         </div>

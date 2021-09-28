@@ -11,10 +11,12 @@
     "@capacitor/keyboard": "*",
     "@material-ui/icons": "^4.11.2",
     "@zm-blood-components/common": "^1.0.0",
+    "add-event-to-calendar": "^1.0.7",
     "dayjs": "^1.10.4",
     "jss-rtl": "^0.3.0",
     "mobx": "^6.3.2",
     "mobx-react-lite": "^3.2.0",
+    "react-icalendar-link": "^3.0.1",
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
