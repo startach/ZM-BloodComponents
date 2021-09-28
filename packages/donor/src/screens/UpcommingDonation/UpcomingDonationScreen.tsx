@@ -42,9 +42,14 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
   const eventDateStart = new Date(bookedAppointment.donationStartTimeMillis);
-  const eventDateEnd = new Date(eventDateStart.getTime() + 90*60000);
-  const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(bookedAppointment.hospital)}`
-  const eventDescription = `זכרון מנחם - ${eventLocation} - ${eventDateStart.toLocaleDateString("he-He", DateUtils.ShortDateFormat)}`
+  const eventDateEnd = new Date(eventDateStart.getTime() + 90 * 60000);
+  const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(
+    bookedAppointment.hospital
+  )}`;
+  const eventDescription = `זכרון מנחם - ${eventLocation} - ${eventDateStart.toLocaleDateString(
+    "he-He",
+    DateUtils.ShortDateFormat
+  )}`;
 
   const getGoogleCalendarEvent = (): TCalendarEvent => ({
     name: `תרומת טרומבוציטים`,
@@ -128,10 +133,17 @@ export default function UpcomingDonationScreen({
                 onClose={handleClose}
               >
                 {calendarTypeList.map((calendar, index) => (
-                  <MenuItem onClick={() => addToCalendarByType(calendar)} className={styles.menuItemCalendar}>
-                    {calendar.type === 'ics' ? <ICalendarLink event={getAppleCalendarEvent()}>
-                      {calendar.label}
-                    </ICalendarLink> : calendar.label}
+                  <MenuItem
+                    onClick={() => addToCalendarByType(calendar)}
+                    className={styles.menuItemCalendar}
+                  >
+                    {calendar.type === "ics" ? (
+                      <ICalendarLink event={getAppleCalendarEvent()}>
+                        {calendar.label}
+                      </ICalendarLink>
+                    ) : (
+                      calendar.label
+                    )}
                   </MenuItem>
                 ))}
               </Menu>
