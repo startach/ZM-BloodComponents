@@ -132,10 +132,11 @@ export default function UpcomingDonationScreen({
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {calendarTypeList.map((calendar, index) => (
+                {calendarTypeList.map((calendar) => (
                   <MenuItem
                     onClick={() => addToCalendarByType(calendar)}
                     className={styles.menuItemCalendar}
+                    key={calendar.type}
                   >
                     {calendar.type === "ics" ? (
                       <ICalendarLink event={getAppleCalendarEvent()}>
