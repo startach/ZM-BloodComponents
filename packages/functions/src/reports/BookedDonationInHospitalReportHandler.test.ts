@@ -164,7 +164,6 @@ async function createDonorUser() {
     bloodType: BloodType.AB_MINUS,
     groupId: "",
     testUser: true,
-    completedDonationsCount: 0,
   };
 
   await setDonor(newDonorUser);
