@@ -1,6 +1,7 @@
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
@@ -37,7 +38,7 @@ export default async function (
     await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
   } else {
     const updatedAppointment =
-      AppointmentDataAccessLayer.removeDonorFromDbAppointment(appointment);
+      DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
     await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
   }
 

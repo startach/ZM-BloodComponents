@@ -143,30 +143,6 @@ export function setAppointment(appointment: DbAppointment) {
     .set(appointment);
 }
 
-export function removeDonorFromDbAppointment(
-  appointment: DbAppointment
-): DbAppointment {
-  const { donorId, bookingTime, confirmationTime, ...otherProperties } =
-    appointment;
-  return {
-    ...otherProperties,
-    donorId: "",
-    lastChangeTime: admin.firestore.Timestamp.now(),
-    lastChangeType: BookingChange.CANCELLED,
-    status: AppointmentStatus.AVAILABLE,
-  };
-}
-
-export function completeArrivedFromDbAppointment(
-  appointment: DbAppointment
-): DbAppointment {
-  appointment.donationDoneTimeMillis = admin.firestore.Timestamp.now();
-  appointment.lastChangeTime = admin.firestore.Timestamp.now();
-  appointment.lastChangeType = BookingChange.COMPLETED;
-  appointment.status = AppointmentStatus.COMPLETED;
-  return appointment;
-}
-
 function toDbAppointments(
   appointments: FirebaseFirestore.QuerySnapshot<DbAppointment>
 ): DbAppointment[] {
