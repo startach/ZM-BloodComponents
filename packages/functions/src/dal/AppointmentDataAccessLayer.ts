@@ -2,7 +2,6 @@ import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
   AppointmentStatus,
-  BookingChange,
   Collections,
   DbAppointment,
   Hospital,
