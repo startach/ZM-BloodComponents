@@ -19,7 +19,6 @@ import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";
-import { Fade } from "@material-ui/core";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
@@ -135,11 +134,6 @@ const GetExpandedColumns = (
 
       return (
         <div className={Styles["icons-container"]}>
-          <div>
-            <Fade in={false} timeout={{ enter: 300, exit: 1000 }}>
-              <h1>Header</h1>
-            </Fade>
-          </div>
           {buttons.map((button) => (
             <IconButton
               key={button.tooltip}
