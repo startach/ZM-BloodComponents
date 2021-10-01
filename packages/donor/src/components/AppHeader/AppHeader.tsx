@@ -22,7 +22,7 @@ import { ReactComponent as SimpleWhatsapp } from "../../assets/icons/simple-what
 import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.svg";
 import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
-import {signOut} from '../../screens/authentication/FirebaseAuthentication';
+import { signOut } from "../../screens/authentication/FirebaseAuthentication";
 
 export interface AppHeaderProps {
   title?: string;
