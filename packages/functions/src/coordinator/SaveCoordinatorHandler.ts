@@ -1,9 +1,6 @@
-import {
-  CoordinatorRole,
-  DbCoordinator,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { CoordinatorRole, FunctionsApi } from "@zm-blood-components/common";
 import { getCoordinator, setAdmin } from "../dal/AdminDataAccessLayer";
+import { DbCoordinator } from "../function-types";
 
 export default async function (
   request: FunctionsApi.SaveCoordinatorRequest,
@@ -11,7 +8,10 @@ export default async function (
 ) {
   await validateUserCanSetRoleToAnotherUser(callerId);
 
-  await setAdmin(request.coordinator);
+  await setAdmin({
+    id: callerId,
+    ...request.coordinator,
+  });
 }
 
 async function validateUserCanSetRoleToAnotherUser(

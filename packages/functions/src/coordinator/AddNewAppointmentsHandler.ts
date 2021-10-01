@@ -1,11 +1,11 @@
 import {
   AppointmentStatus,
   Collections,
-  DbAppointment,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
+import { DbAppointment } from "../function-types";
 
 export default async function (
   request: FunctionsApi.AddAppointmentsRequest,

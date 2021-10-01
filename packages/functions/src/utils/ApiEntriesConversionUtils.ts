@@ -1,11 +1,10 @@
 import {
   BookingChange,
-  DbAppointment,
-  DbDonor,
   Donor,
   DonorNotificationSettings,
   FunctionsApi,
 } from "@zm-blood-components/common";
+import { DbAppointment, DbDonor } from "../function-types";
 
 export function dbDonorToDonor(dbDonor: DbDonor): Donor {
   const notificationSettings: DonorNotificationSettings =

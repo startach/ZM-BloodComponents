@@ -4,7 +4,7 @@ import { createEvent, EventAttributes, EventStatus } from "ics";
 import { AppointmentNotificationData } from "./AppointmentNotificationData";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import { MailDataRequired } from "@sendgrid/helpers/classes/mail";
-import { DbDonor } from "@zm-blood-components/common";
+import { DbDonor } from "../function-types";
 
 const FROM_NAME = "בנק מרכיבי הדם של זכרון מנחם";
 const FROM_EMAIL = "no-reply@zichron.org";

@@ -2,7 +2,6 @@ import {
   BloodType,
   BookingChange,
   Coordinator,
-  DbCoordinator,
   Donor,
   Hospital,
   BookedDonationWithDonorDetails,
@@ -142,7 +141,7 @@ export interface DeleteAppointmentRequest {
 
 export const SaveCoordinatorFunctionName = "saveCoordinator";
 export interface SaveCoordinatorRequest {
-  coordinator: DbCoordinator;
+  coordinator: Coordinator;
 }
 
 export const GetCoordinatorAppointmentsFunctionName =

@@ -1,10 +1,10 @@
-import { DbAppointment, DbDonor } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "./AppointmentNotificationData";
 import { getStaffRecipients } from "./StaffEmailRecipientsCalculator";
 import {
   NotificationToCoordinator,
   sendEmailToCoordinators,
 } from "./NotificationSender";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const PERIOD_48_HOURS_IN_MILLIS = 48 * 60 * 60 * 1000;
 

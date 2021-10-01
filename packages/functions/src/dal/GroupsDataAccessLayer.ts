@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin";
-import { Collections, DbGroup } from "@zm-blood-components/common";
+import { Collections } from "@zm-blood-components/common";
+import { DbGroup } from "../function-types";
 
 export async function createGroup(
   name: string,

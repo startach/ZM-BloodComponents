@@ -1,10 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {
-  DbAppointment,
-  DbDonor,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -23,6 +18,7 @@ import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNot
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbAppointment, DbDonor } from "../function-types";
 
 jest.mock("../notifications/CancelAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnCancelAppointment);

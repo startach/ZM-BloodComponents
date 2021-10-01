@@ -1,9 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
   BloodType,
@@ -18,6 +15,7 @@ import {
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]

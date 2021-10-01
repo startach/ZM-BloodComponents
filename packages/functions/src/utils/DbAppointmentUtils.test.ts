@@ -1,12 +1,11 @@
 import {
   AppointmentStatus,
   BookingChange,
-  DbAppointment,
   Hospital,
 } from "@zm-blood-components/common";
 import admin from "firebase-admin";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import { completeArrivedFromDbAppointment } from "../utils/DbAppointmentUtils";
+import { DbAppointment } from "../function-types";
 
 describe("DbAppointment Utils", () => {
   test("removeDonorFromDbAppointment", () => {

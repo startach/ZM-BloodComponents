@@ -1,6 +1,7 @@
 import { getStaffRecipientsInternal } from "./StaffEmailRecipientsCalculator";
 import { sampleUser } from "../testUtils/TestSamples";
-import { DbDonor, Hospital } from "@zm-blood-components/common";
+import { Hospital } from "@zm-blood-components/common";
+import { DbDonor } from "../function-types";
 
 describe("Staff Email Recipients Calculator", () => {
   const creatorUser: DbDonor = {
