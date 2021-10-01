@@ -1,12 +1,11 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export function signOut() {
-  return firebase.auth().signOut();
+  return getAuth().signOut();
 }
 
 export function getEmail() {
-  return firebase.auth().currentUser?.email || undefined;
+  return getAuth().currentUser?.email || undefined;
 }
 
 export function signInWithEmail(
@@ -15,10 +14,8 @@ export function signInWithEmail(
   emailError: (error: string) => void,
   passwordError: (error: string) => void
 ) {
-  return firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error: firebase.auth.Error) => {
+  return signInWithEmailAndPassword(getAuth(), email, password).catch(
+    (error) => {
       switch (error.code) {
         case "auth/invalid-email":
           emailError("כתובת הדואר אינה תקינה");
@@ -49,5 +46,6 @@ export function signInWithEmail(
           console.warn("Sing in error code without translation: " + error.code);
           return;
       }
-    });
+    }
+  );
 }

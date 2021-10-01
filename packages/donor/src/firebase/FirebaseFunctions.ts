@@ -1,16 +1,21 @@
-import firebase from "firebase/app";
-import "firebase/functions";
 import {
   BloodType,
   BookedAppointment,
   Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
+import { getAuth } from "firebase/auth";
+import { getFunctions, httpsCallable } from "firebase/functions";
+
+export function getCallableFunction(functionName: string) {
+  const functions = getFunctions();
+  return httpsCallable(functions, functionName);
+}
 
 export function getAvailableAppointments() {
-  const getAvailableAppointmentsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
+  const getAvailableAppointmentsFunction = getCallableFunction(
+    FunctionsApi.GetAvailableAppointmentsFunctionName
+  );
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
     return response.availableAppointments;
@@ -18,9 +23,9 @@ export function getAvailableAppointments() {
 }
 
 export async function bookAppointment(appointmentIds: string[]) {
-  const bookAppointmentFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.BookAppointmentFunctionName);
+  const bookAppointmentFunction = getCallableFunction(
+    FunctionsApi.BookAppointmentFunctionName
+  );
 
   const request: FunctionsApi.BookAppointmentRequest = {
     appointmentIds,
@@ -32,9 +37,9 @@ export async function bookAppointment(appointmentIds: string[]) {
 
 // Remove donor from appointment
 export async function cancelAppointment(appointmentId: string) {
-  const cancelAppointmentFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.CancelAppointmentFunctionName);
+  const cancelAppointmentFunction = getCallableFunction(
+    FunctionsApi.CancelAppointmentFunctionName
+  );
 
   const request: FunctionsApi.CancelAppointmentRequest = {
     appointmentId,
@@ -51,16 +56,16 @@ export async function saveDonor(
   bloodType: BloodType,
   enableEmailNotifications: boolean
 ): Promise<Donor> {
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
     throw Error("Unauthorized to update user");
   }
 
-  const saveDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.SaveDonorFunctionName);
+  const saveDonorFunction = getCallableFunction(
+    FunctionsApi.SaveDonorFunctionName
+  );
 
   const request: FunctionsApi.SaveDonorRequest = {
     id: currentUser.uid,
@@ -84,16 +89,16 @@ export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
 }> {
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
     return {};
   }
 
-  const getDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetDonorAppointmentsFunctionName);
+  const getDonorFunction = getCallableFunction(
+    FunctionsApi.GetDonorAppointmentsFunctionName
+  );
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
