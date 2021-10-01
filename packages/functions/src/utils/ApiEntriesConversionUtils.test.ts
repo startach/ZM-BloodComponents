@@ -1,9 +1,7 @@
 import {
-  DbAppointment,
   FunctionsApi,
   Hospital,
   BookingChange,
-  DbDonor,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import {
@@ -14,6 +12,7 @@ import {
   getRecentChangeType,
 } from "./ApiEntriesConversionUtils";
 import { sampleUser } from "../testUtils/TestSamples";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const DB_APPOINTMENT_WITHOUT_ID: DbAppointment = {
   donorId: "CBA",

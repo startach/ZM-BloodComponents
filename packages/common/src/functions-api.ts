@@ -139,11 +139,6 @@ export interface DeleteAppointmentRequest {
   onlyRemoveDonor: boolean;
 }
 
-export const SaveCoordinatorFunctionName = "saveCoordinator";
-export interface SaveCoordinatorRequest {
-  coordinator: Coordinator;
-}
-
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {

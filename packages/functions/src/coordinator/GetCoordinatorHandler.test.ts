@@ -1,7 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
   FunctionsApi,
   Hospital,
   HospitalUtils,
@@ -10,6 +9,7 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { saveTestDonor } from "../testUtils/TestSamples";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { DbCoordinator } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorFunctionName]
