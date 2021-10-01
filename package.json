@@ -20,7 +20,7 @@
     "start-donor": "yarn workspace @zm-blood-components/donor start",
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",
     "test-donor": "yarn workspace @zm-blood-components/donor test",
-    "deploy-donor-qa": "firebase deploy --only hosting:donor -P staging",
+    "deploy-donor-qa": "yarn workspace @zm-blood-components/donor build && firebase deploy --only hosting:donor -P staging",
     "-----------------COORDINATOR---------------------": "",
     "start-coordinator": "yarn workspace @zm-blood-components/coordinator start",
     "storybook-coordinator": "yarn workspace @zm-blood-components/coordinator storybook",
