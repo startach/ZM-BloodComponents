@@ -13,7 +13,7 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
   .onRun(async () => {
     const topOfThisHourInMillis = new Date().setMinutes(0, 0, 0);
     const oneHourInMillis = 1000 * 60 * 60;
-    // Offset by 1 ms, to avoid catching XX:00 twice
+    //A job triggered at 09:00 will send emails to all appointments with donationStartTime between 8:00:00.001 to 9:00
     const topOfPreviousHourInMillis =
       topOfThisHourInMillis - oneHourInMillis + 1;
 
@@ -22,6 +22,7 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
       new Date(topOfThisHourInMillis)
     );
   });
+  
 
 // Run every day at 11 AM Israel Time
 //https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -31,7 +32,8 @@ export const ConfirmationReminderOnNextDay = functions.pubsub
   .onRun(() => {
     const midnightOfToday = new Date().setHours(0, 0, 0, 0);
     const oneDayInMillis = 1000 * 60 * 60 * 24;
-    const midnightOfYesterday = midnightOfToday - oneDayInMillis;
+    //A job triggered at 00:00 will send emails to all appointments with donationStartTime between 00:00:00.001 (yesterday) to 00:00
+    const midnightOfYesterday = midnightOfToday - oneDayInMillis + 1;
 
     SendConfirmationReminders(
       new Date(midnightOfYesterday),
@@ -46,8 +48,10 @@ export const SendConfirmationReminders = async (from: Date, to: Date) => {
     to
   );
 
+  const donorIds = appointments.map((appointment) => appointment.donorId);
+
   const donorsInAppointments = await getDonors(
-    appointments.map((appointment) => appointment.donorId)
+    donorIds.filter((id, index) => donorIds.indexOf(id) === index)
   );
 
   appointments.forEach((appointment) => {
