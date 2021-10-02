@@ -1,10 +1,11 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { DbDonor, FunctionsApi } from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
+import { DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetDonorFunctionName]

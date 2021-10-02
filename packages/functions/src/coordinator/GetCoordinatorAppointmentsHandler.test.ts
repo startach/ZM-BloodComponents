@@ -1,9 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -19,6 +16,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]

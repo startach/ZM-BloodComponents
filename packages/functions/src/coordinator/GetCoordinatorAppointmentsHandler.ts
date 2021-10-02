@@ -1,7 +1,5 @@
 import {
   CoordinatorRole,
-  DbCoordinator,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -13,6 +11,7 @@ import {
 import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
+import { DbCoordinator, DbDonor } from "../function-types";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,

@@ -2,8 +2,6 @@ import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   AppointmentStatus,
   BookingChange,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -17,6 +15,7 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CompleteAppointmentFunctionName]

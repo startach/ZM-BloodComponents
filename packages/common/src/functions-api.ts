@@ -2,7 +2,6 @@ import {
   BloodType,
   BookingChange,
   Coordinator,
-  DbCoordinator,
   Donor,
   Hospital,
   BookedDonationWithDonorDetails,
@@ -138,11 +137,6 @@ export interface DeleteAppointmentRequest {
   // If true, will keep the appointment but remove the donor from it.
   // If false, will delete the appointment completely.
   onlyRemoveDonor: boolean;
-}
-
-export const SaveCoordinatorFunctionName = "saveCoordinator";
-export interface SaveCoordinatorRequest {
-  coordinator: DbCoordinator;
 }
 
 export const GetCoordinatorAppointmentsFunctionName =

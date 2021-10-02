@@ -1,9 +1,6 @@
-import {
-  AppointmentStatus,
-  BookingChange,
-  DbAppointment,
-} from "@zm-blood-components/common";
+import { AppointmentStatus, BookingChange } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
+import { DbAppointment } from "../function-types";
 
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment

@@ -1,8 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   BookingChange,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -20,6 +18,7 @@ import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotif
 import { mocked } from "ts-jest/utils";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.BookAppointmentFunctionName]

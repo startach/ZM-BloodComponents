@@ -1,4 +1,3 @@
-import { DbAppointment, DbDonor } from "@zm-blood-components/common";
 import {
   NotificationToCoordinator,
   NotificationToDonor,
@@ -7,6 +6,7 @@ import {
 } from "./NotificationSender";
 import { getAppointmentNotificationData } from "./AppointmentNotificationData";
 import { getStaffRecipients } from "./StaffEmailRecipientsCalculator";
+import { DbAppointment, DbDonor } from "../function-types";
 
 export async function notifyOnAppointmentBooked(
   bookedAppointment: DbAppointment,

@@ -1,9 +1,6 @@
-import {
-  CoordinatorRole,
-  DbCoordinator,
-  Hospital,
-} from "@zm-blood-components/common";
+import { CoordinatorRole, Hospital } from "@zm-blood-components/common";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
+import { DbCoordinator } from "../function-types";
 
 export async function validateAppointmentEditPermissions(
   userId: string,
