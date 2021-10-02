@@ -1,5 +1,3 @@
-import firebase from "firebase/app";
-import "firebase/auth";
 import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import { useHistory } from "react-router-dom";
@@ -24,6 +22,7 @@ import { ReactComponent as SimpleWhatsapp } from "../../assets/icons/simple-what
 import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.svg";
 import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
+import { signOut } from "../../screens/authentication/FirebaseAuthentication";
 
 export interface AppHeaderProps {
   title?: string;
@@ -133,7 +132,7 @@ export default function AppHeader({
             <MenuItem
               title={"התנתקות"}
               onClick={() => {
-                firebase.auth().signOut();
+                signOut();
                 setShowSideBar(false);
               }}
               icon={<FeatherLogOut />}
