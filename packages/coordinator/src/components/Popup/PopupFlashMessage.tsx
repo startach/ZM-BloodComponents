@@ -1,4 +1,5 @@
 import { Fade } from "@material-ui/core";
+import { useEffect } from "react";
 import styles from "./Popup.module.scss";
 
 type PopupFlashMessageProps = {
@@ -12,11 +13,13 @@ export default function PopupFlashMessage({
   showFlash,
   hide,
 }: PopupFlashMessageProps) {
-  if (showFlash) {
-    setTimeout(() => {
-      hide();
-    }, 700);
-  }
+  useEffect(() => {
+    if (showFlash) {
+      setTimeout(() => {
+        hide();
+      }, 700);
+    }
+  }, [showFlash, hide]);
 
   return (
     <div className={styles.flashMessageContainer}>

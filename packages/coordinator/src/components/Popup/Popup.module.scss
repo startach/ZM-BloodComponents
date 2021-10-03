@@ -32,10 +32,10 @@
 }
 
 .flashMessage {
-  background: #555555;
+  background: var(--color-mid-grey);
   padding: 15px;
   border: none;
   border-radius: 10px;
   font-size: 18px;
-  color: white;
+  color: var(--color-white);
 }
