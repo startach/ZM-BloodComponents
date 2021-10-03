@@ -81,7 +81,7 @@ function appointmentsToAppointmentSlot(
       const donor = getDonor(donorsInAppointments, a.donorId);
 
       return {
-        appointmentTimeMilis: a.donationStartTimeMillis,
+        donationStartTimeMillis: a.donationStartTimeMillis,
         appointmentId: a.id,
         booked: !!a.donorId,
         donorName: donor ? `${donor.firstName} ${donor.lastName}` : undefined,
