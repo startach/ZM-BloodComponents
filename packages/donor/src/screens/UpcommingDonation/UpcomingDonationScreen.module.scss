@@ -94,6 +94,11 @@
   margin-bottom: 25px;
 }
 
+.link > a {
+  all: unset;
+  color: var(--donor-link) !important;
+}
+
 .cancelButton {
   display: flex;
   flex-direction: row;
@@ -105,13 +110,4 @@
 .cancelIcon {
   height: 14px;
   margin-right: 4px;
-}
-
-.menuItemCalendar {
-  padding: 10px;
-  direction: ltr;
-}
-
-.menuItemCalendar > a {
-  all: unset;
 }

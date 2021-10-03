@@ -5,6 +5,7 @@ import {
   Hospital,
   LinkUtils,
   LocaleUtils,
+  DeviceUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
@@ -17,24 +18,13 @@ import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import makeUrls, { TCalendarEvent } from "add-event-to-calendar";
 import ICalendarLink from "react-icalendar-link";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 
+const EVENT_TIME = 90;
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
   onCancel: () => Promise<void>;
 }
-
-interface CalendarType {
-  type: string;
-  label: string;
-}
-
-const calendarTypeList: CalendarType[] = [
-  { type: "google", label: "Google" },
-  { type: "ics", label: "Apple" },
-];
 
 export default function UpcomingDonationScreen({
   fullName,
@@ -42,7 +32,7 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
   const eventDateStart = new Date(bookedAppointment.donationStartTimeMillis);
-  const eventDateEnd = new Date(eventDateStart.getTime() + 90 * 60000);
+  const eventDateEnd = new Date(eventDateStart.getTime() + EVENT_TIME * 60000);
   const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(
     bookedAppointment.hospital
   )}`;
@@ -67,21 +57,10 @@ export default function UpcomingDonationScreen({
     endTime: eventDateEnd.toString(),
   });
 
-  const [anchorEl, setAnchorEl] = React.useState<Boolean>(false);
-
-  const handleClick = () => {
-    setAnchorEl(true);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(false);
-  };
-
-  const addToCalendarByType = (calendar: CalendarType) => {
+  const addToGoogleCalendar = () => {
     const calendarEvents: any = makeUrls(getGoogleCalendarEvent());
-    const url = calendarEvents[calendar.type];
+    const url = calendarEvents["google"];
     window.open(url, "_blank");
-    handleClose();
   };
 
   return (
@@ -122,32 +101,17 @@ export default function UpcomingDonationScreen({
                   DateUtils.ShortDateFormat
                 )}
               </div>
-              <div className={styles.link} onClick={handleClick}>
-                הוספה ליומן
-              </div>
-              <Menu
-                id="simple-menu"
-                // anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                {calendarTypeList.map((calendar) => (
-                  <MenuItem
-                    onClick={() => addToCalendarByType(calendar)}
-                    className={styles.menuItemCalendar}
-                    key={calendar.type}
-                  >
-                    {calendar.type === "ics" ? (
-                      <ICalendarLink event={getAppleCalendarEvent()}>
-                        {calendar.label}
-                      </ICalendarLink>
-                    ) : (
-                      calendar.label
-                    )}
-                  </MenuItem>
-                ))}
-              </Menu>
+              {DeviceUtils.getMobileOperatingSystem() === "android" ? (
+                <div className={styles.link} onClick={addToGoogleCalendar}>
+                  הוספה ליומן
+                </div>
+              ) : (
+                <div className={styles.link}>
+                  <ICalendarLink event={getAppleCalendarEvent()}>
+                    הוספה ליומן
+                  </ICalendarLink>
+                </div>
+              )}
             </div>
           </div>
         </div>
