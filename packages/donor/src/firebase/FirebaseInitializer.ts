@@ -1,9 +1,11 @@
 import { getFirebaseConfig, LoginStatus } from "@zm-blood-components/common";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getPerformance } from "firebase/performance";
 
 export function initFirebase() {
-  initializeApp(getFirebaseConfig());
+  const app = initializeApp(getFirebaseConfig());
+  getPerformance(app);
 }
 
 let loginState = false;
