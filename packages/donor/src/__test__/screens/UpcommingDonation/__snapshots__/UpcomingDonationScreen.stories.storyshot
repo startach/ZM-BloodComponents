@@ -115,7 +115,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך:
+                פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
@@ -158,6 +158,27 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
                 className="detailValue"
               >
                 יום ו׳, 13.8, 12:00
+              </div>
+              <div
+                className="link"
+              >
+                <a
+                  event={
+                    Object {
+                      "description": "זכרון מנחם - בית החולים בילינסון - יום ו׳, 13.8, 12:00",
+                      "endTime": "Fri Aug 13 2021 13:30:00 GMT+0300 (Israel Daylight Time)",
+                      "location": "בית החולים בילינסון",
+                      "startTime": "Fri Aug 13 2021 12:00:00 GMT+0300 (Israel Daylight Time)",
+                      "title": "תרומת טרומבוציטים",
+                    }
+                  }
+                  filename="download.ics"
+                  href="#add-to-calendar"
+                  onClick={[Function]}
+                  rawContent=""
+                >
+                  הוספה ליומן
+                </a>
               </div>
             </div>
           </div>
@@ -305,7 +326,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך:
+                פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
@@ -348,6 +369,27 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
                 className="detailValue"
               >
                 יום ו׳, 13.8, 12:00
+              </div>
+              <div
+                className="link"
+              >
+                <a
+                  event={
+                    Object {
+                      "description": "זכרון מנחם - בית החולים רמב\\"ם - יום ו׳, 13.8, 12:00",
+                      "endTime": "Fri Aug 13 2021 13:30:00 GMT+0300 (Israel Daylight Time)",
+                      "location": "בית החולים רמב\\"ם",
+                      "startTime": "Fri Aug 13 2021 12:00:00 GMT+0300 (Israel Daylight Time)",
+                      "title": "תרומת טרומבוציטים",
+                    }
+                  }
+                  filename="download.ics"
+                  href="#add-to-calendar"
+                  onClick={[Function]}
+                  rawContent=""
+                >
+                  הוספה ליומן
+                </a>
               </div>
             </div>
           </div>
@@ -495,7 +537,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך:
+                פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
@@ -538,6 +580,27 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
                 className="detailValue"
               >
                 יום ו׳, 13.8, 12:00
+              </div>
+              <div
+                className="link"
+              >
+                <a
+                  event={
+                    Object {
+                      "description": "זכרון מנחם - בית החולים איכילוב - יום ו׳, 13.8, 12:00",
+                      "endTime": "Fri Aug 13 2021 13:30:00 GMT+0300 (Israel Daylight Time)",
+                      "location": "בית החולים איכילוב",
+                      "startTime": "Fri Aug 13 2021 12:00:00 GMT+0300 (Israel Daylight Time)",
+                      "title": "תרומת טרומבוציטים",
+                    }
+                  }
+                  filename="download.ics"
+                  href="#add-to-calendar"
+                  onClick={[Function]}
+                  rawContent=""
+                >
+                  הוספה ליומן
+                </a>
               </div>
             </div>
           </div>
@@ -682,7 +745,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך:
+                פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
@@ -725,6 +788,27 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
                 className="detailValue"
               >
                 יום ו׳, 13.8, 12:00
+              </div>
+              <div
+                className="link"
+              >
+                <a
+                  event={
+                    Object {
+                      "description": "זכרון מנחם - בית החולים סורוקה - יום ו׳, 13.8, 12:00",
+                      "endTime": "Fri Aug 13 2021 13:30:00 GMT+0300 (Israel Daylight Time)",
+                      "location": "בית החולים סורוקה",
+                      "startTime": "Fri Aug 13 2021 12:00:00 GMT+0300 (Israel Daylight Time)",
+                      "title": "תרומת טרומבוציטים",
+                    }
+                  }
+                  filename="download.ics"
+                  href="#add-to-calendar"
+                  onClick={[Function]}
+                  rawContent=""
+                >
+                  הוספה ליומן
+                </a>
               </div>
             </div>
           </div>
@@ -875,7 +959,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
               <div
                 className="detailsTitle"
               >
-                פרטי התור שלך:
+                פרטי התור שלך
               </div>
               <div
                 className="cancelButton"
@@ -918,6 +1002,27 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
                 className="detailValue"
               >
                 יום ו׳, 13.8, 12:00
+              </div>
+              <div
+                className="link"
+              >
+                <a
+                  event={
+                    Object {
+                      "description": "זכרון מנחם - בית החולים תל השומר - יום ו׳, 13.8, 12:00",
+                      "endTime": "Fri Aug 13 2021 13:30:00 GMT+0300 (Israel Daylight Time)",
+                      "location": "בית החולים תל השומר",
+                      "startTime": "Fri Aug 13 2021 12:00:00 GMT+0300 (Israel Daylight Time)",
+                      "title": "תרומת טרומבוציטים",
+                    }
+                  }
+                  filename="download.ics"
+                  href="#add-to-calendar"
+                  onClick={[Function]}
+                  rawContent=""
+                >
+                  הוספה ליומן
+                </a>
               </div>
             </div>
           </div>
