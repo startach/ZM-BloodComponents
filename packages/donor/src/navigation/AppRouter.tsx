@@ -27,6 +27,7 @@ import OnboardingWizardScreenContainer, {
 } from "../screens/onboarding/OnboardingWizardScreenContainer";
 import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
 import AboutScreen from "../screens/about/AboutScreen";
+import DonationAprooveScreen from "../screens/donationAproove/DonationAprooveScreen";
 import ContactScreen from "../screens/contact/ContactScreen";
 import UpcomingDonationScreenContainer from "../screens/UpcommingDonation/UpcomingDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
@@ -163,6 +164,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.About}
           render={() => <AboutScreen />}
         />
+        <Route path={"/aproove"} render={() => <DonationAprooveScreen />} />
         <Route
           path={"/" + MainNavigationKeys.Process}
           render={() => <DonationProcessScreenContainer />}
