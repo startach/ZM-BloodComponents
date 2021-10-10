@@ -15,11 +15,14 @@ export default async function (
     throw new Error("No appointment to complete");
   }
   return {
-    appointment: await completeAppointment(request.appointmentId, donorId),
+    appointment: await completeAppointmentFunc(request.appointmentId, donorId),
   };
 }
 
-async function completeAppointment(appointmentId: string, donorId: string) {
+export async function completeAppointmentFunc(
+  appointmentId: string,
+  donorId: string
+) {
   const appointmentToComplete = await getAppointmentsByIds([appointmentId]);
   if (appointmentToComplete.length !== 1) {
     throw new Error("Appointment not found");
