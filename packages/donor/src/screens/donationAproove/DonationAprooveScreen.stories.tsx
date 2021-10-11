@@ -6,4 +6,4 @@ export default {
   parameters: { layout: "fullscreen" },
 };
 
-export const Default = () => <DonationAprooveScreen />;
+export const Default = () => <DonationAprooveScreen firstName=""/>;

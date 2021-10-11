@@ -1,6 +1,7 @@
 import {
   BloodType,
   BookedAppointment,
+  AvailableAppointment,
   Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
@@ -8,6 +9,11 @@ import { getAuth } from "firebase/auth";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
 export function getCallableFunction(functionName: string) {
+  const functions = getFunctions();
+  return httpsCallable(functions, functionName);
+}
+
+export function getCompleteApointmentFunction(functionName: string) {
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
@@ -46,6 +52,18 @@ export async function cancelAppointment(appointmentId: string) {
   };
 
   await cancelAppointmentFunction(request);
+}
+
+export async function completeAppointment(appointmentId: string) {
+  const completeAppointmentFunction = getCompleteApointmentFunction(
+    FunctionsApi.CompleteAppointmentFunctionName
+  );
+
+  const request: FunctionsApi.CompleteAppointmentRequest = {
+    appointmentId,
+  };
+
+  await completeAppointmentFunction(request);
 }
 
 export async function saveDonor(
@@ -88,6 +106,7 @@ export async function saveDonor(
 export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
+  apointmentNotAprooved?: AvailableAppointment;
 }> {
   const currentUser = getAuth().currentUser;
 

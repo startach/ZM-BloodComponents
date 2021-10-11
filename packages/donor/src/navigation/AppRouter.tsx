@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   BookedAppointment,
+  AvailableAppointment,
   Donor,
   LoginStatus,
 } from "@zm-blood-components/common";
@@ -46,6 +47,7 @@ export default function AppRouter() {
   const [appState, setAppState] = useState<{
     donor?: Donor;
     bookedAppointment?: BookedAppointment;
+    apointmentNotAprooved?: AvailableAppointment;
     isFetching: boolean;
   }>({
     isFetching: false,
@@ -75,6 +77,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: undefined,
         bookedAppointment: undefined,
+        apointmentNotAprooved: undefined,
       });
       return;
     }
@@ -84,6 +87,7 @@ export default function AppRouter() {
         isFetching: true,
         donor: undefined,
         bookedAppointment: undefined,
+        apointmentNotAprooved: undefined,
       });
 
       const startTime = new Date().getTime();
@@ -93,6 +97,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: donorDetails.donor,
         bookedAppointment: donorDetails.bookedAppointment,
+        apointmentNotAprooved: donorDetails.apointmentNotAprooved,
       });
       console.log("D", new Date().getTime() - startTime);
     }
@@ -164,7 +169,20 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.About}
           render={() => <AboutScreen />}
         />
-        <Route path={"/aproove"} render={() => <DonationAprooveScreen />} />
+        <Route 
+          path={"/aproove"} 
+          render={() => 
+            {
+              if (!loggedIn) return redirectToBookDonation();
+              return (
+                <DonationAprooveScreen 
+                  firstName={appState.donor?.firstName}
+                  apointmentNotAprooved={appState.apointmentNotAprooved}
+                />
+              );
+            } 
+          }
+        />
         <Route
           path={"/" + MainNavigationKeys.Process}
           render={() => <DonationProcessScreenContainer />}
