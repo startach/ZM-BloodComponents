@@ -3,15 +3,16 @@ import { completeAppointmentFunc } from "../donor/CompleteAppointmentHandler";
 
 export const completeAppointmentApi = functions.https.onRequest(
   async (request, res) => {
-    if (!request.query.donorId) {
+    const donorId = request.query.donorId as string;
+    const appointmentId = request.query.appointmentId as string;
+    if (!donorId) {
       throw new Error("Invalid donor id");
     }
 
-    if (!request.query.appointmentId) {
+    if (!appointmentId) {
       throw new Error("Invalid appointment id");
     }
-    const donorId = request.query.donorId as string;
-    const appointmentId = request.query.appointmentId as string;
+
     try {
       await completeAppointmentFunc(appointmentId, donorId);
     } catch (err) {
