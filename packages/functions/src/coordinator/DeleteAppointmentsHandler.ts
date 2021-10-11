@@ -37,8 +37,9 @@ export default async function (
   if (!request.onlyRemoveDonor) {
     await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
   } else {
-    const updatedAppointment =
-      DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
+    const updatedAppointment = DbAppointmentUtils.removeDonorFromDbAppointment(
+      appointment
+    );
     await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
   }
 

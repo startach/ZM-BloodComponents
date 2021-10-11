@@ -37,8 +37,10 @@ import DonationProcessScreenContainer from "../screens/about/DonationProcessScre
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
 export default function AppRouter() {
-  const [splashMinimumTimeoutFinished, setSplashMinimumTimeoutFinished] =
-    useState(false);
+  const [
+    splashMinimumTimeoutFinished,
+    setSplashMinimumTimeoutFinished,
+  ] = useState(false);
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
 

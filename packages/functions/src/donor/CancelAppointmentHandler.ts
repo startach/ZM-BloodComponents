@@ -34,8 +34,9 @@ export default async function (
     console.error("Error notifying on cancelled appointment", appointment.id, e)
   );
 
-  const updatedAppointment =
-    DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
+  const updatedAppointment = DbAppointmentUtils.removeDonorFromDbAppointment(
+    appointment
+  );
 
   await setAppointment(updatedAppointment);
 }

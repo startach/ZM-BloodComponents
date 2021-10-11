@@ -74,8 +74,9 @@ export default async function (
 
   return {
     status: BookAppointmentStatus.SUCCESS,
-    bookedAppointment:
-      dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
+    bookedAppointment: dbAppointmentToBookedAppointmentApiEntry(
+      appointmentToBook
+    ),
   };
 }
 

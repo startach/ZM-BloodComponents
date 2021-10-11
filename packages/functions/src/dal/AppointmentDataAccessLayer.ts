@@ -70,8 +70,7 @@ export async function getAppointments(
 
   request = request.orderBy("donationStartTime");
 
-  const appointments =
-    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
 }
@@ -94,8 +93,7 @@ export async function getAppointmentsByHospital(
   }
   request = request.orderBy("donationStartTime");
 
-  const appointments =
-    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
 }

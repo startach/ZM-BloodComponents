@@ -78,8 +78,9 @@ export default function ManageAppointmentsScreen({
   setShowPastAppointments,
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenProps) {
-  const [popupData, setPopupData] =
-    useState<DeleteAppointmentPopupData>(emptyPopupData);
+  const [popupData, setPopupData] = useState<DeleteAppointmentPopupData>(
+    emptyPopupData
+  );
 
   const [showFlash, setShowFlash] = useState(false);
   const [flashMessage, setFlashMessage] = useState("");

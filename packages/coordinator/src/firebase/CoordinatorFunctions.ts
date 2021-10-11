@@ -109,7 +109,6 @@ export async function getBookedAppointmentsInHospital(
   );
 
   const response = await getBookedAppointmentsInHospital(request);
-  const data =
-    response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
+  const data = response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
   return data.donationsWithDonorDetails;
 }

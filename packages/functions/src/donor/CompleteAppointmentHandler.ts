@@ -32,8 +32,9 @@ async function completeAppointment(appointmentId: string, donorId: string) {
 
   // TODO add notification
 
-  const updatedAppointment =
-    DbAppointmentUtils.completeArrivedFromDbAppointment(appointment);
+  const updatedAppointment = DbAppointmentUtils.completeArrivedFromDbAppointment(
+    appointment
+  );
 
   return await setAppointment(updatedAppointment);
 }

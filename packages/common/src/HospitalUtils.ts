@@ -17,8 +17,9 @@ export function getHospitalOptions(
   hospitals: Hospital[],
   defaultLabel?: string
 ) {
-  const options: SelectOption<Hospital | "">[] =
-    hospitals.map(hospitalToOption);
+  const options: SelectOption<Hospital | "">[] = hospitals.map(
+    hospitalToOption
+  );
 
   if (defaultLabel) {
     options.unshift({ label: defaultLabel, key: defaultLabel, value: "" });

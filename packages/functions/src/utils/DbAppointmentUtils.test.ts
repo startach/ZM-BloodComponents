@@ -20,8 +20,9 @@ describe("DbAppointment Utils", () => {
       creationTime: admin.firestore.Timestamp.now(),
     };
 
-    const res =
-      DbAppointmentUtils.removeDonorFromDbAppointment(bookedAppointment);
+    const res = DbAppointmentUtils.removeDonorFromDbAppointment(
+      bookedAppointment
+    );
 
     expect(res.id).toEqual(bookedAppointment.id);
     expect(res.creatorUserId).toEqual(bookedAppointment.creatorUserId);
@@ -51,8 +52,9 @@ describe("DbAppointment Utils", () => {
       creationTime: admin.firestore.Timestamp.now(),
     };
 
-    const res =
-      DbAppointmentUtils.completeArrivedFromDbAppointment(bookedAppointment);
+    const res = DbAppointmentUtils.completeArrivedFromDbAppointment(
+      bookedAppointment
+    );
 
     expect(res.id).toEqual(bookedAppointment.id);
     expect(res.creatorUserId).toEqual(bookedAppointment.creatorUserId);

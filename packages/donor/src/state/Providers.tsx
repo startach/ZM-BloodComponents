@@ -17,8 +17,9 @@ export const useAvailableAppointmentsStore = (): AvailableAppointmentsStore => {
   return context;
 };
 
-const AppointmentToBookContext: Context<AppointmentToBookStore | undefined> =
-  createContext<AppointmentToBookStore | undefined>(undefined);
+const AppointmentToBookContext: Context<
+  AppointmentToBookStore | undefined
+> = createContext<AppointmentToBookStore | undefined>(undefined);
 
 export const AppointmentToBookProvider = AppointmentToBookContext.Provider;
 

@@ -21,8 +21,10 @@ export default function ScheduledAppointmentsScreenContainer({
   const [toDate, setToDate] = useState<Date>(new Date());
   const [hospital, setHospital] = useState<Hospital | "">("");
   const [isLoading, setIsLoading] = useState(false);
-  const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
-    useState<BookedDonationWithDonorDetails[]>([]);
+  const [
+    appointmentsWithDonorDetails,
+    setAppointmentsWithDonorDetails,
+  ] = useState<BookedDonationWithDonorDetails[]>([]);
 
   const onSearch = async () => {
     if (!hospital || !fromDate || !toDate) {
@@ -31,12 +33,13 @@ export default function ScheduledAppointmentsScreenContainer({
     setIsLoading(true);
     // get all bookings in fromDate day
     const fromDateMidnight = DateUtils.DateToMidnight(fromDate);
-    const nextAppointmentsWithDonorDetails =
-      await CoordinatorFunctions.getBookedAppointmentsInHospital({
+    const nextAppointmentsWithDonorDetails = await CoordinatorFunctions.getBookedAppointmentsInHospital(
+      {
         hospital,
         fromDateMillis: fromDateMidnight!.getTime(),
         toDateMillis: toDate!.getTime(),
-      });
+      }
+    );
     setAppointmentsWithDonorDetails(nextAppointmentsWithDonorDetails);
     setIsLoading(false);
   };

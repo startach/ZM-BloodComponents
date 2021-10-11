@@ -124,8 +124,8 @@ export default function CoordinatorRouter() {
     ROLES_THAT_VIEW_DONORS.includes(appState.coordinator?.role)
   );
 
-  const activeHospitalsForCoordinator =
-    appState.coordinator?.activeHospitalsForCoordinator!;
+  const activeHospitalsForCoordinator = appState.coordinator
+    ?.activeHospitalsForCoordinator!;
 
   return (
     <CoordinatorScreen

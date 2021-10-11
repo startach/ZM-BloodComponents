@@ -13,13 +13,13 @@ import HeaderSection from "../../components/HeaderSection";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import * as uuid from "uuid";
 
-const slotOptions: SelectOption<number>[] = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-].map((n) => ({
-  label: n + "",
-  value: n,
-  key: n + "",
-}));
+const slotOptions: SelectOption<number>[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(
+  (n) => ({
+    label: n + "",
+    value: n,
+    key: n + "",
+  })
+);
 
 interface AddAppointmentsFormProps {
   activeHospitalsForCoordinator: Hospital[];

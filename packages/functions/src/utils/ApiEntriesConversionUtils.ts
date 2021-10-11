@@ -7,10 +7,9 @@ import {
 import { DbAppointment, DbDonor } from "../function-types";
 
 export function dbDonorToDonor(dbDonor: DbDonor): Donor {
-  const notificationSettings: DonorNotificationSettings =
-    dbDonor.notificationSettings || {
-      disableEmailNotifications: false,
-    };
+  const notificationSettings: DonorNotificationSettings = dbDonor.notificationSettings || {
+    disableEmailNotifications: false,
+  };
 
   return {
     ...dbDonor,

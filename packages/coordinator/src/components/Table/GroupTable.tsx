@@ -71,8 +71,9 @@ export default function GroupsTable<T>({
 
   const [isReversedSort, setIsReversedSort] = useState(false);
 
-  const [internallySortedGroups, setInternallySortedGroups] =
-    useState<CardTableRowGroup<T>[]>(groups);
+  const [internallySortedGroups, setInternallySortedGroups] = useState<
+    CardTableRowGroup<T>[]
+  >(groups);
 
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
