@@ -82,7 +82,7 @@ export default function UpcomingDonationScreen({
         <div className={styles.appointmentDetails}>
           <div className={styles.card}>
             <div className={styles.detailsTitleContainer}>
-              <div className={styles.detailsTitle}>פרטי התור שלך</div>
+              <div className={styles.detailsTitle}>פרטי התור שלך:</div>
               <CancelButton onCancel={onCancel} />
             </div>
 
