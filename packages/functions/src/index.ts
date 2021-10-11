@@ -15,6 +15,7 @@ import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospi
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 import { unsubscribeHandler } from "./notifications/UnsubscribeHandler";
+import { completeAppointmentApi } from "./notifications/CompleteAppointmentApi";
 import { jobHandler } from "./jobs/SchemaJobs";
 
 admin.initializeApp(functions.config().firebase);
@@ -38,6 +39,7 @@ export const getBookedDonationsInHospital = handler(
 export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
 export const completeAppointment = handler(completeAppointmentHandler);
+export const completeAppointmentApiHandler = completeAppointmentApi;
 export const getDonor = handler(geDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = unauthenticatedHandler(
