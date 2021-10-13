@@ -11,7 +11,6 @@
     "@capacitor/keyboard": "*",
     "@material-ui/icons": "^4.11.2",
     "@zm-blood-components/common": "^1.0.0",
-    "add-event-to-calendar": "^1.0.7",
     "dayjs": "^1.10.4",
     "jss-rtl": "^0.3.0",
     "mobx": "^6.3.2",
@@ -24,6 +23,7 @@
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react-swipeable-views": "^0.13.0",
+    "add-event-to-calendar": "^1.0.7",
     "cordova-res": "^0.15.3",
     "react-test-renderer": "^17.0.2",
     "typescript-plugin-css-modules": "^3.2.0"
