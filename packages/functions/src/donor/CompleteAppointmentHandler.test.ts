@@ -103,6 +103,40 @@ test("Valid request complete appointment", async () => {
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
+test("Valid request complete appointment with true parameter", async () => {
+  await createDonor();
+  await saveAppointment(DONOR_ID);
+
+  await wrapped(completeAppointmentRequest(true), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
+
+  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
+  expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
+  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
+  expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
+  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+});
+
+test("Valid request complete appointment with false parameter", async () => {
+  await createDonor();
+  await saveAppointment(DONOR_ID);
+
+  await wrapped(completeAppointmentRequest(false), {
+    auth: {
+      uid: DONOR_ID,
+    },
+  });
+
+  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
+  expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
+  expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
+  expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
+  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+});
+
 async function saveAppointment(donorId: string) {
   const time = admin.firestore.Timestamp.now();
   const appointment: DbAppointment = {
@@ -120,8 +154,8 @@ async function saveAppointment(donorId: string) {
   await setAppointment(appointment);
 }
 
-function completeAppointmentRequest() {
-  return { appointmentId: APPOINTMENT_TO_COMPLETE };
+function completeAppointmentRequest(isNoshow?: boolean) {
+  return { appointmentId: APPOINTMENT_TO_COMPLETE, isNoshow: isNoshow };
 }
 
 async function createDonor() {
