@@ -120,6 +120,7 @@ test("Valid request complete appointment with true parameter", async () => {
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
+
 test("Valid request complete appointment with false parameter", async () => {
   await createDonor();
   await saveAppointment(DONOR_ID);
