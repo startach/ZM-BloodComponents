@@ -1331,12 +1331,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@capacitor/android@*", "@capacitor/android@^3.0.0":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.2.5.tgz#fd16b60a03bf15c9c59e118daf5068b93c39438c"
-  integrity sha512-eq9luSS8Bivyp3F46BaUgmPXxMzuUTdZO/bToHIUBu66Ufh4ou/TDg0opMXjuKIYJgjAsddxkPBeREj8KabbSQ==
+"@capacitor/android@*":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.2.4.tgz#4d65f6db0fb10472d20367a310cfe39d60f1001b"
+  integrity sha512-eR4Lw8GCBJ7yGJ4k78a8tXhVU3iqfq8GMBM0KXYtOYe3SWRO+jOD/puFM9CPFD5uF9PtB+0iaqpLjn1YbvfFZw==
 
-"@capacitor/app@*", "@capacitor/app@^0.3.10":
+"@capacitor/app@*":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
@@ -1363,24 +1363,24 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
-"@capacitor/core@*", "@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.2.5.tgz#3aee6d68d113f5c043593c2327b0fc827f64e1f4"
-  integrity sha512-sr5ZhbdCUL6FAiyNEDpSKDEzjHCOsCA5R32inRergcPFRpOArsQi/NfhoMLHaZwZ78HAn9bfFV7JkoSr46NDDw==
+"@capacitor/core@*", "@capacitor/core@^3.0.1":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.2.4.tgz#8da5774f6237ccaa770b81caff3cffbecbf7e1e8"
+  integrity sha512-TAo9u2XPN8IH3xqTjOfsUT8PYIC2vwimKIJoff/knZs19WnGATklfcWnXpxUecfm2VFMCggd80FRPgjPOS75Ag==
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/haptics@*", "@capacitor/haptics@^0.3.10":
+"@capacitor/haptics@*":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-0.3.10.tgz#7814546e586ddae6c5e5678796854ef9631ac066"
   integrity sha512-EwI79xSsxl5O1CZWrRhkkAok50tCy78fa4xOK9G++eQCNc2cc5ZmnVubDKA/itvIN1NBAhn5qpIadi8zW26ZZw==
 
-"@capacitor/ios@*", "@capacitor/ios@^3.0.0":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.2.5.tgz#2d988aa08caa3c72de3c20471fc084f0fdf26a40"
-  integrity sha512-z3GU07Dz3SJIfdxk4JaLXDZcWWb4LcvjMz7RzOmN13WOWETWWWUnJJdG14QJewjvXPEBZ/XY7MohClWsgjToEw==
+"@capacitor/ios@*":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.2.4.tgz#6b6c156d20a3bf143c56cd6184910f23eff9fdd1"
+  integrity sha512-d9ECeZC2uknOGB/IHaapBvuUSpYoM0J202M8Fw4OBPAkc26ysvMreHoCWCB0nd0leks53biI6DJdS60/VbYTWg==
 
-"@capacitor/keyboard@*", "@capacitor/keyboard@^0.6.3":
+"@capacitor/keyboard@*":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-0.6.3.tgz#0f5844dbfbe59f9bc2efd23466857bca2f0f4517"
   integrity sha512-jf15yaaEVhQ/WCF0doEzzBKWjzbrw5vSsgqlgrP5ldCFhYDU4ZSUtc4xWjyftHjqmGyXBLJAlWEmK1stnz1gdQ==

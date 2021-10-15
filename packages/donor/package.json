@@ -11,6 +11,7 @@
     "@capacitor/keyboard": "*",
     "@material-ui/icons": "^4.11.2",
     "@zm-blood-components/common": "^1.0.0",
+    "add-event-to-calendar": "^1.0.7",
     "dayjs": "^1.10.4",
     "jss-rtl": "^0.3.0",
     "mobx": "^6.3.2",
