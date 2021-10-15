@@ -5,7 +5,6 @@ import {
   Hospital,
   LinkUtils,
   LocaleUtils,
-  DeviceUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen";
@@ -16,10 +15,14 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
+<<<<<<< HEAD
 import ICalendarLink from "react-icalendar-link";
 
 const EVENT_DURATION = 90;
 
+=======
+
+>>>>>>> parent of 51baf3c9 (add calendar android and ios)
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
@@ -31,6 +34,7 @@ export default function UpcomingDonationScreen({
   onCancel,
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
+<<<<<<< HEAD
   const eventDateStart = new Date(bookedAppointment.donationStartTimeMillis);
   const eventDateEnd = DateUtils.DateWithAddedMinutes(eventDateStart, EVENT_DURATION) 
   const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(
@@ -66,6 +70,9 @@ export default function UpcomingDonationScreen({
     window.open(googleEventUrl + eventParams, "_blank");
   };
 
+=======
+  const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
+>>>>>>> parent of 51baf3c9 (add calendar android and ios)
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -99,22 +106,11 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {eventDateStart.toLocaleDateString(
+                {donationDate.toLocaleDateString(
                   "he-He",
                   DateUtils.ShortDateFormat
                 )}
               </div>
-              {DeviceUtils.getMobileOperatingSystem() === "android" ? (
-                <div className={styles.link} onClick={addToGoogleCalendar}>
-                  הוספה ליומן
-                </div>
-              ) : (
-                <div className={styles.link}>
-                  <ICalendarLink event={getAppleCalendarEvent()}>
-                    הוספה ליומן
-                  </ICalendarLink>
-                </div>
-              )}
             </div>
           </div>
         </div>

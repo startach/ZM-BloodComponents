@@ -1331,12 +1331,19 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+<<<<<<< HEAD
 "@capacitor/android@*":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.2.4.tgz#4d65f6db0fb10472d20367a310cfe39d60f1001b"
   integrity sha512-eR4Lw8GCBJ7yGJ4k78a8tXhVU3iqfq8GMBM0KXYtOYe3SWRO+jOD/puFM9CPFD5uF9PtB+0iaqpLjn1YbvfFZw==
+=======
+"@capacitor/android@*", "@capacitor/android@^3.0.0":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.1.2.tgz#b9f42fcbfb31639575cd90b63754e9ec526d434d"
+  integrity sha512-WF2E2jWxO3EBl8Y3aTAa8PHwMZGiAl9pdqvJaEUUhbbovXe0UxAuG4n0mfci4ZI6dD8gannQ2peoZ74vJ0Gr3Q==
+>>>>>>> parent of 51baf3c9 (add calendar android and ios)
 
-"@capacitor/app@*":
+"@capacitor/app@*", "@capacitor/app@^0.3.10":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/app/-/app-0.3.10.tgz#0e859a34fba01f11cb53650ab226889caa5378c0"
   integrity sha512-bjmHkQvHE/Z7ysN35Q29kaPzgM+/bQyZ/rF4oMzL4NRDLoyFJoRgo4yTKcCCPXRaDPJjKXgtVno4CVPFvQ3i/w==
@@ -1363,24 +1370,38 @@
     tslib "^2.1.0"
     xml2js "^0.4.23"
 
+<<<<<<< HEAD
 "@capacitor/core@*", "@capacitor/core@^3.0.1":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.2.4.tgz#8da5774f6237ccaa770b81caff3cffbecbf7e1e8"
   integrity sha512-TAo9u2XPN8IH3xqTjOfsUT8PYIC2vwimKIJoff/knZs19WnGATklfcWnXpxUecfm2VFMCggd80FRPgjPOS75Ag==
+=======
+"@capacitor/core@*", "@capacitor/core@^3.0.0", "@capacitor/core@^3.0.1":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-3.1.2.tgz#0e4691ca098e1ff5bd96105b9523122768e8657d"
+  integrity sha512-cMqDY4JTNtyonqVPYxHqbmN3M3jlEBnQxecptlR+6yk/ZuhUwOJTHT1ActXRLyrQ8XIc74+9Yd37fwjWckSwFg==
+>>>>>>> parent of 51baf3c9 (add calendar android and ios)
   dependencies:
     tslib "^2.1.0"
 
-"@capacitor/haptics@*":
+"@capacitor/haptics@*", "@capacitor/haptics@^0.3.10":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-0.3.10.tgz#7814546e586ddae6c5e5678796854ef9631ac066"
   integrity sha512-EwI79xSsxl5O1CZWrRhkkAok50tCy78fa4xOK9G++eQCNc2cc5ZmnVubDKA/itvIN1NBAhn5qpIadi8zW26ZZw==
 
+<<<<<<< HEAD
 "@capacitor/ios@*":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.2.4.tgz#6b6c156d20a3bf143c56cd6184910f23eff9fdd1"
   integrity sha512-d9ECeZC2uknOGB/IHaapBvuUSpYoM0J202M8Fw4OBPAkc26ysvMreHoCWCB0nd0leks53biI6DJdS60/VbYTWg==
+=======
+"@capacitor/ios@*", "@capacitor/ios@^3.0.0":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-3.1.2.tgz#a4323f7903d7b944b80a20c0ba7b458db5c8ea3a"
+  integrity sha512-y6wnTLK0I/ckTuofzeRkXK0OPw6vAKOj0I6QXwg2DxDdtiHmed6qP/G8cvwNBiFhZE9xfXAulxRYP8D76TPtNQ==
+>>>>>>> parent of 51baf3c9 (add calendar android and ios)
 
-"@capacitor/keyboard@*":
+"@capacitor/keyboard@*", "@capacitor/keyboard@^0.6.3":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@capacitor/keyboard/-/keyboard-0.6.3.tgz#0f5844dbfbe59f9bc2efd23466857bca2f0f4517"
   integrity sha512-jf15yaaEVhQ/WCF0doEzzBKWjzbrw5vSsgqlgrP5ldCFhYDU4ZSUtc4xWjyftHjqmGyXBLJAlWEmK1stnz1gdQ==
@@ -16152,11 +16173,6 @@ react-helmet-async@^1.0.7:
     prop-types "^15.7.2"
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
-
-react-icalendar-link@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/react-icalendar-link/-/react-icalendar-link-3.0.1.tgz#85fc0bf6d4f89d892266bf47c0c79f34ed339543"
-  integrity sha512-t1/gBjzWDsehL+7wjQlC4iWGZeDOF9yqgmb8MhqWZ8VmL0vawqKY3s2Bf5+q6BXUpf0rzavwpMs3YW/F6TQyNg==
 
 react-inspector@^5.1.0:
   version "5.1.1"
