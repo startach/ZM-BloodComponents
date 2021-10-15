@@ -90,8 +90,9 @@ export default function AppRouter() {
         apointmentNotAprooved: undefined,
       });
 
-      const startTime = new Date().getTime();
-      const donorDetails = await FirebaseFunctions.getDonorDetails();
+      const today = new Date().getDate();
+      const startTime = new Date().setDate(today - 30); // get appointments from last 30 days
+      const donorDetails = await FirebaseFunctions.getDonorDetails(startTime);
 
       setAppState({
         isFetching: false,
@@ -170,10 +171,11 @@ export default function AppRouter() {
           render={() => <AboutScreen />}
         />
         <Route 
-          path={"/aproove"} 
+          path={"/" + MainNavigationKeys.Aproove} 
           render={() => 
             {
               if (!loggedIn) return redirectToBookDonation();
+              if (!appState.donor || !appState.apointmentNotAprooved) return redirectToBookDonation();
               return (
                 <DonationAprooveScreen 
                   firstName={appState.donor?.firstName}
@@ -195,6 +197,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
+            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove)
             return (
               <MyProfileScreenContainer
                 user={appState.donor!}
@@ -207,6 +210,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
+            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove)
             return (
               <UpcomingDonationScreenContainer
                 user={appState.donor!}
@@ -220,6 +224,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
+            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove);
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             return (
               <QuestionnaireScreenContainer
@@ -263,4 +268,8 @@ export function redirectToUpcomingDonation() {
 
 export function redirectToLogin() {
   return <Redirect to={"/" + MainNavigationKeys.Login} />;
+}
+
+export function redirectTo(page : string) {
+  return <Redirect to={"/" + page} />;
 }

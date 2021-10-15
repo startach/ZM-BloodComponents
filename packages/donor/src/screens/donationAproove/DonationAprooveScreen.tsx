@@ -2,10 +2,11 @@ import styles from "./DonationAprooveScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import AllLogos from "./../../assets/images/all logos.svg";
 import { AvailableAppointment } from "common/src/types";
+import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
 export interface DonationAprroveScreenProps {
-  firstName?: string;
-  apointmentNotAprooved?: AvailableAppointment;
+  firstName: string;
+  apointmentNotAprooved: AvailableAppointment;
 }
 
 export default function DonationAprooveScreen({
@@ -23,8 +24,19 @@ export default function DonationAprooveScreen({
         {apointmentNotAprooved? apointmentNotAprooved : ""}
 
         <div className={styles.buttonContainer}>
-          <div className={styles.textButton} onClick={()=>{}}>כן</div>
-          <div className={styles.textButton} onClick={()=>{}}>לא</div>
+          <div 
+            className={styles.textButton}
+            onClick= { () => FirebaseFunctions.completeAppointment(apointmentNotAprooved.id)}
+          >
+            כן
+          </div>
+
+          <div 
+            className={styles.textButton}
+            onClick= { () => FirebaseFunctions.completeAppointment(apointmentNotAprooved.id)}
+          >
+            לא
+          </div>
         </div>
 
         <br/> <br/>
@@ -35,4 +47,3 @@ export default function DonationAprooveScreen({
     </ZMScreen>
   );
 }
-

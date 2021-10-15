@@ -103,7 +103,9 @@ export async function saveDonor(
   return data.donor;
 }
 
-export async function getDonorDetails(): Promise<{
+export async function getDonorDetails(
+  fromMillis? : number,
+): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
   apointmentNotAprooved?: AvailableAppointment;
@@ -121,7 +123,7 @@ export async function getDonorDetails(): Promise<{
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: new Date().getTime(),
+    fromMillis: fromMillis? fromMillis : new Date().getTime(),
   };
 
   try {
