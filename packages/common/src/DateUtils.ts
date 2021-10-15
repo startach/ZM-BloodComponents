@@ -49,6 +49,10 @@ export function TodayAdMidnight() {
   return midnight;
 }
 
+export function CleanIsoDate(date: Date) {
+  return date.toISOString().replace(/[-:.]/g, "");
+}
+
 export const ShortDateFormat: Intl.DateTimeFormatOptions = {
   weekday: "short",
   month: "numeric",

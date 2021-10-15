@@ -23,7 +23,6 @@
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react-swipeable-views": "^0.13.0",
-    "add-event-to-calendar": "^1.0.7",
     "cordova-res": "^0.15.3",
     "react-test-renderer": "^17.0.2",
     "typescript-plugin-css-modules": "^3.2.0"

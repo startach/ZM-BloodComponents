@@ -16,10 +16,10 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
-import makeUrls, { TCalendarEvent } from "add-event-to-calendar";
 import ICalendarLink from "react-icalendar-link";
 
 const EVENT_TIME = 90;
+
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
@@ -41,12 +41,13 @@ export default function UpcomingDonationScreen({
     DateUtils.ShortDateFormat
   )}`;
 
-  const getGoogleCalendarEvent = (): TCalendarEvent => ({
-    name: `תרומת טרומבוציטים`,
+  const getGoogleCalendarEvent = (): any => ({
+    text: `תרומת טרומבוציטים`,
     location: eventLocation,
     details: eventDescription,
-    startsAt: eventDateStart.toString(),
-    endsAt: eventDateEnd.toString(),
+    dates: `${DateUtils.CleanIsoDate(eventDateStart)}/${DateUtils.CleanIsoDate(
+      eventDateEnd
+    )}`,
   });
 
   const getAppleCalendarEvent = (): any => ({
@@ -58,9 +59,11 @@ export default function UpcomingDonationScreen({
   });
 
   const addToGoogleCalendar = () => {
-    const calendarEvents: any = makeUrls(getGoogleCalendarEvent());
-    const url = calendarEvents["google"];
-    window.open(url, "_blank");
+    const googleEventUrl = "https://calendar.google.com/calendar/u/0/r/eventedit?";
+    let eventParams = Object.entries(getGoogleCalendarEvent())
+      .map(([key, val]) => `${key}=${val}`)
+      .join("&");
+    window.open(googleEventUrl + eventParams, "_blank");
   };
 
   return (
