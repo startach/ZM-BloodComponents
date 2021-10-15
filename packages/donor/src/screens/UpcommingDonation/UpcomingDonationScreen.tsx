@@ -18,7 +18,7 @@ import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import ICalendarLink from "react-icalendar-link";
 
-const EVENT_TIME = 90;
+const EVENT_DURATION = 90;
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -32,7 +32,7 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
   const eventDateStart = new Date(bookedAppointment.donationStartTimeMillis);
-  const eventDateEnd = new Date(eventDateStart.getTime() + EVENT_TIME * 60000);
+  const eventDateEnd = DateUtils.DateWithAddedMinutes(eventDateStart, EVENT_DURATION) 
   const eventLocation = `בית החולים ${LocaleUtils.getHospitalName(
     bookedAppointment.hospital
   )}`;
@@ -60,7 +60,7 @@ export default function UpcomingDonationScreen({
 
   const addToGoogleCalendar = () => {
     const googleEventUrl = "https://calendar.google.com/calendar/u/0/r/eventedit?";
-    let eventParams = Object.entries(getGoogleCalendarEvent())
+    const eventParams = Object.entries(getGoogleCalendarEvent())
       .map(([key, val]) => `${key}=${val}`)
       .join("&");
     window.open(googleEventUrl + eventParams, "_blank");
