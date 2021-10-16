@@ -94,6 +94,8 @@ export default function AppRouter() {
       const startTime = new Date().setDate(today - 30); // get appointments from last 30 days
       const donorDetails = await FirebaseFunctions.getDonorDetails(startTime);
 
+      console.log(donorDetails);
+
       setAppState({
         isFetching: false,
         donor: donorDetails.donor,
