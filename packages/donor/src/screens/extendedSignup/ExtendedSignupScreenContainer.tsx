@@ -25,7 +25,7 @@ export default function ExtendedSignupScreenContainer(
       "", // unused in pilot
       phone,
       bloodType,
-      false // false by default for new users
+      true // true by default for new users
     );
     props.updateUserInAppState(newUser);
   };
