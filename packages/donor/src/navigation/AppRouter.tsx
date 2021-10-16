@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   BookedAppointment,
-  AvailableAppointment,
+  NotAproovedAppointment,
   Donor,
   LoginStatus,
 } from "@zm-blood-components/common";
@@ -47,7 +47,7 @@ export default function AppRouter() {
   const [appState, setAppState] = useState<{
     donor?: Donor;
     bookedAppointment?: BookedAppointment;
-    apointmentNotAprooved?: AvailableAppointment;
+    apointmentNotAprooved?: NotAproovedAppointment[];
     isFetching: boolean;
   }>({
     isFetching: false,
@@ -94,15 +94,13 @@ export default function AppRouter() {
       const startTime = new Date().setDate(today - 30); // get appointments from last 30 days
       const donorDetails = await FirebaseFunctions.getDonorDetails(startTime);
 
-      console.log(donorDetails);
-
       setAppState({
         isFetching: false,
         donor: donorDetails.donor,
         bookedAppointment: donorDetails.bookedAppointment,
-        apointmentNotAprooved: donorDetails.apointmentNotAprooved,
+        apointmentNotAprooved: donorDetails.NotAproovedAppointment,
       });
-      console.log("D", new Date().getTime() - startTime);
+
     }
 
     fetchData();
@@ -181,7 +179,7 @@ export default function AppRouter() {
               return (
                 <DonationAprooveScreen 
                   firstName={appState.donor?.firstName}
-                  apointmentNotAprooved={appState.apointmentNotAprooved}
+                  apointmentNotAprooved={appState.apointmentNotAprooved[0]}
                 />
               );
             } 

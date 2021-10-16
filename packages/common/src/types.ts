@@ -71,6 +71,14 @@ export type BookedAppointment = {
   bookingTimeMillis: number;
 };
 
+export type NotAproovedAppointment = {
+  id: string;
+  donationStartTimeMillis: number;
+  hospital: Hospital;
+  donorId: string;
+  bookingTimeMillis: number;
+};
+
 export type AvailableAppointment = {
   id: string;
   donationStartTimeMillis: number;

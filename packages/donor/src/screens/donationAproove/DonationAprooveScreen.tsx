@@ -1,12 +1,12 @@
 import styles from "./DonationAprooveScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import AllLogos from "./../../assets/images/all logos.svg";
-import { AvailableAppointment } from "common/src/types";
+import { NotAproovedAppointment } from "common/src/types";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
 export interface DonationAprroveScreenProps {
   firstName: string;
-  apointmentNotAprooved: AvailableAppointment;
+  apointmentNotAprooved: NotAproovedAppointment;
 }
 
 export default function DonationAprooveScreen({
