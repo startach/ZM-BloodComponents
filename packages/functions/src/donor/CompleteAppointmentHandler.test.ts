@@ -115,11 +115,10 @@ test("Valid request complete appointment with true parameter", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
+  expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
   expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
-
 
 test("Valid request complete appointment with false parameter", async () => {
   await createDonor();
@@ -133,7 +132,7 @@ test("Valid request complete appointment with false parameter", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
+  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
   expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
