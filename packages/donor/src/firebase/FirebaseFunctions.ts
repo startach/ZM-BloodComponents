@@ -1,6 +1,7 @@
 import {
   BloodType,
   BookedAppointment,
+  AppointmentStatus,
   NotAproovedAppointment,
   Donor,
   FunctionsApi,
@@ -132,13 +133,15 @@ export async function getDonorDetails(
 
     let ret = { donor: data.donor };
 
-    if (data.futureAppointments.length === 0) {
+    if (data.futureAppointments.length !== 0) {
       ret = Object.assign({futureAppointments: data.futureAppointments}, ret);
     }
 
-    if (data.completedAppointments.length === 0) {
-      // data.completedAppointments.filter((appointment) => {true});
-      ret = Object.assign({NotAproovedAppointment: data.completedAppointments}, ret);
+    const notApprovedAppointments = data.completedAppointments.filter(
+      (appointment) => appointment.status === AppointmentStatus.BOOKED
+    );
+    if (notApprovedAppointments.length !== 0) {
+      ret = Object.assign({NotAproovedAppointment: notApprovedAppointments}, ret);
     }
 
     return ret;

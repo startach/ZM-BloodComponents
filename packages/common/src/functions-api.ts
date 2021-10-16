@@ -1,6 +1,7 @@
 import {
   BloodType,
   BookingChange,
+  AppointmentStatus,
   Coordinator,
   Donor,
   Hospital,
@@ -26,6 +27,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
+  status?: AppointmentStatus;
   recentChangeType?: BookingChange;
   donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
