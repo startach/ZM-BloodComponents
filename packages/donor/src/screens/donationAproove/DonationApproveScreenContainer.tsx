@@ -2,9 +2,9 @@ import DonationApproveScreen from "./DonationApproveScreen";
 import { BookedAppointment } from "common/src/types";
 
 interface DonationApproveScreenContainerProps {
-    firstName?: string;
-    apointmentNotAprooved?: BookedAppointment;
-    onShowOptionSelected: (isNoShow : boolean) => void;
+  firstName?: string;
+  apointmentNotAprooved?: BookedAppointment;
+  onShowOptionSelected: (isNoShow: boolean) => void;
 }
 
 export default function DonationApproveScreenContainer({
@@ -12,12 +12,11 @@ export default function DonationApproveScreenContainer({
   apointmentNotAprooved,
   onShowOptionSelected,
 }: DonationApproveScreenContainerProps) {
-
-    return (
-        <DonationApproveScreen
-            apointmentNotAprooved={apointmentNotAprooved}
-            firstName={firstName}
-            onShowOptionSelected={onShowOptionSelected}
-        />
-    );
+  return (
+    <DonationApproveScreen
+      apointmentNotAprooved={apointmentNotAprooved}
+      firstName={firstName}
+      onShowOptionSelected={onShowOptionSelected}
+    />
+  );
 }

@@ -103,12 +103,10 @@ export async function saveDonor(
   return data.donor;
 }
 
-export async function getDonorDetails(
-  fromMillis? : number,
-): Promise<{
+export async function getDonorDetails(fromMillis?: number): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
-  NotApprovedAppointment?: BookedAppointment [];
+  NotApprovedAppointment?: BookedAppointment[];
 }> {
   const currentUser = getAuth().currentUser;
 
@@ -123,7 +121,7 @@ export async function getDonorDetails(
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: fromMillis? fromMillis : new Date().getTime(),
+    fromMillis: fromMillis ? fromMillis : new Date().getTime(),
   };
 
   try {
@@ -133,18 +131,20 @@ export async function getDonorDetails(
     let ret = { donor: data.donor };
 
     if (data.futureAppointments.length !== 0) {
-      ret = Object.assign({futureAppointments: data.futureAppointments}, ret);
+      ret = Object.assign({ futureAppointments: data.futureAppointments }, ret);
     }
 
     const notApprovedAppointments = data.completedAppointments.filter(
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
     if (notApprovedAppointments.length !== 0) {
-      ret = Object.assign({NotApprovedAppointment: notApprovedAppointments}, ret);
+      ret = Object.assign(
+        { NotApprovedAppointment: notApprovedAppointments },
+        ret
+      );
     }
 
     return ret;
-
   } catch (e) {
     console.error("Error getting donor", e);
     return {};

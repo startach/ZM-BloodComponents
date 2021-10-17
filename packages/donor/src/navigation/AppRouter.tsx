@@ -95,14 +95,12 @@ export default function AppRouter() {
 
       console.log(donorDetails);
 
-
       setAppState({
         isFetching: false,
         donor: donorDetails.donor,
         bookedAppointment: donorDetails.bookedAppointment,
         apointmentNotApproved: donorDetails.NotApprovedAppointment,
       });
-
     }
 
     fetchData();
@@ -172,33 +170,30 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.About}
           render={() => <AboutScreen />}
         />
-        <Route 
-          path={"/" + MainNavigationKeys.Approve} 
-          render={() => 
-            {
+        <Route
+          path={"/" + MainNavigationKeys.Approve}
+          render={() => {
+            if (!loggedIn) return redirectToBookDonation();
+            if (!appState.donor || !appState.apointmentNotApproved)
+              return redirectToBookDonation();
 
+            async function onShowOptionSelected(isNoShow: boolean) {
+              // TODO : call function that update this in the DB
 
-              if (!loggedIn) return redirectToBookDonation();
-              if (!appState.donor || !appState.apointmentNotApproved) return redirectToBookDonation();
-              
-              const onShowOptionSelected = (isNoShow : boolean) => {
-                // TODO : call function that update this in the DB
+              setAppState({
+                ...appState,
+                apointmentNotApproved: appState.apointmentNotApproved?.slice(1),
+              });
+            }
 
-                setAppState({
-                  ...appState,
-                  apointmentNotApproved: appState.apointmentNotApproved?.slice(1),
-                });
-              }
-
-              return (
-                <DonationApproveScreenContainer
-                  firstName={appState.donor?.firstName}
-                  apointmentNotAprooved={appState.apointmentNotApproved[0]}
-                  onShowOptionSelected={onShowOptionSelected}
-                />
-              );
-            } 
-          }
+            return (
+              <DonationApproveScreenContainer
+                firstName={appState.donor?.firstName}
+                apointmentNotAprooved={appState.apointmentNotApproved[0]}
+                onShowOptionSelected={onShowOptionSelected}
+              />
+            );
+          }}
         />
         <Route
           path={"/" + MainNavigationKeys.Process}
@@ -212,7 +207,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
-            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve)
+            if (appState.apointmentNotApproved)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <MyProfileScreenContainer
                 user={appState.donor!}
@@ -225,7 +221,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve)
+            if (appState.apointmentNotApproved)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <UpcomingDonationScreenContainer
                 user={appState.donor!}
@@ -239,7 +236,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve);
+            if (appState.apointmentNotApproved)
+              return redirectTo(MainNavigationKeys.Approve);
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             return (
               <QuestionnaireScreenContainer
@@ -285,6 +283,6 @@ export function redirectToLogin() {
   return <Redirect to={"/" + MainNavigationKeys.Login} />;
 }
 
-export function redirectTo(page : string) {
+export function redirectTo(page: string) {
   return <Redirect to={"/" + page} />;
 }

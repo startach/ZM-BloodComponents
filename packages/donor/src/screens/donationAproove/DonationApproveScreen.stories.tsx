@@ -7,8 +7,8 @@ export default {
 };
 
 export const Default = () => {
-  <DonationApproveScreen 
-    firstName="משה" 
-    onShowOptionSelected={(isNoShow : boolean) => {}}
+  <DonationApproveScreen
+    firstName="משה"
+    onShowOptionSelected={(isNoShow: boolean) => {}}
   />;
-}
+};

@@ -6,7 +6,7 @@ import { AvailableAppointment } from "common/src/types";
 export interface DonationApproveScreenProps {
   firstName?: string;
   apointmentNotAprooved?: AvailableAppointment;
-  onShowOptionSelected: (isNoshow : boolean) => void;
+  onShowOptionSelected: (isNoshow: boolean) => void;
 }
 
 export default function DonationApproveScreen({
@@ -24,10 +24,16 @@ export default function DonationApproveScreen({
         <br />
         {apointmentNotAprooved ? apointmentNotAprooved : ""}
         <div className={styles.buttonContainer}>
-          <div className={styles.textButton} onClick={() => onShowOptionSelected(false)}>
+          <div
+            className={styles.textButton}
+            onClick={() => onShowOptionSelected(false)}
+          >
             כן
           </div>
-          <div className={styles.textButton} onClick={() => onShowOptionSelected(true)}>
+          <div
+            className={styles.textButton}
+            onClick={() => onShowOptionSelected(true)}
+          >
             לא
           </div>
         </div>
