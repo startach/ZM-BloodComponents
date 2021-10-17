@@ -2,7 +2,6 @@ import {
   BloodType,
   BookedAppointment,
   AppointmentStatus,
-  NotAproovedAppointment,
   Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
@@ -109,7 +108,7 @@ export async function getDonorDetails(
 ): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
-  NotAproovedAppointment?: NotAproovedAppointment [];
+  NotApprovedAppointment?: BookedAppointment [];
 }> {
   const currentUser = getAuth().currentUser;
 
@@ -141,7 +140,7 @@ export async function getDonorDetails(
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
     if (notApprovedAppointments.length !== 0) {
-      ret = Object.assign({NotAproovedAppointment: notApprovedAppointments}, ret);
+      ret = Object.assign({NotApprovedAppointment: notApprovedAppointments}, ret);
     }
 
     return ret;

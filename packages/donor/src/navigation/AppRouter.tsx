@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   BookedAppointment,
-  NotAproovedAppointment,
   Donor,
   LoginStatus,
 } from "@zm-blood-components/common";
@@ -28,13 +27,13 @@ import OnboardingWizardScreenContainer, {
 } from "../screens/onboarding/OnboardingWizardScreenContainer";
 import BookDonationScreenContainer from "../screens/bookDonation/BookDonationScreenContainer";
 import AboutScreen from "../screens/about/AboutScreen";
-import DonationAprooveScreen from "../screens/donationAproove/DonationAprooveScreen";
 import ContactScreen from "../screens/contact/ContactScreen";
 import UpcomingDonationScreenContainer from "../screens/UpcommingDonation/UpcomingDonationScreenContainer";
 import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSignupScreenContainer";
 import QuestionnaireScreenContainer from "../screens/questionnaire/QuestionnaireScreenContainer";
 import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContainer";
 import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
+import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -47,7 +46,7 @@ export default function AppRouter() {
   const [appState, setAppState] = useState<{
     donor?: Donor;
     bookedAppointment?: BookedAppointment;
-    apointmentNotAprooved?: NotAproovedAppointment[];
+    apointmentNotApproved?: BookedAppointment[];
     isFetching: boolean;
   }>({
     isFetching: false,
@@ -77,7 +76,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: undefined,
         bookedAppointment: undefined,
-        apointmentNotAprooved: undefined,
+        apointmentNotApproved: undefined,
       });
       return;
     }
@@ -87,7 +86,7 @@ export default function AppRouter() {
         isFetching: true,
         donor: undefined,
         bookedAppointment: undefined,
-        apointmentNotAprooved: undefined,
+        apointmentNotApproved: undefined,
       });
 
       const today = new Date().getDate();
@@ -101,7 +100,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: donorDetails.donor,
         bookedAppointment: donorDetails.bookedAppointment,
-        apointmentNotAprooved: donorDetails.NotAproovedAppointment,
+        apointmentNotApproved: donorDetails.NotApprovedAppointment,
       });
 
     }
@@ -174,15 +173,28 @@ export default function AppRouter() {
           render={() => <AboutScreen />}
         />
         <Route 
-          path={"/" + MainNavigationKeys.Aproove} 
+          path={"/" + MainNavigationKeys.Approve} 
           render={() => 
             {
+
+
               if (!loggedIn) return redirectToBookDonation();
-              if (!appState.donor || !appState.apointmentNotAprooved) return redirectToBookDonation();
+              if (!appState.donor || !appState.apointmentNotApproved) return redirectToBookDonation();
+              
+              const onShowOptionSelected = (isNoShow : boolean) => {
+                // TODO : call function that update this in the DB
+
+                setAppState({
+                  ...appState,
+                  apointmentNotApproved: appState.apointmentNotApproved?.slice(1),
+                });
+              }
+
               return (
-                <DonationAprooveScreen 
+                <DonationApproveScreenContainer
                   firstName={appState.donor?.firstName}
-                  apointmentNotAprooved={appState.apointmentNotAprooved[0]}
+                  apointmentNotAprooved={appState.apointmentNotApproved[0]}
+                  onShowOptionSelected={onShowOptionSelected}
                 />
               );
             } 
@@ -200,7 +212,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
-            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove)
+            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve)
             return (
               <MyProfileScreenContainer
                 user={appState.donor!}
@@ -213,7 +225,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove)
+            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve)
             return (
               <UpcomingDonationScreenContainer
                 user={appState.donor!}
@@ -227,7 +239,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (appState.apointmentNotAprooved) return redirectTo(MainNavigationKeys.Aproove);
+            if (appState.apointmentNotApproved) return redirectTo(MainNavigationKeys.Approve);
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             return (
               <QuestionnaireScreenContainer
