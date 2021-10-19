@@ -1,22 +1,26 @@
 import DonationApproveScreen from "./DonationApproveScreen";
-import { BookedAppointment } from "common/src/types";
+import { BookedAppointment, Hospital } from "@zm-blood-components/common";
+import { hostname } from "os";
 
-interface DonationApproveScreenContainerProps {
-  firstName?: string;
-  apointmentNotAprooved?: BookedAppointment;
-  onShowOptionSelected: (isNoShow: boolean) => void;
+export interface DonationApproveScreenContainerProps {
+    firstName?: string;
+    hospital: Hospital;
+    donationStartTimeMillis: number;
+    onShowOptionSelected: (isNoShow: boolean) => void;
 }
 
 export default function DonationApproveScreenContainer({
-  firstName,
-  apointmentNotAprooved,
-  onShowOptionSelected,
+    firstName,
+    hospital,
+    donationStartTimeMillis,
+    onShowOptionSelected,
 }: DonationApproveScreenContainerProps) {
   return (
     <DonationApproveScreen
-      apointmentNotAprooved={apointmentNotAprooved}
-      firstName={firstName}
-      onShowOptionSelected={onShowOptionSelected}
+        firstName={firstName}
+        hospital={hospital}
+        donationStartTimeMillis={donationStartTimeMillis}
+        onShowOptionSelected={onShowOptionSelected}
     />
   );
 }

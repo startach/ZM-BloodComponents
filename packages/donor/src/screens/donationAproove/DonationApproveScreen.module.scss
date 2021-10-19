@@ -38,15 +38,12 @@
 }
 
 .textButton {
-  border: 1px solid var(--donor-light-gray);
-  border-radius: 5px;
   padding: 8px 8px;
-  text-align: center;
   font-size: 16px;
   margin: auto;
-  flex: 0 40%;
+  flex: 1 1 40%;
 }
 
-.textButton:active {
-  background-color: var(--donor-light-gray);
-}
+// .textButton:active {
+//   background-color: var(--donor-light-gray);
+// }

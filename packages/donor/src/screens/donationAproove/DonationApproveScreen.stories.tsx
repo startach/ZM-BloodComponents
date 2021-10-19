@@ -1,14 +1,30 @@
-import DonationApproveScreen from "./DonationApproveScreen";
+import { Story } from "@storybook/react";
+import { BookedAppointment, Hospital, AppointmentStatus } from "@zm-blood-components/common";
+import DonationApproveScreenContainer, { DonationApproveScreenContainerProps } from "./DonationApproveScreenContainer";
 
-export default {
-  component: DonationApproveScreen,
-  title: "Screens/About Screen",
-  parameters: { layout: "fullscreen" },
+const a : BookedAppointment = {
+  bookingTimeMillis: 123324123,
+  donationStartTimeMillis: 13241432,
+  donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
+  hospital: Hospital.SOROKA,
+  id: "f324t243g435g",
+  status: AppointmentStatus.NOSHOW
 };
 
-export const Default = () => {
-  <DonationApproveScreen
-    firstName="משה"
-    onShowOptionSelected={(isNoShow: boolean) => {}}
-  />;
+export default {
+  component: DonationApproveScreenContainer,
+  title: "Screens/Approve Screen",
+  argTypes: {
+    firstName: {type: "string", defaultValue: "משה"}
+  }
+};
+
+const Template : Story<DonationApproveScreenContainerProps> = (args) => <DonationApproveScreenContainer {...args}/>;
+
+export const Default = Template.bind({})
+Default.args = {
+  firstName: "משה",
+  hospital: Hospital.HADASA,
+  donationStartTimeMillis: new Date().getTime(),
+  onShowOptionSelected: (isNoShow: boolean) => {}
 };

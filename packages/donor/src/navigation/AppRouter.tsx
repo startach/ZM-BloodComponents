@@ -186,10 +186,29 @@ export default function AppRouter() {
               });
             }
 
+            // if (!appState.apointmentNotApproved){ 
+            //   const a : BookedAppointment = {
+            //       bookingTimeMillis: new Date().getTime(),
+            //       donationStartTimeMillis: new Date().getTime(),
+            //       donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
+            //       hospital: Hospital.SOROKA,
+            //       id: "1234",
+            //       status: AppointmentStatus.NOSHOW
+            //     };
+
+            //     return (
+            //       <DonationApproveScreenContainer
+            //         firstName="משה"
+            //         apointmentNotAprooved={a}
+            //         onShowOptionSelected={onShowOptionSelected}
+            //       />);
+            // }
+
             return (
               <DonationApproveScreenContainer
                 firstName={appState.donor?.firstName}
-                apointmentNotAprooved={appState.apointmentNotApproved[0]}
+                hospital={appState.apointmentNotApproved[0].hospital}
+                donationStartTimeMillis={appState.apointmentNotApproved[0].donationStartTimeMillis}
                 onShowOptionSelected={onShowOptionSelected}
               />
             );
