@@ -17,38 +17,35 @@ export default function DonationApproveScreen({
   donationStartTimeMillis,
   onShowOptionSelected,
 }: DonationApproveScreenProps) {
-  const date : Date = new Date(donationStartTimeMillis);
+  const date: Date = new Date(donationStartTimeMillis);
 
   return (
-    <ZMScreen title="אישור הגעה">
+    <ZMScreen title="אישור הגעה" hasBurgerMenu={true}>
       <div className={styles.textContainer}>
         <div className={styles.title}>היי {firstName ? firstName : ""}</div>
+        
         <br />
-        רצינו לוודא האם הגעת לתרום ב
-        {LocaleUtils.getHospitalName(hospital)}
-        {" "}
-        ב-
-        {date.getDate()}.{date.getMonth() + 1}
-        {" "}
-        בשעה
-        {" "}
-        {date.getHours()}:{date.getMinutes()}
-        ?
+        {`רצינו לוודא האם הגעת לתרום ב${LocaleUtils.getHospitalName(hospital)}\
+         ב-${date.getDate()}.${
+          date.getMonth() + 1
+        } בשעה ${date.getHours()}:${date.getMinutes()}?`}
         <br />
         <br />
         <div className={styles.buttonContainer}>
-          <Button 
-            className={styles.textButton}
-            onClick={() => onShowOptionSelected(true)}
-            title="כן"
-            variant={ButtonVariant.outlined}
-          />
-          <Button 
-            className={styles.textButton}
-            onClick={() => onShowOptionSelected(false)}
-            title="לא"
-            variant={ButtonVariant.outlined}
-          />
+          <div className={styles.textButton}>
+            <Button
+              onClick={() => onShowOptionSelected(false)}
+              title="כן"
+              variant={ButtonVariant.outlined}
+            />
+          </div>
+          <div className={styles.textButton}>
+            <Button
+              onClick={() => onShowOptionSelected(true)}
+              title="לא"
+              variant={ButtonVariant.outlined}
+            />
+          </div>
         </div>
         <br /> <br />
         <div className={styles.imageContainer}>

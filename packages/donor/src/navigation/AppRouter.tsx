@@ -3,6 +3,8 @@ import {
   BookedAppointment,
   Donor,
   LoginStatus,
+  AppointmentStatus,
+  Hospital
 } from "@zm-blood-components/common";
 import {
   initFirebase,
@@ -174,8 +176,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Approve}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (!appState.donor || !appState.apointmentNotApproved)
-              return redirectToBookDonation();
+            // if (!appState.donor || !appState.apointmentNotApproved)
+            //   return redirectToBookDonation();
 
             async function onShowOptionSelected(isNoShow: boolean) {
               // TODO : call function that update this in the DB
@@ -186,29 +188,35 @@ export default function AppRouter() {
               });
             }
 
-            // if (!appState.apointmentNotApproved){ 
-            //   const a : BookedAppointment = {
-            //       bookingTimeMillis: new Date().getTime(),
-            //       donationStartTimeMillis: new Date().getTime(),
-            //       donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
-            //       hospital: Hospital.SOROKA,
-            //       id: "1234",
-            //       status: AppointmentStatus.NOSHOW
-            //     };
+            if (!appState.apointmentNotApproved){
+              const a : BookedAppointment = {
+                  bookingTimeMillis: new Date().getTime(),
+                  donationStartTimeMillis: new Date().getTime(),
+                  donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
+                  hospital: Hospital.SOROKA,
+                  id: "1234",
+                  status: AppointmentStatus.NOSHOW
+                };
 
-            //     return (
-            //       <DonationApproveScreenContainer
-            //         firstName="משה"
-            //         apointmentNotAprooved={a}
-            //         onShowOptionSelected={onShowOptionSelected}
-            //       />);
-            // }
+                return (
+                  <DonationApproveScreenContainer
+                  firstName={appState.donor?.firstName}
+                  hospital={a.hospital}
+                  donationStartTimeMillis={
+                    a.donationStartTimeMillis
+                  }
+                  onShowOptionSelected={onShowOptionSelected}
+              />
+                );
+            }
 
             return (
               <DonationApproveScreenContainer
                 firstName={appState.donor?.firstName}
                 hospital={appState.apointmentNotApproved[0].hospital}
-                donationStartTimeMillis={appState.apointmentNotApproved[0].donationStartTimeMillis}
+                donationStartTimeMillis={
+                  appState.apointmentNotApproved[0].donationStartTimeMillis
+                }
                 onShowOptionSelected={onShowOptionSelected}
               />
             );
