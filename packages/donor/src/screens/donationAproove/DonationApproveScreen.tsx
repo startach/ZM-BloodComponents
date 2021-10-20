@@ -28,7 +28,7 @@ export default function DonationApproveScreen({
         {`רצינו לוודא האם הגעת לתרום ב${LocaleUtils.getHospitalName(hospital)}\
          ב-${date.getDate()}.${
           date.getMonth() + 1
-        } בשעה ${date.getHours()}:${date.getMinutes()}?`}
+        } בשעה ${date.getHours() === 0? "00" : date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}?`}
         <br />
         <br />
         <div className={styles.buttonContainer}>

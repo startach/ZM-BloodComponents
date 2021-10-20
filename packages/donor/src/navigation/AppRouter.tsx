@@ -181,6 +181,7 @@ export default function AppRouter() {
 
             async function onShowOptionSelected(isNoShow: boolean) {
               // TODO : call function that update this in the DB
+              console.log('Answer : ', isNoShow);
 
               setAppState({
                 ...appState,
