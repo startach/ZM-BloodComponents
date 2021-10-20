@@ -1,7 +1,7 @@
 import styles from "./DonationApproveScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import AllLogos from "./../../assets/images/all logos.svg";
-import { Hospital, LocaleUtils } from "@zm-blood-components/common";
+import { Hospital, LocaleUtils, DateUtils } from "@zm-blood-components/common";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 
 export interface DonationApproveScreenProps {
@@ -17,18 +17,13 @@ export default function DonationApproveScreen({
   donationStartTimeMillis,
   onShowOptionSelected,
 }: DonationApproveScreenProps) {
-  const date: Date = new Date(donationStartTimeMillis);
-
   return (
     <ZMScreen title="אישור הגעה" hasBurgerMenu={true}>
       <div className={styles.textContainer}>
         <div className={styles.title}>היי {firstName ? firstName : ""}</div>
-        
         <br />
         {`רצינו לוודא האם הגעת לתרום ב${LocaleUtils.getHospitalName(hospital)}\
-         ב-${date.getDate()}.${
-          date.getMonth() + 1
-        } בשעה ${date.getHours() === 0? "00" : date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}?`}
+         ב-${DateUtils.ToDateString(donationStartTimeMillis)} בשעה ${DateUtils.ToTimeString(donationStartTimeMillis)}?`}
         <br />
         <br />
         <div className={styles.buttonContainer}>
