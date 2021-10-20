@@ -23,7 +23,9 @@ export default function DonationApproveScreen({
         <div className={styles.title}>היי {firstName ? firstName : ""}</div>
         <br />
         {`רצינו לוודא האם הגעת לתרום ב${LocaleUtils.getHospitalName(hospital)}\
-         ב-${DateUtils.ToDateString(donationStartTimeMillis)} בשעה ${DateUtils.ToTimeString(donationStartTimeMillis)}?`}
+         ב-${DateUtils.ToDateString(
+           donationStartTimeMillis
+         )} בשעה ${DateUtils.ToTimeString(donationStartTimeMillis)}?`}
         <br />
         <br />
         <div className={styles.buttonContainer}>

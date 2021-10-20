@@ -4,7 +4,7 @@ import {
   Donor,
   LoginStatus,
   AppointmentStatus,
-  Hospital
+  Hospital,
 } from "@zm-blood-components/common";
 import {
   initFirebase,
@@ -181,7 +181,7 @@ export default function AppRouter() {
 
             async function onShowOptionSelected(isNoShow: boolean) {
               // TODO : call function that update this in the DB
-              console.log('Answer : ', isNoShow);
+              console.log("Answer : ", isNoShow);
 
               setAppState({
                 ...appState,
@@ -189,26 +189,24 @@ export default function AppRouter() {
               });
             }
 
-            if (!appState.apointmentNotApproved){
-              const a : BookedAppointment = {
-                  bookingTimeMillis: new Date().getTime(),
-                  donationStartTimeMillis: new Date().getTime(),
-                  donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
-                  hospital: Hospital.SOROKA,
-                  id: "1234",
-                  status: AppointmentStatus.NOSHOW
-                };
+            if (!appState.apointmentNotApproved) {
+              const a: BookedAppointment = {
+                bookingTimeMillis: new Date().getTime(),
+                donationStartTimeMillis: new Date().getTime(),
+                donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
+                hospital: Hospital.SOROKA,
+                id: "1234",
+                status: AppointmentStatus.NOSHOW,
+              };
 
-                return (
-                  <DonationApproveScreenContainer
+              return (
+                <DonationApproveScreenContainer
                   firstName={appState.donor?.firstName}
                   hospital={a.hospital}
-                  donationStartTimeMillis={
-                    a.donationStartTimeMillis
-                  }
+                  donationStartTimeMillis={a.donationStartTimeMillis}
                   onShowOptionSelected={onShowOptionSelected}
-              />
-                );
+                />
+              );
             }
 
             return (
