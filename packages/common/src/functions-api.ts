@@ -27,7 +27,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
-  status?: AppointmentStatus;
+  status: AppointmentStatus;
   recentChangeType?: BookingChange;
   donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
