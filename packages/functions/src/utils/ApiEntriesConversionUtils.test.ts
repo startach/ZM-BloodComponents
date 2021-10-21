@@ -2,6 +2,7 @@ import {
   FunctionsApi,
   Hospital,
   BookingChange,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import {
@@ -20,6 +21,7 @@ const DB_APPOINTMENT_WITHOUT_ID: DbAppointment = {
   creatorUserId: "ABC",
   donationStartTime: admin.firestore.Timestamp.now(),
   hospital: Hospital.ASAF_HAROFE,
+  status: AppointmentStatus.BOOKED,
 };
 
 const getValidDBAppointment = (
@@ -36,6 +38,7 @@ const getValidDBAppointment = (
     bookingTime: testNoBookingTime
       ? undefined
       : admin.firestore.Timestamp.now(),
+    status: testNoDonorId? AppointmentStatus.AVAILABLE : AppointmentStatus.BOOKED,
   };
 };
 

@@ -18,6 +18,7 @@ describe("DbAppointment Utils", () => {
       creatorUserId: "creatorUserId",
       confirmationTime: admin.firestore.Timestamp.now(),
       creationTime: admin.firestore.Timestamp.now(),
+      status: AppointmentStatus.AVAILABLE,
     };
 
     const res =
@@ -49,6 +50,7 @@ describe("DbAppointment Utils", () => {
       creatorUserId: "creatorUserId",
       confirmationTime: admin.firestore.Timestamp.now(),
       creationTime: admin.firestore.Timestamp.now(),
+      status: AppointmentStatus.COMPLETED,
     };
 
     const res =

@@ -1,5 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  AppointmentStatus,
   CoordinatorRole,
   FunctionsApi,
   Hospital,
@@ -248,10 +249,12 @@ async function saveAppointment(
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: hospital,
     donorId: "",
+    status: AppointmentStatus.AVAILABLE,
   };
   if (donorId) {
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
+    appointment.status = AppointmentStatus.BOOKED;
   }
   await setAppointment(appointment);
   return appointment;
