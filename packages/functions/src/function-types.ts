@@ -46,6 +46,7 @@ export type DbAppointment = {
   creatorUserId: string;
   donationStartTime: firestore.Timestamp;
   hospital: Hospital;
+  status: AppointmentStatus;
 
   // added donor
   donorId: string; // Empty string means appointment is available
@@ -55,5 +56,4 @@ export type DbAppointment = {
   lastChangeTime?: firestore.Timestamp;
   lastChangeType?: BookingChange;
   donationDoneTimeMillis?: firestore.Timestamp;
-  status?: AppointmentStatus; // TODO: remove ? once db migration happens
 };
