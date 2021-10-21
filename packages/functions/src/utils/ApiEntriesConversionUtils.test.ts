@@ -38,7 +38,9 @@ const getValidDBAppointment = (
     bookingTime: testNoBookingTime
       ? undefined
       : admin.firestore.Timestamp.now(),
-    status: testNoDonorId? AppointmentStatus.AVAILABLE : AppointmentStatus.BOOKED,
+    status: testNoDonorId
+      ? AppointmentStatus.AVAILABLE
+      : AppointmentStatus.BOOKED,
   };
 };
 
