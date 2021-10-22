@@ -49,10 +49,6 @@ export function TodayAdMidnight() {
   return midnight;
 }
 
-export function CleanIsoDate(date: Date) {
-  return date.toISOString().replace(/[-:.]/g, "");
-}
-
 export function DateWithAddedMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60000);
 }
