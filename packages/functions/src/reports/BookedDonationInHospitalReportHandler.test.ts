@@ -4,6 +4,7 @@ import {
   FunctionsApi,
   Hospital,
   BloodType,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -197,11 +198,13 @@ async function saveAppointment(
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: hospital,
     donorId: "",
+    status: AppointmentStatus.AVAILABLE,
   };
 
   if (donorId) {
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
+    appointment.status = AppointmentStatus.BOOKED;
   }
 
   await setAppointment(appointment);
