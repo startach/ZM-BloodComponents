@@ -103,39 +103,27 @@ test("Valid request complete appointment", async () => {
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
-test("Valid request complete appointment with true parameter", async () => {
-  await createDonor();
-  await saveAppointment(DONOR_ID);
+test.each([true, false])(
+  "Valid request complete appointment with noshow",
+  async (isNoShow) => {
+    await createDonor();
+    await saveAppointment(DONOR_ID);
 
-  await wrapped(completeAppointmentRequest(true), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
+    await wrapped(completeAppointmentRequest(isNoShow), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
-  expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
-  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
-});
-
-test("Valid request complete appointment with false parameter", async () => {
-  await createDonor();
-  await saveAppointment(DONOR_ID);
-
-  await wrapped(completeAppointmentRequest(false), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
-
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
-  expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
-  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
-});
+    const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
+    expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
+    expect(appointment[0].status).toEqual(
+      isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.NOSHOW
+    );
+    expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
+    expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+  }
+);
 
 async function saveAppointment(donorId: string) {
   const time = admin.firestore.Timestamp.now();

@@ -15,15 +15,11 @@ export const completeAppointmentApi = functions.https.onRequest(
       throw new Error("Invalid appointment id");
     }
 
-    // if (!isNoshow || !(isNoshow in ["true", "false"]) ) {
-    //   throw new Error("Invalid isNoshow value");
-    // }
-
     try {
       await completeAppointmentFunc(
         appointmentId,
         donorId,
-        isNoshow === "false"
+        isNoshow === "true"
       );
     } catch (err) {
       functions.logger

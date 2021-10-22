@@ -86,6 +86,10 @@ export interface CompleteAppointmentRequest {
   isNoshow?: boolean;
 }
 
+export interface CompleteAppointmentResponse {
+  completedAppointment: BookedAppointmentApiEntry;
+}
+
 export const GetDonorFunctionName = "getDonor";
 export interface GetDonorRequest {
   donorId: string;

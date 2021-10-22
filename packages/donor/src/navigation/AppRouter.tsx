@@ -88,12 +88,6 @@ export default function AppRouter() {
       const startTime = new Date().getTime();
       const donorDetails = await FirebaseFunctions.getDonorDetails();
 
-      const res = await FirebaseFunctions.setCompleteAppointment(
-        "Ev8MU0ORYGV0ahF8voDO",
-        true
-      );
-      console.log("response : ", res);
-
       setAppState({
         isFetching: false,
         donor: donorDetails.donor,
