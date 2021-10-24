@@ -5,7 +5,7 @@ export function getAppointmentCopyString(
   appointment: ManagedAppointment
 ): string {
   const bookingDateAndTime: string =
-    appointment.donationStartTimeMillis != undefined
+    appointment.donationStartTimeMillis !== undefined
       ? `${DateUtils.ToDateString(
           appointment.donationStartTimeMillis
         )} ${DateUtils.ToTimeString(appointment.donationStartTimeMillis)}`

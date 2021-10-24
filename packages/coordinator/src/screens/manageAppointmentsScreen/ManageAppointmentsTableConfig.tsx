@@ -97,7 +97,9 @@ const GetExpandedColumns = (
           tooltip: "העתק",
           iconUrl: copyIcon,
           onClick: () => {
-            navigator.clipboard.writeText(getAppointmentCopyString(appointment));
+            navigator.clipboard.writeText(
+              getAppointmentCopyString(appointment)
+            );
 
             // flash a message to user
             popupFlashMessageTrigger("הפרטים הועתקו בהצלחה");
