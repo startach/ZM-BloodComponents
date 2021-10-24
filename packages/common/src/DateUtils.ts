@@ -49,6 +49,10 @@ export function TodayAdMidnight() {
   return midnight;
 }
 
+export function DateWithAddedMinutes(date: Date, minutes: number) {
+  return new Date(date.getTime() + minutes * 60000);
+}
+
 export const ShortDateFormat: Intl.DateTimeFormatOptions = {
   weekday: "short",
   month: "numeric",

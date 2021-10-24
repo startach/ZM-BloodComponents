@@ -1,4 +1,8 @@
-import { Hospital, TestUtils } from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  Hospital,
+  TestUtils,
+} from "@zm-blood-components/common";
 import UpcomingDonationScreen, {
   UpcomingDonationScreenProps,
 } from "./UpcomingDonationScreen";
@@ -19,6 +23,7 @@ const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
     donationStartTimeMillis: 1628845200000,
     donorId: "donorId",
     hospital: hospital,
+    status: AppointmentStatus.BOOKED,
     id: "appointmentId",
   },
   fullName: "משה כהן",

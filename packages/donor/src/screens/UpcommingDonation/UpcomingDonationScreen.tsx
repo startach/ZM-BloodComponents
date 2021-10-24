@@ -15,6 +15,9 @@ import Cancellation from "../../assets/images/cancelation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
+import EventCalendarLink from "./EventCalendarLink";
+
+const EVENT_DURATION_BY_MINUTES = 90;
 
 export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
@@ -27,7 +30,6 @@ export default function UpcomingDonationScreen({
   onCancel,
   bookedAppointment,
 }: UpcomingDonationScreenProps) {
-  const donationDate = new Date(bookedAppointment.donationStartTimeMillis);
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -61,11 +63,14 @@ export default function UpcomingDonationScreen({
 
               <div className={styles.detailLabel}>מתי?</div>
               <div className={styles.detailValue}>
-                {donationDate.toLocaleDateString(
-                  "he-He",
-                  DateUtils.ShortDateFormat
-                )}
+                {new Date(
+                  bookedAppointment.donationStartTimeMillis
+                ).toLocaleDateString("he-He", DateUtils.ShortDateFormat)}
               </div>
+              <EventCalendarLink
+                bookedAppointment={bookedAppointment}
+                eventDurationByMinutes={EVENT_DURATION_BY_MINUTES}
+              />
             </div>
           </div>
         </div>

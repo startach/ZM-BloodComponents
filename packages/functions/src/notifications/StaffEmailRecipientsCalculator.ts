@@ -14,6 +14,11 @@ function getProductionHospitalCoordinator(
         email: "bloodbankbl@clalit.org.il",
         name: "בית החולים בילינסון",
       };
+    case Hospital.SOROKA:
+      return {
+        email: "ronniema79@gmail.com",
+        name: "בית החולים סורוקה",
+      };
   }
 
   return undefined;

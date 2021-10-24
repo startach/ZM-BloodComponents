@@ -27,7 +27,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
-  status?: AppointmentStatus;
+  status: AppointmentStatus;
   recentChangeType?: BookingChange;
   donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
@@ -85,6 +85,7 @@ export interface CancelAppointmentRequest {
 export const CompleteAppointmentFunctionName = "completeAppointment";
 export interface CompleteAppointmentRequest {
   appointmentId: string;
+  isNoshow?: boolean;
 }
 
 export interface CompleteAppointmentResponse {
