@@ -96,7 +96,9 @@ const GetExpandedColumns = (
           iconUrl: copyIcon,
           onClick: () => {
             const bookingDate = appointment.donationStartTimeMillis
-              ? DateUtils.ToDateString(appointment.donationStartTimeMillis) + " " + DateUtils.ToTimeString(appointment.donationStartTimeMillis)
+              ? DateUtils.ToDateString(appointment.donationStartTimeMillis) +
+                " " +
+                DateUtils.ToTimeString(appointment.donationStartTimeMillis)
               : "";
             const copyString = `${appointment.donorName}, ${String(
               appointment.donorPhoneNumber
