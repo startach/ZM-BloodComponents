@@ -68,6 +68,7 @@ test("donor details are set in appointments", () => {
       email: "email",
       phone: "phone",
       birthDate: "13/12/2000",
+      notificationSettings: { disableEmailNotifications: false },
     },
   ];
 
