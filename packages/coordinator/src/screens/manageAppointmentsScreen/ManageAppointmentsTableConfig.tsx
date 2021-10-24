@@ -19,6 +19,7 @@ import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";
+import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
@@ -95,15 +96,9 @@ const GetExpandedColumns = (
           tooltip: "העתק",
           iconUrl: copyIcon,
           onClick: () => {
-            const bookingDate = appointment.donationStartTimeMillis
-              ? DateUtils.ToDateString(appointment.donationStartTimeMillis) +
-                " " +
-                DateUtils.ToTimeString(appointment.donationStartTimeMillis)
-              : "";
-            const copyString = `${appointment.donorName}, ${String(
-              appointment.donorPhoneNumber
-            )}, ${bookingDate}`;
-            navigator.clipboard.writeText(copyString);
+            navigator.clipboard.writeText(
+              getAppointmentCopyString(appointment)
+            );
           },
         });
 
