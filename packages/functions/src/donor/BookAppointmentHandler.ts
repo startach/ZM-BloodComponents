@@ -8,13 +8,13 @@ import * as admin from "firebase-admin";
 import {
   AppointmentStatus,
   BookingChange,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
+import { DbDonor } from "../function-types";
 
 const WEEKS_BUFFER = 0;
 
@@ -33,7 +33,7 @@ export default async function (
   }
 
   const availableAppointments = appointmentsToBook.filter(
-    (appointment) => !appointment.donorId
+    (appointment) => appointment.status === AppointmentStatus.AVAILABLE
   );
   if (availableAppointments.length === 0) {
     // None of the requested appointments is available

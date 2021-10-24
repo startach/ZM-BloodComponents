@@ -1,9 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {
-  DbAppointment,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import {
   deleteAppointmentsByIds,
@@ -11,6 +7,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbAppointment } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetAvailableAppointmentsFunctionName]

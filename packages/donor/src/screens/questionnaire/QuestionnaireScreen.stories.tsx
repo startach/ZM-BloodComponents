@@ -32,6 +32,10 @@ export const Soroka = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.SOROKA} />
 );
 
-export const OtherHospital = () => (
+export const TelHashomer = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.TEL_HASHOMER} />
+);
+
+export const OtherHospital = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.RAMBAM} />
 );

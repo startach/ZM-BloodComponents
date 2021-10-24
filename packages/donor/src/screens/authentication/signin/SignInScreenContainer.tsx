@@ -1,8 +1,7 @@
 import SignInScreen from "./SignInScreen";
-import firebase from "firebase/app";
-import "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../../navigation/app/MainNavigationKeys";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function SignInScreenContainer() {
   const history = useHistory();
@@ -28,10 +27,8 @@ function signInWithEmail(
   emailError: (error: string) => void,
   passwordError: (error: string) => void
 ) {
-  return firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch((error: firebase.auth.Error) => {
+  return signInWithEmailAndPassword(getAuth(), email, password)
+    .catch((error) => {
       switch (error.code) {
         case "auth/invalid-email":
           emailError("כתובת הדואר אינה תקינה");

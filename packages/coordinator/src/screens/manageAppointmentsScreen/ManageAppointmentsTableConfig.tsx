@@ -25,7 +25,8 @@ const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     label: "שם מלא",
@@ -97,6 +98,9 @@ const GetExpandedColumns = (
           iconUrl: copyIcon,
           onClick: () => {
             navigator.clipboard.writeText(getAppointmentCopyString(appointment));
+
+            // flash a message to user
+            popupFlashMessageTrigger("הפרטים הועתקו בהצלחה");
           },
         });
 
@@ -150,7 +154,8 @@ export const AppointmentTableExpandedRowContent = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void
 ) => {
   return (
     <Table
@@ -164,7 +169,8 @@ export const AppointmentTableExpandedRowContent = (
         setPopupData,
         onRemoveDonor,
         onDeleteAppointment,
-        showOnlyRecentChanges
+        showOnlyRecentChanges,
+        popupFlashMessageTrigger
       )}
       tableIndex={1}
       hasColumnHeaders

@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
-import { Collections, DbDonor, Hospital } from "@zm-blood-components/common";
+import { Collections, Hospital } from "@zm-blood-components/common";
 import * as _ from "lodash";
+import { DbDonor } from "../function-types";
 
 export async function getDonorOrThrow(donorId: string) {
   const donor = await getDonor(donorId);

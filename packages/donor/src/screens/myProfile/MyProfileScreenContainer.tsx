@@ -1,7 +1,6 @@
 import { BloodType, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
-import "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 interface MyProfileScreenContainerProps {

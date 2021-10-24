@@ -8,7 +8,7 @@ export default async function (
 
   const result = availableAppointments.map((appointment) => {
     return {
-      id: appointment.id,
+      id: appointment.id!,
       donationStartTimeMillis: appointment.donationStartTime.toMillis(),
       hospital: appointment.hospital,
     };

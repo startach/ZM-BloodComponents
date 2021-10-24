@@ -3,9 +3,9 @@ import addNewAppointmentsHandler from "./coordinator/AddNewAppointmentsHandler";
 import getCoordinatorHandler from "./coordinator/GetCoordinatorHandler";
 import getCoordinatorAppointmentsHandler from "./coordinator/GetCoordinatorAppointmentsHandler";
 import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
-import saveAdminRequestHandler from "./coordinator/SaveCoordinatorHandler";
 import bookAppointmentHandler from "./donor/BookAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
+import completeAppointmentHandler from "./donor/CompleteAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
@@ -15,6 +15,8 @@ import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospi
 import * as admin from "firebase-admin";
 import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 import { unsubscribeHandler } from "./notifications/UnsubscribeHandler";
+import { completeAppointmentApi } from "./notifications/CompleteAppointmentApi";
+import { jobHandler } from "./jobs/SchemaJobs";
 
 admin.initializeApp(functions.config().firebase);
 admin.firestore().settings({ timestampsInSnapshots: true });
@@ -26,7 +28,6 @@ export const getCoordinatorAppointments = handler(
   getCoordinatorAppointmentsHandler
 );
 export const deleteAppointments = handler(deleteAppointmentsHandler);
-export const saveCoordinator = handler(saveAdminRequestHandler);
 export const getDonors = handler(getDonorsHandler);
 
 // Reports
@@ -37,6 +38,8 @@ export const getBookedDonationsInHospital = handler(
 // Donor
 export const bookAppointment = handler(bookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
+export const completeAppointment = handler(completeAppointmentHandler);
+export const completeAppointmentApiHandler = completeAppointmentApi;
 export const getDonor = handler(geDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = unauthenticatedHandler(
@@ -44,3 +47,6 @@ export const getAvailableAppointments = unauthenticatedHandler(
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
 export const unsubscribe = unsubscribeHandler;
+
+// Jobs
+export const jobs = jobHandler;

@@ -1,8 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/auth";
 import { BloodType, Donor } from "@zm-blood-components/common";
 import ExtendedSignupScreen from "./ExtendedSignupScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
+import { signOut } from "../authentication/FirebaseAuthentication";
 
 interface ExtendedSignupScreenContainerProps {
   updateUserInAppState: (user: Donor) => void;
@@ -11,7 +10,7 @@ interface ExtendedSignupScreenContainerProps {
 export default function ExtendedSignupScreenContainer(
   props: ExtendedSignupScreenContainerProps
 ) {
-  const onSignOut = () => firebase.auth().signOut();
+  const onSignOut = () => signOut();
 
   const onSave = async (
     firstName: string,
@@ -26,7 +25,7 @@ export default function ExtendedSignupScreenContainer(
       "", // unused in pilot
       phone,
       bloodType,
-      false // false by default for new users
+      true // true by default for new users
     );
     props.updateUserInAppState(newUser);
   };

@@ -1,4 +1,4 @@
-hr {
+.popup_hr {
   width: 90%;
 }
 
@@ -22,4 +22,20 @@ hr {
   font-size: 16px !important;
   font-weight: bold !important;
   color: #fff !important;
+}
+
+.flashMessageContainer {
+  z-index: 100;
+  position: fixed;
+  bottom: 50px;
+  left: 5%;
+}
+
+.flashMessage {
+  background: var(--color-mid-grey);
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  color: var(--color-white);
 }

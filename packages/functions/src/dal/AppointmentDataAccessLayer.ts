@@ -2,11 +2,10 @@ import * as admin from "firebase-admin";
 import * as _ from "lodash";
 import {
   AppointmentStatus,
-  BookingChange,
   Collections,
-  DbAppointment,
   Hospital,
 } from "@zm-blood-components/common";
+import { DbAppointment } from "../function-types";
 
 export async function getAppointmentsByIds(
   appointmentIds: string[]
@@ -24,24 +23,17 @@ export async function getAppointmentsByIds(
   );
 
   const snapshots = await Promise.all(promisesArray);
-  const docs = _.flatMap(snapshots, (s) => s.docs);
-  return _.map(docs, (a) => ({
-    ...a.data(),
-    id: a.id,
-  }));
+  return _.flatMap(snapshots, (s) => toDbAppointments(s));
 }
 
 export async function getAppointmentsCreatedByUserId(userId: string) {
-  const appointments = await admin
+  const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("creatorUserId", "==", userId)
-    .get();
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as DbAppointment[];
+  return toDbAppointments(appointments);
 }
 
 export async function getAppointmentsByDonorIdInTime(
@@ -81,10 +73,7 @@ export async function getAppointments(
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function getAppointmentsByHospital(
@@ -108,10 +97,7 @@ export async function getAppointmentsByHospital(
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
 }
 
 export async function getAvailableAppointments() {
@@ -120,15 +106,21 @@ export async function getAvailableAppointments() {
   const appointments = (await admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
-    .where("donorId", "==", "")
+    .where("status", "==", AppointmentStatus.AVAILABLE)
     .where("donationStartTime", ">", now)
     .orderBy("donationStartTime")
     .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
-  return appointments.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  return toDbAppointments(appointments);
+}
+
+export async function getAllAppointments() {
+  const appointments = (await admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  return toDbAppointments(appointments);
 }
 
 export async function deleteAppointmentsByIds(appointmentIds: string[]) {
@@ -150,16 +142,11 @@ export function setAppointment(appointment: DbAppointment) {
     .set(appointment);
 }
 
-export function removeDonorFromDbAppointment(
-  appointment: DbAppointment
-): DbAppointment {
-  const { donorId, bookingTime, confirmationTime, ...otherProperties } =
-    appointment;
-  return {
-    ...otherProperties,
-    donorId: "",
-    lastChangeTime: admin.firestore.Timestamp.now(),
-    lastChangeType: BookingChange.CANCELLED,
-    status: AppointmentStatus.AVAILABLE,
-  };
+function toDbAppointments(
+  appointments: FirebaseFirestore.QuerySnapshot<DbAppointment>
+): DbAppointment[] {
+  return appointments.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 }

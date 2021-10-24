@@ -1,9 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbAppointment,
-  DbCoordinator,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -25,6 +22,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);

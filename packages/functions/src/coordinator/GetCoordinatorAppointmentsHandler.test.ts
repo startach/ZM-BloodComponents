@@ -1,9 +1,7 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  AppointmentStatus,
   CoordinatorRole,
-  DbCoordinator,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -19,6 +17,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -250,10 +249,12 @@ async function saveAppointment(
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: hospital,
     donorId: "",
+    status: AppointmentStatus.AVAILABLE,
   };
   if (donorId) {
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
+    appointment.status = AppointmentStatus.BOOKED;
   }
   await setAppointment(appointment);
   return appointment;

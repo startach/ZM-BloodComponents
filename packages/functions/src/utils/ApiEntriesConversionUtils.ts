@@ -1,11 +1,10 @@
 import {
   BookingChange,
-  DbAppointment,
-  DbDonor,
   Donor,
   DonorNotificationSettings,
   FunctionsApi,
 } from "@zm-blood-components/common";
+import { DbAppointment, DbDonor } from "../function-types";
 
 export function dbDonorToDonor(dbDonor: DbDonor): Donor {
   const notificationSettings: DonorNotificationSettings =
@@ -42,7 +41,8 @@ export function dbAppointmentToAppointmentApiEntry(
 export function dbAppointmentToBookedAppointmentApiEntry(
   appointment: DbAppointment
 ): FunctionsApi.BookedAppointmentApiEntry {
-  const { id, donorId, hospital, donationStartTime, bookingTime } = appointment;
+  const { id, donorId, hospital, donationStartTime, bookingTime, status } =
+    appointment;
 
   if (!id || !donorId || !bookingTime) {
     console.error(
@@ -58,6 +58,7 @@ export function dbAppointmentToBookedAppointmentApiEntry(
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),
     recentChangeType: getRecentChangeType(appointment),
+    status: status,
   };
 }
 

@@ -1,5 +1,6 @@
-import { BloodType, DbDonor } from "@zm-blood-components/common";
+import { BloodType } from "@zm-blood-components/common";
 import { setDonor } from "../dal/DonorDataAccessLayer";
+import { DbDonor } from "../function-types";
 
 export const sampleUser = {
   email: "email",
