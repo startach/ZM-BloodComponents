@@ -17,13 +17,14 @@ export function removeDonorFromDbAppointment(
 }
 
 export function completeArrivedFromDbAppointment(
-  appointment: DbAppointment
+  appointment: DbAppointment,
+  isNoshow?: boolean
 ): DbAppointment {
   return {
     ...appointment,
     donationDoneTimeMillis: admin.firestore.Timestamp.now(),
     lastChangeTime: admin.firestore.Timestamp.now(),
     lastChangeType: BookingChange.COMPLETED,
-    status: AppointmentStatus.COMPLETED,
+    status: isNoshow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED,
   };
 }

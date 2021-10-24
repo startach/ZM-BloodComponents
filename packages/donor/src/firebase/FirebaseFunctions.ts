@@ -35,6 +35,23 @@ export async function bookAppointment(appointmentIds: string[]) {
   return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
+export async function setCompleteAppointment(
+  appointmentId: string,
+  isNoshow: boolean
+) {
+  const completeAppointmentFunction = getCallableFunction(
+    FunctionsApi.CompleteAppointmentFunctionName
+  );
+
+  const request: FunctionsApi.CompleteAppointmentRequest = {
+    appointmentId,
+    isNoshow,
+  };
+
+  const response = await completeAppointmentFunction(request);
+  return response;
+}
+
 // Remove donor from appointment
 export async function cancelAppointment(appointmentId: string) {
   const cancelAppointmentFunction = getCallableFunction(

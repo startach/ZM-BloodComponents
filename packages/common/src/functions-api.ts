@@ -85,6 +85,7 @@ export interface CancelAppointmentRequest {
 export const CompleteAppointmentFunctionName = "completeAppointment";
 export interface CompleteAppointmentRequest {
   appointmentId: string;
+  isNoshow?: boolean;
 }
 
 export interface CompleteAppointmentResponse {

@@ -5,6 +5,8 @@ export const completeAppointmentApi = functions.https.onRequest(
   async (request, res) => {
     const donorId = request.query.donorId as string;
     const appointmentId = request.query.appointmentId as string;
+    const isNoshow = request.query.isNoshow as string;
+
     if (!donorId) {
       throw new Error("Invalid donor id");
     }
@@ -14,7 +16,11 @@ export const completeAppointmentApi = functions.https.onRequest(
     }
 
     try {
-      await completeAppointmentFunc(appointmentId, donorId);
+      await completeAppointmentFunc(
+        appointmentId,
+        donorId,
+        isNoshow === "true"
+      );
     } catch (err) {
       functions.logger
         .error(`something went wrong while completing appointment id
