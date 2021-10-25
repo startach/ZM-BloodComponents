@@ -1,10 +1,10 @@
-import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
+  import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
 import { ManagedAppointment } from "./CoordinatorAppointmentsGrouper";
 
 const exampleName = "name";
 const examplePhoneNumber = "000";
-const exampleDonationTime = 0;
-const exampleDonationTimeFormat = "01/01/1970 02:00";
+const exampleDonationTime = 946677600000;
+const exampleDonationTimeFormat = "01/01/2000 00:00";
 
 const exmpleAppointment: ManagedAppointment = {
   appointmentId: "abcde",
