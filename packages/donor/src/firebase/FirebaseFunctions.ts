@@ -71,18 +71,6 @@ export async function cancelAppointment(appointmentId: string) {
   await cancelAppointmentFunction(request);
 }
 
-export async function completeAppointment(appointmentId: string) {
-  const completeAppointmentFunction = getCompleteApointmentFunction(
-    FunctionsApi.CompleteAppointmentFunctionName
-  );
-
-  const request: FunctionsApi.CompleteAppointmentRequest = {
-    appointmentId,
-  };
-
-  await completeAppointmentFunction(request);
-}
-
 export async function saveDonor(
   firstName: string,
   lastName: string,
