@@ -36,7 +36,7 @@
     "sync-mobile": "cap sync",
     "generate-mobile-images": "run-s mobile:generate-images",
     "-------------------TESTING---------------------": "",
-    "test": "TZ=Asia/Jerusalem react-scripts test",
+    "test": "react-scripts test",
     "updateSnapshots": "yarn run test -- -u --watchAll=false",
     "-------------------MOBILE----------------------": "",
     "mobile:init-ios": "cap add ios",
