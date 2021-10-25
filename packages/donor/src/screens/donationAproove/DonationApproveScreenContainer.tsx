@@ -2,6 +2,8 @@ import DonationApproveScreen from "./DonationApproveScreen";
 import { BookedAppointment } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
+export const APPROVE_HISTOEY_LENGTH_DAYS = 30;
+
 export interface DonationApproveScreenContainerProps {
   firstName: string;
   appointmentNotApproved: BookedAppointment;

@@ -33,7 +33,9 @@ import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSig
 import QuestionnaireScreenContainer from "../screens/questionnaire/QuestionnaireScreenContainer";
 import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContainer";
 import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
-import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
+import DonationApproveScreenContainer, {
+  APPROVE_HISTOEY_LENGTH_DAYS,
+} from "../screens/donationAproove/DonationApproveScreenContainer";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -92,7 +94,7 @@ export default function AppRouter() {
       });
 
       const today = new Date().getDate();
-      const startTime = new Date().setDate(today - 60); // get appointments from last 60 days
+      const startTime = new Date().setDate(today - APPROVE_HISTOEY_LENGTH_DAYS);
       const donorDetails = await FirebaseFunctions.getDonorDetails(startTime);
 
       console.log(donorDetails);
