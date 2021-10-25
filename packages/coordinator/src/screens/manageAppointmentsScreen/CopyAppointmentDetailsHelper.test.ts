@@ -1,4 +1,4 @@
-  import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
+import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
 import { ManagedAppointment } from "./CoordinatorAppointmentsGrouper";
 
 const exampleName = "name";
