@@ -59,6 +59,9 @@ exports[`Storyshots Screens/Authentication/Sign In Screen Default 1`] = `
       </div>
     </div>
     <div
+      className="header_underline"
+    />
+    <div
       className="screenSection content padding"
     >
       <div

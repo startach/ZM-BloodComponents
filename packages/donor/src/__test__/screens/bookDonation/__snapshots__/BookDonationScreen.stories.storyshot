@@ -73,6 +73,9 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
       </div>
     </div>
     <div
+      className="header_underline"
+    />
+    <div
       className="bookDonationScreen content"
     >
       <div
@@ -276,6 +279,9 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         />
       </div>
     </div>
+    <div
+      className="header_underline"
+    />
     <div
       className="bookDonationScreen content"
     >
@@ -703,6 +709,9 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
         />
       </div>
     </div>
+    <div
+      className="header_underline"
+    />
     <div
       className="bookDonationScreen content"
     >

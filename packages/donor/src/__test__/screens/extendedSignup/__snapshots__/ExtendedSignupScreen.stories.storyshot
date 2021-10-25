@@ -22,6 +22,9 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
       </div>
     </div>
     <div
+      className="header_underline"
+    />
+    <div
       className="content padding"
     >
       <div

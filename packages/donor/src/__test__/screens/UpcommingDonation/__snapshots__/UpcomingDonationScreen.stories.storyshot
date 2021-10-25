@@ -73,6 +73,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
       </div>
     </div>
     <div
+      className="header_underline"
+    />
+    <div
       className="content"
     >
       <div
@@ -285,6 +288,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
         />
       </div>
     </div>
+    <div
+      className="header_underline"
+    />
     <div
       className="content"
     >
@@ -499,6 +505,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
       </div>
     </div>
     <div
+      className="header_underline"
+    />
+    <div
       className="content"
     >
       <div
@@ -708,6 +717,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
         />
       </div>
     </div>
+    <div
+      className="header_underline"
+    />
     <div
       className="content"
     >
@@ -924,6 +936,9 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
         />
       </div>
     </div>
+    <div
+      className="header_underline"
+    />
     <div
       className="content"
     >
