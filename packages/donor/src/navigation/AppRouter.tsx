@@ -3,8 +3,6 @@ import {
   BookedAppointment,
   Donor,
   LoginStatus,
-  AppointmentStatus,
-  Hospital,
 } from "@zm-blood-components/common";
 import {
   initFirebase,
@@ -39,18 +37,20 @@ import DonationApproveScreenContainer from "../screens/donationAproove/DonationA
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
+export type AppStateType = {
+  donor?: Donor;
+  bookedAppointment?: BookedAppointment;
+  apointmentNotApproved?: BookedAppointment[];
+  isFetching: boolean;
+};
+
 export default function AppRouter() {
   const [splashMinimumTimeoutFinished, setSplashMinimumTimeoutFinished] =
     useState(false);
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
 
-  const [appState, setAppState] = useState<{
-    donor?: Donor;
-    bookedAppointment?: BookedAppointment;
-    apointmentNotApproved?: BookedAppointment[];
-    isFetching: boolean;
-  }>({
+  const [appState, setAppState] = useState<AppStateType>({
     isFetching: false,
   });
 
@@ -92,7 +92,7 @@ export default function AppRouter() {
       });
 
       const today = new Date().getDate();
-      const startTime = new Date().setDate(today - 30); // get appointments from last 30 days
+      const startTime = new Date().setDate(today - 60); // get appointments from last 60 days
       const donorDetails = await FirebaseFunctions.getDonorDetails(startTime);
 
       console.log(donorDetails);
@@ -127,6 +127,30 @@ export default function AppRouter() {
     setAppState({
       ...appState,
       bookedAppointment,
+    });
+  };
+
+  const popNotApprovedAppointment = () => {
+    if (
+      appState.apointmentNotApproved &&
+      appState.apointmentNotApproved.length > 1
+    ) {
+      setAppState({
+        ...appState,
+        apointmentNotApproved: appState.apointmentNotApproved.slice(1),
+      });
+    } else {
+      setAppState({
+        ...appState,
+        apointmentNotApproved: undefined,
+      });
+    }
+  };
+
+  const setIsFetching = (isFetching: boolean) => {
+    setAppState({
+      ...appState,
+      isFetching: isFetching,
     });
   };
 
@@ -176,47 +200,15 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Approve}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            // if (!appState.donor || !appState.apointmentNotApproved)
-            //   return redirectToBookDonation();
-
-            async function onShowOptionSelected(isNoShow: boolean) {
-              // TODO : call function that update this in the DB
-              console.log("Answer : ", isNoShow);
-
-              setAppState({
-                ...appState,
-                apointmentNotApproved: appState.apointmentNotApproved?.slice(1),
-              });
-            }
-
-            if (!appState.apointmentNotApproved) {
-              const a: BookedAppointment = {
-                bookingTimeMillis: new Date().getTime(),
-                donationStartTimeMillis: new Date().getTime(),
-                donorId: "1jmgf6YUK4Px7SzFNV2dII6evb52",
-                hospital: Hospital.SOROKA,
-                id: "1234",
-                status: AppointmentStatus.NOSHOW,
-              };
-
-              return (
-                <DonationApproveScreenContainer
-                  firstName={appState.donor?.firstName}
-                  hospital={a.hospital}
-                  donationStartTimeMillis={a.donationStartTimeMillis}
-                  onShowOptionSelected={onShowOptionSelected}
-                />
-              );
-            }
+            if (!appState.donor || !appState.apointmentNotApproved)
+              return redirectToBookDonation();
 
             return (
               <DonationApproveScreenContainer
-                firstName={appState.donor?.firstName}
-                hospital={appState.apointmentNotApproved[0].hospital}
-                donationStartTimeMillis={
-                  appState.apointmentNotApproved[0].donationStartTimeMillis
-                }
-                onShowOptionSelected={onShowOptionSelected}
+                firstName={appState.donor.firstName}
+                appointmentNotApproved={appState.apointmentNotApproved[0]}
+                setIsFetching={setIsFetching}
+                popNotApprovedAppointment={popNotApprovedAppointment}
               />
             );
           }}
@@ -276,6 +268,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
+            if (appState.apointmentNotApproved)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <BookDonationScreenContainer
                 user={appState.donor}

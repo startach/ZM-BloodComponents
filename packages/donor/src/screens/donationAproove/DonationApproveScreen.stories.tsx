@@ -32,7 +32,7 @@ const Template: Story<DonationApproveScreenContainerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   firstName: "משה",
-  hospital: Hospital.HADASA,
-  donationStartTimeMillis: new Date().getTime(),
-  onShowOptionSelected: (isNoShow: boolean) => {},
+  appointmentNotApproved: a,
+  setIsFetching: (isFetcing: boolean) => {},
+  popNotApprovedAppointment: () => {},
 };
