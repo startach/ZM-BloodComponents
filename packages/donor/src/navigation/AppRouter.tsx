@@ -201,7 +201,6 @@ export default function AppRouter() {
             if (!loggedIn) return redirectToBookDonation();
             if (
               !appState.donor ||
-              !appState.pendingCompletionAppointments ||
               appState.pendingCompletionAppointments.length === 0
             )
               return redirectToBookDonation();
@@ -232,10 +231,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
-            if (
-              appState.pendingCompletionAppointments &&
-              appState.pendingCompletionAppointments.length !== 0
-            )
+            if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
             return (
               <MyProfileScreenContainer
@@ -249,10 +245,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (
-              appState.pendingCompletionAppointments &&
-              appState.pendingCompletionAppointments.length !== 0
-            )
+            if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
             return (
               <UpcomingDonationScreenContainer
@@ -267,10 +260,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
-            if (
-              appState.pendingCompletionAppointments &&
-              appState.pendingCompletionAppointments.length !== 0
-            )
+            if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             return (
@@ -284,10 +274,7 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
-            if (
-              appState.pendingCompletionAppointments &&
-              appState.pendingCompletionAppointments.length !== 0
-            )
+            if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
             return (
               <BookDonationScreenContainer

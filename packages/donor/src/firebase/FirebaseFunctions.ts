@@ -134,22 +134,18 @@ export async function getDonorDetails(): Promise<{
     const response = await getDonorFunction(request);
     const data = response.data as FunctionsApi.GetDonorAppointmentsResponse;
 
-    let ret = {
-      donor: data.donor,
-      pendingCompletionAppointments: [],
-    };
-
-    if (data.futureAppointments.length !== 0) {
-      ret = Object.assign({ futureAppointments: data.futureAppointments }, ret);
-    }
-
     const pendingCompletionAppointments = data.completedAppointments.filter(
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
-    ret = Object.assign(
-      { pendingCompletionAppointments: pendingCompletionAppointments },
-      ret
-    );
+
+    const ret = {
+      donor: data.donor,
+      futureAppointments:
+        data.futureAppointments.length !== 0
+          ? data.futureAppointments
+          : undefined,
+      pendingCompletionAppointments: pendingCompletionAppointments,
+    };
 
     return ret;
   } catch (e) {
