@@ -50,8 +50,8 @@ export async function setCompleteAppointment(
   );
 
   const request: FunctionsApi.CompleteAppointmentRequest = {
-    appointmentId : appointmentId,
-    isNoshow : isNoshow,
+    appointmentId: appointmentId,
+    isNoshow: isNoshow,
   };
 
   const response = await completeAppointmentFunction(request);

@@ -4,9 +4,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import {
-  dbAppointmentToBookedAppointmentApiEntry,
-} from "../utils/ApiEntriesConversionUtils";
+import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
