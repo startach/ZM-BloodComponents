@@ -33,7 +33,9 @@ export default function DonationApproveScreenContainer({
     <DonationApproveScreen
       firstName={firstName}
       hospital={pendingCompletionAppointments.hospital}
-      donationStartTimeMillis={pendingCompletionAppointments.donationStartTimeMillis}
+      donationStartTimeMillis={
+        pendingCompletionAppointments.donationStartTimeMillis
+      }
       appointmentId={pendingCompletionAppointments.id}
       onShowOptionSelected={onShowOptionSelected}
     />
