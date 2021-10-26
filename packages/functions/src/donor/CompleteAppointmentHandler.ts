@@ -37,7 +37,7 @@ export async function completeAppointmentFunc(
 
   const appointment = appointmentToComplete[0];
   if (appointment.donorId !== donorId) {
-    throw new Error("Appointment to be completed is not booked by the donor");
+    throw new Error("Appointment to be completed is not booked by donor");
   }
 
   // TODO add notification
