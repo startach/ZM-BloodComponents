@@ -27,7 +27,7 @@ export default async function (
 export async function completeAppointmentFunc(
   appointmentId: string,
   donorId: string,
-  isNoshow: boolean
+  isNoshow?: boolean
 ): Promise<FunctionsApi.CompleteAppointmentResponse> {
   const appointmentToComplete = await getAppointmentsByIds([appointmentId]);
   if (appointmentToComplete.length !== 1) {

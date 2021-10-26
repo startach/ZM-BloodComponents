@@ -18,7 +18,7 @@ export function removeDonorFromDbAppointment(
 
 export function completeArrivedFromDbAppointment(
   appointment: DbAppointment,
-  isNoshow: boolean
+  isNoshow?: boolean
 ): DbAppointment {
   return {
     ...appointment,
