@@ -6,7 +6,7 @@ const examplePhoneNumber = "000";
 const exampleDonationTime = 946677600000;
 const exampleDonationTimeFormat = "01/01/2000 00:00";
 
-const exmpleAppointment: ManagedAppointment = {
+let exmpleAppointment: ManagedAppointment = {
   appointmentId: "abcde",
   booked: true,
   isPastAppointment: false,
@@ -15,10 +15,21 @@ const exmpleAppointment: ManagedAppointment = {
   donorPhoneNumber: examplePhoneNumber,
 };
 
-test("test copy string provider", () => {
+test("test copy string provider with time value", () => {
   const functionResult: string = getAppointmentCopyString(exmpleAppointment);
 
   expect(functionResult).toEqual(
     `${exampleName}, ${examplePhoneNumber}, ${exampleDonationTimeFormat}`
   );
+});
+
+test("test copy string provider without time value", () => {
+  exmpleAppointment = {
+    ...exmpleAppointment,
+    donationStartTimeMillis: undefined,
+  };
+
+  const functionResult: string = getAppointmentCopyString(exmpleAppointment);
+
+  expect(functionResult).toEqual(`${exampleName}, ${examplePhoneNumber}, `);
 });
