@@ -4,9 +4,9 @@ import {
   Hospital,
   AppointmentStatus,
 } from "@zm-blood-components/common";
-import DonationApproveScreenContainer, {
-  DonationApproveScreenContainerProps,
-} from "./DonationApproveScreenContainer";
+import DonationApproveScreen, {
+  DonationApproveScreenProps,
+} from "./DonationApproveScreen";
 
 const a: BookedAppointment = {
   bookingTimeMillis: 123324123,
@@ -18,21 +18,22 @@ const a: BookedAppointment = {
 };
 
 export default {
-  component: DonationApproveScreenContainer,
+  component: DonationApproveScreen,
   title: "Screens/Approve Screen",
   argTypes: {
     firstName: { type: "string", defaultValue: "משה" },
   },
 };
 
-const Template: Story<DonationApproveScreenContainerProps> = (args) => (
-  <DonationApproveScreenContainer {...args} />
+const Template: Story<DonationApproveScreenProps> = (args) => (
+  <DonationApproveScreen {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   firstName: "משה",
-  pendingCompletionAppointments: a,
-  setIsFetching: (isFetcing: boolean) => {},
-  poppendingCompletionAppointments: () => {},
+  hospital: Hospital.HADASA,
+  appointmentId: "1234",
+  donationStartTimeMillis: 946677600000,
+  onShowOptionSelected: (appointmentId: string, isNoshow: boolean) => {},
 };
