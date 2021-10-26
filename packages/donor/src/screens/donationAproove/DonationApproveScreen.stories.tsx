@@ -32,7 +32,7 @@ const Template: Story<DonationApproveScreenContainerProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   firstName: "משה",
-  appointmentNotApproved: a,
+  pendingCompletionAppointments: a,
   setIsFetching: (isFetcing: boolean) => {},
-  popNotApprovedAppointment: () => {},
+  poppendingCompletionAppointments: () => {},
 };

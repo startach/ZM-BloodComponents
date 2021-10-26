@@ -2,19 +2,17 @@ import DonationApproveScreen from "./DonationApproveScreen";
 import { BookedAppointment } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 
-export const APPROVE_HISTOEY_LENGTH_DAYS = 30;
-
 export interface DonationApproveScreenContainerProps {
   firstName: string;
-  appointmentNotApproved: BookedAppointment;
-  popNotApprovedAppointment: () => void;
+  pendingCompletionAppointments: BookedAppointment;
+  poppendingCompletionAppointments: () => void;
   setIsFetching: (isFetching: boolean) => void;
 }
 
 export default function DonationApproveScreenContainer({
   firstName,
-  appointmentNotApproved,
-  popNotApprovedAppointment,
+  pendingCompletionAppointments,
+  poppendingCompletionAppointments,
   setIsFetching,
 }: DonationApproveScreenContainerProps) {
   const onShowOptionSelected = async (
@@ -27,16 +25,16 @@ export default function DonationApproveScreenContainer({
     // wait for return from cloud functin
     await FirebaseFunctions.setCompleteAppointment(appointmentId, isNoShow);
 
-    // update appState (remove the approved appointment from the apointmentNotApproved array)
-    popNotApprovedAppointment();
+    // update appState (remove the approved appointment from the pendingCompletionAppointments array)
+    poppendingCompletionAppointments();
   };
 
   return (
     <DonationApproveScreen
       firstName={firstName}
-      hospital={appointmentNotApproved.hospital}
-      donationStartTimeMillis={appointmentNotApproved.donationStartTimeMillis}
-      appointmentId={appointmentNotApproved.id}
+      hospital={pendingCompletionAppointments.hospital}
+      donationStartTimeMillis={pendingCompletionAppointments.donationStartTimeMillis}
+      appointmentId={pendingCompletionAppointments.id}
       onShowOptionSelected={onShowOptionSelected}
     />
   );

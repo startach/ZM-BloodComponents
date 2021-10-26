@@ -8,12 +8,9 @@ import {
 import { getAuth } from "firebase/auth";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
-export function getCallableFunction(functionName: string) {
-  const functions = getFunctions();
-  return httpsCallable(functions, functionName);
-}
+export const APPROVE_HISTOEY_LENGTH_DAYS = 30;
 
-export function getCompleteApointmentFunction(functionName: string) {
+export function getCallableFunction(functionName: string) {
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
@@ -108,10 +105,10 @@ export async function saveDonor(
   return data.donor;
 }
 
-export async function getDonorDetails(fromMillis?: number): Promise<{
+export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
-  NotApprovedAppointment?: BookedAppointment[];
+  pendingCompletionAppointments?: BookedAppointment[];
 }> {
   const currentUser = getAuth().currentUser;
 
@@ -123,10 +120,12 @@ export async function getDonorDetails(fromMillis?: number): Promise<{
   const getDonorFunction = getCallableFunction(
     FunctionsApi.GetDonorAppointmentsFunctionName
   );
+  const today = new Date().getDate();
+  const fromMillis = new Date().setDate(today - APPROVE_HISTOEY_LENGTH_DAYS);
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: fromMillis ? fromMillis : new Date().getTime(),
+    fromMillis: fromMillis,
   };
 
   try {
@@ -139,12 +138,12 @@ export async function getDonorDetails(fromMillis?: number): Promise<{
       ret = Object.assign({ futureAppointments: data.futureAppointments }, ret);
     }
 
-    const notApprovedAppointments = data.completedAppointments.filter(
+    const pendingCompletionAppointmentss = data.completedAppointments.filter(
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
-    if (notApprovedAppointments.length !== 0) {
+    if (pendingCompletionAppointmentss.length !== 0) {
       ret = Object.assign(
-        { NotApprovedAppointment: notApprovedAppointments },
+        { pendingCompletionAppointments: pendingCompletionAppointmentss },
         ret
       );
     }
