@@ -4,10 +4,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { FunctionsApi } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import {
-  dbAppointmentToAppointmentApiEntry,
-  dbAppointmentToBookedAppointmentApiEntry,
-} from "../utils/ApiEntriesConversionUtils";
+import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -31,6 +28,7 @@ export async function completeAppointmentFunc(
   isNoshow?: boolean
 ): Promise<FunctionsApi.CompleteAppointmentResponse> {
   const appointmentToComplete = await getAppointmentsByIds([appointmentId]);
+
   if (appointmentToComplete.length !== 1) {
     throw new Error("Appointment not found");
   }
