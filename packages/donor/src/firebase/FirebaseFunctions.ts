@@ -108,13 +108,15 @@ export async function saveDonor(
 export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
-  pendingCompletionAppointments?: BookedAppointment[];
+  pendingCompletionAppointments: BookedAppointment[];
 }> {
   const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return {};
+    return {
+      pendingCompletionAppointments: [],
+    };
   }
 
   const getDonorFunction = getCallableFunction(
@@ -132,25 +134,26 @@ export async function getDonorDetails(): Promise<{
     const response = await getDonorFunction(request);
     const data = response.data as FunctionsApi.GetDonorAppointmentsResponse;
 
-    let ret = { donor: data.donor };
+    let ret = {
+      donor: data.donor,
+      pendingCompletionAppointments: [],
+    };
 
     if (data.futureAppointments.length !== 0) {
       ret = Object.assign({ futureAppointments: data.futureAppointments }, ret);
     }
 
-    const pendingCompletionAppointmentss = data.completedAppointments.filter(
+    const pendingCompletionAppointments = data.completedAppointments.filter(
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
-    if (pendingCompletionAppointmentss.length !== 0) {
-      ret = Object.assign(
-        { pendingCompletionAppointments: pendingCompletionAppointmentss },
-        ret
-      );
-    }
+    ret = Object.assign(
+      { pendingCompletionAppointments: pendingCompletionAppointments },
+      ret
+    );
 
     return ret;
   } catch (e) {
     console.error("Error getting donor", e);
-    return {};
+    return { pendingCompletionAppointments: [] };
   }
 }

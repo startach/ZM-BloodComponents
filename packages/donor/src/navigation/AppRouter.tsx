@@ -40,7 +40,7 @@ const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 export type AppStateType = {
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
-  pendingCompletionAppointments?: BookedAppointment[];
+  pendingCompletionAppointments: BookedAppointment[];
   isFetching: boolean;
 };
 
@@ -52,6 +52,7 @@ export default function AppRouter() {
 
   const [appState, setAppState] = useState<AppStateType>({
     isFetching: false,
+    pendingCompletionAppointments: [],
   });
 
   useEffect(() => {
@@ -78,7 +79,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: undefined,
         bookedAppointment: undefined,
-        pendingCompletionAppointments: undefined,
+        pendingCompletionAppointments: [],
       });
       return;
     }
@@ -88,7 +89,7 @@ export default function AppRouter() {
         isFetching: true,
         donor: undefined,
         bookedAppointment: undefined,
-        pendingCompletionAppointments: undefined,
+        pendingCompletionAppointments: [],
       });
 
       const donorDetails = await FirebaseFunctions.getDonorDetails();
@@ -140,7 +141,7 @@ export default function AppRouter() {
     } else {
       setAppState({
         ...appState,
-        pendingCompletionAppointments: undefined,
+        pendingCompletionAppointments: [],
       });
     }
   };
