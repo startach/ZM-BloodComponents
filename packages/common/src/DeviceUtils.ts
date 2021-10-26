@@ -1,5 +1,5 @@
 export function getMobileOperatingSystem() {
-  var userAgent = navigator.userAgent || navigator.vendor;
+  const userAgent = navigator.userAgent || navigator.vendor;
   if (/android/i.test(userAgent)) {
     return "android";
   }
