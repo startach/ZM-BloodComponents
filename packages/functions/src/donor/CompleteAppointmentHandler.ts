@@ -31,6 +31,7 @@ export async function completeAppointmentFunc(
   isNoshow?: boolean
 ): Promise<FunctionsApi.CompleteAppointmentResponse> {
   const appointmentToComplete = await getAppointmentsByIds([appointmentId]);
+
   if (appointmentToComplete.length !== 1) {
     throw new Error("Appointment not found");
   }
