@@ -55,9 +55,6 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
       </div>
     </div>
     <div
-      className="header_underline"
-    />
-    <div
       className="content"
     >
       <div

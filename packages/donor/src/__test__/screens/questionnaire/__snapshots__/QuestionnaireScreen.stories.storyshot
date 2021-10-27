@@ -55,9 +55,6 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
       </div>
     </div>
     <div
-      className="header_underline"
-    />
-    <div
       className="screen content"
     >
       <div
@@ -491,9 +488,6 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
         שאלון התאמה
       </div>
     </div>
-    <div
-      className="header_underline"
-    />
     <div
       className="screen content"
     >
@@ -972,9 +966,6 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
       </div>
     </div>
     <div
-      className="header_underline"
-    />
-    <div
       className="screen content"
     >
       <div
@@ -1409,9 +1400,6 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
       </div>
     </div>
     <div
-      className="header_underline"
-    />
-    <div
       className="screen content"
     >
       <div
@@ -1845,9 +1833,6 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
         שאלון התאמה
       </div>
     </div>
-    <div
-      className="header_underline"
-    />
     <div
       className="screen content"
     >
