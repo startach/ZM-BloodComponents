@@ -28,7 +28,7 @@ test.each([
   ["", undefined, ""],
   [undefined, "", ""],
 ])(
-  "test copy string provider without time value",
+  "test copy string provider with missing values",
   (donationStartTimeMillis, donorName, donorPhoneNumber) => {
     exmpleAppointment = {
       ...exmpleAppointment,
