@@ -35,7 +35,6 @@ export default function ZMScreen({
         hasBackButton={hasBackButton}
         onBack={onBack}
       />
-      <div className={styles.header_underline} />
       <div className={classnames(contentClassNames)}>{children}</div>
     </div>
   );

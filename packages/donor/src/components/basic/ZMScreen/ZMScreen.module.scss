@@ -12,16 +12,3 @@
 .padding {
   padding: 40px;
 }
-
-.header_underline {
-  width: 100%;
-  margin: auto;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    var(--donor-light-gray),
-    rgba(0, 0, 0, 0)
-  );
-}
