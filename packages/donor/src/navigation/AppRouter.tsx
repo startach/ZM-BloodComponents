@@ -129,21 +129,11 @@ export default function AppRouter() {
   };
 
   const poppendingCompletionAppointments = () => {
-    if (
-      appState.pendingCompletionAppointments &&
-      appState.pendingCompletionAppointments.length > 1
-    ) {
-      setAppState({
-        ...appState,
-        pendingCompletionAppointments:
-          appState.pendingCompletionAppointments.slice(1),
-      });
-    } else {
-      setAppState({
-        ...appState,
-        pendingCompletionAppointments: [],
-      });
-    }
+    setAppState({
+      ...appState,
+      pendingCompletionAppointments:
+        appState.pendingCompletionAppointments.slice(1),
+    });
   };
 
   const setIsFetching = (isFetching: boolean) => {
