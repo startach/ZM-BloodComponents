@@ -4,15 +4,19 @@ import { ManagedAppointment } from "./CoordinatorAppointmentsGrouper";
 export function getAppointmentCopyString(
   appointment: ManagedAppointment
 ): string {
-  const bookingDateAndTime: string =
-    appointment.donationStartTimeMillis !== undefined
-      ? `${DateUtils.ToDateString(
-          appointment.donationStartTimeMillis
-        )} ${DateUtils.ToTimeString(appointment.donationStartTimeMillis)}`
-      : "";
+  if (
+    !appointment.donationStartTimeMillis ||
+    !appointment.donorName ||
+    !appointment.donorPhoneNumber
+  ) {
+    return "";
+  }
+
   const copyString: string = `${appointment.donorName}, ${String(
     appointment.donorPhoneNumber
-  )}, ${bookingDateAndTime}`;
+  )}, ${DateUtils.ToDateString(
+    appointment.donationStartTimeMillis
+  )} ${DateUtils.ToTimeString(appointment.donationStartTimeMillis)}`;
 
   return copyString;
 }

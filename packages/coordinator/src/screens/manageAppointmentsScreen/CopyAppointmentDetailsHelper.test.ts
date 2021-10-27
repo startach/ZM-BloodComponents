@@ -23,13 +23,22 @@ test("test copy string provider with time value", () => {
   );
 });
 
-test("test copy string provider without time value", () => {
-  exmpleAppointment = {
-    ...exmpleAppointment,
-    donationStartTimeMillis: undefined,
-  };
+test.each([
+  ["", "", undefined],
+  ["", undefined, ""],
+  [undefined, "", ""],
+])(
+  "test copy string provider without time value",
+  (donationStartTimeMillis, donorName, donorPhoneNumber) => {
+    exmpleAppointment = {
+      ...exmpleAppointment,
+      donationStartTimeMillis: donationStartTimeMillis,
+      donorName: donorName,
+      donorPhoneNumber: donorPhoneNumber,
+    };
 
-  const functionResult: string = getAppointmentCopyString(exmpleAppointment);
+    const functionResult: string = getAppointmentCopyString(exmpleAppointment);
 
-  expect(functionResult).toEqual(`${exampleName}, ${examplePhoneNumber}, `);
-});
+    expect(functionResult).toEqual("");
+  }
+);
