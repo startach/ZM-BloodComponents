@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 import {
   BookedAppointment,
@@ -35,5 +36,5 @@ Default.args = {
   hospital: Hospital.HADASA,
   appointmentId: "1234",
   donationStartTimeMillis: 946677600000,
-  onShowOptionSelected: (appointmentId: string, isNoshow: boolean) => {},
+  onShowOptionSelected: action("onShowOptionSelected"),
 };
