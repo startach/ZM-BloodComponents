@@ -1,7 +1,7 @@
-import { AppointmentStatus } from ".";
 import {
   BloodType,
   BookingChange,
+  AppointmentStatus,
   Coordinator,
   Donor,
   Hospital,

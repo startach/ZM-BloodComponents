@@ -1,11 +1,14 @@
 import {
   BloodType,
   BookedAppointment,
+  AppointmentStatus,
   Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import { getAuth } from "firebase/auth";
 import { getFunctions, httpsCallable } from "firebase/functions";
+
+export const APPROVE_HISTOEY_LENGTH_DAYS = 30;
 
 export function getCallableFunction(functionName: string) {
   const functions = getFunctions();
@@ -44,8 +47,8 @@ export async function setCompleteAppointment(
   );
 
   const request: FunctionsApi.CompleteAppointmentRequest = {
-    appointmentId,
-    isNoshow,
+    appointmentId: appointmentId,
+    isNoshow: isNoshow,
   };
 
   const response = await completeAppointmentFunction(request);
@@ -105,36 +108,48 @@ export async function saveDonor(
 export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
+  pendingCompletionAppointments: BookedAppointment[];
 }> {
   const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return {};
+    return {
+      pendingCompletionAppointments: [],
+    };
   }
 
   const getDonorFunction = getCallableFunction(
     FunctionsApi.GetDonorAppointmentsFunctionName
   );
+  const today = new Date().getDate();
+  const fromMillis = new Date().setDate(today - APPROVE_HISTOEY_LENGTH_DAYS);
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: new Date().getTime(),
+    fromMillis: fromMillis,
   };
 
   try {
     const response = await getDonorFunction(request);
     const data = response.data as FunctionsApi.GetDonorAppointmentsResponse;
 
-    if (data.futureAppointments.length === 0) {
-      return { donor: data.donor };
-    }
-    return {
+    const pendingCompletionAppointments = data.completedAppointments.filter(
+      (appointment) => appointment.status === AppointmentStatus.BOOKED
+    );
+
+    const ret = {
       donor: data.donor,
-      bookedAppointment: data.futureAppointments[0],
+      futureAppointments:
+        data.futureAppointments.length !== 0
+          ? data.futureAppointments
+          : undefined,
+      pendingCompletionAppointments: pendingCompletionAppointments,
     };
+
+    return ret;
   } catch (e) {
     console.error("Error getting donor", e);
-    return {};
+    return { pendingCompletionAppointments: [] };
   }
 }

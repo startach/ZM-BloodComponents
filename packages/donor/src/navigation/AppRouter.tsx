@@ -33,8 +33,16 @@ import ExtendedSignupScreenContainer from "../screens/extendedSignup/ExtendedSig
 import QuestionnaireScreenContainer from "../screens/questionnaire/QuestionnaireScreenContainer";
 import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContainer";
 import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
+import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
+
+export type AppStateType = {
+  donor?: Donor;
+  bookedAppointment?: BookedAppointment;
+  pendingCompletionAppointments: BookedAppointment[];
+  isFetching: boolean;
+};
 
 export default function AppRouter() {
   const [splashMinimumTimeoutFinished, setSplashMinimumTimeoutFinished] =
@@ -42,12 +50,9 @@ export default function AppRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
 
-  const [appState, setAppState] = useState<{
-    donor?: Donor;
-    bookedAppointment?: BookedAppointment;
-    isFetching: boolean;
-  }>({
+  const [appState, setAppState] = useState<AppStateType>({
     isFetching: false,
+    pendingCompletionAppointments: [],
   });
 
   useEffect(() => {
@@ -74,6 +79,7 @@ export default function AppRouter() {
         isFetching: false,
         donor: undefined,
         bookedAppointment: undefined,
+        pendingCompletionAppointments: [],
       });
       return;
     }
@@ -83,17 +89,18 @@ export default function AppRouter() {
         isFetching: true,
         donor: undefined,
         bookedAppointment: undefined,
+        pendingCompletionAppointments: [],
       });
 
-      const startTime = new Date().getTime();
       const donorDetails = await FirebaseFunctions.getDonorDetails();
 
       setAppState({
         isFetching: false,
         donor: donorDetails.donor,
         bookedAppointment: donorDetails.bookedAppointment,
+        pendingCompletionAppointments:
+          donorDetails.pendingCompletionAppointments,
       });
-      console.log("D", new Date().getTime() - startTime);
     }
 
     fetchData();
@@ -118,6 +125,21 @@ export default function AppRouter() {
     setAppState({
       ...appState,
       bookedAppointment,
+    });
+  };
+
+  const poppendingCompletionAppointments = () => {
+    setAppState({
+      ...appState,
+      pendingCompletionAppointments:
+        appState.pendingCompletionAppointments.slice(1),
+    });
+  };
+
+  const setIsFetching = (isFetching: boolean) => {
+    setAppState({
+      ...appState,
+      isFetching: isFetching,
     });
   };
 
@@ -164,6 +186,30 @@ export default function AppRouter() {
           render={() => <AboutScreen />}
         />
         <Route
+          path={"/" + MainNavigationKeys.Approve}
+          render={() => {
+            if (!loggedIn) return redirectToBookDonation();
+            if (
+              !appState.donor ||
+              appState.pendingCompletionAppointments.length === 0
+            )
+              return redirectToBookDonation();
+
+            return (
+              <DonationApproveScreenContainer
+                firstName={appState.donor.firstName}
+                pendingCompletionAppointment={
+                  appState.pendingCompletionAppointments[0]
+                }
+                setIsFetching={setIsFetching}
+                poppendingCompletionAppointment={
+                  poppendingCompletionAppointments
+                }
+              />
+            );
+          }}
+        />
+        <Route
           path={"/" + MainNavigationKeys.Process}
           render={() => <DonationProcessScreenContainer />}
         />
@@ -175,6 +221,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
+            if (appState.pendingCompletionAppointments.length !== 0)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <MyProfileScreenContainer
                 user={appState.donor!}
@@ -187,6 +235,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.UpcomingDonation}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
+            if (appState.pendingCompletionAppointments.length !== 0)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <UpcomingDonationScreenContainer
                 user={appState.donor!}
@@ -200,6 +250,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.Questionnaire}
           render={() => {
             if (!loggedIn) return redirectToBookDonation();
+            if (appState.pendingCompletionAppointments.length !== 0)
+              return redirectTo(MainNavigationKeys.Approve);
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             return (
               <QuestionnaireScreenContainer
@@ -212,6 +264,8 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.BookDonation}
           render={() => {
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
+            if (appState.pendingCompletionAppointments.length !== 0)
+              return redirectTo(MainNavigationKeys.Approve);
             return (
               <BookDonationScreenContainer
                 user={appState.donor}
@@ -243,4 +297,8 @@ export function redirectToUpcomingDonation() {
 
 export function redirectToLogin() {
   return <Redirect to={"/" + MainNavigationKeys.Login} />;
+}
+
+export function redirectTo(page: string) {
+  return <Redirect to={"/" + page} />;
 }

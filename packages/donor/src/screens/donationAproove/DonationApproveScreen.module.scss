@@ -1,0 +1,44 @@
+.imageContainer {
+  width: 100%;
+  background: transparent
+    linear-gradient(
+      66deg,
+      #fbbae2 0%,
+      #fbc5e5 13%,
+      #fcd9eb 42%,
+      #fce5ee 57%,
+      #fdfdfd 100%
+    )
+    0% 0% no-repeat padding-box;
+}
+
+.image {
+  width: 100%;
+}
+
+.title {
+  color: var(--donor-primary);
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.textContainer {
+  text-align: center;
+  font-size: 16px;
+  color: var(--donor-light-black);
+  margin: 40px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.textButton {
+  font-size: 16px;
+  margin: auto;
+  flex: 0 40%;
+}
