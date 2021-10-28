@@ -198,11 +198,11 @@ export default function AppRouter() {
             return (
               <DonationApproveScreenContainer
                 firstName={appState.donor.firstName}
-                pendingCompletionAppointments={
+                pendingCompletionAppointment={
                   appState.pendingCompletionAppointments[0]
                 }
                 setIsFetching={setIsFetching}
-                poppendingCompletionAppointments={
+                poppendingCompletionAppointment={
                   poppendingCompletionAppointments
                 }
               />

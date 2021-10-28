@@ -34,7 +34,6 @@ export const Default = Template.bind({});
 Default.args = {
   firstName: "משה",
   hospital: Hospital.HADASA,
-  appointmentId: "1234",
   donationStartTimeMillis: 946677600000,
   onShowOptionSelected: action("onShowOptionSelected"),
 };

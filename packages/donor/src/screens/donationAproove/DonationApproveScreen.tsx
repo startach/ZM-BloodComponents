@@ -8,15 +8,13 @@ export interface DonationApproveScreenProps {
   firstName?: string;
   hospital: Hospital;
   donationStartTimeMillis: number;
-  appointmentId: string;
-  onShowOptionSelected: (appointmentId: string, isNoshow: boolean) => void;
+  onShowOptionSelected: (isNoshow: boolean) => void;
 }
 
 export default function DonationApproveScreen({
   firstName,
   hospital,
   donationStartTimeMillis,
-  appointmentId,
   onShowOptionSelected,
 }: DonationApproveScreenProps) {
   return (
@@ -33,14 +31,14 @@ export default function DonationApproveScreen({
         <div className={styles.buttonContainer}>
           <div className={styles.textButton}>
             <Button
-              onClick={() => onShowOptionSelected(appointmentId, false)}
+              onClick={() => onShowOptionSelected(false)}
               title="כן"
               variant={ButtonVariant.outlined}
             />
           </div>
           <div className={styles.textButton}>
             <Button
-              onClick={() => onShowOptionSelected(appointmentId, true)}
+              onClick={() => onShowOptionSelected(true)}
               title="לא"
               variant={ButtonVariant.outlined}
             />
