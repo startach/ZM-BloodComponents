@@ -1,8 +1,7 @@
 import RegisterScreen from "./RegisterScreen";
-import firebase from "firebase/app";
-import "firebase/auth";
 import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../../navigation/app/MainNavigationKeys";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export default function RegisterScreenContainer() {
   const history = useHistory();
@@ -40,33 +39,28 @@ function registerUser(
   emailError: (error: string) => void,
   passwordError: (error: string) => void
 ) {
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .catch((error: firebase.auth.Error) => {
-      switch (error.code) {
-        case "auth/email-already-in-use":
-          emailError("כתובת הדואר נמצאת בשימוש");
-          return;
+  createUserWithEmailAndPassword(getAuth(), email, password).catch((error) => {
+    switch (error.code) {
+      case "auth/email-already-in-use":
+        emailError("כתובת הדואר נמצאת בשימוש");
+        return;
 
-        case "auth/invalid-email":
-          emailError("כתובת הדואר אינה תקינה");
-          return;
+      case "auth/invalid-email":
+        emailError("כתובת הדואר אינה תקינה");
+        return;
 
-        case "auth/weak-password":
-          passwordError("הסיסמה אינה חזקה מספיק");
-          return;
+      case "auth/weak-password":
+        passwordError("הסיסמה אינה חזקה מספיק");
+        return;
 
-        case "auth/network-request-failed":
-          passwordError("בעיית רשת, אנא נסה שוב בעתיד");
-          return;
+      case "auth/network-request-failed":
+        passwordError("בעיית רשת, אנא נסה שוב בעתיד");
+        return;
 
-        default:
-          emailError(error.message);
-          console.warn(
-            "Register error code without translation: " + error.code
-          );
-          return;
-      }
-    });
+      default:
+        emailError(error.message);
+        console.warn("Register error code without translation: " + error.code);
+        return;
+    }
+  });
 }

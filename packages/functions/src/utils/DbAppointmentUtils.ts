@@ -1,9 +1,6 @@
-import {
-  AppointmentStatus,
-  BookingChange,
-  DbAppointment,
-} from "@zm-blood-components/common";
+import { AppointmentStatus, BookingChange } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
+import { DbAppointment } from "../function-types";
 
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
@@ -20,13 +17,17 @@ export function removeDonorFromDbAppointment(
 }
 
 export function completeArrivedFromDbAppointment(
-  appointment: DbAppointment
+  appointment: DbAppointment,
+  isNoshow?: boolean
 ): DbAppointment {
   return {
     ...appointment,
     donationDoneTimeMillis: admin.firestore.Timestamp.now(),
     lastChangeTime: admin.firestore.Timestamp.now(),
     lastChangeType: BookingChange.COMPLETED,
-    status: AppointmentStatus.COMPLETED,
+    status:
+      isNoshow === true
+        ? AppointmentStatus.NOSHOW
+        : AppointmentStatus.COMPLETED,
   };
 }

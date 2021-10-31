@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin";
-import { Collections, DbCoordinator } from "@zm-blood-components/common";
+import { Collections } from "@zm-blood-components/common";
+import { DbCoordinator } from "../function-types";
 
 export async function getCoordinator(adminId: string) {
   const collection = admin.firestore().collection(Collections.COORDINATORS);

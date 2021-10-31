@@ -1,15 +1,19 @@
-import firebase from "firebase/app";
-import "firebase/functions";
 import { FunctionsApi, Hospital, DateUtils } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
+import { getFunctions, httpsCallable } from "firebase/functions";
+
+export function getCallableFunction(functionName: string) {
+  const functions = getFunctions();
+  return httpsCallable(functions, functionName);
+}
 
 const TwoWeeksMillis = 14 * 24 * 60 * 60 * 1000;
 
 export async function getCoordinator() {
-  const getCoordinatorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetCoordinatorFunctionName);
+  const getCoordinatorFunction = getCallableFunction(
+    FunctionsApi.GetCoordinatorFunctionName
+  );
   const request: FunctionsApi.GetCoordinatorRequest = {};
 
   try {
@@ -23,9 +27,9 @@ export async function getCoordinator() {
 }
 
 export async function addNewAppointments(newSlots: NewSlots[]) {
-  const addNewAppointmentsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.AddNewAppointmentsFunctionName);
+  const addNewAppointmentsFunction = getCallableFunction(
+    FunctionsApi.AddNewAppointmentsFunctionName
+  );
 
   const newSlotsRequests: FunctionsApi.NewSlotsRequest[] = newSlots.map(
     (slots) => ({
@@ -43,9 +47,9 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
 }
 
 export async function getAppointments(hospital: Hospital) {
-  const getAppointmentsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetCoordinatorAppointmentsFunctionName);
+  const getAppointmentsFunction = getCallableFunction(
+    FunctionsApi.GetCoordinatorAppointmentsFunctionName
+  );
 
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital,
@@ -78,17 +82,17 @@ export function deleteAppointment(appointmentId: string) {
 async function callDeleteAppointmentFunction(
   request: FunctionsApi.DeleteAppointmentRequest
 ) {
-  const deleteAppointmentsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.DeleteAppointmentsFunctionName);
+  const deleteAppointmentsFunction = getCallableFunction(
+    FunctionsApi.DeleteAppointmentsFunctionName
+  );
 
   deleteAppointmentsFunction(request);
 }
 
 export async function getAllDonors() {
-  const getDonorsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetDonorsFunctionName);
+  const getDonorsFunction = getCallableFunction(
+    FunctionsApi.GetDonorsFunctionName
+  );
 
   const request: FunctionsApi.GetDonorsRequest = {};
 
@@ -100,9 +104,9 @@ export async function getAllDonors() {
 export async function getBookedAppointmentsInHospital(
   request: GetBookedDonationsInHospitalRequest
 ) {
-  const getBookedAppointmentsInHospital = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetBookedDonationsInHospitalFunctionName);
+  const getBookedAppointmentsInHospital = getCallableFunction(
+    FunctionsApi.GetBookedDonationsInHospitalFunctionName
+  );
 
   const response = await getBookedAppointmentsInHospital(request);
   const data =

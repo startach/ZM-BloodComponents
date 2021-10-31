@@ -30,6 +30,11 @@ jobs:
     name: ${{ matrix.app }} staging deployment
     runs-on: ubuntu-latest
     steps:
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Jerusalem
+
       - name: Checkout
         uses: actions/checkout@v2
 

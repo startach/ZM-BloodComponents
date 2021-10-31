@@ -14,9 +14,8 @@ const generateClassName = () => {
 
 export const parameters = {
   viewport: {
-    viewports: {
-      ...INITIAL_VIEWPORTS,
-    },
+    viewports: INITIAL_VIEWPORTS,
+    defaultViewport: "iphonex",
   },
 };
 

@@ -1,9 +1,9 @@
 import {
   CoordinatorRole,
-  DbCoordinator,
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
+import { DbCoordinator } from "../function-types";
 
 export function getCoordinatorHospitals(coordinator: DbCoordinator) {
   let hospitals: Hospital[] = [];

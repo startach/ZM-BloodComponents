@@ -15,6 +15,7 @@
     "jss-rtl": "^0.3.0",
     "mobx": "^6.3.2",
     "mobx-react-lite": "^3.2.0",
+    "react-icalendar-link": "^3.0.1",
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
@@ -35,7 +36,7 @@
     "sync-mobile": "cap sync",
     "generate-mobile-images": "run-s mobile:generate-images",
     "-------------------TESTING---------------------": "",
-    "test": "TZ=Asia/Jerusalem react-scripts test",
+    "test": "react-scripts test",
     "updateSnapshots": "yarn run test -- -u --watchAll=false",
     "-------------------MOBILE----------------------": "",
     "mobile:init-ios": "cap add ios",

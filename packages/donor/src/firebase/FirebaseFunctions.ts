@@ -1,16 +1,24 @@
-import firebase from "firebase/app";
-import "firebase/functions";
 import {
   BloodType,
   BookedAppointment,
+  AppointmentStatus,
   Donor,
   FunctionsApi,
 } from "@zm-blood-components/common";
+import { getAuth } from "firebase/auth";
+import { getFunctions, httpsCallable } from "firebase/functions";
+
+export const APPROVE_HISTOEY_LENGTH_DAYS = 30;
+
+export function getCallableFunction(functionName: string) {
+  const functions = getFunctions();
+  return httpsCallable(functions, functionName);
+}
 
 export function getAvailableAppointments() {
-  const getAvailableAppointmentsFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetAvailableAppointmentsFunctionName);
+  const getAvailableAppointmentsFunction = getCallableFunction(
+    FunctionsApi.GetAvailableAppointmentsFunctionName
+  );
   return getAvailableAppointmentsFunction().then((res) => {
     const response = res.data as FunctionsApi.GetAvailableAppointmentsResponse;
     return response.availableAppointments;
@@ -18,9 +26,9 @@ export function getAvailableAppointments() {
 }
 
 export async function bookAppointment(appointmentIds: string[]) {
-  const bookAppointmentFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.BookAppointmentFunctionName);
+  const bookAppointmentFunction = getCallableFunction(
+    FunctionsApi.BookAppointmentFunctionName
+  );
 
   const request: FunctionsApi.BookAppointmentRequest = {
     appointmentIds,
@@ -30,11 +38,28 @@ export async function bookAppointment(appointmentIds: string[]) {
   return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
+export async function setCompleteAppointment(
+  appointmentId: string,
+  isNoshow: boolean
+) {
+  const completeAppointmentFunction = getCallableFunction(
+    FunctionsApi.CompleteAppointmentFunctionName
+  );
+
+  const request: FunctionsApi.CompleteAppointmentRequest = {
+    appointmentId: appointmentId,
+    isNoshow: isNoshow,
+  };
+
+  const response = await completeAppointmentFunction(request);
+  return response;
+}
+
 // Remove donor from appointment
 export async function cancelAppointment(appointmentId: string) {
-  const cancelAppointmentFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.CancelAppointmentFunctionName);
+  const cancelAppointmentFunction = getCallableFunction(
+    FunctionsApi.CancelAppointmentFunctionName
+  );
 
   const request: FunctionsApi.CancelAppointmentRequest = {
     appointmentId,
@@ -51,16 +76,16 @@ export async function saveDonor(
   bloodType: BloodType,
   enableEmailNotifications: boolean
 ): Promise<Donor> {
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
     throw Error("Unauthorized to update user");
   }
 
-  const saveDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.SaveDonorFunctionName);
+  const saveDonorFunction = getCallableFunction(
+    FunctionsApi.SaveDonorFunctionName
+  );
 
   const request: FunctionsApi.SaveDonorRequest = {
     id: currentUser.uid,
@@ -83,36 +108,48 @@ export async function saveDonor(
 export async function getDonorDetails(): Promise<{
   donor?: Donor;
   bookedAppointment?: BookedAppointment;
+  pendingCompletionAppointments: BookedAppointment[];
 }> {
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = getAuth().currentUser;
 
   if (!currentUser?.uid || !currentUser.email) {
     console.error("User not authenticated");
-    return {};
+    return {
+      pendingCompletionAppointments: [],
+    };
   }
 
-  const getDonorFunction = firebase
-    .functions()
-    .httpsCallable(FunctionsApi.GetDonorAppointmentsFunctionName);
+  const getDonorFunction = getCallableFunction(
+    FunctionsApi.GetDonorAppointmentsFunctionName
+  );
+  const today = new Date().getDate();
+  const fromMillis = new Date().setDate(today - APPROVE_HISTOEY_LENGTH_DAYS);
 
   const request: FunctionsApi.GetDonorAppointmentsRequest = {
     donorId: currentUser.uid,
-    fromMillis: new Date().getTime(),
+    fromMillis: fromMillis,
   };
 
   try {
     const response = await getDonorFunction(request);
     const data = response.data as FunctionsApi.GetDonorAppointmentsResponse;
 
-    if (data.futureAppointments.length === 0) {
-      return { donor: data.donor };
-    }
-    return {
+    const pendingCompletionAppointments = data.completedAppointments.filter(
+      (appointment) => appointment.status === AppointmentStatus.BOOKED
+    );
+
+    const ret = {
       donor: data.donor,
-      bookedAppointment: data.futureAppointments[0],
+      futureAppointments:
+        data.futureAppointments.length !== 0
+          ? data.futureAppointments
+          : undefined,
+      pendingCompletionAppointments: pendingCompletionAppointments,
     };
+
+    return ret;
   } catch (e) {
     console.error("Error getting donor", e);
-    return {};
+    return { pendingCompletionAppointments: [] };
   }
 }

@@ -6,6 +6,8 @@ import {
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import Spinner from "../../components/Spinner";
 import Popup from "../../components/Popup";
+import PopupFlashMessage from "../../components/Popup/PopupFlashMessage";
+
 import { useState } from "react";
 import {
   AppointmentTableExpandedRowContent,
@@ -79,6 +81,14 @@ export default function ManageAppointmentsScreen({
   const [popupData, setPopupData] =
     useState<DeleteAppointmentPopupData>(emptyPopupData);
 
+  const [showFlash, setShowFlash] = useState(false);
+  const [flashMessage, setFlashMessage] = useState("");
+
+  const popMessage = (message: string) => {
+    setFlashMessage(message);
+    setShowFlash(true);
+  };
+
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
       groupLabel: day.day,
@@ -91,7 +101,8 @@ export default function ManageAppointmentsScreen({
               setPopupData,
               onRemoveDonor,
               onDeleteAppointment,
-              showOnlyRecentChanges
+              showOnlyRecentChanges,
+              popMessage
             ),
         })
       ),
@@ -156,6 +167,12 @@ export default function ManageAppointmentsScreen({
         onApproved={popupData.onApproved}
         onClose={() => setPopupData(emptyPopupData)}
       />
+      <PopupFlashMessage
+        message={flashMessage}
+        showFlash={showFlash}
+        hide={() => setShowFlash(false)}
+      />
+
       {isLoading && (
         <div className={Styles.spinner}>
           <Spinner size="40px" />

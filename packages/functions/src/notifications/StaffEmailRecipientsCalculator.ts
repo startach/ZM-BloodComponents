@@ -1,8 +1,9 @@
-import { DbAppointment, DbDonor, Hospital } from "@zm-blood-components/common";
+import { Hospital } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
+import { DbAppointment, DbDonor } from "../function-types";
 
 function getProductionHospitalCoordinator(
   hospital: Hospital
@@ -12,6 +13,11 @@ function getProductionHospitalCoordinator(
       return {
         email: "bloodbankbl@clalit.org.il",
         name: "בית החולים בילינסון",
+      };
+    case Hospital.SOROKA:
+      return {
+        email: "ronniema79@gmail.com",
+        name: "בית החולים סורוקה",
       };
   }
 

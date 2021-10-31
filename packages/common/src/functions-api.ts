@@ -1,8 +1,8 @@
 import {
   BloodType,
   BookingChange,
+  AppointmentStatus,
   Coordinator,
-  DbCoordinator,
   Donor,
   Hospital,
   BookedDonationWithDonorDetails,
@@ -27,6 +27,7 @@ export type BookedAppointmentApiEntry = {
   hospital: Hospital;
   donorId: string;
   bookingTimeMillis: number;
+  status: AppointmentStatus;
   recentChangeType?: BookingChange;
   donationDoneTimeMillis?: number; // Time donor confirmed they donated
 };
@@ -84,6 +85,7 @@ export interface CancelAppointmentRequest {
 export const CompleteAppointmentFunctionName = "completeAppointment";
 export interface CompleteAppointmentRequest {
   appointmentId: string;
+  isNoshow?: boolean;
 }
 
 export interface CompleteAppointmentResponse {
@@ -138,11 +140,6 @@ export interface DeleteAppointmentRequest {
   // If true, will keep the appointment but remove the donor from it.
   // If false, will delete the appointment completely.
   onlyRemoveDonor: boolean;
-}
-
-export const SaveCoordinatorFunctionName = "saveCoordinator";
-export interface SaveCoordinatorRequest {
-  coordinator: DbCoordinator;
 }
 
 export const GetCoordinatorAppointmentsFunctionName =

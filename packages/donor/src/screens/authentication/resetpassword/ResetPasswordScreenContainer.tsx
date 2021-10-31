@@ -1,8 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/auth";
 import { validateEmail } from "../register/RegisterScreenContainer";
 import ResetPasswordScreen from "./ResetPasswordScreen";
 import { useHistory } from "react-router-dom";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 export default function ResetPasswordScreenContainer() {
   const history = useHistory();
@@ -16,11 +15,9 @@ export default function ResetPasswordScreenContainer() {
       onError("כתובת הדואר אינה תקינה");
       return;
     }
-    firebase
-      .auth()
-      .sendPasswordResetEmail(email)
+    sendPasswordResetEmail(getAuth(), email)
       .then(onSuccess)
-      .catch((error: firebase.auth.Error) => {
+      .catch((error) => {
         switch (error.code) {
           case "auth/invalid-email":
             onError("כתובת הדואר אינה תקינה");

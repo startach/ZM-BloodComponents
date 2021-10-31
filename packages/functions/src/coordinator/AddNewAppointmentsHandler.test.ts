@@ -1,7 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -15,6 +14,7 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbCoordinator } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.AddNewAppointmentsFunctionName]

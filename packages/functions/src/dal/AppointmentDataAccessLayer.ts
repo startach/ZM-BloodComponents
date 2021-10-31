@@ -3,9 +3,9 @@ import * as _ from "lodash";
 import {
   AppointmentStatus,
   Collections,
-  DbAppointment,
   Hospital,
 } from "@zm-blood-components/common";
+import { DbAppointment } from "../function-types";
 
 export async function getAppointmentsByIds(
   appointmentIds: string[]

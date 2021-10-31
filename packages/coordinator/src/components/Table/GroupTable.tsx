@@ -28,6 +28,7 @@ export interface CardTableRow<T> {
 }
 
 export interface CardTableColumn<T> {
+  aditionalCardClass?: string;
   label?: string;
   /** When user asks to sort by this column, use this function */
   sortBy?: SortFunction<T>;

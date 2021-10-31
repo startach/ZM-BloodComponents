@@ -1,6 +1,7 @@
-import { DbDonor, FunctionsApi } from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import { setDonor } from "../dal/DonorDataAccessLayer";
 import { dbDonorToDonor } from "../utils/ApiEntriesConversionUtils";
+import { DbDonor } from "../function-types";
 
 export default async function (
   request: FunctionsApi.SaveDonorRequest,

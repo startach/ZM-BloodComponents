@@ -1,9 +1,11 @@
-import firebase from "firebase/app";
-import "firebase/auth";
 import { getFirebaseConfig, LoginStatus } from "@zm-blood-components/common";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import { getPerformance } from "firebase/performance";
 
 export function initFirebase() {
-  firebase.initializeApp(getFirebaseConfig());
+  const app = initializeApp(getFirebaseConfig());
+  getPerformance(app);
 }
 
 let loginState = false;
@@ -11,7 +13,7 @@ let loginState = false;
 export function registerAuthChange(
   setLoginState: (isLoggedIn: LoginStatus) => void
 ) {
-  firebase.auth().onAuthStateChanged(async (user: firebase.User | null) => {
+  onAuthStateChanged(getAuth(), async (user: User | null) => {
     if (user) {
       loginState = true;
       setLoginState(LoginStatus.LOGGED_IN);

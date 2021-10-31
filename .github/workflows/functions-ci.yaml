@@ -24,6 +24,8 @@ jobs:
         run: yarn install
       - name: Run Typescript
         run: yarn workspace @zm-blood-components/functions tsc
+      - name: Build Functions
+        run: yarn workspace @zm-blood-components/functions bundle
       - name: Write Test Service Account Key
         uses: DamianReeves/write-file-action@v1.0
         with:

@@ -1,12 +1,11 @@
 import {
   AppointmentStatus,
   BookingChange,
-  DbAppointment,
   Hospital,
 } from "@zm-blood-components/common";
 import admin from "firebase-admin";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import { completeArrivedFromDbAppointment } from "../utils/DbAppointmentUtils";
+import { DbAppointment } from "../function-types";
 
 describe("DbAppointment Utils", () => {
   test("removeDonorFromDbAppointment", () => {
@@ -19,6 +18,7 @@ describe("DbAppointment Utils", () => {
       creatorUserId: "creatorUserId",
       confirmationTime: admin.firestore.Timestamp.now(),
       creationTime: admin.firestore.Timestamp.now(),
+      status: AppointmentStatus.AVAILABLE,
     };
 
     const res =
@@ -50,6 +50,7 @@ describe("DbAppointment Utils", () => {
       creatorUserId: "creatorUserId",
       confirmationTime: admin.firestore.Timestamp.now(),
       creationTime: admin.firestore.Timestamp.now(),
+      status: AppointmentStatus.COMPLETED,
     };
 
     const res =

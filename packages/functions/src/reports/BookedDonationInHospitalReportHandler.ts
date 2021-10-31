@@ -1,12 +1,12 @@
 import {
   BookedDonationWithDonorDetails,
-  DbAppointment,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
+import { DbAppointment } from "../function-types";
 
 export default async function (
   request: FunctionsApi.GetBookedDonationsInHospitalRequest,

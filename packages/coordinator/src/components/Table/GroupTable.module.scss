@@ -35,12 +35,17 @@
 .cell {
   display: flex;
   flex: 1 0 0;
-  justify-content: center;
+  justify-content: right;
   padding: 0 1rem;
+}
+
+.buttons-cell {
+  justify-content: left;
 }
 
 .header-cell {
   cursor: pointer;
+  justify-content: center;
 
   &:hover {
     font-weight: bold;

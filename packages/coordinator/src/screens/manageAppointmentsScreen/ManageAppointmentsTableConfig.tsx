@@ -19,23 +19,27 @@ import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";
+import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void
 ): CardTableColumn<ManagedAppointment>[] => [
   {
     label: "שם מלא",
-    cellRenderer: ({ donorName }) => donorName,
-    hideIfNoData: true,
+    cellRenderer: ({ donorName, booked }) => {
+      return booked && donorName ? donorName : "אין רישום";
+    },
+    hideIfNoData: false,
   },
   {
     label: "סוג דם",
     cellRenderer: ({ bloodType }) =>
       bloodType ? LocaleUtils.getBloodTypeTranslation(bloodType) : null,
-    hideIfNoData: true,
+    hideIfNoData: false,
   },
   {
     label: "טלפון",
@@ -47,12 +51,12 @@ const GetExpandedColumns = (
           </a>
         </div>
       ),
-    hideIfNoData: true,
+    hideIfNoData: false,
   },
   {
     label: "נקבע בתאריך",
     cellRenderer: ({ booked, bookingTimeMillis }) => {
-      let bookingDate = "אין רישום";
+      let bookingDate = "";
       if (booked && bookingTimeMillis) {
         bookingDate = DateUtils.ToDateString(bookingTimeMillis);
       }
@@ -60,9 +64,11 @@ const GetExpandedColumns = (
     },
   },
   {
+    label: "",
+    colRelativeWidth: 0,
     cellRenderer: ({ recentChangeType }) => {
       const chipLabel =
-        recentChangeType === BookingChange.CANCELLED ? "בוטל" : "נקבע";
+        recentChangeType === BookingChange.CANCELLED ? "בוטל" : "חדש";
       return (
         !showOnlyRecentChanges &&
         (recentChangeType || recentChangeType === 0) && (
@@ -70,9 +76,11 @@ const GetExpandedColumns = (
         )
       );
     },
-    colRelativeWidth: 0.3,
   },
   {
+    label: "",
+    aditionalCardClass: "buttons-cell",
+    colRelativeWidth: 1,
     cellRenderer: (appointment) => {
       if (appointment.isPastAppointment) {
         return null;
@@ -89,13 +97,12 @@ const GetExpandedColumns = (
           tooltip: "העתק",
           iconUrl: copyIcon,
           onClick: () => {
-            let bookingDate = appointment.donationStartTimeMillis
-              ? DateUtils.ToDateString(appointment.donationStartTimeMillis)
-              : "";
-            let copyString = `${appointment.donorName}, ${String(
-              appointment.donorPhoneNumber
-            )}, ${bookingDate}`;
-            navigator.clipboard.writeText(copyString);
+            navigator.clipboard.writeText(
+              getAppointmentCopyString(appointment)
+            );
+
+            // flash a message to user
+            popupFlashMessageTrigger("הפרטים הועתקו בהצלחה");
           },
         });
 
@@ -141,7 +148,6 @@ const GetExpandedColumns = (
         </div>
       );
     },
-    colRelativeWidth: 0,
   },
 ];
 
@@ -150,10 +156,12 @@ export const AppointmentTableExpandedRowContent = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
   onRemoveDonor: (appointmentId: string) => Promise<void>,
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
-  showOnlyRecentChanges: boolean
+  showOnlyRecentChanges: boolean,
+  popupFlashMessageTrigger: (message: string) => void
 ) => {
   return (
     <Table
+      className={Styles["donation-table"]}
       rows={slot.appointments.map<CardTableRow<ManagedAppointment>>(
         (managedAppointment) => ({
           rowData: managedAppointment,
@@ -163,7 +171,8 @@ export const AppointmentTableExpandedRowContent = (
         setPopupData,
         onRemoveDonor,
         onDeleteAppointment,
-        showOnlyRecentChanges
+        showOnlyRecentChanges,
+        popupFlashMessageTrigger
       )}
       tableIndex={1}
       hasColumnHeaders
@@ -190,14 +199,20 @@ export const MainAppointmentTableColumns = (
       appointments.filter((a) => a.booked).length,
   },
   {
+    label: "",
     cellRenderer: ({ appointments }) => {
-      return (
+      const visable =
         !showOnlyRecentChanges &&
         appointments.find(
           (a) => a.recentChangeType || a.recentChangeType === 0
-        ) && <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+        );
+
+      return (
+        <div style={{ visibility: visable ? "visible" : "hidden" }}>
+          <Chip colorScheme={ChipColorScheme.New} label="חדש" />
+        </div>
       );
     },
-    colRelativeWidth: 0.3,
+    colRelativeWidth: 0,
   },
 ];

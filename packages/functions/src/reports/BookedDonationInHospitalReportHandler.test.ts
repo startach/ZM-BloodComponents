@@ -1,12 +1,10 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   CoordinatorRole,
-  DbCoordinator,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
   BloodType,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -18,6 +16,7 @@ import {
 import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedDonationsInHospitalFunctionName]
@@ -199,11 +198,13 @@ async function saveAppointment(
     donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
     hospital: hospital,
     donorId: "",
+    status: AppointmentStatus.AVAILABLE,
   };
 
   if (donorId) {
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
+    appointment.status = AppointmentStatus.BOOKED;
   }
 
   await setAppointment(appointment);

@@ -1,9 +1,5 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {
-  DbAppointment,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -14,6 +10,7 @@ import { getDate } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { saveTestDonor } from "../testUtils/TestSamples";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { DbAppointment } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetDonorAppointmentsFunctionName]

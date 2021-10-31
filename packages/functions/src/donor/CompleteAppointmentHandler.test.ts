@@ -2,8 +2,6 @@ import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   AppointmentStatus,
   BookingChange,
-  DbAppointment,
-  DbDonor,
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
@@ -17,6 +15,7 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CompleteAppointmentFunctionName]
@@ -104,6 +103,28 @@ test("Valid request complete appointment", async () => {
   expect(appointment[0].creatorUserId).toEqual("creatorUserId");
 });
 
+test.each([true, false])(
+  "Valid request complete appointment with noshow",
+  async (isNoShow) => {
+    await createDonor();
+    await saveAppointment(DONOR_ID);
+
+    await wrapped(completeAppointmentRequest(isNoShow), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
+
+    const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
+    expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
+    expect(appointment[0].status).toEqual(
+      isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED
+    );
+    expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
+    expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+  }
+);
+
 async function saveAppointment(donorId: string) {
   const time = admin.firestore.Timestamp.now();
   const appointment: DbAppointment = {
@@ -121,8 +142,8 @@ async function saveAppointment(donorId: string) {
   await setAppointment(appointment);
 }
 
-function completeAppointmentRequest() {
-  return { appointmentId: APPOINTMENT_TO_COMPLETE };
+function completeAppointmentRequest(isNoshow?: boolean) {
+  return { appointmentId: APPOINTMENT_TO_COMPLETE, isNoshow: isNoshow };
 }
 
 async function createDonor() {
