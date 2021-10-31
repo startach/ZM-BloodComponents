@@ -4,14 +4,21 @@ import {
   AppointmentStatus,
   BookingChange,
   FunctionsApi,
-  Hospital
+  Hospital,
 } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
-import { deleteAppointmentsByIds, getAppointmentsByIds, setAppointment } from "../dal/AppointmentDataAccessLayer";
+import {
+  deleteAppointmentsByIds,
+  getAppointmentsByIds,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
 import { mocked } from "ts-jest/utils";
-import { NotificationToDonor, sendEmailToDonor } from "../notifications/NotificationSender";
+import {
+  NotificationToDonor,
+  sendEmailToDonor,
+} from "../notifications/NotificationSender";
 import { SendConfirmationReminders } from "./CronJobs";
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 
@@ -23,7 +30,11 @@ jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);
 
 const DONORS = ["BookedDonorId", "AvailableDonorId", "OutOfRangeDonorId"];
-const APPOINTMENTS = ["BookedAppointment", "AvailableAppointment", "OutOfRangeAppointment"];
+const APPOINTMENTS = [
+  "BookedAppointment",
+  "AvailableAppointment",
+  "OutOfRangeAppointment",
+];
 
 const reset = async () => {
   for (let i = 0; i < DONORS.length; i++) {
@@ -44,20 +55,33 @@ test("run on all appointments", async () => {
   await createDonor(DONORS[0]);
   await createDonor(DONORS[1]);
   await createDonor(DONORS[2]);
-  const lastHour = new Date()
-  lastHour.setHours(lastHour.getHours()-1)
-  await saveAppointment(DONORS[0], APPOINTMENTS[0],AppointmentStatus.BOOKED, admin.firestore.Timestamp.fromDate(lastHour));
+  const lastHour = new Date();
+  lastHour.setHours(lastHour.getHours() - 1);
+  await saveAppointment(
+    DONORS[0],
+    APPOINTMENTS[0],
+    AppointmentStatus.BOOKED,
+    admin.firestore.Timestamp.fromDate(lastHour)
+  );
 
-  await saveAppointment(DONORS[1], APPOINTMENTS[1],AppointmentStatus.AVAILABLE, admin.firestore.Timestamp.fromDate(lastHour));
+  await saveAppointment(
+    DONORS[1],
+    APPOINTMENTS[1],
+    AppointmentStatus.AVAILABLE,
+    admin.firestore.Timestamp.fromDate(lastHour)
+  );
   const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate()-1)
-  await saveAppointment(DONORS[2], APPOINTMENTS[2],AppointmentStatus.BOOKED, admin.firestore.Timestamp.fromDate(yesterday));
-
+  yesterday.setDate(yesterday.getDate() - 1);
+  await saveAppointment(
+    DONORS[2],
+    APPOINTMENTS[2],
+    AppointmentStatus.BOOKED,
+    admin.firestore.Timestamp.fromDate(yesterday)
+  );
 
   const topOfThisHourInMillis = new Date().setMinutes(0, 0, 0);
   const oneHourInMillis = 1000 * 60 * 60;
-  const topOfPreviousHourInMillis =
-    topOfThisHourInMillis - oneHourInMillis + 1;
+  const topOfPreviousHourInMillis = topOfThisHourInMillis - oneHourInMillis + 1;
 
   await SendConfirmationReminders(
     new Date(topOfPreviousHourInMillis),
@@ -75,8 +99,12 @@ test("run on all appointments", async () => {
   );
 });
 
-
-async function saveAppointment(donorId: string, appointmentId:string, status: AppointmentStatus, time: FirebaseFirestore.Timestamp) {
+async function saveAppointment(
+  donorId: string,
+  appointmentId: string,
+  status: AppointmentStatus,
+  time: FirebaseFirestore.Timestamp
+) {
   const appointment: DbAppointment = {
     id: appointmentId,
     creationTime: time,
@@ -86,7 +114,7 @@ async function saveAppointment(donorId: string, appointmentId:string, status: Ap
     donorId: donorId,
     bookingTime: time,
     status: status,
-    lastChangeType: BookingChange.BOOKED
+    lastChangeType: BookingChange.BOOKED,
   };
 
   await setAppointment(appointment);
@@ -97,7 +125,7 @@ async function createDonor(donorId: string) {
     id: donorId,
     ...sampleUser,
     firstName: "firstName",
-    email: "email@email.com"
+    email: "email@email.com",
   };
 
   await setDonor(donor);

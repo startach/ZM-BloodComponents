@@ -22,7 +22,6 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
       new Date(topOfThisHourInMillis)
     );
   });
-  
 
 // Run every day at 11 AM Israel Time
 //https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
