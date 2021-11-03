@@ -221,8 +221,6 @@ export default function AppRouter() {
           path={"/" + MainNavigationKeys.MyProfile}
           render={() => {
             if (!loggedIn) return redirectToLogin();
-            if (appState.pendingCompletionAppointments.length !== 0)
-              return redirectTo(MainNavigationKeys.Approve);
             return (
               <MyProfileScreenContainer
                 user={appState.donor!}
