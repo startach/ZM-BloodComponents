@@ -42,7 +42,7 @@ export async function sendEmailToDonor(
       break;
     case NotificationToDonor.DONATION_CONFIRMATION:
       // TODO - Get template for donation confirmation
-      break;
+      return;
     default:
       return;
   }

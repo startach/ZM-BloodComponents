@@ -29,11 +29,15 @@ const wrapped = firebaseFunctionsTest.wrap(
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);
 
-const DONORS = ["BookedDonorId", "AvailableDonorId", "OutOfRangeDonorId"];
+const DONORS = [
+  "SendConfirmationBookedDonorId",
+  "SendConfirmationAvailableDonorId",
+  "SendConfirmationOutOfRangeDonorId",
+];
 const APPOINTMENTS = [
-  "BookedAppointment",
-  "AvailableAppointment",
-  "OutOfRangeAppointment",
+  "SendConfirmationBookedAppointment",
+  "SendConfirmationAvailableAppointment",
+  "SendConfirmationOutOfRangeAppointment",
 ];
 
 const reset = async () => {
@@ -55,7 +59,8 @@ test("run on all appointments", async () => {
   await createDonor(DONORS[0]);
   await createDonor(DONORS[1]);
   await createDonor(DONORS[2]);
-  const lastHour = new Date();
+  const now = new Date(2021, 3, 8, 14, 23);
+  const lastHour = new Date(now);
   lastHour.setHours(lastHour.getHours() - 1);
   await saveAppointment(
     DONORS[0],
@@ -70,7 +75,7 @@ test("run on all appointments", async () => {
     AppointmentStatus.AVAILABLE,
     admin.firestore.Timestamp.fromDate(lastHour)
   );
-  const yesterday = new Date();
+  const yesterday = new Date(now);
   yesterday.setDate(yesterday.getDate() - 1);
   await saveAppointment(
     DONORS[2],
@@ -79,7 +84,7 @@ test("run on all appointments", async () => {
     admin.firestore.Timestamp.fromDate(yesterday)
   );
 
-  const topOfThisHourInMillis = new Date().setMinutes(0, 0, 0);
+  const topOfThisHourInMillis = new Date(now).setMinutes(0, 0, 0);
   const oneHourInMillis = 1000 * 60 * 60;
   const topOfPreviousHourInMillis = topOfThisHourInMillis - oneHourInMillis + 1;
 
