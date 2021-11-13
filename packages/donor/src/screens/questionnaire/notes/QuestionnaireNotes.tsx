@@ -88,7 +88,7 @@ export default function QuestionnaireNotes({
           </div>
 
           <div className={styles.notesDetails}>
-            ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב.
+            לבאים ברכב פרטי ינתן כרטיס חניה לחניון תל השומר.
           </div>
         </>
       );

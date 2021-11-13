@@ -75,7 +75,7 @@ export default function QuestionsTelHashomer({
       <Question
         value={isTattooValid}
         onChange={setIsTattooValid}
-        label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}
+        label={"האם עשית קעקוע או עגילים ב-3 החודשים האחרונים?"}
         options={YesNoOptions}
       />
 

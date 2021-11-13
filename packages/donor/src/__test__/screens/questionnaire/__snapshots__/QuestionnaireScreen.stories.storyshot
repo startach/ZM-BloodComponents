@@ -2068,7 +2068,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
           <div
             className="questionLabel"
           >
-            האם עשית קעקוע או עגילים בחצי השנה האחרונה?
+            האם עשית קעקוע או עגילים ב-3 החודשים האחרונים?
           </div>
           <div
             className="questionButtons"
@@ -2126,7 +2126,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
         <div
           className="notesDetails"
         >
-          ינתן שירות הסעה במונית, או כרטיס חניה בחניון תל השומר לבאים ברכב.
+          לבאים ברכב פרטי ינתן כרטיס חניה לחניון תל השומר.
         </div>
         <div
           className="confirmButtonContainer"
