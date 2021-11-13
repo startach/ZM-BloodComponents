@@ -25,7 +25,7 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
 export const ConfirmationReminderOnNextDay = functions.pubsub
   .schedule("0 0 * * *")
   .timeZone("Asia/Jerusalem")
-  .onRun(async() => {
+  .onRun(async () => {
     const now = new Date();
     const lastDay = new Date();
     lastDay.setDate(lastDay.getDate() - 1);
@@ -44,7 +44,7 @@ export const SendConfirmationReminders = async (from: Date, to: Date) => {
 
   const donorsInAppointments = await getDonors(_.uniqBy(donorIds, "id"));
 
-  for(const appointment of appointments){
+  for (const appointment of appointments) {
     const donor = donorsInAppointments.find(
       (dbDonor) => dbDonor.id === appointment.donorId
     );
