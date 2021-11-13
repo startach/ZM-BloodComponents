@@ -17,7 +17,7 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
     const lastHour = new Date();
     lastHour.setHours(lastHour.getHours() - 1);
 
-    SendConfirmationReminders(lastHour, now);
+    await SendConfirmationReminders(lastHour, now);
   });
 
 // Run every day at 00:00 AM Israel Time
@@ -25,12 +25,12 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
 export const ConfirmationReminderOnNextDay = functions.pubsub
   .schedule("0 0 * * *")
   .timeZone("Asia/Jerusalem")
-  .onRun(() => {
+  .onRun(async() => {
     const now = new Date();
     const lastDay = new Date();
     lastDay.setDate(lastDay.getDate() - 1);
 
-    SendConfirmationReminders(lastDay, now);
+    await SendConfirmationReminders(lastDay, now);
   });
 
 export const SendConfirmationReminders = async (from: Date, to: Date) => {
@@ -44,9 +44,9 @@ export const SendConfirmationReminders = async (from: Date, to: Date) => {
 
   const donorsInAppointments = await getDonors(_.uniqBy(donorIds, "id"));
 
-  appointments.forEach((appointment) => {
+  for(const appointment of appointments){
     const donor = donorsInAppointments.find(
-      (donor) => donor.id == appointment.donorId
+      (dbDonor) => dbDonor.id === appointment.donorId
     );
 
     if (!donor) {
@@ -54,10 +54,10 @@ export const SendConfirmationReminders = async (from: Date, to: Date) => {
       return;
     }
 
-    sendEmailToDonor(
+    await sendEmailToDonor(
       NotificationToDonor.DONATION_CONFIRMATION,
       getAppointmentNotificationData(appointment, donor),
       donor
     );
-  });
+  }
 };
