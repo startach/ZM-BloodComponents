@@ -24,7 +24,7 @@ export function completeArrivedFromDbAppointment(
     ...appointment,
     donationDoneTimeMillis: admin.firestore.Timestamp.now(),
     lastChangeTime: admin.firestore.Timestamp.now(),
-    lastChangeType: BookingChange.COMPLETED,
+    lastChangeType: BookingChange.NOSHOW,
     status:
       isNoshow === true
         ? AppointmentStatus.NOSHOW
