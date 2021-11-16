@@ -39,35 +39,48 @@ describe("DbAppointment Utils", () => {
     expect(Date.now() - res.lastChangeTime?.toMillis()!).toBeLessThan(3_000);
   });
 
-  test("completeArrivedFromDbAppointment", () => {
-    const startTime = new Date().getTime();
-    const bookedAppointment: DbAppointment = {
-      id: "id",
-      donorId: "donorId",
-      hospital: Hospital.BEILINSON,
-      bookingTime: admin.firestore.Timestamp.fromMillis(1122334455),
-      donationStartTime: admin.firestore.Timestamp.fromMillis(1122558899),
-      creatorUserId: "creatorUserId",
-      confirmationTime: admin.firestore.Timestamp.now(),
-      creationTime: admin.firestore.Timestamp.now(),
-      status: AppointmentStatus.COMPLETED,
-    };
+  test.each([true, false])(
+    "completeArrivedFromDbAppointment - isNoShow: %s",
+    (isNoShow) => {
+      const startTime = new Date().getTime();
+      const bookedAppointment: DbAppointment = {
+        id: "id",
+        donorId: "donorId",
+        hospital: Hospital.BEILINSON,
+        bookingTime: admin.firestore.Timestamp.fromMillis(1122334455),
+        donationStartTime: admin.firestore.Timestamp.fromMillis(1122558899),
+        creatorUserId: "creatorUserId",
+        confirmationTime: admin.firestore.Timestamp.now(),
+        creationTime: admin.firestore.Timestamp.now(),
+        status: AppointmentStatus.COMPLETED,
+      };
 
-    const res =
-      DbAppointmentUtils.completeArrivedFromDbAppointment(bookedAppointment);
+      const res = DbAppointmentUtils.completeArrivedFromDbAppointment(
+        bookedAppointment,
+        isNoShow
+      );
 
-    expect(res.id).toEqual(bookedAppointment.id);
-    expect(res.creatorUserId).toEqual(bookedAppointment.creatorUserId);
-    expect(res.hospital).toEqual(bookedAppointment.hospital);
-    expect(res.donationStartTime).toEqual(bookedAppointment.donationStartTime);
-    expect(res.creationTime).toEqual(bookedAppointment.creationTime);
-    expect(res.donorId).toEqual(bookedAppointment.donorId);
-    expect(res.bookingTime).toEqual(bookedAppointment.bookingTime);
-    expect(res.confirmationTime!.toMillis()).toBeGreaterThanOrEqual(startTime);
-    expect(res.confirmationTime!.toMillis()).toBeLessThan(startTime + 10_000);
+      expect(res.id).toEqual(bookedAppointment.id);
+      expect(res.creatorUserId).toEqual(bookedAppointment.creatorUserId);
+      expect(res.hospital).toEqual(bookedAppointment.hospital);
+      expect(res.donationStartTime).toEqual(
+        bookedAppointment.donationStartTime
+      );
+      expect(res.creationTime).toEqual(bookedAppointment.creationTime);
+      expect(res.donorId).toEqual(bookedAppointment.donorId);
+      expect(res.bookingTime).toEqual(bookedAppointment.bookingTime);
+      expect(res.confirmationTime!.toMillis()).toBeGreaterThanOrEqual(
+        startTime
+      );
+      expect(res.confirmationTime!.toMillis()).toBeLessThan(startTime + 10_000);
 
-    expect(res.status).toEqual(AppointmentStatus.COMPLETED);
-    expect(res.lastChangeType).toEqual(BookingChange.COMPLETED);
-    expect(Date.now() - res.lastChangeTime?.toMillis()!).toBeLessThan(3_000);
-  });
+      expect(res.status).toEqual(
+        isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED
+      );
+      expect(res.lastChangeType).toEqual(
+        isNoShow ? BookingChange.NOSHOW : BookingChange.COMPLETED
+      );
+      expect(Date.now() - res.lastChangeTime?.toMillis()!).toBeLessThan(3_000);
+    }
+  );
 });

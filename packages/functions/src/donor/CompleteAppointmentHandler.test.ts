@@ -120,7 +120,9 @@ test.each([true, false])(
     expect(appointment[0].status).toEqual(
       isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED
     );
-    expect(appointment[0].lastChangeType).toEqual(BookingChange.COMPLETED);
+    expect(appointment[0].lastChangeType).toEqual(
+      isNoShow ? BookingChange.NOSHOW : BookingChange.COMPLETED
+    );
     expect(appointment[0].creatorUserId).toEqual("creatorUserId");
   }
 );

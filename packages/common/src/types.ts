@@ -102,6 +102,7 @@ export enum BookingChange {
   BOOKED = "BOOKED",
   CANCELLED = "CANCELLED",
   COMPLETED = "COMPLETED",
+  NOSHOW = "NOSHOW",
 }
 
 export type BookedDonationWithDonorDetails = {
