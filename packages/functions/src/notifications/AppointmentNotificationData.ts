@@ -24,7 +24,7 @@ export function getAppointmentNotificationData(
 
 // Exported for testing
 export function calculateNotificationData(
-  isProd: boolean,
+  isProduction: boolean,
   appointment: DbAppointment,
   donor: DbDonor
 ): AppointmentNotificationData {
@@ -38,15 +38,15 @@ export function calculateNotificationData(
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: getUnsubscribeLink(isProd, donor.id),
+    unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
     donationApprovalLink: getAppointmentApprovalLink(
-      isProd,
+      isProduction,
       donor.id!,
       appointment.id,
       false
     ),
     donationNoShowLink: getAppointmentApprovalLink(
-      isProd,
+      isProduction,
       donor.id!,
       appointment.id,
       true
@@ -54,8 +54,8 @@ export function calculateNotificationData(
   };
 }
 
-function getUnsubscribeLink(isProd: boolean, donorId: string) {
-  if (isProd) {
+function getUnsubscribeLink(isProduction: boolean, donorId: string) {
+  if (isProduction) {
     return (
       "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=" +
       donorId
@@ -69,14 +69,14 @@ function getUnsubscribeLink(isProd: boolean, donorId: string) {
 }
 
 function getAppointmentApprovalLink(
-  isProd: boolean,
+  isProduction: boolean,
   donorId: string,
   appointmentId: string | undefined,
   noShow: boolean
 ) {
   const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
 
-  if (isProd) {
+  if (isProduction) {
     return (
       "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?" +
       parameters
