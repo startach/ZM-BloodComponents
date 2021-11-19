@@ -47,7 +47,7 @@ export function calculateNotificationData(
     ),
     donationNoShowLink: getAppointmentApprovalLink(
       isProduction,
-      donor.id!,
+      donor.id,
       appointment.id!,
       true
     ),
