@@ -86,12 +86,12 @@ test("GROUP_COORDINATOR gets only users in group", async () => {
 test("HOSPITAL_COORDINATOR gets only users that had a donation in their hospitals", async () => {
   await createCoordinator(CoordinatorRole.HOSPITAL_COORDINATOR, [
     Hospital.TEL_HASHOMER,
-    Hospital.HADASA,
+    Hospital.HADASA_EIN_KEREM,
   ]);
 
   await createDonorWithHospital(DONOR_ID_1, Hospital.TEL_HASHOMER);
   await createDonorWithHospital(DONOR_ID_2, Hospital.ASAF_HAROFE);
-  await createDonorWithHospital(DONOR_ID_3, Hospital.HADASA);
+  await createDonorWithHospital(DONOR_ID_3, Hospital.HADASA_EIN_KEREM);
 
   const response = await callFunction(COORDINATOR_ID);
 

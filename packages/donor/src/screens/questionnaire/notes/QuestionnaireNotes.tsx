@@ -92,6 +92,29 @@ export default function QuestionnaireNotes({
           </div>
         </>
       );
+
+    case Hospital.HADASA_EIN_KEREM:
+      return (
+        <>
+          <div className={styles.notesTitle}>ידוע לי שאוכל לתרום רק אם:</div>
+
+          <div className={styles.notesText}>
+            <li>אין לי שריטה מדממת.</li>
+            <li>לא נטלתי אנטיביוטיקה בשבוע שלפני התרומה.</li>
+            <li>לא נטלתי משככי כאבים ב-3 הימים שלפני התרומה.</li>
+            <li>אני מרגיש/ה מצוין ב-3 הימים שלפני התרומה.</li>
+            <li>
+              לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24
+              שעות).
+            </li>
+          </div>
+
+          <div className={styles.notesDetails}>
+            ינתן פתרון חניה לבאים ברכב. במידה ואין איך להגיע, ניתנת אפשרות להסעה
+            בתוך ירושלים. נא ליצור קשר בטלפון: 052−6900091.
+          </div>
+        </>
+      );
   }
 
   return (
