@@ -11,9 +11,20 @@ export type AppointmentNotificationData = {
   appointmentId: string;
   donationStartTimeMillis: number;
   unsubscribeLink: string;
+  donationApprovalLink: string;
+  donationNoShowLink: string;
 };
 
 export function getAppointmentNotificationData(
+  appointment: DbAppointment,
+  donor: DbDonor
+): AppointmentNotificationData {
+  return calculateNotificationData(isProd(), appointment, donor);
+}
+
+// Exported for testing
+export function calculateNotificationData(
+  isProd: boolean,
   appointment: DbAppointment,
   donor: DbDonor
 ): AppointmentNotificationData {
@@ -27,12 +38,24 @@ export function getAppointmentNotificationData(
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: getUnsubscribeLink(donor.id),
+    unsubscribeLink: getUnsubscribeLink(isProd, donor.id),
+    donationApprovalLink: getAppointmentApprovalLink(
+      isProd,
+      donor.id!,
+      appointment.id,
+      false
+    ),
+    donationNoShowLink: getAppointmentApprovalLink(
+      isProd,
+      donor.id!,
+      appointment.id,
+      true
+    ),
   };
 }
 
-function getUnsubscribeLink(donorId: string) {
-  if (isProd()) {
+function getUnsubscribeLink(isProd: boolean, donorId: string) {
+  if (isProd) {
     return (
       "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=" +
       donorId
@@ -41,6 +64,27 @@ function getUnsubscribeLink(donorId: string) {
     return (
       "https://us-central1-blood-components.cloudfunctions.net/unsubscribe?method=email&userId=" +
       donorId
+    );
+  }
+}
+
+function getAppointmentApprovalLink(
+  isProd: boolean,
+  donorId: string,
+  appointmentId: string | undefined,
+  noShow: boolean
+) {
+  const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
+
+  if (isProd) {
+    return (
+      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?" +
+      parameters
+    );
+  } else {
+    return (
+      "https://us-central1-blood-components.cloudfunctions.net/completeAppointmentApiHandler?" +
+      parameters
     );
   }
 }
