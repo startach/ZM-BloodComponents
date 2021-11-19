@@ -434,6 +434,446 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
 </div>
 `;
 
+exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-8"
+        >
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root-12"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+            />
+          </svg>
+        </span>
+      </button>
+      <div
+        className="title"
+      >
+        שאלון התאמה
+      </div>
+    </div>
+    <div
+      className="screen content"
+    >
+      <div
+        className="donationInfo"
+      >
+        <img
+          alt="Appointment"
+          className="illustration"
+          src="AppointmentCalendar.svg"
+        />
+        <div
+          className="donationInfoText"
+        >
+          <div
+            className="infoTitle"
+          >
+            פרטי התור הנבחר
+          </div>
+          <div
+            className="appointmentDetails"
+          >
+            יום ו׳, 13.8, 12:00
+            ,
+             
+            הדסה עין כרם
+          </div>
+        </div>
+      </div>
+      <div
+        className="questionnaireSection"
+      >
+        <div
+          className="questionnaireTitle"
+        >
+          שאלון התאמה לתרומת טרומבוציטים
+        </div>
+        <div
+          className="questionnaireText"
+        >
+          עזרו לנו לוודא התאמה ולמנוע מצב בו תגיעו ביום התור אך לא תוכלו לתרום
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם הנך בהריון/עברת לידה בחצי השנה האחרונה?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא רלוונטי
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם הנך מעל גיל 18?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם משקלך מעל 55 ק״ג?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם עברת ניתוח כירורגי בחצי השנה האחרונה?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="question"
+        >
+          <div
+            className="questionLabel"
+          >
+            האם עשית קעקוע או עגילים בחצי השנה האחרונה?
+          </div>
+          <div
+            className="questionButtons"
+          >
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  כן
+                </div>
+              </div>
+            </div>
+            <div
+              className="questionButton"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  לא
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="notesTitle"
+        >
+          ידוע לי שאוכל לתרום רק אם:
+        </div>
+        <div
+          className="notesText"
+        >
+          <li>
+            אין לי שריטה מדממת.
+          </li>
+          <li>
+            לא נטלתי אנטיביוטיקה בשבוע שלפני התרומה.
+          </li>
+          <li>
+            לא נטלתי משככי כאבים ב-3 הימים שלפני התרומה.
+          </li>
+          <li>
+            אני מרגיש/ה מצוין ב-3 הימים שלפני התרומה.
+          </li>
+          <li>
+            לא עברתי טיפול שיניים ב-10 הימים שלפני התרומה (סתימה ושיננית עד 24 שעות).
+          </li>
+        </div>
+        <div
+          className="notesDetails"
+        >
+          ינתן פתרון חניה לבאים ברכב. במידה ואין איך להגיע, ניתנת אפשרות להסעה בתוך ירושלים. נא ליצור קשר בטלפון: 052−6900091.
+        </div>
+        <div
+          className="confirmButtonContainer"
+        >
+          <div
+            className="container"
+          >
+            <span
+              aria-disabled={false}
+              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={null}
+            >
+              <span
+                className="MuiIconButton-label-8"
+              >
+                <input
+                  checked={false}
+                  className="PrivateSwitchBase-input-57"
+                  data-indeterminate={false}
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root-12"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+            </span>
+            <div
+              className="label"
+            >
+              קראתי ומאשר/ת שכל המידע לעיל נכון
+            </div>
+          </div>
+        </div>
+        <button
+          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          disabled={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={-1}
+          type="button"
+        >
+          <span
+            className="MuiButton-label-59"
+          >
+            <div
+              className="buttonText"
+            >
+              המשך
+            </div>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
 <div
   dir="rtl"

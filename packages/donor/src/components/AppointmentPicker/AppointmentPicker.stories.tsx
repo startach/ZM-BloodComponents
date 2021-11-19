@@ -19,7 +19,7 @@ export const Default = () => {
         slots: generateSlots(9),
       },
       {
-        hospital: Hospital.HADASA,
+        hospital: Hospital.HADASA_EIN_KEREM,
         slots: generateSlots(4),
       },
     ],

@@ -5,6 +5,7 @@ import QuestionsIchilov from "./QuestionsIchilov";
 import QuestionsSoroka from "./QuestionsSoroka";
 import QuestionsDefault from "./QuestionsDefault";
 import QuestionsTelHashomer from "./QuestionsTelHashomer";
+import QuestionsHadasaEinKerem from './QuestionsHadasaEinKerem';
 
 export interface QuestionnaireQuestionsProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
@@ -47,6 +48,13 @@ export default function QuestionnaireQuestions({
     case Hospital.TEL_HASHOMER:
       return (
         <QuestionsTelHashomer
+          setAreAllAnswersCorrect={setAreAllAnswersCorrect}
+          goToHomePage={goToHomePage}
+        />
+      );
+    case Hospital.HADASA_EIN_KEREM:
+      return (
+        <QuestionsHadasaEinKerem
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
           goToHomePage={goToHomePage}
         />

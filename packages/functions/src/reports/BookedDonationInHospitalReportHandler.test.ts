@@ -70,7 +70,7 @@ test("Coordinator does not have permissions for hospital throws exception", asyn
   await createCoordinator(
     HADASA_COORDINATOR_ID,
     CoordinatorRole.HOSPITAL_COORDINATOR,
-    [Hospital.HADASA]
+    [Hospital.HADASA_EIN_KEREM]
   );
 
   const action = () => callFunction(VALID_TEST_HOSPITAL, HADASA_COORDINATOR_ID);
