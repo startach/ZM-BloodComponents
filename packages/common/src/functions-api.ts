@@ -1,3 +1,4 @@
+import { MinimalDonorDetailsForAppointment } from ".";
 import {
   BloodType,
   BookingChange,
@@ -23,6 +24,7 @@ export type AvailableAppointmentApiEntry = {
 
 export type BookedAppointmentApiEntry = {
   id: string;
+  donorDetails?: MinimalDonorDetailsForAppointment;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
@@ -61,17 +63,27 @@ export interface GetDonorAppointmentsResponse {
   futureAppointments: BookedAppointmentApiEntry[];
 }
 
+export const CoordinatorBookAppointmentFunctionName =
+  "CoordinatorBookAppointment";
+export interface CoordinatorBookAppointmentRequest {
+  appointmentIds: string[];
+  donorId: string; // can be an id of a donor or "manual"
+  donorDetails?: MinimalDonorDetailsForAppointment;
+}
+export interface BookAppointmentResponse {
+  status: BookAppointmentStatus;
+  bookedAppointment?: BookedAppointmentApiEntry;
+}
+
 export const BookAppointmentFunctionName = "bookAppointment";
 export enum BookAppointmentStatus {
   SUCCESS = "SUCCESS",
   NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
   NO_SUCH_APPOINTMENTS = "NO_SUCH_APPOINTMENTS",
   HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER",
+  DONOR_DETAILS_REQUIRED = "DONOR_DETAILS_REQUIRED",
 }
-export interface BookAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
-  appointmentIds: string[];
-}
+
 export interface BookAppointmentResponse {
   status: BookAppointmentStatus;
   bookedAppointment?: BookedAppointmentApiEntry;

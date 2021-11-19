@@ -41,8 +41,15 @@ export function dbAppointmentToAppointmentApiEntry(
 export function dbAppointmentToBookedAppointmentApiEntry(
   appointment: DbAppointment
 ): FunctionsApi.BookedAppointmentApiEntry {
-  const { id, donorId, hospital, donationStartTime, bookingTime, status } =
-    appointment;
+  const {
+    id,
+    donorId,
+    hospital,
+    donationStartTime,
+    bookingTime,
+    status,
+    donorDetails,
+  } = appointment;
 
   if (!id || !donorId || !bookingTime) {
     console.error(
@@ -54,6 +61,7 @@ export function dbAppointmentToBookedAppointmentApiEntry(
   return {
     id: id,
     donorId: donorId,
+    donorDetails: donorDetails,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),
