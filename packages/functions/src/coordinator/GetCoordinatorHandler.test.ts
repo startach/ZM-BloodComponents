@@ -68,7 +68,9 @@ test("System User gets all active hospitals", async () => {
 });
 
 test("Group Coordinator gets no hospitals", async () => {
-  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR, [Hospital.HADASA_EIN_KEREM]);
+  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR, [
+    Hospital.HADASA_EIN_KEREM,
+  ]);
 
   const response = await callFunction(COORDINATOR_ID);
 

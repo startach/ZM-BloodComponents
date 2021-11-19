@@ -5,7 +5,7 @@ import QuestionsIchilov from "./QuestionsIchilov";
 import QuestionsSoroka from "./QuestionsSoroka";
 import QuestionsDefault from "./QuestionsDefault";
 import QuestionsTelHashomer from "./QuestionsTelHashomer";
-import QuestionsHadasaEinKerem from './QuestionsHadasaEinKerem';
+import QuestionsHadasaEinKerem from "./QuestionsHadasaEinKerem";
 
 export interface QuestionnaireQuestionsProps {
   setAreAllAnswersCorrect: (correct: boolean) => void;
