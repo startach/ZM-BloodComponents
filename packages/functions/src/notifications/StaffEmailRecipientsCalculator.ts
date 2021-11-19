@@ -5,25 +5,6 @@ import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
 
-function getProductionHospitalCoordinator(
-  hospital: Hospital
-): StaffRecipient | undefined {
-  switch (hospital) {
-    case Hospital.BEILINSON:
-      return {
-        email: "bloodbankbl@clalit.org.il",
-        name: "בית החולים בילינסון",
-      };
-    case Hospital.SOROKA:
-      return {
-        email: "ronniema79@gmail.com",
-        name: "בית החולים סורוקה",
-      };
-  }
-
-  return undefined;
-}
-
 export async function getStaffRecipients(
   bookedAppointment: DbAppointment
 ): Promise<StaffRecipient[]> {
@@ -62,11 +43,37 @@ export function getStaffRecipientsInternal(
     });
   }
 
-  const hospitalCoordinator = getProductionHospitalCoordinator(hospital);
-  if (prod && hospitalCoordinator) {
-    res.push(hospitalCoordinator);
+  if (prod) {
+    addProductionHospitalCoordinator(hospital, res);
   }
 
   // Remove duplicate emails, so we don't send the same message twice
   return _.uniqBy(res, (x) => x.email);
+}
+
+function addProductionHospitalCoordinator(
+  hospital: Hospital,
+  res: StaffRecipient[]
+): StaffRecipient | undefined {
+  switch (hospital) {
+    case Hospital.BEILINSON:
+      res.push({
+        email: "bloodbankbl@clalit.org.il",
+        name: "בית החולים בילינסון",
+      });
+      return;
+    case Hospital.SOROKA:
+      res.push({
+        email: "ronniema79@gmail.com",
+        name: "בית החולים סורוקה",
+      });
+      res.push({
+        email: "dumanionok@gmail.com",
+        name: "בית החולים סורוקה",
+      });
+
+      return;
+  }
+
+  return undefined;
 }
