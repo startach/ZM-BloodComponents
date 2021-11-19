@@ -41,14 +41,14 @@ export function calculateNotificationData(
     unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
     donationApprovalLink: getAppointmentApprovalLink(
       isProduction,
-      donor.id!,
-      appointment.id,
+      donor.id,
+      appointment.id!,
       false
     ),
     donationNoShowLink: getAppointmentApprovalLink(
       isProduction,
       donor.id!,
-      appointment.id,
+      appointment.id!,
       true
     ),
   };
@@ -71,7 +71,7 @@ function getUnsubscribeLink(isProduction: boolean, donorId: string) {
 function getAppointmentApprovalLink(
   isProduction: boolean,
   donorId: string,
-  appointmentId: string | undefined,
+  appointmentId: string,
   noShow: boolean
 ) {
   const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
