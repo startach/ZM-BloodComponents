@@ -63,7 +63,7 @@ export function dbAppointmentToBookedAppointmentApiEntry(
     id: id,
     donorId: donorId,
     donorDetails: donorDetails,
-    assigningCoordinatorId : assigningCoordinatorId,
+    assigningCoordinatorId: assigningCoordinatorId,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),

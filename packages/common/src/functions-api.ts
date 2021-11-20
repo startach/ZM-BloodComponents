@@ -25,7 +25,7 @@ export type AvailableAppointmentApiEntry = {
 export type BookedAppointmentApiEntry = {
   id: string;
   donorDetails?: MinimalDonorDetailsForAppointment;
-  assigningCoordinatorId? : string;
+  assigningCoordinatorId?: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
@@ -65,7 +65,7 @@ export interface GetDonorAppointmentsResponse {
 }
 
 export const CoordinatorBookAppointmentFunctionName =
-  "CoordinatorBookAppointment";
+  "coordinatorBookAppointment";
 export interface CoordinatorBookAppointmentRequest {
   appointmentIds: string[];
   donorId: string; // can be an id of a donor or "manual"

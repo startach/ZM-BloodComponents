@@ -32,10 +32,10 @@ const mockedNotifier = mocked(notifyOnAppointmentBooked);
 
 const DONOR_ID = "BookingAppointmentHandlerDonorId";
 const COORDINATOR_ID = "BookingAppointmentHandlerCoordinatorId";
-const MANUAL_DONOR_DETAILS : MinimalDonorDetailsForAppointment = {
-  firstName : "donorname",
-  phoneNumber :"0502222222",
-} 
+const MANUAL_DONOR_DETAILS: MinimalDonorDetailsForAppointment = {
+  firstName: "donorname",
+  phoneNumber: "0502222222",
+};
 const APPOINTMENT_TO_BOOK_1 = "BookingAppointmentHandlerAppointment1";
 const APPOINTMENT_TO_BOOK_2 = "BookingAppointmentHandlerAppointment2";
 const OTHER_DONATION_OF_USER = "BookingAppointmentHandlerAppointment3";
@@ -168,11 +168,14 @@ test("Valid manual donor request books appointment", async () => {
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
 
-  const response = await wrapped(bookAppointmentRequest(true, MANUAL_DONOR_DETAILS), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
+  const response = await wrapped(
+    bookAppointmentRequest(true, MANUAL_DONOR_DETAILS),
+    {
+      auth: {
+        uid: COORDINATOR_ID,
+      },
+    }
+  );
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
   expect(appointment[0].donorId).toEqual("manual");
