@@ -50,6 +50,7 @@ export default async function (
       return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
     }
     appointmentToBook.donorDetails = request.donorDetails;
+    appointmentToBook.assigningCoordinatorId = coordinatorId;
   } else {
     const donor = await getDonorOrThrow(donorId);
 
