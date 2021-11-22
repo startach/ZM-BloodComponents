@@ -165,6 +165,7 @@ test("Valid request books appointment", async () => {
 
 test("Valid manual donor request books appointment", async () => {
   mockedNotifier.mockReturnValue(Promise.resolve());
+  await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
 
@@ -179,7 +180,7 @@ test("Valid manual donor request books appointment", async () => {
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
   expect(appointment[0].donorId).toEqual("manual");
-  expect(appointment[0].donorDetails).toEqual(MANUAL_DONOR_DETAILS);
+  expect(appointment[0].assigningCoordinatorId).toEqual(COORDINATOR_ID);
   expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
@@ -196,14 +197,6 @@ test("Valid manual donor request books appointment", async () => {
   );
 
   expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
-
-  expect(mockedNotifier).toBeCalledWith(
-    appointment[0],
-    expect.objectContaining({
-      firstName: "firstName",
-      email: "email@email.com",
-    })
-  );
 });
 
 async function createDonor() {
@@ -220,7 +213,8 @@ async function createDonor() {
 async function saveAppointment(
   id: string,
   booked: boolean,
-  donationWeeksFromNow: number
+  donationWeeksFromNow: number,
+  isManual?: boolean
 ) {
   const startTime = new Date();
   startTime.setDate(startTime.getDate() + donationWeeksFromNow * 7);
@@ -240,6 +234,12 @@ async function saveAppointment(
     appointment.bookingTime = time;
   }
 
+  if (isManual) {
+    appointment.donorId = "manual";
+    appointment.assigningCoordinatorId = COORDINATOR_ID;
+    appointment.donorDetails = MANUAL_DONOR_DETAILS;
+  }
+
   await setAppointment(appointment);
 }
 
@@ -249,7 +249,7 @@ function bookAppointmentRequest(
 ) {
   return {
     appointmentIds: [APPOINTMENT_TO_BOOK_1, APPOINTMENT_TO_BOOK_2],
-    donorDetails: donorDetails,
+    donorDetails: isManual ? donorDetails : undefined,
     donorId: isManual ? "manual" : DONOR_ID,
   };
 }
