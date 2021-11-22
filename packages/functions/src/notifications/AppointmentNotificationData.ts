@@ -1,11 +1,7 @@
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
-import {
-  getHttpFunction,
-  PROD_FUNCTION,
-  STG_FUNCTION,
-} from "../utils/HttpFunctionsUtils";
+import { getHttpFunction } from "../utils/HttpFunctionsUtils";
 
 export type AppointmentNotificationData = {
   date: string;
