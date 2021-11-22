@@ -52,15 +52,10 @@ export enum Hospital {
   TEL_HASHOMER = "TEL_HASHOMER",
   ASAF_HAROFE = "ASAF_HAROFE",
   BEILINSON = "BEILINSON",
-  HADASA = "HADASA",
+  HADASA_EIN_KEREM = "HADASA_EIN_KEREM",
   ICHILOV = "ICHILOV",
   RAMBAM = "RAMBAM",
   SOROKA = "SOROKA",
-}
-
-export enum DonationType {
-  Thrombocytes,
-  Granulocytes,
 }
 
 export type BookedAppointment = {
@@ -102,6 +97,7 @@ export enum BookingChange {
   BOOKED = "BOOKED",
   CANCELLED = "CANCELLED",
   COMPLETED = "COMPLETED",
+  NOSHOW = "NOSHOW",
 }
 
 export type BookedDonationWithDonorDetails = {

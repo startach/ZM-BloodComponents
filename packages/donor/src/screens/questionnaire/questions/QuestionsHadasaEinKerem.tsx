@@ -5,7 +5,7 @@ import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
 import { LinkUtils } from "@zm-blood-components/common";
 import { QuestionsProps } from "./QuestionnaireQuestions";
 
-export default function QuestionsTelHashomer({
+export default function QuestionsHadasaEinKerem({
   setAreAllAnswersCorrect,
   goToHomePage,
 }: QuestionsProps) {
@@ -51,7 +51,7 @@ export default function QuestionsTelHashomer({
       <Question
         value={wasPregnant}
         onChange={setWasPregnantEver}
-        label={"האם ילדת בחצי השנה האחרונה?"}
+        label={"האם הנך בהריון/עברת לידה בחצי השנה האחרונה?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
@@ -75,7 +75,7 @@ export default function QuestionsTelHashomer({
       <Question
         value={isTattooValid}
         onChange={setIsTattooValid}
-        label={"האם עשית קעקוע או עגילים ב-3 החודשים האחרונים?"}
+        label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
 

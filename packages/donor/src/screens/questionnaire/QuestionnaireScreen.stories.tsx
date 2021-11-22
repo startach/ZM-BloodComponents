@@ -36,6 +36,10 @@ export const TelHashomer = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.TEL_HASHOMER} />
 );
 
+export const HadasaEinKerem = () => (
+  <QuestionnaireScreen {...props} hospital={Hospital.HADASA_EIN_KEREM} />
+);
+
 export const OtherHospital = () => (
   <QuestionnaireScreen {...props} hospital={Hospital.RAMBAM} />
 );

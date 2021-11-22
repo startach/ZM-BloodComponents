@@ -58,7 +58,6 @@ describe("Staff Email Recipients Calculator", () => {
   test("prod env sends email to prod user, creator and hospital coordinator", () => {
     const res = getStaffRecipientsInternal(true, Hospital.SOROKA, creatorUser);
 
-    expect(res).toHaveLength(3);
     expect(res).toEqual([
       {
         email: "dam@zichron.org",
@@ -70,6 +69,10 @@ describe("Staff Email Recipients Calculator", () => {
       },
       {
         email: "ronniema79@gmail.com",
+        name: "בית החולים סורוקה",
+      },
+      {
+        email: "dumanionok@gmail.com",
         name: "בית החולים סורוקה",
       },
     ]);

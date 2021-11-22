@@ -4,6 +4,7 @@ import { LocaleUtils } from "./index";
 export const activeHospitals = [
   Hospital.ICHILOV,
   Hospital.BEILINSON,
+  Hospital.HADASA_EIN_KEREM,
   Hospital.SOROKA,
   Hospital.TEL_HASHOMER,
 ];
