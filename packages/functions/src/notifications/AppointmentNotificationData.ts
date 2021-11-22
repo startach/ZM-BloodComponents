@@ -1,7 +1,11 @@
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
-import { PROD_FUNCTION, STG_FUNCTION } from "../utils/HttpFunctionsUtils";
+import {
+  getHttpFunction,
+  PROD_FUNCTION,
+  STG_FUNCTION,
+} from "../utils/HttpFunctionsUtils";
 
 export type AppointmentNotificationData = {
   date: string;
@@ -56,11 +60,9 @@ export function calculateNotificationData(
 }
 
 function getUnsubscribeLink(isProduction: boolean, donorId: string) {
-  if (isProduction) {
-    return PROD_FUNCTION + "unsubscribe?method=email&userId=" + donorId;
-  } else {
-    return STG_FUNCTION + "unsubscribe?method=email&userId=" + donorId;
-  }
+  const parameters = `method=email&userId=${donorId}`;
+
+  return getHttpFunction(isProduction, "unsubscribe", parameters);
 }
 
 function getAppointmentApprovalLink(
@@ -71,9 +73,9 @@ function getAppointmentApprovalLink(
 ) {
   const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
 
-  if (isProduction) {
-    return PROD_FUNCTION + "completeAppointmentApiHandler?" + parameters;
-  } else {
-    return STG_FUNCTION + "completeAppointmentApiHandler?" + parameters;
-  }
+  return getHttpFunction(
+    isProduction,
+    "completeAppointmentApiHandler",
+    parameters
+  );
 }
