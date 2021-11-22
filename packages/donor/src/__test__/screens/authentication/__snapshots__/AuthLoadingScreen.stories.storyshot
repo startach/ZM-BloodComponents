@@ -38,7 +38,9 @@ exports[`Storyshots Screens/Splash Screen Default 1`] = `
       />
       <img
         alt="סטארט אח"
+        height="59"
         src="startach_logo.png"
+        width="64"
       />
     </div>
   </div>
