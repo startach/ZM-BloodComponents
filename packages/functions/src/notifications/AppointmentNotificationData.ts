@@ -1,6 +1,7 @@
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
+import { PROD_FUNCTION, STG_FUNCTION } from "../utils/HttpFunctionsUtils";
 
 export type AppointmentNotificationData = {
   date: string;
@@ -56,15 +57,9 @@ export function calculateNotificationData(
 
 function getUnsubscribeLink(isProduction: boolean, donorId: string) {
   if (isProduction) {
-    return (
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=" +
-      donorId
-    );
+    return PROD_FUNCTION + "unsubscribe?method=email&userId=" + donorId;
   } else {
-    return (
-      "https://us-central1-blood-components.cloudfunctions.net/unsubscribe?method=email&userId=" +
-      donorId
-    );
+    return STG_FUNCTION + "unsubscribe?method=email&userId=" + donorId;
   }
 }
 
@@ -77,14 +72,8 @@ function getAppointmentApprovalLink(
   const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
 
   if (isProduction) {
-    return (
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?" +
-      parameters
-    );
+    return PROD_FUNCTION + "completeAppointmentApiHandler?" + parameters;
   } else {
-    return (
-      "https://us-central1-blood-components.cloudfunctions.net/completeAppointmentApiHandler?" +
-      parameters
-    );
+    return STG_FUNCTION + "completeAppointmentApiHandler?" + parameters;
   }
 }
