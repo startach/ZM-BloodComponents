@@ -48,7 +48,8 @@ export default async function (
     );
     appointments = filterAppointmentsForDonors(
       appointments,
-      donorsInAppointments
+      donorsInAppointments,
+      coordinator.id
     );
   }
 
@@ -96,10 +97,15 @@ async function filterDonorsInGroup(
 
 function filterAppointmentsForDonors(
   appointments: FunctionsApi.AppointmentApiEntry[],
-  donors: DbDonor[]
+  donors: DbDonor[],
+  assigningCoordinator: string
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
   return appointments.filter(
-    (appointment) => appointment.donorId && donorIds.has(appointment.donorId)
+    (appointment) =>
+      appointment.donorId &&
+      (donorIds.has(appointment.donorId) ||
+        (appointment.donorId === "manual" &&
+          appointment.assigningCoordinator === assigningCoordinator))
   );
 }

@@ -41,6 +41,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
+  assigningCoordinator?: string;
   bookingTimeMillis?: number;
 };
 
