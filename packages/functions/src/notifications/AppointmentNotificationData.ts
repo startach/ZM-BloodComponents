@@ -1,6 +1,7 @@
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
+import { getHttpFunction } from "../utils/HttpFunctionsUtils";
 
 export type AppointmentNotificationData = {
   date: string;
@@ -11,9 +12,20 @@ export type AppointmentNotificationData = {
   appointmentId: string;
   donationStartTimeMillis: number;
   unsubscribeLink: string;
+  donationApprovalLink: string;
+  donationNoShowLink: string;
 };
 
 export function getAppointmentNotificationData(
+  appointment: DbAppointment,
+  donor: DbDonor
+): AppointmentNotificationData {
+  return calculateNotificationData(isProd(), appointment, donor);
+}
+
+// Exported for testing
+export function calculateNotificationData(
+  isProduction: boolean,
   appointment: DbAppointment,
   donor: DbDonor
 ): AppointmentNotificationData {
@@ -27,20 +39,39 @@ export function getAppointmentNotificationData(
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: getUnsubscribeLink(donor.id),
+    unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
+    donationApprovalLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      false
+    ),
+    donationNoShowLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      true
+    ),
   };
 }
 
-function getUnsubscribeLink(donorId: string) {
-  if (isProd()) {
-    return (
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=" +
-      donorId
-    );
-  } else {
-    return (
-      "https://us-central1-blood-components.cloudfunctions.net/unsubscribe?method=email&userId=" +
-      donorId
-    );
-  }
+function getUnsubscribeLink(isProduction: boolean, donorId: string) {
+  const parameters = `method=email&userId=${donorId}`;
+
+  return getHttpFunction(isProduction, "unsubscribe", parameters);
+}
+
+function getAppointmentApprovalLink(
+  isProduction: boolean,
+  donorId: string,
+  appointmentId: string,
+  noShow: boolean
+) {
+  const parameters = `donorId=${donorId}&appointmentId=${appointmentId}&isNoshow=${noShow}`;
+
+  return getHttpFunction(
+    isProduction,
+    "completeAppointmentApiHandler",
+    parameters
+  );
 }
