@@ -68,7 +68,7 @@ export const CoordinatorBookAppointmentFunctionName =
   "coordinatorBookAppointment";
 export interface CoordinatorBookAppointmentRequest {
   appointmentIds: string[];
-  donorId: string; // can be an id of a donor or "manual"
+  donorId: string; // can be an id of a donor or MANUAL_DONOR_ID (in types)
   donorDetails?: MinimalDonorDetailsForAppointment;
 }
 

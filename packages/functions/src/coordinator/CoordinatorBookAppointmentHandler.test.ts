@@ -19,6 +19,7 @@ import { mocked } from "ts-jest/utils";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
 import {
   AppointmentStatus,
+  MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
@@ -65,6 +66,7 @@ test("Unauthenticated user throws exception", async () => {
 });
 
 test("Donor not found throws exception", async () => {
+  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
   const action = () =>
     wrapped(bookAppointmentRequest(false), {
       auth: {
@@ -77,7 +79,6 @@ test("Donor not found throws exception", async () => {
 
 test("No such appointments", async () => {
   await createDonor();
-
   const response = await wrapped(bookAppointmentRequest(false), {
     auth: {
       uid: COORDINATOR_ID,
@@ -121,7 +122,7 @@ test.skip("Donor has recent donation throws exception", async () => {
   expect(data.bookedAppointment).toBeUndefined();
 });
 
-test("Valid request books appointment", async () => {
+test("Valid request books appointment with registered donor", async () => {
   mockedNotifier.mockReturnValue(Promise.resolve());
   await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
@@ -149,7 +150,7 @@ test("Valid request books appointment", async () => {
     3_000
   );
 
-  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
+  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED); 
 
   expect(mockedNotifier).toBeCalledWith(
     appointment[0],
@@ -179,7 +180,7 @@ test("Valid manual donor request books appointment", async () => {
   );
 
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
-  expect(appointment[0].donorId).toEqual("manual");
+  expect(appointment[0].donorId).toEqual(MANUAL_DONOR_ID);
   expect(appointment[0].assigningCoordinatorId).toEqual(COORDINATOR_ID);
   expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
 
@@ -188,7 +189,7 @@ test("Valid manual donor request books appointment", async () => {
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
-  expect(bookedAppointment.donorId).toEqual("manual");
+  expect(bookedAppointment.donorId).toEqual(MANUAL_DONOR_ID);
   expect(bookedAppointment.donorDetails).toEqual(MANUAL_DONOR_DETAILS);
 
   expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
@@ -235,7 +236,7 @@ async function saveAppointment(
   }
 
   if (isManual) {
-    appointment.donorId = "manual";
+    appointment.donorId = MANUAL_DONOR_ID;
     appointment.assigningCoordinatorId = COORDINATOR_ID;
     appointment.donorDetails = MANUAL_DONOR_DETAILS;
   }
@@ -250,6 +251,6 @@ function bookAppointmentRequest(
   return {
     appointmentIds: [APPOINTMENT_TO_BOOK_1, APPOINTMENT_TO_BOOK_2],
     donorDetails: isManual ? donorDetails : undefined,
-    donorId: isManual ? "manual" : DONOR_ID,
+    donorId: isManual ? MANUAL_DONOR_ID : DONOR_ID,
   };
 }

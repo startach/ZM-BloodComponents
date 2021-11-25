@@ -10,6 +10,7 @@ import {
   BookingChange,
   FunctionsApi,
   Hospital,
+  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
@@ -45,7 +46,7 @@ export default async function (
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
   appointmentToBook.status = AppointmentStatus.BOOKED;
 
-  if (request.donorId === "manual") {
+  if (request.donorId === MANUAL_DONOR_ID) {
     if (!request.donorDetails) {
       return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
     }
@@ -62,12 +63,12 @@ export default async function (
     if (donorAppointments.length > 0) {
       return { status: BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
     }
-    const updateDonorPromise = updateDonorAsync(
+    await updateDonorAsync(
       donor,
       appointmentToBook.hospital
     );
-    await updateDonorPromise;
-    notifyOnAppointmentBooked(appointmentToBook, donor).catch((e) =>
+    
+    notifyOnAppointmentBooked(appointmentToBook, donor).then(()=>{}, (e) =>
       console.error(
         "Error notifying on booked appointment",
         appointmentToBook.id,
