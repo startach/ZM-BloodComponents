@@ -18,6 +18,7 @@ import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
+import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -206,7 +207,7 @@ test("Valid request for group coordinator returns only users in group", async ()
     MANUAL_OF_COORDINATOR,
     getDate(-3),
     Hospital.TEL_HASHOMER,
-    "manual",
+    MANUAL_DONOR_ID,
     COORDINATOR_ID
   );
 
@@ -214,7 +215,7 @@ test("Valid request for group coordinator returns only users in group", async ()
     MANUAL_NOT_OF_COORDINATOR,
     getDate(-3),
     Hospital.TEL_HASHOMER,
-    "manual",
+    MANUAL_DONOR_ID,
     OTHER_COORDINATOR_ID
   );
 
@@ -281,7 +282,7 @@ async function saveAppointment(
     appointment.bookingTime = admin.firestore.Timestamp.now();
     appointment.status = AppointmentStatus.BOOKED;
   }
-  if (donorId === "manual") {
+  if (donorId === MANUAL_DONOR_ID) {
     appointment.assigningCoordinator = assigningCoordinator;
   }
   await setAppointment(appointment);

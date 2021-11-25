@@ -118,3 +118,5 @@ export enum AppointmentStatus {
   COMPLETED = "COMPLETED",
   NOSHOW = "NOSHOW",
 }
+
+export const MANUAL_DONOR_ID = "manual";
