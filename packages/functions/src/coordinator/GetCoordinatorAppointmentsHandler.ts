@@ -101,11 +101,20 @@ function filterAppointmentsForDonors(
   assigningCoordinator: string
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
-  return appointments.filter(
-    (appointment) =>
-      appointment.donorId &&
-      (donorIds.has(appointment.donorId) ||
-        (appointment.donorId === "manual" &&
-          appointment.assigningCoordinator === assigningCoordinator))
-  );
+  return appointments.filter((appointment) => {
+    if (!appointment.donorId) return false;
+
+    // if donor is in coordinator group, show the appointment
+    if (donorIds.has(appointment.donorId)) return true;
+
+    // if the appointment was manualy added by the coordinator
+    if (
+      appointment.donorId === "manual" &&
+      appointment.assigningCoordinator === assigningCoordinator
+    ) {
+      return true;
+    }
+
+    return false;
+  });
 }

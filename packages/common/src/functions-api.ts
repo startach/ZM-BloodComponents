@@ -41,7 +41,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
-  assigningCoordinator?: string;
+  assigningCoordinator?: string; // Applies only if donor is anonymous (manual donor)
   bookingTimeMillis?: number;
 };
 
