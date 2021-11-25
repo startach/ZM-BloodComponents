@@ -103,7 +103,6 @@ function filterAppointmentsForDonors(
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
   return appointments.filter((appointment) => {
-    
     if (!appointment.donorId) return false;
 
     // if donor is in coordinator group, show the appointment
