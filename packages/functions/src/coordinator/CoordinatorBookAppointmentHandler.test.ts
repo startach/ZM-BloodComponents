@@ -31,15 +31,18 @@ const wrapped = firebaseFunctionsTest.wrap(
 jest.mock("../notifications/BookAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnAppointmentBooked);
 
-const DONOR_ID = "BookingAppointmentHandlerDonorId";
-const COORDINATOR_ID = "BookingAppointmentHandlerCoordinatorId";
+const DONOR_ID = "CoordinatorBookingAppointmentHandlerDonorId";
+const COORDINATOR_ID = "CoordinatorBookingAppointmentHandlerCoordinatorId";
 const MANUAL_DONOR_DETAILS: MinimalDonorDetailsForAppointment = {
   firstName: "donorname",
   phoneNumber: "0502222222",
 };
-const APPOINTMENT_TO_BOOK_1 = "BookingAppointmentHandlerAppointment1";
-const APPOINTMENT_TO_BOOK_2 = "BookingAppointmentHandlerAppointment2";
-const OTHER_DONATION_OF_USER = "BookingAppointmentHandlerAppointment3";
+const APPOINTMENT_TO_BOOK_1 =
+  "CoordinatorBookingAppointmentHandlerAppointment1";
+const APPOINTMENT_TO_BOOK_2 =
+  "CoordinatorBookingAppointmentHandlerAppointment2";
+const OTHER_DONATION_OF_USER =
+  "CoordinatorBookingAppointmentHandlerAppointment3";
 
 beforeAll(async () => {
   await DonorDataAccessLayer.deleteDonor(DONOR_ID);
@@ -164,7 +167,7 @@ test("Valid request books appointment with registered donor", async () => {
   expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
 });
 
-test("Valid manual donor request books appointment", async () => {
+test("Valid manual donor request books appointment with manual donor", async () => {
   mockedNotifier.mockReturnValue(Promise.resolve());
   await createDonor();
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
