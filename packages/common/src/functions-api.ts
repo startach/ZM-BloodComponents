@@ -25,7 +25,7 @@ export type AvailableAppointmentApiEntry = {
 export type BookedAppointmentApiEntry = {
   id: string;
   donorDetails?: MinimalDonorDetailsForAppointment;
-  assigningCoordinator?: string;
+  assigningCoordinatorId?: string;
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
@@ -44,7 +44,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
-  assigningCoordinator?: string; // Applies only if donor is anonymous (manual donor)
+  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   bookingTimeMillis?: number;
 };
 

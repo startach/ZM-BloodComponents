@@ -99,7 +99,7 @@ async function filterDonorsInGroup(
 function filterAppointmentsForDonors(
   appointments: FunctionsApi.AppointmentApiEntry[],
   donors: DbDonor[],
-  assigningCoordinator: string
+  assigningCoordinatorId: string
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
   return appointments.filter((appointment) => {
@@ -111,7 +111,7 @@ function filterAppointmentsForDonors(
     // if the appointment was manualy added by the coordinator
     if (
       appointment.donorId === MANUAL_DONOR_ID &&
-      appointment.assigningCoordinator === assigningCoordinator
+      appointment.assigningCoordinatorId === assigningCoordinatorId
     ) {
       return true;
     }

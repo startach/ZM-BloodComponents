@@ -150,7 +150,7 @@ test("Valid request books appointment with registered donor", async () => {
     3_000
   );
 
-  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED); 
+  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 
   expect(mockedNotifier).toBeCalledWith(
     appointment[0],

@@ -266,7 +266,7 @@ async function saveAppointment(
   donationStartTime: Date,
   hospital: Hospital,
   donorId?: string,
-  assigningCoordinator?: string
+  assigningCoordinatorId?: string
 ) {
   const appointment: DbAppointment = {
     id: id,
@@ -283,7 +283,7 @@ async function saveAppointment(
     appointment.status = AppointmentStatus.BOOKED;
   }
   if (donorId === MANUAL_DONOR_ID) {
-    appointment.assigningCoordinator = assigningCoordinator;
+    appointment.assigningCoordinatorId = assigningCoordinatorId;
   }
   await setAppointment(appointment);
   return appointment;

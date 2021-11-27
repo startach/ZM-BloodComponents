@@ -63,18 +63,24 @@ export default async function (
     if (donorAppointments.length > 0) {
       return { status: BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
     }
-    await updateDonorAsync(
+
+    const updateDonorPromise = updateDonorAsync(
       donor,
       appointmentToBook.hospital
     );
-    
-    notifyOnAppointmentBooked(appointmentToBook, donor).then(()=>{}, (e) =>
-      console.error(
-        "Error notifying on booked appointment",
-        appointmentToBook.id,
-        e
-      )
+
+    notifyOnAppointmentBooked(appointmentToBook, donor).then(
+      () => {
+        return;
+      },
+      (e) =>
+        console.error(
+          "Error notifying on booked appointment",
+          appointmentToBook.id,
+          e
+        )
     );
+    await updateDonorPromise;
   }
   await setAppointment(appointmentToBook);
 
