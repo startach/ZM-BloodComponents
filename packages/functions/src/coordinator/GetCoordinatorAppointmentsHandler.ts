@@ -2,6 +2,7 @@ import {
   CoordinatorRole,
   FunctionsApi,
   Hospital,
+  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
@@ -48,7 +49,8 @@ export default async function (
     );
     appointments = filterAppointmentsForDonors(
       appointments,
-      donorsInAppointments
+      donorsInAppointments,
+      coordinator.id
     );
   }
 
@@ -96,10 +98,24 @@ async function filterDonorsInGroup(
 
 function filterAppointmentsForDonors(
   appointments: FunctionsApi.AppointmentApiEntry[],
-  donors: DbDonor[]
+  donors: DbDonor[],
+  assigningCoordinator: string
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
-  return appointments.filter(
-    (appointment) => appointment.donorId && donorIds.has(appointment.donorId)
-  );
+  return appointments.filter((appointment) => {
+    if (!appointment.donorId) return false;
+
+    // if donor is in coordinator group, show the appointment
+    if (donorIds.has(appointment.donorId)) return true;
+
+    // if the appointment was manualy added by the coordinator
+    if (
+      appointment.donorId === MANUAL_DONOR_ID &&
+      appointment.assigningCoordinator === assigningCoordinator
+    ) {
+      return true;
+    }
+
+    return false;
+  });
 }
