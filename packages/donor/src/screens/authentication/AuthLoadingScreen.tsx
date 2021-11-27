@@ -1,7 +1,7 @@
 import styles from "./AuthLoadingScreen.module.scss";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-import startachLogo from "../../assets/mobile/startach_logo.svg";
+import startachLogo from "../../assets/mobile/startach_logo.png";
 import zmLogo from "../../assets/mobile/zm_logo.svg";
 
 import splashAnimation from "../../assets/animations/splash_logo.json";
@@ -17,7 +17,7 @@ export default function AuthLoadingScreen() {
       />
       <div className={styles.bottomContainer}>
         <img alt={"זיכרון מנחם"} src={zmLogo} />
-        <img alt={"סטארט אח"} src={startachLogo} />
+        <img width="64" height="59" alt={"סטארט אח"} src={startachLogo} />
       </div>
     </div>
   );

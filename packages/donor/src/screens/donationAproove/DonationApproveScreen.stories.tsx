@@ -33,7 +33,7 @@ const Template: Story<DonationApproveScreenProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   firstName: "משה",
-  hospital: Hospital.HADASA,
+  hospital: Hospital.HADASA_EIN_KEREM,
   donationStartTimeMillis: 946677600000,
   onShowOptionSelected: action("onShowOptionSelected"),
 };
