@@ -52,7 +52,7 @@ export type DbAppointment = {
   // added donor
   donorId: string; // Empty string means appointment is available
   donorDetails?: MinimalDonorDetailsForAppointment;
-  assigningCoordinatorId?: string;
+  assigningCoordinator?: string;
   bookingTime?: firestore.Timestamp;
   confirmationTime?: firestore.Timestamp; // Time donor confirmed they will come
   /* Represents changes to booking status **/

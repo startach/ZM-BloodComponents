@@ -18,11 +18,13 @@ import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
+import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
 );
 const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";
+const OTHER_COORDINATOR_ID = "GetCoordinatorAppointmentsOtherUser";
 const DONOR_ID_1 = "GetCoordinatorAppointmentsTestDonorUser1";
 const DONOR_ID_2 = "GetCoordinatorAppointmentsTestDonorUser2";
 const GROUP_NAME_1 = "GetCoordinatorAppointmentsTestgroup1";
@@ -35,6 +37,10 @@ const FUTURE_OTHER_HOSPITAL = "GetCoordinatorAppointments_FutureOtherHospital";
 const FUTURE_NOT_BOOKED = "GetCoordinatorAppointments_FutureNotBooked";
 const IN_GROUP_1 = "GetCoordinatorAppointments_IN_GROUP_1";
 const IN_GROUP_2 = "GetCoordinatorAppointments_IN_GROUP_2";
+const MANUAL_OF_COORDINATOR =
+  "GetCoordinatorAppointments_MANUAL_OF_COORDINATOR";
+const MANUAL_NOT_OF_COORDINATOR =
+  "GetCoordinatorAppointments_MANUAL_NOT_OF_COORDINATOR";
 
 const ALL_APPOINTMENT_IDS = [
   PAST_BOOKED,
@@ -45,6 +51,8 @@ const ALL_APPOINTMENT_IDS = [
   FUTURE_NOT_BOOKED,
   IN_GROUP_1,
   IN_GROUP_2,
+  MANUAL_OF_COORDINATOR,
+  MANUAL_NOT_OF_COORDINATOR,
 ];
 
 const reset = async () => {
@@ -195,15 +203,32 @@ test("Valid request for group coordinator returns only users in group", async ()
     DONOR_ID_2
   );
 
+  await saveAppointment(
+    MANUAL_OF_COORDINATOR,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    MANUAL_DONOR_ID,
+    COORDINATOR_ID
+  );
+
+  await saveAppointment(
+    MANUAL_NOT_OF_COORDINATOR,
+    getDate(-3),
+    Hospital.TEL_HASHOMER,
+    MANUAL_DONOR_ID,
+    OTHER_COORDINATOR_ID
+  );
+
   const res = await callFunction(COORDINATOR_ID);
 
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
   );
-  expect(appointments).toHaveLength(1);
+  expect(appointments).toHaveLength(2);
 
   // May contain other donor ids of other appointments that are not part of this test
   expect(appointments[0].id).toEqual(IN_GROUP_1);
+  expect(appointments[1].id).toEqual(MANUAL_OF_COORDINATOR);
 });
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
@@ -240,7 +265,8 @@ async function saveAppointment(
   id: string,
   donationStartTime: Date,
   hospital: Hospital,
-  donorId?: string
+  donorId?: string,
+  assigningCoordinator?: string
 ) {
   const appointment: DbAppointment = {
     id: id,
@@ -255,6 +281,9 @@ async function saveAppointment(
     appointment.donorId = donorId;
     appointment.bookingTime = admin.firestore.Timestamp.now();
     appointment.status = AppointmentStatus.BOOKED;
+  }
+  if (donorId === MANUAL_DONOR_ID) {
+    appointment.assigningCoordinator = assigningCoordinator;
   }
   await setAppointment(appointment);
   return appointment;

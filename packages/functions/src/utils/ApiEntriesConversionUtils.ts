@@ -21,7 +21,14 @@ export function dbDonorToDonor(dbDonor: DbDonor): Donor {
 export function dbAppointmentToAppointmentApiEntry(
   appointment: DbAppointment
 ): FunctionsApi.AppointmentApiEntry {
-  const { id, donorId, hospital, donationStartTime, bookingTime } = appointment;
+  const {
+    id,
+    donorId,
+    assigningCoordinatorId,
+    hospital,
+    donationStartTime,
+    bookingTime,
+  } = appointment;
 
   if (!id) {
     console.error("Cannot convert AppointmentApiEntry with no id");
@@ -31,6 +38,7 @@ export function dbAppointmentToAppointmentApiEntry(
   return {
     id: id,
     donorId: donorId,
+    assigningCoordinatorId: assigningCoordinatorId,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),
