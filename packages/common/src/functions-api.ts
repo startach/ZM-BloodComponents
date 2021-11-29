@@ -1,4 +1,3 @@
-import { MinimalDonorDetailsForAppointment } from ".";
 import {
   BloodType,
   BookingChange,
@@ -8,6 +7,7 @@ import {
   Hospital,
   BookedDonationWithDonorDetails,
   DonorNotificationSettings,
+  MinimalDonorDetailsForAppointment,
 } from "./types";
 
 // Donor functions:
@@ -25,7 +25,7 @@ export type AvailableAppointmentApiEntry = {
 export type BookedAppointmentApiEntry = {
   id: string;
   donorDetails?: MinimalDonorDetailsForAppointment;
-  assigningCoordinatorId?: string;
+  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;

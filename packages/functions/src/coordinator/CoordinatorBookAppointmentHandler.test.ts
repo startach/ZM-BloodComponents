@@ -16,12 +16,11 @@ import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
-import { BookAppointmentStatus } from "../../../common/src/functions-api";
 import {
   AppointmentStatus,
   MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
-} from "@zm-blood-components/common/src";
+} from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
@@ -88,7 +87,9 @@ test("No such appointments", async () => {
     },
   });
   const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.NO_SUCH_APPOINTMENTS);
+  expect(data.status).toEqual(
+    FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS
+  );
   expect(data.bookedAppointment).toBeUndefined();
 });
 
@@ -103,7 +104,9 @@ test("No free appointments ", async () => {
     },
   });
   const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS);
+  expect(data.status).toEqual(
+    FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
+  );
   expect(data.bookedAppointment).toBeUndefined();
 });
 
@@ -120,7 +123,7 @@ test.skip("Donor has recent donation throws exception", async () => {
 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(
-    BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
+    FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
   );
   expect(data.bookedAppointment).toBeUndefined();
 });
@@ -142,7 +145,7 @@ test("Valid request books appointment with registered donor", async () => {
   expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+  expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
@@ -188,7 +191,7 @@ test("Valid manual donor request books appointment with manual donor", async () 
   expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+  expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
