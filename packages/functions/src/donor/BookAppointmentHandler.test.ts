@@ -57,6 +57,7 @@ test("Unauthenticated user throws exception", async () => {
 });
 
 test("Donor not found throws exception", async () => {
+  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
   const action = () =>
     wrapped(bookAppointmentRequest(), {
       auth: {
