@@ -20,7 +20,7 @@ import { DbDonor } from "../function-types";
 const WEEKS_BUFFER = 0;
 
 export async function BookAppointment(
-  request: FunctionsApi.CoordinatorBookAppointmentRequest,
+  request: FunctionsApi.BookAppointmentRequest,
   isDonor: boolean,
   callerId: string
 ): Promise<FunctionsApi.BookAppointmentResponse> {
@@ -28,6 +28,10 @@ export async function BookAppointment(
   let coordinatorId;
 
   if (!isDonor) {
+    if (!request.donorId) {
+      return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
+    }
+    
     coordinatorId = callerId;
     donorId = request.donorId;
   }
