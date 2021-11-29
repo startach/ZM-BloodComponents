@@ -12,6 +12,7 @@ const FROM_EMAIL = "no-reply@zichron.org";
 export enum NotificationToDonor {
   APPOINTMENT_BOOKED = "APPOINTMENT_BOOKED",
   APPOINTMENT_CANCELLED_BY_COORDINATOR = "APPOINTMENT_CANCELLED_BY_COORDINATOR",
+  DONATION_CONFIRMATION = "DONATION_CONFIRMATION",
 }
 
 export async function sendEmailToDonor(
@@ -39,6 +40,9 @@ export async function sendEmailToDonor(
     case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
       templateId = "d-efc1aeb750f542ec9fb1120c03e97a68";
       break;
+    case NotificationToDonor.DONATION_CONFIRMATION:
+      // TODO - Get template for donation confirmation
+      return;
     default:
       return;
   }
@@ -53,7 +57,9 @@ export async function sendEmailToDonor(
     dynamicTemplateData: data,
   };
 
-  addCalendarEventToDonor(msg, type, data, donor.email);
+  if (shouldAddCalendarEventToDonor(type)) {
+    addCalendarEventToDonor(msg, type, data, donor.email);
+  }
 
   await sgMail.send(msg);
 }
@@ -105,6 +111,16 @@ export async function sendEmailToCoordinators(
   }));
 
   await sgMail.send(messages);
+}
+
+function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
+  switch (type) {
+    case NotificationToDonor.APPOINTMENT_BOOKED:
+    case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
+      return true;
+    default:
+      return false;
+  }
 }
 
 function addCalendarEventToDonor(
