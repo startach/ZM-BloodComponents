@@ -4,20 +4,20 @@ import {
   AppointmentStatus,
   BookingChange,
   FunctionsApi,
-  Hospital,
+  Hospital
 } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
-  setAppointment,
+  setAppointment
 } from "../dal/AppointmentDataAccessLayer";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
 import { mocked } from "ts-jest/utils";
 import {
   NotificationToDonor,
-  sendEmailToDonor,
+  sendEmailToDonor
 } from "../notifications/NotificationSender";
 import { SendConfirmationReminders } from "./CronJobs";
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
@@ -32,12 +32,12 @@ const mockedNotifier = mocked(sendEmailToDonor);
 const DONORS = [
   "SendConfirmationBookedDonorId",
   "SendConfirmationAvailableDonorId",
-  "SendConfirmationOutOfRangeDonorId",
+  "SendConfirmationOutOfRangeDonorId"
 ];
 const APPOINTMENTS = [
   "SendConfirmationBookedAppointment",
   "SendConfirmationAvailableAppointment",
-  "SendConfirmationOutOfRangeAppointment",
+  "SendConfirmationOutOfRangeAppointment"
 ];
 
 const reset = async () => {
@@ -61,7 +61,7 @@ test("run on all appointments", async () => {
   await createDonor(DONORS[2]);
   const now = new Date(2021, 3, 8, 14, 23);
   const lastHour = new Date(now);
-  lastHour.setHours(lastHour.getHours() - 1);
+  lastHour.setHours(lastHour.getHours());
   await saveAppointment(
     DONORS[0],
     APPOINTMENTS[0],
@@ -83,23 +83,32 @@ test("run on all appointments", async () => {
     AppointmentStatus.BOOKED,
     admin.firestore.Timestamp.fromDate(yesterday)
   );
+  const nextHour = new Date(now);
+  nextHour.setHours(now.getHours()+1)
+  nextHour.setMinutes(0)
+  const start = new Date(nextHour);
+  const end = new Date(nextHour);
 
-  const topOfThisHourInMillis = new Date(now).setMinutes(0, 0, 0);
-  const oneHourInMillis = 1000 * 60 * 60;
-  const topOfPreviousHourInMillis = topOfThisHourInMillis - oneHourInMillis + 1;
+  end.setMinutes(0);
+  end.setSeconds(0);
+  end.setMilliseconds(0);
+  start.setHours(start.getHours() - 1);
+  start.setMinutes(0);
+  start.setSeconds(0);
+  start.setMilliseconds(0);
 
   await SendConfirmationReminders(
-    new Date(topOfPreviousHourInMillis),
-    new Date(topOfThisHourInMillis)
+    new Date(start),
+    new Date(end)
   );
   expect(mockedNotifier).toHaveBeenCalledTimes(1);
   expect(mockedNotifier).toHaveBeenCalledWith(
     NotificationToDonor.DONATION_CONFIRMATION,
     expect.objectContaining({
-      appointmentId: APPOINTMENTS[0],
+      appointmentId: APPOINTMENTS[0]
     }),
     expect.objectContaining({
-      id: DONORS[0],
+      id: DONORS[0]
     })
   );
 });
@@ -119,7 +128,7 @@ async function saveAppointment(
     donorId: donorId,
     bookingTime: time,
     status: status,
-    lastChangeType: BookingChange.BOOKED,
+    lastChangeType: BookingChange.BOOKED
   };
 
   await setAppointment(appointment);
@@ -130,7 +139,7 @@ async function createDonor(donorId: string) {
     id: donorId,
     ...sampleUser,
     firstName: "firstName",
-    email: "email@email.com",
+    email: "email@email.com"
   };
 
   await setDonor(donor);
