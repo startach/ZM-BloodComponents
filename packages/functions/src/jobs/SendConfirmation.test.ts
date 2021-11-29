@@ -4,20 +4,20 @@ import {
   AppointmentStatus,
   BookingChange,
   FunctionsApi,
-  Hospital
+  Hospital,
 } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
-  setAppointment
+  setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { sampleUser } from "../testUtils/TestSamples";
 import { mocked } from "ts-jest/utils";
 import {
   NotificationToDonor,
-  sendEmailToDonor
+  sendEmailToDonor,
 } from "../notifications/NotificationSender";
 import { SendConfirmationReminders } from "./CronJobs";
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
@@ -32,12 +32,12 @@ const mockedNotifier = mocked(sendEmailToDonor);
 const DONORS = [
   "SendConfirmationBookedDonorId",
   "SendConfirmationAvailableDonorId",
-  "SendConfirmationOutOfRangeDonorId"
+  "SendConfirmationOutOfRangeDonorId",
 ];
 const APPOINTMENTS = [
   "SendConfirmationBookedAppointment",
   "SendConfirmationAvailableAppointment",
-  "SendConfirmationOutOfRangeAppointment"
+  "SendConfirmationOutOfRangeAppointment",
 ];
 
 const reset = async () => {
@@ -84,8 +84,8 @@ test("run on all appointments", async () => {
     admin.firestore.Timestamp.fromDate(yesterday)
   );
   const nextHour = new Date(now);
-  nextHour.setHours(now.getHours()+1)
-  nextHour.setMinutes(0)
+  nextHour.setHours(now.getHours() + 1);
+  nextHour.setMinutes(0);
   const start = new Date(nextHour);
   const end = new Date(nextHour);
 
@@ -97,18 +97,15 @@ test("run on all appointments", async () => {
   start.setSeconds(0);
   start.setMilliseconds(0);
 
-  await SendConfirmationReminders(
-    new Date(start),
-    new Date(end)
-  );
+  await SendConfirmationReminders(new Date(start), new Date(end));
   expect(mockedNotifier).toHaveBeenCalledTimes(1);
   expect(mockedNotifier).toHaveBeenCalledWith(
     NotificationToDonor.DONATION_CONFIRMATION,
     expect.objectContaining({
-      appointmentId: APPOINTMENTS[0]
+      appointmentId: APPOINTMENTS[0],
     }),
     expect.objectContaining({
-      id: DONORS[0]
+      id: DONORS[0],
     })
   );
 });
@@ -128,7 +125,7 @@ async function saveAppointment(
     donorId: donorId,
     bookingTime: time,
     status: status,
-    lastChangeType: BookingChange.BOOKED
+    lastChangeType: BookingChange.BOOKED,
   };
 
   await setAppointment(appointment);
@@ -139,7 +136,7 @@ async function createDonor(donorId: string) {
     id: donorId,
     ...sampleUser,
     firstName: "firstName",
-    email: "email@email.com"
+    email: "email@email.com",
   };
 
   await setDonor(donor);

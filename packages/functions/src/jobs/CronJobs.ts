@@ -16,13 +16,13 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
   .onRun(async () => {
     const start = new Date();
     const end = new Date();
-    end.setMinutes(0)
-    end.setSeconds(0)
-    end.setMilliseconds(0)
+    end.setMinutes(0);
+    end.setSeconds(0);
+    end.setMilliseconds(0);
     start.setHours(start.getHours() - 1);
-    start.setMinutes(0)
-    start.setSeconds(0)
-    start.setMilliseconds(0)
+    start.setMinutes(0);
+    start.setSeconds(0);
+    start.setMilliseconds(0);
 
     await SendConfirmationReminders(start, end);
   });
@@ -40,7 +40,10 @@ export const ConfirmationReminderOnNextDay = functions.pubsub
     await SendConfirmationReminders(lastDay, now);
   });
 
-export const SendConfirmationReminders = async (fromIncluding: Date, toExcluding: Date) => {
+export const SendConfirmationReminders = async (
+  fromIncluding: Date,
+  toExcluding: Date
+) => {
   const appointments = await getAppointmentsByStatus(
     AppointmentStatus.BOOKED,
     fromIncluding,
@@ -60,13 +63,12 @@ export const SendConfirmationReminders = async (fromIncluding: Date, toExcluding
       console.error("Donor not found for donation: " + appointment.id);
       return;
     }
-    if (!isProd()){
+    if (!isProd()) {
       await sendEmailToDonor(
         NotificationToDonor.DONATION_CONFIRMATION,
         getAppointmentNotificationData(appointment, donor),
         donor
       );
     }
-
   }
 };
