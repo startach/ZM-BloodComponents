@@ -67,7 +67,7 @@ export interface GetDonorAppointmentsResponse {
 
 export const CoordinatorBookAppointmentFunctionName =
   "coordinatorBookAppointment";
-export const DonorBookAppointmentFunctionName = "donorBookAppointment";
+export const DonorBookAppointmentFunctionName = "bookAppointment";
 export interface BookAppointmentRequest {
   appointmentIds: string[];
   donorId?: string; // Required if is called by coordinator. Can be an id of a donor or MANUAL_DONOR_ID (in types)

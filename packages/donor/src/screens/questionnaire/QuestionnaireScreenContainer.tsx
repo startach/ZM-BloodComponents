@@ -41,16 +41,16 @@ export function QuestionnaireScreenContainer(
       );
     }
 
-    const donorBookAppointmentResponse =
+    const bookAppointmentResponse =
       await FirebaseFunctions.donorBookAppointment(
         appointmentToBookStore.appointmentIds
       );
 
-    switch (donorBookAppointmentResponse.status) {
+    switch (bookAppointmentResponse.status) {
       case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:
       case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
       case FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS:
-        setError(donorBookAppointmentResponse.status);
+        setError(bookAppointmentResponse.status);
         setIsLoading(false);
         break;
 
@@ -58,12 +58,12 @@ export function QuestionnaireScreenContainer(
         if (debugMode) {
           console.log(
             "Booked appointment",
-            donorBookAppointmentResponse.bookedAppointment!.id
+            bookAppointmentResponse.bookedAppointment!.id
           );
         }
 
         props.setBookedAppointment(
-          donorBookAppointmentResponse.bookedAppointment!
+          bookAppointmentResponse.bookedAppointment!
         );
         history.replace(MainNavigationKeys.UpcomingDonation);
         appointmentToBookStore.clear();

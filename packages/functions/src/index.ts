@@ -40,7 +40,7 @@ export const getBookedDonationsInHospital = handler(
 );
 
 // Donor
-export const donorBookAppointment = handler(donorBookAppointmentHandler);
+export const bookAppointment = handler(donorBookAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
 export const completeAppointment = handler(completeAppointmentHandler);
 export const completeAppointmentApiHandler = completeAppointmentApi;
