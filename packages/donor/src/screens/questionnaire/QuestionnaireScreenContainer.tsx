@@ -62,9 +62,7 @@ export function QuestionnaireScreenContainer(
           );
         }
 
-        props.setBookedAppointment(
-          bookAppointmentResponse.bookedAppointment!
-        );
+        props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
         history.replace(MainNavigationKeys.UpcomingDonation);
         appointmentToBookStore.clear();
     }
