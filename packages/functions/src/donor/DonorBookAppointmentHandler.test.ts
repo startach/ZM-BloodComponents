@@ -21,7 +21,7 @@ import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.BookAppointmentFunctionName]
+  Functions[FunctionsApi.DonorBookAppointmentFunctionName]
 );
 
 jest.mock("../notifications/BookAppointmentNotifier");

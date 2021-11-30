@@ -31,7 +31,7 @@ export async function BookAppointment(
     if (!request.donorId) {
       return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
     }
-    
+
     coordinatorId = callerId;
     donorId = request.donorId;
   }

@@ -25,16 +25,16 @@ export function getAvailableAppointments() {
   });
 }
 
-export async function bookAppointment(appointmentIds: string[]) {
-  const bookAppointmentFunction = getCallableFunction(
-    FunctionsApi.BookAppointmentFunctionName
+export async function donorBookAppointment(appointmentIds: string[]) {
+  const donorBookAppointmentFunction = getCallableFunction(
+    FunctionsApi.DonorBookAppointmentFunctionName
   );
 
   const request: FunctionsApi.BookAppointmentRequest = {
     appointmentIds,
   };
 
-  const response = await bookAppointmentFunction(request);
+  const response = await donorBookAppointmentFunction(request);
   return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
