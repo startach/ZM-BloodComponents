@@ -109,6 +109,7 @@ export type BookedDonationWithDonorDetails = {
   lastName: string;
   phone: string;
   bloodType: BloodType;
+  status: AppointmentStatus;
 };
 
 export enum AppointmentStatus {
