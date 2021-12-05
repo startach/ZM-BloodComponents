@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install Prettier
-        run: npm i prettier@2.3.0
+        run: npm i prettier@2.5.1
       - name: Run prettier
         run: npx prettier --check .
 
