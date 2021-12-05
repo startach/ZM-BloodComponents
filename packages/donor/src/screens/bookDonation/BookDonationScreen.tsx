@@ -33,8 +33,9 @@ export default function BookDonationScreen({
   onSlotSelected,
   defaultHospital,
 }: BookDonationScreenProps) {
-  const [selectedHospital, setSelectedHospital] =
-    useState<Hospital | "">(defaultHospital);
+  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
+    defaultHospital
+  );
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
