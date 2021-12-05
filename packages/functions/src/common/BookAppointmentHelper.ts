@@ -20,7 +20,7 @@ import { DbDonor } from "../function-types";
 
 const WEEKS_BUFFER = 0;
 
-export async function BookAppointment(
+export async function bookAppointment(
   donorId: string,
   isDonor: boolean,
   appointmentIds: string[],
