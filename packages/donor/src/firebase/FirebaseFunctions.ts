@@ -138,16 +138,14 @@ export async function getDonorDetails(): Promise<{
       (appointment) => appointment.status === AppointmentStatus.BOOKED
     );
 
-    const ret = {
+    return {
       donor: data.donor,
-      futureAppointments:
+      bookedAppointment:
         data.futureAppointments.length !== 0
-          ? data.futureAppointments
+          ? data.futureAppointments[0]
           : undefined,
       pendingCompletionAppointments: pendingCompletionAppointments,
     };
-
-    return ret;
   } catch (e) {
     console.error("Error getting donor", e);
     return { pendingCompletionAppointments: [] };
