@@ -37,7 +37,9 @@ export async function bookAppointment(
   );
   if (availableAppointments.length === 0) {
     // None of the requested appointments is available
-    return { status: FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS };
+    return {
+      status: FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS,
+    };
   }
   const appointmentToBook = availableAppointments[0];
   appointmentToBook.donorId = donorId;
@@ -48,7 +50,9 @@ export async function bookAppointment(
 
   if (!isDonor && donorId === MANUAL_DONOR_ID) {
     if (!donorDetails) {
-      return { status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
+      return {
+        status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,
+      };
     }
     appointmentToBook.donorDetails = donorDetails;
     appointmentToBook.assigningCoordinatorId = coordinatorId;
@@ -61,7 +65,9 @@ export async function bookAppointment(
       WEEKS_BUFFER
     );
     if (donorAppointments.length > 0) {
-      return { status: FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
+      return {
+        status: FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER,
+      };
     }
 
     const updateDonorPromise = updateDonorAsync(
