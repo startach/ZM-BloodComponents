@@ -42,12 +42,12 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [lastNameError, setLastNameError] =
     useState<string | undefined>(undefined);
 
-  const isPhoneAllNumbers = /^[0-9]*$/.test(phone);
+  const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
   const phoneValidator = /^05(?!6)\d{8}$/;
   const isValidPhone = phoneValidator.test(phone);
 
   let phoneMessage = undefined;
-  if (!isPhoneAllNumbers) {
+  if (!isPhoneNumberAllNumbers) {
     phoneMessage = "יש להזין ספרות בלבד";
   } else if (phone.length > 0 && !isValidPhone) {
     phoneMessage = "מספר הטלפון אינו חוקי";
