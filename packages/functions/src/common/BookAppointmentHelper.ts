@@ -15,7 +15,6 @@ import {
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
-import { BookAppointmentStatus } from "@zm-blood-components/common/src/functions-api";
 import { DbDonor } from "../function-types";
 
 const WEEKS_BUFFER = 0;
@@ -30,7 +29,7 @@ export async function bookAppointment(
   const appointmentsToBook = await getAppointmentsByIds(appointmentIds);
   if (appointmentsToBook.length === 0) {
     // None of the appointment ids was found in the DB
-    return { status: BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
+    return { status: FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
   }
 
   const availableAppointments = appointmentsToBook.filter(
@@ -38,7 +37,7 @@ export async function bookAppointment(
   );
   if (availableAppointments.length === 0) {
     // None of the requested appointments is available
-    return { status: BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS };
+    return { status: FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS };
   }
   const appointmentToBook = availableAppointments[0];
   appointmentToBook.donorId = donorId;
@@ -49,7 +48,7 @@ export async function bookAppointment(
 
   if (!isDonor && donorId === MANUAL_DONOR_ID) {
     if (!donorDetails) {
-      return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
+      return { status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
     }
     appointmentToBook.donorDetails = donorDetails;
     appointmentToBook.assigningCoordinatorId = coordinatorId;
@@ -62,7 +61,7 @@ export async function bookAppointment(
       WEEKS_BUFFER
     );
     if (donorAppointments.length > 0) {
-      return { status: BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
+      return { status: FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER };
     }
 
     const updateDonorPromise = updateDonorAsync(
@@ -86,7 +85,7 @@ export async function bookAppointment(
   await setAppointment(appointmentToBook);
 
   return {
-    status: BookAppointmentStatus.SUCCESS,
+    status: FunctionsApi.BookAppointmentStatus.SUCCESS,
     bookedAppointment:
       dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
   };
