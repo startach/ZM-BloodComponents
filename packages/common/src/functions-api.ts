@@ -67,11 +67,15 @@ export interface GetDonorAppointmentsResponse {
 
 export const CoordinatorBookAppointmentFunctionName =
   "coordinatorBookAppointment";
+export interface CoordinatorBookAppointmentRequest {
+  appointmentIds: string[];
+  donorId: string; // Can be an id of a donor or MANUAL_DONOR_ID (in types)
+  donorDetails?: MinimalDonorDetailsForAppointment; // if donor id is MANUAL_DONOR_ID need to be sent.
+}
+
 export const DonorBookAppointmentFunctionName = "bookAppointment";
 export interface BookAppointmentRequest {
   appointmentIds: string[];
-  donorId?: string; // Required if is called by coordinator. Can be an id of a donor or MANUAL_DONOR_ID (in types)
-  donorDetails?: MinimalDonorDetailsForAppointment;
 }
 
 export enum BookAppointmentStatus {

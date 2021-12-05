@@ -11,6 +11,7 @@ import {
   FunctionsApi,
   Hospital,
   MANUAL_DONOR_ID,
+  MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
@@ -20,23 +21,13 @@ import { DbDonor } from "../function-types";
 const WEEKS_BUFFER = 0;
 
 export async function BookAppointment(
-  request: FunctionsApi.BookAppointmentRequest,
+  donorId: string,
   isDonor: boolean,
-  callerId: string
+  appointmentIds: string[],
+  coordinatorId?: string,
+  donorDetails?: MinimalDonorDetailsForAppointment
 ): Promise<FunctionsApi.BookAppointmentResponse> {
-  let donorId = callerId;
-  let coordinatorId;
-
-  if (!isDonor) {
-    if (!request.donorId) {
-      return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
-    }
-
-    coordinatorId = callerId;
-    donorId = request.donorId;
-  }
-
-  const appointmentsToBook = await getAppointmentsByIds(request.appointmentIds);
+  const appointmentsToBook = await getAppointmentsByIds(appointmentIds);
   if (appointmentsToBook.length === 0) {
     // None of the appointment ids was found in the DB
     return { status: BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
@@ -56,11 +47,11 @@ export async function BookAppointment(
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
   appointmentToBook.status = AppointmentStatus.BOOKED;
 
-  if (!isDonor && request.donorId === MANUAL_DONOR_ID) {
-    if (!request.donorDetails) {
+  if (!isDonor && donorId === MANUAL_DONOR_ID) {
+    if (!donorDetails) {
       return { status: BookAppointmentStatus.DONOR_DETAILS_REQUIRED };
     }
-    appointmentToBook.donorDetails = request.donorDetails;
+    appointmentToBook.donorDetails = donorDetails;
     appointmentToBook.assigningCoordinatorId = coordinatorId;
   } else {
     const donor = await getDonorOrThrow(donorId);

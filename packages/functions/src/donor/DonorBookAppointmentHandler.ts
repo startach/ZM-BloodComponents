@@ -6,5 +6,5 @@ export default async function (
   request: FunctionsApi.BookAppointmentRequest,
   callerId: string
 ): Promise<FunctionsApi.BookAppointmentResponse> {
-  return BookAppointment(request, true, callerId);
+  return BookAppointment(callerId, true, request.appointmentIds);
 }
