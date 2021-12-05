@@ -51,7 +51,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   if (!isPhoneNumberAllNumbers) {
     phoneMessage = "יש להזין ספרות בלבד";
   } else if (phone.length > 0 && !isValidPhone) {
-    phoneMessage = "מספר הטלפון אינו חוקי";
+    phoneMessage = "מספר הטלפון אינו תקין";
   }
 
   const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
