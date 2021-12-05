@@ -4,10 +4,12 @@ import Illustration from "./../../assets/images/donation_proccess.svg";
 
 export interface DonationProcessScreenProps {
   onContact: () => void;
+  isUserLoggedIn: Boolean;
 }
 
 export default function DonationProcessScreen({
   onContact,
+  isUserLoggedIn,
 }: DonationProcessScreenProps) {
   return (
     <ZMScreen hasBackButton title="תהליך התרומה">
@@ -17,7 +19,9 @@ export default function DonationProcessScreen({
 
       <div className={styles.textContainer}>
         <div className={styles.title}>
-          תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!
+          {isUserLoggedIn
+            ? "ירון, הנה מידע חשוב לקראת התרומה"
+            : " תורמי ותורמות טרומבוציטים יקרים/ות שלום רב!"}
         </div>
         <br />
         לפניכם/ן הסבר על תהליך התרומה. ראשית, השתמשו באפליקציה על מנת להרשם

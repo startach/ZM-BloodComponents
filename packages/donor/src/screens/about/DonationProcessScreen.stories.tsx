@@ -12,6 +12,7 @@ export default {
 
 const props: DonationProcessScreenProps = {
   onContact: action("onContact"),
+  isUserLoggedIn: false,
 };
 
 const Template: Story<DonationProcessScreenProps> = (args) => (
