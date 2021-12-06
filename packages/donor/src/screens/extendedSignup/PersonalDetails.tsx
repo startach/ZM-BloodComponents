@@ -39,19 +39,18 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [lastNameError, setLastNameError] = useState<string | undefined>(
-    undefined
-  );
+  const [lastNameError, setLastNameError] =
+    useState<string | undefined>(undefined);
 
   const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
   const phoneValidator = /^05(?!6)\d{8}$/;
   const isValidPhone = phoneValidator.test(phone);
 
-  let phoneMessage = undefined;
+  let erorrMessage = undefined;
   if (!isPhoneNumberAllNumbers) {
-    phoneMessage = "יש להזין ספרות בלבד";
+    erorrMessage = "יש להזין ספרות בלבד";
   } else if (phone.length > 0 && !isValidPhone) {
-    phoneMessage = "מספר הטלפון אינו תקין";
+    erorrMessage = "מספר הטלפון אינו תקין";
   }
 
   const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
@@ -95,7 +94,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         value={phone}
         onChangeText={setPhone}
         label="מספר טלפון"
-        errorMessage={phoneMessage}
+        errorMessage={erorrMessage}
       />
       <div className={classnames(styles.subtitle, styles.crucialInformation)}>
         מידע חיוני לתרומה
