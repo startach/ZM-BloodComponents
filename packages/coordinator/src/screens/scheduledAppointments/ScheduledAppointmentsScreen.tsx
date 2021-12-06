@@ -82,6 +82,13 @@ export default function ScheduledAppointmentsScreen({
       label: "טלפון",
       cellRenderer: ({ phone }) => <a href={"tel:" + phone}>{phone}</a>,
     },
+    {
+      label: "סטטוס",
+      sortBy: SortingUtils.StringComparator<BookedDonationWithDonorDetails>(
+        (d) => d.status
+      ),
+      cellRenderer: ({ status }) => LocaleUtils.getStatusTranslation(status),
+    },
   ];
 
   return (

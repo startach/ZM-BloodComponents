@@ -1,4 +1,4 @@
-import { Hospital, BloodType } from "./types";
+import { AppointmentStatus, BloodType, Hospital } from "./types";
 
 export function getHospitalName(hospital: Hospital) {
   switch (hospital) {
@@ -46,5 +46,24 @@ export const getBloodTypeTranslation = (bloodType: BloodType) => {
     default:
       console.error("No blood type name for", bloodType);
       return bloodType;
+  }
+};
+
+export const getStatusTranslation = (status: AppointmentStatus) => {
+  switch (status) {
+    case AppointmentStatus.AVAILABLE:
+      return "פנוי";
+    case AppointmentStatus.BOOKED:
+      return "מוזמן";
+    case AppointmentStatus.COMPLETED:
+      return "הושלם";
+    case AppointmentStatus.CONFIRMED:
+      return "אישר הגעה";
+    case AppointmentStatus.NOSHOW:
+      return "לא הגיע";
+
+    default:
+      console.error("No status translation for ", status);
+      return status;
   }
 };

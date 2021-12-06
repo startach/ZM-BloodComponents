@@ -55,6 +55,7 @@ export default async function (
       lastName: donor!.lastName,
       phone: donor!.phone,
       bloodType: donor!.bloodType,
+      status: appointment.status,
     };
     bookedDonationsWithDonor.push(donationWithDonor);
   });
