@@ -2,7 +2,7 @@ import {
   getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import {AppointmentStatus, FunctionsApi} from "@zm-blood-components/common";
+import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 
@@ -38,11 +38,11 @@ export async function completeAppointmentFunc(
     throw new Error("Appointment to be completed is not booked by donor");
   }
 
-  switch (appointment.status){
+  switch (appointment.status) {
     case AppointmentStatus.AVAILABLE:
     case AppointmentStatus.COMPLETED:
     case AppointmentStatus.NOSHOW:
-      throw new Error("Invalid appointment status - " + appointment.status)
+      throw new Error("Invalid appointment status - " + appointment.status);
 
     case AppointmentStatus.BOOKED:
     case AppointmentStatus.CONFIRMED:
