@@ -13,6 +13,7 @@ import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
+import _ from "lodash";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
@@ -40,7 +41,7 @@ export default async function (
     }
   });
 
-  let donorsInAppointments = await getDonors(donorIds);
+  let donorsInAppointments = await getDonors(_.uniq(donorIds));
 
   if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
     donorsInAppointments = await filterDonorsInGroup(
