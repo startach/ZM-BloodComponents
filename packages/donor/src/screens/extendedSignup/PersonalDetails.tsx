@@ -47,6 +47,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const isValidPhone = phoneValidator.test(phone);
 
   let erorrMessage = undefined;
+
   if (!isPhoneNumberAllNumbers) {
     erorrMessage = "יש להזין ספרות בלבד";
   } else if (phone.length > 0 && !isValidPhone) {
