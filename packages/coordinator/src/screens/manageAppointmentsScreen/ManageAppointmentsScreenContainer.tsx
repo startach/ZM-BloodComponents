@@ -18,7 +18,7 @@ export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
   const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">(
-    activeHospitalsForCoordinator.length == 1
+    activeHospitalsForCoordinator.length === 1
       ? activeHospitalsForCoordinator[0]
       : ""
   );
