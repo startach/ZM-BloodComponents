@@ -21,7 +21,6 @@ const WEEKS_BUFFER = 0;
 
 export async function bookAppointment(
   donorId: string,
-  isDonor: boolean,
   appointmentIds: string[],
   coordinatorId?: string,
   donorDetails?: MinimalDonorDetailsForAppointment
@@ -48,7 +47,7 @@ export async function bookAppointment(
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
   appointmentToBook.status = AppointmentStatus.BOOKED;
 
-  if (!isDonor && donorId === MANUAL_DONOR_ID) {
+  if ( coordinatorId && donorId === MANUAL_DONOR_ID) {
     if (!donorDetails) {
       return {
         status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,

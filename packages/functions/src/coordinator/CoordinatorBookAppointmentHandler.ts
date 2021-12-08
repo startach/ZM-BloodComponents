@@ -7,7 +7,6 @@ export default async function (
 ): Promise<FunctionsApi.BookAppointmentResponse> {
   return bookAppointment(
     request.donorId,
-    false,
     request.appointmentIds,
     callerId,
     request.donorDetails
