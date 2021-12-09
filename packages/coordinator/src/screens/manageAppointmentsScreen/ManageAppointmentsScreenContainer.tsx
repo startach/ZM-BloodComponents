@@ -17,7 +17,11 @@ interface ManageAppointmentsScreenContainerProps {
 export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
-  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">("");
+  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">(
+    activeHospitalsForCoordinator.length === 1
+      ? activeHospitalsForCoordinator[0]
+      : ""
+  );
   const [appointmentsResponse, setAppointmentsResponse] = useState(
     getDefaultState()
   );
