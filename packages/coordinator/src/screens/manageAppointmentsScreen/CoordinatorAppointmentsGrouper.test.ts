@@ -24,7 +24,7 @@ test("grouping of appointments", () => {
 
   // Assert
   expect(donationDays).toHaveLength(2);
-  expect(donationDays[0].day).toEqual("02/01/2021");
+  expect(donationDays[0].dayString).toEqual("02/01/2021");
   const slotsInDay = donationDays[0].appointmentSlots;
   expect(slotsInDay).toHaveLength(2);
   expect(slotsInDay[0].appointments).toHaveLength(2);
@@ -37,7 +37,7 @@ test("grouping of appointments", () => {
   expect(slotsInDay[1].appointments[1].appointmentId).toEqual("ap.2/1.14:45.2");
   expect(slotsInDay[1].appointments[2].appointmentId).toEqual("ap.2/1.14:45.3");
 
-  expect(donationDays[1].day).toEqual("01/02/2021");
+  expect(donationDays[1].dayString).toEqual("01/02/2021");
   const slotsInDay2 = donationDays[1].appointmentSlots;
   expect(slotsInDay2).toHaveLength(1);
   expect(slotsInDay2[0].appointments).toHaveLength(2);
@@ -76,7 +76,7 @@ test("donor details are set in appointments", () => {
 
   // Assert
   expect(donationDays).toHaveLength(2);
-  expect(donationDays[0].day).toEqual("01/01/2021");
+  expect(donationDays[0].dayString).toEqual("01/01/2021");
   expect(donationDays[0].appointmentSlots).toHaveLength(1);
   const time1 = donationDays[0].appointmentSlots[0];
   expect(time1.appointments).toHaveLength(1);
@@ -87,7 +87,7 @@ test("donor details are set in appointments", () => {
   expect(slot1.donorPhoneNumber).toEqual("phone");
   expect(slot1.bookingTimeMillis).toEqual(1616837400000);
 
-  expect(donationDays[1].day).toEqual("02/01/2021");
+  expect(donationDays[1].dayString).toEqual("02/01/2021");
   expect(donationDays[1].appointmentSlots).toHaveLength(1);
   const time2 = donationDays[1].appointmentSlots[0];
   expect(time2.appointments).toHaveLength(1);
@@ -113,7 +113,7 @@ test("donor of appointment is missing", () => {
 
   // Assert
   expect(donationDays).toHaveLength(1);
-  expect(donationDays[0].day).toEqual("01/01/2021");
+  expect(donationDays[0].dayString).toEqual("01/01/2021");
   expect(donationDays[0].appointmentSlots).toHaveLength(1);
   const time1 = donationDays[0].appointmentSlots[0];
   expect(time1.appointments).toHaveLength(1);

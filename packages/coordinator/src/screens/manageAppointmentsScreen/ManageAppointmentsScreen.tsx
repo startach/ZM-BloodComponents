@@ -87,7 +87,7 @@ export default function ManageAppointmentsScreen({
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
-      groupLabel: day.day,
+      groupLabel: day.dayString,
       rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
         (slot) => ({
           rowData: slot,

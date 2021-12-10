@@ -1,0 +1,51 @@
+.donationDay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.donationDayHeader {
+  padding: 30px 20px;
+}
+
+.dayString {
+  color: var(--coordinator-secondary);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+}
+
+.data {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--coordinator-dark-gray);
+}
+
+.dataDivider {
+  margin: 0 5px;
+}
+
+.divider {
+  margin: 10px 0;
+  border-bottom: 1px solid var(--coordinator-divider);
+}
+
+.availableAppointmentsToggle {
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--coordinator-dark-gray);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toggle {
+  margin-inline-start: 10px;
+}
+
+.slots {
+  background-color: var(--coordinator-background);
+  overflow-y: auto;
+  flex: 1;
+}

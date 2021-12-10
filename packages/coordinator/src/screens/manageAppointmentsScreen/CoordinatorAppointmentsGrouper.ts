@@ -17,7 +17,7 @@ export function groupAppointmentDays(
       );
 
       const res: DonationDay = {
-        day: DateUtils.ToDateString(new Date(dateString)),
+        dayString: DateUtils.ToDateString(new Date(dateString)),
         appointmentSlots: appointmentSlotsInDay,
       };
 

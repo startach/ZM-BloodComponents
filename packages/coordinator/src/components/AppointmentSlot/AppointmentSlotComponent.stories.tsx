@@ -46,6 +46,7 @@ const props: AppointmentPreviewProps = {
   },
   onClickOnAppointment: action("onClickOnAppointment"),
   onAdd: action("onAdd"),
+  showOnlyAvailableAppointments: false,
 };
 
 const Template: Story<AppointmentPreviewProps> = (args) => (
@@ -57,4 +58,11 @@ const Template: Story<AppointmentPreviewProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+
+export const OnlyAvailableAppointments = Template.bind({});
+OnlyAvailableAppointments.args = {
+  ...props,
+  showOnlyAvailableAppointments: true,
 };

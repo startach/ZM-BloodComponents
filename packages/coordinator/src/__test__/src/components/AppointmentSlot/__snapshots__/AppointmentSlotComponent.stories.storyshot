@@ -12,7 +12,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
   <div
     className="storyBackground"
   >
-    <div>
+    <div
+      className="appointmentSlotListContainer"
+    >
       <div
         className="listHeader"
       >
@@ -221,6 +223,108 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
               add-person.svg
             </svg>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="storyBackground"
+  >
+    <div
+      className="appointmentSlotListContainer"
+    >
+      <div
+        className="listHeader"
+      >
+        <div
+          className="time"
+        >
+          11:00
+        </div>
+        <div
+          className="add"
+          onClick={[Function]}
+        >
+          <svg>
+            add.svg
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div
+          className="appointmentPreviewContainer"
+          onClick={[Function]}
+        >
+          <div
+            className="appointmentPreviewContent"
+          >
+            <div
+              className="nameAndChip"
+            >
+              <div
+                className="availableAppointmentText"
+              >
+                תור ריק
+              </div>
+            </div>
+            <svg>
+              add-person.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          className="dividerContainer"
+        >
+          <div
+            className="divider"
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="appointmentPreviewContainer"
+          onClick={[Function]}
+        >
+          <div
+            className="appointmentPreviewContent"
+          >
+            <div
+              className="nameAndChip"
+            >
+              <div
+                className="availableAppointmentText"
+              >
+                תור ריק
+              </div>
+              <div
+                className="recentChangeChip"
+              >
+                בוטל לאחרונה
+              </div>
+            </div>
+            <svg>
+              add-person.svg
+            </svg>
+          </div>
+        </div>
+        <div
+          className="dividerContainer"
+        >
+          <div
+            className="divider"
+          />
         </div>
       </div>
     </div>

@@ -9,15 +9,26 @@ export type AppointmentPreviewProps = {
   appointmentSlot: AppointmentSlot;
   onClickOnAppointment: (appointmentId: string) => void;
   onAdd: () => void;
+  showOnlyAvailableAppointments: boolean;
 };
 
 export default function AppointmentSlotComponent({
   onClickOnAppointment,
   onAdd,
   appointmentSlot,
+  showOnlyAvailableAppointments,
 }: AppointmentPreviewProps) {
+  let appointments = appointmentSlot.appointments;
+  if (showOnlyAvailableAppointments) {
+    appointments = appointments.filter((x) => !x.booked);
+  }
+
+  if (appointments.length === 0) {
+    return null;
+  }
+
   return (
-    <div>
+    <div className={styles.appointmentSlotListContainer}>
       <div className={styles.listHeader}>
         <div className={styles.time}>
           {DateUtils.ToTimeString(appointmentSlot.donationStartTimeMillis)}
@@ -28,7 +39,7 @@ export default function AppointmentSlotComponent({
         </div>
       </div>
 
-      {appointmentSlot.appointments.map((appointment, index) => (
+      {appointments.map((appointment, index) => (
         <div key={appointment.appointmentId}>
           <AppointmentPreview
             appointment={appointment}

@@ -3,7 +3,7 @@ import { BloodType, BookingChange } from "@zm-blood-components/common";
 export type SortFunction<T> = (a: T, b: T) => number;
 
 export type DonationDay = {
-  day: string;
+  dayString: string;
   appointmentSlots: AppointmentSlot[];
 };
 
