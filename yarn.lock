@@ -3799,7 +3799,7 @@
 
 "@storybook/addon-storyshots@^6.4.9":
   version "6.4.9"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/@storybook/addon-storyshots/-/addon-storyshots-6.4.9.tgz#99661f0fa90bbac6528ab76a12f8c794794169cc"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots/-/addon-storyshots-6.4.9.tgz#99661f0fa90bbac6528ab76a12f8c794794169cc"
   integrity sha1-mWYfD6kLusZSirdqEvjHlHlBacw=
   dependencies:
     "@jest/transform" "^26.6.2"
@@ -3895,7 +3895,7 @@
 
 "@storybook/babel-plugin-require-context-hook@1.0.1":
   version "1.0.1"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/@storybook/babel-plugin-require-context-hook/-/babel-plugin-require-context-hook-1.0.1.tgz#0a4ec9816f6c7296ebc97dd8de3d2b7ae76f2e26"
+  resolved "https://registry.yarnpkg.com/@storybook/babel-plugin-require-context-hook/-/babel-plugin-require-context-hook-1.0.1.tgz#0a4ec9816f6c7296ebc97dd8de3d2b7ae76f2e26"
   integrity sha1-Ck7JgW9scpbryX3Y3j0reudvLiY=
 
 "@storybook/builder-webpack4@6.4.9":
@@ -15826,7 +15826,7 @@ postcss@^8.1.0, postcss@^8.3.0:
 
 preact-render-to-string@^5.1.19:
   version "5.1.19"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/preact-render-to-string/-/preact-render-to-string-5.1.19.tgz#ffae7c3bd1680be5ecf5991d41fe3023b3051e0e"
+  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-5.1.19.tgz#ffae7c3bd1680be5ecf5991d41fe3023b3051e0e"
   integrity sha1-/658O9FoC+Xs9ZkdQf4wI7MFHg4=
   dependencies:
     pretty-format "^3.8.0"
@@ -15895,7 +15895,7 @@ pretty-format@^26.0.0, pretty-format@^26.6.0, pretty-format@^26.6.2:
 
 pretty-format@^3.8.0:
   version "3.8.0"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-3.8.0.tgz#bfbed56d5e9a776645f4b1ff7aa1a3ac4fa3c385"
   integrity sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U=
 
 pretty-hrtime@^1.0.3:
@@ -16522,7 +16522,7 @@ react-router@6.0.2, react-router@^6.0.0:
 
 react-scripts@^4.0.3:
   version "4.0.3"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/react-scripts/-/react-scripts-4.0.3.tgz#b1cafed7c3fa603e7628ba0f187787964cb5d345"
+  resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-4.0.3.tgz#b1cafed7c3fa603e7628ba0f187787964cb5d345"
   integrity sha1-scr+18P6YD52KLoPGHeHlky100U=
   dependencies:
     "@babel/core" "7.12.3"
