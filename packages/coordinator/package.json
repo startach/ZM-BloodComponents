@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",
-    "@material-ui/pickers": "^3.2.10",
     "@zm-blood-components/common": "^1.0.0",
     "date-fns": "^2.17.0",
     "react-csv-downloader": "^2.4.0"

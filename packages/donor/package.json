@@ -15,7 +15,6 @@
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.1.21",
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react-swipeable-views": "^0.13.0",
