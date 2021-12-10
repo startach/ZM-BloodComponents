@@ -1,17 +1,13 @@
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { CardTableRow } from "./GroupTable";
 import Table, { TableProps } from "./Table";
-import {
-  BloodType,
-  Donor,
-  DonorNotificationSettings,
-} from "@zm-blood-components/common";
+import { BloodType, Donor } from "@zm-blood-components/common";
 import { searchDonorColumns } from "../../../screens/searchDonorsScreen/SearchDonorsScreen";
 
 export default {
   component: Table,
   title: "Components Row Table",
-};
+} as Meta;
 
 const baseUser = {
   birthDate: "",

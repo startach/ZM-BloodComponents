@@ -3,13 +3,13 @@ import CoordinatorSignInScreen, {
 } from "./CoordinatorSignInScreen";
 import { action } from "@storybook/addon-actions";
 import { TestUtils } from "@zm-blood-components/common";
-import {Meta} from '@storybook/react';
+import { Meta } from "@storybook/react";
 
 export default {
   component: CoordinatorSignInScreen,
   title: "Screens/Sign In Screen",
   parameters: { layout: "fullscreen" },
-}  as Meta;
+} as Meta;
 
 const onSignInWithEmail = async (
   email: string,
