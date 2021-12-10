@@ -1,0 +1,962 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components Group Table Basic 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="full-width"
+  >
+    <div
+      className="component"
+    >
+      <div
+        className="header"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="cell header-cell header-cell-active"
+            onClick={[Function]}
+            style={
+              Object {
+                "flexGrow": 1,
+              }
+            }
+          >
+            שעה
+          </div>
+          <div
+            className="cell"
+            onClick={[Function]}
+            style={
+              Object {
+                "flexGrow": 1,
+              }
+            }
+          >
+            מספר העמדות
+          </div>
+          <div
+            className="cell"
+            onClick={[Function]}
+            style={
+              Object {
+                "flexGrow": 1,
+              }
+            }
+          >
+            רשומים
+          </div>
+          <div
+            className="cell"
+            onClick={[Function]}
+            style={
+              Object {
+                "flexGrow": 0,
+              }
+            }
+          >
+            
+          </div>
+        </div>
+        <hr
+          className="MuiDivider-root-1 makeStyles-root-0 MuiDivider-middle-5"
+        />
+      </div>
+      <div
+        className="body"
+      >
+        <div
+          className="group"
+        >
+          <div>
+            06/08/2021
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-8 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    10:35
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-53"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-107 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    11:35
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-109"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-110 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    12:05
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-112"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="group"
+        >
+          <div>
+            06/12/2021
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-113 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    10:35
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-115"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-116 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    10:45
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-118"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-119 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    11:35
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-121"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="group"
+        >
+          <div>
+            24/12/2021
+          </div>
+          <div
+            className="MuiPaper-root-14 MuiAccordion-root-10 makeStyles-root-122 MuiAccordion-rounded-11 MuiPaper-elevation1-18 MuiPaper-rounded-15"
+          >
+            <div
+              aria-disabled={false}
+              aria-expanded={false}
+              className="MuiButtonBase-root-48 MuiAccordionSummary-root-42"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                className="MuiAccordionSummary-content-46"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    10:35
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    6
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 1,
+                      }
+                    }
+                  >
+                    2
+                  </div>
+                  <div
+                    className="cell"
+                    style={
+                      Object {
+                        "flexGrow": 0,
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "visibility": "hidden",
+                        }
+                      }
+                    >
+                      <div
+                        className="MuiChip-root-54 makeStyles-root-51 makeStyles-root-124"
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                      >
+                        <span
+                          className="MuiChip-label-76 makeStyles-label-52"
+                        >
+                          חדש
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                aria-disabled={false}
+                aria-hidden={true}
+                className="MuiButtonBase-root-48 MuiIconButton-root-84 MuiAccordionSummary-expandIcon-47 MuiIconButton-edgeEnd-86"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                role={null}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label-92"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-93"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

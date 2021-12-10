@@ -8,6 +8,7 @@ import {
   Styles,
   ViewportMap,
 } from "@storybook/addon-viewport/dist/ts3.9/models/Viewport";
+import { Parameters } from "@storybook/addons/dist/ts3.9/types";
 
 // https://github.com/mui-org/material-ui/issues/9492#issuecomment-657609780
 const generateClassName = () => {
@@ -35,13 +36,18 @@ const viewPort: ViewportMap = {
   },
 };
 
-export const parameters = {
+export const parameters: Parameters = {
   viewport: {
     viewports: {
       ...viewPort,
       ...INITIAL_VIEWPORTS,
     },
-    defaultViewport: "zmTabletSmall",
+    defaultViewport: "iphonex",
+  },
+  options: {
+    storySort: {
+      method: "alphabetical",
+    },
   },
 };
 

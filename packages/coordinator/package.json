@@ -13,6 +13,7 @@
     "start": "(set PORT=3001 || export PORT=3001) && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "test-update": "yarn run test --watchAll=false -u",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009",
