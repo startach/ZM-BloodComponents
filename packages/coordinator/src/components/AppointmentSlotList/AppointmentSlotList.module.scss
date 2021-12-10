@@ -1,0 +1,34 @@
+.appointmentSlotListContainer {
+}
+
+.listHeader {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.time {
+  flex: 1;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--coordinator-dark-gray);
+}
+
+.add {
+  cursor: pointer;
+}
+
+.divider {
+  border-bottom: 0.5px solid var(--coordinator-divider);
+}
+
+.dividerContainer {
+  padding: 0 20px;
+  background-color: var(--coordinator-white);
+}
+
+.storyBackground {
+  height: 100%;
+  background-color: var(--coordinator-background);
+}

@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="availableAppointmentText"
+        >
+          תור ריק
+        </div>
+      </div>
+      <svg>
+        add-person.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="donorName"
+        >
+          משה כהן
+        </div>
+      </div>
+      <svg>
+        chevron-left.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="donorName"
+        >
+          משה כהן
+        </div>
+        <div
+          className="recentChangeChip"
+        >
+          נקבע לאחרונה
+        </div>
+      </div>
+      <svg>
+        chevron-left.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="availableAppointmentText"
+        >
+          תור ריק
+        </div>
+        <div
+          className="recentChangeChip"
+        >
+          בוטל לאחרונה
+        </div>
+      </div>
+      <svg>
+        add-person.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="donorName"
+        >
+          משה כהן
+        </div>
+        <div
+          className="recentChangeChip"
+        >
+          הושלם
+        </div>
+      </div>
+      <svg>
+        chevron-left.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentPreviewContainer"
+    onClick={[Function]}
+  >
+    <div
+      className="appointmentPreviewContent"
+    >
+      <div
+        className="nameAndChip"
+      >
+        <div
+          className="donorName"
+        >
+          משה כהן
+        </div>
+        <div
+          className="recentChangeChip"
+        >
+          לא הגיע
+        </div>
+      </div>
+      <svg>
+        chevron-left.svg
+      </svg>
+    </div>
+  </div>
+</div>
+`;

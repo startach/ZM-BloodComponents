@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Recent Change Chip Booked 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="recentChangeChip"
+  >
+    נקבע לאחרונה
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Recent Change Chip Cancelled 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="recentChangeChip"
+  >
+    בוטל לאחרונה
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Recent Change Chip Completed 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="recentChangeChip"
+  >
+    הושלם
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Recent Change Chip No Show 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="recentChangeChip"
+  >
+    לא הגיע
+  </div>
+</div>
+`;

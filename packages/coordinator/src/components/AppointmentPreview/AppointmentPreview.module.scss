@@ -1,0 +1,35 @@
+.appointmentPreviewContainer {
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--coordinator-white);
+}
+
+.appointmentPreviewContent {
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.nameAndChip {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.donorName {
+  color: var(--coordinator-dark-gray);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.availableAppointmentText {
+  flex: 1;
+  color: var(--coordinator-gray);
+  font-size: 16px;
+  font-weight: 500;
+}
