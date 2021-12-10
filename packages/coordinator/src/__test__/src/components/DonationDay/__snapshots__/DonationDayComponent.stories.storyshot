@@ -18,7 +18,14 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
       <div
         className="dayString"
       >
-        יום ראשון 10/12/2023
+        <span
+          className="weekday"
+        >
+          יום ראשון
+        </span>
+        <span>
+          10/12/2023
+        </span>
       </div>
       <div
         className="data"

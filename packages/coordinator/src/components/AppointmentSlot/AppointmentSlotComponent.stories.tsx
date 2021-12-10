@@ -60,7 +60,6 @@ Default.args = {
   ...props,
 };
 
-
 export const OnlyAvailableAppointments = Template.bind({});
 OnlyAvailableAppointments.args = {
   ...props,

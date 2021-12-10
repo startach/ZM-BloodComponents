@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { DonationDay } from "../../utils/types";
+import { Appointment, DonationDay } from "../../utils/types";
 import AppointmentSlotComponent from "../AppointmentSlot";
 import styles from "./DonationDayComponent.module.scss";
 import _ from "lodash";
 import Toggle from "../Toggle";
+import { DateUtils } from "@zm-blood-components/common";
 
 export type DonationDayComponentProps = {
   donationDay: DonationDay;
@@ -31,7 +32,8 @@ export default function DonationDayComponent({
   return (
     <div className={styles.donationDay}>
       <div className={styles.donationDayHeader}>
-        <div className={styles.dayString}>{donationDay.dayString}</div>
+        <DayString allAppointments={allAppointments} />
+
         <div className={styles.data}>
           <span>{appointmentsCount} תורים</span>
           <span className={styles.dataDivider}>|</span>
@@ -63,6 +65,23 @@ export default function DonationDayComponent({
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+function DayString(props: { allAppointments: Appointment[] }) {
+  if (props.allAppointments.length === 0) {
+    return null;
+  }
+
+  const arbitraryStartTime = props.allAppointments[0].donationStartTimeMillis;
+  const weekdayString = DateUtils.ToWeekDayString(arbitraryStartTime);
+  const dateString = DateUtils.ToDateString(arbitraryStartTime);
+
+  return (
+    <div className={styles.dayString}>
+      <span className={styles.weekday}>{weekdayString}</span>
+      <span>{dateString}</span>
     </div>
   );
 }

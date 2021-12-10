@@ -1,4 +1,5 @@
 import {
+  DateUtils,
   FunctionsApi,
   Hospital,
   HospitalUtils,
@@ -87,7 +88,12 @@ export default function ManageAppointmentsScreen({
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
-      groupLabel: day.dayString,
+      groupLabel:
+        day.appointmentSlots.length > 0
+          ? DateUtils.ToDateString(
+              day.appointmentSlots[0].donationStartTimeMillis
+            )
+          : "",
       rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
         (slot) => ({
           rowData: slot,

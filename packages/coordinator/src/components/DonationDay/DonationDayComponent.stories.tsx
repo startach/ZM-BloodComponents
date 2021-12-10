@@ -7,7 +7,7 @@ import {
   SampleAvailableAppointment,
   SampleBookedAppointment,
 } from "../../__test__/TestSamples";
-import { BookingChange, DateUtils } from "@zm-blood-components/common";
+import { BookingChange } from "@zm-blood-components/common";
 
 export default {
   component: DonationDayComponent,
@@ -17,10 +17,6 @@ export default {
 
 const props: DonationDayComponentProps = {
   donationDay: {
-    dayString:
-      DateUtils.ToWeekDayString(new Date(1702198800000)) +
-      " " +
-      DateUtils.ToDateString(new Date(1702198800000)),
     appointmentSlots: [
       {
         donationStartTimeMillis: 1702198800000, // December 10, 2023 11:00:00 GMT+02:00

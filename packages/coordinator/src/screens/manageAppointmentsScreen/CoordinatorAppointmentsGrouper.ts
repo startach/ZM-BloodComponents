@@ -1,4 +1,4 @@
-import { DateUtils, Donor, FunctionsApi } from "@zm-blood-components/common";
+import { Donor, FunctionsApi } from "@zm-blood-components/common";
 import * as _ from "lodash";
 import { AppointmentSlot, DonationDay, Appointment } from "../../utils/types";
 
@@ -10,14 +10,13 @@ export function groupAppointmentDays(
     .groupBy((appointment) =>
       new Date(appointment.donationStartTimeMillis).toDateString()
     )
-    .map((appointmentsInDay, dateString) => {
+    .map((appointmentsInDay) => {
       const appointmentSlotsInDay = getAppointmentSlotsInDay(
         appointmentsInDay,
         donorsInAppointments
       );
 
       const res: DonationDay = {
-        dayString: DateUtils.ToDateString(new Date(dateString)),
         appointmentSlots: appointmentSlotsInDay,
       };
 
