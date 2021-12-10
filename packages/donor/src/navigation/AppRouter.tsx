@@ -154,28 +154,28 @@ export default function AppRouter() {
       <Switch>
         <Route
           path={"/" + MainNavigationKeys.Login}
-          render={() => {
+          children={() => {
             if (loggedIn) return redirectToBookDonation();
             return <SignInScreenContainer />;
           }}
         />
         <Route
           path={"/" + MainNavigationKeys.Register}
-          render={() => {
+          children={() => {
             if (loggedIn) return redirectToBookDonation();
             return <RegisterScreenContainer />;
           }}
         />
         <Route
           path={"/" + MainNavigationKeys.ResetPassword}
-          render={() => {
+          children={() => {
             if (loggedIn) return redirectToBookDonation();
             return <ResetPasswordScreenContainer />;
           }}
         />
         <Route
           path={"/" + MainNavigationKeys.OnboardingWizard}
-          render={() => {
+          children={() => {
             if (localStorage.getItem(WIZARD_SEEN_KEY)) {
               return redirectToBookDonation();
             } else return <OnboardingWizardScreenContainer />;
@@ -183,11 +183,11 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.About}
-          render={() => <AboutScreen />}
+          children={() => <AboutScreen />}
         />
         <Route
           path={"/" + MainNavigationKeys.Approve}
-          render={() => {
+          children={() => {
             if (!loggedIn) return redirectToBookDonation();
             if (
               !appState.donor ||
@@ -211,15 +211,15 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.Process}
-          render={() => <DonationProcessScreenContainer />}
+          children={() => <DonationProcessScreenContainer />}
         />
         <Route
           path={"/" + MainNavigationKeys.Contact}
-          render={() => <ContactScreen />}
+          children={() => <ContactScreen />}
         />
         <Route
           path={"/" + MainNavigationKeys.MyProfile}
-          render={() => {
+          children={() => {
             if (!loggedIn) return redirectToLogin();
             return (
               <MyProfileScreenContainer
@@ -231,7 +231,7 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.UpcomingDonation}
-          render={() => {
+          children={() => {
             if (!loggedIn) return redirectToBookDonation();
             if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
@@ -246,7 +246,7 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.Questionnaire}
-          render={() => {
+          children={() => {
             if (!loggedIn) return redirectToBookDonation();
             if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);
@@ -260,7 +260,7 @@ export default function AppRouter() {
         />
         <Route
           path={"/" + MainNavigationKeys.BookDonation}
-          render={() => {
+          children={() => {
             if (appState.bookedAppointment) return redirectToUpcomingDonation();
             if (appState.pendingCompletionAppointments.length !== 0)
               return redirectTo(MainNavigationKeys.Approve);

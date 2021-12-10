@@ -144,26 +144,26 @@ export default function CoordinatorRouter() {
     >
       <Switch>
         {canViewOpenAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
+          <Route path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
             <ManageAppointmentsScreenContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />
           </Route>
         )}
         {canViewDonors && (
-          <Route exact path={"/" + CoordinatorScreenKey.DONORS}>
+          <Route path={"/" + CoordinatorScreenKey.DONORS}>
             <SearchDonorsScreenContainer />
           </Route>
         )}
         {canViewBookedAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
+          <Route path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
             <ScheduledAppointmentsContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />
           </Route>
         )}
         {canAddAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
+          <Route path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
             <AddAppointmentsScreenContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />
