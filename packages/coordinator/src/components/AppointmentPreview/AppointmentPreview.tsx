@@ -4,6 +4,7 @@ import { Appointment } from "../../utils/types";
 import { ReactComponent as ChevronLeft } from "../../assets/icons/chevron-left.svg";
 import { ReactComponent as AddPerson } from "../../assets/icons/add-person.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
+import classNames from "classnames";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
@@ -16,7 +17,13 @@ export default function AppointmentPreview({
 }: AppointmentPreviewProps) {
   if (appointment.booked) {
     return (
-      <div className={styles.appointmentPreviewContainer} onClick={onClick}>
+      <div
+        className={classNames(
+          styles.appointmentPreviewContainer,
+          appointment.appointmentId
+        )}
+        onClick={onClick}
+      >
         <div className={styles.appointmentPreviewContent}>
           <div className={styles.nameAndChip}>
             <div className={styles.donorName}>{appointment.donorName}</div>

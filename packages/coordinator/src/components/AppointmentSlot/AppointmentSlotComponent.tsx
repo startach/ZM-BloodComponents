@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./AppointmentSlotList.module.scss";
+import styles from "./AppointmentSlotComponent.module.scss";
 import { AppointmentSlot } from "../../utils/types";
 import AppointmentPreview from "../AppointmentPreview";
 import { DateUtils } from "@zm-blood-components/common";
@@ -11,13 +11,13 @@ export type AppointmentPreviewProps = {
   onAdd: () => void;
 };
 
-export default function AppointmentSlotList({
+export default function AppointmentSlotComponent({
   onClickOnAppointment,
   onAdd,
   appointmentSlot,
 }: AppointmentPreviewProps) {
   return (
-    <div className={styles.appointmentSlotListContainer}>
+    <div>
       <div className={styles.listHeader}>
         <div className={styles.time}>
           {DateUtils.ToTimeString(appointmentSlot.donationStartTimeMillis)}
@@ -29,9 +29,8 @@ export default function AppointmentSlotList({
       </div>
 
       {appointmentSlot.appointments.map((appointment, index) => (
-        <div>
+        <div key={appointment.appointmentId}>
           <AppointmentPreview
-            key={appointment.appointmentId}
             appointment={appointment}
             onClick={() => onClickOnAppointment(appointment.appointmentId)}
           />

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Appointment Slot List Default 1`] = `
+exports[`Storyshots Components/Appointment Slot Default 1`] = `
 <div
   dir="rtl"
   style={
@@ -12,9 +12,7 @@ exports[`Storyshots Components/Appointment Slot List Default 1`] = `
   <div
     className="storyBackground"
   >
-    <div
-      className="appointmentSlotListContainer"
-    >
+    <div>
       <div
         className="listHeader"
       >

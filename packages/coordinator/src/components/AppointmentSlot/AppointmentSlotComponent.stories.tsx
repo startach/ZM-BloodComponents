@@ -1,6 +1,6 @@
-import AppointmentSlotList, {
+import AppointmentSlotComponent, {
   AppointmentPreviewProps,
-} from "./AppointmentSlotList";
+} from "./AppointmentSlotComponent";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
 import {
@@ -8,11 +8,11 @@ import {
   SampleBookedAppointment,
 } from "../../__test__/TestSamples";
 import { BookingChange } from "@zm-blood-components/common";
-import styles from "./AppointmentSlotList.module.scss";
+import styles from "./AppointmentSlotComponent.module.scss";
 
 export default {
-  component: AppointmentSlotList,
-  title: "Components/Appointment Slot List",
+  component: AppointmentSlotComponent,
+  title: "Components/Appointment Slot",
   parameters: { layout: "fullscreen" },
 } as Meta;
 
@@ -50,7 +50,7 @@ const props: AppointmentPreviewProps = {
 
 const Template: Story<AppointmentPreviewProps> = (args) => (
   <div className={styles.storyBackground}>
-    <AppointmentSlotList {...args} />
+    <AppointmentSlotComponent {...args} />
   </div>
 );
 

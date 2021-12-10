@@ -43,7 +43,7 @@ exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer bookedAppointment"
     onClick={[Function]}
   >
     <div
@@ -76,7 +76,7 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer bookedAppointment"
     onClick={[Function]}
   >
     <div
@@ -152,7 +152,7 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer bookedAppointment"
     onClick={[Function]}
   >
     <div
@@ -190,7 +190,7 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer bookedAppointment"
     onClick={[Function]}
   >
     <div
