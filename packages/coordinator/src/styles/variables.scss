@@ -1,6 +1,20 @@
 //colors-------------------------------------------------------
 // See also : src/utils/colors for tsx colors
 :root {
+  --coordinator-primary: #4caf51;
+  --coordinator-bright-green: #a2d45e;
+  --coordinator-selected-green: #a2d45e1f;
+  --coordinator-secondary: #c7007d;
+  --coordinator-light-pink: #fdf5f8;
+  --coordinator-light-black: #1e1f1e;
+  --coordinator-dark-gray: #474747;
+  --coordinator-gray: #7e7e7e;
+  --coordinator-light-gray: #dadee0;
+  --coordinator-light: #f6f6f6;
+  --coordinator-white: #ffffff;
+  --coordinator-error: #cb0027;
+  --coordinator-link: #1e88e5;
+
   --color-primary: #c7007d;
   --color-secondary: #347d8d;
   --color-tertiary: #a5d262;
@@ -9,7 +23,7 @@
   --color-black: black;
   --color-white: white;
 
-  --color-bg: #f3f5f7;
+  --color-bg: #ffffff;
   --color-text: var(--color-black);
 
   --color-statusbar-bg: var(--color-secondary);

@@ -1,12 +1,13 @@
 import Button from "./Button";
 import { ButtonProps, ButtonVariant } from "./Button";
 import { action } from "@storybook/addon-actions";
-import { Story } from "@storybook/react";
+import { Story, Meta } from "@storybook/react";
 
 export default {
   component: Button,
   title: "Components/Button",
-};
+  parameters: { layout: "padded" },
+} as Meta;
 
 const props: ButtonProps = {
   title: "לאישור לחץ כאן",
@@ -59,10 +60,4 @@ Loading.args = {
   ...props,
   isLoading: true,
   color: "secondary",
-};
-
-export const VariantText = Template.bind({});
-VariantText.args = {
-  ...props,
-  variant: ButtonVariant.text,
 };

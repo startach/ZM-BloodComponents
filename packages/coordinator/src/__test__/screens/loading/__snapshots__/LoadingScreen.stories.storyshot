@@ -54,11 +54,6 @@ exports[`Storyshots Screens/Loading Screen Default 1`] = `
         </svg>
       </div>
     </div>
-    <div
-      className="footer"
-    >
-      dev
-    </div>
   </div>
 </div>
 `;

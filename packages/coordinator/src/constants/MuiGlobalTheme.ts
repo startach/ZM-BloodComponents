@@ -15,16 +15,18 @@ const MuiGlobalTheme: ThemeOptions = {
   direction: "rtl", // Both here and <body dir="rtl">
   palette: {
     primary: {
-      light: colors.primary,
       main: colors.primary,
+      contrastText: colors.white,
     },
     secondary: {
-      light: colors.secondary,
       main: colors.secondary,
     },
     info: {
-      light: colors.info,
-      main: colors.info,
+      main: colors.gray,
+    },
+    action: {
+      disabled: colors.gray,
+      disabledBackground: colors.light,
     },
     warning: {
       light: colors.warningLight,
