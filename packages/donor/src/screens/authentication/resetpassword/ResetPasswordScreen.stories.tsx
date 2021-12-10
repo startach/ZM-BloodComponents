@@ -7,7 +7,7 @@ import { Story } from "@storybook/react";
 import GroupsTable, {
   GroupTableProps,
 } from "../../../../../coordinator/src/components/Table/GroupTable";
-import { AppointmentSlot } from "../../../../../coordinator/src/screens/manageAppointmentsScreen/CoordinatorAppointmentsGrouper";
+import { AppointmentSlot } from "../../../../../coordinator/src/utils/types";
 
 export default {
   component: ResetPasswordScreen,

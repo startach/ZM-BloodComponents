@@ -1,9 +1,7 @@
 import { DateUtils } from "@zm-blood-components/common";
-import { ManagedAppointment } from "./CoordinatorAppointmentsGrouper";
+import { Appointment } from "../../utils/types";
 
-export function getAppointmentCopyString(
-  appointment: ManagedAppointment
-): string {
+export function getAppointmentCopyString(appointment: Appointment): string {
   if (
     !appointment.donationStartTimeMillis ||
     !appointment.donorName ||
@@ -12,11 +10,9 @@ export function getAppointmentCopyString(
     return "";
   }
 
-  const copyString: string = `${appointment.donorName}, ${String(
+  return `${appointment.donorName}, ${String(
     appointment.donorPhoneNumber
   )}, ${DateUtils.ToDateString(
     appointment.donationStartTimeMillis
   )} ${DateUtils.ToTimeString(appointment.donationStartTimeMillis)}`;
-
-  return copyString;
 }

@@ -14,11 +14,6 @@ import {
   MainAppointmentTableColumns,
 } from "./ManageAppointmentsTableConfig";
 import {
-  AppointmentSlot,
-  DonationDay,
-  ManagedAppointment,
-} from "./CoordinatorAppointmentsGrouper";
-import {
   GroupTable,
   CardTableRow,
   CardTableRowGroup,
@@ -27,6 +22,7 @@ import HeaderSection from "../../components/HeaderSection";
 import Button, { ButtonVariant } from "../../components/Button";
 import Select from "../../components/Select";
 import { Restore, NewReleases } from "@material-ui/icons";
+import { AppointmentSlot, DonationDay, Appointment } from "../../utils/types";
 
 export interface AppointmentHour {
   hour: string;
@@ -52,7 +48,7 @@ interface ManageAppointmentsScreenProps {
 
 export interface DeleteAppointmentPopupData {
   isOpen: boolean;
-  appointment?: ManagedAppointment;
+  appointment?: Appointment;
   title: string;
   content: string;
   onApproved: () => Promise<void>;

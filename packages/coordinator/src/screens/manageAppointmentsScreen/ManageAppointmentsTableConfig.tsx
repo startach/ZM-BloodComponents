@@ -10,16 +10,13 @@ import {
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import IconButton from "../../components/IconButton";
 import Table from "../../components/Table";
-import {
-  AppointmentSlot,
-  ManagedAppointment,
-} from "./CoordinatorAppointmentsGrouper";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
 import Chip, { ChipColorScheme } from "../../components/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";
 import { getAppointmentCopyString } from "./CopyAppointmentDetailsHelper";
+import { AppointmentSlot, Appointment } from "../../utils/types";
 
 const GetExpandedColumns = (
   setPopupData: (popupData: DeleteAppointmentPopupData) => void,
@@ -27,7 +24,7 @@ const GetExpandedColumns = (
   onDeleteAppointment: (appointmentId: string) => Promise<void>,
   showOnlyRecentChanges: boolean,
   popupFlashMessageTrigger: (message: string) => void
-): CardTableColumn<ManagedAppointment>[] => [
+): CardTableColumn<Appointment>[] => [
   {
     label: "שם מלא",
     cellRenderer: ({ donorName, booked }) => {
@@ -162,7 +159,7 @@ export const AppointmentTableExpandedRowContent = (
   return (
     <Table
       className={Styles["donation-table"]}
-      rows={slot.appointments.map<CardTableRow<ManagedAppointment>>(
+      rows={slot.appointments.map<CardTableRow<Appointment>>(
         (managedAppointment) => ({
           rowData: managedAppointment,
         })
