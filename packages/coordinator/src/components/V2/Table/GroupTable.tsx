@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Divider from "../Divider";
 import Styles from "./GroupTable.module.scss";
-import { SortFunction } from "../../utils/types";
+import { SortFunction } from "../../../utils/types";
 import CardTableItem from "./CardTableItem";
 import classnames from "classnames";
 

@@ -1,11 +1,11 @@
 import Button, { ButtonVariant, ButtonProps } from "../Button";
 import { useEffect, useState } from "react";
 import styles from "./CoordinatorHeader.module.scss";
-import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
+import { CoordinatorScreenKey } from "../../../navigation/CoordinatorScreenKey";
 import EmptyCoordinatorHeader from "./EmptyCoordinatorHeader";
-import { Units } from "../../constants/Units";
-import logoImg from "../../assets/logo.svg";
-import titleImg from "../../assets/blood-bank-zichron-Little-logo.svg";
+import { Units } from "../../../constants/Units";
+import logoImg from "../../../assets/logo.svg";
+import titleImg from "../../../assets/blood-bank-zichron-Little-logo.svg";
 import { Coordinator } from "@zm-blood-components/common";
 
 export interface HeaderButtonFlags {

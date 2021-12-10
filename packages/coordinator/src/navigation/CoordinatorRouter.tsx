@@ -12,12 +12,12 @@ import {
   initFirebase,
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
-import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
+import CoordinatorHeaderContainer from "../components/V2/Header/CoordinatorHeaderContainer";
 import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
-import CoordinatorScreen from "../components/CoordinatorScreen";
+import CoordinatorScreen from "../components/V2/CoordinatorScreen";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
 

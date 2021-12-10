@@ -5,14 +5,17 @@ import {
   SortingUtils,
 } from "@zm-blood-components/common";
 import { BookedDonationWithDonorDetails, Hospital } from "common/src/types";
-import Table, { CardTableColumn, CardTableRow } from "../../components/Table";
-import Spinner from "../../components/Spinner";
-import HeaderSection from "../../components/HeaderSection";
-import Select from "../../components/Select";
-import DatePicker from "../../components/DatePicker";
-import Button from "../../components/Button";
+import Table, {
+  CardTableColumn,
+  CardTableRow,
+} from "../../components/V2/Table";
+import Spinner from "../../components/V2/Spinner";
+import HeaderSection from "../../components/V2/HeaderSection";
+import Select from "../../components/V2/Select";
+import DatePicker from "../../components/V2/DatePicker";
+import Button from "../../components/V2/Button";
 import styles from "./ScheduledAppointmentsScreen.module.scss";
-import CsvDownloaderButton from "../../components/CsvDownloaderButton";
+import CsvDownloaderButton from "../../components/V2/CsvDownloaderButton";
 import {
   csvColumns,
   formatDataByColumns,

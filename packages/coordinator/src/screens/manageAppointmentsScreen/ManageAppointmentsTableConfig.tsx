@@ -6,12 +6,12 @@ import {
 import {
   CardTableColumn,
   CardTableRow,
-} from "coordinator/src/components/Table";
+} from "coordinator/src/components/V2/Table";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import IconButton from "../../components/IconButton";
-import Table from "../../components/Table";
+import IconButton from "../../components/V2/IconButton";
+import Table from "../../components/V2/Table";
 import { DeleteAppointmentPopupData } from "./ManageAppointmentsScreen";
-import Chip, { ChipColorScheme } from "../../components/Chip";
+import Chip, { ChipColorScheme } from "../../components/V2/Chip";
 import userMinusIcon from "../../assets/user-minus.svg";
 import trashIcon from "../../assets/trash.svg";
 import copyIcon from "../../assets/copy.svg";

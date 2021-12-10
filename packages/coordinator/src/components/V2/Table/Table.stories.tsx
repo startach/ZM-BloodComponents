@@ -6,7 +6,7 @@ import {
   Donor,
   DonorNotificationSettings,
 } from "@zm-blood-components/common";
-import { searchDonorColumns } from "../../screens/searchDonorsScreen/SearchDonorsScreen";
+import { searchDonorColumns } from "../../../screens/searchDonorsScreen/SearchDonorsScreen";
 
 export default {
   component: Table,

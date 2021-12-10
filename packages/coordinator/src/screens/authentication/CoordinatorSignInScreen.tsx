@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./CoordinatorSigninScreen.module.scss";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import CoordinatorScreen from "../../components/CoordinatorScreen";
-import Card from "../../components/Card";
+import Button from "../../components/V2/Button";
+import Input from "../../components/V2/Input";
+import CoordinatorScreen from "../../components/V2/CoordinatorScreen";
+import Card from "../../components/V2/Card";
 
 export interface SignInScreenProps {
   onSignInWithEmail: (

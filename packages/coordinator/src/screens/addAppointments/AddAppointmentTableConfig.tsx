@@ -1,7 +1,7 @@
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
-import { CardTableColumn, CardTableRow } from "../../components/Table";
-import { IconButton } from "../../components/IconButton";
+import { CardTableColumn, CardTableRow } from "../../components/V2/Table";
+import { IconButton } from "../../components/V2/IconButton";
 import trashIcon from "../../assets/trash.svg";
 
 const donationTypeText = "סוג תרומה";

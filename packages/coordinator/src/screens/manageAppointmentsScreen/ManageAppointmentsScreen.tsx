@@ -4,9 +4,9 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import Spinner from "../../components/Spinner";
-import Popup from "../../components/Popup";
-import PopupFlashMessage from "../../components/Popup/PopupFlashMessage";
+import Spinner from "../../components/V2/Spinner";
+import Popup from "../../components/V2/Popup";
+import PopupFlashMessage from "../../components/V2/Popup/PopupFlashMessage";
 
 import { useState } from "react";
 import {
@@ -17,10 +17,10 @@ import {
   GroupTable,
   CardTableRow,
   CardTableRowGroup,
-} from "../../components/Table";
-import HeaderSection from "../../components/HeaderSection";
-import Button, { ButtonVariant } from "../../components/Button";
-import Select from "../../components/Select";
+} from "../../components/V2/Table";
+import HeaderSection from "../../components/V2/HeaderSection";
+import Button, { ButtonVariant } from "../../components/V2/Button";
+import Select from "../../components/V2/Select";
 import { Restore, NewReleases } from "@material-ui/icons";
 import { AppointmentSlot, DonationDay, Appointment } from "../../utils/types";
 

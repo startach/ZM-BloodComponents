@@ -1,8 +1,11 @@
 import { Donor, LocaleUtils, SortingUtils } from "@zm-blood-components/common";
 import Styles from "./SearchDonorsScreen.module.scss";
 
-import Spinner from "../../components/Spinner";
-import Table, { CardTableColumn, CardTableRow } from "../../components/Table";
+import Spinner from "../../components/V2/Spinner";
+import Table, {
+  CardTableColumn,
+  CardTableRow,
+} from "../../components/V2/Table";
 
 interface SearchDonorsScreenProps {
   donors: Donor[];

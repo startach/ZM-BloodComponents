@@ -2,10 +2,10 @@ import styles from "./AddAppointmentsScreen.module.scss";
 import AddAppointmentsForm from "./AddAppointmentsForm";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { Hospital } from "@zm-blood-components/common";
-import Button from "../../components/Button";
+import Button from "../../components/V2/Button";
 import { columns, rows } from "./AddAppointmentTableConfig";
-import Table from "../../components/Table";
-import { NotificationPopup } from "../../components/Popup";
+import Table from "../../components/V2/Table";
+import { NotificationPopup } from "../../components/V2/Popup";
 import { useState } from "react";
 import _ from "lodash";
 

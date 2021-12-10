@@ -1,5 +1,5 @@
 import CoordinatorHeader, { HeaderButtonFlags } from "./CoordinatorHeader";
-import { signOut, getEmail } from "../../firebase/FirebaseAuthentication";
+import { signOut, getEmail } from "../../../firebase/FirebaseAuthentication";
 import { Coordinator } from "@zm-blood-components/common";
 import { useHistory, useLocation } from "react-router-dom";
 import { CoordinatorScreenKey } from "coordinator/src/navigation/CoordinatorScreenKey";
