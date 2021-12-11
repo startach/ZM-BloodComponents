@@ -11,10 +11,26 @@ exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
 >
   <div
     className="appointmentPreviewContainer availableAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"
@@ -44,10 +60,26 @@ exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
 >
   <div
     className="appointmentPreviewContainer bookedAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"
@@ -77,10 +109,26 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
 >
   <div
     className="appointmentPreviewContainer bookedAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"
@@ -119,10 +167,26 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
 >
   <div
     className="appointmentPreviewContainer availableAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"
@@ -161,10 +225,26 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
 >
   <div
     className="appointmentPreviewContainer bookedAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"
@@ -203,10 +283,26 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
 >
   <div
     className="appointmentPreviewContainer bookedAppointment"
-    onClick={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
   >
     <div
+      className="deleteButton"
+      onClick={[Function]}
+    >
+      <svg>
+        trash.svg
+      </svg>
+      <div
+        className="deleteButtonText"
+      >
+        מחק תור
+      </div>
+    </div>
+    <div
       className="appointmentPreviewContent"
+      onClick={[Function]}
     >
       <div
         className="nameAndChip"

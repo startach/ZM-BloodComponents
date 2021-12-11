@@ -1,36 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./AppointmentPreview.module.scss";
 import { Appointment } from "../../utils/types";
 import { ReactComponent as ChevronLeft } from "../../assets/icons/chevron-left.svg";
 import { ReactComponent as AddPerson } from "../../assets/icons/add-person.svg";
+import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
 import classNames from "classnames";
+import SwippableComponent from "../SwippableComponent";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
   onClick: () => void;
+  onDelete: () => void;
 };
 
 export default function AppointmentPreview({
+  onDelete,
   onClick,
   appointment,
 }: AppointmentPreviewProps) {
-  // const [showOptions, setShowOptions] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   return (
-    <div
+    <SwippableComponent
       className={classNames(
         styles.appointmentPreviewContainer,
         appointment.appointmentId
       )}
-      onClick={onClick}
-      // onSwipeRight={() => setShowOptions(false)}
-      // onSwipeLeft={() => setShowOptions(true)}
+      onSwipeRight={() => setShowDelete(false)}
+      onSwipeLeft={() => setShowDelete(true)}
     >
-      <div className={styles.appointmentPreviewContent}>
+      <DeleteAppointmentButton onClick={onDelete} showDelete={showDelete} />
+      <div
+        className={styles.appointmentPreviewContent}
+        onClick={showDelete ? undefined : onClick}
+      >
         <AppointmentContent appointment={appointment} />
       </div>
-    </div>
+    </SwippableComponent>
   );
 }
 
@@ -63,5 +70,23 @@ function AppointmentContent(props: { appointment: Appointment }) {
       </div>
       <AddPerson />
     </>
+  );
+}
+
+function DeleteAppointmentButton(props: {
+  onClick: () => void;
+  showDelete: boolean;
+}) {
+  return (
+    <div
+      className={classNames({
+        [styles.deleteButton]: true,
+        [styles.deleteButtonVisible]: props.showDelete,
+      })}
+      onClick={props.onClick}
+    >
+      <Trash />
+      <div className={styles.deleteButtonText}>מחק תור</div>
+    </div>
   );
 }

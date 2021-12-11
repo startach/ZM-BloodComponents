@@ -35,10 +35,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer availableAppointment"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -65,10 +80,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer bookedAppointment"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -95,10 +125,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer booked"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -134,10 +179,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer completed"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -173,10 +233,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer no show"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -212,10 +287,25 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       <div>
         <div
           className="appointmentPreviewContainer cancelled"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -281,10 +371,25 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
       <div>
         <div
           className="appointmentPreviewContainer availableAppointment"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"
@@ -311,10 +416,25 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
       <div>
         <div
           className="appointmentPreviewContainer cancelled"
-          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
         >
           <div
+            className="deleteButton"
+          >
+            <svg>
+              trash.svg
+            </svg>
+            <div
+              className="deleteButtonText"
+            >
+              מחק תור
+            </div>
+          </div>
+          <div
             className="appointmentPreviewContent"
+            onClick={[Function]}
           >
             <div
               className="nameAndChip"

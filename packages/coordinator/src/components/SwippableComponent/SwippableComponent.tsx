@@ -1,7 +1,7 @@
 import React, { TouchEventHandler, useState } from "react";
 
 export type AppointmentPreviewProps = {
-  onClick: () => void;
+  onClick?: () => void;
   onSwipeLeft: () => void;
   onSwipeRight: () => void;
   children: React.ReactNode;
