@@ -24,7 +24,7 @@ import { mocked } from "ts-jest/utils";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
-jest.setTimeout(7000)
+jest.setTimeout(7000);
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CoordinatorBookAppointmentFunctionName]
@@ -48,48 +48,51 @@ const OTHER_DONATION_OF_USER =
 
 const GROUP_NAME_1 = "GetDonorsFunctionNameTestGroup1";
 
-beforeAll(async () => {
+const reset = async () => {
+  // delete the coordinator
   await deleteAdmin(COORDINATOR_ID);
+
+  // delete the groups assotiated to this coordinator
+  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
+  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
+
+  // delete donor
   await DonorDataAccessLayer.deleteDonor(DONOR_ID);
+
+  // delete appointments
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
     OTHER_DONATION_OF_USER,
   ]);
-  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
-  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
+};
+
+beforeAll(async () => {
+  reset();
   mockedNotifier.mockClear();
 });
 
-afterEach(async () => {
-  await deleteAdmin(COORDINATOR_ID);
-  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
-  await deleteAppointmentsByIds([
-    APPOINTMENT_TO_BOOK_1,
-    APPOINTMENT_TO_BOOK_2,
-    OTHER_DONATION_OF_USER,
-  ]);
-  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
-  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
-});
+afterEach(reset);
 
 test("Unauthenticated user throws exception", async () => {
   const action = () => wrapped(bookAppointmentRequest(false));
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-// test("Donor not found throws exception", async () => {
-//   await createCoordinator(CoordinatorRole.SYSTEM_USER);
-//   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
-//   const action = () =>
-//     wrapped(bookAppointmentRequest(false), {
-//       auth: {
-//         uid: COORDINATOR_ID,
-//       },
-//     });
+test("Donor does not exist return no permission to donor", async () => {
+  await createCoordinator(CoordinatorRole.SYSTEM_USER);
+  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
+  const response = await wrapped(bookAppointmentRequest(false), {
+    auth: {
+      uid: COORDINATOR_ID,
+    },
+  });
 
-//   await expectAsyncThrows(action, "Donor not found");
-// });
+  const data = response as FunctionsApi.BookAppointmentResponse;
+  expect(data.status).toEqual(
+    FunctionsApi.BookAppointmentStatus.NO_PERMISSIONS_FOR_DONOR
+  );
+});
 
 test("User that is not admin throws exception", async () => {
   const action = () =>
@@ -233,17 +236,6 @@ test("Valid manual donor request books appointment with manual donor", async () 
 
   expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 });
-
-// async function createDonor() {
-//   const donor: DbDonor = {
-//     id: DONOR_ID,
-//     ...sampleUser,
-//     firstName: "firstName",
-//     email: "email@email.com",
-//   };
-
-//   await DonorDataAccessLayer.setDonor(donor);
-// }
 
 async function createDonor(groupId: string, testUser?: boolean) {
   const donor: DbDonor = {

@@ -25,8 +25,7 @@ export async function deleteAdmin(adminId: string) {
   await collection.doc(adminId).delete();
 }
 
-
-export async function getAdminDonors(adminId: string) : Promise<DbDonor[]> {
+export async function getAdminDonors(adminId: string): Promise<DbDonor[]> {
   // check that the coordinator has permissions to this donor
   const coordinator = await getCoordinator(adminId);
   if (!coordinator) {

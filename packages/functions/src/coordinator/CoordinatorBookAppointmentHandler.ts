@@ -11,14 +11,14 @@ export default async function (
   callerId: string
 ): Promise<FunctionsApi.BookAppointmentResponse> {
   if (request.donorId !== MANUAL_DONOR_ID) {
-    const donors = await CoordinatorDAL.getAdminDonors(callerId)
+    const donors = await CoordinatorDAL.getAdminDonors(callerId);
 
     const availableDonors = new Set(
       donors.filter((donor) => !donor.testUser).map((donor) => donor.id)
     );
 
     if (!availableDonors.has(request.donorId)) {
-      return {  
+      return {
         status: FunctionsApi.BookAppointmentStatus.NO_PERMISSIONS_FOR_DONOR,
       };
     }
