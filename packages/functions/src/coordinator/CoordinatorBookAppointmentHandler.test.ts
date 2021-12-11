@@ -24,6 +24,8 @@ import { mocked } from "ts-jest/utils";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 
+jest.setTimeout(7000)
+
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CoordinatorBookAppointmentFunctionName]
 );
