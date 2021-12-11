@@ -1,6 +1,5 @@
 import {
   FunctionsApi,
-  CoordinatorRole,
   MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { bookAppointment } from "../common/BookAppointmentHelper";
