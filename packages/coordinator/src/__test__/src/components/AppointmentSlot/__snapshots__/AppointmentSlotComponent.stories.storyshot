@@ -34,7 +34,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       </div>
       <div>
         <div
-          className="appointmentPreviewContainer"
+          className="appointmentPreviewContainer availableAppointment"
           onClick={[Function]}
         >
           <div
@@ -109,9 +109,13 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 משה כהן
               </div>
               <div
-                className="recentChangeChip"
+                className="recentChangeChipContainer"
               >
-                נקבע לאחרונה
+                <div
+                  className="recentChangeChip greenChip"
+                >
+                  חדש
+                </div>
               </div>
             </div>
             <svg>
@@ -144,9 +148,13 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 משה כהן
               </div>
               <div
-                className="recentChangeChip"
+                className="recentChangeChipContainer"
               >
-                הושלם
+                <div
+                  className="recentChangeChip greenChip"
+                >
+                  הושלם
+                </div>
               </div>
             </div>
             <svg>
@@ -179,9 +187,13 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 משה כהן
               </div>
               <div
-                className="recentChangeChip"
+                className="recentChangeChipContainer"
               >
-                לא הגיע
+                <div
+                  className="recentChangeChip redChip"
+                >
+                  לא הגיע
+                </div>
               </div>
             </div>
             <svg>
@@ -199,7 +211,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
       </div>
       <div>
         <div
-          className="appointmentPreviewContainer"
+          className="appointmentPreviewContainer cancelled"
           onClick={[Function]}
         >
           <div
@@ -214,9 +226,13 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 תור ריק
               </div>
               <div
-                className="recentChangeChip"
+                className="recentChangeChipContainer"
               >
-                בוטל לאחרונה
+                <div
+                  className="recentChangeChip redChip"
+                >
+                  בוטל לאחרונה
+                </div>
               </div>
             </div>
             <svg>
@@ -264,7 +280,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
       </div>
       <div>
         <div
-          className="appointmentPreviewContainer"
+          className="appointmentPreviewContainer availableAppointment"
           onClick={[Function]}
         >
           <div
@@ -294,7 +310,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
       </div>
       <div>
         <div
-          className="appointmentPreviewContainer"
+          className="appointmentPreviewContainer cancelled"
           onClick={[Function]}
         >
           <div
@@ -309,9 +325,13 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
                 תור ריק
               </div>
               <div
-                className="recentChangeChip"
+                className="recentChangeChipContainer"
               >
-                בוטל לאחרונה
+                <div
+                  className="recentChangeChip redChip"
+                >
+                  בוטל לאחרונה
+                </div>
               </div>
             </div>
             <svg>

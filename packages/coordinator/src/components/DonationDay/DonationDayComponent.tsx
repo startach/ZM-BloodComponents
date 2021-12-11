@@ -5,17 +5,20 @@ import styles from "./DonationDayComponent.module.scss";
 import _ from "lodash";
 import Toggle from "../Toggle";
 import { DateUtils } from "@zm-blood-components/common";
+import { ReactComponent as X } from "../../assets/icons/x.svg";
 
 export type DonationDayComponentProps = {
   donationDay: DonationDay;
   onClickOnAppointment: (appointmentId: string) => void;
   onAdd: () => void;
+  onClose: () => void;
 };
 
 export default function DonationDayComponent({
   onClickOnAppointment,
   onAdd,
   donationDay,
+  onClose,
 }: DonationDayComponentProps) {
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
@@ -32,12 +35,16 @@ export default function DonationDayComponent({
   return (
     <div className={styles.donationDay}>
       <div className={styles.donationDayHeader}>
-        <DayString allAppointments={allAppointments} />
+        <div className={styles.donationDate}>
+          <X className={styles.close} onClick={onClose} />
 
-        <div className={styles.data}>
-          <span>{appointmentsCount} תורים</span>
-          <span className={styles.dataDivider}>|</span>
-          <span>{bookedAppointmentsCount} רשומים</span>
+          <DayString allAppointments={allAppointments} />
+
+          <div className={styles.data}>
+            <span>{appointmentsCount} תורים</span>
+            <span className={styles.dataDivider}>|</span>
+            <span>{bookedAppointmentsCount} רשומים</span>
+          </div>
         </div>
 
         <div className={styles.divider} />
@@ -76,7 +83,7 @@ function DayString(props: { allAppointments: Appointment[] }) {
 
   const arbitraryStartTime = props.allAppointments[0].donationStartTimeMillis;
   const weekdayString = DateUtils.ToWeekDayString(arbitraryStartTime);
-  const dateString = DateUtils.ToDateString(arbitraryStartTime);
+  const dateString = DateUtils.ToShortDateString(arbitraryStartTime);
 
   return (
     <div className={styles.dayString}>

@@ -58,6 +58,7 @@ const props: DonationDayComponentProps = {
     ],
   },
   onClickOnAppointment: action("onClickOnAppointment"),
+  onClose: action("onClose"),
   onAdd: action("onAdd"),
 };
 

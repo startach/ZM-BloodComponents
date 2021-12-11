@@ -4,8 +4,21 @@
   flex-direction: column;
 }
 
+.close {
+  cursor: pointer;
+  align-self: end;
+  margin-bottom: 5px;
+}
+
 .donationDayHeader {
-  padding: 30px 20px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.donationDate {
+  padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dayString {
@@ -23,7 +36,7 @@
   margin-top: 10px;
   font-size: 14px;
   line-height: 17px;
-  color: var(--coordinator-dark-gray);
+  color: var(--coordinator-gray);
 }
 
 .dataDivider {
@@ -31,11 +44,12 @@
 }
 
 .divider {
-  margin: 10px 0;
+  margin-top: 24px;
   border-bottom: 1px solid var(--coordinator-divider);
 }
 
 .availableAppointmentsToggle {
+  margin: 18px 20px;
   font-size: 16px;
   line-height: 19px;
   color: var(--coordinator-dark-gray);

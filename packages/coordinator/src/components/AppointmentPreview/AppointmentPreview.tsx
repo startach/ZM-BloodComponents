@@ -15,41 +15,53 @@ export default function AppointmentPreview({
   onClick,
   appointment,
 }: AppointmentPreviewProps) {
-  if (appointment.booked) {
-    return (
-      <div
-        className={classNames(
-          styles.appointmentPreviewContainer,
-          appointment.appointmentId
-        )}
-        onClick={onClick}
-      >
-        <div className={styles.appointmentPreviewContent}>
-          <div className={styles.nameAndChip}>
-            <div className={styles.donorName}>{appointment.donorName}</div>
-            {appointment.recentChangeType && (
-              <RecentUpdateChip
-                recentChangeType={appointment.recentChangeType}
-              />
-            )}
-          </div>
-          <ChevronLeft />
-        </div>
+  // const [showOptions, setShowOptions] = useState(false);
+
+  return (
+    <div
+      className={classNames(
+        styles.appointmentPreviewContainer,
+        appointment.appointmentId
+      )}
+      onClick={onClick}
+      // onSwipeRight={() => setShowOptions(false)}
+      // onSwipeLeft={() => setShowOptions(true)}
+    >
+      <div className={styles.appointmentPreviewContent}>
+        <AppointmentContent appointment={appointment} />
       </div>
+    </div>
+  );
+}
+
+function AppointmentContent(props: { appointment: Appointment }) {
+  if (props.appointment.booked) {
+    return (
+      <>
+        <div className={styles.nameAndChip}>
+          <div className={styles.donorName}>{props.appointment.donorName}</div>
+          {props.appointment.recentChangeType && (
+            <RecentUpdateChip
+              recentChangeType={props.appointment.recentChangeType}
+            />
+          )}
+        </div>
+        <ChevronLeft />
+      </>
     );
   }
 
   return (
-    <div className={styles.appointmentPreviewContainer} onClick={onClick}>
-      <div className={styles.appointmentPreviewContent}>
-        <div className={styles.nameAndChip}>
-          <div className={styles.availableAppointmentText}>תור ריק</div>
-          {appointment.recentChangeType && (
-            <RecentUpdateChip recentChangeType={appointment.recentChangeType} />
-          )}
-        </div>
-        <AddPerson />
+    <>
+      <div className={styles.nameAndChip}>
+        <div className={styles.availableAppointmentText}>תור ריק</div>
+        {props.appointment.recentChangeType && (
+          <RecentUpdateChip
+            recentChangeType={props.appointment.recentChangeType}
+          />
+        )}
       </div>
-    </div>
+      <AddPerson />
+    </>
   );
 }

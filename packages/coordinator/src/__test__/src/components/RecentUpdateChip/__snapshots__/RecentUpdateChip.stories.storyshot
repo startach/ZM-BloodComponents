@@ -10,9 +10,13 @@ exports[`Storyshots Components/Recent Change Chip Booked 1`] = `
   }
 >
   <div
-    className="recentChangeChip"
+    className="recentChangeChipContainer"
   >
-    נקבע לאחרונה
+    <div
+      className="recentChangeChip greenChip"
+    >
+      חדש
+    </div>
   </div>
 </div>
 `;
@@ -27,9 +31,13 @@ exports[`Storyshots Components/Recent Change Chip Cancelled 1`] = `
   }
 >
   <div
-    className="recentChangeChip"
+    className="recentChangeChipContainer"
   >
-    בוטל לאחרונה
+    <div
+      className="recentChangeChip redChip"
+    >
+      בוטל לאחרונה
+    </div>
   </div>
 </div>
 `;
@@ -44,9 +52,13 @@ exports[`Storyshots Components/Recent Change Chip Completed 1`] = `
   }
 >
   <div
-    className="recentChangeChip"
+    className="recentChangeChipContainer"
   >
-    הושלם
+    <div
+      className="recentChangeChip greenChip"
+    >
+      הושלם
+    </div>
   </div>
 </div>
 `;
@@ -61,9 +73,13 @@ exports[`Storyshots Components/Recent Change Chip No Show 1`] = `
   }
 >
   <div
-    className="recentChangeChip"
+    className="recentChangeChipContainer"
   >
-    לא הגיע
+    <div
+      className="recentChangeChip redChip"
+    >
+      לא הגיע
+    </div>
   </div>
 </div>
 `;

@@ -10,7 +10,7 @@ exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer availableAppointment"
     onClick={[Function]}
   >
     <div
@@ -91,9 +91,13 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
           משה כהן
         </div>
         <div
-          className="recentChangeChip"
+          className="recentChangeChipContainer"
         >
-          נקבע לאחרונה
+          <div
+            className="recentChangeChip greenChip"
+          >
+            חדש
+          </div>
         </div>
       </div>
       <svg>
@@ -114,7 +118,7 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
   }
 >
   <div
-    className="appointmentPreviewContainer"
+    className="appointmentPreviewContainer availableAppointment"
     onClick={[Function]}
   >
     <div
@@ -129,9 +133,13 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
           תור ריק
         </div>
         <div
-          className="recentChangeChip"
+          className="recentChangeChipContainer"
         >
-          בוטל לאחרונה
+          <div
+            className="recentChangeChip redChip"
+          >
+            בוטל לאחרונה
+          </div>
         </div>
       </div>
       <svg>
@@ -167,9 +175,13 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
           משה כהן
         </div>
         <div
-          className="recentChangeChip"
+          className="recentChangeChipContainer"
         >
-          הושלם
+          <div
+            className="recentChangeChip greenChip"
+          >
+            הושלם
+          </div>
         </div>
       </div>
       <svg>
@@ -205,9 +217,13 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
           משה כהן
         </div>
         <div
-          className="recentChangeChip"
+          className="recentChangeChipContainer"
         >
-          לא הגיע
+          <div
+            className="recentChangeChip redChip"
+          >
+            לא הגיע
+          </div>
         </div>
       </div>
       <svg>

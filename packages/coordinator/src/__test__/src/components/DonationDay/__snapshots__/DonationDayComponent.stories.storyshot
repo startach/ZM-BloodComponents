@@ -16,33 +16,43 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
       className="donationDayHeader"
     >
       <div
-        className="dayString"
+        className="donationDate"
       >
-        <span
-          className="weekday"
+        <svg
+          className="close"
+          onClick={[Function]}
         >
-          יום ראשון
-        </span>
-        <span>
-          10/12/2023
-        </span>
-      </div>
-      <div
-        className="data"
-      >
-        <span>
-          6
-           תורים
-        </span>
-        <span
-          className="dataDivider"
+          x.svg
+        </svg>
+        <div
+          className="dayString"
         >
-          |
-        </span>
-        <span>
-          4
-           רשומים
-        </span>
+          <span
+            className="weekday"
+          >
+            יום ראשון
+          </span>
+          <span>
+            10/12
+          </span>
+        </div>
+        <div
+          className="data"
+        >
+          <span>
+            6
+             תורים
+          </span>
+          <span
+            className="dataDivider"
+          >
+            |
+          </span>
+          <span>
+            4
+             רשומים
+          </span>
+        </div>
       </div>
       <div
         className="divider"
@@ -101,9 +111,13 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
                   משה כהן
                 </div>
                 <div
-                  className="recentChangeChip"
+                  className="recentChangeChipContainer"
                 >
-                  לא הגיע
+                  <div
+                    className="recentChangeChip redChip"
+                  >
+                    לא הגיע
+                  </div>
                 </div>
               </div>
               <svg>
@@ -180,9 +194,13 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
                   משה כהן
                 </div>
                 <div
-                  className="recentChangeChip"
+                  className="recentChangeChipContainer"
                 >
-                  הושלם
+                  <div
+                    className="recentChangeChip greenChip"
+                  >
+                    הושלם
+                  </div>
                 </div>
               </div>
               <svg>
@@ -200,7 +218,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
         </div>
         <div>
           <div
-            className="appointmentPreviewContainer"
+            className="appointmentPreviewContainer cancelled"
             onClick={[Function]}
           >
             <div
@@ -215,9 +233,13 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
                   תור ריק
                 </div>
                 <div
-                  className="recentChangeChip"
+                  className="recentChangeChipContainer"
                 >
-                  בוטל לאחרונה
+                  <div
+                    className="recentChangeChip redChip"
+                  >
+                    בוטל לאחרונה
+                  </div>
                 </div>
               </div>
               <svg>
@@ -249,7 +271,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
         </div>
         <div>
           <div
-            className="appointmentPreviewContainer"
+            className="appointmentPreviewContainer availableAppointment"
             onClick={[Function]}
           >
             <div
@@ -294,9 +316,13 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
                   משה כהן
                 </div>
                 <div
-                  className="recentChangeChip"
+                  className="recentChangeChipContainer"
                 >
-                  נקבע לאחרונה
+                  <div
+                    className="recentChangeChip greenChip"
+                  >
+                    חדש
+                  </div>
                 </div>
               </div>
               <svg>
