@@ -1,7 +1,4 @@
-import {
-  FunctionsApi,
-  MANUAL_DONOR_ID,
-} from "@zm-blood-components/common";
+import { FunctionsApi, MANUAL_DONOR_ID } from "@zm-blood-components/common";
 import { bookAppointment } from "../common/BookAppointmentHelper";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
 
