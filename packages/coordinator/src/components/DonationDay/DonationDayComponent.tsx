@@ -10,11 +10,13 @@ import { ReactComponent as X } from "../../assets/icons/x.svg";
 export type DonationDayComponentProps = {
   donationDay: DonationDay;
   onClickOnAppointment: (appointmentId: string) => void;
+  onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
   onClose: () => void;
 };
 
 export default function DonationDayComponent({
+  onDeleteAppointment,
   onClickOnAppointment,
   onAdd,
   donationDay,
@@ -68,6 +70,7 @@ export default function DonationDayComponent({
             appointmentSlot={slot}
             onAdd={onAdd}
             onClickOnAppointment={onClickOnAppointment}
+            onDeleteAppointment={onDeleteAppointment}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
           />
         ))}

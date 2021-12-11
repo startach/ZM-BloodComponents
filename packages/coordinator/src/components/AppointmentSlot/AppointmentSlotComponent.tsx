@@ -8,11 +8,13 @@ import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 export type AppointmentPreviewProps = {
   appointmentSlot: AppointmentSlot;
   onClickOnAppointment: (appointmentId: string) => void;
+  onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
   showOnlyAvailableAppointments: boolean;
 };
 
 export default function AppointmentSlotComponent({
+  onDeleteAppointment,
   onClickOnAppointment,
   onAdd,
   appointmentSlot,
@@ -42,6 +44,7 @@ export default function AppointmentSlotComponent({
       {appointments.map((appointment, index) => (
         <div key={appointment.appointmentId}>
           <AppointmentPreview
+            onDelete={() => onDeleteAppointment(appointment.appointmentId)}
             appointment={appointment}
             onClick={() => onClickOnAppointment(appointment.appointmentId)}
           />

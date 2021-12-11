@@ -103,6 +103,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg
@@ -171,6 +172,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg
@@ -216,6 +218,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg
@@ -270,6 +273,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg
@@ -338,6 +342,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg
@@ -383,6 +388,7 @@ exports[`Storyshots Components/Donation Day Default 1`] = `
           >
             <div
               className="deleteButton"
+              onClick={[Function]}
             >
               <svg>
                 trash.svg

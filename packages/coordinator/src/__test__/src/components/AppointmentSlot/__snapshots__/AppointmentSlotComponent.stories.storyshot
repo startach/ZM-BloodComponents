@@ -41,6 +41,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -86,6 +87,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -131,6 +133,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -185,6 +188,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -239,6 +243,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -293,6 +298,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -377,6 +383,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
@@ -422,6 +429,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
         >
           <div
             className="deleteButton"
+            onClick={[Function]}
           >
             <svg>
               trash.svg
