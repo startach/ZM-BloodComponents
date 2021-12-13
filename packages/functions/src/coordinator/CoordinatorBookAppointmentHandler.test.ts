@@ -82,11 +82,12 @@ test("Unauthenticated user throws exception", async () => {
 test("Donor does not exist return no permission to donor", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
-  const action = () => wrapped(bookAppointmentRequest(false), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
+  const action = () =>
+    wrapped(bookAppointmentRequest(false), {
+      auth: {
+        uid: COORDINATOR_ID,
+      },
+    });
 
   await expectAsyncThrows(action, "Donor not found");
 });
