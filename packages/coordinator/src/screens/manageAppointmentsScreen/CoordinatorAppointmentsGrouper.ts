@@ -1,33 +1,6 @@
-import {
-  BloodType,
-  BookingChange,
-  DateUtils,
-  Donor,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { Donor, FunctionsApi } from "@zm-blood-components/common";
 import * as _ from "lodash";
-
-export type DonationDay = {
-  day: string;
-  appointmentSlots: AppointmentSlot[];
-};
-
-export type AppointmentSlot = {
-  donationStartTimeMillis: number;
-  appointments: ManagedAppointment[];
-};
-
-export type ManagedAppointment = {
-  appointmentId: string;
-  booked: boolean;
-  donorName?: string;
-  donationStartTimeMillis?: number;
-  donorPhoneNumber?: string;
-  bookingTimeMillis?: number;
-  recentChangeType?: BookingChange;
-  isPastAppointment: boolean;
-  bloodType?: BloodType;
-};
+import { AppointmentSlot, DonationDay, Appointment } from "../../utils/types";
 
 export function groupAppointmentDays(
   appointments: FunctionsApi.AppointmentApiEntry[],
@@ -37,14 +10,13 @@ export function groupAppointmentDays(
     .groupBy((appointment) =>
       new Date(appointment.donationStartTimeMillis).toDateString()
     )
-    .map((appointmentsInDay, dateString) => {
+    .map((appointmentsInDay) => {
       const appointmentSlotsInDay = getAppointmentSlotsInDay(
         appointmentsInDay,
         donorsInAppointments
       );
 
       const res: DonationDay = {
-        day: DateUtils.ToDateString(new Date(dateString)),
         appointmentSlots: appointmentSlotsInDay,
       };
 
@@ -77,7 +49,7 @@ function appointmentsToAppointmentSlot(
 
   return {
     donationStartTimeMillis: arbitraryAppointment.donationStartTimeMillis,
-    appointments: appointmentsInSlot.map<ManagedAppointment>((a) => {
+    appointments: appointmentsInSlot.map<Appointment>((a) => {
       const donor = getDonor(donorsInAppointments, a.donorId);
 
       return {

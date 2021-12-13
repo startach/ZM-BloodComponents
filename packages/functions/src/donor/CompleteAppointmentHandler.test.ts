@@ -86,6 +86,23 @@ test("Donor is not booked on this appointment throws exception", async () => {
   );
 });
 
+test.each([
+  AppointmentStatus.AVAILABLE,
+  AppointmentStatus.COMPLETED,
+  AppointmentStatus.NOSHOW,
+])("Appointment has invalid status - %s", async (status) => {
+  await saveAppointment(DONOR_ID, status);
+
+  const action = () =>
+    wrapped(completeAppointmentRequest(), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
+
+  await expectAsyncThrows(action, "Invalid appointment status - " + status);
+});
+
 test("Valid request complete appointment", async () => {
   await createDonor();
   await saveAppointment(DONOR_ID);
@@ -127,7 +144,10 @@ test.each([true, false])(
   }
 );
 
-async function saveAppointment(donorId: string) {
+async function saveAppointment(
+  donorId: string,
+  status = AppointmentStatus.BOOKED
+) {
   const time = admin.firestore.Timestamp.now();
   const appointment: DbAppointment = {
     id: APPOINTMENT_TO_COMPLETE,
@@ -137,7 +157,7 @@ async function saveAppointment(donorId: string) {
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId,
     bookingTime: time,
-    status: AppointmentStatus.BOOKED,
+    status: status,
     lastChangeType: BookingChange.BOOKED,
   };
 

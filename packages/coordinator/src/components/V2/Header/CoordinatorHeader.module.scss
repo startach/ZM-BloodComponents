@@ -1,0 +1,93 @@
+@import "src/styles/mixins";
+
+$header_height: var(--height-header, 100px);
+
+.navBar {
+  background: var(--color-statusbar-bg);
+  color: var(--color-statusbar-text);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+}
+
+.logoContainer {
+  padding: 0 var(--layout-distance-normal);
+  box-sizing: border-box;
+  height: 100%;
+  @media only screen and (max-width: 700px) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+.logo {
+  height: 100%;
+  width: auto;
+  right: var(--layout-distance-large);
+
+  @media only screen and (max-width: 700px) {
+    height: 75%;
+    align-self: center;
+  }
+}
+
+.buttons {
+  flex-grow: 1;
+  align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 700px) {
+    align-self: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+.mainButtons {
+  margin: auto;
+}
+
+.buttons button {
+  border-width: 0;
+  box-shadow: none !important;
+  padding: var(--layout-distance-small) !important;
+}
+
+.buttons > button:hover,
+.buttons > button:active {
+  text-decoration: underline solid white;
+}
+
+.selected__tab {
+  text-decoration: underline solid white !important;
+}
+
+.loggedIn {
+  box-sizing: border-box;
+  padding-left: 8px;
+  padding-right: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: 700px) {
+    flex-direction: column;
+    margin-bottom: -10px;
+    padding: 0;
+    align-self: center;
+  }
+}
+
+.name {
+  margin-bottom: -10px;
+}
+
+.title {
+  height: 30%;
+  align-self: center;
+}

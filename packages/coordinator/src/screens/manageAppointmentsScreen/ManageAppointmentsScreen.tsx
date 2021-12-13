@@ -1,12 +1,13 @@
 import {
+  DateUtils,
   FunctionsApi,
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
-import Spinner from "../../components/Spinner";
-import Popup from "../../components/Popup";
-import PopupFlashMessage from "../../components/Popup/PopupFlashMessage";
+import Spinner from "../../components/V2/Spinner";
+import Popup from "../../components/V2/Popup";
+import PopupFlashMessage from "../../components/V2/Popup/PopupFlashMessage";
 
 import { useState } from "react";
 import {
@@ -14,19 +15,15 @@ import {
   MainAppointmentTableColumns,
 } from "./ManageAppointmentsTableConfig";
 import {
-  AppointmentSlot,
-  DonationDay,
-  ManagedAppointment,
-} from "./CoordinatorAppointmentsGrouper";
-import {
   GroupTable,
   CardTableRow,
   CardTableRowGroup,
-} from "../../components/Table";
-import HeaderSection from "../../components/HeaderSection";
-import Button, { ButtonVariant } from "../../components/Button";
-import Select from "../../components/Select";
+} from "../../components/V2/Table";
+import HeaderSection from "../../components/V2/HeaderSection";
+import Button, { ButtonVariant } from "../../components/V2/Button";
+import Select from "../../components/V2/Select";
 import { Restore, NewReleases } from "@material-ui/icons";
+import { AppointmentSlot, DonationDay, Appointment } from "../../utils/types";
 
 export interface AppointmentHour {
   hour: string;
@@ -52,7 +49,7 @@ interface ManageAppointmentsScreenProps {
 
 export interface DeleteAppointmentPopupData {
   isOpen: boolean;
-  appointment?: ManagedAppointment;
+  appointment?: Appointment;
   title: string;
   content: string;
   onApproved: () => Promise<void>;
@@ -91,7 +88,12 @@ export default function ManageAppointmentsScreen({
 
   const groups = donationDays.map<CardTableRowGroup<AppointmentSlot>>(
     (day) => ({
-      groupLabel: day.day,
+      groupLabel:
+        day.appointmentSlots.length > 0
+          ? DateUtils.ToDateString(
+              day.appointmentSlots[0].donationStartTimeMillis
+            )
+          : "",
       rowsInGroup: day.appointmentSlots.map<CardTableRow<AppointmentSlot>>(
         (slot) => ({
           rowData: slot,

@@ -1,7 +1,8 @@
-import { Button as MuiButton, makeStyles } from "@material-ui/core";
+import { Button as MuiButton, PropTypes } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
+import styles from "./Button.module.scss";
 
 export enum ButtonVariant {
   text = "text",
@@ -10,49 +11,58 @@ export enum ButtonVariant {
 }
 
 export type ButtonProps = {
-  onClick: () => void;
   title: string;
+  onClick: () => void;
   /** Text - clickable text, Outlined - Inside out, or Contained (Default) */
   variant?: ButtonVariant;
   className?: string;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
   isDisabled?: boolean;
   isLoading?: boolean;
-  isFullWidth?: boolean;
+  color?: PropTypes.Color;
 };
-
-const useButtonStyles = makeStyles({
-  root: {
-    borderRadius: 100,
-  },
-});
 
 export default function Button({
   onClick,
   title,
+  color,
   variant = ButtonVariant.contained,
   className,
-  startIcon,
-  endIcon,
   isDisabled = false,
   isLoading = false,
-  isFullWidth = false,
 }: ButtonProps) {
-  const classes = useButtonStyles();
+  if (variant === ButtonVariant.text) {
+    return (
+      <div
+        className={classnames(className, styles.textButton)}
+        onClick={isDisabled ? undefined : onClick}
+      >
+        {title}
+      </div>
+    );
+  }
+
+  let selectedColor: PropTypes.Color;
+  if (color) {
+    selectedColor = color;
+  } else {
+    selectedColor = "primary";
+  }
 
   return (
     <MuiButton
       onClick={onClick}
-      variant={variant}
-      color={variant === ButtonVariant.text ? "inherit" : "primary"}
-      className={classnames(className, classes.root)}
-      startIcon={!isLoading && startIcon}
-      endIcon={!isLoading && endIcon}
+      className={classnames(className, styles.button)}
       disabled={isDisabled || isLoading}
-      fullWidth={isFullWidth}
+      variant={variant}
+      fullWidth
+      color={selectedColor}
+      disableElevation
     >
-      {isLoading ? <Spinner /> : title}
+      {isLoading ? (
+        <Spinner color={selectedColor} />
+      ) : (
+        <div className={styles.buttonText}>{title}</div>
+      )}
     </MuiButton>
   );
 }
