@@ -42,9 +42,10 @@ export function QuestionnaireScreenContainer(
       );
     }
 
-    const bookAppointmentResponse = await FirebaseFunctions.bookAppointment(
-      appointmentToBookStore.appointmentIds
-    );
+    const bookAppointmentResponse =
+      await FirebaseFunctions.donorBookAppointment(
+        appointmentToBookStore.appointmentIds
+      );
 
     switch (bookAppointmentResponse.status) {
       case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:

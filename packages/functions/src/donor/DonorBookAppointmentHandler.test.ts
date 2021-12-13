@@ -21,7 +21,7 @@ import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.BookAppointmentFunctionName]
+  Functions[FunctionsApi.DonorBookAppointmentFunctionName]
 );
 
 jest.mock("../notifications/BookAppointmentNotifier");
@@ -57,6 +57,7 @@ test("Unauthenticated user throws exception", async () => {
 });
 
 test("Donor not found throws exception", async () => {
+  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
   const action = () =>
     wrapped(bookAppointmentRequest(), {
       auth: {

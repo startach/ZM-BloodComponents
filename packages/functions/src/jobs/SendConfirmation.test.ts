@@ -23,7 +23,7 @@ import { SendConfirmationReminders } from "./CronJobs";
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.BookAppointmentFunctionName]
+  Functions[FunctionsApi.DonorBookAppointmentFunctionName]
 );
 
 jest.mock("../notifications/NotificationSender");

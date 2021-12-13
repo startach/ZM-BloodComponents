@@ -6,6 +6,7 @@ import {
   CoordinatorRole,
   DonorNotificationSettings,
   Hospital,
+  MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
 
 export type DbDonor = {
@@ -50,7 +51,8 @@ export type DbAppointment = {
 
   // added donor
   donorId: string; // Empty string means appointment is available
-  assigningCoordinator?: string;
+  donorDetails?: MinimalDonorDetailsForAppointment;
+  assigningCoordinatorId?: string;
   bookingTime?: firestore.Timestamp;
   confirmationTime?: firestore.Timestamp; // Time donor confirmed they will come
   /* Represents changes to booking status **/
