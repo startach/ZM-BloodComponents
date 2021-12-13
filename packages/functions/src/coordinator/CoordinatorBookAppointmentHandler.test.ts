@@ -82,16 +82,13 @@ test("Unauthenticated user throws exception", async () => {
 test("Donor does not exist return no permission to donor", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
-  const response = await wrapped(bookAppointmentRequest(false), {
+  const action = () => wrapped(bookAppointmentRequest(false), {
     auth: {
       uid: COORDINATOR_ID,
     },
   });
 
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(
-    FunctionsApi.BookAppointmentStatus.NO_PERMISSIONS_FOR_DONOR
-  );
+  await expectAsyncThrows(action, "Donor not found");
 });
 
 test("User that is not admin throws exception", async () => {
@@ -136,68 +133,6 @@ test("No free appointments ", async () => {
     FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
   );
   expect(data.bookedAppointment).toBeUndefined();
-});
-
-test.skip("Donor has recent donation throws exception", async () => {
-  await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  await createDonor(GROUP_NAME_1);
-  await saveAppointment(APPOINTMENT_TO_BOOK_1, false, 1);
-  await saveAppointment(OTHER_DONATION_OF_USER, true, 3);
-
-  const response = await wrapped(bookAppointmentRequest(false), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
-
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(
-    FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
-  );
-  expect(data.bookedAppointment).toBeUndefined();
-});
-
-test("Valid request books appointment with registered donor", async () => {
-  mockedNotifier.mockReturnValue(Promise.resolve());
-  await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  await createDonor(GROUP_NAME_1);
-  await saveAppointment(APPOINTMENT_TO_BOOK_1, true, -10);
-  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
-
-  const response = await wrapped(bookAppointmentRequest(false), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
-
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
-
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
-  expect(appointment[0].donorId).toEqual(DONOR_ID);
-  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
-
-  const bookedAppointment = data.bookedAppointment!;
-  expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
-  expect(bookedAppointment.donorId).toEqual(DONOR_ID);
-
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
-    3_000
-  );
-
-  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
-
-  expect(mockedNotifier).toBeCalledWith(
-    appointment[0],
-    expect.objectContaining({
-      ...sampleUser,
-      groupId: GROUP_NAME_1,
-    })
-  );
-
-  const updatedDonor = await DonorDataAccessLayer.getDonor(DONOR_ID);
-  expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
 });
 
 test("Valid manual donor request books appointment with manual donor", async () => {
