@@ -7,11 +7,13 @@ export default async function (
   callerId: string
 ): Promise<FunctionsApi.BookAppointmentResponse> {
   if (request.donorId !== MANUAL_DONOR_ID) {
-    const coordinator = await CoordinatorDAL.getCoordinator(callerId);
+    throw Error(`Coordinator booking for real donots is not supported yet`);
+  }
 
-    if (!coordinator) {
-      throw Error(`User ${callerId} is not an admin`);
-    }
+  const coordinator = await CoordinatorDAL.getCoordinator(callerId);
+
+  if (!coordinator) {
+    throw Error(`User ${callerId} is not an admin`);
   }
 
   return bookAppointment(

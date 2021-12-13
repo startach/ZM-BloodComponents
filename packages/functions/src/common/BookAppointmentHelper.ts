@@ -47,7 +47,7 @@ export async function bookAppointment(
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
   appointmentToBook.status = AppointmentStatus.BOOKED;
 
-  if (donorId === MANUAL_DONOR_ID) {
+  if (coordinatorId && donorId === MANUAL_DONOR_ID) {
     if (!donorDetails) {
       return {
         status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,
