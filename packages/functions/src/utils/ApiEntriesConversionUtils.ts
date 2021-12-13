@@ -24,7 +24,7 @@ export function dbAppointmentToAppointmentApiEntry(
   const {
     id,
     donorId,
-    assigningCoordinator,
+    assigningCoordinatorId,
     hospital,
     donationStartTime,
     bookingTime,
@@ -38,7 +38,7 @@ export function dbAppointmentToAppointmentApiEntry(
   return {
     id: id,
     donorId: donorId,
-    assigningCoordinator: assigningCoordinator,
+    assigningCoordinatorId: assigningCoordinatorId,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),
@@ -49,8 +49,16 @@ export function dbAppointmentToAppointmentApiEntry(
 export function dbAppointmentToBookedAppointmentApiEntry(
   appointment: DbAppointment
 ): FunctionsApi.BookedAppointmentApiEntry {
-  const { id, donorId, hospital, donationStartTime, bookingTime, status } =
-    appointment;
+  const {
+    id,
+    donorId,
+    hospital,
+    donationStartTime,
+    bookingTime,
+    status,
+    donorDetails,
+    assigningCoordinatorId,
+  } = appointment;
 
   if (!id || !donorId || !bookingTime) {
     console.error(
@@ -62,6 +70,8 @@ export function dbAppointmentToBookedAppointmentApiEntry(
   return {
     id: id,
     donorId: donorId,
+    donorDetails: donorDetails,
+    assigningCoordinatorId: assigningCoordinatorId,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
     bookingTimeMillis: bookingTime?.toMillis(),
