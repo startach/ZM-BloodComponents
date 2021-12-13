@@ -79,9 +79,7 @@ test("Unauthenticated user throws exception", async () => {
   await expectAsyncThrows(action, "Unauthorized");
 });
 
-test("Donor does not exist return no permission to donor", async () => {
-  await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  await saveAppointment(APPOINTMENT_TO_BOOK_2, false, 3);
+test("non manual donor throws", async () => {
   const action = () =>
     wrapped(bookAppointmentRequest(false), {
       auth: {
@@ -89,12 +87,15 @@ test("Donor does not exist return no permission to donor", async () => {
       },
     });
 
-  await expectAsyncThrows(action, "Donor not found");
+  await expectAsyncThrows(
+    action,
+    "Coordinator booking for real donots is not supported yet"
+  );
 });
 
 test("User that is not admin throws exception", async () => {
   const action = () =>
-    wrapped(bookAppointmentRequest(false), {
+    wrapped(bookAppointmentRequest(true), {
       auth: {
         uid: COORDINATOR_ID,
       },
@@ -105,8 +106,7 @@ test("User that is not admin throws exception", async () => {
 
 test("No such appointments", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  await createDonor(GROUP_NAME_1);
-  const response = await wrapped(bookAppointmentRequest(false), {
+  const response = await wrapped(bookAppointmentRequest(true), {
     auth: {
       uid: COORDINATOR_ID,
     },
@@ -120,11 +120,10 @@ test("No such appointments", async () => {
 
 test("No free appointments ", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  await createDonor(GROUP_NAME_1);
   await saveAppointment(APPOINTMENT_TO_BOOK_1, true, 10);
   await saveAppointment(APPOINTMENT_TO_BOOK_2, true, 8);
 
-  const response = await wrapped(bookAppointmentRequest(false), {
+  const response = await wrapped(bookAppointmentRequest(true), {
     auth: {
       uid: COORDINATOR_ID,
     },
