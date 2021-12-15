@@ -25,12 +25,14 @@ export async function deleteAdmin(adminId: string) {
   await collection.doc(adminId).delete();
 }
 
-export async function getAdminDonors(adminId: string): Promise<DbDonor[]> {
+export async function getCoordinatorDonors(
+  coordinatorId: string
+): Promise<DbDonor[]> {
   // check that the coordinator has permissions to this donor
-  const coordinator = await getCoordinator(adminId);
+  const coordinator = await getCoordinator(coordinatorId);
   if (!coordinator) {
-    console.error("Could not find calling user", adminId);
-    throw Error(`User ${adminId} is not an admin`);
+    console.error("Could not find calling user", coordinatorId);
+    throw Error(`User ${coordinatorId} is not an admin`);
   }
 
   let donors: DbDonor[] = [];
