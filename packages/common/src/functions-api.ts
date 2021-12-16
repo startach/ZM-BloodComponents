@@ -116,6 +116,22 @@ export interface GetDonorResponse {
   donor?: Donor;
 }
 
+export const SaveInCalanderFunctionName = "SaveInCalander";
+export interface SaveInCalanderRequest {
+  donorId: string;
+  appointment: AppointmentApiEntry;
+}
+
+export enum SaveInCalanderStatus {
+  SUCCESS = "SUCCESS",
+  DONOR_NOT_FOUND = "DONOR_NOT_FOUND",
+  COULD_NOT_SAVE_ON_CALANDER = "COULD_NOT_SAVE_ON_CALANDER"
+}
+
+export interface SaveInCalanderResponse {
+  status: SaveInCalanderStatus
+}
+
 export const SaveDonorFunctionName = "saveDonor";
 export interface SaveDonorRequest {
   id: string;
