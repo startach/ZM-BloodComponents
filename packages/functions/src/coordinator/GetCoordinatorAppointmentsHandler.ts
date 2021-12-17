@@ -73,7 +73,7 @@ async function fetchCoordinator(callerId: string) {
 
 async function validate(
   coordinator: DbCoordinator,
-  hospital: Hospital | "all",
+  hospital: Hospital | "all"
 ): Promise<Hospital[]> {
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:

@@ -20,7 +20,7 @@ import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 
-jest.setTimeout(7000)
+jest.setTimeout(7000);
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
@@ -300,7 +300,7 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
 function callFunction(
   userId?: string,
   earliestTimeDays?: number,
-  all?: boolean,
+  all?: boolean
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const earliestStartTimeMillis = earliestTimeDays
     ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
