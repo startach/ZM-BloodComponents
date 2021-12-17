@@ -13,7 +13,7 @@ import {
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
 import CoordinatorHeaderContainer from "../components/V2/Header/CoordinatorHeaderContainer";
-import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
+import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreenOld/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
