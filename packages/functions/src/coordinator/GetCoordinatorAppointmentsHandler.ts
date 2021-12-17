@@ -21,13 +21,13 @@ export default async function (
 ) {
   const hospital = request.hospital;
   const coordinator = await fetchCoordinator(callerId);
-  await validate(coordinator, hospital);
+  const hospitalsArray = await validate(coordinator, hospital);
 
   const startTimeFilter = request.earliestStartTimeMillis
     ? new Date(request.earliestStartTimeMillis)
     : undefined;
   const appointmentsByHospital = await getAppointmentsByHospital(
-    hospital,
+    hospitalsArray,
     startTimeFilter
   );
 
@@ -71,21 +71,32 @@ async function fetchCoordinator(callerId: string) {
   return coordinator;
 }
 
-async function validate(coordinator: DbCoordinator, hospital: Hospital) {
+async function validate(
+  coordinator: DbCoordinator,
+  hospital: Hospital | "all",
+): Promise<Hospital[]> {
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:
-      return;
     case CoordinatorRole.ZM_COORDINATOR:
     case CoordinatorRole.HOSPITAL_COORDINATOR:
+      if (hospital === "all") {
+        return coordinator.hospitals ?? [];
+      }
       if (!coordinator.hospitals?.includes(hospital)) {
         console.error(
           `Coordinator ${coordinator.id} ${coordinator.role} ${coordinator.hospitals} missing permissions for ${hospital}`
         );
         throw Error("Coordinator has no permissions for hospital");
       }
-      break;
+      return [hospital];
     case CoordinatorRole.GROUP_COORDINATOR:
       break;
+  }
+
+  if (hospital === "all") {
+    return Object.values(Hospital);
+  } else {
+    return [hospital];
   }
 }
 

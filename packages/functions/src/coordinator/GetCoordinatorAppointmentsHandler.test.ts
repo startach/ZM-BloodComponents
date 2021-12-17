@@ -20,6 +20,8 @@ import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 
+jest.setTimeout(7000)
+
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
 );
@@ -144,6 +146,59 @@ test("Valid request returns appointments of the right hospital", async () => {
   );
 });
 
+test("Valid request all returns appointments of the right hospital", async () => {
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+    Hospital.TEL_HASHOMER,
+  ]);
+
+  await createDonor(DONOR_ID_1, "group1");
+  await createDonor(DONOR_ID_2, "group1");
+
+  await saveAppointment(
+    PAST_BOOKED,
+    getDate(-3),
+    Hospital.ASAF_HAROFE,
+    DONOR_ID_1
+  );
+  await saveAppointment(
+    PAST_OTHER_HOSPITAL,
+    getDate(-2),
+    Hospital.ICHILOV,
+    DONOR_ID_1
+  );
+  await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
+  await saveAppointment(
+    FUTURE_BOOKED,
+    getDate(3),
+    Hospital.TEL_HASHOMER,
+    DONOR_ID_2
+  );
+  await saveAppointment(
+    FUTURE_OTHER_HOSPITAL,
+    getDate(4),
+    Hospital.BEILINSON,
+    DONOR_ID_2
+  );
+  await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
+  const res = await callFunction(COORDINATOR_ID, undefined, true);
+  let appointments = res.appointments.filter((a) =>
+    ALL_APPOINTMENT_IDS.includes(a.id)
+  );
+  expect(appointments).toHaveLength(4);
+  expect(appointments[0].id).toEqual(PAST_BOOKED);
+  expect(appointments[1].id).toEqual(PAST_NOT_BOOKED);
+  expect(appointments[2].id).toEqual(FUTURE_BOOKED);
+  expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
+  // May contain other donor ids of other appointments that are not part of this test
+  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+    DONOR_ID_1
+  );
+  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+    DONOR_ID_2
+  );
+});
+
 test("Valid request returns appointments with right time filtering", async () => {
   await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
 
@@ -244,16 +299,22 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
 
 function callFunction(
   userId?: string,
-  earliestTimeDays?: number
+  earliestTimeDays?: number,
+  all?: boolean,
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const earliestStartTimeMillis = earliestTimeDays
     ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
     : undefined;
 
-  const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
+  let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital: Hospital.TEL_HASHOMER,
     earliestStartTimeMillis,
   };
+
+  if (all) {
+    request.hospital = "all";
+  }
+
   return wrapped(request, {
     auth: {
       uid: userId,
