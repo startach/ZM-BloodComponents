@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div>
+    <div
+      className="pickerLabel"
+    >
+      בחר/י את סוג הדם שלך
+    </div>
+    <div
+      className="pickerButtons"
+    >
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          O+
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          O-
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          A+
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          A-
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          B+
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          B-
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          AB+
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          AB-
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          לא ידוע
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Picker Donation Times Picker 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div>
+    <div
+      className="pickerLabel"
+    >
+      בחר/י תור פנוי
+    </div>
+    <div
+      className="pickerButtons"
+    >
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          10:30
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          10:50
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          11:15
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          11:40
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          13:30
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          13:50
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          14:15
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          16:40
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          17:20
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton"
+          color="default"
+          onClick={[Function]}
+        >
+          17:30
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

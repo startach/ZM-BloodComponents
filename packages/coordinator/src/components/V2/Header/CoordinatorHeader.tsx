@@ -5,7 +5,7 @@ import { CoordinatorScreenKey } from "../../../navigation/CoordinatorScreenKey";
 import EmptyCoordinatorHeader from "./EmptyCoordinatorHeader";
 import { Units } from "../../../constants/Units";
 import logoImg from "../../../assets/logo.svg";
-import titleImg from "../../../assets/blood-bank-zichron-Little-logo.svg";
+import titleImg from "../../../assets/blood-bank-zichron-Little-logo-white.svg";
 import { Coordinator } from "@zm-blood-components/common";
 
 export interface HeaderButtonFlags {
