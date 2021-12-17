@@ -1,11 +1,12 @@
 import Input, { InputProps } from "./Input";
 import { action } from "@storybook/addon-actions";
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 
 export default {
   component: Input,
   title: "Components/Input",
-};
+  parameters: { layout: "padded" },
+} as Meta;
 
 const props: InputProps = {
   label: "שם פרטי",
@@ -14,11 +15,7 @@ const props: InputProps = {
   onChangeText: action("onChangeText"),
 };
 
-const Template: Story<InputProps> = (args) => (
-  <div style={{ marginLeft: 20, marginRight: 20 }}>
-    <Input {...args} />
-  </div>
-);
+const Template: Story<InputProps> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
