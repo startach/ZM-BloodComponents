@@ -12,13 +12,13 @@ import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
 import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.svg";
+import { signOut } from "../../firebase/FirebaseAuthentication";
 
 export interface AppHeaderProps {
   title?: string;
   hasBackButton?: boolean;
   hasBurgerMenu?: boolean;
   onBack?: () => void;
-  onSignOut: () => void;
 }
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
@@ -80,7 +80,7 @@ export default function CoordinatorHeader(props: AppHeaderProps) {
         <MenuItem
           title={"התנתקות"}
           onClick={() => {
-            props.onSignOut();
+            signOut();
             setShowSideBar(false);
           }}
           icon={<FeatherLogOut />}

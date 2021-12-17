@@ -49,20 +49,22 @@ export default function Button({
   }
 
   return (
-    <MuiButton
-      onClick={onClick}
-      className={classnames(className, styles.button)}
-      disabled={isDisabled || isLoading}
-      variant={variant}
-      fullWidth
-      color={selectedColor}
-      disableElevation
-    >
-      {isLoading ? (
-        <Spinner color={selectedColor} />
-      ) : (
-        <div className={styles.buttonText}>{title}</div>
-      )}
-    </MuiButton>
+    <div className={className}>
+      <MuiButton
+        onClick={onClick}
+        className={classnames(styles.button)}
+        disabled={isDisabled || isLoading}
+        variant={variant}
+        fullWidth
+        color={selectedColor}
+        disableElevation
+      >
+        {isLoading ? (
+          <Spinner color={selectedColor} />
+        ) : (
+          <div className={styles.buttonText}>{title}</div>
+        )}
+      </MuiButton>
+    </div>
   );
 }

@@ -11,7 +11,6 @@ export default {
 const props: AppHeaderProps = {
   hasBackButton: false,
   hasBurgerMenu: false,
-  onSignOut: action("onSignOut"),
 };
 
 const Template: Story<AppHeaderProps> = (args) => (
