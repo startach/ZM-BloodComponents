@@ -3,6 +3,7 @@ import {
   FunctionsApi,
   Hospital,
   MANUAL_DONOR_ID,
+  HospitalUtils
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
@@ -13,8 +14,6 @@ import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
-import _ from "lodash";
-import { activeHospitals } from "common/src/HospitalUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
@@ -95,7 +94,7 @@ async function getValidHospitalsOrThrow(
   }
 
   if (hospital === "all") {
-    return activeHospitals;
+    return HospitalUtils.activeHospitals;
   } else {
     return [hospital];
   }
