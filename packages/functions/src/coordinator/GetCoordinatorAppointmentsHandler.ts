@@ -3,7 +3,7 @@ import {
   FunctionsApi,
   Hospital,
   MANUAL_DONOR_ID,
-  HospitalUtils
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
