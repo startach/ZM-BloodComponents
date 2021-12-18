@@ -21,7 +21,7 @@ export default async function (
 ) {
   const hospital = request.hospital;
   const coordinator = await fetchCoordinator(callerId);
-  const hospitalsArray = await validate(coordinator, hospital);
+  const hospitalsArray = await getValidHospitalsOrThrow(coordinator, hospital);
 
   const startTimeFilter = request.earliestStartTimeMillis
     ? new Date(request.earliestStartTimeMillis)
@@ -71,7 +71,7 @@ async function fetchCoordinator(callerId: string) {
   return coordinator;
 }
 
-async function validate(
+async function getValidHospitalsOrThrow(
   coordinator: DbCoordinator,
   hospital: Hospital | "all"
 ): Promise<Hospital[]> {
