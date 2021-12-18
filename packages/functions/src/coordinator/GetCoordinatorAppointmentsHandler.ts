@@ -14,6 +14,7 @@ import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 import _ from "lodash";
+import { activeHospitals } from "common/src/HospitalUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
@@ -94,7 +95,7 @@ async function getValidHospitalsOrThrow(
   }
 
   if (hospital === "all") {
-    return Object.values(Hospital);
+    return activeHospitals;
   } else {
     return [hospital];
   }
