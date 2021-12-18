@@ -83,7 +83,9 @@ test("User that is not coordinator throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+  ]);
 
   const action = () => callFunction(COORDINATOR_ID);
 

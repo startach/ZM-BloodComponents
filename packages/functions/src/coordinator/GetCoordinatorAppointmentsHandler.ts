@@ -76,7 +76,8 @@ async function getValidHospitalsOrThrow(
   coordinator: DbCoordinator,
   hospital: Hospital | "all"
 ): Promise<Hospital[]> {
-  const allActiveHospitalsFiltered = hospital === "all"? HospitalUtils.activeHospitals : [hospital];
+  const allActiveHospitalsFiltered =
+    hospital === "all" ? HospitalUtils.activeHospitals : [hospital];
 
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:
@@ -95,7 +96,7 @@ async function getValidHospitalsOrThrow(
       }
       return [hospital];
     case CoordinatorRole.GROUP_COORDINATOR:
-      return hospital === "all"? coordinator.hospitals ?? [] : [hospital];
+      return hospital === "all" ? coordinator.hospitals ?? [] : [hospital];
   }
 
   throw Error("Unfamiliar coordinator role");
