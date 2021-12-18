@@ -14,6 +14,7 @@ import { getDonors } from "../dal/DonorDataAccessLayer";
 import { getCoordinator } from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
+import _ from "lodash";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
