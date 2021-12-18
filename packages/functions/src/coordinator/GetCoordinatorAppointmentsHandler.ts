@@ -76,9 +76,13 @@ async function getValidHospitalsOrThrow(
   coordinator: DbCoordinator,
   hospital: Hospital | "all"
 ): Promise<Hospital[]> {
+  const allActiveHospitalsFiltered = hospital === "all"? HospitalUtils.activeHospitals : [hospital];
+
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:
+      return allActiveHospitalsFiltered;
     case CoordinatorRole.ZM_COORDINATOR:
+      return allActiveHospitalsFiltered;
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       if (hospital === "all") {
         return coordinator.hospitals ?? [];
@@ -91,14 +95,10 @@ async function getValidHospitalsOrThrow(
       }
       return [hospital];
     case CoordinatorRole.GROUP_COORDINATOR:
-      break;
+      return hospital === "all"? coordinator.hospitals ?? [] : [hospital];
   }
 
-  if (hospital === "all") {
-    return HospitalUtils.activeHospitals;
-  } else {
-    return [hospital];
-  }
+  throw Error("Unfamiliar coordinator role");
 }
 
 async function filterDonorsInGroup(
