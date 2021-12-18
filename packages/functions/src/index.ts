@@ -20,6 +20,7 @@ import { completeAppointmentApi } from "./notifications/CompleteAppointmentApi";
 import { jobHandler } from "./jobs/SchemaJobs";
 
 admin.initializeApp(functions.config().firebase);
+
 admin.firestore().settings({ timestampsInSnapshots: true });
 
 // Coordinator
