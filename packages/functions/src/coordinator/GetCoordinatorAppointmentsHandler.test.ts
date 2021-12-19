@@ -19,6 +19,7 @@ import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
+import { array } from "yargs";
 
 jest.setTimeout(7000);
 
@@ -69,12 +70,12 @@ const reset = async () => {
 beforeAll(reset);
 afterEach(reset);
 test("Unauthenticated user throws exception", async () => {
-  const action = () => callFunction();
+  const action = () => callFunction(Hospital.TEL_HASHOMER);
   await expectAsyncThrows(action, "Unauthorized");
 });
 
 test("User that is not coordinator throws exception", async () => {
-  const action = () => callFunction(COORDINATOR_ID);
+  const action = () => callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
@@ -87,7 +88,7 @@ test("User that does not have the right hospital throws exception", async () => 
     Hospital.ASAF_HAROFE,
   ]);
 
-  const action = () => callFunction(COORDINATOR_ID);
+  const action = () => callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
@@ -130,7 +131,7 @@ test("Valid request returns appointments of the right hospital", async () => {
     DONOR_ID_2
   );
   await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
-  const res = await callFunction(COORDINATOR_ID);
+  const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
   );
@@ -148,58 +149,91 @@ test("Valid request returns appointments of the right hospital", async () => {
   );
 });
 
-test("Valid request all returns appointments of the right hospital", async () => {
-  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
-    Hospital.ASAF_HAROFE,
-    Hospital.TEL_HASHOMER,
-  ]);
+test.each([
+  CoordinatorRole.HOSPITAL_COORDINATOR,
+  CoordinatorRole.SYSTEM_USER,
+  CoordinatorRole.ZM_COORDINATOR,
+])(
+  "Valid request for all users, returns write users for each role",
+  async (coordinatorRole: CoordinatorRole) => {
+    if (coordinatorRole === CoordinatorRole.HOSPITAL_COORDINATOR) {
+      await createUser(coordinatorRole, [
+        Hospital.ASAF_HAROFE,
+        Hospital.SOROKA,
+        Hospital.TEL_HASHOMER,
+      ]);
+    } else {
+      await createUser(coordinatorRole);
+    }
 
-  await createDonor(DONOR_ID_1, "group1");
-  await createDonor(DONOR_ID_2, "group1");
+    await createDonor(DONOR_ID_1, "group1");
+    await createDonor(DONOR_ID_2, "group1");
 
-  await saveAppointment(
-    PAST_BOOKED,
-    getDate(-3),
-    Hospital.ASAF_HAROFE,
-    DONOR_ID_1
-  );
-  await saveAppointment(
-    PAST_OTHER_HOSPITAL,
-    getDate(-2),
-    Hospital.ICHILOV,
-    DONOR_ID_1
-  );
-  await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
-  await saveAppointment(
-    FUTURE_BOOKED,
-    getDate(3),
-    Hospital.TEL_HASHOMER,
-    DONOR_ID_2
-  );
-  await saveAppointment(
-    FUTURE_OTHER_HOSPITAL,
-    getDate(4),
-    Hospital.BEILINSON,
-    DONOR_ID_2
-  );
-  await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
-  const res = await callFunction(COORDINATOR_ID, undefined, true);
-  let appointments = res.appointments.filter((a) =>
-    ALL_APPOINTMENT_IDS.includes(a.id)
-  );
-  expect(appointments).toHaveLength(4);
-  expect(appointments[0].id).toEqual(PAST_BOOKED);
-  expect(appointments[1].id).toEqual(PAST_NOT_BOOKED);
-  expect(appointments[2].id).toEqual(FUTURE_BOOKED);
-  expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
-  // May contain other donor ids of other appointments that are not part of this test
-  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
-    DONOR_ID_1
-  );
-  expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
-    DONOR_ID_2
-  );
-});
+    await saveAppointment(
+      PAST_BOOKED,
+      getDate(-3),
+      Hospital.SOROKA,
+      DONOR_ID_1
+    );
+    await saveAppointment(
+      PAST_OTHER_HOSPITAL,
+      getDate(-2),
+      Hospital.ICHILOV,
+      DONOR_ID_1
+    );
+    await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
+    await saveAppointment(
+      FUTURE_BOOKED,
+      getDate(3),
+      Hospital.TEL_HASHOMER,
+      DONOR_ID_2
+    );
+    await saveAppointment(
+      FUTURE_OTHER_HOSPITAL,
+      getDate(4),
+      Hospital.BEILINSON,
+      DONOR_ID_2
+    );
+    await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
+    const res = await callFunction("all", COORDINATOR_ID);
+    let appointments = res.appointments.filter((a) =>
+      ALL_APPOINTMENT_IDS.includes(a.id)
+    );
+
+    const appointmentsIds = new Set(
+      appointments.map((appointment) => appointment.id)
+    );
+
+    expect(appointmentsIds).toContain(PAST_BOOKED);
+    expect(appointmentsIds).toContain(PAST_NOT_BOOKED);
+    expect(appointmentsIds).toContain(FUTURE_BOOKED);
+    expect(appointmentsIds).toContain(FUTURE_NOT_BOOKED);
+
+    switch (coordinatorRole) {
+      case CoordinatorRole.HOSPITAL_COORDINATOR:
+        expect(appointments).toHaveLength(4);
+        break;
+      case CoordinatorRole.SYSTEM_USER:
+        expect(appointments).toHaveLength(6);
+        expect(appointmentsIds).toContain(FUTURE_OTHER_HOSPITAL);
+        expect(appointmentsIds).toContain(PAST_OTHER_HOSPITAL);
+        break;
+      case CoordinatorRole.ZM_COORDINATOR:
+        expect(appointments).toHaveLength(6);
+        expect(appointmentsIds).toContain(FUTURE_OTHER_HOSPITAL);
+        expect(appointmentsIds).toContain(PAST_OTHER_HOSPITAL);
+        break;
+    }
+
+    // May contain other donor ids of other appointments that are not part of this test
+    expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+      DONOR_ID_1
+    );
+    expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
+      DONOR_ID_2
+    );
+  }
+);
 
 test("Valid request returns appointments with right time filtering", async () => {
   await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
@@ -228,7 +262,7 @@ test("Valid request returns appointments with right time filtering", async () =>
   );
   await saveAppointment(FUTURE_NOT_BOOKED, getDate(35), Hospital.TEL_HASHOMER);
 
-  const res = await callFunction(COORDINATOR_ID, 14);
+  const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID, 14);
 
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
@@ -276,7 +310,7 @@ test("Valid request for group coordinator returns only users in group", async ()
     OTHER_COORDINATOR_ID
   );
 
-  const res = await callFunction(COORDINATOR_ID);
+  const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
 
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
@@ -300,22 +334,18 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
 }
 
 function callFunction(
+  hospital: Hospital | "all",
   userId?: string,
-  earliestTimeDays?: number,
-  all?: boolean
+  earliestTimeDays?: number
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const earliestStartTimeMillis = earliestTimeDays
     ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
     : undefined;
 
   let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
-    hospital: Hospital.TEL_HASHOMER,
+    hospital: hospital,
     earliestStartTimeMillis,
   };
-
-  if (all) {
-    request.hospital = "all";
-  }
 
   return wrapped(request, {
     auth: {
