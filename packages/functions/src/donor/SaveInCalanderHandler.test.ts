@@ -8,7 +8,7 @@ import { sampleUser } from "../testUtils/TestSamples";
 import { DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
-  Functions[FunctionsApi.GetDonorFunctionName]
+  Functions[FunctionsApi.SaveInCalanderFunctionName]
 );
 
 const ADMIN_ID = "SaveCalanderAdminId";
@@ -32,19 +32,19 @@ test("Unauthenticated user throws exception", async () => {
 test("User that is not the donor or admin throws exception", async () => {
   const action = () => callTarget(DONOR_ID, "otherUserId");
 
-  await expectAsyncThrows(action, "Unauthorized getDonor request");
+  await expectAsyncThrows(action, "Unauthorized saveInCalander request");
 });
 
 test("Invalid request throws exception", async () => {
   const action = () => callTarget("", DONOR_ID);
 
-  await expectAsyncThrows(action, "Invalid getDonor request");
+  await expectAsyncThrows(action, "Invalid saveInCalander request");
 });
 
 test("No such donor returns empty response", async () => {
   const res = await callTarget(DONOR_ID, DONOR_ID);
 
-  expect(res.donor).toBeUndefined();
+  expect(res.status).toEqual(FunctionsApi.SaveInCalanderStatus.DONOR_NOT_FOUND);
 });
 
 test("Donor request returns donor", async () => {
@@ -52,13 +52,14 @@ test("Donor request returns donor", async () => {
 
   const res = await callTarget(DONOR_ID, DONOR_ID);
 
-  expect(res.donor?.id).toEqual(DONOR_ID);
+  expect(res.status).toEqual(FunctionsApi.SaveInCalanderStatus.SUCCESS);
 });
 
 async function createDonor() {
   const donor: DbDonor = {
     id: DONOR_ID,
     ...sampleUser,
+    email: "yedidya03@gmail.com"
   };
 
   await setDonor(donor);
@@ -72,5 +73,5 @@ async function callTarget(donorId?: string, callingUser?: string) {
         uid: callingUser,
       },
     }
-  )) as FunctionsApi.GetDonorResponse;
+  )) as FunctionsApi.SaveInCalanderResponse;
 }

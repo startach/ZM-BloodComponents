@@ -116,7 +116,7 @@ export interface GetDonorResponse {
   donor?: Donor;
 }
 
-export const SaveInCalanderFunctionName = "SaveInCalander";
+export const SaveInCalanderFunctionName = "saveInCalendar";
 export interface SaveInCalanderRequest {
   donorId: string;
   appointment: AppointmentApiEntry;

@@ -1,10 +1,9 @@
 import { DateUtils, FunctionsApi } from "@zm-blood-components/common";
-import { SaveInCalanderStatus } from "common/src/functions-api";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import * as functions from "firebase-functions";
 
 import { calendar_v3, google } from 'googleapis';
-import { OAuth2Client, Credentials } from 'google-auth-library';
+import { OAuth2Client } from 'google-auth-library';
 import Calendar = calendar_v3.Calendar;
 import Schema$Event = calendar_v3.Schema$Event;
 
@@ -13,23 +12,23 @@ export default async function (
   callerId: string
 ): Promise<FunctionsApi.SaveInCalanderResponse> {
   if (!request.donorId) {
-    throw new Error("Invalid getDonor request");
+    throw new Error("Invalid saveInCalander request");
   }
 
   if (callerId !== request.donorId) {
-    throw new Error("Unauthorized getDonor request");
+    throw new Error("Unauthorized saveInCalander request");
   }
 
   const dbDonor = await getDonor(request.donorId);
   if (!dbDonor){
     return {
-      status: SaveInCalanderStatus.DONOR_NOT_FOUND
+      status: FunctionsApi.SaveInCalanderStatus.DONOR_NOT_FOUND
     }; 
   }
 
   const time = DateUtils.ToDateString(request.appointment.donationStartTimeMillis, "YY-MM-DDThh:mm:ss+02:00");
 
-  var event : Schema$Event = {  
+  const event : Schema$Event = {  
     summary: "תרומת טרומבוציטים",
     description: "can be modified in the future",
     start: {
@@ -53,10 +52,10 @@ export default async function (
     refresh_token: googleCreds.refresh_token
   });
 
-  addEvent(event, auth);
+  addEvent(event, auth).catch(err => console.log(err));
 
   return {
-    status: SaveInCalanderStatus.SUCCESS
+    status: FunctionsApi.SaveInCalanderStatus.SUCCESS
   };
 }
 

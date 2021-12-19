@@ -8,6 +8,7 @@ import donorBookAppointmentHandler from "./donor/DonorBookAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import completeAppointmentHandler from "./donor/CompleteAppointmentHandler";
 import geDonorHandler from "./donor/GetDonorHandler";
+import saveInCalendarHandler from "./donor/SaveInCalanderHandler"
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
@@ -50,6 +51,7 @@ export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
+export const saveInCalendar = handler(saveInCalendarHandler);
 export const unsubscribe = unsubscribeHandler;
 
 // Jobs
