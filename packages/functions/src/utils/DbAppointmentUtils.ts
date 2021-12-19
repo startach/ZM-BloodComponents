@@ -5,8 +5,9 @@ import { DbAppointment } from "../function-types";
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
 ): DbAppointment {
-  const { donorId, bookingTime, confirmationTime, ...otherProperties } =
+  const { donorId, bookingTime, confirmationTime, donorDetails, ...otherProperties } =
     appointment;
+
   return {
     ...otherProperties,
     donorId: "",
