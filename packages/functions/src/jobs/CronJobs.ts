@@ -1,6 +1,5 @@
 import {
   AppointmentStatus,
-  Donor,
   MANUAL_DONOR_ID,
 } from "@zm-blood-components/common/src";
 import * as functions from "firebase-functions";
@@ -13,7 +12,7 @@ import {
 } from "../notifications/NotificationSender";
 import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
-import { DbAppointment, DbDonor } from "../function-types";
+import { DbDonor } from "../function-types";
 
 export const ConfirmationReminderOnSameDay = functions.pubsub
   .schedule("0 * * * *") // runs every hour at :00
