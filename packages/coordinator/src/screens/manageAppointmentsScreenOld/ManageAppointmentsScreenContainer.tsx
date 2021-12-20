@@ -35,12 +35,10 @@ export default function ManageAppointmentsScreenContainer({
   useEffect(() => {
     setAppointmentsResponse(getDefaultState());
     if (!hospitalFilter) {
-      console.log("return");
       return;
     }
     setIsLoading(true);
     CoordinatorFunctions.getAppointments(hospitalFilter).then((res) => {
-      console.log(res);
       setAppointmentsResponse(res);
       setIsLoading(false);
     });
