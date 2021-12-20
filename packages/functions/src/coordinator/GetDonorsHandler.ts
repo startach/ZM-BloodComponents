@@ -6,7 +6,6 @@ export default async function (
   request: FunctionsApi.GetDonorsRequest,
   callerId: string
 ): Promise<FunctionsApi.GetDonorsResponse> {
-  // TODO : should it return also manual donor that this coordinator regisered?
   const donors = await CoordinatorDAL.getCoordinatorDonors(callerId);
 
   const res = donors.filter((donor) => !donor.testUser).map(dbDonorToDonor);
