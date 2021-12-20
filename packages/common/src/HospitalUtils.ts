@@ -35,8 +35,6 @@ export function getHospitalOptions(
     options.unshift({ label: defaultLabel, key: defaultLabel, value: "" });
   }
 
-  console.log(options);
-
   return options;
 }
 
