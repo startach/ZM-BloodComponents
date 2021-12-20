@@ -40,8 +40,10 @@ interface ManageAppointmentsScreenProps {
   isLoading: boolean;
   showOnlyRecentChanges: boolean;
   setShowOnlyRecentChanges: (shouldShow: boolean) => void;
-  hospitalFilter: Hospital | "";
-  setHospitalFilter: (newHospital: Hospital | "") => void;
+  hospitalFilter: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | "";
+  setHospitalFilter: (
+    newHospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
+  ) => void;
   showPastAppointments: boolean;
   setShowPastAppointments: (shouldShow: boolean) => void;
   activeHospitalsForCoordinator: Hospital[];
@@ -117,8 +119,9 @@ export default function ManageAppointmentsScreen({
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={HospitalUtils.getHospitalOptions(
+          options={HospitalUtils.getAllHospitalOptions(
             activeHospitalsForCoordinator,
+            "הכל",
             "בחר"
           )}
           value={hospitalFilter}

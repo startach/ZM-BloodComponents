@@ -9,8 +9,18 @@ export const activeHospitals = [
   Hospital.TEL_HASHOMER,
 ];
 
-export function getAllHospitalOptions(defaultLabel?: string) {
-  return getHospitalOptions(activeHospitals, defaultLabel);
+export const ALL_HOSPITALS_SELECT = "ALL";
+
+export function getAllHospitalOptions(
+  hospitals: Hospital[],
+  allLable: string,
+  defaultLabel?: string
+): SelectOption<Hospital | typeof ALL_HOSPITALS_SELECT | "">[] {
+  let options: SelectOption<Hospital | typeof ALL_HOSPITALS_SELECT | "">[] =
+    getHospitalOptions(hospitals, defaultLabel);
+  options.push({ label: allLable, key: allLable, value: ALL_HOSPITALS_SELECT });
+
+  return options;
 }
 
 // If defaultLabel, will add an option with value ""
@@ -24,6 +34,7 @@ export function getHospitalOptions(
   if (defaultLabel) {
     options.unshift({ label: defaultLabel, key: defaultLabel, value: "" });
   }
+
   return options;
 }
 

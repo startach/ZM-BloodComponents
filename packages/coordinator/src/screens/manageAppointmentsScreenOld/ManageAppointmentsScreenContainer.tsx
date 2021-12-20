@@ -4,6 +4,7 @@ import {
   Donor,
   FunctionsApi,
   Hospital,
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import * as AppointmentUtils from "../../utils/AppointmentUtils";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
@@ -17,7 +18,9 @@ interface ManageAppointmentsScreenContainerProps {
 export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
-  const [hospitalFilter, setHospitalFilter] = useState<Hospital | "">(
+  const [hospitalFilter, setHospitalFilter] = useState<
+    Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
+  >(
     activeHospitalsForCoordinator.length === 1
       ? activeHospitalsForCoordinator[0]
       : ""
@@ -32,10 +35,12 @@ export default function ManageAppointmentsScreenContainer({
   useEffect(() => {
     setAppointmentsResponse(getDefaultState());
     if (!hospitalFilter) {
+      console.log("return");
       return;
     }
     setIsLoading(true);
     CoordinatorFunctions.getAppointments(hospitalFilter).then((res) => {
+      console.log(res);
       setAppointmentsResponse(res);
       setIsLoading(false);
     });

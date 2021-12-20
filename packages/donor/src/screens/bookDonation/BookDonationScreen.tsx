@@ -68,7 +68,10 @@ export default function BookDonationScreen({
         <Select
           label={"הצג תורים ב:"}
           className={styles.dropdown}
-          options={HospitalUtils.getAllHospitalOptions("הכל")}
+          options={HospitalUtils.getHospitalOptions(
+            HospitalUtils.activeHospitals,
+            "הכל"
+          )}
           value={selectedHospital}
           onChange={setSelectedHospital}
           isDisabled={isFetching}

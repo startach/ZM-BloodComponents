@@ -4,6 +4,7 @@ import {
   CoordinatorRole,
   FunctionsApi,
   Hospital,
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -195,7 +196,10 @@ test.each([
       DONOR_ID_2
     );
     await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
-    const res = await callFunction("all", COORDINATOR_ID);
+    const res = await callFunction(
+      HospitalUtils.ALL_HOSPITALS_SELECT,
+      COORDINATOR_ID
+    );
     let appointments = res.appointments.filter((a) =>
       ALL_APPOINTMENT_IDS.includes(a.id)
     );
@@ -334,7 +338,7 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
 }
 
 function callFunction(
-  hospital: Hospital | "all",
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
   userId?: string,
   earliestTimeDays?: number
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {

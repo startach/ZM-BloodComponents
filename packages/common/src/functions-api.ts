@@ -1,3 +1,4 @@
+import { HospitalUtils } from ".";
 import {
   BloodType,
   BookingChange,
@@ -160,7 +161,7 @@ export interface DeleteAppointmentRequest {
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
-  hospital: Hospital | "all";
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   earliestStartTimeMillis?: number;
 }
 
