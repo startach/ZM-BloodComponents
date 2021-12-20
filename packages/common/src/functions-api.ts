@@ -160,7 +160,7 @@ export interface DeleteAppointmentRequest {
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
-  hospital: Hospital;
+  hospital: Hospital | "all";
   earliestStartTimeMillis?: number;
 }
 

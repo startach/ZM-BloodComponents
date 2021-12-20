@@ -31,7 +31,7 @@ export default async function (
   }
 
   const appointments: DbAppointment[] = await getAppointmentsByHospital(
-    request.hospital,
+    [request.hospital],
     new Date(request.fromDateMillis),
     new Date(request.toDateMillis)
   );
