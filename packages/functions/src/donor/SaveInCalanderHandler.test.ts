@@ -47,12 +47,12 @@ test("No such donor returns empty response", async () => {
   expect(res.status).toEqual(FunctionsApi.SaveInCalanderStatus.DONOR_NOT_FOUND);
 });
 
-test("Donor request returns donor", async () => {
+test("No appointment throws", async () => {
   await createDonor();
 
-  const res = await callTarget(DONOR_ID, DONOR_ID);
+  const action = () => callTarget(DONOR_ID, DONOR_ID);
 
-  expect(res.status).toEqual(FunctionsApi.SaveInCalanderStatus.SUCCESS);
+  await expectAsyncThrows(action, "Invalid saveInCalander request");
 });
 
 async function createDonor() {

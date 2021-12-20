@@ -6,6 +6,7 @@ import { calendar_v3, google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 import Calendar = calendar_v3.Calendar;
 import Schema$Event = calendar_v3.Schema$Event;
+import { getAllAppointments, getAppointments, getAppointmentsByIds } from "../dal/AppointmentDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.SaveInCalanderRequest,
@@ -19,12 +20,20 @@ export default async function (
     throw new Error("Unauthorized saveInCalander request");
   }
 
+  const getAppointments = getAppointmentsByIds([request.appointment.id])
+
   const dbDonor = await getDonor(request.donorId);
   if (!dbDonor){
     return {
       status: FunctionsApi.SaveInCalanderStatus.DONOR_NOT_FOUND
     }; 
   }
+
+  const appointments = await getAppointments;
+  if (appointments.length !== 1) {
+    throw new Error("Appointment not found");
+  }
+  const appointment = appointments[0];
 
   const time = DateUtils.ToDateString(request.appointment.donationStartTimeMillis, "YY-MM-DDThh:mm:ss+02:00");
 
