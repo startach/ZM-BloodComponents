@@ -3,6 +3,7 @@ import {
   FunctionsApi,
   Hospital,
   HospitalUtils,
+  SelectOption,
 } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import Spinner from "../../components/V2/Spinner";
@@ -113,17 +114,29 @@ export default function ManageAppointmentsScreen({
     })
   );
 
+  let hospitalSelectOptions: SelectOption<
+    Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
+  >[];
+  if (activeHospitalsForCoordinator.length > 1) {
+    hospitalSelectOptions = HospitalUtils.getAllHospitalOptions(
+      activeHospitalsForCoordinator,
+      "הכל",
+      "בחר"
+    );
+  } else {
+    hospitalSelectOptions = HospitalUtils.getHospitalOptions(
+      activeHospitalsForCoordinator,
+      "בחר"
+    );
+  }
+
   return (
     <>
       <HeaderSection className={Styles.hospital_picker_container}>
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={HospitalUtils.getAllHospitalOptions(
-            activeHospitalsForCoordinator,
-            "הכל",
-            "בחר"
-          )}
+          options={hospitalSelectOptions}
           value={hospitalFilter}
           onChange={setHospitalFilter}
         />
