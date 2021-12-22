@@ -1,72 +1,80 @@
 import TextField from "@material-ui/core/TextField";
-import { InputAdornment } from "@material-ui/core";
+import { IconButton, InputAdornment } from "@material-ui/core";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
-type InputVariant = "standard" | "filled" | "outlined";
+import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
+import { useState } from "react";
 
-type InputProps = {
+export enum InputVariant {
+  standard = "standard",
+  filled = "filled",
+  outlined = "outlined",
+}
+
+export type InputProps = {
   id?: string;
   label?: string;
-  onChange: (newValue: string) => void;
+  onChangeText: (newValue: string) => void;
   value?: any;
   type?: string;
-  isDisabled?: boolean;
-  placeholder?: string;
   className?: string;
-  mainIcon?: any;
   errorMessage?: string;
-  actionIcon?: any;
   variant?: InputVariant;
-  isFullWidth?: boolean;
-  required?: boolean;
+  onSubmit?: () => void;
 };
 
 export default function Input({
   id,
   label,
-  placeholder,
   type = "text",
   value,
-  onChange,
+  onChangeText,
   className,
-  mainIcon,
-  actionIcon,
-  isDisabled,
   errorMessage,
-  variant = "standard",
-  isFullWidth = false,
-  required = false,
+  variant = InputVariant.standard,
+  onSubmit,
 }: InputProps) {
-  let adornments = {
-    ...(mainIcon && {
-      startAdornment: (
-        <InputAdornment position="start">{mainIcon}</InputAdornment>
-      ),
-    }),
-    ...(actionIcon && {
+  const [showPassword, setShowPassword] = useState(false);
+
+  let inputProps;
+  let textFiledType = showPassword ? "text" : type;
+  if (type === "password") {
+    inputProps = {
       endAdornment: (
-        <InputAdornment position="end">{actionIcon}</InputAdornment>
+        <InputAdornment position="end">
+          <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+            {showPassword ? (
+              <VisibilityOffOutlinedIcon />
+            ) : (
+              <VisibilityOutlinedIcon />
+            )}
+          </IconButton>
+        </InputAdornment>
       ),
-    }),
-  };
+    };
+  }
+
   return (
-    <div>
+    <div className={styles.component}>
       <TextField
         id={id}
         value={value}
-        type={type}
-        onChange={(e) => onChange?.(e.currentTarget.value)}
-        placeholder={placeholder}
+        type={textFiledType}
+        onChange={(e) => onChangeText(e.currentTarget.value)}
         label={label}
-        className={classNames(styles.component, className)}
-        disabled={isDisabled}
-        inputProps={adornments}
+        className={classNames(styles.input, className)}
+        InputProps={inputProps}
         error={Boolean(errorMessage)}
         dir="rtl"
         variant={variant}
-        fullWidth={isFullWidth}
         helperText={errorMessage}
-        required={required}
+        fullWidth
+        onKeyPress={(event) => {
+          if (onSubmit && event.key === "Enter") {
+            onSubmit();
+          }
+        }}
       />
     </div>
   );

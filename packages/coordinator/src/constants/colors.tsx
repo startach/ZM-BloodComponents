@@ -1,11 +1,14 @@
 // See also : src/styles/variables for CSS colors
 
 const colors = {
-  primary: "#c7007d",
-  secondary: "#347d8d",
+  primary: "#4caf51",
+  secondary: "#c7007d",
+  light: "#dadee0",
+  gray: "#7E7E7E",
   info: "#f3f5f7",
   warning: "#BC8E00",
   warningLight: "#FFEEBA",
+  white: "#ffffff",
 };
 
 export default colors;

@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "1.x",
-    "@material-ui/pickers": "^3.2.10",
     "@zm-blood-components/common": "^1.0.0",
     "date-fns": "^2.17.0",
     "react-csv-downloader": "^2.4.0"
@@ -13,6 +12,7 @@
     "start": "(set PORT=3001 || export PORT=3001) && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "test-update": "yarn run test --watchAll=false -u",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009",

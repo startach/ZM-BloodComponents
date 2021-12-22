@@ -31,7 +31,7 @@ export default async function (
   }
 
   const appointments: DbAppointment[] = await getAppointmentsByHospital(
-    request.hospital,
+    [request.hospital],
     new Date(request.fromDateMillis),
     new Date(request.toDateMillis)
   );
@@ -55,6 +55,7 @@ export default async function (
       lastName: donor!.lastName,
       phone: donor!.phone,
       bloodType: donor!.bloodType,
+      status: appointment.status,
     };
     bookedDonationsWithDonor.push(donationWithDonor);
   });

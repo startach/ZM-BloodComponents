@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/App Header Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appHeader"
+  >
+    <div
+      className="title"
+    >
+      <img
+        alt="Blood Bank"
+        className="logoImage"
+        src="blood-bank-zichron-Little-logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/App Header Hamburger 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appHeader"
+  >
+    <button
+      className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-8"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-12"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="title"
+    >
+      <img
+        alt="Blood Bank"
+        className="logoImage"
+        src="blood-bank-zichron-Little-logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/App Header With Back 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appHeader"
+  >
+    <button
+      className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label-8"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-12"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      className="title"
+    >
+      <img
+        alt="Blood Bank"
+        className="logoImage"
+        src="blood-bank-zichron-Little-logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/App Header With Text 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appHeader"
+  >
+    <div
+      className="title"
+    >
+      כותרת
+    </div>
+  </div>
+</div>
+`;

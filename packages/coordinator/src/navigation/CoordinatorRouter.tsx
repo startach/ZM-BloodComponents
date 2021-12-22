@@ -12,12 +12,12 @@ import {
   initFirebase,
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
-import CoordinatorHeaderContainer from "../components/Header/CoordinatorHeaderContainer";
-import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreen/ManageAppointmentsScreenContainer";
+import CoordinatorHeaderContainer from "../components/V2/Header/CoordinatorHeaderContainer";
+import ManageAppointmentsScreenContainer from "../screens/manageAppointmentsScreenOld/ManageAppointmentsScreenContainer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
-import CoordinatorScreen from "../components/CoordinatorScreen";
+import CoordinatorScreen from "../components/V2/CoordinatorScreen";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
 
@@ -144,26 +144,26 @@ export default function CoordinatorRouter() {
     >
       <Switch>
         {canViewOpenAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
+          <Route path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
             <ManageAppointmentsScreenContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />
           </Route>
         )}
         {canViewDonors && (
-          <Route exact path={"/" + CoordinatorScreenKey.DONORS}>
+          <Route path={"/" + CoordinatorScreenKey.DONORS}>
             <SearchDonorsScreenContainer />
           </Route>
         )}
         {canViewBookedAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
+          <Route path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
             <ScheduledAppointmentsContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />
           </Route>
         )}
         {canAddAppointments && (
-          <Route exact path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
+          <Route path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
             <AddAppointmentsScreenContainer
               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
             />

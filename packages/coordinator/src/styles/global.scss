@@ -10,13 +10,15 @@ body,
   padding: 0;
   margin: 0;
   direction: rtl;
-  width: 100%;
-  overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  caret-color: transparent; /* Hides blinking cursor */
+  -webkit-user-select: none; /* Prevents selecting text */
+  -webkit-tap-highlight-color: transparent; /* Prevents blue highlight when pressing */
 
   font-family: var(--font-family-content);
   font-weight: var(--font-content-weight-normal);

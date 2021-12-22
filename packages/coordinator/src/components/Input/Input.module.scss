@@ -1,5 +1,13 @@
 .component {
-  :global(.MuiInputLabel-formControl) {
-    white-space: nowrap;
+  margin-bottom: 32px;
+}
+
+.input {
+  height: unset !important;
+  caret-color: black; /* Show blinking cursor */
+  -webkit-user-select: auto; /* Allow selecting text */
+  input[type="email"] {
+    direction: ltr;
+    text-align: var(--input-email-text-align);
   }
 }

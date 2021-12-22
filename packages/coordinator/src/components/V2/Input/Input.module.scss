@@ -1,0 +1,6 @@
+.component {
+  :global(.MuiInputLabel-formControl) {
+    white-space: nowrap;
+  }
+  caret-color: #1e1f1e;
+}

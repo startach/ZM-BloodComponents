@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Loading Screen Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="navBar"
+    >
+      <div
+        className="logoContainer"
+      >
+        <img
+          alt="logo"
+          className="logo"
+          src="logo.svg"
+        />
+      </div>
+    </div>
+    <div
+      className="screen content"
+    >
+      <div
+        className="MuiCircularProgress-root-0 MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-2"
+        role="progressbar"
+        style={
+          Object {
+            "height": "40px",
+            "width": "40px",
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-6"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

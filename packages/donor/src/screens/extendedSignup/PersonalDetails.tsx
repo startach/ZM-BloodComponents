@@ -43,8 +43,18 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     undefined
   );
 
+  const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
   const phoneValidator = /^05(?!6)\d{8}$/;
   const isValidPhone = phoneValidator.test(phone);
+
+  let erorrMessage = undefined;
+
+  if (!isPhoneNumberAllNumbers) {
+    erorrMessage = "יש להזין ספרות בלבד";
+  } else if (phone.length > 0 && !isValidPhone) {
+    erorrMessage = "מספר הטלפון אינו תקין";
+  }
+
   const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
 
   const setLastNameAndValidate = (newLastName: string) => {
@@ -86,11 +96,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         value={phone}
         onChangeText={setPhone}
         label="מספר טלפון"
-        errorMessage={
-          phone.length > 0 && !isValidPhone
-            ? "מספר הטלפון אינו תקין"
-            : undefined
-        }
+        errorMessage={erorrMessage}
       />
       <div className={classnames(styles.subtitle, styles.crucialInformation)}>
         מידע חיוני לתרומה
