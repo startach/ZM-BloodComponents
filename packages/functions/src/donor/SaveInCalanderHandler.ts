@@ -6,7 +6,7 @@ import { calendar_v3, google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 import Calendar = calendar_v3.Calendar;
 import Schema$Event = calendar_v3.Schema$Event;
-import { getAllAppointments, getAppointments, getAppointmentsByIds } from "../dal/AppointmentDataAccessLayer";
+import { getAppointmentsByIds } from "../dal/AppointmentDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.SaveInCalanderRequest,
@@ -20,7 +20,7 @@ export default async function (
     throw new Error("Unauthorized saveInCalander request");
   }
 
-  const getAppointments = getAppointmentsByIds([request.appointment.id])
+  const getAppointmentsAwait = getAppointmentsByIds([request.appointment.id])
 
   const dbDonor = await getDonor(request.donorId);
   if (!dbDonor){
@@ -29,13 +29,13 @@ export default async function (
     }; 
   }
 
-  const appointments = await getAppointments;
+  const appointments = await getAppointmentsAwait;
   if (appointments.length !== 1) {
     throw new Error("Appointment not found");
   }
   const appointment = appointments[0];
 
-  const time = DateUtils.ToDateString(request.appointment.donationStartTimeMillis, "YY-MM-DDThh:mm:ss+02:00");
+  const time = DateUtils.ToDateString(appointment.donationStartTime.toMillis(), "YY-MM-DDThh:mm:ss+02:00");
 
   const event : Schema$Event = {  
     summary: "תרומת טרומבוציטים",
@@ -49,12 +49,12 @@ export default async function (
     ]
   }
 
-  const googleCreds = functions.config().web_app // NEED to get credentials
+  const googleCreds = functions.config().calendar_schedule // NEED to get credentials
 
   const auth : OAuth2Client = new google.auth.OAuth2(
-    googleCreds.web.client_id,
-    googleCreds.web.client_secret,
-    googleCreds.web.redirect_uris[0]
+    googleCreds.client_id,
+    googleCreds.client_secret,
+    googleCreds.redirect_uris[0]
   );
 
   auth.setCredentials({
