@@ -42,9 +42,7 @@ interface ManageAppointmentsScreenProps {
   showOnlyRecentChanges: boolean;
   setShowOnlyRecentChanges: (shouldShow: boolean) => void;
   hospitalFilter: HospitalUtils.HospitalOptionKey;
-  setHospitalFilter: (
-    newHospital: HospitalUtils.HospitalOptionKey
-  ) => void;
+  setHospitalFilter: (newHospital: HospitalUtils.HospitalOptionKey) => void;
   showPastAppointments: boolean;
   setShowPastAppointments: (shouldShow: boolean) => void;
   activeHospitalsForCoordinator: Hospital[];
