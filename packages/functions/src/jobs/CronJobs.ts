@@ -62,8 +62,6 @@ export const SendConfirmationReminders = async (
     return { ...obj, [donor.id]: donor };
   }, {});
 
-  delete donorsInAppointments[MANUAL_DONOR_ID];
-
   for (const appointment of appointments) {
     const donor = donorsInAppointments[appointment.donorId];
 
