@@ -15,9 +15,11 @@ export const ALL_HOSPITALS_SELECT = "ALL";
 
 export function getAllHospitalOptions(
   hospitals: Hospital[]
-): SelectOption<Hospital | typeof ALL_HOSPITALS_SELECT | "">[] {
-  let options: SelectOption<Hospital | typeof ALL_HOSPITALS_SELECT | "">[] =
-    getHospitalOptions(hospitals, "בחר");
+): SelectOption<HospitalOptionKey>[] {
+  let options: SelectOption<HospitalOptionKey>[] = getHospitalOptions(
+    hospitals,
+    "בחר"
+  );
 
   if (hospitals.length > 1) {
     options.push({ label: "הכל", key: "הכל", value: ALL_HOSPITALS_SELECT });
