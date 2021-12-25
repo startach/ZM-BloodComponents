@@ -112,29 +112,15 @@ export default function ManageAppointmentsScreen({
     })
   );
 
-  let hospitalSelectOptions: SelectOption<
-    Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
-  >[];
-  if (activeHospitalsForCoordinator.length > 1) {
-    hospitalSelectOptions = HospitalUtils.getAllHospitalOptions(
-      activeHospitalsForCoordinator,
-      "הכל",
-      "בחר"
-    );
-  } else {
-    hospitalSelectOptions = HospitalUtils.getHospitalOptions(
-      activeHospitalsForCoordinator,
-      "בחר"
-    );
-  }
-
   return (
     <>
       <HeaderSection className={Styles.hospital_picker_container}>
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={hospitalSelectOptions}
+          options={HospitalUtils.getAllHospitalOptions(
+            activeHospitalsForCoordinator
+          )}
           value={hospitalFilter}
           onChange={setHospitalFilter}
         />
