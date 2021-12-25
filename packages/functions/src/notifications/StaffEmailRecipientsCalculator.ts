@@ -71,6 +71,10 @@ function addProductionHospitalCoordinator(
         email: "dumanionok@gmail.com",
         name: "בית החולים סורוקה",
       });
+      res.push({
+        email: "ety140@gmail.com",
+        name: "בית החולים סורוקה",
+      });
 
       return;
   }
