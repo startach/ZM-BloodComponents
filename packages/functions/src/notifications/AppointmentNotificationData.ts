@@ -2,6 +2,7 @@ import { DateUtils, LocaleUtils } from "@zm-blood-components/common";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
 import { getHttpFunction } from "../utils/HttpFunctionsUtils";
+import * as functions from "firebase-functions";
 
 export type AppointmentNotificationData = {
   date: string;
@@ -31,7 +32,7 @@ export function calculateNotificationData(
 ): AppointmentNotificationData {
   const donationStartTime = appointment.donationStartTime.toDate();
 
-  return {
+  const res = {
     appointmentId: appointment.id!,
     date: DateUtils.ToDateString(donationStartTime),
     time: DateUtils.ToTimeString(donationStartTime),
@@ -39,20 +40,21 @@ export function calculateNotificationData(
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
-    donationApprovalLink: getAppointmentApprovalLink(
-      isProduction,
-      donor.id,
-      appointment.id!,
-      false
+    unsubscribeLink: encodeURIComponent(
+      getUnsubscribeLink(isProduction, donor.id)
     ),
-    donationNoShowLink: getAppointmentApprovalLink(
-      isProduction,
-      donor.id,
-      appointment.id!,
-      true
+    donationApprovalLink: encodeURIComponent(
+      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, false)
+    ),
+    donationNoShowLink: encodeURIComponent(
+      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, true)
     ),
   };
+
+  functions.logger.debug(
+    "AppointmentNotificationData is " + JSON.stringify(res)
+  );
+  return res;
 }
 
 function getUnsubscribeLink(isProduction: boolean, donorId: string) {

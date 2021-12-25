@@ -74,16 +74,12 @@ export async function bookAppointment(
       appointmentToBook.hospital
     );
 
-    notifyOnAppointmentBooked(appointmentToBook, donor).then(
-      () => {
-        return;
-      },
-      (e) =>
-        console.error(
-          "Error notifying on booked appointment",
-          appointmentToBook.id,
-          e
-        )
+    notifyOnAppointmentBooked(appointmentToBook, donor).catch((e) =>
+      console.error(
+        "Error notifying on booked appointment",
+        appointmentToBook.id,
+        e
+      )
     );
     await updateDonorPromise;
   }

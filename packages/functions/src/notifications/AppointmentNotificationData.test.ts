@@ -35,13 +35,13 @@ describe("Appointment Notification Data", function () {
     expect(res.donorPhone).toEqual(sampleUser.phone);
     expect(res.donationStartTimeMillis).toEqual(donationStartTime);
     expect(res.unsubscribeLink).toEqual(
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=donorId"
+        encodeURIComponent("https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=donorId")
     );
     expect(res.donationApprovalLink).toEqual(
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=false"
-    );
+        encodeURIComponent("https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=false"
+    ));
     expect(res.donationNoShowLink).toEqual(
-      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=true"
-    );
+        encodeURIComponent("https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=true"
+    ));
   });
 });
