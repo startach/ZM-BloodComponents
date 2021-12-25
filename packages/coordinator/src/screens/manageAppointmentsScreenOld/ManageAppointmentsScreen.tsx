@@ -3,7 +3,6 @@ import {
   FunctionsApi,
   Hospital,
   HospitalUtils,
-  SelectOption,
 } from "@zm-blood-components/common";
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import Spinner from "../../components/V2/Spinner";
