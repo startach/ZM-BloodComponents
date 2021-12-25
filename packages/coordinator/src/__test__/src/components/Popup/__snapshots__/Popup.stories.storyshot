@@ -9,13 +9,7 @@ exports[`Storyshots Components/Popup Custom Content 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
-  >
+  <div>
     <div>
       <button
         className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
@@ -59,13 +53,7 @@ exports[`Storyshots Components/Popup Default 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
-  >
+  <div>
     <div>
       <button
         className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
@@ -109,13 +97,7 @@ exports[`Storyshots Components/Popup Long Text 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
-  >
+  <div>
     <div>
       <button
         className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
@@ -159,13 +141,7 @@ exports[`Storyshots Components/Popup No Cancel 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
-  >
+  <div>
     <div>
       <button
         className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
@@ -209,13 +185,7 @@ exports[`Storyshots Components/Popup With Title 1`] = `
     }
   }
 >
-  <div
-    style={
-      Object {
-        "margin": 20,
-      }
-    }
-  >
+  <div>
     <div>
       <button
         className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"

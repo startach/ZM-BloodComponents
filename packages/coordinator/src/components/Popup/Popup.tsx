@@ -10,9 +10,9 @@ import Button, { ButtonVariant } from "../Button";
 
 export type PopupProps = {
   open: boolean;
-  title?: string | React.ReactNode;
+  title?: string;
   content?: string | React.ReactNode;
-  onClose: (event: object, reason: string) => void;
+  onClose: (event: object) => void;
 
   // Buttons
   primaryButtonText?: string;

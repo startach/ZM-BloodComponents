@@ -6,6 +6,7 @@ import { Popup, PopupProps } from "./Popup";
 export default {
   component: Popup,
   title: "Components/Popup",
+  parameters: { layout: "padded" },
 };
 
 const props = {
@@ -19,7 +20,7 @@ const Template: Story<PopupProps> = (args) => {
   const close = async () => setOpen(false);
 
   return (
-    <div style={{ margin: 20 }}>
+    <div>
       <Button title={"פתח"} onClick={() => setOpen(true)} />
       <Popup
         {...args}
