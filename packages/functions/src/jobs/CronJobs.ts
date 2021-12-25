@@ -1,6 +1,5 @@
 import {
   AppointmentStatus,
-  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common/src";
 import * as functions from "firebase-functions";
 import { getAppointmentsByStatus } from "../dal/AppointmentDataAccessLayer";
