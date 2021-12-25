@@ -1,6 +1,4 @@
-import {
-  AppointmentStatus,
-} from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common/src";
 import * as functions from "firebase-functions";
 import { getAppointmentsByStatus } from "../dal/AppointmentDataAccessLayer";
 import { getDonors } from "../dal/DonorDataAccessLayer";
