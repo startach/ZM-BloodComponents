@@ -41,9 +41,9 @@ interface ManageAppointmentsScreenProps {
   isLoading: boolean;
   showOnlyRecentChanges: boolean;
   setShowOnlyRecentChanges: (shouldShow: boolean) => void;
-  hospitalFilter: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | "";
+  hospitalFilter: HospitalUtils.HospitalOptionKey;
   setHospitalFilter: (
-    newHospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
+    newHospital: HospitalUtils.HospitalOptionKey
   ) => void;
   showPastAppointments: boolean;
   setShowPastAppointments: (shouldShow: boolean) => void;

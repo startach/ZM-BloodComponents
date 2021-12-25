@@ -19,7 +19,7 @@ export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
   const [hospitalFilter, setHospitalFilter] = useState<
-    Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | ""
+    HospitalUtils.HospitalOptionKey
   >(
     activeHospitalsForCoordinator.length === 1
       ? activeHospitalsForCoordinator[0]

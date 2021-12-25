@@ -1,6 +1,8 @@
 import { Hospital, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
+export type HospitalOptionKey = Hospital | typeof ALL_HOSPITALS_SELECT | "";
+
 export const activeHospitals = [
   Hospital.ICHILOV,
   Hospital.BEILINSON,
