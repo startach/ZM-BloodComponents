@@ -29,5 +29,8 @@ export const unsubscribeHandler = functions.https.onRequest(
     await DonorDataAccessLayer.setDonor(dbDonor);
 
     res.send("הרישום הוסר בהצלחה");
+
+    // TODO redirect users to the unsubscribe screen
+    // res.redirect('https://blood-bank.zichron.org/unsubscribe');
   }
 );

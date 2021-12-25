@@ -24,7 +24,3 @@ export function addEmailToQueue(message: EmailMessage) {
       date: admin.firestore.Timestamp.now(),
     });
 }
-
-export function addEmailsToQueue(messages: EmailMessage[]) {
-  return Promise.all(messages.map(addEmailToQueue));
-}
