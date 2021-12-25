@@ -21,12 +21,12 @@ const Template: Story<PopupProps> = (args) => {
   return (
     <div style={{ margin: 20 }}>
       <Button title={"פתח"} onClick={() => setOpen(true)} />
-      <Popup 
-        {...args} 
-        open={open} 
-        onPrimaryButtonClick={close} 
+      <Popup
+        {...args}
+        open={open}
+        onPrimaryButtonClick={close}
         onCancelButtonClick={close}
-       />
+      />
     </div>
   );
 };
@@ -39,20 +39,21 @@ Default.args = {
 export const WithTitle = Template.bind({});
 WithTitle.args = {
   ...props,
-  title: "שים לב"
+  title: "שים לב",
 };
 
 export const LongText = Template.bind({});
 LongText.args = {
   ...props,
-  content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  content:
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 };
 
 export const CustomContent = Template.bind({});
-const content = <Button title={"vhhh"} onClick={()=> {}}/>
+const content = <Button title={"vhhh"} onClick={() => {}} />;
 CustomContent.args = {
   ...props,
-  content: content
+  content: content,
 };
 
 export const NoCancel = Template.bind({});
