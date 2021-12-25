@@ -1,6 +1,8 @@
 import { Hospital, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
+export type HospitalOptionKey = Hospital | typeof ALL_HOSPITALS_SELECT | "";
+
 export const activeHospitals = [
   Hospital.ICHILOV,
   Hospital.BEILINSON,
@@ -9,8 +11,21 @@ export const activeHospitals = [
   Hospital.TEL_HASHOMER,
 ];
 
-export function getAllHospitalOptions(defaultLabel?: string) {
-  return getHospitalOptions(activeHospitals, defaultLabel);
+export const ALL_HOSPITALS_SELECT = "ALL";
+
+export function getAllHospitalOptions(
+  hospitals: Hospital[]
+): SelectOption<HospitalOptionKey>[] {
+  let options: SelectOption<HospitalOptionKey>[] = getHospitalOptions(
+    hospitals,
+    "בחר"
+  );
+
+  if (hospitals.length > 1) {
+    options.push({ label: "הכל", key: "הכל", value: ALL_HOSPITALS_SELECT });
+  }
+
+  return options;
 }
 
 // If defaultLabel, will add an option with value ""
@@ -24,6 +39,7 @@ export function getHospitalOptions(
   if (defaultLabel) {
     options.unshift({ label: defaultLabel, key: defaultLabel, value: "" });
   }
+
   return options;
 }
 

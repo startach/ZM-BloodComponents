@@ -1,4 +1,9 @@
-import { FunctionsApi, Hospital, DateUtils } from "@zm-blood-components/common";
+import {
+  FunctionsApi,
+  Hospital,
+  DateUtils,
+  HospitalUtils,
+} from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
 import { getFunctions, httpsCallable } from "firebase/functions";
@@ -46,7 +51,9 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
   await addNewAppointmentsFunction(request);
 }
 
-export async function getAppointments(hospital: Hospital) {
+export async function getAppointments(
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
+) {
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
   );

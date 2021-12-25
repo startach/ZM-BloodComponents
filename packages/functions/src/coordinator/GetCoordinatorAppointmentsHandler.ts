@@ -74,10 +74,12 @@ async function fetchCoordinator(callerId: string) {
 
 async function getValidHospitalsOrThrow(
   coordinator: DbCoordinator,
-  hospital: Hospital | "all"
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
 ): Promise<Hospital[]> {
   const allActiveHospitalsFiltered =
-    hospital === "all" ? HospitalUtils.activeHospitals : [hospital];
+    hospital === HospitalUtils.ALL_HOSPITALS_SELECT
+      ? HospitalUtils.activeHospitals
+      : [hospital];
 
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:
@@ -85,7 +87,7 @@ async function getValidHospitalsOrThrow(
     case CoordinatorRole.ZM_COORDINATOR:
       return allActiveHospitalsFiltered;
     case CoordinatorRole.HOSPITAL_COORDINATOR:
-      if (hospital === "all") {
+      if (hospital === HospitalUtils.ALL_HOSPITALS_SELECT) {
         return coordinator.hospitals ?? [];
       }
       if (!coordinator.hospitals?.includes(hospital)) {
@@ -96,7 +98,9 @@ async function getValidHospitalsOrThrow(
       }
       return [hospital];
     case CoordinatorRole.GROUP_COORDINATOR:
-      return hospital === "all" ? coordinator.hospitals ?? [] : [hospital];
+      return hospital === HospitalUtils.ALL_HOSPITALS_SELECT
+        ? coordinator.hospitals ?? []
+        : [hospital];
   }
 
   throw Error("Unfamiliar coordinator role");
