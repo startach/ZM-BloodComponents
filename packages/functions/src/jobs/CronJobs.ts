@@ -53,14 +53,14 @@ export const SendConfirmationReminders = async (
 
   const donorIds = appointments.map((appointment) => appointment.donorId);
 
-  const donorsInAppointments: { [donorId: string]: DbDonor } = (
-    await getDonors(_.uniq(donorIds))
-  ).reduce((obj, donor: DbDonor) => {
-    return { ...obj, [donor.id]: donor };
-  }, {});
+  const donorsInAppointments = await getDonors(_.uniq(donorIds));
+  let donorsMap: { [donorId: string]: DbDonor } = {};
+  donorsInAppointments.map((donor) => {
+    donorsMap[donor.id] = donor;
+  });
 
   for (const appointment of appointments) {
-    const donor = donorsInAppointments[appointment.donorId];
+    const donor = donorsMap[appointment.donorId];
 
     if (!donor) {
       console.error("Donor not found for donation: " + appointment.id);
