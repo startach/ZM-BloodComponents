@@ -9,6 +9,7 @@ import {
 } from "../notifications/NotificationSender";
 import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
+import { DbDonor } from "../function-types";
 
 export const ConfirmationReminderOnSameDay = functions.pubsub
   .schedule("0 * * * *") // runs every hour at :00
@@ -53,11 +54,13 @@ export const SendConfirmationReminders = async (
   const donorIds = appointments.map((appointment) => appointment.donorId);
 
   const donorsInAppointments = await getDonors(_.uniq(donorIds));
+  let donorsMap: { [donorId: string]: DbDonor } = {};
+  donorsInAppointments.map((donor) => {
+    donorsMap[donor.id] = donor;
+  });
 
   for (const appointment of appointments) {
-    const donor = donorsInAppointments.find(
-      (dbDonor) => dbDonor.id === appointment.donorId
-    );
+    const donor = donorsMap[appointment.donorId];
 
     if (!donor) {
       console.error("Donor not found for donation: " + appointment.id);
