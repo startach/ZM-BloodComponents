@@ -1,0 +1,27 @@
+.scheduleHourSquare {
+  height: 77px;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-white);
+}
+
+.empty {
+  background-color: var(--color-white);
+}
+
+.partiallyBooked {
+  background-color: var(--coordinator-primary);
+  color: var(--color-white);
+  border: 1px solid var(--color-white);
+  cursor: pointer;
+}
+
+.fullyBooked {
+  background-color: var(--color-white);
+  border: 1px solid var(--coordinator-primary);
+  color: var(--coordinator-primary);
+  cursor: pointer;
+}
