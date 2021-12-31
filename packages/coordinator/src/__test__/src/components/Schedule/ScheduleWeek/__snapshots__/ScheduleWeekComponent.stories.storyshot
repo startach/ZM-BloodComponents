@@ -10,521 +10,1557 @@ exports[`Storyshots Components/Schedule/Week Default 1`] = `
   }
 >
   <div
-    className="scheduleWeek"
+    className="schedule"
   >
     <div
-      className="dayWrapper"
+      className="daysRow"
     >
+      <svg
+        className="chevron"
+        onClick={[Function]}
+      >
+        chevron-right-small.svg
+      </svg>
       <div
-        className="scheduleDay"
+        className="dayLabel"
       >
         <div
-          className="cellWrapper"
+          className="dayNumber"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          2
         </div>
         <div
-          className="cellWrapper"
+          className="dayLetter"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          א
+        </div>
+      </div>
+      <div
+        className="dayLabel"
+      >
+        <div
+          className="dayNumber"
+        >
+          3
         </div>
         <div
-          className="cellWrapper"
+          className="dayLetter"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          ב
+        </div>
+      </div>
+      <div
+        className="dayLabel"
+      >
+        <div
+          className="dayNumber"
+        >
+          4
         </div>
         <div
-          className="cellWrapper"
+          className="dayLetter"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          ג
+        </div>
+      </div>
+      <div
+        className="dayLabel"
+      >
+        <div
+          className="dayNumber"
+        >
+          5
         </div>
         <div
-          className="cellWrapper"
+          className="dayLetter"
+        >
+          ד
+        </div>
+      </div>
+      <div
+        className="dayLabel"
+      >
+        <div
+          className="dayNumber"
+        >
+          6
+        </div>
+        <div
+          className="dayLetter"
+        >
+          ה
+        </div>
+      </div>
+      <div
+        className="dayLabel"
+      >
+        <div
+          className="dayNumber"
+        >
+          7
+        </div>
+        <div
+          className="dayLetter"
+        >
+          ו
+        </div>
+      </div>
+      <svg
+        className="chevron"
+        onClick={[Function]}
+      >
+        chevron-left-small.svg
+      </svg>
+    </div>
+    <div
+      className="scheduleWeek"
+    >
+      <div
+        className="timesColumn"
+      >
+        <div
+          className="hourCell"
+        >
+          0
+        </div>
+        <div
+          className="hourCell"
+        >
+          1
+        </div>
+        <div
+          className="hourCell"
+        >
+          2
+        </div>
+        <div
+          className="hourCell"
+        >
+          3
+        </div>
+        <div
+          className="hourCell"
+        >
+          4
+        </div>
+        <div
+          className="hourCell"
+        >
+          5
+        </div>
+        <div
+          className="hourCell"
+        >
+          6
+        </div>
+        <div
+          className="hourCell"
+        >
+          7
+        </div>
+        <div
+          className="hourCell"
+        >
+          8
+        </div>
+        <div
+          className="hourCell"
+        >
+          9
+        </div>
+        <div
+          className="hourCell"
+        >
+          10
+        </div>
+        <div
+          className="hourCell"
+        >
+          11
+        </div>
+        <div
+          className="hourCell"
+        >
+          12
+        </div>
+        <div
+          className="hourCell"
+        >
+          13
+        </div>
+        <div
+          className="hourCell"
+        >
+          14
+        </div>
+        <div
+          className="hourCell"
+        >
+          15
+        </div>
+        <div
+          className="hourCell"
+        >
+          16
+        </div>
+        <div
+          className="hourCell"
+        >
+          17
+        </div>
+        <div
+          className="hourCell"
+        >
+          18
+        </div>
+        <div
+          className="hourCell"
+        >
+          19
+        </div>
+        <div
+          className="hourCell"
+        >
+          20
+        </div>
+        <div
+          className="hourCell"
+        >
+          21
+        </div>
+        <div
+          className="hourCell"
+        >
+          22
+        </div>
+        <div
+          className="hourCell"
+        >
+          23
+        </div>
+      </div>
+      <div
+        className="dayWrapper"
+      >
+        <div
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/2
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="dayWrapper"
-    >
       <div
-        className="scheduleDay"
+        className="dayWrapper"
       >
         <div
-          className="cellWrapper"
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/2
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="dayWrapper"
-    >
       <div
-        className="scheduleDay"
+        className="dayWrapper"
       >
         <div
-          className="cellWrapper"
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/2
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="dayWrapper"
-    >
       <div
-        className="scheduleDay"
+        className="dayWrapper"
       >
         <div
-          className="cellWrapper"
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/2
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="dayWrapper"
-    >
       <div
-        className="scheduleDay"
+        className="dayWrapper"
       >
         <div
-          className="cellWrapper"
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            3/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/2
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
-        </div>
-        <div
-          className="cellWrapper"
-        >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
           <div
-            className="scheduleHourSquare empty"
-          />
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="dayWrapper"
-    >
       <div
-        className="scheduleDay"
+        className="dayWrapper"
       >
         <div
-          className="cellWrapper"
+          className="scheduleDay"
         >
           <div
-            className="scheduleHourSquare empty"
-          />
-        </div>
-        <div
-          className="cellWrapper"
-        >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
+            className="cellWrapper"
           >
-            1/3
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              0/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare fullyBooked"
+              onClick={[Function]}
+            >
+              3/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              2/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare partiallyBooked"
+              onClick={[Function]}
+            >
+              1/3
+            </div>
+          </div>
+          <div
+            className="cellWrapper"
+          >
+            <div
+              className="scheduleHourSquare empty"
+            />
           </div>
         </div>
+      </div>
+      <div
+        className="timesColumn"
+      >
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
-          >
-            3/3
-          </div>
+          0
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          1
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
-          >
-            1/2
-          </div>
+          2
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          3
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare fullyBooked"
-            onClick={[Function]}
-          >
-            3/3
-          </div>
+          4
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare empty"
-          />
+          5
         </div>
         <div
-          className="cellWrapper"
+          className="hourCell"
         >
-          <div
-            className="scheduleHourSquare partiallyBooked"
-            onClick={[Function]}
-          >
-            1/3
-          </div>
+          6
+        </div>
+        <div
+          className="hourCell"
+        >
+          7
+        </div>
+        <div
+          className="hourCell"
+        >
+          8
+        </div>
+        <div
+          className="hourCell"
+        >
+          9
+        </div>
+        <div
+          className="hourCell"
+        >
+          10
+        </div>
+        <div
+          className="hourCell"
+        >
+          11
+        </div>
+        <div
+          className="hourCell"
+        >
+          12
+        </div>
+        <div
+          className="hourCell"
+        >
+          13
+        </div>
+        <div
+          className="hourCell"
+        >
+          14
+        </div>
+        <div
+          className="hourCell"
+        >
+          15
+        </div>
+        <div
+          className="hourCell"
+        >
+          16
+        </div>
+        <div
+          className="hourCell"
+        >
+          17
+        </div>
+        <div
+          className="hourCell"
+        >
+          18
+        </div>
+        <div
+          className="hourCell"
+        >
+          19
+        </div>
+        <div
+          className="hourCell"
+        >
+          20
+        </div>
+        <div
+          className="hourCell"
+        >
+          21
+        </div>
+        <div
+          className="hourCell"
+        >
+          22
+        </div>
+        <div
+          className="hourCell"
+        >
+          23
         </div>
       </div>
     </div>

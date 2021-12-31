@@ -1,10 +1,61 @@
-.scheduleWeek {
+.schedule {
   width: 100%;
-  background-color: red;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--coordinator-background);
+  position: relative;
+}
+
+.daysRow {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.chevron {
+  margin: 0 5px;
+}
+
+.dayLabel {
+  flex: 1;
+  text-align: center;
+}
+
+.dayNumber {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
+}
+
+.dayLetter {
+  font-size: 14px;
+  color: var(--coordinator-gray);
+}
+
+.scheduleWeek {
+  overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
 }
 
 .dayWrapper {
   flex: 1;
+}
+
+.timesColumn {
+  color: var(--coordinator-gray);
+}
+
+.hourCell {
+  height: 85px;
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

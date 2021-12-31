@@ -12,45 +12,35 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-function getCell(
-  appointmentsCount: number,
-  bookedAppointmentsCount: number
-): ScheduleCell {
-  return {
-    cellStartTime: new Date(1640001600000),
-    onClick: action("onClick"),
-    appointmentsCount,
-    bookedAppointmentsCount,
-  };
-}
+const weekStartMillis = 1641074400000; // January 2, 2022 0:00:00 GMT+02:00
+const millisInHour = 60 * 60 * 1000;
+const daysOffset = _.range(6);
+const onClick = action("onClickCell");
+const days = daysOffset.map<ScheduleDay>((dayOffset) => {
+  const dayStartMillis = weekStartMillis + dayOffset * 24 * millisInHour;
+  const cells: ScheduleCell[] = [];
+  for (let i = 0; i < 24; i++) {
+    const cellStartMillis = dayStartMillis + i * millisInHour;
+    const appointmentsCount = (dayOffset + i) % 3 == 0 ? 3 : 0;
+    const bookedAppointmentsCount = (dayOffset * 3 + i) % 4;
+    cells.push({
+      cellStartTime: new Date(cellStartMillis),
+      onClick,
+      appointmentsCount,
+      bookedAppointmentsCount,
+    });
+  }
 
-function getDay(orderFunction: (cell: ScheduleCell) => number): ScheduleDay {
-  const cells = [
-    getCell(0, 0),
-    getCell(3, 1),
-    getCell(3, 3),
-    getCell(0, 0),
-    getCell(2, 1),
-    getCell(0, 0),
-    getCell(3, 3),
-    getCell(0, 0),
-    getCell(3, 1),
-  ];
   return {
-    cells: _.sortBy(cells, orderFunction),
+    cells,
   };
-}
+});
 
 const props: ScheduleWeekComponentProps = {
+  onNext: action("onNext"),
+  onPrevious: action("onPrevious"),
   week: {
-    days: [
-      getDay((cell) => cell.appointmentsCount),
-      getDay((cell) => cell.cellStartTime.getTime()),
-      getDay((cell) => cell.bookedAppointmentsCount),
-      getDay((cell) => cell.appointmentsCount),
-      getDay((cell) => -cell.bookedAppointmentsCount),
-      getDay((cell) => cell.cellStartTime.getTime()),
-    ],
+    days,
   },
 };
 
