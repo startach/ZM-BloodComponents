@@ -7,7 +7,7 @@ import { Meta } from "@storybook/react";
 
 export default {
   component: CoordinatorSignInScreen,
-  title: "Screens/Sign In Screen",
+  title: "Screens/Sign In Screen (old)",
   parameters: { layout: "fullscreen" },
 } as Meta;
 
