@@ -37,6 +37,7 @@ export function Popup(props: PopupProps) {
     root: {
       justifyContent: "center",
       textAlign: "center",
+      paddingBottom: "20px",
     },
   });
 
