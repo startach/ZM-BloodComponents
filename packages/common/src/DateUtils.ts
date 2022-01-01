@@ -21,6 +21,13 @@ export function ToDateString(
   return dayjs(date, format).tz().format(DateDisplayFormat);
 }
 
+export function ToShortDateString(
+  date: ParsableDateValue | number,
+  format?: string
+) {
+  return dayjs(date, format).tz().format("DD/MM");
+}
+
 export function ToTimeString(date: ParsableDateValue | number) {
   return dayjs(date).tz(IL_TIMEZONE).format("HH:mm");
 }

@@ -1,38 +1,69 @@
-import React from "react";
-import DialogBase from "./DialogBase";
+import { noop } from "lodash";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  makeStyles,
+} from "@material-ui/core";
+import Button, { ButtonVariant } from "../Button";
 
-type PopupProps = {
-  buttonApproveText: string;
+export type PopupProps = {
   open: boolean;
-  titleFirst: string;
-  titleSecond?: string;
-  className?: string;
-  isLoading?: boolean;
-  onClose: () => void;
-  onApproved: () => Promise<void>;
-  PopupButton?: React.ReactNode;
-  isNotificationPopup?: boolean;
+  title?: string;
+  content?: string | React.ReactNode;
+  onClose: (event: object) => void;
+
+  // Buttons
+  primaryButtonText?: string;
+  onPrimaryButtonClick?: () => void;
+  cancelButtonText?: string;
+  onCancelButtonClick?: () => void;
 };
 
-export default function Popup({
-  buttonApproveText,
-  open,
-  titleFirst,
-  titleSecond,
-  onClose,
-  onApproved,
-  PopupButton,
-}: PopupProps) {
+export function Popup(props: PopupProps) {
+  const {
+    open,
+    title,
+    content,
+    onClose,
+    primaryButtonText,
+    onPrimaryButtonClick,
+    cancelButtonText,
+    onCancelButtonClick,
+  } = props;
+
+  const centerStyle = makeStyles({
+    root: {
+      justifyContent: "center",
+      textAlign: "center",
+      paddingBottom: "20px",
+    },
+  });
+
+  const classes = centerStyle();
+
   return (
-    <DialogBase
-      buttonApproveText={buttonApproveText}
-      open={open}
-      titleFirst={titleFirst}
-      titleSecond={titleSecond}
-      onClose={onClose}
-      onApproved={onApproved}
-      PopupButton={PopupButton}
-      isNotificationPopup={false}
-    />
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent classes={classes}>{content}</DialogContent>
+      <DialogActions classes={classes}>
+        {primaryButtonText && (
+          <Button
+            title={primaryButtonText}
+            onClick={onPrimaryButtonClick || noop}
+            color={"secondary"}
+          />
+        )}
+        {cancelButtonText && (
+          <Button
+            title={cancelButtonText}
+            onClick={onCancelButtonClick || noop}
+            variant={ButtonVariant.outlined}
+            color={"default"}
+          />
+        )}
+      </DialogActions>
+    </Dialog>
   );
 }

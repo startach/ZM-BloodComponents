@@ -1,0 +1,24 @@
+.screen {
+  width: 100%;
+}
+
+.screenContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fields {
+  max-width: 400px;
+  width: 80%;
+}
+
+.actionButton {
+}
+
+.textButton {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}

@@ -1,15 +1,15 @@
 import { useState } from "react";
 import styles from "./AddAppointmentsForm.module.scss";
-import Select from "../../components/Select";
+import Select from "../../components/V2/Select";
 import {
   Hospital,
   HospitalUtils,
   SelectOption,
 } from "@zm-blood-components/common";
-import Button from "../../components/Button";
-import DatePicker from "../../components/DatePicker";
-import TimePicker from "../../components/TimePicker";
-import HeaderSection from "../../components/HeaderSection";
+import Button from "../../components/V2/Button";
+import DatePicker from "../../components/V2/DatePicker";
+import TimePicker from "../../components/V2/TimePicker";
+import HeaderSection from "../../components/V2/HeaderSection";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import * as uuid from "uuid";
 

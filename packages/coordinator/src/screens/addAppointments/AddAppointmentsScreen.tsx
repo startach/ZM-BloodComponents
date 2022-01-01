@@ -2,11 +2,12 @@ import styles from "./AddAppointmentsScreen.module.scss";
 import AddAppointmentsForm from "./AddAppointmentsForm";
 import { NewSlots } from "./AddAppointmentsScreenContainer";
 import { Hospital } from "@zm-blood-components/common";
-import Button from "../../components/Button";
+import Button from "../../components/V2/Button";
 import { columns, rows } from "./AddAppointmentTableConfig";
-import Table from "../../components/Table";
-import { NotificationPopup } from "../../components/Popup";
+import Table from "../../components/V2/Table";
+import { NotificationPopup } from "../../components/V2/Popup";
 import { useState } from "react";
+import _ from "lodash";
 
 interface AddAppointmentsScreenProps {
   activeHospitalsForCoordinator: Hospital[];
@@ -26,8 +27,10 @@ export default function AddAppointmentsScreen({
   onSave,
 }: AddAppointmentsScreenProps) {
   const [showPopup, setShowPopup] = useState(false);
+  const [slotsCountToShowInPopup, setSlotsCountToShowInPopup] = useState(0);
 
   const handleSave = async () => {
+    setSlotsCountToShowInPopup(_.sumBy(slotsArray, (slot) => slot.slots));
     await onSave();
     setShowPopup(true);
   };
@@ -39,7 +42,7 @@ export default function AddAppointmentsScreen({
         setSlotsArray={setSlotsArray}
         activeHospitalsForCoordinator={activeHospitalsForCoordinator}
       />
-      <main className={styles.content}>
+      <main>
         <Table
           hasColumnHeaders
           columns={columns(deleteSlotsRequest)}
@@ -61,7 +64,11 @@ export default function AddAppointmentsScreen({
         open={showPopup}
         buttonApproveText={"המשך"}
         onClose={() => setShowPopup(false)}
-        titleFirst="התור נוסף בהצלחה!"
+        titleFirst={
+          slotsCountToShowInPopup === 1
+            ? "התור נוסף בהצלחה!"
+            : slotsCountToShowInPopup + " תורים נוספו בהצלחה!"
+        }
       />
     </div>
   );

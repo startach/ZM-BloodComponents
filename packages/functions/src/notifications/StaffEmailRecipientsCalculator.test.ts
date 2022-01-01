@@ -75,6 +75,10 @@ describe("Staff Email Recipients Calculator", () => {
         email: "dumanionok@gmail.com",
         name: "בית החולים סורוקה",
       },
+      {
+        email: "ety140@gmail.com",
+        name: "בית החולים סורוקה",
+      },
     ]);
   });
 

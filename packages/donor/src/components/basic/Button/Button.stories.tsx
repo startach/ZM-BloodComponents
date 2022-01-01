@@ -1,10 +1,10 @@
-import ButtonV2 from "./Button";
+import Button from "./Button";
 import { ButtonProps, ButtonVariant } from "./Button";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 
 export default {
-  component: ButtonV2,
+  component: Button,
   title: "Components/Button",
 };
 
@@ -15,7 +15,7 @@ const props: ButtonProps = {
   variant: ButtonVariant.contained,
 };
 
-const Template: Story<ButtonProps> = (args) => <ButtonV2 {...args} />;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

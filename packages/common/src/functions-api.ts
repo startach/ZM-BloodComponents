@@ -1,3 +1,4 @@
+import { HospitalUtils } from ".";
 import {
   BloodType,
   BookingChange,
@@ -7,6 +8,7 @@ import {
   Hospital,
   BookedDonationWithDonorDetails,
   DonorNotificationSettings,
+  MinimalDonorDetailsForAppointment,
 } from "./types";
 
 // Donor functions:
@@ -23,6 +25,8 @@ export type AvailableAppointmentApiEntry = {
 
 export type BookedAppointmentApiEntry = {
   id: string;
+  donorDetails?: MinimalDonorDetailsForAppointment;
+  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   donationStartTimeMillis: number; // API returns millis
   hospital: Hospital;
   donorId: string;
@@ -41,7 +45,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
-  assigningCoordinator?: string; // Applies only if donor is anonymous (manual donor)
+  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   bookingTimeMillis?: number;
 };
 
@@ -62,17 +66,28 @@ export interface GetDonorAppointmentsResponse {
   futureAppointments: BookedAppointmentApiEntry[];
 }
 
-export const BookAppointmentFunctionName = "bookAppointment";
+export const CoordinatorBookAppointmentFunctionName =
+  "coordinatorBookAppointment";
+export interface CoordinatorBookAppointmentRequest {
+  appointmentIds: string[];
+  donorId: string; // Can be an id of a donor or MANUAL_DONOR_ID (in types)
+  donorDetails?: MinimalDonorDetailsForAppointment; // if donor id is MANUAL_DONOR_ID need to be sent.
+}
+
+export const DonorBookAppointmentFunctionName = "bookAppointment";
+export interface BookAppointmentRequest {
+  appointmentIds: string[];
+}
+
 export enum BookAppointmentStatus {
   SUCCESS = "SUCCESS",
   NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
   NO_SUCH_APPOINTMENTS = "NO_SUCH_APPOINTMENTS",
   HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER",
+  DONOR_DETAILS_REQUIRED = "DONOR_DETAILS_REQUIRED",
+  NO_PERMISSIONS_FOR_DONOR = "NO_PERMISSIONS_FOR_DONOR",
 }
-export interface BookAppointmentRequest {
-  // Ids of appointments in the time slot, book first one available
-  appointmentIds: string[];
-}
+
 export interface BookAppointmentResponse {
   status: BookAppointmentStatus;
   bookedAppointment?: BookedAppointmentApiEntry;
@@ -146,7 +161,7 @@ export interface DeleteAppointmentRequest {
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
-  hospital: Hospital;
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   earliestStartTimeMillis?: number;
 }
 

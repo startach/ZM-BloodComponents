@@ -15,7 +15,6 @@
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.1.21",
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react-swipeable-views": "^0.13.0",
@@ -33,7 +32,7 @@
     "generate-mobile-images": "run-s mobile:generate-images",
     "-------------------TESTING---------------------": "",
     "test": "react-scripts test",
-    "updateSnapshots": "yarn run test -- -u --watchAll=false",
+    "test-update": "yarn run test --watchAll=false -u",
     "-------------------MOBILE----------------------": "",
     "mobile:init-ios": "cap add ios",
     "mobile:init-android": "cap add android",

@@ -1,5 +1,5 @@
-import CoordinatorScreen from "../../components/CoordinatorScreen";
-import Spinner from "../../components/Spinner";
+import CoordinatorScreen from "../../components/V2/CoordinatorScreen";
+import Spinner from "../../components/V2/Spinner";
 import styles from "./LoadingScreen.module.scss";
 
 export default function LoadingScreen() {
