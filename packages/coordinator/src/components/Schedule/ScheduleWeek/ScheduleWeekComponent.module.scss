@@ -7,55 +7,40 @@
   position: relative;
 }
 
-.daysRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.chevron {
-  margin: 0 5px;
-}
-
 .dayLabel {
   flex: 1;
   text-align: center;
+  color: var(--coordinator-gray);
 }
 
 .dayNumber {
   font-weight: 500;
   font-size: 16px;
-  color: var(--coordinator-dark-gray);
 }
 
 .dayLetter {
   font-size: 14px;
-  color: var(--coordinator-gray);
 }
 
 .scheduleWeek {
   overflow-y: auto;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  height: 100%;
+  display: grid;
 }
 
-.dayWrapper {
-  flex: 1;
-}
-
-.timesColumn {
-  color: var(--coordinator-gray);
+.gridColumns {
+  display: grid;
+  grid-template-columns: 15px repeat(6, auto);
+  grid-gap: 5px;
 }
 
 .hourCell {
-  height: 85px;
   font-size: 14px;
   line-height: 14px;
-  margin: 0 2px;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: center;
+  margin-inline-start: 3px;
 }

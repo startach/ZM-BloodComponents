@@ -17,24 +17,18 @@ export default function ScheduleCellComponent({
   }
 
   const content = cell.bookedAppointmentsCount + "/" + cell.appointmentsCount;
+  const classes = [styles.scheduleHourSquare];
+
   if (cell.appointmentsCount > cell.bookedAppointmentsCount) {
-    return (
-      <div
-        onClick={() => cell.onClick(cell.cellStartTime)}
-        className={classNames(
-          styles.scheduleHourSquare,
-          styles.partiallyBooked
-        )}
-      >
-        {content}
-      </div>
-    );
+    classes.push(styles.partiallyBooked);
+  } else {
+    classes.push(styles.fullyBooked);
   }
 
   return (
     <div
       onClick={() => cell.onClick(cell.cellStartTime)}
-      className={classNames(styles.scheduleHourSquare, styles.fullyBooked)}
+      className={classNames(classes)}
     >
       {content}
     </div>

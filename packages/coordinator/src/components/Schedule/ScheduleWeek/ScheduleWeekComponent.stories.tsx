@@ -37,11 +37,7 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
 });
 
 const props: ScheduleWeekComponentProps = {
-  onNext: action("onNext"),
-  onPrevious: action("onPrevious"),
-  week: {
-    days,
-  },
+  days,
 };
 
 const Template: Story<ScheduleWeekComponentProps> = (args) => (
