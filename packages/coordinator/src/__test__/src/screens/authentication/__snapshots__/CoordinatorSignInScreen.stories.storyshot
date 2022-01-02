@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Screens/Sign In Screen Default 1`] = `
+exports[`Storyshots Screens (OLD)/Sign In Screen Default 1`] = `
 <div
   dir="rtl"
   style={

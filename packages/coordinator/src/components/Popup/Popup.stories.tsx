@@ -17,7 +17,7 @@ const props = {
 
 const Template: Story<PopupProps> = (args) => {
   const [open, setOpen] = useState(false);
-  const close = async () => setOpen(false);
+  const handleClose = async () => setOpen(false);
 
   return (
     <div>
@@ -25,8 +25,9 @@ const Template: Story<PopupProps> = (args) => {
       <Popup
         {...args}
         open={open}
-        onPrimaryButtonClick={close}
-        onCancelButtonClick={close}
+        onPrimaryButtonClick={handleClose}
+        onCancelButtonClick={handleClose}
+        onClose={handleClose}
       />
     </div>
   );
