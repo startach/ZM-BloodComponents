@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { useState } from "react";
 import Button from "../Button";
 import { Popup, PopupProps } from "./Popup";
@@ -7,7 +7,7 @@ export default {
   component: Popup,
   title: "Components/Popup",
   parameters: { layout: "padded" },
-};
+} as Meta;
 
 const props = {
   content: "האם ברצונך להסיר תורם זה  מהתור הנוכחי?",

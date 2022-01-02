@@ -1,12 +1,11 @@
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import CoordinatorHeader, { AppHeaderProps } from "./CoordinatorHeader";
-import { action } from "@storybook/addon-actions";
 
 export default {
   component: CoordinatorHeader,
   title: "Components/App Header",
   parameters: { layout: "fullscreen" },
-};
+} as Meta;
 
 const props: AppHeaderProps = {
   hasBackButton: false,

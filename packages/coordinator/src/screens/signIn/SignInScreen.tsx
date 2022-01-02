@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./SignInScreen.module.scss";
-import CoordinatorHeader from "../../components/AppHeader";
+import CoordinatorHeader from "../../components/CoordinatorHeader";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
