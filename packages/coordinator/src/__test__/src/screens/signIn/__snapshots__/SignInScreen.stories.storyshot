@@ -18,15 +18,33 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
       <div
         className="title"
       >
-        זכרון מנחם - התחברות רכזים
+         
       </div>
+    </div>
+    <div
+      className="loginScreenLogoContainer"
+    >
+      <img
+        className="loginScreenLogoImage"
+        src="blood-bank-zichron-logo.svg"
+      />
     </div>
     <div
       className="screenContent"
     >
       <div
+        className="subtitle"
+      >
+        מערכת רכז
+      </div>
+      <div
         className="fields"
       >
+        <div
+          className="loginScreenSecondaryHeader"
+        >
+          התחברות
+        </div>
         <div
           className="component"
         >
@@ -166,6 +184,16 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
                 </div>
               </span>
             </button>
+          </div>
+        </div>
+        <div
+          className="forgotPassContainer"
+        >
+          <div
+            className="forgotPasswordBtn textButton"
+            onClick={[Function]}
+          >
+            שכחתי את הסיסמה
           </div>
         </div>
       </div>
