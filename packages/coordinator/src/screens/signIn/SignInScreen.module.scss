@@ -2,6 +2,16 @@
   width: 100%;
 }
 
+.loginScreenLogoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+img.loginScreenLogoImage {
+  width: 120px;
+}
+
 .screenContent {
   display: flex;
   flex-direction: column;
@@ -13,12 +23,31 @@
   width: 80%;
 }
 
-.actionButton {
-}
-
 .textButton {
   padding-top: 25px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+}
+
+.loginScreenSecondaryHeader {
+  font-weight: 500;
+}
+
+.forgotPassContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forgotPasswordBtn {
+  color: gray;
+}
+
+.subtitle {
+  color: var(--coordinator-primary);
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
