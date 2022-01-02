@@ -3,7 +3,6 @@ import styles from "./SignInScreen.module.scss";
 import CoordinatorHeader from "../../components/AppHeader";
 import Input from "../../components/Input";
 import Button, { ButtonVariant } from "../../components/Button";
-import { async } from "@firebase/util";
 import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
 
 export interface SignInScreenProps {
