@@ -1,14 +1,9 @@
-import {
-  BookedAppointment,
-  DateUtils,
-  Donor,
-} from "@zm-blood-components/common";
+import { BookedAppointment, Donor } from "@zm-blood-components/common";
 import UpcomingDonationScreen from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { redirectToBookDonation } from "../../navigation/AppRouter";
 import { useAppointmentToBookStore } from "../../state/Providers";
 import { shouldDisplaySameDayDonationPopup } from "./SameDayDonationUtil";
-import { bookAppointment } from "@zm-blood-components/functions";
 
 interface UpcomingDonationScreenContainerProps {
   user: Donor;
