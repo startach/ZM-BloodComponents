@@ -1,4 +1,5 @@
 import { action } from "@storybook/addon-actions";
+import { Meta } from "@storybook/react";
 import { TestUtils } from "@zm-blood-components/common";
 import ResetPasswordScreen, {
   ResetPasswordScreenProps,
@@ -8,7 +9,7 @@ export default {
   component: ResetPasswordScreen,
   title: "Screens/Reset Password Screen",
   parameters: { layout: "fullscreen" },
-};
+} as Meta;
 
 const onResetPasswordWithEmail = async (
   email: string,
