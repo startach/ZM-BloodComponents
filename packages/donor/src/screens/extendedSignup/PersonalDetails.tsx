@@ -66,7 +66,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     let firstNameErrorMessage = "";
 
     if (newFirstName.length < 2) {
-      firstNameErrorMessage = "נא להזין שם פרטי";
+      firstNameErrorMessage = "שם אינו תקין";
     }
 
     setFirstNameError(firstNameErrorMessage);
@@ -81,7 +81,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     }
 
     if (newLastName.length < 2) {
-      lastNameError = "נא להזין שם משפחה";
+      lastNameError = "שם אינו תקין";
     }
 
     setLastNameError(lastNameError);
