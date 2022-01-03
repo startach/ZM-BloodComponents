@@ -52,9 +52,3 @@ TelHashomer.args = props(Hospital.TEL_HASHOMER);
 
 export const Default = Template.bind({});
 Default.args = props(Hospital.RAMBAM);
-
-export const SameDayDonation = Template.bind({});
-SameDayDonation.args = {
-  ...props(Hospital.RAMBAM),
-  showSameDayDonationPopup: true,
-};
