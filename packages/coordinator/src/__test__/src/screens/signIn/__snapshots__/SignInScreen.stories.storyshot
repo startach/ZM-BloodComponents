@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
       className="appHeader"
     >
       <div
-        className="title secondaryTitle"
+        className="title"
       >
         זכרון מנחם - התחברות רכזים
       </div>
