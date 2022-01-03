@@ -41,7 +41,7 @@ export async function sendEmailToDonor(
       templateId = "d-efc1aeb750f542ec9fb1120c03e97a68";
       break;
     case NotificationToDonor.DONATION_CONFIRMATION:
-      // TODO - Get template for donation confirmation
+      templateId = "d-9875da5105274900826e8f1492508758";
       return;
     default:
       return;
