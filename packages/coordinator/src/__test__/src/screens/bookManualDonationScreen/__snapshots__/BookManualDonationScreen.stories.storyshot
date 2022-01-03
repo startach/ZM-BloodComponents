@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         </span>
       </button>
       <div
-        className="title"
+        className="title secondaryTitle"
       >
         הוספה ידנית של תורם
       </div>
