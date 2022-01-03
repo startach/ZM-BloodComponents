@@ -3,6 +3,7 @@ import styles from "./SignInScreen.module.scss";
 import CoordinatorHeader from "../../components/CoordinatorHeader";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface SignInScreenProps {
   onSignInWithEmail: (
@@ -36,7 +37,10 @@ export default function SignInScreen(props: SignInScreenProps) {
 
   return (
     <div className={styles.screen}>
-      <CoordinatorHeader title={"זכרון מנחם - התחברות רכזים"} />
+      <CoordinatorHeader
+        title={"זכרון מנחם - התחברות רכזים"}
+        variant={HeaderVariant.SECONDARY}
+      />
       <div className={styles.screenContent}>
         <div className={styles.fields}>
           <Input
