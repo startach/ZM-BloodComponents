@@ -40,6 +40,10 @@ export function ToWeekDayString(
   return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
 }
 
+export function ToWeekDayLetter(date: ParsableDateValue | number) {
+  return dayjs(date).locale("he").format("dd").substring(0, 1);
+}
+
 export function DateComparer(date1: Date, date2: Date): number {
   return date1.getTime() - date2.getTime();
 }

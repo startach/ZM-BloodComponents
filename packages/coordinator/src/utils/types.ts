@@ -22,3 +22,18 @@ export type Appointment = {
   isPastAppointment: boolean;
   bloodType?: BloodType;
 };
+
+export type ScheduleWeek = {
+  days: ScheduleDay[];
+};
+
+export type ScheduleDay = {
+  cells: ScheduleCell[];
+};
+
+export type ScheduleCell = {
+  cellStartTime: Date;
+  appointmentsCount: number;
+  bookedAppointmentsCount: number;
+  onClick: (cellStartTime: Date) => void;
+};

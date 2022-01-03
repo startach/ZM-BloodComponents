@@ -1,12 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { CoordinatorRole, Hospital } from "@zm-blood-components/common";
 import CoordinatorHeader, { CoordinatorHeaderProps } from "./CoordinatorHeader";
 
 export default {
   component: CoordinatorHeader,
   title: "Components Coordinator Header",
-};
+} as Meta;
 
 const getEmail = () => {
   return "johndoe@lostfound.com";
