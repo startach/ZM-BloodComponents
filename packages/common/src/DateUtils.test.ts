@@ -38,7 +38,7 @@ test("ToWeekDayLatter works", () => {
   expect(ToWeekDayLetter(Friday)).toEqual("ו");
 });
 
-test.each([true, false])("isSameDay works", (areTgeSameDay) => {
+test.each([true, false])("isSameDay works - %s", (areTgeSameDay) => {
   const date1 = new Date(2022, 0, 2, 11, 30);
   const date2 = areTgeSameDay
     ? new Date(2022, 0, 2, 17, 30)

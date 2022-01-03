@@ -61,7 +61,7 @@ export async function getAppointments(
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital,
     earliestStartTimeMillis:
-      DateUtils.TodayAtMidnight().getTime() - TwoWeeksMillis,
+      DateUtils.TodayAdMidnight().getTime() - TwoWeeksMillis,
   };
 
   const response = await getAppointmentsFunction(request);
