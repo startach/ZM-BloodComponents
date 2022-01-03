@@ -3,7 +3,7 @@ import styles from "./AuthScreens.module.scss";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
-import ArrowForward from "@material-ui/icons/ArrowForward";
+import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useHistory } from "react-router-dom";
 
 
@@ -37,7 +37,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
             className={styles.resetPasswordbackButton}
             onClick={() => history.goBack()}
         >
-            <ArrowForward />
+            <img src={chevronSvg} />
             חזרה
         </div>
       <div className={styles.authScreenLogoContainer}>
