@@ -13,19 +13,10 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
     className="screen"
   >
     <div
-      className="appHeader"
-    >
-      <div
-        className="title"
-      >
-         
-      </div>
-    </div>
-    <div
-      className="loginScreenLogoContainer"
+      className="authScreenLogoContainer"
     >
       <img
-        className="loginScreenLogoImage"
+        className="authScreenLogoImage"
         src="blood-bank-zichron-logo.svg"
       />
     </div>
@@ -49,24 +40,24 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
+            className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
             dir="rtl"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+              className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
               data-shrink={false}
             >
               דוא"ל
             </label>
             <div
-              className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
+              className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-62 MuiInput-input-47"
+                className="MuiInputBase-input-50 MuiInput-input-35"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -84,24 +75,24 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
+            className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
             dir="rtl"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+              className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
               data-shrink={false}
             >
               סיסמה
             </label>
             <div
-              className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38 MuiInputBase-adornedEnd-56"
+              className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26 MuiInputBase-adornedEnd-44"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-62 MuiInput-input-47 MuiInputBase-inputAdornedEnd-67"
+                className="MuiInputBase-input-50 MuiInput-input-35 MuiInputBase-inputAdornedEnd-55"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -112,10 +103,10 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
                 value=""
               />
               <div
-                className="MuiInputAdornment-root-69 MuiInputAdornment-positionEnd-72"
+                className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"
               >
                 <button
-                  className="MuiButtonBase-root-85 MuiIconButton-root-76 MuiIconButton-edgeEnd-78"
+                  className="MuiButtonBase-root-73 MuiIconButton-root-64 MuiIconButton-edgeEnd-66"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -133,11 +124,11 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
                   type="button"
                 >
                   <span
-                    className="MuiIconButton-label-84"
+                    className="MuiIconButton-label-72"
                   >
                     <svg
                       aria-hidden={true}
-                      className="MuiSvgIcon-root-88"
+                      className="MuiSvgIcon-root-76"
                       focusable="false"
                       viewBox="0 0 24 24"
                     >
@@ -157,7 +148,7 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-85 MuiButton-root-97 MuiButton-contained-105 button MuiButton-containedPrimary-106 MuiButton-disableElevation-108 MuiButton-disabled-110 MuiButton-fullWidth-120 MuiButtonBase-disabled-86"
+              className="MuiButtonBase-root-73 MuiButton-root-85 MuiButton-contained-93 button MuiButton-containedPrimary-94 MuiButton-disableElevation-96 MuiButton-disabled-98 MuiButton-fullWidth-108 MuiButtonBase-disabled-74"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
@@ -175,7 +166,7 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-98"
+                className="MuiButton-label-86"
               >
                 <div
                   className="buttonText"

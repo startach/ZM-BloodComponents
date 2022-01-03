@@ -71,6 +71,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               value=""
             />
           </div>
+          
         </div>
       </div>
       <div
