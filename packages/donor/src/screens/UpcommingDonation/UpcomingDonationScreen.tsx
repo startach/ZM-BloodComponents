@@ -11,7 +11,8 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/exists appointment.svg";
-import Cancellation from "../../assets/images/cancelation.svg";
+import Cancellation from "../../assets/images/same-day-donation.svg";
+import SameDayDonation from "../../assets/images/same-day-donation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
@@ -88,7 +89,7 @@ export default function UpcomingDonationScreen({
         title={"איזו ספונטיות!"}
         buttonApproveText={"אישור"}
         onApproved={() => setShowPopup(false)}
-        image={Cancellation}
+        image={SameDayDonation}
       >
         <div className={styles.popupContent}>
           נרשמת לתור שמתקיים היום. כדאי מאוד להתקשר למאמת כדי לוודא קיום התור
