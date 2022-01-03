@@ -1,4 +1,9 @@
-import { DateComparer, ToDateString, ToTimeString } from "./DateUtils";
+import {
+  DateComparer,
+  ToDateString,
+  ToTimeString,
+  ToWeekDayLetter,
+} from "./DateUtils";
 
 test("DateComparer works", () => {
   const now = new Date();
@@ -22,4 +27,12 @@ test("ToDateString works", () => {
   yesterday.setDate(yesterday.getDate() - 1);
 
   expect(ToDateString(time)).toEqual("13/01/2021");
+});
+
+test("ToWeekDayLatter works", () => {
+  const Sunday = new Date(2022, 0, 2);
+  expect(ToWeekDayLetter(Sunday)).toEqual("א");
+
+  const Friday = new Date(2022, 0, 7);
+  expect(ToWeekDayLetter(Friday)).toEqual("ו");
 });
