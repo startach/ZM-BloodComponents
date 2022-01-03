@@ -1,8 +1,8 @@
 import { useState } from "react";
-import styles from "./SignInScreen.module.scss";
-import CoordinatorHeader from "../../components/CoordinatorHeader";
+import styles from "./AuthScreens.module.scss";
 import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Button, { ButtonVariant } from "../../components/Button";
+import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
 
 export interface SignInScreenProps {
   onSignInWithEmail: (
@@ -11,6 +11,7 @@ export interface SignInScreenProps {
     emailError: (error: string) => void,
     passwordError: (error: string) => void
   ) => Promise<boolean>;
+  onForgotPasswordClick: () => void;
 }
 
 export default function SignInScreen(props: SignInScreenProps) {
@@ -36,9 +37,13 @@ export default function SignInScreen(props: SignInScreenProps) {
 
   return (
     <div className={styles.screen}>
-      <CoordinatorHeader title={"זכרון מנחם - התחברות רכזים"} />
+      <div className={styles.authScreenLogoContainer}>
+        <img src={logoImage} className={styles.authScreenLogoImage} />
+      </div>
       <div className={styles.screenContent}>
+        <div className={styles.subtitle}>מערכת רכז</div>
         <div className={styles.fields}>
+          <div className={styles.loginScreenSecondaryHeader}>{"התחברות"}</div>
           <Input
             onChangeText={(emailContent) => {
               setEmail(emailContent);
@@ -62,10 +67,19 @@ export default function SignInScreen(props: SignInScreenProps) {
           />
           <div className={styles.actionButton}>
             <Button
-              title="התחברות"
+              title={"התחברות"}
               onClick={signIn}
               isLoading={isLoading}
               isDisabled={!(email && password)}
+            />
+          </div>
+          <div className={styles.forgotPassContainer}>
+            <Button
+              className={styles.forgotPasswordBtn}
+              title="שכחתי את הסיסמה"
+              onClick={props.onForgotPasswordClick}
+              isDisabled={false}
+              variant={ButtonVariant.text}
             />
           </div>
         </div>
