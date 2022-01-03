@@ -18,6 +18,7 @@ export default {
 const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
   hospital
 ) => ({
+  showSameDayDonationPopup: false,
   bookedAppointment: {
     bookingTimeMillis: 1628845200000,
     donationStartTimeMillis: 1628845200000,
@@ -51,3 +52,9 @@ TelHashomer.args = props(Hospital.TEL_HASHOMER);
 
 export const Default = Template.bind({});
 Default.args = props(Hospital.RAMBAM);
+
+export const SameDayDonation = Template.bind({});
+SameDayDonation.args = {
+  ...props(Hospital.RAMBAM),
+  showSameDayDonationPopup: true,
+};

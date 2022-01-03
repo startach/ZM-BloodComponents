@@ -54,7 +54,11 @@ export function DateToMidnight(date: Date) {
   return midnight;
 }
 
-export function TodayAdMidnight() {
+export function isSameDay(date1: Date, date2: Date) {
+  return DateToMidnight(date1).getTime() === DateToMidnight(date2).getTime();
+}
+
+export function TodayAtMidnight() {
   const midnight = new Date();
   midnight.setHours(0, 0, 0, 0);
   return midnight;

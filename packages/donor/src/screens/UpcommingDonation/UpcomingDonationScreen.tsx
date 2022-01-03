@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BookedAppointment,
   DateUtils,
@@ -23,13 +23,18 @@ export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
   onCancel: () => Promise<void>;
+  showSameDayDonationPopup: boolean;
 }
 
 export default function UpcomingDonationScreen({
   fullName,
   onCancel,
   bookedAppointment,
+  showSameDayDonationPopup,
 }: UpcomingDonationScreenProps) {
+  const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
+  const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
+
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -77,6 +82,22 @@ export default function UpcomingDonationScreen({
       </div>
 
       <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
+
+      <Popup
+        open={showPopup}
+        title={"איזו ספונטיות!"}
+        buttonApproveText={"אישור"}
+        onApproved={() => setShowPopup(false)}
+        image={Cancellation}
+      >
+        <div className={styles.popupContent}>
+          נרשמת לתור שמתקיים היום. כדאי מאוד להתקשר למאמת כדי לוודא קיום התור
+          בטלפון
+          <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
+            {phoneNumber}
+          </a>
+        </div>
+      </Popup>
     </ZMScreen>
   );
 }
@@ -150,4 +171,21 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
       />
     </>
   );
+}
+
+function getHospitalPhoneNumber(hospital: Hospital) {
+  switch (hospital) {
+    case Hospital.TEL_HASHOMER:
+      return "03-5305375";
+    case Hospital.BEILINSON:
+      return "03-9376052";
+    case Hospital.SOROKA:
+      return "08-6400138";
+    case Hospital.ASAF_HAROFE:
+    case Hospital.HADASA_EIN_KEREM:
+    case Hospital.ICHILOV:
+    case Hospital.RAMBAM:
+    default:
+      return "058-7100571";
+  }
 }

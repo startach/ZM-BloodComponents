@@ -72,7 +72,7 @@ export default function ManageAppointmentsScreenContainer({
     shownAppointments = shownAppointments.filter(
       (appointment) =>
         appointment.donationStartTimeMillis >
-        DateUtils.TodayAdMidnight().getTime()
+        DateUtils.TodayAtMidnight().getTime()
     );
 
     if (showOnlyRecentChanges) {
