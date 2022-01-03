@@ -21,8 +21,8 @@ const onSignInWithEmail = async (
 };
 
 const onForgotPasswordScreen = () => {
-  action("On Forgot Password!")
-}
+  action("On Forgot Password!");
+};
 
 const props: SignInScreenProps = {
   onSignInWithEmail: onSignInWithEmail,

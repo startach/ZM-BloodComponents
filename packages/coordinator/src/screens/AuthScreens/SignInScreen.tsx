@@ -36,56 +36,54 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-      <div className={styles.screen}>
-        <div className={styles.authScreenLogoContainer}>
-          <img src={logoImage} className={styles.authScreenLogoImage} />
-        </div>
-        <div className={styles.screenContent}>
-          <div className={styles.subtitle}>מערכת רכז</div>
-          <div className={styles.fields}>
-            <div className={styles.loginScreenSecondaryHeader}>
-              {"התחברות"}
-            </div>
-            <Input
-              onChangeText={(emailContent) => {
-                setEmail(emailContent);
-                setEmailError("");
-              }}
-              value={email}
-              type={"email"}
-              label={`דוא"ל`}
-              errorMessage={emailError}
+    <div className={styles.screen}>
+      <div className={styles.authScreenLogoContainer}>
+        <img src={logoImage} className={styles.authScreenLogoImage} />
+      </div>
+      <div className={styles.screenContent}>
+        <div className={styles.subtitle}>מערכת רכז</div>
+        <div className={styles.fields}>
+          <div className={styles.loginScreenSecondaryHeader}>{"התחברות"}</div>
+          <Input
+            onChangeText={(emailContent) => {
+              setEmail(emailContent);
+              setEmailError("");
+            }}
+            value={email}
+            type={"email"}
+            label={`דוא"ל`}
+            errorMessage={emailError}
+          />
+          <Input
+            onChangeText={(passwordContent) => {
+              setPassword(passwordContent);
+              setPasswordError("");
+            }}
+            value={password}
+            label="סיסמה"
+            errorMessage={passwordError}
+            onSubmit={signIn}
+            type="password"
+          />
+          <div className={styles.actionButton}>
+            <Button
+              title={"התחברות"}
+              onClick={signIn}
+              isLoading={isLoading}
+              isDisabled={!(email && password)}
             />
-            <Input
-              onChangeText={(passwordContent) => {
-                setPassword(passwordContent);
-                setPasswordError("");
-              }}
-              value={password}
-              label="סיסמה"
-              errorMessage={passwordError}
-              onSubmit={signIn}
-              type="password"
+          </div>
+          <div className={styles.forgotPassContainer}>
+            <Button
+              className={styles.forgotPasswordBtn}
+              title="שכחתי את הסיסמה"
+              onClick={props.onForgotPasswordClick}
+              isDisabled={false}
+              variant={ButtonVariant.text}
             />
-            <div className={styles.actionButton}>
-              <Button
-                title={"התחברות"}
-                onClick={signIn}
-                isLoading={isLoading}
-                isDisabled={!(email && password)}
-              />
-            </div>
-            <div className={styles.forgotPassContainer}>
-              <Button
-                className={styles.forgotPasswordBtn}
-                title="שכחתי את הסיסמה"
-                onClick={props.onForgotPasswordClick}
-                isDisabled={false}
-                variant={ButtonVariant.text}
-              />
-            </div>
           </div>
         </div>
       </div>
+    </div>
   );
 }

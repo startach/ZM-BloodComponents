@@ -1,6 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { TestUtils } from "@zm-blood-components/common";
-import ResetPasswordScreen, { ResetPasswordScreenProps } from "./ResetPasswordScreen";
+import ResetPasswordScreen, {
+  ResetPasswordScreenProps,
+} from "./ResetPasswordScreen";
 
 export default {
   component: ResetPasswordScreen,
@@ -22,5 +24,7 @@ const props: ResetPasswordScreenProps = {
   onResetPasswordWithEmail: onResetPasswordWithEmail,
 };
 
-export const Default = (args: ResetPasswordScreenProps) => <ResetPasswordScreen {...args} />;
+export const Default = (args: ResetPasswordScreenProps) => (
+  <ResetPasswordScreen {...args} />
+);
 Default.args = props;

@@ -6,8 +6,6 @@ import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
 import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useHistory } from "react-router-dom";
 
-
-
 export interface ResetPasswordScreenProps {
   onResetPasswordWithEmail: (
     email: string,
@@ -33,13 +31,13 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
 
   return (
     <div className={styles.screen}>
-        <div
-            className={styles.resetPasswordbackButton}
-            onClick={() => history.goBack()}
-        >
-            <img src={chevronSvg} />
-            חזרה
-        </div>
+      <div
+        className={styles.resetPasswordbackButton}
+        onClick={() => history.goBack()}
+      >
+        <img src={chevronSvg} />
+        חזרה
+      </div>
       <div className={styles.authScreenLogoContainer}>
         <img src={logoImage} className={styles.authScreenLogoImage} />
       </div>
@@ -64,7 +62,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               title={"איפוס סיסמה"}
               onClick={resetPassword}
               isLoading={isLoading}
-              isDisabled={!(email)}
+              isDisabled={!email}
             />
           </div>
         </div>
