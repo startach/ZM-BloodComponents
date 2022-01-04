@@ -124,7 +124,6 @@ export default function BookManualDonationScreen(
           onClick={() => history.goBack()}
           className={styles.button}
           variant={ButtonVariant.outlined}
-          color={"default"}
         />
       </div>
     </div>
