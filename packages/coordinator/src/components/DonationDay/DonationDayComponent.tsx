@@ -5,14 +5,16 @@ import styles from "./DonationDayComponent.module.scss";
 import _ from "lodash";
 import Toggle from "../Toggle";
 import { DateUtils } from "@zm-blood-components/common";
-import { ReactComponent as X } from "../../assets/icons/x.svg";
+import CoordinatorHeader from "../CoordinatorHeader";
+import { HeaderVariant } from "../CoordinatorHeader/CoordinatorHeader";
+import Fab from "../Fab";
+import AddAppointmentFab from "../AddAppointmentFab";
 
 export type DonationDayComponentProps = {
   donationDay: DonationDay;
   onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
-  onClose: () => void;
 };
 
 export default function DonationDayComponent({
@@ -20,7 +22,6 @@ export default function DonationDayComponent({
   onClickOnAppointment,
   onAdd,
   donationDay,
-  onClose,
 }: DonationDayComponentProps) {
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
@@ -36,10 +37,14 @@ export default function DonationDayComponent({
 
   return (
     <div className={styles.donationDay}>
+      <CoordinatorHeader
+        variant={HeaderVariant.INFO}
+        hasBackButton
+        hasNotificationsIcon
+        title={"ניהול תורים"}
+      />
       <div className={styles.donationDayHeader}>
         <div className={styles.donationDate}>
-          <X className={styles.close} onClick={onClose} />
-
           <DayString allAppointments={allAppointments} />
 
           <div className={styles.data}>
@@ -48,8 +53,6 @@ export default function DonationDayComponent({
             <span>{bookedAppointmentsCount} רשומים</span>
           </div>
         </div>
-
-        <div className={styles.divider} />
 
         <div className={styles.availableAppointmentsToggle}>
           הצג תורים פנויים בלבד
@@ -75,6 +78,8 @@ export default function DonationDayComponent({
           />
         ))}
       </div>
+
+      <AddAppointmentFab onClick={onAdd} />
     </div>
   );
 }
