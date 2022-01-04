@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import Button, { ButtonVariant } from "../Button";
 import { ButtonColor } from "../Button/Button";
+import React from "react";
 
 export type PopupProps = {
   open: boolean;
@@ -61,7 +62,6 @@ export function Popup(props: PopupProps) {
             title={cancelButtonText}
             onClick={onCancelButtonClick || noop}
             variant={ButtonVariant.outlined}
-            color={ButtonColor.info}
           />
         )}
       </DialogActions>
