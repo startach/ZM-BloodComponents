@@ -1,6 +1,5 @@
 import {
   DateUtils,
-  Hospital,
   HospitalUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
