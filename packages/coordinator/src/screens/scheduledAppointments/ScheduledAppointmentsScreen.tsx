@@ -30,8 +30,8 @@ export interface ScheduledAppointmentsScreenProps {
   setFromDate: (newDate: Date) => void;
   toDate: Date;
   setToDate: (newDate: Date) => void;
-  hospital: Hospital | "";
-  setHospital: (newHospital: Hospital | "") => void;
+  hospital: HospitalUtils.HospitalOptionKey;
+  setHospital: (newHospital: HospitalUtils.HospitalOptionKey) => void;
   onSearch: () => void;
 }
 
@@ -100,9 +100,8 @@ export default function ScheduledAppointmentsScreen({
         <Select
           id={"hospital"}
           label={"בית חולים"}
-          options={HospitalUtils.getHospitalOptions(
-            activeHospitalsForCoordinator,
-            "בחר"
+          options={HospitalUtils.getAllHospitalOptions(
+            activeHospitalsForCoordinator
           )}
           onChange={setHospital}
           value={hospital}

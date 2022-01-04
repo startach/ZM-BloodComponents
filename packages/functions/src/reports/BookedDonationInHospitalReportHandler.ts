@@ -2,10 +2,12 @@ import {
   BookedDonationWithDonorDetails,
   FunctionsApi,
 } from "@zm-blood-components/common";
-import { getCoordinator } from "../dal/AdminDataAccessLayer";
+import {
+  getCoordinator,
+  getValidHospitalsOrThrow,
+} from "../dal/AdminDataAccessLayer";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import { getDonors } from "../dal/DonorDataAccessLayer";
-import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
 import { DbAppointment } from "../function-types";
 
 export default async function (
@@ -18,20 +20,10 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  const allowedHospitals = getCoordinatorHospitals(coordinator);
-  if (!allowedHospitals.includes(request.hospital)) {
-    console.error(
-      "Coordinator not allowed for requested hospital",
-      callerId,
-      request.hospital
-    );
-    throw Error(
-      `Coordinator ${callerId} is not allowed to view hospital ${request.hospital}`
-    );
-  }
+  const hospitals = getValidHospitalsOrThrow(coordinator, request.hospital);
 
   const appointments: DbAppointment[] = await getAppointmentsByHospital(
-    [request.hospital],
+    hospitals,
     new Date(request.fromDateMillis),
     new Date(request.toDateMillis)
   );

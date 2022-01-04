@@ -1,4 +1,9 @@
-import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
+import {
+  DateUtils,
+  Hospital,
+  HospitalUtils,
+  LocaleUtils,
+} from "@zm-blood-components/common";
 import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
 import { IColumn } from "react-csv-downloader/dist/esm/lib/csv";
 
@@ -45,7 +50,7 @@ export const formatDataByColumns = (
 };
 
 export const getDonorReportFileName = (
-  hospital: Hospital | "",
+  hospital: HospitalUtils.HospitalOptionKey,
   fromDate: Date,
   toDate: Date
 ): string => {

@@ -3,6 +3,7 @@ import {
   BookedDonationWithDonorDetails,
   DateUtils,
   Hospital,
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ScheduledAppointmentsScreen from "./ScheduledAppointmentsScreen";
@@ -19,7 +20,7 @@ export default function ScheduledAppointmentsScreenContainer({
     dayjs().subtract(1, "month").toDate()
   );
   const [toDate, setToDate] = useState<Date>(new Date());
-  const [hospital, setHospital] = useState<Hospital | "">("");
+  const [hospital, setHospital] = useState<HospitalUtils.HospitalOptionKey>("");
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
     useState<BookedDonationWithDonorDetails[]>([]);
