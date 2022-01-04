@@ -70,7 +70,6 @@ export default function DonationDayComponent({
           <AppointmentSlotComponent
             key={index + "." + slot.donationStartTimeMillis}
             appointmentSlot={slot}
-            onAdd={onAdd}
             onClickOnAppointment={onClickOnAppointment}
             onDeleteAppointment={onDeleteAppointment}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
