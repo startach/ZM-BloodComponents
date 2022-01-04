@@ -7,7 +7,6 @@ import Toggle from "../Toggle";
 import { DateUtils } from "@zm-blood-components/common";
 import CoordinatorHeader from "../CoordinatorHeader";
 import { HeaderVariant } from "../CoordinatorHeader/CoordinatorHeader";
-import Fab from "../Fab";
 import AddAppointmentFab from "../AddAppointmentFab";
 
 export type DonationDayComponentProps = {
