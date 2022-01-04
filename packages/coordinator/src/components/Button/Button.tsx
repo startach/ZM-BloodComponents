@@ -1,4 +1,4 @@
-import { Button as MuiButton, PropTypes } from "@material-ui/core";
+import { Button as MuiButton } from "@material-ui/core";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -10,6 +10,11 @@ export enum ButtonVariant {
   contained = "contained",
 }
 
+export enum ButtonColor {
+  primary = "primary",
+  secondary = "secondary",
+}
+
 export type ButtonProps = {
   title: string;
   onClick: () => void;
@@ -18,7 +23,7 @@ export type ButtonProps = {
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
-  color?: PropTypes.Color;
+  color?: ButtonColor;
 };
 
 export default function Button({
@@ -41,26 +46,37 @@ export default function Button({
     );
   }
 
-  let selectedColor: PropTypes.Color;
-  if (color) {
-    selectedColor = color;
+  const buttonClasses = [styles.button];
+  if (isDisabled || isLoading) {
+    buttonClasses.push(styles.disabledButton);
+  } else if (variant === ButtonVariant.outlined) {
+    buttonClasses.push(styles.outlinedButton);
   } else {
-    selectedColor = "primary";
+    switch (color) {
+      case ButtonColor.secondary:
+        buttonClasses.push(styles.secondaryButton);
+        break;
+
+      case ButtonColor.primary:
+      default:
+        buttonClasses.push(styles.primaryButton);
+        break;
+    }
   }
 
   return (
     <div className={className}>
       <MuiButton
         onClick={onClick}
-        className={classnames(styles.button)}
+        className={classnames(buttonClasses)}
         disabled={isDisabled || isLoading}
         variant={variant}
         fullWidth
-        color={selectedColor}
+        // color={selectedColor}
         disableElevation
       >
         {isLoading ? (
-          <Spinner color={selectedColor} />
+          <Spinner color={"inherit"} />
         ) : (
           <div className={styles.buttonText}>{title}</div>
         )}
