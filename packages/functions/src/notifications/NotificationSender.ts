@@ -42,7 +42,7 @@ export async function sendEmailToDonor(
       break;
     case NotificationToDonor.DONATION_CONFIRMATION:
       templateId = "d-9875da5105274900826e8f1492508758";
-      return;
+      break;
     default:
       return;
   }
