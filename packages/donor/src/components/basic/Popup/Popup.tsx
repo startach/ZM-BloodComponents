@@ -46,16 +46,17 @@ export default function Popup({
     onClose = onBack;
   }
 
+  if (content) {
+    children = content;
+  }
+
   return (
     <Dialog fullWidth open={open} onClose={onClose}>
       <div className={styles.container}>
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
           <div className={styles.popupTextTitle}>{title}</div>
-          <div className={styles.popupTextContent}>
-            {content}
-            {children}
-          </div>
+          <div className={styles.popupTextContent}>{children}</div>
         </div>
         <div className={styles.buttonContainer}>
           <Button
