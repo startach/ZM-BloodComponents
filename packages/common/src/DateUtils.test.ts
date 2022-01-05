@@ -1,5 +1,6 @@
 import {
   DateComparer,
+  isSameDay,
   ToDateString,
   ToTimeString,
   ToWeekDayLetter,
@@ -35,4 +36,12 @@ test("ToWeekDayLatter works", () => {
 
   const Friday = new Date(2022, 0, 7);
   expect(ToWeekDayLetter(Friday)).toEqual("ו");
+});
+
+test.each([true, false])("isSameDay works - %s", (areTgeSameDay) => {
+  const date1 = new Date(2022, 0, 2, 11, 30);
+  const date2 = areTgeSameDay
+    ? new Date(2022, 0, 2, 17, 30)
+    : new Date(2022, 0, 3, 17, 30);
+  expect(isSameDay(date1, date2)).toEqual(areTgeSameDay);
 });

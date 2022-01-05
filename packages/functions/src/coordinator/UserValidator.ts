@@ -51,7 +51,7 @@ function allHospitalsAreInCoordinatorHospitalList(
   adminHospitals: Set<Hospital>,
   requestedHospitals: Set<Hospital>
 ) {
-  for (const requestedHospital of requestedHospitals) {
+  for (const requestedHospital of Array.from(requestedHospitals)) {
     if (!adminHospitals.has(requestedHospital)) {
       console.warn("Admin is not allowed to edit", requestedHospital);
       return false;

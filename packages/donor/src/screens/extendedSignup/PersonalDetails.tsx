@@ -163,7 +163,6 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       <Popup
         open={bloodTypePopupOpen}
         title="לא ידוע לך סוג הדם שלך?"
-        content="אין שום בעיה! ניתן לברר את סוג הדם בקלות בכל זמן במענה הטלפוני הממוחשב בטלפון 03−5300400"
         buttonApproveText="חיוג למענה הממוחשב"
         onApproved={async () => {
           window.open("tel:035300400");
@@ -172,7 +171,10 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         goBackText="בעצם לא צריך"
         onBack={() => setBloodTypePopupOpen(false)}
         image={Illustration}
-      />
+      >
+        אין שום בעיה! ניתן לברר את סוג הדם בקלות בכל זמן במענה הטלפוני הממוחשב
+        בטלפון 03−5300400
+      </Popup>
     </>
   );
 }

@@ -3,6 +3,7 @@ import UpcomingDonationScreen from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { redirectToBookDonation } from "../../navigation/AppRouter";
 import { useAppointmentToBookStore } from "../../state/Providers";
+import { shouldDisplaySameDayDonationPopup } from "./SameDayDonationUtil";
 
 interface UpcomingDonationScreenContainerProps {
   user: Donor;
@@ -29,6 +30,10 @@ export default function UpcomingDonationScreenContainer(
       bookedAppointment={props.bookedAppointment}
       fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
+      showSameDayDonationPopup={shouldDisplaySameDayDonationPopup(
+        new Date(),
+        props.bookedAppointment
+      )}
     />
   );
 }

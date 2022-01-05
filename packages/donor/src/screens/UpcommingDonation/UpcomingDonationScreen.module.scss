@@ -111,3 +111,15 @@
   height: 14px;
   margin-right: 4px;
 }
+
+.popupContent {
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--donor-dark-gray);
+}
+
+.popupPhoneNumber {
+  color: var(--donor-link);
+  cursor: pointer;
+  margin-inline-start: 5px;
+}

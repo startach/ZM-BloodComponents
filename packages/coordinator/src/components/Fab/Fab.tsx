@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
     right: 15,
     bottom: 15,
     borderRadius: 7,
+    fontWeight: "normal",
   },
 }));
 

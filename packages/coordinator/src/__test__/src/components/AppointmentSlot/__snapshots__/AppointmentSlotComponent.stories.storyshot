@@ -23,14 +23,6 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
         >
           11:00
         </div>
-        <div
-          className="add"
-          onClick={[Function]}
-        >
-          <svg>
-            add.svg
-          </svg>
-        </div>
       </div>
       <div>
         <div
@@ -364,14 +356,6 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
           className="time"
         >
           11:00
-        </div>
-        <div
-          className="add"
-          onClick={[Function]}
-        >
-          <svg>
-            add.svg
-          </svg>
         </div>
       </div>
       <div>
