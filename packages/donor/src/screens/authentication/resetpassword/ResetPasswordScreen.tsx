@@ -70,7 +70,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       <Popup
         open={popupOpen}
         title={error ? "אופס" : "מייל איפוס בדרך אליך"}
-        content={error || "ברגעים הקרובים ישלח אליך מייל עם לינק לאיפוס הסיסמה"}
         buttonApproveText={error ? "חזרה" : "סבבה"}
         onApproved={
           error
@@ -81,7 +80,9 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               }
         }
         image={error ? EmailError : ResetSuccess}
-      />
+      >
+        {error || "ברגעים הקרובים ישלח אליך מייל עם לינק לאיפוס הסיסמה"}
+      </Popup>
     </ZMScreen>
   );
 }

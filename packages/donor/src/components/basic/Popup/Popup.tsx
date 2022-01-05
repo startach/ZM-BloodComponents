@@ -7,7 +7,6 @@ import { Color } from "../../../constants/colors";
 export type PopupProps = {
   open: boolean;
   title: string;
-  content?: string;
   children?: React.ReactNode;
   buttonApproveText: string;
   onApproved: () => void | Promise<void>;
@@ -25,7 +24,6 @@ export default function Popup({
   buttonApproveText,
   open,
   title,
-  content,
   children,
   onBack,
   goBackText,
@@ -44,10 +42,6 @@ export default function Popup({
   if (!onClose && onBack) {
     // If no specific onClose, use onBack
     onClose = onBack;
-  }
-
-  if (content) {
-    children = content;
   }
 
   return (

@@ -126,7 +126,6 @@ function NeedRideButton(props: { hospital: Hospital }) {
       <Popup
         open={open}
         title="אין לך איך להגיע?"
-        content={content}
         buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
@@ -141,7 +140,9 @@ function NeedRideButton(props: { hospital: Hospital }) {
         }}
         image={Whatsapp}
         buttonColor={Color.Primary}
-      />
+      >
+        {content}
+      </Popup>
     </>
   );
 }
@@ -162,14 +163,15 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
       <Popup
         open={open}
         title="רק מוודאים"
-        content="בטוח/ה שברצונך לבטל את התור?"
         buttonApproveText="כן, בטלו לי את התור"
         goBackText="אל תבטלו לי את התור"
         onBack={() => setOpen(false)}
         onApproved={onCancelAppointment}
         image={Cancellation}
         buttonColor={Color.Secondary}
-      />
+      >
+        בטוח/ה שברצונך לבטל את התור?
+      </Popup>
     </>
   );
 }

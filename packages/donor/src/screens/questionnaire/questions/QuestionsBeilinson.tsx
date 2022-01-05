@@ -87,9 +87,6 @@ export default function QuestionsBeilinson({
       <Popup
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
-        content={
-          "לצערנו נראה שאין אפשרות לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם מיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052 או עם רכז בנק הדם בהודעת וואטסאפ"
-        }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
           window.open(
@@ -119,7 +116,11 @@ export default function QuestionsBeilinson({
           }
           return Promise.resolve();
         }}
-      />
+      >
+        לצערנו נראה שאין אפשרות לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן
+        ליצור קשר עם מיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052 או עם רכז
+        בנק הדם בהודעת וואטסאפ
+      </Popup>
     </>
   );
 }
