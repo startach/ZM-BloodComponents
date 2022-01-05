@@ -6,6 +6,7 @@ import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useHistory } from "react-router-dom";
+import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface BookManualDonationScreenProps {
   onSave: (
@@ -68,7 +69,11 @@ export default function BookManualDonationScreen(
 
   return (
     <div>
-      <CoordinatorHeader title={"הוספה ידנית של תורם"} hasBackButton />
+      <CoordinatorHeader
+        title={"הוספה ידנית של תורם"}
+        hasBackButton
+        variant={HeaderVariant.SECONDARY}
+      />
 
       <div className={styles.content}>
         <div className={styles.subtitle}>פרטים אישיים</div>
@@ -119,7 +124,6 @@ export default function BookManualDonationScreen(
           onClick={() => history.goBack()}
           className={styles.button}
           variant={ButtonVariant.outlined}
-          color={"default"}
         />
       </div>
     </div>

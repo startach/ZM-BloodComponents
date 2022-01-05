@@ -2,6 +2,7 @@ import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import { useHistory } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
+import NotificationIcon from "@material-ui/icons/NotificationsNone";
 import React, { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -13,32 +14,93 @@ import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
 import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
+import classNames from "classnames";
+
+export enum HeaderVariant {
+  SECONDARY,
+  INFO,
+}
 
 export interface AppHeaderProps {
   title?: string;
   hasBackButton?: boolean;
+  hasNotificationsIcon?: boolean;
+  onNotificationsClick?: () => void;
   hasBurgerMenu?: boolean;
+  variant: HeaderVariant;
   onBack?: () => void;
 }
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
 export default function CoordinatorHeader(props: AppHeaderProps) {
-  const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
 
-  let icon = null;
+  return (
+    <div className={styles.appHeader}>
+      <RightIcon {...props} onMenuClick={() => setShowSideBar(!showSideBar)} />
+      <HeaderContent {...props} />
+      <LeftIcon {...props} />
+      <HeaderMenu showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
+    </div>
+  );
+}
+
+function HeaderContent(props: AppHeaderProps) {
+  if (props.title) {
+    const className =
+      props.variant === HeaderVariant.SECONDARY
+        ? styles.secondaryTitle
+        : styles.infoTitle;
+    return (
+      <div className={classNames(styles.title, className)}>{props.title}</div>
+    );
+  }
+
+  return (
+    <div className={styles.title}>
+      <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
+    </div>
+  );
+}
+
+function HeaderMenu(props: {
+  showSideBar: boolean;
+  setShowSideBar: (show: boolean) => void;
+}) {
+  return (
+    <Drawer
+      open={props.showSideBar}
+      onClose={() => props.setShowSideBar(false)}
+      dir={"rtl"}
+    >
+      <Divider />
+
+      <MenuItem
+        title={"התנתקות"}
+        onClick={() => {
+          signOut();
+          props.setShowSideBar(false);
+        }}
+        icon={<FeatherLogOut />}
+      />
+
+      <img src={ZMLogo} alt={"logo"} className={styles.zmLogoImage} />
+      <div className={styles.version}>{appVersion}</div>
+    </Drawer>
+  );
+}
+
+function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
+  const history = useHistory();
   if (props.hasBurgerMenu) {
-    icon = (
-      <IconButton
-        onClick={() => setShowSideBar((previous) => !previous)}
-        className={styles.rightButton}
-      >
+    return (
+      <IconButton onClick={props.onMenuClick} className={styles.rightButton}>
         <MenuIcon />
       </IconButton>
     );
   } else if (props.hasBackButton) {
-    icon = (
+    return (
       <IconButton
         onClick={props.onBack ? props.onBack : () => history.goBack()}
         className={styles.rightButton}
@@ -48,49 +110,22 @@ export default function CoordinatorHeader(props: AppHeaderProps) {
     );
   }
 
-  let headerContent;
-  if (props.title) {
-    headerContent = <div className={styles.title}>{props.title}</div>;
-  } else {
-    headerContent = (
-      <div className={styles.title}>
-        <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
-      </div>
+  return null;
+}
+
+function LeftIcon(props: AppHeaderProps) {
+  if (props.hasNotificationsIcon) {
+    return (
+      <IconButton
+        onClick={props.onNotificationsClick}
+        className={styles.leftButton}
+      >
+        <NotificationIcon />
+      </IconButton>
     );
   }
 
-  return (
-    <div className={styles.appHeader}>
-      {icon}
-      {headerContent}
-      <Drawer
-        open={showSideBar}
-        onClose={() => setShowSideBar(false)}
-        dir={"rtl"}
-      >
-        {/*<List>*/}
-        {/*  <MenuItem*/}
-        {/*    title={"הפרופיל שלי"}*/}
-        {/*    onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}*/}
-        {/*    icon={<ProfileIcon />}*/}
-        {/*  />*/}
-        {/*</List>*/}
-        <Divider />
-
-        <MenuItem
-          title={"התנתקות"}
-          onClick={() => {
-            signOut();
-            setShowSideBar(false);
-          }}
-          icon={<FeatherLogOut />}
-        />
-
-        <img src={ZMLogo} alt={"logo"} className={styles.zmLogoImage} />
-        <div className={styles.version}>{appVersion}</div>
-      </Drawer>
-    </div>
-  );
+  return null;
 }
 
 function MenuItem(props: {

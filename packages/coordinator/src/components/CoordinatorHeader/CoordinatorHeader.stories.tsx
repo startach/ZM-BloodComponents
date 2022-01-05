@@ -1,5 +1,8 @@
 import { Meta, Story } from "@storybook/react";
-import CoordinatorHeader, { AppHeaderProps } from "./CoordinatorHeader";
+import CoordinatorHeader, {
+  AppHeaderProps,
+  HeaderVariant,
+} from "./CoordinatorHeader";
 
 export default {
   component: CoordinatorHeader,
@@ -10,6 +13,7 @@ export default {
 const props: AppHeaderProps = {
   hasBackButton: false,
   hasBurgerMenu: false,
+  variant: HeaderVariant.SECONDARY,
 };
 
 const Template: Story<AppHeaderProps> = (args) => (
@@ -21,16 +25,33 @@ Default.args = {
   ...props,
 };
 
-export const WithText = Template.bind({});
-WithText.args = {
+export const SecondaryTitle = Template.bind({});
+SecondaryTitle.args = {
   ...props,
   title: "כותרת",
+  variant: HeaderVariant.SECONDARY,
+};
+
+export const InfoTitle = Template.bind({});
+InfoTitle.args = {
+  ...props,
+  title: "כותרת",
+  variant: HeaderVariant.INFO,
 };
 
 export const WithBack = Template.bind({});
 WithBack.args = {
   ...props,
   hasBackButton: true,
+};
+
+export const WithNotification = Template.bind({});
+WithNotification.args = {
+  ...props,
+  title: "ניהול תורים",
+  variant: HeaderVariant.INFO,
+  hasBackButton: true,
+  hasNotificationsIcon: true,
 };
 
 export const Hamburger = Template.bind({});
