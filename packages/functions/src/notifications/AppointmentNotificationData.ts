@@ -40,14 +40,18 @@ export function calculateNotificationData(
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: encodeURIComponent(
-      getUnsubscribeLink(isProduction, donor.id)
+    unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
+    donationApprovalLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      false
     ),
-    donationApprovalLink: encodeURIComponent(
-      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, false)
-    ),
-    donationNoShowLink: encodeURIComponent(
-      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, true)
+    donationNoShowLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      true
     ),
   };
 
