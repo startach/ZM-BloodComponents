@@ -108,10 +108,11 @@ function ErrorPopup(props: {
   return (
     <Popup
       title={"אופס!"}
-      content={text}
       buttonApproveText={"בחירת מועד חדש"}
       open={true}
       onApproved={props.goToHomePage}
-    />
+    >
+      {text}
+    </Popup>
   );
 }

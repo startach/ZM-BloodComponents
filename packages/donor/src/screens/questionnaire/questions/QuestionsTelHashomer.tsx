@@ -87,9 +87,6 @@ export default function QuestionsTelHashomer({
       <Popup
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
-        content={
-          "לצערנו נראה שאין אפשרות לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז"
-        }
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
         onApproved={() => {
           window.open(
@@ -119,7 +116,10 @@ export default function QuestionsTelHashomer({
           }
           return Promise.resolve();
         }}
-      />
+      >
+        לצערנו נראה שאין אפשרות לתרום טרומבוציטים במצב זה. לבירור נוסף ניתן
+        ליצור קשר עם בנק מרכיבי הדם 058−7100571 או בהודעה לרכז
+      </Popup>
     </>
   );
 }

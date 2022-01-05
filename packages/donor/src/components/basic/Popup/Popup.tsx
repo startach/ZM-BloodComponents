@@ -1,5 +1,5 @@
 import { Dialog } from "@material-ui/core";
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./Popup.module.scss";
 import Button, { ButtonVariant } from "../Button";
 import { Color } from "../../../constants/colors";
@@ -7,7 +7,7 @@ import { Color } from "../../../constants/colors";
 export type PopupProps = {
   open: boolean;
   title: string;
-  content?: string;
+  children?: React.ReactNode;
   buttonApproveText: string;
   onApproved: () => void | Promise<void>;
   goBackText?: string;
@@ -24,7 +24,7 @@ export default function Popup({
   buttonApproveText,
   open,
   title,
-  content,
+  children,
   onBack,
   goBackText,
   onClose,
@@ -50,7 +50,7 @@ export default function Popup({
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
           <div className={styles.popupTextTitle}>{title}</div>
-          <div className={styles.popupTextContent}>{content}</div>
+          <div className={styles.popupTextContent}>{children}</div>
         </div>
         <div className={styles.buttonContainer}>
           <Button

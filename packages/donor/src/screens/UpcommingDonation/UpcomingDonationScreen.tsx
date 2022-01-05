@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BookedAppointment,
   DateUtils,
@@ -11,7 +11,8 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import Popup from "../../components/basic/Popup";
 import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/exists appointment.svg";
-import Cancellation from "../../assets/images/cancelation.svg";
+import Cancellation from "../../assets/images/same-day-donation.svg";
+import SameDayDonation from "../../assets/images/same-day-donation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
@@ -23,13 +24,18 @@ export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
   onCancel: () => Promise<void>;
+  showSameDayDonationPopup: boolean;
 }
 
 export default function UpcomingDonationScreen({
   fullName,
   onCancel,
   bookedAppointment,
+  showSameDayDonationPopup,
 }: UpcomingDonationScreenProps) {
+  const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
+  const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
+
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -77,6 +83,22 @@ export default function UpcomingDonationScreen({
       </div>
 
       <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
+
+      <Popup
+        open={showPopup}
+        title={"איזו ספונטיות!"}
+        buttonApproveText={"אישור"}
+        onApproved={() => setShowPopup(false)}
+        image={SameDayDonation}
+      >
+        <div className={styles.popupContent}>
+          נרשמת לתור שמתקיים היום. כדאי מאוד להתקשר למאמת כדי לוודא קיום התור
+          בטלפון
+          <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
+            {phoneNumber}
+          </a>
+        </div>
+      </Popup>
     </ZMScreen>
   );
 }
@@ -104,7 +126,6 @@ function NeedRideButton(props: { hospital: Hospital }) {
       <Popup
         open={open}
         title="אין לך איך להגיע?"
-        content={content}
         buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
@@ -119,7 +140,9 @@ function NeedRideButton(props: { hospital: Hospital }) {
         }}
         image={Whatsapp}
         buttonColor={Color.Primary}
-      />
+      >
+        {content}
+      </Popup>
     </>
   );
 }
@@ -140,14 +163,32 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
       <Popup
         open={open}
         title="רק מוודאים"
-        content="בטוח/ה שברצונך לבטל את התור?"
         buttonApproveText="כן, בטלו לי את התור"
         goBackText="אל תבטלו לי את התור"
         onBack={() => setOpen(false)}
         onApproved={onCancelAppointment}
         image={Cancellation}
         buttonColor={Color.Secondary}
-      />
+      >
+        בטוח/ה שברצונך לבטל את התור?
+      </Popup>
     </>
   );
+}
+
+function getHospitalPhoneNumber(hospital: Hospital) {
+  switch (hospital) {
+    case Hospital.TEL_HASHOMER:
+      return "03-5305375";
+    case Hospital.BEILINSON:
+      return "03-9376052";
+    case Hospital.SOROKA:
+      return "08-6400138";
+    case Hospital.ASAF_HAROFE:
+    case Hospital.HADASA_EIN_KEREM:
+    case Hospital.ICHILOV:
+    case Hospital.RAMBAM:
+    default:
+      return "058-7100571";
+  }
 }

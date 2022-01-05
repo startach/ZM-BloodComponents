@@ -18,6 +18,7 @@ export default {
 const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
   hospital
 ) => ({
+  showSameDayDonationPopup: false,
   bookedAppointment: {
     bookingTimeMillis: 1628845200000,
     donationStartTimeMillis: 1628845200000,
