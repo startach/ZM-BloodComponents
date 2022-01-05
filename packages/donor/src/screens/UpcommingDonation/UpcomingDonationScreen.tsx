@@ -92,8 +92,8 @@ export default function UpcomingDonationScreen({
         image={SameDayDonation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום התור
-          בטלפון
+          נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
+          התור בטלפון
           <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
             {phoneNumber}
           </a>
