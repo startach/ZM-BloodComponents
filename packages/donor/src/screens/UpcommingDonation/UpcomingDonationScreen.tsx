@@ -48,7 +48,7 @@ export default function UpcomingDonationScreen({
           <div className={styles.welcomeTitle}>
             <div>היי</div>
             <div>{fullName},</div>
-            <div className={styles.welcomeText}>בקרוב נפגש</div>
+            <div className={styles.welcomeText}>בקרוב ניפגש...</div>
           </div>
         </div>
 
@@ -87,13 +87,13 @@ export default function UpcomingDonationScreen({
       <Popup
         open={showPopup}
         title={"איזו ספונטיות!"}
-        buttonApproveText={"אישור"}
+        buttonApproveText={"הבנתי"}
         onApproved={() => setShowPopup(false)}
         image={SameDayDonation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים היום. כדאי מאוד להתקשר למאמת כדי לוודא קיום התור
-          בטלפון
+          נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
+          התור בטלפון
           <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
             {phoneNumber}
           </a>
