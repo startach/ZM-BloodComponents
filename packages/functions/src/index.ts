@@ -18,6 +18,10 @@ import { handler, unauthenticatedHandler } from "./RequestHandleWrapper";
 import { unsubscribeHandler } from "./notifications/UnsubscribeHandler";
 import { completeAppointmentApi } from "./notifications/CompleteAppointmentApi";
 import { jobHandler } from "./jobs/SchemaJobs";
+import {
+  confirmationReminderOnNextDayJob,
+  confirmationReminderOnSameDayJob,
+} from "./jobs/CronJobs";
 
 admin.initializeApp(functions.config().firebase);
 
@@ -55,3 +59,5 @@ export const unsubscribe = unsubscribeHandler;
 
 // Jobs
 export const jobs = jobHandler;
+export const confirmationReminderOnSameDay = confirmationReminderOnSameDayJob;
+export const confirmationReminderOnNextDay = confirmationReminderOnNextDayJob;
