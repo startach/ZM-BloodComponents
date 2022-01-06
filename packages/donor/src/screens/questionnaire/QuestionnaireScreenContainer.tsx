@@ -31,11 +31,15 @@ export function QuestionnaireScreenContainer(
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
-  if (!props.loggedIn) return <Navigate to={MainNavigationKeys.BookDonation} />;
-  if (props.pendingCompletionAppointmentsCount !== 0)
+  if (!props.loggedIn) {
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
+  }
+  if (props.pendingCompletionAppointmentsCount !== 0) {
     return <Navigate to={MainNavigationKeys.Approve} />;
-  if (props.bookedAppointment)
+  }
+  if (props.bookedAppointment) {
     return <Navigate to={MainNavigationKeys.UpcomingDonation} />;
+  }
 
   if (!appointmentToBookStore.hasAppointmentToBook()) {
     return <Navigate to={MainNavigationKeys.BookDonation} />;
