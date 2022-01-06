@@ -44,7 +44,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
 
   const popupContent = (
     <div className={styles.resetPassPopupContent}>
-      <img src={popupImage} className={styles.resetPassPopupImg} />
+      <img src={popupImage} alt="" className={styles.resetPassPopupImg} />
       <div className={styles.resetPassPopupTitle}>
         {popupError ? "אופס" : "מייל איפוס בדרך אליך"}
       </div>
