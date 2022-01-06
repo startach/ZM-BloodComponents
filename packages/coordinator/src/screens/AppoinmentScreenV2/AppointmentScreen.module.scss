@@ -16,8 +16,14 @@
     
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     align-items: center;
+}
+
+.appointmentScreenXButton {
+    position: absolute;
+    margin: auto 0;
+    left: 20px;
 }
 
 .addAppoinmentScreen .cardContainer .title {
@@ -30,6 +36,8 @@
 
     border-bottom: 1px solid lightgray;
     padding-bottom: 4px;
+
+    margin-bottom: 10px;
 }
 
 .addApponimentSubtitle text {
