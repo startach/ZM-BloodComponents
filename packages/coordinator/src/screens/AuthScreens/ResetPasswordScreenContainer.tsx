@@ -18,28 +18,30 @@ export default function ResetPasswordScreenContainer(props: {
       switch (error.code) {
         case "auth/invalid-email":
           emailError("כתובת הדואר אינה תקינה");
-          return;
+          return false;
 
         case "auth/user-not-found":
           emailError("המשתמש לא נמצא");
-          return;
+          return false;
 
         case "auth/too-many-requests":
           emailError("לא ניתן להתחבר כעת, נסה מאוחר יותר");
-          return;
+          return false;
 
         case "auth/network-request-failed":
           emailError("בעיית רשת, אנא נסה שוב בעתיד");
-          return;
+          return false;
 
         default:
           emailError(error.message);
           console.error(
             "Reset password error code without translation: " + error.code
           );
-          return;
+          return false;
       }
     });
+
+    return true;
   };
 
   return <ResetPasswordScreen onResetPassword={onResetPassword} />;

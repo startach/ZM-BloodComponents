@@ -17,7 +17,13 @@ const onResetPassword = async (
 ) => {
   action("onResetPasswordWithEmail")();
   await TestUtils.wait(3000);
+
+  if (email === "1234"){
+    return true;
+  }
+
   emailError("שגיאה כלשהי");
+  return false;
 };
 
 const props: ResetPasswordScreenProps = {
