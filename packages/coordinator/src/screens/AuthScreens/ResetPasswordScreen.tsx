@@ -4,7 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
 import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export interface ResetPasswordScreenProps {
   onResetPasswordWithEmail: (
@@ -18,7 +18,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const resetPassword = async () => {
     setIsLoading(true);
@@ -33,7 +33,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
     <div className={styles.screen}>
       <div
         className={styles.resetPasswordbackButton}
-        onClick={() => history.goBack()}
+        onClick={() => navigate(-1)}
       >
         <img src={chevronSvg} />
         חזרה

@@ -5,7 +5,7 @@ import styles from "./BookManualDonationScreen.module.scss";
 import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface BookManualDonationScreenProps {
@@ -28,7 +28,7 @@ export default function BookManualDonationScreen(
   const [phoneError, setPhoneError] = useState("");
   const [bloodType, setBloodType] = useState(BloodType.NOT_SURE);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onSave = () => {
     let valid = true;
@@ -121,7 +121,7 @@ export default function BookManualDonationScreen(
         />
         <Button
           title={"ביטול"}
-          onClick={() => history.goBack()}
+          onClick={() => navigate(-1)}
           className={styles.button}
           variant={ButtonVariant.outlined}
         />

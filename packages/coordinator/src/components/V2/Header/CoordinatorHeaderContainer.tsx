@@ -1,7 +1,7 @@
 import CoordinatorHeader, { HeaderButtonFlags } from "./CoordinatorHeader";
-import { signOut, getEmail } from "../../../firebase/FirebaseAuthentication";
+import { getEmail, signOut } from "../../../firebase/FirebaseAuthentication";
 import { Coordinator } from "@zm-blood-components/common";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "coordinator/src/navigation/CoordinatorScreenKey";
 
 interface CoordinatorHeaderContainerProps {
@@ -15,9 +15,7 @@ export default function CoordinatorHeaderContainer({
 }: CoordinatorHeaderContainerProps) {
   const location = useLocation();
 
-  const history = useHistory();
-  const navigate = (screen: CoordinatorScreenKey) => () =>
-    history.push("/" + screen);
+  const navigate = useNavigate();
 
   return (
     <CoordinatorHeader
@@ -26,7 +24,7 @@ export default function CoordinatorHeaderContainer({
       getEmail={getEmail}
       coordinator={coordinator}
       currentLocationPathname={location.pathname}
-      navigate={navigate}
+      navigate={(screen: CoordinatorScreenKey) => () => navigate("/" + screen)}
     />
   );
 }

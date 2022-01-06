@@ -1,10 +1,16 @@
 import { validateEmail } from "../register/RegisterScreenContainer";
 import ResetPasswordScreen from "./ResetPasswordScreen";
-import { useHistory } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { Navigate, useNavigate } from "react-router-dom";
+import { MainNavigationKeys } from "../../../navigation/app/MainNavigationKeys";
 
-export default function ResetPasswordScreenContainer() {
-  const history = useHistory();
+export default function ResetPasswordScreenContainer(props: {
+  loggedIn: boolean;
+}) {
+  const navigate = useNavigate();
+  if (props.loggedIn) {
+    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+  }
 
   const onResetPassword = (
     email: string,
@@ -46,7 +52,7 @@ export default function ResetPasswordScreenContainer() {
   };
 
   const goToSignIn = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   return (

@@ -1,9 +1,11 @@
 import { BloodType, Donor } from "@zm-blood-components/common";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import MyProfileScreen from "./MyProfileScreen";
-import { useHistory } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
 interface MyProfileScreenContainerProps {
+  loggedIn: boolean;
   user: Donor;
   updateUserInAppState: (user: Donor) => void;
 }
@@ -11,7 +13,10 @@ interface MyProfileScreenContainerProps {
 export default function MyProfileScreenContainer(
   props: MyProfileScreenContainerProps
 ) {
-  const history = useHistory();
+  const navigate = useNavigate();
+  if (!props.loggedIn) {
+    return <Navigate to={"/" + MainNavigationKeys.Login} />;
+  }
 
   const onSave = async (
     firstName: string,
@@ -29,7 +34,7 @@ export default function MyProfileScreenContainer(
       enableEmailNotifications
     );
     props.updateUserInAppState(updatedUser);
-    history.goBack();
+    navigate(-1);
   };
 
   return <MyProfileScreen onSave={onSave} user={props.user} />;

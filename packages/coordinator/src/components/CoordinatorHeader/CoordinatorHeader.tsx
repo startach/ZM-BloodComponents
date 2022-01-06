@@ -1,6 +1,6 @@
 import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationIcon from "@material-ui/icons/NotificationsNone";
 import React, { useState } from "react";
@@ -92,7 +92,7 @@ function HeaderMenu(props: {
 }
 
 function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
-  const history = useHistory();
+  const navigate = useNavigate();
   if (props.hasBurgerMenu) {
     return (
       <IconButton onClick={props.onMenuClick} className={styles.rightButton}>
@@ -102,7 +102,7 @@ function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
   } else if (props.hasBackButton) {
     return (
       <IconButton
-        onClick={props.onBack ? props.onBack : () => history.goBack()}
+        onClick={props.onBack ? props.onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
         <ArrowForward />

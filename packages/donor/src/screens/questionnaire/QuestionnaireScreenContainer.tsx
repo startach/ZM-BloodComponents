@@ -1,7 +1,7 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
 import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
-import { Redirect, useHistory } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
@@ -12,6 +12,9 @@ import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsS
 import { observer } from "mobx-react-lite";
 
 interface QuestionnaireScreenContainerProps {
+  loggedIn: boolean;
+  bookedAppointment?: BookedAppointment;
+  pendingCompletionAppointmentsCount: number;
   setBookedAppointment: (bookedAppointment?: BookedAppointment) => void;
 }
 
@@ -20,7 +23,7 @@ const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
 export function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<
     FunctionsApi.BookAppointmentStatus | undefined
@@ -28,8 +31,15 @@ export function QuestionnaireScreenContainer(
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
+  if (!props.loggedIn)
+    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+  if (props.pendingCompletionAppointmentsCount !== 0)
+    return <Navigate to={"/" + MainNavigationKeys.Approve} />;
+  if (props.bookedAppointment)
+    return <Navigate to={"/" + MainNavigationKeys.UpcomingDonation} />;
+
   if (!appointmentToBookStore.hasAppointmentToBook()) {
-    return <Redirect to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
   }
 
   const onSuccess = async () => {
@@ -64,14 +74,14 @@ export function QuestionnaireScreenContainer(
         }
 
         props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
-        history.replace(MainNavigationKeys.UpcomingDonation);
+        navigate(MainNavigationKeys.UpcomingDonation, { replace: true });
         appointmentToBookStore.clear();
     }
   };
 
   const onBack = () => {
     appointmentToBookStore.clear();
-    history.goBack();
+    navigate(-1);
   };
 
   return (
@@ -86,7 +96,7 @@ export function QuestionnaireScreenContainer(
       goToHomePage={async () => {
         appointmentToBookStore.clear();
         refreshAvailableAppointments(availableAppointmentsStore);
-        history.goBack();
+        navigate(-1);
       }}
     />
   );
