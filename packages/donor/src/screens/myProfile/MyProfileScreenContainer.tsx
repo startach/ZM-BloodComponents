@@ -15,7 +15,7 @@ export default function MyProfileScreenContainer(
 ) {
   const navigate = useNavigate();
   if (!props.loggedIn) {
-    return <Navigate to={"/" + MainNavigationKeys.Login} />;
+    return <Navigate to={MainNavigationKeys.Login} />;
   }
 
   const onSave = async (

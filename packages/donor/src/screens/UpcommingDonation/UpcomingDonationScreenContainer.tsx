@@ -19,12 +19,12 @@ export default function UpcomingDonationScreenContainer(
 ) {
   const appointmentToBookStore = useAppointmentToBookStore();
   if (!props.loggedIn) {
-    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
   if (props.pendingCompletionAppointmentsCount !== 0)
-    return <Navigate to={"/" + MainNavigationKeys.Approve} />;
+    return <Navigate to={MainNavigationKeys.Approve} />;
   if (!props.bookedAppointment) {
-    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
 
   const onCancelAppointment = async () => {

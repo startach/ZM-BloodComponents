@@ -23,14 +23,14 @@ export function BookDonationScreenContainer({
   const appointmentToBookStore = useAppointmentToBookStore();
 
   if (appState.bookedAppointment) {
-    return <Navigate to={"/" + MainNavigationKeys.UpcomingDonation} />;
+    return <Navigate to={MainNavigationKeys.UpcomingDonation} />;
   }
   if (appState.pendingCompletionAppointments.length !== 0) {
-    return <Navigate to={"/" + MainNavigationKeys.Approve} />;
+    return <Navigate to={MainNavigationKeys.Approve} />;
   }
 
   if (isLoggedIn && appointmentToBookStore.hasAppointmentToBook()) {
-    return <Navigate to={"/" + MainNavigationKeys.Questionnaire} />;
+    return <Navigate to={MainNavigationKeys.Questionnaire} />;
   }
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {

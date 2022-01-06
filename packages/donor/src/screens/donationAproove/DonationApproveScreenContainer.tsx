@@ -22,7 +22,7 @@ export default function DonationApproveScreenContainer({
     !appState.donor ||
     appState.pendingCompletionAppointments.length === 0
   ) {
-    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
 
   const pendingCompletionAppointment =

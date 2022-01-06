@@ -9,7 +9,7 @@ export default function ResetPasswordScreenContainer(props: {
 }) {
   const navigate = useNavigate();
   if (props.loggedIn) {
-    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
 
   const onResetPassword = (

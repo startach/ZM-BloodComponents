@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 export default function RegisterScreenContainer(props: { loggedIn: boolean }) {
   const navigate = useNavigate();
   if (props.loggedIn) {
-    return <Navigate to={"/" + MainNavigationKeys.BookDonation} />;
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
 
   const onRegister = (

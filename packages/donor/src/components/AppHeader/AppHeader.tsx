@@ -80,7 +80,7 @@ export default function AppHeader({
     loginIcon = (
       <div
         className={styles.login}
-        onClick={() => navigate("/" + MainNavigationKeys.Login)}
+        onClick={() => navigate(MainNavigationKeys.Login)}
       >
         <p className={styles.login_text}>{"כניסה"}</p>
         <img alt={"התחבר"} src={profileIcon} />
@@ -101,12 +101,12 @@ export default function AppHeader({
         <List>
           <MenuItem
             title={"הפרופיל שלי"}
-            onClick={() => navigate("/" + MainNavigationKeys.MyProfile)}
+            onClick={() => navigate(MainNavigationKeys.MyProfile)}
             icon={<ProfileIcon />}
           />
           <MenuItem
             title={"תהליך התרומה"}
-            onClick={() => navigate("/" + MainNavigationKeys.Process)}
+            onClick={() => navigate(MainNavigationKeys.Process)}
             icon={<ZMLineIcon />}
           />
           <MenuItem
@@ -116,12 +116,12 @@ export default function AppHeader({
           />
           <MenuItem
             title={"אודות"}
-            onClick={() => navigate("/" + MainNavigationKeys.About)}
+            onClick={() => navigate(MainNavigationKeys.About)}
             icon={<FeatherInfo />}
           />
           <MenuItem
             title={"צור קשר"}
-            onClick={() => navigate("/" + MainNavigationKeys.Contact)}
+            onClick={() => navigate(MainNavigationKeys.Contact)}
             icon={<SimpleWhatsapp />}
           />
         </List>
@@ -143,7 +143,7 @@ export default function AppHeader({
             <MenuItem
               title={"כניסה"}
               onClick={() => {
-                navigate("/" + MainNavigationKeys.Login);
+                navigate(MainNavigationKeys.Login);
                 setShowSideBar(false);
               }}
               icon={<FeatherLogIn />}

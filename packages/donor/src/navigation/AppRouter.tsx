@@ -43,6 +43,14 @@ export type AppStateType = {
 };
 
 export default function AppRouter() {
+  return (
+    <Router>
+      <DonorRouter />
+    </Router>
+  );
+}
+
+function DonorRouter() {
   const [splashMinimumTimeoutFinished, setSplashMinimumTimeoutFinished] =
     useState(false);
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -150,105 +158,97 @@ export default function AppRouter() {
   }
 
   return (
-    <Router>
-      <Routes>
-        <Route
-          path={"/" + MainNavigationKeys.Login}
-          element={<SignInScreenContainer loggedIn={loggedIn} />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.Register}
-          element={<RegisterScreenContainer loggedIn={loggedIn} />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.ResetPassword}
-          element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.OnboardingWizard}
-          element={<OnboardingWizardScreenContainer />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.About}
-          element={() => <AboutScreen />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.Approve}
-          element={
-            <DonationApproveScreenContainer
-              loggedIn={loggedIn}
-              appState={appState}
-              setIsFetching={setIsFetching}
-              popPendingCompletionAppointment={popPendingCompletionAppointments}
-            />
-          }
-        />
-        <Route
-          path={"/" + MainNavigationKeys.Process}
-          element={<DonationProcessScreenContainer />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.Contact}
-          element={<ContactScreen />}
-        />
-        <Route
-          path={"/" + MainNavigationKeys.MyProfile}
-          element={
-            <MyProfileScreenContainer
-              loggedIn={loggedIn}
-              user={appState.donor!}
-              updateUserInAppState={setUser}
-            />
-          }
-        />
-        <Route
-          path={"/" + MainNavigationKeys.UpcomingDonation}
-          element={
-            <UpcomingDonationScreenContainer
-              loggedIn={loggedIn}
-              user={appState.donor!}
-              bookedAppointment={appState.bookedAppointment}
-              setBookedAppointment={setBookedAppointment}
-              pendingCompletionAppointmentsCount={
-                pendingCompletionAppointmentsCount
-              }
-            />
-          }
-        />
-        <Route
-          path={"/" + MainNavigationKeys.Questionnaire}
-          element={
-            <QuestionnaireScreenContainer
-              loggedIn={loggedIn}
-              bookedAppointment={appState.bookedAppointment}
-              setBookedAppointment={setBookedAppointment}
-              pendingCompletionAppointmentsCount={
-                pendingCompletionAppointmentsCount
-              }
-            />
-          }
-        />
-        <Route
-          path={"/" + MainNavigationKeys.BookDonation}
-          element={
-            <BookDonationScreenContainer
-              appState={appState}
-              isLoggedIn={loggedIn}
-            />
-          }
-        />
+    <Routes>
+      <Route
+        path={MainNavigationKeys.Login}
+        element={<SignInScreenContainer loggedIn={loggedIn} />}
+      />
+      <Route
+        path={MainNavigationKeys.Register}
+        element={<RegisterScreenContainer loggedIn={loggedIn} />}
+      />
+      <Route
+        path={MainNavigationKeys.ResetPassword}
+        element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
+      />
+      <Route
+        path={MainNavigationKeys.OnboardingWizard}
+        element={<OnboardingWizardScreenContainer />}
+      />
+      <Route path={MainNavigationKeys.About} element={() => <AboutScreen />} />
+      <Route
+        path={MainNavigationKeys.Approve}
+        element={
+          <DonationApproveScreenContainer
+            loggedIn={loggedIn}
+            appState={appState}
+            setIsFetching={setIsFetching}
+            popPendingCompletionAppointment={popPendingCompletionAppointments}
+          />
+        }
+      />
+      <Route
+        path={MainNavigationKeys.Process}
+        element={<DonationProcessScreenContainer />}
+      />
+      <Route path={MainNavigationKeys.Contact} element={<ContactScreen />} />
+      <Route
+        path={MainNavigationKeys.MyProfile}
+        element={
+          <MyProfileScreenContainer
+            loggedIn={loggedIn}
+            user={appState.donor!}
+            updateUserInAppState={setUser}
+          />
+        }
+      />
+      <Route
+        path={MainNavigationKeys.UpcomingDonation}
+        element={
+          <UpcomingDonationScreenContainer
+            loggedIn={loggedIn}
+            user={appState.donor!}
+            bookedAppointment={appState.bookedAppointment}
+            setBookedAppointment={setBookedAppointment}
+            pendingCompletionAppointmentsCount={
+              pendingCompletionAppointmentsCount
+            }
+          />
+        }
+      />
+      <Route
+        path={MainNavigationKeys.Questionnaire}
+        element={
+          <QuestionnaireScreenContainer
+            loggedIn={loggedIn}
+            bookedAppointment={appState.bookedAppointment}
+            setBookedAppointment={setBookedAppointment}
+            pendingCompletionAppointmentsCount={
+              pendingCompletionAppointmentsCount
+            }
+          />
+        }
+      />
+      <Route
+        path={MainNavigationKeys.BookDonation}
+        element={
+          <BookDonationScreenContainer
+            appState={appState}
+            isLoggedIn={loggedIn}
+          />
+        }
+      />
 
-        <Route
-          path={"*"}
-          element={
-            loggedIn ? (
-              <Navigate to={"/" + MainNavigationKeys.BookDonation} />
-            ) : (
-              <Navigate to={"/" + MainNavigationKeys.OnboardingWizard} />
-            )
-          }
-        />
-      </Routes>
-    </Router>
+      <Route
+        path={"*"}
+        element={
+          loggedIn ? (
+            <Navigate to={MainNavigationKeys.BookDonation} />
+          ) : (
+            <Navigate to={MainNavigationKeys.OnboardingWizard} />
+          )
+        }
+      />
+    </Routes>
   );
 }
