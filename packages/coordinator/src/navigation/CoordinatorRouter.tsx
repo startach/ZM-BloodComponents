@@ -145,7 +145,7 @@ export default function CoordinatorRouter() {
       <Routes>
         {canViewOpenAppointments && (
           <Route
-            path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
+            path={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
             element={
               <ManageAppointmentsScreenContainer
                 activeHospitalsForCoordinator={activeHospitalsForCoordinator}
@@ -155,13 +155,13 @@ export default function CoordinatorRouter() {
         )}
         {canViewDonors && (
           <Route
-            path={"/" + CoordinatorScreenKey.DONORS}
+            path={CoordinatorScreenKey.DONORS}
             element={<SearchDonorsScreenContainer />}
           />
         )}
         {canViewBookedAppointments && (
           <Route
-            path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}
+            path={CoordinatorScreenKey.BOOKED_DONATIONS}
             element={
               <ScheduledAppointmentsContainer
                 activeHospitalsForCoordinator={activeHospitalsForCoordinator}
@@ -171,7 +171,7 @@ export default function CoordinatorRouter() {
         )}
         {canAddAppointments && (
           <Route
-            path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}
+            path={CoordinatorScreenKey.ADD_APPOINTMENTS}
             element={
               <AddAppointmentsScreenContainer
                 activeHospitalsForCoordinator={activeHospitalsForCoordinator}
@@ -184,7 +184,7 @@ export default function CoordinatorRouter() {
         <Route
           path="*"
           element={
-            <Navigate to={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
+            <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
           }
         />
       </Routes>
