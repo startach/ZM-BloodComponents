@@ -18,6 +18,11 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
     defaultViewport: "iphonex",
   },
+  options: {
+    storySort: {
+      method: "alphabetical",
+    },
+  },
 };
 
 export default function WithStableMuiClassnames(props: {
