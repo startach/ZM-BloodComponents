@@ -34,7 +34,7 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.addApponimentSubtitle}>
-          <text>זמנים</text>
+          <text>זמני תור</text>
         </div>
         <div className={styles.appointmentScreenInputsContainer}>
           <Input
