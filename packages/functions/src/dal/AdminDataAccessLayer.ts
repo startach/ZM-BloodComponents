@@ -97,5 +97,7 @@ export function getValidHospitalsOrThrow(
         : [hospital];
   }
 
-  throw Error("Unfamiliar coordinator role");
+  throw Error(
+    "Error while trying to get coordinator hospital : 'Unfamiliar coordinator role'"
+  );
 }
