@@ -6,7 +6,7 @@ import {
 import {
   CardTableColumn,
   CardTableRow,
-} from "coordinator/src/components/V2/Table";
+} from "../../components/V2/Table";
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import IconButton from "../../components/V2/IconButton";
 import Table from "../../components/V2/Table";
