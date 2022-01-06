@@ -1,0 +1,46 @@
+.addAppoinmentScreen {
+    width: 100%;
+    height: 100%; // need to remove
+    background-color: rgb(236, 235, 235);
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addAppoinmentScreen .cardContainer {
+    position: relative;
+    
+    background-color: white;
+    padding: 20px 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.addAppoinmentScreen .cardContainer .title {
+    color: var(--coordinator-secondary);
+    font-weight: 450;
+}
+
+.addApponimentSubtitle {
+    width: 100%;
+
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 4px;
+}
+
+.addApponimentSubtitle text {
+    color: var(--coordinator-primary);
+    font-size: 17px;
+    font-weight: 500;
+
+    padding-right: 10px;
+}
+
+.appointmentScreenInputsContainer {
+    width: 80%;
+    margin-bottom: 0;
+}
