@@ -22,7 +22,7 @@ export async function sendEmailToDonor(
 ) {
   if (donor.notificationSettings?.disableEmailNotifications) {
     functions.logger.info(
-      `NOT sending ${type} notification to donor ${data.donorName}.`
+      `NOT sending ${type} notification to donor ${data.donorName} - disabled settings.`
     );
     return;
   }
@@ -44,6 +44,9 @@ export async function sendEmailToDonor(
       templateId = "d-9875da5105274900826e8f1492508758";
       break;
     default:
+      functions.logger.warn(
+        `NOT sending ${type} notification to donor ${data.donorName} - unknown type.`
+      );
       return;
   }
 
@@ -118,6 +121,7 @@ function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
     case NotificationToDonor.APPOINTMENT_BOOKED:
     case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
       return true;
+    case NotificationToDonor.DONATION_CONFIRMATION:
     default:
       return false;
   }
