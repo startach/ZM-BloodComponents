@@ -18,16 +18,15 @@ const onSignInWithEmail = async (
   action("onSignInWithEmail")();
   await TestUtils.wait(3000);
   passwordError("שגיאה כלשהי");
-  return false;
 };
 
-const onForgotPasswordScreen = () => {
+const onForgotPassword = () => {
   action("On Forgot Password!");
 };
 
 const props: SignInScreenProps = {
   onSignInWithEmail: onSignInWithEmail,
-  onForgotPasswordClick: onForgotPasswordScreen,
+  onForgotPassword: onForgotPassword,
 };
 
 export const Default = (args: SignInScreenProps) => <SignInScreen {...args} />;

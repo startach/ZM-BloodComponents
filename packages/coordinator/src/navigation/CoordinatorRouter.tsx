@@ -20,6 +20,8 @@ import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import CoordinatorScreen from "../components/V2/CoordinatorScreen";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
+import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
+import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -46,6 +48,8 @@ const ROLES_THAT_VIEW_DONORS = [
   CoordinatorRole.ZM_COORDINATOR,
   CoordinatorRole.GROUP_COORDINATOR,
 ];
+
+const USE_NEW_COORDINATOR = false;
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -99,11 +103,31 @@ export default function CoordinatorRouter() {
     fetchData();
   }, [loginStatus]);
 
+  if (USE_NEW_COORDINATOR) {
+    if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
+      return <LoadingScreen />;
+    }
+
+    const loggedIn = loginStatus === LoginStatus.LOGGED_IN;
+    return (
+      <Routes>
+        <Route
+          path={CoordinatorScreenKey.LOGIN}
+          element={<SignInScreenContainer loggedIn={loggedIn} />}
+        />
+        <Route
+          path={CoordinatorScreenKey.RESET_PASSWORD}
+          element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
+        />
+      </Routes>
+    );
+  }
+
   if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
     return <LoadingScreen />;
   }
 
-  if (loginStatus === LoginStatus.LOGGED_OUT) {
+  if (loginStatus === LoginStatus.LOGGED_OUT && !USE_NEW_COORDINATOR) {
     return <CoordinatorSignInScreenContainer />;
   }
 

@@ -10,8 +10,8 @@ export interface SignInScreenProps {
     password: string,
     emailError: (error: string) => void,
     passwordError: (error: string) => void
-  ) => Promise<boolean>;
-  onForgotPasswordClick: () => void;
+  ) => Promise<void>;
+  onForgotPassword: () => void;
 }
 
 export default function SignInScreen(props: SignInScreenProps) {
@@ -23,22 +23,24 @@ export default function SignInScreen(props: SignInScreenProps) {
 
   const signIn = async () => {
     setIsLoading(true);
-    const success = await props.onSignInWithEmail(
+    await props.onSignInWithEmail(
       email,
       password,
       setEmailError,
       setPasswordError
     );
 
-    if (!success) {
-      setIsLoading(false);
-    }
+    setIsLoading(false);
   };
 
   return (
     <div className={styles.screen}>
       <div className={styles.authScreenLogoContainer}>
-        <img src={logoImage} className={styles.authScreenLogoImage} />
+        <img
+          src={logoImage}
+          className={styles.authScreenLogoImage}
+          alt={"logo"}
+        />
       </div>
       <div className={styles.screenContent}>
         <div className={styles.subtitle}>מערכת רכז</div>
@@ -65,7 +67,7 @@ export default function SignInScreen(props: SignInScreenProps) {
             onSubmit={signIn}
             type="password"
           />
-          <div className={styles.actionButton}>
+          <div>
             <Button
               title={"התחברות"}
               onClick={signIn}
@@ -77,7 +79,7 @@ export default function SignInScreen(props: SignInScreenProps) {
             <Button
               className={styles.forgotPasswordBtn}
               title="שכחתי את הסיסמה"
-              onClick={props.onForgotPasswordClick}
+              onClick={props.onForgotPassword}
               isDisabled={false}
               variant={ButtonVariant.text}
             />

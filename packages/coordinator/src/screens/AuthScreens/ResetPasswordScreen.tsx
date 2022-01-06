@@ -7,10 +7,10 @@ import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useNavigate } from "react-router-dom";
 
 export interface ResetPasswordScreenProps {
-  onResetPasswordWithEmail: (
+  onResetPassword: (
     email: string,
     emailError: (error: string) => void
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -22,11 +22,8 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
 
   const resetPassword = async () => {
     setIsLoading(true);
-    const success = await props.onResetPasswordWithEmail(email, setEmailError);
-
-    if (!success) {
-      setIsLoading(false);
-    }
+    await props.onResetPassword(email, setEmailError);
+    setIsLoading(false);
   };
 
   return (
@@ -35,11 +32,15 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         className={styles.resetPasswordbackButton}
         onClick={() => navigate(-1)}
       >
-        <img src={chevronSvg} />
+        <img src={chevronSvg} alt={"back"} />
         חזרה
       </div>
       <div className={styles.authScreenLogoContainer}>
-        <img src={logoImage} className={styles.authScreenLogoImage} />
+        <img
+          src={logoImage}
+          className={styles.authScreenLogoImage}
+          alt={"logo"}
+        />
       </div>
       <div className={styles.screenContent}>
         <div className={styles.subtitle}>מערכת רכז</div>
@@ -57,7 +58,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
             label={`דוא"ל`}
             errorMessage={emailError}
           />
-          <div className={styles.actionButton}>
+          <div>
             <Button
               title={"איפוס סיסמה"}
               onClick={resetPassword}
