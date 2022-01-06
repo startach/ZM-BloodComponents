@@ -50,10 +50,16 @@ export const SendConfirmationReminders = async (
     fromIncluding,
     toExcluding
   );
+  functions.logger.debug(
+    "Appointments that require confirmations: " + appointments.map((a) => a.id)
+  );
 
-  const donorIds = appointments.map((appointment) => appointment.donorId);
+  const donorIds = _.uniq(
+    appointments.map((appointment) => appointment.donorId)
+  );
+  functions.logger.debug("Donors for appointment confirmation: " + donorIds);
 
-  const donorsInAppointments = await getDonors(_.uniq(donorIds));
+  const donorsInAppointments = await getDonors(donorIds);
   let donorsMap: { [donorId: string]: DbDonor } = {};
   donorsInAppointments.map((donor) => {
     donorsMap[donor.id] = donor;
@@ -63,7 +69,7 @@ export const SendConfirmationReminders = async (
     const donor = donorsMap[appointment.donorId];
 
     if (!donor) {
-      console.error("Donor not found for donation: " + appointment.id);
+      functions.logger.error("Donor not found for donation: " + appointment.id);
       return;
     }
     if (!isProd()) {
