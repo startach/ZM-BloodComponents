@@ -1,4 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { Meta, Story } from "@storybook/react";
 import { CoordinatorRole, Hospital } from "@zm-blood-components/common";
 import CoordinatorHeader, { CoordinatorHeaderProps } from "./CoordinatorHeader";
@@ -28,7 +27,6 @@ const props: CoordinatorHeaderProps = {
     activeHospitalsForCoordinator: [Hospital.BEILINSON],
   },
   currentLocationPathname: "/home",
-  navigate: () => () => {},
 };
 
 const Template: Story<CoordinatorHeaderProps> = (args) => (

@@ -7,6 +7,7 @@ import { Units } from "../../../constants/Units";
 import logoImg from "../../../assets/logo.svg";
 import titleImg from "../../../assets/blood-bank-zichron-Little-logo-white.svg";
 import { Coordinator } from "@zm-blood-components/common";
+import { useNavigate } from "react-router-dom";
 
 export interface HeaderButtonFlags {
   isLoggedIn: boolean;
@@ -22,7 +23,6 @@ export interface CoordinatorHeaderProps {
   getEmail: () => string | undefined;
   coordinator: Coordinator | undefined;
   currentLocationPathname: string;
-  navigate: (screen: CoordinatorScreenKey) => () => void;
 }
 
 export default function CoordinatorHeader({
@@ -31,9 +31,9 @@ export default function CoordinatorHeader({
   getEmail,
   coordinator,
   currentLocationPathname,
-  navigate,
 }: CoordinatorHeaderProps) {
   const [currentTab, setCurrentTab] = useState("/home");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentLocationPathname === "/") {
@@ -61,13 +61,15 @@ export default function CoordinatorHeader({
             <TextButton
               className={currentTab === "/home" ? styles.selected__tab : ""}
               title="הוספת תורים"
-              onClick={navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
+              onClick={() => navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
             />
           )}
           {flags.showOpenAppointments && (
             <TextButton
               title="תורים מתוכננים"
-              onClick={navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)}
+              onClick={() =>
+                navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)
+              }
               className={
                 currentTab === "/appointments" ? styles.selected__tab : ""
               }
@@ -77,7 +79,7 @@ export default function CoordinatorHeader({
             <TextButton
               className={currentTab === "/donors" ? styles.selected__tab : ""}
               title="חיפוש משתמשים"
-              onClick={navigate(CoordinatorScreenKey.DONORS)}
+              onClick={() => navigate(CoordinatorScreenKey.DONORS)}
             />
           )}
           {flags.showBookedAppointments && (
@@ -86,7 +88,7 @@ export default function CoordinatorHeader({
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
               title={`דוח"ות`}
-              onClick={navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
+              onClick={() => navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
             />
           )}
         </div>
@@ -122,13 +124,15 @@ export default function CoordinatorHeader({
             <TextButton
               className={currentTab === "/home" ? styles.selected__tab : ""}
               title="הוספת תורים"
-              onClick={navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
+              onClick={() => navigate(CoordinatorScreenKey.ADD_APPOINTMENTS)}
             />
           )}
           {flags.showOpenAppointments && (
             <TextButton
               title="תורים מתוכננים"
-              onClick={navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)}
+              onClick={() =>
+                navigate(CoordinatorScreenKey.SCHEDULED_APPOINTMENTS)
+              }
               className={
                 currentTab === "/appointments" ? styles.selected__tab : ""
               }
@@ -138,7 +142,7 @@ export default function CoordinatorHeader({
             <TextButton
               className={currentTab === "/donors" ? styles.selected__tab : ""}
               title="חיפוש משתמשים"
-              onClick={navigate(CoordinatorScreenKey.DONORS)}
+              onClick={() => navigate(CoordinatorScreenKey.DONORS)}
             />
           )}
           {flags.showBookedAppointments && (
@@ -147,7 +151,7 @@ export default function CoordinatorHeader({
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
               title={`דוח"ות`}
-              onClick={navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
+              onClick={() => navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
             />
           )}
         </div>

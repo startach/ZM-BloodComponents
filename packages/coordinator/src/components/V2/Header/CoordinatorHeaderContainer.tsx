@@ -15,8 +15,6 @@ export default function CoordinatorHeaderContainer({
 }: CoordinatorHeaderContainerProps) {
   const location = useLocation();
 
-  const navigate = useNavigate();
-
   return (
     <CoordinatorHeader
       flags={flags}
@@ -24,7 +22,6 @@ export default function CoordinatorHeaderContainer({
       getEmail={getEmail}
       coordinator={coordinator}
       currentLocationPathname={location.pathname}
-      navigate={(screen: CoordinatorScreenKey) => () => navigate("/" + screen)}
     />
   );
 }
