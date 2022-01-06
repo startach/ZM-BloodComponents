@@ -2,42 +2,34 @@ import { useState } from "react";
 import styles from "./AppointmentScreen.module.scss";
 import Input from "../../components/Input";
 import Button, { ButtonVariant } from "../../components/Button";
+import { useHistory } from "react-router-dom";
 
 export interface AppointmentScreenProps {
-  onSignInWithEmail: (
-    email: string,
-    password: string,
-    emailError: (error: string) => void,
-    passwordError: (error: string) => void
-  ) => Promise<boolean>;
-  onForgotPasswordClick: () => void;
+  
 }
 
 export default function AppointmentScreen(props: AppointmentScreenProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [date, setDate] = useState("");
+  const [dateFocus, setDateFocus] = useState(false)
+  const [errorDate, setErrorDate] = useState("");
 
-  const signIn = async () => {
-    setIsLoading(true);
-    const success = await props.onSignInWithEmail(
-      email,
-      password,
-      setEmailError,
-      setPasswordError
-    );
+  const [time, setTime] = useState("");
+  const [errorHour, setErrorHour] = useState("");
 
-    if (!success) {
-      setIsLoading(false);
-    }
-  };
+  const [type, setType] = useState("");
+
+  const history = useHistory()
 
   return (
     <div className={styles.addAppoinmentScreen}>
       <div className={styles.cardContainer}>
         <div className={styles.title}>הוספת תור יחיד</div>
+        <div 
+          className={styles.appointmentScreenXButton}
+          onClick={() => history.goBack()}
+        >
+          X
+        </div>
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.addApponimentSubtitle}>
@@ -45,20 +37,22 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
         </div>
         <div className={styles.appointmentScreenInputsContainer}>
           <Input
-              onChangeText={() => {}}
-              value={email}
-              type={"email"}
-              label={`דוא"ל`}
-              errorMessage={emailError}
+              onChangeText={(newValue) => {
+                setDate(newValue);
+              }}
+              value={date}
+              type={"date"}
+              errorMessage={errorDate}
             />
         </div>
         <div className={styles.appointmentScreenInputsContainer}>
           <Input
-            onChangeText={() => {}}
-            value={email}
-            type={"email"}
-            label={`דוא"ל`}
-            errorMessage={emailError}
+            onChangeText={(newValue) => {
+              setTime(newValue)
+            }}
+            value={time}
+            type={"time"}
+            errorMessage={errorHour}
           />
         </div>
       </div>
@@ -68,11 +62,13 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
         </div>
         <div className={styles.appointmentScreenInputsContainer}>
           <Input
-              onChangeText={() => {}}
-              value={email}
-              type={"email"}
-              label={`דוא"ל`}
-              errorMessage={emailError}
+              onChangeText={(newValue) => {
+                setType(newValue)
+              }}
+              value={type}
+              type={"number"}
+              label={`מספר עמדות`}
+              errorMessage={""}
             />
         </div>
       </div>
