@@ -1,9 +1,7 @@
 import {
   CoordinatorRole,
   FunctionsApi,
-  Hospital,
   MANUAL_DONOR_ID,
-  HospitalUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
@@ -11,7 +9,10 @@ import {
   dbDonorToDonor,
 } from "../utils/ApiEntriesConversionUtils";
 import { getDonors } from "../dal/DonorDataAccessLayer";
-import { getCoordinator } from "../dal/AdminDataAccessLayer";
+import {
+  getCoordinator,
+  getValidHospitalsOrThrow,
+} from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 import _ from "lodash";
@@ -22,7 +23,7 @@ export default async function (
 ) {
   const hospital = request.hospital;
   const coordinator = await fetchCoordinator(callerId);
-  const hospitalsArray = await getValidHospitalsOrThrow(coordinator, hospital);
+  const hospitalsArray = getValidHospitalsOrThrow(coordinator, hospital);
 
   const startTimeFilter = request.earliestStartTimeMillis
     ? new Date(request.earliestStartTimeMillis)
@@ -70,40 +71,6 @@ async function fetchCoordinator(callerId: string) {
     throw Error("User is not an coordinator and can't edit appointments");
   }
   return coordinator;
-}
-
-async function getValidHospitalsOrThrow(
-  coordinator: DbCoordinator,
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
-): Promise<Hospital[]> {
-  const allActiveHospitalsFiltered =
-    hospital === HospitalUtils.ALL_HOSPITALS_SELECT
-      ? HospitalUtils.activeHospitals
-      : [hospital];
-
-  switch (coordinator.role) {
-    case CoordinatorRole.SYSTEM_USER:
-      return allActiveHospitalsFiltered;
-    case CoordinatorRole.ZM_COORDINATOR:
-      return allActiveHospitalsFiltered;
-    case CoordinatorRole.HOSPITAL_COORDINATOR:
-      if (hospital === HospitalUtils.ALL_HOSPITALS_SELECT) {
-        return coordinator.hospitals ?? [];
-      }
-      if (!coordinator.hospitals?.includes(hospital)) {
-        console.error(
-          `Coordinator ${coordinator.id} ${coordinator.role} ${coordinator.hospitals} missing permissions for ${hospital}`
-        );
-        throw Error("Coordinator has no permissions for hospital");
-      }
-      return [hospital];
-    case CoordinatorRole.GROUP_COORDINATOR:
-      return hospital === HospitalUtils.ALL_HOSPITALS_SELECT
-        ? coordinator.hospitals ?? []
-        : [hospital];
-  }
-
-  throw Error("Unfamiliar coordinator role");
 }
 
 async function filterDonorsInGroup(

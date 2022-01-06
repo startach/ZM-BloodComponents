@@ -34,6 +34,9 @@ img.authScreenLogoImage {
 .fields {
   max-width: 400px;
   width: 80%;
+
+  display: grid;
+  gap: 30px;
 }
 
 .textButton {
@@ -47,15 +50,14 @@ img.authScreenLogoImage {
   font-weight: 500;
 }
 
-.forgotPassContainer {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.buttonsContainer {
+  display: grid;
+  gap: 10px;
 }
 
 .forgotPasswordBtn {
   color: gray;
+  margin: auto;
 }
 
 .subtitle {

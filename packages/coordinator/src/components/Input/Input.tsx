@@ -56,26 +56,24 @@ export default function Input({
   }
 
   return (
-    <div className={styles.component}>
-      <TextField
-        id={id}
-        value={value}
-        type={textFiledType}
-        onChange={(e) => onChangeText(e.currentTarget.value)}
-        label={label}
-        className={classNames(styles.input, className)}
-        InputProps={inputProps}
-        error={Boolean(errorMessage)}
-        dir="rtl"
-        variant={variant}
-        helperText={errorMessage}
-        fullWidth
-        onKeyPress={(event) => {
-          if (onSubmit && event.key === "Enter") {
-            onSubmit();
-          }
-        }}
-      />
-    </div>
+    <TextField
+      id={id}
+      value={value}
+      type={textFiledType}
+      onChange={(e) => onChangeText(e.currentTarget.value)}
+      label={label}
+      className={classNames(styles.input, className)}
+      InputProps={inputProps}
+      error={Boolean(errorMessage)}
+      dir="rtl"
+      variant={variant}
+      helperText={errorMessage}
+      fullWidth
+      onKeyPress={(event) => {
+        if (onSubmit && event.key === "Enter") {
+          onSubmit();
+        }
+      }}
+    />
   );
 }

@@ -67,20 +67,17 @@ export default function SignInScreen(props: SignInScreenProps) {
             onSubmit={signIn}
             type="password"
           />
-          <div>
+          <div className={styles.buttonsContainer}>
             <Button
               title={"התחברות"}
               onClick={signIn}
               isLoading={isLoading}
               isDisabled={!(email && password)}
             />
-          </div>
-          <div className={styles.forgotPassContainer}>
             <Button
               className={styles.forgotPasswordBtn}
               title="שכחתי את הסיסמה"
               onClick={props.onForgotPassword}
-              isDisabled={false}
               variant={ButtonVariant.text}
             />
           </div>
