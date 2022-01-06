@@ -35,8 +35,7 @@ img.authScreenLogoImage {
   max-width: 400px;
   width: 80%;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 30px;
 }
 
@@ -52,8 +51,7 @@ img.authScreenLogoImage {
 }
 
 .buttonsContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 10px;
 }
 
