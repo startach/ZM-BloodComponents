@@ -179,7 +179,7 @@ export interface GetDonorsResponse {
 export const GetBookedDonationsInHospitalFunctionName =
   "getBookedDonationsInHospital";
 export interface GetBookedDonationsInHospitalRequest {
-  hospital: Hospital;
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   fromDateMillis: number;
   toDateMillis: number;
 }

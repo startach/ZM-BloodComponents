@@ -76,7 +76,7 @@ test("Coordinator does not have permissions for hospital throws exception", asyn
   const action = () => callFunction(VALID_TEST_HOSPITAL, HADASA_COORDINATOR_ID);
   await expectAsyncThrows(
     action,
-    `Coordinator ${HADASA_COORDINATOR_ID} is not allowed to view hospital ${VALID_TEST_HOSPITAL}`
+    "Coordinator has no permissions for hospital"
   );
 });
 
