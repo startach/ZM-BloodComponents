@@ -5,7 +5,8 @@ import Button, { ButtonVariant } from "../../components/Button";
 import { useHistory } from "react-router-dom";
 
 export interface AppointmentScreenProps {
-  
+  onSubmit: () => void;
+  onCencel: () => void;
 }
 
 export default function AppointmentScreen(props: AppointmentScreenProps) {
