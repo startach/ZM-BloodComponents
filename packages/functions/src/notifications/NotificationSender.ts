@@ -29,7 +29,7 @@ export async function sendEmailToDonor(
 
   sgMail.setApiKey(functions.config().sendgrid.key);
   functions.logger.info(
-    `Sending ${type} notification to donor ${data.donorName} for appointment ${data.appointmentId} `
+    `Sending ${type} notification to donor ${data.donorId} ${data.donorName} for appointment ${data.appointmentId} `
   );
 
   let templateId = "";
@@ -48,7 +48,7 @@ export async function sendEmailToDonor(
   }
 
   const msg: MailDataRequired = {
-    to: donor.email,
+    to: data.donorEmail,
     from: {
       name: FROM_NAME,
       email: FROM_EMAIL,
@@ -58,7 +58,7 @@ export async function sendEmailToDonor(
   };
 
   if (shouldAddCalendarEventToDonor(type)) {
-    addCalendarEventToDonor(msg, type, data, donor.email);
+    addCalendarEventToDonor(msg, type, data);
   }
 
   await sgMail.send(msg);
@@ -126,8 +126,7 @@ function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
 function addCalendarEventToDonor(
   msg: MailDataRequired,
   type: NotificationToDonor,
-  data: AppointmentNotificationData,
-  donorEmail: string
+  data: AppointmentNotificationData
 ) {
   const donationTime = new Date(data.donationStartTimeMillis);
 
@@ -158,7 +157,7 @@ function addCalendarEventToDonor(
     attendees: [
       {
         name: data.donorName,
-        email: donorEmail,
+        email: data.donorEmail,
         rsvp: true,
         partstat: "NEEDS-ACTION",
         role: "REQ-PARTICIPANT",

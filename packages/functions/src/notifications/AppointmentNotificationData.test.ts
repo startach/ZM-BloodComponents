@@ -29,6 +29,8 @@ describe("Appointment Notification Data", function () {
     expect(res.date).toEqual("18/11/2021");
     expect(res.time).toEqual("10:30");
     expect(res.hospital).toEqual("בילינסון");
+    expect(res.donorId).toEqual("donorId");
+    expect(res.donorEmail).toEqual(sampleUser.email);
     expect(res.donorName).toEqual(
       sampleUser.firstName + " " + sampleUser.lastName
     );
