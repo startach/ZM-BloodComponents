@@ -1,6 +1,6 @@
 import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
@@ -39,7 +39,7 @@ export default function AppHeader({
   title,
   hasBurgerMenu,
 }: AppHeaderProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showSideBar, setShowSideBar] = useState(false);
   const loggedIn = isLoggedIn();
 
@@ -56,7 +56,7 @@ export default function AppHeader({
   } else if (hasBackButton) {
     icon = (
       <IconButton
-        onClick={onBack ? onBack : () => history.goBack()}
+        onClick={onBack ? onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
         <ArrowForward />
@@ -80,7 +80,7 @@ export default function AppHeader({
     loginIcon = (
       <div
         className={styles.login}
-        onClick={() => history.push("/" + MainNavigationKeys.Login)}
+        onClick={() => navigate(MainNavigationKeys.Login)}
       >
         <p className={styles.login_text}>{"כניסה"}</p>
         <img alt={"התחבר"} src={profileIcon} />
@@ -101,12 +101,12 @@ export default function AppHeader({
         <List>
           <MenuItem
             title={"הפרופיל שלי"}
-            onClick={() => history.push("/" + MainNavigationKeys.MyProfile)}
+            onClick={() => navigate(MainNavigationKeys.MyProfile)}
             icon={<ProfileIcon />}
           />
           <MenuItem
             title={"תהליך התרומה"}
-            onClick={() => history.push("/" + MainNavigationKeys.Process)}
+            onClick={() => navigate(MainNavigationKeys.Process)}
             icon={<ZMLineIcon />}
           />
           <MenuItem
@@ -116,12 +116,12 @@ export default function AppHeader({
           />
           <MenuItem
             title={"אודות"}
-            onClick={() => history.push("/" + MainNavigationKeys.About)}
+            onClick={() => navigate(MainNavigationKeys.About)}
             icon={<FeatherInfo />}
           />
           <MenuItem
             title={"צור קשר"}
-            onClick={() => history.push("/" + MainNavigationKeys.Contact)}
+            onClick={() => navigate(MainNavigationKeys.Contact)}
             icon={<SimpleWhatsapp />}
           />
         </List>
@@ -143,7 +143,7 @@ export default function AppHeader({
             <MenuItem
               title={"כניסה"}
               onClick={() => {
-                history.push("/" + MainNavigationKeys.Login);
+                navigate(MainNavigationKeys.Login);
                 setShowSideBar(false);
               }}
               icon={<FeatherLogIn />}

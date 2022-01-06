@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoadingScreen from "../screens/loading/LoadingScreen";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import {
   Coordinator,
@@ -142,37 +142,52 @@ export default function CoordinatorRouter() {
         />
       }
     >
-      <Switch>
+      <Routes>
         {canViewOpenAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
-            <ManageAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
+            element={
+              <ManageAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
         {canViewDonors && (
-          <Route path={"/" + CoordinatorScreenKey.DONORS}>
-            <SearchDonorsScreenContainer />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.DONORS}
+            element={<SearchDonorsScreenContainer />}
+          />
         )}
         {canViewBookedAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
-            <ScheduledAppointmentsContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.BOOKED_DONATIONS}
+            element={
+              <ScheduledAppointmentsContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
         {canAddAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
-            <AddAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.ADD_APPOINTMENTS}
+            element={
+              <AddAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
 
         {/*in case of no match*/}
-        <Redirect to={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
-      </Switch>
+        <Route
+          path="*"
+          element={
+            <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
+          }
+        />
+      </Routes>
     </CoordinatorScreen>
   );
 }
