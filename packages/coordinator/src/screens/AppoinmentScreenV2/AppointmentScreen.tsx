@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./AppointmentScreen.module.scss";
 import Input from "../../components/Input";
 import Button, { ButtonVariant } from "../../components/Button";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export interface AppointmentScreenProps {
   onSubmit: () => void;
@@ -19,7 +19,7 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
 
   const [type, setType] = useState("");
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
     <div className={styles.addAppoinmentScreen}>
@@ -27,7 +27,7 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
         <div className={styles.title}>הוספת תור יחיד</div>
         <div 
           className={styles.appointmentScreenXButton}
-          onClick={() => history.goBack()}
+          onClick={() => {navigate(-1)}}
         >
           X
         </div>
