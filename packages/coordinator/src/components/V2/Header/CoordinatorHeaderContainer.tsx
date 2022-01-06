@@ -1,8 +1,7 @@
 import CoordinatorHeader, { HeaderButtonFlags } from "./CoordinatorHeader";
 import { getEmail, signOut } from "../../../firebase/FirebaseAuthentication";
 import { Coordinator } from "@zm-blood-components/common";
-import { useLocation, useNavigate } from "react-router-dom";
-import { CoordinatorScreenKey } from "coordinator/src/navigation/CoordinatorScreenKey";
+import { useLocation } from "react-router-dom";
 
 interface CoordinatorHeaderContainerProps {
   flags: HeaderButtonFlags;
