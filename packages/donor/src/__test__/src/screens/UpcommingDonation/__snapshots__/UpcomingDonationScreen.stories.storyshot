@@ -99,7 +99,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
             <div
               className="welcomeText"
             >
-              בקרוב ניפגש...
+              בקרוב ניפגש
             </div>
           </div>
         </div>
@@ -312,7 +312,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
             <div
               className="welcomeText"
             >
-              בקרוב ניפגש...
+              בקרוב ניפגש
             </div>
           </div>
         </div>
@@ -525,7 +525,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
             <div
               className="welcomeText"
             >
-              בקרוב ניפגש...
+              בקרוב ניפגש
             </div>
           </div>
         </div>
@@ -735,7 +735,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
             <div
               className="welcomeText"
             >
-              בקרוב ניפגש...
+              בקרוב ניפגש
             </div>
           </div>
         </div>
@@ -951,7 +951,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
             <div
               className="welcomeText"
             >
-              בקרוב ניפגש...
+              בקרוב ניפגש
             </div>
           </div>
         </div>

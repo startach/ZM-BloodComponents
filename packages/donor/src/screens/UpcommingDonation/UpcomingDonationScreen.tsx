@@ -48,7 +48,7 @@ export default function UpcomingDonationScreen({
           <div className={styles.welcomeTitle}>
             <div>היי</div>
             <div>{fullName},</div>
-            <div className={styles.welcomeText}>בקרוב ניפגש...</div>
+            <div className={styles.welcomeText}>בקרוב ניפגש</div>
           </div>
         </div>
 
