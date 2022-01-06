@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Splash Screen Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="lf-player-container"
+    >
+      <div
+        id="lottie"
+        style={
+          Object {
+            "background": "transparent",
+            "height": "300px",
+            "margin": "0 auto",
+            "outline": "none",
+            "overflow": "hidden",
+            "width": "300px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="bottomContainer"
+    >
+      <img
+        alt="זיכרון מנחם"
+        src="zm_logo.svg"
+      />
+      <img
+        alt="סטארט אח"
+        height="59"
+        src="startach_logo.png"
+        width="64"
+      />
+    </div>
+  </div>
+</div>
+`;

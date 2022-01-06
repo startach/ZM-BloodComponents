@@ -22,6 +22,7 @@ import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
 import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
 import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
+import SplashScreen from "../screens/loading/SplashScreen";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -105,7 +106,7 @@ export default function CoordinatorRouter() {
 
   if (USE_NEW_COORDINATOR) {
     if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
-      return <LoadingScreen />;
+      return <SplashScreen />;
     }
 
     const loggedIn = loginStatus === LoginStatus.LOGGED_IN;
