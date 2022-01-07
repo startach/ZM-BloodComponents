@@ -9,7 +9,9 @@ import Select from "../../components/V2/Select";
 import { SelectOption } from "@zm-blood-components/common";
 import classnames from "classnames";
 
-export interface AppointmentScreenProps {}
+export interface AppointmentScreenProps {
+  onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
+}
 
 const slotOptions: SelectOption<number>[] = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -79,12 +81,17 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
       >
         <Button
           className={styles.inputField}
-          onClick={() => {}}
+          onClick={() => {
+            if (date !== null && hour !== null) {
+              props.onSubmit(date, hour, slots);
+            }
+          }}
+          isDisabled={date === null || hour === null || slots === 0}
           title="אשר והמשך"
         />
         <Button
           className={styles.inputField}
-          onClick={() => {}}
+          onClick={() => navigate(-1)}
           title="ביטול"
           variant={ButtonVariant.outlined}
         />

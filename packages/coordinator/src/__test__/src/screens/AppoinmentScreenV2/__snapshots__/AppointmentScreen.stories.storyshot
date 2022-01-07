@@ -255,8 +255,8 @@ exports[`Storyshots Screens/Appointment Screen Default 1`] = `
         className="inputField"
       >
         <button
-          className="MuiButtonBase-root-73 MuiButton-root-119 MuiButton-contained-127 button primaryButton MuiButton-disableElevation-130 MuiButton-fullWidth-142"
-          disabled={false}
+          className="MuiButtonBase-root-73 MuiButton-root-119 MuiButton-contained-127 button disabledButton MuiButton-disableElevation-130 MuiButton-disabled-132 MuiButton-fullWidth-142 MuiButtonBase-disabled-74"
+          disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
           onDragLeave={[Function]}
@@ -269,7 +269,7 @@ exports[`Storyshots Screens/Appointment Screen Default 1`] = `
           onTouchEnd={[Function]}
           onTouchMove={[Function]}
           onTouchStart={[Function]}
-          tabIndex={0}
+          tabIndex={-1}
           type="button"
         >
           <span
