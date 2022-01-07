@@ -7,16 +7,16 @@ import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
 import classNames from "classnames";
 import SwippableComponent from "../SwippableComponent";
+import { useNavigate } from "react-router-dom";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
-  onClick: () => void;
   onDelete: () => void;
 };
 
 export default function AppointmentPreview({
   onDelete,
-  onClick,
   appointment,
 }: AppointmentPreviewProps) {
   const [showDelete, setShowDelete] = useState(false);
@@ -31,21 +31,40 @@ export default function AppointmentPreview({
       onSwipeLeft={() => setShowDelete(true)}
     >
       <DeleteAppointmentButton onClick={onDelete} showDelete={showDelete} />
-      <div
-        className={styles.appointmentPreviewContent}
-        onClick={showDelete ? undefined : onClick}
-      >
-        <AppointmentContent appointment={appointment} />
+      <div className={styles.appointmentPreviewContent}>
+        <AppointmentContent appointment={appointment} showDelete={showDelete} />
       </div>
     </SwippableComponent>
   );
 }
 
-function AppointmentContent(props: { appointment: Appointment }) {
+function AppointmentContent(props: {
+  appointment: Appointment;
+  showDelete: boolean;
+}) {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    if (props.showDelete) {
+      return;
+    }
+    if (props.appointment.booked) {
+      navigate(
+        CoordinatorScreenKey.APPOINTMENT + "/" + props.appointment.appointmentId
+      );
+    } else {
+      navigate(
+        CoordinatorScreenKey.MANUAL_DONATION +
+          "/" +
+          props.appointment.appointmentId
+      );
+    }
+  };
+
   if (props.appointment.booked) {
     return (
       <>
-        <div className={styles.nameAndChip}>
+        <div className={styles.nameAndChip} onClick={onClick}>
           <div className={styles.donorName}>{props.appointment.donorName}</div>
           {props.appointment.recentChangeType && (
             <RecentUpdateChip
@@ -53,14 +72,14 @@ function AppointmentContent(props: { appointment: Appointment }) {
             />
           )}
         </div>
-        <ChevronLeft />
+        <ChevronLeft onClick={onClick} />
       </>
     );
   }
 
   return (
     <>
-      <div className={styles.nameAndChip}>
+      <div className={styles.nameAndChip} onClick={onClick}>
         <div className={styles.availableAppointmentText}>תור ריק</div>
         {props.appointment.recentChangeType && (
           <RecentUpdateChip
@@ -68,7 +87,7 @@ function AppointmentContent(props: { appointment: Appointment }) {
           />
         )}
       </div>
-      <AddPerson />
+      <AddPerson onClick={onClick} />
     </>
   );
 }

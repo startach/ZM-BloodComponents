@@ -45,6 +45,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
+  donorName?: string;
   assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   bookingTimeMillis?: number;
 };
@@ -168,7 +169,7 @@ export interface GetCoordinatorAppointmentsRequest {
 
 export interface GetCoordinatorAppointmentsResponse {
   appointments: AppointmentApiEntry[];
-  donorsInAppointments: Donor[];
+  donorsInAppointments: Donor[]; // TODO remove once coordinator is migrated
 }
 
 export const GetDonorsFunctionName = "getDonors";

@@ -56,7 +56,6 @@ const props: DonationDayScreenProps = {
     ],
   },
   onDeleteAppointment: action("onDeleteAppointment"),
-  onClickOnAppointment: action("onClickOnAppointment"),
   onAdd: action("onAdd"),
   dayStartTime: new Date(1702198800000),
 };

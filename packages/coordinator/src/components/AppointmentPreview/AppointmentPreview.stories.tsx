@@ -17,7 +17,6 @@ export default {
 
 const props: AppointmentPreviewProps = {
   appointment: SampleBookedAppointment,
-  onClick: action("onClick"),
   onDelete: action("onDelete"),
 };
 

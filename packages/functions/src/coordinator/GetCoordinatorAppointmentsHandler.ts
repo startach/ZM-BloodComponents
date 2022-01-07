@@ -35,9 +35,6 @@ export default async function (
     endTimeFilter
   );
 
-  let appointments = appointmentsByHospital.map(
-    dbAppointmentToAppointmentApiEntry
-  );
   const donorIds: string[] = [];
   appointmentsByHospital.map((appointment) => {
     if (appointment.donorId) {
@@ -47,6 +44,9 @@ export default async function (
 
   let donorsInAppointments = await getDonors(_.uniq(donorIds));
 
+  let appointments = appointmentsByHospital.map((a) =>
+    dbAppointmentToAppointmentApiEntry(a, donorsInAppointments)
+  );
   if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
     donorsInAppointments = await filterDonorsInGroup(
       coordinator,

@@ -44,10 +44,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="availableAppointmentText"
@@ -55,7 +55,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 תור ריק
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               add-person.svg
             </svg>
           </div>
@@ -90,10 +92,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="donorName"
@@ -101,7 +103,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 משה כהן
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               chevron-left.svg
             </svg>
           </div>
@@ -136,10 +140,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="donorName"
@@ -156,7 +160,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 </div>
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               chevron-left.svg
             </svg>
           </div>
@@ -191,10 +197,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="donorName"
@@ -211,7 +217,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 </div>
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               chevron-left.svg
             </svg>
           </div>
@@ -246,10 +254,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="donorName"
@@ -266,7 +274,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 </div>
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               chevron-left.svg
             </svg>
           </div>
@@ -301,10 +311,10 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="availableAppointmentText"
@@ -321,7 +331,9 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
                 </div>
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               add-person.svg
             </svg>
           </div>
@@ -376,10 +388,10 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="availableAppointmentText"
@@ -387,7 +399,9 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
                 תור ריק
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               add-person.svg
             </svg>
           </div>
@@ -422,10 +436,10 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
           </div>
           <div
             className="appointmentPreviewContent"
-            onClick={[Function]}
           >
             <div
               className="nameAndChip"
+              onClick={[Function]}
             >
               <div
                 className="availableAppointmentText"
@@ -442,7 +456,9 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
                 </div>
               </div>
             </div>
-            <svg>
+            <svg
+              onClick={[Function]}
+            >
               add-person.svg
             </svg>
           </div>

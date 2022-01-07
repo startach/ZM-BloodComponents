@@ -6,14 +6,12 @@ import { DateUtils } from "@zm-blood-components/common";
 
 export type AppointmentPreviewProps = {
   appointmentSlot: AppointmentSlot;
-  onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
   showOnlyAvailableAppointments: boolean;
 };
 
 export default function AppointmentSlotComponent({
   onDeleteAppointment,
-  onClickOnAppointment,
   appointmentSlot,
   showOnlyAvailableAppointments,
 }: AppointmentPreviewProps) {
@@ -41,7 +39,6 @@ export default function AppointmentSlotComponent({
           <AppointmentPreview
             onDelete={() => onDeleteAppointment(appointment.appointmentId)}
             appointment={appointment}
-            onClick={() => onClickOnAppointment(appointment.appointmentId)}
           />
 
           {index < appointments.length - 1 && (

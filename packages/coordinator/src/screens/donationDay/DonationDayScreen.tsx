@@ -12,14 +12,12 @@ import Spinner from "../../components/Spinner";
 export type DonationDayScreenProps = {
   dayStartTime: Date;
   donationDay: DonationDay | undefined; // Could be loading
-  onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
 };
 
 export default function DonationDayScreen({
   onDeleteAppointment,
-  onClickOnAppointment,
   dayStartTime,
   donationDay,
 }: DonationDayScreenProps) {
@@ -53,7 +51,6 @@ export default function DonationDayScreen({
           <AppointmentSlotComponent
             key={index + "." + slot.donationStartTimeMillis}
             appointmentSlot={slot}
-            onClickOnAppointment={onClickOnAppointment}
             onDeleteAppointment={onDeleteAppointment}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
           />

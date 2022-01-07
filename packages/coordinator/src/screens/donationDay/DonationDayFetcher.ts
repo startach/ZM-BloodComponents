@@ -1,4 +1,4 @@
-import { Donor, Hospital } from "@zm-blood-components/common";
+import { Hospital } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { AppointmentSlot, DonationDay } from "../../utils/types";
 import _ from "lodash";
@@ -15,11 +15,6 @@ export async function fetchDonationDay(
   );
 
   const slotsMap: { [appointmentStartTime: number]: AppointmentSlot } = {};
-  const donorsMap: { [donorId: string]: Donor } = {};
-
-  appointmentsResponse.donorsInAppointments.forEach(
-    (donor) => (donorsMap[donor.id] = donor)
-  );
 
   appointmentsResponse.appointments.forEach((appointment) => {
     const slot: AppointmentSlot = slotsMap[
@@ -29,10 +24,6 @@ export async function fetchDonationDay(
       donationStartTimeMillis: appointment.donationStartTimeMillis,
     };
 
-    const donor = appointment.donorId
-      ? donorsMap[appointment.donorId]
-      : undefined;
-
     slot.appointments.push({
       appointmentId: appointment.id,
       donationStartTimeMillis: appointment.donationStartTimeMillis,
@@ -40,10 +31,9 @@ export async function fetchDonationDay(
       bookingTimeMillis: appointment.bookingTimeMillis,
       recentChangeType: appointment.recentChangeType,
       isPastAppointment: appointment.donationStartTimeMillis < Date.now(),
-
-      donorName: donor ? `${donor.firstName} ${donor.lastName}` : undefined,
-      donorPhoneNumber: donor?.phone,
-      bloodType: donor?.bloodType,
+      donorName: appointment.donorName,
+      donorPhoneNumber: undefined, // TODO remove
+      bloodType: undefined, // TODO remove
     });
     slotsMap[appointment.donationStartTimeMillis] = slot;
   });

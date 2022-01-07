@@ -27,6 +27,10 @@ export default function DonationDayScreenContainer(
     fetchDonationDay(hospital, dayStartTime).then(setDonationDay);
   }, [props.loggedIn, dayStartTime, setDonationDay, hospital]);
 
+  if (!props.loggedIn) {
+    return <Navigate to={CoordinatorScreenKey.LOGIN} />;
+  }
+
   if (!dayStartTime || !hospital) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
@@ -36,7 +40,6 @@ export default function DonationDayScreenContainer(
       dayStartTime={dayStartTime}
       donationDay={donationDay}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
-      onClickOnAppointment={() => {}} // TODO
       onDeleteAppointment={() => {}} // TODO
     />
   );

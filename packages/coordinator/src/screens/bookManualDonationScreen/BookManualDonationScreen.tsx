@@ -27,6 +27,7 @@ export default function BookManualDonationScreen(
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [bloodType, setBloodType] = useState(BloodType.NOT_SURE);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,6 +64,7 @@ export default function BookManualDonationScreen(
     }
 
     if (valid) {
+      setLoading(true);
       props.onSave(firstName, lastName, phone, bloodType);
     }
   };
@@ -109,6 +111,7 @@ export default function BookManualDonationScreen(
           label={"סוג דם"}
           options={BloodTypeUtils.getBloodTypeSelectOptions()}
           value={bloodType}
+          isLoading={loading}
           onChange={(newValue) => {
             setBloodType(newValue);
           }}
@@ -120,6 +123,7 @@ export default function BookManualDonationScreen(
             title={"ביטול"}
             onClick={() => navigate(-1)}
             variant={ButtonVariant.outlined}
+            isDisabled={loading}
           />
         </div>
       </div>

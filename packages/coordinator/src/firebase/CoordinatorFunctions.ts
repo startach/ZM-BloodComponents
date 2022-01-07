@@ -119,3 +119,13 @@ export async function getBookedAppointmentsInHospital(
     response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
   return data.donationsWithDonorDetails;
 }
+
+export async function bookManualDonation(
+  request: FunctionsApi.CoordinatorBookAppointmentRequest
+) {
+  const callableFunction = getCallableFunction(
+    FunctionsApi.CoordinatorBookAppointmentFunctionName
+  );
+
+  await callableFunction(request);
+}

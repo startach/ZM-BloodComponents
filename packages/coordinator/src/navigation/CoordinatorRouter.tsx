@@ -25,6 +25,7 @@ import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordSc
 import SplashScreen from "../screens/loading/SplashScreen";
 import ScheduleScreenContainer from "../screens/schedule/ScheduleScreenContainer";
 import DonationDayScreenContainer from "../screens/donationDay/DonationDayScreenContainer";
+import BookManualDonationScreenContainer from "../screens/bookManualDonationScreen/BookManualDonationScreenContainer";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -138,6 +139,11 @@ export default function CoordinatorRouter() {
         <Route
           path={CoordinatorScreenKey.DAY + "/:hospital/:timestamp"}
           element={<DonationDayScreenContainer loggedIn={loggedIn} />}
+        />
+
+        <Route
+          path={CoordinatorScreenKey.MANUAL_DONATION + "/:appointmentId"}
+          element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
         />
 
         {/*in case of no match*/}

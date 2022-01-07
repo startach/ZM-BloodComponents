@@ -3,6 +3,7 @@ import {
   Donor,
   DonorNotificationSettings,
   FunctionsApi,
+  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 
@@ -19,7 +20,8 @@ export function dbDonorToDonor(dbDonor: DbDonor): Donor {
 }
 
 export function dbAppointmentToAppointmentApiEntry(
-  appointment: DbAppointment
+  appointment: DbAppointment,
+  donorsInAppointments: DbDonor[]
 ): FunctionsApi.AppointmentApiEntry {
   const {
     id,
@@ -35,9 +37,20 @@ export function dbAppointmentToAppointmentApiEntry(
     throw new Error("Invalid State");
   }
 
+  let donorName: string | undefined;
+  if (donorId) {
+    if (donorId === MANUAL_DONOR_ID) {
+      donorName = `${appointment.donorDetails?.firstName} ${appointment.donorDetails?.lastName}`;
+    } else {
+      const donor = donorsInAppointments.filter((d) => d.id === donorId)[0];
+      donorName = `${donor.firstName} ${donor.lastName}`;
+    }
+  }
+
   return {
     id: id,
     donorId: donorId,
+    donorName,
     assigningCoordinatorId: assigningCoordinatorId,
     hospital: hospital,
     donationStartTimeMillis: donationStartTime.toMillis(),
