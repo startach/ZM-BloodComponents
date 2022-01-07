@@ -6,10 +6,4 @@ export default {
   parameters: { layout: "fullscreen" },
 };
 
-export const Default = () => (
-    <UnsubscribedScreen  />
-  );
-
-
-
-
+export const Default = () => <UnsubscribedScreen />;

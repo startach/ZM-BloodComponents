@@ -241,7 +241,7 @@ function DonorRouter() {
       />
       <Route
         path={MainNavigationKeys.Unsubscribe}
-        element={<UnsubscribedScreen/>}
+        element={<UnsubscribedScreen />}
       />
 
       <Route

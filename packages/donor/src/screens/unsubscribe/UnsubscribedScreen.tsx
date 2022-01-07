@@ -5,16 +5,17 @@ import { useNavigate } from "react-router-dom";
 import zmDrop from "../../assets/images/zmDrop.svg";
 import styles from "./UnsubscribedScreen.module.scss";
 
-
 const UnsubscribedScreen = () => {
   const navigate = useNavigate();
 
-  const profileLink = <Button
-    onClick={() => navigate(MainNavigationKeys.MyProfile)}
-    title={"הפרופיל"}
-    variant={ButtonVariant.text}
-    className={styles.ProfileLink}
-  />;
+  const profileLink = (
+    <Button
+      onClick={() => navigate(MainNavigationKeys.MyProfile)}
+      title={"הפרופיל"}
+      variant={ButtonVariant.text}
+      className={styles.ProfileLink}
+    />
+  );
   const GOODBYE = "להתראות !";
   const EMAIL_REMOVED = "האימייל שלך הוסר בהצלחה מרשימת התפוצה";
   const REGRET = "התחרטת? תמיד נשמח שוב לראותך!";
