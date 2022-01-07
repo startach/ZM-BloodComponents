@@ -12,9 +12,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
   <div
     className="storyBackground"
   >
-    <div
-      className="appointmentSlotListContainer"
-    >
+    <div>
       <div
         className="listHeader"
       >
@@ -346,9 +344,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
   <div
     className="storyBackground"
   >
-    <div
-      className="appointmentSlotListContainer"
-    >
+    <div>
       <div
         className="listHeader"
       >

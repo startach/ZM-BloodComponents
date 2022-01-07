@@ -27,7 +27,7 @@ export default function AppointmentSlotComponent({
   }
 
   return (
-    <div className={styles.appointmentSlotListContainer}>
+    <div>
       <div className={styles.listHeader}>
         <div className={styles.time}>
           {DateUtils.ToTimeString(appointmentSlot.donationStartTimeMillis)}

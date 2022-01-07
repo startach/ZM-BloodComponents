@@ -24,7 +24,6 @@ export default function DonationDayScreenContainer(
       return;
     }
 
-    // TODO hospital
     fetchDonationDay(hospital, dayStartTime).then(setDonationDay);
   }, [props.loggedIn, dayStartTime, setDonationDay, hospital]);
 

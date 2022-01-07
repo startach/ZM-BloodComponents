@@ -1,12 +1,9 @@
-.appointmentSlotListContainer {
-  padding: 15px 0;
-}
-
 .listHeader {
   padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: var(--coordinator-background);
 }
 
 .time {

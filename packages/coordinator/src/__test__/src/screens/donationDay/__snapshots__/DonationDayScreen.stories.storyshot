@@ -146,9 +146,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       <div
         className="slots"
       >
-        <div
-          className="appointmentSlotListContainer"
-        >
+        <div>
           <div
             className="listHeader"
           >
@@ -207,9 +205,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="appointmentSlotListContainer"
-        >
+        <div>
           <div
             className="listHeader"
           >
@@ -369,9 +365,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="appointmentSlotListContainer"
-        >
+        <div>
           <div
             className="listHeader"
           >
@@ -501,6 +495,228 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
     >
       <span
         className="MuiFab-label-35"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-12"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+        <div
+          className="text"
+        >
+          הוסף תור
+        </div>
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Screens/Donation Day Loading 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="coordinatorScreen"
+  >
+    <div
+      className="appHeader"
+    >
+      <div
+        className="headerRow"
+      >
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title infoTitle"
+        >
+          ניהול תורים
+        </div>
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        className="stickyComponent"
+      >
+        <div
+          className="donationDate"
+        >
+          <div
+            className="dayString"
+          >
+            <span
+              className="weekday"
+            >
+              יום ראשון
+            </span>
+            <span>
+              10/12
+            </span>
+          </div>
+          <div
+            className="data"
+          >
+            <span>
+              0
+               תורים
+            </span>
+            <span
+              className="dataDivider"
+            >
+              |
+            </span>
+            <span>
+              0
+               רשומים
+            </span>
+          </div>
+        </div>
+        <div
+          className="availableAppointmentsToggle"
+        >
+          הצג תורים פנויים בלבד
+          <div
+            className="toggleContainer toggle"
+            onClick={[Function]}
+          >
+            <div
+              className="toggleCircle"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent"
+    >
+      <div
+        className="slots"
+      >
+        <div
+          className="spinner"
+        >
+          <div
+            className="MuiCircularProgress-root-33 MuiCircularProgress-colorPrimary-37 MuiCircularProgress-indeterminate-35"
+            role="progressbar"
+            style={
+              Object {
+                "height": "3rem",
+                "width": "3rem",
+              }
+            }
+          >
+            <svg
+              className="MuiCircularProgress-svg-39"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                className="MuiCircularProgress-circle-40 MuiCircularProgress-circleIndeterminate-42"
+                cx={44}
+                cy={44}
+                fill="none"
+                r={20.2}
+                strokeWidth={3.6}
+                style={Object {}}
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          className="emptySpace"
+        />
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-9 MuiFab-root-48 makeStyles-fab-47 MuiFab-extended-52 MuiFab-primary-50"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiFab-label-49"
       >
         <svg
           aria-hidden={true}
