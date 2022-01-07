@@ -27,7 +27,7 @@ export default function ScheduleScreen(props: ScheduleScreenProps) {
         hasNotificationsIcon: true,
         stickyComponent: (
           <SchedulePicker
-            weekStartTime={props.days[0].cells[0].cellStartTime}
+            weekStartTime={props.days[0].dayStartTime}
             onNext={props.onNextWeek}
             onPrevious={props.oPreviousWeek}
             hospital={hospital}
