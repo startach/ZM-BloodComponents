@@ -36,7 +36,6 @@ export function ToWeekDayString(
   date: ParsableDateValue | number,
   format?: string
 ) {
-  //TODO: update the word "Day" based on the locale (in ar + en)
   return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
 }
 

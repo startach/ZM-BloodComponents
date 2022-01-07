@@ -13,18 +13,19 @@ export default function DonationDayScreenContainer(
   props: DonationDayScreenContainerProps
 ) {
   const navigate = useNavigate();
-  const { timestamp } = useParams<{ timestamp: string }>();
-  if (!timestamp || isNaN(parseInt(timestamp))) {
-    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
-  }
-  const requestedTimestamp = new Date(parseInt(timestamp));
-  const dayStartTime = DateUtils.GetStartOfDay(requestedTimestamp);
 
   useEffect(() => {
     if (!props.loggedIn) {
       return;
     }
   }, [props.loggedIn]);
+
+  const { timestamp } = useParams<{ timestamp: string }>();
+  if (!timestamp || isNaN(parseInt(timestamp))) {
+    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
+  }
+  const requestedTimestamp = new Date(parseInt(timestamp));
+  const dayStartTime = DateUtils.GetStartOfDay(requestedTimestamp);
 
   return (
     <DonationDayScreen

@@ -4,7 +4,7 @@ import { DateUtils, Hospital } from "@zm-blood-components/common";
 import { ScheduleDay } from "../../utils/types";
 import ScheduleScreen from "./ScheduleScreen";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export interface ScheduleScreenContainerProps {
   loggedIn: boolean;
@@ -19,16 +19,17 @@ export default function ScheduleScreenContainer(
   );
   const [days, setDays] = useState<ScheduleDay[]>([]);
   const [hospital, setHospital] = useState(props.availableHospitals[0]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!props.loggedIn) {
       return;
     }
     setDays([]);
-    fetchScheduleAppointments(hospital, selectedDayInWeek).then((days) =>
-      setDays(days)
+    fetchScheduleAppointments(hospital, selectedDayInWeek, navigate).then(
+      (days) => setDays(days)
     );
-  }, [selectedDayInWeek, hospital, props.loggedIn]);
+  }, [selectedDayInWeek, hospital, props.loggedIn, navigate]);
 
   if (!props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;

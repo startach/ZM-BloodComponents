@@ -6,11 +6,13 @@ import {
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { ScheduleCell, ScheduleDay } from "../../utils/types";
 import _ from "lodash";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 const millisInHour = 60 * 60 * 1_000;
 export async function fetchScheduleAppointments(
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
-  dayInRequestedWeek: Date
+  dayInRequestedWeek: Date,
+  navigate: (route: string) => void
 ): Promise<ScheduleDay[]> {
   const startOfTheWeek = DateUtils.GetStartOfTheWeek(dayInRequestedWeek);
 
@@ -20,8 +22,7 @@ export async function fetchScheduleAppointments(
   );
 
   const onClickCell = (cellStartTime: Date) => {
-    // TODO implement move to donation day
-    console.log("Clicked on", cellStartTime);
+    navigate(CoordinatorScreenKey.ADD + "/" + cellStartTime.getTime());
   };
 
   const cellsMap: { [hourStartTime: number]: ScheduleCell } = {};

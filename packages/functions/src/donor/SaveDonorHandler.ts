@@ -21,7 +21,6 @@ export default async function (
     bloodType: request.bloodType,
     notificationSettings: request.notificationSettings,
 
-    //TODO add group Id
     groupId: "",
 
     testUser: false,
