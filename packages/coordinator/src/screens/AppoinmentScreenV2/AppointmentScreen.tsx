@@ -1,23 +1,30 @@
 import { useState } from "react";
 import styles from "./AppointmentScreen.module.scss";
-import Input from "../../components/Input";
+
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "../../components/V2/DatePicker";
+import TimePicker from "../../components/V2/TimePicker";
+import Select from "../../components/V2/Select";
+import { SelectOption } from "@zm-blood-components/common";
+import classnames from "classnames";
 
 export interface AppointmentScreenProps {
-  onSubmit: () => void;
-  onCencel: () => void;
 }
 
+const slotOptions: SelectOption<number>[] = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+].map((n) => ({
+  label: n + "",
+  value: n,
+  key: n + "",
+}));
+
 export default function AppointmentScreen(props: AppointmentScreenProps) {
-  const [date, setDate] = useState("");
-  const [dateFocus, setDateFocus] = useState(false)
-  const [errorDate, setErrorDate] = useState("");
+  const [date, setDate] = useState<Date | null>(null);
+  const [hour, setHour] = useState<Date | null>(null);
 
-  const [time, setTime] = useState("");
-  const [errorHour, setErrorHour] = useState("");
-
-  const [type, setType] = useState("");
+  const [slots, setSlots] = useState(0);
 
   const navigate = useNavigate()
 
@@ -34,59 +41,47 @@ export default function AppointmentScreen(props: AppointmentScreenProps) {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.addApponimentSubtitle}>
-          <text>זמני תור</text>
+          <div className={styles.subtitleText}>זמני תור</div>
         </div>
-        <div className={styles.appointmentScreenInputsContainer}>
-          <Input
-              onChangeText={(newValue) => {
-                setDate(newValue);
-              }}
-              value={date}
-              type={"date"}
-              errorMessage={errorDate}
-            />
-        </div>
-        <div className={styles.appointmentScreenInputsContainer}>
-          <Input
-            onChangeText={(newValue) => {
-              setTime(newValue)
-            }}
-            value={time}
-            type={"time"}
-            errorMessage={errorHour}
+          <DatePicker
+            className={styles.inputField}
+            value={date}
+            onChange={setDate}
+            label={"תאריך"}
+            disablePast
           />
-        </div>
+          <TimePicker
+            className={styles.inputField}
+            value={hour}
+            onChange={setHour}
+            label={"שעה"}
+          />
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.addApponimentSubtitle}>
-          <text>מספר עמדות</text>
+          <div className={styles.subtitleText}>מספר עמדות</div>
         </div>
-        <div className={styles.appointmentScreenInputsContainer}>
-          <Input
-              onChangeText={(newValue) => {
-                setType(newValue)
-              }}
-              value={type}
-              type={"number"}
-              label={`מספר עמדות`}
-              errorMessage={""}
-            />
-        </div>
+          <Select
+            containerClassName={styles.inputField}
+            id={"donations_count"}
+            label={"מספר עמדות"}
+            options={slotOptions}
+            onChange={setSlots}
+            value={slots}
+          />
       </div>
-      <div className={styles.cardContainer}>
-        <div className={styles.appointmentScreenInputsContainer}>
+      <div className={classnames(styles.cardContainer, styles.appointmentsScreenButtons)}>
           <Button
+            className={styles.inputField}
             onClick={() => {}}
             title="אשר והמשך"
           />
-        </div>
-        <div className={styles.appointmentScreenInputsContainer}>
           <Button
+            className={styles.inputField}
             onClick={() => {}}
             title="ביטול"
             variant={ButtonVariant.outlined}
           />
-        </div>
       </div>
     </div>
   );

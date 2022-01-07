@@ -17,6 +17,7 @@ type SelectProps<T> = {
   isDisabled?: boolean;
   placeholder?: string;
   className?: string;
+  containerClassName?: string;
   isValid?: boolean;
   variant?: SelectVariant;
   options: SelectOption<T>[];
@@ -30,12 +31,13 @@ export default function Select<T>({
   isDisabled,
   placeholder,
   className,
+  containerClassName,
   isValid = true,
   variant = "standard",
   options,
 }: SelectProps<T>) {
   return (
-    <FormControl>
+    <FormControl className={containerClassName}>
       <InputLabel className={styles.label} id={`${id}_label`}>
         {label}
       </InputLabel>
