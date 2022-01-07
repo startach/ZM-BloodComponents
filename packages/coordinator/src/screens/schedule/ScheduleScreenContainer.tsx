@@ -19,6 +19,7 @@ export default function ScheduleScreenContainer(
   const [hospital, setHospital] = useState(props.availableHospitals[0]);
 
   useEffect(() => {
+    setDays([]);
     fetchScheduleAppointments(hospital, selectedDayInWeek).then((days) =>
       setDays(days)
     );
