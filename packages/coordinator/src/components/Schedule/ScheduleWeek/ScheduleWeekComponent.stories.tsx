@@ -24,9 +24,6 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
     const appointmentsCount = (dayOffset + i) % 3 === 0 ? 3 : 0;
     const bookedAppointmentsCount = (dayOffset * 3 + i) % 4;
 
-    if (appointmentsCount === 0) {
-      cells.push(undefined);
-    }
     cells.push({
       cellStartTime: new Date(cellStartMillis),
       onClick,
