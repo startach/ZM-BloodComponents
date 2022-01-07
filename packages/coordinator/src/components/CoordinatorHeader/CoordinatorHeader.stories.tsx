@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 import CoordinatorHeader, {
-  AppHeaderProps,
+  CoordinatorHeaderProps,
   HeaderVariant,
 } from "./CoordinatorHeader";
 
@@ -10,13 +10,13 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const props: AppHeaderProps = {
+const props: CoordinatorHeaderProps = {
   hasBackButton: false,
   hasBurgerMenu: false,
   variant: HeaderVariant.SECONDARY,
 };
 
-const Template: Story<AppHeaderProps> = (args) => (
+const Template: Story<CoordinatorHeaderProps> = (args) => (
   <div style={{ height: "100%", width: "100%", backgroundColor: "lightcyan" }}>
     <CoordinatorHeader {...args} />
   </div>

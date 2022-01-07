@@ -1,6 +1,5 @@
 import { Meta, Story } from "@storybook/react";
 import AddAppointmentFab, { AddAppointmentFabProps } from "./AddAppointmentFab";
-import { action } from "@storybook/addon-actions";
 
 export default {
   component: AddAppointmentFab,
@@ -9,5 +8,5 @@ export default {
 } as Meta;
 
 export const Default: Story<AddAppointmentFabProps> = (args) => {
-  return <AddAppointmentFab onClick={action("onClick")} />;
+  return <AddAppointmentFab />;
 };
