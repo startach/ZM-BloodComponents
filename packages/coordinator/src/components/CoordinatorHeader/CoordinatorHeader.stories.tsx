@@ -17,7 +17,9 @@ const props: AppHeaderProps = {
 };
 
 const Template: Story<AppHeaderProps> = (args) => (
-  <CoordinatorHeader {...args} />
+  <div style={{ height: "100%", width: "100%", backgroundColor: "lightcyan" }}>
+    <CoordinatorHeader {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});
@@ -52,6 +54,16 @@ WithNotification.args = {
   variant: HeaderVariant.INFO,
   hasBackButton: true,
   hasNotificationsIcon: true,
+};
+
+export const StickyComponent = Template.bind({});
+StickyComponent.args = {
+  ...props,
+  title: "ניהול תורים",
+  variant: HeaderVariant.INFO,
+  hasBackButton: true,
+  hasNotificationsIcon: true,
+  stickyComponent: <div style={{ padding: 10 }}>משהו דביק</div>,
 };
 
 export const Hamburger = Template.bind({});

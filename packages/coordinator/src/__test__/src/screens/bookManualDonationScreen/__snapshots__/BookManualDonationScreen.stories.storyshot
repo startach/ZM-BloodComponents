@@ -13,43 +13,47 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
     <div
       className="appHeader"
     >
-      <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label-8"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root-12"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            />
-          </svg>
-        </span>
-      </button>
       <div
-        className="title secondaryTitle"
+        className="headerRow"
       >
-        הוספה ידנית של תורם
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title secondaryTitle"
+        >
+          הוספה ידנית של תורם
+        </div>
       </div>
     </div>
     <div

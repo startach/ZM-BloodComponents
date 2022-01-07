@@ -29,6 +29,7 @@ export interface AppHeaderProps {
   hasBurgerMenu?: boolean;
   variant: HeaderVariant;
   onBack?: () => void;
+  stickyComponent?: React.ReactNode;
 }
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
@@ -38,9 +39,19 @@ export default function CoordinatorHeader(props: AppHeaderProps) {
 
   return (
     <div className={styles.appHeader}>
-      <RightIcon {...props} onMenuClick={() => setShowSideBar(!showSideBar)} />
-      <HeaderContent {...props} />
-      <LeftIcon {...props} />
+      <div className={styles.headerRow}>
+        <RightIcon
+          {...props}
+          onMenuClick={() => setShowSideBar(!showSideBar)}
+        />
+        <HeaderContent {...props} />
+        <LeftIcon {...props} />
+      </div>
+
+      {props.stickyComponent && (
+        <div className={styles.stickyComponent}>{props.stickyComponent}</div>
+      )}
+
       <HeaderMenu showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
     </div>
   );

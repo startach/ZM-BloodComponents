@@ -25,15 +25,6 @@ export default function DonationDayScreen({
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
 
-  const allAppointments = _.flatMap(
-    donationDay.appointmentSlots,
-    (x) => x.appointments
-  );
-  const appointmentsCount = allAppointments.length;
-  const bookedAppointmentsCount = allAppointments.filter(
-    (x) => x.booked
-  ).length;
-
   return (
     <div className={styles.donationDay}>
       <CoordinatorHeader
@@ -41,29 +32,14 @@ export default function DonationDayScreen({
         hasBackButton
         hasNotificationsIcon
         title={"ניהול תורים"}
-      />
-      <div className={styles.donationDayHeader}>
-        <div className={styles.donationDate}>
-          <DayString allAppointments={allAppointments} />
-
-          <div className={styles.data}>
-            <span>{appointmentsCount} תורים</span>
-            <span className={styles.dataDivider}>|</span>
-            <span>{bookedAppointmentsCount} רשומים</span>
-          </div>
-        </div>
-
-        <div className={styles.availableAppointmentsToggle}>
-          הצג תורים פנויים בלבד
-          <Toggle
-            className={styles.toggle}
-            enabled={showOnlyAvailableAppointments}
-            onChange={() =>
-              setShowOnlyAvailableAppointments(!showOnlyAvailableAppointments)
-            }
+        stickyComponent={
+          <DayHeader
+            donationDay={donationDay}
+            showOnlyAvailableAppointments={showOnlyAvailableAppointments}
+            setShowOnlyAvailableAppointments={setShowOnlyAvailableAppointments}
           />
-        </div>
-      </div>
+        }
+      />
 
       <div className={styles.slots}>
         {donationDay.appointmentSlots.map((slot, index) => (
@@ -79,6 +55,47 @@ export default function DonationDayScreen({
 
       <AddAppointmentFab onClick={onAdd} />
     </div>
+  );
+}
+
+function DayHeader(props: {
+  donationDay: DonationDay;
+  showOnlyAvailableAppointments: boolean;
+  setShowOnlyAvailableAppointments: (show: boolean) => void;
+}) {
+  const allAppointments = _.flatMap(
+    props.donationDay.appointmentSlots,
+    (x) => x.appointments
+  );
+  const appointmentsCount = allAppointments.length;
+  const bookedAppointmentsCount = allAppointments.filter(
+    (x) => x.booked
+  ).length;
+  return (
+    <>
+      <div className={styles.donationDate}>
+        <DayString allAppointments={allAppointments} />
+
+        <div className={styles.data}>
+          <span>{appointmentsCount} תורים</span>
+          <span className={styles.dataDivider}>|</span>
+          <span>{bookedAppointmentsCount} רשומים</span>
+        </div>
+      </div>
+
+      <div className={styles.availableAppointmentsToggle}>
+        הצג תורים פנויים בלבד
+        <Toggle
+          className={styles.toggle}
+          enabled={props.showOnlyAvailableAppointments}
+          onChange={() =>
+            props.setShowOnlyAvailableAppointments(
+              !props.showOnlyAvailableAppointments
+            )
+          }
+        />
+      </div>
+    </>
   );
 }
 
