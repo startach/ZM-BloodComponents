@@ -23,6 +23,7 @@ import { signOut } from "../firebase/FirebaseAuthentication";
 import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
 import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
 import SplashScreen from "../screens/loading/SplashScreen";
+import ScheduleScreenContainer from "../screens/schedule/ScheduleScreenContainer";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -104,6 +105,9 @@ export default function CoordinatorRouter() {
     fetchData();
   }, [loginStatus]);
 
+  const activeHospitalsForCoordinator =
+    appState.coordinator?.activeHospitalsForCoordinator!;
+
   if (USE_NEW_COORDINATOR) {
     if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
       return <SplashScreen />;
@@ -119,6 +123,15 @@ export default function CoordinatorRouter() {
         <Route
           path={CoordinatorScreenKey.RESET_PASSWORD}
           element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
+        />
+        <Route
+          path={CoordinatorScreenKey.SCHEDULE}
+          element={
+            <ScheduleScreenContainer
+              loggedIn={loggedIn}
+              availableHospitals={activeHospitalsForCoordinator}
+            />
+          }
         />
       </Routes>
     );
@@ -148,9 +161,6 @@ export default function CoordinatorRouter() {
     appState.coordinator?.role &&
     ROLES_THAT_VIEW_DONORS.includes(appState.coordinator?.role)
   );
-
-  const activeHospitalsForCoordinator =
-    appState.coordinator?.activeHospitalsForCoordinator!;
 
   return (
     <CoordinatorScreen

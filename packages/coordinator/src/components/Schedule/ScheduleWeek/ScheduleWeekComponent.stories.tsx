@@ -18,7 +18,7 @@ const daysOffset = _.range(6);
 const onClick = action("onClickCell");
 const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   const dayStartMillis = weekStartMillis + dayOffset * 24 * millisInHour;
-  const cells: (ScheduleCell | undefined)[] = [];
+  const cells: ScheduleCell[] = [];
   for (let i = 0; i < 24; i++) {
     const cellStartMillis = dayStartMillis + i * millisInHour;
     const appointmentsCount = (dayOffset + i) % 3 === 0 ? 3 : 0;
