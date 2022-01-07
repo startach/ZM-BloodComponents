@@ -18,11 +18,15 @@ const daysOffset = _.range(6);
 const onClick = action("onClickCell");
 const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   const dayStartMillis = weekStartMillis + dayOffset * 24 * millisInHour;
-  const cells: ScheduleCell[] = [];
+  const cells: (ScheduleCell | undefined)[] = [];
   for (let i = 0; i < 24; i++) {
     const cellStartMillis = dayStartMillis + i * millisInHour;
     const appointmentsCount = (dayOffset + i) % 3 === 0 ? 3 : 0;
     const bookedAppointmentsCount = (dayOffset * 3 + i) % 4;
+
+    if (appointmentsCount === 0) {
+      cells.push(undefined);
+    }
     cells.push({
       cellStartTime: new Date(cellStartMillis),
       onClick,
