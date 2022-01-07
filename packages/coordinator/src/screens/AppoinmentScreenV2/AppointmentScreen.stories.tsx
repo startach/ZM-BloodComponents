@@ -11,14 +11,14 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const props: AppointmentScreenProps = {
-};
+const props: AppointmentScreenProps = {};
 
 export const Default = (args: AppointmentScreenProps) => {
- return (
-  <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
-  <AppointmentScreen {...args} />
-  </MuiPickersUtilsProvider>
-)};
+  return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
+      <AppointmentScreen {...args} />
+    </MuiPickersUtilsProvider>
+  );
+};
 
 Default.args = props;
