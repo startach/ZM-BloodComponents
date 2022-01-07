@@ -40,6 +40,18 @@ export function ToWeekDayString(
   return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
 }
 
+export function ToMonthString(
+  date: ParsableDateValue | number,
+  short?: boolean
+) {
+  const format = short ? "MMM" : "MMMM";
+  let res = dayjs(date).locale("he").format(format);
+  if (short) {
+    res += "'";
+  }
+  return res;
+}
+
 export function ToWeekDayLetter(date: ParsableDateValue | number) {
   return dayjs(date).locale("he").format("dd").substring(0, 1);
 }

@@ -2,6 +2,7 @@ import {
   DateComparer,
   isSameDay,
   ToDateString,
+  ToMonthString,
   ToTimeString,
   ToWeekDayLetter,
 } from "./DateUtils";
@@ -36,6 +37,11 @@ test("ToWeekDayLatter works", () => {
 
   const Friday = new Date(2022, 0, 7);
   expect(ToWeekDayLetter(Friday)).toEqual("ו");
+});
+
+test("ToMonthString works", () => {
+  expect(ToMonthString(new Date(2022, 0, 2))).toEqual("ינואר");
+  expect(ToMonthString(new Date(2022, 11, 2), true)).toEqual("דצמ'");
 });
 
 test.each([true, false])("isSameDay works - %s", (areTgeSameDay) => {
