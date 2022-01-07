@@ -76,8 +76,20 @@ export function TodayAdMidnight() {
   return midnight;
 }
 
-export function GetStartOfTheWeek() {
-  const time = TodayAdMidnight();
+export function GetStartOfDay(date: Date | number) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+export function GetStartOfHour(date: Date | number) {
+  const d = new Date(date);
+  d.setMinutes(0, 0, 0);
+  return d;
+}
+
+export function GetStartOfTheWeek(date: Date | number) {
+  const time = GetStartOfDay(date);
   time.setDate(time.getDate() - time.getDay());
   return time;
 }

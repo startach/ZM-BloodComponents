@@ -3,6 +3,7 @@ export enum CoordinatorScreenKey {
   SCHEDULED_APPOINTMENTS = "/appointments",
   DONORS = "/donors",
   BOOKED_DONATIONS = "/booked-donations",
+  SCHEDULE = "/schedule",
 
   LOGIN = "/login",
   RESET_PASSWORD = "/resetPassword",

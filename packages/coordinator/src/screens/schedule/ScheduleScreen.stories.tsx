@@ -3,6 +3,8 @@ import _ from "lodash";
 import { action } from "@storybook/addon-actions";
 import { ScheduleCell, ScheduleDay } from "../../utils/types";
 import { Hospital } from "@zm-blood-components/common";
+import { Story } from "@storybook/react";
+import { useState } from "react";
 
 export default {
   component: ScheduleScreen,
@@ -36,10 +38,12 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
 });
 
 const props: ScheduleScreenProps = {
+  dayInWeek: new Date(weekStartMillis),
   days,
+  hospital: Hospital.HADASA_EIN_KEREM,
+  setHospital: () => {},
   onNextWeek: action("onNextWeek"),
   oPreviousWeek: action("oPreviousWeek"),
-  onAddAppointment: action("onAddAppointment"),
   availableHospitals: [
     Hospital.HADASA_EIN_KEREM,
     Hospital.SOROKA,
@@ -47,7 +51,17 @@ const props: ScheduleScreenProps = {
   ],
 };
 
-export const Default = (args: ScheduleScreenProps) => (
-  <ScheduleScreen {...args} />
-);
+const Template: Story<ScheduleScreenProps> = (args) => {
+  const [hospital, setHospital] = useState(Hospital.HADASA_EIN_KEREM);
+  return (
+    <ScheduleScreen {...args} hospital={hospital} setHospital={setHospital} />
+  );
+};
+export const Default = Template.bind({});
 Default.args = props;
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...props,
+  days: [],
+};

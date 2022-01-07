@@ -1,21 +1,24 @@
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
-import { Hospital } from "@zm-blood-components/common";
+import { DateUtils, Hospital } from "@zm-blood-components/common";
 import { ScheduleDay } from "../../utils/types";
 import SchedulePicker from "../../components/Schedule/ScheduleWeekPicker";
-import { useState } from "react";
 import ScheduleWeekComponent from "../../components/Schedule/ScheduleWeek";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
+import Spinner from "../../components/Spinner";
+import styles from "./ScheduleScreen.module.scss";
 
 export interface ScheduleScreenProps {
+  dayInWeek: Date;
   days: ScheduleDay[];
+  hospital: Hospital;
+  setHospital: (hospital: Hospital) => void;
   onNextWeek: () => void;
   oPreviousWeek: () => void;
-  onAddAppointment: () => void;
   availableHospitals: Hospital[];
 }
 
 export default function ScheduleScreen(props: ScheduleScreenProps) {
-  const [hospital, setHospital] = useState(props.availableHospitals[0]);
+  const startOfTheWeek = DateUtils.GetStartOfTheWeek(props.dayInWeek);
 
   return (
     <CoordinatorScreen
@@ -27,17 +30,23 @@ export default function ScheduleScreen(props: ScheduleScreenProps) {
         hasNotificationsIcon: true,
         stickyComponent: (
           <SchedulePicker
-            weekStartTime={props.days[0].dayStartTime}
+            weekStartTime={startOfTheWeek}
             onNext={props.onNextWeek}
             onPrevious={props.oPreviousWeek}
-            hospital={hospital}
-            setSelectedHospital={setHospital}
+            hospital={props.hospital}
+            setSelectedHospital={props.setHospital}
             availableHospitals={props.availableHospitals}
           />
         ),
       }}
     >
-      <ScheduleWeekComponent days={props.days} />
+      {props.days.length === 0 ? (
+        <div className={styles.spinner}>
+          <Spinner size={"3rem"} />
+        </div>
+      ) : (
+        <ScheduleWeekComponent days={props.days} />
+      )}
     </CoordinatorScreen>
   );
 }
