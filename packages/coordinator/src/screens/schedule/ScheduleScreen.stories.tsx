@@ -2,7 +2,6 @@ import ScheduleScreen, { ScheduleScreenProps } from "./ScheduleScreen";
 import _ from "lodash";
 import { action } from "@storybook/addon-actions";
 import { ScheduleCell, ScheduleDay } from "../../utils/types";
-import { ScheduleWeekComponentProps } from "../../components/Schedule/ScheduleWeek/ScheduleWeekComponent";
 import { Hospital } from "@zm-blood-components/common";
 
 export default {
@@ -31,6 +30,7 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   }
 
   return {
+    dayStartTime: new Date(dayStartMillis),
     cells,
   };
 });

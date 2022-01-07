@@ -1,7 +1,6 @@
 import {
   FunctionsApi,
   Hospital,
-  DateUtils,
   HospitalUtils,
 } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
@@ -12,8 +11,6 @@ export function getCallableFunction(functionName: string) {
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
-
-const TwoWeeksMillis = 14 * 24 * 60 * 60 * 1000;
 
 export async function getCoordinator() {
   const getCoordinatorFunction = getCallableFunction(
@@ -52,7 +49,8 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
 }
 
 export async function getAppointments(
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
+  earliestStartTimeMillis: number
 ) {
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
@@ -60,8 +58,7 @@ export async function getAppointments(
 
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital,
-    earliestStartTimeMillis:
-      DateUtils.TodayAdMidnight().getTime() - TwoWeeksMillis,
+    earliestStartTimeMillis,
   };
 
   const response = await getAppointmentsFunction(request);

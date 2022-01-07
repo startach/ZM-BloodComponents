@@ -3,6 +3,7 @@ import ScheduleCellComponent, {
 } from "./ScheduleCellComponent";
 import { Meta, Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { ScheduleCell } from "../../../utils/types";
 
 export default {
   component: ScheduleCellComponent,
@@ -10,13 +11,11 @@ export default {
   parameters: { layout: "padded" },
 } as Meta;
 
-const props: ScheduleCellComponentProps = {
-  cell: {
-    cellStartTime: new Date(1640001600000),
-    onClick: action("onClick"),
-    appointmentsCount: 3,
-    bookedAppointmentsCount: 1,
-  },
+const cell: ScheduleCell = {
+  cellStartTime: new Date(1640001600000),
+  onClick: action("onClick"),
+  appointmentsCount: 3,
+  bookedAppointmentsCount: 1,
 };
 
 const Template: Story<ScheduleCellComponentProps> = (args) => (
@@ -28,7 +27,7 @@ const Template: Story<ScheduleCellComponentProps> = (args) => (
 export const FullyBooked = Template.bind({});
 FullyBooked.args = {
   cell: {
-    ...props.cell,
+    ...cell,
     appointmentsCount: 3,
     bookedAppointmentsCount: 3,
   },
@@ -37,7 +36,7 @@ FullyBooked.args = {
 export const PartiallyBooked = Template.bind({});
 PartiallyBooked.args = {
   cell: {
-    ...props.cell,
+    ...cell,
     appointmentsCount: 3,
     bookedAppointmentsCount: 1,
   },
@@ -46,7 +45,7 @@ PartiallyBooked.args = {
 export const AllAvailable = Template.bind({});
 AllAvailable.args = {
   cell: {
-    ...props.cell,
+    ...cell,
     appointmentsCount: 3,
     bookedAppointmentsCount: 0,
   },
@@ -55,8 +54,13 @@ AllAvailable.args = {
 export const NoAppointments = Template.bind({});
 NoAppointments.args = {
   cell: {
-    ...props.cell,
+    ...cell,
     appointmentsCount: 0,
     bookedAppointmentsCount: 0,
   },
+};
+
+export const UndefinedCell = Template.bind({});
+NoAppointments.args = {
+  cell: undefined,
 };

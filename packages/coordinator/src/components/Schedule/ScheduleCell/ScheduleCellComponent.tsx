@@ -4,13 +4,13 @@ import classNames from "classnames";
 import { ScheduleCell } from "../../../utils/types";
 
 export type ScheduleCellComponentProps = {
-  cell: ScheduleCell;
+  cell?: ScheduleCell;
 };
 
 export default function ScheduleCellComponent({
   cell,
 }: ScheduleCellComponentProps) {
-  if (cell.appointmentsCount === 0) {
+  if (!cell || cell.appointmentsCount === 0) {
     return (
       <div className={classNames(styles.scheduleHourSquare, styles.empty)} />
     );

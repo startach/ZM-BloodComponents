@@ -32,6 +32,7 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   }
 
   return {
+    dayStartTime: new Date(dayStartMillis),
     cells,
   };
 });

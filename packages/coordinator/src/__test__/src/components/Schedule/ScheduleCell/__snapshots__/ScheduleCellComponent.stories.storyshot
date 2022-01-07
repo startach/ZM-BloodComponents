@@ -100,3 +100,26 @@ exports[`Storyshots Components/Schedule/Cell Partially Booked 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots Components/Schedule/Cell Undefined Cell 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "width": 60,
+      }
+    }
+  >
+    <div
+      className="scheduleHourSquare empty"
+    />
+  </div>
+</div>
+`;

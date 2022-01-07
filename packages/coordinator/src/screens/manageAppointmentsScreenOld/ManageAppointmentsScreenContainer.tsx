@@ -15,6 +15,8 @@ interface ManageAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
 }
 
+const TwoWeeksMillis = 14 * 24 * 60 * 60 * 1000;
+
 export default function ManageAppointmentsScreenContainer({
   activeHospitalsForCoordinator,
 }: ManageAppointmentsScreenContainerProps) {
@@ -37,7 +39,10 @@ export default function ManageAppointmentsScreenContainer({
       return;
     }
     setIsLoading(true);
-    CoordinatorFunctions.getAppointments(hospitalFilter).then((res) => {
+    CoordinatorFunctions.getAppointments(
+      hospitalFilter,
+      DateUtils.TodayAdMidnight().getTime() - TwoWeeksMillis
+    ).then((res) => {
       setAppointmentsResponse(res);
       setIsLoading(false);
     });

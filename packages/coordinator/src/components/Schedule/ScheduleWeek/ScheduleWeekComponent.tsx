@@ -19,10 +19,7 @@ export default function ScheduleWeekComponent(
       <div className={classNames(styles.gridColumns)}>
         <div />
         {days.map((day) => (
-          <DayHeader
-            day={day}
-            key={`day.${day.cells[0].cellStartTime.getTime()}`}
-          />
+          <DayHeader day={day} key={`day.${day.dayStartTime.getTime()}`} />
         ))}
 
         {/*This div is here for spacing on the left column*/}
@@ -56,7 +53,7 @@ export default function ScheduleWeekComponent(
 }
 
 function DayHeader(props: { day: ScheduleDay }) {
-  const dayStartTime = props.day.cells[0].cellStartTime;
+  const dayStartTime = props.day.dayStartTime;
   return (
     <div key={dayStartTime.toLocaleDateString()} className={styles.dayLabel}>
       <div className={styles.dayNumber}>{dayStartTime.getDate()}</div>

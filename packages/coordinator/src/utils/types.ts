@@ -28,7 +28,8 @@ export type ScheduleWeek = {
 };
 
 export type ScheduleDay = {
-  cells: ScheduleCell[];
+  dayStartTime: Date;
+  cells: (ScheduleCell | undefined)[];
 };
 
 export type ScheduleCell = {
