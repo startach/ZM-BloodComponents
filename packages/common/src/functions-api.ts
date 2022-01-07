@@ -162,7 +162,8 @@ export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
-  earliestStartTimeMillis?: number;
+  earliestStartTimeMillis: number;
+  latestStartTimeMillis?: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {

@@ -137,7 +137,7 @@ export default function CoordinatorRouter() {
 
         <Route
           path={CoordinatorScreenKey.DAY + "/:timestamp"}
-          element={<DonationDayScreenContainer />}
+          element={<DonationDayScreenContainer loggedIn={loggedIn} />}
         />
 
         {/*in case of no match*/}

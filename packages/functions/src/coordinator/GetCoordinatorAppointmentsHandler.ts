@@ -25,12 +25,14 @@ export default async function (
   const coordinator = await fetchCoordinator(callerId);
   const hospitalsArray = getValidHospitalsOrThrow(coordinator, hospital);
 
-  const startTimeFilter = request.earliestStartTimeMillis
-    ? new Date(request.earliestStartTimeMillis)
+  const startTimeFilter = new Date(request.earliestStartTimeMillis);
+  const endTimeFilter = request.latestStartTimeMillis
+    ? new Date(request.latestStartTimeMillis)
     : undefined;
   const appointmentsByHospital = await getAppointmentsByHospital(
     hospitalsArray,
-    startTimeFilter
+    startTimeFilter,
+    endTimeFilter
   );
 
   let appointments = appointmentsByHospital.map(
