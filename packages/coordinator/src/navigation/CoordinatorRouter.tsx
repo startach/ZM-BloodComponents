@@ -136,7 +136,7 @@ export default function CoordinatorRouter() {
         />
 
         <Route
-          path={CoordinatorScreenKey.DAY + "/:timestamp"}
+          path={CoordinatorScreenKey.DAY + "/:hospital/:timestamp"}
           element={<DonationDayScreenContainer loggedIn={loggedIn} />}
         />
 

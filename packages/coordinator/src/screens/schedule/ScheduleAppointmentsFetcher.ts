@@ -1,16 +1,13 @@
-import {
-  DateUtils,
-  Hospital,
-  HospitalUtils,
-} from "@zm-blood-components/common";
+import { DateUtils, Hospital } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { ScheduleCell, ScheduleDay } from "../../utils/types";
 import _ from "lodash";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 const millisInHour = 60 * 60 * 1_000;
+const millisInWeek = 7 * 24 * 60 * 60 * 1_000;
 export async function fetchScheduleAppointments(
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
+  hospital: Hospital,
   dayInRequestedWeek: Date,
   navigate: (route: string) => void
 ): Promise<ScheduleDay[]> {
@@ -18,17 +15,19 @@ export async function fetchScheduleAppointments(
 
   const appointmentsResponse = await CoordinatorFunctions.getAppointments(
     hospital,
-    startOfTheWeek.getTime()
+    startOfTheWeek.getTime(),
+    startOfTheWeek.getTime() + millisInWeek - 1
   );
 
   const onClickCell = (cellStartTime: Date) => {
-    navigate(CoordinatorScreenKey.ADD + "/" + cellStartTime.getTime());
+    navigate(
+      `${CoordinatorScreenKey.DAY}/${hospital}/${cellStartTime.getTime()}`
+    );
   };
 
   const cellsMap: { [hourStartTime: number]: ScheduleCell } = {};
 
-  // eslint-disable-next-line array-callback-return
-  appointmentsResponse.appointments.map((appointment) => {
+  appointmentsResponse.appointments.forEach((appointment) => {
     const hourStartTime = DateUtils.GetStartOfHour(
       appointment.donationStartTimeMillis
     );

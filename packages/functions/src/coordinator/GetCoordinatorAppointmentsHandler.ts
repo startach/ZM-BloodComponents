@@ -95,7 +95,7 @@ function filterAppointmentsForDonors(
     // if donor is in coordinator group, show the appointment
     if (donorIds.has(appointment.donorId)) return true;
 
-    // if the appointment was manualy added by the coordinator
+    // if the appointment was manually added by the coordinator
     if (
       appointment.donorId === MANUAL_DONOR_ID &&
       appointment.assigningCoordinatorId === assigningCoordinatorId
