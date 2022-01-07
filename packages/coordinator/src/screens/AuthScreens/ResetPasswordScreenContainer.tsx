@@ -7,7 +7,7 @@ export default function ResetPasswordScreenContainer(props: {
   loggedIn: boolean;
 }) {
   if (props.loggedIn) {
-    return <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />;
+    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
   const onResetPassword = async (
