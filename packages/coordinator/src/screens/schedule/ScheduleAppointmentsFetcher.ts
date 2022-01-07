@@ -31,12 +31,9 @@ export async function fetchScheduleAppointments(
     const hourStartTime = DateUtils.GetStartOfHour(
       appointment.donationStartTimeMillis
     );
-    const cell: ScheduleCell = cellsMap[hourStartTime.getTime()] || {
-      cellStartTime: hourStartTime,
-      bookedAppointmentsCount: 0,
-      appointmentsCount: 0,
-      onClick: onClickCell,
-    };
+    const cell: ScheduleCell =
+      cellsMap[hourStartTime.getTime()] ||
+      getEmptyCell(hourStartTime, onClickCell);
 
     cell.appointmentsCount++;
     // TODO add status to AppointmentApiEntry
@@ -51,9 +48,14 @@ export async function fetchScheduleAppointments(
     const dayStartTime = new Date(startOfTheWeek);
     dayStartTime.setDate(dayStartTime.getDate() + dayIndex);
 
-    const dayCells = _.range(24).map<ScheduleCell | undefined>(
-      (hour) => cellsMap[dayStartTime.getTime() + hour * millisInHour]
-    );
+    const dayCells = _.range(24).map<ScheduleCell>((hour) => {
+      const cellStartTime = dayStartTime.getTime() + hour * millisInHour;
+      const existingCell = cellsMap[cellStartTime];
+      if (existingCell) {
+        return existingCell;
+      }
+      return getEmptyCell(new Date(cellStartTime), onClickCell);
+    });
 
     return {
       dayStartTime,
@@ -62,4 +64,16 @@ export async function fetchScheduleAppointments(
   });
 
   return result;
+}
+
+function getEmptyCell(
+  hourStartTime: Date,
+  onClickCell: (cellStartTime: Date) => void
+): ScheduleCell {
+  return {
+    cellStartTime: hourStartTime,
+    bookedAppointmentsCount: 0,
+    appointmentsCount: 0,
+    onClick: onClickCell,
+  };
 }

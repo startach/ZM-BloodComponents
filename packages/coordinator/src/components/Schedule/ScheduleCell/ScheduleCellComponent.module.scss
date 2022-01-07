@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid var(--color-white);
+  cursor: pointer;
 }
 
 .empty {
@@ -18,12 +19,10 @@
   background-color: var(--coordinator-red-chip-background);
   color: var(--coordinator-gray);
   border: 1.5px solid rgba(199, 8, 125, 0.23);
-  cursor: pointer;
 }
 
 .fullyBooked {
   background-color: var(--coordinator-divider);
   border: 1px solid var(--coordinator-divider);
   color: var(--color-white);
-  cursor: pointer;
 }

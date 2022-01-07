@@ -59,8 +59,3 @@ NoAppointments.args = {
     bookedAppointmentsCount: 0,
   },
 };
-
-export const UndefinedCell = Template.bind({});
-NoAppointments.args = {
-  cell: undefined,
-};

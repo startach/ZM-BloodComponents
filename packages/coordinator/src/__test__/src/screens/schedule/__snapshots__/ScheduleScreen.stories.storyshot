@@ -304,9 +304,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -316,9 +318,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -328,9 +332,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -340,9 +346,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -358,6 +366,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -367,9 +376,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -379,6 +390,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -394,9 +406,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -406,9 +420,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -418,9 +434,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -430,9 +448,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -448,6 +468,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -457,9 +478,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -469,6 +492,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -484,9 +508,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -496,9 +522,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -508,9 +536,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -520,9 +550,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -538,6 +570,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -547,9 +580,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -559,6 +594,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -574,9 +610,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -586,9 +624,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -598,9 +638,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -610,9 +652,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -628,6 +672,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -637,9 +682,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -649,6 +696,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -664,9 +712,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -676,9 +726,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -688,9 +740,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -700,9 +754,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -718,6 +774,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -727,9 +784,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -739,6 +798,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -754,9 +814,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -766,9 +828,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -778,9 +842,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -790,9 +856,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -808,6 +876,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -817,9 +886,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -829,6 +900,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -844,9 +916,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -856,9 +930,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -868,9 +944,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -880,9 +958,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -898,6 +978,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -907,9 +988,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -919,6 +1002,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -934,9 +1018,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -946,9 +1032,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
           <div
@@ -958,9 +1046,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -970,9 +1060,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -988,6 +1080,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare partiallyBooked"
@@ -997,9 +1090,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div
             className="scheduleHourSquare fullyBooked"
@@ -1009,6 +1104,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           </div>
           <div
             className="scheduleHourSquare empty"
+            onClick={[Function]}
           />
           <div />
         </div>
