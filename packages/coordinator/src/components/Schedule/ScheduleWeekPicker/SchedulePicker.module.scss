@@ -65,6 +65,7 @@
   transform-origin: left top;
   transition: transform 300ms;
   background-color: var(--color-white);
+  border-top: 1px solid var(--coordinator-light-gray);
 }
 
 .hospitalPickerOpen {
@@ -75,7 +76,7 @@
   font-weight: 500;
   font-size: 16px;
   color: var(--coordinator-dark-gray);
-  padding: 10px 20px;
+  padding: 15px 20px 10px 20px;
 }
 
 .hospitalOption {

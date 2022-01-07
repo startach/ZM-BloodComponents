@@ -152,7 +152,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           <div
             className="hospitalPickerTitle"
           >
-            בחר בית חולים:
+            בחר/י בית חולים:
           </div>
           <div
             className="hospitalOption"
@@ -1304,7 +1304,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
           <div
             className="hospitalPickerTitle"
           >
-            בחר בית חולים:
+            בחר/י בית חולים:
           </div>
           <div
             className="hospitalOption"

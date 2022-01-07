@@ -130,7 +130,7 @@ function HospitalPicker(
         [styles.hospitalPickerOpen]: props.showHospitalPicker,
       })}
     >
-      <div className={styles.hospitalPickerTitle}>בחר בית חולים:</div>
+      <div className={styles.hospitalPickerTitle}>בחר/י בית חולים:</div>
       {props.availableHospitals.map((hospital, index) => (
         <div
           key={"hospital." + hospital}

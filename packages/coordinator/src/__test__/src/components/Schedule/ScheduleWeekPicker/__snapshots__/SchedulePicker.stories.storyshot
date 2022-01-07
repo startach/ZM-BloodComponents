@@ -69,7 +69,7 @@ exports[`Storyshots Components/Schedule/Picker Default 1`] = `
     <div
       className="hospitalPickerTitle"
     >
-      בחר בית חולים:
+      בחר/י בית חולים:
     </div>
     <div
       className="hospitalOption"
@@ -181,7 +181,7 @@ exports[`Storyshots Components/Schedule/Picker Different Months 1`] = `
     <div
       className="hospitalPickerTitle"
     >
-      בחר בית חולים:
+      בחר/י בית חולים:
     </div>
     <div
       className="hospitalOption"
@@ -291,7 +291,7 @@ exports[`Storyshots Components/Schedule/Picker Different Year 1`] = `
     <div
       className="hospitalPickerTitle"
     >
-      בחר בית חולים:
+      בחר/י בית חולים:
     </div>
     <div
       className="hospitalOption"
@@ -395,7 +395,7 @@ exports[`Storyshots Components/Schedule/Picker Only One Hospital 1`] = `
     <div
       className="hospitalPickerTitle"
     >
-      בחר בית חולים:
+      בחר/י בית חולים:
     </div>
     <div
       className="hospitalOption"
