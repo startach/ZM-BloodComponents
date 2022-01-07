@@ -275,9 +275,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         <div
           className="buttons"
         >
-          <div
-            className="button"
-          >
+          <div>
             <button
               className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
               disabled={false}
@@ -307,9 +305,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               </span>
             </button>
           </div>
-          <div
-            className="button"
-          >
+          <div>
             <button
               className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
               disabled={false}

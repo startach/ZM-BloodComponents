@@ -115,15 +115,10 @@ export default function BookManualDonationScreen(
         />
 
         <div className={styles.buttons}>
-          <Button
-            title={"אישור והמשך"}
-            onClick={onSave}
-            className={styles.button}
-          />
+          <Button title={"אישור והמשך"} onClick={onSave} />
           <Button
             title={"ביטול"}
             onClick={() => navigate(-1)}
-            className={styles.button}
             variant={ButtonVariant.outlined}
           />
         </div>

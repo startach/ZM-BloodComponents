@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ScheduleWeekComponent.module.scss";
 import { ScheduleDay } from "../../../utils/types";
 import _ from "lodash";
@@ -10,10 +10,19 @@ export type ScheduleWeekComponentProps = {
   days: ScheduleDay[];
 };
 
+const FIRST_SCROLL_HOUR = 9;
+
 export default function ScheduleWeekComponent(
   props: ScheduleWeekComponentProps
 ) {
   const days = props.days;
+  const topScrollRef = React.useRef(null);
+
+  useEffect(() => {
+    // @ts-ignore
+    topScrollRef.current?.scrollIntoView();
+  }, []);
+
   return (
     <div className={styles.schedule}>
       <div className={classNames(styles.gridColumns)}>
@@ -42,8 +51,10 @@ export default function ScheduleWeekComponent(
                 />
               ))}
 
-              {/*This div is here for spacing on the left column*/}
-              <div />
+              {/*This div is here for spacing on the left column and for scrolling*/}
+              <div
+                ref={hourIndex === FIRST_SCROLL_HOUR ? topScrollRef : undefined}
+              />
             </React.Fragment>
           );
         })}
