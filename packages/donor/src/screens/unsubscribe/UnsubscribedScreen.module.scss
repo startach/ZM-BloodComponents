@@ -1,0 +1,60 @@
+.Unsubscribed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  outline: 7px solid var(--donor-light-pink);
+  outline-offset: -16px;
+  height: 100%;
+  line-height: 19px;
+  color: var(--donor-dark-gray);
+
+  .Content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .UpperContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+
+    .Goodbye {
+      font-size: 48px;
+      font-weight: 500;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+
+    .Success {
+      font-size: 16px;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .FooterContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+
+    .Regret {
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 50px;
+      margin-bottom: 10px;
+    }
+
+    .Renew {
+      font-size: 14px;
+      font-weight: 400;
+      overflow-wrap: break-word;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

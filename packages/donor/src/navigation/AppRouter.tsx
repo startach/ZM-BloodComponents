@@ -34,6 +34,7 @@ import QuestionnaireScreenContainer from "../screens/questionnaire/Questionnaire
 import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContainer";
 import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
 import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
+import UnsubscribedScreen from "../screens/unsubscribe/UnsubscribedScreen";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -271,6 +272,12 @@ export default function AppRouter() {
               />
             );
           }}
+        />
+        <Route
+          path={"/" + MainNavigationKeys.Unsubscribe}
+          children={() => (
+            <UnsubscribedScreen user={appState.donor} isLoggedIn={loggedIn} />
+          )}
         />
 
         <Route path={"*"}>
