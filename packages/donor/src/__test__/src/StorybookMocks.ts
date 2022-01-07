@@ -7,7 +7,7 @@ import {
 const notificationSettingsMock: DonorNotificationSettings = {
   disableEmailNotifications: true,
 };
-export const mockUser: Donor = {
+export const sampleUser: Donor = {
   id: "1",
   email: "moshe@moshe.com",
   firstName: "משה",

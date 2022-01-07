@@ -55,6 +55,10 @@
       overflow-wrap: break-word;
       text-align: center;
       vertical-align: middle;
+
+      .ProfileLink {
+        display: inline;
+      }
     }
   }
 }

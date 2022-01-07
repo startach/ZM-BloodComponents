@@ -1,6 +1,4 @@
-import DonationDayComponent, {
-  DonationDayComponentProps,
-} from "./DonationDayComponent";
+import DonationDayScreen, { DonationDayScreenProps } from "./DonationDayScreen";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
 import {
@@ -10,12 +8,12 @@ import {
 import { BookingChange } from "@zm-blood-components/common";
 
 export default {
-  component: DonationDayComponent,
-  title: "Components/Donation Day",
+  component: DonationDayScreen,
+  title: "Screens/Donation Day",
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const props: DonationDayComponentProps = {
+const props: DonationDayScreenProps = {
   donationDay: {
     appointmentSlots: [
       {
@@ -62,8 +60,8 @@ const props: DonationDayComponentProps = {
   onAdd: action("onAdd"),
 };
 
-const Template: Story<DonationDayComponentProps> = (args) => (
-  <DonationDayComponent {...args} />
+const Template: Story<DonationDayScreenProps> = (args) => (
+  <DonationDayScreen {...args} />
 );
 
 export const Default = Template.bind({});

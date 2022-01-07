@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ScheduleWeekComponent.module.scss";
-import { ScheduleDay, ScheduleWeek } from "../../../utils/types";
+import { ScheduleDay } from "../../../utils/types";
 import _ from "lodash";
 import { DateUtils } from "@zm-blood-components/common";
 import ScheduleCellComponent from "../ScheduleCell";

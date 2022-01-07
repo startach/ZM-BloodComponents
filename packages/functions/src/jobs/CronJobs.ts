@@ -11,7 +11,7 @@ import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
 import { DbDonor } from "../function-types";
 
-export const ConfirmationReminderOnSameDay = functions.pubsub
+export const confirmationReminderOnSameDayJob = functions.pubsub
   .schedule("0 * * * *") // runs every hour at :00
   .timeZone("Asia/Jerusalem")
   .onRun(async () => {
@@ -30,7 +30,7 @@ export const ConfirmationReminderOnSameDay = functions.pubsub
 
 // Run every day at 19:00  Israel Time
 //https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-export const ConfirmationReminderOnNextDay = functions.pubsub
+export const confirmationReminderOnNextDayJob = functions.pubsub
   .schedule("0 19 * * *")
   .timeZone("Asia/Jerusalem")
   .onRun(async () => {
@@ -50,10 +50,16 @@ export const SendConfirmationReminders = async (
     fromIncluding,
     toExcluding
   );
+  functions.logger.debug(
+    "Appointments that require confirmations: " + appointments.map((a) => a.id)
+  );
 
-  const donorIds = appointments.map((appointment) => appointment.donorId);
+  const donorIds = _.uniq(
+    appointments.map((appointment) => appointment.donorId)
+  );
+  functions.logger.debug("Donors for appointment confirmation: " + donorIds);
 
-  const donorsInAppointments = await getDonors(_.uniq(donorIds));
+  const donorsInAppointments = await getDonors(donorIds);
   let donorsMap: { [donorId: string]: DbDonor } = {};
   donorsInAppointments.map((donor) => {
     donorsMap[donor.id] = donor;
@@ -63,7 +69,7 @@ export const SendConfirmationReminders = async (
     const donor = donorsMap[appointment.donorId];
 
     if (!donor) {
-      console.error("Donor not found for donation: " + appointment.id);
+      functions.logger.error("Donor not found for donation: " + appointment.id);
       return;
     }
     if (!isProd()) {

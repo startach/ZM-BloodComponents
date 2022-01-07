@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoadingScreen from "../screens/loading/LoadingScreen";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AddAppointmentsScreenContainer from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import {
   Coordinator,
@@ -20,6 +20,9 @@ import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import CoordinatorScreen from "../components/V2/CoordinatorScreen";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
+import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
+import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
+import SplashScreen from "../screens/loading/SplashScreen";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -46,6 +49,8 @@ const ROLES_THAT_VIEW_DONORS = [
   CoordinatorRole.ZM_COORDINATOR,
   CoordinatorRole.GROUP_COORDINATOR,
 ];
+
+const USE_NEW_COORDINATOR = false;
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -99,11 +104,31 @@ export default function CoordinatorRouter() {
     fetchData();
   }, [loginStatus]);
 
+  if (USE_NEW_COORDINATOR) {
+    if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
+      return <SplashScreen />;
+    }
+
+    const loggedIn = loginStatus === LoginStatus.LOGGED_IN;
+    return (
+      <Routes>
+        <Route
+          path={CoordinatorScreenKey.LOGIN}
+          element={<SignInScreenContainer loggedIn={loggedIn} />}
+        />
+        <Route
+          path={CoordinatorScreenKey.RESET_PASSWORD}
+          element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
+        />
+      </Routes>
+    );
+  }
+
   if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
     return <LoadingScreen />;
   }
 
-  if (loginStatus === LoginStatus.LOGGED_OUT) {
+  if (loginStatus === LoginStatus.LOGGED_OUT && !USE_NEW_COORDINATOR) {
     return <CoordinatorSignInScreenContainer />;
   }
 
@@ -142,37 +167,52 @@ export default function CoordinatorRouter() {
         />
       }
     >
-      <Switch>
+      <Routes>
         {canViewOpenAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}>
-            <ManageAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
+            element={
+              <ManageAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
         {canViewDonors && (
-          <Route path={"/" + CoordinatorScreenKey.DONORS}>
-            <SearchDonorsScreenContainer />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.DONORS}
+            element={<SearchDonorsScreenContainer />}
+          />
         )}
         {canViewBookedAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.BOOKED_DONATIONS}>
-            <ScheduledAppointmentsContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.BOOKED_DONATIONS}
+            element={
+              <ScheduledAppointmentsContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
         {canAddAppointments && (
-          <Route path={"/" + CoordinatorScreenKey.ADD_APPOINTMENTS}>
-            <AddAppointmentsScreenContainer
-              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-            />
-          </Route>
+          <Route
+            path={CoordinatorScreenKey.ADD_APPOINTMENTS}
+            element={
+              <AddAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
         )}
 
         {/*in case of no match*/}
-        <Redirect to={"/" + CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
-      </Switch>
+        <Route
+          path="*"
+          element={
+            <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
+          }
+        />
+      </Routes>
     </CoordinatorScreen>
   );
 }

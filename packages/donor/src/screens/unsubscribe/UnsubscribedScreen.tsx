@@ -1,22 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Donor } from "@zm-blood-components/common";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
+import Button, { ButtonVariant } from "../../components/basic/Button";
+import { useNavigate } from "react-router-dom";
 import zmDrop from "../../assets/images/zmDrop.svg";
 import styles from "./UnsubscribedScreen.module.scss";
 
-export interface UnsubscribedScreenProps {
-  isLoggedIn: boolean;
-  user?: Donor;
-}
 
-const UnsubscribedScreen = (props: UnsubscribedScreenProps) => {
-  const { user, isLoggedIn } = props;
-  const profileLink = <Link to={MainNavigationKeys.MyProfile}>הפרופיל</Link>;
+const UnsubscribedScreen = () => {
+  const navigate = useNavigate();
+
+  const profileLink = <Button
+    onClick={() => navigate(MainNavigationKeys.MyProfile)}
+    title={"הפרופיל"}
+    variant={ButtonVariant.text}
+    className={styles.ProfileLink}
+  />;
   const GOODBYE = "להתראות !";
-  const EMAIL_REMOVED = `${
-    isLoggedIn ? user?.email : "האימייל שלך"
-  } הוסר בהצלחה מרשימת התפוצה של בנק מרכיבי הדם`;
+  const EMAIL_REMOVED = "האימייל שלך הוסר בהצלחה מרשימת התפוצה";
   const REGRET = "התחרטת? תמיד נשמח שוב לראותך!";
   const RENEW = <>ניתן לחדש את ההרשמה לתפוצה בעמוד {profileLink} באפליקציה</>;
 

@@ -13,43 +13,47 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
     <div
       className="appHeader"
     >
-      <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label-8"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root-12"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            />
-          </svg>
-        </span>
-      </button>
       <div
-        className="title secondaryTitle"
+        className="headerRow"
       >
-        הוספה ידנית של תורם
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title secondaryTitle"
+        >
+          הוספה ידנית של תורם
+        </div>
       </div>
     </div>
     <div
@@ -61,109 +65,97 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         פרטים אישיים
       </div>
       <div
-        className="component"
+        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+        dir="rtl"
+        onKeyPress={[Function]}
       >
-        <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-          dir="rtl"
-          onKeyPress={[Function]}
+        <label
+          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+          data-shrink={false}
         >
-          <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-            data-shrink={false}
-          >
-            שם פרטי
-          </label>
-          <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-            onClick={[Function]}
-          >
-            <input
-              aria-invalid={false}
-              autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
-              disabled={false}
-              onAnimationStart={[Function]}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-              value=""
-            />
-          </div>
-          
+          שם פרטי
+        </label>
+        <div
+          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input-83 MuiInput-input-68"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
         </div>
+        
       </div>
       <div
-        className="component"
+        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+        dir="rtl"
+        onKeyPress={[Function]}
       >
-        <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-          dir="rtl"
-          onKeyPress={[Function]}
+        <label
+          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+          data-shrink={false}
         >
-          <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-            data-shrink={false}
-          >
-            שם משפחה
-          </label>
-          <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-            onClick={[Function]}
-          >
-            <input
-              aria-invalid={false}
-              autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
-              disabled={false}
-              onAnimationStart={[Function]}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-              value=""
-            />
-          </div>
-          
+          שם משפחה
+        </label>
+        <div
+          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input-83 MuiInput-input-68"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
         </div>
+        
       </div>
       <div
-        className="component"
+        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+        dir="rtl"
+        onKeyPress={[Function]}
       >
-        <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-          dir="rtl"
-          onKeyPress={[Function]}
+        <label
+          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+          data-shrink={false}
         >
-          <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-            data-shrink={false}
-          >
-            טלפון נייד
-          </label>
-          <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-            onClick={[Function]}
-          >
-            <input
-              aria-invalid={false}
-              autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
-              disabled={false}
-              onAnimationStart={[Function]}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              required={false}
-              type="text"
-              value=""
-            />
-          </div>
-          
+          טלפון נייד
+        </label>
+        <div
+          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+          onClick={[Function]}
+        >
+          <input
+            aria-invalid={false}
+            autoFocus={false}
+            className="MuiInputBase-input-83 MuiInput-input-68"
+            disabled={false}
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            required={false}
+            type="text"
+            value=""
+          />
         </div>
+        
       </div>
       <div>
         <div
@@ -276,68 +268,72 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         </div>
       </div>
       <div
-        className="button"
+        className="buttons"
       >
-        <button
-          className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <div
+          className="button"
         >
-          <span
-            className="MuiButton-label-91"
+          <button
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
           >
-            <div
-              className="buttonText"
+            <span
+              className="MuiButton-label-91"
             >
-              אישור והמשך
-            </div>
-          </span>
-        </button>
-      </div>
-      <div
-        className="button"
-      >
-        <button
-          className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+              <div
+                className="buttonText"
+              >
+                אישור והמשך
+              </div>
+            </span>
+          </button>
+        </div>
+        <div
+          className="button"
         >
-          <span
-            className="MuiButton-label-91"
+          <button
+            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
           >
-            <div
-              className="buttonText"
+            <span
+              className="MuiButton-label-91"
             >
-              ביטול
-            </div>
-          </span>
-        </button>
+              <div
+                className="buttonText"
+              >
+                ביטול
+              </div>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
