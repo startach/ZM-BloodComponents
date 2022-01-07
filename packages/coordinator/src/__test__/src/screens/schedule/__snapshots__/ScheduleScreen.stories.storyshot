@@ -159,7 +159,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="hospitalName selectedHospital"
+              className="hospitalName selectedHospital bottomBorder"
             >
               <svg
                 className="selected"
@@ -174,7 +174,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="hospitalName"
+              className="hospitalName bottomBorder"
             >
               סורוקה
             </div>
@@ -1311,7 +1311,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
             onClick={[Function]}
           >
             <div
-              className="hospitalName selectedHospital"
+              className="hospitalName selectedHospital bottomBorder"
             >
               <svg
                 className="selected"
@@ -1326,7 +1326,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
             onClick={[Function]}
           >
             <div
-              className="hospitalName"
+              className="hospitalName bottomBorder"
             >
               סורוקה
             </div>

@@ -131,7 +131,7 @@ function HospitalPicker(
       })}
     >
       <div className={styles.hospitalPickerTitle}>בחר בית חולים:</div>
-      {props.availableHospitals.map((hospital) => (
+      {props.availableHospitals.map((hospital, index) => (
         <div
           key={"hospital." + hospital}
           className={styles.hospitalOption}
@@ -144,6 +144,8 @@ function HospitalPicker(
             className={classNames({
               [styles.hospitalName]: true,
               [styles.selectedHospital]: props.hospital === hospital,
+              [styles.bottomBorder]:
+                index < props.availableHospitals.length - 1,
             })}
           >
             {props.hospital === hospital && (

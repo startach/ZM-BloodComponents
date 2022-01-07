@@ -451,13 +451,6 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
             </svg>
           </div>
         </div>
-        <div
-          className="dividerContainer"
-        >
-          <div
-            className="divider"
-          />
-        </div>
       </div>
     </div>
   </div>

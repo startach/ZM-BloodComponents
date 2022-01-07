@@ -76,7 +76,7 @@ exports[`Storyshots Components/Schedule/Picker Default 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName selectedHospital"
+        className="hospitalName selectedHospital bottomBorder"
       >
         <svg
           className="selected"
@@ -91,7 +91,7 @@ exports[`Storyshots Components/Schedule/Picker Default 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName"
+        className="hospitalName bottomBorder"
       >
         סורוקה
       </div>
@@ -188,7 +188,7 @@ exports[`Storyshots Components/Schedule/Picker Different Months 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName selectedHospital"
+        className="hospitalName selectedHospital bottomBorder"
       >
         <svg
           className="selected"
@@ -203,7 +203,7 @@ exports[`Storyshots Components/Schedule/Picker Different Months 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName"
+        className="hospitalName bottomBorder"
       >
         סורוקה
       </div>
@@ -298,7 +298,7 @@ exports[`Storyshots Components/Schedule/Picker Different Year 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName selectedHospital"
+        className="hospitalName selectedHospital bottomBorder"
       >
         <svg
           className="selected"
@@ -313,7 +313,7 @@ exports[`Storyshots Components/Schedule/Picker Different Year 1`] = `
       onClick={[Function]}
     >
       <div
-        className="hospitalName"
+        className="hospitalName bottomBorder"
       >
         סורוקה
       </div>

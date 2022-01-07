@@ -35,14 +35,16 @@ export default function AppointmentSlotComponent({
       </div>
 
       {appointments.map((appointment, index) => (
-        <div key={appointment.appointmentId}>
+        <div
+          key={appointment.appointmentId + "." + showOnlyAvailableAppointments}
+        >
           <AppointmentPreview
             onDelete={() => onDeleteAppointment(appointment.appointmentId)}
             appointment={appointment}
             onClick={() => onClickOnAppointment(appointment.appointmentId)}
           />
 
-          {index < appointmentSlot.appointments.length - 1 && (
+          {index < appointments.length - 1 && (
             <div className={styles.dividerContainer}>
               <div className={styles.divider} />
             </div>
