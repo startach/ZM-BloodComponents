@@ -8,6 +8,7 @@ import { DateUtils } from "@zm-blood-components/common";
 import CoordinatorHeader from "../../components/CoordinatorHeader";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import AddAppointmentFab from "../../components/AddAppointmentFab";
+import CoordinatorScreen from "../../components/CoordinatorScreen";
 
 export type DonationDayScreenProps = {
   donationDay: DonationDay;
@@ -26,21 +27,22 @@ export default function DonationDayScreen({
     useState(false);
 
   return (
-    <div className={styles.donationDay}>
-      <CoordinatorHeader
-        variant={HeaderVariant.INFO}
-        hasBackButton
-        hasNotificationsIcon
-        title={"ניהול תורים"}
-        stickyComponent={
+    <CoordinatorScreen
+      showFab
+      headerProps={{
+        title: "ניהול תורים",
+        variant: HeaderVariant.INFO,
+        hasBackButton: true,
+        hasNotificationsIcon: true,
+        stickyComponent: (
           <DayHeader
             donationDay={donationDay}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
             setShowOnlyAvailableAppointments={setShowOnlyAvailableAppointments}
           />
-        }
-      />
-
+        ),
+      }}
+    >
       <div className={styles.slots}>
         {donationDay.appointmentSlots.map((slot, index) => (
           <AppointmentSlotComponent
@@ -52,9 +54,7 @@ export default function DonationDayScreen({
           />
         ))}
       </div>
-
-      <AddAppointmentFab onClick={onAdd} />
-    </div>
+    </CoordinatorScreen>
   );
 }
 

@@ -7,6 +7,7 @@ import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
+import CoordinatorScreen from "../../components/CoordinatorScreen";
 
 export interface BookManualDonationScreenProps {
   onSave: (
@@ -68,13 +69,13 @@ export default function BookManualDonationScreen(
   };
 
   return (
-    <div>
-      <CoordinatorHeader
-        title={"הוספה ידנית של תורם"}
-        hasBackButton
-        variant={HeaderVariant.SECONDARY}
-      />
-
+    <CoordinatorScreen
+      headerProps={{
+        title: "הוספה ידנית של תורם",
+        variant: HeaderVariant.SECONDARY,
+        hasBackButton: true,
+      }}
+    >
       <div className={styles.content}>
         <div className={styles.subtitle}>פרטים אישיים</div>
         <Input
@@ -128,6 +129,6 @@ export default function BookManualDonationScreen(
           />
         </div>
       </div>
-    </div>
+    </CoordinatorScreen>
   );
 }

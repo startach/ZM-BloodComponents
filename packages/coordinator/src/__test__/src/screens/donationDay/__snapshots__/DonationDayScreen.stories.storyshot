@@ -10,7 +10,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
   }
 >
   <div
-    className="donationDay"
+    className="coordinatorScreen"
   >
     <div
       className="appHeader"
@@ -141,334 +141,338 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       </div>
     </div>
     <div
-      className="slots"
+      className="screenContent"
     >
       <div
-        className="appointmentSlotListContainer"
+        className="slots"
       >
         <div
-          className="listHeader"
+          className="appointmentSlotListContainer"
         >
           <div
-            className="time"
-          >
-            11:00
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer no show"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
+            className="listHeader"
           >
             <div
-              className="deleteButton"
-              onClick={[Function]}
+              className="time"
             >
-              <svg>
-                trash.svg
-              </svg>
-              <div
-                className="deleteButtonText"
-              >
-                מחק תור
-              </div>
+              11:00
             </div>
+          </div>
+          <div>
             <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
+              className="appointmentPreviewContainer no show"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
             >
               <div
-                className="nameAndChip"
+                className="deleteButton"
+                onClick={[Function]}
+              >
+                <svg>
+                  trash.svg
+                </svg>
+                <div
+                  className="deleteButtonText"
+                >
+                  מחק תור
+                </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                onClick={[Function]}
               >
                 <div
-                  className="donorName"
-                >
-                  משה כהן
-                </div>
-                <div
-                  className="recentChangeChipContainer"
+                  className="nameAndChip"
                 >
                   <div
-                    className="recentChangeChip redChip"
+                    className="donorName"
                   >
-                    לא הגיע
+                    משה כהן
+                  </div>
+                  <div
+                    className="recentChangeChipContainer"
+                  >
+                    <div
+                      className="recentChangeChip redChip"
+                    >
+                      לא הגיע
+                    </div>
                   </div>
                 </div>
+                <svg>
+                  chevron-left.svg
+                </svg>
               </div>
-              <svg>
-                chevron-left.svg
-              </svg>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="appointmentSlotListContainer"
-      >
         <div
-          className="listHeader"
+          className="appointmentSlotListContainer"
         >
           <div
-            className="time"
-          >
-            13:00
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer bookedAppointment"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
+            className="listHeader"
           >
             <div
-              className="deleteButton"
-              onClick={[Function]}
+              className="time"
             >
-              <svg>
-                trash.svg
-              </svg>
-              <div
-                className="deleteButtonText"
-              >
-                מחק תור
-              </div>
+              13:00
             </div>
+          </div>
+          <div>
             <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
+              className="appointmentPreviewContainer bookedAppointment"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
             >
               <div
-                className="nameAndChip"
+                className="deleteButton"
+                onClick={[Function]}
               >
+                <svg>
+                  trash.svg
+                </svg>
                 <div
-                  className="donorName"
+                  className="deleteButtonText"
                 >
-                  משה כהן
+                  מחק תור
                 </div>
               </div>
-              <svg>
-                chevron-left.svg
-              </svg>
-            </div>
-          </div>
-          <div
-            className="dividerContainer"
-          >
-            <div
-              className="divider"
-            />
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer completed"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="deleteButton"
-              onClick={[Function]}
-            >
-              <svg>
-                trash.svg
-              </svg>
               <div
-                className="deleteButtonText"
-              >
-                מחק תור
-              </div>
-            </div>
-            <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
-            >
-              <div
-                className="nameAndChip"
+                className="appointmentPreviewContent"
+                onClick={[Function]}
               >
                 <div
-                  className="donorName"
-                >
-                  משה כהן
-                </div>
-                <div
-                  className="recentChangeChipContainer"
+                  className="nameAndChip"
                 >
                   <div
-                    className="recentChangeChip greenChip"
+                    className="donorName"
                   >
-                    הושלם
+                    משה כהן
                   </div>
                 </div>
-              </div>
-              <svg>
-                chevron-left.svg
-              </svg>
-            </div>
-          </div>
-          <div
-            className="dividerContainer"
-          >
-            <div
-              className="divider"
-            />
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer cancelled"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="deleteButton"
-              onClick={[Function]}
-            >
-              <svg>
-                trash.svg
-              </svg>
-              <div
-                className="deleteButtonText"
-              >
-                מחק תור
+                <svg>
+                  chevron-left.svg
+                </svg>
               </div>
             </div>
             <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
+              className="dividerContainer"
             >
               <div
-                className="nameAndChip"
+                className="divider"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="appointmentPreviewContainer completed"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+            >
+              <div
+                className="deleteButton"
+                onClick={[Function]}
               >
+                <svg>
+                  trash.svg
+                </svg>
                 <div
-                  className="availableAppointmentText"
+                  className="deleteButtonText"
                 >
-                  תור ריק
+                  מחק תור
                 </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                onClick={[Function]}
+              >
                 <div
-                  className="recentChangeChipContainer"
+                  className="nameAndChip"
                 >
                   <div
-                    className="recentChangeChip redChip"
+                    className="donorName"
                   >
-                    בוטל לאחרונה
+                    משה כהן
+                  </div>
+                  <div
+                    className="recentChangeChipContainer"
+                  >
+                    <div
+                      className="recentChangeChip greenChip"
+                    >
+                      הושלם
+                    </div>
                   </div>
                 </div>
+                <svg>
+                  chevron-left.svg
+                </svg>
               </div>
-              <svg>
-                add-person.svg
-              </svg>
+            </div>
+            <div
+              className="dividerContainer"
+            >
+              <div
+                className="divider"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="appointmentPreviewContainer cancelled"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+            >
+              <div
+                className="deleteButton"
+                onClick={[Function]}
+              >
+                <svg>
+                  trash.svg
+                </svg>
+                <div
+                  className="deleteButtonText"
+                >
+                  מחק תור
+                </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                onClick={[Function]}
+              >
+                <div
+                  className="nameAndChip"
+                >
+                  <div
+                    className="availableAppointmentText"
+                  >
+                    תור ריק
+                  </div>
+                  <div
+                    className="recentChangeChipContainer"
+                  >
+                    <div
+                      className="recentChangeChip redChip"
+                    >
+                      בוטל לאחרונה
+                    </div>
+                  </div>
+                </div>
+                <svg>
+                  add-person.svg
+                </svg>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        className="appointmentSlotListContainer"
-      >
         <div
-          className="listHeader"
+          className="appointmentSlotListContainer"
         >
           <div
-            className="time"
-          >
-            14:30
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer availableAppointment"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
+            className="listHeader"
           >
             <div
-              className="deleteButton"
-              onClick={[Function]}
+              className="time"
             >
-              <svg>
-                trash.svg
-              </svg>
-              <div
-                className="deleteButtonText"
-              >
-                מחק תור
-              </div>
+              14:30
             </div>
+          </div>
+          <div>
             <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
+              className="appointmentPreviewContainer availableAppointment"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
             >
               <div
-                className="nameAndChip"
+                className="deleteButton"
+                onClick={[Function]}
               >
+                <svg>
+                  trash.svg
+                </svg>
                 <div
-                  className="availableAppointmentText"
+                  className="deleteButtonText"
                 >
-                  תור ריק
+                  מחק תור
                 </div>
               </div>
-              <svg>
-                add-person.svg
-              </svg>
-            </div>
-          </div>
-          <div
-            className="dividerContainer"
-          >
-            <div
-              className="divider"
-            />
-          </div>
-        </div>
-        <div>
-          <div
-            className="appointmentPreviewContainer booked"
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="deleteButton"
-              onClick={[Function]}
-            >
-              <svg>
-                trash.svg
-              </svg>
               <div
-                className="deleteButtonText"
-              >
-                מחק תור
-              </div>
-            </div>
-            <div
-              className="appointmentPreviewContent"
-              onClick={[Function]}
-            >
-              <div
-                className="nameAndChip"
+                className="appointmentPreviewContent"
+                onClick={[Function]}
               >
                 <div
-                  className="donorName"
-                >
-                  משה כהן
-                </div>
-                <div
-                  className="recentChangeChipContainer"
+                  className="nameAndChip"
                 >
                   <div
-                    className="recentChangeChip greenChip"
+                    className="availableAppointmentText"
                   >
-                    חדש
+                    תור ריק
                   </div>
                 </div>
+                <svg>
+                  add-person.svg
+                </svg>
               </div>
-              <svg>
-                chevron-left.svg
-              </svg>
+            </div>
+            <div
+              className="dividerContainer"
+            >
+              <div
+                className="divider"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="appointmentPreviewContainer booked"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+            >
+              <div
+                className="deleteButton"
+                onClick={[Function]}
+              >
+                <svg>
+                  trash.svg
+                </svg>
+                <div
+                  className="deleteButtonText"
+                >
+                  מחק תור
+                </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                onClick={[Function]}
+              >
+                <div
+                  className="nameAndChip"
+                >
+                  <div
+                    className="donorName"
+                  >
+                    משה כהן
+                  </div>
+                  <div
+                    className="recentChangeChipContainer"
+                  >
+                    <div
+                      className="recentChangeChip greenChip"
+                    >
+                      חדש
+                    </div>
+                  </div>
+                </div>
+                <svg>
+                  chevron-left.svg
+                </svg>
+              </div>
             </div>
           </div>
         </div>

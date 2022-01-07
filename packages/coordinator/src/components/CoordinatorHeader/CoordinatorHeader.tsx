@@ -21,7 +21,7 @@ export enum HeaderVariant {
   INFO,
 }
 
-export interface AppHeaderProps {
+export interface CoordinatorHeaderProps {
   title?: string;
   hasBackButton?: boolean;
   hasNotificationsIcon?: boolean;
@@ -34,7 +34,7 @@ export interface AppHeaderProps {
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
-export default function CoordinatorHeader(props: AppHeaderProps) {
+export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
@@ -57,7 +57,7 @@ export default function CoordinatorHeader(props: AppHeaderProps) {
   );
 }
 
-function HeaderContent(props: AppHeaderProps) {
+function HeaderContent(props: CoordinatorHeaderProps) {
   if (props.title) {
     const className =
       props.variant === HeaderVariant.SECONDARY
@@ -102,7 +102,9 @@ function HeaderMenu(props: {
   );
 }
 
-function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
+function RightIcon(
+  props: CoordinatorHeaderProps & { onMenuClick: () => void }
+) {
   const navigate = useNavigate();
   if (props.hasBurgerMenu) {
     return (
@@ -124,7 +126,7 @@ function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
   return null;
 }
 
-function LeftIcon(props: AppHeaderProps) {
+function LeftIcon(props: CoordinatorHeaderProps) {
   if (props.hasNotificationsIcon) {
     return (
       <IconButton
