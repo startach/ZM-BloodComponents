@@ -58,6 +58,7 @@ const props: DonationDayScreenProps = {
   onDeleteAppointment: action("onDeleteAppointment"),
   onClickOnAppointment: action("onClickOnAppointment"),
   onAdd: action("onAdd"),
+  dayStartTime: new Date(1702198800000),
 };
 
 const Template: Story<DonationDayScreenProps> = (args) => (
@@ -67,4 +68,12 @@ const Template: Story<DonationDayScreenProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+export const NoAppointments = Template.bind({});
+NoAppointments.args = {
+  ...props,
+  donationDay: {
+    appointmentSlots: [],
+  },
 };

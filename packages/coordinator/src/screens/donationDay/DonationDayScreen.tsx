@@ -5,12 +5,11 @@ import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
 import Toggle from "../../components/Toggle";
 import { DateUtils } from "@zm-blood-components/common";
-import CoordinatorHeader from "../../components/CoordinatorHeader";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
-import AddAppointmentFab from "../../components/AddAppointmentFab";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 
 export type DonationDayScreenProps = {
+  dayStartTime: Date;
   donationDay: DonationDay;
   onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
@@ -20,7 +19,7 @@ export type DonationDayScreenProps = {
 export default function DonationDayScreen({
   onDeleteAppointment,
   onClickOnAppointment,
-  onAdd,
+  dayStartTime,
   donationDay,
 }: DonationDayScreenProps) {
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
@@ -36,6 +35,7 @@ export default function DonationDayScreen({
         hasNotificationsIcon: true,
         stickyComponent: (
           <DayHeader
+            dayStartTime={dayStartTime}
             donationDay={donationDay}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
             setShowOnlyAvailableAppointments={setShowOnlyAvailableAppointments}
@@ -53,12 +53,20 @@ export default function DonationDayScreen({
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
           />
         ))}
+
+        {donationDay.appointmentSlots.length == 0 && (
+          <div className={styles.noAppointments}>טרם נקבעו תורים ליום זה</div>
+        )}
+
+        {/*To avoid showing an appointment under the FAB*/}
+        <div className={styles.emptySpace} />
       </div>
     </CoordinatorScreen>
   );
 }
 
 function DayHeader(props: {
+  dayStartTime: Date;
   donationDay: DonationDay;
   showOnlyAvailableAppointments: boolean;
   setShowOnlyAvailableAppointments: (show: boolean) => void;
@@ -74,7 +82,7 @@ function DayHeader(props: {
   return (
     <>
       <div className={styles.donationDate}>
-        <DayString allAppointments={allAppointments} />
+        <DayString dayStartTime={props.dayStartTime} />
 
         <div className={styles.data}>
           <span>{appointmentsCount} תורים</span>
@@ -99,12 +107,8 @@ function DayHeader(props: {
   );
 }
 
-function DayString(props: { allAppointments: Appointment[] }) {
-  if (props.allAppointments.length === 0) {
-    return null;
-  }
-
-  const arbitraryStartTime = props.allAppointments[0].donationStartTimeMillis;
+function DayString(props: { dayStartTime: Date }) {
+  const arbitraryStartTime = props.dayStartTime;
   const weekdayString = DateUtils.ToWeekDayString(arbitraryStartTime);
   const dateString = DateUtils.ToShortDateString(arbitraryStartTime);
 

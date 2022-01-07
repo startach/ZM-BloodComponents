@@ -47,5 +47,18 @@
 
 .slots {
   background-color: var(--coordinator-background);
-  padding-bottom: 60px;
+  height: 100%;
+}
+
+.noAppointments {
+  padding-top: 150px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: var(--coordinator-gray);
+}
+
+.emptySpace {
+  height: 80px;
+  background-color: var(--coordinator-background);
 }
