@@ -66,6 +66,11 @@
   transition: transform 300ms;
   background-color: var(--color-white);
   border-top: 1px solid var(--coordinator-light-gray);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 10px 10px;
+  clip-path: inset(
+    0px -4px -4px -4px
+  ); // Hide shadow from top part of the picker
 }
 
 .hospitalPickerOpen {

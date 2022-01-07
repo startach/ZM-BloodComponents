@@ -21,15 +21,21 @@ const props: SchedulePickerProps = {
   setSelectedHospital: action("setSelectedHospital"),
   onNext: action("onNext"),
   onPrevious: action("onPrevious"),
+  showHospitalPicker: false,
+  setShowHospitalPicker: () => {},
 };
 
 const Template: Story<SchedulePickerProps> = (args) => {
   const [hospital, setHospital] = useState(Hospital.HADASA_EIN_KEREM);
+  const [showHospitalPicker, setShowHospitalPicker] = useState(false);
+
   return (
     <SchedulePicker
       {...args}
       hospital={hospital}
       setSelectedHospital={setHospital}
+      showHospitalPicker={showHospitalPicker}
+      setShowHospitalPicker={setShowHospitalPicker}
     />
   );
 };

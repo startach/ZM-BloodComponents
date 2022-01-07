@@ -6,6 +6,7 @@ import ScheduleWeekComponent from "../../components/Schedule/ScheduleWeek";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import Spinner from "../../components/Spinner";
 import styles from "./ScheduleScreen.module.scss";
+import { useState } from "react";
 
 export interface ScheduleScreenProps {
   dayInWeek: Date;
@@ -19,6 +20,7 @@ export interface ScheduleScreenProps {
 
 export default function ScheduleScreen(props: ScheduleScreenProps) {
   const startOfTheWeek = DateUtils.GetStartOfTheWeek(props.dayInWeek);
+  const [showHospitalPicker, setShowHospitalPicker] = useState(false);
 
   return (
     <CoordinatorScreen
@@ -34,12 +36,21 @@ export default function ScheduleScreen(props: ScheduleScreenProps) {
             onNext={props.onNextWeek}
             onPrevious={props.oPreviousWeek}
             hospital={props.hospital}
+            showHospitalPicker={showHospitalPicker}
+            setShowHospitalPicker={setShowHospitalPicker}
             setSelectedHospital={props.setHospital}
             availableHospitals={props.availableHospitals}
           />
         ),
       }}
     >
+      {showHospitalPicker && (
+        <div
+          className={styles.pickerOverlay}
+          onClick={() => setShowHospitalPicker(false)}
+        />
+      )}
+
       {props.days.length === 0 ? (
         <div className={styles.spinner}>
           <Spinner size={"3rem"} />

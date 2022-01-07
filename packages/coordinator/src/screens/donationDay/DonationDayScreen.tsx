@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Appointment, DonationDay } from "../../utils/types";
+import { DonationDay } from "../../utils/types";
 import AppointmentSlotComponent from "../../components/AppointmentSlot";
 import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
@@ -54,7 +54,7 @@ export default function DonationDayScreen({
           />
         ))}
 
-        {donationDay.appointmentSlots.length == 0 && (
+        {donationDay.appointmentSlots.length === 0 && (
           <div className={styles.noAppointments}>טרם נקבעו תורים ליום זה</div>
         )}
 

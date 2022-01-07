@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SchedulePicker.module.scss";
 import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 import { ReactComponent as ChevronLeft } from "../../../assets/icons/chevron-left-small.svg";
@@ -12,29 +12,21 @@ export type SchedulePickerProps = {
   weekStartTime: Date;
   onNext: () => void;
   onPrevious: () => void;
+  showHospitalPicker: boolean;
+  setShowHospitalPicker: (show: boolean) => void;
   hospital: Hospital;
   setSelectedHospital: (hospital: Hospital) => void;
   availableHospitals: Hospital[];
 };
 
 export default function SchedulePicker(props: SchedulePickerProps) {
-  const [showHospitalPicker, setShowHospitalPicker] = useState(false);
-
   return (
     <>
       <div className={styles.container}>
         <DatePicker {...props} />
-        <HospitalSelected
-          {...props}
-          showHospitalPicker={showHospitalPicker}
-          setShowHospitalPicker={setShowHospitalPicker}
-        />
+        <HospitalSelected {...props} />
       </div>
-      <HospitalPicker
-        {...props}
-        showHospitalPicker={showHospitalPicker}
-        setShowHospitalPicker={setShowHospitalPicker}
-      />
+      <HospitalPicker {...props} />
     </>
   );
 }
@@ -86,12 +78,7 @@ function DateLabel(props: { weekStartTime: Date }) {
   );
 }
 
-function HospitalSelected(
-  props: SchedulePickerProps & {
-    showHospitalPicker: boolean;
-    setShowHospitalPicker: (show: boolean) => void;
-  }
-) {
+function HospitalSelected(props: SchedulePickerProps) {
   const selectable = props.availableHospitals.length > 1;
   return (
     <div
@@ -117,12 +104,7 @@ function HospitalSelected(
   );
 }
 
-function HospitalPicker(
-  props: SchedulePickerProps & {
-    showHospitalPicker: boolean;
-    setShowHospitalPicker: (show: boolean) => void;
-  }
-) {
+function HospitalPicker(props: SchedulePickerProps) {
   return (
     <div
       className={classNames({

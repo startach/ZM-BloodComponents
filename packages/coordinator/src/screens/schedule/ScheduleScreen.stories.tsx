@@ -3,14 +3,14 @@ import _ from "lodash";
 import { action } from "@storybook/addon-actions";
 import { ScheduleCell, ScheduleDay } from "../../utils/types";
 import { Hospital } from "@zm-blood-components/common";
-import { Story } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { useState } from "react";
 
 export default {
   component: ScheduleScreen,
   title: "Screens/Schedule Screen",
   parameters: { layout: "fullscreen" },
-};
+} as Meta;
 
 const weekStartMillis = 1642284000000; // January 16, 2022 0:00:00 GMT+02:00
 const millisInHour = 60 * 60 * 1000;
@@ -21,7 +21,7 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   const cells: ScheduleCell[] = [];
   for (let i = 0; i < 24; i++) {
     const cellStartMillis = dayStartMillis + i * millisInHour;
-    const appointmentsCount = (dayOffset + i) % 3 == 0 ? 3 : 0;
+    const appointmentsCount = (dayOffset + i) % 3 === 0 ? 3 : 0;
     const bookedAppointmentsCount = (dayOffset * 3 + i) % 4;
     cells.push({
       cellStartTime: new Date(cellStartMillis),

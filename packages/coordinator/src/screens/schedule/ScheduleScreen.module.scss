@@ -6,3 +6,12 @@
   justify-content: center;
   align-items: flex-end;
 }
+
+.pickerOverlay {
+  position: fixed;
+  z-index: 5;
+  background: var(--coordinator-divider);
+  opacity: 50%;
+  height: 100%;
+  width: 100%;
+}
