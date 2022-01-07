@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import { Appointment, DonationDay } from "../../utils/types";
-import AppointmentSlotComponent from "../AppointmentSlot";
-import styles from "./DonationDayComponent.module.scss";
+import AppointmentSlotComponent from "../../components/AppointmentSlot";
+import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
-import Toggle from "../Toggle";
+import Toggle from "../../components/Toggle";
 import { DateUtils } from "@zm-blood-components/common";
-import CoordinatorHeader from "../CoordinatorHeader";
-import { HeaderVariant } from "../CoordinatorHeader/CoordinatorHeader";
-import AddAppointmentFab from "../AddAppointmentFab";
+import CoordinatorHeader from "../../components/CoordinatorHeader";
+import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
+import AddAppointmentFab from "../../components/AddAppointmentFab";
 
-export type DonationDayComponentProps = {
+export type DonationDayScreenProps = {
   donationDay: DonationDay;
   onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
 };
 
-export default function DonationDayComponent({
+export default function DonationDayScreen({
   onDeleteAppointment,
   onClickOnAppointment,
   onAdd,
   donationDay,
-}: DonationDayComponentProps) {
+}: DonationDayScreenProps) {
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
 

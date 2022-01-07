@@ -133,6 +133,7 @@ function HospitalPicker(
       <div className={styles.hospitalPickerTitle}>בחר בית חולים:</div>
       {props.availableHospitals.map((hospital) => (
         <div
+          key={"hospital." + hospital}
           className={styles.hospitalOption}
           onClick={() => {
             props.setSelectedHospital(hospital);
