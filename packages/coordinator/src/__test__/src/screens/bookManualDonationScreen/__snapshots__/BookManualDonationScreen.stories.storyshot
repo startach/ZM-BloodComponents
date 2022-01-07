@@ -65,6 +65,14 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         className="content"
       >
         <div
+          className="donationStartTime"
+        >
+          אנא הכנס את הפרטים של התורם בתאריך
+          13/08/2021
+          בשעה
+          12:00
+        </div>
+        <div
           className="subtitle"
         >
           פרטים אישיים

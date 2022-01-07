@@ -1,7 +1,11 @@
 import Input from "../../components/Input";
 import { useState } from "react";
 import styles from "./BookManualDonationScreen.module.scss";
-import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
+import {
+  BloodType,
+  BloodTypeUtils,
+  DateUtils,
+} from "@zm-blood-components/common";
 import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +13,7 @@ import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHea
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 
 export interface BookManualDonationScreenProps {
+  donationStartTime: Date;
   onSave: (
     firstName: string,
     lastName: string,
@@ -78,6 +83,12 @@ export default function BookManualDonationScreen(
       }}
     >
       <div className={styles.content}>
+        <div className={styles.donationStartTime}>
+          אנא הכנס את הפרטים של התורם בתאריך
+          {DateUtils.ToDateString(props.donationStartTime)}
+          בשעה
+          {DateUtils.ToTimeString(props.donationStartTime)}
+        </div>
         <div className={styles.subtitle}>פרטים אישיים</div>
         <Input
           label="שם פרטי"
@@ -111,14 +122,13 @@ export default function BookManualDonationScreen(
           label={"סוג דם"}
           options={BloodTypeUtils.getBloodTypeSelectOptions()}
           value={bloodType}
-          isLoading={loading}
           onChange={(newValue) => {
             setBloodType(newValue);
           }}
         />
 
         <div className={styles.buttons}>
-          <Button title={"אישור והמשך"} onClick={onSave} />
+          <Button title={"אישור והמשך"} onClick={onSave} isLoading={loading} />
           <Button
             title={"ביטול"}
             onClick={() => navigate(-1)}

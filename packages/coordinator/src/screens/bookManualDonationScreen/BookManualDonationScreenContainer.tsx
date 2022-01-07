@@ -12,13 +12,15 @@ export default function BookManualDonationScreenContainer(
   props: BookManualDonationScreenContainerProps
 ) {
   const navigate = useNavigate();
-  const { appointmentId } = useParams<{ appointmentId: string }>();
+  const { appointmentId, timestamp } =
+    useParams<{ appointmentId: string; timestamp: string }>();
+  const donationStartTime = getTimestamp(timestamp);
 
   if (!props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
 
-  if (!appointmentId) {
+  if (!appointmentId || !donationStartTime) {
     navigate(-1);
     return null;
   }
@@ -43,5 +45,18 @@ export default function BookManualDonationScreenContainer(
     navigate(-1);
   };
 
-  return <BookManualDonationScreen onSave={onSave} />;
+  return (
+    <BookManualDonationScreen
+      onSave={onSave}
+      donationStartTime={donationStartTime}
+    />
+  );
+}
+
+function getTimestamp(timestamp: string | undefined) {
+  if (!timestamp || isNaN(parseInt(timestamp))) {
+    return undefined;
+  }
+
+  return new Date(parseInt(timestamp));
 }

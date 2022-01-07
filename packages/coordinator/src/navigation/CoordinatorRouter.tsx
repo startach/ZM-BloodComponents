@@ -142,7 +142,9 @@ export default function CoordinatorRouter() {
         />
 
         <Route
-          path={CoordinatorScreenKey.MANUAL_DONATION + "/:appointmentId"}
+          path={
+            CoordinatorScreenKey.MANUAL_DONATION + "/:appointmentId/:timestamp"
+          }
           element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
         />
 

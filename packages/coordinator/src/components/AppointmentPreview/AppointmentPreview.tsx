@@ -54,9 +54,7 @@ function AppointmentContent(props: {
       );
     } else {
       navigate(
-        CoordinatorScreenKey.MANUAL_DONATION +
-          "/" +
-          props.appointment.appointmentId
+        `${CoordinatorScreenKey.MANUAL_DONATION}/${props.appointment.appointmentId}/${props.appointment.donationStartTimeMillis}`
       );
     }
   };
