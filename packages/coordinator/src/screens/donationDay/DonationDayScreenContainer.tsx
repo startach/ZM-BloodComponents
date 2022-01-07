@@ -5,6 +5,7 @@ import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DonationDayScreen from "./DonationDayScreen";
 import { fetchDonationDay } from "./DonationDayFetcher";
+import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 
 export interface DonationDayScreenContainerProps {
   loggedIn: boolean;
@@ -17,20 +18,24 @@ export default function DonationDayScreenContainer(
   const [donationDay, setDonationDay] = useState<DonationDay | undefined>();
   const { timestamp, hospital } =
     useParams<{ timestamp: string; hospital: Hospital }>();
-  const dayStartTime = getDayStartTime(timestamp);
 
   useEffect(() => {
-    if (!props.loggedIn || !dayStartTime || !hospital) {
+    if (!props.loggedIn || !timestamp || !hospital) {
+      return;
+    }
+    const dayStartTime = getDayStartTime(timestamp);
+    if (!dayStartTime) {
       return;
     }
 
     fetchDonationDay(hospital, dayStartTime).then(setDonationDay);
-  }, [props.loggedIn, dayStartTime, setDonationDay, hospital]);
+  }, [props.loggedIn, timestamp, setDonationDay, hospital]);
 
   if (!props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
 
+  const dayStartTime = getDayStartTime(timestamp);
   if (!dayStartTime || !hospital) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
@@ -40,7 +45,10 @@ export default function DonationDayScreenContainer(
       dayStartTime={dayStartTime}
       donationDay={donationDay}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
-      onDeleteAppointment={() => {}} // TODO
+      // TODO refresh list after deleting an appointment
+      onDeleteAppointment={(appointmentId) =>
+        CoordinatorFunctions.deleteAppointment(appointmentId)
+      }
     />
   );
 }

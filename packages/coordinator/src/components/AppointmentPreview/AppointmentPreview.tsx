@@ -31,7 +31,10 @@ export default function AppointmentPreview({
       onSwipeLeft={() => setShowDelete(true)}
     >
       <DeleteAppointmentButton onClick={onDelete} showDelete={showDelete} />
-      <div className={styles.appointmentPreviewContent}>
+      <div
+        className={styles.appointmentPreviewContent}
+        data-appointment-id={appointment.appointmentId}
+      >
         <AppointmentContent appointment={appointment} showDelete={showDelete} />
       </div>
     </SwippableComponent>
