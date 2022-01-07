@@ -31,7 +31,7 @@
 
 .gridColumns {
   display: grid;
-  grid-template-columns: 15px repeat(6, auto);
+  grid-template-columns: 15px repeat(6, auto) 10px;
   grid-gap: 5px;
 }
 
@@ -44,4 +44,5 @@
   justify-content: center;
   text-align: center;
   margin-inline-start: 3px;
+  color: var(--coordinator-gray);
 }

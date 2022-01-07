@@ -24,6 +24,9 @@ export default function ScheduleWeekComponent(
             key={`day.${day.cells[0].cellStartTime.getTime()}`}
           />
         ))}
+
+        {/*This div is here for spacing on the left column*/}
+        <div />
       </div>
 
       <div className={classNames(styles.scheduleWeek, styles.gridColumns)}>
@@ -41,6 +44,9 @@ export default function ScheduleWeekComponent(
                   cell={day.cells[hourIndex]}
                 />
               ))}
+
+              {/*This div is here for spacing on the left column*/}
+              <div />
             </React.Fragment>
           );
         })}

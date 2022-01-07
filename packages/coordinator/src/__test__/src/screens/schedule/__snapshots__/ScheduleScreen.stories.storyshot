@@ -1,0 +1,1057 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Schedule Screen Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="coordinatorScreen"
+  >
+    <div
+      className="appHeader"
+    >
+      <div
+        className="headerRow"
+      >
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title infoTitle"
+        >
+          ניהול תורים
+        </div>
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
+          disabled={false}
+          onBlur={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div
+        className="stickyComponent"
+      >
+        <div
+          className="container"
+        >
+          <div
+            className="datePicker"
+          >
+            <svg
+              className="chevronRight"
+              onClick={[Function]}
+            >
+              chevron-right-small.svg
+            </svg>
+            <svg
+              className="calendar"
+            >
+              calendar.svg
+            </svg>
+            <div
+              className="dateLabel"
+            >
+              <span
+                className="monthName"
+              >
+                ינואר
+              </span>
+              <span
+                className="yearName"
+              >
+                
+                ,
+              </span>
+              16
+              -
+              21
+            </div>
+            <svg
+              className="chevronLeft"
+              onClick={[Function]}
+            >
+              chevron-left-small.svg
+            </svg>
+          </div>
+          <div
+            className="hospitalSelectable"
+            onClick={[Function]}
+          >
+            <svg
+              className="chevronDown"
+            >
+              chevron-down.svg
+            </svg>
+            הדסה עין כרם
+          </div>
+        </div>
+        <div
+          className="hospitalPicker"
+        >
+          <div
+            className="hospitalPickerTitle"
+          >
+            בחר בית חולים:
+          </div>
+          <div
+            className="hospitalOption"
+            onClick={[Function]}
+          >
+            <div
+              className="hospitalName selectedHospital"
+            >
+              <svg
+                className="selected"
+              >
+                selected.svg
+              </svg>
+              הדסה עין כרם
+            </div>
+          </div>
+          <div
+            className="hospitalOption"
+            onClick={[Function]}
+          >
+            <div
+              className="hospitalName"
+            >
+              סורוקה
+            </div>
+          </div>
+          <div
+            className="hospitalOption"
+            onClick={[Function]}
+          >
+            <div
+              className="hospitalName"
+            >
+              תל השומר
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent"
+    >
+      <div
+        className="schedule"
+      >
+        <div
+          className="gridColumns"
+        >
+          <div />
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              16
+            </div>
+            <div
+              className="dayLetter"
+            >
+              א
+            </div>
+          </div>
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              17
+            </div>
+            <div
+              className="dayLetter"
+            >
+              ב
+            </div>
+          </div>
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              18
+            </div>
+            <div
+              className="dayLetter"
+            >
+              ג
+            </div>
+          </div>
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              19
+            </div>
+            <div
+              className="dayLetter"
+            >
+              ד
+            </div>
+          </div>
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              20
+            </div>
+            <div
+              className="dayLetter"
+            >
+              ה
+            </div>
+          </div>
+          <div
+            className="dayLabel"
+          >
+            <div
+              className="dayNumber"
+            >
+              21
+            </div>
+            <div
+              className="dayLetter"
+            >
+              ו
+            </div>
+          </div>
+          <div />
+        </div>
+        <div
+          className="scheduleWeek gridColumns"
+        >
+          <div
+            className="hourCell"
+          >
+            0
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            1
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            2
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            3
+          </div>
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            4
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            5
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            6
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            7
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            8
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            9
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            10
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            11
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            12
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            13
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            14
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            15
+          </div>
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            16
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            17
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            18
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            19
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            20
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            21
+          </div>
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+          <div
+            className="hourCell"
+          >
+            22
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            0/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            1/3
+          </div>
+          <div />
+          <div
+            className="hourCell"
+          >
+            23
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare partiallyBooked"
+            onClick={[Function]}
+          >
+            2/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div
+            className="scheduleHourSquare fullyBooked"
+            onClick={[Function]}
+          >
+            3/3
+          </div>
+          <div
+            className="scheduleHourSquare empty"
+          />
+          <div />
+        </div>
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-9 MuiFab-root-34 makeStyles-fab-33 MuiFab-extended-38 MuiFab-primary-36"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiFab-label-35"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root-12"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+        <div
+          className="text"
+        >
+          הוסף תור
+        </div>
+      </span>
+    </button>
+  </div>
+</div>
+`;
