@@ -12,32 +12,58 @@ import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
+  addBottomDivider: boolean;
   onDelete: () => void;
 };
 
 export default function AppointmentPreview({
   onDelete,
   appointment,
+  addBottomDivider,
 }: AppointmentPreviewProps) {
   const [showDelete, setShowDelete] = useState(false);
+  const [appointmentDeleted, setAppointmentDeleted] = useState(false);
+
+  const onDeleteAppointment = () => {
+    onDelete();
+    setAppointmentDeleted(true);
+  };
+
+  if (appointmentDeleted) {
+    return null;
+  }
 
   return (
-    <SwippableComponent
-      className={classNames(
-        styles.appointmentPreviewContainer,
-        appointment.appointmentId
-      )}
-      onSwipeRight={() => setShowDelete(false)}
-      onSwipeLeft={() => setShowDelete(true)}
-    >
-      <DeleteAppointmentButton onClick={onDelete} showDelete={showDelete} />
-      <div
-        className={styles.appointmentPreviewContent}
-        data-appointment-id={appointment.appointmentId}
+    <>
+      <SwippableComponent
+        className={classNames(
+          styles.appointmentPreviewContainer,
+          appointment.appointmentId
+        )}
+        onSwipeRight={() => setShowDelete(false)}
+        onSwipeLeft={() => setShowDelete(true)}
       >
-        <AppointmentContent appointment={appointment} showDelete={showDelete} />
-      </div>
-    </SwippableComponent>
+        <DeleteAppointmentButton
+          onClick={onDeleteAppointment}
+          showDelete={showDelete}
+        />
+        <div
+          className={styles.appointmentPreviewContent}
+          data-appointment-id={appointment.appointmentId}
+        >
+          <AppointmentContent
+            appointment={appointment}
+            showDelete={showDelete}
+          />
+        </div>
+      </SwippableComponent>
+
+      {addBottomDivider && (
+        <div className={styles.dividerContainer}>
+          <div className={styles.divider} />
+        </div>
+      )}
+    </>
   );
 }
 

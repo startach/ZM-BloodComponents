@@ -44,6 +44,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="availableAppointment"
           >
             <div
               className="nameAndChip"
@@ -92,6 +93,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="bookedAppointment"
           >
             <div
               className="nameAndChip"
@@ -140,6 +142,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="booked"
           >
             <div
               className="nameAndChip"
@@ -197,6 +200,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="completed"
           >
             <div
               className="nameAndChip"
@@ -254,6 +258,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="no show"
           >
             <div
               className="nameAndChip"
@@ -311,6 +316,7 @@ exports[`Storyshots Components/Appointment Slot Default 1`] = `
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="cancelled"
           >
             <div
               className="nameAndChip"
@@ -388,6 +394,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="availableAppointment"
           >
             <div
               className="nameAndChip"
@@ -436,6 +443,7 @@ exports[`Storyshots Components/Appointment Slot Only Available Appointments 1`] 
           </div>
           <div
             className="appointmentPreviewContent"
+            data-appointment-id="cancelled"
           >
             <div
               className="nameAndChip"

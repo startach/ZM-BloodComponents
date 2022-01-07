@@ -39,13 +39,8 @@ export default function AppointmentSlotComponent({
           <AppointmentPreview
             onDelete={() => onDeleteAppointment(appointment.appointmentId)}
             appointment={appointment}
+            addBottomDivider={index < appointments.length - 1}
           />
-
-          {index < appointments.length - 1 && (
-            <div className={styles.dividerContainer}>
-              <div className={styles.divider} />
-            </div>
-          )}
         </div>
       ))}
     </div>

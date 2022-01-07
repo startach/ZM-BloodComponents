@@ -30,6 +30,7 @@ exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="availableAppointment"
     >
       <div
         className="nameAndChip"
@@ -81,6 +82,7 @@ exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
@@ -132,6 +134,7 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
@@ -192,6 +195,7 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="availableAppointment"
     >
       <div
         className="nameAndChip"
@@ -252,6 +256,7 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
@@ -312,6 +317,7 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"

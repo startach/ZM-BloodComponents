@@ -45,7 +45,6 @@ export default function DonationDayScreenContainer(
       dayStartTime={dayStartTime}
       donationDay={donationDay}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
-      // TODO refresh list after deleting an appointment
       onDeleteAppointment={(appointmentId) =>
         CoordinatorFunctions.deleteAppointment(appointmentId)
       }
