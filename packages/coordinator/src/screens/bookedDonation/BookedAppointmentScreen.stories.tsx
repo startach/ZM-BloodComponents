@@ -20,6 +20,7 @@ const props: BookedAppointmentScreenProps = {
     firstName: "משה",
     lastName: "כהן",
     donationStartTimeMillis: 1702198800000,
+    bookingTimeMillis: 1702008800000,
     bloodType: BloodType.AB_PLUS,
     phone: "0522222222",
     status: AppointmentStatus.NOSHOW,

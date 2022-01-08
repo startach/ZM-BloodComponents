@@ -42,6 +42,7 @@ export default async function (
       appointmentId: appointment.id!,
       donorId: appointment.donorId,
       donationStartTimeMillis: appointment.donationStartTime.toMillis(),
+      bookingTimeMillis: appointment.bookingTime!.toMillis(),
       hospital: appointment.hospital,
       firstName: donor!.firstName,
       lastName: donor!.lastName,

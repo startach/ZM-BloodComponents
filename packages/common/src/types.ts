@@ -111,6 +111,7 @@ export type BookedDonationWithDonorDetails = {
   appointmentId: string;
   donorId: string;
   donationStartTimeMillis: number;
+  bookingTimeMillis: number;
   hospital: Hospital;
   firstName: string;
   lastName: string;
