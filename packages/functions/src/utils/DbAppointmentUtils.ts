@@ -34,3 +34,17 @@ export function completeArrivedFromDbAppointment(
     status: isNoshow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED,
   };
 }
+
+export function isAppointmentAvailable(appointment: DbAppointment) {
+  switch (appointment.status) {
+    case AppointmentStatus.AVAILABLE:
+      return true;
+    case AppointmentStatus.BOOKED:
+    case AppointmentStatus.CONFIRMED:
+    case AppointmentStatus.COMPLETED:
+    case AppointmentStatus.NOSHOW:
+      return false;
+  }
+
+  throw new Error("Invalid appointment status for availability check");
+}
