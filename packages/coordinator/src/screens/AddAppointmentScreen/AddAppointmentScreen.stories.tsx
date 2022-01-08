@@ -1,4 +1,4 @@
-import AppointmentScreen, { AppointmentScreenProps } from "./AppointmentScreen";
+import AddAppointmentScreen, { AddAppointmentScreenProps } from "./AddAppointmentScreen";
 import { Meta } from "@storybook/react";
 
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -7,7 +7,7 @@ import { he } from "date-fns/locale";
 import { action } from "@storybook/addon-actions";
 
 export default {
-  component: AppointmentScreen,
+  component: AddAppointmentScreen,
   title: "Screens/Appointment Screen",
   parameters: { layout: "fullscreen" },
 } as Meta;
@@ -16,14 +16,14 @@ const onSubmit = (date: Date, hour: Date, slots: number) => {
   action("onSubmitNewSlots");
 };
 
-const props: AppointmentScreenProps = {
+const props: AddAppointmentScreenProps = {
   onSubmit: onSubmit,
 };
 
-export const Default = (args: AppointmentScreenProps) => {
+export const Default = (args: AddAppointmentScreenProps) => {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
-      <AppointmentScreen {...args} />
+      <AddAppointmentScreen {...args} />
     </MuiPickersUtilsProvider>
   );
 };

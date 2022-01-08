@@ -1,6 +1,5 @@
 import { useState } from "react";
-import styles from "./AppointmentScreen.module.scss";
-
+import styles from "./AddAppointmentScreen.module.scss";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "../../components/V2/DatePicker";
@@ -9,7 +8,7 @@ import Select from "../../components/V2/Select";
 import { SelectOption } from "@zm-blood-components/common";
 import classnames from "classnames";
 
-export interface AppointmentScreenProps {
+export interface AddAppointmentScreenProps {
   onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
 }
 
@@ -21,7 +20,7 @@ const slotOptions: SelectOption<number>[] = [
   key: n + "",
 }));
 
-export default function AppointmentScreen(props: AppointmentScreenProps) {
+export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   const [date, setDate] = useState<Date | null>(null);
   const [hour, setHour] = useState<Date | null>(null);
 
