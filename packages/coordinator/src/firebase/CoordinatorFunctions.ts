@@ -129,3 +129,17 @@ export async function bookManualDonation(
 
   await callableFunction(request);
 }
+
+export async function getBookedAppointment(appointmentId: string) {
+  const request: FunctionsApi.GetBookedAppointmentRequest = {
+    appointmentId,
+  };
+
+  const callableFunction = getCallableFunction(
+    FunctionsApi.GetBookedAppointment
+  );
+
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
+  return data.bookedAppointment;
+}

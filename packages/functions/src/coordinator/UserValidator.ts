@@ -7,8 +7,8 @@ export async function validateAppointmentEditPermissions(
   hospitals: Set<Hospital>
 ) {
   const coordinator = await getCoordinator(userId);
-   validateAppointmentPermissions(hospitals, coordinator);
-return userId;
+  validateAppointmentPermissions(hospitals, coordinator);
+  return userId;
 }
 
 export function validateAppointmentPermissions(

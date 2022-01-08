@@ -40,3 +40,9 @@ export const Default = Template.bind({});
 Default.args = {
   ...props,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...props,
+  appointment: undefined,
+};

@@ -1,13 +1,24 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import {AppointmentStatus, BloodType, CoordinatorRole, FunctionsApi, Hospital, MANUAL_DONOR_ID, MinimalDonorDetailsForAppointment,} from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  BloodType,
+  CoordinatorRole,
+  FunctionsApi,
+  Hospital,
+  MANUAL_DONOR_ID,
+  MinimalDonorDetailsForAppointment,
+} from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import {deleteAdmin, setAdmin} from "../dal/AdminDataAccessLayer";
-import {deleteAppointmentsByIds, setAppointment,} from "../dal/AppointmentDataAccessLayer";
-import {expectAsyncThrows} from "../testUtils/TestUtils";
-import {sampleUser} from "../testUtils/TestSamples";
-import {deleteDonor, setDonor} from "../dal/DonorDataAccessLayer";
-import {DbAppointment, DbCoordinator, DbDonor} from "../function-types";
+import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import {
+  deleteAppointmentsByIds,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { sampleUser } from "../testUtils/TestSamples";
+import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetBookedAppointment]
@@ -85,11 +96,11 @@ describe("GetBookedAppointment", function () {
 
   test("Manual donor is valid", async () => {
     await createCoordinator(HOSPITAL);
-    await createAppointment(AppointmentStatus.COMPLETED,{
+    await createAppointment(AppointmentStatus.COMPLETED, {
       phoneNumber: "manualPhone",
       firstName: "manualFirst",
       lastName: "manualLast",
-      bloodType: BloodType.NOT_SURE
+      bloodType: BloodType.NOT_SURE,
     });
 
     const res = await callFunction(COORDINATOR_ID);
@@ -143,7 +154,10 @@ describe("GetBookedAppointment", function () {
     });
   }
 
-  async function createAppointment(status: AppointmentStatus, donorDetails?:MinimalDonorDetailsForAppointment) {
+  async function createAppointment(
+    status: AppointmentStatus,
+    donorDetails?: MinimalDonorDetailsForAppointment
+  ) {
     const appointment: DbAppointment = {
       id: APPOINTMENT_ID,
       creationTime: admin.firestore.Timestamp.fromMillis(TIME),
@@ -155,7 +169,7 @@ describe("GetBookedAppointment", function () {
       status: status || AppointmentStatus.BOOKED,
     };
 
-    if(donorDetails){
+    if (donorDetails) {
       appointment.donorId = MANUAL_DONOR_ID;
       appointment.donorDetails = donorDetails;
     }
