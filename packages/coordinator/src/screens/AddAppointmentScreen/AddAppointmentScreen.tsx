@@ -61,7 +61,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.addApponimentSubtitle}>
-          <div className={styles.subtitleText}>מספר עמדות</div>
+          <div className={styles.subtitleText}>מאפייני תור</div>
         </div>
         <Select
           containerClassName={styles.inputField}
