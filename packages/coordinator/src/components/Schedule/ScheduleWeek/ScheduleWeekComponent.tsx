@@ -10,7 +10,7 @@ export type ScheduleWeekComponentProps = {
   days: ScheduleDay[];
 };
 
-const FIRST_SCROLL_HOUR = 9;
+const FIRST_SCROLL_HOUR = 8;
 
 export default function ScheduleWeekComponent(
   props: ScheduleWeekComponentProps

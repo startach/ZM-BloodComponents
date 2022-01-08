@@ -10,7 +10,10 @@ const UnsubscribedScreen = () => {
 
   const profileLink = (
     <Button
-      onClick={() => navigate(MainNavigationKeys.MyProfile)}
+      onClick={() => {
+        navigate(MainNavigationKeys.BookDonation);
+        navigate(MainNavigationKeys.MyProfile);
+      }}
       title={"הפרופיל"}
       variant={ButtonVariant.text}
       className={styles.ProfileLink}
