@@ -23,11 +23,7 @@ const props: AddAppointmentScreenProps = {
 };
 
 export const Default = (args: AddAppointmentScreenProps) => {
-  return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
-      <AddAppointmentScreen {...args} />
-    </MuiPickersUtilsProvider>
-  );
+  return <AddAppointmentScreen {...args} />;
 };
 
 Default.args = props;
