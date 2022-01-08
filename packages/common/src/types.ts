@@ -36,9 +36,9 @@ export type Donor = {
 
 export type MinimalDonorDetailsForAppointment = {
   firstName: string;
-  lastName?: string;
+  lastName: string;
   phoneNumber: string;
-  bloodType?: BloodType;
+  bloodType: BloodType;
 };
 
 //https://docs.google.com/document/d/1Y3ovMRJhdHlJEd4rS3FCgxxY3qdpmk2WLaR45nL8IT8
@@ -111,6 +111,7 @@ export type BookedDonationWithDonorDetails = {
   appointmentId: string;
   donorId: string;
   donationStartTimeMillis: number;
+  bookingTimeMillis: number;
   hospital: Hospital;
   firstName: string;
   lastName: string;

@@ -1,7 +1,6 @@
 import {
   FunctionsApi,
   Hospital,
-  DateUtils,
   HospitalUtils,
 } from "@zm-blood-components/common";
 import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
@@ -12,8 +11,6 @@ export function getCallableFunction(functionName: string) {
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
-
-const TwoWeeksMillis = 14 * 24 * 60 * 60 * 1000;
 
 export async function getCoordinator() {
   const getCoordinatorFunction = getCallableFunction(
@@ -52,7 +49,9 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
 }
 
 export async function getAppointments(
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
+  earliestStartTimeMillis: number,
+  latestStartTimeMillis?: number
 ) {
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
@@ -60,8 +59,8 @@ export async function getAppointments(
 
   const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital,
-    earliestStartTimeMillis:
-      DateUtils.TodayAdMidnight().getTime() - TwoWeeksMillis,
+    earliestStartTimeMillis,
+    latestStartTimeMillis,
   };
 
   const response = await getAppointmentsFunction(request);
@@ -119,4 +118,28 @@ export async function getBookedAppointmentsInHospital(
   const data =
     response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
   return data.donationsWithDonorDetails;
+}
+
+export async function bookManualDonation(
+  request: FunctionsApi.CoordinatorBookAppointmentRequest
+) {
+  const callableFunction = getCallableFunction(
+    FunctionsApi.CoordinatorBookAppointmentFunctionName
+  );
+
+  await callableFunction(request);
+}
+
+export async function getBookedAppointment(appointmentId: string) {
+  const request: FunctionsApi.GetBookedAppointmentRequest = {
+    appointmentId,
+  };
+
+  const callableFunction = getCallableFunction(
+    FunctionsApi.GetBookedAppointment
+  );
+
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
+  return data.bookedAppointment;
 }

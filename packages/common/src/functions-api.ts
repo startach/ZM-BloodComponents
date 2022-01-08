@@ -45,6 +45,7 @@ export type AppointmentApiEntry = {
 
   // If booked
   donorId?: string;
+  donorName?: string;
   assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
   bookingTimeMillis?: number;
 };
@@ -162,12 +163,13 @@ export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
-  earliestStartTimeMillis?: number;
+  earliestStartTimeMillis: number;
+  latestStartTimeMillis?: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {
   appointments: AppointmentApiEntry[];
-  donorsInAppointments: Donor[];
+  donorsInAppointments: Donor[]; // TODO remove once coordinator is migrated
 }
 
 export const GetDonorsFunctionName = "getDonors";
@@ -179,10 +181,18 @@ export interface GetDonorsResponse {
 export const GetBookedDonationsInHospitalFunctionName =
   "getBookedDonationsInHospital";
 export interface GetBookedDonationsInHospitalRequest {
-  hospital: Hospital;
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   fromDateMillis: number;
   toDateMillis: number;
 }
 export interface GetBookedDonationsInHospitalResponse {
   donationsWithDonorDetails: BookedDonationWithDonorDetails[];
+}
+
+export const GetBookedAppointment = "getBookedAppointment";
+export interface GetBookedAppointmentRequest {
+  appointmentId: string;
+}
+export interface GetBookedAppointmentResponse {
+  bookedAppointment: BookedDonationWithDonorDetails;
 }

@@ -1,6 +1,6 @@
 import { Meta, Story } from "@storybook/react";
 import CoordinatorHeader, {
-  AppHeaderProps,
+  CoordinatorHeaderProps,
   HeaderVariant,
 } from "./CoordinatorHeader";
 
@@ -10,14 +10,16 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const props: AppHeaderProps = {
+const props: CoordinatorHeaderProps = {
   hasBackButton: false,
   hasBurgerMenu: false,
   variant: HeaderVariant.SECONDARY,
 };
 
-const Template: Story<AppHeaderProps> = (args) => (
-  <CoordinatorHeader {...args} />
+const Template: Story<CoordinatorHeaderProps> = (args) => (
+  <div style={{ height: "100%", width: "100%", backgroundColor: "lightcyan" }}>
+    <CoordinatorHeader {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});
@@ -52,6 +54,16 @@ WithNotification.args = {
   variant: HeaderVariant.INFO,
   hasBackButton: true,
   hasNotificationsIcon: true,
+};
+
+export const StickyComponent = Template.bind({});
+StickyComponent.args = {
+  ...props,
+  title: "ניהול תורים",
+  variant: HeaderVariant.INFO,
+  hasBackButton: true,
+  hasNotificationsIcon: true,
+  stickyComponent: <div style={{ padding: 10 }}>משהו דביק</div>,
 };
 
 export const Hamburger = Template.bind({});

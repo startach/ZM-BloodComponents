@@ -3,10 +3,7 @@ import {
   DateUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import {
-  CardTableColumn,
-  CardTableRow,
-} from "coordinator/src/components/V2/Table";
+import { CardTableColumn, CardTableRow } from "../../components/V2/Table";
 import Styles from "./ManageAppointmentsScreen.module.scss";
 import IconButton from "../../components/V2/IconButton";
 import Table from "../../components/V2/Table";

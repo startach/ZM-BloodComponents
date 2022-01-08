@@ -12,7 +12,10 @@ export default function ScheduleCellComponent({
 }: ScheduleCellComponentProps) {
   if (cell.appointmentsCount === 0) {
     return (
-      <div className={classNames(styles.scheduleHourSquare, styles.empty)} />
+      <div
+        onClick={() => cell.onClick(cell.cellStartTime)}
+        className={classNames(styles.scheduleHourSquare, styles.empty)}
+      />
     );
   }
 

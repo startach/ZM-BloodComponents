@@ -56,7 +56,8 @@ async function callTarget(userId: string, method = "email") {
 
   // @ts-ignore
   const response = {
-    send: (x) => expect(x).toEqual("הרישום הוסר בהצלחה"),
+    redirect: (x) =>
+      expect(x).toEqual("https://zm-donor-qa.web.app/unsubscribe"),
   } as express.Response;
 
   return Functions.unsubscribe(request, response);

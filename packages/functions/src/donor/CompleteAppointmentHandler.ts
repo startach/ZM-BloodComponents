@@ -48,8 +48,6 @@ export async function completeAppointmentFunc(
     case AppointmentStatus.CONFIRMED:
   }
 
-  // TODO add notification
-
   const updatedAppointment =
     DbAppointmentUtils.completeArrivedFromDbAppointment(appointment, isNoshow);
 

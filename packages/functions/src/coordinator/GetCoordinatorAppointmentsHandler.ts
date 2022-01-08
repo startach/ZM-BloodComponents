@@ -1,9 +1,7 @@
 import {
   CoordinatorRole,
   FunctionsApi,
-  Hospital,
   MANUAL_DONOR_ID,
-  HospitalUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
@@ -11,7 +9,10 @@ import {
   dbDonorToDonor,
 } from "../utils/ApiEntriesConversionUtils";
 import { getDonors } from "../dal/DonorDataAccessLayer";
-import { getCoordinator } from "../dal/AdminDataAccessLayer";
+import {
+  getCoordinator,
+  getValidHospitalsOrThrow,
+} from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 import _ from "lodash";
@@ -22,19 +23,18 @@ export default async function (
 ) {
   const hospital = request.hospital;
   const coordinator = await fetchCoordinator(callerId);
-  const hospitalsArray = await getValidHospitalsOrThrow(coordinator, hospital);
+  const hospitalsArray = getValidHospitalsOrThrow(coordinator, hospital);
 
-  const startTimeFilter = request.earliestStartTimeMillis
-    ? new Date(request.earliestStartTimeMillis)
+  const startTimeFilter = new Date(request.earliestStartTimeMillis);
+  const endTimeFilter = request.latestStartTimeMillis
+    ? new Date(request.latestStartTimeMillis)
     : undefined;
   const appointmentsByHospital = await getAppointmentsByHospital(
     hospitalsArray,
-    startTimeFilter
+    startTimeFilter,
+    endTimeFilter
   );
 
-  let appointments = appointmentsByHospital.map(
-    dbAppointmentToAppointmentApiEntry
-  );
   const donorIds: string[] = [];
   appointmentsByHospital.map((appointment) => {
     if (appointment.donorId) {
@@ -44,6 +44,9 @@ export default async function (
 
   let donorsInAppointments = await getDonors(_.uniq(donorIds));
 
+  let appointments = appointmentsByHospital.map((a) =>
+    dbAppointmentToAppointmentApiEntry(a, donorsInAppointments)
+  );
   if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
     donorsInAppointments = await filterDonorsInGroup(
       coordinator,
@@ -72,40 +75,6 @@ async function fetchCoordinator(callerId: string) {
   return coordinator;
 }
 
-async function getValidHospitalsOrThrow(
-  coordinator: DbCoordinator,
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
-): Promise<Hospital[]> {
-  const allActiveHospitalsFiltered =
-    hospital === HospitalUtils.ALL_HOSPITALS_SELECT
-      ? HospitalUtils.activeHospitals
-      : [hospital];
-
-  switch (coordinator.role) {
-    case CoordinatorRole.SYSTEM_USER:
-      return allActiveHospitalsFiltered;
-    case CoordinatorRole.ZM_COORDINATOR:
-      return allActiveHospitalsFiltered;
-    case CoordinatorRole.HOSPITAL_COORDINATOR:
-      if (hospital === HospitalUtils.ALL_HOSPITALS_SELECT) {
-        return coordinator.hospitals ?? [];
-      }
-      if (!coordinator.hospitals?.includes(hospital)) {
-        console.error(
-          `Coordinator ${coordinator.id} ${coordinator.role} ${coordinator.hospitals} missing permissions for ${hospital}`
-        );
-        throw Error("Coordinator has no permissions for hospital");
-      }
-      return [hospital];
-    case CoordinatorRole.GROUP_COORDINATOR:
-      return hospital === HospitalUtils.ALL_HOSPITALS_SELECT
-        ? coordinator.hospitals ?? []
-        : [hospital];
-  }
-
-  throw Error("Unfamiliar coordinator role");
-}
-
 async function filterDonorsInGroup(
   coordinator: DbCoordinator,
   donorsInAppointments: DbDonor[]
@@ -126,7 +95,7 @@ function filterAppointmentsForDonors(
     // if donor is in coordinator group, show the appointment
     if (donorIds.has(appointment.donorId)) return true;
 
-    // if the appointment was manualy added by the coordinator
+    // if the appointment was manually added by the coordinator
     if (
       appointment.donorId === MANUAL_DONOR_ID &&
       appointment.assigningCoordinatorId === assigningCoordinatorId

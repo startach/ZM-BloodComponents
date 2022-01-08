@@ -28,6 +28,7 @@ export type ScheduleWeek = {
 };
 
 export type ScheduleDay = {
+  dayStartTime: Date;
   cells: ScheduleCell[];
 };
 

@@ -1,6 +1,4 @@
-import DonationDayComponent, {
-  DonationDayComponentProps,
-} from "./DonationDayComponent";
+import DonationDayScreen, { DonationDayScreenProps } from "./DonationDayScreen";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
 import {
@@ -10,12 +8,12 @@ import {
 import { BookingChange } from "@zm-blood-components/common";
 
 export default {
-  component: DonationDayComponent,
-  title: "Components/Donation Day",
+  component: DonationDayScreen,
+  title: "Screens/Donation Day",
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const props: DonationDayComponentProps = {
+const props: DonationDayScreenProps = {
   donationDay: {
     appointmentSlots: [
       {
@@ -58,15 +56,29 @@ const props: DonationDayComponentProps = {
     ],
   },
   onDeleteAppointment: action("onDeleteAppointment"),
-  onClickOnAppointment: action("onClickOnAppointment"),
   onAdd: action("onAdd"),
+  dayStartTime: new Date(1702198800000),
 };
 
-const Template: Story<DonationDayComponentProps> = (args) => (
-  <DonationDayComponent {...args} />
+const Template: Story<DonationDayScreenProps> = (args) => (
+  <DonationDayScreen {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+export const NoAppointments = Template.bind({});
+NoAppointments.args = {
+  ...props,
+  donationDay: {
+    appointmentSlots: [],
+  },
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...props,
+  donationDay: undefined,
 };

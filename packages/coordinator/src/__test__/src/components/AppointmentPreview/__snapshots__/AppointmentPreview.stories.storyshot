@@ -30,10 +30,11 @@ exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="availableAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="availableAppointmentText"
@@ -41,7 +42,9 @@ exports[`Storyshots Components/Appointment Preview Available Appointment 1`] = `
           תור ריק
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         add-person.svg
       </svg>
     </div>
@@ -79,10 +82,11 @@ exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="donorName"
@@ -90,7 +94,9 @@ exports[`Storyshots Components/Appointment Preview Booked Appointment 1`] = `
           משה כהן
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         chevron-left.svg
       </svg>
     </div>
@@ -128,10 +134,11 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="donorName"
@@ -148,7 +155,9 @@ exports[`Storyshots Components/Appointment Preview Recently Booked 1`] = `
           </div>
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         chevron-left.svg
       </svg>
     </div>
@@ -186,10 +195,11 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="availableAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="availableAppointmentText"
@@ -206,7 +216,9 @@ exports[`Storyshots Components/Appointment Preview Recently Cancelled 1`] = `
           </div>
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         add-person.svg
       </svg>
     </div>
@@ -244,10 +256,11 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="donorName"
@@ -264,7 +277,9 @@ exports[`Storyshots Components/Appointment Preview Recently Completed 1`] = `
           </div>
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         chevron-left.svg
       </svg>
     </div>
@@ -302,10 +317,11 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
     </div>
     <div
       className="appointmentPreviewContent"
-      onClick={[Function]}
+      data-appointment-id="bookedAppointment"
     >
       <div
         className="nameAndChip"
+        onClick={[Function]}
       >
         <div
           className="donorName"
@@ -322,7 +338,9 @@ exports[`Storyshots Components/Appointment Preview Recently No Show 1`] = `
           </div>
         </div>
       </div>
-      <svg>
+      <svg
+        onClick={[Function]}
+      >
         chevron-left.svg
       </svg>
     </div>

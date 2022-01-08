@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ScheduleWeekComponent.module.scss";
-import { ScheduleDay, ScheduleWeek } from "../../../utils/types";
+import { ScheduleDay } from "../../../utils/types";
 import _ from "lodash";
 import { DateUtils } from "@zm-blood-components/common";
 import ScheduleCellComponent from "../ScheduleCell";
@@ -10,20 +10,29 @@ export type ScheduleWeekComponentProps = {
   days: ScheduleDay[];
 };
 
+const FIRST_SCROLL_HOUR = 8;
+
 export default function ScheduleWeekComponent(
   props: ScheduleWeekComponentProps
 ) {
   const days = props.days;
+  const topScrollRef = React.useRef(null);
+
+  useEffect(() => {
+    // @ts-ignore
+    topScrollRef.current?.scrollIntoView();
+  }, []);
+
   return (
     <div className={styles.schedule}>
       <div className={classNames(styles.gridColumns)}>
         <div />
         {days.map((day) => (
-          <DayHeader
-            day={day}
-            key={`day.${day.cells[0].cellStartTime.getTime()}`}
-          />
+          <DayHeader day={day} key={`day.${day.dayStartTime.getTime()}`} />
         ))}
+
+        {/*This div is here for spacing on the left column*/}
+        <div />
       </div>
 
       <div className={classNames(styles.scheduleWeek, styles.gridColumns)}>
@@ -41,6 +50,11 @@ export default function ScheduleWeekComponent(
                   cell={day.cells[hourIndex]}
                 />
               ))}
+
+              {/*This div is here for spacing on the left column and for scrolling*/}
+              <div
+                ref={hourIndex === FIRST_SCROLL_HOUR ? topScrollRef : undefined}
+              />
             </React.Fragment>
           );
         })}
@@ -50,7 +64,7 @@ export default function ScheduleWeekComponent(
 }
 
 function DayHeader(props: { day: ScheduleDay }) {
-  const dayStartTime = props.day.cells[0].cellStartTime;
+  const dayStartTime = props.day.dayStartTime;
   return (
     <div key={dayStartTime.toLocaleDateString()} className={styles.dayLabel}>
       <div className={styles.dayNumber}>{dayStartTime.getDate()}</div>

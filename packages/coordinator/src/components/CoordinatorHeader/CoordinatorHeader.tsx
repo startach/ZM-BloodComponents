@@ -13,15 +13,19 @@ import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
 import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.svg";
+import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
+import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 import classNames from "classnames";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 export enum HeaderVariant {
   SECONDARY,
   INFO,
 }
 
-export interface AppHeaderProps {
+export interface CoordinatorHeaderProps {
   title?: string;
   hasBackButton?: boolean;
   hasNotificationsIcon?: boolean;
@@ -29,24 +33,35 @@ export interface AppHeaderProps {
   hasBurgerMenu?: boolean;
   variant: HeaderVariant;
   onBack?: () => void;
+  stickyComponent?: React.ReactNode;
 }
 
 const appVersion = process.env.REACT_APP_VERSION || "dev";
 
-export default function CoordinatorHeader(props: AppHeaderProps) {
+export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
   const [showSideBar, setShowSideBar] = useState(false);
 
   return (
     <div className={styles.appHeader}>
-      <RightIcon {...props} onMenuClick={() => setShowSideBar(!showSideBar)} />
-      <HeaderContent {...props} />
-      <LeftIcon {...props} />
+      <div className={styles.headerRow}>
+        <RightIcon
+          {...props}
+          onMenuClick={() => setShowSideBar(!showSideBar)}
+        />
+        <HeaderContent {...props} />
+        <LeftIcon {...props} />
+      </div>
+
+      {props.stickyComponent && (
+        <div className={styles.stickyComponent}>{props.stickyComponent}</div>
+      )}
+
       <HeaderMenu showSideBar={showSideBar} setShowSideBar={setShowSideBar} />
     </div>
   );
 }
 
-function HeaderContent(props: AppHeaderProps) {
+function HeaderContent(props: CoordinatorHeaderProps) {
   if (props.title) {
     const className =
       props.variant === HeaderVariant.SECONDARY
@@ -68,12 +83,29 @@ function HeaderMenu(props: {
   showSideBar: boolean;
   setShowSideBar: (show: boolean) => void;
 }) {
+  const navigate = useNavigate();
   return (
     <Drawer
       open={props.showSideBar}
       onClose={() => props.setShowSideBar(false)}
       dir={"rtl"}
     >
+      <MenuItem
+        title={""}
+        onClick={() => props.setShowSideBar(false)}
+        icon={<BackIcon className={styles.menuBack} />}
+      />
+      <MenuItem
+        title={"חיפוש משתמשים"}
+        onClick={() => navigate(CoordinatorScreenKey.DONORS)}
+        icon={<SearchIcon />}
+      />
+      <MenuItem
+        title={"דוחות"}
+        onClick={() => navigate(CoordinatorScreenKey.REPORTS)}
+        icon={<ReportIcon />}
+      />
+
       <Divider />
 
       <MenuItem
@@ -91,7 +123,9 @@ function HeaderMenu(props: {
   );
 }
 
-function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
+function RightIcon(
+  props: CoordinatorHeaderProps & { onMenuClick: () => void }
+) {
   const navigate = useNavigate();
   if (props.hasBurgerMenu) {
     return (
@@ -113,7 +147,7 @@ function RightIcon(props: AppHeaderProps & { onMenuClick: () => void }) {
   return null;
 }
 
-function LeftIcon(props: AppHeaderProps) {
+function LeftIcon(props: CoordinatorHeaderProps) {
   if (props.hasNotificationsIcon) {
     return (
       <IconButton

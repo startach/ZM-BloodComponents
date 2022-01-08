@@ -1,14 +1,19 @@
-import CoordinatorHeader from "../../components/CoordinatorHeader";
 import Input from "../../components/Input";
 import { useState } from "react";
 import styles from "./BookManualDonationScreen.module.scss";
-import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
+import {
+  BloodType,
+  BloodTypeUtils,
+  DateUtils,
+} from "@zm-blood-components/common";
 import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
+import CoordinatorScreen from "../../components/CoordinatorScreen";
 
 export interface BookManualDonationScreenProps {
+  donationStartTime: Date;
   onSave: (
     firstName: string,
     lastName: string,
@@ -27,6 +32,7 @@ export default function BookManualDonationScreen(
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [bloodType, setBloodType] = useState(BloodType.NOT_SURE);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -63,19 +69,26 @@ export default function BookManualDonationScreen(
     }
 
     if (valid) {
+      setLoading(true);
       props.onSave(firstName, lastName, phone, bloodType);
     }
   };
 
   return (
-    <div>
-      <CoordinatorHeader
-        title={"הוספה ידנית של תורם"}
-        hasBackButton
-        variant={HeaderVariant.SECONDARY}
-      />
-
+    <CoordinatorScreen
+      headerProps={{
+        title: "הוספה ידנית של תורם",
+        variant: HeaderVariant.SECONDARY,
+        hasBackButton: true,
+      }}
+    >
       <div className={styles.content}>
+        <div className={styles.donationStartTime}>
+          אנא הכנס את הפרטים של התורם בתאריך
+          {DateUtils.ToDateString(props.donationStartTime)}
+          בשעה
+          {DateUtils.ToTimeString(props.donationStartTime)}
+        </div>
         <div className={styles.subtitle}>פרטים אישיים</div>
         <Input
           label="שם פרטי"
@@ -114,18 +127,16 @@ export default function BookManualDonationScreen(
           }}
         />
 
-        <Button
-          title={"אישור והמשך"}
-          onClick={onSave}
-          className={styles.button}
-        />
-        <Button
-          title={"ביטול"}
-          onClick={() => navigate(-1)}
-          className={styles.button}
-          variant={ButtonVariant.outlined}
-        />
+        <div className={styles.buttons}>
+          <Button title={"אישור והמשך"} onClick={onSave} isLoading={loading} />
+          <Button
+            title={"ביטול"}
+            onClick={() => navigate(-1)}
+            variant={ButtonVariant.outlined}
+            isDisabled={loading}
+          />
+        </div>
       </div>
-    </div>
+    </CoordinatorScreen>
   );
 }

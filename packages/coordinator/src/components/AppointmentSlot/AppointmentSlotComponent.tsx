@@ -6,14 +6,12 @@ import { DateUtils } from "@zm-blood-components/common";
 
 export type AppointmentPreviewProps = {
   appointmentSlot: AppointmentSlot;
-  onClickOnAppointment: (appointmentId: string) => void;
   onDeleteAppointment: (appointmentId: string) => void;
   showOnlyAvailableAppointments: boolean;
 };
 
 export default function AppointmentSlotComponent({
   onDeleteAppointment,
-  onClickOnAppointment,
   appointmentSlot,
   showOnlyAvailableAppointments,
 }: AppointmentPreviewProps) {
@@ -27,7 +25,7 @@ export default function AppointmentSlotComponent({
   }
 
   return (
-    <div className={styles.appointmentSlotListContainer}>
+    <div>
       <div className={styles.listHeader}>
         <div className={styles.time}>
           {DateUtils.ToTimeString(appointmentSlot.donationStartTimeMillis)}
@@ -35,18 +33,14 @@ export default function AppointmentSlotComponent({
       </div>
 
       {appointments.map((appointment, index) => (
-        <div key={appointment.appointmentId}>
+        <div
+          key={appointment.appointmentId + "." + showOnlyAvailableAppointments}
+        >
           <AppointmentPreview
             onDelete={() => onDeleteAppointment(appointment.appointmentId)}
             appointment={appointment}
-            onClick={() => onClickOnAppointment(appointment.appointmentId)}
+            addBottomDivider={index < appointments.length - 1}
           />
-
-          {index < appointmentSlot.appointments.length - 1 && (
-            <div className={styles.dividerContainer}>
-              <div className={styles.divider} />
-            </div>
-          )}
         </div>
       ))}
     </div>

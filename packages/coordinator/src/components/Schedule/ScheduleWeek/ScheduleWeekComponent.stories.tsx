@@ -21,8 +21,9 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   const cells: ScheduleCell[] = [];
   for (let i = 0; i < 24; i++) {
     const cellStartMillis = dayStartMillis + i * millisInHour;
-    const appointmentsCount = (dayOffset + i) % 3 == 0 ? 3 : 0;
+    const appointmentsCount = (dayOffset + i) % 3 === 0 ? 3 : 0;
     const bookedAppointmentsCount = (dayOffset * 3 + i) % 4;
+
     cells.push({
       cellStartTime: new Date(cellStartMillis),
       onClick,
@@ -32,6 +33,7 @@ const days = daysOffset.map<ScheduleDay>((dayOffset) => {
   }
 
   return {
+    dayStartTime: new Date(dayStartMillis),
     cells,
   };
 });
