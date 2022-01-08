@@ -18,8 +18,16 @@ export default function ScheduleScreenContainer(
     DateUtils.TodayAdMidnight()
   );
   const [days, setDays] = useState<ScheduleDay[]>([]);
-  const [hospital, setHospital] = useState(props.availableHospitals[0]);
+
+  // Arbitrary hospital, just so it would not fail TODO(Yaron) - fix this ugliness
+  const [hospital, setHospital] = useState(Hospital.BEILINSON);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (props.loggedIn && props.availableHospitals.length > 0) {
+      setHospital(props.availableHospitals[0]);
+    }
+  }, [props.loggedIn, props.availableHospitals]);
 
   useEffect(() => {
     if (!props.loggedIn) {
