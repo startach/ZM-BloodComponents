@@ -8,7 +8,6 @@ import {
   sendEmailToDonor,
 } from "../notifications/NotificationSender";
 import _ from "lodash";
-import { isProd } from "../utils/EnvUtils";
 import { DbDonor } from "../function-types";
 
 export const confirmationReminderOnSameDayJob = functions.pubsub
@@ -72,12 +71,10 @@ export const SendConfirmationReminders = async (
       functions.logger.error("Donor not found for donation: " + appointment.id);
       return;
     }
-    if (!isProd()) {
-      await sendEmailToDonor(
-        NotificationToDonor.DONATION_CONFIRMATION,
-        getAppointmentNotificationData(appointment, donor),
-        donor
-      );
-    }
+    await sendEmailToDonor(
+      NotificationToDonor.DONATION_CONFIRMATION,
+      getAppointmentNotificationData(appointment, donor),
+      donor
+    );
   }
 };
