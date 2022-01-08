@@ -27,12 +27,16 @@ export const confirmationReminderOnSameDayJob = functions.pubsub
     await SendConfirmationReminders(start, end);
   });
 
+const DISABLE_DAILY_JOB = true;
 // Run every day at 19:00  Israel Time
 //https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 export const confirmationReminderOnNextDayJob = functions.pubsub
   .schedule("0 19 * * *")
   .timeZone("Asia/Jerusalem")
   .onRun(async () => {
+    if (DISABLE_DAILY_JOB) {
+      return;
+    }
     const now = new Date();
     const lastDay = new Date();
     lastDay.setDate(lastDay.getDate() - 1);
