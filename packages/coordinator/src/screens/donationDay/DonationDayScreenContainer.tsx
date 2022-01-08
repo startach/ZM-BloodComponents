@@ -6,6 +6,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DonationDayScreen from "./DonationDayScreen";
 import { fetchDonationDay } from "./DonationDayFetcher";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
+import { getTimestamp } from "../../navigation/RouterUtils";
 
 export interface DonationDayScreenContainerProps {
   loggedIn: boolean;
@@ -53,10 +54,10 @@ export default function DonationDayScreenContainer(
 }
 
 function getDayStartTime(timestamp: string | undefined) {
-  if (!timestamp || isNaN(parseInt(timestamp))) {
+  const time = getTimestamp(timestamp);
+  if (!time) {
     return undefined;
   }
 
-  const requestedTimestamp = new Date(parseInt(timestamp));
-  return DateUtils.GetStartOfDay(requestedTimestamp);
+  return DateUtils.GetStartOfDay(time);
 }

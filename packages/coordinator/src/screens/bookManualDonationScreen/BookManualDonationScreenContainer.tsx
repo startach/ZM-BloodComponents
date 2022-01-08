@@ -3,6 +3,7 @@ import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookManualDonationScreen from "./BookManualDonationScreen";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
+import { getTimestamp } from "../../navigation/RouterUtils";
 
 export interface BookManualDonationScreenContainerProps {
   loggedIn: boolean;
@@ -51,12 +52,4 @@ export default function BookManualDonationScreenContainer(
       donationStartTime={donationStartTime}
     />
   );
-}
-
-function getTimestamp(timestamp: string | undefined) {
-  if (!timestamp || isNaN(parseInt(timestamp))) {
-    return undefined;
-  }
-
-  return new Date(parseInt(timestamp));
 }

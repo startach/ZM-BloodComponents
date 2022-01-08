@@ -26,6 +26,7 @@ import SplashScreen from "../screens/loading/SplashScreen";
 import ScheduleScreenContainer from "../screens/schedule/ScheduleScreenContainer";
 import DonationDayScreenContainer from "../screens/donationDay/DonationDayScreenContainer";
 import BookManualDonationScreenContainer from "../screens/bookManualDonationScreen/BookManualDonationScreenContainer";
+import { schedulePath } from "./RouterUtils";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -53,7 +54,7 @@ const ROLES_THAT_VIEW_DONORS = [
   CoordinatorRole.GROUP_COORDINATOR,
 ];
 
-const USE_NEW_COORDINATOR = false;
+const USE_NEW_COORDINATOR = process.env.REACT_APP_USE_NEW_COORDINATOR;
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -126,15 +127,23 @@ export default function CoordinatorRouter() {
           path={CoordinatorScreenKey.RESET_PASSWORD}
           element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
         />
-        <Route
-          path={CoordinatorScreenKey.SCHEDULE}
-          element={
-            <ScheduleScreenContainer
-              loggedIn={loggedIn}
-              availableHospitals={activeHospitalsForCoordinator}
-            />
-          }
-        />
+        <Route path={CoordinatorScreenKey.SCHEDULE}>
+          <Route
+            path={""}
+            element={
+              <Navigate to={schedulePath(activeHospitalsForCoordinator[0])} />
+            }
+          />
+          <Route
+            path={":hospital/:timestamp"}
+            element={
+              <ScheduleScreenContainer
+                loggedIn={loggedIn}
+                availableHospitals={activeHospitalsForCoordinator}
+              />
+            }
+          />
+        </Route>
 
         <Route
           path={CoordinatorScreenKey.DAY + "/:hospital/:timestamp"}
