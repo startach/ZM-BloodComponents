@@ -7,18 +7,18 @@ import TimePicker from "../../components/V2/TimePicker";
 import Select from "../../components/V2/Select";
 import { SelectOption } from "@zm-blood-components/common";
 import classnames from "classnames";
+import { range } from "lodash";
 
 export interface AddAppointmentScreenProps {
   onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
 }
 
-const slotOptions: SelectOption<number>[] = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-].map((n) => ({
-  label: n + "",
-  value: n,
+const slotOptions: SelectOption<number>[] = range(10).map((n) => ({
+  label: n+1 + "",
+  value: n+1,
   key: n + "",
 }));
+
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   const [date, setDate] = useState<Date | null>(null);
