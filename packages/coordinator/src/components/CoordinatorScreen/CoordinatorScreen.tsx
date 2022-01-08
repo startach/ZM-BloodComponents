@@ -18,7 +18,9 @@ export default function CoordinatorScreen(props: CoordinatorScreenProps) {
     <div className={styles.coordinatorScreen}>
       <CoordinatorHeader {...props.headerProps} />
 
-      <div className={classnames(styles.screenContent, props.className)}>{props.children}</div>
+      <div className={classnames(styles.screenContent, props.className)}>
+        {props.children}
+      </div>
 
       {props.showFab && <AddAppointmentFab />}
     </div>

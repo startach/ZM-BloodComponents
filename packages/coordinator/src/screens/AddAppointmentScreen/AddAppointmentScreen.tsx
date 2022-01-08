@@ -17,11 +17,10 @@ export interface AddAppointmentScreenProps {
 }
 
 const slotOptions: SelectOption<number>[] = range(10).map((n) => ({
-  label: n+1 + "",
-  value: n+1,
+  label: n + 1 + "",
+  value: n + 1,
   key: n + "",
 }));
-
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   const [date, setDate] = useState<Date | null>(null);
@@ -38,7 +37,8 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
         title: "הוספת תור יחיד",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
-      }}>
+      }}
+    >
       <div className={styles.addAppoinmentScreenCardContainer}>
         <div className={styles.cardContainer}>
           <div className={styles.addApponimentSubtitle}>

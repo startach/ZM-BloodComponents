@@ -1,4 +1,6 @@
-import AddAppointmentScreen, { AddAppointmentScreenProps } from "./AddAppointmentScreen";
+import AddAppointmentScreen, {
+  AddAppointmentScreenProps,
+} from "./AddAppointmentScreen";
 import { Meta } from "@storybook/react";
 
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
