@@ -1,5 +1,6 @@
 import * as functions from "firebase-functions";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
+import { isProd } from "../utils/EnvUtils";
 
 export const unsubscribeHandler = functions.https.onRequest(
   async (request, res) => {
@@ -28,9 +29,13 @@ export const unsubscribeHandler = functions.https.onRequest(
 
     await DonorDataAccessLayer.setDonor(dbDonor);
 
-    res.send("הרישום הוסר בהצלחה");
+    let redirectUrl;
+    if (isProd()) {
+      redirectUrl = "https://blood-bank.zichron.org/unsubscribe";
+    } else {
+      redirectUrl = "https://zm-donor-qa.web.app/unsubscribe";
+    }
 
-    // TODO redirect users to the unsubscribe screen
-    // res.redirect('https://blood-bank.zichron.org/unsubscribe');
+    res.redirect(redirectUrl);
   }
 );
