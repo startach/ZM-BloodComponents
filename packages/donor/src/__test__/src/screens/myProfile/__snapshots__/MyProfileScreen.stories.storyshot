@@ -193,39 +193,6 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               className="pickerButtonContainer"
             >
               <div
-                className="pickerButton bloodTypeButton"
-                color="default"
-                onClick={[Function]}
-              >
-                O+
-              </div>
-            </div>
-            <div
-              className="pickerButtonContainer"
-            >
-              <div
-                className="pickerButton bloodTypeButton"
-                color="default"
-                onClick={[Function]}
-              >
-                O-
-              </div>
-            </div>
-            <div
-              className="pickerButtonContainer"
-            >
-              <div
-                className="pickerButton bloodTypeButton"
-                color="default"
-                onClick={[Function]}
-              >
-                A+
-              </div>
-            </div>
-            <div
-              className="pickerButtonContainer"
-            >
-              <div
                 className="pickerButton bloodTypeButton selectedButton"
                 color="primary"
                 onClick={[Function]}
@@ -241,7 +208,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                B+
+                A+
               </div>
             </div>
             <div
@@ -263,7 +230,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                AB+
+                B+
               </div>
             </div>
             <div
@@ -275,6 +242,39 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 onClick={[Function]}
               >
                 AB-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton bloodTypeButton"
+                color="default"
+                onClick={[Function]}
+              >
+                AB+
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton bloodTypeButton"
+                color="default"
+                onClick={[Function]}
+              >
+                O-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton bloodTypeButton"
+                color="default"
+                onClick={[Function]}
+              >
+                O+
               </div>
             </div>
             <div

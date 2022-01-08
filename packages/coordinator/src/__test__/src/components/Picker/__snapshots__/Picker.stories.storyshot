@@ -26,18 +26,7 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
           color="default"
           onClick={[Function]}
         >
-          O+
-        </div>
-      </div>
-      <div
-        className="pickerButtonContainer"
-      >
-        <div
-          className="pickerButton storyBloodTypeButton"
-          color="default"
-          onClick={[Function]}
-        >
-          O-
+          A-
         </div>
       </div>
       <div
@@ -59,7 +48,7 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
           color="default"
           onClick={[Function]}
         >
-          A-
+          B-
         </div>
       </div>
       <div
@@ -81,7 +70,7 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
           color="default"
           onClick={[Function]}
         >
-          B-
+          AB-
         </div>
       </div>
       <div
@@ -103,7 +92,18 @@ exports[`Storyshots Components/Picker Blood Type Picker 1`] = `
           color="default"
           onClick={[Function]}
         >
-          AB-
+          O-
+        </div>
+      </div>
+      <div
+        className="pickerButtonContainer"
+      >
+        <div
+          className="pickerButton storyBloodTypeButton"
+          color="default"
+          onClick={[Function]}
+        >
+          O+
         </div>
       </div>
       <div

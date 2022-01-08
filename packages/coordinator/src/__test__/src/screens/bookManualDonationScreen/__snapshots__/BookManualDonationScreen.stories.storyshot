@@ -187,18 +187,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                O+
-              </div>
-            </div>
-            <div
-              className="pickerButtonContainer"
-            >
-              <div
-                className="pickerButton"
-                color="default"
-                onClick={[Function]}
-              >
-                O-
+                A-
               </div>
             </div>
             <div
@@ -220,7 +209,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                A-
+                B-
               </div>
             </div>
             <div
@@ -242,7 +231,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                B-
+                AB-
               </div>
             </div>
             <div
@@ -264,7 +253,18 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
                 color="default"
                 onClick={[Function]}
               >
-                AB-
+                O-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                O+
               </div>
             </div>
             <div
