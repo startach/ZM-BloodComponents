@@ -13,8 +13,12 @@ import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
 import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.svg";
+import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
+import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
+import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 import classNames from "classnames";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 export enum HeaderVariant {
   SECONDARY,
@@ -79,12 +83,29 @@ function HeaderMenu(props: {
   showSideBar: boolean;
   setShowSideBar: (show: boolean) => void;
 }) {
+  const navigate = useNavigate();
   return (
     <Drawer
       open={props.showSideBar}
       onClose={() => props.setShowSideBar(false)}
       dir={"rtl"}
     >
+      <MenuItem
+        title={""}
+        onClick={() => props.setShowSideBar(false)}
+        icon={<BackIcon className={styles.menuBack} />}
+      />
+      <MenuItem
+        title={"חיפוש משתמשים"}
+        onClick={() => navigate(CoordinatorScreenKey.DONORS)}
+        icon={<SearchIcon />}
+      />
+      <MenuItem
+        title={"דוחות"}
+        onClick={() => navigate(CoordinatorScreenKey.REPORTS)}
+        icon={<ReportIcon />}
+      />
+
       <Divider />
 
       <MenuItem

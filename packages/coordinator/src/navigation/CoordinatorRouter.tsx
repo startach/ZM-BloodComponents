@@ -169,6 +169,21 @@ export default function CoordinatorRouter() {
           element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
         />
 
+        {/*Old screens*/}
+        <Route
+          path={CoordinatorScreenKey.DONORS}
+          element={<SearchDonorsScreenContainer />}
+        />
+
+        <Route
+          path={CoordinatorScreenKey.REPORTS}
+          element={
+            <ScheduledAppointmentsContainer
+              activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+            />
+          }
+        />
+
         {/*in case of no match*/}
         <Route
           path="*"
@@ -237,7 +252,7 @@ export default function CoordinatorRouter() {
         )}
         {canViewBookedAppointments && (
           <Route
-            path={CoordinatorScreenKey.BOOKED_DONATIONS}
+            path={CoordinatorScreenKey.REPORTS}
             element={
               <ScheduledAppointmentsContainer
                 activeHospitalsForCoordinator={activeHospitalsForCoordinator}

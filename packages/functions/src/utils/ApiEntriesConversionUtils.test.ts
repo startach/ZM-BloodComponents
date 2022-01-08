@@ -1,8 +1,9 @@
 import {
+  AppointmentStatus,
+  BloodType,
+  BookingChange,
   FunctionsApi,
   Hospital,
-  BookingChange,
-  AppointmentStatus,
   MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
@@ -115,6 +116,7 @@ test("AppointmentApiEntry has donor name when donor is a manual donor", () => {
       firstName: "AAAA",
       lastName: "BB",
       phoneNumber: "123",
+      bloodType: BloodType.NOT_SURE,
     },
   };
   const res = dbAppointmentToAppointmentApiEntry(appointment, []);

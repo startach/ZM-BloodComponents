@@ -5,7 +5,6 @@ import {
 } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
-import Spinner from "../../components/Spinner";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -17,7 +16,8 @@ export default function BookedAppointmentScreen(
   props: BookedAppointmentScreenProps
 ) {
   if (!props.appointment) {
-    return <Spinner />;
+    // Loading state
+    return null;
   }
 
   const time = DateUtils.ToDateString(

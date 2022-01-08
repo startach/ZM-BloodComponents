@@ -8,6 +8,7 @@ export type AppointmentPreviewProps = {
   className?: string;
 };
 
+const SWIPE_WIDTH = 200;
 export default function SwippableComponent(props: AppointmentPreviewProps) {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -21,9 +22,9 @@ export default function SwippableComponent(props: AppointmentPreviewProps) {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 150) {
+    if (touchStart - touchEnd > SWIPE_WIDTH) {
       props.onSwipeLeft();
-    } else if (touchStart - touchEnd < -150) {
+    } else if (touchStart - touchEnd < -SWIPE_WIDTH) {
       props.onSwipeRight();
     }
   };
