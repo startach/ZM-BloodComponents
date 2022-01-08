@@ -36,7 +36,6 @@ export async function fetchScheduleAppointments(
       getEmptyCell(hourStartTime, onClickCell);
 
     cell.appointmentsCount++;
-    // TODO add status to AppointmentApiEntry
     if (appointment.donorId) {
       cell.bookedAppointmentsCount++;
     }

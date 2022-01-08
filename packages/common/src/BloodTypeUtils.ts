@@ -1,25 +1,22 @@
 import { BloodType, SelectOption } from "./types";
 import { LocaleUtils } from "./index";
 
-export function getBloodTypeSelectOptionsWithDefault(defaultLabel: string) {
-  const bloodTypeOptions: SelectOption<BloodType | "">[] =
-    getBloodTypeSelectOptions();
-  bloodTypeOptions.unshift({
-    key: "undefined",
-    value: "",
-    label: defaultLabel,
-  });
-  return bloodTypeOptions;
-}
-
 export function getBloodTypeSelectOptions() {
-  return Object.values(BloodType).map<SelectOption<BloodType>>(
-    (type, index) => {
-      return {
-        key: index + type,
-        value: type,
-        label: LocaleUtils.getBloodTypeTranslation(BloodType[type]),
-      };
-    }
-  );
+  return [
+    BloodType.A_MINUS,
+    BloodType.A_PLUS,
+    BloodType.B_MINUS,
+    BloodType.B_PLUS,
+    BloodType.AB_MINUS,
+    BloodType.AB_PLUS,
+    BloodType.O_MINUS,
+    BloodType.O_PLUS,
+    BloodType.NOT_SURE,
+  ].map<SelectOption<BloodType>>((type, index) => {
+    return {
+      key: index + type,
+      value: type,
+      label: LocaleUtils.getBloodTypeTranslation(BloodType[type]),
+    };
+  });
 }
