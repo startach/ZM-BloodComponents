@@ -7,7 +7,7 @@ import TimePicker from "../../components/TimePicker";
 import Select from "../../components/Select";
 import { SelectOption } from "@zm-blood-components/common";
 import classnames from "classnames";
-import { range } from "lodash";
+import _ from "lodash"
 
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
@@ -16,7 +16,7 @@ export interface AddAppointmentScreenProps {
   onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
 }
 
-const slotOptions: SelectOption<number>[] = range(10).map((n) => ({
+const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
   label: n + 1 + "",
   value: n + 1,
   key: n + "",
