@@ -3,14 +3,12 @@ import AddAppointmentScreen, {
 } from "./AddAppointmentScreen";
 import { Meta } from "@storybook/react";
 
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-import { he } from "date-fns/locale";
+
 import { action } from "@storybook/addon-actions";
 
 export default {
   component: AddAppointmentScreen,
-  title: "Screens/Appointment Screen",
+  title: "Screens/Add Appointment Screen",
   parameters: { layout: "fullscreen" },
 } as Meta;
 
@@ -23,7 +21,9 @@ const props: AddAppointmentScreenProps = {
 };
 
 export const Default = (args: AddAppointmentScreenProps) => {
-  return <AddAppointmentScreen {...args} />;
+  return (
+      <AddAppointmentScreen {...args} />
+  );
 };
 
 Default.args = props;
