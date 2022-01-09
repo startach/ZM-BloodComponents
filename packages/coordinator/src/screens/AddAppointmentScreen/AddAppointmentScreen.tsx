@@ -64,7 +64,6 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           </div>
           <Select
             containerClassName={styles.inputField}
-            id={"donations_count"}
             label={"מספר עמדות"}
             options={slotOptions}
             onChange={setSlots}

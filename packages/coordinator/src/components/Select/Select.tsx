@@ -10,7 +10,7 @@ import styles from "./Select.module.scss";
 type SelectVariant = "standard" | "filled" | "outlined";
 
 type SelectProps<T> = {
-  id: string;
+  id?: string;
   label?: string;
   onChange: (value: T) => void;
   value?: T;
