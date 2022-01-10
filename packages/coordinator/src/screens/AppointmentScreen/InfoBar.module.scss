@@ -1,0 +1,11 @@
+.infoBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titleContent {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
