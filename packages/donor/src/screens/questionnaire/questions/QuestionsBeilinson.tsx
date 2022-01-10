@@ -9,21 +9,16 @@ export default function QuestionsBeilinson({
   setAreAllAnswersCorrect,
   goToHomePage,
 }: QuestionsProps) {
-  const [hasAlreadyDonated, setHasAlreadyDonated] = React.useState<
-    boolean | undefined
-  >(undefined);
-  const [isWeightValid, setIsWeightValid] = React.useState<boolean | undefined>(
-    undefined
-  );
-  const [isSurgeryValid, setIsSurgeryValid] = React.useState<
-    boolean | undefined
-  >(undefined);
-  const [isRightAge, setIsRightAge] = React.useState<boolean | undefined>(
-    undefined
-  );
-  const [wasPregnant, setWasPregnantEver] = React.useState<string | undefined>(
-    undefined
-  );
+  const [hasAlreadyDonated, setHasAlreadyDonated] =
+    React.useState<boolean | undefined>(undefined);
+  const [isWeightValid, setIsWeightValid] =
+    React.useState<boolean | undefined>(undefined);
+  const [isSurgeryValid, setIsSurgeryValid] =
+    React.useState<boolean | undefined>(undefined);
+  const [isRightAge, setIsRightAge] =
+    React.useState<boolean | undefined>(undefined);
+  const [wasPregnant, setWasPregnantEver] =
+    React.useState<string | undefined>(undefined);
 
   useEffect(() => {
     const res =

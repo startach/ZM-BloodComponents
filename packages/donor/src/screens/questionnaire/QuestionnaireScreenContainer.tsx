@@ -22,9 +22,8 @@ export function QuestionnaireScreenContainer(
 ) {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<
-    FunctionsApi.BookAppointmentStatus | undefined
-  >();
+  const [error, setError] =
+    useState<FunctionsApi.BookAppointmentStatus | undefined>();
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
