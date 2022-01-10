@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./InfoBar.module.scss.module.scss";
+import styles from "./InfoBar.module.scss";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 export type InfoBarProps = {

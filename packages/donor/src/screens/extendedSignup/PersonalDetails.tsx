@@ -39,8 +39,9 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [lastNameError, setLastNameError] =
-    useState<string | undefined>(undefined);
+  const [lastNameError, setLastNameError] = useState<string | undefined>(
+    undefined
+  );
 
   const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
   const phoneValidator = /^05(?!6)\d{8}$/;
