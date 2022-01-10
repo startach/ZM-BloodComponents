@@ -1,26 +1,20 @@
-import TimePicker, { TimePickerProps } from "./TimePicker"
+import TimePicker, { TimePickerProps } from "./TimePicker";
 import { Meta } from "@storybook/react";
 
-
-import { action } from "@storybook/addon-actions";
-
 export default {
-    component: TimePicker,
-    title: "Components/Time Picker",
-    parameters: { layout: "padded" },
+  component: TimePicker,
+  title: "Components/Time Picker",
+  parameters: { layout: "padded" },
 } as Meta;
 
 const props: TimePickerProps = {
-    label: "בחר שעה",
-    onChange: () => {},
-    value: new Date()
+  label: "בחר שעה",
+  onChange: () => {},
+  value: new Date(),
 };
 
 export const Default = (args: TimePickerProps) => {
-return (
-    <TimePicker {...args} />
-);
+  return <TimePicker {...args} />;
 };
 
 Default.args = props;
-  

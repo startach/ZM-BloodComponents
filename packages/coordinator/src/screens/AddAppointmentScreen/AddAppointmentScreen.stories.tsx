@@ -3,7 +3,6 @@ import AddAppointmentScreen, {
 } from "./AddAppointmentScreen";
 import { Meta } from "@storybook/react";
 
-
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -21,9 +20,7 @@ const props: AddAppointmentScreenProps = {
 };
 
 export const Default = (args: AddAppointmentScreenProps) => {
-  return (
-      <AddAppointmentScreen {...args} />
-  );
+  return <AddAppointmentScreen {...args} />;
 };
 
 Default.args = props;

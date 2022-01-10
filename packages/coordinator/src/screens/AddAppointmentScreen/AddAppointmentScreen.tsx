@@ -7,7 +7,7 @@ import TimePicker from "../../components/TimePicker";
 import Select from "../../components/Select";
 import { SelectOption } from "@zm-blood-components/common";
 import classnames from "classnames";
-import _ from "lodash"
+import _ from "lodash";
 
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
