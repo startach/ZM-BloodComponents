@@ -4,6 +4,7 @@ import WithGlobalTheme from "../src/HOCs/withGlobalTheme";
 import { Story, StoryContext } from "@storybook/react";
 import "../src/styles/index.scss";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { MemoryRouter } from "react-router-dom";
 
 // https://github.com/mui-org/material-ui/issues/9492#issuecomment-657609780
 const generateClassName = () => {
@@ -16,6 +17,11 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
     defaultViewport: "iphonex",
+  },
+  options: {
+    storySort: {
+      method: "alphabetical",
+    },
   },
 };
 
@@ -32,11 +38,13 @@ export default function WithStableMuiClassnames(props: {
 const withMuiProvider = (Story: Story, context: StoryContext) => {
   return (
     <div dir="rtl" style={{ height: "100vh" }}>
-      <WithStableMuiClassnames>
-        <WithGlobalTheme>
-          <Story {...context} />
-        </WithGlobalTheme>
-      </WithStableMuiClassnames>
+      <MemoryRouter>
+        <WithStableMuiClassnames>
+          <WithGlobalTheme>
+            <Story {...context} />
+          </WithGlobalTheme>
+        </WithStableMuiClassnames>
+      </MemoryRouter>
     </div>
   );
 };

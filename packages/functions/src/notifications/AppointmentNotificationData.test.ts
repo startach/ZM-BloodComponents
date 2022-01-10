@@ -29,25 +29,21 @@ describe("Appointment Notification Data", function () {
     expect(res.date).toEqual("18/11/2021");
     expect(res.time).toEqual("10:30");
     expect(res.hospital).toEqual("בילינסון");
+    expect(res.donorId).toEqual("donorId");
+    expect(res.donorEmail).toEqual(sampleUser.email);
     expect(res.donorName).toEqual(
       sampleUser.firstName + " " + sampleUser.lastName
     );
     expect(res.donorPhone).toEqual(sampleUser.phone);
     expect(res.donationStartTimeMillis).toEqual(donationStartTime);
     expect(res.unsubscribeLink).toEqual(
-      encodeURIComponent(
-        "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=donorId"
-      )
+      "https://us-central1-blood-components-9ad48.cloudfunctions.net/unsubscribe?method=email&userId=donorId"
     );
     expect(res.donationApprovalLink).toEqual(
-      encodeURIComponent(
-        "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=false"
-      )
+      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=false"
     );
     expect(res.donationNoShowLink).toEqual(
-      encodeURIComponent(
-        "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=true"
-      )
+      "https://us-central1-blood-components-9ad48.cloudfunctions.net/completeAppointmentApiHandler?donorId=donorId&appointmentId=appointmentId&isNoshow=true"
     );
   });
 });

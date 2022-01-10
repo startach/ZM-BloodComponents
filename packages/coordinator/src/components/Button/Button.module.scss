@@ -1,19 +1,27 @@
-button.zm-btn {
-  background: var(--coordinator-primary) !important;
-  transition: all 0.1s ease !important;
-  &:hover {
-    opacity: 0.9;
-    transform: translateY(-3px);
-  }
-  &:active {
-    transform: translateY(-1px);
-  }
-}
-
 .button {
   font-size: 16px;
   height: 44px;
   border-radius: 6px !important;
+}
+
+.primaryButton {
+  background-color: var(--coordinator-primary) !important;
+  color: var(--color-white) !important;
+}
+
+.secondaryButton {
+  background-color: var(--coordinator-secondary) !important;
+  color: var(--color-white) !important;
+}
+
+.outlinedButton {
+  background-color: var(--color-white) !important;
+  color: var(--coordinator-dark-gray) !important;
+}
+
+.disabledButton {
+  background-color: var(--coordinator-light-gray) !important;
+  color: var(--coordinator-gray) !important;
 }
 
 .textButton {

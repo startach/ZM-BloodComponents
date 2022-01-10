@@ -36,8 +36,23 @@ export function ToWeekDayString(
   date: ParsableDateValue | number,
   format?: string
 ) {
-  //TODO: update the word "Day" based on the locale (in ar + en)
   return `יום ${dayjs(date, format).locale("he").format("dddd")}`;
+}
+
+export function ToMonthString(
+  date: ParsableDateValue | number,
+  short?: boolean
+) {
+  const format = short ? "MMM" : "MMMM";
+  let res = dayjs(date).locale("he").format(format);
+  if (short) {
+    res += "'";
+  }
+  return res;
+}
+
+export function ToWeekDayLetter(date: ParsableDateValue | number) {
+  return dayjs(date).locale("he").format("dd").substring(0, 1);
 }
 
 export function DateComparer(date1: Date, date2: Date): number {
@@ -50,10 +65,32 @@ export function DateToMidnight(date: Date) {
   return midnight;
 }
 
+export function isSameDay(date1: Date, date2: Date) {
+  return DateToMidnight(date1).getTime() === DateToMidnight(date2).getTime();
+}
+
 export function TodayAdMidnight() {
   const midnight = new Date();
   midnight.setHours(0, 0, 0, 0);
   return midnight;
+}
+
+export function GetStartOfDay(date: Date | number) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
+export function GetStartOfHour(date: Date | number) {
+  const d = new Date(date);
+  d.setMinutes(0, 0, 0);
+  return d;
+}
+
+export function GetStartOfTheWeek(date: Date | number) {
+  const time = GetStartOfDay(date);
+  time.setDate(time.getDate() - time.getDay());
+  return time;
 }
 
 export function DateWithAddedMinutes(date: Date, minutes: number) {

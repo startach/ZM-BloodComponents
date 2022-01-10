@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Schedule/Cell All Available 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "width": 60,
+      }
+    }
+  >
+    <div
+      className="scheduleHourSquare partiallyBooked"
+      onClick={[Function]}
+    >
+      0/3
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Schedule/Cell Fully Booked 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "width": 60,
+      }
+    }
+  >
+    <div
+      className="scheduleHourSquare fullyBooked"
+      onClick={[Function]}
+    >
+      3/3
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Schedule/Cell No Appointments 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "width": 60,
+      }
+    }
+  >
+    <div
+      className="scheduleHourSquare empty"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Schedule/Cell Partially Booked 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "width": 60,
+      }
+    }
+  >
+    <div
+      className="scheduleHourSquare partiallyBooked"
+      onClick={[Function]}
+    >
+      1/3
+    </div>
+  </div>
+</div>
+`;

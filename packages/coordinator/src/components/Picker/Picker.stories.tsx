@@ -7,11 +7,12 @@ import {
 import { useState } from "react";
 import styles from "./Picker.module.scss";
 import { action } from "@storybook/addon-actions";
+import { Meta } from "@storybook/react";
 
 export default {
   component: Picker,
   title: "Components/Picker",
-};
+} as Meta;
 
 export const BloodTypePicker = () => {
   const [selected, setSelected] = useState<BloodType | undefined>();

@@ -6,23 +6,28 @@ export async function validateAppointmentEditPermissions(
   userId: string,
   hospitals: Set<Hospital>
 ) {
-  const admin = await getCoordinator(userId);
-  if (!admin) {
-    console.error("Could not find calling user", userId);
+  const coordinator = await getCoordinator(userId);
+  validateAppointmentPermissions(hospitals, coordinator);
+  return userId;
+}
+
+export function validateAppointmentPermissions(
+  hospitals: Set<Hospital>,
+  coordinator?: DbCoordinator
+) {
+  if (!coordinator) {
     throw Error("User is not a coordinator and can't edit appointments");
   }
 
-  if (!adminAllowedToAddAppointments(admin, hospitals)) {
+  if (!adminAllowedToAddAppointments(coordinator, hospitals)) {
     console.error(
       "User",
-      userId,
+      coordinator.id,
       "role does not allow adding appointments to",
       hospitals
     );
     throw Error("Coordinator has no permissions for hospital");
   }
-
-  return userId;
 }
 
 function adminAllowedToAddAppointments(
@@ -51,7 +56,7 @@ function allHospitalsAreInCoordinatorHospitalList(
   adminHospitals: Set<Hospital>,
   requestedHospitals: Set<Hospital>
 ) {
-  for (const requestedHospital of requestedHospitals) {
+  for (const requestedHospital of Array.from(requestedHospitals)) {
     if (!adminHospitals.has(requestedHospital)) {
       console.warn("Admin is not allowed to edit", requestedHospital);
       return false;

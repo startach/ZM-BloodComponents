@@ -1,0 +1,73 @@
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 64px;
+  padding: 0 5px;
+  justify-content: space-between;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-size: 14pt;
+  position: fixed;
+  width: 100%;
+  font-weight: normal;
+}
+
+.secondaryTitle {
+  color: var(--coordinator-secondary);
+}
+
+.infoTitle {
+  color: var(--coordinator-dark-gray);
+}
+
+.logoImage {
+  padding-top: 8px;
+}
+
+.rightButton {
+  z-index: 10;
+}
+
+.stickyComponent {
+  border-top: 1px solid var(--coordinator-divider);
+}
+
+.leftButton {
+  z-index: 10;
+}
+
+.listItem {
+  min-width: 50vw;
+  padding-bottom: 10px;
+}
+
+.version {
+  font-size: 14px;
+  margin-right: 20px;
+  padding-bottom: 10px;
+}
+
+.zmLogoImage {
+  height: 84px;
+  width: 80px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 69px;
+}
+
+.menuBack {
+  padding-top: 10px;
+}

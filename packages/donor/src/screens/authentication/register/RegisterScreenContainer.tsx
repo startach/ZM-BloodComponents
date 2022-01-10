@@ -1,10 +1,13 @@
 import RegisterScreen from "./RegisterScreen";
-import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../../navigation/app/MainNavigationKeys";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function RegisterScreenContainer() {
-  const history = useHistory();
+export default function RegisterScreenContainer(props: { loggedIn: boolean }) {
+  const navigate = useNavigate();
+  if (props.loggedIn) {
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
+  }
 
   const onRegister = (
     email: string,
@@ -21,7 +24,7 @@ export default function RegisterScreenContainer() {
   };
 
   const goToSignIn = () => {
-    history.push(MainNavigationKeys.Login);
+    navigate(MainNavigationKeys.Login);
   };
 
   return <RegisterScreen onRegister={onRegister} goToSignIn={goToSignIn} />;

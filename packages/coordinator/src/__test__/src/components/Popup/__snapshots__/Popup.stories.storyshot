@@ -12,7 +12,7 @@ exports[`Storyshots Components/Popup Custom Content 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -56,7 +56,7 @@ exports[`Storyshots Components/Popup Default 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -100,7 +100,7 @@ exports[`Storyshots Components/Popup Long Text 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -144,7 +144,7 @@ exports[`Storyshots Components/Popup No Cancel 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -188,7 +188,7 @@ exports[`Storyshots Components/Popup With Title 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}

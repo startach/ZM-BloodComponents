@@ -1,3 +1,4 @@
+import { isEmpty } from "lodash";
 import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
@@ -42,6 +43,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [lastNameError, setLastNameError] = useState<string | undefined>(
     undefined
   );
+  const [firstNameError, setFirstNameError] = useState("");
 
   const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
   const phoneValidator = /^05(?!6)\d{8}$/;
@@ -55,15 +57,34 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     erorrMessage = "מספר הטלפון אינו תקין";
   }
 
-  const areAllFieldsValid = !lastNameError && isValidPhone && bloodType;
+  const areAllFieldsValid =
+    !firstNameError && !lastNameError && isValidPhone && bloodType;
+  const allFieldsHaveValue =
+    !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(phone);
 
-  const setLastNameAndValidate = (newLastName: string) => {
-    if (firstName.length + lastName.length > 20) {
-      setLastNameError("השם המלא ארוך מ-20 תווים");
-    } else {
-      setLastNameError("");
+  const setFirstNameAndValidate = (newFirstName: string) => {
+    let firstNameErrorMessage = "";
+
+    if (newFirstName.length < 2) {
+      firstNameErrorMessage = "שם אינו תקין";
     }
 
+    setFirstNameError(firstNameErrorMessage);
+    setFirstName(newFirstName);
+  };
+
+  const setLastNameAndValidate = (newLastName: string) => {
+    let lastNameError = "";
+
+    if (firstName.length + newLastName.length > 20) {
+      lastNameError = "השם המלא ארוך מ-20 תווים";
+    }
+
+    if (newLastName.length < 2) {
+      lastNameError = "שם אינו תקין";
+    }
+
+    setLastNameError(lastNameError);
     setLastName(newLastName);
   };
 
@@ -85,7 +106,12 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   return (
     <>
       <div className={styles.subtitle}>פרטים אישיים</div>
-      <Input value={firstName} onChangeText={setFirstName} label="שם פרטי" />
+      <Input
+        value={firstName}
+        onChangeText={setFirstNameAndValidate}
+        label="שם פרטי"
+        errorMessage={firstNameError}
+      />
       <Input
         value={lastName}
         onChangeText={setLastNameAndValidate}
@@ -129,7 +155,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         <Button
           onClick={onSave}
           title={props.buttonText}
-          isDisabled={!areAllFieldsValid}
+          isDisabled={!areAllFieldsValid || !allFieldsHaveValue}
           isLoading={loading}
         />
       </div>
@@ -137,7 +163,6 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       <Popup
         open={bloodTypePopupOpen}
         title="לא ידוע לך סוג הדם שלך?"
-        content="אין שום בעיה! ניתן לברר את סוג הדם בקלות בכל זמן במענה הטלפוני הממוחשב בטלפון 03−5300400"
         buttonApproveText="חיוג למענה הממוחשב"
         onApproved={async () => {
           window.open("tel:035300400");
@@ -146,7 +171,10 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         goBackText="בעצם לא צריך"
         onBack={() => setBloodTypePopupOpen(false)}
         image={Illustration}
-      />
+      >
+        אין שום בעיה! ניתן לברר את סוג הדם בקלות בכל זמן במענה הטלפוני הממוחשב
+        בטלפון 03−5300400
+      </Popup>
     </>
   );
 }

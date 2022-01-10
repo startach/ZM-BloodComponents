@@ -16,7 +16,7 @@ export const ALL_HOSPITALS_SELECT = "ALL";
 export function getAllHospitalOptions(
   hospitals: Hospital[]
 ): SelectOption<HospitalOptionKey>[] {
-  let options: SelectOption<HospitalOptionKey>[] = getHospitalOptions(
+  const options: SelectOption<HospitalOptionKey>[] = getHospitalOptions(
     hospitals,
     "בחר"
   );

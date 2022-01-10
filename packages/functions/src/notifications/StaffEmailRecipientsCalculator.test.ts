@@ -11,10 +11,15 @@ describe("Staff Email Recipients Calculator", () => {
     firstName: "myFirstName",
   };
 
+  const mockedHospitalRecipients = {
+    [Hospital.BEILINSON]: ["a@beilinson.com", "b@beilinson.com"],
+  };
+
   test("stg env sends email to stg user and not to hospital coordinator", () => {
     const res = getStaffRecipientsInternal(
       false,
       Hospital.BEILINSON,
+      mockedHospitalRecipients,
       creatorUser
     );
 
@@ -31,14 +36,14 @@ describe("Staff Email Recipients Calculator", () => {
     ]);
   });
 
-  test("prod env sends email to prod user, creator and hospital coordinator", () => {
+  test("prod env sends email to prod user, creator and hospital coordinator - Config has hospital", () => {
     const res = getStaffRecipientsInternal(
       true,
       Hospital.BEILINSON,
+      mockedHospitalRecipients,
       creatorUser
     );
 
-    expect(res).toHaveLength(3);
     expect(res).toEqual([
       {
         email: "dam@zichron.org",
@@ -49,14 +54,23 @@ describe("Staff Email Recipients Calculator", () => {
         name: "myFirstName",
       },
       {
-        email: "bloodbankbl@clalit.org.il",
+        email: "a@beilinson.com",
+        name: "בית החולים בילינסון",
+      },
+      {
+        email: "b@beilinson.com",
         name: "בית החולים בילינסון",
       },
     ]);
   });
 
-  test("prod env sends email to prod user, creator and hospital coordinator", () => {
-    const res = getStaffRecipientsInternal(true, Hospital.SOROKA, creatorUser);
+  test("prod env sends email to prod user, creator and hospital coordinator - Config doesn't have hospital", () => {
+    const res = getStaffRecipientsInternal(
+      true,
+      Hospital.SOROKA,
+      mockedHospitalRecipients,
+      creatorUser
+    );
 
     expect(res).toEqual([
       {
@@ -66,18 +80,6 @@ describe("Staff Email Recipients Calculator", () => {
       {
         email: "my@email",
         name: "myFirstName",
-      },
-      {
-        email: "ronniema79@gmail.com",
-        name: "בית החולים סורוקה",
-      },
-      {
-        email: "dumanionok@gmail.com",
-        name: "בית החולים סורוקה",
-      },
-      {
-        email: "ety140@gmail.com",
-        name: "בית החולים סורוקה",
       },
     ]);
   });
@@ -93,6 +95,7 @@ describe("Staff Email Recipients Calculator", () => {
     const res = getStaffRecipientsInternal(
       false,
       Hospital.BEILINSON,
+      mockedHospitalRecipients,
       creatorUser
     );
 
@@ -107,6 +110,7 @@ describe("Staff Email Recipients Calculator", () => {
     const res = getStaffRecipientsInternal(
       true,
       Hospital.TEL_HASHOMER,
+      mockedHospitalRecipients,
       undefined
     );
 

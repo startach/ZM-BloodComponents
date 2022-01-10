@@ -1,12 +1,14 @@
 import { noop } from "lodash";
 import {
   Dialog,
-  DialogTitle,
   DialogActions,
   DialogContent,
+  DialogTitle,
   makeStyles,
 } from "@material-ui/core";
 import Button, { ButtonVariant } from "../Button";
+import { ButtonColor } from "../Button/Button";
+import React from "react";
 
 export type PopupProps = {
   open: boolean;
@@ -52,7 +54,7 @@ export function Popup(props: PopupProps) {
           <Button
             title={primaryButtonText}
             onClick={onPrimaryButtonClick || noop}
-            color={"secondary"}
+            color={ButtonColor.secondary}
           />
         )}
         {cancelButtonText && (
@@ -60,7 +62,6 @@ export function Popup(props: PopupProps) {
             title={cancelButtonText}
             onClick={onCancelButtonClick || noop}
             variant={ButtonVariant.outlined}
-            color={"default"}
           />
         )}
       </DialogActions>

@@ -46,7 +46,6 @@ export interface CardTableRowGroup<T> {
   rowsInGroup: CardTableRow<T>[];
 }
 
-// TODO what happens if groups prop changes
 export default function GroupsTable<T>({
   columns,
   groups = [],

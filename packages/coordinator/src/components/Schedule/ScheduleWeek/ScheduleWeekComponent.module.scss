@@ -1,0 +1,48 @@
+.schedule {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--coordinator-background);
+  position: relative;
+}
+
+.dayLabel {
+  flex: 1;
+  text-align: center;
+  color: var(--coordinator-gray);
+  margin: 7px 0 5px 0;
+}
+
+.dayNumber {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.dayLetter {
+  font-size: 14px;
+}
+
+.scheduleWeek {
+  overflow-y: auto;
+  width: 100%;
+  display: grid;
+}
+
+.gridColumns {
+  display: grid;
+  grid-template-columns: 15px repeat(6, auto) 10px;
+  grid-gap: 5px;
+}
+
+.hourCell {
+  font-size: 14px;
+  line-height: 14px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-inline-start: 3px;
+  color: var(--coordinator-gray);
+}

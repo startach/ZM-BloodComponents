@@ -8,13 +8,13 @@ export function getEmail() {
   return getAuth().currentUser?.email || undefined;
 }
 
-export function signInWithEmail(
+export async function signInWithEmail(
   email: string,
   password: string,
   emailError: (error: string) => void,
   passwordError: (error: string) => void
 ) {
-  return signInWithEmailAndPassword(getAuth(), email, password).catch(
+  await signInWithEmailAndPassword(getAuth(), email, password).catch(
     (error) => {
       switch (error.code) {
         case "auth/invalid-email":

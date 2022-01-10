@@ -22,14 +22,14 @@ export async function sendEmailToDonor(
 ) {
   if (donor.notificationSettings?.disableEmailNotifications) {
     functions.logger.info(
-      `NOT sending ${type} notification to donor ${data.donorName}.`
+      `NOT sending ${type} notification to donor ${data.donorName} - disabled settings.`
     );
     return;
   }
 
   sgMail.setApiKey(functions.config().sendgrid.key);
   functions.logger.info(
-    `Sending ${type} notification to donor ${data.donorName} for appointment ${data.appointmentId} `
+    `Sending ${type} notification to donor ${data.donorId} ${data.donorName} for appointment ${data.appointmentId} `
   );
 
   let templateId = "";
@@ -41,14 +41,17 @@ export async function sendEmailToDonor(
       templateId = "d-efc1aeb750f542ec9fb1120c03e97a68";
       break;
     case NotificationToDonor.DONATION_CONFIRMATION:
-      // TODO - Get template for donation confirmation
-      return;
+      templateId = "d-9875da5105274900826e8f1492508758";
+      break;
     default:
+      functions.logger.warn(
+        `NOT sending ${type} notification to donor ${data.donorName} - unknown type.`
+      );
       return;
   }
 
   const msg: MailDataRequired = {
-    to: donor.email,
+    to: data.donorEmail,
     from: {
       name: FROM_NAME,
       email: FROM_EMAIL,
@@ -58,7 +61,7 @@ export async function sendEmailToDonor(
   };
 
   if (shouldAddCalendarEventToDonor(type)) {
-    addCalendarEventToDonor(msg, type, data, donor.email);
+    addCalendarEventToDonor(msg, type, data);
   }
 
   await sgMail.send(msg);
@@ -118,6 +121,7 @@ function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
     case NotificationToDonor.APPOINTMENT_BOOKED:
     case NotificationToDonor.APPOINTMENT_CANCELLED_BY_COORDINATOR:
       return true;
+    case NotificationToDonor.DONATION_CONFIRMATION:
     default:
       return false;
   }
@@ -126,8 +130,7 @@ function shouldAddCalendarEventToDonor(type: NotificationToDonor) {
 function addCalendarEventToDonor(
   msg: MailDataRequired,
   type: NotificationToDonor,
-  data: AppointmentNotificationData,
-  donorEmail: string
+  data: AppointmentNotificationData
 ) {
   const donationTime = new Date(data.donationStartTimeMillis);
 
@@ -158,7 +161,7 @@ function addCalendarEventToDonor(
     attendees: [
       {
         name: data.donorName,
-        email: donorEmail,
+        email: data.donorEmail,
         rsvp: true,
         partstat: "NEEDS-ACTION",
         role: "REQ-PARTICIPANT",

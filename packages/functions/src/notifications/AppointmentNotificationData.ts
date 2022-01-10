@@ -8,7 +8,9 @@ export type AppointmentNotificationData = {
   date: string;
   time: string;
   hospital: string;
+  donorId: string;
   donorName: string;
+  donorEmail: string;
   donorPhone: string;
   appointmentId: string;
   donationStartTimeMillis: number;
@@ -32,22 +34,28 @@ export function calculateNotificationData(
 ): AppointmentNotificationData {
   const donationStartTime = appointment.donationStartTime.toDate();
 
-  const res = {
+  const res: AppointmentNotificationData = {
     appointmentId: appointment.id!,
     date: DateUtils.ToDateString(donationStartTime),
     time: DateUtils.ToTimeString(donationStartTime),
     hospital: LocaleUtils.getHospitalName(appointment.hospital),
+    donorId: donor.id,
+    donorEmail: donor.email,
     donorName: donor.firstName + " " + donor.lastName,
     donorPhone: donor.phone,
     donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    unsubscribeLink: encodeURIComponent(
-      getUnsubscribeLink(isProduction, donor.id)
+    unsubscribeLink: getUnsubscribeLink(isProduction, donor.id),
+    donationApprovalLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      false
     ),
-    donationApprovalLink: encodeURIComponent(
-      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, false)
-    ),
-    donationNoShowLink: encodeURIComponent(
-      getAppointmentApprovalLink(isProduction, donor.id, appointment.id!, true)
+    donationNoShowLink: getAppointmentApprovalLink(
+      isProduction,
+      donor.id,
+      appointment.id!,
+      true
     ),
   };
 

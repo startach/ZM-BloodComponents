@@ -1,15 +1,19 @@
 import SignInScreen from "./SignInScreen";
-import { useHistory } from "react-router-dom";
 import { MainNavigationKeys } from "../../../navigation/app/MainNavigationKeys";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function SignInScreenContainer() {
-  const history = useHistory();
+export default function SignInScreenContainer(props: { loggedIn: boolean }) {
+  const navigate = useNavigate();
+  if (props.loggedIn) {
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
+  }
+
   const onRegister = () => {
-    history.push(MainNavigationKeys.Register);
+    navigate(MainNavigationKeys.Register);
   };
   const onResetPassword = () => {
-    history.push(MainNavigationKeys.ResetPassword);
+    navigate(MainNavigationKeys.ResetPassword);
   };
 
   return (

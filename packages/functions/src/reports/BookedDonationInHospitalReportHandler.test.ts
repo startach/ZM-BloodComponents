@@ -76,7 +76,7 @@ test("Coordinator does not have permissions for hospital throws exception", asyn
   const action = () => callFunction(VALID_TEST_HOSPITAL, HADASA_COORDINATOR_ID);
   await expectAsyncThrows(
     action,
-    `Coordinator ${HADASA_COORDINATOR_ID} is not allowed to view hospital ${VALID_TEST_HOSPITAL}`
+    "Coordinator has no permissions for hospital"
   );
 });
 
@@ -129,6 +129,7 @@ test("Valid request returns booked appointment of the right hospital", async () 
   expect(bookedAppointment.donationStartTimeMillis).toEqual(
     IN_TWO_DAYS.getTime()
   );
+  expect(bookedAppointment.bookingTimeMillis).toEqual(IN_TWO_DAYS.getTime());
   expect(bookedAppointment.firstName).toEqual(sampleUser.firstName);
   expect(bookedAppointment.lastName).toEqual(sampleUser.lastName);
   expect(bookedAppointment.hospital).toEqual(VALID_TEST_HOSPITAL);
@@ -203,7 +204,8 @@ async function saveAppointment(
 
   if (donorId) {
     appointment.donorId = donorId;
-    appointment.bookingTime = admin.firestore.Timestamp.now();
+    appointment.bookingTime =
+      admin.firestore.Timestamp.fromDate(donationStartTime);
     appointment.status = AppointmentStatus.BOOKED;
   }
 
