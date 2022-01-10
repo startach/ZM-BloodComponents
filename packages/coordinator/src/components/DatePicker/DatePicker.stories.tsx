@@ -10,7 +10,7 @@ export default {
 const props: DatePickerProps = {
   label: "בחר שעה",
   onChange: () => {},
-  value: new Date(),
+  value: new Date(2022, 1, 1, 10, 30, 0),
 };
 
 export const Default = (args: DatePickerProps) => {

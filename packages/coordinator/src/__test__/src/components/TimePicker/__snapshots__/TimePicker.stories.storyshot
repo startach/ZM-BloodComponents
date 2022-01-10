@@ -33,7 +33,7 @@ exports[`Storyshots Components/Time Picker Default 1`] = `
         onFocus={[Function]}
         required={false}
         type="text"
-        value="18:13"
+        value="10:30"
       />
       <div
         className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"

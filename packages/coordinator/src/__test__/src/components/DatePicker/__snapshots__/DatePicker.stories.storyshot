@@ -33,7 +33,7 @@ exports[`Storyshots Components/Date Picker Default 1`] = `
         onFocus={[Function]}
         required={false}
         type="text"
-        value="10/01/2022"
+        value="01/02/2022"
       />
       <div
         className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"
