@@ -1,6 +1,6 @@
 import { KeyboardTimePicker } from "@material-ui/pickers";
 
-interface TimePickerProps {
+export interface TimePickerProps {
   value: Date | null;
   label: string;
   onChange: (newDate: Date | null) => void;
