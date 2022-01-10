@@ -1,6 +1,6 @@
 import { KeyboardDatePicker } from "@material-ui/pickers";
 
-interface DatePickerProps {
+export interface DatePickerProps {
   value: Date | null;
   label: string;
   onChange: (newDate: Date | null) => void;
