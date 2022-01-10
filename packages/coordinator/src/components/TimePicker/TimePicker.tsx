@@ -1,6 +1,7 @@
 import { KeyboardTimePicker } from "@material-ui/pickers";
-import styles from "./TimePicker.module.scss";
-import clockIcon from "../../assets/icons/clock.svg";
+
+import { AccessAlarm } from "@material-ui/icons";
+import { SvgIcon } from "@material-ui/core";
 
 export interface TimePickerProps {
   value: Date | null;
@@ -15,13 +16,9 @@ export default function TimePicker({
   onChange,
   className,
 }: TimePickerProps) {
-  const clockIconImage = (
-    <img className={styles.clockIconContainer} src={clockIcon} alt="O" />
-  );
-
   return (
     <KeyboardTimePicker
-      keyboardIcon={clockIconImage}
+      keyboardIcon={<SvgIcon component={AccessAlarm} />}
       label={label}
       value={value}
       onChange={onChange}
