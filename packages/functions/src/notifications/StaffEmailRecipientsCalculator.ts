@@ -1,9 +1,10 @@
-import { Hospital } from "@zm-blood-components/common";
+import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
+import RecipientsByHospital from "./HospitalEmailRecipients.json";
 
 export async function getStaffRecipients(
   bookedAppointment: DbAppointment
@@ -12,6 +13,7 @@ export async function getStaffRecipients(
   return getStaffRecipientsInternal(
     isProd(),
     bookedAppointment.hospital,
+    RecipientsByHospital,
     appointmentCreator
   );
 }
@@ -20,6 +22,9 @@ export async function getStaffRecipients(
 export function getStaffRecipientsInternal(
   prod: boolean,
   hospital: Hospital,
+  hospitalEmailRecipients: {
+    [hospital: string]: string[];
+  },
   appointmentCreatorUser?: DbDonor
 ): StaffRecipient[] {
   const res: StaffRecipient[] = [];
@@ -44,44 +49,17 @@ export function getStaffRecipientsInternal(
   }
 
   if (prod) {
-    addProductionHospitalCoordinator(hospital, res);
+    const emailList = hospitalEmailRecipients[hospital];
+    if (emailList) {
+      emailList.forEach((email) =>
+        res.push({
+          email: email,
+          name: "בית החולים " + LocaleUtils.getHospitalName(hospital),
+        })
+      );
+    }
   }
 
   // Remove duplicate emails, so we don't send the same message twice
   return _.uniqBy(res, (x) => x.email);
-}
-
-function addProductionHospitalCoordinator(
-  hospital: Hospital,
-  res: StaffRecipient[]
-): StaffRecipient | undefined {
-  switch (hospital) {
-    case Hospital.BEILINSON:
-      res.push({
-        email: "bloodbankbl@clalit.org.il",
-        name: "בית החולים בילינסון",
-      });
-      res.push({
-        email: "michal0709@gmail.com",
-        name: "בית החולים בילינסון",
-      });
-      return;
-    case Hospital.SOROKA:
-      res.push({
-        email: "ronniema79@gmail.com",
-        name: "בית החולים סורוקה",
-      });
-      res.push({
-        email: "dumanionok@gmail.com",
-        name: "בית החולים סורוקה",
-      });
-      res.push({
-        email: "ety140@gmail.com",
-        name: "בית החולים סורוקה",
-      });
-
-      return;
-  }
-
-  return undefined;
 }
