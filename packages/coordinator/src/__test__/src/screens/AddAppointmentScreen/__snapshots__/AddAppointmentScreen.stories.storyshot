@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Screens/Appointment Screen Default 1`] = `
+exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
 <div
   dir="rtl"
   style={
@@ -235,7 +235,7 @@ exports[`Storyshots Screens/Appointment Screen Default 1`] = `
             <label
               className="MuiFormLabel-root-50 MuiInputLabel-root-38 label MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
               data-shrink={false}
-              id="donations_count_label"
+              id="undefined_label"
             >
               מספר עמדות
             </label>
@@ -245,9 +245,9 @@ exports[`Storyshots Screens/Appointment Screen Default 1`] = `
             >
               <div
                 aria-haspopup="listbox"
-                aria-labelledby="donations_count_label donations_count_select"
+                aria-labelledby="undefined_label undefined_select"
                 className="MuiSelect-root-116 MuiSelect-select-117 MuiSelect-selectMenu-120 MuiInputBase-input-83 MuiInput-input-68"
-                id="donations_count_select"
+                id="undefined_select"
                 onBlur={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}

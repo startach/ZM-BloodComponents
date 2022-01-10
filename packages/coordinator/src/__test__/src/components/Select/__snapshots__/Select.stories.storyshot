@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Select Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="MuiFormControl-root-0"
+  >
+    <label
+      className="MuiFormLabel-root-16 MuiInputLabel-root-4 label MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+      data-shrink={false}
+      id="undefined_label"
+    />
+    <div
+      className="MuiInputBase-root-49 MuiInput-root-35 MuiInput-underline-40 MuiInputBase-formControl-50 MuiInput-formControl-36"
+      onClick={[Function]}
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="undefined_label undefined_select"
+        className="MuiSelect-root-24 MuiSelect-select-25 MuiSelect-selectMenu-28 MuiInputBase-input-60 MuiInput-input-45"
+        id="undefined_select"
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <span
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "&#8203;",
+            }
+          }
+        />
+      </div>
+      <input
+        aria-hidden={true}
+        className="MuiSelect-nativeInput-34"
+        onAnimationStart={[Function]}
+        onChange={[Function]}
+        required={false}
+        tabIndex={-1}
+        value=""
+      />
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root-67 MuiSelect-icon-30"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
