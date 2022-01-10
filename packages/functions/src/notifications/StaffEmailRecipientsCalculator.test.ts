@@ -31,14 +31,13 @@ describe("Staff Email Recipients Calculator", () => {
     ]);
   });
 
-  test("prod env sends email to prod user, creator and hospital coordinator", () => {
+  test("prod env sends email to prod user, creator and hospital coordinator - BEILINSON", () => {
     const res = getStaffRecipientsInternal(
       true,
       Hospital.BEILINSON,
       creatorUser
     );
 
-    expect(res).toHaveLength(3);
     expect(res).toEqual([
       {
         email: "dam@zichron.org",
@@ -52,10 +51,14 @@ describe("Staff Email Recipients Calculator", () => {
         email: "bloodbankbl@clalit.org.il",
         name: "בית החולים בילינסון",
       },
+      {
+        email: "michal0709@gmail.com",
+        name: "בית החולים בילינסון",
+      },
     ]);
   });
 
-  test("prod env sends email to prod user, creator and hospital coordinator", () => {
+  test("prod env sends email to prod user, creator and hospital coordinator - SOROKA", () => {
     const res = getStaffRecipientsInternal(true, Hospital.SOROKA, creatorUser);
 
     expect(res).toEqual([
