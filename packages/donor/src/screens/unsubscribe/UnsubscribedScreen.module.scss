@@ -2,15 +2,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  outline: 7px solid var(--donor-light-pink);
+  outline: 7px solid #fde9f0;
   outline-offset: -16px;
   height: 100%;
   line-height: 19px;
   color: var(--donor-dark-gray);
 
   .Content {
+    height: 100%;
     padding-left: 40px;
     padding-right: 40px;
+    padding-top: 157px;
+    padding-bottom: 214px;
   }
 
   .UpperContent {
@@ -24,7 +27,7 @@
       font-size: 48px;
       font-weight: 500;
       margin-top: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 12px;
     }
 
     .Success {
@@ -40,6 +43,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
     height: 50%;
 
     .Regret {
