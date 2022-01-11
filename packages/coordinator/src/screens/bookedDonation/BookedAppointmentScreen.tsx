@@ -41,18 +41,30 @@ export default function BookedAppointmentScreen(
         stickyComponent: <div>{props.appointment.firstName}</div>,
       }}
     >
-      <div className={styles.details}>
-        פרטי התורם
-      </div>
-      <InfoBar title={"מספר טלפון"} value={<a href={`tel: ${props.appointment.phone}`}>{props.appointment.phone}</a>} icon={<Phone/>}/>
-      <InfoBar title={"סוג דם"} value={getValueInDiv(props.appointment.bloodType)} icon={<Bloodtype/>}/>
-      <InfoBar title={"נקבע בתאריך"} value={getValueInDiv(bookingTime)} icon={<Calender/>}/>
+      <div className={styles.details}>פרטי התורם</div>
+      <InfoBar
+        title={"מספר טלפון"}
+        value={
+          <a href={`tel: ${props.appointment.phone}`}>
+            {props.appointment.phone}
+          </a>
+        }
+        icon={<Phone />}
+      />
+      <InfoBar
+        title={"סוג דם"}
+        value={getValueInDiv(props.appointment.bloodType)}
+        icon={<Bloodtype />}
+      />
+      <InfoBar
+        title={"נקבע בתאריך"}
+        value={getValueInDiv(bookingTime)}
+        icon={<Calender />}
+      />
     </CoordinatorScreen>
   );
 }
 
-function getValueInDiv(value:string){
-  return (
-    <div className={styles.values}>{value}</div>
-  )
+function getValueInDiv(value: string) {
+  return <div className={styles.values}>{value}</div>;
 }
