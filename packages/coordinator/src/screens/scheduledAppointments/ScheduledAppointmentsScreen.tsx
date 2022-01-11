@@ -90,7 +90,7 @@ export default function ScheduledAppointmentsScreen({
       sortBy: SortingUtils.StringComparator<BookedDonationWithDonorDetails>(
         (d) => d.status
       ),
-      cellRenderer: ({ status }) => LocaleUtils.getStatusTranslation(status),
+      cellRenderer: ({ status, donationStartTimeMillis }) => LocaleUtils.getStatusTranslation(status, donationStartTimeMillis),
     },
   ];
 
