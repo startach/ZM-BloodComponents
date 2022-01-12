@@ -1,7 +1,8 @@
 import React from "react";
 import {
   BookedDonationWithDonorDetails,
-  DateUtils, LocaleUtils
+  DateUtils,
+  LocaleUtils,
 } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
@@ -42,24 +43,15 @@ export default function BookedAppointmentScreen(
       }}
     >
       <div className={styles.details}>פרטי התורם</div>
-      <InfoBar
-        title={"מספר טלפון"}
-        icon={<Phone />}
-      >
+      <InfoBar title={"מספר טלפון"} icon={<Phone />}>
         <a href={`tel: ${props.appointment.phone}`}>
-        {props.appointment.phone}
+          {props.appointment.phone}
         </a>
       </InfoBar>
-      <InfoBar
-        title={"סוג דם"}
-        icon={<Bloodtype />}
-      >
+      <InfoBar title={"סוג דם"} icon={<Bloodtype />}>
         {LocaleUtils.getBloodTypeTranslation(props.appointment.bloodType)}
       </InfoBar>
-      <InfoBar
-        title={"נקבע בתאריך"}
-        icon={<Calender />}
-      >
+      <InfoBar title={"נקבע בתאריך"} icon={<Calender />}>
         {bookingTime}
       </InfoBar>
     </CoordinatorScreen>

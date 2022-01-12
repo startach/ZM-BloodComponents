@@ -7,7 +7,7 @@ export type InfoBarProps = {
   icon: React.ReactNode;
 };
 
-export default function InfoBar( props : InfoBarProps) {
+export default function InfoBar(props: InfoBarProps) {
   return (
     <div className={styles.infoBar}>
       <div className={styles.icon}>{props.icon}</div>
