@@ -100,7 +100,84 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
     <div
       className="screenContent"
     >
-      {"appointment":{"firstName":"משה","lastName":"כהן","donationStartTimeMillis":1702198800000,"bookingTimeMillis":1702008800000,"bloodType":"AB_PLUS","phone":"0522222222","status":"NOSHOW","appointmentId":"appointmentId","hospital":"TEL_HASHOMER","donorId":"donorId"}}
+      <div
+        className="details"
+      >
+        פרטי התורם
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            phone.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            מספר טלפון
+          </div>
+          <div
+            className="values"
+          >
+            <a
+              href="tel: 0522222222"
+            >
+              0522222222
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            bloodtype.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            סוג דם
+          </div>
+          <div
+            className="values"
+          >
+            AB+
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            calender.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            נקבע בתאריך
+          </div>
+          <div
+            className="values"
+          >
+            08/12/2023
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
