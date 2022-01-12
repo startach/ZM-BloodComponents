@@ -4,17 +4,17 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 export type InfoBarProps = {
   title: string;
-  value: React.ReactNode;
+  children: React.ReactNode;
   icon: React.ReactNode;
 };
 
-export default function InfoBar({ title, value, icon }: InfoBarProps) {
+export default function InfoBar( props : InfoBarProps) {
   return (
     <div className={styles.infoBar}>
-      <div className={styles.icon}>{icon}</div>
+      <div className={styles.icon}>{props.icon}</div>
       <div className={styles.titleContent}>
-        <div>{title}</div>
-        {value}
+        <div>{props.title}</div>
+        <div className={styles.values}>{props.children}</div>
       </div>
     </div>
   );
