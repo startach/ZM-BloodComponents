@@ -20,9 +20,10 @@ const UnsubscribedScreen = () => {
     />
   );
   const GOODBYE = "להתראות !";
-  const EMAIL_REMOVED = "האימייל שלך הוסר בהצלחה מרשימת התפוצה";
+  const EMAIL_REMOVED = "הוסרת בהצלחה מרשימת התפוצה";
   const REGRET = "התחרטת? תמיד נשמח שוב לראותך!";
-  const RENEW = <>ניתן לחדש את ההרשמה לתפוצה בעמוד {profileLink} באפליקציה</>;
+  const RENEW_FIRST_LINE = "ניתן לחדש את ההרשמה לתפוצה בעמוד";
+  const RENEW_SECOND_LINE = <>{profileLink} באפליקציה</>;
 
   return (
     <div className={styles.Unsubscribed}>
@@ -34,7 +35,8 @@ const UnsubscribedScreen = () => {
         </div>
         <div className={styles.FooterContent}>
           <div className={styles.Regret}>{REGRET}</div>
-          <div className={styles.Renew}>{RENEW}</div>
+          <div className={styles.Renew}>{RENEW_FIRST_LINE}</div>
+          <div className={styles.Renew}>{RENEW_SECOND_LINE}</div>
         </div>
       </div>
     </div>
