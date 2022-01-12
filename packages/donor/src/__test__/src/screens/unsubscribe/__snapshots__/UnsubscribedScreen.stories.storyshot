@@ -30,7 +30,7 @@ exports[`Storyshots Screens/Unsubscribed Default 1`] = `
         <div
           className="Success"
         >
-          האימייל שלך הוסר בהצלחה מרשימת התפוצה
+          הוסרת בהצלחה מרשימת התפוצה
         </div>
       </div>
       <div
@@ -44,131 +44,17 @@ exports[`Storyshots Screens/Unsubscribed Default 1`] = `
         <div
           className="Renew"
         >
-          ניתן לחדש את ההרשמה לתפוצה בעמוד 
+          ניתן לחדש את ההרשמה לתפוצה בעמוד
+        </div>
+        <div
+          className="Renew"
+        >
           <div
             className="ProfileLink textButton"
             onClick={[Function]}
           >
             הפרופיל
           </div>
-           באפליקציה
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Screens/Unsubscribed No User 1`] = `
-<div
-  dir="rtl"
-  style={
-    Object {
-      "height": "100vh",
-    }
-  }
->
-  <div
-    className="Unsubscribed"
-  >
-    <div
-      className="Content"
-    >
-      <div
-        className="UpperContent"
-      >
-        <img
-          alt="logo"
-          src="zmDrop.svg"
-        />
-        <div
-          className="Goodbye"
-        >
-          להתראות !
-        </div>
-        <div
-          className="Success"
-        >
-          האימייל שלך הוסר בהצלחה מרשימת התפוצה של בנק מרכיבי הדם
-        </div>
-      </div>
-      <div
-        className="FooterContent"
-      >
-        <div
-          className="Regret"
-        >
-          התחרטת? תמיד נשמח שוב לראותך!
-        </div>
-        <div
-          className="Renew"
-        >
-          ניתן לחדש את ההרשמה לתפוצה בעמוד 
-          <a
-            href="/profile"
-            onClick={[Function]}
-          >
-            הפרופיל
-          </a>
-           באפליקציה
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Screens/Unsubscribed User Logged In 1`] = `
-<div
-  dir="rtl"
-  style={
-    Object {
-      "height": "100vh",
-    }
-  }
->
-  <div
-    className="Unsubscribed"
-  >
-    <div
-      className="Content"
-    >
-      <div
-        className="UpperContent"
-      >
-        <img
-          alt="logo"
-          src="zmDrop.svg"
-        />
-        <div
-          className="Goodbye"
-        >
-          להתראות !
-        </div>
-        <div
-          className="Success"
-        >
-          moshe@moshe.com הוסר בהצלחה מרשימת התפוצה של בנק מרכיבי הדם
-        </div>
-      </div>
-      <div
-        className="FooterContent"
-      >
-        <div
-          className="Regret"
-        >
-          התחרטת? תמיד נשמח שוב לראותך!
-        </div>
-        <div
-          className="Renew"
-        >
-          ניתן לחדש את ההרשמה לתפוצה בעמוד 
-          <a
-            href="/profile"
-            onClick={[Function]}
-          >
-            הפרופיל
-          </a>
            באפליקציה
         </div>
       </div>

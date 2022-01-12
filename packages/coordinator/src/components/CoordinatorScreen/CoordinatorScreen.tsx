@@ -4,11 +4,13 @@ import CoordinatorHeader, {
   CoordinatorHeaderProps,
 } from "../CoordinatorHeader/CoordinatorHeader";
 import AddAppointmentFab from "../AddAppointmentFab";
+import classnames from "classnames";
 
 export type CoordinatorScreenProps = {
   headerProps: CoordinatorHeaderProps;
   showFab?: boolean;
   children: React.ReactNode;
+  className?: string;
 };
 
 export default function CoordinatorScreen(props: CoordinatorScreenProps) {
@@ -16,7 +18,9 @@ export default function CoordinatorScreen(props: CoordinatorScreenProps) {
     <div className={styles.coordinatorScreen}>
       <CoordinatorHeader {...props.headerProps} />
 
-      <div className={styles.screenContent}>{props.children}</div>
+      <div className={classnames(styles.screenContent, props.className)}>
+        {props.children}
+      </div>
 
       {props.showFab && <AddAppointmentFab />}
     </div>
