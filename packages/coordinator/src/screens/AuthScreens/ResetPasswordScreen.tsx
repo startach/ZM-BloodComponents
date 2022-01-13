@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./AuthScreens.module.scss";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
+import logoImage from "./../../assets/logo_drop_ZM.svg";
 import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useNavigate } from "react-router-dom";
 
@@ -41,6 +41,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           className={styles.authScreenLogoImage}
           alt={"logo"}
         />
+        <div className={styles.logoTitle}>זכרון מנחם</div>
       </div>
       <div className={styles.screenContent}>
         <div className={styles.subtitle}>מערכת רכז</div>
