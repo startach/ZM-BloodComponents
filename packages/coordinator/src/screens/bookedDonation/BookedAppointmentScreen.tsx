@@ -9,8 +9,11 @@ import CoordinatorScreen from "../../components/CoordinatorScreen";
 import InfoBar from "./InfoBar";
 import { ReactComponent as Phone } from "../../assets/icons/phone.svg";
 import { ReactComponent as Bloodtype } from "../../assets/icons/bloodtype.svg";
+import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
+import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
+import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -34,15 +37,26 @@ export default function BookedAppointmentScreen(
   );
   return (
     <CoordinatorScreen
+      className={styles.bookedApointmentScreenContent}
       headerProps={{
         title: time,
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
-        stickyComponent: <div>{props.appointment.firstName}</div>,
+        stickyComponent: nameBar(
+          `${props.appointment.firstName} ${props.appointment.lastName}`
+        ),
       }}
     >
-      <div className={styles.details}>פרטי התורם</div>
+      <div className={styles.status}>
+        <div>סטטוס:</div>
+        <div className={styles.statusChip}>
+          <AppointmentStatusChip
+            appointmentStatusType={props.appointment.status}
+          />
+        </div>
+      </div>
+      <div className={styles.details}>פרטי תורם</div>
       <InfoBar title={"מספר טלפון"} icon={<Phone />}>
         <a href={`tel: ${props.appointment.phone}`}>
           {props.appointment.phone}
@@ -55,5 +69,17 @@ export default function BookedAppointmentScreen(
         {bookingTime}
       </InfoBar>
     </CoordinatorScreen>
+  );
+}
+
+function nameBar(name: string) {
+  return (
+    <div className={styles.name}>
+      <div>{name}</div>
+      <div className={styles.icons}>
+        <Copy />
+        <Profile />
+      </div>
+    </div>
   );
 }

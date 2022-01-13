@@ -1,0 +1,21 @@
+.appointmentStatusChipContainer {
+  display: flex;
+}
+
+.appointmentStatusChip {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 6px;
+  width: auto;
+  border-radius: 5px;
+}
+
+.redChip {
+  color: var(--coordinator-secondary);
+  background-color: var(--coordinator-red-chip-background);
+}
+
+.greenChip {
+  color: var(--coordinator-primary);
+  background-color: var(--coordinator-green-chip-background);
+}
