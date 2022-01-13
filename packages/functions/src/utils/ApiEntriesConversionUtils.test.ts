@@ -1,8 +1,10 @@
 import {
+  AppointmentStatus,
+  BloodType,
+  BookingChange,
   FunctionsApi,
   Hospital,
-  BookingChange,
-  AppointmentStatus,
+  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import {
@@ -15,8 +17,10 @@ import {
 import { sampleUser } from "../testUtils/TestSamples";
 import { DbAppointment, DbDonor } from "../function-types";
 
+const DONOR_ID = "DONOR_ID";
+const APPOINTMENT_ID = "APPOINTMENT_ID";
 const DB_APPOINTMENT_WITHOUT_ID: DbAppointment = {
-  donorId: "CBA",
+  donorId: DONOR_ID,
   creationTime: admin.firestore.Timestamp.now(),
   creatorUserId: "ABC",
   donationStartTime: admin.firestore.Timestamp.now(),
@@ -30,7 +34,7 @@ const getValidDBAppointment = (
 ): DbAppointment => {
   return {
     id: "1",
-    donorId: testNoDonorId ? "" : "CBA",
+    donorId: testNoDonorId ? "" : DONOR_ID,
     creationTime: admin.firestore.Timestamp.now(),
     creatorUserId: "ABC",
     donationStartTime: admin.firestore.Timestamp.now(),
@@ -74,7 +78,7 @@ test("NotificationSettings are added to donor without any", () => {
 
 test("DBAppointment does not have an ID", () => {
   const toAppointmentApiEntry = () =>
-    dbAppointmentToAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID);
+    dbAppointmentToAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID, []);
   expect(toAppointmentApiEntry).toThrow("Invalid State");
 
   const toBookedAppointmentApiEntry = () =>
@@ -84,6 +88,40 @@ test("DBAppointment does not have an ID", () => {
   const toAvailableAppointmentApiEntry = () =>
     dbAppointmentToAvailableAppointmentApiEntry(DB_APPOINTMENT_WITHOUT_ID);
   expect(toAvailableAppointmentApiEntry).toThrow("Invalid State");
+});
+
+test("AppointmentApiEntry has donor name when donor is a regular donor", () => {
+  const appointment: DbAppointment = {
+    ...DB_APPOINTMENT_WITHOUT_ID,
+    id: APPOINTMENT_ID,
+  };
+  const res = dbAppointmentToAppointmentApiEntry(appointment, [
+    {
+      ...sampleUser,
+      id: DONOR_ID,
+    },
+  ]);
+  expect(res.id).toEqual(APPOINTMENT_ID);
+  expect(res.donorName).toEqual(
+    sampleUser.firstName + " " + sampleUser.lastName
+  );
+});
+
+test("AppointmentApiEntry has donor name when donor is a manual donor", () => {
+  const appointment: DbAppointment = {
+    ...DB_APPOINTMENT_WITHOUT_ID,
+    id: APPOINTMENT_ID,
+    donorId: MANUAL_DONOR_ID,
+    donorDetails: {
+      firstName: "AAAA",
+      lastName: "BB",
+      phoneNumber: "123",
+      bloodType: BloodType.NOT_SURE,
+    },
+  };
+  const res = dbAppointmentToAppointmentApiEntry(appointment, []);
+  expect(res.id).toEqual(APPOINTMENT_ID);
+  expect(res.donorName).toEqual("AAAA BB");
 });
 
 test("BookedAppointmentApiEntry is not booked", () => {

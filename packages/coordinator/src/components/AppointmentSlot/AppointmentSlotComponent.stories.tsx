@@ -44,7 +44,6 @@ const props: AppointmentPreviewProps = {
       },
     ],
   },
-  onClickOnAppointment: action("onClickOnAppointment"),
   onDeleteAppointment: action("onDeleteAppointment"),
   showOnlyAvailableAppointments: false,
 };

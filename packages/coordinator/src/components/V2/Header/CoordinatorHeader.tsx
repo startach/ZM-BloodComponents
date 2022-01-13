@@ -88,7 +88,7 @@ export default function CoordinatorHeader({
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
               title={`דוח"ות`}
-              onClick={() => navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
+              onClick={() => navigate(CoordinatorScreenKey.REPORTS)}
             />
           )}
         </div>
@@ -151,7 +151,7 @@ export default function CoordinatorHeader({
                 currentTab === "/booked-donations" ? styles.selected__tab : ""
               }
               title={`דוח"ות`}
-              onClick={() => navigate(CoordinatorScreenKey.BOOKED_DONATIONS)}
+              onClick={() => navigate(CoordinatorScreenKey.REPORTS)}
             />
           )}
         </div>

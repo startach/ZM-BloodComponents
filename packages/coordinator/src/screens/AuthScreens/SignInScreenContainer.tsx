@@ -6,7 +6,7 @@ import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 export default function SignInScreenContainer(props: { loggedIn: boolean }) {
   const navigate = useNavigate();
   if (props.loggedIn) {
-    return <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />;
+    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
   return (

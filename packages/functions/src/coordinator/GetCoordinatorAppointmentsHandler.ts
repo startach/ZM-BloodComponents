@@ -25,17 +25,16 @@ export default async function (
   const coordinator = await fetchCoordinator(callerId);
   const hospitalsArray = getValidHospitalsOrThrow(coordinator, hospital);
 
-  const startTimeFilter = request.earliestStartTimeMillis
-    ? new Date(request.earliestStartTimeMillis)
+  const startTimeFilter = new Date(request.earliestStartTimeMillis);
+  const endTimeFilter = request.latestStartTimeMillis
+    ? new Date(request.latestStartTimeMillis)
     : undefined;
   const appointmentsByHospital = await getAppointmentsByHospital(
     hospitalsArray,
-    startTimeFilter
+    startTimeFilter,
+    endTimeFilter
   );
 
-  let appointments = appointmentsByHospital.map(
-    dbAppointmentToAppointmentApiEntry
-  );
   const donorIds: string[] = [];
   appointmentsByHospital.map((appointment) => {
     if (appointment.donorId) {
@@ -45,6 +44,9 @@ export default async function (
 
   let donorsInAppointments = await getDonors(_.uniq(donorIds));
 
+  let appointments = appointmentsByHospital.map((a) =>
+    dbAppointmentToAppointmentApiEntry(a, donorsInAppointments)
+  );
   if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
     donorsInAppointments = await filterDonorsInGroup(
       coordinator,
@@ -93,7 +95,7 @@ function filterAppointmentsForDonors(
     // if donor is in coordinator group, show the appointment
     if (donorIds.has(appointment.donorId)) return true;
 
-    // if the appointment was manualy added by the coordinator
+    // if the appointment was manually added by the coordinator
     if (
       appointment.donorId === MANUAL_DONOR_ID &&
       appointment.assigningCoordinatorId === assigningCoordinatorId

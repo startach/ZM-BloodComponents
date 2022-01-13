@@ -1,10 +1,11 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  AppointmentStatus,
+  BloodType,
   BookingChange,
   CoordinatorRole,
   FunctionsApi,
   Hospital,
-  AppointmentStatus,
   MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
@@ -37,7 +38,9 @@ const DONOR_ID = "CoordinatorBookingAppointmentHandlerDonorId";
 const COORDINATOR_ID = "CoordinatorBookingAppointmentHandlerCoordinatorId";
 const MANUAL_DONOR_DETAILS: MinimalDonorDetailsForAppointment = {
   firstName: "donorname",
+  lastName: "lastName",
   phoneNumber: "0502222222",
+  bloodType: BloodType.NOT_SURE,
 };
 const APPOINTMENT_TO_BOOK_1 =
   "CoordinatorBookingAppointmentHandlerAppointment1";

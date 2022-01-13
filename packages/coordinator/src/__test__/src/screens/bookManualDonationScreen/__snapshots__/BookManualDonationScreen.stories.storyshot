@@ -9,326 +9,340 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
     }
   }
 >
-  <div>
+  <div
+    className="coordinatorScreen"
+  >
     <div
       className="appHeader"
     >
-      <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
-        disabled={false}
-        onBlur={[Function]}
-        onClick={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        tabIndex={0}
-        type="button"
-      >
-        <span
-          className="MuiIconButton-label-8"
-        >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root-12"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            />
-          </svg>
-        </span>
-      </button>
       <div
-        className="title secondaryTitle"
+        className="headerRow"
       >
-        הוספה ידנית של תורם
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root-12"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title secondaryTitle"
+        >
+          הוספה ידנית של תורם
+        </div>
       </div>
     </div>
     <div
-      className="content"
+      className="screenContent"
     >
       <div
-        className="subtitle"
-      >
-        פרטים אישיים
-      </div>
-      <div
-        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-        dir="rtl"
-        onKeyPress={[Function]}
-      >
-        <label
-          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-          data-shrink={false}
-        >
-          שם פרטי
-        </label>
-        <div
-          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input-83 MuiInput-input-68"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value=""
-          />
-        </div>
-        
-      </div>
-      <div
-        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-        dir="rtl"
-        onKeyPress={[Function]}
-      >
-        <label
-          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-          data-shrink={false}
-        >
-          שם משפחה
-        </label>
-        <div
-          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input-83 MuiInput-input-68"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value=""
-          />
-        </div>
-        
-      </div>
-      <div
-        className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-        dir="rtl"
-        onKeyPress={[Function]}
-      >
-        <label
-          className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-          data-shrink={false}
-        >
-          טלפון נייד
-        </label>
-        <div
-          className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
-          onClick={[Function]}
-        >
-          <input
-            aria-invalid={false}
-            autoFocus={false}
-            className="MuiInputBase-input-83 MuiInput-input-68"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
-            type="text"
-            value=""
-          />
-        </div>
-        
-      </div>
-      <div>
-        <div
-          className="pickerLabel"
-        >
-          סוג דם
-        </div>
-        <div
-          className="pickerButtons"
-        >
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              O+
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              O-
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              A+
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              A-
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              B+
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              B-
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              AB+
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton"
-              color="default"
-              onClick={[Function]}
-            >
-              AB-
-            </div>
-          </div>
-          <div
-            className="pickerButtonContainer"
-          >
-            <div
-              className="pickerButton selectedButton"
-              color="primary"
-              onClick={[Function]}
-            >
-              לא ידוע
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="buttons"
+        className="content"
       >
         <div
-          className="button"
+          className="donationStartTime"
         >
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-            disabled={false}
-            onBlur={[Function]}
+          אנא הכנס את הפרטים של התורם בתאריך
+          13/08/2021
+          בשעה
+          12:00
+        </div>
+        <div
+          className="subtitle"
+        >
+          פרטים אישיים
+        </div>
+        <div
+          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          dir="rtl"
+          onKeyPress={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            data-shrink={false}
+          >
+            שם פרטי
+          </label>
+          <div
+            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
             onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
           >
-            <span
-              className="MuiButton-label-91"
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-83 MuiInput-input-68"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          dir="rtl"
+          onKeyPress={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            data-shrink={false}
+          >
+            שם משפחה
+          </label>
+          <div
+            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-83 MuiInput-input-68"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          dir="rtl"
+          onKeyPress={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            data-shrink={false}
+          >
+            טלפון נייד
+          </label>
+          <div
+            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-83 MuiInput-input-68"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value=""
+            />
+          </div>
+          
+        </div>
+        <div>
+          <div
+            className="pickerLabel"
+          >
+            סוג דם
+          </div>
+          <div
+            className="pickerButtons"
+          >
+            <div
+              className="pickerButtonContainer"
             >
               <div
-                className="buttonText"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                אישור והמשך
+                A-
               </div>
-            </span>
-          </button>
-        </div>
-        <div
-          className="button"
-        >
-          <button
-            className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
-            disabled={false}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={0}
-            type="button"
-          >
-            <span
-              className="MuiButton-label-91"
+            </div>
+            <div
+              className="pickerButtonContainer"
             >
               <div
-                className="buttonText"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                ביטול
+                A+
               </div>
-            </span>
-          </button>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                B-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                B+
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                AB-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                AB+
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                O-
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
+              >
+                O+
+              </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
+              <div
+                className="pickerButton selectedButton"
+                color="primary"
+                onClick={[Function]}
+              >
+                לא ידוע
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="buttons"
+        >
+          <div>
+            <button
+              className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label-91"
+              >
+                <div
+                  className="buttonText"
+                >
+                  אישור והמשך
+                </div>
+              </span>
+            </button>
+          </div>
+          <div>
+            <button
+              className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label-91"
+              >
+                <div
+                  className="buttonText"
+                >
+                  ביטול
+                </div>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

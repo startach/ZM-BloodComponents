@@ -4,11 +4,6 @@
   flex-direction: column;
 }
 
-.donationDayHeader {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
 .donationDate {
   margin: 20px;
   display: flex;
@@ -52,7 +47,27 @@
 
 .slots {
   background-color: var(--coordinator-background);
-  overflow-y: auto;
-  flex: 1;
-  padding-bottom: 60px;
+  height: 100%;
+}
+
+.noAppointments {
+  padding-top: 150px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: var(--coordinator-gray);
+}
+
+.emptySpace {
+  height: 80px;
+  background-color: var(--coordinator-background);
+}
+
+.spinner {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
 }

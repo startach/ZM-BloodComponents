@@ -17,8 +17,8 @@ export default {
 
 const props: AppointmentPreviewProps = {
   appointment: SampleBookedAppointment,
-  onClick: action("onClick"),
   onDelete: action("onDelete"),
+  addBottomDivider: false,
 };
 
 const Template: Story<AppointmentPreviewProps> = (args) => (

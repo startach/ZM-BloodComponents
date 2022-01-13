@@ -7,6 +7,10 @@ import "../src/styles/index.scss";
 import { Parameters } from "@storybook/addons/dist/ts3.9/types";
 import { MemoryRouter } from "react-router-dom";
 
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { he } from "date-fns/locale";
+
 // https://github.com/mui-org/material-ui/issues/9492#issuecomment-657609780
 const generateClassName = () => {
   let counter = 0;
@@ -60,7 +64,9 @@ const withMuiProvider = (Story: Story, context: StoryContext) => {
       <MemoryRouter>
         <WithStableMuiClassnames>
           <WithGlobalTheme>
-            <Story {...context} />
+            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
+              <Story {...context} />
+            </MuiPickersUtilsProvider>
           </WithGlobalTheme>
         </WithStableMuiClassnames>
       </MemoryRouter>

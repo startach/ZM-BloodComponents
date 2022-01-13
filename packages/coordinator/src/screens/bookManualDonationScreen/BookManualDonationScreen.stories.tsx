@@ -11,6 +11,7 @@ export default {
 } as Meta;
 
 const props: BookManualDonationScreenProps = {
+  donationStartTime: new Date(1628845200000),
   onSave: action("onSave"),
 };
 

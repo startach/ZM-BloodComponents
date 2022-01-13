@@ -7,6 +7,7 @@ export enum MainNavigationKeys {
   Process = "/process",
   Contact = "/contact",
   Approve = "/approve",
+  Unsubscribe = "/unsubscribe",
 
   // Authentication
   Login = "/login",

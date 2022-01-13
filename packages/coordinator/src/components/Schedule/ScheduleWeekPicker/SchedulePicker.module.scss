@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
+}
+
+.datePicker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dateLabel {
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
+}
+
+.yearName {
+  margin-inline-end: 5px;
+}
+
+.monthName {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.chevronRight {
+  padding: 10px 0 10px 10px;
+  cursor: pointer;
+}
+
+.chevronLeft {
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.chevronDown {
+  margin-inline-end: 5px;
+  transform: none;
+  transition: transform 300ms ease-out;
+}
+
+.chevronDownTurned {
+  transform: rotate(-180deg);
+}
+
+.calendar {
+  padding: 0 5px 5px 10px;
+}
+
+.hospitalSelectable {
+  cursor: pointer;
+}
+
+.hospitalPicker {
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  transform: scaleY(0);
+  transform-origin: left top;
+  transition: transform 300ms;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--coordinator-light-gray);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 10px 10px;
+  clip-path: inset(
+    0px -4px -4px -4px
+  ); // Hide shadow from top part of the picker
+}
+
+.hospitalPickerOpen {
+  transform: scaleY(1);
+}
+
+.hospitalPickerTitle {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
+  padding: 15px 20px 10px 20px;
+}
+
+.hospitalOption {
+  cursor: pointer;
+  padding: 0 30px;
+}
+
+.hospitalName {
+  padding: 20px 25px;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--coordinator-gray);
+}
+
+.bottomBorder {
+  border-bottom: 1px solid var(--coordinator-light-gray);
+}
+
+.selectedHospital {
+  color: var(--coordinator-primary);
+  padding-right: 0;
+}
+
+.selected {
+  padding-left: 10px;
+}

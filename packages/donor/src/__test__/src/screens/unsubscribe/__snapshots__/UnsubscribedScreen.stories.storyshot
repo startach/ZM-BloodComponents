@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Unsubscribed Default 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="Unsubscribed"
+  >
+    <div
+      className="Content"
+    >
+      <div
+        className="UpperContent"
+      >
+        <img
+          alt="logo"
+          src="zmDrop.svg"
+        />
+        <div
+          className="Goodbye"
+        >
+          להתראות !
+        </div>
+        <div
+          className="Success"
+        >
+          הוסרת בהצלחה מרשימת התפוצה
+        </div>
+      </div>
+      <div
+        className="FooterContent"
+      >
+        <div
+          className="Regret"
+        >
+          התחרטת? תמיד נשמח שוב לראותך!
+        </div>
+        <div
+          className="Renew"
+        >
+          ניתן לחדש את ההרשמה לתפוצה בעמוד
+        </div>
+        <div
+          className="Renew"
+        >
+          <div
+            className="ProfileLink textButton"
+            onClick={[Function]}
+          >
+            הפרופיל
+          </div>
+           באפליקציה
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

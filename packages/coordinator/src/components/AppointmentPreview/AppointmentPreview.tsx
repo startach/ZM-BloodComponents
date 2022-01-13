@@ -7,45 +7,91 @@ import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
 import classNames from "classnames";
 import SwippableComponent from "../SwippableComponent";
+import { useNavigate } from "react-router-dom";
+import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
-  onClick: () => void;
+  addBottomDivider: boolean;
   onDelete: () => void;
 };
 
 export default function AppointmentPreview({
   onDelete,
-  onClick,
   appointment,
+  addBottomDivider,
 }: AppointmentPreviewProps) {
   const [showDelete, setShowDelete] = useState(false);
+  const [appointmentDeleted, setAppointmentDeleted] = useState(false);
+
+  const onDeleteAppointment = () => {
+    onDelete();
+    setAppointmentDeleted(true);
+  };
+
+  if (appointmentDeleted) {
+    return null;
+  }
 
   return (
-    <SwippableComponent
-      className={classNames(
-        styles.appointmentPreviewContainer,
-        appointment.appointmentId
-      )}
-      onSwipeRight={() => setShowDelete(false)}
-      onSwipeLeft={() => setShowDelete(true)}
-    >
-      <DeleteAppointmentButton onClick={onDelete} showDelete={showDelete} />
-      <div
-        className={styles.appointmentPreviewContent}
-        onClick={showDelete ? undefined : onClick}
+    <>
+      <SwippableComponent
+        className={classNames(
+          styles.appointmentPreviewContainer,
+          appointment.appointmentId
+        )}
+        onSwipeRight={() => setShowDelete(false)}
+        onSwipeLeft={() => setShowDelete(true)}
       >
-        <AppointmentContent appointment={appointment} />
-      </div>
-    </SwippableComponent>
+        <DeleteAppointmentButton
+          onClick={onDeleteAppointment}
+          showDelete={showDelete}
+        />
+        <div
+          className={styles.appointmentPreviewContent}
+          data-appointment-id={appointment.appointmentId}
+        >
+          <AppointmentContent
+            appointment={appointment}
+            showDelete={showDelete}
+          />
+        </div>
+      </SwippableComponent>
+
+      {addBottomDivider && (
+        <div className={styles.dividerContainer}>
+          <div className={styles.divider} />
+        </div>
+      )}
+    </>
   );
 }
 
-function AppointmentContent(props: { appointment: Appointment }) {
+function AppointmentContent(props: {
+  appointment: Appointment;
+  showDelete: boolean;
+}) {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    if (props.showDelete) {
+      return;
+    }
+    if (props.appointment.booked) {
+      navigate(
+        CoordinatorScreenKey.APPOINTMENT + "/" + props.appointment.appointmentId
+      );
+    } else {
+      navigate(
+        `${CoordinatorScreenKey.MANUAL_DONATION}/${props.appointment.appointmentId}/${props.appointment.donationStartTimeMillis}`
+      );
+    }
+  };
+
   if (props.appointment.booked) {
     return (
       <>
-        <div className={styles.nameAndChip}>
+        <div className={styles.nameAndChip} onClick={onClick}>
           <div className={styles.donorName}>{props.appointment.donorName}</div>
           {props.appointment.recentChangeType && (
             <RecentUpdateChip
@@ -53,14 +99,14 @@ function AppointmentContent(props: { appointment: Appointment }) {
             />
           )}
         </div>
-        <ChevronLeft />
+        <ChevronLeft onClick={onClick} />
       </>
     );
   }
 
   return (
     <>
-      <div className={styles.nameAndChip}>
+      <div className={styles.nameAndChip} onClick={onClick}>
         <div className={styles.availableAppointmentText}>תור ריק</div>
         {props.appointment.recentChangeType && (
           <RecentUpdateChip
@@ -68,7 +114,7 @@ function AppointmentContent(props: { appointment: Appointment }) {
           />
         )}
       </div>
-      <AddPerson />
+      <AddPerson onClick={onClick} />
     </>
   );
 }

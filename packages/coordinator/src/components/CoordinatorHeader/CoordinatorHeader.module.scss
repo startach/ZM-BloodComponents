@@ -1,5 +1,12 @@
 .appHeader {
-  //border-bottom: 1px solid var(--coordinator-light-gray);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.headerRow {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -33,32 +40,23 @@
   z-index: 10;
 }
 
+.stickyComponent {
+  border-top: 1px solid var(--coordinator-divider);
+}
+
 .leftButton {
   z-index: 10;
 }
 
 .listItem {
   min-width: 50vw;
+  padding-bottom: 10px;
 }
 
 .version {
   font-size: 14px;
   margin-right: 20px;
   padding-bottom: 10px;
-}
-
-.login {
-  z-index: 20;
-  margin-left: 15px;
-  display: flex;
-}
-
-.login_text {
-  color: var(--coordinator-link);
-  font-size: 14px;
-  font-weight: normal;
-  letter-spacing: 0px;
-  padding-left: 6px;
 }
 
 .zmLogoImage {
@@ -68,4 +66,8 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 69px;
+}
+
+.menuBack {
+  padding-top: 10px;
 }

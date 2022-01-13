@@ -20,7 +20,6 @@ import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
-import { array } from "yargs";
 
 jest.setTimeout(7000);
 
@@ -266,15 +265,14 @@ test("Valid request returns appointments with right time filtering", async () =>
   );
   await saveAppointment(FUTURE_NOT_BOOKED, getDate(35), Hospital.TEL_HASHOMER);
 
-  const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID, 14);
+  const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID, 14, 14);
 
   let appointments = res.appointments.filter((a) =>
     ALL_APPOINTMENT_IDS.includes(a.id)
   );
-  expect(appointments).toHaveLength(3);
+  expect(appointments).toHaveLength(2);
   expect(appointments[0].id).toEqual(PAST_NOT_BOOKED);
   expect(appointments[1].id).toEqual(FUTURE_BOOKED);
-  expect(appointments[2].id).toEqual(FUTURE_NOT_BOOKED);
 });
 
 test("Valid request for group coordinator returns only users in group", async () => {
@@ -340,15 +338,20 @@ async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
 function callFunction(
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
   userId?: string,
-  earliestTimeDays?: number
+  earliestTimeDays?: number,
+  latestTimeDays?: number
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const earliestStartTimeMillis = earliestTimeDays
     ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
+    : getDate(-7).getTime();
+  const latestStartTimeMillis = latestTimeDays
+    ? new Date().getTime() + latestTimeDays * 24 * 60 * 60 * 1000
     : undefined;
 
   let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital: hospital,
     earliestStartTimeMillis,
+    latestStartTimeMillis,
   };
 
   return wrapped(request, {
