@@ -1,0 +1,21 @@
+.infoBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 25px 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.titleContent {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+.values {
+  font-weight: bold;
+}
