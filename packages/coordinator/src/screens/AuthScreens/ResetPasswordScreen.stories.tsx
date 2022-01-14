@@ -24,8 +24,17 @@ const onResetPassword = async (
   }
 };
 
+const sendEmailAgain = async (
+  email: string,
+  emailError: (error: string) => void
+) => {
+  action("onSendEmailAgain")();
+  await TestUtils.wait(500);
+};
+
 const props: ResetPasswordScreenProps = {
   onResetPassword: onResetPassword,
+  sendEmailAgain: sendEmailAgain,
 };
 
 export const Default = (args: ResetPasswordScreenProps) => (

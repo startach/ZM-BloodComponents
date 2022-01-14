@@ -10,10 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { Popup } from "../../components/Popup/Popup";
 
 export interface ResetPasswordScreenProps {
-  onResetPassword: (
-    email: string,
-    emailError: (error: string) => void
-  ) => void;
+  onResetPassword: (email: string, emailError: (error: string) => void) => void;
+  sendEmailAgain: (email: string, emailError: (error: string) => void) => void;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -22,62 +20,22 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const [successPopupOpen, setSuccessPopupOpen] = useState<boolean>(false);
+  const [sendAgainIsLoading, setSendAgainIsLoading] = useState(false);
+
   const [errorPopupOpen, setErrorPopupOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const handleResetPass = async () => {
     setIsLoading(true);
-    try{
+    try {
       await props.onResetPassword(email, setEmailError);
       setSuccessPopupOpen(true);
-    } catch (e){
+    } catch (e) {
       setErrorPopupOpen(true);
     }
     setIsLoading(false);
   };
-
-  // const emailOnTheWayPopup = (
-    // <div className={styles.resetPassPopupContent}>
-    //   <img src={emailOnTheWay} alt="" className={styles.resetPassPopupImg} />
-    //   <div className={styles.resetPassPopupTitle}>
-    //     מייל איפוס בדרך אליך
-    //   </div>
-    //   <div className={styles.resetPassPopupMessage}>
-    //     ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
-    //   </div>
-    //   <Button
-    //     className={styles.resetPasswordScreenPopupButton}
-    //     onClick={() => {
-    //       setEmail("");
-    //       setPopupOpen(false);
-    //     }}
-    //     title="לא קיבלתי, שלחו לי שוב"
-    //     variant={ButtonVariant.text}
-    //   />
-    // </div>
-  // );
-
-  // const emailNotFoundPopup = (
-  //   <div className={styles.resetPassPopupContent}>
-  //     <img src={emailNotFound} alt="" className={styles.resetPassPopupImg} />
-  //     <div className={styles.resetPassPopupTitle}>
-  //       אופס
-  //     </div>
-  //     <div className={styles.resetPassPopupMessage}>
-  //       כתובת המייל שלך לא נמצאה
-  //     </div>
-  //     <Button
-  //       className={styles.resetPasswordScreenPopupButton}
-  //       onClick={() => {
-  //         setEmail("");
-  //         setPopupOpen(false);
-  //       }}
-  //       title="נסה/י שוב"
-  //       variant={ButtonVariant.contained}
-  //     />
-  //   </div>
-  // );
 
   return (
     <div className={styles.screen}>
@@ -126,7 +84,11 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         onClose={() => setSuccessPopupOpen(false)}
         content={
           <div className={styles.resetPassPopupContent}>
-            <img src={emailOnTheWay} alt="" className={styles.resetPassPopupImg} />
+            <img
+              src={emailOnTheWay}
+              alt=""
+              className={styles.resetPassPopupImg}
+            />
             <div className={styles.resetPassPopupTitle}>
               מייל איפוס בדרך אליך
             </div>
@@ -134,10 +96,12 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
             </div>
             <Button
+              isLoading={sendAgainIsLoading}
               className={styles.resetPasswordScreenPopupButton}
               onClick={() => {
-                setEmail("");
+                setEmailError("");
                 setSuccessPopupOpen(false);
+                handleResetPass();
               }}
               title="לא קיבלתי, שלחו לי שוב"
               variant={ButtonVariant.text}
@@ -150,10 +114,12 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         onClose={() => setErrorPopupOpen(false)}
         content={
           <div className={styles.resetPassPopupContent}>
-            <img src={emailNotFound} alt="" className={styles.resetPassPopupImg} />
-            <div className={styles.resetPassPopupTitle}>
-              אופס
-            </div>
+            <img
+              src={emailNotFound}
+              alt=""
+              className={styles.resetPassPopupImg}
+            />
+            <div className={styles.resetPassPopupTitle}>אופס</div>
             <div className={styles.resetPassPopupMessage}>
               כתובת המייל שלך לא נמצאה
             </div>
