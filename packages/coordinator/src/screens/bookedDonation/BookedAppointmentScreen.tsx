@@ -15,7 +15,6 @@ import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 import {
-  ToFullDateString,
   ToMonthString,
   ToWeekDayString,
 } from "@zm-blood-components/common/src/DateUtils";
@@ -48,7 +47,7 @@ export default function BookedAppointmentScreen(
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
-        stickyComponent: NameBar(props),
+        stickyComponent: <NameBar {...props} />,
       }}
     >
       <div className={styles.status}>
@@ -75,7 +74,11 @@ export default function BookedAppointmentScreen(
   );
 }
 
-function NameBar({ ...props }) {
+function NameBar(props: BookedAppointmentScreenProps) {
+  if (!props.appointment) {
+    // Loading state
+    return null;
+  }
   return (
     <div className={styles.name}>
       <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>
