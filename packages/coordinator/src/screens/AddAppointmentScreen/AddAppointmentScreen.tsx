@@ -13,7 +13,7 @@ import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface AddAppointmentScreenProps {
-  onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
+  onSubmit: (donationStartTime: Date, slots: number) => void;
 }
 
 const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
@@ -23,12 +23,24 @@ const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
 }));
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
-  const [date, setDate] = useState<Date | null>(null);
-  const [hour, setHour] = useState<Date | null>(null);
-
-  const [slots, setSlots] = useState(0);
+  const [date, setDate] = useState<Date | null>(getInitialDate());
+  const [hour, setHour] = useState<Date | null>(getInitialDate());
+  const [slots, setSlots] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const onSave = () => {
+    if (date === null || hour === null) {
+      return;
+    }
+
+    setLoading(true);
+
+    const startTime = new Date(date);
+    startTime.setHours(hour.getHours(), hour.getMinutes(), 0, 0);
+    props.onSubmit(startTime, slots);
+  };
 
   return (
     <CoordinatorScreen
@@ -78,22 +90,31 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
         >
           <Button
             className={styles.inputField}
-            onClick={() => {
-              if (date !== null && hour !== null) {
-                props.onSubmit(date, hour, slots);
-              }
-            }}
+            onClick={onSave}
             isDisabled={date === null || hour === null || slots === 0}
             title="אשר והמשך"
+            isLoading={loading}
           />
           <Button
             className={styles.inputField}
             onClick={() => navigate(-1)}
             title="ביטול"
             variant={ButtonVariant.outlined}
+            isDisabled={loading}
           />
         </div>
       </div>
     </CoordinatorScreen>
   );
+}
+
+function getInitialDate() {
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+  date.setHours(11);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+
+  return date;
 }

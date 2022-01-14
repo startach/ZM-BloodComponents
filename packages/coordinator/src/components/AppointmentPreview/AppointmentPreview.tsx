@@ -33,6 +33,12 @@ export default function AppointmentPreview({
     return null;
   }
 
+  const onSwipe = (open: boolean) => {
+    if (!appointment.booked) {
+      setShowDelete(open);
+    }
+  };
+
   return (
     <>
       <SwippableComponent
@@ -40,8 +46,8 @@ export default function AppointmentPreview({
           styles.appointmentPreviewContainer,
           appointment.appointmentId
         )}
-        onSwipeRight={() => setShowDelete(false)}
-        onSwipeLeft={() => setShowDelete(true)}
+        onSwipeRight={() => onSwipe(false)}
+        onSwipeLeft={() => onSwipe(true)}
       >
         <DeleteAppointmentButton
           onClick={onDeleteAppointment}

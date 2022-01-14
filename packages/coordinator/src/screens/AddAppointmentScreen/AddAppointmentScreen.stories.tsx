@@ -11,12 +11,8 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const onSubmit = (date: Date, hour: Date, slots: number) => {
-  action("onSubmitNewSlots");
-};
-
 const props: AddAppointmentScreenProps = {
-  onSubmit: onSubmit,
+  onSubmit: action("onSubmitNewSlots"),
 };
 
 export const Default = (args: AddAppointmentScreenProps) => {

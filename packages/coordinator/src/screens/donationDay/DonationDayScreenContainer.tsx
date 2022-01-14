@@ -45,6 +45,7 @@ export default function DonationDayScreenContainer(
     <DonationDayScreen
       dayStartTime={dayStartTime}
       donationDay={donationDay}
+      hospital={hospital}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
       onDeleteAppointment={(appointmentId) =>
         CoordinatorFunctions.deleteAppointment(appointmentId)

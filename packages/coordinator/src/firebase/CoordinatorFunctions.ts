@@ -48,6 +48,28 @@ export async function addNewAppointments(newSlots: NewSlots[]) {
   await addNewAppointmentsFunction(request);
 }
 
+export async function addNewAppointment(
+  hospital: Hospital,
+  donationStartTime: Date,
+  slots: number
+) {
+  const callableFunction = getCallableFunction(
+    FunctionsApi.AddNewAppointmentsFunctionName
+  );
+
+  const slot: FunctionsApi.NewSlotsRequest = {
+    hospital: hospital,
+    slots: slots,
+    donationStartTimeMillis: donationStartTime.getTime(),
+  };
+
+  const request: FunctionsApi.AddAppointmentsRequest = {
+    slotsRequests: [slot],
+  };
+
+  await callableFunction(request);
+}
+
 export async function getAppointments(
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
   earliestStartTimeMillis: number,

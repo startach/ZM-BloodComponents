@@ -3,6 +3,7 @@ import CoordinatorScreen, { CoordinatorScreenProps } from "./CoordinatorScreen";
 import { action } from "@storybook/addon-actions";
 import { HeaderVariant } from "../CoordinatorHeader/CoordinatorHeader";
 import styles from "./CoordinatorScreen.module.scss";
+import { Hospital } from "@zm-blood-components/common";
 
 export default {
   component: CoordinatorScreen,
@@ -48,5 +49,5 @@ StickyContent.args = {
 export const Fab = Template.bind({});
 Fab.args = {
   ...props,
-  showFab: true,
+  hospitalForAddAppointment: Hospital.TEL_HASHOMER,
 };

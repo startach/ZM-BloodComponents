@@ -1,7 +1,8 @@
 import {
   AvailableAppointment,
-  Hospital,
   DateUtils,
+  Hospital,
+  LocaleUtils,
 } from "@zm-blood-components/common";
 import * as _ from "lodash";
 
@@ -53,6 +54,9 @@ function getDonationDays(
       };
       return res;
     })
+    .sortBy((hospitalSlot) =>
+      LocaleUtils.getHospitalName(hospitalSlot.hospital)
+    )
     .value();
 
   return {

@@ -5,10 +5,11 @@ import CoordinatorHeader, {
 } from "../CoordinatorHeader/CoordinatorHeader";
 import AddAppointmentFab from "../AddAppointmentFab";
 import classnames from "classnames";
+import { Hospital } from "@zm-blood-components/common";
 
 export type CoordinatorScreenProps = {
   headerProps: CoordinatorHeaderProps;
-  showFab?: boolean;
+  hospitalForAddAppointment?: Hospital;
   children: React.ReactNode;
   className?: string;
 };
@@ -22,7 +23,9 @@ export default function CoordinatorScreen(props: CoordinatorScreenProps) {
         {props.children}
       </div>
 
-      {props.showFab && <AddAppointmentFab />}
+      {props.hospitalForAddAppointment && (
+        <AddAppointmentFab hospital={props.hospitalForAddAppointment} />
+      )}
     </div>
   );
 }
