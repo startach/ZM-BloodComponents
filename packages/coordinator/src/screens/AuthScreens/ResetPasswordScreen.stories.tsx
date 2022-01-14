@@ -16,14 +16,12 @@ const onResetPassword = async (
   emailError: (error: string) => void
 ) => {
   action("onResetPasswordWithEmail")();
-  await TestUtils.wait(3000);
+  await TestUtils.wait(500);
 
-  if (email === "1234") {
-    return true;
+  if (email !== "1234") {
+    emailError("שגיאה כלשהי");
+    throw new Error("email is not 1234!");
   }
-
-  emailError("שגיאה כלשהי");
-  return false;
 };
 
 const props: ResetPasswordScreenProps = {

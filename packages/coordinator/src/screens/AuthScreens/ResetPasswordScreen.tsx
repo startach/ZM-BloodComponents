@@ -3,7 +3,8 @@ import styles from "./AuthScreens.module.scss";
 import Input from "../../components/Input";
 import Button, { ButtonVariant } from "../../components/Button";
 import logoImage from "./../../assets/blood-bank-zichron-logo.svg";
-import popupImage from "../../assets/popup_resetpass.png";
+import emailNotFound from "../../assets/email_not_found.svg";
+import emailOnTheWay from "../../assets/email_on_the_way.svg";
 import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useNavigate } from "react-router-dom";
 import { Popup } from "../../components/Popup/Popup";
@@ -12,7 +13,7 @@ export interface ResetPasswordScreenProps {
   onResetPassword: (
     email: string,
     emailError: (error: string) => void
-  ) => Promise<boolean>;
+  ) => void;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -20,56 +21,66 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const [popupOpen, setPopupOpen] = useState<boolean>(false);
-  const [popupError, setPopupError] = useState<string | undefined>(undefined);
+  const [successPopupOpen, setSuccessPopupOpen] = useState<boolean>(false);
+  const [errorPopupOpen, setErrorPopupOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
-  const resetPassword = async () => {
-    setIsLoading(true);
-    const res = await props.onResetPassword(email, setEmailError);
-    setIsLoading(false);
-
-    return res;
-  };
-
   const handleResetPass = async () => {
-    const resetStatus = await resetPassword();
-    setPopupOpen(true);
-
-    if (!resetStatus) {
-      setPopupError("כתובת המייל שלך לא נמצאה");
+    setIsLoading(true);
+    try{
+      await props.onResetPassword(email, setEmailError);
+      setSuccessPopupOpen(true);
+    } catch (e){
+      setErrorPopupOpen(true);
     }
+    setIsLoading(false);
   };
 
-  const popupContent = (
-    <div className={styles.resetPassPopupContent}>
-      <img src={popupImage} alt="" className={styles.resetPassPopupImg} />
-      <div className={styles.resetPassPopupTitle}>
-        {popupError ? "אופס" : "מייל איפוס בדרך אליך"}
-      </div>
-      <div className={styles.resetPassPopupMessage}>
-        {popupError ?? "ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס סיסמא"}
-      </div>
-      <Button
-        className={styles.resetPasswordScreenPopupButton}
-        onClick={() => {
-          setEmail("");
-          setPopupOpen(false);
-        }}
-        title={popupError ? "נסה/י שנית" : "לא קיבלתי, שלחו לי שוב"}
-        variant={popupError ? ButtonVariant.contained : ButtonVariant.text}
-      />
-    </div>
-  );
+  // const emailOnTheWayPopup = (
+    // <div className={styles.resetPassPopupContent}>
+    //   <img src={emailOnTheWay} alt="" className={styles.resetPassPopupImg} />
+    //   <div className={styles.resetPassPopupTitle}>
+    //     מייל איפוס בדרך אליך
+    //   </div>
+    //   <div className={styles.resetPassPopupMessage}>
+    //     ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
+    //   </div>
+    //   <Button
+    //     className={styles.resetPasswordScreenPopupButton}
+    //     onClick={() => {
+    //       setEmail("");
+    //       setPopupOpen(false);
+    //     }}
+    //     title="לא קיבלתי, שלחו לי שוב"
+    //     variant={ButtonVariant.text}
+    //   />
+    // </div>
+  // );
+
+  // const emailNotFoundPopup = (
+  //   <div className={styles.resetPassPopupContent}>
+  //     <img src={emailNotFound} alt="" className={styles.resetPassPopupImg} />
+  //     <div className={styles.resetPassPopupTitle}>
+  //       אופס
+  //     </div>
+  //     <div className={styles.resetPassPopupMessage}>
+  //       כתובת המייל שלך לא נמצאה
+  //     </div>
+  //     <Button
+  //       className={styles.resetPasswordScreenPopupButton}
+  //       onClick={() => {
+  //         setEmail("");
+  //         setPopupOpen(false);
+  //       }}
+  //       title="נסה/י שוב"
+  //       variant={ButtonVariant.contained}
+  //     />
+  //   </div>
+  // );
 
   return (
     <div className={styles.screen}>
-      <Popup
-        open={popupOpen}
-        onClose={() => setPopupOpen(false)}
-        content={popupContent}
-      />
       <div
         className={styles.resetPasswordbackButton}
         onClick={() => navigate(-1)}
@@ -110,6 +121,54 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           </div>
         </div>
       </div>
+      <Popup
+        open={successPopupOpen}
+        onClose={() => setSuccessPopupOpen(false)}
+        content={
+          <div className={styles.resetPassPopupContent}>
+            <img src={emailOnTheWay} alt="" className={styles.resetPassPopupImg} />
+            <div className={styles.resetPassPopupTitle}>
+              מייל איפוס בדרך אליך
+            </div>
+            <div className={styles.resetPassPopupMessage}>
+              ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
+            </div>
+            <Button
+              className={styles.resetPasswordScreenPopupButton}
+              onClick={() => {
+                setEmail("");
+                setSuccessPopupOpen(false);
+              }}
+              title="לא קיבלתי, שלחו לי שוב"
+              variant={ButtonVariant.text}
+            />
+          </div>
+        }
+      />
+      <Popup
+        open={errorPopupOpen}
+        onClose={() => setErrorPopupOpen(false)}
+        content={
+          <div className={styles.resetPassPopupContent}>
+            <img src={emailNotFound} alt="" className={styles.resetPassPopupImg} />
+            <div className={styles.resetPassPopupTitle}>
+              אופס
+            </div>
+            <div className={styles.resetPassPopupMessage}>
+              כתובת המייל שלך לא נמצאה
+            </div>
+            <Button
+              className={styles.resetPasswordScreenPopupButton}
+              onClick={() => {
+                setEmail("");
+                setErrorPopupOpen(false);
+              }}
+              title="נסה/י שוב"
+              variant={ButtonVariant.contained}
+            />
+          </div>
+        }
+      />
     </div>
   );
 }
