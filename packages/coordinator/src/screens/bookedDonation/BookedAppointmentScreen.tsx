@@ -9,8 +9,11 @@ import CoordinatorScreen from "../../components/CoordinatorScreen";
 import InfoBar from "./InfoBar";
 import { ReactComponent as Phone } from "../../assets/icons/phone.svg";
 import { ReactComponent as Bloodtype } from "../../assets/icons/bloodtype.svg";
+import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
+import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
+import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -25,24 +28,33 @@ export default function BookedAppointmentScreen(
     // Loading state
     return null;
   }
-
-  const time = DateUtils.ToDateString(
+  const fulltime = new Date(
     props.appointment.donationStartTimeMillis
-  );
+  ).toLocaleDateString("he-He", DateUtils.LongDateFormat);
+
   const bookingTime = DateUtils.ToDateString(
     props.appointment.bookingTimeMillis
   );
   return (
     <CoordinatorScreen
+      className={styles.bookedApointmentScreenContent}
       headerProps={{
-        title: time,
+        title: fulltime,
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
-        stickyComponent: <div>{props.appointment.firstName}</div>,
+        stickyComponent: <NameBar {...props} />,
       }}
     >
-      <div className={styles.details}>פרטי התורם</div>
+      <div className={styles.status}>
+        <div>סטטוס:</div>
+        <div className={styles.statusChip}>
+          <AppointmentStatusChip
+            appointmentStatusType={props.appointment.status}
+          />
+        </div>
+      </div>
+      <div className={styles.details}>פרטי תורם</div>
       <InfoBar title={"מספר טלפון"} icon={<Phone />}>
         <a href={`tel: ${props.appointment.phone}`}>
           {props.appointment.phone}
@@ -55,5 +67,21 @@ export default function BookedAppointmentScreen(
         {bookingTime}
       </InfoBar>
     </CoordinatorScreen>
+  );
+}
+
+function NameBar(props: BookedAppointmentScreenProps) {
+  if (!props.appointment) {
+    // Loading state
+    return null;
+  }
+  return (
+    <div className={styles.name}>
+      <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>
+      <div className={styles.icons}>
+        <Copy onClick={props.onCopyAppointmentDetails} />
+        <Profile onClick={props.onRemoveDonor} />
+      </div>
+    </div>
   );
 }

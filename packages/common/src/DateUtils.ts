@@ -104,3 +104,11 @@ export const ShortDateFormat: Intl.DateTimeFormatOptions = {
   hour: "numeric",
   minute: "numeric",
 };
+
+export const LongDateFormat: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+};

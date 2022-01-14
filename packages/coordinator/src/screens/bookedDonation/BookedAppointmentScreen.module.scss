@@ -1,4 +1,43 @@
+.bookedApointmentScreenContent {
+  background-color: rgb(236, 235, 235);
+}
+
 .details {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   padding: 25px 30px;
+  background-color: white;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 25px 30px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.statusChip {
+  margin-right: 10px;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 25px 25px 30px 20px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  column-gap: 20px;
+  cursor: pointer;
+}
+
+.spaces {
+  margin-left: 10px;
 }
