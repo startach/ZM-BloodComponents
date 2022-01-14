@@ -16,6 +16,7 @@ import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 import Spinner from "../../components/Spinner";
 import Toast from "../../components/Toast";
+import { Popup } from "../../components/Popup/Popup";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -77,6 +78,8 @@ export default function BookedAppointmentScreen(
 }
 
 function NameBar(props: BookedAppointmentScreenProps) {
+  const [removeDonorPopupOpen, setRemoveDonorPopupOpen] = useState(false);
+  const [deletingAppointment, setDeletingAppointment] = useState(false);
   const [copyToastOpen, setCopyToastOpen] = useState(false);
 
   if (!props.appointment) {
@@ -93,13 +96,27 @@ function NameBar(props: BookedAppointmentScreenProps) {
             setCopyToastOpen(true);
           }}
         />
-        <Profile onClick={props.onRemoveDonor} />
+        <Profile onClick={() => setRemoveDonorPopupOpen(true)} />
       </div>
 
       <Toast
         message={"הפרטים הועתקו בהצלחה"}
         open={copyToastOpen}
         setOpen={setCopyToastOpen}
+      />
+
+      <Popup
+        open={removeDonorPopupOpen}
+        onClose={() => setRemoveDonorPopupOpen(false)}
+        content={"האם ברצונך להסיר תורם זה מהתור הנוכחי?"}
+        primaryButtonText={"הסר תורם"}
+        onPrimaryButtonClick={() => {
+          setDeletingAppointment(true);
+          props.onRemoveDonor();
+        }}
+        primaryButtonLoading={deletingAppointment}
+        cancelButtonText={"השאר תורם"}
+        onCancelButtonClick={() => setRemoveDonorPopupOpen(false)}
       />
     </div>
   );

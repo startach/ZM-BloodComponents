@@ -38,12 +38,12 @@ export default async function (
     new Set<Hospital>([appointment.hospital])
   );
 
-  if (!request.onlyRemoveDonor) {
-    await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
-  } else {
+  if (request.onlyRemoveDonor) {
     const updatedAppointment =
       DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
     await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
+  } else {
+    await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
   }
 
   // Handle notification to the donor
