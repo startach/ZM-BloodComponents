@@ -5,7 +5,7 @@ import {
   SampleAvailableAppointment,
   SampleBookedAppointment,
 } from "../../__test__/TestSamples";
-import { BookingChange } from "@zm-blood-components/common";
+import { BookingChange, Hospital } from "@zm-blood-components/common";
 
 export default {
   component: DonationDayScreen,
@@ -58,6 +58,7 @@ const props: DonationDayScreenProps = {
   onDeleteAppointment: action("onDeleteAppointment"),
   onAdd: action("onAdd"),
   dayStartTime: new Date(1702198800000),
+  hospital: Hospital.TEL_HASHOMER,
 };
 
 const Template: Story<DonationDayScreenProps> = (args) => (

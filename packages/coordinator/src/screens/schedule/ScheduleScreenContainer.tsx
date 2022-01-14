@@ -32,8 +32,12 @@ export default function ScheduleScreenContainer(
     );
   }, [timestamp, hospital, props.loggedIn, navigate]);
 
-  if (!props.loggedIn || !hospital || !hospital) {
+  if (!props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
+  }
+
+  if (!hospital) {
+    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
   const timeInWeek = getTimestamp(timestamp);

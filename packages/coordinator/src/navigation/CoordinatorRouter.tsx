@@ -28,6 +28,7 @@ import DonationDayScreenContainer from "../screens/donationDay/DonationDayScreen
 import BookManualDonationScreenContainer from "../screens/bookManualDonationScreen/BookManualDonationScreenContainer";
 import { schedulePath } from "./RouterUtils";
 import BookedAppointmentScreenContainer from "../screens/bookedDonation/BookedAppointmentScreenContainer";
+import AddAppointmentScreenContainer from "../screens/AddAppointmentScreen/AddAppointmentScreenContainer";
 
 const ROLES_THAT_ADD_APPOINTMENTS = [
   CoordinatorRole.SYSTEM_USER,
@@ -167,6 +168,11 @@ export default function CoordinatorRouter() {
             CoordinatorScreenKey.MANUAL_DONATION + "/:appointmentId/:timestamp"
           }
           element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
+        />
+
+        <Route
+          path={CoordinatorScreenKey.ADD + "/:hospital"}
+          element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
         />
 
         {/*Old screens*/}

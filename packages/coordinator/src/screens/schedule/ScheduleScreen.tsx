@@ -24,7 +24,7 @@ export default function ScheduleScreen(props: ScheduleScreenProps) {
 
   return (
     <CoordinatorScreen
-      showFab
+      hospitalForAddAppointment={props.hospital}
       headerProps={{
         title: "ניהול תורים",
         variant: HeaderVariant.INFO,

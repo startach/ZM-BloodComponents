@@ -4,7 +4,7 @@ import AppointmentSlotComponent from "../../components/AppointmentSlot";
 import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
 import Toggle from "../../components/Toggle";
-import { DateUtils } from "@zm-blood-components/common";
+import { DateUtils, Hospital } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import Spinner from "../../components/Spinner";
@@ -12,6 +12,7 @@ import Spinner from "../../components/Spinner";
 export type DonationDayScreenProps = {
   dayStartTime: Date;
   donationDay: DonationDay | undefined; // Could be loading
+  hospital: Hospital;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
 };
@@ -20,6 +21,7 @@ export default function DonationDayScreen({
   onDeleteAppointment,
   dayStartTime,
   donationDay,
+  hospital,
 }: DonationDayScreenProps) {
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
@@ -30,7 +32,7 @@ export default function DonationDayScreen({
 
   return (
     <CoordinatorScreen
-      showFab
+      hospitalForAddAppointment={hospital}
       headerProps={{
         title: "ניהול תורים",
         variant: HeaderVariant.INFO,
