@@ -8,12 +8,13 @@ import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHea
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import InfoBar from "./InfoBar";
 import { ReactComponent as Phone } from "../../assets/icons/phone.svg";
-import { ReactComponent as Bloodtype } from "../../assets/icons/bloodtype.svg";
+import { ReactComponent as BloodType } from "../../assets/icons/bloodtype.svg";
 import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
 import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
+import Spinner from "../../components/Spinner";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -26,9 +27,13 @@ export default function BookedAppointmentScreen(
 ) {
   if (!props.appointment) {
     // Loading state
-    return null;
+    return (
+      <div className={styles.loading}>
+        <Spinner size={"3rem"} className={styles.spinner} />
+      </div>
+    );
   }
-  const fulltime = new Date(
+  const fullTime = new Date(
     props.appointment.donationStartTimeMillis
   ).toLocaleDateString("he-He", DateUtils.LongDateFormat);
 
@@ -37,9 +42,9 @@ export default function BookedAppointmentScreen(
   );
   return (
     <CoordinatorScreen
-      className={styles.bookedApointmentScreenContent}
+      className={styles.bookedAppointmentScreenContent}
       headerProps={{
-        title: fulltime,
+        title: fullTime,
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
@@ -60,7 +65,7 @@ export default function BookedAppointmentScreen(
           {props.appointment.phone}
         </a>
       </InfoBar>
-      <InfoBar title={"סוג דם"} icon={<Bloodtype />}>
+      <InfoBar title={"סוג דם"} icon={<BloodType />}>
         {LocaleUtils.getBloodTypeTranslation(props.appointment.bloodType)}
       </InfoBar>
       <InfoBar title={"נקבע בתאריך"} icon={<Calender />}>
@@ -72,9 +77,9 @@ export default function BookedAppointmentScreen(
 
 function NameBar(props: BookedAppointmentScreenProps) {
   if (!props.appointment) {
-    // Loading state
     return null;
   }
+
   return (
     <div className={styles.name}>
       <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>

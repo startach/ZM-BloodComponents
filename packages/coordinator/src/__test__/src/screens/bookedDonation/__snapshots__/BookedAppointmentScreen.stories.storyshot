@@ -116,7 +116,7 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
       </div>
     </div>
     <div
-      className="screenContent bookedApointmentScreenContent"
+      className="screenContent bookedAppointmentScreenContent"
     >
       <div
         className="status"
@@ -229,5 +229,35 @@ exports[`Storyshots Screens/Booked Appointment Loading 1`] = `
       "height": "100vh",
     }
   }
-/>
+>
+  <div
+    className="loading"
+  >
+    <div
+      className="MuiCircularProgress-root-0 spinner MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-2"
+      role="progressbar"
+      style={
+        Object {
+          "height": "3rem",
+          "width": "3rem",
+        }
+      }
+    >
+      <svg
+        className="MuiCircularProgress-svg-6"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
+          cx={44}
+          cy={44}
+          fill="none"
+          r={20.2}
+          strokeWidth={3.6}
+          style={Object {}}
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 `;
