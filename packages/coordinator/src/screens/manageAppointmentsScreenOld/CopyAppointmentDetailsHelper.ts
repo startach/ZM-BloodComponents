@@ -10,9 +10,19 @@ export function getAppointmentCopyString(appointment: Appointment): string {
     return "";
   }
 
-  return `${appointment.donorName}, ${String(
-    appointment.donorPhoneNumber
-  )}, ${DateUtils.ToDateString(
+  return getAppointmentCopyStringContent(
+    appointment.donorName,
+    appointment.donorPhoneNumber,
     appointment.donationStartTimeMillis
-  )} ${DateUtils.ToTimeString(appointment.donationStartTimeMillis)}`;
+  );
+}
+
+export function getAppointmentCopyStringContent(
+  donorName: string,
+  donorPhoneNumber: string,
+  donationStartTimeMillis: number
+) {
+  return `${donorName}, ${String(donorPhoneNumber)}, ${DateUtils.ToDateString(
+    donationStartTimeMillis
+  )} ${DateUtils.ToTimeString(donationStartTimeMillis)}`;
 }

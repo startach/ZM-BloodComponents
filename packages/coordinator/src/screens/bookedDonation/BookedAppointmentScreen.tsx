@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BookedDonationWithDonorDetails,
   DateUtils,
@@ -15,6 +15,7 @@ import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 import Spinner from "../../components/Spinner";
+import Toast from "../../components/Toast";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -76,6 +77,8 @@ export default function BookedAppointmentScreen(
 }
 
 function NameBar(props: BookedAppointmentScreenProps) {
+  const [copyToastOpen, setCopyToastOpen] = useState(false);
+
   if (!props.appointment) {
     return null;
   }
@@ -84,9 +87,20 @@ function NameBar(props: BookedAppointmentScreenProps) {
     <div className={styles.name}>
       <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>
       <div className={styles.icons}>
-        <Copy onClick={props.onCopyAppointmentDetails} />
+        <Copy
+          onClick={() => {
+            props.onCopyAppointmentDetails();
+            setCopyToastOpen(true);
+          }}
+        />
         <Profile onClick={props.onRemoveDonor} />
       </div>
+
+      <Toast
+        message={"הפרטים הועתקו בהצלחה"}
+        open={copyToastOpen}
+        setOpen={setCopyToastOpen}
+      />
     </div>
   );
 }
