@@ -19,8 +19,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [isLoading, setIsLoading] = useState(false);
 
   const [successPopupOpen, setSuccessPopupOpen] = useState<boolean>(false);
-  const [sendAgainIsLoading, setSendAgainIsLoading] = useState(false);
-
   const [errorPopupOpen, setErrorPopupOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -96,7 +94,6 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
             </div>
             <Button
-              isLoading={sendAgainIsLoading}
               className={styles.resetPasswordScreenPopupButton}
               onClick={() => {
                 setEmailError("");
