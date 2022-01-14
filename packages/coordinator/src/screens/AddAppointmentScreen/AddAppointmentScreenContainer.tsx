@@ -12,8 +12,7 @@ export default function AddAppointmentScreenContainer(
   props: AddAppointmentsScreenContainerProps
 ) {
   const navigate = useNavigate();
-  const { hospital, timestamp } =
-    useParams<{ hospital: Hospital; timestamp: string }>();
+  const { hospital } = useParams<{ hospital: Hospital }>();
   if (!props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }

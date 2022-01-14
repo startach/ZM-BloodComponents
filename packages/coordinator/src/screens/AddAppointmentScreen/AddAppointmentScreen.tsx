@@ -23,11 +23,10 @@ const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
 }));
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
-  const [date, setDate] = useState<Date | null>(null);
-  const [hour, setHour] = useState<Date | null>(null);
+  const [date, setDate] = useState<Date | null>(getInitialDate());
+  const [hour, setHour] = useState<Date | null>(getInitialDate());
+  const [slots, setSlots] = useState(1);
   const [loading, setLoading] = useState(false);
-
-  const [slots, setSlots] = useState(0);
 
   const navigate = useNavigate();
 
@@ -107,4 +106,15 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
       </div>
     </CoordinatorScreen>
   );
+}
+
+function getInitialDate() {
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+  date.setHours(11);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+
+  return date;
 }
