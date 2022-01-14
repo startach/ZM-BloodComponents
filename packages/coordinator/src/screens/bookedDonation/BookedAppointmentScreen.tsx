@@ -14,6 +14,11 @@ import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
+import {
+  ToFullDateString,
+  ToMonthString,
+  ToWeekDayString,
+} from "@zm-blood-components/common/src/DateUtils";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
@@ -28,10 +33,10 @@ export default function BookedAppointmentScreen(
     // Loading state
     return null;
   }
-
-  const time = DateUtils.ToDateString(
+  const fulltime = new Date(
     props.appointment.donationStartTimeMillis
-  );
+  ).toLocaleDateString("he-He", DateUtils.LongDateFormat);
+
   const bookingTime = DateUtils.ToDateString(
     props.appointment.bookingTimeMillis
   );
@@ -39,13 +44,11 @@ export default function BookedAppointmentScreen(
     <CoordinatorScreen
       className={styles.bookedApointmentScreenContent}
       headerProps={{
-        title: time,
+        title: fulltime,
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
-        stickyComponent: nameBar(
-          `${props.appointment.firstName} ${props.appointment.lastName}`
-        ),
+        stickyComponent: NameBar(props),
       }}
     >
       <div className={styles.status}>
@@ -72,13 +75,13 @@ export default function BookedAppointmentScreen(
   );
 }
 
-function nameBar(name: string) {
+function NameBar({ ...props }) {
   return (
     <div className={styles.name}>
-      <div>{name}</div>
+      <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>
       <div className={styles.icons}>
-        <Copy />
-        <Profile />
+        <Copy onClick={props.onCopyAppointmentDetails} />
+        <Profile onClick={props.onRemoveDonor} />
       </div>
     </div>
   );
