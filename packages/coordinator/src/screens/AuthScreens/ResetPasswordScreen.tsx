@@ -11,7 +11,6 @@ import { Popup } from "../../components/Popup/Popup";
 
 export interface ResetPasswordScreenProps {
   onResetPassword: (email: string, emailError: (error: string) => void) => void;
-  sendEmailAgain: (email: string, emailError: (error: string) => void) => void;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
