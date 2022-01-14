@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./AppointmentStatusChip.module.scss";
 import { AppointmentStatus, LocaleUtils } from "@zm-blood-components/common";
 import classNames from "classnames";
-import { getStatusTranslation } from "@zm-blood-components/common/src/LocaleUtils";
 
 export type AppointmentStatusChipProps = {
   appointmentStatusType: AppointmentStatus;

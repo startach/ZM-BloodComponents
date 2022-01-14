@@ -14,10 +14,6 @@ import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
-import {
-  ToMonthString,
-  ToWeekDayString,
-} from "@zm-blood-components/common/src/DateUtils";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedDonationWithDonorDetails;
