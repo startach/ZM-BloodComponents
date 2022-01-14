@@ -80,8 +80,8 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="MuiFormControl-root-34 MuiTextField-root-33 inputField"
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-              data-shrink={false}
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
             >
               תאריך
             </label>
@@ -100,7 +100,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value=""
+                value="15/01/2022"
               />
               <div
                 className="MuiInputAdornment-root-90 MuiInputAdornment-positionEnd-93"
@@ -150,8 +150,8 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="MuiFormControl-root-34 MuiTextField-root-33 inputField"
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-              data-shrink={false}
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
             >
               שעה
             </label>
@@ -170,7 +170,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value=""
+                value="11:00"
               />
               <div
                 className="MuiInputAdornment-root-90 MuiInputAdornment-positionEnd-93"
@@ -229,8 +229,8 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="MuiFormControl-root-34 inputField"
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 label MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
-              data-shrink={false}
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 label MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              data-shrink={true}
               id="undefined_label"
             >
               מספר עמדות
@@ -251,13 +251,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 role="button"
                 tabIndex={0}
               >
-                <span
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "&#8203;",
-                    }
-                  }
-                />
+                1
               </div>
               <input
                 aria-hidden={true}
@@ -266,7 +260,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 onChange={[Function]}
                 required={false}
                 tabIndex={-1}
-                value=""
+                value="0"
               />
               <svg
                 aria-hidden={true}
@@ -288,8 +282,8 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="inputField"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button disabledButton MuiButton-disableElevation-142 MuiButton-disabled-144 MuiButton-fullWidth-154 MuiButtonBase-disabled-10"
-              disabled={true}
+              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+              disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
               onDragLeave={[Function]}
@@ -302,7 +296,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
-              tabIndex={-1}
+              tabIndex={0}
               type="button"
             >
               <span
