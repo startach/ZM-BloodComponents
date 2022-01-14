@@ -49,15 +49,17 @@ export const getBloodTypeTranslation = (bloodType: BloodType) => {
   }
 };
 
-export const getStatusTranslation = (status: AppointmentStatus, startTimeMillis: number) => {
-
+export const getStatusTranslation = (
+  status: AppointmentStatus,
+  startTimeMillis: number
+) => {
   const isPastAppointment = startTimeMillis < Date.now();
 
   switch (status) {
     case AppointmentStatus.AVAILABLE:
       return "פנוי";
     case AppointmentStatus.BOOKED:
-      return isPastAppointment ? "אין מידע"  : "מוזמן";
+      return isPastAppointment ? "אין מידע" : "מוזמן";
     case AppointmentStatus.COMPLETED:
       return "הושלם";
     case AppointmentStatus.CONFIRMED:
