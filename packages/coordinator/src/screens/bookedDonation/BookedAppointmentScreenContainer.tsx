@@ -37,12 +37,8 @@ export default function BookedAppointmentScreenContainer(
   return (
     <BookedAppointmentScreen
       appointment={bookedAppointment}
-      onCopyAppointmentDetails={() => {
-        console.log("copy");
-      }} // TODO
-      onRemoveDonor={() => {
-        console.log("remove");
-      }} // TODO
+      onCopyAppointmentDetails={() => {}} // TODO
+      onRemoveDonor={() => {}} // TODO
     />
   );
 }
