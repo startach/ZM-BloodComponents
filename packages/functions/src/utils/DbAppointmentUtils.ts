@@ -6,7 +6,7 @@ import {
   BookingChange,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
-import { DbAppointment, DbDonor } from "../function-types";
+import { DbAppointment } from "../function-types";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 
 export function removeDonorFromDbAppointment(

@@ -1,11 +1,7 @@
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import {
-  FunctionsApi,
-  Hospital,
-  AppointmentUtils,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
 import {
