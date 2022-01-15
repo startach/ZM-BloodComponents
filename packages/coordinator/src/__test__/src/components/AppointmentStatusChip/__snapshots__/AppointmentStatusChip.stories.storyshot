@@ -21,7 +21,7 @@ exports[`Storyshots Components/Appointment Status Chip Available 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components/Appointment Status Chip Booked 1`] = `
+exports[`Storyshots Components/Appointment Status Chip Booked Future 1`] = `
 <div
   dir="rtl"
   style={
@@ -37,6 +37,27 @@ exports[`Storyshots Components/Appointment Status Chip Booked 1`] = `
       className="appointmentStatusChip greenChip"
     >
       מוזמן
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip Booked Past 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      אין מידע
     </div>
   </div>
 </div>

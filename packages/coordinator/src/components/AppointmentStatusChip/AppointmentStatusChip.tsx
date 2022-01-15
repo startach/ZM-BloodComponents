@@ -5,10 +5,12 @@ import classNames from "classnames";
 
 export type AppointmentStatusChipProps = {
   appointmentStatusType: AppointmentStatus;
+  donationStartTimeMillis: number;
 };
 
 export default function AppointmentStatusChip({
   appointmentStatusType,
+  donationStartTimeMillis,
 }: AppointmentStatusChipProps) {
   const classes = [styles.appointmentStatusChip];
   classes.push(getColors(appointmentStatusType));
@@ -16,7 +18,10 @@ export default function AppointmentStatusChip({
   return (
     <div className={styles.appointmentStatusChipContainer}>
       <div className={classNames(classes)}>
-        {LocaleUtils.getStatusTranslation(appointmentStatusType)}
+        {LocaleUtils.getStatusTranslation(
+          appointmentStatusType,
+          donationStartTimeMillis
+        )}
       </div>
     </div>
   );

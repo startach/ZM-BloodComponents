@@ -58,6 +58,7 @@ export default function BookedAppointmentScreen(
         <div className={styles.statusChip}>
           <AppointmentStatusChip
             appointmentStatusType={props.appointment.status}
+            donationStartTimeMillis={props.appointment.donationStartTimeMillis}
           />
         </div>
       </div>
