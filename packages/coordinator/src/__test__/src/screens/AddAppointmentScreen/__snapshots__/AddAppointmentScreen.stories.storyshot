@@ -80,17 +80,17 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="MuiFormControl-root-34 MuiTextField-root-33 inputField"
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-error-54 MuiInputLabel-error-41 MuiFormLabel-filled-55"
               data-shrink={true}
             >
               תאריך
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-formControl-73 MuiInput-formControl-59 MuiInputBase-adornedEnd-77"
+              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-error-78 MuiInput-error-64 MuiInputBase-formControl-73 MuiInput-formControl-59 MuiInputBase-adornedEnd-77"
               onClick={[Function]}
             >
               <input
-                aria-invalid={false}
+                aria-invalid={true}
                 autoFocus={false}
                 className="MuiInputBase-input-83 MuiInput-input-68 MuiInputBase-inputAdornedEnd-88"
                 disabled={false}
@@ -100,7 +100,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="15/01/2022"
+                value="11/01/2022"
               />
               <div
                 className="MuiInputAdornment-root-90 MuiInputAdornment-positionEnd-93"
@@ -144,7 +144,11 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 </button>
               </div>
             </div>
-            
+            <p
+              className="MuiFormHelperText-root-97 MuiFormHelperText-error-98 MuiFormHelperText-filled-103"
+            >
+              Date should not be before minimal date
+            </p>
           </div>
           <div
             className="MuiFormControl-root-34 MuiTextField-root-33 inputField"
@@ -170,7 +174,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="11:00"
+                value="17:15"
               />
               <div
                 className="MuiInputAdornment-root-90 MuiInputAdornment-positionEnd-93"
@@ -242,7 +246,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               <div
                 aria-haspopup="listbox"
                 aria-labelledby="undefined_label undefined_select"
-                className="MuiSelect-root-116 MuiSelect-select-117 MuiSelect-selectMenu-120 MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiSelect-root-124 MuiSelect-select-125 MuiSelect-selectMenu-128 MuiInputBase-input-83 MuiInput-input-68"
                 id="undefined_select"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -255,7 +259,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               </div>
               <input
                 aria-hidden={true}
-                className="MuiSelect-nativeInput-126"
+                className="MuiSelect-nativeInput-134"
                 onAnimationStart={[Function]}
                 onChange={[Function]}
                 required={false}
@@ -264,7 +268,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-12 MuiSelect-icon-122"
+                className="MuiSvgIcon-root-12 MuiSelect-icon-130"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -282,7 +286,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="inputField"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+              className="MuiButtonBase-root-9 MuiButton-root-139 MuiButton-contained-147 button primaryButton MuiButton-disableElevation-150 MuiButton-fullWidth-162"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -300,7 +304,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-132"
+                className="MuiButton-label-140"
               >
                 <div
                   className="buttonText"
@@ -314,7 +318,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             className="inputField"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-outlined-136 button outlinedButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+              className="MuiButtonBase-root-9 MuiButton-root-139 MuiButton-outlined-144 button outlinedButton MuiButton-disableElevation-150 MuiButton-fullWidth-162"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -332,7 +336,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-132"
+                className="MuiButton-label-140"
               >
                 <div
                   className="buttonText"

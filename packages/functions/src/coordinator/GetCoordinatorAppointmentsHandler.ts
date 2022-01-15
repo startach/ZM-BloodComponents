@@ -1,7 +1,7 @@
 import {
+  AppointmentUtils,
   CoordinatorRole,
   FunctionsApi,
-  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
 import {
@@ -97,7 +97,7 @@ function filterAppointmentsForDonors(
 
     // if the appointment was manually added by the coordinator
     if (
-      appointment.donorId === MANUAL_DONOR_ID &&
+      AppointmentUtils.isManualDonor(appointment.donorId) &&
       appointment.assigningCoordinatorId === assigningCoordinatorId
     ) {
       return true;

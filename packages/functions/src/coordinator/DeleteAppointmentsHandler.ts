@@ -5,7 +5,7 @@ import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import {
   FunctionsApi,
   Hospital,
-  MANUAL_DONOR_ID,
+  AppointmentUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
@@ -47,7 +47,10 @@ export default async function (
   }
 
   // Handle notification to the donor
-  if (!appointment.donorId || appointment.donorId === MANUAL_DONOR_ID) {
+  if (
+    !appointment.donorId ||
+    AppointmentUtils.isManualDonor(appointment.donorId)
+  ) {
     return;
   }
 

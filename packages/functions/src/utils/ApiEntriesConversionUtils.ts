@@ -1,4 +1,5 @@
 import {
+  AppointmentUtils,
   BookingChange,
   Donor,
   DonorNotificationSettings,
@@ -39,7 +40,7 @@ export function dbAppointmentToAppointmentApiEntry(
 
   let donorName: string | undefined;
   if (donorId) {
-    if (donorId === MANUAL_DONOR_ID) {
+    if (AppointmentUtils.isManualDonor(donorId)) {
       donorName = `${appointment.donorDetails?.firstName} ${appointment.donorDetails?.lastName}`;
     } else {
       const donor = donorsInAppointments.filter((d) => d.id === donorId)[0];

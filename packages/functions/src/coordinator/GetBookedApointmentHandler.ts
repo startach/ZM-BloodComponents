@@ -1,9 +1,9 @@
 import {
+  AppointmentUtils,
   BloodType,
   BookedDonationWithDonorDetails,
   FunctionsApi,
   Hospital,
-  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import * as AdminDataAccessLayer from "../dal/AdminDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
@@ -40,7 +40,7 @@ export default async function (
   let lastName: string;
   let phone: string;
   let bloodType: BloodType;
-  if (appointment.donorId === MANUAL_DONOR_ID) {
+  if (AppointmentUtils.isManualDonor(appointment.donorId)) {
     firstName = appointment.donorDetails!.firstName;
     lastName = appointment.donorDetails!.lastName;
     phone = appointment.donorDetails!.phoneNumber;
