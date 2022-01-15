@@ -1,14 +1,11 @@
-import {
-  BookedDonationWithDonorDetails,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import {
   getCoordinator,
   getValidHospitalsOrThrow,
 } from "../dal/AdminDataAccessLayer";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import { getDonors } from "../dal/DonorDataAccessLayer";
 import { DbAppointment } from "../function-types";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.GetBookedDonationsInHospitalRequest,
@@ -28,30 +25,15 @@ export default async function (
     new Date(request.toDateMillis)
   );
 
-  const bookedAppointments = appointments.filter((a) => a.donorId?.length > 0);
-  const donorsInAppointments = await getDonors(
-    bookedAppointments.map((a) => a.donorId)
+  const bookedAppointments = appointments.filter(
+    DbAppointmentUtils.isAppointmentBooked
   );
-
-  const bookedDonationsWithDonor: BookedDonationWithDonorDetails[] = [];
-  bookedAppointments.forEach((appointment) => {
-    const donor = donorsInAppointments.find(
-      (d) => d.id === appointment.donorId
-    );
-    const donationWithDonor: BookedDonationWithDonorDetails = {
-      appointmentId: appointment.id!,
-      donorId: appointment.donorId,
-      donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-      bookingTimeMillis: appointment.bookingTime!.toMillis(),
-      hospital: appointment.hospital,
-      firstName: donor!.firstName,
-      lastName: donor!.lastName,
-      phone: donor!.phone,
-      bloodType: donor!.bloodType,
-      status: appointment.status,
-    };
-    bookedDonationsWithDonor.push(donationWithDonor);
-  });
+  const bookedDonationWithDonorDetailsPromises = bookedAppointments.map(
+    DbAppointmentUtils.toBookedDonationWithDonorDetails
+  );
+  const bookedDonationsWithDonor = await Promise.all(
+    bookedDonationWithDonorDetailsPromises
+  );
 
   return {
     donationsWithDonorDetails: bookedDonationsWithDonor,
