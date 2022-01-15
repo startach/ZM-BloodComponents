@@ -39,15 +39,8 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
+            <svg>
+              chevron-right.svg
             </svg>
           </span>
         </button>
@@ -82,24 +75,24 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           פרטים אישיים
         </div>
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
             data-shrink={false}
           >
             שם פרטי
           </label>
           <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
+              className="MuiInputBase-input-74 MuiInput-input-59"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -113,24 +106,24 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           
         </div>
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
             data-shrink={false}
           >
             שם משפחה
           </label>
           <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
+              className="MuiInputBase-input-74 MuiInput-input-59"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -144,24 +137,24 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           
         </div>
         <div
-          className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
             data-shrink={false}
           >
             טלפון נייד
           </label>
           <div
-            className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-83 MuiInput-input-68"
+              className="MuiInputBase-input-74 MuiInput-input-59"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -289,7 +282,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-contained-98 button primaryButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-contained-89 button primaryButton MuiButton-disableElevation-92 MuiButton-fullWidth-104"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -307,7 +300,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-91"
+                className="MuiButton-label-82"
               >
                 <div
                   className="buttonText"
@@ -319,7 +312,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           </div>
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-90 MuiButton-outlined-95 button outlinedButton MuiButton-disableElevation-101 MuiButton-fullWidth-113"
+              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-outlined-86 button outlinedButton MuiButton-disableElevation-92 MuiButton-fullWidth-104"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -337,7 +330,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-91"
+                className="MuiButton-label-82"
               >
                 <div
                   className="buttonText"
