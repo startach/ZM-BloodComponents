@@ -35,9 +35,10 @@ export default function BookedAppointmentScreen(
       </div>
     );
   }
-  const fullTime = new Date(
+
+  const fullTime = DateUtils.ToDateTimeString(
     props.appointment.donationStartTimeMillis
-  ).toLocaleDateString("he-He", DateUtils.LongDateFormat);
+  );
 
   const bookingTime = DateUtils.ToDateString(
     props.appointment.bookingTimeMillis

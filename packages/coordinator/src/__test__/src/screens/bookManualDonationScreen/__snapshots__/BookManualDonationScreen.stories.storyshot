@@ -56,7 +56,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         <div
           className="donationStartTime"
         >
-          יום שישי, 13 באוגוסט, 12:00
+          יום שישי, 13.8, 12:00
         </div>
       </div>
     </div>
