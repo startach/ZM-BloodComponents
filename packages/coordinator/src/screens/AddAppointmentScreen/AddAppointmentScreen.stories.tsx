@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 const props: AddAppointmentScreenProps = {
-  initialDate: new Date(1641914113000),
+  initialDate: new Date(1851914113000),
   onSubmit: action("onSubmitNewSlots"),
 };
 

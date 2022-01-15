@@ -1,10 +1,17 @@
+.divider {
+  background-color: rgb(236, 235, 235);
+  height: 20px;
+}
+
 .content {
   display: grid;
   gap: 25px;
-  padding: 30px;
+  padding: 0 30px;
+  margin-top: 20px;
+  background-color: var(--color-white);
 }
 
-.content .buttons {
+.buttons {
   display: grid;
   gap: 10px;
 }
@@ -19,4 +26,5 @@
   text-align: center;
   font-size: 16px;
   color: var(--coordinator-dark-gray);
+  padding: 10px;
 }

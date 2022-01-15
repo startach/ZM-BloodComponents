@@ -57,21 +57,25 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           הוספה ידנית של תורם
         </div>
       </div>
+      <div
+        className="stickyComponent"
+      >
+        <div
+          className="donationStartTime"
+        >
+          יום שישי, 13 באוגוסט, 12:00
+        </div>
+      </div>
     </div>
     <div
       className="screenContent"
     >
       <div
+        className="divider"
+      />
+      <div
         className="content"
       >
-        <div
-          className="donationStartTime"
-        >
-          אנא הכנס את הפרטים של התורם בתאריך
-          13/08/2021
-          בשעה
-          12:00
-        </div>
         <div
           className="subtitle"
         >

@@ -1,8 +1,8 @@
-.addApointmentSceenContent {
+.addAppointmentScreenContent {
   background-color: rgb(236, 235, 235);
 }
 
-.addAppoinmentScreenCardContainer {
+.addAppointmentScreenCardContainer {
   width: 100%;
 
   display: flex;
@@ -34,19 +34,19 @@
   left: 20px;
 }
 
-.addAppoinmentScreenCardContainer .cardContainer .title {
+.addAppointmentScreenCardContainer .cardContainer .title {
   color: var(--coordinator-secondary);
   font-weight: 450;
 }
 
-.addApponimentSubtitle {
+.addAppointmentSubtitle {
   width: 100%;
 
   border-bottom: 1px solid lightgray;
   padding-bottom: 6px;
 }
 
-.addApponimentSubtitle .subtitleText {
+.addAppointmentSubtitle .subtitleText {
   color: var(--coordinator-primary);
   font-size: 17px;
   font-weight: 500;
