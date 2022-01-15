@@ -8,7 +8,6 @@ import {
   dbAppointmentToAppointmentApiEntry,
   dbDonorToDonor,
 } from "../utils/ApiEntriesConversionUtils";
-import { getDonors } from "../dal/DonorDataAccessLayer";
 import {
   getCoordinator,
   getValidHospitalsOrThrow,
@@ -16,6 +15,8 @@ import {
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 import _ from "lodash";
+import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
+import { isManualDonorAppointment } from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
@@ -37,12 +38,14 @@ export default async function (
 
   const donorIds: string[] = [];
   appointmentsByHospital.map((appointment) => {
-    if (appointment.donorId) {
+    if (appointment.donorId && !isManualDonorAppointment(appointment)) {
       donorIds.push(appointment.donorId);
     }
   });
 
-  let donorsInAppointments = await getDonors(_.uniq(donorIds));
+  let donorsInAppointments = await DonorDataAccessLayer.getDonors(
+    _.uniq(donorIds)
+  );
 
   let appointments = appointmentsByHospital.map((a) =>
     dbAppointmentToAppointmentApiEntry(a, donorsInAppointments)

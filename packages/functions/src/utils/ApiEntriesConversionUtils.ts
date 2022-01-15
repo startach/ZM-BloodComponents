@@ -4,7 +4,6 @@ import {
   Donor,
   DonorNotificationSettings,
   FunctionsApi,
-  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 
