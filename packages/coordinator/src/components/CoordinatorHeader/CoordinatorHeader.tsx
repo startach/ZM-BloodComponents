@@ -1,6 +1,5 @@
 import { IconButton } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -16,6 +15,7 @@ import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
 import { ReactComponent as NotificationsIcon } from "../../assets/icons/notifications.svg";
 import { ReactComponent as ChevronRight } from "../../assets/icons/chevron-right.svg";
+import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 import classNames from "classnames";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";

@@ -84,15 +84,8 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
+            <svg>
+              menu.svg
             </svg>
           </span>
         </button>

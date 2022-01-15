@@ -39,15 +39,8 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
+            <svg>
+              menu.svg
             </svg>
           </span>
         </button>
@@ -1104,7 +1097,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-34 makeStyles-fab-33 MuiFab-extended-38 MuiFab-primary-36"
+      className="MuiButtonBase-root-9 MuiFab-root-25 makeStyles-fab-24 MuiFab-extended-29 MuiFab-primary-27"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1122,11 +1115,11 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-35"
+        className="MuiFab-label-26"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-12"
+          className="MuiSvgIcon-root-35"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -1184,15 +1177,8 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-              />
+            <svg>
+              menu.svg
             </svg>
           </span>
         </button>
@@ -1337,7 +1323,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
         className="spinner"
       >
         <div
-          className="MuiCircularProgress-root-33 MuiCircularProgress-colorPrimary-37 MuiCircularProgress-indeterminate-35"
+          className="MuiCircularProgress-root-24 MuiCircularProgress-colorPrimary-28 MuiCircularProgress-indeterminate-26"
           role="progressbar"
           style={
             Object {
@@ -1347,11 +1333,11 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
           }
         >
           <svg
-            className="MuiCircularProgress-svg-39"
+            className="MuiCircularProgress-svg-30"
             viewBox="22 22 44 44"
           >
             <circle
-              className="MuiCircularProgress-circle-40 MuiCircularProgress-circleIndeterminate-42"
+              className="MuiCircularProgress-circle-31 MuiCircularProgress-circleIndeterminate-33"
               cx={44}
               cy={44}
               fill="none"
@@ -1364,7 +1350,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-48 makeStyles-fab-47 MuiFab-extended-52 MuiFab-primary-50"
+      className="MuiButtonBase-root-9 MuiFab-root-39 makeStyles-fab-38 MuiFab-extended-43 MuiFab-primary-41"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -1382,11 +1368,11 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-49"
+        className="MuiFab-label-40"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-12"
+          className="MuiSvgIcon-root-49"
           focusable="false"
           viewBox="0 0 24 24"
         >
