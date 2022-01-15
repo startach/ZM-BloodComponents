@@ -10,7 +10,6 @@ import SwippableComponent from "../SwippableComponent";
 import { Popup } from "../../components/Popup/Popup";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
-import { MemoVoidIteratorCapped } from "lodash";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
