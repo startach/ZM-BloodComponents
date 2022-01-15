@@ -66,8 +66,26 @@ request.
    `git clone git@github.com:startach/ZM-BloodComponents.git`
 2. Install the required dependencies
    `yarn install`
-3. To start the Donor app:
+3. Build the common package
+   `yarn run build-common`
+4. To start the Donor app:
    `yarn run start-donor`
-4. To start the Coordinator app:
+5. To start the Coordinator app:
    `yarn run start-coordinator`
-5. ENJOY!
+
+## Before merging
+
+To manage our development environment some automatic tests 
+are triggered with each pull request. 
+Run this steps locally to make sure they will pass:
+
+1. Fix code styling 
+   `yarn run style`
+2. Test [storybook snapshots](https://github.com/storybookjs/storybook/tree/main/addons/storyshots/storyshots-core)
+   `yarn run test-donor` or `yarn run test-coordinator` 
+   (depends on which package you have worked on)
+3. If some test failed, it means the code changes effected the UI. 
+    Make sure they didn't change any component that they weren't supposed to and update them with
+   `test-update-donor` or `test-update-coordinator`
+
+ENJOY!
