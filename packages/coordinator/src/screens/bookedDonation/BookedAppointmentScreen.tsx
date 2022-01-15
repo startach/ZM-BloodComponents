@@ -65,7 +65,7 @@ export default function BookedAppointmentScreen(
       </div>
       <div className={styles.details}>פרטי תורם</div>
       <InfoBar title={"מספר טלפון"} icon={<Phone />}>
-        <a href={`tel: ${props.appointment.phone}`}>
+        <a href={`tel: ${props.appointment.phone}`} className={styles.phone}>
           {props.appointment.phone}
         </a>
       </InfoBar>

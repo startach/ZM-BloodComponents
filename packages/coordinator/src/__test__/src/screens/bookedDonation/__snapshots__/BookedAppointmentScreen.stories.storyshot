@@ -149,6 +149,7 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
             className="values"
           >
             <a
+              className="phone"
               href="tel: 0522222222"
             >
               0522222222
