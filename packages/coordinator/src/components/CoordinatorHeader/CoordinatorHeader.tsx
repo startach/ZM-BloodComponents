@@ -147,7 +147,12 @@ function RightIcon(
   return null;
 }
 
+const HIDE_NOTIFICATION_BUTTON = true;
 function LeftIcon(props: CoordinatorHeaderProps) {
+  if (HIDE_NOTIFICATION_BUTTON) {
+    return null;
+  }
+
   if (props.hasNotificationsIcon) {
     return (
       <IconButton

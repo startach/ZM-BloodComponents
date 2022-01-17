@@ -47,7 +47,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
     <CoordinatorScreen
       className={styles.addAppointmentScreenContent}
       headerProps={{
-        title: "הוספת תור יחיד",
+        title: "הוספת תור",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
       }}

@@ -229,31 +229,6 @@ exports[`Storyshots Components/App Header Sticky Component 1`] = `
         >
           ניהול תורים
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              notifications.svg
-            </svg>
-          </span>
-        </button>
       </div>
       <div
         className="stickyComponent"
@@ -393,31 +368,6 @@ exports[`Storyshots Components/App Header With Notification 1`] = `
         >
           ניהול תורים
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              notifications.svg
-            </svg>
-          </span>
-        </button>
       </div>
     </div>
   </div>

@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         <div
           className="title secondaryTitle"
         >
-          הוספת תור יחיד
+          הוספת תור
         </div>
       </div>
     </div>

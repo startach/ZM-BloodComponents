@@ -49,32 +49,6 @@ exports[`Storyshots Components/Coordinator Screen Default 1`] = `
         >
           כותרת
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              notifications.svg
-            </svg>
-          </span>
-        </button>
       </div>
     </div>
     <div
@@ -139,32 +113,6 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
         >
           כותרת
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              notifications.svg
-            </svg>
-          </span>
-        </button>
       </div>
     </div>
     <div
@@ -267,32 +215,6 @@ exports[`Storyshots Components/Coordinator Screen Sticky Content 1`] = `
         >
           כותרת
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              notifications.svg
-            </svg>
-          </span>
-        </button>
       </div>
       <div
         className="stickyComponent"
