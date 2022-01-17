@@ -77,7 +77,7 @@ request.
 
 To manage our development environment some automatic tests 
 are triggered with each pull request. 
-Run this steps locally to make sure they will pass:
+Run these steps locally to make sure they will pass:
 
 1. Fix code styling 
    `yarn run style`

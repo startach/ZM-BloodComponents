@@ -162,7 +162,7 @@ function DeleteAppointmentPopup(props: {
     <Popup
       open={openPopup}
       onClose={closePopup}
-      content={"האם ברצונך למחוק תור זה ?"}
+      content={"האם ברצונך למחוק תור זה?"}
       primaryButtonText={"מחק תור"}
       onPrimaryButtonClick={onDeleteClick}
       cancelButtonText={"שמור תור"}

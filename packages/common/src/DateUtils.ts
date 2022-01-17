@@ -32,6 +32,11 @@ export function ToTimeString(date: ParsableDateValue | number) {
   return dayjs(date).tz(IL_TIMEZONE).format("HH:mm");
 }
 
+// TODO yaron add tests
+export function ToDateTimeString(date: ParsableDateValue | number) {
+  return dayjs(date).tz(IL_TIMEZONE).locale("he").format("dddd DD/MM, HH:mm");
+}
+
 export function ToWeekDayString(
   date: ParsableDateValue | number,
   format?: string
@@ -107,7 +112,7 @@ export const ShortDateFormat: Intl.DateTimeFormatOptions = {
 
 export const LongDateFormat: Intl.DateTimeFormatOptions = {
   weekday: "long",
-  month: "long",
+  month: "numeric",
   day: "numeric",
   hour: "numeric",
   minute: "numeric",

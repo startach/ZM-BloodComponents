@@ -92,7 +92,7 @@ test("non manual donor throws", async () => {
 
   await expectAsyncThrows(
     action,
-    "Coordinator booking for real donots is not supported yet"
+    "Coordinator booking for real donors is not supported yet"
   );
 });
 

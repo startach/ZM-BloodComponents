@@ -45,16 +45,16 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
 
   return (
     <CoordinatorScreen
-      className={styles.addApointmentSceenContent}
+      className={styles.addAppointmentScreenContent}
       headerProps={{
-        title: "הוספת תור יחיד",
+        title: "הוספת תור",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
       }}
     >
-      <div className={styles.addAppoinmentScreenCardContainer}>
+      <div className={styles.addAppointmentScreenCardContainer}>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>זמני תור</div>
           </div>
           <DatePicker
@@ -72,7 +72,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           />
         </div>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>מאפייני תור</div>
           </div>
           <Select

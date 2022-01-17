@@ -7,12 +7,11 @@ import {
 import * as admin from "firebase-admin";
 import {
   AppointmentStatus,
+  AppointmentUtils,
   BookingChange,
   FunctionsApi,
   Hospital,
-  MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
-  AppointmentUtils,
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";

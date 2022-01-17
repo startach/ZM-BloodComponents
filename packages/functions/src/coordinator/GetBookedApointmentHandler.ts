@@ -1,14 +1,10 @@
-import {
-  AppointmentUtils,
-  BloodType,
-  BookedDonationWithDonorDetails,
-  FunctionsApi,
-  Hospital,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as AdminDataAccessLayer from "../dal/AdminDataAccessLayer";
-import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
-import { isAppointmentAvailable } from "../utils/DbAppointmentUtils";
+import {
+  isAppointmentAvailable,
+  toBookedDonationWithDonorDetails,
+} from "../utils/DbAppointmentUtils";
 import { DbAppointment, DbCoordinator } from "../function-types";
 import { validateAppointmentPermissions } from "./UserValidator";
 
@@ -36,38 +32,7 @@ export default async function (
   const appointment = appointments[0];
   validateAppointment(appointment, coordinator);
 
-  let firstName: string;
-  let lastName: string;
-  let phone: string;
-  let bloodType: BloodType;
-  if (AppointmentUtils.isManualDonor(appointment.donorId)) {
-    firstName = appointment.donorDetails!.firstName;
-    lastName = appointment.donorDetails!.lastName;
-    phone = appointment.donorDetails!.phoneNumber;
-    bloodType = appointment.donorDetails!.bloodType;
-  } else {
-    const donor = await DonorDataAccessLayer.getDonor(appointment.donorId);
-    if (!donor) {
-      throw new Error("Could not find donor for booked appointment");
-    }
-    firstName = donor.firstName;
-    lastName = donor.lastName;
-    phone = donor.phone;
-    bloodType = donor.bloodType;
-  }
-
-  const bookedAppointment: BookedDonationWithDonorDetails = {
-    appointmentId: appointment.id!,
-    donorId: appointment.donorId,
-    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
-    bookingTimeMillis: appointment.bookingTime!.toMillis(),
-    hospital: appointment.hospital,
-    firstName: firstName,
-    lastName: lastName,
-    phone: phone,
-    bloodType: bloodType,
-    status: appointment.status,
-  };
+  const bookedAppointment = await toBookedDonationWithDonorDetails(appointment);
 
   return {
     bookedAppointment: bookedAppointment,

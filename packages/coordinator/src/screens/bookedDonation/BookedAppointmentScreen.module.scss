@@ -1,11 +1,12 @@
 .bookedAppointmentScreenContent {
   background-color: rgb(236, 235, 235);
+  color: var(--coordinator-dark-gray);
 }
 
 .details {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   padding: 25px 30px;
   background-color: white;
+  font-size: 16px;
 }
 
 .status {
@@ -16,18 +17,27 @@
   padding: 25px 30px;
   margin-bottom: 15px;
   margin-top: 15px;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
 }
 
 .statusChip {
   margin-right: 10px;
 }
 
+.phone {
+  color: var(--coordinator-link);
+}
+
 .name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-weight: bold;
+  font-weight: 500;
   padding: 25px 25px 30px 20px;
+  color: var(--coordinator-dark-gray);
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .icons {
