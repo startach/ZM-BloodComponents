@@ -75,17 +75,17 @@ request.
 
 ## Before merging
 
-To manage our development environment some automatic tests 
-are triggered with each pull request. 
+To manage our development environment some automatic tests
+are triggered with each pull request.
 Run these steps locally to make sure they will pass:
 
-1. Fix code styling 
+1. Fix code styling
    `yarn run style`
 2. Test [storybook snapshots](https://github.com/storybookjs/storybook/tree/main/addons/storyshots/storyshots-core)
-   `yarn run test-donor` or `yarn run test-coordinator` 
+   `yarn run test-donor` or `yarn run test-coordinator`
    (depends on which package you have worked on)
-3. If some test failed, it means the code changes effected the UI. 
-    Make sure they didn't change any component that they weren't supposed to and update them with
-   `test-update-donor` or `test-update-coordinator`
+3. If some test failed, it means the code changes effected the UI.
+   Make sure they didn't change any component that they weren't supposed to and update them with
+   `yarn run test-update-donor` or `yarn run test-update-coordinator`
 
 ENJOY!
