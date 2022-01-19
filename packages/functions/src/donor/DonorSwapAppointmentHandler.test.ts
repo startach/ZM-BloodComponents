@@ -237,7 +237,7 @@ async function saveAppointment(
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId ?? "",
     status: donorId ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
-    bookingTime: donorId ? time : null,
+    bookingTime: donorId ? time : undefined,
   };
 
   await setAppointment(appointment);
