@@ -38,6 +38,20 @@ export async function donorBookAppointment(appointmentIds: string[]) {
   return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
+export async function donorSwapAppointment(bookAppointmentIds: string[], cancelAppointmentId: string) {
+  const donorSwapAppointmentFunction = getCallableFunction(
+    FunctionsApi.DonorSwapAppointmentFunctionName
+  );
+
+  const request: FunctionsApi.SwapAppointmentRequest = {
+    bookAppointmentIds,
+    cancelAppointmentId
+  };
+
+  const response = await donorSwapAppointmentFunction(request);
+  return response.data as FunctionsApi.SwapAppointmentResponse;
+}
+
 export async function setCompleteAppointment(
   appointmentId: string,
   isNoshow: boolean

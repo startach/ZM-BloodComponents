@@ -93,6 +93,13 @@ export interface BookAppointmentResponse {
   status: BookAppointmentStatus;
   bookedAppointment?: BookedAppointmentApiEntry;
 }
+export const DonorSwapAppointmentFunctionName = "swapAppointment";
+
+export interface SwapAppointmentRequest {
+  cancelAppointmentId: string;
+  bookAppointmentIds: string[];
+}
+export interface SwapAppointmentResponse extends BookAppointmentResponse {}
 
 export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
