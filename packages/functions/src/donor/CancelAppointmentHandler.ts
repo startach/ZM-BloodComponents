@@ -1,5 +1,5 @@
 import { FunctionsApi } from "@zm-blood-components/common";
-import  { cancelAppointment } from "../common/CancelAppointmentHelper";
+import { cancelAppointment } from "../common/CancelAppointmentHelper";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,

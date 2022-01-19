@@ -39,7 +39,10 @@ export async function bookAppointment(
       donorDetails
     );
 
-  if (!appointmentToBook || status !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
+  if (
+    !appointmentToBook ||
+    status !== FunctionsApi.BookAppointmentStatus.SUCCESS
+  ) {
     return { status };
   }
 

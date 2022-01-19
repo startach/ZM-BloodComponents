@@ -38,14 +38,17 @@ export async function donorBookAppointment(appointmentIds: string[]) {
   return response.data as FunctionsApi.BookAppointmentResponse;
 }
 
-export async function donorSwapAppointment(bookAppointmentIds: string[], cancelAppointmentId: string) {
+export async function donorSwapAppointment(
+  bookAppointmentIds: string[],
+  cancelAppointmentId: string
+) {
   const donorSwapAppointmentFunction = getCallableFunction(
     FunctionsApi.DonorSwapAppointmentFunctionName
   );
 
   const request: FunctionsApi.SwapAppointmentRequest = {
     bookAppointmentIds,
-    cancelAppointmentId
+    cancelAppointmentId,
   };
 
   const response = await donorSwapAppointmentFunction(request);

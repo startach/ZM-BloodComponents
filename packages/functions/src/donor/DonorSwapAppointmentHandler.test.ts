@@ -181,7 +181,9 @@ test("Valid request swaps appointment", async () => {
     },
   });
 
-  const appointmentToCancel = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
+  const appointmentToCancel = await getAppointmentsByIds([
+    APPOINTMENT_TO_CANCEL,
+  ]);
   expect(appointmentToCancel[0].donorId).toEqual("");
   expect(appointmentToCancel[0].status).toEqual(AppointmentStatus.AVAILABLE);
   expect(appointmentToCancel[0].creatorUserId).toEqual("creatorUserId");

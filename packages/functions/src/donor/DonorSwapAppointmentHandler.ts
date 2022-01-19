@@ -32,7 +32,8 @@ export default async function (
     throw new Error(invalidReason);
   }
 
- const {status: bookAppointmentStatus, bookedAppointment} = await bookAppointment(callerId, [request.cancelAppointmentId], false);
+  const { status: bookAppointmentStatus, bookedAppointment } =
+    await bookAppointment(callerId, [request.cancelAppointmentId], false);
 
   await cancelAppointment(
     callerId,
