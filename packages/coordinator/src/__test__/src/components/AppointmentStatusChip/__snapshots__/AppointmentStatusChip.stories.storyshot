@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Appointment Status Chip Available 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      פנוי
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip Booked Future 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      מוזמן
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip Booked Past 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      אין מידע
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip Completed 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      הושלם
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip Confirmed 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip greenChip"
+    >
+      אישר הגעה
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Appointment Status Chip No Show 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="appointmentStatusChipContainer"
+  >
+    <div
+      className="appointmentStatusChip redChip"
+    >
+      לא הגיע
+    </div>
+  </div>
+</div>
+`;

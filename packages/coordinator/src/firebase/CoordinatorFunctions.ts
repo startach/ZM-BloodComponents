@@ -114,7 +114,7 @@ async function callDeleteAppointmentFunction(
     FunctionsApi.DeleteAppointmentsFunctionName
   );
 
-  deleteAppointmentsFunction(request);
+  await deleteAppointmentsFunction(request);
 }
 
 export async function getAllDonors() {

@@ -7,10 +7,10 @@ import {
 import * as admin from "firebase-admin";
 import {
   AppointmentStatus,
+  AppointmentUtils,
   BookingChange,
   FunctionsApi,
   Hospital,
-  MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
@@ -49,7 +49,7 @@ export async function bookAppointment(
   appointmentToBook.lastChangeType = BookingChange.BOOKED;
   appointmentToBook.status = AppointmentStatus.BOOKED;
 
-  if (coordinatorId && donorId === MANUAL_DONOR_ID) {
+  if (coordinatorId && AppointmentUtils.isManualDonor(donorId)) {
     appointmentToBook.donorDetails = donorDetails;
     appointmentToBook.assigningCoordinatorId = coordinatorId;
   } else {
@@ -112,7 +112,7 @@ export async function validateBookAppointment(
   }
   const appointmentToBook = availableAppointments[0];
 
-  if (coordinatorId && donorId === MANUAL_DONOR_ID) {
+  if (coordinatorId && AppointmentUtils.isManualDonor(donorId)) {
     if (!donorDetails) {
       return {
         status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,

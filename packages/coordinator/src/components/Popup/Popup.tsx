@@ -19,6 +19,7 @@ export type PopupProps = {
   // Buttons
   primaryButtonText?: string;
   onPrimaryButtonClick?: () => void;
+  primaryButtonLoading?: boolean;
   cancelButtonText?: string;
   onCancelButtonClick?: () => void;
 };
@@ -31,6 +32,7 @@ export function Popup(props: PopupProps) {
     onClose,
     primaryButtonText,
     onPrimaryButtonClick,
+    primaryButtonLoading,
     cancelButtonText,
     onCancelButtonClick,
   } = props;
@@ -55,6 +57,7 @@ export function Popup(props: PopupProps) {
             title={primaryButtonText}
             onClick={onPrimaryButtonClick || noop}
             color={ButtonColor.secondary}
+            isLoading={primaryButtonLoading}
           />
         )}
         {cancelButtonText && (

@@ -13,6 +13,7 @@ import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface AddAppointmentScreenProps {
+  initialDate: Date;
   onSubmit: (donationStartTime: Date, slots: number) => void;
 }
 
@@ -23,8 +24,8 @@ const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
 }));
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
-  const [date, setDate] = useState<Date | null>(getInitialDate());
-  const [hour, setHour] = useState<Date | null>(getInitialDate());
+  const [date, setDate] = useState<Date | null>(props.initialDate);
+  const [hour, setHour] = useState<Date | null>(props.initialDate);
   const [slots, setSlots] = useState(1);
   const [loading, setLoading] = useState(false);
 
@@ -44,16 +45,16 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
 
   return (
     <CoordinatorScreen
-      className={styles.addApointmentSceenContent}
+      className={styles.addAppointmentScreenContent}
       headerProps={{
-        title: "הוספת תור יחיד",
+        title: "הוספת תור",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
       }}
     >
-      <div className={styles.addAppoinmentScreenCardContainer}>
+      <div className={styles.addAppointmentScreenCardContainer}>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>זמני תור</div>
           </div>
           <DatePicker
@@ -71,7 +72,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           />
         </div>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>מאפייני תור</div>
           </div>
           <Select
@@ -106,15 +107,4 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
       </div>
     </CoordinatorScreen>
   );
-}
-
-function getInitialDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 1);
-  date.setHours(11);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
-
-  return date;
 }

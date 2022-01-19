@@ -30,5 +30,18 @@ export default function AddAppointmentScreenContainer(
     navigate(-1);
   };
 
-  return <AddAppointmentScreen onSubmit={onSave} />;
+  return (
+    <AddAppointmentScreen onSubmit={onSave} initialDate={getInitialDate()} />
+  );
+}
+
+function getInitialDate() {
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+  date.setHours(11);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+
+  return date;
 }

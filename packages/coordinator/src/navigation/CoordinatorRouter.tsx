@@ -56,7 +56,7 @@ const ROLES_THAT_VIEW_DONORS = [
   CoordinatorRole.GROUP_COORDINATOR,
 ];
 
-const USE_NEW_COORDINATOR = process.env.REACT_APP_USE_NEW_COORDINATOR;
+const USE_NEW_COORDINATOR = process.env.REACT_APP_USE_NEW_COORDINATOR || "true";
 
 export default function CoordinatorRouter() {
   const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
@@ -113,7 +113,7 @@ export default function CoordinatorRouter() {
   const activeHospitalsForCoordinator =
     appState.coordinator?.activeHospitalsForCoordinator!;
 
-  if (USE_NEW_COORDINATOR) {
+  if (USE_NEW_COORDINATOR === "true") {
     if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
       return <SplashScreen />;
     }

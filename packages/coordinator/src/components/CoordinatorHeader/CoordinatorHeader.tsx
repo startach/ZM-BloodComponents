@@ -1,8 +1,5 @@
 import { IconButton } from "@material-ui/core";
-import ArrowForward from "@material-ui/icons/ArrowForward";
 import { useNavigate } from "react-router-dom";
-import MenuIcon from "@material-ui/icons/Menu";
-import NotificationIcon from "@material-ui/icons/NotificationsNone";
 import React, { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
@@ -16,6 +13,9 @@ import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.sv
 import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
+import { ReactComponent as NotificationsIcon } from "../../assets/icons/notifications.svg";
+import { ReactComponent as ChevronRight } from "../../assets/icons/chevron-right.svg";
+import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 import classNames from "classnames";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
@@ -139,7 +139,7 @@ function RightIcon(
         onClick={props.onBack ? props.onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
-        <ArrowForward />
+        <ChevronRight />
       </IconButton>
     );
   }
@@ -147,14 +147,19 @@ function RightIcon(
   return null;
 }
 
+const HIDE_NOTIFICATION_BUTTON = true;
 function LeftIcon(props: CoordinatorHeaderProps) {
+  if (HIDE_NOTIFICATION_BUTTON) {
+    return null;
+  }
+
   if (props.hasNotificationsIcon) {
     return (
       <IconButton
         onClick={props.onNotificationsClick}
         className={styles.leftButton}
       >
-        <NotificationIcon />
+        <NotificationsIcon />
       </IconButton>
     );
   }

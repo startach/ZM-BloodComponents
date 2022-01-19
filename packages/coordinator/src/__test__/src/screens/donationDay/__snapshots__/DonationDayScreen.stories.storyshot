@@ -39,15 +39,8 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
+            <svg>
+              chevron-right.svg
             </svg>
           </span>
         </button>
@@ -56,38 +49,6 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
         >
           ניהול תורים
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
-              />
-            </svg>
-          </span>
-        </button>
       </div>
       <div
         className="stickyComponent"
@@ -494,7 +455,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-34 makeStyles-fab-33 MuiFab-extended-38 MuiFab-primary-36"
+      className="MuiButtonBase-root-9 MuiFab-root-25 makeStyles-fab-24 MuiFab-extended-29 MuiFab-primary-27"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -512,11 +473,11 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-35"
+        className="MuiFab-label-26"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-12"
+          className="MuiSvgIcon-root-35"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -574,15 +535,8 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
+            <svg>
+              chevron-right.svg
             </svg>
           </span>
         </button>
@@ -591,38 +545,6 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
         >
           ניהול תורים
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
-              />
-            </svg>
-          </span>
-        </button>
       </div>
       <div
         className="stickyComponent"
@@ -685,7 +607,7 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
           className="spinner"
         >
           <div
-            className="MuiCircularProgress-root-33 MuiCircularProgress-colorPrimary-37 MuiCircularProgress-indeterminate-35"
+            className="MuiCircularProgress-root-24 MuiCircularProgress-colorPrimary-28 MuiCircularProgress-indeterminate-26"
             role="progressbar"
             style={
               Object {
@@ -695,11 +617,11 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
             }
           >
             <svg
-              className="MuiCircularProgress-svg-39"
+              className="MuiCircularProgress-svg-30"
               viewBox="22 22 44 44"
             >
               <circle
-                className="MuiCircularProgress-circle-40 MuiCircularProgress-circleIndeterminate-42"
+                className="MuiCircularProgress-circle-31 MuiCircularProgress-circleIndeterminate-33"
                 cx={44}
                 cy={44}
                 fill="none"
@@ -716,7 +638,7 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-48 makeStyles-fab-47 MuiFab-extended-52 MuiFab-primary-50"
+      className="MuiButtonBase-root-9 MuiFab-root-39 makeStyles-fab-38 MuiFab-extended-43 MuiFab-primary-41"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -734,11 +656,11 @@ exports[`Storyshots Screens/Donation Day Loading 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-49"
+        className="MuiFab-label-40"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-12"
+          className="MuiSvgIcon-root-49"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -796,15 +718,8 @@ exports[`Storyshots Screens/Donation Day No Appointments 1`] = `
           <span
             className="MuiIconButton-label-8"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-              />
+            <svg>
+              chevron-right.svg
             </svg>
           </span>
         </button>
@@ -813,38 +728,6 @@ exports[`Storyshots Screens/Donation Day No Appointments 1`] = `
         >
           ניהול תורים
         </div>
-        <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 leftButton"
-          disabled={false}
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
-        >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-12"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"
-              />
-            </svg>
-          </span>
-        </button>
       </div>
       <div
         className="stickyComponent"
@@ -914,7 +797,7 @@ exports[`Storyshots Screens/Donation Day No Appointments 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-34 makeStyles-fab-33 MuiFab-extended-38 MuiFab-primary-36"
+      className="MuiButtonBase-root-9 MuiFab-root-25 makeStyles-fab-24 MuiFab-extended-29 MuiFab-primary-27"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -932,11 +815,11 @@ exports[`Storyshots Screens/Donation Day No Appointments 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-35"
+        className="MuiFab-label-26"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-12"
+          className="MuiSvgIcon-root-35"
           focusable="false"
           viewBox="0 0 24 24"
         >
