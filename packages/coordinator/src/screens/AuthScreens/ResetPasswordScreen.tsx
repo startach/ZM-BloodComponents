@@ -99,9 +99,9 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
             <Button
               className={styles.resetPasswordScreenPopupButton}
               onClick={() => {
-                setSuccessPopupOpen(false);
+                navigate(-1);
               }}
-              title="אחלה, תודה!"
+              title="חזרה למסך התחברות"
               variant={ButtonVariant.contained}
             />
             <Button
