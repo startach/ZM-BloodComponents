@@ -112,8 +112,6 @@ export default function CoordinatorRouter() {
   const activeHospitalsForCoordinator =
     appState.coordinator?.activeHospitalsForCoordinator!;
 
-  return <ResetPasswordScreenContainer loggedIn={false} />;
-
   if (USE_NEW_COORDINATOR) {
     if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
       return <SplashScreen />;
@@ -203,84 +201,84 @@ export default function CoordinatorRouter() {
     return <CoordinatorSignInScreenContainer />;
   }
 
-  // const canAddAppointments = !!(
-  //   appState.coordinator?.role &&
-  //   ROLES_THAT_ADD_APPOINTMENTS.includes(appState.coordinator?.role)
-  // );
-  // const canViewOpenAppointments = !!(
-  //   appState.coordinator?.role &&
-  //   ROLES_THAT_VIEW_OPEN_APPOINTMENTS.includes(appState.coordinator?.role)
-  // );
-  // const canViewBookedAppointments = !!(
-  //   appState.coordinator?.role &&
-  //   ROLES_THAT_VIEW_BOOKED_APPOINTMENTS.includes(appState.coordinator?.role)
-  // );
-  // const canViewDonors = !!(
-  //   appState.coordinator?.role &&
-  //   ROLES_THAT_VIEW_DONORS.includes(appState.coordinator?.role)
-  // );
+  const canAddAppointments = !!(
+    appState.coordinator?.role &&
+    ROLES_THAT_ADD_APPOINTMENTS.includes(appState.coordinator?.role)
+  );
+  const canViewOpenAppointments = !!(
+    appState.coordinator?.role &&
+    ROLES_THAT_VIEW_OPEN_APPOINTMENTS.includes(appState.coordinator?.role)
+  );
+  const canViewBookedAppointments = !!(
+    appState.coordinator?.role &&
+    ROLES_THAT_VIEW_BOOKED_APPOINTMENTS.includes(appState.coordinator?.role)
+  );
+  const canViewDonors = !!(
+    appState.coordinator?.role &&
+    ROLES_THAT_VIEW_DONORS.includes(appState.coordinator?.role)
+  );
 
-  // return (
-  //   <CoordinatorScreen
-  //     header={
-  //       <CoordinatorHeaderContainer
-  //         flags={{
-  //           isLoggedIn: true,
-  //           showAddAppointments: canAddAppointments,
-  //           showOpenAppointments: canViewOpenAppointments,
-  //           showSearchDonors: canViewDonors,
-  //           showBookedAppointments: canViewBookedAppointments,
-  //         }}
-  //         coordinator={appState.coordinator}
-  //       />
-  //     }
-  //   >
-  //     <Routes>
-  //       {canViewOpenAppointments && (
-  //         <Route
-  //           path={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
-  //           element={
-  //             <ManageAppointmentsScreenContainer
-  //               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-  //             />
-  //           }
-  //         />
-  //       )}
-  //       {canViewDonors && (
-  //         <Route
-  //           path={CoordinatorScreenKey.DONORS}
-  //           element={<SearchDonorsScreenContainer />}
-  //         />
-  //       )}
-  //       {canViewBookedAppointments && (
-  //         <Route
-  //           path={CoordinatorScreenKey.REPORTS}
-  //           element={
-  //             <ScheduledAppointmentsContainer
-  //               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-  //             />
-  //           }
-  //         />
-  //       )}
-  //       {canAddAppointments && (
-  //         <Route
-  //           path={CoordinatorScreenKey.ADD_APPOINTMENTS}
-  //           element={
-  //             <AddAppointmentsScreenContainer
-  //               activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-  //             />
-  //           }
-  //         />
-  //       )}
+  return (
+    <CoordinatorScreen
+      header={
+        <CoordinatorHeaderContainer
+          flags={{
+            isLoggedIn: true,
+            showAddAppointments: canAddAppointments,
+            showOpenAppointments: canViewOpenAppointments,
+            showSearchDonors: canViewDonors,
+            showBookedAppointments: canViewBookedAppointments,
+          }}
+          coordinator={appState.coordinator}
+        />
+      }
+    >
+      <Routes>
+        {canViewOpenAppointments && (
+          <Route
+            path={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS}
+            element={
+              <ManageAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
+        )}
+        {canViewDonors && (
+          <Route
+            path={CoordinatorScreenKey.DONORS}
+            element={<SearchDonorsScreenContainer />}
+          />
+        )}
+        {canViewBookedAppointments && (
+          <Route
+            path={CoordinatorScreenKey.REPORTS}
+            element={
+              <ScheduledAppointmentsContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
+        )}
+        {canAddAppointments && (
+          <Route
+            path={CoordinatorScreenKey.ADD_APPOINTMENTS}
+            element={
+              <AddAppointmentsScreenContainer
+                activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+              />
+            }
+          />
+        )}
 
-  //       {/*in case of no match*/}
-  //       <Route
-  //         path="*"
-  //         element={
-  //           <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
-  //         }
-  //       />
-  //     </Routes>
-  //   </CoordinatorScreen>
-  // );
+        {/*in case of no match*/}
+        <Route
+          path="*"
+          element={
+            <Navigate to={CoordinatorScreenKey.SCHEDULED_APPOINTMENTS} />
+          }
+        />
+      </Routes>
+    </CoordinatorScreen>
+  );
 }
