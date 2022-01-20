@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Popup } from "../../components/Popup/Popup";
 
 export interface ResetPasswordScreenProps {
-  onResetPassword: (email: string, emailError: (error: string) => void) => void;
+  onResetPassword: (email: string, emailError: (error: string) => void) => Promise<void>;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {

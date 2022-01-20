@@ -13,7 +13,7 @@ export default function ResetPasswordScreenContainer(props: {
   const onResetPassword = async (
     email: string,
     emailError: (error: string) => void
-  ) => {
+  ): Promise<void> => {
     await sendPasswordResetEmail(getAuth(), email).catch((error) => {
       switch (error.code) {
         case "auth/invalid-email":
@@ -31,7 +31,7 @@ export default function ResetPasswordScreenContainer(props: {
         case "auth/network-request-failed":
           emailError("בעיית רשת, אנא נסה שוב בעתיד");
           break;
-          
+
         default:
           emailError(error.message);
           console.error(
@@ -39,8 +39,6 @@ export default function ResetPasswordScreenContainer(props: {
           );
       }
     });
-
-    return true;
   };
 
   return <ResetPasswordScreen onResetPassword={onResetPassword} />;
