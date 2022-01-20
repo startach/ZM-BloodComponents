@@ -118,7 +118,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
             />
             <div className={styles.resetPassPopupTitle}>אופס</div>
             <div className={styles.resetPassPopupMessage}>
-              כתובת המייל שלך לא נמצאה
+              {emailError}
             </div>
             <Button
               className={styles.resetPasswordScreenPopupButton}
