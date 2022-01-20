@@ -6,14 +6,12 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 export default function ResetPasswordScreenContainer(props: {
   loggedIn: boolean;
 }) {
-  console.log(props.loggedIn)
+  console.log(props.loggedIn);
   if (props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
-  const onResetPassword = async (
-    email: string,
-  ): Promise<void> => {
+  const onResetPassword = async (email: string): Promise<void> => {
     await sendPasswordResetEmail(getAuth(), email).catch((error) => {
       switch (error.code) {
         case "auth/invalid-email":
@@ -33,7 +31,6 @@ export default function ResetPasswordScreenContainer(props: {
             "Reset password error code without translation: " + error.code
           );
           throw new Error(error.message);
-
       }
     });
   };

@@ -112,7 +112,7 @@ export default function CoordinatorRouter() {
   const activeHospitalsForCoordinator =
     appState.coordinator?.activeHospitalsForCoordinator!;
 
-  return <ResetPasswordScreenContainer loggedIn={false} />
+  return <ResetPasswordScreenContainer loggedIn={false} />;
 
   if (USE_NEW_COORDINATOR) {
     if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {

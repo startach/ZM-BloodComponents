@@ -11,9 +11,7 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const onResetPassword = async (
-  email: string,
-) => {
+const onResetPassword = async (email: string) => {
   action("onResetPasswordWithEmail")();
   await TestUtils.wait(500);
 
