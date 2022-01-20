@@ -19,7 +19,7 @@ const onResetPassword = async (
   await TestUtils.wait(500);
 
   if (email !== "1234") {
-    emailError("שגיאה כלשהי");
+    emailError("כתובת המייל שלך לא נמצאה");
     throw new Error("email is not 1234!");
   }
 };

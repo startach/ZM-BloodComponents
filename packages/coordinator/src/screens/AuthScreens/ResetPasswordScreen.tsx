@@ -96,6 +96,14 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
             <Button
               className={styles.resetPasswordScreenPopupButton}
               onClick={() => {
+                setSuccessPopupOpen(false);
+              }}
+              title="אחלה, תודה!"
+              variant={ButtonVariant.contained}
+            />
+            <Button
+              className={styles.resetPasswordScreenPopupButton}
+              onClick={() => {
                 setEmailError("");
                 setSuccessPopupOpen(false);
                 handleResetPass();
