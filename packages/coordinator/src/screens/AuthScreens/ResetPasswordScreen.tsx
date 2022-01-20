@@ -10,7 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { Popup } from "../../components/Popup/Popup";
 
 export interface ResetPasswordScreenProps {
-  onResetPassword: (email: string, emailError: (error: string) => void) => Promise<void>;
+  onResetPassword: (
+    email: string,
+    emailError: (error: string) => void
+  ) => Promise<void>;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -125,9 +128,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               className={styles.resetPassPopupImg}
             />
             <div className={styles.resetPassPopupTitle}>אופס</div>
-            <div className={styles.resetPassPopupMessage}>
-              {emailError}
-            </div>
+            <div className={styles.resetPassPopupMessage}>{emailError}</div>
             <Button
               className={styles.resetPasswordScreenPopupButton}
               onClick={() => {
