@@ -12,7 +12,6 @@ import { Popup } from "../../components/Popup/Popup";
 export interface ResetPasswordScreenProps {
   onResetPassword: (
     email: string,
-    emailError: (error: string) => void
   ) => Promise<void>;
 }
 
@@ -28,12 +27,12 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
 
   const handleResetPass = async () => {
     setIsLoading(true);
-    try {
-      await props.onResetPassword(email, setEmailError);
+    await props.onResetPassword(email).then(() => {
       setSuccessPopupOpen(true);
-    } catch (e) {
-      setErrorPopupOpen(true);
-    }
+    }).catch((error) => {
+      setEmailError(error.message);
+      setErrorPopupOpen(true)
+    });
     setIsLoading(false);
   };
 

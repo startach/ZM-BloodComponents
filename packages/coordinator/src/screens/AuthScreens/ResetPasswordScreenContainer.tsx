@@ -6,37 +6,34 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 export default function ResetPasswordScreenContainer(props: {
   loggedIn: boolean;
 }) {
+  console.log(props.loggedIn)
   if (props.loggedIn) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
   const onResetPassword = async (
     email: string,
-    emailError: (error: string) => void
   ): Promise<void> => {
     await sendPasswordResetEmail(getAuth(), email).catch((error) => {
       switch (error.code) {
         case "auth/invalid-email":
-          emailError("כתובת הדואר אינה תקינה");
-          break;
+          throw new Error("כתובת הדואר אינה תקינה");
 
         case "auth/user-not-found":
-          emailError("המשתמש לא נמצא");
-          break;
+          throw new Error("המשתמש לא נמצא");
 
         case "auth/too-many-requests":
-          emailError("לא ניתן להתחבר כעת, נסה מאוחר יותר");
-          break;
+          throw new Error("לא ניתן להתחבר כעת, נסה מאוחר יותר");
 
         case "auth/network-request-failed":
-          emailError("בעיית רשת, אנא נסה שוב בעתיד");
-          break;
+          throw new Error("בעיית רשת, אנא נסה שוב בעתיד");
 
         default:
-          emailError(error.message);
           console.error(
             "Reset password error code without translation: " + error.code
           );
+          throw new Error(error.message);
+
       }
     });
   };

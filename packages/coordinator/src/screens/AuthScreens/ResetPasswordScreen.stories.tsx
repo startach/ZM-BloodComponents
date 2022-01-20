@@ -13,14 +13,12 @@ export default {
 
 const onResetPassword = async (
   email: string,
-  emailError: (error: string) => void
 ) => {
   action("onResetPasswordWithEmail")();
   await TestUtils.wait(500);
 
   if (email !== "1234") {
-    emailError("כתובת המייל שלך לא נמצאה");
-    throw new Error("email is not 1234!");
+    throw new Error("כתבות המייל אינה תקינה");
   }
 };
 
