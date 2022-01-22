@@ -382,32 +382,75 @@ exports[`Storyshots Screens/Booked Appointment Loading 1`] = `
   }
 >
   <div
-    className="loading"
+    className="coordinatorScreen"
   >
     <div
-      className="MuiCircularProgress-root-0 spinner MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-2"
-      role="progressbar"
-      style={
-        Object {
-          "height": "3rem",
-          "width": "3rem",
-        }
-      }
+      className="appHeader"
     >
-      <svg
-        className="MuiCircularProgress-svg-6"
-        viewBox="22 22 44 44"
+      <div
+        className="headerRow"
       >
-        <circle
-          className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
-          cx={44}
-          cy={44}
-          fill="none"
-          r={20.2}
-          strokeWidth={3.6}
-          style={Object {}}
-        />
-      </svg>
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg>
+              chevron-right.svg
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title infoTitle"
+        >
+           
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent loading"
+    >
+      <div
+        className="MuiCircularProgress-root-24 spinner MuiCircularProgress-colorPrimary-28 MuiCircularProgress-indeterminate-26"
+        role="progressbar"
+        style={
+          Object {
+            "height": "3rem",
+            "width": "3rem",
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-30"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-31 MuiCircularProgress-circleIndeterminate-33"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </div>

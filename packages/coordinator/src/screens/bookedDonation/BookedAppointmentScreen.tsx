@@ -35,9 +35,17 @@ export default function BookedAppointmentScreen(
   if (!props.appointment) {
     // Loading state
     return (
-      <div className={styles.loading}>
+      <CoordinatorScreen
+        className={styles.loading}
+        headerProps={{
+          title: " ",
+          variant: HeaderVariant.INFO,
+          hasBackButton: true,
+          hasNotificationsIcon: true,
+        }}
+      >
         <Spinner size={"3rem"} className={styles.spinner} />
-      </div>
+      </CoordinatorScreen>
     );
   }
 
@@ -56,7 +64,13 @@ export default function BookedAppointmentScreen(
         variant: HeaderVariant.INFO,
         hasBackButton: true,
         hasNotificationsIcon: true,
-        stickyComponent: <NameBar {...props} />,
+        stickyComponent: (
+          <NameBar
+            name={`${props.appointment.firstName} ${props.appointment.lastName}`}
+            onCopyAppointmentDetails={props.onCopyAppointmentDetails}
+            onRemoveDonor={props.onRemoveDonor}
+          />
+        ),
       }}
     >
       <Status
@@ -152,18 +166,18 @@ function Status(props: {
   );
 }
 
-function NameBar(props: BookedAppointmentScreenProps) {
+function NameBar(props: {
+  name: string;
+  onRemoveDonor: () => void;
+  onCopyAppointmentDetails: () => void;
+}) {
   const [removeDonorPopupOpen, setRemoveDonorPopupOpen] = useState(false);
   const [deletingAppointment, setDeletingAppointment] = useState(false);
   const [copyToastOpen, setCopyToastOpen] = useState(false);
 
-  if (!props.appointment) {
-    return null;
-  }
-
   return (
     <div className={styles.name}>
-      <div>{`${props.appointment.firstName} ${props.appointment.lastName}`}</div>
+      <div>{props.name}</div>
       <div className={styles.icons}>
         <Copy
           onClick={() => {
