@@ -7,7 +7,7 @@ import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
 import classNames from "classnames";
 import SwippableComponent from "../SwippableComponent";
-import { Popup } from "../../components/Popup/Popup";
+import Popup from "../../components/Popup";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
@@ -24,16 +24,10 @@ export default function AppointmentPreview({
 }: AppointmentPreviewProps) {
   const [showDelete, setShowDelete] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
-  const [appointmentDeleted, setAppointmentDeleted] = useState(false);
 
   const onDeleteAppointment = () => {
     onDelete();
-    setAppointmentDeleted(true);
   };
-
-  if (appointmentDeleted) {
-    return null;
-  }
 
   const onSwipe = (open: boolean) => {
     if (!appointment.booked) {
