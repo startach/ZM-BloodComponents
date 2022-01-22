@@ -41,14 +41,14 @@ export function Popup(props: PopupProps) {
     root: {
       justifyContent: "center",
       textAlign: "center",
-      paddingBottom: "20px",
+      paddingBottom: "10px",
     },
   });
 
   const classes = centerStyle();
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} fullWidth={true}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent classes={classes}>{children}</DialogContent>
       <DialogActions classes={classes}>

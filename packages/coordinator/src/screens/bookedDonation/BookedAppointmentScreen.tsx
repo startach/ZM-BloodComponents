@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  AppointmentStatus,
   BookedDonationWithDonorDetails,
   DateUtils,
   LocaleUtils,
@@ -82,8 +83,14 @@ function Status(props: {
   appointment: BookedDonationWithDonorDetails;
   markAppointmentAsCompleted: (isNoShow: boolean) => void;
 }) {
+  const initialNoShowSelected =
+    props.appointment.status === AppointmentStatus.NOSHOW
+      ? true
+      : props.appointment.status === AppointmentStatus.COMPLETED
+      ? false
+      : undefined;
   const [showConfirmationPopup, setShowConfirmationPopup] = useState(false);
-  const [noShowSelected, setNoShowSelected] = useState<boolean | undefined>();
+  const [noShowSelected, setNoShowSelected] = useState(initialNoShowSelected);
   const canChangeAppointmentStatus =
     new Date().getTime() > props.appointment.donationStartTimeMillis;
 
