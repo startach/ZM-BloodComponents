@@ -13,7 +13,7 @@ import React from "react";
 export type PopupProps = {
   open: boolean;
   title?: string;
-  content?: string | React.ReactNode;
+  children?: React.ReactNode;
   onClose: (event: object) => void;
 
   // Buttons
@@ -28,7 +28,7 @@ export function Popup(props: PopupProps) {
   const {
     open,
     title,
-    content,
+    children,
     onClose,
     primaryButtonText,
     onPrimaryButtonClick,
@@ -50,7 +50,7 @@ export function Popup(props: PopupProps) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
-      <DialogContent classes={classes}>{content}</DialogContent>
+      <DialogContent classes={classes}>{children}</DialogContent>
       <DialogActions classes={classes}>
         {primaryButtonText && (
           <Button

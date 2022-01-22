@@ -144,3 +144,22 @@ export async function getBookedAppointment(appointmentId: string) {
   const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
   return data.bookedAppointment;
 }
+
+export async function markAppointmentAsCompleted(
+  appointmentId: string,
+  isNoShow: boolean
+) {
+  const request: FunctionsApi.CompleteAppointmentRequest = {
+    appointmentId,
+    isNoshow: isNoShow,
+    callFromCoordinator: true,
+  };
+
+  const callableFunction = getCallableFunction(
+    FunctionsApi.CompleteAppointmentFunctionName
+  );
+
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.CompleteAppointmentResponse;
+  return data.completedAppointment;
+}

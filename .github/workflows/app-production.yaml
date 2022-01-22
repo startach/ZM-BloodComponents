@@ -25,9 +25,6 @@ jobs:
       - name: Set Envitonment Variable to Production
         run: echo "REACT_APP_PRODUCTION_FIREBASE=true" >> "$GITHUB_ENV"
 
-      - name: Set new coordinator feature flag
-        run: echo "REACT_APP_USE_NEW_COORDINATOR=false" >> "$GITHUB_ENV"
-
       - name: Bump tag version (dry run)
         id: bumpVersion
         uses: anothrNick/github-tag-action@1.26.0

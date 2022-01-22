@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  BookedDonationWithDonorDetails,
+} from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookedAppointmentScreen from "./BookedAppointmentScreen";
@@ -49,6 +52,17 @@ export default function BookedAppointmentScreenContainer(
     navigator.clipboard.writeText(content);
   };
 
+  const markAppointmentAsCompleted = (isNoShow: boolean) => {
+    if (!bookedAppointment) {
+      return;
+    }
+    CoordinatorFunctions.markAppointmentAsCompleted(appointmentId, isNoShow);
+    setBookedAppointment({
+      ...bookedAppointment,
+      status: isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED,
+    });
+  };
+
   return (
     <BookedAppointmentScreen
       appointment={bookedAppointment}
@@ -58,6 +72,7 @@ export default function BookedAppointmentScreenContainer(
           () => navigate(-1)
         );
       }}
+      markAppointmentAsCompleted={markAppointmentAsCompleted}
     />
   );
 }
