@@ -13,7 +13,7 @@ import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
@@ -44,6 +44,8 @@ const MANUAL_OF_COORDINATOR =
   "GetCoordinatorAppointments_MANUAL_OF_COORDINATOR";
 const MANUAL_NOT_OF_COORDINATOR =
   "GetCoordinatorAppointments_MANUAL_NOT_OF_COORDINATOR";
+
+const NOW = 1518508800000; // February 13, 2018 8:00:00
 
 const ALL_APPOINTMENT_IDS = [
   PAST_BOOKED,
@@ -154,7 +156,7 @@ test.each([
   CoordinatorRole.SYSTEM_USER,
   CoordinatorRole.ZM_COORDINATOR,
 ])(
-  "Valid request for all users, returns write users for each role",
+  "Valid request for all users, returns write users for each role - %s",
   async (coordinatorRole: CoordinatorRole) => {
     if (coordinatorRole === CoordinatorRole.HOSPITAL_COORDINATOR) {
       await createUser(coordinatorRole, [
@@ -342,11 +344,11 @@ function callFunction(
   latestTimeDays?: number
 ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
   const earliestStartTimeMillis = earliestTimeDays
-    ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
+    ? NOW - earliestTimeDays * 24 * 60 * 60 * 1000
     : getDate(-7).getTime();
   const latestStartTimeMillis = latestTimeDays
-    ? new Date().getTime() + latestTimeDays * 24 * 60 * 60 * 1000
-    : undefined;
+    ? NOW + latestTimeDays * 24 * 60 * 60 * 1000
+    : getDate(14).getTime();
 
   let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
     hospital: hospital,
@@ -397,4 +399,10 @@ async function createDonor(donorId: string, groupId: string) {
   };
 
   await DonorDAL.setDonor(donor);
+}
+
+export function getDate(daysFromNow: number) {
+  const res = new Date(NOW);
+  res.setDate(res.getDate() + daysFromNow);
+  return res;
 }
