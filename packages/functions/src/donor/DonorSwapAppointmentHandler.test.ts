@@ -23,6 +23,7 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DonorSwapAppointmentFunctionName]
 );
 
+const SWAP_TEST_HOSPITAL = Hospital.RAMBAM;
 const CREATOR_USER_ID = "creatorUserId";
 const DONOR_ID = "SwapAppointmentHandlerDonorId1";
 const OTHER_DONOR_ID = "SwapAppointmentHandlerDonorId2";
@@ -33,6 +34,7 @@ const APPOINTMENT_TO_CANCEL = "SwapAppointmentHandlerAppointment4";
 
 beforeAll(async () => {
   await DonorDataAccessLayer.deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(OTHER_DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -43,6 +45,7 @@ beforeAll(async () => {
 
 afterEach(async () => {
   await DonorDataAccessLayer.deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(OTHER_DONOR_ID);
   await deleteAppointmentsByIds([
     APPOINTMENT_TO_BOOK_1,
     APPOINTMENT_TO_BOOK_2,
@@ -220,7 +223,7 @@ test("Valid request swaps appointment", async () => {
     BookingChange.BOOKED
   );
 
-  expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
+  expect(updatedDonor?.lastBookedHospital).toEqual(SWAP_TEST_HOSPITAL);
 });
 
 async function createDonor() {
@@ -247,7 +250,7 @@ async function saveAppointment(
     creationTime: time,
     creatorUserId: CREATOR_USER_ID,
     donationStartTime: time,
-    hospital: Hospital.ASAF_HAROFE,
+    hospital: SWAP_TEST_HOSPITAL,
     donorId: donorId ?? "",
     status: donorId ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
     bookingTime: time,
