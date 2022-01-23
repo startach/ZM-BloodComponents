@@ -13,26 +13,38 @@ export default async function (
   request: FunctionsApi.SwapAppointmentRequest,
   callerId: string
 ): Promise<FunctionsApi.SwapAppointmentResponse> {
-  const { status } = await validateBookAppointment(
+  const bookAppointmentValidation = validateBookAppointment(
     request.bookAppointmentIds,
     callerId
   );
 
-  if (status !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
-    return { status };
-  }
-
-  const { isValid, invalidReason } = await validateCancelAppointment(
+  const cancelAppointmentValidation = validateCancelAppointment(
     request.cancelAppointmentId,
     callerId
   );
 
-  if (!isValid) {
-    throw new Error(invalidReason);
+  // Unified promises due to low performance
+  const [
+    { status: bookAppointmentStatus },
+    { isValid: isCancelValid, invalidReason: cancellationInvalidReason },
+  ] = await Promise.all([
+    bookAppointmentValidation,
+    cancelAppointmentValidation,
+  ]);
+
+  if (bookAppointmentStatus !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
+    return { status: bookAppointmentStatus };
   }
 
-  const { status: bookAppointmentStatus, bookedAppointment } =
-    await bookAppointment(callerId, [request.cancelAppointmentId], false);
+  if (!isCancelValid) {
+    throw new Error(cancellationInvalidReason);
+  }
+
+  const { bookedAppointment } = await bookAppointment(
+    callerId,
+    request.bookAppointmentIds,
+    false
+  );
 
   await cancelAppointment(
     callerId,

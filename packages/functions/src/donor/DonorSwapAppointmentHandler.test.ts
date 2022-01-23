@@ -23,6 +23,7 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DonorSwapAppointmentFunctionName]
 );
 
+const CREATOR_USER_ID = "creatorUserId";
 const DONOR_ID = "SwapAppointmentHandlerDonorId1";
 const OTHER_DONOR_ID = "SwapAppointmentHandlerDonorId2";
 const APPOINTMENT_TO_BOOK_1 = "SwapAppointmentHandlerAppointment1";
@@ -54,13 +55,19 @@ const defaultInitialization = async (
   createBookableAppointment: boolean,
   createCancellableAppointment: boolean
 ) => {
-  createDonor();
+  let functionsToInitialize = [createDonor()];
+
   if (createBookableAppointment) {
-    await saveAppointment(APPOINTMENT_TO_BOOK_2, 10, OTHER_DONOR_ID);
+    functionsToInitialize.push(saveAppointment(APPOINTMENT_TO_BOOK_2, 10));
   }
+
   if (createCancellableAppointment) {
-    await saveAppointment(APPOINTMENT_TO_CANCEL, 1, DONOR_ID);
+    functionsToInitialize.push(
+      saveAppointment(APPOINTMENT_TO_CANCEL, 1, DONOR_ID)
+    );
   }
+
+  await Promise.all(functionsToInitialize);
 };
 
 // Test Booking
@@ -140,14 +147,11 @@ test("No such appointments throws exception", async () => {
   await defaultInitialization(true, false);
 
   const action = () =>
-    wrapped(
-      swapAppointmentRequest([APPOINTMENT_TO_BOOK_1], APPOINTMENT_TO_CANCEL),
-      {
-        auth: {
-          uid: DONOR_ID,
-        },
-      }
-    );
+    wrapped(swapAppointmentRequest(), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
 
   await expectAsyncThrows(action, "Appointment not found");
 });
@@ -172,7 +176,6 @@ test("Donor is not booked on this appointment throws exception", async () => {
 // Test Swap
 
 test("Valid request swaps appointment", async () => {
-  await saveAppointment(APPOINTMENT_TO_BOOK_1, -10, OTHER_DONOR_ID);
   await defaultInitialization(true, true);
 
   const response = await wrapped(swapAppointmentRequest(), {
@@ -181,32 +184,42 @@ test("Valid request swaps appointment", async () => {
     },
   });
 
-  const appointmentToCancel = await getAppointmentsByIds([
-    APPOINTMENT_TO_CANCEL,
+  const [appointments, updatedDonor] = await Promise.all([
+    getAppointmentsByIds([APPOINTMENT_TO_CANCEL, APPOINTMENT_TO_BOOK_2]),
+    DonorDataAccessLayer.getDonor(DONOR_ID),
   ]);
-  expect(appointmentToCancel[0].donorId).toEqual("");
-  expect(appointmentToCancel[0].status).toEqual(AppointmentStatus.AVAILABLE);
-  expect(appointmentToCancel[0].creatorUserId).toEqual("creatorUserId");
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_1]);
-  expect(appointment[0].donorId).toEqual(DONOR_ID);
-  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
+  expect(appointments).toHaveLength(2);
+
+  const appointmentToCancel = appointments.find(
+    (app) => app.id === APPOINTMENT_TO_CANCEL
+  );
+
+  expect(appointmentToCancel?.donorId).toEqual("");
+  expect(appointmentToCancel?.status).toEqual(AppointmentStatus.AVAILABLE);
+  expect(appointmentToCancel?.creatorUserId).toEqual(CREATOR_USER_ID);
+
+  const bookedAppointment = appointments.find(
+    (app) => app.id === APPOINTMENT_TO_BOOK_2
+  );
+
+  expect(bookedAppointment?.donorId).toEqual(DONOR_ID);
+  expect(bookedAppointment?.status).toEqual(AppointmentStatus.BOOKED);
+  expect(bookedAppointment?.lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(
+    Date.now() - bookedAppointment?.lastChangeTime?.toMillis()!
+  ).toBeLessThan(3_000);
 
   const data = response as FunctionsApi.SwapAppointmentResponse;
   expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
 
-  const bookedAppointment = data.bookedAppointment!;
-  expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
-  expect(bookedAppointment.donorId).toEqual(DONOR_ID);
-
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
-    3_000
+  const returnedBookedAppointment = data.bookedAppointment!;
+  expect(returnedBookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
+  expect(returnedBookedAppointment.donorId).toEqual(DONOR_ID);
+  expect(returnedBookedAppointment.recentChangeType).toEqual(
+    BookingChange.BOOKED
   );
 
-  expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
-
-  const updatedDonor = await DonorDataAccessLayer.getDonor(DONOR_ID);
   expect(updatedDonor?.lastBookedHospital).toEqual(Hospital.ASAF_HAROFE);
 });
 
@@ -232,12 +245,12 @@ async function saveAppointment(
   const appointment: DbAppointment = {
     id: id,
     creationTime: time,
-    creatorUserId: "CreatingUserId",
+    creatorUserId: CREATOR_USER_ID,
     donationStartTime: time,
     hospital: Hospital.ASAF_HAROFE,
     donorId: donorId ?? "",
     status: donorId ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
-    bookingTime: donorId ? time : undefined,
+    bookingTime: time,
   };
 
   await setAppointment(appointment);

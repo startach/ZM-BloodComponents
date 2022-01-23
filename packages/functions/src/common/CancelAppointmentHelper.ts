@@ -10,8 +10,8 @@ import { DbAppointment } from "../function-types";
 
 export interface ValidCancelAppointmentResponse {
   isValid: boolean;
-  invalidReason: string;
-  appointment: DbAppointment;
+  invalidReason?: string;
+  appointment?: DbAppointment;
 }
 
 export async function cancelAppointment(
@@ -24,7 +24,7 @@ export async function cancelAppointment(
   const { isValid, invalidReason, appointment } =
     await validateCancelAppointment(request.appointmentId, donorId);
 
-  if (!isValid) {
+  if (!isValid || !appointment) {
     throw new Error(invalidReason);
   }
 
@@ -49,24 +49,21 @@ export async function validateCancelAppointment(
   appointmentId: string,
   donorId: string
 ): Promise<ValidCancelAppointmentResponse> {
-  let isValid = true;
-  let invalidReason = "";
-
   if (!appointmentId) {
-    isValid = false;
-    invalidReason = "No appointment to cancel";
+    return { isValid: false, invalidReason: "No appointment to cancel" };
   }
-
   const appointmentToCancel = await getAppointmentsByIds([appointmentId]);
   if (appointmentToCancel.length !== 1) {
-    isValid = false;
-    invalidReason = "Appointment not found";
+    return { isValid: false, invalidReason: "Appointment not found" };
   }
 
   const appointment = appointmentToCancel[0];
   if (appointment.donorId !== donorId) {
-    isValid = false;
-    invalidReason = "Appointment to be deleted is not booked by donor";
+    return {
+      isValid: false,
+      invalidReason: "Appointment to be deleted is not booked by donor",
+    };
   }
-  return { invalidReason, isValid, appointment };
+
+  return { isValid: true, appointment };
 }

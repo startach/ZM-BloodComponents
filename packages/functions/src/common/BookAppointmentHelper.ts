@@ -133,5 +133,8 @@ export async function validateBookAppointment(
       };
     }
   }
-  return { status: FunctionsApi.BookAppointmentStatus.SUCCESS };
+  return {
+    status: FunctionsApi.BookAppointmentStatus.SUCCESS,
+    appointment: appointmentToBook,
+  };
 }
