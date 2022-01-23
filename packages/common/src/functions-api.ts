@@ -110,6 +110,7 @@ export const CompleteAppointmentFunctionName = "completeAppointment";
 export interface CompleteAppointmentRequest {
   appointmentId: string;
   isNoshow: boolean;
+  callFromCoordinator?: boolean;
 }
 
 export interface CompleteAppointmentResponse {

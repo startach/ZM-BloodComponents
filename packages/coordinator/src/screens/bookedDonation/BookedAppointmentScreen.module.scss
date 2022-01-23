@@ -14,15 +14,54 @@
   flex-direction: row;
   align-items: center;
   background-color: white;
-  padding: 25px 30px;
+  padding: 25px 30px 25px 20px;
   margin-bottom: 15px;
   margin-top: 15px;
   font-size: 16px;
   color: var(--coordinator-dark-gray);
+
+  .button {
+    cursor: pointer;
+  }
+}
+
+.statusChangePopup {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusChangeButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.statusChangeButton {
+  font-size: 16px;
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.statusChangeButtonCompleted {
+  color: var(--coordinator-primary);
+  background-color: var(--coordinator-bright-green);
+}
+
+.statusChangeButtonNoShow {
+  color: var(--coordinator-secondary);
+  background-color: var(--coordinator-light-pink);
+}
+
+.statusChangeButtonSelected {
+  border: 1px solid var(--coordinator-dark-gray);
 }
 
 .statusChip {
   margin-right: 10px;
+  flex: 1;
 }
 
 .phone {
@@ -54,8 +93,6 @@
 
 .loading {
   background-color: var(--coordinator-background);
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
 }

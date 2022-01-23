@@ -1,5 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="coordinatorScreen"
+  >
+    <div
+      className="appHeader"
+    >
+      <div
+        className="headerRow"
+      >
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg>
+              chevron-right.svg
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title infoTitle"
+        >
+          שישי 11/09, 19:06
+        </div>
+      </div>
+      <div
+        className="stickyComponent"
+      >
+        <div
+          className="name"
+        >
+          <div>
+            משה כהן
+          </div>
+          <div
+            className="icons"
+          >
+            <svg
+              onClick={[Function]}
+            >
+              copy.svg
+            </svg>
+            <svg
+              onClick={[Function]}
+            >
+              profile.svg
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent bookedAppointmentScreenContent"
+    >
+      <div
+        className="status"
+      >
+        <div>
+          סטטוס:
+        </div>
+        <div
+          className="statusChip"
+        >
+          <div
+            className="appointmentStatusChipContainer"
+          >
+            <div
+              className="appointmentStatusChip greenChip"
+            >
+              הושלם
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="details"
+      >
+        פרטי תורם
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            phone.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            מספר טלפון
+          </div>
+          <div
+            className="values"
+          >
+            <a
+              className="phone"
+              href="tel: 0522222222"
+            >
+              0522222222
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            bloodtype.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            סוג דם
+          </div>
+          <div
+            className="values"
+          >
+            AB+
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            calender.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            נקבע בתאריך
+          </div>
+          <div
+            className="values"
+          >
+            08/12/2023
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Screens/Booked Appointment Default 1`] = `
 <div
   dir="rtl"
@@ -47,7 +230,7 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
         <div
           className="title infoTitle"
         >
-          ראשון 10/12, 11:00
+          שבת 01/01, 03:01
         </div>
       </div>
       <div
@@ -92,12 +275,18 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
             className="appointmentStatusChipContainer"
           >
             <div
-              className="appointmentStatusChip redChip"
+              className="appointmentStatusChip greenChip"
             >
-              לא הגיע
+              הושלם
             </div>
           </div>
         </div>
+        <svg
+          className="button"
+          onClick={[Function]}
+        >
+          edit.svg
+        </svg>
       </div>
       <div
         className="details"
@@ -193,32 +382,75 @@ exports[`Storyshots Screens/Booked Appointment Loading 1`] = `
   }
 >
   <div
-    className="loading"
+    className="coordinatorScreen"
   >
     <div
-      className="MuiCircularProgress-root-0 spinner MuiCircularProgress-colorPrimary-4 MuiCircularProgress-indeterminate-2"
-      role="progressbar"
-      style={
-        Object {
-          "height": "3rem",
-          "width": "3rem",
-        }
-      }
+      className="appHeader"
     >
-      <svg
-        className="MuiCircularProgress-svg-6"
-        viewBox="22 22 44 44"
+      <div
+        className="headerRow"
       >
-        <circle
-          className="MuiCircularProgress-circle-7 MuiCircularProgress-circleIndeterminate-9"
-          cx={44}
-          cy={44}
-          fill="none"
-          r={20.2}
-          strokeWidth={3.6}
-          style={Object {}}
-        />
-      </svg>
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg>
+              chevron-right.svg
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title infoTitle"
+        >
+           
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent loading"
+    >
+      <div
+        className="MuiCircularProgress-root-24 spinner MuiCircularProgress-colorPrimary-28 MuiCircularProgress-indeterminate-26"
+        role="progressbar"
+        style={
+          Object {
+            "height": "3rem",
+            "width": "3rem",
+          }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg-30"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            className="MuiCircularProgress-circle-31 MuiCircularProgress-circleIndeterminate-33"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
+      </div>
     </div>
   </div>
 </div>

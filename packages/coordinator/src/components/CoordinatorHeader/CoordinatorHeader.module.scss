@@ -11,7 +11,6 @@
   flex-direction: row;
   align-items: center;
   height: 64px;
-  padding: 0 5px;
   justify-content: space-between;
 }
 
@@ -38,6 +37,7 @@
 
 .rightButton {
   z-index: 10;
+  padding: 0 5px;
 }
 
 .stickyComponent {

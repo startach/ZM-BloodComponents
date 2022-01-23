@@ -97,7 +97,7 @@ export default function ScheduledAppointmentsScreen({
 
   return (
     <main>
-      <HeaderSection className={styles.component}>
+      <HeaderSection>
         <Select
           id={"hospital"}
           label={"בית חולים"}

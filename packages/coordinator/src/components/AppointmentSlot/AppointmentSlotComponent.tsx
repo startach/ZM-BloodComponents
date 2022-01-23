@@ -20,10 +20,6 @@ export default function AppointmentSlotComponent({
     appointments = appointments.filter((x) => !x.booked);
   }
 
-  if (appointments.length === 0) {
-    return null;
-  }
-
   return (
     <div>
       <div className={styles.listHeader}>
