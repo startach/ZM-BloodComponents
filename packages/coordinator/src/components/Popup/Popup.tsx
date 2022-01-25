@@ -1,4 +1,5 @@
 import { noop } from "lodash";
+import clsx from "clsx";
 import {
   Dialog,
   DialogActions,
@@ -43,6 +44,9 @@ export function Popup(props: PopupProps) {
       textAlign: "center",
       paddingBottom: "10px",
     },
+    bottom: {
+      paddingBottom: "30px",
+    },
   });
 
   const classes = centerStyle();
@@ -51,7 +55,7 @@ export function Popup(props: PopupProps) {
     <Dialog open={open} onClose={onClose} fullWidth={true}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent classes={classes}>{children}</DialogContent>
-      <DialogActions classes={classes}>
+      <DialogActions className={clsx(classes.root, classes.bottom)}>
         {primaryButtonText && (
           <Button
             title={primaryButtonText}
