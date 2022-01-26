@@ -1,5 +1,5 @@
 import { noop } from "lodash";
-import clsx from "clsx";
+import classNames from "classnames";
 import {
   Dialog,
   DialogActions,
@@ -55,7 +55,7 @@ export function Popup(props: PopupProps) {
     <Dialog open={open} onClose={onClose} fullWidth={true}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent classes={classes}>{children}</DialogContent>
-      <DialogActions className={clsx(classes.root, classes.bottom)}>
+      <DialogActions className={classNames(classes.root, classes.bottom)}>
         {primaryButtonText && (
           <Button
             title={primaryButtonText}
