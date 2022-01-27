@@ -74,21 +74,24 @@ export default function BookManualDonationScreen(
     }
   };
 
+  const fullTime = props.donationStartTime.toLocaleDateString(
+    "he-He",
+    DateUtils.LongDateFormat
+  );
+
   return (
     <CoordinatorScreen
       headerProps={{
         title: "הוספה ידנית של תורם",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
+        stickyComponent: (
+          <div className={styles.donationStartTime}>{fullTime}</div>
+        ),
       }}
     >
+      <div className={styles.divider} />
       <div className={styles.content}>
-        <div className={styles.donationStartTime}>
-          אנא הכנס את הפרטים של התורם בתאריך
-          {DateUtils.ToDateString(props.donationStartTime)}
-          בשעה
-          {DateUtils.ToTimeString(props.donationStartTime)}
-        </div>
         <div className={styles.subtitle}>פרטים אישיים</div>
         <Input
           label="שם פרטי"

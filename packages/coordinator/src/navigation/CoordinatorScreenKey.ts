@@ -1,6 +1,4 @@
 export enum CoordinatorScreenKey {
-  ADD_APPOINTMENTS = "/home",
-  SCHEDULED_APPOINTMENTS = "/appointments",
   DONORS = "/donors",
   REPORTS = "/reports",
   SCHEDULE = "/schedule",

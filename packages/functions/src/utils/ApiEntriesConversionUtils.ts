@@ -1,9 +1,9 @@
 import {
+  AppointmentUtils,
   BookingChange,
   Donor,
   DonorNotificationSettings,
   FunctionsApi,
-  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 
@@ -39,7 +39,7 @@ export function dbAppointmentToAppointmentApiEntry(
 
   let donorName: string | undefined;
   if (donorId) {
-    if (donorId === MANUAL_DONOR_ID) {
+    if (AppointmentUtils.isManualDonor(donorId)) {
       donorName = `${appointment.donorDetails?.firstName} ${appointment.donorDetails?.lastName}`;
     } else {
       const donor = donorsInAppointments.filter((d) => d.id === donorId)[0];

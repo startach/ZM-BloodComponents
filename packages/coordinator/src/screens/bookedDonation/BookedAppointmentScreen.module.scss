@@ -1,4 +1,102 @@
+.bookedAppointmentScreenContent {
+  background-color: rgb(236, 235, 235);
+  color: var(--coordinator-dark-gray);
+}
+
 .details {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   padding: 25px 30px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 25px 30px 25px 20px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
+
+  .button {
+    cursor: pointer;
+  }
+}
+
+.statusChangePopup {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusChangeButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.statusChangeButton {
+  font-size: 16px;
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.statusChangeButtonCompleted {
+  color: var(--coordinator-primary);
+  background-color: var(--coordinator-bright-green);
+}
+
+.statusChangeButtonNoShow {
+  color: var(--coordinator-secondary);
+  background-color: var(--coordinator-light-pink);
+}
+
+.statusChangeButtonSelected {
+  border: 1px solid var(--coordinator-dark-gray);
+}
+
+.statusChip {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.phone {
+  color: var(--coordinator-link);
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 500;
+  padding: 25px 25px 30px 20px;
+  color: var(--coordinator-dark-gray);
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  column-gap: 20px;
+  cursor: pointer;
+}
+
+.spaces {
+  margin-left: 10px;
+}
+
+.loading {
+  background-color: var(--coordinator-background);
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  margin-top: 40vh;
 }

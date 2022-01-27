@@ -406,6 +406,36 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
             <div
               className="hospitalName"
             >
+              בילינסון
+               
+            </div>
+            <div
+              className="hospitalCard"
+            >
+              <div>
+                <div
+                  className="pickerLabel"
+                />
+                <div
+                  className="pickerButtons"
+                >
+                  <div
+                    className="pickerButtonContainer"
+                  >
+                    <div
+                      className="pickerButton"
+                      color="default"
+                      onClick={[Function]}
+                    >
+                      12:00
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="hospitalName"
+            >
               תל השומר
                
             </div>
@@ -488,6 +518,24 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div
+          className="donationDayContainer"
+        >
+          <div
+            className="dayContainer"
+          >
+            <div
+              className="availableAppointmentsTitle"
+            >
+              תורים פנויים
+            </div>
+            <div
+              className="dayTitle"
+            >
+              יום שבת, 14/08/2021
+            </div>
             <div
               className="hospitalName"
             >
@@ -512,29 +560,11 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                       color="default"
                       onClick={[Function]}
                     >
-                      12:00
+                      15:46
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="donationDayContainer"
-        >
-          <div
-            className="dayContainer"
-          >
-            <div
-              className="availableAppointmentsTitle"
-            >
-              תורים פנויים
-            </div>
-            <div
-              className="dayTitle"
-            >
-              יום שבת, 14/08/2021
             </div>
             <div
               className="hospitalName"
@@ -583,36 +613,6 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
                       onClick={[Function]}
                     >
                       17:10
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
-                <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
-                >
-                  <div
-                    className="pickerButtonContainer"
-                  >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      15:46
                     </div>
                   </div>
                 </div>

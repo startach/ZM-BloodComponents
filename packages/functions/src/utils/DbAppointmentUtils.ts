@@ -1,6 +1,13 @@
-import { AppointmentStatus, BookingChange } from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  AppointmentUtils,
+  BloodType,
+  BookedDonationWithDonorDetails,
+  BookingChange,
+} from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import { DbAppointment } from "../function-types";
+import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
@@ -47,4 +54,49 @@ export function isAppointmentAvailable(appointment: DbAppointment) {
   }
 
   throw new Error("Invalid appointment status for availability check");
+}
+
+export function isAppointmentBooked(appointment: DbAppointment) {
+  return !isAppointmentAvailable(appointment);
+}
+
+export function isManualDonorAppointment(appointment: DbAppointment) {
+  return AppointmentUtils.isManualDonor(appointment.donorId);
+}
+
+export async function toBookedDonationWithDonorDetails(
+  appointment: DbAppointment
+): Promise<BookedDonationWithDonorDetails> {
+  let firstName: string;
+  let lastName: string;
+  let phone: string;
+  let bloodType: BloodType;
+  if (AppointmentUtils.isManualDonor(appointment.donorId)) {
+    firstName = appointment.donorDetails!.firstName;
+    lastName = appointment.donorDetails!.lastName;
+    phone = appointment.donorDetails!.phoneNumber;
+    bloodType = appointment.donorDetails!.bloodType;
+  } else {
+    const donor = await DonorDataAccessLayer.getDonor(appointment.donorId);
+    if (!donor) {
+      throw new Error("Could not find donor for booked appointment");
+    }
+    firstName = donor.firstName;
+    lastName = donor.lastName;
+    phone = donor.phone;
+    bloodType = donor.bloodType;
+  }
+
+  return {
+    appointmentId: appointment.id!,
+    donorId: appointment.donorId,
+    donationStartTimeMillis: appointment.donationStartTime.toMillis(),
+    bookingTimeMillis: appointment.bookingTime!.toMillis(),
+    hospital: appointment.hospital,
+    firstName: firstName,
+    lastName: lastName,
+    phone: phone,
+    bloodType: bloodType,
+    status: appointment.status,
+  };
 }

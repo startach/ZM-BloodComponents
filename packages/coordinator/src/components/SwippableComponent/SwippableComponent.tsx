@@ -8,7 +8,7 @@ export type AppointmentPreviewProps = {
   className?: string;
 };
 
-const SWIPE_WIDTH = 200;
+const SWIPE_WIDTH = 80;
 export default function SwippableComponent(props: AppointmentPreviewProps) {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);

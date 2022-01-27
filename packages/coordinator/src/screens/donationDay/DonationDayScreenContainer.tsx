@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DateUtils, Hospital } from "@zm-blood-components/common";
-import { DonationDay } from "../../utils/types";
+import { AppointmentSlot, DonationDay } from "../../utils/types";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DonationDayScreen from "./DonationDayScreen";
@@ -45,12 +45,38 @@ export default function DonationDayScreenContainer(
     <DonationDayScreen
       dayStartTime={dayStartTime}
       donationDay={donationDay}
+      hospital={hospital}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
-      onDeleteAppointment={(appointmentId) =>
-        CoordinatorFunctions.deleteAppointment(appointmentId)
-      }
+      onDeleteAppointment={(appointmentId) => {
+        setDonationDay((donationDay) =>
+          getRemoveAppointmentFromDonationDay(donationDay, appointmentId)
+        );
+        CoordinatorFunctions.deleteAppointment(appointmentId);
+      }}
     />
   );
+}
+
+function getRemoveAppointmentFromDonationDay(
+  donationDay: DonationDay | undefined,
+  appointmentId: string
+): DonationDay | undefined {
+  if (!donationDay) {
+    return undefined;
+  }
+
+  const slots = donationDay.appointmentSlots
+    .map<AppointmentSlot>((slot) => ({
+      ...slot,
+      appointments: slot.appointments.filter(
+        (appointment) => appointment.appointmentId !== appointmentId
+      ),
+    }))
+    .filter((slot) => slot.appointments.length > 0);
+
+  return {
+    appointmentSlots: slots,
+  };
 }
 
 function getDayStartTime(timestamp: string | undefined) {

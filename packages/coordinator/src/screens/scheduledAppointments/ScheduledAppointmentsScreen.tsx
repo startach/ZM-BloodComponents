@@ -90,13 +90,14 @@ export default function ScheduledAppointmentsScreen({
       sortBy: SortingUtils.StringComparator<BookedDonationWithDonorDetails>(
         (d) => d.status
       ),
-      cellRenderer: ({ status }) => LocaleUtils.getStatusTranslation(status),
+      cellRenderer: ({ status, donationStartTimeMillis }) =>
+        LocaleUtils.getStatusTranslation(status, donationStartTimeMillis),
     },
   ];
 
   return (
     <main>
-      <HeaderSection className={styles.component}>
+      <HeaderSection>
         <Select
           id={"hospital"}
           label={"בית חולים"}

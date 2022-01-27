@@ -3,11 +3,10 @@ import {
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
-import { NewSlots } from "../screens/addAppointments/AddAppointmentsScreenContainer";
 import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
-export function getCallableFunction(functionName: string) {
+function getCallableFunction(functionName: string) {
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
@@ -28,24 +27,26 @@ export async function getCoordinator() {
   }
 }
 
-export async function addNewAppointments(newSlots: NewSlots[]) {
-  const addNewAppointmentsFunction = getCallableFunction(
+export async function addNewAppointment(
+  hospital: Hospital,
+  donationStartTime: Date,
+  slots: number
+) {
+  const callableFunction = getCallableFunction(
     FunctionsApi.AddNewAppointmentsFunctionName
   );
 
-  const newSlotsRequests: FunctionsApi.NewSlotsRequest[] = newSlots.map(
-    (slots) => ({
-      hospital: slots.hospital,
-      slots: slots.slots,
-      donationStartTimeMillis: slots.donationStartTime.getTime(),
-    })
-  );
-
-  const request: FunctionsApi.AddAppointmentsRequest = {
-    slotsRequests: newSlotsRequests,
+  const slot: FunctionsApi.NewSlotsRequest = {
+    hospital: hospital,
+    slots: slots,
+    donationStartTimeMillis: donationStartTime.getTime(),
   };
 
-  await addNewAppointmentsFunction(request);
+  const request: FunctionsApi.AddAppointmentsRequest = {
+    slotsRequests: [slot],
+  };
+
+  await callableFunction(request);
 }
 
 export async function getAppointments(
@@ -92,7 +93,7 @@ async function callDeleteAppointmentFunction(
     FunctionsApi.DeleteAppointmentsFunctionName
   );
 
-  deleteAppointmentsFunction(request);
+  await deleteAppointmentsFunction(request);
 }
 
 export async function getAllDonors() {
@@ -142,4 +143,23 @@ export async function getBookedAppointment(appointmentId: string) {
   const response = await callableFunction(request);
   const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
   return data.bookedAppointment;
+}
+
+export async function markAppointmentAsCompleted(
+  appointmentId: string,
+  isNoShow: boolean
+) {
+  const request: FunctionsApi.CompleteAppointmentRequest = {
+    appointmentId,
+    isNoshow: isNoShow,
+    callFromCoordinator: true,
+  };
+
+  const callableFunction = getCallableFunction(
+    FunctionsApi.CompleteAppointmentFunctionName
+  );
+
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.CompleteAppointmentResponse;
+  return data.completedAppointment;
 }

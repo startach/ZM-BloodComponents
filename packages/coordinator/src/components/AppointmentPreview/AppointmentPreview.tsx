@@ -7,6 +7,7 @@ import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
 import RecentUpdateChip from "../RecentUpdateChip";
 import classNames from "classnames";
 import SwippableComponent from "../SwippableComponent";
+import Popup from "../../components/Popup";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 
@@ -22,16 +23,17 @@ export default function AppointmentPreview({
   addBottomDivider,
 }: AppointmentPreviewProps) {
   const [showDelete, setShowDelete] = useState(false);
-  const [appointmentDeleted, setAppointmentDeleted] = useState(false);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   const onDeleteAppointment = () => {
     onDelete();
-    setAppointmentDeleted(true);
   };
 
-  if (appointmentDeleted) {
-    return null;
-  }
+  const onSwipe = (open: boolean) => {
+    if (!appointment.booked) {
+      setShowDelete(open);
+    }
+  };
 
   return (
     <>
@@ -40,11 +42,11 @@ export default function AppointmentPreview({
           styles.appointmentPreviewContainer,
           appointment.appointmentId
         )}
-        onSwipeRight={() => setShowDelete(false)}
-        onSwipeLeft={() => setShowDelete(true)}
+        onSwipeRight={() => onSwipe(false)}
+        onSwipeLeft={() => onSwipe(true)}
       >
         <DeleteAppointmentButton
-          onClick={onDeleteAppointment}
+          onClick={() => setShowDeletePopup(true)}
           showDelete={showDelete}
         />
         <div
@@ -57,6 +59,12 @@ export default function AppointmentPreview({
           />
         </div>
       </SwippableComponent>
+
+      <DeleteAppointmentPopup
+        openPopup={showDeletePopup}
+        onDeleteClick={onDeleteAppointment}
+        closePopup={() => setShowDeletePopup(false)}
+      />
 
       {addBottomDivider && (
         <div className={styles.dividerContainer}>
@@ -134,5 +142,26 @@ function DeleteAppointmentButton(props: {
       <Trash />
       <div className={styles.deleteButtonText}>מחק תור</div>
     </div>
+  );
+}
+
+function DeleteAppointmentPopup(props: {
+  openPopup: boolean;
+  closePopup: () => void;
+  onDeleteClick: () => void;
+}) {
+  const { openPopup, closePopup, onDeleteClick } = props;
+
+  return (
+    <Popup
+      open={openPopup}
+      onClose={closePopup}
+      primaryButtonText={"מחק תור"}
+      onPrimaryButtonClick={onDeleteClick}
+      cancelButtonText={"שמור תור"}
+      onCancelButtonClick={closePopup}
+    >
+      האם ברצונך למחוק תור זה?
+    </Popup>
   );
 }

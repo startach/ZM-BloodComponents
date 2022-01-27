@@ -2,7 +2,6 @@ import AddAppointmentScreen, {
   AddAppointmentScreenProps,
 } from "./AddAppointmentScreen";
 import { Meta } from "@storybook/react";
-
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -11,12 +10,9 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const onSubmit = (date: Date, hour: Date, slots: number) => {
-  action("onSubmitNewSlots");
-};
-
 const props: AddAppointmentScreenProps = {
-  onSubmit: onSubmit,
+  initialDate: new Date(1851914113000),
+  onSubmit: action("onSubmitNewSlots"),
 };
 
 export const Default = (args: AddAppointmentScreenProps) => {

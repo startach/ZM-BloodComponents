@@ -13,7 +13,8 @@ import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
 export interface AddAppointmentScreenProps {
-  onSubmit: (date: Date, hour: Date, numberOfPlaces: number) => void;
+  initialDate: Date;
+  onSubmit: (donationStartTime: Date, slots: number) => void;
 }
 
 const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
@@ -23,25 +24,37 @@ const slotOptions: SelectOption<number>[] = _.range(10).map((n) => ({
 }));
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
-  const [date, setDate] = useState<Date | null>(null);
-  const [hour, setHour] = useState<Date | null>(null);
-
-  const [slots, setSlots] = useState(0);
+  const [date, setDate] = useState<Date | null>(props.initialDate);
+  const [hour, setHour] = useState<Date | null>(props.initialDate);
+  const [slots, setSlots] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  const onSave = () => {
+    if (date === null || hour === null) {
+      return;
+    }
+
+    setLoading(true);
+
+    const startTime = new Date(date);
+    startTime.setHours(hour.getHours(), hour.getMinutes(), 0, 0);
+    props.onSubmit(startTime, slots);
+  };
+
   return (
     <CoordinatorScreen
-      className={styles.addApointmentSceenContent}
+      className={styles.addAppointmentScreenContent}
       headerProps={{
-        title: "הוספת תור יחיד",
+        title: "הוספת תור",
         variant: HeaderVariant.SECONDARY,
         hasBackButton: true,
       }}
     >
-      <div className={styles.addAppoinmentScreenCardContainer}>
+      <div className={styles.addAppointmentScreenCardContainer}>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>זמני תור</div>
           </div>
           <DatePicker
@@ -59,7 +72,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           />
         </div>
         <div className={styles.cardContainer}>
-          <div className={styles.addApponimentSubtitle}>
+          <div className={styles.addAppointmentSubtitle}>
             <div className={styles.subtitleText}>מאפייני תור</div>
           </div>
           <Select
@@ -78,19 +91,17 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
         >
           <Button
             className={styles.inputField}
-            onClick={() => {
-              if (date !== null && hour !== null) {
-                props.onSubmit(date, hour, slots);
-              }
-            }}
+            onClick={onSave}
             isDisabled={date === null || hour === null || slots === 0}
             title="אשר והמשך"
+            isLoading={loading}
           />
           <Button
             className={styles.inputField}
             onClick={() => navigate(-1)}
             title="ביטול"
             variant={ButtonVariant.outlined}
+            isDisabled={loading}
           />
         </div>
       </div>

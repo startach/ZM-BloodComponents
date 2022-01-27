@@ -1,18 +1,14 @@
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import {
-  FunctionsApi,
-  Hospital,
-  MANUAL_DONOR_ID,
-} from "@zm-blood-components/common";
+import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
 import {
   NotificationToDonor,
   sendEmailToDonor,
 } from "../notifications/NotificationSender";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -28,7 +24,10 @@ export default async function (
   }
 
   const appointment = appointments[0];
-  const donorPromise = appointment.donorId
+  const appointmentHasRealDonor =
+    DbAppointmentUtils.isAppointmentBooked(appointment) &&
+    !DbAppointmentUtils.isManualDonorAppointment(appointment);
+  const donorPromise = appointmentHasRealDonor
     ? DonorDataAccessLayer.getDonor(appointment.donorId)
     : undefined;
 
@@ -38,16 +37,16 @@ export default async function (
     new Set<Hospital>([appointment.hospital])
   );
 
-  if (!request.onlyRemoveDonor) {
-    await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
-  } else {
+  if (request.onlyRemoveDonor) {
     const updatedAppointment =
       DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
     await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
+  } else {
+    await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
   }
 
   // Handle notification to the donor
-  if (!appointment.donorId || appointment.donorId === MANUAL_DONOR_ID) {
+  if (!appointmentHasRealDonor) {
     return;
   }
 
