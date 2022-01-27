@@ -75,3 +75,27 @@ img.authScreenLogoImage {
   color: gray;
   margin: auto;
 }
+
+.subtitle {
+  color: var(--coordinator-primary);
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.resetPassPopupContent .resetPassPopupImg {
+  width: 150px;
+}
+
+.resetPassPopupContent .resetPassPopupTitle {
+  font-weight: 500;
+}
+
+.resetPassPopupContent .resetPassPopupMessage {
+  font-size: 16px;
+}
+
+.resetPassPopupContent .resetPasswordScreenPopupButton {
+  width: 200px;
+  margin: auto;
+}

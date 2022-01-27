@@ -11,13 +11,13 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const onResetPassword = async (
-  email: string,
-  emailError: (error: string) => void
-) => {
+const onResetPassword = async (email: string) => {
   action("onResetPasswordWithEmail")();
-  await TestUtils.wait(3000);
-  emailError("שגיאה כלשהי");
+  await TestUtils.wait(500);
+
+  if (email !== "1234") {
+    throw new Error("כתבות המייל אינה תקינה");
+  }
 };
 
 const props: ResetPasswordScreenProps = {

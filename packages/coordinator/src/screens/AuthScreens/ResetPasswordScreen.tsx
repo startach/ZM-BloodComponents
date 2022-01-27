@@ -1,16 +1,16 @@
 import { useState } from "react";
 import styles from "./AuthScreens.module.scss";
 import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Button, { ButtonVariant } from "../../components/Button";
+import emailNotFound from "../../assets/email_not_found.svg";
+import emailOnTheWay from "../../assets/email_on_the_way.svg";
 import logoImage from "./../../assets/logo_drop_ZM.svg";
 import chevronSvg from "./../../assets/icons/chevron-right-small.svg";
 import { useNavigate } from "react-router-dom";
+import { Popup } from "../../components/Popup/Popup";
 
 export interface ResetPasswordScreenProps {
-  onResetPassword: (
-    email: string,
-    emailError: (error: string) => void
-  ) => Promise<void>;
+  onResetPassword: (email: string) => Promise<void>;
 }
 
 export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
@@ -18,11 +18,22 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
   const [emailError, setEmailError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const [successPopupOpen, setSuccessPopupOpen] = useState<boolean>(false);
+  const [errorPopupOpen, setErrorPopupOpen] = useState<boolean>(false);
+
   const navigate = useNavigate();
 
-  const resetPassword = async () => {
+  const handleResetPass = async () => {
     setIsLoading(true);
-    await props.onResetPassword(email, setEmailError);
+    await props
+      .onResetPassword(email)
+      .then(() => {
+        setSuccessPopupOpen(true);
+      })
+      .catch((error) => {
+        setEmailError(error.message);
+        setErrorPopupOpen(true);
+      });
     setIsLoading(false);
   };
 
@@ -62,13 +73,64 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           <div>
             <Button
               title={"איפוס סיסמה"}
-              onClick={resetPassword}
+              onClick={handleResetPass}
               isLoading={isLoading}
               isDisabled={!email}
             />
           </div>
         </div>
       </div>
+      <Popup open={successPopupOpen} onClose={() => setSuccessPopupOpen(false)}>
+        <div className={styles.resetPassPopupContent}>
+          <img
+            src={emailOnTheWay}
+            alt=""
+            className={styles.resetPassPopupImg}
+          />
+          <div className={styles.resetPassPopupTitle}>מייל איפוס בדרך אליך</div>
+          <div className={styles.resetPassPopupMessage}>
+            ברגעים הקרובים יישלח אליך מייל עם לינק לאיפוס הסיסמא
+          </div>
+          <Button
+            className={styles.resetPasswordScreenPopupButton}
+            onClick={() => {
+              navigate(-1);
+            }}
+            title="חזרה למסך התחברות"
+            variant={ButtonVariant.contained}
+          />
+          <Button
+            className={styles.resetPasswordScreenPopupButton}
+            onClick={() => {
+              setEmailError("");
+              setSuccessPopupOpen(false);
+              handleResetPass();
+            }}
+            title="לא קיבלתי, שלחו לי שוב"
+            variant={ButtonVariant.text}
+          />
+        </div>
+      </Popup>
+      <Popup open={errorPopupOpen} onClose={() => setErrorPopupOpen(false)}>
+        <div className={styles.resetPassPopupContent}>
+          <img
+            src={emailNotFound}
+            alt=""
+            className={styles.resetPassPopupImg}
+          />
+          <div className={styles.resetPassPopupTitle}>אופס</div>
+          <div className={styles.resetPassPopupMessage}>{emailError}</div>
+          <Button
+            className={styles.resetPasswordScreenPopupButton}
+            onClick={() => {
+              setEmail("");
+              setErrorPopupOpen(false);
+            }}
+            title="נסה/י שוב"
+            variant={ButtonVariant.contained}
+          />
+        </div>
+      </Popup>
     </div>
   );
 }
