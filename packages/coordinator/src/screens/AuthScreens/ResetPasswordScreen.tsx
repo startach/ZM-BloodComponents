@@ -83,8 +83,8 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       <Popup
         open={successPopupOpen}
         onClose={() => setSuccessPopupOpen(false)}
-        content={
-          <div className={styles.resetPassPopupContent}>
+      >
+        <div className={styles.resetPassPopupContent}>
             <img
               src={emailOnTheWay}
               alt=""
@@ -115,13 +115,12 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               variant={ButtonVariant.text}
             />
           </div>
-        }
-      />
+      </Popup>
       <Popup
         open={errorPopupOpen}
         onClose={() => setErrorPopupOpen(false)}
-        content={
-          <div className={styles.resetPassPopupContent}>
+      >
+        <div className={styles.resetPassPopupContent}>
             <img
               src={emailNotFound}
               alt=""
@@ -139,8 +138,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
               variant={ButtonVariant.contained}
             />
           </div>
-        }
-      />
+      </Popup>
     </div>
   );
 }
