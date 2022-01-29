@@ -6,14 +6,14 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
-import ScheduledAppointmentsScreen from "./ScheduledAppointmentsScreen";
+import ReportsScreen from "./ReportsScreen";
 import dayjs from "dayjs";
 
 interface ScheduledAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
 }
 
-export default function ScheduledAppointmentsScreenContainer({
+export default function ReportsScreenContainer({
   activeHospitalsForCoordinator,
 }: ScheduledAppointmentsScreenContainerProps) {
   const [fromDate, setFromDate] = useState<Date>(
@@ -43,7 +43,7 @@ export default function ScheduledAppointmentsScreenContainer({
   };
 
   return (
-    <ScheduledAppointmentsScreen
+    <ReportsScreen
       appointmentsWithDonorDetails={appointmentsWithDonorDetails}
       isLoading={isLoading}
       activeHospitalsForCoordinator={activeHospitalsForCoordinator}

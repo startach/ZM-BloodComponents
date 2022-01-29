@@ -14,13 +14,13 @@ import HeaderSection from "../../components/V2/HeaderSection";
 import Select from "../../components/V2/Select";
 import DatePicker from "../../components/V2/DatePicker";
 import Button from "../../components/V2/Button";
-import styles from "./ScheduledAppointmentsScreen.module.scss";
+import styles from "./ReportsScreen.module.scss";
 import CsvDownloaderButton from "../../components/V2/CsvDownloaderButton";
 import {
   csvColumns,
   formatDataByColumns,
   getDonorReportFileName,
-} from "./ScheduledAppointmentsCsvConfig";
+} from "./ReportsCsvConfig";
 
 export interface ScheduledAppointmentsScreenProps {
   appointmentsWithDonorDetails: BookedDonationWithDonorDetails[];
@@ -35,7 +35,7 @@ export interface ScheduledAppointmentsScreenProps {
   onSearch: () => void;
 }
 
-export default function ScheduledAppointmentsScreen({
+export default function ReportsScreen({
   appointmentsWithDonorDetails,
   isLoading,
   activeHospitalsForCoordinator,

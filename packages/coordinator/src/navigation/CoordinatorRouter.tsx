@@ -10,7 +10,7 @@ import {
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
-import ScheduledAppointmentsContainer from "../screens/scheduledAppointments/ScheduledAppointmentsScreenContainer";
+import ReportsScreenContainer from "../screens/reports/ReportsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 import { signOut } from "../firebase/FirebaseAuthentication";
@@ -175,7 +175,7 @@ export default function CoordinatorRouter() {
       <Route
         path={CoordinatorScreenKey.REPORTS}
         element={
-          <ScheduledAppointmentsContainer
+          <ReportsScreenContainer
             activeHospitalsForCoordinator={activeHospitalsForCoordinator}
           />
         }
