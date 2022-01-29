@@ -13,6 +13,7 @@ import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.sv
 import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
+import { ReactComponent as ScheduleIcon } from "../../assets/icons/schedule.svg";
 import { ReactComponent as NotificationsIcon } from "../../assets/icons/notifications.svg";
 import { ReactComponent as ChevronRight } from "../../assets/icons/chevron-right.svg";
 import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
@@ -94,6 +95,11 @@ function HeaderMenu(props: {
         title={""}
         onClick={() => props.setShowSideBar(false)}
         icon={<BackIcon className={styles.menuBack} />}
+      />
+      <MenuItem
+        title={"ניהול תורים"}
+        onClick={() => navigate(CoordinatorScreenKey.SCHEDULE)}
+        icon={<ScheduleIcon />}
       />
       <MenuItem
         title={"חיפוש משתמשים"}
