@@ -6,8 +6,10 @@ import Table, {
   CardTableColumn,
   CardTableRow,
 } from "../../components/V2/Table";
+import CoordinatorScreen from "../../components/CoordinatorScreen";
+import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 
-interface SearchDonorsScreenProps {
+export interface SearchDonorsScreenProps {
   donors: Donor[];
   isLoading: boolean;
 }
@@ -50,7 +52,13 @@ export default function SearchDonorsScreen({
   }));
 
   return (
-    <>
+    <CoordinatorScreen
+      headerProps={{
+        title: "חיפוש משתמשים",
+        variant: HeaderVariant.INFO,
+        hasBurgerMenu: true,
+      }}
+    >
       <Table
         className={Styles["centered-screen"]}
         hasColumnHeaders
@@ -58,6 +66,6 @@ export default function SearchDonorsScreen({
         rows={rows}
       />
       {isLoading && <Spinner size="4rem" />}
-    </>
+    </CoordinatorScreen>
   );
 }
