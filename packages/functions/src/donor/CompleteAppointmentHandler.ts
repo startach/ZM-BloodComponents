@@ -1,4 +1,6 @@
+import * as admin from "firebase-admin";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
+import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import {
   AppointmentStatus,
   FunctionsApi,
@@ -67,6 +69,11 @@ export async function completeAppointmentFunc(
     DbAppointmentUtils.completeArrivedFromDbAppointment(appointment, isNoshow);
 
   await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
+
+  if (appointment.status == AppointmentStatus.COMPLETED) {
+    // TODO : verify if donorId is valid, should be done here or in DAL ?
+    await DonorDAL.updateDonor(donorId, { lastDonationTime: admin.firestore.Timestamp.now()});
+  }
 
   return {
     completedAppointment:

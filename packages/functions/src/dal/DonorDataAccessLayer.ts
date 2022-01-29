@@ -79,3 +79,10 @@ export async function getDonorsByGroupIds(
     .get();
   return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
 }
+
+export async function updateDonor(donorId: string, 
+  fieldsToUpdate: Partial<DbDonor>) {
+    const collection = admin.firestore().collection(Collections.DONORS);
+    await collection.doc(donorId).update(fieldsToUpdate);
+}
+

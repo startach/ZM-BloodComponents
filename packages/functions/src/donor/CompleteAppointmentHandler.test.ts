@@ -136,6 +136,8 @@ test("Valid request when caller is a coordinator", async () => {
     },
   });
 
+  // Add donor test
+
   const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
   expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
   expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
