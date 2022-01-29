@@ -1,13 +1,7 @@
-import { useState } from "react";
-import {
-  BookedDonationWithDonorDetails,
-  DateUtils,
-  Hospital,
-  HospitalUtils,
-} from "@zm-blood-components/common";
+import {useState} from "react";
+import {BookedDonationWithDonorDetails, DateUtils, Hospital, HospitalUtils,} from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ReportsScreen from "./ReportsScreen";
-import dayjs from "dayjs";
 
 interface ScheduledAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
@@ -16,16 +10,15 @@ interface ScheduledAppointmentsScreenContainerProps {
 export default function ReportsScreenContainer({
   activeHospitalsForCoordinator,
 }: ScheduledAppointmentsScreenContainerProps) {
-  const [fromDate, setFromDate] = useState<Date>(
-    dayjs().subtract(1, "month").toDate()
-  );
-  const [toDate, setToDate] = useState<Date>(new Date());
-  const [hospital, setHospital] = useState<HospitalUtils.HospitalOptionKey>("");
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
     useState<BookedDonationWithDonorDetails[]>([]);
 
-  const onSearch = async () => {
+  const onSearch = async (
+    fromDate: Date,
+    toDate: Date,
+    hospital: HospitalUtils.HospitalOptionKey
+  ) => {
     if (!hospital || !fromDate || !toDate) {
       return;
     }
@@ -47,12 +40,6 @@ export default function ReportsScreenContainer({
       appointmentsWithDonorDetails={appointmentsWithDonorDetails}
       isLoading={isLoading}
       activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-      fromDate={fromDate}
-      setFromDate={setFromDate}
-      toDate={toDate}
-      setToDate={setToDate}
-      hospital={hospital}
-      setHospital={setHospital}
       onSearch={onSearch}
     />
   );
