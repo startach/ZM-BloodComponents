@@ -9,9 +9,12 @@ import { Hospital } from "@zm-blood-components/common";
 
 export type CoordinatorScreenProps = {
   headerProps: CoordinatorHeaderProps;
-  hospitalForAddAppointment?: Hospital;
   children: React.ReactNode;
   className?: string;
+  addAppointmentFabProps?: {
+    hospital: Hospital;
+    timestamp?: number;
+  };
 };
 
 export default function CoordinatorScreen(props: CoordinatorScreenProps) {
@@ -23,8 +26,8 @@ export default function CoordinatorScreen(props: CoordinatorScreenProps) {
         {props.children}
       </div>
 
-      {props.hospitalForAddAppointment && (
-        <AddAppointmentFab hospital={props.hospitalForAddAppointment} />
+      {props.addAppointmentFabProps && (
+        <AddAppointmentFab {...props.addAppointmentFabProps} />
       )}
     </div>
   );

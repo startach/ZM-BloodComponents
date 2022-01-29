@@ -161,10 +161,16 @@ export default function CoordinatorRouter() {
         element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
       />
 
-      <Route
-        path={CoordinatorScreenKey.ADD + "/:hospital"}
-        element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
-      />
+      <Route>
+        <Route
+          path={CoordinatorScreenKey.ADD + "/:hospital"}
+          element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
+        />
+        <Route
+          path={CoordinatorScreenKey.ADD + "/:hospital/:timestamp"}
+          element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
+        />
+      </Route>
 
       {/*Old screens*/}
       <Route

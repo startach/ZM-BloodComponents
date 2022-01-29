@@ -32,7 +32,6 @@ export default function DonationDayScreen({
 
   return (
     <CoordinatorScreen
-      hospitalForAddAppointment={hospital}
       headerProps={{
         title: "ניהול תורים",
         variant: HeaderVariant.INFO,
@@ -46,6 +45,10 @@ export default function DonationDayScreen({
             setShowOnlyAvailableAppointments={setShowOnlyAvailableAppointments}
           />
         ),
+      }}
+      addAppointmentFabProps={{
+        hospital,
+        timestamp: dayStartTime.getTime(),
       }}
     >
       <div className={styles.slots}>
