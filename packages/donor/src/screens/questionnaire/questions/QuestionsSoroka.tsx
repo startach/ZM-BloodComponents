@@ -68,7 +68,7 @@ export default function QuestionsSoroka({
       <Question
         value={isWeightValid}
         onChange={setIsWeightValid}
-        label={"האם משקלך מעל 55 ק״ג?"}
+        label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
