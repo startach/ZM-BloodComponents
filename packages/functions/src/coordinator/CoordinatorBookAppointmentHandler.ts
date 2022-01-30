@@ -19,7 +19,7 @@ export default async function (
   return bookAppointment(
     request.donorId,
     request.appointmentIds,
-    true,
+    false,
     callerId,
     request.donorDetails
   );

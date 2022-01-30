@@ -1,58 +1,49 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 
+import { bookAppointment } from "../common/BookAppointmentHelper";
+import { validateCancelAppointment } from "../common/CancelAppointmentHelper";
 import {
-  bookAppointment,
-  validateBookAppointment,
-} from "../common/BookAppointmentHelper";
-import {
-  cancelAppointment,
-  validateCancelAppointment,
-} from "../common/CancelAppointmentHelper";
+  getAppointmentsByIds,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
+import { removeDonorFromDbAppointment } from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.SwapAppointmentRequest,
   callerId: string
 ): Promise<FunctionsApi.SwapAppointmentResponse> {
-  const bookAppointmentValidation = validateBookAppointment(
-    request.bookAppointmentIds,
-    callerId
-  );
+  await cancelAppointment(callerId, {
+    appointmentId: request.cancelAppointmentId,
+  });
 
-  const cancelAppointmentValidation = validateCancelAppointment(
-    request.cancelAppointmentId,
-    callerId
-  );
-
-  // Unified promises due to low performance
-  const [
-    { status: bookAppointmentStatus },
-    { isValid: isCancelValid, invalidReason: cancellationInvalidReason },
-  ] = await Promise.all([
-    bookAppointmentValidation,
-    cancelAppointmentValidation,
-  ]);
-
-  if (bookAppointmentStatus !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
-    return { status: bookAppointmentStatus };
-  }
-
-  if (!isCancelValid) {
-    throw new Error(cancellationInvalidReason);
-  }
-
-  const { bookedAppointment } = await bookAppointment(
+  const { bookedAppointment, status } = await bookAppointment(
     callerId,
     request.bookAppointmentIds,
-    false
-  );
-
-  await cancelAppointment(
-    callerId,
-    { appointmentId: request.cancelAppointmentId },
     false
   );
 
   // TODO Notify Swap Appointment
 
-  return { status: bookAppointmentStatus, bookedAppointment };
+  return { status, bookedAppointment };
+}
+
+async function cancelAppointment(
+  callerId: string,
+  request: FunctionsApi.CancelAppointmentRequest
+) {
+  const donorId = callerId;
+
+  if (!request.appointmentId) {
+    throw new Error("No appointment to cancel");
+  }
+
+  const foundAppointments = await getAppointmentsByIds([request.appointmentId]);
+
+  await validateCancelAppointment(foundAppointments, donorId);
+
+  const appointment = foundAppointments[0];
+
+  const updatedAppointment = removeDonorFromDbAppointment(appointment);
+
+  await setAppointment(updatedAppointment);
 }

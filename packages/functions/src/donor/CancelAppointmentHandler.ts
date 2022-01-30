@@ -1,9 +1,35 @@
 import { FunctionsApi } from "@zm-blood-components/common";
-import { cancelAppointment } from "../common/CancelAppointmentHelper";
+import { validateCancelAppointment } from "../common/CancelAppointmentHelper";
+import {
+  getAppointmentsByIds,
+  setAppointment,
+} from "../dal/AppointmentDataAccessLayer";
+import { getDonor } from "../dal/DonorDataAccessLayer";
+import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
+import { removeDonorFromDbAppointment } from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
   callerId: string
 ) {
-  await cancelAppointment(callerId, request, true);
+  const donorId = callerId;
+
+  if (!request.appointmentId) {
+    throw new Error("No appointment to cancel");
+  }
+
+  const foundAppointments = await getAppointmentsByIds([request.appointmentId]);
+
+  await validateCancelAppointment(foundAppointments, donorId);
+
+  const appointment = foundAppointments[0];
+
+  const updatedAppointment = removeDonorFromDbAppointment(appointment);
+
+  await setAppointment(updatedAppointment);
+
+  const donor = await getDonor(donorId);
+  notifyOnCancelAppointment(appointment, donor!).catch((e) =>
+    console.error("Error notifying on cancelled appointment", appointment.id, e)
+  );
 }
