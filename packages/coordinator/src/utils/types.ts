@@ -1,7 +1,5 @@
 import { BloodType, BookingChange } from "@zm-blood-components/common";
 
-export type SortFunction<T> = (a: T, b: T) => number;
-
 export type DonationDay = {
   appointmentSlots: AppointmentSlot[];
 };

@@ -455,7 +455,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-46 makeStyles-fab-45 MuiFab-extended-50 MuiFab-primary-48"
+      className="MuiButtonBase-root-9 MuiFab-root-52 makeStyles-fab-51 MuiFab-extended-56 MuiFab-primary-54"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -473,11 +473,11 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
       type="button"
     >
       <span
-        className="MuiFab-label-47"
+        className="MuiFab-label-53"
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root-56"
+          className="MuiSvgIcon-root-62"
           focusable="false"
           viewBox="0 0 24 24"
         >

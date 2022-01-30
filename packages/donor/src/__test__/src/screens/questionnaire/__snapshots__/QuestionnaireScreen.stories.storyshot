@@ -1988,7 +1988,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           <div
             className="questionLabel"
           >
-            האם משקלך מעל 55 ק״ג?
+            האם משקלך מעל 50 ק״ג?
           </div>
           <div
             className="questionButtons"
