@@ -34,6 +34,8 @@ export interface ReportsScreenProps {
     toDate: Date,
     hospital: HospitalUtils.HospitalOptionKey
   ) => void;
+  initialStartDate: Date;
+  initialEndDate: Date;
 }
 
 export default function ReportsScreen({
@@ -41,11 +43,11 @@ export default function ReportsScreen({
   isLoading,
   activeHospitalsForCoordinator,
   onSearch,
+  initialStartDate,
+  initialEndDate,
 }: ReportsScreenProps) {
-  const [fromDate, setFromDate] = useState<Date>(
-    dayjs().subtract(1, "month").toDate()
-  );
-  const [toDate, setToDate] = useState<Date>(new Date());
+  const [fromDate, setFromDate] = useState(initialStartDate);
+  const [toDate, setToDate] = useState(initialEndDate);
 
   const initialHospital =
     activeHospitalsForCoordinator.length === 1

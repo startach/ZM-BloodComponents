@@ -133,7 +133,7 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="29/12/2021"
+                value="01/01/2022"
               />
               <div
                 className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
@@ -637,7 +637,7 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="29/12/2021"
+                value="01/01/2022"
               />
               <div
                 className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
@@ -1061,7 +1061,7 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
                 onFocus={[Function]}
                 required={false}
                 type="text"
-                value="29/12/2021"
+                value="01/01/2022"
               />
               <div
                 className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"

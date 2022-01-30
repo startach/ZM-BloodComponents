@@ -43,6 +43,8 @@ const props: ReportsScreenProps = {
     },
   ],
   isLoading: false,
+  initialStartDate: new Date(1641027600000),
+  initialEndDate: new Date(1643446800000),
 };
 
 const Template: Story<ReportsScreenProps> = (args) => {

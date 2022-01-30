@@ -54,6 +54,15 @@
   padding-bottom: 10px;
 }
 
+.listItemTitle {
+  color: var(--coordinator-dark-gray);
+  padding-left: 10px;
+}
+
+.selectedTitle {
+  font-weight: 700;
+}
+
 .version {
   font-size: 14px;
   margin-right: 20px;

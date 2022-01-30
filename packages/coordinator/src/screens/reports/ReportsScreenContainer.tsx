@@ -7,6 +7,7 @@ import {
 } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ReportsScreen from "./ReportsScreen";
+import dayjs from "dayjs";
 
 interface ScheduledAppointmentsScreenContainerProps {
   activeHospitalsForCoordinator: Hospital[];
@@ -46,6 +47,8 @@ export default function ReportsScreenContainer({
       isLoading={isLoading}
       activeHospitalsForCoordinator={activeHospitalsForCoordinator}
       onSearch={onSearch}
+      initialStartDate={dayjs().subtract(1, "month").toDate()}
+      initialEndDate={new Date()}
     />
   );
 }
