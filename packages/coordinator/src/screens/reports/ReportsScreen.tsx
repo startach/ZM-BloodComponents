@@ -12,7 +12,6 @@ import {
   getDonorReportFileName,
 } from "./ReportsCsvConfig";
 import { useState } from "react";
-import dayjs from "dayjs";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import Table from "@material-ui/core/Table";
