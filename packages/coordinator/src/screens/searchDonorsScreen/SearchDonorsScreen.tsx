@@ -21,7 +21,7 @@ export default function SearchDonorsScreen({
   return (
     <CoordinatorScreen
       headerProps={{
-        title: "חיפוש משתמשים",
+        title: "חיפוש תורמים",
         variant: HeaderVariant.INFO,
         hasBurgerMenu: true,
       }}

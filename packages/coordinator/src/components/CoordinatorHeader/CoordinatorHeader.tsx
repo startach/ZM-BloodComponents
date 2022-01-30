@@ -5,11 +5,10 @@ import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
-import { ReactComponent as FeatherLogOut } from "../../assets/icons/logOut.svg";
+import { ReactComponent as LogOutIcon } from "../../assets/icons/logOut.svg";
 import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
@@ -124,7 +123,7 @@ function HeaderMenu(props: {
           signOut();
           props.setShowSideBar(false);
         }}
-        icon={<FeatherLogOut />}
+        icon={<LogOutIcon />}
       />
 
       <img src={ZMLogo} alt={"logo"} className={styles.zmLogoImage} />
