@@ -4966,13 +4966,6 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.3.tgz"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/react-add-to-calendar@^0.1.5":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@types/react-add-to-calendar/-/react-add-to-calendar-0.1.1.tgz#f5c479bc7e3b06ba555d5a0d4511a6d029fa3d0b"
-  integrity sha512-ItsxKlNmvq5CG8cgGzXCy1760TC3YYT+u6qWy6+D6Mb/9iHD90WeJIKVqUFW15ZqByjwfjKb+niDHNL1tJaN5w==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@^17.0.0":
   version "17.0.7"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.7.tgz"
