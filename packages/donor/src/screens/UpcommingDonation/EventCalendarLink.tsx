@@ -76,16 +76,10 @@ export default function EventCalendarLink({
       "END:VCALENDAR",
     ].join("\n");
 
-    const filename = "download.ics";
     const blob = new Blob([calendarUrl], {
       type: "text/calendar;charset=utf-8",
     });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", filename);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    return window.URL.createObjectURL(blob);
   };
 
   return (
@@ -95,8 +89,8 @@ export default function EventCalendarLink({
           הוספה ליומן
         </div>
       ) : (
-        <div className={styles.link} onClick={addToIOSCalendar}>
-          הוספה ליומן
+        <div className={styles.link}>
+          <a href={addToIOSCalendar()} download={"download.ics"}>הוספה ליומן</a>
         </div>
       )}
     </div>
