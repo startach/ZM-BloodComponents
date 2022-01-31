@@ -6,7 +6,6 @@ import {
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
-import ICalendarLink from "react-icalendar-link";
 
 export interface EventCalendarLinkProps {
   bookedAppointment: BookedAppointment;
