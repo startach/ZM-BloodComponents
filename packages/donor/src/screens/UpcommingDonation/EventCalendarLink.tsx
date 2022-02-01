@@ -79,7 +79,8 @@ export default function EventCalendarLink({
     const blob = new Blob([calendarUrl], {
       type: "text/calendar;charset=utf-8",
     });
-    return window.URL.createObjectURL(blob);
+    const ret = window.URL.createObjectURL(blob);
+    window.open(ret, "_blank")
   };
 
   return (
@@ -89,8 +90,8 @@ export default function EventCalendarLink({
           הוספה ליומן
         </div>
       ) : (
-        <div className={styles.link}>
-          <a href={addToIOSCalendar()} download={"download.ics"}>הוספה ליומן</a>
+        <div className={styles.link} onClick={addToIOSCalendar}>
+          הוספה ליומן
         </div>
       )}
     </div>
