@@ -159,13 +159,11 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
               >
                 יום ו׳, 13.8, 12:00
               </div>
-              <div>
-                <div
-                  className="link"
-                  onClick={[Function]}
-                >
-                  הוספה ליומן
-                </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                הוספה ליומן
               </div>
             </div>
           </div>
@@ -357,13 +355,11 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               >
                 יום ו׳, 13.8, 12:00
               </div>
-              <div>
-                <div
-                  className="link"
-                  onClick={[Function]}
-                >
-                  הוספה ליומן
-                </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                הוספה ליומן
               </div>
             </div>
           </div>
@@ -555,13 +551,11 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
               >
                 יום ו׳, 13.8, 12:00
               </div>
-              <div>
-                <div
-                  className="link"
-                  onClick={[Function]}
-                >
-                  הוספה ליומן
-                </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                הוספה ליומן
               </div>
             </div>
           </div>
@@ -750,13 +744,11 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
               >
                 יום ו׳, 13.8, 12:00
               </div>
-              <div>
-                <div
-                  className="link"
-                  onClick={[Function]}
-                >
-                  הוספה ליומן
-                </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                הוספה ליומן
               </div>
             </div>
           </div>
@@ -951,13 +943,11 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
               >
                 יום ו׳, 13.8, 12:00
               </div>
-              <div>
-                <div
-                  className="link"
-                  onClick={[Function]}
-                >
-                  הוספה ליומן
-                </div>
+              <div
+                className="link"
+                onClick={[Function]}
+              >
+                הוספה ליומן
               </div>
             </div>
           </div>
