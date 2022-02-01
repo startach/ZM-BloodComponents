@@ -16400,11 +16400,6 @@ react-helmet-async@^1.0.7:
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
 
-react-icalendar-link@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/react-icalendar-link/-/react-icalendar-link-3.0.1.tgz"
-  integrity sha512-t1/gBjzWDsehL+7wjQlC4iWGZeDOF9yqgmb8MhqWZ8VmL0vawqKY3s2Bf5+q6BXUpf0rzavwpMs3YW/F6TQyNg==
-
 react-inspector@^5.1.0:
   version "5.1.1"
   resolved "https://registry.npmjs.org/react-inspector/-/react-inspector-5.1.1.tgz"
