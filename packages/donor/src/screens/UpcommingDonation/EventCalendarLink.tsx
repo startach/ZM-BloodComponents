@@ -80,7 +80,7 @@ export default function EventCalendarLink({
       type: "text/calendar;charset=utf-8",
     });
     const ret = window.URL.createObjectURL(blob);
-    window.open(ret, "_blank")
+    window.open(ret, "_blank");
   };
 
   return (
