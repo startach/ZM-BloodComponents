@@ -41,14 +41,6 @@ export default function EventCalendarLink({
     )}`,
   });
 
-  const getAppleCalendarEvent = (): any => ({
-    title: "תרומת טרומבוציטים",
-    location: eventLocation,
-    description: eventDescription,
-    startTime: eventDateStart.toString(),
-    endTime: eventDateEnd.toString(),
-  });
-
   const CleanIsoFormatDate = (date: Date) => {
     return date.toISOString().replace(/[-:.]/g, "");
   };
@@ -69,7 +61,7 @@ export default function EventCalendarLink({
       "URL:" + document.URL,
       "DTSTART:" + CleanIsoFormatDate(eventDateStart),
       "DTEND:" + CleanIsoFormatDate(eventDateEnd),
-      "SUMMARY:" + "תרומת טרומבוציטים",
+      "SUMMARY:תרומת טרומבוציטים",
       "DESCRIPTION:" + eventDescription,
       "LOCATION:" + eventLocation,
       "END:VEVENT",
