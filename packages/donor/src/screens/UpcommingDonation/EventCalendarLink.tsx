@@ -75,17 +75,15 @@ export default function EventCalendarLink({
     window.open(ret, "_blank");
   };
 
+  const linkByOperatingSystem = () =>{
+    return DeviceUtils.getMobileOperatingSystem() === "android"?
+      addToGoogleCalendar() : addToIOSCalendar()
+
+  }
+
   return (
-    <div>
-      {DeviceUtils.getMobileOperatingSystem() === "android" ? (
-        <div className={styles.link} onClick={addToGoogleCalendar}>
-          הוספה ליומן
-        </div>
-      ) : (
-        <div className={styles.link} onClick={addToIOSCalendar}>
-          הוספה ליומן
-        </div>
-      )}
+    <div className={styles.link} onClick={linkByOperatingSystem}>
+      הוספה ליומן
     </div>
   );
 }
