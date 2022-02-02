@@ -1,8 +1,9 @@
 import AddAppointmentScreen, {
   AddAppointmentScreenProps,
 } from "./AddAppointmentScreen";
-import { Meta } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import { Hospital } from "@zm-blood-components/common";
 
 export default {
   component: AddAppointmentScreen,
@@ -11,12 +12,22 @@ export default {
 } as Meta;
 
 const props: AddAppointmentScreenProps = {
+  hospital: Hospital.ASAF_HAROFE,
   initialDate: new Date(1851914113000),
   onSubmit: action("onSubmitNewSlots"),
 };
 
-export const Default = (args: AddAppointmentScreenProps) => {
-  return <AddAppointmentScreen {...args} />;
+const Template: Story<AddAppointmentScreenProps> = (args) => (
+  <AddAppointmentScreen {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  ...props,
 };
 
-Default.args = props;
+export const Beilinson = Template.bind({});
+Beilinson.args = {
+  ...props,
+  hospital: Hospital.BEILINSON,
+};

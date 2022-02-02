@@ -40,7 +40,13 @@ export default function AddAppointmentScreenContainer(
     navigate(-1);
   };
 
-  return <AddAppointmentScreen onSubmit={onSave} initialDate={initialDate} />;
+  return (
+    <AddAppointmentScreen
+      onSubmit={onSave}
+      initialDate={initialDate}
+      hospital={hospital}
+    />
+  );
 }
 
 function getInitialDate(date: Date) {
