@@ -57,6 +57,54 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
     ]);
   };
 
+  /*
+   * This is a cheat added for Beilinson hospital.
+   * They asked to be able to add appointments, with specific hours, to the whole day in a single click.
+   */
+  const onAddWholeDay = () => {
+    if (!date || props.hospital !== Hospital.BEILINSON) {
+      return;
+    }
+
+    const weekdayHoursAndSlots = [
+      [8, 1],
+      [9, 1],
+      [10, 1],
+      [11, 1],
+      [12, 1],
+      [13, 1],
+      [14, 1],
+      [15, 2],
+      [16, 2],
+      [17, 2],
+    ];
+
+    const fridayHoursAndSlots = [
+      [8, 2],
+      [9, 2],
+      [10, 2],
+      [11, 2],
+    ];
+
+    const hoursAndSlots =
+      date.getDay() === 5 ? fridayHoursAndSlots : weekdayHoursAndSlots;
+
+    const creationTimeBase = new Date().getTime();
+    const newSlots = hoursAndSlots.map<SlotToAdd>((hourAndSlots, index) => {
+      const donationStartTime = new Date(date);
+      donationStartTime.setHours(hourAndSlots[0]);
+      donationStartTime.setMinutes(0);
+      return {
+        hospital: props.hospital,
+        donationStartTimeMillis: donationStartTime.getTime(),
+        slots: hourAndSlots[1],
+        creationTime: creationTimeBase + index,
+      };
+    });
+
+    setSlotsList((list) => [...list, ...newSlots]);
+  };
+
   return (
     <CoordinatorScreen
       className={styles.addAppointmentScreenContent}
@@ -95,7 +143,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
         {entireDayButtonEnabled && (
           <Button
             title={"יום שלם"}
-            onClick={() => {}}
+            onClick={onAddWholeDay}
             variant={ButtonVariant.outlined}
           />
         )}
