@@ -143,13 +143,8 @@ export interface GetCoordinatorResponse {
 
 export const AddNewAppointmentsFunctionName = "addNewAppointments";
 export interface AddAppointmentsRequest {
-  slotsRequests: NewSlotsRequest[];
-}
-
-export interface NewSlotsRequest {
   hospital: Hospital;
-  donationStartTimeMillis: number;
-  slots: number;
+  donationStartTimes: number[];
 }
 
 export const DeleteAppointmentsFunctionName = "deleteAppointments";

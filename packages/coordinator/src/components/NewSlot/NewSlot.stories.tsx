@@ -1,6 +1,5 @@
 import NewSlot, { NewSlotProps } from "./NewSlot";
 import { Meta, Story } from "@storybook/react";
-import { Hospital } from "@zm-blood-components/common";
 import { action } from "@storybook/addon-actions";
 
 export default {
@@ -12,8 +11,7 @@ export default {
 const props: NewSlotProps = {
   slot: {
     donationStartTimeMillis: 1641202200000,
-    slots: 3,
-    hospital: Hospital.TEL_HASHOMER,
+    count: 3,
   },
   onDelete: action("onDelete"),
 };

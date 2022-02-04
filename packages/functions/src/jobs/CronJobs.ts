@@ -63,7 +63,7 @@ export const SendConfirmationReminders = async (
   functions.logger.debug("Donors for appointment confirmation: " + donorIds);
 
   const donorsInAppointments = await getDonors(donorIds);
-  let donorsMap: { [donorId: string]: DbDonor } = {};
+  const donorsMap: { [donorId: string]: DbDonor } = {};
   donorsInAppointments.map((donor) => {
     donorsMap[donor.id] = donor;
   });

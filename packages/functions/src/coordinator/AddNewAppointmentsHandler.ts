@@ -2,6 +2,7 @@ import {
   AppointmentStatus,
   Collections,
   FunctionsApi,
+  Hospital,
 } from "@zm-blood-components/common";
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
@@ -12,45 +13,42 @@ export default async function (
   callerId: string
 ) {
   // validate user is allowed to add appointments to this hospital
-  const requestedHospitals = new Set(
-    request.slotsRequests.map((appointment) => appointment.hospital)
-  );
-
   const callingUserId = await validateAppointmentEditPermissions(
     callerId,
-    requestedHospitals
+    request.hospital
   );
 
   const batch = admin.firestore().batch();
 
-  request.slotsRequests.map((slotsRequest) =>
-    addAppointmentsToBatch(slotsRequest, callingUserId, batch)
+  request.donationStartTimes.map((donationStartTimeMillis) =>
+    addAppointmentsToBatch(
+      request.hospital,
+      donationStartTimeMillis,
+      callingUserId,
+      batch
+    )
   );
 
   await batch.commit();
 }
 
 function addAppointmentsToBatch(
-  slotsRequest: FunctionsApi.NewSlotsRequest,
+  hospital: Hospital,
+  donationStartTimeMillis: number,
   callingUserId: string,
   batch: FirebaseFirestore.WriteBatch
 ) {
-  const slots = slotsRequest.slots;
-
   const newAppointment: DbAppointment = {
     creationTime: admin.firestore.Timestamp.fromDate(new Date()),
     creatorUserId: callingUserId,
-    donationStartTime: admin.firestore.Timestamp.fromDate(
-      new Date(slotsRequest.donationStartTimeMillis)
+    donationStartTime: admin.firestore.Timestamp.fromMillis(
+      donationStartTimeMillis
     ),
-    hospital: slotsRequest.hospital,
+    hospital: hospital,
     donorId: "",
     status: AppointmentStatus.AVAILABLE,
   };
 
   const collection = admin.firestore().collection(Collections.APPOINTMENTS);
-
-  for (let i = 0; i < slots; i++) {
-    batch.set(collection.doc(), newAppointment);
-  }
+  batch.set(collection.doc(), newAppointment);
 }

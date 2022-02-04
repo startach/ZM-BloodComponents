@@ -1,4 +1,4 @@
-import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import { Hospital } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import AddAppointmentScreen from "./AddAppointmentScreen";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -31,8 +31,8 @@ export default function AddAppointmentScreenContainer(
   }
   const initialDate = getInitialDate(time);
 
-  const onSave = async (slots: FunctionsApi.NewSlotsRequest[]) => {
-    await CoordinatorFunctions.addNewAppointment(hospital, slots);
+  const onSave = async (donationStartTimes: number[]) => {
+    await CoordinatorFunctions.addNewAppointment(hospital, donationStartTimes);
     navigate(-1);
   };
 
@@ -46,10 +46,6 @@ export default function AddAppointmentScreenContainer(
 }
 
 function getInitialDate(date: Date) {
-  date.setHours(11);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
-
+  date.setHours(11, 0, 0, 0);
   return date;
 }

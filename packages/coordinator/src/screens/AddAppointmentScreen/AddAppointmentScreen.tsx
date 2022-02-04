@@ -4,7 +4,7 @@ import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "../../components/DatePicker";
 import TimePicker from "../../components/TimePicker";
-import { DateUtils, FunctionsApi, Hospital } from "@zm-blood-components/common";
+import { DateUtils, Hospital } from "@zm-blood-components/common";
 import _ from "lodash";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
@@ -14,11 +14,7 @@ import Input from "../../components/Input";
 export interface AddAppointmentScreenProps {
   hospital: Hospital;
   initialDate: Date;
-  onSubmit: (slots: FunctionsApi.NewSlotsRequest[]) => void;
-}
-
-interface SlotToAdd extends FunctionsApi.NewSlotsRequest {
-  creationTime: number;
+  onSubmit: (donationStartTimes: number[]) => void;
 }
 
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
@@ -28,7 +24,7 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   const [slotsError, setSlotsError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [slotsList, setSlotsList] = useState<SlotToAdd[]>([]);
+  const [donationStartTimes, setDonationStartTimes] = useState<number[]>([]);
 
   const navigate = useNavigate();
   const entireDayButtonEnabled = props.hospital === Hospital.BEILINSON;
@@ -46,15 +42,10 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
     }
     const startTime = new Date(date);
     startTime.setHours(hour.getHours(), hour.getMinutes(), 0, 0);
-    setSlotsList((list) => [
-      ...list,
-      {
-        slots: parsedSlots,
-        hospital: props.hospital,
-        donationStartTimeMillis: startTime.getTime(),
-        creationTime: new Date().getTime(),
-      },
-    ]);
+    const startTimeMillis = startTime.getTime();
+    const timesToAdd = _.range(parsedSlots).map(() => startTimeMillis);
+
+    setDonationStartTimes((startTimes) => [...startTimes, ...timesToAdd]);
   };
 
   /*
@@ -66,43 +57,10 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
       return;
     }
 
-    const weekdayHoursAndSlots = [
-      [8, 1],
-      [9, 1],
-      [10, 1],
-      [11, 1],
-      [12, 1],
-      [13, 1],
-      [14, 1],
-      [15, 2],
-      [16, 2],
-      [17, 2],
-    ];
-
-    const fridayHoursAndSlots = [
-      [8, 2],
-      [9, 2],
-      [10, 2],
-      [11, 2],
-    ];
-
-    const hoursAndSlots =
-      date.getDay() === 5 ? fridayHoursAndSlots : weekdayHoursAndSlots;
-
-    const creationTimeBase = new Date().getTime();
-    const newSlots = hoursAndSlots.map<SlotToAdd>((hourAndSlots, index) => {
-      const donationStartTime = new Date(date);
-      donationStartTime.setHours(hourAndSlots[0]);
-      donationStartTime.setMinutes(0);
-      return {
-        hospital: props.hospital,
-        donationStartTimeMillis: donationStartTime.getTime(),
-        slots: hourAndSlots[1],
-        creationTime: creationTimeBase + index,
-      };
-    });
-
-    setSlotsList((list) => [...list, ...newSlots]);
+    setDonationStartTimes((list) => [
+      ...list,
+      ...getAppointmentsForEntireDay(date),
+    ]);
   };
 
   return (
@@ -159,20 +117,20 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           <div className={styles.subtitleText}>רשימת תורים</div>
         </div>
 
-        {slotsList.length === 0 ? (
+        {donationStartTimes.length === 0 ? (
           <div className={styles.noAppointmentsText}>טרם נוצרו תורים חדשים</div>
         ) : (
           <div>
-            {groupSlots(slotsList).map((group) => (
+            {groupSlots(donationStartTimes).map((group) => (
               <div key={group.date + "." + group.slots.length}>
                 <div className={styles.dateTitle}>{group.date}</div>
-                {group.slots.map((s, index) => (
+                {group.slots.map((slot, index) => (
                   <NewSlot
-                    key={index + "." + s.creationTime}
-                    slot={s}
+                    key={index + "." + slot.donationStartTimeMillis}
+                    slot={slot}
                     onDelete={() => {
-                      setSlotsList((list) =>
-                        list.filter((x) => x.creationTime !== s.creationTime)
+                      setDonationStartTimes((list) =>
+                        list.filter((x) => x !== slot.donationStartTimeMillis)
                       );
                     }}
                   />
@@ -193,10 +151,10 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           />
           <Button
             title="אשר והמשך"
-            isDisabled={slotsList.length === 0}
+            isDisabled={donationStartTimes.length === 0}
             onClick={() => {
               setLoading(true);
-              props.onSubmit(slotsList);
+              props.onSubmit(donationStartTimes);
             }}
             isLoading={loading}
           />
@@ -206,21 +164,70 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   );
 }
 
-function groupSlots(
-  slots: SlotToAdd[]
-): { date: string; slots: SlotToAdd[] }[] {
-  const res: { date: string; slots: SlotToAdd[] }[] = [];
+function groupSlots(slotsList: number[]): {
+  date: string;
+  slots: { donationStartTimeMillis: number; count: number }[];
+}[] {
+  const res: {
+    date: string;
+    slots: { donationStartTimeMillis: number; count: number }[];
+  }[] = [];
 
-  const groups = _.groupBy(slots, (x) =>
-    DateUtils.ToShortDateString(x.donationStartTimeMillis)
-  );
+  const groups = _.groupBy(slotsList, DateUtils.ToShortDateString);
 
   for (let date in groups) {
+    const timesGroups = _.countBy(groups[date], (x) => x);
+
+    const slots: { donationStartTimeMillis: number; count: number }[] = [];
+    for (let g in timesGroups) {
+      slots.push({
+        donationStartTimeMillis: parseInt(g),
+        count: timesGroups[g],
+      });
+    }
+
     res.push({
       date,
-      slots: _.sortBy(groups[date], (x) => x.donationStartTimeMillis),
+      slots: _.sortBy(slots, (x) => x.donationStartTimeMillis),
     });
   }
 
   return _.sortBy(res, (x) => x.slots[0].donationStartTimeMillis);
+}
+
+function getAppointmentsForEntireDay(date: Date) {
+  const weekdayHoursAndSlots = [
+    [8, 1],
+    [9, 1],
+    [10, 1],
+    [11, 1],
+    [12, 1],
+    [13, 1],
+    [14, 1],
+    [15, 2],
+    [16, 2],
+    [17, 2],
+  ];
+
+  const fridayHoursAndSlots = [
+    [8, 2],
+    [9, 2],
+    [10, 2],
+    [11, 2],
+  ];
+
+  const hoursAndSlots =
+    date.getDay() === 5 ? fridayHoursAndSlots : weekdayHoursAndSlots;
+
+  const res: number[] = [];
+  hoursAndSlots.forEach((hourAndSlots) => {
+    const donationStartTime = new Date(date);
+    donationStartTime.setHours(hourAndSlots[0], 0, 0, 0);
+
+    for (let i = 0; i < hourAndSlots[1]; i++) {
+      res.push(donationStartTime.getTime());
+    }
+  });
+
+  return res;
 }

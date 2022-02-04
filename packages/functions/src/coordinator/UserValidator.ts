@@ -4,10 +4,10 @@ import { DbCoordinator } from "../function-types";
 
 export async function validateAppointmentEditPermissions(
   userId: string,
-  hospitals: Set<Hospital>
+  hospital: Hospital
 ) {
   const coordinator = await getCoordinator(userId);
-  validateAppointmentPermissions(hospitals, coordinator);
+  validateAppointmentPermissions(new Set<Hospital>([hospital]), coordinator);
   return userId;
 }
 
