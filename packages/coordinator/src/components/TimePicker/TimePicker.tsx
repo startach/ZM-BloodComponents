@@ -25,6 +25,9 @@ export default function TimePicker({
       ampm={false}
       minutesStep={5}
       className={className}
+      okLabel={"אישור"}
+      cancelLabel={"ביטול"}
+      autoOk
     />
   );
 }

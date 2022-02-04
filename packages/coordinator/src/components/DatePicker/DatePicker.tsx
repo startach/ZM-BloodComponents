@@ -35,6 +35,9 @@ export default function DatePicker({
       maxDateMessage={"תאריך לא תקין"}
       okLabel={"אישור"}
       cancelLabel={"ביטול"}
+      todayLabel={"היום"}
+      showTodayButton
+      autoOk
       shouldDisableDate={(x) =>
         x && disableSaturday ? x.getDay() === 6 : false
       }
