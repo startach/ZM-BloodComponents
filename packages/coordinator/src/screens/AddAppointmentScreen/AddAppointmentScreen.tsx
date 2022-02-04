@@ -17,6 +17,9 @@ export interface AddAppointmentScreenProps {
   onSubmit: (donationStartTimes: number[]) => void;
 }
 
+const minDate = new Date();
+minDate.setHours(0, 0, 0, 0);
+
 export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
   const [date, setDate] = useState<Date>(props.initialDate);
   const [hour, setHour] = useState<Date>(props.initialDate);
@@ -79,6 +82,8 @@ export default function AddAppointmentScreen(props: AddAppointmentScreenProps) {
           onChange={(d) => d && setDate(d)}
           label={"תאריך"}
           disablePast
+          minimumDate={minDate}
+          disableSaturday
         />
 
         <TimePicker

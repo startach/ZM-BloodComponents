@@ -46,6 +46,11 @@ export default function AddAppointmentScreenContainer(
 }
 
 function getInitialDate(date: Date) {
+  if (date.getDay() === 6) {
+    // If day is Saturday, move to Sunday.
+    date.setDate(date.getDate() + 1);
+  }
+
   date.setHours(11, 0, 0, 0);
   return date;
 }

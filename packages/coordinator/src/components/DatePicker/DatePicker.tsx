@@ -8,6 +8,7 @@ export interface DatePickerProps {
   className?: string;
   minimumDate?: Date;
   maximumDate?: Date;
+  disableSaturday?: boolean;
 }
 
 export default function DatePicker({
@@ -18,6 +19,7 @@ export default function DatePicker({
   className,
   minimumDate,
   maximumDate,
+  disableSaturday,
 }: DatePickerProps) {
   return (
     <KeyboardDatePicker
@@ -29,6 +31,13 @@ export default function DatePicker({
       className={className}
       minDate={minimumDate}
       maxDate={maximumDate}
+      minDateMessage={"תאריך לא תקין"}
+      maxDateMessage={"תאריך לא תקין"}
+      okLabel={"אישור"}
+      cancelLabel={"ביטול"}
+      shouldDisableDate={(x) =>
+        x && disableSaturday ? x.getDay() === 6 : false
+      }
     />
   );
 }
