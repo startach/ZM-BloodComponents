@@ -32,7 +32,7 @@ export default function ReportsScreenContainer({
     // get all bookings in fromDate day
     const fromDateMidnight = DateUtils.DateToMidnight(fromDate);
     const nextAppointmentsWithDonorDetails =
-      await CoordinatorFunctions.getBookedAppointmentsInHospital({
+      await CoordinatorFunctions.getReportsForHospital({
         hospital,
         fromDateMillis: fromDateMidnight!.getTime(),
         toDateMillis: toDate!.getTime(),
