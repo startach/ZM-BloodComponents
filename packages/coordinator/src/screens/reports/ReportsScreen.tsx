@@ -116,8 +116,8 @@ export default function ReportsScreen({
             <TableCell align="center">שעה</TableCell>
             <TableCell align="center">שם פרטי</TableCell>
             <TableCell align="center">שם משפחה</TableCell>
-            <TableCell align="center">סוג דם</TableCell>
             <TableCell align="center">טלפון</TableCell>
+            <TableCell align="center">סוג דם</TableCell>
             <TableCell align="center">סטאטוס</TableCell>
           </TableRow>
         </TableHead>

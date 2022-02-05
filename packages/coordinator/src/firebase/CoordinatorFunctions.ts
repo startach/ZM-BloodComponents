@@ -77,11 +77,11 @@ export async function getBookedAppointment(appointmentId: string) {
 export async function getReportsForHospital(
   request: GetBookedDonationsInHospitalRequest
 ) {
-  const getBookedAppointmentsInHospital = getCallableFunction(
+  const callableFunction = getCallableFunction(
     FunctionsApi.GetBookedDonationsInHospitalFunctionName
   );
 
-  const response = await getBookedAppointmentsInHospital(request);
+  const response = await callableFunction(request);
   const data =
     response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
   return data.donationsWithDonorDetails;
