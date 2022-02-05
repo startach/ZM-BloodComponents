@@ -4,6 +4,7 @@ import {
   BloodType,
   BookedAppointment,
   Hospital,
+  MinimalDonorDetailsForAppointment,
 } from "../types";
 
 export const SampleBookedAppointment: BookedAppointment = {
@@ -27,4 +28,11 @@ export const SampleAvailableAppointment: AvailableAppointment = {
   donationStartTimeMillis: 1702382400000, // December 12, 2023 14:00:00 GMT+02:00
   status: AppointmentStatus.AVAILABLE,
   hospital: Hospital.TEL_HASHOMER,
+};
+
+export const SampleManualDonorDetails: MinimalDonorDetailsForAppointment = {
+  firstName: "manualFirstName",
+  lastName: "manualLastName",
+  bloodType: BloodType.B_PLUS,
+  phoneNumber: "0549876543",
 };

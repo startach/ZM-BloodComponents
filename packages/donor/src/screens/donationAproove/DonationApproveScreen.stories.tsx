@@ -1,7 +1,9 @@
-import {action} from "@storybook/addon-actions";
-import {Story} from "@storybook/react";
-import {Hospital,} from "@zm-blood-components/common";
-import DonationApproveScreen, {DonationApproveScreenProps,} from "./DonationApproveScreen";
+import { action } from "@storybook/addon-actions";
+import { Story } from "@storybook/react";
+import { Hospital } from "@zm-blood-components/common";
+import DonationApproveScreen, {
+  DonationApproveScreenProps,
+} from "./DonationApproveScreen";
 
 export default {
   component: DonationApproveScreen,

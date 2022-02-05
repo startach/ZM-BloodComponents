@@ -115,7 +115,9 @@ export type BookedAppointment = AppointmentBase & {
   fullName: string;
   phone: string;
   bloodType: BloodType;
+  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
 };
+
 export enum AppointmentStatus {
   AVAILABLE = "AVAILABLE",
   BOOKED = "BOOKED",

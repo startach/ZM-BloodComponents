@@ -1,7 +1,6 @@
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
 
 export default async function (
@@ -64,8 +63,9 @@ export async function completeAppointmentFunc(
 
   await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
 
+  const completedAppointment =
+    await DbAppointmentUtils.toBookedAppointmentAsync(updatedAppointment);
   return {
-    completedAppointment:
-      dbAppointmentToBookedAppointmentApiEntry(updatedAppointment),
+    completedAppointment,
   };
 }

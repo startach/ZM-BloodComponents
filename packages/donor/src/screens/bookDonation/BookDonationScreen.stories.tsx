@@ -3,7 +3,11 @@ import BookDonationScreen, {
 } from "./BookDonationScreen";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
-import {AvailableAppointment, Hospital, TestSamples} from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  Hospital,
+  TestSamples,
+} from "@zm-blood-components/common";
 
 export default {
   component: BookDonationScreen,

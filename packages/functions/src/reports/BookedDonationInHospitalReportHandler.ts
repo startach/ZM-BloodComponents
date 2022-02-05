@@ -29,7 +29,7 @@ export default async function (
     DbAppointmentUtils.isAppointmentBooked
   );
   const bookedDonationWithDonorDetailsPromises = bookedAppointments.map(
-    DbAppointmentUtils.toBookedDonationWithDonorDetails
+    DbAppointmentUtils.toBookedAppointmentAsync
   );
   const bookedDonationsWithDonor = await Promise.all(
     bookedDonationWithDonorDetailsPromises

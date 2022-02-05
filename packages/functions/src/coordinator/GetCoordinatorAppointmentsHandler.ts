@@ -1,10 +1,10 @@
 import {
+  Appointment,
   AppointmentUtils,
   CoordinatorRole,
   FunctionsApi,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import { dbAppointmentToAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import {
   getCoordinator,
   getValidHospitalsOrThrow,
@@ -13,7 +13,7 @@ import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 import _ from "lodash";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import { isManualDonorAppointment } from "../utils/DbAppointmentUtils";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
@@ -35,7 +35,10 @@ export default async function (
 
   const donorIds: string[] = [];
   appointmentsByHospital.map((appointment) => {
-    if (appointment.donorId && !isManualDonorAppointment(appointment)) {
+    if (
+      appointment.donorId &&
+      !DbAppointmentUtils.isManualDonorAppointment(appointment)
+    ) {
       donorIds.push(appointment.donorId);
     }
   });
@@ -44,9 +47,16 @@ export default async function (
     _.uniq(donorIds)
   );
 
-  let appointments = appointmentsByHospital.map((a) =>
-    dbAppointmentToAppointmentApiEntry(a, donorsInAppointments)
-  );
+  let appointments = appointmentsByHospital.map((a) => {
+    if (DbAppointmentUtils.isAppointmentBooked(a)) {
+      const getDonor = (donorId: string) =>
+        donorsInAppointments.filter((d) => d.id === donorId)[0];
+      return DbAppointmentUtils.toBookedAppointmentSync(a, getDonor);
+    } else {
+      return DbAppointmentUtils.toAvailableAppointment(a);
+    }
+  });
+
   if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
     donorsInAppointments = await filterDonorsInGroup(
       coordinator,
@@ -83,13 +93,13 @@ async function filterDonorsInGroup(
 }
 
 function filterAppointmentsForDonors(
-  appointments: FunctionsApi.AppointmentApiEntry[],
+  appointments: Appointment[],
   donors: DbDonor[],
   assigningCoordinatorId: string
 ) {
   const donorIds = new Set(donors.map((donor) => donor.id));
   return appointments.filter((appointment) => {
-    if (!appointment.donorId) return false;
+    if (!appointment.booked) return false;
 
     // if donor is in coordinator group, show the appointment
     if (donorIds.has(appointment.donorId)) return true;
