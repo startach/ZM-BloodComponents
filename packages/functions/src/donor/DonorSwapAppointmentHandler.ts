@@ -1,5 +1,4 @@
-import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
-import { BookAppointmentStatus } from "common/src/functions-api";
+import { FunctionsApi } from "@zm-blood-components/common";
 
 import {
   bookAppointment,
@@ -37,7 +36,7 @@ export default async function (
 
   const { status } = validateBookAppointment(appointmentsToBook, callerId);
 
-  if (status !== BookAppointmentStatus.SUCCESS) {
+  if (status !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
     return { status };
   }
 
