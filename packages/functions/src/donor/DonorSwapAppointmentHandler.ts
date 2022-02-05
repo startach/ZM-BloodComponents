@@ -24,6 +24,10 @@ export default async function (
     request.cancelAppointmentId,
   ]);
 
+  if (!appointmentsToValidate) {
+    throw new Error("Appointments not found");
+  }
+
   const appointmentToCancel = appointmentsToValidate.find(
     (a) => a.id === request.cancelAppointmentId
   );
@@ -31,7 +35,7 @@ export default async function (
   validateCancelAppointment(appointmentToCancel, callerId);
 
   const appointmentsToBook = appointmentsToValidate.filter((a) =>
-    request.bookAppointmentIds.includes(a.id ?? "")
+    request.bookAppointmentIds.includes(a.id!)
   );
 
   const { status } = validateBookAppointment(appointmentsToBook, callerId);

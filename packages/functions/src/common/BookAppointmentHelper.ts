@@ -15,11 +15,19 @@ import {
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { DbDonor, DbAppointment } from "../function-types";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import { BookAppointmentStatus } from "common/src/functions-api";
 
-export interface ValidBookAppointmentResponse {
+export type ValidBookAppointmentResponse =
+  | ValidBookAppointment
+  | InvalidBookAppointment;
+
+export type ValidBookAppointment = {
+  status: BookAppointmentStatus.SUCCESS;
+  appointment: DbAppointment;
+};
+export type InvalidBookAppointment = {
   status: FunctionsApi.BookAppointmentStatus;
-  appointment?: DbAppointment;
-}
+};
 
 export async function bookAppointment(
   donorId: string,
@@ -35,19 +43,19 @@ export async function bookAppointment(
     throw new Error("No such appointments");
   }
 
-  const { appointment: appointmentToBook, status } = validateBookAppointment(
+  const bookValidation = validateBookAppointment(
     appointmentsToBook,
     donorId,
     coordinatorId,
     donorDetails
   );
 
-  if (
-    !appointmentToBook ||
-    status !== FunctionsApi.BookAppointmentStatus.SUCCESS
-  ) {
-    return { status };
+  if (bookValidation.status !== FunctionsApi.BookAppointmentStatus.SUCCESS) {
+    return { status: bookValidation.status };
   }
+
+  const appointmentToBook = (bookValidation as ValidBookAppointment)
+    .appointment;
 
   appointmentToBook.donorId = donorId;
   appointmentToBook.bookingTime = admin.firestore.Timestamp.now();
@@ -103,7 +111,7 @@ export function validateBookAppointment(
   coordinatorId?: string,
   donorDetails?: MinimalDonorDetailsForAppointment
 ): ValidBookAppointmentResponse {
-  if (!appointments || appointments.length === 0) {
+  if (appointments.length === 0) {
     throw new Error("No such appointments");
   }
 
