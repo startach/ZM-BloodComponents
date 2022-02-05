@@ -165,7 +165,6 @@ export interface GetCoordinatorAppointmentsRequest {
 
 export interface GetCoordinatorAppointmentsResponse {
   appointments: AppointmentApiEntry[];
-  donorsInAppointments: Donor[]; // TODO remove once coordinator is migrated
 }
 
 export const GetDonorsFunctionName = "getDonors";

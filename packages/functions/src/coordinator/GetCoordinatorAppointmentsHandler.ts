@@ -4,10 +4,7 @@ import {
   FunctionsApi,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import {
-  dbAppointmentToAppointmentApiEntry,
-  dbDonorToDonor,
-} from "../utils/ApiEntriesConversionUtils";
+import { dbAppointmentToAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import {
   getCoordinator,
   getValidHospitalsOrThrow,
@@ -64,7 +61,6 @@ export default async function (
 
   const res: FunctionsApi.GetCoordinatorAppointmentsResponse = {
     appointments,
-    donorsInAppointments: donorsInAppointments.map(dbDonorToDonor),
   };
   return res;
 }
