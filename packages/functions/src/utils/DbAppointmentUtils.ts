@@ -72,7 +72,8 @@ export function toAvailableAppointment(
 
   if (!id || donorId || status !== AppointmentStatus.AVAILABLE) {
     console.error(
-      "Cannot convert AvailableAppointmentApiEntry with no id or with donor id"
+      "Cannot convert AvailableAppointmentApiEntry with no id or with donor id",
+      JSON.stringify(appointment)
     );
     throw new Error("Invalid Available Appointment");
   }

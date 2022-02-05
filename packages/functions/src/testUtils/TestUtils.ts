@@ -13,6 +13,21 @@ export async function expectAsyncThrows(
   expect(error).toEqual(new Error(expectedExceptionText));
 }
 
+export async function expectThrows(
+  action: () => any,
+  expectedExceptionText: string
+) {
+  let error;
+  try {
+    await action();
+  } catch (e) {
+    error = e;
+  }
+
+  // @ts-ignore
+  expect(error).toEqual(new Error(expectedExceptionText));
+}
+
 export function getDate(daysFromNow: number) {
   const res = new Date();
   res.setDate(res.getDate() + daysFromNow);
