@@ -107,18 +107,15 @@ test("User that is not admin throws exception", async () => {
   await expectAsyncThrows(action, `User ${COORDINATOR_ID} is not an admin`);
 });
 
-test("No such appointments", async () => {
+test("No such appointments throws exception", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  const response = await wrapped(bookAppointmentRequest(true), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(
-    FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS
-  );
-  expect(data.bookedAppointment).toBeUndefined();
+  const action = () =>
+    wrapped(bookAppointmentRequest(true), {
+      auth: {
+        uid: COORDINATOR_ID,
+      },
+    });
+  await expectAsyncThrows(action, "No such appointments");
 });
 
 test("No free appointments ", async () => {

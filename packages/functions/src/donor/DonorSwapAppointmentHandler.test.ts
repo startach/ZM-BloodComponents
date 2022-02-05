@@ -96,14 +96,13 @@ test("Donor not found throws exception", async () => {
 test("No such appointments", async () => {
   await defaultInitialization(false, true);
 
-  const response = await wrapped(swapAppointmentRequest(), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
-  const data = response as FunctionsApi.SwapAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.NO_SUCH_APPOINTMENTS);
-  expect(data.bookedAppointment).toBeUndefined();
+  const action = () =>
+    wrapped(swapAppointmentRequest(), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
+  await expectAsyncThrows(action, "No such appointments");
 });
 
 test("No free appointments ", async () => {

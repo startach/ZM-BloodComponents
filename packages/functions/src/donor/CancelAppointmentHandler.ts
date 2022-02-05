@@ -20,7 +20,11 @@ export default async function (
 
   const foundAppointments = await getAppointmentsByIds([request.appointmentId]);
 
-  await validateCancelAppointment(foundAppointments, donorId);
+  if (foundAppointments.length !== 1) {
+    throw new Error("Appointment not found");
+  }
+
+  validateCancelAppointment(foundAppointments[0], donorId);
 
   const appointment = foundAppointments[0];
 

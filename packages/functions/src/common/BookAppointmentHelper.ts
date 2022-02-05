@@ -22,8 +22,6 @@ export interface ValidBookAppointmentResponse {
   appointment?: DbAppointment;
 }
 
-const WEEKS_BUFFER = 0;
-
 export async function bookAppointment(
   donorId: string,
   appointmentIds: string[],
@@ -31,13 +29,19 @@ export async function bookAppointment(
   coordinatorId?: string,
   donorDetails?: MinimalDonorDetailsForAppointment
 ): Promise<FunctionsApi.BookAppointmentResponse> {
-  const { appointment: appointmentToBook, status } =
-    await validateBookAppointment(
-      appointmentIds,
-      donorId,
-      coordinatorId,
-      donorDetails
-    );
+  const appointmentsToBook = await getAppointmentsByIds(appointmentIds);
+
+  if (appointmentsToBook.length === 0) {
+    // None of the appointment ids was found in the DB
+    throw new Error("No such appointments");
+  }
+
+  const { appointment: appointmentToBook, status } = validateBookAppointment(
+    appointmentsToBook,
+    donorId,
+    coordinatorId,
+    donorDetails
+  );
 
   if (
     !appointmentToBook ||
@@ -92,21 +96,20 @@ function updateDonorAsync(donor: DbDonor, hospital: Hospital) {
   return setDonor(updatedDonor);
 }
 
-export async function validateBookAppointment(
-  appointmentIds: string[],
+export function validateBookAppointment(
+  appointments: DbAppointment[],
   donorId: string,
   coordinatorId?: string,
   donorDetails?: MinimalDonorDetailsForAppointment
-): Promise<ValidBookAppointmentResponse> {
-  const appointmentsToBook = await getAppointmentsByIds(appointmentIds);
-  if (appointmentsToBook.length === 0) {
-    // None of the appointment ids was found in the DB
-    return { status: FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS };
+): ValidBookAppointmentResponse {
+  if (!appointments || appointments.length === 0) {
+    throw new Error("No such appointments");
   }
 
-  const availableAppointments = appointmentsToBook.filter(
+  const availableAppointments = appointments.filter(
     (appointment) => appointment.status === AppointmentStatus.AVAILABLE
   );
+
   if (availableAppointments.length === 0) {
     // None of the requested appointments is available
     return {
@@ -115,23 +118,14 @@ export async function validateBookAppointment(
   }
   const appointmentToBook = availableAppointments[0];
 
-  if (coordinatorId && AppointmentUtils.isManualDonor(donorId)) {
-    if (!donorDetails) {
-      return {
-        status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,
-      };
-    }
-  } else {
-    const donorAppointments = await getAppointmentsByDonorIdInTime(
-      donorId,
-      appointmentToBook.donationStartTime.toDate(),
-      WEEKS_BUFFER
-    );
-    if (donorAppointments.length > 0) {
-      return {
-        status: FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER,
-      };
-    }
+  if (
+    coordinatorId &&
+    AppointmentUtils.isManualDonor(donorId) &&
+    !donorDetails
+  ) {
+    return {
+      status: FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED,
+    };
   }
   return {
     status: FunctionsApi.BookAppointmentStatus.SUCCESS,
