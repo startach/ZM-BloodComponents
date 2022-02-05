@@ -1,6 +1,5 @@
 import { getDonorOrThrow, setDonor } from "../dal/DonorDataAccessLayer";
 import {
-  getAppointmentsByDonorIdInTime,
   getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
