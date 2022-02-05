@@ -124,7 +124,7 @@ test("Valid request returns booked appointment of the right hospital", async () 
   );
   expect(appointments).toHaveLength(1);
   const bookedAppointment = appointments[0];
-  expect(bookedAppointment.appointmentId).toEqual(FUTURE_BOOKED);
+  expect(bookedAppointment.id).toEqual(FUTURE_BOOKED);
   expect(bookedAppointment.bloodType).toEqual(sampleUser.bloodType);
   expect(bookedAppointment.donationStartTimeMillis).toEqual(
     IN_TWO_DAYS.getTime()

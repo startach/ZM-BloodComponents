@@ -6,7 +6,6 @@ import {
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
-import ICalendarLink from "react-icalendar-link";
 
 export interface EventCalendarLinkProps {
   bookedAppointment: BookedAppointment;
@@ -42,14 +41,6 @@ export default function EventCalendarLink({
     )}`,
   });
 
-  const getAppleCalendarEvent = (): any => ({
-    title: "תרומת טרומבוציטים",
-    location: eventLocation,
-    description: eventDescription,
-    startTime: eventDateStart.toString(),
-    endTime: eventDateEnd.toString(),
-  });
-
   const CleanIsoFormatDate = (date: Date) => {
     return date.toISOString().replace(/[-:.]/g, "");
   };
@@ -62,19 +53,37 @@ export default function EventCalendarLink({
     window.open(googleEventUrlWithParams, "_blank");
   };
 
+  const addToIOSCalendar = () => {
+    const calendarUrl = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      "URL:" + document.URL,
+      "DTSTART:" + CleanIsoFormatDate(eventDateStart),
+      "DTEND:" + CleanIsoFormatDate(eventDateEnd),
+      "SUMMARY:תרומת טרומבוציטים",
+      "DESCRIPTION:" + eventDescription,
+      "LOCATION:" + eventLocation,
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\n");
+
+    const blob = new Blob([calendarUrl], {
+      type: "text/calendar;charset=utf-8",
+    });
+    const ret = window.URL.createObjectURL(blob);
+    window.open(ret, "_blank");
+  };
+
+  const linkByOperatingSystem = () => {
+    return DeviceUtils.getMobileOperatingSystem() === "android"
+      ? addToGoogleCalendar()
+      : addToIOSCalendar();
+  };
+
   return (
-    <div>
-      {DeviceUtils.getMobileOperatingSystem() === "android" ? (
-        <div className={styles.link} onClick={addToGoogleCalendar}>
-          הוספה ליומן
-        </div>
-      ) : (
-        <div className={styles.link}>
-          <ICalendarLink event={getAppleCalendarEvent()}>
-            הוספה ליומן
-          </ICalendarLink>
-        </div>
-      )}
+    <div className={styles.link} onClick={linkByOperatingSystem}>
+      הוספה ליומן
     </div>
   );
 }

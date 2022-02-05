@@ -1,7 +1,7 @@
 import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import { FunctionsApi } from "@zm-blood-components/common";
 import { getAppointmentNotificationData } from "../notifications/AppointmentNotificationData";
 import * as functions from "firebase-functions";
 import {
@@ -32,10 +32,7 @@ export default async function (
     : undefined;
 
   // validate user is allowed to edit appointments of this hospital
-  await validateAppointmentEditPermissions(
-    callerId,
-    new Set<Hospital>([appointment.hospital])
-  );
+  await validateAppointmentEditPermissions(callerId, appointment.hospital);
 
   if (request.onlyRemoveDonor) {
     const updatedAppointment =

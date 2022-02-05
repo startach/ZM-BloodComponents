@@ -68,7 +68,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           onSubmit={signIn}
           type="password"
         />
-        <div className={styles.actionButton}>
+        <div>
           <Button
             title="התחברות"
             onClick={signIn}

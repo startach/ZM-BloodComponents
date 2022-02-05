@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import {
-  Coordinator,
-  CoordinatorRole,
-  LoginStatus,
-} from "@zm-blood-components/common";
+import { Coordinator, LoginStatus } from "@zm-blood-components/common";
 import {
   initFirebase,
   registerAuthChange,
@@ -91,7 +87,6 @@ export default function CoordinatorRouter() {
         signOut();
         return;
       }
-      coordinator.role = CoordinatorRole.SYSTEM_USER;
 
       setAppState({
         coordinator,

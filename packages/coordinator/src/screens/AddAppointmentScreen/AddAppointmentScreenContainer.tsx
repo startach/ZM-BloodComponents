@@ -31,23 +31,26 @@ export default function AddAppointmentScreenContainer(
   }
   const initialDate = getInitialDate(time);
 
-  const onSave = async (donationStartTime: Date, slots: number) => {
-    await CoordinatorFunctions.addNewAppointment(
-      hospital,
-      donationStartTime,
-      slots
-    );
+  const onSave = async (donationStartTimes: number[]) => {
+    await CoordinatorFunctions.addNewAppointment(hospital, donationStartTimes);
     navigate(-1);
   };
 
-  return <AddAppointmentScreen onSubmit={onSave} initialDate={initialDate} />;
+  return (
+    <AddAppointmentScreen
+      onSubmit={onSave}
+      initialDate={initialDate}
+      hospital={hospital}
+    />
+  );
 }
 
 function getInitialDate(date: Date) {
-  date.setHours(11);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
+  if (date.getDay() === 6) {
+    // If day is Saturday, move to Sunday.
+    date.setDate(date.getDate() + 1);
+  }
 
+  date.setHours(11, 0, 0, 0);
   return date;
 }

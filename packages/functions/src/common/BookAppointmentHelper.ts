@@ -13,9 +13,9 @@ import {
   Hospital,
   MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
-import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
-import { DbAppointment, DbDonor } from "../function-types";
+import { DbDonor, DbAppointment } from "../function-types";
+import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export interface ValidBookAppointmentResponse {
   status: FunctionsApi.BookAppointmentStatus;
@@ -78,11 +78,13 @@ export async function bookAppointment(
     await updateDonorPromise;
   }
   await setAppointment(appointmentToBook);
+  const bookedAppointment = await DbAppointmentUtils.toBookedAppointmentAsync(
+    appointmentToBook
+  );
 
   return {
     status: FunctionsApi.BookAppointmentStatus.SUCCESS,
-    bookedAppointment:
-      dbAppointmentToBookedAppointmentApiEntry(appointmentToBook),
+    bookedAppointment,
   };
 }
 

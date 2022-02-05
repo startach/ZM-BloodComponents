@@ -3,6 +3,7 @@ import {
   AppointmentStatus,
   BloodType,
   Hospital,
+  TestSamples,
 } from "@zm-blood-components/common";
 import ReportsScreen, { ReportsScreenProps } from "./ReportsScreen";
 import { action } from "@storybook/addon-actions";
@@ -18,6 +19,7 @@ const props: ReportsScreenProps = {
   onSearch: action("onSearch"),
   appointmentsWithDonorDetails: [
     {
+      ...TestSamples.SampleBookedAppointment,
       status: AppointmentStatus.BOOKED,
       phone: "0525256631",
       lastName: "כהן",
@@ -25,11 +27,12 @@ const props: ReportsScreenProps = {
       donorId: "donorId1",
       donationStartTimeMillis: 1641988800000,
       hospital: Hospital.ASAF_HAROFE,
-      appointmentId: "appointmentId1",
+      id: "appointmentId1",
       bookingTimeMillis: 1641988800000,
       bloodType: BloodType.A_PLUS,
     },
     {
+      ...TestSamples.SampleBookedAppointment,
       status: AppointmentStatus.COMPLETED,
       phone: "0525256221",
       lastName: "לוי",
@@ -37,12 +40,14 @@ const props: ReportsScreenProps = {
       donorId: "donorId2",
       donationStartTimeMillis: 1641992400000,
       hospital: Hospital.TEL_HASHOMER,
-      appointmentId: "appointmentId2",
+      id: "appointmentId2",
       bookingTimeMillis: 1641992400000,
       bloodType: BloodType.AB_PLUS,
     },
   ],
   isLoading: false,
+  initialStartDate: new Date(1641027600000),
+  initialEndDate: new Date(1643446800000),
 };
 
 const Template: Story<ReportsScreenProps> = (args) => {

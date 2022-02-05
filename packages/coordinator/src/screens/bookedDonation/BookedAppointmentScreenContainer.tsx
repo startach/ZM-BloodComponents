@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import {
   AppointmentStatus,
-  BookedDonationWithDonorDetails,
+  BookedAppointment,
+  DateUtils,
 } from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookedAppointmentScreen from "./BookedAppointmentScreen";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
-import { getAppointmentCopyStringContent } from "../manageAppointmentsScreenOld/CopyAppointmentDetailsHelper";
 
 export interface BookedAppointmentScreenContainerProps {
   loggedIn: boolean;
@@ -17,7 +17,7 @@ export default function BookedAppointmentScreenContainer(
   props: BookedAppointmentScreenContainerProps
 ) {
   const [bookedAppointment, setBookedAppointment] = useState<
-    BookedDonationWithDonorDetails | undefined
+    BookedAppointment | undefined
   >();
   const { appointmentId } = useParams<{ appointmentId: string }>();
   const navigate = useNavigate();
@@ -75,4 +75,14 @@ export default function BookedAppointmentScreenContainer(
       markAppointmentAsCompleted={markAppointmentAsCompleted}
     />
   );
+}
+
+function getAppointmentCopyStringContent(
+  donorName: string,
+  donorPhoneNumber: string,
+  donationStartTimeMillis: number
+) {
+  return `${donorName}, ${String(donorPhoneNumber)}, ${DateUtils.ToDateString(
+    donationStartTimeMillis
+  )} ${DateUtils.ToTimeString(donationStartTimeMillis)}`;
 }

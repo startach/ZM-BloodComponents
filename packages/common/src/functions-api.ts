@@ -1,12 +1,14 @@
-import { HospitalUtils } from ".";
+import {
+  Appointment,
+  AvailableAppointment,
+  BookedAppointment,
+  HospitalUtils,
+} from ".";
 import {
   BloodType,
-  BookingChange,
-  AppointmentStatus,
   Coordinator,
   Donor,
   Hospital,
-  BookedDonationWithDonorDetails,
   DonorNotificationSettings,
   MinimalDonorDetailsForAppointment,
 } from "./types";
@@ -15,43 +17,8 @@ import {
 
 export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {}
-
-export type AvailableAppointmentApiEntry = {
-  id: string;
-  donationStartTimeMillis: number; // API returns millis
-  hospital: Hospital;
-  recentChangeType?: BookingChange;
-};
-
-export type BookedAppointmentApiEntry = {
-  id: string;
-  donorDetails?: MinimalDonorDetailsForAppointment;
-  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
-  donationStartTimeMillis: number; // API returns millis
-  hospital: Hospital;
-  donorId: string;
-  bookingTimeMillis: number;
-  status: AppointmentStatus;
-  recentChangeType?: BookingChange;
-  donationDoneTimeMillis?: number; // Time donor confirmed they donated
-};
-
-// Represent an appointment, both available and booked
-export type AppointmentApiEntry = {
-  id: string;
-  donationStartTimeMillis: number; // API returns millis
-  hospital: Hospital;
-  recentChangeType?: BookingChange;
-
-  // If booked
-  donorId?: string;
-  donorName?: string;
-  assigningCoordinatorId?: string; // Applies only if donor is anonymous (manual donor)
-  bookingTimeMillis?: number;
-};
-
 export interface GetAvailableAppointmentsResponse {
-  availableAppointments: AvailableAppointmentApiEntry[];
+  availableAppointments: AvailableAppointment[];
 }
 
 export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
@@ -63,8 +30,8 @@ export interface GetDonorAppointmentsRequest {
 
 export interface GetDonorAppointmentsResponse {
   donor?: Donor;
-  completedAppointments: BookedAppointmentApiEntry[];
-  futureAppointments: BookedAppointmentApiEntry[];
+  completedAppointments: BookedAppointment[];
+  futureAppointments: BookedAppointment[];
 }
 
 export const CoordinatorBookAppointmentFunctionName =
@@ -90,7 +57,7 @@ export enum BookAppointmentStatus {
 
 export interface BookAppointmentResponse {
   status: BookAppointmentStatus;
-  bookedAppointment?: BookedAppointmentApiEntry;
+  bookedAppointment?: BookedAppointment;
 }
 export const DonorSwapAppointmentFunctionName = "swapAppointment";
 
@@ -113,7 +80,7 @@ export interface CompleteAppointmentRequest {
 }
 
 export interface CompleteAppointmentResponse {
-  completedAppointment: BookedAppointmentApiEntry;
+  completedAppointment: BookedAppointment;
 }
 
 export const GetDonorFunctionName = "getDonor";
@@ -149,13 +116,8 @@ export interface GetCoordinatorResponse {
 
 export const AddNewAppointmentsFunctionName = "addNewAppointments";
 export interface AddAppointmentsRequest {
-  slotsRequests: NewSlotsRequest[];
-}
-
-export interface NewSlotsRequest {
   hospital: Hospital;
-  donationStartTimeMillis: number;
-  slots: number;
+  donationStartTimes: number[];
 }
 
 export const DeleteAppointmentsFunctionName = "deleteAppointments";
@@ -171,12 +133,11 @@ export const GetCoordinatorAppointmentsFunctionName =
 export interface GetCoordinatorAppointmentsRequest {
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   earliestStartTimeMillis: number;
-  latestStartTimeMillis?: number;
+  latestStartTimeMillis: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {
-  appointments: AppointmentApiEntry[];
-  donorsInAppointments: Donor[]; // TODO remove once coordinator is migrated
+  appointments: Appointment[];
 }
 
 export const GetDonorsFunctionName = "getDonors";
@@ -193,7 +154,7 @@ export interface GetBookedDonationsInHospitalRequest {
   toDateMillis: number;
 }
 export interface GetBookedDonationsInHospitalResponse {
-  donationsWithDonorDetails: BookedDonationWithDonorDetails[];
+  donationsWithDonorDetails: BookedAppointment[];
 }
 
 export const GetBookedAppointment = "getBookedAppointment";
@@ -201,5 +162,5 @@ export interface GetBookedAppointmentRequest {
   appointmentId: string;
 }
 export interface GetBookedAppointmentResponse {
-  bookedAppointment: BookedDonationWithDonorDetails;
+  bookedAppointment: BookedAppointment;
 }

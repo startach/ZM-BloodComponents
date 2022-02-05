@@ -82,7 +82,7 @@ describe("GetBookedAppointment", function () {
     await createAppointment(AppointmentStatus.COMPLETED);
 
     const res = await callFunction(COORDINATOR_ID);
-    expect(res.bookedAppointment.appointmentId).toEqual(APPOINTMENT_ID);
+    expect(res.bookedAppointment.id).toEqual(APPOINTMENT_ID);
     expect(res.bookedAppointment.donorId).toEqual(DONOR_ID);
     expect(res.bookedAppointment.donationStartTimeMillis).toEqual(TIME);
     expect(res.bookedAppointment.bookingTimeMillis).toEqual(TIME);
@@ -104,7 +104,7 @@ describe("GetBookedAppointment", function () {
     });
 
     const res = await callFunction(COORDINATOR_ID);
-    expect(res.bookedAppointment.appointmentId).toEqual(APPOINTMENT_ID);
+    expect(res.bookedAppointment.id).toEqual(APPOINTMENT_ID);
     expect(res.bookedAppointment.donorId).toEqual(MANUAL_DONOR_ID);
     expect(res.bookedAppointment.donationStartTimeMillis).toEqual(TIME);
     expect(res.bookedAppointment.bookingTimeMillis).toEqual(TIME);

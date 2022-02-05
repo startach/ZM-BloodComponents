@@ -29,11 +29,9 @@ export default function AppointmentSlotComponent({
       </div>
 
       {appointments.map((appointment, index) => (
-        <div
-          key={appointment.appointmentId + "." + showOnlyAvailableAppointments}
-        >
+        <div key={appointment.id + "." + showOnlyAvailableAppointments}>
           <AppointmentPreview
-            onDelete={() => onDeleteAppointment(appointment.appointmentId)}
+            onDelete={() => onDeleteAppointment(appointment.id)}
             appointment={appointment}
             addBottomDivider={index < appointments.length - 1}
           />

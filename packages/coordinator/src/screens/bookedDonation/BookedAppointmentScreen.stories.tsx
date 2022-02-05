@@ -6,8 +6,9 @@ import { Meta, Story } from "@storybook/react";
 import {
   AppointmentStatus,
   BloodType,
-  BookedDonationWithDonorDetails,
+  BookedAppointment,
   Hospital,
+  TestSamples,
 } from "@zm-blood-components/common";
 
 export default {
@@ -16,15 +17,13 @@ export default {
   parameters: { layout: "fullscreen" },
 } as Meta;
 
-const appointment: BookedDonationWithDonorDetails = {
-  firstName: "משה",
-  lastName: "כהן",
+const appointment: BookedAppointment = {
+  ...TestSamples.SampleBookedAppointment,
   donationStartTimeMillis: 1640998861000,
   bookingTimeMillis: 1702008800000,
   bloodType: BloodType.AB_PLUS,
-  phone: "0522222222",
   status: AppointmentStatus.COMPLETED,
-  appointmentId: "appointmentId",
+  id: "appointmentId",
   hospital: Hospital.TEL_HASHOMER,
   donorId: "donorId",
 };

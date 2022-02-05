@@ -29,21 +29,15 @@ export async function getCoordinator() {
 
 export async function addNewAppointment(
   hospital: Hospital,
-  donationStartTime: Date,
-  slots: number
+  donationStartTimes: number[]
 ) {
   const callableFunction = getCallableFunction(
     FunctionsApi.AddNewAppointmentsFunctionName
   );
 
-  const slot: FunctionsApi.NewSlotsRequest = {
-    hospital: hospital,
-    slots: slots,
-    donationStartTimeMillis: donationStartTime.getTime(),
-  };
-
   const request: FunctionsApi.AddAppointmentsRequest = {
-    slotsRequests: [slot],
+    hospital,
+    donationStartTimes,
   };
 
   await callableFunction(request);
@@ -52,7 +46,7 @@ export async function addNewAppointment(
 export async function getAppointments(
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
   earliestStartTimeMillis: number,
-  latestStartTimeMillis?: number
+  latestStartTimeMillis: number
 ) {
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName

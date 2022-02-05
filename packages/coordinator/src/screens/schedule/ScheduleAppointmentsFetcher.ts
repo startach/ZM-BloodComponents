@@ -36,7 +36,7 @@ export async function fetchScheduleAppointments(
       getEmptyCell(hourStartTime, onClickCell);
 
     cell.appointmentsCount++;
-    if (appointment.donorId) {
+    if (appointment.booked) {
       cell.bookedAppointmentsCount++;
     }
 

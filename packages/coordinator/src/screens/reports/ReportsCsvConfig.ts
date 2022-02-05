@@ -1,9 +1,9 @@
 import {
+  BookedAppointment,
   DateUtils,
   HospitalUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import { BookedDonationWithDonorDetails } from "@zm-blood-components/common";
 import { IColumn } from "react-csv-downloader/dist/esm/lib/csv";
 
 enum columnNames {
@@ -27,7 +27,7 @@ export const csvColumns: IColumn[] = [
 ];
 
 export const formatDataByColumns = (
-  data: BookedDonationWithDonorDetails[]
+  data: BookedAppointment[]
 ): { [key: string]: string }[] => {
   return data.map((appointment) => {
     return {

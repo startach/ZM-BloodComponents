@@ -162,7 +162,13 @@ test("Valid manual donor request books appointment with manual donor", async () 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(bookedAppointment.donorId).toEqual(MANUAL_DONOR_ID);
-  expect(bookedAppointment.donorDetails).toEqual(MANUAL_DONOR_DETAILS);
+  expect(bookedAppointment.firstName).toEqual(MANUAL_DONOR_DETAILS.firstName);
+  expect(bookedAppointment.lastName).toEqual(MANUAL_DONOR_DETAILS.lastName);
+  expect(bookedAppointment.fullName).toEqual(
+    MANUAL_DONOR_DETAILS.firstName + " " + MANUAL_DONOR_DETAILS.lastName
+  );
+  expect(bookedAppointment.phone).toEqual(MANUAL_DONOR_DETAILS.phoneNumber);
+  expect(bookedAppointment.bloodType).toEqual(MANUAL_DONOR_DETAILS.bloodType);
 
   expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
   expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(

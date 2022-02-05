@@ -57,11 +57,7 @@ export default function BookDonationScreen({
             מתי יתאים לך לתרום?
           </div>
         </div>
-        <img
-          src={Illustration}
-          alt={"illustration"}
-          className={styles.illustration}
-        />
+        <img src={Illustration} alt={"illustration"} />
       </div>
 
       <div className={styles.dropdownContainer}>

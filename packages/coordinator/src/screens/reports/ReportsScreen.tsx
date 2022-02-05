@@ -1,9 +1,10 @@
 import {
+  BookedAppointment,
   DateUtils,
   HospitalUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
-import { BookedDonationWithDonorDetails, Hospital } from "common/src/types";
+import { Hospital } from "common/src/types";
 import styles from "./ReportsScreen.module.scss";
 import CsvDownloaderButton from "../../components/CsvDownloaderButton";
 import {
@@ -12,7 +13,6 @@ import {
   getDonorReportFileName,
 } from "./ReportsCsvConfig";
 import { useState } from "react";
-import dayjs from "dayjs";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import Table from "@material-ui/core/Table";
@@ -26,7 +26,7 @@ import Button from "../../components/Button";
 import Spinner from "../../components/Spinner";
 
 export interface ReportsScreenProps {
-  appointmentsWithDonorDetails: BookedDonationWithDonorDetails[];
+  appointmentsWithDonorDetails: BookedAppointment[];
   isLoading: boolean;
   activeHospitalsForCoordinator: Hospital[];
   onSearch: (
@@ -34,6 +34,8 @@ export interface ReportsScreenProps {
     toDate: Date,
     hospital: HospitalUtils.HospitalOptionKey
   ) => void;
+  initialStartDate: Date;
+  initialEndDate: Date;
 }
 
 export default function ReportsScreen({
@@ -41,11 +43,11 @@ export default function ReportsScreen({
   isLoading,
   activeHospitalsForCoordinator,
   onSearch,
+  initialStartDate,
+  initialEndDate,
 }: ReportsScreenProps) {
-  const [fromDate, setFromDate] = useState<Date>(
-    dayjs().subtract(1, "month").toDate()
-  );
-  const [toDate, setToDate] = useState<Date>(new Date());
+  const [fromDate, setFromDate] = useState(initialStartDate);
+  const [toDate, setToDate] = useState(initialEndDate);
 
   const initialHospital =
     activeHospitalsForCoordinator.length === 1
@@ -123,8 +125,8 @@ export default function ReportsScreen({
           <TableBody>
             {appointmentsWithDonorDetails.map((appointmentDetails) => (
               <TableRow
-                key={appointmentDetails.appointmentId}
-                data-appointment-id={appointmentDetails.appointmentId}
+                key={appointmentDetails.id}
+                data-appointment-id={appointmentDetails.id}
               >
                 <TableCell>
                   {DateUtils.ToDateString(

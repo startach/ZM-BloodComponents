@@ -57,7 +57,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           value={email}
           type="email"
         />
-        <div className={styles.actionButton}>
+        <div>
           <Button
             title="איפוס סיסמה"
             onClick={resetPassword}

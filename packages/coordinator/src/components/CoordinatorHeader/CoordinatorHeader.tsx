@@ -1,15 +1,14 @@
 import { IconButton } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";
-import { ReactComponent as FeatherLogOut } from "../../assets/feather_log_out.svg";
+import { ReactComponent as LogOutIcon } from "../../assets/icons/logOut.svg";
 import { ReactComponent as ReportIcon } from "../../assets/icons/report.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
@@ -85,6 +84,7 @@ function HeaderMenu(props: {
   setShowSideBar: (show: boolean) => void;
 }) {
   const navigate = useNavigate();
+  const location = useLocation();
   return (
     <Drawer
       open={props.showSideBar}
@@ -100,16 +100,19 @@ function HeaderMenu(props: {
         title={"ניהול תורים"}
         onClick={() => navigate(CoordinatorScreenKey.SCHEDULE)}
         icon={<ScheduleIcon />}
+        selected={location.pathname.includes(CoordinatorScreenKey.SCHEDULE)}
       />
       <MenuItem
-        title={"חיפוש משתמשים"}
+        title={"חיפוש תורמים"}
         onClick={() => navigate(CoordinatorScreenKey.DONORS)}
         icon={<SearchIcon />}
+        selected={location.pathname.includes(CoordinatorScreenKey.DONORS)}
       />
       <MenuItem
         title={"דוחות"}
         onClick={() => navigate(CoordinatorScreenKey.REPORTS)}
         icon={<ReportIcon />}
+        selected={location.pathname.includes(CoordinatorScreenKey.REPORTS)}
       />
 
       <Divider />
@@ -120,7 +123,7 @@ function HeaderMenu(props: {
           signOut();
           props.setShowSideBar(false);
         }}
-        icon={<FeatherLogOut />}
+        icon={<LogOutIcon />}
       />
 
       <img src={ZMLogo} alt={"logo"} className={styles.zmLogoImage} />
@@ -177,11 +180,19 @@ function MenuItem(props: {
   title: string;
   onClick: () => void;
   icon: React.ReactNode;
+  selected?: boolean;
 }) {
   return (
     <ListItem button onClick={props.onClick} className={styles.listItem}>
       <ListItemIcon>{props.icon}</ListItemIcon>
-      <ListItemText primary={props.title} />
+      <div
+        className={classNames({
+          [styles.listItemTitle]: true,
+          [styles.selectedTitle]: props.selected,
+        })}
+      >
+        {props.title}
+      </div>
     </ListItem>
   );
 }
