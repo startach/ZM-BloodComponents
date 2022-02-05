@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   AppointmentStatus,
-  BookedDonationWithDonorDetails,
+  BookedAppointment,
   DateUtils,
 } from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
@@ -17,7 +17,7 @@ export default function BookedAppointmentScreenContainer(
   props: BookedAppointmentScreenContainerProps
 ) {
   const [bookedAppointment, setBookedAppointment] = useState<
-    BookedDonationWithDonorDetails | undefined
+    BookedAppointment | undefined
   >();
   const { appointmentId } = useParams<{ appointmentId: string }>();
   const navigate = useNavigate();

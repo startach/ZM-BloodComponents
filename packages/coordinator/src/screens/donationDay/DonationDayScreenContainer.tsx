@@ -69,7 +69,7 @@ function getRemoveAppointmentFromDonationDay(
     .map<AppointmentSlot>((slot) => ({
       ...slot,
       appointments: slot.appointments.filter(
-        (appointment) => appointment.appointmentId !== appointmentId
+        (appointment) => appointment.id !== appointmentId
       ),
     }))
     .filter((slot) => slot.appointments.length > 0);

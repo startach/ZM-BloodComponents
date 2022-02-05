@@ -97,7 +97,6 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
         </div>
         <img
           alt="illustration"
-          className="illustration"
           src="home page-illustration.png"
         />
       </div>
@@ -306,7 +305,6 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         </div>
         <img
           alt="illustration"
-          className="illustration"
           src="home page-illustration.png"
         />
       </div>
@@ -390,9 +388,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         <div
           className="donationDayContainer"
         >
-          <div
-            className="dayContainer"
-          >
+          <div>
             <div
               className="availableAppointmentsTitle"
             >
@@ -523,9 +519,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
         <div
           className="donationDayContainer"
         >
-          <div
-            className="dayContainer"
-          >
+          <div>
             <div
               className="availableAppointmentsTitle"
             >
@@ -738,7 +732,6 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
         </div>
         <img
           alt="illustration"
-          className="illustration"
           src="home page-illustration.png"
         />
       </div>

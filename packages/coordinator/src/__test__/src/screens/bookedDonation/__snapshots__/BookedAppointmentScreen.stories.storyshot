@@ -125,9 +125,9 @@ exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
           >
             <a
               className="phone"
-              href="tel: 0522222222"
+              href="tel: 0521234567"
             >
-              0522222222
+              0521234567
             </a>
           </div>
         </div>
@@ -314,9 +314,9 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
           >
             <a
               className="phone"
-              href="tel: 0522222222"
+              href="tel: 0521234567"
             >
-              0522222222
+              0521234567
             </a>
           </div>
         </div>

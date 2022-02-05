@@ -30,7 +30,7 @@ function AppointmentPicker({
   )}, ${donationDay.day}`;
 
   return (
-    <div className={styles.dayContainer}>
+    <div>
       <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       <div className={styles.dayTitle}>{dayString}</div>
 

@@ -65,21 +65,6 @@ export enum Hospital {
   SOROKA = "SOROKA",
 }
 
-export type BookedAppointment = {
-  id: string;
-  donationStartTimeMillis: number;
-  hospital: Hospital;
-  donorId: string;
-  bookingTimeMillis: number;
-  status: AppointmentStatus;
-};
-
-export type AvailableAppointment = {
-  id: string;
-  donationStartTimeMillis: number;
-  hospital: Hospital;
-};
-
 export enum Collections {
   COORDINATORS = "coordinators",
   DONORS = "donors",
@@ -107,19 +92,30 @@ export enum BookingChange {
   NOSHOW = "NOSHOW",
 }
 
-export type BookedDonationWithDonorDetails = {
-  appointmentId: string;
-  donorId: string;
+export type Appointment = AvailableAppointment | BookedAppointment;
+
+type AppointmentBase = {
+  id: string;
   donationStartTimeMillis: number;
-  bookingTimeMillis: number;
   hospital: Hospital;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  bloodType: BloodType;
   status: AppointmentStatus;
+  recentChangeType?: BookingChange;
 };
 
+export type AvailableAppointment = AppointmentBase & {
+  booked: false;
+};
+
+export type BookedAppointment = AppointmentBase & {
+  booked: true;
+  donorId: string;
+  bookingTimeMillis: number;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  phone: string;
+  bloodType: BloodType;
+};
 export enum AppointmentStatus {
   AVAILABLE = "AVAILABLE",
   BOOKED = "BOOKED",

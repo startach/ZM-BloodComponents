@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   AppointmentStatus,
-  BookedDonationWithDonorDetails,
+  BookedAppointment,
   DateUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
@@ -23,7 +23,7 @@ import classNames from "classnames";
 import Button from "../../components/Button";
 
 export type BookedAppointmentScreenProps = {
-  appointment?: BookedDonationWithDonorDetails;
+  appointment?: BookedAppointment;
   onRemoveDonor: () => void;
   onCopyAppointmentDetails: () => void;
   markAppointmentAsCompleted: (isNoShow: boolean) => void;
@@ -94,7 +94,7 @@ export default function BookedAppointmentScreen(
 }
 
 function Status(props: {
-  appointment: BookedDonationWithDonorDetails;
+  appointment: BookedAppointment;
   markAppointmentAsCompleted: (isNoShow: boolean) => void;
 }) {
   const initialNoShowSelected =

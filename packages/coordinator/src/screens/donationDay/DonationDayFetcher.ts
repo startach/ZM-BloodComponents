@@ -24,15 +24,7 @@ export async function fetchDonationDay(
       donationStartTimeMillis: appointment.donationStartTimeMillis,
     };
 
-    slot.appointments.push({
-      appointmentId: appointment.id,
-      donationStartTimeMillis: appointment.donationStartTimeMillis,
-      booked: !!appointment.donorId,
-      bookingTimeMillis: appointment.bookingTimeMillis,
-      recentChangeType: appointment.recentChangeType,
-      isPastAppointment: appointment.donationStartTimeMillis < Date.now(),
-      donorName: appointment.donorName,
-    });
+    slot.appointments.push(appointment);
     slotsMap[appointment.donationStartTimeMillis] = slot;
   });
 

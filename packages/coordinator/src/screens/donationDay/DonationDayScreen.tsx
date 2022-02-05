@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Appointment, DonationDay } from "../../utils/types";
+import { DonationDay } from "../../utils/types";
 import AppointmentSlotComponent from "../../components/AppointmentSlot";
 import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
 import Toggle from "../../components/Toggle";
-import { DateUtils, Hospital } from "@zm-blood-components/common";
+import { Appointment, DateUtils, Hospital } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
 import Spinner from "../../components/Spinner";

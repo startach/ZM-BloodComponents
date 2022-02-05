@@ -12,9 +12,7 @@ exports[`Storyshots Components/Appointment Picker Default 1`] = `
   <div
     className="storyBackground"
   >
-    <div
-      className="dayContainer"
-    >
+    <div>
       <div
         className="availableAppointmentsTitle"
       >
@@ -223,9 +221,7 @@ exports[`Storyshots Components/Appointment Picker No Hospital Name 1`] = `
   <div
     className="storyBackground"
   >
-    <div
-      className="dayContainer"
-    >
+    <div>
       <div
         className="availableAppointmentsTitle"
       >

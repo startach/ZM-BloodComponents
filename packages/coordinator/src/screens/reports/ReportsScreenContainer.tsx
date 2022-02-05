@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  BookedDonationWithDonorDetails,
+  BookedAppointment,
   DateUtils,
   Hospital,
   HospitalUtils,
@@ -18,7 +18,7 @@ export default function ReportsScreenContainer({
 }: ScheduledAppointmentsScreenContainerProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
-    useState<BookedDonationWithDonorDetails[]>([]);
+    useState<BookedAppointment[]>([]);
 
   const onSearch = async (
     fromDate: Date,
