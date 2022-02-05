@@ -220,14 +220,6 @@ test.each([
         expect(appointmentsIds).toContain(PAST_OTHER_HOSPITAL);
         break;
     }
-
-    // May contain other donor ids of other appointments that are not part of this test
-    expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
-      DONOR_ID_1
-    );
-    expect(res.donorsInAppointments.map((donor) => donor.id)).toContain(
-      DONOR_ID_2
-    );
   }
 );
 
