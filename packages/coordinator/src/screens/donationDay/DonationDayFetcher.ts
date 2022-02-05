@@ -32,8 +32,6 @@ export async function fetchDonationDay(
       recentChangeType: appointment.recentChangeType,
       isPastAppointment: appointment.donationStartTimeMillis < Date.now(),
       donorName: appointment.donorName,
-      donorPhoneNumber: undefined, // TODO remove when old coordinator is deprecated
-      bloodType: undefined, // TODO remove when old coordinator is deprecated
     });
     slotsMap[appointment.donationStartTimeMillis] = slot;
   });

@@ -1,4 +1,4 @@
-import { BloodType, BookingChange } from "@zm-blood-components/common";
+import { BookingChange } from "@zm-blood-components/common";
 
 export type DonationDay = {
   appointmentSlots: AppointmentSlot[];
@@ -14,11 +14,9 @@ export type Appointment = {
   booked: boolean;
   donorName?: string;
   donationStartTimeMillis: number;
-  donorPhoneNumber?: string;
   bookingTimeMillis?: number;
   recentChangeType?: BookingChange;
   isPastAppointment: boolean;
-  bloodType?: BloodType;
 };
 
 export type ScheduleWeek = {
