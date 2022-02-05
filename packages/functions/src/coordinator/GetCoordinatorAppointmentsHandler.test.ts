@@ -72,7 +72,7 @@ describe("Get Coordinator Appointments", function () {
   beforeAll(reset);
   afterEach(reset);
   test("Unauthenticated user throws exception", async () => {
-    const action = () => callFunction(Hospital.TEL_HASHOMER);
+    const action = () => callFunction(Hospital.TEL_HASHOMER, "");
     await expectAsyncThrows(action, "Unauthorized");
   });
 
@@ -267,7 +267,7 @@ describe("Get Coordinator Appointments", function () {
     const res = await callFunction(
       Hospital.TEL_HASHOMER,
       COORDINATOR_ID,
-      14,
+      -14,
       14
     );
 
@@ -341,16 +341,17 @@ describe("Get Coordinator Appointments", function () {
 
   function callFunction(
     hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
-    userId?: string,
-    earliestTimeDays?: number,
-    latestTimeDays?: number
+    userId = COORDINATOR_ID,
+    earliestTimeDays = -7,
+    latestTimeDays = 14
   ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
-    const earliestStartTimeMillis = earliestTimeDays
-      ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
-      : getDate(-7).getTime();
+    // const earliestStartTimeMillis = earliestTimeDays
+    //   ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
+    //   : getDate(-7).getTim
+    const earliestStartTimeMillis = getDate(earliestTimeDays).getTime();
     const latestStartTimeMillis = latestTimeDays
       ? new Date().getTime() + latestTimeDays * 24 * 60 * 60 * 1000
-      : undefined;
+      : getDate(latestTimeDays).getTime();
 
     let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
       hospital: hospital,

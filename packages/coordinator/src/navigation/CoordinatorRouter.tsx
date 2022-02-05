@@ -91,7 +91,6 @@ export default function CoordinatorRouter() {
         signOut();
         return;
       }
-      coordinator.role = CoordinatorRole.SYSTEM_USER;
 
       setAppState({
         coordinator,

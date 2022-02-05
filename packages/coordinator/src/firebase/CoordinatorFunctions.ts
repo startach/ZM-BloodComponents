@@ -46,7 +46,7 @@ export async function addNewAppointment(
 export async function getAppointments(
   hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
   earliestStartTimeMillis: number,
-  latestStartTimeMillis?: number
+  latestStartTimeMillis: number
 ) {
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
