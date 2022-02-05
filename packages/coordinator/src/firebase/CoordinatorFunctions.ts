@@ -10,6 +10,9 @@ function getCallableFunction(functionName: string) {
   return httpsCallable(functions, functionName);
 }
 
+/*
+ * Fetching
+ */
 export async function getCoordinator() {
   const getCoordinatorFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorFunctionName
@@ -24,22 +27,6 @@ export async function getCoordinator() {
     console.warn("User is not a coordinator");
     return undefined;
   }
-}
-
-export async function addNewAppointment(
-  hospital: Hospital,
-  donationStartTimes: number[]
-) {
-  const callableFunction = getCallableFunction(
-    FunctionsApi.AddNewAppointmentsFunctionName
-  );
-
-  const request: FunctionsApi.AddAppointmentsRequest = {
-    hospital,
-    donationStartTimes,
-  };
-
-  await callableFunction(request);
 }
 
 export async function getAppointments(
@@ -61,34 +48,6 @@ export async function getAppointments(
   return response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
 }
 
-export function removeDonorFromAppointment(appointmentId: string) {
-  const request: FunctionsApi.DeleteAppointmentRequest = {
-    appointmentId: appointmentId,
-    onlyRemoveDonor: true,
-  };
-
-  return callDeleteAppointmentFunction(request);
-}
-
-export function deleteAppointment(appointmentId: string) {
-  const request: FunctionsApi.DeleteAppointmentRequest = {
-    appointmentId: appointmentId,
-    onlyRemoveDonor: false,
-  };
-
-  return callDeleteAppointmentFunction(request);
-}
-
-async function callDeleteAppointmentFunction(
-  request: FunctionsApi.DeleteAppointmentRequest
-) {
-  const deleteAppointmentsFunction = getCallableFunction(
-    FunctionsApi.DeleteAppointmentsFunctionName
-  );
-
-  await deleteAppointmentsFunction(request);
-}
-
 export async function getAllDonors() {
   const getDonorsFunction = getCallableFunction(
     FunctionsApi.GetDonorsFunctionName
@@ -99,29 +58,6 @@ export async function getAllDonors() {
   const response = await getDonorsFunction(request);
   const data = response.data as FunctionsApi.GetDonorsResponse;
   return data.donors;
-}
-
-export async function getBookedAppointmentsInHospital(
-  request: FunctionsApi.GetBookedDonationsInHospitalRequest
-) {
-  const getBookedAppointmentsInHospital = getCallableFunction(
-    FunctionsApi.GetBookedDonationsInHospitalFunctionName
-  );
-
-  const response = await getBookedAppointmentsInHospital(request);
-  const data =
-    response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
-  return data.donationsWithDonorDetails;
-}
-
-export async function bookManualDonation(
-  request: FunctionsApi.CoordinatorBookAppointmentRequest
-) {
-  const callableFunction = getCallableFunction(
-    FunctionsApi.CoordinatorBookAppointmentFunctionName
-  );
-
-  await callableFunction(request);
 }
 
 export async function getBookedAppointment(appointmentId: string) {
@@ -136,6 +72,76 @@ export async function getBookedAppointment(appointmentId: string) {
   const response = await callableFunction(request);
   const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
   return data.bookedAppointment;
+}
+
+export async function getReportsForHospital(
+  request: GetBookedDonationsInHospitalRequest
+) {
+  const getBookedAppointmentsInHospital = getCallableFunction(
+    FunctionsApi.GetBookedDonationsInHospitalFunctionName
+  );
+
+  const response = await getBookedAppointmentsInHospital(request);
+  const data =
+    response.data as FunctionsApi.GetBookedDonationsInHospitalResponse;
+  return data.donationsWithDonorDetails;
+}
+
+/*
+ * Do changes
+ */
+export async function addNewAppointment(
+  hospital: Hospital,
+  donationStartTimes: number[]
+) {
+  const callableFunction = getCallableFunction(
+    FunctionsApi.AddNewAppointmentsFunctionName
+  );
+
+  const request: FunctionsApi.AddAppointmentsRequest = {
+    hospital,
+    donationStartTimes,
+  };
+
+  await callableFunction(request);
+}
+
+export function removeDonorFromAppointment(appointmentId: string) {
+  const request: FunctionsApi.DeleteAppointmentRequest = {
+    appointmentId: appointmentId,
+    onlyRemoveDonor: true,
+  };
+
+  return deleteAppointmentInternal(request);
+}
+
+export function deleteAppointment(appointmentId: string) {
+  const request: FunctionsApi.DeleteAppointmentRequest = {
+    appointmentId: appointmentId,
+    onlyRemoveDonor: false,
+  };
+
+  return deleteAppointmentInternal(request);
+}
+
+async function deleteAppointmentInternal(
+  request: FunctionsApi.DeleteAppointmentRequest
+) {
+  const deleteAppointmentsFunction = getCallableFunction(
+    FunctionsApi.DeleteAppointmentsFunctionName
+  );
+
+  await deleteAppointmentsFunction(request);
+}
+
+export async function bookManualDonation(
+  request: FunctionsApi.CoordinatorBookAppointmentRequest
+) {
+  const callableFunction = getCallableFunction(
+    FunctionsApi.CoordinatorBookAppointmentFunctionName
+  );
+
+  await callableFunction(request);
 }
 
 export async function markAppointmentAsCompleted(
