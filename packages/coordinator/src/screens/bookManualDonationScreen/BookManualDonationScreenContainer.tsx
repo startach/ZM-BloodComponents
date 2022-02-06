@@ -4,20 +4,17 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookManualDonationScreen from "./BookManualDonationScreen";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { getTimestamp } from "../../navigation/RouterUtils";
+import { useSelector } from "react-redux";
+import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
 
-export interface BookManualDonationScreenContainerProps {
-  loggedIn: boolean;
-}
-
-export default function BookManualDonationScreenContainer(
-  props: BookManualDonationScreenContainerProps
-) {
+export default function BookManualDonationScreenContainer() {
   const navigate = useNavigate();
   const { appointmentId, timestamp } =
     useParams<{ appointmentId: string; timestamp: string }>();
   const donationStartTime = getTimestamp(timestamp);
+  const loggedOut = useSelector(isLoggedOut);
 
-  if (!props.loggedIn) {
+  if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
 

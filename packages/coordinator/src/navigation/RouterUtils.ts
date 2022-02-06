@@ -1,10 +1,7 @@
-import { Hospital } from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
 
-export function schedulePath(hospital: Hospital, dayInWeek: Date = new Date()) {
-  return (
-    CoordinatorScreenKey.SCHEDULE + "/" + hospital + "/" + dayInWeek.getTime()
-  );
+export function schedulePath(dayInWeek: Date = new Date()) {
+  return CoordinatorScreenKey.SCHEDULE + "/" + dayInWeek.getTime();
 }
 
 export function getTimestamp(timestamp: string | undefined) {

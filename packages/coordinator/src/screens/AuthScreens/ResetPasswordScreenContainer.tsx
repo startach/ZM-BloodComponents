@@ -2,12 +2,13 @@ import { Navigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import ResetPasswordScreen from "./ResetPasswordScreen";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useSelector } from "react-redux";
+import { isLoggedIn } from "../../store/login/LoginStatusSelectors";
 
-export default function ResetPasswordScreenContainer(props: {
-  loggedIn: boolean;
-}) {
-  console.log(props.loggedIn);
-  if (props.loggedIn) {
+export default function ResetPasswordScreenContainer() {
+  const loggedIn = useSelector(isLoggedIn);
+
+  if (loggedIn) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
