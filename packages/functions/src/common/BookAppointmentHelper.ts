@@ -21,11 +21,11 @@ export type ValidBookAppointmentResponse =
   | ValidBookAppointment
   | InvalidBookAppointment;
 
-export type ValidBookAppointment = {
+type ValidBookAppointment = {
   status: BookAppointmentStatus.SUCCESS;
   appointment: DbAppointment;
 };
-export type InvalidBookAppointment = {
+type InvalidBookAppointment = {
   status: FunctionsApi.BookAppointmentStatus;
 };
 
