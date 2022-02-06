@@ -1,6 +1,7 @@
 import { DbAppointment } from "../function-types";
 import {
   validateBookAppointment,
+  ValidBookAppointment,
   ValidBookAppointmentResponse,
 } from "./BookAppointmentHelper";
 import * as admin from "firebase-admin";
@@ -53,7 +54,7 @@ describe("Book Appointment Helper", () => {
     expect(data.status).toEqual(
       BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
     );
-    expect(data.appointment).toBeUndefined();
+    expect(data).not.toHaveProperty("appointment");
   });
 
   test("No donor details returns DONOR_DETAILS_REQUIRED", () => {
@@ -67,7 +68,7 @@ describe("Book Appointment Helper", () => {
     const data = res as ValidBookAppointmentResponse;
 
     expect(data.status).toEqual(BookAppointmentStatus.DONOR_DETAILS_REQUIRED);
-    expect(data.appointment).toBeUndefined();
+    expect(data).not.toHaveProperty("appointment");
   });
 
   test("Valid request with existing donor validates booking", () => {
@@ -85,7 +86,7 @@ describe("Book Appointment Helper", () => {
       DONOR_ID,
       undefined
     );
-    const data = res as ValidBookAppointmentResponse;
+    const data = res as ValidBookAppointment;
 
     expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
     expect(data.appointment).toEqual(
@@ -109,7 +110,7 @@ describe("Book Appointment Helper", () => {
       minimalDonorDetailsForAppointment
     );
 
-    const data = res as ValidBookAppointmentResponse;
+    const data = res as ValidBookAppointment;
 
     expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
     expect(data.appointment).toEqual(
