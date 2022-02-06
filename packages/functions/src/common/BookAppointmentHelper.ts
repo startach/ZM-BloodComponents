@@ -15,14 +15,13 @@ import {
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { DbDonor, DbAppointment } from "../function-types";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
-import { BookAppointmentStatus } from "common/src/functions-api";
 
 export type ValidBookAppointmentResponse =
   | ValidBookAppointment
   | InvalidBookAppointment;
 
 type ValidBookAppointment = {
-  status: BookAppointmentStatus.SUCCESS;
+  status: FunctionsApi.BookAppointmentStatus.SUCCESS;
   appointment: DbAppointment;
 };
 type InvalidBookAppointment = {
