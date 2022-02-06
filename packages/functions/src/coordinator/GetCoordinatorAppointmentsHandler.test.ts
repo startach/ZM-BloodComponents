@@ -15,7 +15,7 @@ import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
+import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
@@ -345,13 +345,8 @@ describe("Get Coordinator Appointments", function () {
     earliestTimeDays = -7,
     latestTimeDays = 14
   ): Promise<FunctionsApi.GetCoordinatorAppointmentsResponse> {
-    // const earliestStartTimeMillis = earliestTimeDays
-    //   ? new Date().getTime() - earliestTimeDays * 24 * 60 * 60 * 1000
-    //   : getDate(-7).getTim
     const earliestStartTimeMillis = getDate(earliestTimeDays).getTime();
-    const latestStartTimeMillis = latestTimeDays
-      ? new Date().getTime() + latestTimeDays * 24 * 60 * 60 * 1000
-      : getDate(latestTimeDays).getTime();
+    const latestStartTimeMillis = getDate(latestTimeDays).getTime();
 
     let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
       hospital: hospital,
@@ -405,3 +400,9 @@ describe("Get Coordinator Appointments", function () {
     await DonorDAL.setDonor(donor);
   }
 });
+
+function getDate(daysFromNow: number) {
+  const res = new Date(1581717600000);
+  res.setDate(res.getDate() + daysFromNow);
+  return res;
+}

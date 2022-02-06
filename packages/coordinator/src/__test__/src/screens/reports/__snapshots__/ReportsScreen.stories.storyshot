@@ -371,14 +371,14 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              סוג דם
+              טלפון
             </th>
             <th
               aria-sort={null}
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              טלפון
+              סוג דם
             </th>
             <th
               aria-sort={null}
@@ -875,14 +875,14 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              סוג דם
+              טלפון
             </th>
             <th
               aria-sort={null}
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              טלפון
+              סוג דם
             </th>
             <th
               aria-sort={null}
@@ -1299,14 +1299,14 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              סוג דם
+              טלפון
             </th>
             <th
               aria-sort={null}
               className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
               scope="col"
             >
-              טלפון
+              סוג דם
             </th>
             <th
               aria-sort={null}
