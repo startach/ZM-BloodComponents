@@ -2,20 +2,16 @@ import { useState } from "react";
 import {
   BookedAppointment,
   DateUtils,
-  Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ReportsScreen from "./ReportsScreen";
 import dayjs from "dayjs";
+import { useSelector } from "react-redux";
+import { getAvailableHospitals } from "../../store/coordinator/CoordinatorSelectors";
 
-interface ScheduledAppointmentsScreenContainerProps {
-  activeHospitalsForCoordinator: Hospital[];
-}
-
-export default function ReportsScreenContainer({
-  activeHospitalsForCoordinator,
-}: ScheduledAppointmentsScreenContainerProps) {
+export default function ReportsScreenContainer() {
+  const availableHospitals = useSelector(getAvailableHospitals);
   const [isLoading, setIsLoading] = useState(false);
   const [appointmentsWithDonorDetails, setAppointmentsWithDonorDetails] =
     useState<BookedAppointment[]>([]);
@@ -45,7 +41,7 @@ export default function ReportsScreenContainer({
     <ReportsScreen
       appointmentsWithDonorDetails={appointmentsWithDonorDetails}
       isLoading={isLoading}
-      activeHospitalsForCoordinator={activeHospitalsForCoordinator}
+      activeHospitalsForCoordinator={availableHospitals}
       onSearch={onSearch}
       initialStartDate={dayjs().subtract(1, "month").toDate()}
       initialEndDate={new Date()}

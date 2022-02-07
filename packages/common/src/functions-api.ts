@@ -119,6 +119,9 @@ export interface AddAppointmentsRequest {
   hospital: Hospital;
   donationStartTimes: number[];
 }
+export interface AddAppointmentsResponse {
+  newAppointments: AvailableAppointment[];
+}
 
 export const DeleteAppointmentsFunctionName = "deleteAppointments";
 export interface DeleteAppointmentRequest {

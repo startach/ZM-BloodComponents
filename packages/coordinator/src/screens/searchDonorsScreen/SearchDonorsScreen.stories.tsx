@@ -141,7 +141,7 @@ const donors: Donor[] = [
     id: "QVjvYphIB9Qnigg9crjvuwY7GJ43",
     bloodType: BloodType.O_PLUS,
     lastName: "מתלונן",
-    email: "y@yaron.com",
+    email: "y@aaa.com",
     firstName: "יגל",
   },
   {

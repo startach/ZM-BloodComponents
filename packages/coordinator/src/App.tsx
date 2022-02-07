@@ -6,16 +6,20 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import { he } from "date-fns/locale";
 import Div100vh from "react-div-100vh";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <Div100vh className="App">
       <WithGlobalTheme>
-        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
-          <Router>
-            <CoordinatorRouter />
-          </Router>
-        </MuiPickersUtilsProvider>
+        <Provider store={store}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
+            <Router>
+              <CoordinatorRouter />
+            </Router>
+          </MuiPickersUtilsProvider>
+        </Provider>
       </WithGlobalTheme>
     </Div100vh>
   );

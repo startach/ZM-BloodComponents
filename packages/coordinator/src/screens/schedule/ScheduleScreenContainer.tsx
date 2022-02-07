@@ -1,55 +1,45 @@
-import { useEffect, useState } from "react";
-import { fetchScheduleAppointments } from "./ScheduleAppointmentsFetcher";
-import { Hospital } from "@zm-blood-components/common";
-import { ScheduleDay } from "../../utils/types";
 import ScheduleScreen from "./ScheduleScreen";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getTimestamp, schedulePath } from "../../navigation/RouterUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { getSchedule } from "../../store/appointments/selectors/GetScheduleSelector";
+import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
+import { setHospital } from "../../store/appointments/actions/SetHospitalAction";
+import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
+import { getAvailableHospitals } from "../../store/coordinator/CoordinatorSelectors";
 
-export interface ScheduleScreenContainerProps {
-  loggedIn: boolean;
-  availableHospitals: Hospital[];
-}
-
-export default function ScheduleScreenContainer(
-  props: ScheduleScreenContainerProps
-) {
+export default function ScheduleScreenContainer() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [days, setDays] = useState<ScheduleDay[]>([]);
-  const { hospital, timestamp } =
-    useParams<{ hospital: Hospital; timestamp: string }>();
+  const { timestamp } = useParams<{ timestamp: string }>();
+  const timeInWeek = getTimestamp(timestamp);
+  const days = useSelector(getSchedule)(timeInWeek, navigate);
+  const hospital = useSelector(getHospital);
+  const availableHospitals = useSelector(getAvailableHospitals);
+  const loggedOut = useSelector(isLoggedOut);
 
-  useEffect(() => {
-    const timeInWeek = getTimestamp(timestamp);
-    if (!props.loggedIn || !hospital || !timeInWeek) {
-      return;
-    }
-    setDays([]);
-    fetchScheduleAppointments(hospital, timeInWeek, navigate).then((days) =>
-      setDays(days)
-    );
-  }, [timestamp, hospital, props.loggedIn, navigate]);
-
-  if (!props.loggedIn) {
+  if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
 
-  if (!hospital) {
+  if (!timeInWeek) {
+    return <Navigate to={schedulePath(new Date())} />;
+  }
+
+  if (!days) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
-  const timeInWeek = getTimestamp(timestamp);
-  if (!timeInWeek) {
-    return <Navigate to={schedulePath(hospital, new Date())} />;
+  if (!hospital) {
+    return null;
   }
 
   const addWeek = (forward: boolean) => () => {
-    setDays([]);
     const newDate = new Date(timeInWeek);
     newDate.setDate(newDate.getDate() + (forward ? 7 : -7));
-    navigate(schedulePath(hospital, newDate));
+    navigate(schedulePath(newDate));
   };
 
   return (
@@ -57,10 +47,10 @@ export default function ScheduleScreenContainer(
       dayInWeek={timeInWeek}
       days={days}
       hospital={hospital}
-      setHospital={(hospital) => navigate(schedulePath(hospital, timeInWeek))}
+      setHospital={(hospital) => dispatch(setHospital(hospital))}
       onNextWeek={addWeek(true)}
       oPreviousWeek={addWeek(false)}
-      availableHospitals={props.availableHospitals}
+      availableHospitals={availableHospitals}
     />
   );
 }

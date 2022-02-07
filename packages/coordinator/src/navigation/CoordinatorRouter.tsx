@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Coordinator, LoginStatus } from "@zm-blood-components/common";
 import {
   initFirebase,
   registerAuthChange,
 } from "../firebase/FirebaseInitializer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ReportsScreenContainer from "../screens/reports/ReportsScreenContainer";
-import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
-import { signOut } from "../firebase/FirebaseAuthentication";
 import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
 import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
 import SplashScreen from "../screens/loading/SplashScreen";
 import ScheduleScreenContainer from "../screens/schedule/ScheduleScreenContainer";
 import DonationDayScreenContainer from "../screens/donationDay/DonationDayScreenContainer";
 import BookManualDonationScreenContainer from "../screens/bookManualDonationScreen/BookManualDonationScreenContainer";
-import { schedulePath } from "./RouterUtils";
 import BookedAppointmentScreenContainer from "../screens/bookedDonation/BookedAppointmentScreenContainer";
 import AddAppointmentScreenContainer from "../screens/AddAppointmentScreen/AddAppointmentScreenContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginStatus } from "../store/login/LoginStatusActions";
+import { schedulePath } from "./RouterUtils";
+import { isFetching } from "../store/appointments/selectors/GetIsFetchingSelector";
 
 // const ROLES_THAT_ADD_APPOINTMENTS = [
 //   CoordinatorRole.SYSTEM_USER,
@@ -47,14 +47,8 @@ import AddAppointmentScreenContainer from "../screens/AddAppointmentScreen/AddAp
 // ];
 
 export default function CoordinatorRouter() {
-  const [loginStatus, setLoginStatus] = useState(LoginStatus.UNKNOWN);
-  const [appState, setAppState] = useState<{
-    coordinator?: Coordinator;
-    isFetching: boolean;
-  }>({
-    coordinator: undefined,
-    isFetching: false,
-  });
+  const dispatch = useDispatch();
+  const fetching = useSelector(isFetching);
 
   useEffect(() => {
     initFirebase();
@@ -62,110 +56,56 @@ export default function CoordinatorRouter() {
 
   useEffect(() => {
     registerAuthChange((newLoginStatus) => {
-      if (newLoginStatus === LoginStatus.LOGGED_IN) {
-        setAppState({
-          coordinator: undefined,
-          isFetching: true,
-        });
-      }
-      setLoginStatus(newLoginStatus);
+      dispatch(setLoginStatus(newLoginStatus));
     });
-  }, [loginStatus]);
+  }, [dispatch]);
 
-  useEffect(() => {
-    if (loginStatus !== LoginStatus.LOGGED_IN) {
-      setAppState({
-        coordinator: undefined,
-        isFetching: false,
-      });
-      return;
-    }
-
-    async function fetchData() {
-      const coordinator = await CoordinatorFunctions.getCoordinator();
-      if (!coordinator) {
-        signOut();
-        return;
-      }
-
-      setAppState({
-        coordinator,
-        isFetching: false,
-      });
-    }
-
-    fetchData();
-  }, [loginStatus]);
-
-  const activeHospitalsForCoordinator =
-    appState.coordinator?.activeHospitalsForCoordinator!;
-
-  if (loginStatus === LoginStatus.UNKNOWN || appState.isFetching) {
+  if (fetching) {
     return <SplashScreen />;
   }
 
-  const loggedIn = loginStatus === LoginStatus.LOGGED_IN;
   return (
     <Routes>
       <Route
         path={CoordinatorScreenKey.LOGIN}
-        element={<SignInScreenContainer loggedIn={loggedIn} />}
+        element={<SignInScreenContainer />}
       />
       <Route
         path={CoordinatorScreenKey.RESET_PASSWORD}
-        element={<ResetPasswordScreenContainer loggedIn={loggedIn} />}
+        element={<ResetPasswordScreenContainer />}
       />
-      <Route path={CoordinatorScreenKey.SCHEDULE}>
-        <Route
-          path={""}
-          element={
-            <Navigate
-              to={
-                appState.coordinator
-                  ? schedulePath(activeHospitalsForCoordinator[0])
-                  : CoordinatorScreenKey.LOGIN
-              }
-            />
-          }
-        />
-        <Route
-          path={":hospital/:timestamp"}
-          element={
-            <ScheduleScreenContainer
-              loggedIn={loggedIn}
-              availableHospitals={activeHospitalsForCoordinator}
-            />
-          }
-        />
-      </Route>
 
       <Route
-        path={CoordinatorScreenKey.DAY + "/:hospital/:timestamp"}
-        element={<DonationDayScreenContainer loggedIn={loggedIn} />}
+        path={CoordinatorScreenKey.SCHEDULE + "/:timestamp"}
+        element={<ScheduleScreenContainer />}
+      />
+
+      <Route
+        path={CoordinatorScreenKey.DAY + "/:timestamp"}
+        element={<DonationDayScreenContainer />}
       />
 
       <Route
         path={CoordinatorScreenKey.APPOINTMENT + "/:appointmentId"}
-        element={<BookedAppointmentScreenContainer loggedIn={loggedIn} />}
+        element={<BookedAppointmentScreenContainer />}
       />
 
       <Route
         path={
           CoordinatorScreenKey.MANUAL_DONATION + "/:appointmentId/:timestamp"
         }
-        element={<BookManualDonationScreenContainer loggedIn={loggedIn} />}
+        element={<BookManualDonationScreenContainer />}
       />
 
-      <Route>
-        <Route
-          path={CoordinatorScreenKey.ADD + "/:hospital"}
-          element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
-        />
-        <Route
-          path={CoordinatorScreenKey.ADD + "/:hospital/:timestamp"}
-          element={<AddAppointmentScreenContainer loggedIn={loggedIn} />}
-        />
-      </Route>
+      <Route
+        path={CoordinatorScreenKey.ADD}
+        element={<AddAppointmentScreenContainer />}
+      />
+
+      <Route
+        path={CoordinatorScreenKey.ADD + "/:timestamp"}
+        element={<AddAppointmentScreenContainer />}
+      />
 
       {/*Old screens*/}
       <Route
@@ -175,18 +115,11 @@ export default function CoordinatorRouter() {
 
       <Route
         path={CoordinatorScreenKey.REPORTS}
-        element={
-          <ReportsScreenContainer
-            activeHospitalsForCoordinator={activeHospitalsForCoordinator}
-          />
-        }
+        element={<ReportsScreenContainer />}
       />
 
       {/*in case of no match*/}
-      <Route
-        path="*"
-        element={<Navigate to={CoordinatorScreenKey.SCHEDULE} />}
-      />
+      <Route path="*" element={<Navigate to={schedulePath(new Date())} />} />
     </Routes>
   );
 }
