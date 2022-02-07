@@ -15,6 +15,10 @@ export default async function (
   request: FunctionsApi.SwapAppointmentRequest,
   callerId: string
 ): Promise<FunctionsApi.SwapAppointmentResponse> {
+  if (!request.bookAppointmentIds) {
+    throw new Error("No appointment to book");
+  }
+
   if (!request.cancelAppointmentId) {
     throw new Error("No appointment to cancel");
   }

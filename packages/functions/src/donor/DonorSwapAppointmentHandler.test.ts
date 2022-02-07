@@ -1,5 +1,6 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
+  AppointmentStatus,
   BookingChange,
   FunctionsApi,
   Hospital,
@@ -14,10 +15,7 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
-import { BookAppointmentStatus } from "@zm-blood-components/common/src/functions-api";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
-import { SwapAppointmentRequest } from "@zm-blood-components/common/lib/functions-api";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DonorSwapAppointmentFunctionName]
@@ -33,25 +31,11 @@ const OTHER_DONATION_OF_USER = "SwapAppointmentHandlerAppointment3";
 const APPOINTMENT_TO_CANCEL = "SwapAppointmentHandlerAppointment4";
 
 beforeAll(async () => {
-  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
-  await DonorDataAccessLayer.deleteDonor(OTHER_DONOR_ID);
-  await deleteAppointmentsByIds([
-    APPOINTMENT_TO_BOOK_1,
-    APPOINTMENT_TO_BOOK_2,
-    OTHER_DONATION_OF_USER,
-    APPOINTMENT_TO_CANCEL,
-  ]);
+  await reset();
 });
 
 afterEach(async () => {
-  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
-  await DonorDataAccessLayer.deleteDonor(OTHER_DONOR_ID);
-  await deleteAppointmentsByIds([
-    APPOINTMENT_TO_BOOK_1,
-    APPOINTMENT_TO_BOOK_2,
-    OTHER_DONATION_OF_USER,
-    APPOINTMENT_TO_CANCEL,
-  ]);
+  await reset();
 });
 
 const defaultInitialization = async (
@@ -83,12 +67,7 @@ describe("Donor Swap Appointment Handler", () => {
   test("Donor not found throws exception", async () => {
     await saveAppointment(APPOINTMENT_TO_BOOK_1, 3);
     await saveAppointment(APPOINTMENT_TO_CANCEL, 1, DONOR_ID);
-    const action = () =>
-      wrapped(swapAppointmentRequest(), {
-        auth: {
-          uid: DONOR_ID,
-        },
-      });
+    const action = () => swapAppointmentAuthenticatedRequest();
 
     await expectAsyncThrows(action, "Donor not found");
   });
@@ -96,12 +75,7 @@ describe("Donor Swap Appointment Handler", () => {
   test("No such appointments", async () => {
     await defaultInitialization(false, true);
 
-    const action = () =>
-      wrapped(swapAppointmentRequest(), {
-        auth: {
-          uid: DONOR_ID,
-        },
-      });
+    const action = () => swapAppointmentAuthenticatedRequest();
     await expectAsyncThrows(action, "No such appointments");
   });
 
@@ -110,17 +84,14 @@ describe("Donor Swap Appointment Handler", () => {
     await saveAppointment(APPOINTMENT_TO_BOOK_1, 10, OTHER_DONOR_ID);
     await saveAppointment(APPOINTMENT_TO_BOOK_2, 8, OTHER_DONOR_ID);
 
-    const response = await wrapped(
-      swapAppointmentRequest([APPOINTMENT_TO_BOOK_1, APPOINTMENT_TO_BOOK_2]),
-      {
-        auth: {
-          uid: DONOR_ID,
-        },
-      }
-    );
+    const response = await swapAppointmentAuthenticatedRequest([
+      APPOINTMENT_TO_BOOK_1,
+      APPOINTMENT_TO_BOOK_2,
+    ]);
+
     const data = response as FunctionsApi.SwapAppointmentResponse;
     expect(data.status).toEqual(
-      BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
+      FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
     );
     expect(data.bookedAppointment).toBeUndefined();
   });
@@ -129,18 +100,14 @@ describe("Donor Swap Appointment Handler", () => {
     await defaultInitialization(true, true);
     await saveAppointment(OTHER_DONATION_OF_USER, 3, DONOR_ID);
 
-    const response = await wrapped(
-      swapAppointmentRequest([APPOINTMENT_TO_BOOK_1, OTHER_DONATION_OF_USER]),
-      {
-        auth: {
-          uid: DONOR_ID,
-        },
-      }
-    );
+    const response = await swapAppointmentAuthenticatedRequest([
+      APPOINTMENT_TO_BOOK_1,
+      OTHER_DONATION_OF_USER,
+    ]);
 
     const data = response as FunctionsApi.SwapAppointmentResponse;
     expect(data.status).toEqual(
-      BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
+      FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
     );
     expect(data.bookedAppointment).toBeUndefined();
   });
@@ -150,12 +117,7 @@ describe("Donor Swap Appointment Handler", () => {
   test("No such appointments throws exception", async () => {
     await defaultInitialization(true, false);
 
-    const action = () =>
-      wrapped(swapAppointmentRequest(), {
-        auth: {
-          uid: DONOR_ID,
-        },
-      });
+    const action = () => swapAppointmentAuthenticatedRequest();
 
     await expectAsyncThrows(action, "Appointment Undefined");
   });
@@ -164,12 +126,7 @@ describe("Donor Swap Appointment Handler", () => {
     await defaultInitialization(true, false);
     await saveAppointment(APPOINTMENT_TO_CANCEL, 1, OTHER_DONOR_ID);
 
-    const action = () =>
-      wrapped(swapAppointmentRequest(), {
-        auth: {
-          uid: DONOR_ID,
-        },
-      });
+    const action = () => swapAppointmentAuthenticatedRequest();
 
     await expectAsyncThrows(
       action,
@@ -182,11 +139,7 @@ describe("Donor Swap Appointment Handler", () => {
   test("Valid request swaps appointment", async () => {
     await defaultInitialization(true, true);
 
-    const response = await wrapped(swapAppointmentRequest(), {
-      auth: {
-        uid: DONOR_ID,
-      },
-    });
+    const response = await swapAppointmentAuthenticatedRequest();
 
     const [appointments, updatedDonor] = await Promise.all([
       getAppointmentsByIds([APPOINTMENT_TO_CANCEL, APPOINTMENT_TO_BOOK_2]),
@@ -215,7 +168,7 @@ describe("Donor Swap Appointment Handler", () => {
     ).toBeLessThan(3_000);
 
     const data = response as FunctionsApi.SwapAppointmentResponse;
-    expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+    expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
     const returnedBookedAppointment = data.bookedAppointment!;
     expect(returnedBookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
@@ -227,6 +180,17 @@ describe("Donor Swap Appointment Handler", () => {
     expect(updatedDonor?.lastBookedHospital).toEqual(SWAP_TEST_HOSPITAL);
   });
 });
+
+async function reset() {
+  await DonorDataAccessLayer.deleteDonor(DONOR_ID);
+  await DonorDataAccessLayer.deleteDonor(OTHER_DONOR_ID);
+  await deleteAppointmentsByIds([
+    APPOINTMENT_TO_BOOK_1,
+    APPOINTMENT_TO_BOOK_2,
+    OTHER_DONATION_OF_USER,
+    APPOINTMENT_TO_CANCEL,
+  ]);
+}
 
 async function createDonor() {
   const donor: DbDonor = {
@@ -264,7 +228,7 @@ async function saveAppointment(
 function swapAppointmentRequest(
   bookAppointmentIds?: string[],
   cancelAppointmentId?: string
-): SwapAppointmentRequest {
+): FunctionsApi.SwapAppointmentRequest {
   return {
     bookAppointmentIds: bookAppointmentIds ?? [
       APPOINTMENT_TO_BOOK_1,
@@ -272,4 +236,18 @@ function swapAppointmentRequest(
     ],
     cancelAppointmentId: cancelAppointmentId ?? APPOINTMENT_TO_CANCEL,
   };
+}
+
+function swapAppointmentAuthenticatedRequest(
+  bookAppointmentIds?: string[],
+  cancelAppointmentId?: string
+) {
+  return wrapped(
+    swapAppointmentRequest(bookAppointmentIds, cancelAppointmentId),
+    {
+      auth: {
+        uid: DONOR_ID,
+      },
+    }
+  );
 }

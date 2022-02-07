@@ -24,9 +24,9 @@ export default async function (
     throw new Error("Appointment not found");
   }
 
-  validateCancelAppointment(foundAppointments[0], donorId);
-
   const appointment = foundAppointments[0];
+
+  validateCancelAppointment(appointment, donorId);
 
   const updatedAppointment = removeDonorFromDbAppointment(appointment);
 
