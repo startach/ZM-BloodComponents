@@ -1,0 +1,1 @@
+export const SET_COORDINATOR = "SET_COORDINATOR";

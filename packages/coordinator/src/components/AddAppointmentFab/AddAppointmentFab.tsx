@@ -14,7 +14,7 @@ export type AddAppointmentFabProps = {
 export default function AddAppointmentFab(props: AddAppointmentFabProps) {
   const navigate = useNavigate();
 
-  let navigateTo = CoordinatorScreenKey.ADD + "/" + props.hospital;
+  let navigateTo = CoordinatorScreenKey.ADD + "";
   if (props.timestamp) {
     navigateTo += "/" + props.timestamp;
   }
