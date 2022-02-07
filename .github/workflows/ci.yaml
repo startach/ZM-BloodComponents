@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
-          path: "**/node_modules/prettier"
+          path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Prettier
         run: yarn install
