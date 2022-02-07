@@ -68,17 +68,16 @@ test("Donor not found throws exception", async () => {
   await expectAsyncThrows(action, "Donor not found");
 });
 
-test("No such appointments", async () => {
+test("No such appointments throws exception", async () => {
   await createDonor();
 
-  const response = await wrapped(bookAppointmentRequest(), {
-    auth: {
-      uid: DONOR_ID,
-    },
-  });
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(BookAppointmentStatus.NO_SUCH_APPOINTMENTS);
-  expect(data.bookedAppointment).toBeUndefined();
+  const action = () =>
+    wrapped(bookAppointmentRequest(), {
+      auth: {
+        uid: DONOR_ID,
+      },
+    });
+  await expectAsyncThrows(action, "No such appointments");
 });
 
 test("No free appointments ", async () => {
