@@ -11,13 +11,14 @@ export const setHospital =
       hospital,
     });
 
-    // TODO fetch more
+    // TODO(Yaron) - Apply dynamic fetching
     const millisInWeek = 7 * 24 * 60 * 60 * 1_000;
 
     dispatch(
       fetchAppointments(
-        new Date().getTime() - 3 * millisInWeek,
-        new Date().getTime() + 3 * millisInWeek
+        hospital,
+        new Date().getTime() - 4 * millisInWeek,
+        new Date().getTime() + 4 * millisInWeek
       )
     );
   };

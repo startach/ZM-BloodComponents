@@ -32,6 +32,10 @@ export default function ScheduleScreenContainer() {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
+  if (!hospital) {
+    return null;
+  }
+
   const addWeek = (forward: boolean) => () => {
     const newDate = new Date(timeInWeek);
     newDate.setDate(newDate.getDate() + (forward ? 7 : -7));

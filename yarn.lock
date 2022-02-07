@@ -1356,7 +1356,7 @@
 
 "@babel/runtime@^7.15.4", "@babel/runtime@^7.9.2":
   version "7.17.0"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/@babel/runtime/-/runtime-7.17.0.tgz#b8d142fc0f7664fb3d9b5833fd40dcbab89276c0"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.0.tgz#b8d142fc0f7664fb3d9b5833fd40dcbab89276c0"
   integrity sha1-uNFC/A92ZPs9m1gz/UDcuriSdsA=
   dependencies:
     regenerator-runtime "^0.13.4"
@@ -4798,7 +4798,7 @@
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  resolved "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha1-ESSq/lEYy1kZd66xzqrtEHDrA58=
   dependencies:
     "@types/react" "*"
@@ -4990,7 +4990,7 @@
 
 "@types/react-redux@^7.1.20":
   version "7.1.22"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/@types/react-redux/-/react-redux-7.1.22.tgz#0eab76a37ef477cc4b53665aeaf29cb60631b72a"
+  resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.22.tgz#0eab76a37ef477cc4b53665aeaf29cb60631b72a"
   integrity sha1-Dqt2o370d8xLU2Za6vKctgYxtyo=
   dependencies:
     "@types/hoist-non-react-statics" "^3.3.0"
@@ -16463,7 +16463,7 @@ react-popper@^2.2.4:
 
 react-redux@^7.2.6:
   version "7.2.6"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/react-redux/-/react-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
+  resolved "https://registry.npmjs.org/react-redux/-/react-redux-7.2.6.tgz#49633a24fe552b5f9caf58feb8a138936ddfe9aa"
   integrity sha1-SWM6JP5VK1+cr1j+uKE4k23f6ao=
   dependencies:
     "@babel/runtime" "^7.15.4"
@@ -16850,12 +16850,12 @@ redent@^3.0.0:
 
 redux-thunk@^2.4.1:
   version "2.4.1"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/redux-thunk/-/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
+  resolved "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
   integrity sha1-DdgELPR4aPSylpmUHeA8kwGnVxQ=
 
 redux@^4.0.0:
   version "4.1.2"
-  resolved "https://artifactory.apigee.net/artifactory/api/npm/waze-npm/redux/-/redux-4.1.2.tgz#140f35426d99bb4729af760afcf79eaaac407104"
+  resolved "https://registry.npmjs.org/redux/-/redux-4.1.2.tgz#140f35426d99bb4729af760afcf79eaaac407104"
   integrity sha1-FA81Qm2Zu0cpr3YK/PeeqqxAcQQ=
   dependencies:
     "@babel/runtime" "^7.9.2"

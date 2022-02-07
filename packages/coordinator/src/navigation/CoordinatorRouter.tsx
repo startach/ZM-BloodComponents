@@ -1,12 +1,15 @@
-import React, {useEffect} from "react";
-import {Navigate, Route, Routes} from "react-router-dom";
-import {LoginStatus} from "@zm-blood-components/common";
-import {initFirebase, registerAuthChange,} from "../firebase/FirebaseInitializer";
+import React, { useEffect } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { LoginStatus } from "@zm-blood-components/common";
+import {
+  initFirebase,
+  registerAuthChange,
+} from "../firebase/FirebaseInitializer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ReportsScreenContainer from "../screens/reports/ReportsScreenContainer";
 import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
-import {CoordinatorScreenKey} from "./CoordinatorScreenKey";
-import {signOut} from "../firebase/FirebaseAuthentication";
+import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
+import { signOut } from "../firebase/FirebaseAuthentication";
 import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
 import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
 import SplashScreen from "../screens/loading/SplashScreen";
@@ -15,12 +18,12 @@ import DonationDayScreenContainer from "../screens/donationDay/DonationDayScreen
 import BookManualDonationScreenContainer from "../screens/bookManualDonationScreen/BookManualDonationScreenContainer";
 import BookedAppointmentScreenContainer from "../screens/bookedDonation/BookedAppointmentScreenContainer";
 import AddAppointmentScreenContainer from "../screens/AddAppointmentScreen/AddAppointmentScreenContainer";
-import {useDispatch, useSelector} from "react-redux";
-import {setLoginStatus} from "../store/login/LoginStatusActions";
-import {setHospital} from "../store/appointments/actions/SetHospitalAction";
-import {schedulePath} from "./RouterUtils";
-import {setCoordinator} from "../store/coordinator/CoordinatorActions";
-import {isFetching} from "../store/appointments/selectors/GetIsFetchingSelector";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoginStatus } from "../store/login/LoginStatusActions";
+import { setHospital } from "../store/appointments/actions/SetHospitalAction";
+import { schedulePath } from "./RouterUtils";
+import { setCoordinator } from "../store/coordinator/CoordinatorActions";
+import { isFetching } from "../store/appointments/selectors/GetIsFetchingSelector";
 
 // const ROLES_THAT_ADD_APPOINTMENTS = [
 //   CoordinatorRole.SYSTEM_USER,

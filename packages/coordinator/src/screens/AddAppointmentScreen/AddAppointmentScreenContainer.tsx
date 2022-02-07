@@ -17,7 +17,7 @@ export default function AddAppointmentScreenContainer() {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
   if (!hospital) {
-    return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
+    return null;
   }
 
   let time = getTimestamp(timestamp);

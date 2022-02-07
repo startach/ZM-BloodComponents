@@ -25,6 +25,9 @@ export default function DonationDayScreenContainer() {
   if (!donationDay || !dayStartTime) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
+  if (!hospital) {
+    return null;
+  }
 
   return (
     <DonationDayScreen

@@ -1,10 +1,14 @@
-import {useState} from "react";
-import {BookedAppointment, DateUtils, HospitalUtils,} from "@zm-blood-components/common";
+import { useState } from "react";
+import {
+  BookedAppointment,
+  DateUtils,
+  HospitalUtils,
+} from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import ReportsScreen from "./ReportsScreen";
 import dayjs from "dayjs";
-import {useSelector} from "react-redux";
-import {getAvailableHospitals} from "../../store/coordinator/CoordinatorSelectors";
+import { useSelector } from "react-redux";
+import { getAvailableHospitals } from "../../store/coordinator/CoordinatorSelectors";
 
 export default function ReportsScreenContainer() {
   const availableHospitals = useSelector(getAvailableHospitals);
