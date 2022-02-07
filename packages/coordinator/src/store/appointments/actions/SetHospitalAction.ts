@@ -5,7 +5,7 @@ import { fetchAppointments } from "./FetchAppointmentsAction";
 
 export const setHospital =
   (hospital: Hospital): ThunkAction =>
-  async (dispatch, getState) => {
+  (dispatch) => {
     dispatch({
       type: actionTypes.SET_HOSPITAL,
       hospital,

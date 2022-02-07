@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { LoginStatus } from "@zm-blood-components/common";
 import {
   initFirebase,
   registerAuthChange,
@@ -20,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoginStatus } from "../store/login/LoginStatusActions";
 import { schedulePath } from "./RouterUtils";
 import { isFetching } from "../store/appointments/selectors/GetIsFetchingSelector";
-import { fetchCoordinatorAndAppointments } from "../store/coordinator/actions/FetchCoordinatorAction";
 
 // const ROLES_THAT_ADD_APPOINTMENTS = [
 //   CoordinatorRole.SYSTEM_USER,
@@ -59,11 +57,6 @@ export default function CoordinatorRouter() {
   useEffect(() => {
     registerAuthChange((newLoginStatus) => {
       dispatch(setLoginStatus(newLoginStatus));
-      if (newLoginStatus !== LoginStatus.LOGGED_IN) {
-        return;
-      }
-
-      dispatch(fetchCoordinatorAndAppointments());
     });
   }, [dispatch]);
 
