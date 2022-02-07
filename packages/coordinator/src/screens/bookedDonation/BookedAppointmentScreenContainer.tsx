@@ -2,11 +2,11 @@ import { DateUtils } from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookedAppointmentScreen from "./BookedAppointmentScreen";
-import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
 import { getAppointmentById } from "../../store/appointments/selectors/GetAppointmentByIdSelector";
 import { markAppointmentAsCompleted } from "../../store/appointments/actions/MarkAppointmentAsCompletedAction";
+import { removeDonorFromAppointment } from "../../store/appointments/actions/RemoveDonorFromAppointmentAction";
 
 export default function BookedAppointmentScreenContainer() {
   const { appointmentId } = useParams<{ appointmentId: string }>();
@@ -53,9 +53,8 @@ export default function BookedAppointmentScreenContainer() {
       appointment={bookedAppointment}
       onCopyAppointmentDetails={onCopyAppointmentDetails}
       onRemoveDonor={() => {
-        CoordinatorFunctions.removeDonorFromAppointment(appointmentId).then(
-          () => navigate(-1)
-        );
+        dispatch(removeDonorFromAppointment(appointmentId));
+        navigate(-1);
       }}
       markAppointmentAsCompleted={markAppointment}
     />

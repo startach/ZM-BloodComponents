@@ -7,9 +7,7 @@ import {
 } from "../firebase/FirebaseInitializer";
 import SearchDonorsScreenContainer from "../screens/searchDonorsScreen/SearchDonorsScreenContainer";
 import ReportsScreenContainer from "../screens/reports/ReportsScreenContainer";
-import * as CoordinatorFunctions from "../firebase/CoordinatorFunctions";
 import { CoordinatorScreenKey } from "./CoordinatorScreenKey";
-import { signOut } from "../firebase/FirebaseAuthentication";
 import SignInScreenContainer from "../screens/AuthScreens/SignInScreenContainer";
 import ResetPasswordScreenContainer from "../screens/AuthScreens/ResetPasswordScreenContainer";
 import SplashScreen from "../screens/loading/SplashScreen";
@@ -20,10 +18,9 @@ import BookedAppointmentScreenContainer from "../screens/bookedDonation/BookedAp
 import AddAppointmentScreenContainer from "../screens/AddAppointmentScreen/AddAppointmentScreenContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoginStatus } from "../store/login/LoginStatusActions";
-import { setHospital } from "../store/appointments/actions/SetHospitalAction";
 import { schedulePath } from "./RouterUtils";
-import { setCoordinator } from "../store/coordinator/CoordinatorActions";
 import { isFetching } from "../store/appointments/selectors/GetIsFetchingSelector";
+import { fetchCoordinatorAndAppointments } from "../store/coordinator/actions/FetchCoordinatorAction";
 
 // const ROLES_THAT_ADD_APPOINTMENTS = [
 //   CoordinatorRole.SYSTEM_USER,
@@ -62,26 +59,11 @@ export default function CoordinatorRouter() {
   useEffect(() => {
     registerAuthChange((newLoginStatus) => {
       dispatch(setLoginStatus(newLoginStatus));
-      // if (newLoginStatus === LoginStatus.LOGGED_IN) {
-      //   setIsFetching(true);
-      // }
-
       if (newLoginStatus !== LoginStatus.LOGGED_IN) {
-        // setIsFetching(false);
         return;
       }
 
-      async function fetchData() {
-        const coordinator = await CoordinatorFunctions.getCoordinator();
-        if (!coordinator) {
-          signOut();
-          return;
-        }
-        dispatch(setCoordinator(coordinator));
-        dispatch(setHospital(coordinator.activeHospitalsForCoordinator[0]));
-      }
-
-      fetchData();
+      dispatch(fetchCoordinatorAndAppointments());
     });
   }, [dispatch]);
 

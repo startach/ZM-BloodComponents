@@ -104,7 +104,9 @@ export async function addNewAppointment(
     donationStartTimes,
   };
 
-  await callableFunction(request);
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.AddAppointmentsResponse;
+  return data.newAppointments;
 }
 
 export function removeDonorFromAppointment(appointmentId: string) {

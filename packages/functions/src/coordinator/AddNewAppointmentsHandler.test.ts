@@ -70,7 +70,12 @@ test("User that does not have the right hospital throws exception", async () => 
 test("Valid request inserts new appointments", async () => {
   await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
 
-  await callFunction(USER_ID);
+  const response = await callFunction(USER_ID);
+  expect(response.newAppointments).toHaveLength(5);
+  response.newAppointments.forEach((appointment) => {
+    expect(appointment.hospital).toEqual(Hospital.ASAF_HAROFE);
+    expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+  });
 
   const newAppointmentIds = await getAppointmentIdsOfUser();
   expect(newAppointmentIds).toHaveLength(5);
@@ -118,7 +123,9 @@ async function getAppointmentIdsOfUser() {
   return appointments.map((a) => a.id || "");
 }
 
-function callFunction(userId?: string) {
+function callFunction(
+  userId?: string
+): Promise<FunctionsApi.AddAppointmentsResponse> {
   const request: FunctionsApi.AddAppointmentsRequest = {
     hospital: Hospital.ASAF_HAROFE,
     donationStartTimes: [

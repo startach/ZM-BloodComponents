@@ -1,14 +1,15 @@
-import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import AddAppointmentScreen from "./AddAppointmentScreen";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { getTimestamp } from "../../navigation/RouterUtils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
 import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
+import { addNewAppointments } from "../../store/appointments/actions/AddNewAppointmentsAction";
 
 export default function AddAppointmentScreenContainer() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { timestamp } = useParams<{ timestamp: string }>();
   const loggedOut = useSelector(isLoggedOut);
   const hospital = useSelector(getHospital);
@@ -29,8 +30,7 @@ export default function AddAppointmentScreenContainer() {
   const initialDate = getInitialDate(time);
 
   const onSave = async (donationStartTimes: number[]) => {
-    await CoordinatorFunctions.addNewAppointment(hospital, donationStartTimes);
-    navigate(-1);
+    dispatch(addNewAppointments(donationStartTimes, () => navigate(-1)));
   };
 
   return (
