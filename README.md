@@ -72,7 +72,7 @@ request.
    `yarn run start-donor`
 5. To start the Coordinator app:
    `yarn run start-coordinator`
-
+just a test
 ## Before merging
 
 To manage our development environment some automatic tests
