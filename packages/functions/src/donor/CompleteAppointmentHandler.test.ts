@@ -10,7 +10,6 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -18,6 +17,7 @@ import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CompleteAppointmentFunctionName]
@@ -136,11 +136,11 @@ test("Valid request when caller is a coordinator", async () => {
     },
   });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
-  expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-  expect(appointment[0].status).toEqual(AppointmentStatus.NOSHOW);
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.NOSHOW);
-  expect(appointment[0].creatorUserId).toEqual(COORDINATOR_ID);
+  const appointment = await getAppointmentById(APPOINTMENT_TO_COMPLETE);
+  expect(appointment.donationDoneTimeMillis).toBeTruthy();
+  expect(appointment.status).toEqual(AppointmentStatus.NOSHOW);
+  expect(appointment.lastChangeType).toEqual(BookingChange.NOSHOW);
+  expect(appointment.creatorUserId).toEqual(COORDINATOR_ID);
 });
 
 test.each([true, false])(
@@ -155,15 +155,15 @@ test.each([true, false])(
       },
     });
 
-    const appointment = await getAppointmentsByIds([APPOINTMENT_TO_COMPLETE]);
-    expect(appointment[0].donationDoneTimeMillis).toBeTruthy();
-    expect(appointment[0].status).toEqual(
+    const appointment = await getAppointmentById(APPOINTMENT_TO_COMPLETE);
+    expect(appointment.donationDoneTimeMillis).toBeTruthy();
+    expect(appointment.status).toEqual(
       isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED
     );
-    expect(appointment[0].lastChangeType).toEqual(
+    expect(appointment.lastChangeType).toEqual(
       isNoShow ? BookingChange.NOSHOW : BookingChange.COMPLETED
     );
-    expect(appointment[0].creatorUserId).toEqual(COORDINATOR_ID);
+    expect(appointment.creatorUserId).toEqual(COORDINATOR_ID);
   }
 );
 

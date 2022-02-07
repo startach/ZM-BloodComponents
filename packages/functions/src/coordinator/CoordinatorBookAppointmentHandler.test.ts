@@ -14,7 +14,6 @@ import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -24,6 +23,7 @@ import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotif
 import { mocked } from "ts-jest/utils";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 jest.setTimeout(7000);
 
@@ -154,10 +154,10 @@ test("Valid manual donor request books appointment with manual donor", async () 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
-  expect(appointment[0].donorId).toEqual(MANUAL_DONOR_ID);
-  expect(appointment[0].assigningCoordinatorId).toEqual(COORDINATOR_ID);
-  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
+  const appointment = await getAppointmentById(APPOINTMENT_TO_BOOK_2);
+  expect(appointment.donorId).toEqual(MANUAL_DONOR_ID);
+  expect(appointment.assigningCoordinatorId).toEqual(COORDINATOR_ID);
+  expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
@@ -170,8 +170,8 @@ test("Valid manual donor request books appointment with manual donor", async () 
   expect(bookedAppointment.phone).toEqual(MANUAL_DONOR_DETAILS.phoneNumber);
   expect(bookedAppointment.bloodType).toEqual(MANUAL_DONOR_DETAILS.bloodType);
 
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+  expect(appointment.lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(Date.now() - appointment?.lastChangeTime?.toMillis()!).toBeLessThan(
     3_000
   );
 

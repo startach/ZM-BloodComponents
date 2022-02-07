@@ -4,7 +4,6 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -19,6 +18,7 @@ import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
+import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 jest.mock("../notifications/CancelAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnCancelAppointment);
@@ -100,10 +100,10 @@ test("Valid request cancells appointment", async () => {
     },
   });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
-  expect(appointment[0].donorId).toEqual("");
-  expect(appointment[0].status).toEqual(AppointmentStatus.AVAILABLE);
-  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+  const appointment = await getAppointmentById(APPOINTMENT_TO_CANCEL);
+  expect(appointment.donorId).toEqual("");
+  expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+  expect(appointment.creatorUserId).toEqual("creatorUserId");
 
   expect(mockedNotifier).toBeCalledWith(
     expect.objectContaining({

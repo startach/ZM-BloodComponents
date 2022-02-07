@@ -8,7 +8,6 @@ import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -19,6 +18,7 @@ import { mocked } from "ts-jest/utils";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
+import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DonorBookAppointmentFunctionName]
@@ -125,9 +125,9 @@ test("Valid request books appointment", async () => {
     },
   });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
-  expect(appointment[0].donorId).toEqual(DONOR_ID);
-  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
+  const appointment = await getAppointmentById(APPOINTMENT_TO_BOOK_2);
+  expect(appointment.donorId).toEqual(DONOR_ID);
+  expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
@@ -136,15 +136,15 @@ test("Valid request books appointment", async () => {
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(bookedAppointment.donorId).toEqual(DONOR_ID);
 
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+  expect(appointment.lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(Date.now() - appointment?.lastChangeTime?.toMillis()!).toBeLessThan(
     3_000
   );
 
   expect(bookedAppointment.recentChangeType).toEqual(BookingChange.BOOKED);
 
   expect(mockedNotifier).toBeCalledWith(
-    appointment[0],
+    appointment,
     expect.objectContaining({
       firstName: "firstName",
       email: "email@email.com",

@@ -1,6 +1,5 @@
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as AdminDataAccessLayer from "../dal/AdminDataAccessLayer";
-import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import { DbAppointment, DbCoordinator } from "../function-types";
 import { validateAppointmentPermissions } from "./UserValidator";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
@@ -15,18 +14,10 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
-    request.appointmentId,
-  ]);
-  if (appointments.length !== 1) {
-    console.error(
-      "Unexpected number of appointments, expected 1 got:",
-      appointments
-    );
-    throw Error(`Unexpected number of appointments`);
-  }
+  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
+    request.appointmentId
+  );
 
-  const appointment = appointments[0];
   validateAppointment(appointment, coordinator);
 
   const bookedAppointment = await DbAppointmentUtils.toBookedAppointmentAsync(

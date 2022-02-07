@@ -9,7 +9,6 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -23,6 +22,7 @@ import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
+import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);
@@ -113,8 +113,8 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-    expect(appointments).toHaveLength(0);
+    const appointment = await getAppointmentById(APPOINTMENT_ID);
+    expect(appointment).toBeUndefined();
 
     // Check notification is sent
     if (booked) {
@@ -148,12 +148,11 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
 
-    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-    expect(appointments).toHaveLength(1);
-    expect(appointments[0].id).toEqual(APPOINTMENT_ID);
-    expect(appointments[0].donorId).toEqual("");
-    expect(appointments[0].status).toEqual(AppointmentStatus.AVAILABLE);
-    expect(appointments[0].bookingTime).toBeUndefined();
+    const appointment = await getAppointmentById(APPOINTMENT_ID);
+    expect(appointment.id).toEqual(APPOINTMENT_ID);
+    expect(appointment.donorId).toEqual("");
+    expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+    expect(appointment.bookingTime).toBeUndefined();
 
     // Check notification is sent
     if (booked) {

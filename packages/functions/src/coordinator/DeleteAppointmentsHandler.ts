@@ -16,14 +16,10 @@ export default async function (
 ) {
   const appointmentId = request.appointmentId;
 
-  const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
-    appointmentId,
-  ]);
-  if (appointments.length !== 1) {
-    throw new Error("Invalid appointment id");
-  }
+  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
+    appointmentId
+  );
 
-  const appointment = appointments[0];
   const appointmentHasRealDonor =
     DbAppointmentUtils.isAppointmentBooked(appointment) &&
     !DbAppointmentUtils.isManualDonorAppointment(appointment);

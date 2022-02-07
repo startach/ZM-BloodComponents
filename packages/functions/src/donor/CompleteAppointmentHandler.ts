@@ -27,14 +27,10 @@ export async function completeAppointmentFunc(
   isNoshow: boolean,
   coordinatorId?: string
 ): Promise<FunctionsApi.CompleteAppointmentResponse> {
-  const appointmentToComplete =
-    await AppointmentDataAccessLayer.getAppointmentsByIds([appointmentId]);
+  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
+    appointmentId
+  );
 
-  if (appointmentToComplete.length !== 1) {
-    throw new Error("Appointment not found");
-  }
-
-  const appointment = appointmentToComplete[0];
   if (coordinatorId) {
     await validateAppointmentEditPermissions(
       coordinatorId,

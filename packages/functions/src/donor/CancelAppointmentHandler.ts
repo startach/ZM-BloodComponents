@@ -1,12 +1,12 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 import { validateCancelAppointment } from "../common/CancelAppointmentHelper";
-import {
-  getAppointmentsByIds,
-  setAppointment,
-} from "../dal/AppointmentDataAccessLayer";
+import { setAppointment } from "../dal/AppointmentDataAccessLayer";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
-import { removeDonorFromDbAppointment } from "../utils/DbAppointmentUtils";
+import {
+  getAppointmentByIdOrThrow,
+  removeDonorFromDbAppointment,
+} from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
@@ -18,13 +18,7 @@ export default async function (
     throw new Error("No appointment to cancel");
   }
 
-  const foundAppointments = await getAppointmentsByIds([request.appointmentId]);
-
-  if (foundAppointments.length !== 1) {
-    throw new Error("Appointment not found");
-  }
-
-  const appointment = foundAppointments[0];
+  const appointment = await getAppointmentByIdOrThrow(request.appointmentId);
 
   validateCancelAppointment(appointment, donorId);
 
