@@ -3,7 +3,6 @@ import {
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
-import { GetBookedDonationsInHospitalRequest } from "common/src/functions-api";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
 function getCallableFunction(functionName: string) {
@@ -76,7 +75,7 @@ export async function getBookedAppointment(appointmentId: string) {
 }
 
 export async function getReportsForHospital(
-  request: GetBookedDonationsInHospitalRequest
+  request: FunctionsApi.GetBookedDonationsInHospitalRequest
 ) {
   const callableFunction = getCallableFunction(
     FunctionsApi.GetBookedDonationsInHospitalFunctionName

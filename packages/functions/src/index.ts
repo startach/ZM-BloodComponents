@@ -6,9 +6,10 @@ import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
 import getBookedAppointmentHandler from "./coordinator/GetBookedApointmentHandler";
 import coordinatorBookAppointmentHandler from "./coordinator/CoordinatorBookAppointmentHandler";
 import donorBookAppointmentHandler from "./donor/DonorBookAppointmentHandler";
+import donorSwapAppointmentHandler from "./donor/DonorSwapAppointmentHandler";
 import cancelAppointmentHandler from "./donor/CancelAppointmentHandler";
 import completeAppointmentHandler from "./donor/CompleteAppointmentHandler";
-import geDonorHandler from "./donor/GetDonorHandler";
+import getDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
@@ -48,10 +49,11 @@ export const getBookedDonationsInHospital = handler(
 
 // Donor
 export const bookAppointment = handler(donorBookAppointmentHandler);
+export const swapAppointment = handler(donorSwapAppointmentHandler);
 export const cancelAppointment = handler(cancelAppointmentHandler);
 export const completeAppointment = handler(completeAppointmentHandler);
 export const completeAppointmentApiHandler = completeAppointmentApi;
-export const getDonor = handler(geDonorHandler);
+export const getDonor = handler(getDonorHandler);
 export const saveDonor = handler(saveDonorHandler);
 export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler

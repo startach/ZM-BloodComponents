@@ -50,8 +50,7 @@ export interface BookAppointmentRequest {
 export enum BookAppointmentStatus {
   SUCCESS = "SUCCESS",
   NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
-  NO_SUCH_APPOINTMENTS = "NO_SUCH_APPOINTMENTS",
-  HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER",
+  HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER", // Status not used
   DONOR_DETAILS_REQUIRED = "DONOR_DETAILS_REQUIRED",
   NO_PERMISSIONS_FOR_DONOR = "NO_PERMISSIONS_FOR_DONOR",
 }
@@ -60,6 +59,13 @@ export interface BookAppointmentResponse {
   status: BookAppointmentStatus;
   bookedAppointment?: BookedAppointment;
 }
+export const DonorSwapAppointmentFunctionName = "swapAppointment";
+
+export interface SwapAppointmentRequest {
+  cancelAppointmentId: string;
+  bookAppointmentIds: string[];
+}
+export interface SwapAppointmentResponse extends BookAppointmentResponse {}
 
 export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
