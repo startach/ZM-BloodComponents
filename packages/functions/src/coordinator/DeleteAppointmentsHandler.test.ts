@@ -95,7 +95,7 @@ test("No such appointment throws exception", async () => {
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "Invalid appointment id");
+  await expectAsyncThrows(action, "Appointment not found");
 });
 
 test.each([true, false])(
