@@ -144,7 +144,9 @@ export async function bookManualDonation(
     FunctionsApi.CoordinatorBookAppointmentFunctionName
   );
 
-  await callableFunction(request);
+  const response = await callableFunction(request);
+  const data = response.data as FunctionsApi.BookAppointmentResponse;
+  return data.bookedAppointment;
 }
 
 export async function markAppointmentAsCompleted(

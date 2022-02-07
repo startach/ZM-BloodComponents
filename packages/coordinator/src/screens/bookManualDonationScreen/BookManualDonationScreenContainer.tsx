@@ -1,14 +1,15 @@
-import { BloodType, MANUAL_DONOR_ID } from "@zm-blood-components/common";
+import { BloodType } from "@zm-blood-components/common";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import BookManualDonationScreen from "./BookManualDonationScreen";
-import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import { getTimestamp } from "../../navigation/RouterUtils";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
+import { bookManualDonation } from "../../store/appointments/actions/BookManualDonationAction";
 
 export default function BookManualDonationScreenContainer() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { appointmentId, timestamp } =
     useParams<{ appointmentId: string; timestamp: string }>();
   const donationStartTime = getTimestamp(timestamp);
@@ -29,18 +30,18 @@ export default function BookManualDonationScreenContainer() {
     phoneNumber: string,
     bloodType: BloodType
   ) => {
-    await CoordinatorFunctions.bookManualDonation({
-      donorId: MANUAL_DONOR_ID,
-      appointmentIds: [appointmentId],
-      donorDetails: {
-        firstName,
-        lastName,
-        phoneNumber,
-        bloodType,
-      },
-    });
-
-    navigate(-1);
+    dispatch(
+      bookManualDonation(
+        appointmentId,
+        {
+          firstName,
+          lastName,
+          phoneNumber,
+          bloodType,
+        },
+        () => navigate(-1)
+      )
+    );
   };
 
   return (
