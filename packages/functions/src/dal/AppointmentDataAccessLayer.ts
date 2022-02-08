@@ -33,7 +33,7 @@ export async function getAppointmentByIdOrThrow(
   const appointment = foundAppointments[0];
 
   if (!appointment) {
-    throw new Error("Appointment not found");
+    throw new Error(`Appointment not found. Id ${appointmentId}`);
   }
 
   return appointment;

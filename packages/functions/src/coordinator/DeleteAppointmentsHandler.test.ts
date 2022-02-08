@@ -95,7 +95,10 @@ test("No such appointment throws exception", async () => {
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "Appointment not found");
+  await expectAsyncThrows(
+    action,
+    `Appointment not found. Id ${APPOINTMENT_ID}`
+  );
 });
 
 test.each([true, false])(
@@ -115,7 +118,10 @@ test.each([true, false])(
 
     const action = () => getAppointmentByIdOrThrow(APPOINTMENT_ID);
 
-    await expectAsyncThrows(action, "Appointment not found");
+    await expectAsyncThrows(
+      action,
+      `Appointment not found. Id ${APPOINTMENT_ID}`
+    );
 
     // Check notification is sent
     if (booked) {

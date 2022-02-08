@@ -72,7 +72,10 @@ test("No such appointments throws exception", async () => {
       }
     );
 
-  await expectAsyncThrows(action, "Appointment not found");
+  await expectAsyncThrows(
+    action,
+    `Appointment not found. Id ${APPOINTMENT_TO_COMPLETE}`
+  );
 });
 
 test("Donor is not booked on this appointment throws exception", async () => {
