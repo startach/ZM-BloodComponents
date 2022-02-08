@@ -9,7 +9,7 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -95,7 +95,10 @@ test("No such appointment throws exception", async () => {
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-  await expectAsyncThrows(action, "Invalid appointment id");
+  await expectAsyncThrows(
+    action,
+    `Appointment not found. Id ${APPOINTMENT_ID}`
+  );
 });
 
 test.each([true, false])(
@@ -113,8 +116,12 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-    expect(appointments).toHaveLength(0);
+    const action = () => getAppointmentByIdOrThrow(APPOINTMENT_ID);
+
+    await expectAsyncThrows(
+      action,
+      `Appointment not found. Id ${APPOINTMENT_ID}`
+    );
 
     // Check notification is sent
     if (booked) {
@@ -148,12 +155,11 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
 
-    const appointments = await getAppointmentsByIds([APPOINTMENT_ID]);
-    expect(appointments).toHaveLength(1);
-    expect(appointments[0].id).toEqual(APPOINTMENT_ID);
-    expect(appointments[0].donorId).toEqual("");
-    expect(appointments[0].status).toEqual(AppointmentStatus.AVAILABLE);
-    expect(appointments[0].bookingTime).toBeUndefined();
+    const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_ID);
+    expect(appointment.id).toEqual(APPOINTMENT_ID);
+    expect(appointment.donorId).toEqual("");
+    expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+    expect(appointment.bookingTime).toBeUndefined();
 
     // Check notification is sent
     if (booked) {

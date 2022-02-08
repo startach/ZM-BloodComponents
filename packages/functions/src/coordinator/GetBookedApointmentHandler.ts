@@ -15,18 +15,11 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
-    request.appointmentId,
-  ]);
-  if (appointments.length !== 1) {
-    console.error(
-      "Unexpected number of appointments, expected 1 got:",
-      appointments
+  const appointment =
+    await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(
+      request.appointmentId
     );
-    throw Error(`Unexpected number of appointments`);
-  }
 
-  const appointment = appointments[0];
   validateAppointment(appointment, coordinator);
 
   const bookedAppointment = await DbAppointmentUtils.toBookedAppointmentAsync(

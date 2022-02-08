@@ -73,7 +73,10 @@ describe("GetBookedAppointment", function () {
     await createCoordinator(HOSPITAL);
 
     const action = () => callFunction(COORDINATOR_ID);
-    await expectAsyncThrows(action, "Unexpected number of appointments");
+    await expectAsyncThrows(
+      action,
+      `Appointment not found. Id ${APPOINTMENT_ID}`
+    );
   });
 
   test("Real donor is valid", async () => {

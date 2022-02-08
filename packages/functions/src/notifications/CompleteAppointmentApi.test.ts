@@ -1,6 +1,6 @@
 import * as Functions from "../index";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
-import { deleteDonor, getDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import { saveTestDonor } from "../testUtils/TestSamples";
 import "../testUtils/FirebaseTestUtils";
 import { Request } from "firebase-functions/lib/providers/https";
@@ -10,7 +10,7 @@ import { DbAppointment } from "../function-types";
 import { AppointmentStatus, Hospital } from "@zm-blood-components/common/src";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 
@@ -44,8 +44,8 @@ test("Valid request to complete", async () => {
 
   await callTarget(APPOINTMENT_ID, DONOR_ID);
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_ID]);
-  expect(appointment[0].status).toEqual(AppointmentStatus.COMPLETED);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_ID);
+  expect(appointment.status).toEqual(AppointmentStatus.COMPLETED);
 });
 
 async function callTarget(appointmentId: string, donorId: string) {
