@@ -16,9 +16,8 @@ export default async function (
 ) {
   const appointmentId = request.appointmentId;
 
-  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
-    appointmentId
-  );
+  const appointment =
+    await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(appointmentId);
 
   const appointmentHasRealDonor =
     DbAppointmentUtils.isAppointmentBooked(appointment) &&

@@ -1,5 +1,6 @@
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
 import * as AdminDataAccessLayer from "../dal/AdminDataAccessLayer";
+import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import { DbAppointment, DbCoordinator } from "../function-types";
 import { validateAppointmentPermissions } from "./UserValidator";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
@@ -14,9 +15,10 @@ export default async function (
     throw Error(`User ${callerId} is not an admin`);
   }
 
-  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
-    request.appointmentId
-  );
+  const appointment =
+    await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(
+      request.appointmentId
+    );
 
   validateAppointment(appointment, coordinator);
 

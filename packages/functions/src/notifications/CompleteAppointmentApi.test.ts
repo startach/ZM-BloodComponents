@@ -10,9 +10,9 @@ import { DbAppointment } from "../function-types";
 import { AppointmentStatus, Hospital } from "@zm-blood-components/common/src";
 import {
   deleteAppointmentsByIds,
+  getAppointmentById,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 const DONOR_ID = "CompleteUserId";
 const APPOINTMENT_ID = "CompleteAppointmentID";

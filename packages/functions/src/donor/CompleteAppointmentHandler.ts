@@ -27,9 +27,8 @@ export async function completeAppointmentFunc(
   isNoshow: boolean,
   coordinatorId?: string
 ): Promise<FunctionsApi.CompleteAppointmentResponse> {
-  const appointment = await DbAppointmentUtils.getAppointmentByIdOrThrow(
-    appointmentId
-  );
+  const appointment =
+    await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(appointmentId);
 
   if (coordinatorId) {
     await validateAppointmentEditPermissions(

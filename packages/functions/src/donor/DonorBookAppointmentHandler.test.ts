@@ -8,6 +8,7 @@ import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
+  getAppointmentById,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -18,7 +19,6 @@ import { mocked } from "ts-jest/utils";
 import { BookAppointmentStatus } from "../../../common/src/functions-api";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbDonor } from "../function-types";
-import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.DonorBookAppointmentFunctionName]

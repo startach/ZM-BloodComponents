@@ -10,6 +10,7 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
+  getAppointmentById,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -17,7 +18,6 @@ import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
-import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CompleteAppointmentFunctionName]

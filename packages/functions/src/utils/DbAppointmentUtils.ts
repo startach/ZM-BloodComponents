@@ -9,7 +9,6 @@ import {
 import * as admin from "firebase-admin";
 import { DbAppointment, DbDonor } from "../function-types";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import { getAppointmentsByIds } from "../dal/AppointmentDataAccessLayer";
 
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
@@ -119,25 +118,6 @@ export function toBookedAppointmentSync(
       donor.bloodType
     );
   }
-}
-
-export async function getAppointmentById(
-  appointmentId: string
-): Promise<DbAppointment> {
-  const foundAppointments = await getAppointmentsByIds([appointmentId]);
-  return foundAppointments[0];
-}
-
-export async function getAppointmentByIdOrThrow(
-  appointmentId: string
-): Promise<DbAppointment> {
-  const appointment = await getAppointmentById(appointmentId);
-
-  if (!appointment) {
-    throw new Error("Appointment not found");
-  }
-
-  return appointment;
 }
 
 function manuallyBookedAppointmentToBookedAppointment(

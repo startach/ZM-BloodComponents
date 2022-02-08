@@ -1,12 +1,12 @@
 import { FunctionsApi } from "@zm-blood-components/common";
 import { validateCancelAppointment } from "../common/CancelAppointmentHelper";
-import { setAppointment } from "../dal/AppointmentDataAccessLayer";
+import {
+  setAppointment,
+  getAppointmentByIdOrThrow,
+} from "../dal/AppointmentDataAccessLayer";
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
-import {
-  getAppointmentByIdOrThrow,
-  removeDonorFromDbAppointment,
-} from "../utils/DbAppointmentUtils";
+import { removeDonorFromDbAppointment } from "../utils/DbAppointmentUtils";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,

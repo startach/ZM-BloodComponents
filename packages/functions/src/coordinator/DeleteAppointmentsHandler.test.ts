@@ -9,6 +9,7 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
+  getAppointmentById,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -22,7 +23,6 @@ import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
 import { AppointmentStatus } from "@zm-blood-components/common/src";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
-import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 jest.mock("../notifications/NotificationSender");
 const mockedNotifier = mocked(sendEmailToDonor);

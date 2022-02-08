@@ -14,6 +14,7 @@ import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import {
   deleteAppointmentsByIds,
+  getAppointmentById,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -23,7 +24,6 @@ import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotif
 import { mocked } from "ts-jest/utils";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
-import { getAppointmentById } from "../utils/DbAppointmentUtils";
 
 jest.setTimeout(7000);
 
