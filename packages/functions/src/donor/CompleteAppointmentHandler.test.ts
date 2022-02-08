@@ -10,7 +10,7 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -136,7 +136,7 @@ test("Valid request when caller is a coordinator", async () => {
     },
   });
 
-  const appointment = await getAppointmentById(APPOINTMENT_TO_COMPLETE);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_COMPLETE);
   expect(appointment.donationDoneTimeMillis).toBeTruthy();
   expect(appointment.status).toEqual(AppointmentStatus.NOSHOW);
   expect(appointment.lastChangeType).toEqual(BookingChange.NOSHOW);
@@ -155,7 +155,9 @@ test.each([true, false])(
       },
     });
 
-    const appointment = await getAppointmentById(APPOINTMENT_TO_COMPLETE);
+    const appointment = await getAppointmentByIdOrThrow(
+      APPOINTMENT_TO_COMPLETE
+    );
     expect(appointment.donationDoneTimeMillis).toBeTruthy();
     expect(appointment.status).toEqual(
       isNoShow ? AppointmentStatus.NOSHOW : AppointmentStatus.COMPLETED

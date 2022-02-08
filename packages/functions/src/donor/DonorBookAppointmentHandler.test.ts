@@ -8,7 +8,7 @@ import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -125,7 +125,7 @@ test("Valid request books appointment", async () => {
     },
   });
 
-  const appointment = await getAppointmentById(APPOINTMENT_TO_BOOK_2);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_BOOK_2);
   expect(appointment.donorId).toEqual(DONOR_ID);
   expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
 

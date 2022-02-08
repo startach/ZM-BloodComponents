@@ -10,7 +10,7 @@ import { DbAppointment } from "../function-types";
 import { AppointmentStatus, Hospital } from "@zm-blood-components/common/src";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 
@@ -44,7 +44,7 @@ test("Valid request to complete", async () => {
 
   await callTarget(APPOINTMENT_ID, DONOR_ID);
 
-  const appointment = await getAppointmentById(APPOINTMENT_ID);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_ID);
   expect(appointment.status).toEqual(AppointmentStatus.COMPLETED);
 });
 

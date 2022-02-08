@@ -9,7 +9,7 @@ import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -113,8 +113,9 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
-    const appointment = await getAppointmentById(APPOINTMENT_ID);
-    expect(appointment).toBeUndefined();
+    const action = () => getAppointmentByIdOrThrow(APPOINTMENT_ID);
+
+    await expectAsyncThrows(action, "Appointment not found");
 
     // Check notification is sent
     if (booked) {
@@ -148,7 +149,7 @@ test.each([true, false])(
 
     await callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
 
-    const appointment = await getAppointmentById(APPOINTMENT_ID);
+    const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_ID);
     expect(appointment.id).toEqual(APPOINTMENT_ID);
     expect(appointment.donorId).toEqual("");
     expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);

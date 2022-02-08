@@ -4,7 +4,7 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -100,7 +100,7 @@ test("Valid request cancells appointment", async () => {
     },
   });
 
-  const appointment = await getAppointmentById(APPOINTMENT_TO_CANCEL);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_CANCEL);
   expect(appointment.donorId).toEqual("");
   expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
   expect(appointment.creatorUserId).toEqual("creatorUserId");

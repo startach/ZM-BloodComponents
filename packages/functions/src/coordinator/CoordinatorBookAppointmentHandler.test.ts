@@ -14,7 +14,7 @@ import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentById,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -154,7 +154,7 @@ test("Valid manual donor request books appointment with manual donor", async () 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
-  const appointment = await getAppointmentById(APPOINTMENT_TO_BOOK_2);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_BOOK_2);
   expect(appointment.donorId).toEqual(MANUAL_DONOR_ID);
   expect(appointment.assigningCoordinatorId).toEqual(COORDINATOR_ID);
   expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
