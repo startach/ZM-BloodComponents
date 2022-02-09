@@ -77,9 +77,3 @@ NoAppointments.args = {
     appointmentSlots: [],
   },
 };
-
-export const Loading = Template.bind({});
-Loading.args = {
-  ...props,
-  donationDay: undefined,
-};

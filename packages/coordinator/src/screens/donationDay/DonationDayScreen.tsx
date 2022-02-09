@@ -7,11 +7,10 @@ import Toggle from "../../components/Toggle";
 import { Appointment, DateUtils, Hospital } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
-import Spinner from "../../components/Spinner";
 
 export type DonationDayScreenProps = {
   dayStartTime: Date;
-  donationDay: DonationDay | undefined; // Could be loading
+  donationDay: DonationDay;
   hospital: Hospital;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
@@ -52,23 +51,23 @@ export default function DonationDayScreen({
       }}
     >
       <div className={styles.slots}>
-        {donationDay?.appointmentSlots.map((slot, index) => (
+        {donationDay.appointmentSlots.map((slot, index) => (
           <AppointmentSlotComponent
-            key={index + "." + slot.donationStartTimeMillis}
+            key={
+              index +
+              "." +
+              slot.donationStartTimeMillis +
+              "." +
+              slot.appointments.length
+            }
             appointmentSlot={slot}
             onDeleteAppointment={onDeleteAppointment}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
           />
         ))}
 
-        {donationDay?.appointmentSlots.length === 0 && (
+        {donationDay.appointmentSlots.length === 0 && (
           <div className={styles.noAppointments}>טרם נקבעו תורים ליום זה</div>
-        )}
-
-        {donationDay === undefined && (
-          <div className={styles.spinner}>
-            <Spinner size={"3rem"} />
-          </div>
         )}
 
         {/*To avoid showing an appointment under the FAB*/}

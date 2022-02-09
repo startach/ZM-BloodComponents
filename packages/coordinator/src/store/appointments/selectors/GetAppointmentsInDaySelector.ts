@@ -39,7 +39,8 @@ export const getAppointmentsInDay =
         slotsMap[appointment.donationStartTimeMillis] = slot;
       });
 
-    const sortedSlots = _.values(slotsMap).sort(
+    const sortedSlots = _.sortBy(
+      _.values(slotsMap),
       (x) => x.donationStartTimeMillis
     );
 
