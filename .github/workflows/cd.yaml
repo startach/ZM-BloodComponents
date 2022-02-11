@@ -17,8 +17,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Prettier
-        run: npm i prettier@2.5.1
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+        run: yarn install
       - name: Run prettier
         run: npx prettier --check .
 
