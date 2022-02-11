@@ -21,6 +21,7 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Prettier
         run: yarn install
       - name: Run prettier
         run: npx prettier --check .
