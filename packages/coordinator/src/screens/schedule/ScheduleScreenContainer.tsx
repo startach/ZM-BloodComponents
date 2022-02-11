@@ -28,7 +28,7 @@ export default function ScheduleScreenContainer() {
     if (timeInWeek) {
       dispatch(maybeFetchMoreAppointments(timeInWeek.getTime()));
     }
-  }, [timeInWeek]);
+  }, [timeInWeek, dispatch]);
 
   if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
