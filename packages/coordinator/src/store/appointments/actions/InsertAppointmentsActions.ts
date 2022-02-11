@@ -57,7 +57,7 @@ export const maybeFetchMoreAppointments =
       dispatch(
         fetchAndInsertAppointments(
           hospital,
-          DateUtils.GetStartOfTheWeek(timeInWeek).getTime(),
+          DateUtils.GetStartOfTheWeek(timeInWeek - MILLIS_IN_WEEK).getTime(),
           earliestTimeFetched
         )
       );
@@ -68,7 +68,9 @@ export const maybeFetchMoreAppointments =
         fetchAndInsertAppointments(
           hospital,
           latestTimeFetched,
-          DateUtils.GetStartOfTheWeek(timeInWeek).getTime() + 2 * MILLIS_IN_WEEK
+          DateUtils.GetStartOfTheWeek(
+            timeInWeek + 2 * MILLIS_IN_WEEK
+          ).getTime() - 1
         )
       );
     }

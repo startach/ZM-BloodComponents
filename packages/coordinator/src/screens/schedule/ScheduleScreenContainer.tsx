@@ -11,6 +11,7 @@ import {
   clearAndFetchAppointments,
   maybeFetchMoreAppointments,
 } from "../../store/appointments/actions/InsertAppointmentsActions";
+import { useEffect } from "react";
 
 export default function ScheduleScreenContainer() {
   const navigate = useNavigate();
@@ -22,6 +23,12 @@ export default function ScheduleScreenContainer() {
   const hospital = useSelector(getHospital);
   const availableHospitals = useSelector(getAvailableHospitals);
   const loggedOut = useSelector(isLoggedOut);
+
+  useEffect(() => {
+    if (timeInWeek) {
+      dispatch(maybeFetchMoreAppointments(timeInWeek.getTime()));
+    }
+  }, [timeInWeek]);
 
   if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
@@ -43,7 +50,6 @@ export default function ScheduleScreenContainer() {
     const newDate = new Date(timeInWeek);
     newDate.setDate(newDate.getDate() + (forward ? 7 : -7));
     navigate(schedulePath(newDate));
-    dispatch(maybeFetchMoreAppointments(newDate.getTime()));
   };
 
   return (

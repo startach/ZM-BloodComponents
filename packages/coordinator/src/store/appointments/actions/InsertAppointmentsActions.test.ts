@@ -77,14 +77,10 @@ describe("Insert Appointments Actions", () => {
   });
 
   test("maybeFetchMoreAppointments - need to fetch earlier appointments", async () => {
-    const almostFourWeeksAgo = FOUR_WEEKS_AGO - WEEK_MILLIS - 1000;
-    const expectedFetchStart = FOUR_WEEKS_AGO - 2 * WEEK_MILLIS;
+    const scheduleTime = FOUR_WEEKS_AGO + 1000;
+    const expectedFetchStart = FOUR_WEEKS_AGO - WEEK_MILLIS;
 
-    await maybeFetchMoreAppointments(almostFourWeeksAgo)(
-      dispatch,
-      getState,
-      {}
-    );
+    await maybeFetchMoreAppointments(scheduleTime)(dispatch, getState, {});
     await triggerActions(dispatch);
 
     expect(mockedCoordinatorFunctions.getAppointments).toHaveBeenCalledWith(
@@ -102,6 +98,31 @@ describe("Insert Appointments Actions", () => {
       type: actionTypes.SET_FETCHED_TIMES,
       earliestTimeFetched: expectedFetchStart,
       latestTimeFetched: FOUR_WEEKS_AHEAD,
+    });
+  });
+
+  test("maybeFetchMoreAppointments - need to fetch later appointments", async () => {
+    const scheduleTime = FOUR_WEEKS_AHEAD - 1000;
+    const expectedFetchEnd = FOUR_WEEKS_AHEAD + WEEK_MILLIS;
+
+    await maybeFetchMoreAppointments(scheduleTime)(dispatch, getState, {});
+    await triggerActions(dispatch);
+
+    expect(mockedCoordinatorFunctions.getAppointments).toHaveBeenCalledWith(
+      HOSPITAL,
+      FOUR_WEEKS_AHEAD,
+      expectedFetchEnd
+    );
+
+    expect(dispatch).toHaveBeenCalledTimes(3);
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: actionTypes.ADD_APPOINTMENTS_TO_STATE,
+      appointments: [SAMPLE_APPOINTMENT],
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(3, {
+      type: actionTypes.SET_FETCHED_TIMES,
+      earliestTimeFetched: FOUR_WEEKS_AGO,
+      latestTimeFetched: expectedFetchEnd,
     });
   });
 });
