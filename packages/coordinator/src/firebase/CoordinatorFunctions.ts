@@ -60,20 +60,6 @@ export async function getAllDonors() {
   return data.donors;
 }
 
-export async function getBookedAppointment(appointmentId: string) {
-  const request: FunctionsApi.GetBookedAppointmentRequest = {
-    appointmentId,
-  };
-
-  const callableFunction = getCallableFunction(
-    FunctionsApi.GetBookedAppointment
-  );
-
-  const response = await callableFunction(request);
-  const data = response.data as FunctionsApi.GetBookedAppointmentResponse;
-  return data.bookedAppointment;
-}
-
 export async function getReportsForHospital(
   request: FunctionsApi.GetBookedDonationsInHospitalRequest
 ) {

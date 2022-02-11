@@ -159,11 +159,3 @@ export interface GetBookedDonationsInHospitalRequest {
 export interface GetBookedDonationsInHospitalResponse {
   donationsWithDonorDetails: BookedAppointment[];
 }
-
-export const GetBookedAppointment = "getBookedAppointment";
-export interface GetBookedAppointmentRequest {
-  appointmentId: string;
-}
-export interface GetBookedAppointmentResponse {
-  bookedAppointment: BookedAppointment;
-}
