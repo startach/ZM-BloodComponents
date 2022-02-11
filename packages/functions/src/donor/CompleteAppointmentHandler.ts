@@ -1,4 +1,5 @@
 import * as admin from "firebase-admin";
+import * as functions from "firebase-functions";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import {
@@ -9,6 +10,7 @@ import {
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { dbAppointmentToBookedAppointmentApiEntry } from "../utils/ApiEntriesConversionUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
+import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -69,10 +71,22 @@ export async function completeAppointmentFunc(
     DbAppointmentUtils.completeArrivedFromDbAppointment(appointment, isNoshow);
 
   await AppointmentDataAccessLayer.setAppointment(updatedAppointment);
+  console.log("before if", appointment.status);
+  if (updatedAppointment.status == AppointmentStatus.COMPLETED && 
+    donorId != MANUAL_DONOR_ID) {
+    console.log("gets donor");
+    const donor = await DonorDAL.getDonor(donorId);
+    const lastCompletedAppointment = donor?.lastCompletedDonationTime;
+    const appointmentCompletionTime = updatedAppointment.donationDoneTimeMillis || admin.firestore.Timestamp.now();
+    const shouldUpdateCompletion = lastCompletedAppointment ? 
+    lastCompletedAppointment < appointmentCompletionTime : true;
+    console.log("before if", donorId, appointmentCompletionTime, lastCompletedAppointment);
 
-  if (appointment.status == AppointmentStatus.COMPLETED) {
-    // TODO : verify if donorId is valid, should be done here or in DAL ?
-    await DonorDAL.updateDonor(donorId, { lastDonationTime: admin.firestore.Timestamp.now()});
+    if (shouldUpdateCompletion)
+    {
+      console.log("updates donor with", appointmentCompletionTime, donorId);
+      await DonorDAL.updateDonor(donorId, { lastCompletedDonationTime: appointmentCompletionTime});
+    }
   }
 
   return {

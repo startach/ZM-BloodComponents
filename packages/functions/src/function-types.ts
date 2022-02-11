@@ -25,7 +25,7 @@ export type DbDonor = {
   lastBookedHospital?: Hospital; // The hospital of the last booked donation of the donor
 
   // Fields changing after completing a donation
-  lastDonationTime?: firestore.Timestamp;
+  lastCompletedDonationTime?: firestore.Timestamp;
 
   testUser: boolean;
 };

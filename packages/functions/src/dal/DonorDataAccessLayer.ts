@@ -83,6 +83,11 @@ export async function getDonorsByGroupIds(
 export async function updateDonor(donorId: string, 
   fieldsToUpdate: Partial<DbDonor>) {
     const collection = admin.firestore().collection(Collections.DONORS);
-    await collection.doc(donorId).update(fieldsToUpdate);
+    const donorRef = collection.doc(donorId);
+    const donorDoc = await donorRef.get()
+
+    if (donorDoc.exists) {
+      donorRef.update(fieldsToUpdate);
+    }
 }
 
