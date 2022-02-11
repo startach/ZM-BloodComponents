@@ -2,6 +2,7 @@ import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -60,6 +61,12 @@ export async function completeAppointmentFunc(
 
   const completedAppointment =
     await DbAppointmentUtils.toBookedAppointmentAsync(updatedAppointment);
+
+  await setCoordinatorUpdate(
+    updatedAppointment.hospital,
+    coordinatorId || donorId
+  );
+
   return {
     completedAppointment,
   };

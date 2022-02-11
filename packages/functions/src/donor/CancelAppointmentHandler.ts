@@ -7,6 +7,7 @@ import {
 import { getDonor } from "../dal/DonorDataAccessLayer";
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
 import { removeDonorFromDbAppointment } from "../utils/DbAppointmentUtils";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.CancelAppointmentRequest,
@@ -25,6 +26,7 @@ export default async function (
   const updatedAppointment = removeDonorFromDbAppointment(appointment);
 
   await setAppointment(updatedAppointment);
+  await setCoordinatorUpdate(updatedAppointment.hospital, callerId);
 
   const donor = await getDonor(donorId);
   notifyOnCancelAppointment(appointment, donor!).catch((e) =>

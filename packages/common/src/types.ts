@@ -61,6 +61,7 @@ export enum Collections {
   DONORS = "donors",
   APPOINTMENTS = "appointments",
   GROUPS = "groups",
+  UPDATES = "updates",
 }
 
 export enum LoginStatus {
@@ -117,3 +118,9 @@ export enum AppointmentStatus {
 }
 
 export const MANUAL_DONOR_ID = "manual";
+
+export type CoordinatorUpdate = {
+  hospital: Hospital;
+  userId: string;
+  time: any;
+};

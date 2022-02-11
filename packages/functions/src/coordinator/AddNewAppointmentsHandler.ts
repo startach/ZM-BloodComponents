@@ -8,6 +8,7 @@ import { validateAppointmentEditPermissions } from "./UserValidator";
 import * as admin from "firebase-admin";
 import { DbAppointment } from "../function-types";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.AddAppointmentsRequest,
@@ -24,7 +25,7 @@ export default async function (
   const appointmentsAdded: AvailableAppointment[] = [];
   request.donationStartTimes.map((donationStartTimeMillis) => {
     const newAppointment: DbAppointment = {
-      creationTime: admin.firestore.Timestamp.fromDate(new Date()),
+      creationTime: admin.firestore.Timestamp.now(),
       creatorUserId: callingUserId,
       donationStartTime: admin.firestore.Timestamp.fromMillis(
         donationStartTimeMillis
@@ -47,6 +48,8 @@ export default async function (
   });
 
   await batch.commit();
+
+  await setCoordinatorUpdate(request.hospital, callerId);
 
   return {
     newAppointments: appointmentsAdded,
