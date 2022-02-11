@@ -1,10 +1,14 @@
 import { Hospital, LocaleUtils } from "@zm-blood-components/common";
 import { getDonor } from "../dal/DonorDataAccessLayer";
-import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import _ from "lodash";
 import { isProd } from "../utils/EnvUtils";
 import { DbAppointment, DbDonor } from "../function-types";
 import RecipientsByHospital from "./HospitalEmailRecipients.json";
+
+export type StaffRecipient = {
+  email: string;
+  name: string;
+};
 
 export async function getStaffRecipients(
   bookedAppointment: DbAppointment

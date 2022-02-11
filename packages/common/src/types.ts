@@ -1,12 +1,3 @@
-// Hospital has available machines
-// Admin opens new slots in app
-// Donors sign up in slots - if they are allowed to
-// Not MVP - Send notification to donor
-// Donor completes donation
-
-// Admin can see users (all of them?)
-// Admin can make another user admin
-
 export enum BloodType {
   O_PLUS = "O_PLUS",
   O_MINUS = "O_MINUS",
@@ -69,7 +60,6 @@ export enum Collections {
   COORDINATORS = "coordinators",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
-  EMAIL_NOTIFICATIONS = "emailNotifications",
   GROUPS = "groups",
 }
 

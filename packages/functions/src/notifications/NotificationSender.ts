@@ -2,9 +2,9 @@ import * as functions from "firebase-functions";
 import sgMail from "@sendgrid/mail";
 import { createEvent, EventAttributes, EventStatus } from "ics";
 import { AppointmentNotificationData } from "./AppointmentNotificationData";
-import { StaffRecipient } from "../dal/EmailNotificationsDataAccessLayer";
 import { MailDataRequired } from "@sendgrid/helpers/classes/mail";
 import { DbDonor } from "../function-types";
+import { StaffRecipient } from "./StaffEmailRecipientsCalculator";
 
 const FROM_NAME = "בנק מרכיבי הדם של זכרון מנחם";
 const FROM_EMAIL = "no-reply@zichron.org";
