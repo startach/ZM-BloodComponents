@@ -1,6 +1,7 @@
 import {
   AppointmentStatus,
   Hospital,
+  TestSamples,
   TestUtils,
 } from "@zm-blood-components/common";
 import UpcomingDonationScreen, {
@@ -20,6 +21,7 @@ const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
 ) => ({
   showSameDayDonationPopup: false,
   bookedAppointment: {
+    ...TestSamples.SampleBookedAppointment,
     bookingTimeMillis: 1628845200000,
     donationStartTimeMillis: 1628845200000,
     donorId: "donorId",

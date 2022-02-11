@@ -26,6 +26,19 @@ export async function getAppointmentsByIds(
   return _.flatMap(snapshots, (s) => toDbAppointments(s));
 }
 
+export async function getAppointmentByIdOrThrow(
+  appointmentId: string
+): Promise<DbAppointment> {
+  const foundAppointments = await getAppointmentsByIds([appointmentId]);
+  const appointment = foundAppointments[0];
+
+  if (!appointment) {
+    throw new Error(`Appointment not found. Id ${appointmentId}`);
+  }
+
+  return appointment;
+}
+
 export async function getAppointmentsCreatedByUserId(userId: string) {
   const appointments = (await admin
     .firestore()

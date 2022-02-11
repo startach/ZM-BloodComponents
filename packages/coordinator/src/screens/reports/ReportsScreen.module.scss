@@ -1,0 +1,26 @@
+.reportFields {
+  padding: 20px;
+}
+
+.field {
+  min-width: 100px;
+  margin-inline-end: 10px;
+  margin-bottom: 10px;
+}
+
+.spinner {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}

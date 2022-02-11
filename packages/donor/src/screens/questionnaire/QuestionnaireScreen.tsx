@@ -94,14 +94,9 @@ function ErrorPopup(props: {
 
   let text = "";
   switch (props.errorCode) {
-    case FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS:
     case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
       text =
         'מצטערים, התור הזה הרגע נתפס ע"י תורם/ת אחר/ת. אנא הירשם/י למועד אחר';
-      break;
-
-    case FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER:
-      text = "מצטערים, לא ניתן לקבוע שתי תרומות בסמיכות של פחות מחודש";
       break;
   }
 

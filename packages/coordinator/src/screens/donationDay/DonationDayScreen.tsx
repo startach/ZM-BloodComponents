@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Appointment, DonationDay } from "../../utils/types";
+import { DonationDay } from "../../utils/types";
 import AppointmentSlotComponent from "../../components/AppointmentSlot";
 import styles from "./DonationDayScreen.module.scss";
 import _ from "lodash";
 import Toggle from "../../components/Toggle";
-import { DateUtils, Hospital } from "@zm-blood-components/common";
+import { Appointment, DateUtils, Hospital } from "@zm-blood-components/common";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
-import Spinner from "../../components/Spinner";
 
 export type DonationDayScreenProps = {
   dayStartTime: Date;
-  donationDay: DonationDay | undefined; // Could be loading
+  donationDay: DonationDay;
   hospital: Hospital;
   onDeleteAppointment: (appointmentId: string) => void;
   onAdd: () => void;
@@ -32,7 +31,6 @@ export default function DonationDayScreen({
 
   return (
     <CoordinatorScreen
-      hospitalForAddAppointment={hospital}
       headerProps={{
         title: "ניהול תורים",
         variant: HeaderVariant.INFO,
@@ -47,25 +45,29 @@ export default function DonationDayScreen({
           />
         ),
       }}
+      addAppointmentFabProps={{
+        hospital,
+        timestamp: dayStartTime.getTime(),
+      }}
     >
       <div className={styles.slots}>
-        {donationDay?.appointmentSlots.map((slot, index) => (
+        {donationDay.appointmentSlots.map((slot, index) => (
           <AppointmentSlotComponent
-            key={index + "." + slot.donationStartTimeMillis}
+            key={
+              index +
+              "." +
+              slot.donationStartTimeMillis +
+              "." +
+              slot.appointments.length
+            }
             appointmentSlot={slot}
             onDeleteAppointment={onDeleteAppointment}
             showOnlyAvailableAppointments={showOnlyAvailableAppointments}
           />
         ))}
 
-        {donationDay?.appointmentSlots.length === 0 && (
+        {donationDay.appointmentSlots.length === 0 && (
           <div className={styles.noAppointments}>טרם נקבעו תורים ליום זה</div>
-        )}
-
-        {donationDay === undefined && (
-          <div className={styles.spinner}>
-            <Spinner size={"3rem"} />
-          </div>
         )}
 
         {/*To avoid showing an appointment under the FAB*/}

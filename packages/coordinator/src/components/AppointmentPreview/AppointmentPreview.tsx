@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./AppointmentPreview.module.scss";
-import { Appointment } from "../../utils/types";
 import { ReactComponent as ChevronLeft } from "../../assets/icons/chevron-left.svg";
 import { ReactComponent as AddPerson } from "../../assets/icons/add-person.svg";
 import { ReactComponent as Trash } from "../../assets/icons/trash.svg";
@@ -10,6 +9,7 @@ import SwippableComponent from "../SwippableComponent";
 import Popup from "../../components/Popup";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
+import { Appointment } from "@zm-blood-components/common";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
@@ -40,7 +40,7 @@ export default function AppointmentPreview({
       <SwippableComponent
         className={classNames(
           styles.appointmentPreviewContainer,
-          appointment.appointmentId
+          appointment.id
         )}
         onSwipeRight={() => onSwipe(false)}
         onSwipeLeft={() => onSwipe(true)}
@@ -51,7 +51,7 @@ export default function AppointmentPreview({
         />
         <div
           className={styles.appointmentPreviewContent}
-          data-appointment-id={appointment.appointmentId}
+          data-appointment-id={appointment.id}
         >
           <AppointmentContent
             appointment={appointment}
@@ -86,12 +86,10 @@ function AppointmentContent(props: {
       return;
     }
     if (props.appointment.booked) {
-      navigate(
-        CoordinatorScreenKey.APPOINTMENT + "/" + props.appointment.appointmentId
-      );
+      navigate(CoordinatorScreenKey.APPOINTMENT + "/" + props.appointment.id);
     } else {
       navigate(
-        `${CoordinatorScreenKey.MANUAL_DONATION}/${props.appointment.appointmentId}/${props.appointment.donationStartTimeMillis}`
+        `${CoordinatorScreenKey.MANUAL_DONATION}/${props.appointment.id}/${props.appointment.donationStartTimeMillis}`
       );
     }
   };
@@ -100,7 +98,7 @@ function AppointmentContent(props: {
     return (
       <>
         <div className={styles.nameAndChip} onClick={onClick}>
-          <div className={styles.donorName}>{props.appointment.donorName}</div>
+          <div className={styles.donorName}>{props.appointment.fullName}</div>
           {props.appointment.recentChangeType && (
             <RecentUpdateChip
               recentChangeType={props.appointment.recentChangeType}

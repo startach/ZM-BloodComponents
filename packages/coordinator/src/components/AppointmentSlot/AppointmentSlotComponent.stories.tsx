@@ -3,11 +3,7 @@ import AppointmentSlotComponent, {
 } from "./AppointmentSlotComponent";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
-import {
-  SampleAvailableAppointment,
-  SampleBookedAppointment,
-} from "../../__test__/TestSamples";
-import { BookingChange } from "@zm-blood-components/common";
+import { BookingChange, TestSamples } from "@zm-blood-components/common";
 import styles from "./AppointmentSlotComponent.module.scss";
 
 export default {
@@ -20,26 +16,26 @@ const props: AppointmentPreviewProps = {
   appointmentSlot: {
     donationStartTimeMillis: 1702198800000, // December 10, 2023 11:00:00 GMT+02:00
     appointments: [
-      SampleAvailableAppointment,
-      SampleBookedAppointment,
+      TestSamples.SampleAvailableAppointment,
+      TestSamples.SampleBookedAppointment,
       {
-        ...SampleBookedAppointment,
-        appointmentId: "booked",
+        ...TestSamples.SampleBookedAppointment,
+        id: "booked",
         recentChangeType: BookingChange.BOOKED,
       },
       {
-        ...SampleBookedAppointment,
-        appointmentId: "completed",
+        ...TestSamples.SampleBookedAppointment,
+        id: "completed",
         recentChangeType: BookingChange.COMPLETED,
       },
       {
-        ...SampleBookedAppointment,
-        appointmentId: "no show",
+        ...TestSamples.SampleBookedAppointment,
+        id: "no show",
         recentChangeType: BookingChange.NOSHOW,
       },
       {
-        ...SampleAvailableAppointment,
-        appointmentId: "cancelled",
+        ...TestSamples.SampleAvailableAppointment,
+        id: "cancelled",
         recentChangeType: BookingChange.CANCELLED,
       },
     ],

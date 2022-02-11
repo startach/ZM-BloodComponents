@@ -57,7 +57,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           label="סיסמה"
           errorMessage={passwordError}
         />
-        <div className={styles.actionButton}>
+        <div>
           <Button
             title="הירשם"
             onClick={register}

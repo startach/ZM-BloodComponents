@@ -14,7 +14,7 @@ import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -107,18 +107,15 @@ test("User that is not admin throws exception", async () => {
   await expectAsyncThrows(action, `User ${COORDINATOR_ID} is not an admin`);
 });
 
-test("No such appointments", async () => {
+test("No such appointments throws exception", async () => {
   await createCoordinator(CoordinatorRole.SYSTEM_USER);
-  const response = await wrapped(bookAppointmentRequest(true), {
-    auth: {
-      uid: COORDINATOR_ID,
-    },
-  });
-  const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(
-    FunctionsApi.BookAppointmentStatus.NO_SUCH_APPOINTMENTS
-  );
-  expect(data.bookedAppointment).toBeUndefined();
+  const action = () =>
+    wrapped(bookAppointmentRequest(true), {
+      auth: {
+        uid: COORDINATOR_ID,
+      },
+    });
+  await expectAsyncThrows(action, "No such appointments");
 });
 
 test("No free appointments ", async () => {
@@ -157,18 +154,24 @@ test("Valid manual donor request books appointment with manual donor", async () 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_BOOK_2]);
-  expect(appointment[0].donorId).toEqual(MANUAL_DONOR_ID);
-  expect(appointment[0].assigningCoordinatorId).toEqual(COORDINATOR_ID);
-  expect(appointment[0].status).toEqual(AppointmentStatus.BOOKED);
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_BOOK_2);
+  expect(appointment.donorId).toEqual(MANUAL_DONOR_ID);
+  expect(appointment.assigningCoordinatorId).toEqual(COORDINATOR_ID);
+  expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
   expect(bookedAppointment.donorId).toEqual(MANUAL_DONOR_ID);
-  expect(bookedAppointment.donorDetails).toEqual(MANUAL_DONOR_DETAILS);
+  expect(bookedAppointment.firstName).toEqual(MANUAL_DONOR_DETAILS.firstName);
+  expect(bookedAppointment.lastName).toEqual(MANUAL_DONOR_DETAILS.lastName);
+  expect(bookedAppointment.fullName).toEqual(
+    MANUAL_DONOR_DETAILS.firstName + " " + MANUAL_DONOR_DETAILS.lastName
+  );
+  expect(bookedAppointment.phone).toEqual(MANUAL_DONOR_DETAILS.phoneNumber);
+  expect(bookedAppointment.bloodType).toEqual(MANUAL_DONOR_DETAILS.bloodType);
 
-  expect(appointment[0].lastChangeType).toEqual(BookingChange.BOOKED);
-  expect(Date.now() - appointment[0]?.lastChangeTime?.toMillis()!).toBeLessThan(
+  expect(appointment.lastChangeType).toEqual(BookingChange.BOOKED);
+  expect(Date.now() - appointment?.lastChangeTime?.toMillis()!).toBeLessThan(
     3_000
   );
 

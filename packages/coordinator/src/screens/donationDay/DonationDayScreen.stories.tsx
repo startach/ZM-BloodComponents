@@ -2,10 +2,10 @@ import DonationDayScreen, { DonationDayScreenProps } from "./DonationDayScreen";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
 import {
-  SampleAvailableAppointment,
-  SampleBookedAppointment,
-} from "../../__test__/TestSamples";
-import { BookingChange, Hospital } from "@zm-blood-components/common";
+  BookingChange,
+  Hospital,
+  TestSamples,
+} from "@zm-blood-components/common";
 
 export default {
   component: DonationDayScreen,
@@ -20,8 +20,8 @@ const props: DonationDayScreenProps = {
         donationStartTimeMillis: 1702198800000, // December 10, 2023 11:00:00 GMT+02:00
         appointments: [
           {
-            ...SampleBookedAppointment,
-            appointmentId: "no show",
+            ...TestSamples.SampleBookedAppointment,
+            id: "no show",
             recentChangeType: BookingChange.NOSHOW,
           },
         ],
@@ -29,15 +29,15 @@ const props: DonationDayScreenProps = {
       {
         donationStartTimeMillis: 1702206000000, // December 10, 2023 13:00:00 GMT+02:00
         appointments: [
-          SampleBookedAppointment,
+          TestSamples.SampleBookedAppointment,
           {
-            ...SampleBookedAppointment,
-            appointmentId: "completed",
+            ...TestSamples.SampleBookedAppointment,
+            id: "completed",
             recentChangeType: BookingChange.COMPLETED,
           },
           {
-            ...SampleAvailableAppointment,
-            appointmentId: "cancelled",
+            ...TestSamples.SampleAvailableAppointment,
+            id: "cancelled",
             recentChangeType: BookingChange.CANCELLED,
           },
         ],
@@ -45,10 +45,10 @@ const props: DonationDayScreenProps = {
       {
         donationStartTimeMillis: 1702211400000, // December 10, 2023 13:00:00 GMT+02:00
         appointments: [
-          SampleAvailableAppointment,
+          TestSamples.SampleAvailableAppointment,
           {
-            ...SampleBookedAppointment,
-            appointmentId: "booked",
+            ...TestSamples.SampleBookedAppointment,
+            id: "booked",
             recentChangeType: BookingChange.BOOKED,
           },
         ],
@@ -76,10 +76,4 @@ NoAppointments.args = {
   donationDay: {
     appointmentSlots: [],
   },
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  ...props,
-  donationDay: undefined,
 };

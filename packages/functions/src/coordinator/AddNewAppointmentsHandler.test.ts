@@ -4,7 +4,6 @@ import {
   FunctionsApi,
   Hospital,
 } from "@zm-blood-components/common";
-import * as admin from "firebase-admin";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import {
@@ -58,7 +57,7 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.HADASA_EIN_KEREM]);
 
   const action = () => callFunction(USER_ID);
 
@@ -69,35 +68,40 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request inserts new appointments", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [
-    Hospital.ASAF_HAROFE,
-    Hospital.TEL_HASHOMER,
-  ]);
+  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
 
-  await callFunction(USER_ID);
+  const response = await callFunction(USER_ID);
+  expect(response.newAppointments).toHaveLength(5);
+  response.newAppointments.forEach((appointment) => {
+    expect(appointment.hospital).toEqual(Hospital.ASAF_HAROFE);
+    expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+  });
 
   const newAppointmentIds = await getAppointmentIdsOfUser();
   expect(newAppointmentIds).toHaveLength(5);
 
   const addedAppointments = await getAppointmentsByIds(newAppointmentIds);
+
+  const startTimes: Date[] = [];
   addedAppointments.forEach((appointment) => {
     expect(appointment.creatorUserId).toEqual(USER_ID);
 
-    expect([Hospital.ASAF_HAROFE, Hospital.TEL_HASHOMER]).toContain(
-      appointment.hospital
-    );
-
-    const expectedStartTime =
-      appointment.hospital == Hospital.ASAF_HAROFE
-        ? DONATION_START_TIME_1
-        : DONATION_START_TIME_2;
-    expect(appointment.donationStartTime).toEqual(
-      admin.firestore.Timestamp.fromDate(expectedStartTime)
-    );
+    expect(appointment.hospital).toEqual(Hospital.ASAF_HAROFE);
     expect(appointment.lastChangeTime).toBeUndefined();
     expect(appointment.lastChangeType).toBeUndefined();
     expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+
+    startTimes.push(appointment.donationStartTime.toDate());
   });
+
+  startTimes.sort();
+  expect(startTimes).toEqual([
+    DONATION_START_TIME_1,
+    DONATION_START_TIME_1,
+    DONATION_START_TIME_1,
+    DONATION_START_TIME_2,
+    DONATION_START_TIME_2,
+  ]);
 });
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
@@ -119,19 +123,17 @@ async function getAppointmentIdsOfUser() {
   return appointments.map((a) => a.id || "");
 }
 
-function callFunction(userId?: string) {
+function callFunction(
+  userId?: string
+): Promise<FunctionsApi.AddAppointmentsResponse> {
   const request: FunctionsApi.AddAppointmentsRequest = {
-    slotsRequests: [
-      {
-        hospital: Hospital.ASAF_HAROFE,
-        donationStartTimeMillis: DONATION_START_TIME_1.getTime(),
-        slots: 3,
-      },
-      {
-        hospital: Hospital.TEL_HASHOMER,
-        donationStartTimeMillis: DONATION_START_TIME_2.getTime(),
-        slots: 2,
-      },
+    hospital: Hospital.ASAF_HAROFE,
+    donationStartTimes: [
+      DONATION_START_TIME_2.getTime(),
+      DONATION_START_TIME_1.getTime(),
+      DONATION_START_TIME_1.getTime(),
+      DONATION_START_TIME_2.getTime(),
+      DONATION_START_TIME_1.getTime(),
     ],
   };
 

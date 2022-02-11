@@ -1,47 +1,53 @@
-import { Hospital } from "@zm-blood-components/common";
-import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
 import AddAppointmentScreen from "./AddAppointmentScreen";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
+import { getTimestamp } from "../../navigation/RouterUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
+import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
+import { addNewAppointments } from "../../store/appointments/actions/AddNewAppointmentsAction";
 
-interface AddAppointmentsScreenContainerProps {
-  loggedIn: boolean;
-}
-
-export default function AddAppointmentScreenContainer(
-  props: AddAppointmentsScreenContainerProps
-) {
+export default function AddAppointmentScreenContainer() {
   const navigate = useNavigate();
-  const { hospital } = useParams<{ hospital: Hospital }>();
-  if (!props.loggedIn) {
+  const dispatch = useDispatch();
+  const { timestamp } = useParams<{ timestamp: string }>();
+  const loggedOut = useSelector(isLoggedOut);
+  const hospital = useSelector(getHospital);
+
+  if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
-
   if (!hospital) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
-  const onSave = async (donationStartTime: Date, slots: number) => {
-    await CoordinatorFunctions.addNewAppointment(
-      hospital,
-      donationStartTime,
-      slots
-    );
-    navigate(-1);
+  let time = getTimestamp(timestamp);
+  if (!time) {
+    // If no timestamp, take tomorrow
+    time = new Date();
+    time.setDate(time.getDate() + 1);
+  }
+  const initialDate = getInitialDate(time);
+
+  const onSave = async (donationStartTimes: number[]) => {
+    dispatch(addNewAppointments(donationStartTimes, () => navigate(-1)));
   };
 
   return (
-    <AddAppointmentScreen onSubmit={onSave} initialDate={getInitialDate()} />
+    <AddAppointmentScreen
+      onSubmit={onSave}
+      initialDate={initialDate}
+      hospital={hospital}
+    />
   );
 }
 
-function getInitialDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 1);
-  date.setHours(11);
-  date.setMinutes(0);
-  date.setSeconds(0);
-  date.setMilliseconds(0);
+function getInitialDate(date: Date) {
+  if (date.getDay() === 6) {
+    // If day is Saturday, move to Sunday.
+    date.setDate(date.getDate() + 1);
+  }
 
+  date.setHours(11, 0, 0, 0);
   return date;
 }

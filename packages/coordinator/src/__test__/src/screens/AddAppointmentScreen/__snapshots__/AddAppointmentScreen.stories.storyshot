@@ -1,5 +1,383 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="coordinatorScreen"
+  >
+    <div
+      className="appHeader"
+    >
+      <div
+        className="headerRow"
+      >
+        <button
+          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiIconButton-label-8"
+          >
+            <svg>
+              chevron-right.svg
+            </svg>
+          </span>
+        </button>
+        <div
+          className="title secondaryTitle"
+        >
+          הוספת תורים
+        </div>
+      </div>
+    </div>
+    <div
+      className="screenContent addAppointmentScreenContent"
+    >
+      <div
+        className="fieldsBox"
+      >
+        <div
+          className="MuiFormControl-root-25 MuiTextField-root-24 fullRowField"
+        >
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
+          >
+            תאריך
+          </label>
+          <div
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value="07/09/2028"
+            />
+            <div
+              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiIconButton-root-0"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiIconButton-label-8"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-88"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                    />
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-25 MuiTextField-root-24"
+        >
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
+          >
+            שעה
+          </label>
+          <div
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value="07:35"
+            />
+            <div
+              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiIconButton-root-0"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiIconButton-label-8"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-88 MuiSvgIcon-root-88"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
+          dir="rtl"
+          onKeyPress={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
+          >
+            מספר עמדות
+          </label>
+          <div
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="number"
+              value="1"
+            />
+          </div>
+          
+        </div>
+        <div>
+          <button
+            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-117"
+            >
+              <div
+                className="buttonText"
+              >
+                יום שלם
+              </div>
+            </span>
+          </button>
+        </div>
+        <div
+          className=""
+        >
+          <button
+            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button primaryButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-117"
+            >
+              <div
+                className="buttonText"
+              >
+                הוספה
+              </div>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="appointmentsList"
+      >
+        <div
+          className="subtitle"
+        >
+          <div
+            className="subtitleText"
+          >
+            רשימת תורים
+          </div>
+        </div>
+        <div
+          className="noAppointmentsText"
+        >
+          טרם נוצרו תורים חדשים
+        </div>
+      </div>
+      <div
+        className="actionFooter"
+      >
+        <div
+          className="actionButtons"
+        >
+          <div>
+            <button
+              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={0}
+              type="button"
+            >
+              <span
+                className="MuiButton-label-117"
+              >
+                <div
+                  className="buttonText"
+                >
+                  ביטול
+                </div>
+              </span>
+            </button>
+          </div>
+          <div>
+            <button
+              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button disabledButton MuiButton-disableElevation-127 MuiButton-disabled-129 MuiButton-fullWidth-139 MuiButtonBase-disabled-10"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiButton-label-117"
+              >
+                <div
+                  className="buttonText"
+                >
+                  אשר והמשך
+                </div>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
 <div
   dir="rtl"
@@ -47,7 +425,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         <div
           className="title secondaryTitle"
         >
-          הוספת תור
+          הוספת תורים
         </div>
       </div>
     </div>
@@ -55,227 +433,235 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
       className="screenContent addAppointmentScreenContent"
     >
       <div
-        className="addAppointmentScreenCardContainer"
+        className="fieldsBox"
       >
         <div
-          className="cardContainer"
+          className="MuiFormControl-root-25 MuiTextField-root-24 fullRowField"
         >
-          <div
-            className="addAppointmentSubtitle"
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
           >
-            <div
-              className="subtitleText"
-            >
-              זמני תור
-            </div>
-          </div>
+            תאריך
+          </label>
           <div
-            className="MuiFormControl-root-25 MuiTextField-root-24 inputField"
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            onClick={[Function]}
           >
-            <label
-              className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-              data-shrink={true}
-            >
-              תאריך
-            </label>
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value="07/09/2028"
+            />
             <div
-              className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
-              onClick={[Function]}
+              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
             >
-              <input
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
+              <button
+                className="MuiButtonBase-root-9 MuiIconButton-root-0"
                 disabled={false}
-                onAnimationStart={[Function]}
                 onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                type="text"
-                value="07/09/2028"
-              />
-              <div
-                className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-88"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </div>
-            
-          </div>
-          <div
-            className="MuiFormControl-root-25 MuiTextField-root-24 inputField"
-          >
-            <label
-              className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-              data-shrink={true}
-            >
-              שעה
-            </label>
-            <div
-              className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
-              onClick={[Function]}
-            >
-              <input
-                aria-invalid={false}
-                autoFocus={false}
-                className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
-                disabled={false}
-                onAnimationStart={[Function]}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                type="text"
-                value="07:35"
-              />
-              <div
-                className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-88 MuiSvgIcon-root-88"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <div
-          className="cardContainer"
-        >
-          <div
-            className="addAppointmentSubtitle"
-          >
-            <div
-              className="subtitleText"
-            >
-              מאפייני תור
-            </div>
-          </div>
-          <div
-            className="MuiFormControl-root-25 inputField"
-          >
-            <label
-              className="MuiFormLabel-root-41 MuiInputLabel-root-29 label MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-              data-shrink={true}
-              id="undefined_label"
-            >
-              מספר עמדות
-            </label>
-            <div
-              className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50"
-              onClick={[Function]}
-            >
-              <div
-                aria-haspopup="listbox"
-                aria-labelledby="undefined_label undefined_select"
-                className="MuiSelect-root-116 MuiSelect-select-117 MuiSelect-selectMenu-120 MuiInputBase-input-74 MuiInput-input-59"
-                id="undefined_select"
-                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
+                onKeyUp={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
                 tabIndex={0}
+                type="button"
               >
-                1
-              </div>
-              <input
-                aria-hidden={true}
-                className="MuiSelect-nativeInput-126"
-                onAnimationStart={[Function]}
-                onChange={[Function]}
-                required={false}
-                tabIndex={-1}
-                value="0"
-              />
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root-88 MuiSelect-icon-122"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 10l5 5 5-5z"
-                />
-              </svg>
+                <span
+                  className="MuiIconButton-label-8"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-88"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
+                    />
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </button>
             </div>
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-25 MuiTextField-root-24"
+        >
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
+          >
+            שעה
+          </label>
+          <div
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+              value="07:35"
+            />
+            <div
+              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            >
+              <button
+                className="MuiButtonBase-root-9 MuiIconButton-root-0"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                <span
+                  className="MuiIconButton-label-8"
+                >
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root-88 MuiSvgIcon-root-88"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          
+        </div>
+        <div
+          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
+          dir="rtl"
+          onKeyPress={[Function]}
+        >
+          <label
+            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
+            data-shrink={true}
+          >
+            מספר עמדות
+          </label>
+          <div
+            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input-74 MuiInput-input-59"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="number"
+              value="1"
+            />
+          </div>
+          
+        </div>
+        <div
+          className="fullRowField"
+        >
+          <button
+            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button primaryButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiButton-label-117"
+            >
+              <div
+                className="buttonText"
+              >
+                הוספה
+              </div>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        className="appointmentsList"
+      >
+        <div
+          className="subtitle"
+        >
+          <div
+            className="subtitleText"
+          >
+            רשימת תורים
           </div>
         </div>
         <div
-          className="cardContainer appointmentsScreenButtons"
+          className="noAppointmentsText"
         >
-          <div
-            className="inputField"
-          >
+          טרם נוצרו תורים חדשים
+        </div>
+      </div>
+      <div
+        className="actionFooter"
+      >
+        <div
+          className="actionButtons"
+        >
+          <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -293,44 +679,42 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-132"
-              >
-                <div
-                  className="buttonText"
-                >
-                  אשר והמשך
-                </div>
-              </span>
-            </button>
-          </div>
-          <div
-            className="inputField"
-          >
-            <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-outlined-136 button outlinedButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <span
-                className="MuiButton-label-132"
+                className="MuiButton-label-117"
               >
                 <div
                   className="buttonText"
                 >
                   ביטול
+                </div>
+              </span>
+            </button>
+          </div>
+          <div>
+            <button
+              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button disabledButton MuiButton-disableElevation-127 MuiButton-disabled-129 MuiButton-fullWidth-139 MuiButtonBase-disabled-10"
+              disabled={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="MuiButton-label-117"
+              >
+                <div
+                  className="buttonText"
+                >
+                  אשר והמשך
                 </div>
               </span>
             </button>

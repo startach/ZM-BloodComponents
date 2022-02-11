@@ -49,5 +49,7 @@ StickyContent.args = {
 export const Fab = Template.bind({});
 Fab.args = {
   ...props,
-  hospitalForAddAppointment: Hospital.TEL_HASHOMER,
+  addAppointmentFabProps: {
+    hospital: Hospital.TEL_HASHOMER,
+  },
 };

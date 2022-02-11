@@ -8,14 +8,19 @@ import { Hospital } from "@zm-blood-components/common";
 
 export type AddAppointmentFabProps = {
   hospital: Hospital;
+  timestamp?: number;
 };
 
 export default function AddAppointmentFab(props: AddAppointmentFabProps) {
   const navigate = useNavigate();
+
+  let navigateTo = CoordinatorScreenKey.ADD + "";
+  if (props.timestamp) {
+    navigateTo += "/" + props.timestamp;
+  }
+
   return (
-    <Fab
-      onClick={() => navigate(CoordinatorScreenKey.ADD + "/" + props.hospital)}
-    >
+    <Fab onClick={() => navigate(navigateTo)}>
       <AddIcon />
       <div className={styles.text}>הוסף תור</div>
     </Fab>

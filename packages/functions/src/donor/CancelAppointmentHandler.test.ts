@@ -4,7 +4,7 @@ import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
-  getAppointmentsByIds,
+  getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
@@ -70,7 +70,10 @@ test("No such appointments throws exception", async () => {
       }
     );
 
-  await expectAsyncThrows(action, "Appointment not found");
+  await expectAsyncThrows(
+    action,
+    `Appointment not found. Id ${APPOINTMENT_TO_CANCEL}`
+  );
 });
 
 test("Donor is not booked on this appointment throws exception", async () => {
@@ -100,10 +103,10 @@ test("Valid request cancells appointment", async () => {
     },
   });
 
-  const appointment = await getAppointmentsByIds([APPOINTMENT_TO_CANCEL]);
-  expect(appointment[0].donorId).toEqual("");
-  expect(appointment[0].status).toEqual(AppointmentStatus.AVAILABLE);
-  expect(appointment[0].creatorUserId).toEqual("creatorUserId");
+  const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_CANCEL);
+  expect(appointment.donorId).toEqual("");
+  expect(appointment.status).toEqual(AppointmentStatus.AVAILABLE);
+  expect(appointment.creatorUserId).toEqual("creatorUserId");
 
   expect(mockedNotifier).toBeCalledWith(
     expect.objectContaining({

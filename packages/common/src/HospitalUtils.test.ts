@@ -3,7 +3,8 @@ import { activeHospitals } from "./HospitalUtils";
 
 test("Active hospitals are sorted by local name", () => {
   const original = activeHospitals.map(getHospitalName);
-  const sorted = [...original].sort();
+  const sorted = [...original];
+  sorted.sort();
   expect(original).toEqual(sorted);
 });
 

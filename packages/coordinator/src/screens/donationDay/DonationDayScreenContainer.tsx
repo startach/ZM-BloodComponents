@@ -1,44 +1,32 @@
-import { useEffect, useState } from "react";
-import { DateUtils, Hospital } from "@zm-blood-components/common";
-import { AppointmentSlot, DonationDay } from "../../utils/types";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DonationDayScreen from "./DonationDayScreen";
-import { fetchDonationDay } from "./DonationDayFetcher";
-import * as CoordinatorFunctions from "../../firebase/CoordinatorFunctions";
-import { getTimestamp } from "../../navigation/RouterUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
+import {
+  getAppointmentsInDay,
+  getDayStartTime,
+} from "../../store/appointments/selectors/GetAppointmentsInDaySelector";
+import { deleteAppointment } from "../../store/appointments/actions/DeleteAppointmentAction";
+import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
 
-export interface DonationDayScreenContainerProps {
-  loggedIn: boolean;
-}
-
-export default function DonationDayScreenContainer(
-  props: DonationDayScreenContainerProps
-) {
+export default function DonationDayScreenContainer() {
   const navigate = useNavigate();
-  const [donationDay, setDonationDay] = useState<DonationDay | undefined>();
-  const { timestamp, hospital } =
-    useParams<{ timestamp: string; hospital: Hospital }>();
+  const dispatch = useDispatch();
+  const { timestamp } = useParams<{ timestamp: string }>();
+  const dayStartTime = getDayStartTime(timestamp);
+  const loggedOut = useSelector(isLoggedOut);
+  const donationDay = useSelector(getAppointmentsInDay)(dayStartTime);
+  const hospital = useSelector(getHospital);
 
-  useEffect(() => {
-    if (!props.loggedIn || !timestamp || !hospital) {
-      return;
-    }
-    const dayStartTime = getDayStartTime(timestamp);
-    if (!dayStartTime) {
-      return;
-    }
-
-    fetchDonationDay(hospital, dayStartTime).then(setDonationDay);
-  }, [props.loggedIn, timestamp, setDonationDay, hospital]);
-
-  if (!props.loggedIn) {
+  if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
-
-  const dayStartTime = getDayStartTime(timestamp);
-  if (!dayStartTime || !hospital) {
+  if (!donationDay || !dayStartTime) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
+  }
+  if (!hospital) {
+    return null;
   }
 
   return (
@@ -48,42 +36,8 @@ export default function DonationDayScreenContainer(
       hospital={hospital}
       onAdd={() => navigate(CoordinatorScreenKey.ADD)}
       onDeleteAppointment={(appointmentId) => {
-        setDonationDay((donationDay) =>
-          getRemoveAppointmentFromDonationDay(donationDay, appointmentId)
-        );
-        CoordinatorFunctions.deleteAppointment(appointmentId);
+        dispatch(deleteAppointment(appointmentId));
       }}
     />
   );
-}
-
-function getRemoveAppointmentFromDonationDay(
-  donationDay: DonationDay | undefined,
-  appointmentId: string
-): DonationDay | undefined {
-  if (!donationDay) {
-    return undefined;
-  }
-
-  const slots = donationDay.appointmentSlots
-    .map<AppointmentSlot>((slot) => ({
-      ...slot,
-      appointments: slot.appointments.filter(
-        (appointment) => appointment.appointmentId !== appointmentId
-      ),
-    }))
-    .filter((slot) => slot.appointments.length > 0);
-
-  return {
-    appointmentSlots: slots,
-  };
-}
-
-function getDayStartTime(timestamp: string | undefined) {
-  const time = getTimestamp(timestamp);
-  if (!time) {
-    return undefined;
-  }
-
-  return DateUtils.GetStartOfDay(time);
 }
