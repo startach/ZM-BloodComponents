@@ -1,6 +1,6 @@
 import { ThunkAction } from "../../store";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
-import { setAppointments } from "./SetAppointmentsAction";
+import { insertAppointmentsToState } from "./InsertAppointmentsActions";
 import { getAppointmentById } from "../selectors/GetAppointmentByIdSelector";
 import {
   MANUAL_DONOR_ID,
@@ -29,6 +29,6 @@ export const bookManualDonation =
       throw Error("Failed manually booking appointment " + appointmentId);
     }
 
-    dispatch(setAppointments([bookedAppointment]));
+    dispatch(insertAppointmentsToState([bookedAppointment]));
     onDone();
   };

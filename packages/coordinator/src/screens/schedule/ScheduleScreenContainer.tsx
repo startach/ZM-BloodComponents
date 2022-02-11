@@ -5,9 +5,12 @@ import { getTimestamp, schedulePath } from "../../navigation/RouterUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { getSchedule } from "../../store/appointments/selectors/GetScheduleSelector";
 import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
-import { setHospital } from "../../store/appointments/actions/SetHospitalAction";
 import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
 import { getAvailableHospitals } from "../../store/coordinator/CoordinatorSelectors";
+import {
+  clearAndFetchAppointments,
+  maybeFetchMoreAppointments,
+} from "../../store/appointments/actions/InsertAppointmentsActions";
 
 export default function ScheduleScreenContainer() {
   const navigate = useNavigate();
@@ -40,6 +43,7 @@ export default function ScheduleScreenContainer() {
     const newDate = new Date(timeInWeek);
     newDate.setDate(newDate.getDate() + (forward ? 7 : -7));
     navigate(schedulePath(newDate));
+    dispatch(maybeFetchMoreAppointments(newDate.getTime()));
   };
 
   return (
@@ -47,7 +51,9 @@ export default function ScheduleScreenContainer() {
       dayInWeek={timeInWeek}
       days={days}
       hospital={hospital}
-      setHospital={(hospital) => dispatch(setHospital(hospital))}
+      setHospital={(hospital) =>
+        dispatch(clearAndFetchAppointments(hospital, new Date()))
+      }
       onNextWeek={addWeek(true)}
       oPreviousWeek={addWeek(false)}
       availableHospitals={availableHospitals}

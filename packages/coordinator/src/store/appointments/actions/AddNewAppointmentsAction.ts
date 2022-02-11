@@ -1,6 +1,6 @@
 import { ThunkAction } from "../../store";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
-import { setAppointments } from "./SetAppointmentsAction";
+import { insertAppointmentsToState } from "./InsertAppointmentsActions";
 import { getHospital } from "../selectors/GetHospitalSelector";
 
 export const addNewAppointments =
@@ -16,6 +16,6 @@ export const addNewAppointments =
       donationStartTimes
     );
 
-    dispatch(setAppointments(addedAppointments));
+    dispatch(insertAppointmentsToState(addedAppointments));
     onDone();
   };

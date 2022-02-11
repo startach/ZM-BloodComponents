@@ -1,6 +1,6 @@
 import { ThunkAction } from "../../store";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
-import { setAppointments } from "./SetAppointmentsAction";
+import { insertAppointmentsToState } from "./InsertAppointmentsActions";
 import { getAppointmentById } from "../selectors/GetAppointmentByIdSelector";
 import {
   AppointmentStatus,
@@ -27,5 +27,5 @@ export const removeDonorFromAppointment =
       donationStartTimeMillis: appointment.donationStartTimeMillis,
       recentChangeType: BookingChange.CANCELLED,
     };
-    dispatch(setAppointments([availableAppointment]));
+    dispatch(insertAppointmentsToState([availableAppointment]));
   };
