@@ -42,9 +42,9 @@ export default function SignInScreen(props: SignInScreenProps) {
           alt={"logo"}
         />
         <div className={styles.logoTitle}>זכרון מנחם</div>
+        <div className={styles.subtitle}>מערכת רכז</div>
       </div>
       <div className={styles.screenContent}>
-        <div className={styles.subtitle}>מערכת רכז</div>
         <div className={styles.fields}>
           <div className={styles.loginScreenSecondaryHeader}>{"התחברות"}</div>
           <Input
