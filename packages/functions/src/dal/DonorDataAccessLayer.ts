@@ -80,13 +80,15 @@ export async function getDonorsByGroupIds(
   return snapshot.docs.map<DbDonor>((doc) => doc.data() as DbDonor);
 }
 
-export async function updateDonor(donorId: string, 
-  fieldsToUpdate: Partial<DbDonor>) {
-    const collection = admin.firestore().collection(Collections.DONORS);
-    const donorRef = collection.doc(donorId);
-    const donorDoc = await donorRef.get()
+export async function updateDonor(
+  donorId: string,
+  fieldsToUpdate: Partial<DbDonor>
+) {
+  const collection = admin.firestore().collection(Collections.DONORS);
+  const donorRef = collection.doc(donorId);
+  const donorDoc = await donorRef.get();
 
-    if (donorDoc.exists) {
-      donorRef.update(fieldsToUpdate);
-    }
+  if (donorDoc.exists) {
+    donorRef.update(fieldsToUpdate);
+  }
 }

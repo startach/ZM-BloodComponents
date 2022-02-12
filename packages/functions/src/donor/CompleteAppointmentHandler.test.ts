@@ -174,9 +174,10 @@ test.each([true, false])(
 
 test("Donor last Completed Appointment shouldt be updated when appointment is completed", async () => {
   const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  await createDonor(
-    { lastCompletedDonationTime: admin.firestore.Timestamp.fromDate(tomorrow) });
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  await createDonor({
+    lastCompletedDonationTime: admin.firestore.Timestamp.fromDate(tomorrow),
+  });
   await saveAppointment(DONOR_ID);
   await createCoordinator(HOSPITAL);
   const isNoShow = false;
@@ -187,15 +188,17 @@ test("Donor last Completed Appointment shouldt be updated when appointment is co
     },
   });
 
-  const donor = await getDonor(DONOR_ID)
-  expect(donor?.lastCompletedDonationTime).toEqual(admin.firestore.Timestamp.fromDate(tomorrow));
+  const donor = await getDonor(DONOR_ID);
+  expect(donor?.lastCompletedDonationTime).toEqual(
+    admin.firestore.Timestamp.fromDate(tomorrow)
+  );
 });
 
 test("Donor last Completed Appointment is updated", async () => {
   await createDonor();
   await saveAppointment(DONOR_ID);
   await createCoordinator(HOSPITAL);
-  const isNoShow = false; 
+  const isNoShow = false;
 
   await wrapped(completeAppointmentRequest(isNoShow, true), {
     auth: {
@@ -244,7 +247,7 @@ async function createDonor(customFields?: Partial<DbDonor>) {
     ...sampleUser,
     firstName: "firstName",
     email: "email@email.com",
-    ...customFields
+    ...customFields,
   };
 
   await setDonor(donor);

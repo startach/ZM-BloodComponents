@@ -1,8 +1,11 @@
 import * as admin from "firebase-admin";
-import * as functions from "firebase-functions";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
-import { AppointmentStatus, FunctionsApi } from "@zm-blood-components/common";
+import {
+  AppointmentStatus,
+  FunctionsApi,
+  AppointmentUtils,
+} from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
@@ -65,22 +68,27 @@ export async function completeAppointmentFunc(
 
   const completedAppointment =
     await DbAppointmentUtils.toBookedAppointmentAsync(updatedAppointment);
-  
+
   const currentAppointmentDonorId = appointment.donorId;
 
-  if (updatedAppointment.status == AppointmentStatus.COMPLETED && 
-    currentAppointmentDonorId != MANUAL_DONOR_ID) {
-
+  if (
+    updatedAppointment.status == AppointmentStatus.COMPLETED &&
+    !AppointmentUtils.isManualDonor(currentAppointmentDonorId)
+  ) {
     const donor = await DonorDAL.getDonor(currentAppointmentDonorId);
     const lastCompletedAppointment = donor?.lastCompletedDonationTime;
-    const appointmentCompletionTime = updatedAppointment.donationDoneTimeMillis || admin.firestore.Timestamp.now();
+    const appointmentCompletionTime =
+      updatedAppointment.donationDoneTimeMillis ||
+      admin.firestore.Timestamp.now();
 
-    const shouldUpdateCompletion = lastCompletedAppointment ? 
-    lastCompletedAppointment < appointmentCompletionTime : true;
+    const shouldUpdateCompletion = lastCompletedAppointment
+      ? lastCompletedAppointment < appointmentCompletionTime
+      : true;
 
-    if (shouldUpdateCompletion)
-    {
-      await DonorDAL.updateDonor(currentAppointmentDonorId, { lastCompletedDonationTime: appointmentCompletionTime});
+    if (shouldUpdateCompletion) {
+      await DonorDAL.updateDonor(currentAppointmentDonorId, {
+        lastCompletedDonationTime: appointmentCompletionTime,
+      });
     }
   }
 
