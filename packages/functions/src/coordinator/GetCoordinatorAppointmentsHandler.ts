@@ -21,10 +21,14 @@ export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
   callerId: string
 ) {
+  const dbCoordinator = await CoordinatorDAL.getCoordinator(callerId);
+  if (!dbCoordinator) {
+    throw new Error("User is not a valid coordinator");
+  }
   const coordinator = await fetchCoordinator(callerId);
   const hospital = getHospitalToFetchAppointmentsFor(request, coordinator);
   const hospitalsArray = CoordinatorDAL.getValidHospitalsOrThrow(
-    coordinator,
+    dbCoordinator,
     hospital
   );
 
@@ -68,7 +72,7 @@ export default async function (
     appointments = filterAppointmentsForDonors(
       appointments,
       donorsInAppointments,
-      coordinator.id
+      coordinator.coordinatorId
     );
   }
 
@@ -91,7 +95,7 @@ async function fetchCoordinator(callerId: string): Promise<Coordinator> {
   const coordinatorDonorUser = await getCoordinatorDonorUser;
 
   return {
-    id: callerId,
+    coordinatorId: callerId,
     role: coordinator.role,
     activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
     name: coordinatorDonorUser
@@ -104,7 +108,9 @@ async function filterDonorsInGroup(
   coordinator: Coordinator,
   donorsInAppointments: DbDonor[]
 ) {
-  const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(coordinator.id);
+  const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(
+    coordinator.coordinatorId
+  );
   return donorsInAppointments.filter((donor) => groupIds.has(donor.groupId));
 }
 

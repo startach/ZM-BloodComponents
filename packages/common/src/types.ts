@@ -41,7 +41,7 @@ export enum CoordinatorRole {
 }
 
 export type Coordinator = {
-  id: string;
+  coordinatorId: string;
   role: CoordinatorRole;
   activeHospitalsForCoordinator: Hospital[];
   name: string | undefined;

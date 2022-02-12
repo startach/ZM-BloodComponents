@@ -79,10 +79,7 @@ describe("Get Coordinator Appointments", function () {
   test("User that is not coordinator throws exception", async () => {
     const action = () => callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
 
-    await expectAsyncThrows(
-      action,
-      "User is not an coordinator and can't edit appointments"
-    );
+    await expectAsyncThrows(action, "User is not a valid coordinator");
   });
 
   test("User that does not have the right hospital throws exception", async () => {
@@ -181,7 +178,7 @@ describe("Get Coordinator Appointments", function () {
     await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
     const res = await callFunction(undefined, COORDINATOR_ID);
 
-    expect(res.coordinator.id).toEqual(COORDINATOR_ID);
+    expect(res.coordinator.coordinatorId).toEqual(COORDINATOR_ID);
     expect(res.hospitalFetched).toEqual(Hospital.BEILINSON);
 
     let appointments = res.appointments.filter((a) =>
@@ -197,7 +194,7 @@ describe("Get Coordinator Appointments", function () {
     CoordinatorRole.SYSTEM_USER,
     CoordinatorRole.ZM_COORDINATOR,
   ])(
-    "Valid request for all users, returns write users for each role - %s",
+    "Valid request for all hospitals, returns write users for each role - %s",
     async (coordinatorRole: CoordinatorRole) => {
       if (coordinatorRole === CoordinatorRole.HOSPITAL_COORDINATOR) {
         await createUser(coordinatorRole, [
