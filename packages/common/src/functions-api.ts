@@ -133,12 +133,15 @@ export interface DeleteAppointmentRequest {
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
+  // If hospital == undefined, use the first available hospital for coordinator
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | undefined;
   earliestStartTimeMillis: number;
   latestStartTimeMillis: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {
+  coordinator: Coordinator;
+  hospitalFetched: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   appointments: Appointment[];
 }
 

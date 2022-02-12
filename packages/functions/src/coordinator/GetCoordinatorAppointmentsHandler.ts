@@ -1,32 +1,35 @@
 import {
   Appointment,
   AppointmentUtils,
+  Coordinator,
   CoordinatorRole,
   FunctionsApi,
+  Hospital,
+  HospitalUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import {
-  getCoordinator,
-  getValidHospitalsOrThrow,
-} from "../dal/AdminDataAccessLayer";
 import * as GroupDAL from "../dal/GroupsDataAccessLayer";
-import { DbCoordinator, DbDonor } from "../function-types";
+import { DbDonor } from "../function-types";
 import _ from "lodash";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import * as functions from "firebase-functions";
+import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
+import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
   callerId: string
 ) {
-  const hospital = request.hospital;
   const coordinator = await fetchCoordinator(callerId);
-  const hospitalsArray = getValidHospitalsOrThrow(coordinator, hospital);
+  const hospital = getHospitalToFetchAppointmentsFor(request, coordinator);
+  const hospitalsArray = CoordinatorDAL.getValidHospitalsOrThrow(
+    coordinator,
+    hospital
+  );
 
   const startTimeFilter = new Date(request.earliestStartTimeMillis);
-  const endTimeFilter = request.latestStartTimeMillis
-    ? new Date(request.latestStartTimeMillis)
-    : undefined;
+  const endTimeFilter = new Date(request.latestStartTimeMillis);
   const appointmentsByHospital = await getAppointmentsByHospital(
     hospitalsArray,
     startTimeFilter,
@@ -70,22 +73,35 @@ export default async function (
   }
 
   const res: FunctionsApi.GetCoordinatorAppointmentsResponse = {
+    coordinator,
+    hospitalFetched: hospital,
     appointments,
   };
   return res;
 }
 
-async function fetchCoordinator(callerId: string) {
-  const coordinator = await getCoordinator(callerId);
+async function fetchCoordinator(callerId: string): Promise<Coordinator> {
+  const getCoordinatorDonorUser = DonorDataAccessLayer.getDonor(callerId);
+  const coordinator = await CoordinatorDAL.getCoordinator(callerId);
   if (!coordinator) {
     console.error("Could not find calling user", callerId);
-    throw Error("User is not an coordinator and can't edit appointments");
+    throw Error(`User is not a coordinator`);
   }
-  return coordinator;
+
+  const coordinatorDonorUser = await getCoordinatorDonorUser;
+
+  return {
+    id: callerId,
+    role: coordinator.role,
+    activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
+    name: coordinatorDonorUser
+      ? `${coordinatorDonorUser.firstName} ${coordinatorDonorUser.lastName}`
+      : undefined,
+  };
 }
 
 async function filterDonorsInGroup(
-  coordinator: DbCoordinator,
+  coordinator: Coordinator,
   donorsInAppointments: DbDonor[]
 ) {
   const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(coordinator.id);
@@ -114,4 +130,22 @@ function filterAppointmentsForDonors(
 
     return false;
   });
+}
+
+function getHospitalToFetchAppointmentsFor(
+  request: FunctionsApi.GetCoordinatorAppointmentsRequest,
+  coordinator: Coordinator
+): Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT {
+  if (request.hospital) {
+    return request.hospital;
+  }
+
+  if (coordinator.activeHospitalsForCoordinator.length > 0) {
+    functions.logger.debug(
+      `Providing appointments for first hospital: ${coordinator.activeHospitalsForCoordinator[0]}`
+    );
+    return coordinator.activeHospitalsForCoordinator[0];
+  }
+
+  throw Error("Could not determine hospital for coordinator");
 }

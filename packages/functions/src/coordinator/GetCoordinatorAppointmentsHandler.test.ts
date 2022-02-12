@@ -144,6 +144,54 @@ describe("Get Coordinator Appointments", function () {
     expect(appointments[3].id).toEqual(FUTURE_NOT_BOOKED);
   });
 
+  test("Valid request with no hospital returns appointments of the first hospital", async () => {
+    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+      Hospital.BEILINSON,
+      Hospital.TEL_HASHOMER,
+    ]);
+
+    await createDonor(DONOR_ID_1, "group1");
+    await createDonor(DONOR_ID_2, "group1");
+
+    await saveAppointment(
+      PAST_BOOKED,
+      getDate(-3),
+      Hospital.TEL_HASHOMER,
+      DONOR_ID_1
+    );
+    await saveAppointment(
+      PAST_OTHER_HOSPITAL,
+      getDate(-2),
+      Hospital.BEILINSON,
+      DONOR_ID_1
+    );
+    await saveAppointment(PAST_NOT_BOOKED, getDate(-1), Hospital.TEL_HASHOMER);
+    await saveAppointment(
+      FUTURE_BOOKED,
+      getDate(3),
+      Hospital.TEL_HASHOMER,
+      DONOR_ID_2
+    );
+    await saveAppointment(
+      FUTURE_OTHER_HOSPITAL,
+      getDate(4),
+      Hospital.BEILINSON,
+      DONOR_ID_2
+    );
+    await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
+    const res = await callFunction(undefined, COORDINATOR_ID);
+
+    expect(res.coordinator.id).toEqual(COORDINATOR_ID);
+    expect(res.hospitalFetched).toEqual(Hospital.BEILINSON);
+
+    let appointments = res.appointments.filter((a) =>
+      ALL_APPOINTMENT_IDS.includes(a.id)
+    );
+    expect(appointments).toHaveLength(2);
+    expect(appointments[0].id).toEqual(PAST_OTHER_HOSPITAL);
+    expect(appointments[1].id).toEqual(FUTURE_OTHER_HOSPITAL);
+  });
+
   test.each([
     CoordinatorRole.HOSPITAL_COORDINATOR,
     CoordinatorRole.SYSTEM_USER,
@@ -340,7 +388,7 @@ describe("Get Coordinator Appointments", function () {
   }
 
   function callFunction(
-    hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
+    hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | undefined,
     userId = COORDINATOR_ID,
     earliestTimeDays = -7,
     latestTimeDays = 14
