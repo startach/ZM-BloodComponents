@@ -6,39 +6,53 @@ export interface AppointmentsState {
   isFetching: boolean;
   hospital?: Hospital;
   appointments: { [appointmentId: string]: Appointment };
+  earliestTimeFetched: number;
+  latestTimeFetched: number;
 }
 
 const initialState: AppointmentsState = {
   isFetching: true,
   hospital: undefined,
   appointments: {},
+  earliestTimeFetched: -1,
+  latestTimeFetched: -1,
 };
 
 const reducer = (state = initialState, action: any = {}): AppointmentsState => {
   switch (action.type) {
-    case actionTypes.SET_HOSPITAL:
+    case actionTypes.START_FETCHING:
       return {
         hospital: action.hospital,
         appointments: {},
         isFetching: true,
+        earliestTimeFetched: action.earliestStartTimeMillis,
+        latestTimeFetched: action.latestStartTimeMillis,
       };
-    case actionTypes.SET_APPOINTMENTS:
+
+    case actionTypes.ADD_APPOINTMENTS_TO_STATE:
       const appointmentsObject = { ...state.appointments };
       action.appointments.forEach(
         (appointment: Appointment) =>
           (appointmentsObject[appointment.id] = appointment)
       );
       return {
-        hospital: state.hospital,
+        ...state,
         appointments: appointmentsObject,
         isFetching: false,
+      };
+
+    case actionTypes.SET_FETCHED_TIMES:
+      return {
+        ...state,
+        earliestTimeFetched: action.earliestTimeFetched,
+        latestTimeFetched: action.latestTimeFetched,
       };
 
     case actionTypes.DELETE_APPOINTMENT:
       const appointments = { ...state.appointments };
       delete appointments[action.appointmentId];
       return {
-        hospital: state.hospital,
+        ...state,
         appointments,
         isFetching: false,
       };

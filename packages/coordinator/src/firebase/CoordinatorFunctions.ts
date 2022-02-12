@@ -2,6 +2,7 @@ import {
   FunctionsApi,
   Hospital,
   HospitalUtils,
+  DateUtils,
 } from "@zm-blood-components/common";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
@@ -34,6 +35,14 @@ export async function getAppointments(
   earliestStartTimeMillis: number,
   latestStartTimeMillis: number
 ) {
+  // TODO (Yaron) - After state verification remove this log
+  console.log(
+    "Fetching appointments for",
+    hospital,
+    DateUtils.ToDateString(earliestStartTimeMillis),
+    "-",
+    DateUtils.ToDateString(latestStartTimeMillis)
+  );
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
   );
@@ -45,7 +54,8 @@ export async function getAppointments(
   };
 
   const response = await getAppointmentsFunction(request);
-  return response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
+  const data = response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
+  return data.appointments;
 }
 
 export async function getAllDonors() {
