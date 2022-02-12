@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoginStatus } from "../store/login/LoginStatusActions";
 import { schedulePath } from "./RouterUtils";
 import { isFetching } from "../store/appointments/selectors/GetIsFetchingSelector";
+import { handleCoordinatorUpdate } from "../store/appointments/actions/CoordinatorUpdateAction";
 
 // const ROLES_THAT_ADD_APPOINTMENTS = [
 //   CoordinatorRole.SYSTEM_USER,
@@ -55,9 +56,14 @@ export default function CoordinatorRouter() {
   }, []);
 
   useEffect(() => {
-    registerAuthChange((newLoginStatus) => {
-      dispatch(setLoginStatus(newLoginStatus));
-    });
+    registerAuthChange(
+      (newLoginStatus) => {
+        dispatch(setLoginStatus(newLoginStatus));
+      },
+      (update) => {
+        dispatch(handleCoordinatorUpdate(update));
+      }
+    );
   }, [dispatch]);
 
   if (fetching) {

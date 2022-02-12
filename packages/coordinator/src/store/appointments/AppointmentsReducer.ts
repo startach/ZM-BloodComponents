@@ -41,6 +41,12 @@ const reducer = (state = initialState, action: any = {}): AppointmentsState => {
         isFetching: false,
       };
 
+    case actionTypes.CLEAR_AND_SET_APPOINTMENTS:
+      return {
+        ...state,
+        appointments: action.appointments,
+      };
+
     case actionTypes.SET_FETCHED_TIMES:
       return {
         ...state,
