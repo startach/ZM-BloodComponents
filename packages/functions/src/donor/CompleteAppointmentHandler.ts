@@ -72,7 +72,7 @@ export async function completeAppointmentFunc(
   const currentAppointmentDonorId = appointment.donorId;
 
   if (
-    updatedAppointment.status == AppointmentStatus.COMPLETED &&
+    updatedAppointment.status === AppointmentStatus.COMPLETED &&
     !AppointmentUtils.isManualDonor(currentAppointmentDonorId)
   ) {
     const donor = await DonorDAL.getDonor(currentAppointmentDonorId);

@@ -89,6 +89,6 @@ export async function updateDonor(
   const donorDoc = await donorRef.get();
 
   if (donorDoc.exists) {
-    donorRef.update(fieldsToUpdate);
+    await donorRef.update(fieldsToUpdate);
   }
 }
