@@ -8,7 +8,6 @@ import {
 } from "@zm-blood-components/common";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
-import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
 import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
@@ -97,7 +96,6 @@ export async function completeAppointmentFunc(
     updatedAppointment.hospital,
     coordinatorId || donorId
   );
-
 
   return {
     completedAppointment,
