@@ -10,6 +10,8 @@ import Popup from "../../components/Popup";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
 import { Appointment } from "@zm-blood-components/common";
+import Button, { ButtonVariant } from "../Button";
+import { ButtonColor } from "../Button/Button";
 
 export type AppointmentPreviewProps = {
   appointment: Appointment;
@@ -151,15 +153,22 @@ function DeleteAppointmentPopup(props: {
   const { openPopup, closePopup, onDeleteClick } = props;
 
   return (
-    <Popup
-      open={openPopup}
-      onClose={closePopup}
-      primaryButtonText={"מחק תור"}
-      onPrimaryButtonClick={onDeleteClick}
-      cancelButtonText={"שמור תור"}
-      onCancelButtonClick={closePopup}
-    >
-      האם ברצונך למחוק תור זה?
+    <Popup open={openPopup} onClose={closePopup}>
+      <div className={styles.popupText}>האם ברצונך למחוק תור זה?</div>
+
+      <div className={styles.deleteAppointmentPopupButtons}>
+        <Button
+          title={"מחק תור"}
+          onClick={onDeleteClick}
+          color={ButtonColor.secondary}
+        />
+
+        <Button
+          title={"שמור תור"}
+          onClick={closePopup}
+          variant={ButtonVariant.outlined}
+        />
+      </div>
     </Popup>
   );
 }

@@ -5,9 +5,13 @@ import { getTimestamp, schedulePath } from "../../navigation/RouterUtils";
 import { useDispatch, useSelector } from "react-redux";
 import { getSchedule } from "../../store/appointments/selectors/GetScheduleSelector";
 import { getHospital } from "../../store/appointments/selectors/GetHospitalSelector";
-import { setHospital } from "../../store/appointments/actions/SetHospitalAction";
 import { isLoggedOut } from "../../store/login/LoginStatusSelectors";
 import { getAvailableHospitals } from "../../store/coordinator/CoordinatorSelectors";
+import {
+  clearAndFetchAppointments,
+  maybeFetchMoreAppointments,
+} from "../../store/appointments/actions/InsertAppointmentsActions";
+import { useEffect } from "react";
 
 export default function ScheduleScreenContainer() {
   const navigate = useNavigate();
@@ -19,6 +23,12 @@ export default function ScheduleScreenContainer() {
   const hospital = useSelector(getHospital);
   const availableHospitals = useSelector(getAvailableHospitals);
   const loggedOut = useSelector(isLoggedOut);
+
+  useEffect(() => {
+    if (timeInWeek) {
+      dispatch(maybeFetchMoreAppointments(timeInWeek.getTime()));
+    }
+  }, [timeInWeek, dispatch]);
 
   if (loggedOut) {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
@@ -47,7 +57,9 @@ export default function ScheduleScreenContainer() {
       dayInWeek={timeInWeek}
       days={days}
       hospital={hospital}
-      setHospital={(hospital) => dispatch(setHospital(hospital))}
+      setHospital={(hospital) =>
+        dispatch(clearAndFetchAppointments(hospital, new Date()))
+      }
       onNextWeek={addWeek(true)}
       oPreviousWeek={addWeek(false)}
       availableHospitals={availableHospitals}

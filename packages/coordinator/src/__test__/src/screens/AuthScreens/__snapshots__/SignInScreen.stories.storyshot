@@ -25,15 +25,15 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
       >
         זכרון מנחם
       </div>
-    </div>
-    <div
-      className="screenContent"
-    >
       <div
         className="subtitle"
       >
         מערכת רכז
       </div>
+    </div>
+    <div
+      className="screenContent"
+    >
       <div
         className="fields"
       >

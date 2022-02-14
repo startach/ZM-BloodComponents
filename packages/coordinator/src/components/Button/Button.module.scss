@@ -1,6 +1,6 @@
 .button {
   font-size: 16px;
-  height: 44px;
+  min-height: 44px;
   border-radius: 6px !important;
 }
 
@@ -33,4 +33,5 @@
 .buttonText {
   font-size: 18px;
   font-weight: normal;
+  line-height: 22px;
 }

@@ -9,6 +9,7 @@ import {
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
 import { MANUAL_DONOR_ID } from "@zm-blood-components/common/src";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -91,6 +92,12 @@ export async function completeAppointmentFunc(
       });
     }
   }
+
+  await setCoordinatorUpdate(
+    updatedAppointment.hospital,
+    coordinatorId || donorId
+  );
+
 
   return {
     completedAppointment,

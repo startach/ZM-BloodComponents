@@ -1,12 +1,3 @@
-// Hospital has available machines
-// Admin opens new slots in app
-// Donors sign up in slots - if they are allowed to
-// Not MVP - Send notification to donor
-// Donor completes donation
-
-// Admin can see users (all of them?)
-// Admin can make another user admin
-
 export enum BloodType {
   O_PLUS = "O_PLUS",
   O_MINUS = "O_MINUS",
@@ -50,6 +41,7 @@ export enum CoordinatorRole {
 }
 
 export type Coordinator = {
+  coordinatorId: string;
   role: CoordinatorRole;
   activeHospitalsForCoordinator: Hospital[];
   name: string | undefined;
@@ -69,8 +61,8 @@ export enum Collections {
   COORDINATORS = "coordinators",
   DONORS = "donors",
   APPOINTMENTS = "appointments",
-  EMAIL_NOTIFICATIONS = "emailNotifications",
   GROUPS = "groups",
+  UPDATES = "updates",
 }
 
 export enum LoginStatus {
@@ -127,3 +119,9 @@ export enum AppointmentStatus {
 }
 
 export const MANUAL_DONOR_ID = "manual";
+
+export type CoordinatorUpdate = {
+  hospital: Hospital;
+  userId: string;
+  time: any;
+};

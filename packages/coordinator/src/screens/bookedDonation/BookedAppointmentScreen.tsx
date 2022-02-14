@@ -18,9 +18,10 @@ import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 import Spinner from "../../components/Spinner";
 import Toast from "../../components/Toast";
-import { Popup } from "../../components/Popup/Popup";
+import Popup from "../../components/Popup";
 import classNames from "classnames";
-import Button from "../../components/Button";
+import Button, { ButtonVariant } from "../../components/Button";
+import { ButtonColor } from "../../components/Button/Button";
 
 export type BookedAppointmentScreenProps = {
   appointment?: BookedAppointment;
@@ -197,16 +198,28 @@ function NameBar(props: {
       <Popup
         open={removeDonorPopupOpen}
         onClose={() => setRemoveDonorPopupOpen(false)}
-        primaryButtonText={"הסר תורם"}
-        onPrimaryButtonClick={() => {
-          setDeletingAppointment(true);
-          props.onRemoveDonor();
-        }}
-        primaryButtonLoading={deletingAppointment}
-        cancelButtonText={"השאר תורם"}
-        onCancelButtonClick={() => setRemoveDonorPopupOpen(false)}
       >
-        האם ברצונך להסיר תורם זה מהתור הנוכחי?
+        <div className={styles.popupText}>
+          האם ברצונך להסיר תורם זה מהתור הנוכחי?
+        </div>
+
+        <div className={styles.PopupButtons}>
+          <Button
+            title={"הסר תורם"}
+            onClick={() => {
+              setDeletingAppointment(true);
+              props.onRemoveDonor();
+            }}
+            color={ButtonColor.secondary}
+            isLoading={deletingAppointment}
+          />
+
+          <Button
+            title={"השאר תורם"}
+            onClick={() => setRemoveDonorPopupOpen(false)}
+            variant={ButtonVariant.outlined}
+          />
+        </div>
       </Popup>
     </div>
   );

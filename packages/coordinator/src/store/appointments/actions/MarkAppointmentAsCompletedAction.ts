@@ -1,7 +1,7 @@
 import { AppointmentStatus } from "@zm-blood-components/common";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import { ThunkAction } from "../../store";
-import { setAppointments } from "./SetAppointmentsAction";
+import { insertAppointmentsToState } from "./InsertAppointmentsActions";
 import { getAppointmentById } from "../selectors/GetAppointmentByIdSelector";
 
 export const markAppointmentAsCompleted =
@@ -19,5 +19,5 @@ export const markAppointmentAsCompleted =
 
     CoordinatorFunctions.markAppointmentAsCompleted(appointmentId, isNoShow);
 
-    dispatch(setAppointments([appointment]));
+    dispatch(insertAppointmentsToState([appointment]));
   };

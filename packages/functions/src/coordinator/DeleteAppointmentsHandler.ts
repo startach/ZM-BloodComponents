@@ -9,6 +9,7 @@ import {
   sendEmailToDonor,
 } from "../notifications/NotificationSender";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -36,6 +37,8 @@ export default async function (
   } else {
     await AppointmentDataAccessLayer.deleteAppointmentsByIds([appointmentId]);
   }
+
+  await setCoordinatorUpdate(appointment.hospital, callerId);
 
   // Handle notification to the donor
   if (!appointmentHasRealDonor) {

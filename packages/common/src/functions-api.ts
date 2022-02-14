@@ -52,7 +52,6 @@ export enum BookAppointmentStatus {
   NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
   HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER", // Status not used
   DONOR_DETAILS_REQUIRED = "DONOR_DETAILS_REQUIRED",
-  NO_PERMISSIONS_FOR_DONOR = "NO_PERMISSIONS_FOR_DONOR",
 }
 
 export interface BookAppointmentResponse {
@@ -134,12 +133,15 @@ export interface DeleteAppointmentRequest {
 export const GetCoordinatorAppointmentsFunctionName =
   "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
+  // If hospital == undefined, use the first available hospital for coordinator
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | undefined;
   earliestStartTimeMillis: number;
   latestStartTimeMillis: number;
 }
 
 export interface GetCoordinatorAppointmentsResponse {
+  coordinator: Coordinator;
+  hospitalFetched: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
   appointments: Appointment[];
 }
 
@@ -158,12 +160,4 @@ export interface GetBookedDonationsInHospitalRequest {
 }
 export interface GetBookedDonationsInHospitalResponse {
   donationsWithDonorDetails: BookedAppointment[];
-}
-
-export const GetBookedAppointment = "getBookedAppointment";
-export interface GetBookedAppointmentRequest {
-  appointmentId: string;
-}
-export interface GetBookedAppointmentResponse {
-  bookedAppointment: BookedAppointment;
 }

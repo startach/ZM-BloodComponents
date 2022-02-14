@@ -2,7 +2,7 @@ import { ThunkAction } from "../../store";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import { signOut } from "../../../firebase/FirebaseAuthentication";
 import { setCoordinator } from "../CoordinatorActions";
-import { setHospital } from "../../appointments/actions/SetHospitalAction";
+import { clearAndFetchAppointments } from "../../appointments/actions/InsertAppointmentsActions";
 
 export const fetchCoordinatorAndAppointments =
   (): ThunkAction => async (dispatch) => {
@@ -13,5 +13,10 @@ export const fetchCoordinatorAndAppointments =
     }
 
     dispatch(setCoordinator(coordinator));
-    dispatch(setHospital(coordinator.activeHospitalsForCoordinator[0]));
+    dispatch(
+      clearAndFetchAppointments(
+        coordinator.activeHospitalsForCoordinator[0],
+        new Date()
+      )
+    );
   };

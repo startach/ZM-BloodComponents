@@ -3,7 +3,6 @@ import addNewAppointmentsHandler from "./coordinator/AddNewAppointmentsHandler";
 import getCoordinatorHandler from "./coordinator/GetCoordinatorHandler";
 import getCoordinatorAppointmentsHandler from "./coordinator/GetCoordinatorAppointmentsHandler";
 import deleteAppointmentsHandler from "./coordinator/DeleteAppointmentsHandler";
-import getBookedAppointmentHandler from "./coordinator/GetBookedApointmentHandler";
 import coordinatorBookAppointmentHandler from "./coordinator/CoordinatorBookAppointmentHandler";
 import donorBookAppointmentHandler from "./donor/DonorBookAppointmentHandler";
 import donorSwapAppointmentHandler from "./donor/DonorSwapAppointmentHandler";
@@ -35,7 +34,6 @@ export const addNewAppointments = handler(addNewAppointmentsHandler);
 export const getCoordinatorAppointments = handler(
   getCoordinatorAppointmentsHandler
 );
-export const getBookedAppointment = handler(getBookedAppointmentHandler);
 export const deleteAppointments = handler(deleteAppointmentsHandler);
 export const getDonors = handler(getDonorsHandler);
 export const coordinatorBookAppointment = handler(

@@ -15,6 +15,7 @@ import {
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { DbDonor, DbAppointment } from "../function-types";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
 
 export type ValidBookAppointmentResponse =
   | ValidBookAppointment
@@ -86,6 +87,11 @@ export async function bookAppointment(
   await setAppointment(appointmentToBook);
   const bookedAppointment = await DbAppointmentUtils.toBookedAppointmentAsync(
     appointmentToBook
+  );
+
+  await setCoordinatorUpdate(
+    appointmentToBook.hospital,
+    coordinatorId || donorId
   );
 
   return {

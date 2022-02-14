@@ -18,6 +18,7 @@ export default async function (
 
   return {
     coordinator: {
+      coordinatorId: coordinator.id,
       role: coordinator.role,
       activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
       name: coordinatorDonorUser

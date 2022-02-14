@@ -1,4 +1,4 @@
-.resetPasswordbackButton {
+.resetPasswordBackButton {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -7,7 +7,8 @@
   align-items: center;
   gap: 10px;
 
-  font-size: 14px;
+  font-size: 16px;
+  color: var(--coordinator-dark-gray);
 }
 
 .screen {
@@ -26,11 +27,10 @@ img.authScreenLogoImage {
 }
 
 .screenContent {
+  margin-top: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 30px;
 }
 
 .logoTitle {
@@ -43,13 +43,11 @@ img.authScreenLogoImage {
   color: var(--coordinator-primary);
   font-weight: 700;
   font-size: 25px;
-  margin-bottom: 20px;
 }
 
 .fields {
   max-width: 400px;
   width: 80%;
-
   display: grid;
   gap: 16px;
 }
@@ -63,39 +61,37 @@ img.authScreenLogoImage {
 
 .loginScreenSecondaryHeader {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
+  color: var(--coordinator-dark-gray);
 }
 
 .buttonsContainer {
   display: grid;
-  gap: 10px;
-}
-
-.forgotPasswordBtn {
-  color: gray;
-  margin: auto;
-}
-
-.subtitle {
-  color: var(--coordinator-primary);
-  font-weight: 500;
-  margin-bottom: 20px;
   margin-top: 20px;
 }
 
-.resetPassPopupContent .resetPassPopupImg {
-  width: 150px;
+.forgotPasswordBtn {
+  color: var(--coordinator-gray);
+  padding-top: 25px;
+  text-align: center;
 }
 
-.resetPassPopupContent .resetPassPopupTitle {
+.resetPassPopupImg {
+  width: 150px;
+  margin-bottom: 20px;
+  color: var(--coordinator-dark-gray);
+}
+
+.resetPassPopupTitle {
   font-weight: 500;
 }
 
-.resetPassPopupContent .resetPassPopupMessage {
+.resetPassPopupMessage {
   font-size: 16px;
+  line-height: 20px;
 }
 
-.resetPassPopupContent .resetPasswordScreenPopupButton {
-  width: 200px;
-  margin: auto;
+.resetPasswordScreenPopupButton {
+  width: 100%;
+  margin: 10px auto 0 auto;
 }
