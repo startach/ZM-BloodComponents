@@ -176,7 +176,7 @@ function DonorRouter() {
         path={MainNavigationKeys.OnboardingWizard}
         element={<OnboardingWizardScreenContainer />}
       />
-      <Route path={MainNavigationKeys.About} element={() => <AboutScreen />} />
+      <Route path={MainNavigationKeys.About} element={<AboutScreen />} />
       <Route
         path={MainNavigationKeys.Approve}
         element={
