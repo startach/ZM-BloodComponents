@@ -3,6 +3,7 @@ import styles from "./AppointmentSlotComponent.module.scss";
 import { AppointmentSlot } from "../../utils/types";
 import AppointmentPreview from "../AppointmentPreview";
 import { DateUtils } from "@zm-blood-components/common";
+import _ from "lodash";
 
 export type AppointmentPreviewProps = {
   appointmentSlot: AppointmentSlot;
@@ -20,6 +21,13 @@ export default function AppointmentSlotComponent({
     appointments = appointments.filter((x) => !x.booked);
   }
 
+  const sortedAppointments = _.sortBy(appointments, (appointment) => {
+    if (appointment.booked && appointment.recentChangeType) return 1;
+    if (appointment.booked && !appointment.recentChangeType) return 2;
+    if (appointment.recentChangeType) return 3;
+    return 4;
+  });
+
   return (
     <div>
       <div className={styles.listHeader}>
@@ -28,7 +36,7 @@ export default function AppointmentSlotComponent({
         </div>
       </div>
 
-      {appointments.map((appointment, index) => (
+      {sortedAppointments.map((appointment, index) => (
         <div key={appointment.id + "." + showOnlyAvailableAppointments}>
           <AppointmentPreview
             onDelete={() => onDeleteAppointment(appointment.id)}
