@@ -85,10 +85,5 @@ export async function updateDonor(
   fieldsToUpdate: Partial<DbDonor>
 ) {
   const collection = admin.firestore().collection(Collections.DONORS);
-  const donorRef = collection.doc(donorId);
-  const donorDoc = await donorRef.get();
-
-  if (donorDoc.exists) {
-    await donorRef.update(fieldsToUpdate);
-  }
+  await collection.doc(donorId).update(fieldsToUpdate);
 }
