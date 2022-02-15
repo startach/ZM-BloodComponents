@@ -181,55 +181,6 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
           </div>
           <div>
             <div
-              className="appointmentPreviewContainer bookedAppointment"
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-            >
-              <div
-                className="deleteButton"
-                onClick={[Function]}
-              >
-                <svg>
-                  trash.svg
-                </svg>
-                <div
-                  className="deleteButtonText"
-                >
-                  מחק תור
-                </div>
-              </div>
-              <div
-                className="appointmentPreviewContent"
-                data-appointment-id="bookedAppointment"
-              >
-                <div
-                  className="nameAndChip"
-                  onClick={[Function]}
-                >
-                  <div
-                    className="donorName"
-                  >
-                    משה כהן
-                  </div>
-                </div>
-                <svg
-                  onClick={[Function]}
-                >
-                  chevron-left.svg
-                </svg>
-              </div>
-            </div>
-            <div
-              className="dividerContainer"
-            >
-              <div
-                className="divider"
-              />
-            </div>
-          </div>
-          <div>
-            <div
               className="appointmentPreviewContainer completed"
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
@@ -269,6 +220,55 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
                     >
                       הושלם
                     </div>
+                  </div>
+                </div>
+                <svg
+                  onClick={[Function]}
+                >
+                  chevron-left.svg
+                </svg>
+              </div>
+            </div>
+            <div
+              className="dividerContainer"
+            >
+              <div
+                className="divider"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="appointmentPreviewContainer bookedAppointment"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+            >
+              <div
+                className="deleteButton"
+                onClick={[Function]}
+              >
+                <svg>
+                  trash.svg
+                </svg>
+                <div
+                  className="deleteButtonText"
+                >
+                  מחק תור
+                </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                data-appointment-id="bookedAppointment"
+              >
+                <div
+                  className="nameAndChip"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="donorName"
+                  >
+                    משה כהן
                   </div>
                 </div>
                 <svg
@@ -350,55 +350,6 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
           </div>
           <div>
             <div
-              className="appointmentPreviewContainer availableAppointment"
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-            >
-              <div
-                className="deleteButton"
-                onClick={[Function]}
-              >
-                <svg>
-                  trash.svg
-                </svg>
-                <div
-                  className="deleteButtonText"
-                >
-                  מחק תור
-                </div>
-              </div>
-              <div
-                className="appointmentPreviewContent"
-                data-appointment-id="availableAppointment"
-              >
-                <div
-                  className="nameAndChip"
-                  onClick={[Function]}
-                >
-                  <div
-                    className="availableAppointmentText"
-                  >
-                    תור ריק
-                  </div>
-                </div>
-                <svg
-                  onClick={[Function]}
-                >
-                  add-person.svg
-                </svg>
-              </div>
-            </div>
-            <div
-              className="dividerContainer"
-            >
-              <div
-                className="divider"
-              />
-            </div>
-          </div>
-          <div>
-            <div
               className="appointmentPreviewContainer booked"
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
@@ -444,6 +395,55 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
                   onClick={[Function]}
                 >
                   chevron-left.svg
+                </svg>
+              </div>
+            </div>
+            <div
+              className="dividerContainer"
+            >
+              <div
+                className="divider"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="appointmentPreviewContainer availableAppointment"
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+            >
+              <div
+                className="deleteButton"
+                onClick={[Function]}
+              >
+                <svg>
+                  trash.svg
+                </svg>
+                <div
+                  className="deleteButtonText"
+                >
+                  מחק תור
+                </div>
+              </div>
+              <div
+                className="appointmentPreviewContent"
+                data-appointment-id="availableAppointment"
+              >
+                <div
+                  className="nameAndChip"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="availableAppointmentText"
+                  >
+                    תור ריק
+                  </div>
+                </div>
+                <svg
+                  onClick={[Function]}
+                >
+                  add-person.svg
                 </svg>
               </div>
             </div>

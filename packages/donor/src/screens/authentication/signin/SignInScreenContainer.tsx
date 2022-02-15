@@ -16,11 +16,16 @@ export default function SignInScreenContainer(props: { loggedIn: boolean }) {
     navigate(MainNavigationKeys.ResetPassword);
   };
 
+  const onBack = () => {
+    navigate(MainNavigationKeys.BookDonation);
+  };
+
   return (
     <SignInScreen
       onSignInWithEmail={signInWithEmail}
       onRegister={onRegister}
       onResetPassword={onResetPassword}
+      onBack={onBack}
     />
   );
 }
