@@ -24,6 +24,7 @@ const props: SignInScreenProps = {
   onRegister: action("onRegister"),
   onResetPassword: action("onResetPassword"),
   onSignInWithEmail: onSignInWithEmail,
+  onBack: action("onBack"),
 };
 
 export const Default = (args: SignInScreenProps) => <SignInScreen {...args} />;

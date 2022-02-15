@@ -15,6 +15,7 @@ export interface SignInScreenProps {
     emailError: (error: string) => void,
     passwordError: (error: string) => void
   ) => Promise<boolean>;
+  onBack: () => void;
 }
 
 export default function SignInScreen(props: SignInScreenProps) {
@@ -39,7 +40,12 @@ export default function SignInScreen(props: SignInScreenProps) {
   };
 
   return (
-    <ZMScreen className={styles.screenSection} padding hasBackButton>
+    <ZMScreen
+      className={styles.screenSection}
+      padding
+      hasBackButton
+      onBack={props.onBack}
+    >
       <div className={styles.screenContent}>
         <img
           src={LoginIllustration}
