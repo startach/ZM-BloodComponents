@@ -17,6 +17,7 @@ import {
   Navigate,
   Route,
   Routes,
+  useLocation,
 } from "react-router-dom";
 import { MainNavigationKeys } from "./app/MainNavigationKeys";
 import ResetPasswordScreenContainer from "../screens/authentication/resetpassword/ResetPasswordScreenContainer";
@@ -33,6 +34,7 @@ import MyProfileScreenContainer from "../screens/myProfile/MyProfileScreenContai
 import DonationProcessScreenContainer from "../screens/about/DonationProcessScreenContainer";
 import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
 import UnsubscribedScreen from "../screens/unsubscribe/UnsubscribedScreen";
+import { reportScreen } from "../Analytics";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -61,6 +63,8 @@ function DonorRouter() {
     isFetching: false,
     pendingCompletionAppointments: [],
   });
+
+  const location = useLocation();
 
   useEffect(() => {
     initFirebase();
@@ -112,6 +116,10 @@ function DonorRouter() {
 
     fetchData();
   }, [loginStatus]);
+
+  useEffect(() => {
+    reportScreen(location.pathname);
+  }, [location]);
 
   if (
     loginStatus === LoginStatus.UNKNOWN ||

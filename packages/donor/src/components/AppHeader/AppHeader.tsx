@@ -1,6 +1,6 @@
 import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
@@ -23,6 +23,7 @@ import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.s
 import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
 import { signOut } from "../../screens/authentication/FirebaseAuthentication";
+import { reportClick } from "../../Analytics";
 
 export interface AppHeaderProps {
   title?: string;
@@ -39,6 +40,7 @@ export default function AppHeader({
   title,
   hasBurgerMenu,
 }: AppHeaderProps) {
+  const location = useLocation();
   const navigate = useNavigate();
   const [showSideBar, setShowSideBar] = useState(false);
   const loggedIn = isLoggedIn();
@@ -88,6 +90,10 @@ export default function AppHeader({
     );
   }
 
+  const reportButtonClick = (buttonName: string) => {
+    reportClick(location.pathname, buttonName);
+  };
+
   return (
     <div className={styles.appHeader}>
       {icon}
@@ -101,27 +107,42 @@ export default function AppHeader({
         <List>
           <MenuItem
             title={"הפרופיל שלי"}
-            onClick={() => navigate(MainNavigationKeys.MyProfile)}
+            onClick={() => {
+              reportButtonClick("ToMyProfile");
+              navigate(MainNavigationKeys.MyProfile);
+            }}
             icon={<ProfileIcon />}
           />
           <MenuItem
             title={"תהליך התרומה"}
-            onClick={() => navigate(MainNavigationKeys.Process)}
+            onClick={() => {
+              reportButtonClick("ToProcess");
+              navigate(MainNavigationKeys.Process);
+            }}
             icon={<ZMLineIcon />}
           />
           <MenuItem
             title={"משוב"}
-            onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
+            onClick={() => {
+              reportButtonClick("ToFeedbackForm");
+              window.open("https://forms.gle/xFoUfhx8sNUujJVy8");
+            }}
             icon={<FeedBackIcon />}
           />
           <MenuItem
             title={"אודות"}
-            onClick={() => navigate(MainNavigationKeys.About)}
+            onClick={() => {
+              reportButtonClick("ToAbout");
+              navigate(MainNavigationKeys.About);
+            }}
             icon={<FeatherInfo />}
           />
           <MenuItem
             title={"צור קשר"}
-            onClick={() => navigate(MainNavigationKeys.Contact)}
+            onClick={() => {
+              reportButtonClick("ToContact");
+              navigate(MainNavigationKeys.Contact);
+            }}
             icon={<SimpleWhatsapp />}
           />
         </List>
