@@ -5,14 +5,21 @@ export function reportScreen(path: string) {
   if (!firebaseAnalytics) {
     return;
   }
-  console.log("screen/" + path);
-  logEvent(firebaseAnalytics, "screen" + path, { debug_mode: true });
+  console.log("screen" + path);
+  logEvent(firebaseAnalytics, "screen_view", {
+    firebase_screen: path,
+    firebase_screen_class: "donor_screen",
+  });
 }
 
 export function reportClick(path: string, buttonName: string) {
   if (!firebaseAnalytics) {
     return;
   }
-  console.log(`click/${path}/${buttonName}`);
-  logEvent(firebaseAnalytics, `click/${path}/${buttonName}`);
+  console.log(`click${path}/${buttonName}`);
+  logEvent(firebaseAnalytics, `button_click`, {
+    firebase_screen: path,
+    firebase_screen_class: "donor_screen",
+    name: buttonName,
+  });
 }
