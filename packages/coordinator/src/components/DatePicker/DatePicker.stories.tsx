@@ -38,3 +38,11 @@ DisableSaturday.args = {
   label: "ללא שבת",
   disableSaturday: true,
 };
+
+export const DisableSaturdayError = Template.bind({});
+DisableSaturdayError.args = {
+  ...props,
+  label: "ללא שבת",
+  disableSaturday: true,
+  value: new Date(2022, 1, 5, 10, 30, 0),
+};

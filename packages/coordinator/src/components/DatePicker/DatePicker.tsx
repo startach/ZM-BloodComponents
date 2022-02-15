@@ -41,6 +41,7 @@ export default function DatePicker({
       shouldDisableDate={(x) =>
         x && disableSaturday ? x.getDay() === 6 : false
       }
+      error={disableSaturday && value?.getDay() === 6}
     />
   );
 }
