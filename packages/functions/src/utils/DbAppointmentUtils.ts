@@ -9,6 +9,7 @@ import {
 import * as admin from "firebase-admin";
 import { DbAppointment, DbDonor } from "../function-types";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
+import * as functions from "firebase-functions";
 
 export function removeDonorFromDbAppointment(
   appointment: DbAppointment
@@ -54,6 +55,8 @@ export function isAppointmentAvailable(appointment: DbAppointment) {
       return false;
   }
 
+  functions.logger.error(`Invalid appointment status for availability check in
+       ${JSON.stringify(appointment)}`);
   throw new Error("Invalid appointment status for availability check");
 }
 
