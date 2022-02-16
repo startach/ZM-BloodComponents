@@ -7,7 +7,7 @@ import {
   Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
+import { deleteDonor, setDonor, getDonor } from "../dal/DonorDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentByIdOrThrow,
@@ -172,6 +172,44 @@ test.each([true, false])(
   }
 );
 
+test("Donor last Completed Appointment shouldt be updated when appointment is completed", async () => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  await createDonor({
+    lastCompletedDonationTime: admin.firestore.Timestamp.fromDate(tomorrow),
+  });
+  await saveAppointment(DONOR_ID);
+  await createCoordinator(HOSPITAL);
+  const isNoShow = false;
+
+  await wrapped(completeAppointmentRequest(isNoShow, true), {
+    auth: {
+      uid: COORDINATOR_ID,
+    },
+  });
+
+  const donor = await getDonor(DONOR_ID);
+  expect(donor?.lastCompletedDonationTime).toEqual(
+    admin.firestore.Timestamp.fromDate(tomorrow)
+  );
+});
+
+test("Donor last Completed Appointment is updated", async () => {
+  await createDonor();
+  await saveAppointment(DONOR_ID);
+  await createCoordinator(HOSPITAL);
+  const isNoShow = false;
+
+  await wrapped(completeAppointmentRequest(isNoShow, true), {
+    auth: {
+      uid: COORDINATOR_ID,
+    },
+  });
+
+  const donor = await getDonor(DONOR_ID);
+  expect(donor?.lastCompletedDonationTime).toBeTruthy();
+});
+
 async function saveAppointment(
   donorId: string,
   status = AppointmentStatus.BOOKED
@@ -203,12 +241,13 @@ function completeAppointmentRequest(
   };
 }
 
-async function createDonor() {
+async function createDonor(customFields?: Partial<DbDonor>) {
   const donor: DbDonor = {
     id: DONOR_ID,
     ...sampleUser,
     firstName: "firstName",
     email: "email@email.com",
+    ...customFields,
   };
 
   await setDonor(donor);
