@@ -17,9 +17,22 @@ export default async function (
 ) {
   const appointmentId = request.appointmentId;
 
-  const appointment =
-    await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(appointmentId);
+  const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
+    appointmentId,
+  ]);
 
+  if (appointments.length === 0) {
+    if (request.onlyRemoveDonor) {
+      throw new Error(
+        "Cannot remove donor from missing appointment - " +
+          request.appointmentId
+      );
+    }
+    functions.logger.debug("No appointment to delete", request.appointmentId);
+    return;
+  }
+
+  const appointment = appointments[0];
   const appointmentHasRealDonor =
     DbAppointmentUtils.isAppointmentBooked(appointment) &&
     !DbAppointmentUtils.isManualDonorAppointment(appointment);
