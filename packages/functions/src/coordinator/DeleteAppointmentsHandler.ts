@@ -28,7 +28,7 @@ export default async function (
           request.appointmentId
       );
     }
-    functions.logger.debug("No appointment to delete", request.appointmentId);
+    functions.logger.warn("No appointment to delete", request.appointmentId);
     return;
   }
 
