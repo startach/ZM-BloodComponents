@@ -79,6 +79,7 @@ function HeaderContent(props: CoordinatorHeaderProps) {
   return (
     <div className={styles.title}>
       <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
+      {" 🛠"}
     </div>
   );
 }

@@ -32,6 +32,7 @@ exports[`Storyshots Components/App Header Default 1`] = `
             className="logoImage"
             src="blood-bank-zichron-Little-logo.svg"
           />
+           🛠
         </div>
       </div>
     </div>
@@ -97,6 +98,7 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
             className="logoImage"
             src="blood-bank-zichron-Little-logo.svg"
           />
+           🛠
         </div>
       </div>
     </div>
@@ -306,6 +308,7 @@ exports[`Storyshots Components/App Header With Back 1`] = `
             className="logoImage"
             src="blood-bank-zichron-Little-logo.svg"
           />
+           🛠
         </div>
       </div>
     </div>

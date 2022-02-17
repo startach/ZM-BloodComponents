@@ -56,6 +56,7 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
+         🛠
       </div>
       <div
         className="login"
@@ -264,6 +265,7 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
+         🛠
       </div>
       <div
         className="login"
@@ -691,6 +693,7 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
+         🛠
       </div>
       <div
         className="login"

@@ -77,6 +77,7 @@ export default function AppHeader({
     headerContent = (
       <div className={styles.title}>
         <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
+        {" 🛠"}
       </div>
     );
   }
