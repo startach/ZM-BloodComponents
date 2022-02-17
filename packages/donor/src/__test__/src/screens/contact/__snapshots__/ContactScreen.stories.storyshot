@@ -51,7 +51,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
       <div
         className="title"
       >
-        צור קשר
+        צור קשר 🛠️
       </div>
     </div>
     <div

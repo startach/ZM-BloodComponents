@@ -51,7 +51,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
       <div
         className="title"
       >
-        הפרופיל שלי
+        הפרופיל שלי 🛠️
       </div>
     </div>
     <div

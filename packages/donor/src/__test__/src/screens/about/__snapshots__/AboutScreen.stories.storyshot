@@ -51,7 +51,7 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
       <div
         className="title"
       >
-        אודות
+        אודות 🛠️
       </div>
     </div>
     <div

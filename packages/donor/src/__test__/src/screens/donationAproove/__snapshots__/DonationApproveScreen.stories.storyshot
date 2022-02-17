@@ -51,7 +51,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       <div
         className="title"
       >
-        אישור הגעה
+        אישור הגעה 🛠️
       </div>
       <div
         className="login"

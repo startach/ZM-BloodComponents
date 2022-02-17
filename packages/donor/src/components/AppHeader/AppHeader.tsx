@@ -24,6 +24,7 @@ import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
 import { signOut } from "../../screens/authentication/FirebaseAuthentication";
 import { reportClick } from "../../Analytics";
+import { isProduction } from "@zm-blood-components/common";
 
 export interface AppHeaderProps {
   title?: string;
@@ -68,6 +69,9 @@ export default function AppHeader({
 
   let headerContent;
   if (title) {
+    if (!isProduction()) {
+      title += " 🛠️";
+    }
     headerContent = <div className={styles.title}>{title}</div>;
   } else {
     headerContent = (

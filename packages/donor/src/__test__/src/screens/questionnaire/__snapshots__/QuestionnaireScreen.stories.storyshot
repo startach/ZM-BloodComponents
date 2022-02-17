@@ -51,7 +51,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
@@ -485,7 +485,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
@@ -925,7 +925,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
@@ -1402,7 +1402,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
@@ -1836,7 +1836,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
@@ -2270,7 +2270,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
       <div
         className="title"
       >
-        שאלון התאמה
+        שאלון התאמה 🛠️
       </div>
     </div>
     <div
