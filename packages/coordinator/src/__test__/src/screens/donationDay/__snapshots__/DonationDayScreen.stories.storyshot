@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Donation Day Default 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
       <div
@@ -543,7 +543,7 @@ exports[`Storyshots Screens/Donation Day No Appointments 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
       <div

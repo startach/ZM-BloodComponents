@@ -131,7 +131,7 @@ exports[`Storyshots Components/App Header Info Title 1`] = `
         <div
           className="title infoTitle"
         >
-          כותרת
+          כותרת 🛠️
         </div>
       </div>
     </div>
@@ -166,7 +166,7 @@ exports[`Storyshots Components/App Header Secondary Title 1`] = `
         <div
           className="title secondaryTitle"
         >
-          כותרת
+          כותרת 🛠️
         </div>
       </div>
     </div>
@@ -227,7 +227,7 @@ exports[`Storyshots Components/App Header Sticky Component 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
       <div
@@ -366,7 +366,7 @@ exports[`Storyshots Components/App Header With Notification 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
     </div>

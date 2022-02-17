@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
         <div
           className="title secondaryTitle"
         >
-          הוספת תורים
+          הוספת תורים 🛠️
         </div>
       </div>
     </div>
@@ -425,7 +425,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         <div
           className="title secondaryTitle"
         >
-          הוספת תורים
+          הוספת תורים 🛠️
         </div>
       </div>
     </div>

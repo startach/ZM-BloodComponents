@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
         <div
           className="title infoTitle"
         >
-          דוחות
+          דוחות 🛠️
         </div>
       </div>
     </div>
@@ -551,7 +551,7 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
         <div
           className="title infoTitle"
         >
-          דוחות
+          דוחות 🛠️
         </div>
       </div>
     </div>
@@ -975,7 +975,7 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
         <div
           className="title infoTitle"
         >
-          דוחות
+          דוחות 🛠️
         </div>
       </div>
     </div>

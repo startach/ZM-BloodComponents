@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Search Donors Screen Default 1`] = `
         <div
           className="title infoTitle"
         >
-          חיפוש תורמים
+          חיפוש תורמים 🛠️
         </div>
       </div>
     </div>
@@ -961,7 +961,7 @@ exports[`Storyshots Screens/Search Donors Screen Loading 1`] = `
         <div
           className="title infoTitle"
         >
-          חיפוש תורמים
+          חיפוש תורמים 🛠️
         </div>
       </div>
     </div>

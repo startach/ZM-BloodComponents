@@ -19,6 +19,7 @@ import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 import { signOut } from "../../firebase/FirebaseAuthentication";
 import classNames from "classnames";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";
+import { isProduction } from "@zm-blood-components/common";
 
 export enum HeaderVariant {
   SECONDARY,
@@ -63,13 +64,16 @@ export default function CoordinatorHeader(props: CoordinatorHeaderProps) {
 
 function HeaderContent(props: CoordinatorHeaderProps) {
   if (props.title) {
+    let title = props.title;
+    if (!isProduction()) {
+      title += " 🛠️";
+    }
+
     const className =
       props.variant === HeaderVariant.SECONDARY
         ? styles.secondaryTitle
         : styles.infoTitle;
-    return (
-      <div className={classNames(styles.title, className)}>{props.title}</div>
-    );
+    return <div className={classNames(styles.title, className)}>{title}</div>;
   }
 
   return (

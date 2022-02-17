@@ -1,6 +1,11 @@
 const isProductionEnvironment = process.env.REACT_APP_PRODUCTION_FIREBASE;
+
+export function isProduction() {
+  return isProductionEnvironment;
+}
+
 export function getFirebaseConfig() {
-  if (isProductionEnvironment) {
+  if (isProduction()) {
     console.log("Using production firebase");
     return firebaseConfigProd;
   } else {

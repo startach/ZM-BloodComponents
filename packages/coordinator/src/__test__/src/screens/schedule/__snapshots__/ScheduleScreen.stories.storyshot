@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Schedule Screen Default 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
       <div
@@ -1160,7 +1160,7 @@ exports[`Storyshots Screens/Schedule Screen Loading 1`] = `
         <div
           className="title infoTitle"
         >
-          ניהול תורים
+          ניהול תורים 🛠️
         </div>
       </div>
       <div

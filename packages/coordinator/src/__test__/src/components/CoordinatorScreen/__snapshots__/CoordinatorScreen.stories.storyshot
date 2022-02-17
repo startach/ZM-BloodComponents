@@ -47,7 +47,7 @@ exports[`Storyshots Components/Coordinator Screen Default 1`] = `
         <div
           className="title infoTitle"
         >
-          כותרת
+          כותרת 🛠️
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
         <div
           className="title infoTitle"
         >
-          כותרת
+          כותרת 🛠️
         </div>
       </div>
     </div>
@@ -213,7 +213,7 @@ exports[`Storyshots Components/Coordinator Screen Sticky Content 1`] = `
         <div
           className="title infoTitle"
         >
-          כותרת
+          כותרת 🛠️
         </div>
       </div>
       <div

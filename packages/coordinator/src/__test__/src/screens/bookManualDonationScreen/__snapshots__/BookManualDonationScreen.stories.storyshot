@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         <div
           className="title secondaryTitle"
         >
-          הוספה ידנית של תורם
+          הוספה ידנית של תורם 🛠️
         </div>
       </div>
       <div

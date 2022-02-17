@@ -47,7 +47,7 @@ exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
         <div
           className="title infoTitle"
         >
-          שישי 11/09, 19:06
+          שישי 11/09, 19:06 🛠️
         </div>
       </div>
       <div
@@ -230,7 +230,7 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
         <div
           className="title infoTitle"
         >
-          שבת 01/01, 03:01
+          שבת 01/01, 03:01 🛠️
         </div>
       </div>
       <div
@@ -419,7 +419,7 @@ exports[`Storyshots Screens/Booked Appointment Loading 1`] = `
         <div
           className="title infoTitle"
         >
-           
+            🛠️
         </div>
       </div>
     </div>
