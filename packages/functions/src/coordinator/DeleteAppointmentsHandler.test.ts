@@ -90,15 +90,21 @@ test("User that does not have the right hospital throws exception", async () => 
   );
 });
 
-test("No such appointment throws exception", async () => {
+test("No such appointment throws exception when only removing donor", async () => {
   await createUser(CoordinatorRole.SYSTEM_USER);
 
-  const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
+  const action = () => callFunction(APPOINTMENT_ID, true, COORDINATOR_ID);
 
   await expectAsyncThrows(
     action,
-    `Appointment not found. Id ${APPOINTMENT_ID}`
+    `Cannot remove donor from missing appointment - ${APPOINTMENT_ID}`
   );
+});
+
+test("No such appointment fails silently", async () => {
+  await createUser(CoordinatorRole.SYSTEM_USER);
+
+  await callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 });
 
 test.each([true, false])(
