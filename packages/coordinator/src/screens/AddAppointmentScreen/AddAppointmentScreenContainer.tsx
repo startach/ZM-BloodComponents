@@ -11,6 +11,7 @@ export default function AddAppointmentScreenContainer() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { timestamp } = useParams<{ timestamp: string }>();
+  console.log(timestamp);
   const loggedOut = useSelector(isLoggedOut);
   const hospital = useSelector(getHospital);
 
@@ -48,6 +49,6 @@ function getInitialDate(date: Date) {
     date.setDate(date.getDate() + 1);
   }
 
-  date.setHours(11, 0, 0, 0);
+  // date.setHours(11, 0, 0, 0);
   return date;
 }

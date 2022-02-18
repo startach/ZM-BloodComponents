@@ -47,7 +47,6 @@ export default function DonationDayScreen({
       }}
       addAppointmentFabProps={{
         hospital,
-        timestamp: dayStartTime.getTime(),
       }}
     >
       <div className={styles.slots}>
