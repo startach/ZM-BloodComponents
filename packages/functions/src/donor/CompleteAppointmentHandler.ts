@@ -1,4 +1,3 @@
-import * as admin from "firebase-admin";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import * as AppointmentDataAccessLayer from "../dal/AppointmentDataAccessLayer";
 import {
@@ -77,9 +76,7 @@ export async function completeAppointmentFunc(
   ) {
     const donor = await DonorDAL.getDonor(currentAppointmentDonorId);
     const lastCompletedAppointment = donor?.lastCompletedDonationTime;
-    const appointmentCompletionTime =
-      updatedAppointment.donationDoneTimeMillis ||
-      admin.firestore.Timestamp.now();
+    const appointmentCompletionTime = updatedAppointment.donationStartTime;
 
     const shouldUpdateCompletion = lastCompletedAppointment
       ? lastCompletedAppointment < appointmentCompletionTime
