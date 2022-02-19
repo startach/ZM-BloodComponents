@@ -44,7 +44,7 @@ export const ValidateLastName = (
 
   if (lastName.length < 2) return PersonalDetailsValidation.NAME_TOO_SHORT;
 
-  if (lastName.length + firstName!.length > 20)
+  if (lastName.length + firstName.length > 20)
     return PersonalDetailsValidation.FULL_NAME_TOO_LONG;
 
   return PersonalDetailsValidation.VALID_FIELD;
