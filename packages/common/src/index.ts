@@ -10,3 +10,4 @@ export * as TestUtils from "./test/TestUtils";
 export * as TestSamples from "./test/TestSamples";
 export * as LinkUtils from "./LinkUtils";
 export * as DeviceUtils from "./DeviceUtils";
+export * as Validation from "./Validation";

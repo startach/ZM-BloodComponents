@@ -1,4 +1,5 @@
 import { AppointmentStatus, BloodType, Hospital } from "./types";
+import { PersonalDetailsValidation } from "./Validation";
 
 export function getHospitalName(hospital: Hospital) {
   switch (hospital) {
@@ -70,5 +71,25 @@ export const getStatusTranslation = (
     default:
       console.error("No status translation for ", status);
       return status;
+  }
+};
+
+export const getValidationErrorTranslation = (
+  errorType: PersonalDetailsValidation | undefined
+) => {
+  switch (errorType) {
+    case PersonalDetailsValidation.NAME_TOO_SHORT:
+      return "שם אינו תקין";
+    case PersonalDetailsValidation.FULL_NAME_TOO_LONG:
+      return "השם המלא ארוך מ-20 תווים";
+    case PersonalDetailsValidation.PHONE_INVALID:
+      return "מספר הטלפון אינו תקין";
+    case PersonalDetailsValidation.PHONE_HAS_NANS:
+      return "יש להזין ספרות בלבד";
+    case PersonalDetailsValidation.REQUIRED_FIELD:
+      return "שדה חובה";
+    case PersonalDetailsValidation.VALID_FIELD:
+    default:
+      return "";
   }
 };

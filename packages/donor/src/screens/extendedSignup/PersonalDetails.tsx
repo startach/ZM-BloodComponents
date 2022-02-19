@@ -1,5 +1,10 @@
 import { isEmpty } from "lodash";
-import { BloodType, BloodTypeUtils } from "@zm-blood-components/common";
+import {
+  BloodType,
+  BloodTypeUtils,
+  LocaleUtils,
+  Validation,
+} from "@zm-blood-components/common";
 import Button from "../../components/basic/Button";
 import Input from "../../components/basic/Input";
 import styles from "./PersonalDetails.module.scss";
@@ -29,8 +34,13 @@ export interface PersonalDetailsProps {
 
 export default function PersonalDetails(props: PersonalDetailsProps) {
   const [firstName, setFirstName] = useState(props.firstName || "");
+  const [firstNameError, setFirstNameError] =
+    useState<Validation.FirstNameValidation>();
   const [lastName, setLastName] = useState(props.lastName || "");
+  const [lastNameError, setLastNameError] =
+    useState<Validation.LastNameValidation>();
   const [phone, setPhone] = useState(props.phone || "");
+  const [phoneError, setPhoneError] = useState<Validation.PhoneValidation>();
   const [bloodType, setBloodType] = useState<BloodType | "">(
     props.bloodType || ""
   );
@@ -40,53 +50,23 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
   const [bloodTypePopupOpen, setBloodTypePopupOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [lastNameError, setLastNameError] = useState<string | undefined>(
-    undefined
+  const setAndValidateFirstName = (nextFirstName: string): void => {
+    setFirstName(nextFirstName);
+    setFirstNameError(Validation.ValidateFirstName(nextFirstName));
+    // Validate long full name
+    if (
+      Validation.ValidateLastName(lastName, nextFirstName) ===
+        Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
+      lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
+    )
+      setLastNameError(Validation.ValidateLastName(lastName, nextFirstName));
+  };
+
+  const areAllFieldsValid = [firstNameError, lastNameError, phoneError].every(
+    (e) => e === Validation.PersonalDetailsValidation.VALID_FIELD
   );
-  const [firstNameError, setFirstNameError] = useState("");
-
-  const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
-  const phoneValidator = /^05(?!6)\d{8}$/;
-  const isValidPhone = phoneValidator.test(phone);
-
-  let erorrMessage = undefined;
-
-  if (!isPhoneNumberAllNumbers) {
-    erorrMessage = "יש להזין ספרות בלבד";
-  } else if (phone.length > 0 && !isValidPhone) {
-    erorrMessage = "מספר הטלפון אינו תקין";
-  }
-
-  const areAllFieldsValid =
-    !firstNameError && !lastNameError && isValidPhone && bloodType;
   const allFieldsHaveValue =
-    !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(phone);
-
-  const setFirstNameAndValidate = (newFirstName: string) => {
-    let firstNameErrorMessage = "";
-
-    if (newFirstName.length < 2) {
-      firstNameErrorMessage = "שם אינו תקין";
-    }
-
-    setFirstNameError(firstNameErrorMessage);
-    setFirstName(newFirstName);
-  };
-
-  const setLastNameAndValidate = (newLastName: string) => {
-    let lastNameError = "";
-
-    if (firstName.length + newLastName.length > 20) {
-      lastNameError = "השם המלא ארוך מ-20 תווים";
-    }
-
-    if (newLastName.length < 2) {
-      lastNameError = "שם אינו תקין";
-    }
-
-    setLastNameError(lastNameError);
-    setLastName(newLastName);
-  };
+    !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(phone) && bloodType;
 
   const onSave = () => {
     if (!areAllFieldsValid || !bloodType) {
@@ -108,21 +88,29 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       <div className={styles.subtitle}>פרטים אישיים</div>
       <Input
         value={firstName}
-        onChangeText={setFirstNameAndValidate}
+        onChangeText={setAndValidateFirstName}
         label="שם פרטי"
-        errorMessage={firstNameError}
+        errorMessage={LocaleUtils.getValidationErrorTranslation(firstNameError)}
       />
       <Input
         value={lastName}
-        onChangeText={setLastNameAndValidate}
+        onChangeText={(nextLastName) => {
+          setLastName(nextLastName);
+          setLastNameError(
+            Validation.ValidateLastName(nextLastName, firstName)
+          );
+        }}
         label="שם משפחה"
-        errorMessage={lastNameError}
+        errorMessage={LocaleUtils.getValidationErrorTranslation(lastNameError)}
       />
       <Input
         value={phone}
-        onChangeText={setPhone}
+        onChangeText={(nextPhone) => {
+          setPhone(nextPhone);
+          setPhoneError(Validation.ValidatePhone(nextPhone));
+        }}
         label="מספר טלפון"
-        errorMessage={erorrMessage}
+        errorMessage={LocaleUtils.getValidationErrorTranslation(phoneError)}
       />
       <div className={classnames(styles.subtitle, styles.crucialInformation)}>
         מידע חיוני לתרומה

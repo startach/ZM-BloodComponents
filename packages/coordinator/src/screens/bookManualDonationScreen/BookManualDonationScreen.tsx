@@ -5,12 +5,15 @@ import {
   BloodType,
   BloodTypeUtils,
   DateUtils,
+  LocaleUtils,
+  Validation,
 } from "@zm-blood-components/common";
 import Picker from "../../components/Picker";
 import Button, { ButtonVariant } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { HeaderVariant } from "../../components/CoordinatorHeader/CoordinatorHeader";
 import CoordinatorScreen from "../../components/CoordinatorScreen";
+import { isEmpty } from "lodash";
 
 export interface BookManualDonationScreenProps {
   donationStartTime: Date;
@@ -26,52 +29,43 @@ export default function BookManualDonationScreen(
   props: BookManualDonationScreenProps
 ) {
   const [firstName, setFirstName] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
+  const [firstNameError, setFirstNameError] =
+    useState<Validation.FirstNameValidation>();
   const [lastName, setLastName] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
+  const [lastNameError, setLastNameError] =
+    useState<Validation.LastNameValidation>();
   const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("");
+  const [phoneError, setPhoneError] = useState<Validation.PhoneValidation>();
   const [bloodType, setBloodType] = useState(BloodType.NOT_SURE);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  const setAndValidateFirstName = (nextFirstName: string): void => {
+    setFirstName(nextFirstName);
+    setFirstNameError(Validation.ValidateFirstName(nextFirstName));
+    // Validate long full name
+    if (
+      Validation.ValidateLastName(lastName, nextFirstName) ===
+        Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
+      lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
+    )
+      setLastNameError(Validation.ValidateLastName(lastName, nextFirstName));
+  };
+
+  const doAllFieldsHaveValue =
+    !isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(phone);
+
+  const areAllFieldsValid = [firstNameError, lastNameError, phoneError].every(
+    (e) => e === Validation.PersonalDetailsValidation.VALID_FIELD
+  );
+
   const onSave = () => {
-    let valid = true;
-    if (!firstName) {
-      setFirstNameError("שדה חובה");
-      valid = false;
-    } else if (firstName.length < 2) {
-      setFirstNameError("הקלט אינו תקין");
-      valid = false;
+    if (!doAllFieldsHaveValue || !areAllFieldsValid) {
+      return;
     }
-    if (!lastName) {
-      setLastNameError("שדה חובה");
-      valid = false;
-    } else if (lastName.length < 2) {
-      setLastNameError("הקלט אינו תקין");
-      valid = false;
-    }
-    if (!phone) {
-      setPhoneError("שדה חובה");
-      valid = false;
-    }
-
-    const isPhoneNumberAllNumbers = /^[0-9]*$/.test(phone);
-    const phoneValidator = /^05(?!6)\d{8}$/;
-    const isValidPhone = phoneValidator.test(phone);
-    if (!isPhoneNumberAllNumbers) {
-      setPhoneError("יש להזין ספרות בלבד");
-      valid = false;
-    } else if (phone.length > 0 && !isValidPhone) {
-      setPhoneError("מספר הטלפון אינו תקין");
-      valid = false;
-    }
-
-    if (valid) {
-      setLoading(true);
-      props.onSave(firstName, lastName, phone, bloodType);
-    }
+    setLoading(true);
+    props.onSave(firstName, lastName, phone, bloodType);
   };
 
   const fullTime = props.donationStartTime.toLocaleDateString(
@@ -96,29 +90,32 @@ export default function BookManualDonationScreen(
         <Input
           label="שם פרטי"
           value={firstName}
-          onChangeText={(newValue) => {
-            setFirstName(newValue);
-            setFirstNameError("");
-          }}
-          errorMessage={firstNameError}
+          onChangeText={setAndValidateFirstName}
+          errorMessage={LocaleUtils.getValidationErrorTranslation(
+            firstNameError
+          )}
         />
         <Input
           label="שם משפחה"
           value={lastName}
-          onChangeText={(newValue) => {
-            setLastName(newValue);
-            setLastNameError("");
+          onChangeText={(nextLastName) => {
+            setLastName(nextLastName);
+            setLastNameError(
+              Validation.ValidateLastName(nextLastName, firstName)
+            );
           }}
-          errorMessage={lastNameError}
+          errorMessage={LocaleUtils.getValidationErrorTranslation(
+            lastNameError
+          )}
         />
         <Input
           label="טלפון נייד"
           value={phone}
-          onChangeText={(newValue) => {
-            setPhone(newValue);
-            setPhoneError("");
+          onChangeText={(nextPhone) => {
+            setPhone(nextPhone);
+            setPhoneError(Validation.ValidatePhone(nextPhone));
           }}
-          errorMessage={phoneError}
+          errorMessage={LocaleUtils.getValidationErrorTranslation(phoneError)}
         />
 
         <Picker
@@ -131,7 +128,12 @@ export default function BookManualDonationScreen(
         />
 
         <div className={styles.buttons}>
-          <Button title={"אישור והמשך"} onClick={onSave} isLoading={loading} />
+          <Button
+            title={"אישור והמשך"}
+            onClick={onSave}
+            isLoading={loading}
+            isDisabled={!areAllFieldsValid || !doAllFieldsHaveValue}
+          />
           <Button
             title={"ביטול"}
             onClick={() => navigate(-1)}
