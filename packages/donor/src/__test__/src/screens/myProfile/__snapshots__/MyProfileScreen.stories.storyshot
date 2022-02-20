@@ -139,6 +139,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 value="כהן"
               />
             </div>
+            
           </div>
         </div>
         <div
@@ -173,6 +174,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 value="0521234567"
               />
             </div>
+            
           </div>
         </div>
         <div
@@ -345,8 +347,8 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="button"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-fullWidth-129"
-            disabled={false}
+            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-disabled-119 MuiButton-fullWidth-129 MuiButtonBase-disabled-10"
+            disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
             onDragLeave={[Function]}
@@ -359,7 +361,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex={0}
+            tabIndex={-1}
             type="button"
           >
             <span
