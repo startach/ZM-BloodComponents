@@ -37,6 +37,7 @@ export async function getAppointments(
 ) {
   // TODO (Yaron) - After state verification remove this log
   console.log(
+    new Date().toLocaleTimeString(),
     "Fetching appointments for",
     hospital,
     DateUtils.ToDateString(earliestStartTimeMillis),
