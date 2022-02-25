@@ -11,7 +11,7 @@ export default function AddAppointmentScreenContainer() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { timestamp } = useParams<{ timestamp: string }>();
-  console.log(timestamp);
+
   const loggedOut = useSelector(isLoggedOut);
   const hospital = useSelector(getHospital);
 
@@ -27,6 +27,7 @@ export default function AddAppointmentScreenContainer() {
     // If no timestamp, take tomorrow
     time = new Date();
     time.setDate(time.getDate() + 1);
+    time.setHours(11, 0, 0, 0);
   }
   const initialDate = getInitialDate(time);
 
@@ -49,6 +50,5 @@ function getInitialDate(date: Date) {
     date.setDate(date.getDate() + 1);
   }
 
-  // date.setHours(11, 0, 0, 0);
   return date;
 }

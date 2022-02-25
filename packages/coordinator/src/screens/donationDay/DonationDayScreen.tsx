@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { DonationDay } from "../../utils/types";
 import AppointmentSlotComponent from "../../components/AppointmentSlot";
 import styles from "./DonationDayScreen.module.scss";
@@ -25,6 +26,9 @@ export default function DonationDayScreen({
   const [showOnlyAvailableAppointments, setShowOnlyAvailableAppointments] =
     useState(false);
 
+  const { timestamp } = useParams<{ timestamp: string }>();
+  const currentScheduleTime = timestamp ? parseInt(timestamp) : undefined;
+
   const allAppointments = donationDay
     ? _.flatMap(donationDay.appointmentSlots, (x) => x.appointments)
     : [];
@@ -47,6 +51,7 @@ export default function DonationDayScreen({
       }}
       addAppointmentFabProps={{
         hospital,
+        timestamp: currentScheduleTime,
       }}
     >
       <div className={styles.slots}>

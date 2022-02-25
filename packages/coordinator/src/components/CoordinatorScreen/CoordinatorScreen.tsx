@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import styles from "./CoordinatorScreen.module.scss";
 import CoordinatorHeader, {
   CoordinatorHeaderProps,
@@ -14,13 +13,11 @@ export type CoordinatorScreenProps = {
   className?: string;
   addAppointmentFabProps?: {
     hospital: Hospital;
+    timestamp?: number;
   };
 };
 
 export default function CoordinatorScreen(props: CoordinatorScreenProps) {
-  const { timestamp } = useParams<{ timestamp: string }>();
-  const currentScheduleTime = timestamp ? parseInt(timestamp) : undefined;
-
   return (
     <div className={styles.coordinatorScreen}>
       <CoordinatorHeader {...props.headerProps} />
@@ -30,9 +27,7 @@ export default function CoordinatorScreen(props: CoordinatorScreenProps) {
       </div>
 
       {props.addAppointmentFabProps && (
-        <AddAppointmentFab 
-        timestamp={currentScheduleTime}
-        {...props.addAppointmentFabProps} />
+        <AddAppointmentFab {...props.addAppointmentFabProps} />
       )}
     </div>
   );
