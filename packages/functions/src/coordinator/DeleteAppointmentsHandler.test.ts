@@ -67,7 +67,7 @@ test.each([true, false])(
 test("User that has wrong role throws exception", async () => {
   await saveAppointment();
 
-  await createUser(CoordinatorRole.GROUP_COORDINATOR);
+  await createUser(CoordinatorRole.ADVOCATE);
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -80,7 +80,9 @@ test("User that has wrong role throws exception", async () => {
 test("User that does not have the right hospital throws exception", async () => {
   await saveAppointment();
 
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.TEL_HASHOMER,
+  ]);
 
   const action = () => callFunction(APPOINTMENT_ID, false, COORDINATOR_ID);
 
@@ -115,7 +117,7 @@ test.each([true, false])(
       await createDonor();
     }
 
-    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
       Hospital.ASAF_HAROFE,
       Hospital.BEILINSON,
     ]);
@@ -154,7 +156,7 @@ test.each([true, false])(
       await createDonor();
     }
 
-    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
       Hospital.ASAF_HAROFE,
       Hospital.BEILINSON,
     ]);

@@ -46,7 +46,7 @@ test("User that is not admin throws exception", async () => {
 });
 
 test("User that has wrong role throws exception", async () => {
-  await createUser(CoordinatorRole.GROUP_COORDINATOR);
+  await createUser(CoordinatorRole.ADVOCATE);
 
   const action = () => callFunction(USER_ID);
 
@@ -57,7 +57,9 @@ test("User that has wrong role throws exception", async () => {
 });
 
 test("User that does not have the right hospital throws exception", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.HADASA_EIN_KEREM]);
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.HADASA_EIN_KEREM,
+  ]);
 
   const action = () => callFunction(USER_ID);
 
@@ -68,7 +70,9 @@ test("User that does not have the right hospital throws exception", async () => 
 });
 
 test("Valid request inserts new appointments", async () => {
-  await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.ASAF_HAROFE]);
+  await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+    Hospital.ASAF_HAROFE,
+  ]);
 
   const response = await callFunction(USER_ID);
   expect(response.newAppointments).toHaveLength(5);
