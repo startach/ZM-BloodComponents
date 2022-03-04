@@ -11,7 +11,6 @@ export function getCoordinatorHospitals(coordinator: DbCoordinator) {
     case CoordinatorRole.SYSTEM_USER:
       hospitals = HospitalUtils.activeHospitals;
       break;
-    case CoordinatorRole.ZM_COORDINATOR:
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       if (coordinator.hospitals && coordinator.hospitals.length > 0) {
         // Take only active hospitals
@@ -20,7 +19,7 @@ export function getCoordinatorHospitals(coordinator: DbCoordinator) {
         );
       }
       break;
-    case CoordinatorRole.GROUP_COORDINATOR:
+    case CoordinatorRole.ADVOCATE:
       break;
   }
   return hospitals;

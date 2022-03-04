@@ -38,14 +38,13 @@ function adminAllowedToAddAppointments(
     case CoordinatorRole.SYSTEM_USER:
       return true;
 
-    case CoordinatorRole.ZM_COORDINATOR:
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       const adminHospitals = new Set(admin.hospitals);
       return allHospitalsAreInCoordinatorHospitalList(
         adminHospitals,
         requestedHospitals
       );
-    case CoordinatorRole.GROUP_COORDINATOR:
+    case CoordinatorRole.ADVOCATE:
       return false;
   }
 

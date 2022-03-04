@@ -1,15 +1,10 @@
 import {
-  Appointment,
-  AppointmentUtils,
   Coordinator,
-  CoordinatorRole,
   FunctionsApi,
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
 import { getAppointmentsByHospital } from "../dal/AppointmentDataAccessLayer";
-import * as GroupDAL from "../dal/GroupsDataAccessLayer";
-import { DbDonor } from "../function-types";
 import _ from "lodash";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
@@ -64,18 +59,6 @@ export default async function (
     }
   });
 
-  if (coordinator.role === CoordinatorRole.GROUP_COORDINATOR) {
-    donorsInAppointments = await filterDonorsInGroup(
-      coordinator,
-      donorsInAppointments
-    );
-    appointments = filterAppointmentsForDonors(
-      appointments,
-      donorsInAppointments,
-      coordinator.coordinatorId
-    );
-  }
-
   const res: FunctionsApi.GetCoordinatorAppointmentsResponse = {
     coordinator,
     hospitalFetched: hospital,
@@ -102,40 +85,6 @@ async function fetchCoordinator(callerId: string): Promise<Coordinator> {
       ? `${coordinatorDonorUser.firstName} ${coordinatorDonorUser.lastName}`
       : undefined,
   };
-}
-
-async function filterDonorsInGroup(
-  coordinator: Coordinator,
-  donorsInAppointments: DbDonor[]
-) {
-  const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(
-    coordinator.coordinatorId
-  );
-  return donorsInAppointments.filter((donor) => groupIds.has(donor.groupId));
-}
-
-function filterAppointmentsForDonors(
-  appointments: Appointment[],
-  donors: DbDonor[],
-  assigningCoordinatorId: string
-) {
-  const donorIds = new Set(donors.map((donor) => donor.id));
-  return appointments.filter((appointment) => {
-    if (!appointment.booked) return false;
-
-    // if donor is in coordinator group, show the appointment
-    if (donorIds.has(appointment.donorId)) return true;
-
-    // if the appointment was manually added by the coordinator
-    if (
-      AppointmentUtils.isManualDonor(appointment.donorId) &&
-      appointment.assigningCoordinatorId === assigningCoordinatorId
-    ) {
-      return true;
-    }
-
-    return false;
-  });
 }
 
 function getHospitalToFetchAppointmentsFor(

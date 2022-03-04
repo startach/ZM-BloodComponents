@@ -67,15 +67,15 @@ test("System User gets all active hospitals", async () => {
   );
 });
 
-test("Group Coordinator gets no hospitals", async () => {
-  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR, [
+test("Advocate gets no hospitals", async () => {
+  await createCoordinator(CoordinatorRole.ADVOCATE, [
     Hospital.HADASA_EIN_KEREM,
   ]);
 
   const response = await callFunction(COORDINATOR_ID);
 
   expect(response.coordinator.name).toEqual(COORDINATOR_FULL_NAME);
-  expect(response.coordinator.role).toEqual(CoordinatorRole.GROUP_COORDINATOR);
+  expect(response.coordinator.role).toEqual(CoordinatorRole.ADVOCATE);
   expect(response.coordinator.activeHospitalsForCoordinator).toEqual([]);
 });
 
