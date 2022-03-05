@@ -34,7 +34,6 @@ export const clearAndFetchAppointments =
       latestStartTimeMillis,
     });
 
-    console.warn("from 3");
     dispatch(
       fetchAndInsertAppointments(
         hospital,
