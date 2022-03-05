@@ -1,5 +1,10 @@
 import * as actionTypes from "../AppointmentsActionTypes";
-import { Appointment, Hospital, DateUtils } from "@zm-blood-components/common";
+import {
+  Appointment,
+  DateUtils,
+  Hospital,
+  HospitalUtils,
+} from "@zm-blood-components/common";
 import { ThunkAction } from "../../store";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import {
@@ -8,11 +13,12 @@ import {
 } from "../selectors/GetIsFetchingSelector";
 import { getHospital } from "../selectors/GetHospitalSelector";
 import _ from "lodash";
+import { setCoordinator } from "../../coordinator/CoordinatorActions";
 
 const MILLIS_IN_WEEK = 7 * 24 * 60 * 60 * 1_000;
 const DEFAULT_WEEKS_TO_FETCH = 4;
 export const clearAndFetchAppointments =
-  (hospital: Hospital, nowMillis: number | Date): ThunkAction =>
+  (hospital: Hospital | undefined, nowMillis: number | Date): ThunkAction =>
   (dispatch) => {
     const earliestStartTimeMillis =
       DateUtils.GetStartOfTheWeek(nowMillis).getTime() -
@@ -28,6 +34,7 @@ export const clearAndFetchAppointments =
       latestStartTimeMillis,
     });
 
+    console.warn("from 3");
     dispatch(
       fetchAndInsertAppointments(
         hospital,
@@ -77,18 +84,20 @@ export const maybeFetchMoreAppointments =
   };
 
 const fetchAndInsertAppointments = (
-  hospital: Hospital,
+  hospital: Hospital | undefined,
   earliestStartTimeMillis: number,
   latestStartTimeMillis: number
 ): ThunkAction => {
   return async (dispatch, getState) => {
-    const appointments = await CoordinatorFunctions.getAppointments(
+    const response = await CoordinatorFunctions.getAppointments(
       hospital,
       earliestStartTimeMillis,
       latestStartTimeMillis
     );
 
-    dispatch(insertAppointmentsToState(appointments));
+    dispatch(setCoordinator(response.coordinator));
+    dispatch(setHospital(response.hospitalFetched));
+    dispatch(insertAppointmentsToState(response.appointments));
     dispatch({
       type: actionTypes.SET_FETCHED_TIMES,
       earliestTimeFetched: _.min([
@@ -107,5 +116,14 @@ export const insertAppointmentsToState = (appointments: Appointment[]) => {
   return {
     type: actionTypes.ADD_APPOINTMENTS_TO_STATE,
     appointments: appointments,
+  };
+};
+
+export const setHospital = (
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT
+) => {
+  return {
+    type: actionTypes.SET_HOSPITAL,
+    hospital: hospital,
   };
 };

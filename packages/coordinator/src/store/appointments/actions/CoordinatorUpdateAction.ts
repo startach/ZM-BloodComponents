@@ -8,6 +8,7 @@ import { getHospital } from "../selectors/GetHospitalSelector";
 import { getAuth } from "firebase/auth";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import * as actionTypes from "../AppointmentsActionTypes";
+import { setCoordinator } from "../../coordinator/CoordinatorActions";
 
 export const handleCoordinatorUpdate =
   (update: CoordinatorUpdate): ThunkAction =>
@@ -25,14 +26,15 @@ export const handleCoordinatorUpdate =
     const earliestTimeFetched = getEarliestTimeFetched(getState());
     const latestTimeFetched = getLatestTimeFetched(getState());
 
-    const appointments = await CoordinatorFunctions.getAppointments(
+    const response = await CoordinatorFunctions.getAppointments(
       hospital,
       earliestTimeFetched,
       latestTimeFetched
     );
 
+    dispatch(setCoordinator(response.coordinator));
     const appointmentsObject: { [appointmentId: string]: Appointment } = {};
-    appointments.forEach(
+    response.appointments.forEach(
       (appointment: Appointment) =>
         (appointmentsObject[appointment.id] = appointment)
     );
