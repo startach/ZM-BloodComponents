@@ -1,12 +1,17 @@
 import { mocked } from "ts-jest/utils";
 import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import { ThunkAction } from "../../store";
-import { Appointment, Hospital } from "@zm-blood-components/common";
+import {
+  Appointment,
+  Coordinator,
+  Hospital,
+} from "@zm-blood-components/common";
 import {
   clearAndFetchAppointments,
   maybeFetchMoreAppointments,
 } from "./InsertAppointmentsActions";
 import * as actionTypes from "../AppointmentsActionTypes";
+import { SET_COORDINATOR } from "../../coordinator/CoordinatorActionTypes";
 
 jest.mock("../../../firebase/CoordinatorFunctions");
 const mockedCoordinatorFunctions = mocked(CoordinatorFunctions);
@@ -19,6 +24,9 @@ const NOW = 1644568200000; // Friday, February 11, 2022 10:30:00
 const FOUR_WEEKS_AGO = 1641679200000; // Sunday, January 9, 2022 0:00:00
 const FOUR_WEEKS_AHEAD = 1646517599999; // Saturday, March 5, 2022 23:59:59.999
 const WEEK_MILLIS = 7 * 24 * 60 * 60 * 1000;
+const COORDINATOR = {
+  coordinatorId: "coordinatorId",
+} as Coordinator;
 
 const SAMPLE_APPOINTMENT = {
   id: "sampleAppointment",
@@ -30,7 +38,11 @@ describe("Insert Appointments Actions", () => {
     getState.mockClear();
     mockedCoordinatorFunctions.getAppointments.mockClear();
     mockedCoordinatorFunctions.getAppointments.mockReturnValue(
-      Promise.resolve([SAMPLE_APPOINTMENT])
+      Promise.resolve({
+        appointments: [SAMPLE_APPOINTMENT],
+        hospitalFetched: HOSPITAL,
+        coordinator: COORDINATOR,
+      })
     );
 
     getState.mockReturnValue({
@@ -52,7 +64,7 @@ describe("Insert Appointments Actions", () => {
       FOUR_WEEKS_AHEAD
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(dispatch).toHaveBeenCalledTimes(6);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: actionTypes.START_FETCHING,
       hospital: HOSPITAL,
@@ -60,10 +72,18 @@ describe("Insert Appointments Actions", () => {
       latestStartTimeMillis: FOUR_WEEKS_AHEAD,
     });
     expect(dispatch).toHaveBeenNthCalledWith(3, {
+      type: SET_COORDINATOR,
+      coordinator: COORDINATOR,
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(4, {
+      type: actionTypes.SET_HOSPITAL,
+      hospital: HOSPITAL,
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(5, {
       type: actionTypes.ADD_APPOINTMENTS_TO_STATE,
       appointments: [SAMPLE_APPOINTMENT],
     });
-    expect(dispatch).toHaveBeenNthCalledWith(4, {
+    expect(dispatch).toHaveBeenNthCalledWith(6, {
       type: actionTypes.SET_FETCHED_TIMES,
       earliestTimeFetched: FOUR_WEEKS_AGO,
       latestTimeFetched: FOUR_WEEKS_AHEAD,
@@ -89,12 +109,12 @@ describe("Insert Appointments Actions", () => {
       FOUR_WEEKS_AGO
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(3);
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
+    expect(dispatch).toHaveBeenCalledTimes(5);
+    expect(dispatch).toHaveBeenNthCalledWith(4, {
       type: actionTypes.ADD_APPOINTMENTS_TO_STATE,
       appointments: [SAMPLE_APPOINTMENT],
     });
-    expect(dispatch).toHaveBeenNthCalledWith(3, {
+    expect(dispatch).toHaveBeenNthCalledWith(5, {
       type: actionTypes.SET_FETCHED_TIMES,
       earliestTimeFetched: expectedFetchStart,
       latestTimeFetched: FOUR_WEEKS_AHEAD,
@@ -114,12 +134,12 @@ describe("Insert Appointments Actions", () => {
       expectedFetchEnd
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(3);
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
+    expect(dispatch).toHaveBeenCalledTimes(5);
+    expect(dispatch).toHaveBeenNthCalledWith(4, {
       type: actionTypes.ADD_APPOINTMENTS_TO_STATE,
       appointments: [SAMPLE_APPOINTMENT],
     });
-    expect(dispatch).toHaveBeenNthCalledWith(3, {
+    expect(dispatch).toHaveBeenNthCalledWith(5, {
       type: actionTypes.SET_FETCHED_TIMES,
       earliestTimeFetched: FOUR_WEEKS_AGO,
       latestTimeFetched: expectedFetchEnd,
@@ -128,8 +148,8 @@ describe("Insert Appointments Actions", () => {
 });
 
 // https://stackoverflow.com/a/6000009/4748839
-async function triggerActions(dispatch: jest.Mock) {
-  for (const call of dispatch.mock.calls) {
+async function triggerActions(mockedDispatch: jest.Mock) {
+  for (const call of mockedDispatch.mock.calls) {
     const callback = call[0];
     if (typeof callback === "function") {
       const action = callback as ThunkAction;

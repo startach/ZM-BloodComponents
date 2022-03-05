@@ -6,7 +6,12 @@ import {
 } from "@zm-blood-components/common";
 import { getFunctions, httpsCallable } from "firebase/functions";
 
+const logFunctionCalls = false;
+
 function getCallableFunction(functionName: string) {
+  if (logFunctionCalls) {
+    console.log(new Date().toLocaleTimeString(), "Calling", functionName);
+  }
   const functions = getFunctions();
   return httpsCallable(functions, functionName);
 }
@@ -14,36 +19,21 @@ function getCallableFunction(functionName: string) {
 /*
  * Fetching
  */
-export async function getCoordinator() {
-  const getCoordinatorFunction = getCallableFunction(
-    FunctionsApi.GetCoordinatorFunctionName
-  );
-  const request: FunctionsApi.GetCoordinatorRequest = {};
-
-  try {
-    const res = await getCoordinatorFunction(request);
-    const data = res.data as FunctionsApi.GetCoordinatorResponse;
-    return data.coordinator;
-  } catch (e) {
-    console.warn("User is not a coordinator");
-    return undefined;
-  }
-}
-
 export async function getAppointments(
-  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT,
+  hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | undefined,
   earliestStartTimeMillis: number,
   latestStartTimeMillis: number
 ) {
-  // TODO (Yaron) - After state verification remove this log
-  console.log(
-    new Date().toLocaleTimeString(),
-    "Fetching appointments for",
-    hospital,
-    DateUtils.ToDateString(earliestStartTimeMillis),
-    "-",
-    DateUtils.ToDateString(latestStartTimeMillis)
-  );
+  if (logFunctionCalls) {
+    console.log(
+      new Date().toLocaleTimeString(),
+      "Fetching appointments for",
+      hospital,
+      DateUtils.ToDateString(earliestStartTimeMillis),
+      "-",
+      DateUtils.ToDateString(latestStartTimeMillis)
+    );
+  }
   const getAppointmentsFunction = getCallableFunction(
     FunctionsApi.GetCoordinatorAppointmentsFunctionName
   );
@@ -55,8 +45,7 @@ export async function getAppointments(
   };
 
   const response = await getAppointmentsFunction(request);
-  const data = response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
-  return data.appointments;
+  return response.data as FunctionsApi.GetCoordinatorAppointmentsResponse;
 }
 
 export async function getAllDonors() {

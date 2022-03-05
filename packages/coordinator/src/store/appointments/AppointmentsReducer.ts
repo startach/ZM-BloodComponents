@@ -54,6 +54,12 @@ const reducer = (state = initialState, action: any = {}): AppointmentsState => {
         latestTimeFetched: action.latestTimeFetched,
       };
 
+    case actionTypes.SET_HOSPITAL:
+      return {
+        ...state,
+        hospital: action.hospital,
+      };
+
     case actionTypes.DELETE_APPOINTMENT:
       const appointments = { ...state.appointments };
       delete appointments[action.appointmentId];

@@ -1,14 +1,14 @@
 import * as actionTypes from "./LoginActionTypes";
 import { LoginStatus } from "@zm-blood-components/common";
 import { ThunkAction } from "../store";
-import { fetchCoordinatorAndAppointments } from "../coordinator/actions/FetchCoordinatorAction";
+import { clearAndFetchAppointments } from "../appointments/actions/InsertAppointmentsActions";
 
 export const setLoginStatus =
   (newLoginStatus: LoginStatus): ThunkAction =>
   (dispatch) => {
     dispatch(setLoginStatusInternal(newLoginStatus));
     if (newLoginStatus === LoginStatus.LOGGED_IN) {
-      dispatch(fetchCoordinatorAndAppointments());
+      dispatch(clearAndFetchAppointments(undefined, new Date()));
     }
   };
 
