@@ -57,9 +57,7 @@ export default function ScheduleScreenContainer() {
       dayInWeek={timeInWeek}
       days={days}
       hospital={hospital}
-      setHospital={(hospital) =>
-        dispatch(clearAndFetchAppointments(hospital, new Date()))
-      }
+      setHospital={(h) => dispatch(clearAndFetchAppointments(h, new Date()))}
       onNextWeek={addWeek(true)}
       oPreviousWeek={addWeek(false)}
       availableHospitals={availableHospitals}
