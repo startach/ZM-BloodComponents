@@ -35,12 +35,18 @@ export interface PersonalDetailsProps {
 export default function PersonalDetails(props: PersonalDetailsProps) {
   const [firstName, setFirstName] = useState(props.firstName || "");
   const [firstNameError, setFirstNameError] =
-    useState<Validation.FirstNameValidation>();
+    useState<Validation.FirstNameValidation>(
+      Validation.PersonalDetailsValidation.VALID_FIELD
+    );
   const [lastName, setLastName] = useState(props.lastName || "");
   const [lastNameError, setLastNameError] =
-    useState<Validation.LastNameValidation>();
+    useState<Validation.LastNameValidation>(
+      Validation.PersonalDetailsValidation.VALID_FIELD
+    );
   const [phone, setPhone] = useState(props.phone || "");
-  const [phoneError, setPhoneError] = useState<Validation.PhoneValidation>();
+  const [phoneError, setPhoneError] = useState<Validation.PhoneValidation>(
+    Validation.PersonalDetailsValidation.VALID_FIELD
+  );
   const [bloodType, setBloodType] = useState<BloodType | "">(
     props.bloodType || ""
   );
@@ -54,12 +60,16 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     setFirstName(nextFirstName);
     setFirstNameError(Validation.ValidateFirstName(nextFirstName));
     // Validate long full name
+    const nextLastNameError = Validation.ValidateLastName(
+      lastName,
+      nextFirstName
+    );
     if (
-      Validation.ValidateLastName(lastName, nextFirstName) ===
+      nextLastNameError ===
         Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
       lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
     )
-      setLastNameError(Validation.ValidateLastName(lastName, nextFirstName));
+      setLastNameError(nextLastNameError);
   };
 
   const areAllFieldsValid = [firstNameError, lastNameError, phoneError].every(

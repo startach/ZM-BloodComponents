@@ -38,10 +38,6 @@ export const ValidateLastName = (
 ): LastNameValidation => {
   if (!lastName) return PersonalDetailsValidation.REQUIRED_FIELD;
 
-  if (typeof firstName === undefined) {
-    throw new Error("Cannot validate last name without full name");
-  }
-
   if (lastName.length < 2) return PersonalDetailsValidation.NAME_TOO_SHORT;
 
   if (lastName.length + firstName.length > 20)

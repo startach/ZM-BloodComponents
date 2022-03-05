@@ -89,7 +89,8 @@ export const getValidationErrorTranslation = (
     case PersonalDetailsValidation.REQUIRED_FIELD:
       return "שדה חובה";
     case PersonalDetailsValidation.VALID_FIELD:
-    default:
       return "";
+    default:
+      return "השדה אינו תקין";
   }
 };
