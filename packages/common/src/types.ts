@@ -35,9 +35,8 @@ export type MinimalDonorDetailsForAppointment = {
 //https://docs.google.com/document/d/1Y3ovMRJhdHlJEd4rS3FCgxxY3qdpmk2WLaR45nL8IT8
 export enum CoordinatorRole {
   SYSTEM_USER = "SYSTEM_USER",
-  ZM_COORDINATOR = "ZM_COORDINATOR",
   HOSPITAL_COORDINATOR = "HOSPITAL_COORDINATOR",
-  GROUP_COORDINATOR = "GROUP_COORDINATOR",
+  ADVOCATE = "ADVOCATE",
 }
 
 export type Coordinator = {

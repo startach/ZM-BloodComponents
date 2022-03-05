@@ -1,4 +1,4 @@
-import { CoordinatorUpdate } from "@zm-blood-components/common";
+import { Appointment, CoordinatorUpdate } from "@zm-blood-components/common";
 import { ThunkAction } from "../../store";
 import {
   getEarliestTimeFetched,
@@ -31,8 +31,14 @@ export const handleCoordinatorUpdate =
       latestTimeFetched
     );
 
+    const appointmentsObject: { [appointmentId: string]: Appointment } = {};
+    appointments.forEach(
+      (appointment: Appointment) =>
+        (appointmentsObject[appointment.id] = appointment)
+    );
+
     dispatch({
       type: actionTypes.CLEAR_AND_SET_APPOINTMENTS,
-      appointments: appointments,
+      appointments: appointmentsObject,
     });
   };

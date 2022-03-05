@@ -9,7 +9,6 @@ import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
-import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
@@ -28,8 +27,6 @@ const reset = async () => {
   await DonorDAL.deleteDonor(DONOR_ID_1);
   await DonorDAL.deleteDonor(DONOR_ID_2);
   await DonorDAL.deleteDonor(DONOR_ID_3);
-  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
-  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
 
 beforeAll(reset);
@@ -68,19 +65,6 @@ test("SYSTEM_USER gets all users", async () => {
   const testDonor = response.donors.filter((donor) => donor.id === DONOR_ID_1);
 
   expect(testDonor).toHaveLength(1);
-});
-
-test("GROUP_COORDINATOR gets only users in group", async () => {
-  await createCoordinator(CoordinatorRole.GROUP_COORDINATOR);
-  const group = await GroupDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
-
-  await createDonor(DONOR_ID_1, group.id);
-  await createDonor(DONOR_ID_2, "other_group_id");
-
-  const response = await callFunction(COORDINATOR_ID);
-
-  expect(response.donors).toHaveLength(1);
-  expect(response.donors[0].id).toEqual(DONOR_ID_1);
 });
 
 test("HOSPITAL_COORDINATOR gets only users that had a donation in their hospitals", async () => {

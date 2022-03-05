@@ -6,7 +6,6 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import { DbCoordinator, DbDonor } from "../function-types";
-import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 
 export async function getCoordinator(adminId: string) {
@@ -46,8 +45,6 @@ export async function getCoordinatorDonors(
     case CoordinatorRole.SYSTEM_USER:
       donors = await DonorDAL.getAllDonors();
       break;
-    case CoordinatorRole.ZM_COORDINATOR:
-    // TODO should ZM_COORDINATOR also get donors that are in their group?
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       if (coordinator.hospitals) {
         donors = await DonorDAL.getDonorsByLastBookedHospital(
@@ -55,11 +52,7 @@ export async function getCoordinatorDonors(
         );
       }
       break;
-    case CoordinatorRole.GROUP_COORDINATOR:
-      const groupIds = await GroupDAL.getGroupIdsOfCoordinatorId(
-        coordinator.id
-      );
-      donors = await DonorDAL.getDonorsByGroupIds(groupIds);
+    case CoordinatorRole.ADVOCATE:
       break;
   }
 
@@ -77,8 +70,7 @@ export function getValidHospitalsOrThrow(
 
   switch (coordinator.role) {
     case CoordinatorRole.SYSTEM_USER:
-      return allActiveHospitalsFiltered;
-    case CoordinatorRole.ZM_COORDINATOR:
+    case CoordinatorRole.ADVOCATE:
       return allActiveHospitalsFiltered;
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       if (hospital === HospitalUtils.ALL_HOSPITALS_SELECT) {
@@ -91,10 +83,6 @@ export function getValidHospitalsOrThrow(
         throw Error("Coordinator has no permissions for hospital");
       }
       return [hospital];
-    case CoordinatorRole.GROUP_COORDINATOR:
-      return hospital === HospitalUtils.ALL_HOSPITALS_SELECT
-        ? coordinator.hospitals ?? []
-        : [hospital];
   }
 
   throw Error(

@@ -5,8 +5,8 @@ import {
   FunctionsApi,
   Hospital,
   HospitalUtils,
-  TestSamples,
   MANUAL_DONOR_ID,
+  TestSamples,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -18,8 +18,6 @@ import {
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
-import * as GroupsDAL from "../dal/GroupsDataAccessLayer";
-import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 jest.setTimeout(7000);
@@ -28,10 +26,8 @@ const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetCoordinatorAppointmentsFunctionName]
 );
 const COORDINATOR_ID = "GetCoordinatorAppointmentsTestUser";
-const OTHER_COORDINATOR_ID = "GetCoordinatorAppointmentsOtherUser";
 const DONOR_ID_1 = "GetCoordinatorAppointmentsTestDonorUser1";
 const DONOR_ID_2 = "GetCoordinatorAppointmentsTestDonorUser2";
-const GROUP_NAME_1 = "GetCoordinatorAppointmentsTestgroup1";
 
 const PAST_BOOKED = "GetCoordinatorAppointments_PastBooked";
 const PAST_OTHER_HOSPITAL = "GetCoordinatorAppointments_PastOtherHospital";
@@ -64,8 +60,6 @@ const reset = async () => {
   await deleteAdmin(COORDINATOR_ID);
   await DonorDAL.deleteDonor(DONOR_ID_1);
   await DonorDAL.deleteDonor(DONOR_ID_2);
-  const groups1 = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
-  groups1.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 };
 
 describe("Get Coordinator Appointments", function () {
@@ -96,7 +90,7 @@ describe("Get Coordinator Appointments", function () {
   });
 
   test("Valid request returns appointments of the right hospital", async () => {
-    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
       Hospital.ASAF_HAROFE,
       Hospital.TEL_HASHOMER,
     ]);
@@ -142,7 +136,7 @@ describe("Get Coordinator Appointments", function () {
   });
 
   test("Valid request with no hospital returns appointments of the first hospital", async () => {
-    await createUser(CoordinatorRole.ZM_COORDINATOR, [
+    await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
       Hospital.BEILINSON,
       Hospital.TEL_HASHOMER,
     ]);
@@ -192,7 +186,6 @@ describe("Get Coordinator Appointments", function () {
   test.each([
     CoordinatorRole.HOSPITAL_COORDINATOR,
     CoordinatorRole.SYSTEM_USER,
-    CoordinatorRole.ZM_COORDINATOR,
   ])(
     "Valid request for all hospitals, returns write users for each role - %s",
     async (coordinatorRole: CoordinatorRole) => {
@@ -269,17 +262,16 @@ describe("Get Coordinator Appointments", function () {
           expect(appointmentsIds).toContain(FUTURE_OTHER_HOSPITAL);
           expect(appointmentsIds).toContain(PAST_OTHER_HOSPITAL);
           break;
-        case CoordinatorRole.ZM_COORDINATOR:
-          expect(appointments).toHaveLength(6);
-          expect(appointmentsIds).toContain(FUTURE_OTHER_HOSPITAL);
-          expect(appointmentsIds).toContain(PAST_OTHER_HOSPITAL);
+        case CoordinatorRole.ADVOCATE:
           break;
       }
     }
   );
 
   test("Valid request returns appointments with right time filtering", async () => {
-    await createUser(CoordinatorRole.ZM_COORDINATOR, [Hospital.TEL_HASHOMER]);
+    await createUser(CoordinatorRole.HOSPITAL_COORDINATOR, [
+      Hospital.TEL_HASHOMER,
+    ]);
 
     await createDonor(DONOR_ID_1, "group1");
     await createDonor(DONOR_ID_2, "group1");
@@ -324,54 +316,54 @@ describe("Get Coordinator Appointments", function () {
     expect(appointments[1].id).toEqual(FUTURE_BOOKED);
   });
 
-  test("Valid request for group coordinator returns only users in group", async () => {
-    await createUser(CoordinatorRole.GROUP_COORDINATOR);
-    const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
-
-    await createDonor(DONOR_ID_1, group.id);
-    await createDonor(DONOR_ID_2, "OTHER_GROUP");
-
-    await saveAppointment(
-      IN_GROUP_1,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      DONOR_ID_1
-    );
-
-    await saveAppointment(
-      IN_GROUP_2,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      DONOR_ID_2
-    );
-
-    await saveAppointment(
-      MANUAL_OF_COORDINATOR,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      MANUAL_DONOR_ID,
-      COORDINATOR_ID
-    );
-
-    await saveAppointment(
-      MANUAL_NOT_OF_COORDINATOR,
-      getDate(-3),
-      Hospital.TEL_HASHOMER,
-      MANUAL_DONOR_ID,
-      OTHER_COORDINATOR_ID
-    );
-
-    const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
-
-    let appointments = res.appointments.filter((a) =>
-      ALL_APPOINTMENT_IDS.includes(a.id)
-    );
-    expect(appointments).toHaveLength(2);
-
-    // May contain other donor ids of other appointments that are not part of this test
-    expect(appointments[0].id).toEqual(IN_GROUP_1);
-    expect(appointments[1].id).toEqual(MANUAL_OF_COORDINATOR);
-  });
+  // test("Valid request for group coordinator returns only users in group", async () => {
+  //   await createUser(CoordinatorRole.GROUP_COORDINATOR);
+  //   const group = await GroupsDAL.createGroup(GROUP_NAME_1, COORDINATOR_ID);
+  //
+  //   await createDonor(DONOR_ID_1, group.id);
+  //   await createDonor(DONOR_ID_2, "OTHER_GROUP");
+  //
+  //   await saveAppointment(
+  //     IN_GROUP_1,
+  //     getDate(-3),
+  //     Hospital.TEL_HASHOMER,
+  //     DONOR_ID_1
+  //   );
+  //
+  //   await saveAppointment(
+  //     IN_GROUP_2,
+  //     getDate(-3),
+  //     Hospital.TEL_HASHOMER,
+  //     DONOR_ID_2
+  //   );
+  //
+  //   await saveAppointment(
+  //     MANUAL_OF_COORDINATOR,
+  //     getDate(-3),
+  //     Hospital.TEL_HASHOMER,
+  //     MANUAL_DONOR_ID,
+  //     COORDINATOR_ID
+  //   );
+  //
+  //   await saveAppointment(
+  //     MANUAL_NOT_OF_COORDINATOR,
+  //     getDate(-3),
+  //     Hospital.TEL_HASHOMER,
+  //     MANUAL_DONOR_ID,
+  //     OTHER_COORDINATOR_ID
+  //   );
+  //
+  //   const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
+  //
+  //   let appointments = res.appointments.filter((a) =>
+  //     ALL_APPOINTMENT_IDS.includes(a.id)
+  //   );
+  //   expect(appointments).toHaveLength(2);
+  //
+  //   // May contain other donor ids of other appointments that are not part of this test
+  //   expect(appointments[0].id).toEqual(IN_GROUP_1);
+  //   expect(appointments[1].id).toEqual(MANUAL_OF_COORDINATOR);
+  // });
 
   async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
     const newAdmin: DbCoordinator = {

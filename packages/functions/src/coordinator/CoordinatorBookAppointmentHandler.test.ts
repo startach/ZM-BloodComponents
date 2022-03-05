@@ -11,7 +11,6 @@ import {
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
-import * as GroupDAL from "../dal/GroupsDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentByIdOrThrow,
@@ -54,10 +53,6 @@ const GROUP_NAME_1 = "GetDonorsFunctionNameTestGroup1";
 const reset = async () => {
   // delete the coordinator
   await deleteAdmin(COORDINATOR_ID);
-
-  // delete the groups assotiated to this coordinator
-  const groups = await GroupDAL.getGroupIdsOfCoordinatorId(COORDINATOR_ID);
-  groups.forEach((groupId) => GroupDAL.deleteGroup(groupId));
 
   // delete donor
   await DonorDataAccessLayer.deleteDonor(DONOR_ID);

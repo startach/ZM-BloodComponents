@@ -165,7 +165,7 @@ describe("Donor Swap Appointment Handler", () => {
     expect(bookedAppointment?.lastChangeType).toEqual(BookingChange.BOOKED);
     expect(
       Date.now() - bookedAppointment?.lastChangeTime?.toMillis()!
-    ).toBeLessThan(3_000);
+    ).toBeLessThan(10_000);
 
     const data = response as FunctionsApi.SwapAppointmentResponse;
     expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
