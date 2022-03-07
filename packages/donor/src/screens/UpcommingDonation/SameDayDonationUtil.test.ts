@@ -8,18 +8,19 @@ import { shouldDisplaySameDayDonationPopup } from "./SameDayDonationUtil";
 describe("Upcoming donation popup", function () {
   const now = 1641229200000;
   const oneDayInMillis = 24 * 60 * 60 * 1000;
-  const bookedAppointment: BookedAppointment = {
+  const bookedAppointment = {
     id: "id",
     donationStartTimeMillis: now,
     bookingTimeMillis: now,
     donorId: "donorId",
     status: AppointmentStatus.BOOKED,
     hospital: Hospital.TEL_HASHOMER,
-  };
+    booked: true,
+  } as BookedAppointment;
 
   it("should not show popup when appointment is for the next day", () => {
     expect(
-      shouldDisplaySameDayDonationPopup(new Date(now), {
+      shouldDisplaySameDayDonationPopup(() => new Date(now), {
         ...bookedAppointment,
         donationStartTimeMillis: now + oneDayInMillis,
       })
@@ -28,7 +29,7 @@ describe("Upcoming donation popup", function () {
 
   it("should not show popup when appointment was booked 1 day ago", () => {
     expect(
-      shouldDisplaySameDayDonationPopup(new Date(now), {
+      shouldDisplaySameDayDonationPopup(() => new Date(now), {
         ...bookedAppointment,
         bookingTimeMillis: now - oneDayInMillis,
       })
@@ -37,7 +38,7 @@ describe("Upcoming donation popup", function () {
 
   it("should show popup", () => {
     expect(
-      shouldDisplaySameDayDonationPopup(new Date(now), {
+      shouldDisplaySameDayDonationPopup(() => new Date(now), {
         ...bookedAppointment,
         donationStartTimeMillis: now + 100,
         bookingTimeMillis: now - 2_000,

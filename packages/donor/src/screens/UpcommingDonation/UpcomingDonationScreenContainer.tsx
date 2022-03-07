@@ -37,7 +37,7 @@ export default function UpcomingDonationScreenContainer(
       fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
       showSameDayDonationPopup={shouldDisplaySameDayDonationPopup(
-        new Date(),
+        () => new Date(),
         props.bookedAppointment
       )}
     />
