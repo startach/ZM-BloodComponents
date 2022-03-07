@@ -347,8 +347,8 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="button"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-disabled-119 MuiButton-fullWidth-129 MuiButtonBase-disabled-10"
-            disabled={true}
+            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-fullWidth-129"
+            disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
             onDragLeave={[Function]}
@@ -361,7 +361,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             onTouchEnd={[Function]}
             onTouchMove={[Function]}
             onTouchStart={[Function]}
-            tabIndex={-1}
+            tabIndex={0}
             type="button"
           >
             <span
