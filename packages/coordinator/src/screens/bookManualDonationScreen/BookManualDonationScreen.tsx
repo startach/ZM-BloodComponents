@@ -59,8 +59,9 @@ export default function BookManualDonationScreen(
       nextLastNameError ===
         Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
       lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
-    )
+    ) {
       setLastNameError(nextLastNameError);
+    }
   };
 
   const doAllFieldsHaveValue =

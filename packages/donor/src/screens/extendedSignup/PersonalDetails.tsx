@@ -68,8 +68,9 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       nextLastNameError ===
         Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
       lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
-    )
+    ) {
       setLastNameError(nextLastNameError);
+    }
   };
 
   const areAllFieldsValid = [firstNameError, lastNameError, phoneError].every(
