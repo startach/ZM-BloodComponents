@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import BookDonationScreen from "./BookDonationScreen";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
@@ -8,6 +9,8 @@ import { observer } from "mobx-react-lite";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AppStateType } from "../../navigation/AppRouter";
+import Popup from "../../components/basic/Popup";
+import WarningLogo from "../../assets/images/warning.svg";
 
 interface BookDonationScreenContainerProps {
   isLoggedIn: boolean;
@@ -19,6 +22,8 @@ export function BookDonationScreenContainer({
   isLoggedIn,
 }: BookDonationScreenContainerProps) {
   const navigate = useNavigate();
+  const [showWarningPopup, setShowWarningPopup] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState<DonationSlotToBook>();
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
@@ -34,22 +39,52 @@ export function BookDonationScreenContainer({
   }
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
-    appointmentToBookStore.setAppointmentToBook(donationSlot);
-    if (isLoggedIn) {
-      navigate(MainNavigationKeys.Questionnaire);
+    setSelectedSlot(donationSlot);
+    const currentDonor = appState.donor;
+
+    if (currentDonor) {
+      setShowWarningPopup(true);
     } else {
-      navigate(MainNavigationKeys.Register);
+      continueDonation();
     }
   };
 
+  const continueDonation = () => {
+    if (selectedSlot) {
+      appointmentToBookStore.setAppointmentToBook(selectedSlot);
+      if (isLoggedIn) {
+        navigate(MainNavigationKeys.Questionnaire);
+      } else {
+        navigate(MainNavigationKeys.Register);
+      }
+    }
+  }
+
+
   return (
-    <BookDonationScreen
-      availableAppointments={availableAppointmentsStore.availableAppointments}
-      onSlotSelected={onSlotSelected}
-      firstName={appState.donor?.firstName}
-      isFetching={availableAppointmentsStore.isFetching}
-      defaultHospital={""}
-    />
+    <div>
+      <BookDonationScreen
+        availableAppointments={availableAppointmentsStore.availableAppointments}
+        onSlotSelected={onSlotSelected}
+        firstName={appState.donor?.firstName}
+        isFetching={availableAppointmentsStore.isFetching}
+        defaultHospital={""}
+      />
+      <Popup
+        title={"מועד קרוב מידי"}
+        buttonApproveText={"כן, אשר תור"}
+        open={showWarningPopup}
+        goBackText={"התחרטתי, חזרה למסך התורים"}
+        onApproved={continueDonation}
+        onBack={() => {
+          setShowWarningPopup(false);
+          navigate(MainNavigationKeys.BookDonation);
+        }}
+        image={WarningLogo}
+      >
+        {"טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור זה ?"}
+      </Popup>
+    </div>
   );
 }
 
