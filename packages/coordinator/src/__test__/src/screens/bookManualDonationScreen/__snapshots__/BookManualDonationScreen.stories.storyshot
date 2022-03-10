@@ -282,8 +282,8 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-contained-89 button primaryButton MuiButton-disableElevation-92 MuiButton-fullWidth-104"
-              disabled={false}
+              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-contained-89 button disabledButton MuiButton-disableElevation-92 MuiButton-disabled-94 MuiButton-fullWidth-104 MuiButtonBase-disabled-10"
+              disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
               onDragLeave={[Function]}
@@ -296,7 +296,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
-              tabIndex={0}
+              tabIndex={-1}
               type="button"
             >
               <span
