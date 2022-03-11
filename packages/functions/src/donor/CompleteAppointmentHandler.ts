@@ -47,14 +47,16 @@ export async function completeAppointmentFunc(
   }
 
   switch (appointment.status) {
-    case AppointmentStatus.AVAILABLE:
-      throw new Error("Invalid appointment status - " + appointment.status);
     case AppointmentStatus.COMPLETED:
+    // @ts-ignore
     case AppointmentStatus.NOSHOW:
       // Coordinators can change status of completed appointments
       if (!coordinatorId) {
         throw new Error("Invalid appointment status - " + appointment.status);
       }
+
+    case AppointmentStatus.AVAILABLE:
+      throw new Error("Invalid appointment status - " + appointment.status);
 
     case AppointmentStatus.BOOKED:
     case AppointmentStatus.CONFIRMED:

@@ -11,16 +11,21 @@ import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import * as functions from "firebase-functions";
 import * as CoordinatorDAL from "../dal/AdminDataAccessLayer";
 import { getCoordinatorHospitals } from "../utils/CoordinatorUtils";
+import { DbCoordinator, DbDonor } from "../function-types";
 
 export default async function (
   request: FunctionsApi.GetCoordinatorAppointmentsRequest,
   callerId: string
 ) {
+  const coordinatorDonorUserFuture = DonorDataAccessLayer.getDonor(callerId);
   const dbCoordinator = await CoordinatorDAL.getCoordinator(callerId);
   if (!dbCoordinator) {
     throw new Error("User is not a valid coordinator");
   }
-  const coordinator = await fetchCoordinator(callerId);
+  const coordinator = await toCoordinator(
+    dbCoordinator,
+    coordinatorDonorUserFuture
+  );
   const hospital = getHospitalToFetchAppointmentsFor(request, coordinator);
   const hospitalsArray = CoordinatorDAL.getValidHospitalsOrThrow(
     dbCoordinator,
@@ -67,20 +72,16 @@ export default async function (
   return res;
 }
 
-async function fetchCoordinator(callerId: string): Promise<Coordinator> {
-  const getCoordinatorDonorUser = DonorDataAccessLayer.getDonor(callerId);
-  const coordinator = await CoordinatorDAL.getCoordinator(callerId);
-  if (!coordinator) {
-    console.error("Could not find calling user", callerId);
-    throw Error(`User is not a coordinator`);
-  }
-
-  const coordinatorDonorUser = await getCoordinatorDonorUser;
+async function toCoordinator(
+  dbCoordinator: DbCoordinator,
+  coordinatorDonorUserFuture: Promise<DbDonor | undefined>
+): Promise<Coordinator> {
+  const coordinatorDonorUser = await coordinatorDonorUserFuture;
 
   return {
-    coordinatorId: callerId,
-    role: coordinator.role,
-    activeHospitalsForCoordinator: getCoordinatorHospitals(coordinator),
+    coordinatorId: dbCoordinator.id,
+    role: dbCoordinator.role,
+    activeHospitalsForCoordinator: getCoordinatorHospitals(dbCoordinator),
     name: coordinatorDonorUser
       ? `${coordinatorDonorUser.firstName} ${coordinatorDonorUser.lastName}`
       : undefined,
