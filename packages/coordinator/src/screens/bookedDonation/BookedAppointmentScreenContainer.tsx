@@ -19,7 +19,7 @@ export default function BookedAppointmentScreenContainer() {
     return <Navigate to={CoordinatorScreenKey.LOGIN} />;
   }
 
-  if (!appointmentId) {
+  if (!appointmentId || !appointment) {
     return <Navigate to={CoordinatorScreenKey.SCHEDULE} />;
   }
 
@@ -48,6 +48,11 @@ export default function BookedAppointmentScreenContainer() {
     dispatch(markAppointmentAsCompleted(bookedAppointment.id, isNoShow));
   };
 
+  const REMOVE_DONOR_BUFFER_TIME = 3 * 24 * 60 * 60 * 1000;
+  const allowRemoveDonor =
+    new Date().getTime() - bookedAppointment.donationStartTimeMillis <
+    REMOVE_DONOR_BUFFER_TIME;
+
   return (
     <BookedAppointmentScreen
       appointment={bookedAppointment}
@@ -57,6 +62,7 @@ export default function BookedAppointmentScreenContainer() {
         navigate(-1);
       }}
       markAppointmentAsCompleted={markAppointment}
+      allowRemoveDonor={allowRemoveDonor}
     />
   );
 }
