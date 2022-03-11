@@ -23,7 +23,7 @@ export type Donor = {
   phone: string;
   bloodType: BloodType;
   notificationSettings: DonorNotificationSettings;
-  lastCompletedDonationTime?: number;
+  lastCompletedDonationTimeMillis?: number;
 };
 
 export type MinimalDonorDetailsForAppointment = {

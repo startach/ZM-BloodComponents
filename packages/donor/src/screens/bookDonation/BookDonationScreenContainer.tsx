@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { DateUtils } from "@zm-blood-components/common";
 import BookDonationScreen from "./BookDonationScreen";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
@@ -11,6 +12,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { AppStateType } from "../../navigation/AppRouter";
 import Popup from "../../components/basic/Popup";
 import WarningLogo from "../../assets/images/warning.svg";
+
+const MIN_DAYS_BETWEEN_DONATIONS = 30;
 
 interface BookDonationScreenContainerProps {
   isLoggedIn: boolean;
@@ -38,11 +41,28 @@ export function BookDonationScreenContainer({
     return <Navigate to={MainNavigationKeys.Questionnaire} />;
   }
 
+function getNumberOfDaysBetweenDates(start: Date, end: Date) {
+
+    // One day in milliseconds
+    const oneDay = 1000 * 60 * 60 * 24;
+  
+    // Calculating the time difference between two dates
+    const diffInTime = start.getTime() - end.getTime();
+  
+    // Calculating the no. of days between two dates
+    const diffInDays = Math.round(diffInTime / oneDay);
+  
+    return diffInDays;
+  }
+
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
     setSelectedSlot(donationSlot);
     const currentDonor = appState.donor;
+    const timeDifference = currentDonor?.lastCompletedDonationTime ? 
+    getNumberOfDaysBetweenDates(new Date(donationSlot.donationStartTimeMillis), 
+      new Date(currentDonor.lastCompletedDonationTime._seconds)) : MIN_DAYS_BETWEEN_DONATIONS;
 
-    if (currentDonor) {
+    if (timeDifference < MIN_DAYS_BETWEEN_DONATIONS) {
       setShowWarningPopup(true);
     } else {
       continueDonation();

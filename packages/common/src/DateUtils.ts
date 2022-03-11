@@ -102,6 +102,20 @@ export function DateWithAddedMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60000);
 }
 
+export function getNumberOfDaysBetweenDates(start: Date, end: Date) {
+
+  // One day in milliseconds
+  const oneDay = 1000 * 60 * 60 * 24;
+
+  // Calculating the time difference between two dates
+  const diffInTime = start.getTime() - end.getTime();
+
+  // Calculating the no. of days between two dates
+  const diffInDays = Math.round(diffInTime / oneDay);
+
+  return diffInDays;
+}
+
 export const ShortDateFormat: Intl.DateTimeFormatOptions = {
   weekday: "short",
   month: "numeric",
