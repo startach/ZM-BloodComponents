@@ -7,7 +7,7 @@ import { Request } from "firebase-functions/lib/providers/https";
 import * as express from "express";
 import * as admin from "firebase-admin";
 import { DbAppointment } from "../function-types";
-import { AppointmentStatus, Hospital } from "@zm-blood-components/common/src";
+import { AppointmentStatus, Hospital } from "@zm-blood-components/common";
 import {
   deleteAppointmentsByIds,
   getAppointmentByIdOrThrow,

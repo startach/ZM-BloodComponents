@@ -71,6 +71,8 @@ node_modules/
 
 # lib files
 **/lib/**
+**/dist/**
+.packages
 
 keys
 **/test-service-account-key.json

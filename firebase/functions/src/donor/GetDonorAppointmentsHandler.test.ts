@@ -9,7 +9,7 @@ import {
 import { getDate } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { saveTestDonor } from "../testUtils/TestSamples";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(

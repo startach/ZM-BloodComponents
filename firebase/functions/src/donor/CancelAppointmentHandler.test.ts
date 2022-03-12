@@ -17,7 +17,7 @@ const wrapped = firebaseFunctionsTest.wrap(
 import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 
 jest.mock("../notifications/CancelAppointmentNotifier");

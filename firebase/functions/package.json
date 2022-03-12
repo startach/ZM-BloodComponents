@@ -8,35 +8,39 @@
   "scripts": {
     "clean": "rimraf ./lib && rimraf ./dist",
     "lint": "tslint --project tsconfig.json ",
-    "compile": "tsc -p tsconfig.build.json",
-    "build": "yarn run clean && yarn run lint && yarn run compile",
+    "build": "yarn run clean && yarn run lint && yarn run tsc",
     "bundle": "yarn run build && webpack",
     "serve": "yarn run build && firebase emulators:start --only functions",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run shell",
     "logs": "firebase functions:log",
     "test": "jest --silent",
-    "style": "yarn run prettier --write . "
+    "style": "yarn run prettier --write . ",
+    "deploy-prod": "firelink deploy --only functions -P production ",
+    "deploy-dev": "firelink deploy --only functions -P staging "
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
     "@zm-blood-components/common": "^1.0.0",
+    "dayjs": "^1.10.4",
     "firebase-admin": "^9.12.0",
     "firebase-functions": "3.13.2",
     "ics": "^2.31.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
-    "copy-webpack-plugin": "^7.0.0",
-    "firebase-functions-test": "^0.2.3",
-    "generate-package-json-webpack-plugin": "^2.1.2",
-    "ts-loader": "^8.0.14",
-    "webpack": "^5.17.0",
-    "webpack-cli": "^4.4.0",
-    "webpack-node-externals": "^2.5.2"
+    "firebase-functions-test": "^0.2.3"
+  },
+  "fireDependencies": {
+    "@zm-blood-components/common": "../../packages/common"
+  },
+  "fireConfig": {
+    "runner": "firebase",
+    "outFolderName": ".packages",
+    "outFolderLocation": "."
   },
   "private": true
 }

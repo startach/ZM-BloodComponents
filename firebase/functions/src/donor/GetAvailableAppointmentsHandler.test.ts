@@ -6,7 +6,7 @@ import {
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
