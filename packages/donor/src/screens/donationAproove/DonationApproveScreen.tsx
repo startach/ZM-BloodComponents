@@ -18,6 +18,7 @@ export default function DonationApproveScreen({
   onShowOptionSelected,
 }: DonationApproveScreenProps) {
   return (
+    // minor change in FE to check functions sanity
     <ZMScreen title="אישור הגעה" hasBurgerMenu={true}>
       <div className={styles.textContainer}>
         <div className={styles.title}>היי {firstName ? firstName : ""}</div>
