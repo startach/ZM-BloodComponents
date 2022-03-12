@@ -19,9 +19,6 @@
     "deploy-prod": "firelink deploy --only functions -P production ",
     "deploy-dev": "firelink deploy --only functions -P staging "
   },
-  "engines": {
-    "node": "14"
-  },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
     "@zm-blood-components/common": "^1.0.0",
