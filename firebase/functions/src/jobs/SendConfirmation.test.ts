@@ -5,7 +5,7 @@ import {
   BookingChange,
   FunctionsApi,
   Hospital,
-} from "@zm-blood-components/common/src";
+} from "@zm-blood-components/common";
 import { DbAppointment, DbDonor } from "../function-types";
 import {
   deleteAppointmentsByIds,

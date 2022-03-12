@@ -2,7 +2,8 @@ import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
 import {
   BookingChange,
   FunctionsApi,
-  Hospital,AppointmentStatus
+  Hospital,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import * as DonorDataAccessLayer from "../dal/DonorDataAccessLayer";
@@ -89,7 +90,9 @@ test("No free appointments ", async () => {
     },
   });
   const data = response as FunctionsApi.BookAppointmentResponse;
-  expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS);
+  expect(data.status).toEqual(
+    FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
+  );
   expect(data.bookedAppointment).toBeUndefined();
 });
 
@@ -106,7 +109,7 @@ test.skip("Donor has recent donation throws exception", async () => {
 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(
-      FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
+    FunctionsApi.BookAppointmentStatus.HAS_OTHER_DONATION_IN_BUFFER
   );
   expect(data.bookedAppointment).toBeUndefined();
 });

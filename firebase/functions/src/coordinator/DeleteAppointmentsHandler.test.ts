@@ -21,7 +21,7 @@ import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { deleteDonor } from "../dal/DonorDataAccessLayer";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 jest.mock("../notifications/NotificationSender");

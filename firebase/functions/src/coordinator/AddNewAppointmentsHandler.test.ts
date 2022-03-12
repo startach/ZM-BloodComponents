@@ -12,7 +12,7 @@ import {
   getAppointmentsCreatedByUserId,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
-import { AppointmentStatus } from "@zm-blood-components/common/src";
+import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbCoordinator } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(

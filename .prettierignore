@@ -1,10 +1,11 @@
 .idea
 client
 lib
+dist
+.packages
 packages/donor/build
 packages/donor/storybook-build
 packages/coordinator/storybook-build
 packages/functions/dist
 build
 tsconfig.json
-tsconfig.build.json
