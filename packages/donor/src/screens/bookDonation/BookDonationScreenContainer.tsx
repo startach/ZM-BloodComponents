@@ -41,26 +41,15 @@ export function BookDonationScreenContainer({
     return <Navigate to={MainNavigationKeys.Questionnaire} />;
   }
 
-function getNumberOfDaysBetweenDates(start: Date, end: Date) {
-
-    // One day in milliseconds
-    const oneDay = 1000 * 60 * 60 * 24;
-  
-    // Calculating the time difference between two dates
-    const diffInTime = start.getTime() - end.getTime();
-  
-    // Calculating the no. of days between two dates
-    const diffInDays = Math.round(diffInTime / oneDay);
-  
-    return diffInDays;
-  }
-
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
     setSelectedSlot(donationSlot);
     const currentDonor = appState.donor;
-    const timeDifference = currentDonor?.lastCompletedDonationTime ? 
-    getNumberOfDaysBetweenDates(new Date(donationSlot.donationStartTimeMillis), 
-      new Date(currentDonor.lastCompletedDonationTime._seconds)) : MIN_DAYS_BETWEEN_DONATIONS;
+    const timeDifference = currentDonor?.lastCompletedDonationTimeMillis
+      ? DateUtils.getNumberOfDaysBetweenDates(
+          new Date(donationSlot.donationStartTimeMillis),
+          new Date(currentDonor.lastCompletedDonationTimeMillis)
+        )
+      : MIN_DAYS_BETWEEN_DONATIONS;
 
     if (timeDifference < MIN_DAYS_BETWEEN_DONATIONS) {
       setShowWarningPopup(true);
@@ -78,8 +67,7 @@ function getNumberOfDaysBetweenDates(start: Date, end: Date) {
         navigate(MainNavigationKeys.Register);
       }
     }
-  }
-
+  };
 
   return (
     <div>
@@ -102,7 +90,9 @@ function getNumberOfDaysBetweenDates(start: Date, end: Date) {
         }}
         image={WarningLogo}
       >
-        {"טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור זה ?"}
+        {
+          "טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור זה ?"
+        }
       </Popup>
     </div>
   );

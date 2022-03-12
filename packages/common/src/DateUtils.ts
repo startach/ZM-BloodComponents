@@ -103,7 +103,6 @@ export function DateWithAddedMinutes(date: Date, minutes: number) {
 }
 
 export function getNumberOfDaysBetweenDates(start: Date, end: Date) {
-
   // One day in milliseconds
   const oneDay = 1000 * 60 * 60 * 24;
 
