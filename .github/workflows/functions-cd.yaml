@@ -44,6 +44,9 @@ jobs:
       - name: CD
         run: cd firebase/functions/
 
+      - name: PWD
+        run: pwd
+
       - name: Deploy to Firebase Functions (Staging)
         run: firelink deploy --only functions:swapAppointment -P staging --token ${{ secrets.FIREBASE_TOKEN }}
 
