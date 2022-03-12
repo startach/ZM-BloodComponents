@@ -49,7 +49,7 @@ export function BookDonationScreenContainer({
           new Date(donationSlot.donationStartTimeMillis),
           new Date(currentDonor.lastCompletedDonationTimeMillis)
         )
-      : MIN_DAYS_BETWEEN_DONATIONS;
+      : MIN_DAYS_BETWEEN_DONATIONS + 1;
 
     if (timeDifference < MIN_DAYS_BETWEEN_DONATIONS) {
       setShowWarningPopup(true);
