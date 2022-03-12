@@ -65,6 +65,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^3.3.2",
+    "@rxdi/firelink": "^0.7.75",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
@@ -81,6 +82,7 @@
     "@types/uuid": "^8.3.1",
     "@types/yargs": "^16.0.1",
     "cross-env": "^7.0.3",
+    "firebase-tools": "^10.2.2",
     "firelink": "^0.1.0",
     "fs-extra": "^9.1.0",
     "inquirer": "^8.0.0",

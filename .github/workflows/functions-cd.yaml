@@ -36,10 +36,11 @@ jobs:
           path: ./test-service-account-key.json
           contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
           write-mode: overwrite
-      - name: Install deployment dependencies
-        run: npm i -g @rxdi/firelink firebase firebase-tools
+      - name: Build Common
+        run: yarn workspace @zm-blood-components/common build
+
       - name: Deploy to Firebase Functions (Staging)
-        run: npm i -g @rxdi/firelink && firelink deploy --only functions -P staging --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firelink deploy --only functions:swapAppointment -P staging --token ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Test Functions
         run: yarn workspace @zm-blood-components/functions test
