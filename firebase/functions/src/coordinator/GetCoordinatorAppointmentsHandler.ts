@@ -50,11 +50,11 @@ export default async function (
     }
   });
 
-  let donorsInAppointments = await DonorDataAccessLayer.getDonors(
+  const donorsInAppointments = await DonorDataAccessLayer.getDonors(
     _.uniq(donorIds)
   );
 
-  let appointments = appointmentsByHospital.map((a) => {
+  const appointments = appointmentsByHospital.map((a) => {
     if (DbAppointmentUtils.isAppointmentBooked(a)) {
       const getDonor = (donorId: string) =>
         donorsInAppointments.filter((d) => d.id === donorId)[0];
