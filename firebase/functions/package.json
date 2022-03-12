@@ -20,7 +20,7 @@
     "deploy-dev": "firelink deploy --only functions -P staging "
   },
   "engines": {
-    "node": "14"
+    "node": ">=14"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
