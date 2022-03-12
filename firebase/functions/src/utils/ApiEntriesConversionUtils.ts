@@ -7,8 +7,12 @@ export function dbDonorToDonor(dbDonor: DbDonor): Donor {
       disableEmailNotifications: false,
     };
 
+    const lastCompletedDonationTime =
+    dbDonor.lastCompletedDonationTime?.toMillis();
+
   return {
     ...dbDonor,
+    lastCompletedDonationTimeMillis: lastCompletedDonationTime,
     notificationSettings: notificationSettings,
   };
 }
