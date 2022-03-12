@@ -15,25 +15,33 @@ jobs:
         uses: zcong1993/setup-timezone@master
         with:
           timezone: Asia/Jerusalem
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.version }}
+
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Functions
+        run: yarn workspace @zm-blood-components/functions build
+
       - name: Write Test Service Account Key
         uses: DamianReeves/write-file-action@v1.0
         with:
           path: ./test-service-account-key.json
           contents: ${{ secrets.TEST_SERVICE_ACCOUNT }}
           write-mode: overwrite
-      - name: Install Dependencies
-        run: yarn install
-      - name: Deploy to Firebase Hosting
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions -P production
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Install deployment dependencies
+        run: npm i -g @rxdi/firelink firebase-tools
+
+      - name: Deploy to Firebase Functions (Production)
+        working-directory: ./firebase/functions
+        run: firelink deploy --only functions -P production --token ${{ secrets.FIREBASE_TOKEN }}

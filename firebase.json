@@ -1,7 +1,6 @@
 {
   "functions": {
     "source": "firebase/functions",
-    "predeploy": ["yarn run build-common", "yarn run build-functions"],
     "runtime": "nodejs16"
   },
   "hosting": [

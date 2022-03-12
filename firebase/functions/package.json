@@ -8,16 +8,13 @@
   "scripts": {
     "clean": "rimraf ./lib && rimraf ./dist",
     "lint": "tslint --project tsconfig.json ",
-    "build": "yarn run clean && yarn run lint && yarn run tsc",
-    "bundle": "yarn run build && webpack",
-    "serve": "yarn run build && firebase emulators:start --only functions",
-    "shell": "yarn run build && firebase functions:shell",
-    "start": "yarn run shell",
+    "pre-build": "yarn run clean && yarn workspace @zm-blood-components/common build ",
+    "build": "yarn run pre-build && tsc ",
     "logs": "firebase functions:log",
     "test": "jest --silent",
     "style": "yarn run prettier --write . ",
-    "deploy-prod": "firelink deploy --only functions -P production ",
-    "deploy-dev": "firelink deploy --only functions -P staging "
+    "deploy-prod": "yarn run build && firelink deploy --only functions -P production ",
+    "deploy-dev": "yarn run build && firelink deploy --only functions -P staging "
   },
   "dependencies": {
     "@sendgrid/mail": "^7.4.5",
