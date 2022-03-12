@@ -1,14 +1,13 @@
-import { AppointmentStatus, Hospital } from "@zm-blood-components/common";
+import { TestSamples } from "@zm-blood-components/common";
 import { DbAppointment } from "../function-types";
 import { validateCancelAppointment } from "./CancelAppointmentHelper";
 import * as admin from "firebase-admin";
-import { SampleBookedAppointment } from "@zm-blood-components/common/lib/test/TestSamples";
 
 const DONOR_ID = "DONOR_ID";
 
 function APPOINTMENT_TO_CANCEL(donorId: string): DbAppointment {
   return {
-    ...SampleBookedAppointment,
+    ...TestSamples.SampleBookedAppointment,
     creationTime: admin.firestore.Timestamp.now(),
     creatorUserId: "",
     donationStartTime: admin.firestore.Timestamp.now(),

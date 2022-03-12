@@ -10,9 +10,9 @@ import {
   BloodType,
   Hospital,
   MANUAL_DONOR_ID,
+  FunctionsApi,
   MinimalDonorDetailsForAppointment,
 } from "@zm-blood-components/common";
-import { BookAppointmentStatus } from "@zm-blood-components/common/lib/functions-api";
 
 const DONOR_ID = "DONOR_ID";
 
@@ -52,7 +52,7 @@ describe("Book Appointment Helper", () => {
     const data = res as ValidBookAppointmentResponse;
 
     expect(data.status).toEqual(
-      BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
+      FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
     );
     expect(data).not.toHaveProperty("appointment");
   });
@@ -67,7 +67,9 @@ describe("Book Appointment Helper", () => {
 
     const data = res as ValidBookAppointmentResponse;
 
-    expect(data.status).toEqual(BookAppointmentStatus.DONOR_DETAILS_REQUIRED);
+    expect(data.status).toEqual(
+      FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED
+    );
     expect(data).not.toHaveProperty("appointment");
   });
 
@@ -88,7 +90,7 @@ describe("Book Appointment Helper", () => {
     );
     const data = res as ValidBookAppointment;
 
-    expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+    expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
     expect(data.appointment).toEqual(
       APPOINTMENT_TO_BOOK(AppointmentStatus.AVAILABLE)
     );
@@ -112,7 +114,7 @@ describe("Book Appointment Helper", () => {
 
     const data = res as ValidBookAppointment;
 
-    expect(data.status).toEqual(BookAppointmentStatus.SUCCESS);
+    expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
     expect(data.appointment).toEqual(
       APPOINTMENT_TO_BOOK(AppointmentStatus.AVAILABLE)
     );
