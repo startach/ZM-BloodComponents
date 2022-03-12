@@ -24,7 +24,6 @@ import {
 } from "./jobs/CronJobs";
 
 admin.initializeApp(functions.config().firebase);
-
 admin.firestore().settings({ timestampsInSnapshots: true });
 
 // Coordinator

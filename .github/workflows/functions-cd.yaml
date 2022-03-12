@@ -41,13 +41,8 @@ jobs:
       - name: Install deployment dependencies
         run: npm i -g @rxdi/firelink firebase-tools
 
-      - name: CD
-        run: cd firebase/functions/
-
-      - name: PWD
-        run: pwd
-
       - name: Deploy to Firebase Functions (Staging)
+        working-directory: ./firebase/functions
         run: firelink deploy --only functions:swapAppointment -P staging --token ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Test Functions
