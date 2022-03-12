@@ -6,7 +6,7 @@ import {
   TestSamples,
 } from "@zm-blood-components/common";
 import admin from "firebase-admin";
-import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
+import * as DbAppointmentUtils from "./DbAppointmentUtils";
 import { DbAppointment, DbDonor } from "../function-types";
 import {
   SampleAvailableDbAppointment,

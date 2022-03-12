@@ -1,6 +1,6 @@
 import { DbAppointment, DbDonor } from "../function-types";
 import * as admin from "firebase-admin";
-import { AppointmentStatus, Hospital } from "../../../common/src";
+import { AppointmentStatus, Hospital } from "@zm-blood-components/common";
 import { sampleUser } from "../testUtils/TestSamples";
 import { calculateNotificationData } from "./AppointmentNotificationData";
 

@@ -6,7 +6,7 @@ import {
   HospitalUtils,
 } from "@zm-blood-components/common";
 import { DbCoordinator, DbDonor } from "../function-types";
-import * as DonorDAL from "../dal/DonorDataAccessLayer";
+import * as DonorDAL from "./DonorDataAccessLayer";
 
 export async function getCoordinator(adminId: string) {
   const collection = admin.firestore().collection(Collections.COORDINATORS);
