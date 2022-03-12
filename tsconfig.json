@@ -1,19 +1,19 @@
 {
-  "extends": "./tsconfig.build.json",
-
   "compileOnSave": true,
   "compilerOptions": {
-    "baseUrl": "./packages",
-    "paths": {
-      "@zm-blood-components/common": ["common/src"],
-      "@zm-blood-components/coordinator": ["coordinator/src"],
-      "@zm-blood-components/functions": ["functions/src"],
-      "@zm-blood-components/donor": ["donor/src"]
-    },
-    "types": ["jest", "node"],
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es2017",
+    "sourceMap": false,
+    "strict": true,
+    "declaration": true,
+    "noImplicitReturns": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false
+    "skipLibCheck": true,
+    "types": ["jest", "node",],
+    "noUnusedLocals": false,
+    "useUnknownInCatchVariables": false,
   },
-  "exclude": ["**/node_modules/**", "**/*.test.ts*", "**/lib/**"]
+  "exclude": ["**/node_modules", "lib", "**/*.test.ts*"]
 }
-

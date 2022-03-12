@@ -3,7 +3,7 @@ name: Functions Continuous Integration
 on:
   pull_request:
     paths:
-      - "packages/functions/**"
+      - "firebase/functions/**"
       - "packages/common/**"
 
 jobs:
@@ -22,10 +22,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install Dependencies
         run: yarn install
-      - name: Run Typescript
-        run: yarn workspace @zm-blood-components/functions tsc
       - name: Build Functions
-        run: yarn workspace @zm-blood-components/functions bundle
+        run: yarn workspace @zm-blood-components/functions build
       - name: Write Test Service Account Key
         uses: DamianReeves/write-file-action@v1.0
         with:

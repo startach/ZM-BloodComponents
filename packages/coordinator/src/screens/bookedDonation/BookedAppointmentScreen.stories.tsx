@@ -33,6 +33,7 @@ const props: BookedAppointmentScreenProps = {
   onRemoveDonor: action("onRemoveDonor"),
   onCopyAppointmentDetails: action("onCopyAppointmentDetails"),
   markAppointmentAsCompleted: action("markAppointmentAsCompleted"),
+  allowRemoveDonor: true,
 };
 
 const Template: Story<BookedAppointmentScreenProps> = (args) => (
@@ -53,8 +54,8 @@ AppointmentNotPassed.args = {
   },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
+export const CantRemoveDonor = Template.bind({});
+CantRemoveDonor.args = {
   ...props,
-  appointment: undefined,
+  allowRemoveDonor: false,
 };

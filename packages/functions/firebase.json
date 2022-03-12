@@ -1,6 +1,0 @@
-{
-  "functions": {
-    "source": "./dist",
-    "predeploy": ["yarn run bundle"]
-  }
-}
