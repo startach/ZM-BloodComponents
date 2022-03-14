@@ -39,7 +39,7 @@ export default function BookManualDonationScreenContainer() {
           lastName,
           phoneNumber,
           bloodType,
-          countryIdNumber
+          countryIdNumber,
         },
         () => navigate(-1)
       )

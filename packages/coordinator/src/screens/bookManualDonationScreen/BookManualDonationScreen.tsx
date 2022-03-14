@@ -139,9 +139,7 @@ export default function BookManualDonationScreen(
           value={countryIdNumber}
           onChangeText={(nextIdNumber) => {
             setCountryIdNumber(nextIdNumber);
-            setCountryIdNumberError(
-              Validation.ValidateIdNumber(nextIdNumber)
-            );
+            setCountryIdNumberError(Validation.ValidateIdNumber(nextIdNumber));
           }}
           errorMessage={LocaleUtils.getValidationErrorTranslation(
             countryIdNumberError

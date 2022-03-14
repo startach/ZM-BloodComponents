@@ -23,7 +23,7 @@ export type LastNameValidation =
   | PersonalDetailsValidation.FULL_NAME_TOO_LONG;
 
 export type CountryIdNumberValidation =
-  PersonalDetailsValidation.VALID_FIELD
+  | PersonalDetailsValidation.VALID_FIELD
   | PersonalDetailsValidation.ID_INVALID
   | PersonalDetailsValidation.ID_HAS_NANS;
 
