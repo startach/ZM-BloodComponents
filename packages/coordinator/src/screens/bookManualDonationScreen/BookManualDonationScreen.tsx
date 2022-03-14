@@ -21,7 +21,8 @@ export interface BookManualDonationScreenProps {
     firstName: string,
     lastName: string,
     phone: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    countryIdNumber?: string
   ) => void;
 }
 
@@ -36,6 +37,11 @@ export default function BookManualDonationScreen(
   const [lastName, setLastName] = useState("");
   const [lastNameError, setLastNameError] =
     useState<Validation.LastNameValidation>(
+      Validation.PersonalDetailsValidation.VALID_FIELD
+    );
+  const [countryIdNumber, setCountryIdNumber] = useState("");
+  const [countryIdNumberError, setCountryIdNumberError] =
+    useState<Validation.CountryIdNumberValidation>(
       Validation.PersonalDetailsValidation.VALID_FIELD
     );
   const [phone, setPhone] = useState("");
@@ -76,7 +82,7 @@ export default function BookManualDonationScreen(
       return;
     }
     setLoading(true);
-    props.onSave(firstName, lastName, phone, bloodType);
+    props.onSave(firstName, lastName, phone, bloodType, countryIdNumber);
   };
 
   const fullTime = props.donationStartTime.toLocaleDateString(
@@ -128,7 +134,19 @@ export default function BookManualDonationScreen(
           }}
           errorMessage={LocaleUtils.getValidationErrorTranslation(phoneError)}
         />
-
+        <Input
+          label="תעודת זהות"
+          value={countryIdNumber}
+          onChangeText={(nextIdNumber) => {
+            setCountryIdNumber(nextIdNumber);
+            setCountryIdNumberError(
+              Validation.ValidateIdNumber(nextIdNumber)
+            );
+          }}
+          errorMessage={LocaleUtils.getValidationErrorTranslation(
+            countryIdNumberError
+          )}
+        />
         <Picker
           label={"סוג דם"}
           options={BloodTypeUtils.getBloodTypeSelectOptions()}
