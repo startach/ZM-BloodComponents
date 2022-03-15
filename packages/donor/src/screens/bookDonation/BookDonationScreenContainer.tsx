@@ -10,8 +10,6 @@ import { observer } from "mobx-react-lite";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AppStateType } from "../../navigation/AppRouter";
-import Popup from "../../components/basic/Popup";
-import WarningLogo from "../../assets/images/warning.svg";
 
 const MIN_DAYS_BETWEEN_DONATIONS = 30;
 
@@ -46,8 +44,8 @@ export function BookDonationScreenContainer({
     const currentDonor = appState.donor;
     const timeDifference = currentDonor?.lastCompletedDonationTimeMillis
       ? DateUtils.getNumberOfDaysBetweenDates(
-          new Date(donationSlot.donationStartTimeMillis),
-          new Date(currentDonor.lastCompletedDonationTimeMillis)
+          donationSlot.donationStartTimeMillis,
+          currentDonor.lastCompletedDonationTimeMillis
         )
       : MIN_DAYS_BETWEEN_DONATIONS + 1;
 
@@ -69,6 +67,15 @@ export function BookDonationScreenContainer({
     }
   };
 
+  const onSlotSelectedPopUpProps = {
+    open: showWarningPopup,
+    onApproved: continueDonation,
+    onBack: () => {
+      setShowWarningPopup(false);
+      navigate(MainNavigationKeys.BookDonation);
+    }, 
+  }
+
   return (
     <div>
       <BookDonationScreen
@@ -77,23 +84,8 @@ export function BookDonationScreenContainer({
         firstName={appState.donor?.firstName}
         isFetching={availableAppointmentsStore.isFetching}
         defaultHospital={""}
+        onSlotSelectedPopUpProps={onSlotSelectedPopUpProps}
       />
-      <Popup
-        title={"מועד קרוב מידי"}
-        buttonApproveText={"כן, אשר תור"}
-        open={showWarningPopup}
-        goBackText={"התחרטתי, חזרה למסך התורים"}
-        onApproved={continueDonation}
-        onBack={() => {
-          setShowWarningPopup(false);
-          navigate(MainNavigationKeys.BookDonation);
-        }}
-        image={WarningLogo}
-      >
-        {
-          "טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור זה ?"
-        }
-      </Popup>
     </div>
   );
 }
