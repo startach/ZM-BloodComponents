@@ -73,8 +73,8 @@ export function BookDonationScreenContainer({
     onBack: () => {
       setShowWarningPopup(false);
       navigate(MainNavigationKeys.BookDonation);
-    }, 
-  }
+    },
+  };
 
   return (
     <div>

@@ -21,7 +21,11 @@ const props: BookDonationScreenProps = {
   firstName: "משה",
   defaultHospital: "",
   onSlotSelected: action("onSlotSelected"),
-  onSlotSelectedPopUpProps: { open: false, onApproved: () => {}, onBack: () => {}}
+  onSlotSelectedPopUpProps: {
+    open: false,
+    onApproved: () => {},
+    onBack: () => {},
+  },
 };
 
 const sampleAppointments: AvailableAppointment[] = [

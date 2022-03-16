@@ -102,7 +102,10 @@ export function DateWithAddedMinutes(date: Date, minutes: number) {
   return new Date(date.getTime() + minutes * 60000);
 }
 
-export function getNumberOfDaysBetweenDates(start: Date | number, end: Date | number) {
+export function getNumberOfDaysBetweenDates(
+  start: Date | number,
+  end: Date | number
+) {
   const date1 = new Date(start);
   const date2 = new Date(end);
 

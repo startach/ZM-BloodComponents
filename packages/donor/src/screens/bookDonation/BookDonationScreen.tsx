@@ -26,7 +26,7 @@ export interface BookDonationScreenProps {
   firstName?: string;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
   defaultHospital: Hospital | "";
-  onSlotSelectedPopUpProps:  Pick<PopupProps, "open" | "onBack" | "onApproved">;
+  onSlotSelectedPopUpProps: Pick<PopupProps, "open" | "onBack" | "onApproved">;
 }
 
 export default function BookDonationScreen({

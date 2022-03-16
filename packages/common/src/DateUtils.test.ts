@@ -75,10 +75,11 @@ describe("DateUtils", function () {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - DAYS_DIFFERENCE);
 
-    expect(getNumberOfDaysBetweenDates(now, yesterday)).toEqual(DAYS_DIFFERENCE);
-    expect(getNumberOfDaysBetweenDates(yesterday, now)).toEqual(DAYS_DIFFERENCE);
-
+    expect(getNumberOfDaysBetweenDates(now, yesterday)).toEqual(
+      DAYS_DIFFERENCE
+    );
+    expect(getNumberOfDaysBetweenDates(yesterday, now)).toEqual(
+      DAYS_DIFFERENCE
+    );
   });
 });
-
-
