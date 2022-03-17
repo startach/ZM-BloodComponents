@@ -40,11 +40,11 @@ jobs:
           write-mode: overwrite
 
       - name: Install deployment dependencies
-        run: npm i -g @rxdi/firelink firebase-tools
+        run: npm i -g @rxdi/firelink
 
       - name: Run firelink
         working-directory: ./firebase/functions
-        run: firelink --leave-changes
+        run: firelink --no-runner --leave-changes
 
       - name: Deploy to Firebase Functions (Production)
         uses: w9jds/firebase-action@master
