@@ -55,7 +55,6 @@ export default function EventCalendarLink({
   };
 
   const addToIOSCalendar = () => {
-    console.log(eventDateStart);
     const calendarUrl = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
@@ -78,7 +77,6 @@ export default function EventCalendarLink({
   };
 
   const linkByOperatingSystem = () => {
-    return addToIOSCalendar();
     return DeviceUtils.getMobileOperatingSystem() === "android"
       ? addToGoogleCalendar()
       : addToIOSCalendar();
