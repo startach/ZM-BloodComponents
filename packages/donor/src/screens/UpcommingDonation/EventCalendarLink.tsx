@@ -42,7 +42,8 @@ export default function EventCalendarLink({
   });
 
   const CleanIsoFormatDate = (date: Date) => {
-    return date.toISOString().replace(/[-:.]/g, "");
+    const isoStringWithoutSeconds = date.toISOString().replace(/.\d+Z$/g, "Z");
+    return isoStringWithoutSeconds.replace(/[-:.]/g, "");
   };
 
   const addToGoogleCalendar = () => {
@@ -54,6 +55,7 @@ export default function EventCalendarLink({
   };
 
   const addToIOSCalendar = () => {
+    console.log(eventDateStart);
     const calendarUrl = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
@@ -76,6 +78,7 @@ export default function EventCalendarLink({
   };
 
   const linkByOperatingSystem = () => {
+    return addToIOSCalendar();
     return DeviceUtils.getMobileOperatingSystem() === "android"
       ? addToGoogleCalendar()
       : addToIOSCalendar();
