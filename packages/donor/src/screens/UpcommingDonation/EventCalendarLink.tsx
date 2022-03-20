@@ -42,7 +42,8 @@ export default function EventCalendarLink({
   });
 
   const CleanIsoFormatDate = (date: Date) => {
-    return date.toISOString().replace(/[-:.]/g, "");
+    const isoStringWithoutSeconds = date.toISOString().replace(/.\d+Z$/g, "Z");
+    return isoStringWithoutSeconds.replace(/[-:.]/g, "");
   };
 
   const addToGoogleCalendar = () => {
