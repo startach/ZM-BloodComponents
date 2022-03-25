@@ -5,6 +5,7 @@ import { PropTypes } from "@material-ui/core";
 import ZMScreen from "../basic/ZMScreen";
 import SwipeableViews from "react-swipeable-views";
 import classNames from "classnames";
+import { AnalyticsButtonType } from "@zm-blood-components/common";
 
 export interface WizardPage {
   imageUrl: string;
@@ -12,8 +13,11 @@ export interface WizardPage {
   content: {
     text: string;
     bold?: boolean;
-    button?: { text: string; onClick: () => void };
+    button?: { name: string; text: string; onClick: () => void };
   }[];
+  /** For logging and Analytics */
+  buttonName: string;
+  buttonValue: string;
   buttonText: string;
   buttonVariant: ButtonVariant;
   buttonColor: PropTypes.Color;
@@ -50,6 +54,9 @@ export default function WizardScreen(props: WizardScreenProps) {
 
       <div className={styles.actionButton}>
         <Button
+          buttonType={AnalyticsButtonType.Wizard}
+          buttonName={props.pages[currentStep].buttonName}
+          buttonValue={props.pages[currentStep].buttonValue}
           color={props.pages[currentStep].buttonColor}
           title={props.pages[currentStep].buttonText}
           variant={props.pages[currentStep].buttonVariant}
@@ -77,6 +84,8 @@ function Page(props: { page: WizardPage }) {
 
               {key.button && (
                 <Button
+                  buttonType={AnalyticsButtonType.Wizard}
+                  buttonName={key.button.name}
                   title={key.button.text}
                   onClick={key.button.onClick}
                   variant={ButtonVariant.text}

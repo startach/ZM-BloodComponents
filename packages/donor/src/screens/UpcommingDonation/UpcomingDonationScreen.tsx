@@ -17,6 +17,7 @@ import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import EventCalendarLink from "./EventCalendarLink";
+import AnchorTag from "../../components/basic/AnchorTag";
 
 const EVENT_DURATION_BY_MINUTES = 90;
 
@@ -94,9 +95,13 @@ export default function UpcomingDonationScreen({
         <div className={styles.popupContent}>
           נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
           התור בטלפון
-          <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
+          <AnchorTag
+            linkName="coordinator_phone"
+            href={"tel:" + phoneNumber}
+            className={styles.popupPhoneNumber}
+          >
             {phoneNumber}
-          </a>
+          </AnchorTag>
         </div>
       </Popup>
     </ZMScreen>

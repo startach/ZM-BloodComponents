@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./Question.module.scss";
-import { SelectOption } from "@zm-blood-components/common";
+import { AnalyticsButtonType, SelectOption } from "@zm-blood-components/common";
 import { PickerButton } from "../../../components/basic/Picker/Picker";
+import { reportClick } from "../../../Analytics";
 
 export interface QuestionProps<T> {
   label?: string;
@@ -22,6 +23,16 @@ export const YesNoNotRelevantOptions: SelectOption<string>[] = [
 ];
 
 export function Question<T>(props: QuestionProps<T>) {
+  //// TODO Should Questions have names?
+  const handleClick = (option: SelectOption<T>) => {
+    props.onChange(option.value);
+    reportClick(
+      AnalyticsButtonType.Question,
+      props.label || "",
+      `${option.value}`
+    );
+  };
+
   return (
     <div className={styles.question}>
       <div className={styles.questionLabel}>{props.label}</div>
@@ -30,7 +41,7 @@ export function Question<T>(props: QuestionProps<T>) {
           <div className={styles.questionButton} key={option.key}>
             <PickerButton
               label={option.label}
-              onClick={() => props.onChange(option.value)}
+              onClick={() => handleClick(option)}
               selected={props.value === option.value}
             />
           </div>

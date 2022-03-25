@@ -1,10 +1,17 @@
 import { Dialog } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Popup.module.scss";
 import Button, { ButtonVariant } from "../Button";
 import { Color } from "../../../constants/colors";
+import { reportEvent } from "../../../Analytics";
+import {
+  AnalyticsButtonType,
+  AnalyticsEventType,
+} from "@zm-blood-components/common";
 
 export type PopupProps = {
+  /** For logging and Analytics */
+  name: string;
   open: boolean;
   title: string;
   children?: React.ReactNode;
@@ -21,6 +28,7 @@ export type PopupProps = {
 };
 
 export default function Popup({
+  name,
   buttonApproveText,
   open,
   title,
@@ -44,6 +52,10 @@ export default function Popup({
     onClose = onBack;
   }
 
+  useEffect(() => {
+    reportEvent(AnalyticsEventType.PopupChange, name);
+  }, [open, name]);
+
   return (
     <Dialog fullWidth open={open} onClose={onClose}>
       <div className={styles.container}>
@@ -54,6 +66,8 @@ export default function Popup({
         </div>
         <div className={styles.buttonContainer}>
           <Button
+            buttonName={`${name}_approve`}
+            buttonType={AnalyticsButtonType.Popup}
             onClick={buttonClicked}
             title={buttonApproveText}
             isLoading={isLoading}
@@ -63,6 +77,8 @@ export default function Popup({
         {onBack && goBackText && (
           <div className={styles.buttonContainer}>
             <Button
+              buttonName={`${name}_go_back`}
+              buttonType={AnalyticsButtonType.Popup}
               onClick={onBack}
               title={goBackText}
               isDisabled={isLoading}

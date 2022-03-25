@@ -3,6 +3,11 @@ import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
 import styles from "./Button.module.scss";
+import { reportClick, reportEvent } from "../../../Analytics";
+import {
+  AnalyticsButtonType,
+  AnalyticsEventType,
+} from "@zm-blood-components/common";
 
 export enum ButtonVariant {
   text = "text",
@@ -19,6 +24,10 @@ export type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   color?: PropTypes.Color;
+  /** For logging and Analytics */
+  buttonName: string;
+  buttonValue?: string;
+  buttonType?: AnalyticsButtonType;
 };
 
 export default function Button({
@@ -29,12 +38,29 @@ export default function Button({
   className,
   isDisabled = false,
   isLoading = false,
+  buttonName,
+  buttonValue,
+  buttonType,
 }: ButtonProps) {
+  const handleDisabledButtonClick = () => {
+    reportEvent(AnalyticsEventType.Click, "disabled_text_button");
+  };
+
+  const handleClick = (isTextButton: boolean) => {
+    onClick();
+    const detectedButtonType = isTextButton
+      ? AnalyticsButtonType.TextButton
+      : AnalyticsButtonType.Button;
+    reportClick(buttonType ?? detectedButtonType, buttonName, buttonValue);
+  };
+
   if (variant === ButtonVariant.text) {
     return (
       <div
         className={classnames(className, styles.textButton)}
-        onClick={isDisabled ? undefined : onClick}
+        onClick={
+          isDisabled ? handleDisabledButtonClick : () => handleClick(true)
+        }
       >
         {title}
       </div>
@@ -50,7 +76,7 @@ export default function Button({
 
   return (
     <MuiButton
-      onClick={onClick}
+      onClick={() => handleClick(false)}
       className={classnames(className, styles.button)}
       disabled={isDisabled || isLoading}
       variant={variant}

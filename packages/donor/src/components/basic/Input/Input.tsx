@@ -1,10 +1,11 @@
 import TextField from "@material-ui/core/TextField";
-import { IconButton, InputAdornment } from "@material-ui/core";
+import { InputAdornment } from "@material-ui/core";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
 import { useState } from "react";
+import IconButton from "../IconButton";
 
 export enum InputVariant {
   standard = "standard",
@@ -44,7 +45,11 @@ export default function Input({
     inputProps = {
       endAdornment: (
         <InputAdornment position="end">
-          <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+          <IconButton
+            buttonName="show_password"
+            onClick={() => setShowPassword(!showPassword)}
+            edge="end"
+          >
             {showPassword ? (
               <VisibilityOffOutlinedIcon />
             ) : (

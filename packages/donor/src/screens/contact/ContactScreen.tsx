@@ -10,6 +10,7 @@ import Illustration from "../../assets/images/Contact.svg";
 import React, { ReactNode } from "react";
 import classNames from "classnames";
 import { LinkUtils } from "@zm-blood-components/common";
+import AnchorTag from "../../components/basic/AnchorTag";
 
 export default function ContactScreen() {
   return (
@@ -118,9 +119,13 @@ type ContactLinkProps = {
 
 const LinkTo: React.FC<ContactLinkProps> = ({ url, text, className }) => {
   return (
-    <a className={classNames(styles.link, className)} href={url}>
+    <AnchorTag
+      linkName="contact_link"
+      className={classNames(styles.link, className)}
+      href={url}
+    >
       {text}
-    </a>
+    </AnchorTag>
   );
 };
 
@@ -131,12 +136,13 @@ type MailToProps = {
 
 const MailTo: React.FC<MailToProps> = ({ email, text }) => {
   return (
-    <a
+    <AnchorTag
+      linkName="mail_link"
       className={classNames(styles.link, styles.underline)}
       href={`mailto:${email}`}
     >
       {text}
-    </a>
+    </AnchorTag>
   );
 };
 
@@ -147,11 +153,12 @@ type WhatsAppProps = {
 
 const WhatsApp: React.FC<WhatsAppProps> = ({ link, text }) => {
   return (
-    <a
+    <AnchorTag
+      linkName="whats_app_link"
       className={classNames(styles.phonelink, styles.underline)}
       href={`${link}`}
     >
       {text}
-    </a>
+    </AnchorTag>
   );
 };

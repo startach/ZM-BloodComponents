@@ -127,6 +127,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         מידע חיוני לתרומה
       </div>
       <Picker
+        name="blood_type"
         label={"סוג דם"}
         value={bloodType}
         options={BloodTypeUtils.getBloodTypeSelectOptions()}
