@@ -4,12 +4,12 @@ import {
   StylesProvider,
   jssPreset,
   ThemeOptions,
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
 import MuiGlobalTheme from "../constants/MuiGlobalTheme";
 
-const globalTheme = createMuiTheme(MuiGlobalTheme as ThemeOptions);
+const globalTheme = createTheme(MuiGlobalTheme as ThemeOptions);
 
 // Configure JSS
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
