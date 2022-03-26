@@ -232,13 +232,22 @@ async function createCoordinator(
   role: CoordinatorRole,
   hospitals?: Hospital[]
 ) {
-  const newCoordinator: DbCoordinator = {
-    id: COORDINATOR_ID,
-    role,
-  };
-
-  if (hospitals) {
-    newCoordinator.hospitals = hospitals;
+  let newCoordinator: DbCoordinator;
+  switch (role) {
+    case CoordinatorRole.SYSTEM_USER:
+    case CoordinatorRole.ADVOCATE:
+      newCoordinator = {
+        id: COORDINATOR_ID,
+        role,
+      };
+      break;
+    case CoordinatorRole.HOSPITAL_COORDINATOR:
+      newCoordinator = {
+        id: COORDINATOR_ID,
+        role,
+        hospitals: hospitals!,
+      };
+      break;
   }
 
   await setAdmin(newCoordinator);
