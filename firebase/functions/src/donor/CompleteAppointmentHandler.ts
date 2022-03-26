@@ -8,6 +8,7 @@ import {
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { validateAppointmentEditPermissions } from "../coordinator/UserValidator";
 import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
+import { getCoordinator } from "../dal/AdminDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.CompleteAppointmentRequest,
@@ -38,9 +39,10 @@ export async function completeAppointmentFunc(
     await AppointmentDataAccessLayer.getAppointmentByIdOrThrow(appointmentId);
 
   if (coordinatorId) {
-    await validateAppointmentEditPermissions(
-      coordinatorId,
-      appointment.hospital
+    const dbCoordinator = await getCoordinator(coordinatorId);
+    const callingUserId = validateAppointmentEditPermissions(
+      appointment.hospital,
+      dbCoordinator
     );
   } else if (appointment.donorId !== donorId) {
     throw new Error("Appointment to be completed is not booked by donor");

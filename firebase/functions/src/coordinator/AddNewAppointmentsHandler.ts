@@ -9,15 +9,17 @@ import * as admin from "firebase-admin";
 import { DbAppointment } from "../function-types";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
+import { getCoordinator } from "../dal/AdminDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.AddAppointmentsRequest,
   callerId: string
 ): Promise<FunctionsApi.AddAppointmentsResponse> {
   // validate user is allowed to add appointments to this hospital
-  const callingUserId = await validateAppointmentEditPermissions(
-    callerId,
-    request.hospital
+  const dbCoordinator = await getCoordinator(callerId);
+  const callingUserId = validateAppointmentEditPermissions(
+    request.hospital,
+    dbCoordinator
   );
 
   const batch = admin.firestore().batch();
@@ -26,7 +28,7 @@ export default async function (
   request.donationStartTimes.map((donationStartTimeMillis) => {
     const newAppointment: DbAppointment = {
       creationTime: admin.firestore.Timestamp.now(),
-      creatorUserId: callingUserId,
+      creatorUserId: callerId,
       donationStartTime: admin.firestore.Timestamp.fromMillis(
         donationStartTimeMillis
       ),

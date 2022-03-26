@@ -10,6 +10,7 @@ import {
 } from "../notifications/NotificationSender";
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 import { setCoordinatorUpdate } from "../dal/UpdatesDataAccessLayer";
+import { getCoordinator } from "../dal/AdminDataAccessLayer";
 
 export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
@@ -41,8 +42,11 @@ export default async function (
     : undefined;
 
   // validate user is allowed to edit appointments of this hospital
-  await validateAppointmentEditPermissions(callerId, appointment.hospital);
-
+  const dbCoordinator = await getCoordinator(callerId);
+  const callingUserId = validateAppointmentEditPermissions(
+    appointment.hospital,
+    dbCoordinator
+  );
   if (request.onlyRemoveDonor) {
     const updatedAppointment =
       DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
