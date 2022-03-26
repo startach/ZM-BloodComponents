@@ -16,6 +16,7 @@ export default async function (
   request: FunctionsApi.DeleteAppointmentRequest,
   callerId: string
 ) {
+  const dbCoordinatorPromise = getCoordinator(callerId);
   const appointmentId = request.appointmentId;
 
   const appointments = await AppointmentDataAccessLayer.getAppointmentsByIds([
@@ -42,8 +43,10 @@ export default async function (
     : undefined;
 
   // validate user is allowed to edit appointments of this hospital
-  const dbCoordinator = await getCoordinator(callerId);
-  validateAppointmentEditPermissions(appointment.hospital, dbCoordinator);
+  validateAppointmentEditPermissions(
+    appointment.hospital,
+    await dbCoordinatorPromise
+  );
   if (request.onlyRemoveDonor) {
     const updatedAppointment =
       DbAppointmentUtils.removeDonorFromDbAppointment(appointment);
