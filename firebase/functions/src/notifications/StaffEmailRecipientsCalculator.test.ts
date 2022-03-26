@@ -85,7 +85,7 @@ describe("Staff Email Recipients Calculator", () => {
   });
 
   test("Creator user is blood bank then only one recipient is returned", () => {
-    const creatorUser: DbDonor = {
+    const bloodbank: DbDonor = {
       ...sampleUser,
       id: "id",
       email: "bloodbank.ZM@gmail.com",
@@ -96,7 +96,7 @@ describe("Staff Email Recipients Calculator", () => {
       false,
       Hospital.BEILINSON,
       mockedHospitalRecipients,
-      creatorUser
+      bloodbank
     );
 
     expect(res).toHaveLength(1);

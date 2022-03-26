@@ -6,7 +6,7 @@ import { calculateNotificationData } from "./AppointmentNotificationData";
 
 describe("Appointment Notification Data", function () {
   test("Get appointment notification data", () => {
-    let donationStartTime = 1637224200000;
+    const donationStartTime = 1637224200000;
     const appointment: DbAppointment = {
       id: "appointmentId",
       creationTime: admin.firestore.Timestamp.fromMillis(donationStartTime),

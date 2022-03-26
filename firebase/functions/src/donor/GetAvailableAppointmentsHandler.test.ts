@@ -1,12 +1,15 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import {
+  FunctionsApi,
+  Hospital,
+  AppointmentStatus,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
-import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(

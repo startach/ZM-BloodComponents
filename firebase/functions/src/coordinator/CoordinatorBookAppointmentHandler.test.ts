@@ -66,7 +66,7 @@ const reset = async () => {
 };
 
 beforeAll(async () => {
-  reset();
+  await reset();
   mockedNotifier.mockClear();
 });
 

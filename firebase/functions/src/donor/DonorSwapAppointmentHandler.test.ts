@@ -42,7 +42,7 @@ const defaultInitialization = async (
   createBookableAppointment: boolean,
   createCancellableAppointment: boolean
 ) => {
-  let functionsToInitialize = [createDonor()];
+  const functionsToInitialize = [createDonor()];
 
   if (createBookableAppointment) {
     functionsToInitialize.push(saveAppointment(APPOINTMENT_TO_BOOK_2, 10));

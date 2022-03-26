@@ -30,8 +30,8 @@ function adminAllowedToAddAppointments(
 
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       return admin.hospitals.includes(hospital);
-    case CoordinatorRole.ADVOCATE:
-      return false;
+    // case CoordinatorRole.ADVOCATE:
+    //   return false;
   }
 
   return false;

@@ -13,13 +13,10 @@ export async function expectAsyncThrows(
   expect(error).toEqual(new Error(expectedExceptionText));
 }
 
-export async function expectThrows(
-  action: () => any,
-  expectedExceptionText: string
-) {
+export function expectThrows(action: () => any, expectedExceptionText: string) {
   let error;
   try {
-    await action();
+    action();
   } catch (e) {
     error = e;
   }

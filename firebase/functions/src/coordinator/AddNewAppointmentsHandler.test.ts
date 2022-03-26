@@ -3,6 +3,7 @@ import {
   CoordinatorRole,
   FunctionsApi,
   Hospital,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
@@ -12,7 +13,6 @@ import {
   getAppointmentsCreatedByUserId,
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
-import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbCoordinator } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(

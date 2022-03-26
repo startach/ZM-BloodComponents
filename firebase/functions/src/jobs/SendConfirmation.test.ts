@@ -41,8 +41,8 @@ const APPOINTMENTS = [
 ];
 
 const reset = async () => {
-  for (let i = 0; i < DONORS.length; i++) {
-    await deleteDonor(DONORS[i]);
+  for (const d in DONORS) {
+    await deleteDonor(d);
   }
   await deleteAppointmentsByIds(APPOINTMENTS);
 };

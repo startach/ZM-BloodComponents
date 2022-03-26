@@ -40,10 +40,7 @@ export async function completeAppointmentFunc(
 
   if (coordinatorId) {
     const dbCoordinator = await getCoordinator(coordinatorId);
-    const callingUserId = validateAppointmentEditPermissions(
-      appointment.hospital,
-      dbCoordinator
-    );
+    validateAppointmentEditPermissions(appointment.hospital, dbCoordinator);
   } else if (appointment.donorId !== donorId) {
     throw new Error("Appointment to be completed is not booked by donor");
   }

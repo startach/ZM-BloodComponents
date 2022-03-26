@@ -38,6 +38,7 @@
     "cleanup": "scripts/cleanup.sh",
     "bootstrap": "lerna bootstrap --hoist",
     "build": "lerna run build --stream",
+    "lint": "tslint",
     "postinstall": "yarn run build-common"
   },
   "dependencies": {

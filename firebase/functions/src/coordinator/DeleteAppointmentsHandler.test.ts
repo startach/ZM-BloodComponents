@@ -3,6 +3,7 @@ import {
   CoordinatorRole,
   FunctionsApi,
   Hospital,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
@@ -20,8 +21,6 @@ import {
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
-import { deleteDonor } from "../dal/DonorDataAccessLayer";
-import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 jest.mock("../notifications/NotificationSender");
@@ -38,7 +37,7 @@ const APPOINTMENT_ID = "DeleteAppointmentHandlerTestAppointmentId";
 const reset = async () => {
   await deleteAppointmentsByIds([APPOINTMENT_ID]);
   await deleteAdmin(COORDINATOR_ID);
-  await deleteDonor(DONOR_ID);
+  await DonorDAL.deleteDonor(DONOR_ID);
   mockedNotifier.mockClear();
 };
 
@@ -187,16 +186,25 @@ test.each([true, false])(
 );
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
-  const newAdmin: DbCoordinator = {
-    id: COORDINATOR_ID,
-    role,
-  };
-
-  if (hospitals) {
-    newAdmin.hospitals = hospitals;
+  let newCoordinator: DbCoordinator;
+  switch (role) {
+    case CoordinatorRole.SYSTEM_USER:
+    case CoordinatorRole.ADVOCATE:
+      newCoordinator = {
+        id: COORDINATOR_ID,
+        role,
+      };
+      break;
+    case CoordinatorRole.HOSPITAL_COORDINATOR:
+      newCoordinator = {
+        id: COORDINATOR_ID,
+        role,
+        hospitals: hospitals!,
+      };
+      break;
   }
 
-  await setAdmin(newAdmin);
+  await setAdmin(newCoordinator);
 }
 
 function callFunction(

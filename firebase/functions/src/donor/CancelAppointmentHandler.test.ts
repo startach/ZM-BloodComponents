@@ -1,5 +1,9 @@
 import firebaseFunctionsTest from "../testUtils/FirebaseTestUtils";
-import { FunctionsApi, Hospital } from "@zm-blood-components/common";
+import {
+  FunctionsApi,
+  Hospital,
+  AppointmentStatus,
+} from "@zm-blood-components/common";
 import * as Functions from "../index";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import {
@@ -9,16 +13,14 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
+import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
+import { mocked } from "ts-jest/utils";
+import { sampleUser } from "../testUtils/TestSamples";
+import { DbAppointment, DbDonor } from "../function-types";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CancelAppointmentFunctionName]
 );
-
-import { notifyOnCancelAppointment } from "../notifications/CancelAppointmentNotifier";
-import { mocked } from "ts-jest/utils";
-import { sampleUser } from "../testUtils/TestSamples";
-import { AppointmentStatus } from "@zm-blood-components/common";
-import { DbAppointment, DbDonor } from "../function-types";
 
 jest.mock("../notifications/CancelAppointmentNotifier");
 const mockedNotifier = mocked(notifyOnCancelAppointment);
