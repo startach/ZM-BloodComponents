@@ -10,12 +10,12 @@ import {
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
@@ -366,24 +366,9 @@ describe("Get Coordinator Appointments", function () {
   // });
 
   async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
-    let newCoordinator: DbCoordinator;
-    switch (role) {
-      case CoordinatorRole.SYSTEM_USER:
-      case CoordinatorRole.ADVOCATE:
-        newCoordinator = {
-          id: COORDINATOR_ID,
-          role,
-        };
-        break;
-      case CoordinatorRole.HOSPITAL_COORDINATOR:
-        newCoordinator = {
-          id: COORDINATOR_ID,
-          role,
-          hospitals: hospitals!,
-        };
-        break;
-    }
-    await setAdmin(newCoordinator);
+    const newCoordinator = createDbDonor(COORDINATOR_ID, role, hospitals);
+
+    await setCoordinator(newCoordinator);
   }
 
   function callFunction(

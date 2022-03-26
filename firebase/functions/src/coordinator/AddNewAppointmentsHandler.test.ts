@@ -6,14 +6,13 @@ import {
   AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentsByIds,
   getAppointmentsCreatedByUserId,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
-import { DbCoordinator } from "../function-types";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.AddNewAppointmentsFunctionName]
@@ -109,16 +108,9 @@ test("Valid request inserts new appointments", async () => {
 });
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
-  const newAdmin: DbCoordinator = {
-    id: USER_ID,
-    role,
-  };
+  const newCoordinator = createDbDonor(USER_ID, role, hospitals);
 
-  if (hospitals) {
-    newAdmin.hospitals = hospitals;
-  }
-
-  await setAdmin(newAdmin);
+  await setCoordinator(newCoordinator);
 }
 
 async function getAppointmentIdsOfUser() {

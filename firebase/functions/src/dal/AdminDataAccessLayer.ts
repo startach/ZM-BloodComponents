@@ -18,7 +18,7 @@ export async function getCoordinator(adminId: string) {
   return adminUser.data() as DbCoordinator;
 }
 
-export async function setAdmin(adminUser: DbCoordinator) {
+export async function setCoordinator(adminUser: DbCoordinator) {
   const collection = admin.firestore().collection(Collections.COORDINATORS);
   await collection.doc(adminUser.id).set(adminUser);
 }
