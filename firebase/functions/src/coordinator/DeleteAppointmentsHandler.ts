@@ -43,10 +43,7 @@ export default async function (
 
   // validate user is allowed to edit appointments of this hospital
   const dbCoordinator = await getCoordinator(callerId);
-  const callingUserId = validateAppointmentEditPermissions(
-    appointment.hospital,
-    dbCoordinator
-  );
+  validateAppointmentEditPermissions(appointment.hospital, dbCoordinator);
   if (request.onlyRemoveDonor) {
     const updatedAppointment =
       DbAppointmentUtils.removeDonorFromDbAppointment(appointment);

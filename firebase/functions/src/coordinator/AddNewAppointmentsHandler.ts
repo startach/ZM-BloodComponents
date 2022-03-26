@@ -17,10 +17,7 @@ export default async function (
 ): Promise<FunctionsApi.AddAppointmentsResponse> {
   // validate user is allowed to add appointments to this hospital
   const dbCoordinator = await getCoordinator(callerId);
-  const callingUserId = validateAppointmentEditPermissions(
-    request.hospital,
-    dbCoordinator
-  );
+  validateAppointmentEditPermissions(request.hospital, dbCoordinator);
 
   const batch = admin.firestore().batch();
 

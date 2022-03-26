@@ -74,9 +74,9 @@ export function getValidHospitalsOrThrow(
       return allActiveHospitalsFiltered;
     case CoordinatorRole.HOSPITAL_COORDINATOR:
       if (hospital === HospitalUtils.ALL_HOSPITALS_SELECT) {
-        return coordinator.hospitals ?? [];
+        return coordinator.hospitals;
       }
-      if (!coordinator.hospitals?.includes(hospital)) {
+      if (!coordinator.hospitals.includes(hospital)) {
         console.error(
           `Coordinator ${coordinator.id} ${coordinator.role} ${coordinator.hospitals} missing permissions for ${hospital}`
         );
