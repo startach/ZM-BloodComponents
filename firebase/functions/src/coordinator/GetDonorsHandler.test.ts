@@ -5,8 +5,8 @@ import {
   Hospital,
 } from "@zm-blood-components/common";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { DbCoordinator, DbDonor } from "../function-types";
@@ -91,16 +91,9 @@ async function createCoordinator(
   role: CoordinatorRole,
   hospitals?: Hospital[]
 ) {
-  const newCoordinator: DbCoordinator = {
-    id: COORDINATOR_ID,
-    role,
-  };
+  const newCoordinator = createDbDonor(COORDINATOR_ID, role, hospitals);
 
-  if (hospitals) {
-    newCoordinator.hospitals = hospitals;
-  }
-
-  await setAdmin(newCoordinator);
+  await setCoordinator(newCoordinator);
 }
 
 async function createDonor(id: string, groupId: string, testUser?: boolean) {

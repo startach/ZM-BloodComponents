@@ -57,7 +57,7 @@ export default function Select<T>({
         id={id}
         onChange={(e) =>
           onChange(
-            options.find((option) => option.key === e.target.value)?.value as T
+            options.find((option) => option.key === e.target.value)?.value!
           )
         }
         value={options.find((option) => option.value === value)?.key}
@@ -67,9 +67,9 @@ export default function Select<T>({
         error={!isValid}
         variant={variant}
       >
-        {options.map(({ key, label }) => (
-          <option key={key} value={key}>
-            {label}
+        {options.map((option) => (
+          <option key={option.key} value={option.key}>
+            {option.label}
           </option>
         ))}
       </NativeSelect>

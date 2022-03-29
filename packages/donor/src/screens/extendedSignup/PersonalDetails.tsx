@@ -131,11 +131,11 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         label={"סוג דם"}
         value={bloodType}
         options={BloodTypeUtils.getBloodTypeSelectOptions()}
-        onChange={(bloodType) => {
-          if (bloodType === BloodType.NOT_SURE) {
+        onChange={(newType) => {
+          if (newType === BloodType.NOT_SURE) {
             setBloodTypePopupOpen(true);
           }
-          setBloodType(bloodType);
+          setBloodType(newType);
         }}
         buttonClassName={styles.bloodTypeButton}
       />

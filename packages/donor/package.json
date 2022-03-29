@@ -41,6 +41,7 @@
     "mobile:start-dev": "cross-env DEV=1 cap run",
     "build-dev-apk": "ts-node ./scripts/buildAndroid --alias donor --keystore 'dev.keystore' --storepass 11223344  --output 'dev_<version>.apk'",
     "-------------------MISC------------------------": "",
+    "lint": "tslint --project tslint.json ",
     "eject": "react-scripts eject",
     "style": "yarn prettier --write .",
     "storybook": "start-storybook -p 9009",

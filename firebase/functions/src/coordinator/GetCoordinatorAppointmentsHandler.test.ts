@@ -10,12 +10,12 @@ import {
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
@@ -125,7 +125,7 @@ describe("Get Coordinator Appointments", function () {
     );
     await saveAppointment(FUTURE_NOT_BOOKED, getDate(5), Hospital.TEL_HASHOMER);
     const res = await callFunction(Hospital.TEL_HASHOMER, COORDINATOR_ID);
-    let appointments = res.appointments.filter((a) =>
+    const appointments = res.appointments.filter((a) =>
       ALL_APPOINTMENT_IDS.includes(a.id)
     );
     expect(appointments).toHaveLength(4);
@@ -175,7 +175,7 @@ describe("Get Coordinator Appointments", function () {
     expect(res.coordinator.coordinatorId).toEqual(COORDINATOR_ID);
     expect(res.hospitalFetched).toEqual(Hospital.BEILINSON);
 
-    let appointments = res.appointments.filter((a) =>
+    const appointments = res.appointments.filter((a) =>
       ALL_APPOINTMENT_IDS.includes(a.id)
     );
     expect(appointments).toHaveLength(2);
@@ -240,7 +240,7 @@ describe("Get Coordinator Appointments", function () {
         HospitalUtils.ALL_HOSPITALS_SELECT,
         COORDINATOR_ID
       );
-      let appointments = res.appointments.filter((a) =>
+      const appointments = res.appointments.filter((a) =>
         ALL_APPOINTMENT_IDS.includes(a.id)
       );
 
@@ -308,7 +308,7 @@ describe("Get Coordinator Appointments", function () {
       14
     );
 
-    let appointments = res.appointments.filter((a) =>
+    const appointments = res.appointments.filter((a) =>
       ALL_APPOINTMENT_IDS.includes(a.id)
     );
     expect(appointments).toHaveLength(2);
@@ -366,14 +366,9 @@ describe("Get Coordinator Appointments", function () {
   // });
 
   async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
-    const newAdmin: DbCoordinator = {
-      id: COORDINATOR_ID,
-      role,
-    };
-    if (hospitals) {
-      newAdmin.hospitals = hospitals;
-    }
-    await setAdmin(newAdmin);
+    const newCoordinator = createDbDonor(COORDINATOR_ID, role, hospitals);
+
+    await setCoordinator(newCoordinator);
   }
 
   function callFunction(
@@ -385,7 +380,7 @@ describe("Get Coordinator Appointments", function () {
     const earliestStartTimeMillis = getDate(earliestTimeDays).getTime();
     const latestStartTimeMillis = getDate(latestTimeDays).getTime();
 
-    let request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
+    const request: FunctionsApi.GetCoordinatorAppointmentsRequest = {
       hospital: hospital,
       earliestStartTimeMillis,
       latestStartTimeMillis,

@@ -70,10 +70,11 @@ export default function AppHeader({
 
   let headerContent;
   if (title) {
+    let headerTitle = title;
     if (!isProduction()) {
-      title += " 🛠️";
+      headerTitle += " 🛠️";
     }
-    headerContent = <div className={styles.title}>{title}</div>;
+    headerContent = <div className={styles.title}>{headerTitle}</div>;
   } else {
     headerContent = (
       <div className={styles.title}>

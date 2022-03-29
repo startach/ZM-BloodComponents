@@ -8,12 +8,16 @@ import {
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows, getDate } from "../testUtils/TestUtils";
+import {
+  createDbDonor,
+  expectAsyncThrows,
+  getDate,
+} from "../testUtils/TestUtils";
 import { sampleUser } from "../testUtils/TestSamples";
 import { deleteDonor, setDonor } from "../dal/DonorDataAccessLayer";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
@@ -141,16 +145,9 @@ async function createCoordinator(
   role: CoordinatorRole,
   hospitals?: Hospital[]
 ) {
-  const newAdmin: DbCoordinator = {
-    id,
-    role,
-  };
+  const newCoordinator = createDbDonor(id, role, hospitals);
 
-  if (hospitals) {
-    newAdmin.hospitals = hospitals;
-  }
-
-  await setAdmin(newAdmin);
+  await setCoordinator(newCoordinator);
 }
 
 async function createDonorUser() {

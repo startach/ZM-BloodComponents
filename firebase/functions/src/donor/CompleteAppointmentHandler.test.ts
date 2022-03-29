@@ -17,7 +17,7 @@ import { expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.CompleteAppointmentFunctionName]
@@ -260,5 +260,5 @@ async function createCoordinator(hospital: Hospital) {
     hospitals: [hospital],
   };
 
-  await setAdmin(coordinator);
+  await setCoordinator(coordinator);
 }

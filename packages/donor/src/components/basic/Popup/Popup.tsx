@@ -47,17 +47,8 @@ export default function Popup({
     setIsLoading(false);
   };
 
-  if (!onClose && onBack) {
-    // If no specific onClose, use onBack
-    onClose = onBack;
-  }
-
-  useEffect(() => {
-    reportEvent(AnalyticsEventType.PopupChange, name);
-  }, [open, name]);
-
   return (
-    <Dialog fullWidth open={open} onClose={onClose}>
+    <Dialog fullWidth open={open} onClose={onClose || onBack}>
       <div className={styles.container}>
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
