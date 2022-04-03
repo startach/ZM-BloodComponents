@@ -47,6 +47,14 @@ export default function Popup({
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    reportEvent(
+      AnalyticsEventType.PopupChange,
+      "popup_visibility_open",
+      `${open}`
+    );
+  }, [open]);
+
   return (
     <Dialog fullWidth open={open} onClose={onClose || onBack}>
       <div className={styles.container}>

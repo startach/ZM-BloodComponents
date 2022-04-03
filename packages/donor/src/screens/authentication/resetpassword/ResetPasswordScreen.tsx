@@ -7,6 +7,7 @@ import ResetPasswordIllustration from "../../../assets/images/password reset-ill
 import Popup from "../../../components/basic/Popup";
 import EmailError from "../../../assets/images/Email not found.svg";
 import ResetSuccess from "../../../assets/images/Email on the way.svg";
+import { InputType } from "@zm-blood-components/common";
 
 export interface ResetPasswordScreenProps {
   onResetPassword: (
@@ -49,13 +50,14 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         />
         <div className={styles.title}>איפוס סיסמה</div>
         <Input
+          name="reset_password"
           onChangeText={(emailContent) => {
             setEmail(emailContent);
             setError("");
           }}
           label={`דוא״ל`}
           value={email}
-          type="email"
+          type={InputType.Email}
         />
         <div>
           <Button
@@ -69,6 +71,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       </div>
 
       <Popup
+        name="reset_password"
         open={popupOpen}
         title={error ? "אופס" : "מייל איפוס בדרך אליך"}
         buttonApproveText={error ? "חזרה" : "סבבה"}

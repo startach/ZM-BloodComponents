@@ -4,9 +4,9 @@ import { firebaseAnalytics } from "./firebase/FirebaseInitializer";
 import {
   AnalyticsButtonType,
   AnalyticsEventType,
+  InputType,
 } from "@zm-blood-components/common";
 
-//// OnClick={} OnChange={}
 
 function getUserId() {
   const auth = getAuth();
@@ -38,17 +38,40 @@ export function reportClick(
   if (!firebaseAnalytics) {
     return;
   }
+  console.log(`type - ${buttonType} | name - ${buttonName} | value - ${value}`);
   logEvent(firebaseAnalytics, `click`, {
     user_id: getUserId(),
     firebase_screen: getPath(),
     firebase_screen_class: "donor",
     type: buttonType,
-    clickName: buttonName,
+    title: buttonName,
     value: value,
   });
 }
 
-export function reportEvent(otherType: AnalyticsEventType, otherName: string) {
+export function reportInput(
+  inputType: InputType,
+  inputName: string,
+  value?: string
+) {
+  if (!firebaseAnalytics) {
+    return;
+  }
+  logEvent(firebaseAnalytics, `input`, {
+    user_id: getUserId(),
+    firebase_screen: getPath(),
+    firebase_screen_class: "donor",
+    type: inputType,
+    title: inputName,
+    value: value,
+  });
+}
+
+export function reportEvent(
+  otherType: AnalyticsEventType,
+  otherName: string,
+  otherValue?: string
+) {
   if (!firebaseAnalytics) {
     return;
   }
@@ -57,6 +80,7 @@ export function reportEvent(otherType: AnalyticsEventType, otherName: string) {
     firebase_screen: getPath(),
     firebase_screen_class: "donor",
     type: otherType,
-    otherName: otherName,
+    title: otherName,
+    value: otherValue,
   });
 }

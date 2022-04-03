@@ -136,9 +136,20 @@ export enum AnalyticsButtonType {
   Question = "question",
   Wizard = "wizard",
   Popup = "popup",
+  Checkbox = "checkbox",
+  Input = "input",
+  Radio = "radio",
+  Select = "select",
+  Toggle = "toggle",
 }
 
 export enum AnalyticsEventType {
   Click = "click",
   PopupChange = "popup_change",
+}
+
+export enum InputType {
+  Email = "email",
+  Password = "password",
+  Text = "text",
 }

@@ -12,6 +12,11 @@ export const Default = () => {
   const [value, setValue] = useState(false);
 
   return (
-    <Toggle label={"קבלת תזכורות למייל"} value={value} onChange={setValue} />
+    <Toggle
+      name="get_email_reminders"
+      label={"קבלת תזכורות למייל"}
+      value={value}
+      onChange={setValue}
+    />
   );
 };

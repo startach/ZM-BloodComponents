@@ -5,6 +5,7 @@ import Input from "../../../components/basic/Input";
 import { Color } from "../../../constants/colors";
 import ZMScreen from "../../../components/basic/ZMScreen";
 import LoginIllustration from "../../../assets/images/LogIn-illustration.svg";
+import { InputType } from "@zm-blood-components/common";
 
 export interface SignInScreenProps {
   onRegister: () => void;
@@ -54,16 +55,18 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
         <div className={styles.title}>טוב לראותך שוב</div>
         <Input
+          name="sign_in"
           onChangeText={(emailContent) => {
             setEmail(emailContent);
             setEmailError("");
           }}
           value={email}
-          type={"email"}
+          type={InputType.Email}
           label={`דוא"ל`}
           errorMessage={emailError}
         />
         <Input
+          name="sign_in"
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);
             setPasswordError("");
@@ -72,7 +75,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           label="סיסמה"
           errorMessage={passwordError}
           onSubmit={signIn}
-          type="password"
+          type={InputType.Password}
         />
         <div>
           <Button

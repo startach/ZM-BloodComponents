@@ -4,6 +4,8 @@ import {
   Radio,
   RadioGroup as MaterialRadioGroup,
 } from "@material-ui/core";
+import { AnalyticsButtonType } from "@zm-blood-components/common";
+import { reportClick } from "../../../Analytics";
 
 export type RadioOption = {
   value: any;
@@ -12,6 +14,8 @@ export type RadioOption = {
 };
 
 type RadioGroupProps = {
+  /** For logging and Analytics */
+  name: string;
   label?: string;
   onChange: (value: string) => void;
   value: string;
@@ -21,17 +25,24 @@ type RadioGroupProps = {
 };
 
 export default function RadioGroup({
+  name,
   options,
   label,
   onChange,
   value,
   className,
 }: RadioGroupProps) {
+  const handleChange = (newValue: string) => {
+    onChange(newValue);
+
+    reportClick(AnalyticsButtonType.Radio, name, newValue);
+  };
+
   return (
     <div>
       <FormLabel component="legend">{label}</FormLabel>
       <MaterialRadioGroup
-        onChange={(e, newValue) => onChange(newValue)}
+        onChange={(e, newValue) => handleChange(newValue)}
         {...{ className, value }}
       >
         {options.map((option) => (

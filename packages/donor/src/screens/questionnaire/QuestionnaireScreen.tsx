@@ -65,6 +65,7 @@ export default function QuestionnaireScreen({
 
         <div className={styles.confirmButtonContainer}>
           <Checkbox
+            name="all_info_correct"
             label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
             isChecked={isConfirmed}
             onChange={setIsConfirmed}
@@ -72,6 +73,7 @@ export default function QuestionnaireScreen({
         </div>
 
         <Button
+          buttonName="continue"
           isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
@@ -102,6 +104,7 @@ function ErrorPopup(props: {
 
   return (
     <Popup
+      name="reschedule_appointment"
       title={"אופס!"}
       buttonApproveText={"בחירת מועד חדש"}
       open={true}

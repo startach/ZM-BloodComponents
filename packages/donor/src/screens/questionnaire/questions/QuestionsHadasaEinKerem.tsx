@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
-import { LinkUtils } from "@zm-blood-components/common";
+import { Hospital, LinkUtils } from "@zm-blood-components/common";
 import { QuestionsProps } from "./QuestionnaireQuestions";
 
 export default function QuestionsHadasaEinKerem({
@@ -54,30 +54,35 @@ export default function QuestionsHadasaEinKerem({
   return (
     <>
       <Question
+        name={Hospital.HADASA_EIN_KEREM + "_was_pregnant"}
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם הנך בהריון/עברת לידה בחצי השנה האחרונה?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
+        name={Hospital.HADASA_EIN_KEREM + "_is_right_age"}
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 18?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.HADASA_EIN_KEREM + "_is_weight_valid"}
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 55 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.HADASA_EIN_KEREM + "_is_surgery_valid"}
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.HADASA_EIN_KEREM + "_is_tatoo_valid"}
         value={isTattooValid}
         onChange={setIsTattooValid}
         label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}
@@ -85,6 +90,7 @@ export default function QuestionsHadasaEinKerem({
       />
 
       <Popup
+        name={Hospital.HADASA_EIN_KEREM + "_failed_questionnaire"}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"

@@ -5,6 +5,8 @@ import { PickerButton } from "../../../components/basic/Picker/Picker";
 import { reportClick } from "../../../Analytics";
 
 export interface QuestionProps<T> {
+  /** For logging and Analytics */
+  name: string;
   label?: string;
   options: SelectOption<T>[];
   onChange: (value: T) => void;
@@ -23,7 +25,6 @@ export const YesNoNotRelevantOptions: SelectOption<string>[] = [
 ];
 
 export function Question<T>(props: QuestionProps<T>) {
-  //// TODO Should Questions have names?
   const handleClick = (option: SelectOption<T>) => {
     props.onChange(option.value);
     reportClick(

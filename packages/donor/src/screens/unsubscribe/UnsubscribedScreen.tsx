@@ -1,4 +1,3 @@
-import React from "react";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import Button, { ButtonVariant } from "../../components/basic/Button";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +9,7 @@ const UnsubscribedScreen = () => {
 
   const profileLink = (
     <Button
+      buttonName="to_profile"
       onClick={() => {
         navigate(MainNavigationKeys.BookDonation);
         navigate(MainNavigationKeys.MyProfile);

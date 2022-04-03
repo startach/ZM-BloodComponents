@@ -31,6 +31,8 @@ export default function DonationApproveScreen({
         <div className={styles.buttonContainer}>
           <div className={styles.textButton}>
             <Button
+              buttonName="confirmed_has_donated"
+              buttonValue="true"
               onClick={() => onShowOptionSelected(false)}
               title="כן"
               variant={ButtonVariant.outlined}
@@ -38,6 +40,8 @@ export default function DonationApproveScreen({
           </div>
           <div className={styles.textButton}>
             <Button
+              buttonName="confirmed_has_donated"
+              buttonValue="false"
               onClick={() => onShowOptionSelected(true)}
               title="לא"
               variant={ButtonVariant.outlined}

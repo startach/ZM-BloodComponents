@@ -54,30 +54,35 @@ export default function QuestionsDefault({
   return (
     <>
       <Question
+        name="default_was_pregnant"
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם היית / הנך בהריון?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
+        name="default_has_already_donated"
         value={hasAlreadyDonated}
         onChange={setHasAlreadyDonated}
         label={"האם תרמת דם / טרומבוציטים בעבר?"}
         options={YesNoOptions}
       />
       <Question
+        name="default_is_right_age"
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 17?"}
         options={YesNoOptions}
       />
       <Question
+        name="default_is_weight_valid"
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
+        name="default_is_surgery_valid"
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
@@ -85,6 +90,7 @@ export default function QuestionsDefault({
       />
 
       <Popup
+        name="default_failed_questionnaire"
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"

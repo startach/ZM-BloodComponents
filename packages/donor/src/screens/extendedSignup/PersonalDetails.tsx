@@ -98,12 +98,14 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     <>
       <div className={styles.subtitle}>פרטים אישיים</div>
       <Input
+        name="personal_details"
         value={firstName}
         onChangeText={setAndValidateFirstName}
         label="שם פרטי"
         errorMessage={LocaleUtils.getValidationErrorTranslation(firstNameError)}
       />
       <Input
+        name="personal_details"
         value={lastName}
         onChangeText={(nextLastName) => {
           setLastName(nextLastName);
@@ -115,6 +117,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         errorMessage={LocaleUtils.getValidationErrorTranslation(lastNameError)}
       />
       <Input
+        name="personal_details"
         value={phone}
         onChangeText={(nextPhone) => {
           setPhone(nextPhone);
@@ -144,6 +147,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         <>
           <div className={styles.subtitle}> הגדרות נוספות </div>
           <Toggle
+            name="approve_email_notifications"
             label={"קבלת תזכורות למייל"}
             value={enableEmailNotifications}
             onChange={setEnableEmailNotifications}
@@ -153,6 +157,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
 
       <div className={styles.button}>
         <Button
+          buttonName="save"
           onClick={onSave}
           title={props.buttonText}
           isDisabled={!areAllFieldsValid || !allFieldsHaveValue}
@@ -161,6 +166,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       </div>
 
       <Popup
+        name="blood_type_not_known"
         open={bloodTypePopupOpen}
         title="לא ידוע לך סוג הדם שלך?"
         buttonApproveText="חיוג למענה הממוחשב"

@@ -6,6 +6,8 @@ import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
 import { useState } from "react";
 import IconButton from "../IconButton";
+import { reportInput } from "../../../Analytics";
+import { InputType } from "@zm-blood-components/common";
 
 export enum InputVariant {
   standard = "standard",
@@ -14,11 +16,13 @@ export enum InputVariant {
 }
 
 export type InputProps = {
+  /** For logging and Analytics */
+  name: string;
   id?: string;
   label?: string;
   onChangeText: (newValue: string) => void;
   value?: any;
-  type?: string;
+  type?: InputType;
   className?: string;
   errorMessage?: string;
   /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
@@ -27,9 +31,10 @@ export type InputProps = {
 };
 
 export default function Input({
+  name,
   id,
   label,
-  type = "text",
+  type = InputType.Text,
   value,
   onChangeText,
   className,
@@ -40,8 +45,8 @@ export default function Input({
   const [showPassword, setShowPassword] = useState(false);
 
   let inputProps;
-  const textFiledType = showPassword ? "text" : type;
-  if (type === "password") {
+  const textFiledType = showPassword ? InputType.Text : type;
+  if (type === InputType.Password) {
     inputProps = {
       endAdornment: (
         <InputAdornment position="end">
@@ -61,13 +66,19 @@ export default function Input({
     };
   }
 
+  const handleChange = (newValue: string) => {
+    onChangeText(newValue);
+
+    reportInput(type, name, newValue);
+  };
+
   return (
     <div className={styles.component}>
       <TextField
         id={id}
         value={value}
         type={textFiledType}
-        onChange={(e) => onChangeText(e.currentTarget.value)}
+        onChange={(e) => handleChange(e.currentTarget.value)}
         label={label}
         className={classNames(styles.input, className)}
         InputProps={inputProps}

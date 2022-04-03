@@ -36,6 +36,8 @@ export default function UpcomingDonationScreen({
   const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
   const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
 
+  //// TODO verify - spontaneous
+
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>
@@ -85,6 +87,7 @@ export default function UpcomingDonationScreen({
       <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
 
       <Popup
+        name="spontaneous_booking"
         open={showPopup}
         title={"איזו ספונטיות!"}
         buttonApproveText={"הבנתי"}
@@ -128,6 +131,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         אני צריכ/ה הסעה
       </div>
       <Popup
+        name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
         buttonApproveText="בקשת הסעה"
@@ -165,6 +169,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
       </div>
       <Popup
+        name="cancel_appointment"
         open={open}
         title="רק מוודאים"
         buttonApproveText="כן, בטלו לי את התור"

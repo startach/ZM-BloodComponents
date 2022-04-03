@@ -8,6 +8,7 @@ export default {
 };
 
 const props: ButtonProps = {
+  buttonName: "approval",
   title: "לאישור לחץ כאן",
   color: "primary",
   onClick: action("onClick"),
