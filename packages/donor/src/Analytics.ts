@@ -7,7 +7,6 @@ import {
   InputType,
 } from "@zm-blood-components/common";
 
-
 function getUserId() {
   const auth = getAuth();
   const user = auth.currentUser;
