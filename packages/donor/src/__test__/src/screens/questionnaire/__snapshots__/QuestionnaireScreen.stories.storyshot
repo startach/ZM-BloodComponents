@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -38,7 +38,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -357,7 +357,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -376,14 +376,14 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -401,7 +401,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -419,7 +419,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
@@ -450,7 +450,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -472,7 +472,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -797,7 +797,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -816,14 +816,14 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -841,7 +841,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -859,7 +859,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
@@ -890,7 +890,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -912,7 +912,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1274,7 +1274,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -1293,14 +1293,14 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -1318,7 +1318,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1336,7 +1336,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
@@ -1367,7 +1367,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1389,7 +1389,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -1708,7 +1708,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -1727,14 +1727,14 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -1752,7 +1752,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -1770,7 +1770,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
@@ -1801,7 +1801,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -1823,7 +1823,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -2142,7 +2142,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -2161,14 +2161,14 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -2186,7 +2186,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -2204,7 +2204,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
@@ -2235,7 +2235,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -2257,7 +2257,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -2576,7 +2576,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
           >
             <span
               aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-54 MuiCheckbox-root-48 MuiCheckbox-colorPrimary-52 MuiIconButton-colorPrimary-4"
+              className="MuiButtonBase-root-41 MuiIconButton-root-0 PrivateSwitchBase-root-30 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-4"
               onBlur={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
@@ -2595,14 +2595,14 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
               >
                 <input
                   checked={false}
-                  className="PrivateSwitchBase-input-57"
+                  className="PrivateSwitchBase-input-33"
                   data-indeterminate={false}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root-12"
+                  className="MuiSvgIcon-root-9"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -2620,7 +2620,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
           </div>
         </div>
         <button
-          className="MuiButtonBase-root-9 MuiButton-root-58 MuiButton-contained-66 button MuiButton-containedPrimary-67 MuiButton-disableElevation-69 MuiButton-disabled-71 MuiButton-fullWidth-81 MuiButtonBase-disabled-10"
+          className="MuiButtonBase-root-41 MuiButton-root-12 MuiButton-contained-20 button MuiButton-containedPrimary-21 MuiButton-disableElevation-23 MuiButton-disabled-25 MuiButton-fullWidth-35 MuiButtonBase-disabled-42"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -2638,7 +2638,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
           type="button"
         >
           <span
-            className="MuiButton-label-59"
+            className="MuiButton-label-13"
           >
             <div
               className="buttonText"
