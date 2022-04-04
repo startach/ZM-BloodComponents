@@ -29,7 +29,7 @@ export function Question<T>(props: QuestionProps<T>) {
     props.onChange(option.value);
     reportClick(
       AnalyticsButtonType.Question,
-      props.label || "",
+      props.name ?? props.label ?? "",
       `${option.value}`
     );
   };
