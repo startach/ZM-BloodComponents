@@ -67,7 +67,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     );
     if (
       nextLastNameError ===
-      Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
+        Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
       lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
     ) {
       setLastNameError(nextLastNameError);

@@ -137,7 +137,7 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               required={false}
-              type="text"
+              type="phone"
               value=""
             />
           </div>
