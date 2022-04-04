@@ -18,7 +18,7 @@ export default function IconButton({
 }: IconButtonProps) {
   const handleClick = () => {
     onClick();
-    reportClick(AnalyticsButtonType.ListItem, buttonName);
+    reportClick(AnalyticsButtonType.IconButton, buttonName);
   };
 
   return <MuiIconButton onClick={handleClick} {...props} />;
