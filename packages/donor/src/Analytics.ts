@@ -37,7 +37,6 @@ export function reportClick(
   if (!firebaseAnalytics) {
     return;
   }
-  console.log(`type - ${buttonType} | name - ${buttonName} | value - ${value}`);
   logEvent(firebaseAnalytics, `click`, {
     user_id: getUserId(),
     firebase_screen: getPath(),
