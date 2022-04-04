@@ -2,6 +2,7 @@ import { isEmpty } from "lodash";
 import {
   BloodType,
   BloodTypeUtils,
+  InputType,
   LocaleUtils,
   Validation,
 } from "@zm-blood-components/common";
@@ -66,7 +67,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     );
     if (
       nextLastNameError ===
-        Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
+      Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG ||
       lastNameError === Validation.PersonalDetailsValidation.FULL_NAME_TOO_LONG
     ) {
       setLastNameError(nextLastNameError);
@@ -98,14 +99,14 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     <>
       <div className={styles.subtitle}>פרטים אישיים</div>
       <Input
-        name="personal_details"
+        name="first_name"
         value={firstName}
         onChangeText={setAndValidateFirstName}
         label="שם פרטי"
         errorMessage={LocaleUtils.getValidationErrorTranslation(firstNameError)}
       />
       <Input
-        name="personal_details"
+        name="last_name"
         value={lastName}
         onChangeText={(nextLastName) => {
           setLastName(nextLastName);
@@ -117,8 +118,9 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         errorMessage={LocaleUtils.getValidationErrorTranslation(lastNameError)}
       />
       <Input
-        name="personal_details"
+        name="phone"
         value={phone}
+        type={InputType.Phone}
         onChangeText={(nextPhone) => {
           setPhone(nextPhone);
           setPhoneError(Validation.ValidatePhone(nextPhone));
