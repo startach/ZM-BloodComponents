@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -38,7 +38,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-9"
+            className="MuiSvgIcon-root-12"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -59,7 +59,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
          🛠
       </div>
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -231,7 +231,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -253,7 +253,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-9"
+            className="MuiSvgIcon-root-12"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -274,7 +274,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
          🛠
       </div>
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -446,7 +446,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -468,7 +468,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-9"
+            className="MuiSvgIcon-root-12"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -489,7 +489,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
          🛠
       </div>
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -658,7 +658,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -680,7 +680,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-9"
+            className="MuiSvgIcon-root-12"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -701,7 +701,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
          🛠
       </div>
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -876,7 +876,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -898,7 +898,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-9"
+            className="MuiSvgIcon-root-12"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -919,7 +919,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
          🛠
       </div>
       <button
-        className="MuiButtonBase-root-41 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
