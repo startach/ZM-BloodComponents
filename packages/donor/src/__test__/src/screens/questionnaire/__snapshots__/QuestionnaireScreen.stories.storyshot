@@ -76,7 +76,7 @@ exports[`Storyshots Screens/Questionnaire Beilinson 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             בילינסון
@@ -510,7 +510,7 @@ exports[`Storyshots Screens/Questionnaire Hadasa Ein Kerem 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             הדסה עין כרם
@@ -950,7 +950,7 @@ exports[`Storyshots Screens/Questionnaire Ichilov 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             איכילוב
@@ -1427,7 +1427,7 @@ exports[`Storyshots Screens/Questionnaire Other Hospital 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             רמב"ם
@@ -1861,7 +1861,7 @@ exports[`Storyshots Screens/Questionnaire Soroka 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             סורוקה
@@ -2295,7 +2295,7 @@ exports[`Storyshots Screens/Questionnaire Tel Hashomer 1`] = `
           <div
             className="appointmentDetails"
           >
-            יום ו׳, 13.8, 11:00
+            יום ו׳, 13.8, 12:00
             ,
              
             תל השומר
