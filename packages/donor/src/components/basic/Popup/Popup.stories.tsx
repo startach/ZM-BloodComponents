@@ -22,7 +22,11 @@ const Template: Story<PopupProps> = (args) => {
 
   return (
     <div style={{ margin: 20 }}>
-      <ButtonV2 buttonName="open" title={"פתח"} onClick={() => setOpen(true)} />
+      <ButtonV2
+        analyticsName="open"
+        title={"פתח"}
+        onClick={() => setOpen(true)}
+      />
       <PopupV2 {...args} open={open} onBack={close} onApproved={close} />
     </div>
   );

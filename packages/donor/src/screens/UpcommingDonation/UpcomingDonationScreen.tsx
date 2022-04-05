@@ -36,8 +36,6 @@ export default function UpcomingDonationScreen({
   const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
   const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
 
-  //// TODO verify - spontaneous
-
   return (
     <ZMScreen hasBurgerMenu>
       <div className={styles.pinkContainer}>

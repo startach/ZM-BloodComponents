@@ -27,11 +27,7 @@ export const YesNoNotRelevantOptions: SelectOption<string>[] = [
 export function Question<T>(props: QuestionProps<T>) {
   const handleClick = (option: SelectOption<T>) => {
     props.onChange(option.value);
-    reportClick(
-      AnalyticsButtonType.Question,
-      props.name ?? props.label ?? "",
-      `${option.value}`
-    );
+    reportClick(AnalyticsButtonType.Question, props.name, String(option.value));
   };
 
   return (

@@ -146,6 +146,7 @@ export enum AnalyticsButtonType {
 export enum AnalyticsEventType {
   Click = "click",
   PopupChange = "popup_change",
+  ApiConfirmation = "api_confirmation",
 }
 
 export enum InputType {

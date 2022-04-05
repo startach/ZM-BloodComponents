@@ -15,7 +15,6 @@ export type PickerProps<T> = {
 };
 
 export default function Picker<T>({
-  /** For logging and Analytics */
   name,
   getAnalyticsValue,
   label,
@@ -27,9 +26,7 @@ export default function Picker<T>({
   const handleClick = (option: SelectOption<T>) => {
     onChange(option!.value);
 
-    const value = getAnalyticsValue
-      ? getAnalyticsValue(option.value)
-      : `${option.value}`;
+    const value = getAnalyticsValue?.(option.value) ?? String(option.value);
 
     reportClick(AnalyticsButtonType.Picker, name, value);
   };

@@ -159,7 +159,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
 
       <div className={styles.button}>
         <Button
-          buttonName="save"
+          analyticsName="save"
           onClick={onSave}
           title={props.buttonText}
           isDisabled={!areAllFieldsValid || !allFieldsHaveValue}

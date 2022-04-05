@@ -32,7 +32,7 @@ export default function ExtendedSignupScreen(props: ExtendedSignupScreenProps) {
 
       <div className={styles.signOut}>
         <Button
-          buttonName="sign_out"
+          analyticsName="sign_out"
           onClick={props.onSignOut}
           title={"התנתקות"}
           variant={ButtonVariant.text}

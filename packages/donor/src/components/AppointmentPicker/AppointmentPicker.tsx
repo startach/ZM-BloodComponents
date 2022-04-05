@@ -79,7 +79,7 @@ function HospitalCard(props: {
             donationSlot.appointmentIds.toString()
           }
           options={options}
-          onChange={(donationSlot) => props.onSlotSelected(donationSlot)}
+          onChange={props.onSlotSelected}
         />
       </div>
     </>

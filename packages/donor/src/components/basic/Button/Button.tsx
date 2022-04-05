@@ -25,9 +25,9 @@ export type ButtonProps = {
   isLoading?: boolean;
   color?: PropTypes.Color;
   /** For logging and Analytics */
-  buttonName: string;
-  buttonValue?: string;
-  buttonType?: AnalyticsButtonType;
+  analyticsName: string;
+  analyticsValue?: string;
+  analyticsType?: AnalyticsButtonType;
 };
 
 export default function Button({
@@ -38,19 +38,20 @@ export default function Button({
   className,
   isDisabled = false,
   isLoading = false,
-  buttonName,
-  buttonValue,
-  buttonType,
+  analyticsName: buttonName,
+  analyticsValue: buttonValue,
+  analyticsType: buttonType,
 }: ButtonProps) {
   const handleDisabledButtonClick = () => {
     reportEvent(AnalyticsEventType.Click, "disabled_text_button");
   };
 
-  const handleClick = (isTextButton: boolean) => {
+  const handleClick = () => {
     onClick();
-    const detectedButtonType = isTextButton
-      ? AnalyticsButtonType.TextButton
-      : AnalyticsButtonType.Button;
+    const detectedButtonType =
+      variant === ButtonVariant.text
+        ? AnalyticsButtonType.TextButton
+        : AnalyticsButtonType.Button;
     reportClick(buttonType ?? detectedButtonType, buttonName, buttonValue);
   };
 
@@ -76,7 +77,7 @@ export default function Button({
 
   return (
     <MuiButton
-      onClick={() => handleClick(false)}
+      onClick={handleClick}
       className={classnames(className, styles.button)}
       disabled={isDisabled || isLoading}
       variant={variant}

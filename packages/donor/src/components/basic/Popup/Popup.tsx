@@ -50,8 +50,8 @@ export default function Popup({
   useEffect(() => {
     reportEvent(
       AnalyticsEventType.PopupChange,
-      "popup_visibility_open",
-      `${open}`
+      `${name}_visibility_open`,
+      String(open)
     );
   }, [open]);
 
@@ -65,8 +65,8 @@ export default function Popup({
         </div>
         <div className={styles.buttonContainer}>
           <Button
-            buttonName={`${name}_approve`}
-            buttonType={AnalyticsButtonType.Popup}
+            analyticsName={`${name}_approve`}
+            analyticsType={AnalyticsButtonType.Popup}
             onClick={buttonClicked}
             title={buttonApproveText}
             isLoading={isLoading}
@@ -76,8 +76,8 @@ export default function Popup({
         {onBack && goBackText && (
           <div className={styles.buttonContainer}>
             <Button
-              buttonName={`${name}_go_back`}
-              buttonType={AnalyticsButtonType.Popup}
+              analyticsName={`${name}_go_back`}
+              analyticsType={AnalyticsButtonType.Popup}
               onClick={onBack}
               title={goBackText}
               isDisabled={isLoading}

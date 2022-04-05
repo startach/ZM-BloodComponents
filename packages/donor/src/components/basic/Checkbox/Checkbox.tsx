@@ -18,9 +18,8 @@ export default function CheckBox({
   onChange,
 }: CheckboxProps) {
   const handleChange = (checked: boolean) => {
-    reportClick(AnalyticsButtonType.Checkbox, name, `${checked}`);
-
     onChange(checked);
+    reportClick(AnalyticsButtonType.Checkbox, name, String(checked));
   };
 
   return (

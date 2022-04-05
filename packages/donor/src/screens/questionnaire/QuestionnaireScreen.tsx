@@ -73,7 +73,7 @@ export default function QuestionnaireScreen({
         </div>
 
         <Button
-          buttonName="continue"
+          analyticsName="continue"
           isDisabled={!debugMode && !isVerified}
           onClick={onSuccess}
           title={"המשך"}
