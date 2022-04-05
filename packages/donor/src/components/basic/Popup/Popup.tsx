@@ -53,7 +53,7 @@ export default function Popup({
       `${name}_visibility_open`,
       String(open)
     );
-  }, [open]);
+  }, [open, name]);
 
   return (
     <Dialog fullWidth open={open} onClose={onClose || onBack}>

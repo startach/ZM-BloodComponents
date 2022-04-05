@@ -60,7 +60,7 @@ export default function Button({
       <div
         className={classnames(className, styles.textButton)}
         onClick={
-          isDisabled ? handleDisabledButtonClick : () => handleClick(true)
+          isDisabled ? handleDisabledButtonClick : handleClick
         }
       >
         {title}
