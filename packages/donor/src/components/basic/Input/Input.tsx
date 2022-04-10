@@ -39,7 +39,7 @@ export default function Input({
   const [showPassword, setShowPassword] = useState(false);
 
   let inputProps;
-  let textFiledType = showPassword ? "text" : type;
+  const textFiledType = showPassword ? "text" : type;
   if (type === "password") {
     inputProps = {
       endAdornment: (

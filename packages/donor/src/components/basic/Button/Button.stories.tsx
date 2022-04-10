@@ -1,5 +1,4 @@
-import Button from "./Button";
-import { ButtonProps, ButtonVariant } from "./Button";
+import Button, { ButtonProps, ButtonVariant } from "./Button";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
 

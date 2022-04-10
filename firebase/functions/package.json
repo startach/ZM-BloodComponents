@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./lib && rimraf ./dist",
-    "lint": "tslint --project tsconfig.json ",
+    "lint": "tslint --project tslint.json ",
     "pre-build": "yarn run clean && yarn workspace @zm-blood-components/common build ",
     "build": "yarn run pre-build && tsc ",
     "logs": "firebase functions:log",

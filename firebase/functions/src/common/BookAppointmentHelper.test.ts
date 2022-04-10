@@ -47,9 +47,7 @@ describe("Book Appointment Helper", () => {
       APPOINTMENT_TO_BOOK(AppointmentStatus.NOSHOW),
     ];
 
-    const res = validateBookAppointment(nonAvailableAppointments, "");
-
-    const data = res as ValidBookAppointmentResponse;
+    const data = validateBookAppointment(nonAvailableAppointments, "");
 
     expect(data.status).toEqual(
       FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS
@@ -58,14 +56,12 @@ describe("Book Appointment Helper", () => {
   });
 
   test("No donor details returns DONOR_DETAILS_REQUIRED", () => {
-    const res = validateBookAppointment(
+    const data = validateBookAppointment(
       [APPOINTMENT_TO_BOOK(AppointmentStatus.AVAILABLE)],
       MANUAL_DONOR_ID,
       DONOR_ID,
       undefined
     );
-
-    const data = res as ValidBookAppointmentResponse;
 
     expect(data.status).toEqual(
       FunctionsApi.BookAppointmentStatus.DONOR_DETAILS_REQUIRED

@@ -40,8 +40,15 @@ jobs:
           write-mode: overwrite
 
       - name: Install deployment dependencies
-        run: npm i -g @rxdi/firelink firebase-tools
+        run: npm i -g @rxdi/firelink
+
+      - name: Run firelink
+        working-directory: ./firebase/functions
+        run: firelink --no-runner --leave-changes
 
       - name: Deploy to Firebase Functions (Production)
-        working-directory: ./firebase/functions
-        run: firelink deploy --only functions -P production --token ${{ secrets.FIREBASE_TOKEN }}
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions -P production
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

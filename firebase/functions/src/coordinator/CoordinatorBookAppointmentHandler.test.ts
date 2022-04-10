@@ -16,13 +16,13 @@ import {
   getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 import * as admin from "firebase-admin";
 import { sampleUser } from "../testUtils/TestSamples";
 import { notifyOnAppointmentBooked } from "../notifications/BookAppointmentNotifier";
 import { mocked } from "ts-jest/utils";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 
 jest.setTimeout(7000);
 
@@ -66,7 +66,7 @@ const reset = async () => {
 };
 
 beforeAll(async () => {
-  reset();
+  await reset();
   mockedNotifier.mockClear();
 });
 
@@ -232,14 +232,7 @@ async function createCoordinator(
   role: CoordinatorRole,
   hospitals?: Hospital[]
 ) {
-  const newCoordinator: DbCoordinator = {
-    id: COORDINATOR_ID,
-    role,
-  };
+  const newCoordinator = createDbDonor(COORDINATOR_ID, role, hospitals);
 
-  if (hospitals) {
-    newCoordinator.hospitals = hospitals;
-  }
-
-  await setAdmin(newCoordinator);
+  await setCoordinator(newCoordinator);
 }

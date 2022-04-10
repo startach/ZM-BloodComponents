@@ -48,8 +48,15 @@ jobs:
         run: yarn workspace @zm-blood-components/functions test
 
       - name: Install deployment dependencies
-        run: npm i -g @rxdi/firelink firebase-tools
+        run: npm i -g @rxdi/firelink
+
+      - name: Run firelink
+        working-directory: ./firebase/functions
+        run: firelink --no-runner --leave-changes
 
       - name: Deploy to Firebase Functions (Staging)
-        working-directory: ./firebase/functions
-        run: firelink deploy --only functions -P staging --token ${{ secrets.FIREBASE_TOKEN }}
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions -P staging
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

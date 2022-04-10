@@ -3,16 +3,17 @@ import {
   CoordinatorRole,
   FunctionsApi,
   Hospital,
+  AppointmentStatus,
 } from "@zm-blood-components/common";
 import * as admin from "firebase-admin";
 import * as Functions from "../index";
-import { deleteAdmin, setAdmin } from "../dal/AdminDataAccessLayer";
+import { deleteAdmin, setCoordinator } from "../dal/AdminDataAccessLayer";
 import {
   deleteAppointmentsByIds,
   getAppointmentByIdOrThrow,
   setAppointment,
 } from "../dal/AppointmentDataAccessLayer";
-import { expectAsyncThrows } from "../testUtils/TestUtils";
+import { createDbDonor, expectAsyncThrows } from "../testUtils/TestUtils";
 import {
   NotificationToDonor,
   sendEmailToDonor,
@@ -20,8 +21,6 @@ import {
 import { mocked } from "ts-jest/utils";
 import { sampleUser } from "../testUtils/TestSamples";
 import * as DonorDAL from "../dal/DonorDataAccessLayer";
-import { deleteDonor } from "../dal/DonorDataAccessLayer";
-import { AppointmentStatus } from "@zm-blood-components/common";
 import { DbAppointment, DbCoordinator, DbDonor } from "../function-types";
 
 jest.mock("../notifications/NotificationSender");
@@ -38,7 +37,7 @@ const APPOINTMENT_ID = "DeleteAppointmentHandlerTestAppointmentId";
 const reset = async () => {
   await deleteAppointmentsByIds([APPOINTMENT_ID]);
   await deleteAdmin(COORDINATOR_ID);
-  await deleteDonor(DONOR_ID);
+  await DonorDAL.deleteDonor(DONOR_ID);
   mockedNotifier.mockClear();
 };
 
@@ -187,16 +186,9 @@ test.each([true, false])(
 );
 
 async function createUser(role: CoordinatorRole, hospitals?: Hospital[]) {
-  const newAdmin: DbCoordinator = {
-    id: COORDINATOR_ID,
-    role,
-  };
+  const newCoordinator = createDbDonor(COORDINATOR_ID, role, hospitals);
 
-  if (hospitals) {
-    newAdmin.hospitals = hospitals;
-  }
-
-  await setAdmin(newAdmin);
+  await setCoordinator(newCoordinator);
 }
 
 function callFunction(
