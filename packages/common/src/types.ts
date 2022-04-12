@@ -125,3 +125,10 @@ export type CoordinatorUpdate = {
   userId: string;
   time: any;
 };
+
+export enum InputType {
+  Email = "email",
+  Password = "password",
+  Text = "text",
+  Phone = "phone",
+}

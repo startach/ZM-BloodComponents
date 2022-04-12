@@ -2,6 +2,7 @@ import { isEmpty } from "lodash";
 import {
   BloodType,
   BloodTypeUtils,
+  InputType,
   LocaleUtils,
   Validation,
 } from "@zm-blood-components/common";
@@ -116,6 +117,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       />
       <Input
         value={phone}
+        type={InputType.Phone}
         onChangeText={(nextPhone) => {
           setPhone(nextPhone);
           setPhoneError(Validation.ValidatePhone(nextPhone));
