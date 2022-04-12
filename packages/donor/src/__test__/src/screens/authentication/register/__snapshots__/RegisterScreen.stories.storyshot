@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-29 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -38,7 +38,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -79,24 +79,24 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            className="MuiFormControl-root-31 MuiTextField-root-30 input MuiFormControl-fullWidth-34"
             dir="rtl"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+              className="MuiFormLabel-root-47 MuiInputLabel-root-35 MuiInputLabel-formControl-41 MuiInputLabel-animated-44"
               data-shrink={false}
             >
               דוא״ל
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInputBase-root-69 MuiInput-root-55 MuiInput-underline-60 MuiInputBase-fullWidth-79 MuiInput-fullWidth-64 MuiInputBase-formControl-70 MuiInput-formControl-56"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInputBase-input-80 MuiInput-input-65"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -114,24 +114,24 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
+            className="MuiFormControl-root-31 MuiTextField-root-30 input MuiFormControl-fullWidth-34"
             dir="rtl"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47"
+              className="MuiFormLabel-root-47 MuiInputLabel-root-35 MuiInputLabel-formControl-41 MuiInputLabel-animated-44"
               data-shrink={false}
             >
               סיסמה
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59 MuiInputBase-adornedEnd-77"
+              className="MuiInputBase-root-69 MuiInput-root-55 MuiInput-underline-60 MuiInputBase-fullWidth-79 MuiInput-fullWidth-64 MuiInputBase-formControl-70 MuiInput-formControl-56 MuiInputBase-adornedEnd-74"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68 MuiInputBase-inputAdornedEnd-88"
+                className="MuiInputBase-input-80 MuiInput-input-65 MuiInputBase-inputAdornedEnd-85"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -142,10 +142,10 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
                 value=""
               />
               <div
-                className="MuiInputAdornment-root-90 MuiInputAdornment-positionEnd-93"
+                className="MuiInputAdornment-root-87 MuiInputAdornment-positionEnd-90"
               >
                 <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0 MuiIconButton-edgeEnd-2"
+                  className="MuiButtonBase-root-29 MuiIconButton-root-0 MuiIconButton-edgeEnd-2"
                   disabled={false}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -167,7 +167,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
                   >
                     <svg
                       aria-hidden={true}
-                      className="MuiSvgIcon-root-12"
+                      className="MuiSvgIcon-root-9"
                       focusable="false"
                       viewBox="0 0 24 24"
                     >
@@ -184,7 +184,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
         </div>
         <div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-97 MuiButton-contained-105 button MuiButton-containedPrimary-106 MuiButton-disableElevation-108 MuiButton-disabled-110 MuiButton-fullWidth-120 MuiButtonBase-disabled-10"
+            className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button MuiButton-containedPrimary-9 MuiButton-disableElevation-11 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
             disabled={true}
             onBlur={[Function]}
             onClick={[Function]}
@@ -202,7 +202,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
             type="button"
           >
             <span
-              className="MuiButton-label-98"
+              className="MuiButton-label-1"
             >
               <div
                 className="buttonText"

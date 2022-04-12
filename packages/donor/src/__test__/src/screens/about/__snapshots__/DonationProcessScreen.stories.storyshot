@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Donation Process Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-29 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -38,7 +38,7 @@ exports[`Storyshots Screens/Donation Process Screen Default 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >

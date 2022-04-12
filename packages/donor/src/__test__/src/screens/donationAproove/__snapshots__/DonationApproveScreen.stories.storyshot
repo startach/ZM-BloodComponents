@@ -16,7 +16,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root-29 MuiIconButton-root-0 rightButton"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -38,7 +38,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root-12"
+            className="MuiSvgIcon-root-9"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -54,7 +54,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         אישור הגעה 🛠️
       </div>
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root-29 MuiIconButton-root-0 login"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -109,7 +109,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
             className="textButton"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-outlinedPrimary-39 MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+              className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button MuiButton-outlinedPrimary-6 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -127,7 +127,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-34"
+                className="MuiButton-label-1"
               >
                 <div
                   className="buttonText"
@@ -141,7 +141,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
             className="textButton"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-outlinedPrimary-39 MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+              className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button MuiButton-outlinedPrimary-6 MuiButton-disableElevation-11 MuiButton-fullWidth-23"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -159,7 +159,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
               type="button"
             >
               <span
-                className="MuiButton-label-34"
+                className="MuiButton-label-1"
               >
                 <div
                   className="buttonText"

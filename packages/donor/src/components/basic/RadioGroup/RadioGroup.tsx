@@ -7,26 +7,26 @@ import {
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 
-export type RadioOption<T> = {
+export type RadioOption = {
   value: any;
   label: string;
   isDisabled?: boolean;
   key: string;
 };
 
-type RadioGroupProps<T> = {
+type RadioGroupProps = {
   /** For logging and Analytics */
   analyticsName: string;
-  getAnalyticsValue?: (optionValue: T | undefined) => string;
+  getAnalyticsValue?: (optionValue: string | undefined) => string;
   label?: string;
-  onChange: (value: T) => void;
-  value: T;
+  onChange: (value: string) => void;
+  value: string;
   isDisabled?: boolean;
   className?: string;
-  options: RadioOption<T>[];
+  options: RadioOption[];
 };
 
-export default function RadioGroup<T>({
+export default function RadioGroup({
   analyticsName: name,
   getAnalyticsValue,
   options,
@@ -34,7 +34,7 @@ export default function RadioGroup<T>({
   onChange,
   value,
   className,
-}: RadioGroupProps<T>) {
+}: RadioGroupProps) {
   const handleChange = (nextValue: string) => {
     onChange(
       options.find((option) => String(option.value) === nextValue)?.value!
