@@ -7,6 +7,7 @@ import ResetPasswordIllustration from "../../../assets/images/password reset-ill
 import Popup from "../../../components/basic/Popup";
 import EmailError from "../../../assets/images/Email not found.svg";
 import ResetSuccess from "../../../assets/images/Email on the way.svg";
+import { InputType } from "@zm-blood-components/common";
 
 export interface ResetPasswordScreenProps {
   onResetPassword: (
@@ -55,7 +56,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
           }}
           label={`דוא״ל`}
           value={email}
-          type="email"
+          type={InputType.Email}
         />
         <div>
           <Button

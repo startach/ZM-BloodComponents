@@ -5,6 +5,7 @@ import Input from "../../../components/basic/Input";
 import { Color } from "../../../constants/colors";
 import ZMScreen from "../../../components/basic/ZMScreen";
 import SignUpIllustration from "../../../assets/images/SignUp-illustration.svg";
+import { InputType } from "@zm-blood-components/common";
 
 export interface RegisterScreenProps {
   onRegister: (
@@ -44,11 +45,11 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           }}
           value={email}
           label={`דוא״ל`}
-          type={"email"}
+          type={InputType.Email}
           errorMessage={emailError}
         />
         <Input
-          type="password"
+          type={InputType.Password}
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);
             setPasswordError("");

@@ -5,6 +5,7 @@ import Input from "../../../components/basic/Input";
 import { Color } from "../../../constants/colors";
 import ZMScreen from "../../../components/basic/ZMScreen";
 import LoginIllustration from "../../../assets/images/LogIn-illustration.svg";
+import { InputType } from "@zm-blood-components/common";
 
 export interface SignInScreenProps {
   onRegister: () => void;
@@ -59,7 +60,7 @@ export default function SignInScreen(props: SignInScreenProps) {
             setEmailError("");
           }}
           value={email}
-          type={"email"}
+          type={InputType.Email}
           label={`דוא"ל`}
           errorMessage={emailError}
         />
@@ -72,7 +73,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           label="סיסמה"
           errorMessage={passwordError}
           onSubmit={signIn}
-          type="password"
+          type={InputType.Password}
         />
         <div>
           <Button

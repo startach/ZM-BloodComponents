@@ -5,6 +5,7 @@ import classNames from "classnames";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
 import { useState } from "react";
+import { InputType } from "@zm-blood-components/common";
 
 export enum InputVariant {
   standard = "standard",
@@ -17,7 +18,7 @@ export type InputProps = {
   label?: string;
   onChangeText: (newValue: string) => void;
   value?: any;
-  type?: string;
+  type?: InputType;
   className?: string;
   errorMessage?: string;
   /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
@@ -28,7 +29,7 @@ export type InputProps = {
 export default function Input({
   id,
   label,
-  type = "text",
+  type = InputType.Text,
   value,
   onChangeText,
   className,
