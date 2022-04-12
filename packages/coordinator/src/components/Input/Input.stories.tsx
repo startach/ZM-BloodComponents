@@ -1,6 +1,7 @@
 import Input, { InputProps } from "./Input";
 import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
+import { InputType } from "@zm-blood-components/common";
 
 export default {
   component: Input,
@@ -33,7 +34,7 @@ export const Password = Template.bind({});
 Password.args = {
   ...props,
   label: "סיסמה",
-  type: "password",
+  type: InputType.Password,
   value: "password1234",
 };
 
