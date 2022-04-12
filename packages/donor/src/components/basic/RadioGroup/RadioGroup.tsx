@@ -16,7 +16,7 @@ export type RadioOption<T> = {
 
 type RadioGroupProps<T> = {
   /** For logging and Analytics */
-  name: string;
+  analyticsName: string;
   getAnalyticsValue?: (optionValue: T | undefined) => string;
   label?: string;
   onChange: (value: T) => void;
@@ -27,7 +27,7 @@ type RadioGroupProps<T> = {
 };
 
 export default function RadioGroup<T>({
-  name,
+  analyticsName: name,
   getAnalyticsValue,
   options,
   label,
@@ -36,7 +36,9 @@ export default function RadioGroup<T>({
   className,
 }: RadioGroupProps<T>) {
   const handleChange = (nextValue: string) => {
-    onChange(options.find((option) => option.key === nextValue)?.value!);
+    onChange(
+      options.find((option) => String(option.value) === nextValue)?.value!
+    );
 
     const reportValue = getAnalyticsValue?.(value) ?? nextValue;
 

@@ -62,7 +62,7 @@ export default function BookDonationScreen({
 
       <div className={styles.dropdownContainer}>
         <Select
-          name="show_appointments_in_hospital"
+          analyticsName="show_appointments_in_hospital"
           label={"הצג תורים ב:"}
           className={styles.dropdown}
           options={HospitalUtils.getHospitalOptions(

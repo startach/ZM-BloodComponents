@@ -18,7 +18,7 @@ export interface SelectOption<T> {
 
 type SelectProps<T> = {
   /** For logging and Analytics */
-  name: string;
+  analyticsName: string;
   getAnalyticsValue?: (optionValue: T | undefined) => string;
   id?: string;
   label?: string;
@@ -41,7 +41,7 @@ const useSelectStyles = makeStyles({
 });
 
 export default function Select<T>({
-  name,
+  analyticsName,
   getAnalyticsValue,
   id,
   label,
@@ -58,11 +58,13 @@ export default function Select<T>({
   const classes = useSelectStyles();
 
   const handleChange = (nextValue: string) => {
-    onChange(options.find((option) => option.key === nextValue)?.value!);
+    onChange(
+      options.find((option) => String(option.value) === nextValue)?.value!
+    );
 
     const reportValue = getAnalyticsValue?.(value) ?? nextValue;
 
-    reportClick(AnalyticsButtonType.Select, name, reportValue);
+    reportClick(AnalyticsButtonType.Select, analyticsName, reportValue);
   };
 
   return (
