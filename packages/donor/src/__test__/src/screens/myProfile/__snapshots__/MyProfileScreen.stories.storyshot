@@ -170,7 +170,7 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
                 onChange={[Function]}
                 onFocus={[Function]}
                 required={false}
-                type="text"
+                type="phone"
                 value="0521234567"
               />
             </div>
