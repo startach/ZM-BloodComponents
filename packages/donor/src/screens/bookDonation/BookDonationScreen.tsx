@@ -16,7 +16,9 @@ import Illustration from "../../assets/images/home page-illustration.png";
 import NoAppointments from "../../assets/images/NO Appointments.svg";
 import { Player } from "@lottiefiles/react-lottie-player";
 import DropAnimation from "../../assets/animations/drop.json";
+import Popup, { PopupProps } from "../../components/basic/Popup";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
+import WarningLogo from "../../assets/images/warning.svg";
 
 export interface BookDonationScreenProps {
   availableAppointments: AvailableAppointment[];
@@ -24,6 +26,10 @@ export interface BookDonationScreenProps {
   firstName?: string;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
   defaultHospital: Hospital | "";
+  tooCloseDonationPopupProps: Pick<
+    PopupProps,
+    "open" | "onBack" | "onApproved"
+  >;
 }
 
 export default function BookDonationScreen({
@@ -32,6 +38,7 @@ export default function BookDonationScreen({
   firstName,
   onSlotSelected,
   defaultHospital,
+  tooCloseDonationPopupProps,
 }: BookDonationScreenProps) {
   const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
     defaultHospital
@@ -73,6 +80,19 @@ export default function BookDonationScreen({
           isDisabled={isFetching}
         />
       </div>
+
+      <Popup
+        title={"מועד קרוב מידי"}
+        buttonApproveText={"כן, אשר תור"}
+        open={tooCloseDonationPopupProps.open}
+        goBackText={"התחרטתי, חזרה למסך התורים"}
+        onApproved={tooCloseDonationPopupProps.onApproved}
+        onBack={tooCloseDonationPopupProps.onBack}
+        image={WarningLogo}
+      >
+        טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור
+        זה ?
+      </Popup>
 
       <div className={styles.donationsCard}>
         {Donations(

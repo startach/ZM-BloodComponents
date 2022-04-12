@@ -1,13 +1,16 @@
+import { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { Navigate, useNavigate } from "react-router-dom";
+import { AppStateType } from "../../navigation/AppRouter";
 import BookDonationScreen from "./BookDonationScreen";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
   useAppointmentToBookStore,
   useAvailableAppointmentsStore,
 } from "../../state/Providers";
-import { observer } from "mobx-react-lite";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
-import { Navigate, useNavigate } from "react-router-dom";
-import { AppStateType } from "../../navigation/AppRouter";
+
+const MIN_DAYS_BETWEEN_DONATIONS = 30;
 
 interface BookDonationScreenContainerProps {
   isLoggedIn: boolean;
@@ -19,6 +22,7 @@ export function BookDonationScreenContainer({
   isLoggedIn,
 }: BookDonationScreenContainerProps) {
   const navigate = useNavigate();
+  const [showWarningPopup, setShowWarningPopup] = useState(false);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
@@ -29,17 +33,37 @@ export function BookDonationScreenContainer({
     return <Navigate to={MainNavigationKeys.Approve} />;
   }
 
-  if (isLoggedIn && appointmentToBookStore.hasAppointmentToBook()) {
+  if (
+    isLoggedIn &&
+    appointmentToBookStore.hasAppointmentToBook() &&
+    appointmentToBookStore.isDonationValidForDonor(appState.donor!)
+  ) {
     return <Navigate to={MainNavigationKeys.Questionnaire} />;
   }
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
     appointmentToBookStore.setAppointmentToBook(donationSlot);
+
     if (isLoggedIn) {
-      navigate(MainNavigationKeys.Questionnaire);
+      appointmentToBookStore.isDonationValidForDonor(appState.donor!)
+        ? navigate(MainNavigationKeys.Questionnaire)
+        : setShowWarningPopup(true);
     } else {
       navigate(MainNavigationKeys.Register);
     }
+  };
+
+  const onSlotSelectedPopUpProps = {
+    open: showWarningPopup,
+    onApproved: () => navigate(MainNavigationKeys.Questionnaire),
+    onBack: () => {
+      setShowWarningPopup(false);
+      navigate(MainNavigationKeys.BookDonation);
+    },
+    onBClose: () => {
+      setShowWarningPopup(false);
+      navigate(MainNavigationKeys.BookDonation);
+    },
   };
 
   return (
@@ -49,6 +73,7 @@ export function BookDonationScreenContainer({
       firstName={appState.donor?.firstName}
       isFetching={availableAppointmentsStore.isFetching}
       defaultHospital={""}
+      tooCloseDonationPopupProps={onSlotSelectedPopUpProps}
     />
   );
 }

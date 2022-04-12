@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { Hospital } from "@zm-blood-components/common";
+import { Donor, Hospital, DateUtils } from "@zm-blood-components/common";
+
+const MIN_DAYS_BETWEEN_DONATIONS = 30;
 
 export type DonationSlotToBook = {
   hospital: Hospital;
@@ -29,5 +31,20 @@ export class AppointmentToBookStore {
     this.hospital = slot.hospital;
     this.donationStartTimeMillis = slot.donationStartTimeMillis;
     this.appointmentIds = slot.appointmentIds;
+  }
+
+  isDonationValidForDonor(donor: Donor): boolean {
+    const daysBetweenLastDonorDonationToSlot =
+      donor.lastCompletedDonationTimeMillis &&
+      DateUtils.getNumberOfDaysBetweenDates(
+        this.donationStartTimeMillis,
+        donor.lastCompletedDonationTimeMillis
+      );
+    const isAppointmentTooCloseToLastDonation =
+      daysBetweenLastDonorDonationToSlot
+        ? daysBetweenLastDonorDonationToSlot > MIN_DAYS_BETWEEN_DONATIONS
+        : false;
+
+    return isAppointmentTooCloseToLastDonation;
   }
 }

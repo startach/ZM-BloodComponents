@@ -21,6 +21,11 @@ const props: BookDonationScreenProps = {
   firstName: "משה",
   defaultHospital: "",
   onSlotSelected: action("onSlotSelected"),
+  tooCloseDonationPopupProps: {
+    open: false,
+    onApproved: () => {},
+    onBack: () => {},
+  },
 };
 
 const sampleAppointments: AvailableAppointment[] = [
@@ -115,4 +120,18 @@ export const Fetching = (args: BookDonationScreenProps) => (
 Fetching.args = {
   ...props,
   isFetching: true,
+};
+
+export const SlotTooCloseDoDonorLastAppointmentPopup = (args: BookDonationScreenProps) => (
+  <BookDonationScreen {...args} />
+);
+
+SlotTooCloseDoDonorLastAppointmentPopup.args = {
+  ...props,
+  availableAppointments: sampleAppointments,
+  tooCloseDonationPopupProps: {
+    open: false,
+    onApproved: () => {},
+    onBack: () => {},
+  },
 };

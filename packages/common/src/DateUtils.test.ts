@@ -8,6 +8,7 @@ import {
   ToMonthString,
   ToTimeString,
   ToWeekDayLetter,
+  getNumberOfDaysBetweenDates,
 } from "./DateUtils";
 
 describe("DateUtils", function () {
@@ -65,6 +66,21 @@ describe("DateUtils", function () {
   test("GetStartOfHour works", () => {
     expect(GetStartOfHour(new Date(2022, 0, 2, 11, 30))).toEqual(
       new Date(2022, 0, 2, 11, 0)
+    );
+  });
+
+  test("getNumberOfDaysBetweenDates works", () => {
+    const DAYS_DIFFERENCE = 10;
+    const now = new Date();
+    const yesterday = new Date();
+
+    yesterday.setDate(yesterday.getDate() - DAYS_DIFFERENCE);
+
+    expect(getNumberOfDaysBetweenDates(now, yesterday)).toEqual(
+      DAYS_DIFFERENCE
+    );
+    expect(getNumberOfDaysBetweenDates(yesterday, now)).toEqual(
+      DAYS_DIFFERENCE
     );
   });
 });
