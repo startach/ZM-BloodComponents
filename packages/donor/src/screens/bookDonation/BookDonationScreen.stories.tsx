@@ -122,9 +122,9 @@ Fetching.args = {
   isFetching: true,
 };
 
-export const SlotTooCloseDoDonorLastAppointmentPopup = (args: BookDonationScreenProps) => (
-  <BookDonationScreen {...args} />
-);
+export const SlotTooCloseDoDonorLastAppointmentPopup = (
+  args: BookDonationScreenProps
+) => <BookDonationScreen {...args} />;
 
 SlotTooCloseDoDonorLastAppointmentPopup.args = {
   ...props,
