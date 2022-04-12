@@ -34,7 +34,7 @@ export const Password = Template.bind({});
 Password.args = {
   ...props,
   label: "סיסמה",
-  type: InputType.Password,
+  type: "password",
   value: "password1234",
 };
 
