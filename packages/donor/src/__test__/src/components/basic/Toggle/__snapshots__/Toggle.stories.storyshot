@@ -17,7 +17,7 @@ exports[`Storyshots Components/Toggle Default 1`] = `
     >
       <span
         aria-disabled={false}
-        className="MuiButtonBase-root-29 MuiIconButton-root-16 PrivateSwitchBase-root-12 MuiSwitch-switchBase-3 MuiSwitch-colorPrimary-4"
+        className="MuiButtonBase-root-25 MuiIconButton-root-16 PrivateSwitchBase-root-12 MuiSwitch-switchBase-3 MuiSwitch-colorPrimary-4"
         onBlur={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
