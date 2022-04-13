@@ -8,6 +8,7 @@ export default {
 };
 
 const props: ButtonProps = {
+  analyticsName: "approval",
   title: "לאישור לחץ כאן",
   color: "primary",
   onClick: action("onClick"),

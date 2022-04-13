@@ -126,6 +126,29 @@ export type CoordinatorUpdate = {
   time: any;
 };
 
+export enum AnalyticsButtonType {
+  ListItem = "list_item",
+  IconButton = "icon_button",
+  Button = "button",
+  TextButton = "text_button",
+  AnchorTag = "anchor_tag",
+  Picker = "picker",
+  Question = "question",
+  Wizard = "wizard",
+  Popup = "popup",
+  Checkbox = "checkbox",
+  Input = "input",
+  Radio = "radio",
+  Select = "select",
+  Toggle = "toggle",
+}
+
+export enum AnalyticsEventType {
+  Click = "click",
+  PopupChange = "popup_change",
+  ApiConfirmation = "api_confirmation",
+}
+
 export enum InputType {
   Email = "email",
   Password = "password",

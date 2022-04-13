@@ -9,8 +9,8 @@ export default {
 };
 
 const props: InputProps = {
+  name: "first_name",
   label: "שם פרטי",
-
   onSubmit: action("onSubmit"),
   onChangeText: action("onChangeText"),
 };

@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./Question.module.scss";
-import { SelectOption } from "@zm-blood-components/common";
+import { AnalyticsButtonType, SelectOption } from "@zm-blood-components/common";
 import { PickerButton } from "../../../components/basic/Picker/Picker";
+import { reportClick } from "../../../Analytics";
 
 export interface QuestionProps<T> {
+  /** For logging and Analytics */
+  name: string;
   label?: string;
   options: SelectOption<T>[];
   onChange: (value: T) => void;
@@ -22,6 +25,11 @@ export const YesNoNotRelevantOptions: SelectOption<string>[] = [
 ];
 
 export function Question<T>(props: QuestionProps<T>) {
+  const handleClick = (option: SelectOption<T>) => {
+    props.onChange(option.value);
+    reportClick(AnalyticsButtonType.Question, props.name, String(option.value));
+  };
+
   return (
     <div className={styles.question}>
       <div className={styles.questionLabel}>{props.label}</div>
@@ -30,7 +38,7 @@ export function Question<T>(props: QuestionProps<T>) {
           <div className={styles.questionButton} key={option.key}>
             <PickerButton
               label={option.label}
-              onClick={() => props.onChange(option.value)}
+              onClick={() => handleClick(option)}
               selected={props.value === option.value}
             />
           </div>

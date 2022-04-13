@@ -53,20 +53,38 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       >
         אישור הגעה 🛠️
       </div>
-      <div
-        className="login"
+      <button
+        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
+        disabled={false}
+        onBlur={[Function]}
         onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
-        <p
-          className="login_text"
+        <span
+          className="MuiIconButton-label-8"
         >
-          כניסה
-        </p>
-        <img
-          alt="התחבר"
-          src="profile-icon.svg"
-        />
-      </div>
+          <p
+            className="login_text"
+          >
+            כניסה
+          </p>
+          <img
+            alt="התחבר"
+            src="profile-icon.svg"
+          />
+        </span>
+      </button>
     </div>
     <div
       className="content"

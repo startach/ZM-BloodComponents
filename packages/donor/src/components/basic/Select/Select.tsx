@@ -5,6 +5,8 @@ import {
   FormControl,
   makeStyles,
 } from "@material-ui/core";
+import { AnalyticsButtonType } from "@zm-blood-components/common";
+import { reportClick } from "../../../Analytics";
 
 type SelectVariant = "standard" | "filled" | "outlined";
 
@@ -15,6 +17,9 @@ export interface SelectOption<T> {
 }
 
 type SelectProps<T> = {
+  /** For logging and Analytics */
+  analyticsName: string;
+  getAnalyticsValue?: (optionValue: T | undefined) => string;
   id?: string;
   label?: string;
   onChange: (value: T) => void;
@@ -36,6 +41,8 @@ const useSelectStyles = makeStyles({
 });
 
 export default function Select<T>({
+  analyticsName,
+  getAnalyticsValue,
   id,
   label,
   onChange,
@@ -50,16 +57,22 @@ export default function Select<T>({
 }: SelectProps<T>) {
   const classes = useSelectStyles();
 
+  const handleChange = (nextValue: string) => {
+    onChange(
+      options.find((option) => String(option.value) === nextValue)?.value!
+    );
+
+    const reportValue = getAnalyticsValue?.(value) ?? nextValue;
+
+    reportClick(AnalyticsButtonType.Select, analyticsName, reportValue);
+  };
+
   return (
     <FormControl error={!isValid} className={classes.root}>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <NativeSelect
         id={id}
-        onChange={(e) =>
-          onChange(
-            options.find((option) => option.key === e.target.value)?.value!
-          )
-        }
+        onChange={(e) => handleChange(e.target.value)}
         value={options.find((option) => option.value === value)?.key}
         disabled={isDisabled}
         placeholder={placeholder}

@@ -78,7 +78,7 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
         אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם במגוון דרכים: תמיכה נפשית ורפואית, ימי כיף, מחנות נופש, מרכזי יום, סדנאות, תרומות שיער ועוד (היכנסו ל
         <a
           className="link"
-          href="https://zichron.org"
+          onClick={[Function]}
         >
           אתרנו
         </a>
@@ -96,7 +96,7 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
          
         <a
           className="link"
-          href="https://www.startach.org.il/"
+          onClick={[Function]}
         >
           סטארט-אח
         </a>
@@ -104,7 +104,7 @@ exports[`Storyshots Screens/About Screen Default 1`] = `
          
         <a
           className="link"
-          href="https://www.facebook.com/StartAchCom"
+          onClick={[Function]}
         >
           בפייסבוק
         </a>

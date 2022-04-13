@@ -1,6 +1,10 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
+import {
+  AnalyticsEventType,
+  BookedAppointment,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import { Navigate, useNavigate } from "react-router-dom";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
@@ -10,6 +14,7 @@ import {
 } from "../../state/Providers";
 import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
 import { observer } from "mobx-react-lite";
+import { reportEvent } from "../../Analytics";
 
 interface QuestionnaireScreenContainerProps {
   loggedIn: boolean;
@@ -67,6 +72,12 @@ export function QuestionnaireScreenContainer(
         break;
 
       case FunctionsApi.BookAppointmentStatus.SUCCESS:
+        reportEvent(
+          AnalyticsEventType.ApiConfirmation,
+          "donation_booked",
+          bookAppointmentResponse.bookedAppointment!.id
+        );
+
         if (debugMode) {
           console.log(
             "Booked appointment",
