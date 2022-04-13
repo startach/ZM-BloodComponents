@@ -11,7 +11,6 @@ export type RadioOption = {
   value: any;
   label: string;
   isDisabled?: boolean;
-  key: string;
 };
 
 type RadioGroupProps = {
