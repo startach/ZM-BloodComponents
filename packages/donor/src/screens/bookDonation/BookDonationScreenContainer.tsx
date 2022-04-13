@@ -10,8 +10,6 @@ import {
 } from "../../state/Providers";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 
-const MIN_DAYS_BETWEEN_DONATIONS = 30;
-
 interface BookDonationScreenContainerProps {
   isLoggedIn: boolean;
   appState: AppStateType;
