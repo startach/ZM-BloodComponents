@@ -38,11 +38,6 @@ export const coordinatorBookAppointment = handler(
   coordinatorBookAppointmentHandler
 );
 
-// Reports
-export const getBookedDonationsInHospital = handler(
-  getBookedDonationsInHospitalHandler
-);
-
 // Donor
 export const bookAppointment = handler(donorBookAppointmentHandler);
 export const swapAppointment = handler(donorSwapAppointmentHandler);
@@ -56,6 +51,11 @@ export const getAvailableAppointments = unauthenticatedHandler(
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
 export const unsubscribe = unsubscribeHandler;
+
+// Reports
+export const getBookedDonationsInHospital = handler(
+  getBookedDonationsInHospitalHandler
+);
 
 // Jobs
 export const jobs = jobHandler;
