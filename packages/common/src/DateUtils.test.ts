@@ -24,7 +24,7 @@ describe("DateUtils", function () {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
 
-    expect(ToTimeString(time)).toEqual("12:35");
+    expect(ToTimeString(time)).toEqual("12:50");
   });
 
   test("ToDateString works", () => {
