@@ -82,6 +82,7 @@ export default function BookDonationScreen({
       </div>
 
       <Popup
+        name="TooCloseAppointment"
         title={"מועד קרוב מידי"}
         buttonApproveText={"כן, אשר תור"}
         open={tooCloseDonationPopupProps.open}
