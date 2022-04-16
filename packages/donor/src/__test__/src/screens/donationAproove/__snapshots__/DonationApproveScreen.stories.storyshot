@@ -16,10 +16,11 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -33,20 +34,17 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         tabIndex={0}
         type="button"
       >
-        <span
-          className="MuiIconButton-label-8"
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+          data-testid="MenuIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root-12"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-            />
-          </svg>
-        </span>
+          <path
+            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+          />
+        </svg>
       </button>
       <div
         className="title"
@@ -54,10 +52,11 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         אישור הגעה 🛠️
       </div>
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -71,19 +70,15 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         tabIndex={0}
         type="button"
       >
-        <span
-          className="MuiIconButton-label-8"
+        <p
+          className="login_text"
         >
-          <p
-            className="login_text"
-          >
-            כניסה
-          </p>
-          <img
-            alt="התחבר"
-            src="profile-icon.svg"
-          />
-        </span>
+          כניסה
+        </p>
+        <img
+          alt="התחבר"
+          src="profile-icon.svg"
+        />
       </button>
     </div>
     <div
@@ -109,10 +104,11 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
             className="textButton"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-outlinedPrimary-39 MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button muirtl-7os2ca-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -126,25 +122,22 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-34"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  כן
-                </div>
-              </span>
+                כן
+              </div>
             </button>
           </div>
           <div
             className="textButton"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-33 MuiButton-outlined-38 button MuiButton-outlinedPrimary-39 MuiButton-disableElevation-44 MuiButton-fullWidth-56"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button muirtl-7os2ca-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -158,15 +151,11 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-34"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  לא
-                </div>
-              </span>
+                לא
+              </div>
             </button>
           </div>
         </div>

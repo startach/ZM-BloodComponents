@@ -13,9 +13,9 @@ exports[`Storyshots Components/Checkbox Default 1`] = `
     className="container"
   >
     <span
-      aria-disabled={false}
-      className="MuiButtonBase-root-19 MuiIconButton-root-10 PrivateSwitchBase-root-6 MuiCheckbox-root-0 MuiCheckbox-colorPrimary-4 MuiIconButton-colorPrimary-14"
+      className="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root muirtl-5u1n94-MuiButtonBase-root-MuiCheckbox-root"
       onBlur={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -28,27 +28,24 @@ exports[`Storyshots Components/Checkbox Default 1`] = `
       onTouchStart={[Function]}
       tabIndex={null}
     >
-      <span
-        className="MuiIconButton-label-18"
+      <input
+        checked={false}
+        className="PrivateSwitchBase-input muirtl-1m9pwf3"
+        data-indeterminate={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+        data-testid="CheckBoxOutlineBlankIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <input
-          checked={false}
-          className="PrivateSwitchBase-input-9"
-          data-indeterminate={false}
-          onChange={[Function]}
-          type="checkbox"
+        <path
+          d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
         />
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root-22"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-          />
-        </svg>
-      </span>
+      </svg>
     </span>
     <div
       className="label"

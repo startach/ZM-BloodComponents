@@ -16,10 +16,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -33,20 +34,17 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
         tabIndex={0}
         type="button"
       >
-        <span
-          className="MuiIconButton-label-8"
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+          data-testid="ArrowForwardIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
         >
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root-12"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-            />
-          </svg>
-        </span>
+          <path
+            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
       </button>
       <div
         className="title"
@@ -76,24 +74,23 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-            dir="rtl"
+            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-14as5ll-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
             >
               שם פרטי
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -111,24 +108,23 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-            dir="rtl"
+            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-14as5ll-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
             >
               שם משפחה
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -146,24 +142,23 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="component"
         >
           <div
-            className="MuiFormControl-root-34 MuiTextField-root-33 input MuiFormControl-fullWidth-37"
-            dir="rtl"
+            className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
             onKeyPress={[Function]}
           >
             <label
-              className="MuiFormLabel-root-50 MuiInputLabel-root-38 MuiInputLabel-formControl-44 MuiInputLabel-animated-47 MuiInputLabel-shrink-46 MuiFormLabel-filled-55"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-14as5ll-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
             >
               מספר טלפון
             </label>
             <div
-              className="MuiInputBase-root-72 MuiInput-root-58 MuiInput-underline-63 MuiInputBase-fullWidth-82 MuiInput-fullWidth-67 MuiInputBase-formControl-73 MuiInput-formControl-59"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
                 autoFocus={false}
-                className="MuiInputBase-input-83 MuiInput-input-68"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 disabled={false}
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -301,12 +296,12 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="container"
         >
           <span
-            className="MuiSwitch-root-90"
+            className="MuiSwitch-root MuiSwitch-sizeMedium muirtl-julti5-MuiSwitch-root"
           >
             <span
-              aria-disabled={false}
-              className="MuiButtonBase-root-9 MuiIconButton-root-0 PrivateSwitchBase-root-102 MuiSwitch-switchBase-93 MuiSwitch-colorPrimary-94 PrivateSwitchBase-checked-103 MuiSwitch-checked-97"
+              className="MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary Mui-checked PrivateSwitchBase-root Mui-checked muirtl-vm1ps3-MuiButtonBase-root-MuiSwitch-switchBase"
               onBlur={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -319,22 +314,18 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
               onTouchStart={[Function]}
               tabIndex={null}
             >
+              <input
+                checked={true}
+                className="MuiSwitch-input PrivateSwitchBase-input muirtl-1m9pwf3"
+                onChange={[Function]}
+                type="checkbox"
+              />
               <span
-                className="MuiIconButton-label-8"
-              >
-                <input
-                  checked={true}
-                  className="PrivateSwitchBase-input-105 MuiSwitch-input-99"
-                  onChange={[Function]}
-                  type="checkbox"
-                />
-                <span
-                  className="MuiSwitch-thumb-100"
-                />
-              </span>
+                className="MuiSwitch-thumb muirtl-jsexje-MuiSwitch-thumb"
+              />
             </span>
             <span
-              className="MuiSwitch-track-101"
+              className="MuiSwitch-track muirtl-1yjjitx-MuiSwitch-track"
             />
           </span>
           <div
@@ -347,10 +338,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
           className="button"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-106 MuiButton-contained-114 button MuiButton-containedPrimary-115 MuiButton-disableElevation-117 MuiButton-fullWidth-129"
+            className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button muirtl-jddfkq-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -364,15 +356,11 @@ exports[`Storyshots Screens/My Profile Screen Default 1`] = `
             tabIndex={0}
             type="button"
           >
-            <span
-              className="MuiButton-label-107"
+            <div
+              className="buttonText"
             >
-              <div
-                className="buttonText"
-              >
-                עדכון פרטים
-              </div>
-            </span>
+              עדכון פרטים
+            </div>
           </button>
         </div>
       </div>
