@@ -40,8 +40,9 @@ export default function BookDonationScreen({
   defaultHospital,
   tooCloseDonationPopupProps,
 }: BookDonationScreenProps) {
-  const [selectedHospital, setSelectedHospital] =
-    useState<Hospital | "">(defaultHospital);
+  const [selectedHospital, setSelectedHospital] = useState<Hospital | "">(
+    defaultHospital
+  );
 
   const sortedDonationDays = React.useMemo(() => {
     const filteredResults = availableAppointments.filter(
