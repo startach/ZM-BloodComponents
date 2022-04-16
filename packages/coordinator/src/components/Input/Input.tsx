@@ -1,9 +1,9 @@
-import TextField from "@material-ui/core/TextField";
-import { IconButton, InputAdornment } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import { IconButton, InputAdornment } from "@mui/material";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
-import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
-import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { useState } from "react";
 
 export enum InputVariant {

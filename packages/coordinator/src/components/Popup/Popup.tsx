@@ -1,4 +1,5 @@
-import { Dialog, DialogContent, makeStyles } from "@material-ui/core";
+import { Dialog, DialogContent } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React from "react";
 
 export type PopupProps = {

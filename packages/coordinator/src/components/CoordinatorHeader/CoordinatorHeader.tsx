@@ -1,10 +1,10 @@
-import { IconButton } from "@material-ui/core";
+import { IconButton } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import styles from "./CoordinatorHeader.module.scss";
 import LittleLogo from "../../assets/blood-bank-zichron-Little-logo.svg";
 import ZMLogo from "../../assets/zm_logo.svg";

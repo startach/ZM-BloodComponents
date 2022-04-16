@@ -19,10 +19,11 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -36,13 +37,12 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
           tabIndex={0}
           type="button"
         >
+          <svg>
+            chevron-right.svg
+          </svg>
           <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+            className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+          />
         </button>
         <div
           className="title secondaryTitle"
@@ -58,161 +58,140 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
         className="fieldsBox"
       >
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 fullRowField"
+          className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-34"
+            id="mui-34-label"
           >
             תאריך
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
+              aria-label="Choose date, selected date is Sep 7, 2028"
+              aria-readonly={true}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
-              disabled={false}
+              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="mui-34"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={true}
               required={false}
               type="text"
-              value="07/09/2028"
+              value="09/07/2028"
             />
-            <div
-              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <legend
+                className="muirtl-1ftyaf0"
               >
-                <span
-                  className="MuiIconButton-label-8"
-                >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root-88"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                    />
-                    <path
-                      d="M0 0h24v24H0z"
-                      fill="none"
-                    />
-                  </svg>
+                <span>
+                  תאריך
                 </span>
-              </button>
-            </div>
+              </legend>
+            </fieldset>
           </div>
-          
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24"
+          className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-36"
+            id="mui-36-label"
           >
             שעה
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
+              aria-label="Choose time, selected time is 7:35 AM"
+              aria-readonly={true}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
-              disabled={false}
+              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              endAdornment={
+                <ForwardRef(InputAdornment)
+                  position="end"
+                >
+                  <ForwardRef(SvgIcon)
+                    component={
+                      Object {
+                        "$$typeof": Symbol(react.memo),
+                        "compare": null,
+                        "type": Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "render": [Function],
+                        },
+                      }
+                    }
+                  />
+                </ForwardRef(InputAdornment)>
+              }
+              id="mui-36"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={true}
               required={false}
               type="text"
               value="07:35"
             />
-            <div
-              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <legend
+                className="muirtl-1ftyaf0"
               >
-                <span
-                  className="MuiIconButton-label-8"
-                >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root-88 MuiSvgIcon-root-88"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
-                    />
-                  </svg>
+                <span>
+                  שעה
                 </span>
-              </button>
-            </div>
+              </legend>
+            </fieldset>
           </div>
-          
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-38"
+            id="mui-38-label"
           >
             מספר עמדות
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
+              id="mui-38"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
@@ -226,10 +205,11 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
         </div>
         <div>
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button outlinedButton muirtl-tkjjjm-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -243,25 +223,25 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
             tabIndex={0}
             type="button"
           >
-            <span
-              className="MuiButton-label-117"
+            <div
+              className="buttonText"
             >
-              <div
-                className="buttonText"
-              >
-                יום שלם
-              </div>
-            </span>
+              יום שלם
+            </div>
+            <span
+              className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+            />
           </button>
         </div>
         <div
           className=""
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button primaryButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -275,15 +255,14 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
             tabIndex={0}
             type="button"
           >
-            <span
-              className="MuiButton-label-117"
+            <div
+              className="buttonText"
             >
-              <div
-                className="buttonText"
-              >
-                הוספה
-              </div>
-            </span>
+              הוספה
+            </div>
+            <span
+              className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+            />
           </button>
         </div>
       </div>
@@ -313,10 +292,11 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button outlinedButton muirtl-tkjjjm-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -330,23 +310,23 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-117"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  ביטול
-                </div>
-              </span>
+                ביטול
+              </div>
+              <span
+                className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+              />
             </button>
           </div>
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button disabledButton MuiButton-disableElevation-127 MuiButton-disabled-129 MuiButton-fullWidth-139 MuiButtonBase-disabled-10"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -360,15 +340,11 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
               tabIndex={-1}
               type="button"
             >
-              <span
-                className="MuiButton-label-117"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  אשר והמשך
-                </div>
-              </span>
+                אשר והמשך
+              </div>
             </button>
           </div>
         </div>
@@ -397,10 +373,11 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -414,13 +391,12 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
           tabIndex={0}
           type="button"
         >
+          <svg>
+            chevron-right.svg
+          </svg>
           <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+            className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+          />
         </button>
         <div
           className="title secondaryTitle"
@@ -436,161 +412,140 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         className="fieldsBox"
       >
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 fullRowField"
+          className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-39"
+            id="mui-39-label"
           >
             תאריך
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
+              aria-label="Choose date, selected date is Sep 7, 2028"
+              aria-readonly={true}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
-              disabled={false}
+              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              id="mui-39"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={true}
               required={false}
               type="text"
-              value="07/09/2028"
+              value="09/07/2028"
             />
-            <div
-              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <legend
+                className="muirtl-1ftyaf0"
               >
-                <span
-                  className="MuiIconButton-label-8"
-                >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root-88"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                    />
-                    <path
-                      d="M0 0h24v24H0z"
-                      fill="none"
-                    />
-                  </svg>
+                <span>
+                  תאריך
                 </span>
-              </button>
-            </div>
+              </legend>
+            </fieldset>
           </div>
-          
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24"
+          className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-41"
+            id="mui-41-label"
           >
             שעה
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-formControl-64 MuiInput-formControl-50 MuiInputBase-adornedEnd-68"
+            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
+              aria-label="Choose time, selected time is 7:35 AM"
+              aria-readonly={true}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59 MuiInputBase-inputAdornedEnd-79"
-              disabled={false}
+              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              endAdornment={
+                <ForwardRef(InputAdornment)
+                  position="end"
+                >
+                  <ForwardRef(SvgIcon)
+                    component={
+                      Object {
+                        "$$typeof": Symbol(react.memo),
+                        "compare": null,
+                        "type": Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "render": [Function],
+                        },
+                      }
+                    }
+                  />
+                </ForwardRef(InputAdornment)>
+              }
+              id="mui-41"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
+              onClick={[Function]}
               onFocus={[Function]}
+              onKeyDown={[Function]}
+              readOnly={true}
               required={false}
               type="text"
               value="07:35"
             />
-            <div
-              className="MuiInputAdornment-root-81 MuiInputAdornment-positionEnd-84"
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
             >
-              <button
-                className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                disabled={false}
-                onBlur={[Function]}
-                onClick={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={0}
-                type="button"
+              <legend
+                className="muirtl-1ftyaf0"
               >
-                <span
-                  className="MuiIconButton-label-8"
-                >
-                  <svg
-                    aria-hidden={true}
-                    className="MuiSvgIcon-root-88 MuiSvgIcon-root-88"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
-                    />
-                  </svg>
+                <span>
+                  שעה
                 </span>
-              </button>
-            </div>
+              </legend>
+            </fieldset>
           </div>
-          
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           dir="rtl"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38 MuiInputLabel-shrink-37 MuiFormLabel-filled-46"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={false}
+            htmlFor="mui-43"
+            id="mui-43-label"
           >
             מספר עמדות
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
+              id="mui-43"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
@@ -606,10 +561,11 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
           className="fullRowField"
         >
           <button
-            className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button primaryButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+            className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
             disabled={false}
             onBlur={[Function]}
             onClick={[Function]}
+            onContextMenu={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -623,15 +579,14 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             tabIndex={0}
             type="button"
           >
-            <span
-              className="MuiButton-label-117"
+            <div
+              className="buttonText"
             >
-              <div
-                className="buttonText"
-              >
-                הוספה
-              </div>
-            </span>
+              הוספה
+            </div>
+            <span
+              className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+            />
           </button>
         </div>
       </div>
@@ -661,10 +616,11 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-outlined-121 button outlinedButton MuiButton-disableElevation-127 MuiButton-fullWidth-139"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button outlinedButton muirtl-tkjjjm-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -678,23 +634,23 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-117"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  ביטול
-                </div>
-              </span>
+                ביטול
+              </div>
+              <span
+                className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+              />
             </button>
           </div>
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-116 MuiButton-contained-124 button disabledButton MuiButton-disableElevation-127 MuiButton-disabled-129 MuiButton-fullWidth-139 MuiButtonBase-disabled-10"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -708,15 +664,11 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               tabIndex={-1}
               type="button"
             >
-              <span
-                className="MuiButton-label-117"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  אשר והמשך
-                </div>
-              </span>
+                אשר והמשך
+              </div>
             </button>
           </div>
         </div>

@@ -10,70 +10,69 @@ exports[`Storyshots Components/Time Picker Default 1`] = `
   }
 >
   <div
-    className="MuiFormControl-root-1 MuiTextField-root-0"
+    className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
-      data-shrink={true}
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+      data-shrink={false}
+      htmlFor="mui-32"
+      id="mui-32-label"
     >
       בחר שעה
     </label>
     <div
-      className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-formControl-40 MuiInput-formControl-26 MuiInputBase-adornedEnd-44"
+      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
+        aria-label="Choose time, selected time is 10:30 AM"
+        aria-readonly={true}
         autoFocus={false}
-        className="MuiInputBase-input-50 MuiInput-input-35 MuiInputBase-inputAdornedEnd-55"
-        disabled={false}
+        className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        endAdornment={
+          <ForwardRef(InputAdornment)
+            position="end"
+          >
+            <ForwardRef(SvgIcon)
+              component={
+                Object {
+                  "$$typeof": Symbol(react.memo),
+                  "compare": null,
+                  "type": Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "render": [Function],
+                  },
+                }
+              }
+            />
+          </ForwardRef(InputAdornment)>
+        }
+        id="mui-32"
         onAnimationStart={[Function]}
         onBlur={[Function]}
         onChange={[Function]}
+        onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
+        readOnly={true}
         required={false}
         type="text"
         value="10:30"
       />
-      <div
-        className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"
+      <fieldset
+        aria-hidden={true}
+        className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
       >
-        <button
-          className="MuiButtonBase-root-73 MuiIconButton-root-64"
-          disabled={false}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={0}
-          type="button"
+        <legend
+          className="muirtl-1ftyaf0"
         >
-          <span
-            className="MuiIconButton-label-72"
-          >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-76 MuiSvgIcon-root-76"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
-              />
-            </svg>
+          <span>
+            בחר שעה
           </span>
-        </button>
-      </div>
+        </legend>
+      </fieldset>
     </div>
-    
   </div>
 </div>
 `;

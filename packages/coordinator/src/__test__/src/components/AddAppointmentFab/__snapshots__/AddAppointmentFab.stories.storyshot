@@ -10,10 +10,11 @@ exports[`Storyshots Components/Add Appointment Fab Default 1`] = `
   }
 >
   <button
-    className="MuiButtonBase-root-11 MuiFab-root-1 makeStyles-fab-0 MuiFab-extended-5 MuiFab-primary-3"
+    className="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-primary makeStyles-fab-1 muirtl-1ew8fi0-MuiButtonBase-root-MuiFab-root"
     disabled={false}
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -27,25 +28,22 @@ exports[`Storyshots Components/Add Appointment Fab Default 1`] = `
     tabIndex={0}
     type="button"
   >
-    <span
-      className="MuiFab-label-2"
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+      data-testid="AddIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
     >
-      <svg
-        aria-hidden={true}
-        className="MuiSvgIcon-root-14"
-        focusable="false"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-        />
-      </svg>
-      <div
-        className="text"
-      >
-        הוסף תור
-      </div>
-    </span>
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+      />
+    </svg>
+    <div
+      className="text"
+    >
+      הוסף תור
+    </div>
   </button>
 </div>
 `;

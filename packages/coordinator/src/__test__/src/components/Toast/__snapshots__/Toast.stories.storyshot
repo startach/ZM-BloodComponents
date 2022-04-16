@@ -12,10 +12,11 @@ exports[`Storyshots Components/Toast Default 1`] = `
   <div>
     <div>
       <button
-        className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+        className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
+        onContextMenu={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -29,15 +30,11 @@ exports[`Storyshots Components/Toast Default 1`] = `
         tabIndex={0}
         type="button"
       >
-        <span
-          className="MuiButton-label-1"
+        <div
+          className="buttonText"
         >
-          <div
-            className="buttonText"
-          >
-            פתח
-          </div>
-        </span>
+          פתח
+        </div>
       </button>
     </div>
   </div>

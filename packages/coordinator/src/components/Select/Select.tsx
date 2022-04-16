@@ -3,7 +3,7 @@ import {
   Select as MUSelect,
   InputLabel,
   FormControl,
-} from "@material-ui/core";
+} from "@mui/material";
 import { SelectOption } from "@zm-blood-components/common";
 import styles from "./Select.module.scss";
 
