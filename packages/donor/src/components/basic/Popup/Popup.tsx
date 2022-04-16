@@ -1,4 +1,4 @@
-import { Dialog } from "@material-ui/core";
+import { Dialog } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styles from "./Popup.module.scss";
 import Button, { ButtonVariant } from "../Button";
@@ -82,7 +82,6 @@ export default function Popup({
               title={goBackText}
               isDisabled={isLoading}
               variant={ButtonVariant.text}
-              color={"default"}
             />
           </div>
         )}

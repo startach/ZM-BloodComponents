@@ -39,7 +39,6 @@ export default function OnboardingWizardScreen(
       buttonValue: "next",
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
-      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg2,
@@ -53,7 +52,6 @@ export default function OnboardingWizardScreen(
       buttonValue: "next",
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
-      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg3,
@@ -71,7 +69,6 @@ export default function OnboardingWizardScreen(
       buttonValue: "next",
       buttonText: "הבא",
       buttonVariant: ButtonVariant.outlined,
-      buttonColor: "default",
     },
     {
       imageUrl: onboardingImg4,
@@ -94,7 +91,6 @@ export default function OnboardingWizardScreen(
       buttonValue: "next",
       buttonText: "בואו נתחיל",
       buttonVariant: ButtonVariant.contained,
-      buttonColor: "primary",
     },
   ];
 

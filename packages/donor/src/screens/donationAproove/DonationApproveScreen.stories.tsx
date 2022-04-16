@@ -8,6 +8,7 @@ import DonationApproveScreen, {
 export default {
   component: DonationApproveScreen,
   title: "Screens/Approve Screen",
+  parameters: { layout: "fullscreen" },
   argTypes: {
     firstName: { type: "string", defaultValue: "משה" },
   },

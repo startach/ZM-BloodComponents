@@ -3,7 +3,7 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup as MaterialRadioGroup,
-} from "@material-ui/core";
+} from "@mui/material";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 

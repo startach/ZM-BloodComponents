@@ -1,4 +1,4 @@
-import MobileStepper from "@material-ui/core/MobileStepper";
+import MobileStepper from "@mui/material/MobileStepper";
 
 interface StepperProps {
   step: number;

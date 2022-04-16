@@ -1,4 +1,4 @@
-import { Button as MuiButton, PropTypes } from "@material-ui/core";
+import { Button as MuiButton, PropTypes } from "@mui/material";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -8,6 +8,7 @@ import {
   AnalyticsButtonType,
   AnalyticsEventType,
 } from "@zm-blood-components/common";
+import { Color } from "../../../constants/colors";
 
 export enum ButtonVariant {
   text = "text",
@@ -23,7 +24,7 @@ export type ButtonProps = {
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
-  color?: PropTypes.Color;
+  color?: Color;
   /** For logging and Analytics */
   analyticsName: string;
   analyticsValue?: string;
@@ -33,7 +34,7 @@ export type ButtonProps = {
 export default function Button({
   onClick,
   title,
-  color,
+  color = Color.Primary,
   variant = ButtonVariant.contained,
   className,
   isDisabled = false,
@@ -66,13 +67,6 @@ export default function Button({
     );
   }
 
-  let selectedColor: PropTypes.Color;
-  if (color) {
-    selectedColor = color;
-  } else {
-    selectedColor = "primary";
-  }
-
   return (
     <MuiButton
       onClick={handleClick}
@@ -80,11 +74,11 @@ export default function Button({
       disabled={isDisabled || isLoading}
       variant={variant}
       fullWidth
-      color={selectedColor}
+      color={color}
       disableElevation
     >
       {isLoading ? (
-        <Spinner color={selectedColor} />
+        <Spinner color={color} />
       ) : (
         <div className={styles.buttonText}>{title}</div>
       )}
