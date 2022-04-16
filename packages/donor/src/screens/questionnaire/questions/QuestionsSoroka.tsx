@@ -9,21 +9,16 @@ export default function QuestionsSoroka({
   setAreAllAnswersCorrect,
   goToHomePage,
 }: QuestionsProps) {
-  const [isWeightValid, setIsWeightValid] = React.useState<boolean | undefined>(
-    undefined
-  );
-  const [isSurgeryValid, setIsSurgeryValid] = React.useState<
-    boolean | undefined
-  >(undefined);
-  const [isRightAge, setIsRightAge] = React.useState<boolean | undefined>(
-    undefined
-  );
-  const [wasPregnant, setWasPregnantEver] = React.useState<string | undefined>(
-    undefined
-  );
-  const [isTattooValid, setIsTattooValid] = React.useState<boolean | undefined>(
-    undefined
-  );
+  const [isWeightValid, setIsWeightValid] =
+    React.useState<boolean | undefined>(undefined);
+  const [isSurgeryValid, setIsSurgeryValid] =
+    React.useState<boolean | undefined>(undefined);
+  const [isRightAge, setIsRightAge] =
+    React.useState<boolean | undefined>(undefined);
+  const [wasPregnant, setWasPregnantEver] =
+    React.useState<string | undefined>(undefined);
+  const [isTattooValid, setIsTattooValid] =
+    React.useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const res =

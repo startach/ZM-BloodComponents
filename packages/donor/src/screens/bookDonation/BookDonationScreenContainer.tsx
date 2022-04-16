@@ -43,9 +43,11 @@ export function BookDonationScreenContainer({
     appointmentToBookStore.setAppointmentToBook(donationSlot);
 
     if (isLoggedIn) {
-      appointmentToBookStore.isAppointmentTooCloseToLastDonation(appState.donor!)
+      appointmentToBookStore.isAppointmentTooCloseToLastDonation(
+        appState.donor!
+      )
         ? setShowWarningPopup(true)
-        :  navigate(MainNavigationKeys.Questionnaire);
+        : navigate(MainNavigationKeys.Questionnaire);
     } else {
       navigate(MainNavigationKeys.Register);
     }
