@@ -71,16 +71,10 @@ describe("DateUtils", function () {
 
   test("getNumberOfDaysBetweenDates works", () => {
     const DAYS_DIFFERENCE = 10;
-    const now = new Date();
-    const yesterday = new Date();
+    const day1 = new Date(2022, 0, 3, 17, 30);
+    const day2 = new Date(2022, 0, 13, 17, 30);
 
-    yesterday.setDate(yesterday.getDate() - DAYS_DIFFERENCE);
-
-    expect(getNumberOfDaysBetweenDates(now, yesterday)).toEqual(
-      DAYS_DIFFERENCE
-    );
-    expect(getNumberOfDaysBetweenDates(yesterday, now)).toEqual(
-      DAYS_DIFFERENCE
-    );
+    expect(getNumberOfDaysBetweenDates(day1, day2)).toEqual(DAYS_DIFFERENCE);
+    expect(getNumberOfDaysBetweenDates(day2, day1)).toEqual(DAYS_DIFFERENCE);
   });
 });
