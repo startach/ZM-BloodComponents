@@ -1,7 +1,6 @@
-import { Button as MuiButton, PropTypes } from "@mui/material";
+import { Button as MuiButton } from "@mui/material";
 import classnames from "classnames";
 import Spinner from "../Spinner";
-import React from "react";
 import styles from "./Button.module.scss";
 import { reportClick, reportEvent } from "../../../Analytics";
 import {
