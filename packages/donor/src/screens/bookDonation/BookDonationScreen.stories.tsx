@@ -21,6 +21,11 @@ const props: BookDonationScreenProps = {
   firstName: "משה",
   defaultHospital: "",
   onSlotSelected: action("onSlotSelected"),
+  tooCloseDonationPopupProps: {
+    open: false,
+    onApproved: () => {},
+    onBack: () => {},
+  },
 };
 
 const sampleAppointments: AvailableAppointment[] = [
@@ -99,19 +104,14 @@ const Template: Story<BookDonationScreenProps> = (args) => (
 export const NoAppointments = Template.bind({});
 NoAppointments.args = props;
 
-export const HasAppointments = (args: BookDonationScreenProps) => (
-  <BookDonationScreen {...args} />
-);
+export const HasAppointments = Template.bind({});
 
 HasAppointments.args = {
   ...props,
   availableAppointments: sampleAppointments,
 };
 
-export const Fetching = (args: BookDonationScreenProps) => (
-  <BookDonationScreen {...args} />
-);
-
+export const Fetching = Template.bind({});
 Fetching.args = {
   ...props,
   isFetching: true,
