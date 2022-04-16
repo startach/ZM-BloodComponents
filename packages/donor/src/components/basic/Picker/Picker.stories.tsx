@@ -17,6 +17,7 @@ export const BloodTypePicker = () => {
   const [selected, setSelected] = useState<BloodType | undefined>();
   return (
     <Picker
+      name="blood_type"
       label={"בחר/י את סוג הדם שלך"}
       options={BloodTypeUtils.getBloodTypeSelectOptions()}
       value={selected}
@@ -53,6 +54,7 @@ export const DonationTimesPicker = () => {
 
   return (
     <Picker
+      name="available_appointment"
       label={"בחר/י תור פנוי"}
       options={options}
       value={selected}

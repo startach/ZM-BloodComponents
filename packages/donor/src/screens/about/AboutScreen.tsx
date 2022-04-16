@@ -1,6 +1,7 @@
 import styles from "./AboutScreen.module.scss";
 import ZMScreen from "../../components/basic/ZMScreen/ZMScreen";
 import AllLogos from "./../../assets/images/all logos.svg";
+import AnchorTag from "../../components/basic/AnchorTag";
 
 export default function AboutScreen() {
   return (
@@ -15,9 +16,13 @@ export default function AboutScreen() {
         אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם
         במגוון דרכים: תמיכה נפשית ורפואית, ימי כיף, מחנות נופש, מרכזי יום,
         סדנאות, תרומות שיער ועוד (היכנסו ל
-        <a href="https://zichron.org" className={styles.link}>
+        <AnchorTag
+          linkName="zm_website"
+          href="https://zichron.org"
+          className={styles.link}
+        >
           אתרנו
-        </a>{" "}
+        </AnchorTag>{" "}
         למידע נוסף).
         <br />
         <br />
@@ -31,13 +36,21 @@ export default function AboutScreen() {
         <br />
         <br />
         האפליקציה מפותחת ע"י מתנדבי עמותת{" "}
-        <a href="https://www.startach.org.il/" className={styles.link}>
+        <AnchorTag
+          linkName="startach_website"
+          href="https://www.startach.org.il/"
+          className={styles.link}
+        >
           סטארט-אח
-        </a>
+        </AnchorTag>
         . מוזמנים לבקר אותנו גם{" "}
-        <a href="https://www.facebook.com/StartAchCom" className={styles.link}>
+        <AnchorTag
+          linkName="startach_facebook"
+          href="https://www.facebook.com/StartAchCom"
+          className={styles.link}
+        >
           בפייסבוק
-        </a>
+        </AnchorTag>
         !
         <br />
         <br />

@@ -1,6 +1,5 @@
-import { IconButton } from "@material-ui/core";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
@@ -23,8 +22,9 @@ import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.s
 import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
 import { signOut } from "../../screens/authentication/FirebaseAuthentication";
+import { AnalyticsButtonType, isProduction } from "@zm-blood-components/common";
+import IconButton from "../basic/IconButton";
 import { reportClick } from "../../Analytics";
-import { isProduction } from "@zm-blood-components/common";
 
 export interface AppHeaderProps {
   title?: string;
@@ -41,7 +41,6 @@ export default function AppHeader({
   title,
   hasBurgerMenu,
 }: AppHeaderProps) {
-  const location = useLocation();
   const navigate = useNavigate();
   const [showSideBar, setShowSideBar] = useState(false);
   const loggedIn = isLoggedIn();
@@ -50,6 +49,7 @@ export default function AppHeader({
   if (hasBurgerMenu) {
     icon = (
       <IconButton
+        buttonName="burger_menu"
         onClick={() => setShowSideBar((previous) => !previous)}
         className={styles.rightButton}
       >
@@ -59,6 +59,7 @@ export default function AppHeader({
   } else if (hasBackButton) {
     icon = (
       <IconButton
+        buttonName="back"
         onClick={onBack ? onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
@@ -86,19 +87,16 @@ export default function AppHeader({
   let loginIcon = null;
   if (hasBurgerMenu && !loggedIn) {
     loginIcon = (
-      <div
+      <IconButton
+        buttonName="login"
         className={styles.login}
         onClick={() => navigate(MainNavigationKeys.Login)}
       >
         <p className={styles.login_text}>{"כניסה"}</p>
         <img alt={"התחבר"} src={profileIcon} />
-      </div>
+      </IconButton>
     );
   }
-
-  const reportButtonClick = (buttonName: string) => {
-    reportClick(location.pathname, buttonName);
-  };
 
   return (
     <div className={styles.appHeader}>
@@ -112,43 +110,33 @@ export default function AppHeader({
       >
         <List>
           <MenuItem
+            name="profile"
             title={"הפרופיל שלי"}
-            onClick={() => {
-              reportButtonClick("ToMyProfile");
-              navigate(MainNavigationKeys.MyProfile);
-            }}
+            onClick={() => navigate(MainNavigationKeys.MyProfile)}
             icon={<ProfileIcon />}
           />
           <MenuItem
+            name="about_process"
             title={"תהליך התרומה"}
-            onClick={() => {
-              reportButtonClick("ToProcess");
-              navigate(MainNavigationKeys.Process);
-            }}
+            onClick={() => navigate(MainNavigationKeys.Process)}
             icon={<ZMLineIcon />}
           />
           <MenuItem
+            name="feedback"
             title={"משוב"}
-            onClick={() => {
-              reportButtonClick("ToFeedbackForm");
-              window.open("https://forms.gle/xFoUfhx8sNUujJVy8");
-            }}
+            onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
             icon={<FeedBackIcon />}
           />
           <MenuItem
+            name="about"
             title={"אודות"}
-            onClick={() => {
-              reportButtonClick("ToAbout");
-              navigate(MainNavigationKeys.About);
-            }}
+            onClick={() => navigate(MainNavigationKeys.About)}
             icon={<FeatherInfo />}
           />
           <MenuItem
+            name="contact_us"
             title={"צור קשר"}
-            onClick={() => {
-              reportButtonClick("ToContact");
-              navigate(MainNavigationKeys.Contact);
-            }}
+            onClick={() => navigate(MainNavigationKeys.Contact)}
             icon={<SimpleWhatsapp />}
           />
         </List>
@@ -157,6 +145,7 @@ export default function AppHeader({
         {loggedIn ? (
           <>
             <MenuItem
+              name="log_out"
               title={"התנתקות"}
               onClick={() => {
                 signOut();
@@ -168,6 +157,7 @@ export default function AppHeader({
         ) : (
           <>
             <MenuItem
+              name="login"
               title={"כניסה"}
               onClick={() => {
                 navigate(MainNavigationKeys.Login);
@@ -186,12 +176,21 @@ export default function AppHeader({
 }
 
 function MenuItem(props: {
+  name: string;
   title: string;
   onClick: () => void;
   icon: React.ReactNode;
 }) {
+  //// TODO Move ListItem to component folder && replace ListItem -> ListItemButton in MUI V5
+  //// https://mui.com/blog/material-ui-is-now-mui/
+
+  const handleClick = () => {
+    props.onClick();
+    reportClick(AnalyticsButtonType.ListItem, "burger_menu_item", props.name);
+  };
+
   return (
-    <ListItem button onClick={props.onClick} className={styles.listItem}>
+    <ListItem button onClick={handleClick} className={styles.listItem}>
       <ListItemIcon>{props.icon}</ListItemIcon>
       <ListItemText primary={props.title} />
     </ListItem>

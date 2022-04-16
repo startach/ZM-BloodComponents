@@ -16,6 +16,7 @@ import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import EventCalendarLink from "./EventCalendarLink";
+import AnchorTag from "../../components/basic/AnchorTag";
 
 const EVENT_DURATION_BY_MINUTES = 90;
 
@@ -84,6 +85,7 @@ export default function UpcomingDonationScreen({
       <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
 
       <Popup
+        name="spontaneous_booking"
         open={showPopup}
         title={"איזו ספונטיות!"}
         buttonApproveText={"הבנתי"}
@@ -93,9 +95,13 @@ export default function UpcomingDonationScreen({
         <div className={styles.popupContent}>
           נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
           התור בטלפון
-          <a href={"tel:" + phoneNumber} className={styles.popupPhoneNumber}>
+          <AnchorTag
+            linkName="coordinator_phone"
+            href={"tel:" + phoneNumber}
+            className={styles.popupPhoneNumber}
+          >
             {phoneNumber}
-          </a>
+          </AnchorTag>
         </div>
       </Popup>
     </ZMScreen>
@@ -123,6 +129,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         אני צריכ/ה הסעה
       </div>
       <Popup
+        name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
         buttonApproveText="בקשת הסעה"
@@ -160,6 +167,7 @@ function CancelButton(props: { onCancel: () => Promise<void> }) {
         <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
       </div>
       <Popup
+        name="cancel_appointment"
         open={open}
         title="רק מוודאים"
         buttonApproveText="כן, בטלו לי את התור"

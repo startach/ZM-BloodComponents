@@ -1,6 +1,7 @@
 import InputV2, { InputProps } from "./Input";
 import { action } from "@storybook/addon-actions";
 import { Story } from "@storybook/react";
+import { InputType } from "@zm-blood-components/common";
 
 export default {
   component: InputV2,
@@ -8,8 +9,8 @@ export default {
 };
 
 const props: InputProps = {
+  name: "first_name",
   label: "שם פרטי",
-
   onSubmit: action("onSubmit"),
   onChangeText: action("onChangeText"),
 };
@@ -36,7 +37,7 @@ export const Password = Template.bind({});
 Password.args = {
   ...props,
   label: "סיסמה",
-  type: "password",
+  type: InputType.Password,
   value: "password1234",
 };
 

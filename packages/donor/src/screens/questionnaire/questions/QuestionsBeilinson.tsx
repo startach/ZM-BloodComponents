@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Popup from "../../../components/basic/Popup";
 import WhatsappIcon from "../../../assets/images/whatsup-color-big.svg";
 import { Question, YesNoNotRelevantOptions, YesNoOptions } from "./Question";
-import { LinkUtils } from "@zm-blood-components/common";
+import { Hospital, LinkUtils } from "@zm-blood-components/common";
 import { QuestionsProps } from "./QuestionnaireQuestions";
 
 export default function QuestionsBeilinson({
@@ -49,30 +49,35 @@ export default function QuestionsBeilinson({
   return (
     <>
       <Question
+        name={Hospital.BEILINSON + "_was_pregnant"}
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם היית / הנך בהריון?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
+        name={Hospital.BEILINSON + "_has_already_donated"}
         value={hasAlreadyDonated}
         onChange={setHasAlreadyDonated}
         label={"האם תרמת דם / טרומבוציטים בעבר?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.BEILINSON + "_is_right_age"}
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 17?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.BEILINSON + "_is_weight_valid"}
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
+        name={Hospital.BEILINSON + "_is_surgery_valid"}
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
@@ -80,6 +85,7 @@ export default function QuestionsBeilinson({
       />
 
       <Popup
+        name={Hospital.BEILINSON + "_failed_questionnaire"}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"

@@ -1,11 +1,13 @@
 import React from "react";
 import {
+  AnalyticsEventType,
   BookedAppointment,
   DateUtils,
   DeviceUtils,
   LocaleUtils,
 } from "@zm-blood-components/common";
 import styles from "./UpcomingDonationScreen.module.scss";
+import { reportEvent } from "../../Analytics";
 
 export interface EventCalendarLinkProps {
   bookedAppointment: BookedAppointment;
@@ -82,8 +84,14 @@ export default function EventCalendarLink({
       : addToIOSCalendar();
   };
 
+  const handleClick = () => {
+    linkByOperatingSystem();
+
+    reportEvent(AnalyticsEventType.Click, "add_reminder_to_calendar");
+  };
+
   return (
-    <div className={styles.link} onClick={linkByOperatingSystem}>
+    <div className={styles.link} onClick={handleClick}>
       הוספה ליומן
     </div>
   );

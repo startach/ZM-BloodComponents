@@ -10,7 +10,6 @@ import {
   SelectOption,
 } from "@zm-blood-components/common";
 import Picker from "../basic/Picker";
-import React from "react";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 
 export interface AppointmentPickerProps {
@@ -74,7 +73,14 @@ function HospitalCard(props: {
         <div className={styles.hospitalName}>{hospitalName} </div>
       )}
       <div className={styles.hospitalCard}>
-        <Picker options={options} onChange={props.onSlotSelected} />
+        <Picker
+          name="available_appointments"
+          getAnalyticsValue={(donationSlot) =>
+            donationSlot.appointmentIds.toString()
+          }
+          options={options}
+          onChange={props.onSlotSelected}
+        />
       </div>
     </>
   );
