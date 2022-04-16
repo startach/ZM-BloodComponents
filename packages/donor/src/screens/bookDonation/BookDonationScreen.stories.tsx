@@ -104,34 +104,15 @@ const Template: Story<BookDonationScreenProps> = (args) => (
 export const NoAppointments = Template.bind({});
 NoAppointments.args = props;
 
-export const HasAppointments = (args: BookDonationScreenProps) => (
-  <BookDonationScreen {...args} />
-);
+export const HasAppointments = Template.bind({});
 
 HasAppointments.args = {
   ...props,
   availableAppointments: sampleAppointments,
 };
 
-export const Fetching = (args: BookDonationScreenProps) => (
-  <BookDonationScreen {...args} />
-);
-
+export const Fetching = Template.bind({});
 Fetching.args = {
   ...props,
   isFetching: true,
-};
-
-export const SlotTooCloseDoDonorLastAppointmentPopup = (
-  args: BookDonationScreenProps
-) => <BookDonationScreen {...args} />;
-
-SlotTooCloseDoDonorLastAppointmentPopup.args = {
-  ...props,
-  availableAppointments: sampleAppointments,
-  tooCloseDonationPopupProps: {
-    open: false,
-    onApproved: () => {},
-    onBack: () => {},
-  },
 };

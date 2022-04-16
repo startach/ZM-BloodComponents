@@ -34,7 +34,7 @@ export function BookDonationScreenContainer({
   if (
     isLoggedIn &&
     appointmentToBookStore.hasAppointmentToBook() &&
-    appointmentToBookStore.isDonationValidForDonor(appState.donor!)
+    !appointmentToBookStore.isAppointmentTooCloseToLastDonation(appState.donor!)
   ) {
     return <Navigate to={MainNavigationKeys.Questionnaire} />;
   }
@@ -43,9 +43,9 @@ export function BookDonationScreenContainer({
     appointmentToBookStore.setAppointmentToBook(donationSlot);
 
     if (isLoggedIn) {
-      appointmentToBookStore.isDonationValidForDonor(appState.donor!)
-        ? navigate(MainNavigationKeys.Questionnaire)
-        : setShowWarningPopup(true);
+      appointmentToBookStore.isAppointmentTooCloseToLastDonation(appState.donor!)
+        ? setShowWarningPopup(true)
+        :  navigate(MainNavigationKeys.Questionnaire);
     } else {
       navigate(MainNavigationKeys.Register);
     }

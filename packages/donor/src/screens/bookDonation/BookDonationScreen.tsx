@@ -28,7 +28,7 @@ export interface BookDonationScreenProps {
   defaultHospital: Hospital | "";
   tooCloseDonationPopupProps: Pick<
     PopupProps,
-    "open" | "onBack" | "onApproved"
+    "open" | "onBack" | "onApproved" | "onClose"
   >;
 }
 
@@ -88,10 +88,11 @@ export default function BookDonationScreen({
         goBackText={"התחרטתי, חזרה למסך התורים"}
         onApproved={tooCloseDonationPopupProps.onApproved}
         onBack={tooCloseDonationPopupProps.onBack}
+        onClose={tooCloseDonationPopupProps.onClose}
         image={WarningLogo}
       >
         טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור
-        זה ?
+        זה?
       </Popup>
 
       <div className={styles.donationsCard}>

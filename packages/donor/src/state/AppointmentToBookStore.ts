@@ -33,7 +33,7 @@ export class AppointmentToBookStore {
     this.appointmentIds = slot.appointmentIds;
   }
 
-  isDonationValidForDonor(donor: Donor): boolean {
+  isAppointmentTooCloseToLastDonation(donor: Donor): boolean {
     const daysBetweenLastDonorDonationToSlot =
       donor.lastCompletedDonationTimeMillis &&
       DateUtils.getNumberOfDaysBetweenDates(
@@ -42,7 +42,7 @@ export class AppointmentToBookStore {
       );
     const isAppointmentTooCloseToLastDonation =
       daysBetweenLastDonorDonationToSlot
-        ? daysBetweenLastDonorDonationToSlot > MIN_DAYS_BETWEEN_DONATIONS
+        ? daysBetweenLastDonorDonationToSlot < MIN_DAYS_BETWEEN_DONATIONS
         : false;
 
     return isAppointmentTooCloseToLastDonation;
