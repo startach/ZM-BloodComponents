@@ -61,7 +61,7 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
           className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
             htmlFor="mui-34"
             id="mui-34-label"
@@ -69,15 +69,15 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
             תאריך
           </label>
           <div
-            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
-              aria-label="Choose date, selected date is Sep 7, 2028"
+              aria-label="Choose date, selected date is 7 בספט׳ 2028"
               aria-readonly={true}
               autoFocus={false}
-              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               id="mui-34"
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -88,27 +88,15 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
               readOnly={true}
               required={false}
               type="text"
-              value="09/07/2028"
+              value="07/09/2028"
             />
-            <fieldset
-              aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                className="muirtl-1ftyaf0"
-              >
-                <span>
-                  תאריך
-                </span>
-              </legend>
-            </fieldset>
           </div>
         </div>
         <div
           className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
             htmlFor="mui-36"
             id="mui-36-label"
@@ -116,33 +104,15 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
             שעה
           </label>
           <div
-            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
-              aria-label="Choose time, selected time is 7:35 AM"
+              aria-label="Choose time, selected time is 7:35"
               aria-readonly={true}
               autoFocus={false}
-              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-              endAdornment={
-                <ForwardRef(InputAdornment)
-                  position="end"
-                >
-                  <ForwardRef(SvgIcon)
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.memo),
-                        "compare": null,
-                        "type": Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "render": [Function],
-                        },
-                      }
-                    }
-                  />
-                </ForwardRef(InputAdornment)>
-              }
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               id="mui-36"
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -155,23 +125,10 @@ exports[`Storyshots Screens/Add Appointment Screen Beilinson 1`] = `
               type="text"
               value="07:35"
             />
-            <fieldset
-              aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                className="muirtl-1ftyaf0"
-              >
-                <span>
-                  שעה
-                </span>
-              </legend>
-            </fieldset>
           </div>
         </div>
         <div
           className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-          dir="rtl"
           onKeyPress={[Function]}
         >
           <label
@@ -415,7 +372,7 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
           className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
             htmlFor="mui-39"
             id="mui-39-label"
@@ -423,15 +380,15 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             תאריך
           </label>
           <div
-            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
-              aria-label="Choose date, selected date is Sep 7, 2028"
+              aria-label="Choose date, selected date is 7 בספט׳ 2028"
               aria-readonly={true}
               autoFocus={false}
-              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               id="mui-39"
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -442,27 +399,15 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               readOnly={true}
               required={false}
               type="text"
-              value="09/07/2028"
+              value="07/09/2028"
             />
-            <fieldset
-              aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                className="muirtl-1ftyaf0"
-              >
-                <span>
-                  תאריך
-                </span>
-              </legend>
-            </fieldset>
           </div>
         </div>
         <div
           className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
             htmlFor="mui-41"
             id="mui-41-label"
@@ -470,33 +415,15 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
             שעה
           </label>
           <div
-            className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
-              aria-label="Choose time, selected time is 7:35 AM"
+              aria-label="Choose time, selected time is 7:35"
               aria-readonly={true}
               autoFocus={false}
-              className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-              endAdornment={
-                <ForwardRef(InputAdornment)
-                  position="end"
-                >
-                  <ForwardRef(SvgIcon)
-                    component={
-                      Object {
-                        "$$typeof": Symbol(react.memo),
-                        "compare": null,
-                        "type": Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "render": [Function],
-                        },
-                      }
-                    }
-                  />
-                </ForwardRef(InputAdornment)>
-              }
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               id="mui-41"
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -509,23 +436,10 @@ exports[`Storyshots Screens/Add Appointment Screen Default 1`] = `
               type="text"
               value="07:35"
             />
-            <fieldset
-              aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                className="muirtl-1ftyaf0"
-              >
-                <span>
-                  שעה
-                </span>
-              </legend>
-            </fieldset>
           </div>
         </div>
         <div
           className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-          dir="rtl"
           onKeyPress={[Function]}
         >
           <label

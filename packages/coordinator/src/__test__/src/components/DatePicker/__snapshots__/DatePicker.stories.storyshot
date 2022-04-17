@@ -13,7 +13,7 @@ exports[`Storyshots Components/Date Picker Default 1`] = `
     className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
       htmlFor="mui-15"
       id="mui-15-label"
@@ -21,15 +21,15 @@ exports[`Storyshots Components/Date Picker Default 1`] = `
       בחר תאריך
     </label>
     <div
-      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
-        aria-label="Choose date, selected date is Feb 1, 2022"
+        aria-label="Choose date, selected date is 1 בפבר׳ 2022"
         aria-readonly={true}
         autoFocus={false}
-        className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         id="mui-15"
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -40,20 +40,8 @@ exports[`Storyshots Components/Date Picker Default 1`] = `
         readOnly={true}
         required={false}
         type="text"
-        value="02/01/2022"
+        value="01/02/2022"
       />
-      <fieldset
-        aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="muirtl-1ftyaf0"
-        >
-          <span>
-            בחר תאריך
-          </span>
-        </legend>
-      </fieldset>
     </div>
   </div>
 </div>
@@ -72,7 +60,7 @@ exports[`Storyshots Components/Date Picker Disable Saturday 1`] = `
     className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
       htmlFor="mui-17"
       id="mui-17-label"
@@ -80,15 +68,15 @@ exports[`Storyshots Components/Date Picker Disable Saturday 1`] = `
       ללא שבת
     </label>
     <div
-      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
-        aria-label="Choose date, selected date is Feb 1, 2022"
+        aria-label="Choose date, selected date is 1 בפבר׳ 2022"
         aria-readonly={true}
         autoFocus={false}
-        className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         id="mui-17"
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -99,20 +87,8 @@ exports[`Storyshots Components/Date Picker Disable Saturday 1`] = `
         readOnly={true}
         required={false}
         type="text"
-        value="02/01/2022"
+        value="01/02/2022"
       />
-      <fieldset
-        aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="muirtl-1ftyaf0"
-        >
-          <span>
-            ללא שבת
-          </span>
-        </legend>
-      </fieldset>
     </div>
   </div>
 </div>
@@ -131,7 +107,7 @@ exports[`Storyshots Components/Date Picker Disable Saturday Error 1`] = `
     className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
       htmlFor="mui-19"
       id="mui-19-label"
@@ -139,15 +115,15 @@ exports[`Storyshots Components/Date Picker Disable Saturday Error 1`] = `
       ללא שבת
     </label>
     <div
-      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
-        aria-invalid={false}
-        aria-label="Choose date, selected date is Feb 5, 2022"
+        aria-invalid={true}
+        aria-label="Choose date, selected date is 5 בפבר׳ 2022"
         aria-readonly={true}
         autoFocus={false}
-        className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         id="mui-19"
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -158,20 +134,8 @@ exports[`Storyshots Components/Date Picker Disable Saturday Error 1`] = `
         readOnly={true}
         required={false}
         type="text"
-        value="02/05/2022"
+        value="05/02/2022"
       />
-      <fieldset
-        aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="muirtl-1ftyaf0"
-        >
-          <span>
-            ללא שבת
-          </span>
-        </legend>
-      </fieldset>
     </div>
   </div>
 </div>
@@ -190,7 +154,7 @@ exports[`Storyshots Components/Date Picker Min Date 1`] = `
     className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
   >
     <label
-      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
       htmlFor="mui-21"
       id="mui-21-label"
@@ -198,15 +162,15 @@ exports[`Storyshots Components/Date Picker Min Date 1`] = `
       תאריך עתידי בלבד
     </label>
     <div
-      className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
-        aria-invalid={false}
-        aria-label="Choose date, selected date is Feb 1, 2022"
+        aria-invalid={true}
+        aria-label="Choose date, selected date is 1 בפבר׳ 2022"
         aria-readonly={true}
         autoFocus={false}
-        className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         id="mui-21"
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -217,20 +181,8 @@ exports[`Storyshots Components/Date Picker Min Date 1`] = `
         readOnly={true}
         required={false}
         type="text"
-        value="02/01/2022"
+        value="01/02/2022"
       />
-      <fieldset
-        aria-hidden={true}
-        className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          className="muirtl-1ftyaf0"
-        >
-          <span>
-            תאריך עתידי בלבד
-          </span>
-        </legend>
-      </fieldset>
     </div>
   </div>
 </div>

@@ -1,22 +1,13 @@
 import React from "react";
-import { StylesProvider } from "@material-ui/core";
 import WithGlobalTheme from "../src/HOCs/withGlobalTheme";
 import { Story, StoryContext } from "@storybook/react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/index.scss";
 import { Parameters } from "@storybook/addons/dist/ts3.9/types";
 import { MemoryRouter } from "react-router-dom";
-
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { he } from "date-fns/locale";
-
-// https://github.com/mui-org/material-ui/issues/9492#issuecomment-657609780
-const generateClassName = () => {
-  let counter = 0;
-  return (rule: any, styleSheet: any) =>
-    `${styleSheet.options.classNamePrefix}-${rule.key}-${counter++}`;
-};
 
 export const parameters: Parameters = {
   viewport: {
@@ -48,27 +39,15 @@ export const parameters: Parameters = {
   },
 };
 
-export default function WithStableMuiClassnames(props: {
-  children: React.ReactNode;
-}) {
-  return (
-    <StylesProvider generateClassName={generateClassName()}>
-      {props.children}
-    </StylesProvider>
-  );
-}
-
 const withMuiProvider = (Story: Story, context: StoryContext) => {
   return (
     <div dir="rtl" style={{ height: "100vh" }}>
       <MemoryRouter>
-        <WithStableMuiClassnames>
-          <WithGlobalTheme>
-            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={he}>
-              <Story {...context} />
-            </MuiPickersUtilsProvider>
-          </WithGlobalTheme>
-        </WithStableMuiClassnames>
+        <WithGlobalTheme>
+          <LocalizationProvider dateAdapter={AdapterDateFns} locale={he}>
+            <Story {...context} />
+          </LocalizationProvider>
+        </WithGlobalTheme>
       </MemoryRouter>
     </div>
   );

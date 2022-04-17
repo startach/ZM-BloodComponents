@@ -116,7 +116,7 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-59"
               id="mui-59-label"
@@ -124,15 +124,15 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               החל מתאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 1, 2022"
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-59"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -145,25 +145,13 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
                 type="text"
                 value="01/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    החל מתאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
           <div
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-61"
               id="mui-61-label"
@@ -171,15 +159,15 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               עד תאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 29, 2022"
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-61"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -190,20 +178,8 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
                 readOnly={true}
                 required={false}
                 type="text"
-                value="01/29/2022"
+                value="29/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    עד תאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
         </div>
@@ -574,7 +550,7 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-63"
               id="mui-63-label"
@@ -582,15 +558,15 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               החל מתאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 1, 2022"
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-63"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -603,25 +579,13 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
                 type="text"
                 value="01/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    החל מתאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
           <div
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-65"
               id="mui-65-label"
@@ -629,15 +593,15 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               עד תאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 29, 2022"
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-65"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -648,20 +612,8 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
                 readOnly={true}
                 required={false}
                 type="text"
-                value="01/29/2022"
+                value="29/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    עד תאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
         </div>
@@ -949,7 +901,7 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-67"
               id="mui-67-label"
@@ -957,15 +909,15 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               החל מתאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 1, 2022"
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-67"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -978,25 +930,13 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
                 type="text"
                 value="01/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    החל מתאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
           <div
             className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={false}
               htmlFor="mui-69"
               id="mui-69-label"
@@ -1004,15 +944,15 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               עד תאריך
             </label>
             <div
-              className="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-1ydara-MuiInputBase-root-MuiOutlinedInput-root"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
-                aria-label="Choose date, selected date is Jan 29, 2022"
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
                 aria-readonly={true}
                 autoFocus={false}
-                className="MuiOutlinedInput-input MuiInputBase-input muirtl-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
                 id="mui-69"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
@@ -1023,20 +963,8 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
                 readOnly={true}
                 required={false}
                 type="text"
-                value="01/29/2022"
+                value="29/01/2022"
               />
-              <fieldset
-                aria-hidden={true}
-                className="MuiOutlinedInput-notchedOutline muirtl-1d3z3hw-MuiOutlinedInput-notchedOutline"
-              >
-                <legend
-                  className="muirtl-1ftyaf0"
-                >
-                  <span>
-                    עד תאריך
-                  </span>
-                </legend>
-              </fieldset>
             </div>
           </div>
         </div>

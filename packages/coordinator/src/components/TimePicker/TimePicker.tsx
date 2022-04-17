@@ -1,7 +1,5 @@
-import { KeyboardTimePicker } from "@material-ui/pickers";
-
-import { AccessAlarm } from "@material-ui/icons";
-import { SvgIcon } from "@material-ui/core";
+import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker";
+import TextField from "@mui/material/TextField";
 
 export interface TimePickerProps {
   value: Date | null;
@@ -17,17 +15,16 @@ export default function TimePicker({
   className,
 }: TimePickerProps) {
   return (
-    <KeyboardTimePicker
-      keyboardIcon={<SvgIcon component={AccessAlarm} />}
+    <MuiTimePicker
       label={label}
       value={value}
       onChange={onChange}
       ampm={false}
       minutesStep={5}
       className={className}
-      okLabel={"אישור"}
-      cancelLabel={"ביטול"}
-      autoOk
+      okText={"אישור"}
+      cancelText={"ביטול"}
+      renderInput={(params) => <TextField {...params} variant="standard" />}
     />
   );
 }

@@ -44,7 +44,6 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
         </div>
         <div
           className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-          dir="rtl"
           onKeyPress={[Function]}
         >
           <label
@@ -75,7 +74,6 @@ exports[`Storyshots Screens/Sign In Screen Default 1`] = `
         </div>
         <div
           className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-          dir="rtl"
           onKeyPress={[Function]}
         >
           <label

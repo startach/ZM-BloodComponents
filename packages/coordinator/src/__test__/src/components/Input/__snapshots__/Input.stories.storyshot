@@ -11,7 +11,6 @@ exports[`Storyshots Components/Input Default 1`] = `
 >
   <div
     className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-    dir="rtl"
     onKeyPress={[Function]}
   >
     <label
@@ -52,7 +51,6 @@ exports[`Storyshots Components/Input Error 1`] = `
 >
   <div
     className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-    dir="rtl"
     onKeyPress={[Function]}
   >
     <label
@@ -107,7 +105,6 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
   >
     <div
       className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-      dir="rtl"
       onKeyPress={[Function]}
     >
       <label
@@ -137,7 +134,6 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
     </div>
     <div
       className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-      dir="rtl"
       onKeyPress={[Function]}
     >
       <label
@@ -167,7 +163,6 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
     </div>
     <div
       className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-      dir="rtl"
       onKeyPress={[Function]}
     >
       <label
@@ -197,7 +192,6 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
     </div>
     <div
       className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-      dir="rtl"
       onKeyPress={[Function]}
     >
       <label
@@ -240,7 +234,6 @@ exports[`Storyshots Components/Input Password 1`] = `
 >
   <div
     className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
-    dir="rtl"
     onKeyPress={[Function]}
   >
     <label

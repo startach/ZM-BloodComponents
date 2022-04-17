@@ -65,7 +65,6 @@ export default function Input({
       className={classNames(styles.input, className)}
       InputProps={inputProps}
       error={Boolean(errorMessage)}
-      dir="rtl"
       variant={variant}
       helperText={errorMessage}
       fullWidth

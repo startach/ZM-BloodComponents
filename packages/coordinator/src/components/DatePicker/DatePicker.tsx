@@ -1,4 +1,5 @@
-import { KeyboardDatePicker } from "@material-ui/pickers";
+import { DatePicker as MuiDatePicker } from "@mui/x-date-pickers/DatePicker";
+import TextField from "@mui/material/TextField";
 
 export interface DatePickerProps {
   value: Date | null;
@@ -22,26 +23,21 @@ export default function DatePicker({
   disableSaturday,
 }: DatePickerProps) {
   return (
-    <KeyboardDatePicker
+    <MuiDatePicker
       label={label}
       value={value}
       onChange={onChange}
-      format="dd/MM/yyyy"
+      inputFormat="dd/MM/yyyy"
       disablePast={disablePast}
       className={className}
       minDate={minimumDate}
       maxDate={maximumDate}
-      minDateMessage={"תאריך לא תקין"}
-      maxDateMessage={"תאריך לא תקין"}
-      okLabel={"אישור"}
-      cancelLabel={"ביטול"}
-      todayLabel={"היום"}
+      todayText={"היום"}
       showTodayButton
-      autoOk
       shouldDisableDate={(x) =>
         x && disableSaturday ? x.getDay() === 6 : false
       }
-      error={disableSaturday && value?.getDay() === 6}
+      renderInput={(params) => <TextField variant="standard" {...params} />}
     />
   );
 }
