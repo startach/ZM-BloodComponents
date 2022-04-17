@@ -1,4 +1,4 @@
-import { CircularProgress, PropTypes } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { Color } from "../../constants/colors";
 
 interface SpinnerProps {

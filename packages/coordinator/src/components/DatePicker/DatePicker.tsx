@@ -32,6 +32,8 @@ export default function DatePicker({
       className={className}
       minDate={minimumDate}
       maxDate={maximumDate}
+      okText={"אישור"}
+      cancelText={"ביטול"}
       todayText={"היום"}
       showTodayButton
       shouldDisableDate={(x) =>
