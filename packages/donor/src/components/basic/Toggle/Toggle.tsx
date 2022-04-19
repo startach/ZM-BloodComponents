@@ -1,4 +1,4 @@
-import Switch from "@material-ui/core/Switch";
+import Switch from "@mui/material/Switch";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 import styles from "./Toggle.module.scss";

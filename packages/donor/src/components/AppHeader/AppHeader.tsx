@@ -1,14 +1,14 @@
-import ArrowForward from "@material-ui/icons/ArrowForward";
+import ArrowForward from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import styles from "./style.module.scss";
 import LittleLogo from "../../assets/icons/blood-bank-zichron-Little-logo.svg";
 import { isLoggedIn } from "../../firebase/FirebaseInitializer";
@@ -103,11 +103,7 @@ export default function AppHeader({
       {icon}
       {headerContent}
       {loginIcon}
-      <Drawer
-        open={showSideBar}
-        onClose={() => setShowSideBar(false)}
-        dir={"rtl"}
-      >
+      <Drawer open={showSideBar} onClose={() => setShowSideBar(false)}>
         <List>
           <MenuItem
             name="profile"

@@ -1,4 +1,4 @@
-import Checkbox from "@material-ui/core/Checkbox";
+import Checkbox from "@mui/material/Checkbox";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 import styles from "./Checkbox.module.scss";

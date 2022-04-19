@@ -11,10 +11,11 @@ exports[`Storyshots Components/Button Default Color 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+      className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -28,15 +29,11 @@ exports[`Storyshots Components/Button Default Color 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiButton-label-1"
+      <div
+        className="buttonText"
       >
-        <div
-          className="buttonText"
-        >
-          לאישור לחץ כאן
-        </div>
-      </span>
+        לאישור לחץ כאן
+      </div>
     </button>
   </div>
 </div>
@@ -53,10 +50,11 @@ exports[`Storyshots Components/Button Disabled 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button disabledButton MuiButton-disableElevation-11 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+      className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
       disabled={true}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -70,15 +68,11 @@ exports[`Storyshots Components/Button Disabled 1`] = `
       tabIndex={-1}
       type="button"
     >
-      <span
-        className="MuiButton-label-1"
+      <div
+        className="buttonText"
       >
-        <div
-          className="buttonText"
-        >
-          לאישור לחץ כאן
-        </div>
-      </span>
+        לאישור לחץ כאן
+      </div>
     </button>
   </div>
 </div>
@@ -95,10 +89,11 @@ exports[`Storyshots Components/Button Loading 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button disabledButton MuiButton-disableElevation-11 MuiButton-disabled-13 MuiButton-fullWidth-23 MuiButtonBase-disabled-30"
+      className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
       disabled={true}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -113,33 +108,29 @@ exports[`Storyshots Components/Button Loading 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-1"
-      >
-        <div
-          className="MuiCircularProgress-root-32 MuiCircularProgress-indeterminate-34"
-          role="progressbar"
-          style={
-            Object {
-              "height": "1rem",
-              "width": "1rem",
-            }
+        className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary muirtl-1ep2p63-MuiCircularProgress-root"
+        role="progressbar"
+        style={
+          Object {
+            "height": "1rem",
+            "width": "1rem",
           }
+        }
+      >
+        <svg
+          className="MuiCircularProgress-svg muirtl-1idz92c-MuiCircularProgress-svg"
+          viewBox="22 22 44 44"
         >
-          <svg
-            className="MuiCircularProgress-svg-38"
-            viewBox="22 22 44 44"
-          >
-            <circle
-              className="MuiCircularProgress-circle-39 MuiCircularProgress-circleIndeterminate-41"
-              cx={44}
-              cy={44}
-              fill="none"
-              r={20.2}
-              strokeWidth={3.6}
-              style={Object {}}
-            />
-          </svg>
-        </div>
+          <circle
+            className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate muirtl-176wh8e-MuiCircularProgress-circle"
+            cx={44}
+            cy={44}
+            fill="none"
+            r={20.2}
+            strokeWidth={3.6}
+            style={Object {}}
+          />
+        </svg>
       </span>
     </button>
   </div>
@@ -157,10 +148,11 @@ exports[`Storyshots Components/Button Outlined 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-outlined-5 button outlinedButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+      className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button outlinedButton muirtl-tkjjjm-MuiButtonBase-root-MuiButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -174,15 +166,11 @@ exports[`Storyshots Components/Button Outlined 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiButton-label-1"
+      <div
+        className="buttonText"
       >
-        <div
-          className="buttonText"
-        >
-          לאישור לחץ כאן
-        </div>
-      </span>
+        לאישור לחץ כאן
+      </div>
     </button>
   </div>
 </div>
@@ -199,10 +187,11 @@ exports[`Storyshots Components/Button Primary 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button primaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+      className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -216,15 +205,11 @@ exports[`Storyshots Components/Button Primary 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiButton-label-1"
+      <div
+        className="buttonText"
       >
-        <div
-          className="buttonText"
-        >
-          לאישור לחץ כאן
-        </div>
-      </span>
+        לאישור לחץ כאן
+      </div>
     </button>
   </div>
 </div>
@@ -241,10 +226,11 @@ exports[`Storyshots Components/Button Secondary 1`] = `
 >
   <div>
     <button
-      className="MuiButtonBase-root-29 MuiButton-root-0 MuiButton-contained-8 button secondaryButton MuiButton-disableElevation-11 MuiButton-fullWidth-23"
+      className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button secondaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -258,15 +244,11 @@ exports[`Storyshots Components/Button Secondary 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiButton-label-1"
+      <div
+        className="buttonText"
       >
-        <div
-          className="buttonText"
-        >
-          לאישור לחץ כאן
-        </div>
-      </span>
+        לאישור לחץ כאן
+      </div>
     </button>
   </div>
 </div>

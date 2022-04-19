@@ -13,12 +13,12 @@ exports[`Storyshots Components/Toggle Default 1`] = `
     className="container"
   >
     <span
-      className="MuiSwitch-root-0"
+      className="MuiSwitch-root MuiSwitch-sizeMedium muirtl-julti5-MuiSwitch-root"
     >
       <span
-        aria-disabled={false}
-        className="MuiButtonBase-root-25 MuiIconButton-root-16 PrivateSwitchBase-root-12 MuiSwitch-switchBase-3 MuiSwitch-colorPrimary-4"
+        className="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root muirtl-vm1ps3-MuiButtonBase-root-MuiSwitch-switchBase"
         onBlur={[Function]}
+        onContextMenu={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -31,22 +31,18 @@ exports[`Storyshots Components/Toggle Default 1`] = `
         onTouchStart={[Function]}
         tabIndex={null}
       >
+        <input
+          checked={false}
+          className="MuiSwitch-input PrivateSwitchBase-input muirtl-1m9pwf3"
+          onChange={[Function]}
+          type="checkbox"
+        />
         <span
-          className="MuiIconButton-label-24"
-        >
-          <input
-            checked={false}
-            className="PrivateSwitchBase-input-15 MuiSwitch-input-9"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          <span
-            className="MuiSwitch-thumb-10"
-          />
-        </span>
+          className="MuiSwitch-thumb muirtl-jsexje-MuiSwitch-thumb"
+        />
       </span>
       <span
-        className="MuiSwitch-track-11"
+        className="MuiSwitch-track muirtl-1yjjitx-MuiSwitch-track"
       />
     </span>
     <div

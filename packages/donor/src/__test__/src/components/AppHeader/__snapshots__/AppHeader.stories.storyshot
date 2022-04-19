@@ -39,10 +39,11 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
     className="appHeader"
   >
     <button
-      className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -56,20 +57,17 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiIconButton-label-8"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+        data-testid="MenuIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root-12"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-          />
-        </svg>
-      </span>
+        <path
+          d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+        />
+      </svg>
     </button>
     <div
       className="title"
@@ -82,10 +80,11 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
        🛠
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiIconButton-root-0 login"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -99,19 +98,15 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiIconButton-label-8"
+      <p
+        className="login_text"
       >
-        <p
-          className="login_text"
-        >
-          כניסה
-        </p>
-        <img
-          alt="התחבר"
-          src="profile-icon.svg"
-        />
-      </span>
+        כניסה
+      </p>
+      <img
+        alt="התחבר"
+        src="profile-icon.svg"
+      />
     </button>
   </div>
 </div>
@@ -130,10 +125,11 @@ exports[`Storyshots Components/App Header With Back 1`] = `
     className="appHeader"
   >
     <button
-      className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -147,20 +143,17 @@ exports[`Storyshots Components/App Header With Back 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiIconButton-label-8"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+        data-testid="ArrowForwardIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root-12"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
-          />
-        </svg>
-      </span>
+        <path
+          d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+        />
+      </svg>
     </button>
     <div
       className="title"

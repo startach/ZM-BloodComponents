@@ -1,6 +1,6 @@
 import React from "react";
 import Fab from "../Fab";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "@mui/icons-material/Add";
 import styles from "./AddAppointmentFab.module.scss";
 import { useNavigate } from "react-router-dom";
 import { CoordinatorScreenKey } from "../../navigation/CoordinatorScreenKey";

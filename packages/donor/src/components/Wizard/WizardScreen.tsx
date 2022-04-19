@@ -1,7 +1,6 @@
 import Button, { ButtonVariant } from "../basic/Button";
 import styles from "./WizardScreen.module.scss";
 import { useState } from "react";
-import { PropTypes } from "@material-ui/core";
 import ZMScreen from "../basic/ZMScreen";
 import SwipeableViews from "react-swipeable-views";
 import classNames from "classnames";
@@ -20,7 +19,6 @@ export interface WizardPage {
   buttonValue: string;
   buttonText: string;
   buttonVariant: ButtonVariant;
-  buttonColor: PropTypes.Color;
 }
 
 export interface WizardScreenProps {
@@ -57,7 +55,6 @@ export default function WizardScreen(props: WizardScreenProps) {
           analyticsType={AnalyticsButtonType.Wizard}
           analyticsName={props.pages[currentStep].buttonName}
           analyticsValue={props.pages[currentStep].buttonValue}
-          color={props.pages[currentStep].buttonColor}
           title={props.pages[currentStep].buttonText}
           variant={props.pages[currentStep].buttonVariant}
           onClick={onNext}

@@ -19,10 +19,11 @@ exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -36,13 +37,9 @@ exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"
@@ -202,10 +199,11 @@ exports[`Storyshots Screens/Booked Appointment Cant Remove Donor 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -219,13 +217,9 @@ exports[`Storyshots Screens/Booked Appointment Cant Remove Donor 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"
@@ -386,10 +380,11 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -403,13 +398,9 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"

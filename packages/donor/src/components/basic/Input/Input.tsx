@@ -1,9 +1,9 @@
-import TextField from "@material-ui/core/TextField";
-import { InputAdornment } from "@material-ui/core";
+import TextField from "@mui/material/TextField";
+import { InputAdornment } from "@mui/material";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
-import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
-import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined";
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { useState } from "react";
 import IconButton from "../IconButton";
 import { reportInput } from "../../../Analytics";
@@ -54,6 +54,7 @@ export default function Input({
             buttonName="show_password"
             onClick={() => setShowPassword(!showPassword)}
             edge="end"
+            size="large"
           >
             {showPassword ? (
               <VisibilityOffOutlinedIcon />
@@ -83,7 +84,6 @@ export default function Input({
         className={classNames(styles.input, className)}
         InputProps={inputProps}
         error={Boolean(errorMessage)}
-        dir="rtl"
         variant={variant}
         helperText={errorMessage}
         fullWidth

@@ -43,24 +43,23 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-13n9olh-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             שם פרטי
           </label>
           <div
-            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-62 MuiInput-input-47"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -78,24 +77,23 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-13n9olh-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             שם משפחה
           </label>
           <div
-            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-62 MuiInput-input-47"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -113,24 +111,23 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="component"
       >
         <div
-          className="MuiFormControl-root-13 MuiTextField-root-12 input MuiFormControl-fullWidth-16"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-29 MuiInputLabel-root-17 MuiInputLabel-formControl-23 MuiInputLabel-animated-26"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-13n9olh-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             מספר טלפון
           </label>
           <div
-            className="MuiInputBase-root-51 MuiInput-root-37 MuiInput-underline-42 MuiInputBase-fullWidth-61 MuiInput-fullWidth-46 MuiInputBase-formControl-52 MuiInput-formControl-38"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1owix13-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-62 MuiInput-input-47"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -263,10 +260,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
         className="button"
       >
         <button
-          className="MuiButtonBase-root-98 MuiButton-root-69 MuiButton-contained-77 button MuiButton-containedPrimary-78 MuiButton-disableElevation-80 MuiButton-disabled-82 MuiButton-fullWidth-92 MuiButtonBase-disabled-99"
+          className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button muirtl-jddfkq-MuiButtonBase-root-MuiButton-root"
           disabled={true}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -280,15 +278,11 @@ exports[`Storyshots Screens/Extended Signup Screen Default 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <span
-            className="MuiButton-label-70"
+          <div
+            className="buttonText"
           >
-            <div
-              className="buttonText"
-            >
-              רשמו אותי
-            </div>
-          </span>
+            רשמו אותי
+          </div>
         </button>
       </div>
       <div

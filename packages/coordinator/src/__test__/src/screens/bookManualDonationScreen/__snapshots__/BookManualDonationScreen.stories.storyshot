@@ -19,10 +19,11 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -36,13 +37,9 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title secondaryTitle"
@@ -75,24 +72,23 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           פרטים אישיים
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             שם פרטי
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -106,24 +102,23 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             שם משפחה
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -137,24 +132,23 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
           
         </div>
         <div
-          className="MuiFormControl-root-25 MuiTextField-root-24 input MuiFormControl-fullWidth-28"
-          dir="rtl"
+          className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
           onKeyPress={[Function]}
         >
           <label
-            className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
           >
             טלפון נייד
           </label>
           <div
-            className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"
+            className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
             onClick={[Function]}
           >
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input-74 MuiInput-input-59"
+              className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
               disabled={false}
               onAnimationStart={[Function]}
               onBlur={[Function]}
@@ -282,10 +276,11 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
         >
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-contained-89 button disabledButton MuiButton-disableElevation-92 MuiButton-disabled-94 MuiButton-fullWidth-104 MuiButtonBase-disabled-10"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -299,23 +294,20 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               tabIndex={-1}
               type="button"
             >
-              <span
-                className="MuiButton-label-82"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  אישור והמשך
-                </div>
-              </span>
+                אישור והמשך
+              </div>
             </button>
           </div>
           <div>
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-81 MuiButton-outlined-86 button outlinedButton MuiButton-disableElevation-92 MuiButton-fullWidth-104"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button outlinedButton muirtl-tkjjjm-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -329,15 +321,11 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-82"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  ביטול
-                </div>
-              </span>
+                ביטול
+              </div>
             </button>
           </div>
         </div>

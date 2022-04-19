@@ -3,8 +3,8 @@ import {
   InputLabel,
   FormHelperText,
   FormControl,
-  makeStyles,
-} from "@material-ui/core";
+} from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 

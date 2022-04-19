@@ -1,4 +1,4 @@
-import { Button as MuiButton } from "@material-ui/core";
+import { Button as MuiButton } from "@mui/material";
 import classnames from "classnames";
 import Spinner from "../Spinner";
 import React from "react";
@@ -76,7 +76,7 @@ export default function Button({
         disableElevation
       >
         {isLoading ? (
-          <Spinner color={"inherit"} />
+          <Spinner />
         ) : (
           <div className={styles.buttonText}>{title}</div>
         )}

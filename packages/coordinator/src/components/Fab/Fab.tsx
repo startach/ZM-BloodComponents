@@ -1,6 +1,6 @@
-import FabComponent from "@material-ui/core/Fab";
+import FabComponent from "@mui/material/Fab";
 import React from "react";
-import { makeStyles } from "@material-ui/core";
+import makeStyles from "@mui/styles/makeStyles";
 
 export type FabProps = {
   onClick: () => void;

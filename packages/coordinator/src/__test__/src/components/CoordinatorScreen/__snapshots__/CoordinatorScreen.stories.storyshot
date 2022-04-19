@@ -19,10 +19,11 @@ exports[`Storyshots Components/Coordinator Screen Default 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -36,13 +37,9 @@ exports[`Storyshots Components/Coordinator Screen Default 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"
@@ -83,10 +80,11 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -100,13 +98,9 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"
@@ -125,10 +119,11 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-9 MuiFab-root-25 makeStyles-fab-24 MuiFab-extended-29 MuiFab-primary-27"
+      className="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-primary makeStyles-fab-16 muirtl-1ew8fi0-MuiButtonBase-root-MuiFab-root"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -142,25 +137,22 @@ exports[`Storyshots Components/Coordinator Screen Fab 1`] = `
       tabIndex={0}
       type="button"
     >
-      <span
-        className="MuiFab-label-26"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+        data-testid="AddIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root-35"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-          />
-        </svg>
-        <div
-          className="text"
-        >
-          הוסף תור
-        </div>
-      </span>
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+      <div
+        className="text"
+      >
+        הוסף תור
+      </div>
     </button>
   </div>
 </div>
@@ -185,10 +177,11 @@ exports[`Storyshots Components/Coordinator Screen Sticky Content 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -202,13 +195,9 @@ exports[`Storyshots Components/Coordinator Screen Sticky Content 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"

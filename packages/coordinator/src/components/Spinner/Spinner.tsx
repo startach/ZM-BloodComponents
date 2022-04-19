@@ -1,13 +1,14 @@
-import { CircularProgress, PropTypes } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
+import { Color } from "../../constants/colors";
 
 interface SpinnerProps {
-  color?: PropTypes.Color;
+  color?: Color;
   size?: string;
   className?: string;
 }
 
 export default function Spinner(props: SpinnerProps) {
-  const color = props.color === "default" ? "primary" : props.color;
+  const color = props.color || Color.Primary;
   const size = props.size || "1rem";
 
   return (

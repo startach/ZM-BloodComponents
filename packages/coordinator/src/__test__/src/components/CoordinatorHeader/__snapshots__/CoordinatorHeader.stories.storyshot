@@ -65,10 +65,11 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -82,13 +83,9 @@ exports[`Storyshots Components/App Header Hamburger 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              menu.svg
-            </svg>
-          </span>
+          <svg>
+            menu.svg
+          </svg>
         </button>
         <div
           className="title"
@@ -201,10 +198,11 @@ exports[`Storyshots Components/App Header Sticky Component 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -218,13 +216,9 @@ exports[`Storyshots Components/App Header Sticky Component 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"
@@ -275,10 +269,11 @@ exports[`Storyshots Components/App Header With Back 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -292,13 +287,9 @@ exports[`Storyshots Components/App Header With Back 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title"
@@ -341,10 +332,11 @@ exports[`Storyshots Components/App Header With Notification 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -358,13 +350,9 @@ exports[`Storyshots Components/App Header With Notification 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              chevron-right.svg
-            </svg>
-          </span>
+          <svg>
+            chevron-right.svg
+          </svg>
         </button>
         <div
           className="title infoTitle"

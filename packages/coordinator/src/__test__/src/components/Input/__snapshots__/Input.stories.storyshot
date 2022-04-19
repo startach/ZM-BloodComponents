@@ -10,24 +10,23 @@ exports[`Storyshots Components/Input Default 1`] = `
   }
 >
   <div
-    className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-    dir="rtl"
+    className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
     onKeyPress={[Function]}
   >
     <label
-      className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
     >
       שם פרטי
     </label>
     <div
-      className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         autoFocus={false}
-        className="MuiInputBase-input-50 MuiInput-input-35"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         disabled={false}
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -51,24 +50,23 @@ exports[`Storyshots Components/Input Error 1`] = `
   }
 >
   <div
-    className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-    dir="rtl"
+    className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
     onKeyPress={[Function]}
   >
     <label
-      className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-error-21 MuiInputLabel-error-8 MuiFormLabel-filled-22"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary Mui-error MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={true}
     >
       שם פרטי
     </label>
     <div
-      className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-error-45 MuiInput-error-31 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary Mui-error MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={true}
         autoFocus={false}
-        className="MuiInputBase-input-50 MuiInput-input-35"
+        className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         disabled={false}
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -80,7 +78,7 @@ exports[`Storyshots Components/Input Error 1`] = `
       />
     </div>
     <p
-      className="MuiFormHelperText-root-57 MuiFormHelperText-error-58 MuiFormHelperText-filled-63"
+      className="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-filled muirtl-1of3e5o-MuiFormHelperText-root"
     >
       שם פרטי לא יכול להכיל מספרים
     </p>
@@ -106,24 +104,23 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
     }
   >
     <div
-      className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-      dir="rtl"
+      className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
       onKeyPress={[Function]}
     >
       <label
-        className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
+        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={true}
       >
         שדה מספר 1
       </label>
       <div
-        className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+        className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
           autoFocus={false}
-          className="MuiInputBase-input-50 MuiInput-input-35"
+          className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
           disabled={false}
           onAnimationStart={[Function]}
           onBlur={[Function]}
@@ -136,24 +133,23 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-      dir="rtl"
+      className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
       onKeyPress={[Function]}
     >
       <label
-        className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
+        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={true}
       >
         שדה מספר 2
       </label>
       <div
-        className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+        className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
           autoFocus={false}
-          className="MuiInputBase-input-50 MuiInput-input-35"
+          className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
           disabled={false}
           onAnimationStart={[Function]}
           onBlur={[Function]}
@@ -166,24 +162,23 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-      dir="rtl"
+      className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
       onKeyPress={[Function]}
     >
       <label
-        className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
+        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={true}
       >
         שדה מספר 3
       </label>
       <div
-        className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+        className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
           autoFocus={false}
-          className="MuiInputBase-input-50 MuiInput-input-35"
+          className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
           disabled={false}
           onAnimationStart={[Function]}
           onBlur={[Function]}
@@ -196,24 +191,23 @@ exports[`Storyshots Components/Input Multiple Input 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-      dir="rtl"
+      className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
       onKeyPress={[Function]}
     >
       <label
-        className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
+        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={true}
       >
         שדה מספר 4
       </label>
       <div
-        className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26"
+        className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
         onClick={[Function]}
       >
         <input
           aria-invalid={false}
           autoFocus={false}
-          className="MuiInputBase-input-50 MuiInput-input-35"
+          className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
           disabled={false}
           onAnimationStart={[Function]}
           onBlur={[Function]}
@@ -239,24 +233,23 @@ exports[`Storyshots Components/Input Password 1`] = `
   }
 >
   <div
-    className="MuiFormControl-root-1 MuiTextField-root-0 input MuiFormControl-fullWidth-4"
-    dir="rtl"
+    className="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root input muirtl-wb57ya-MuiFormControl-root-MuiTextField-root"
     onKeyPress={[Function]}
   >
     <label
-      className="MuiFormLabel-root-17 MuiInputLabel-root-5 MuiInputLabel-formControl-11 MuiInputLabel-animated-14 MuiInputLabel-shrink-13 MuiFormLabel-filled-22"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled muirtl-av90zh-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={true}
     >
       סיסמה
     </label>
     <div
-      className="MuiInputBase-root-39 MuiInput-root-25 MuiInput-underline-30 MuiInputBase-fullWidth-49 MuiInput-fullWidth-34 MuiInputBase-formControl-40 MuiInput-formControl-26 MuiInputBase-adornedEnd-44"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd muirtl-1iimdog-MuiInputBase-root-MuiInput-root"
       onClick={[Function]}
     >
       <input
         aria-invalid={false}
         autoFocus={false}
-        className="MuiInputBase-input-50 MuiInput-input-35 MuiInputBase-inputAdornedEnd-55"
+        className="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
         disabled={false}
         onAnimationStart={[Function]}
         onBlur={[Function]}
@@ -267,13 +260,14 @@ exports[`Storyshots Components/Input Password 1`] = `
         value="password1234"
       />
       <div
-        className="MuiInputAdornment-root-57 MuiInputAdornment-positionEnd-60"
+        className="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-standard MuiInputAdornment-sizeMedium muirtl-1laqsz7-MuiInputAdornment-root"
       >
         <button
-          className="MuiButtonBase-root-73 MuiIconButton-root-64 MuiIconButton-edgeEnd-66"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium muirtl-19jphax-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -287,20 +281,17 @@ exports[`Storyshots Components/Input Password 1`] = `
           tabIndex={0}
           type="button"
         >
-          <span
-            className="MuiIconButton-label-72"
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+            data-testid="VisibilityOutlinedIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden={true}
-              className="MuiSvgIcon-root-76"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"
-              />
-            </svg>
-          </span>
+            <path
+              d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"
+            />
+          </svg>
         </button>
       </div>
     </div>

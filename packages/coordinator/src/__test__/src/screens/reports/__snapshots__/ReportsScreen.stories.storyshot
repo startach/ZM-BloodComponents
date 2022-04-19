@@ -19,10 +19,11 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -36,13 +37,12 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
           tabIndex={0}
           type="button"
         >
+          <svg>
+            menu.svg
+          </svg>
           <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              menu.svg
-            </svg>
-          </span>
+            className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+          />
         </button>
         <div
           className="title infoTitle"
@@ -61,23 +61,24 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
           className="fields"
         >
           <div
-            className="MuiFormControl-root-24"
+            className="MuiFormControl-root muirtl-1nrlq1o-MuiFormControl-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 label MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled label muirtl-15jt06t-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
               id="hospital_label"
             >
               בית חולים
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 field MuiInputBase-formControl-74 MuiInput-formControl-60"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl field muirtl-1tv324o-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               onClick={[Function]}
             >
               <div
+                aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="hospital_label hospital_select"
-                className="MuiSelect-root-48 MuiSelect-select-49 MuiSelect-selectMenu-52 MuiInputBase-input-84 MuiInput-input-69"
+                className="MuiSelect-select MuiSelect-standard MuiInput-input MuiInputBase-input muirtl-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input"
                 id="hospital_select"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -90,7 +91,8 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               </div>
               <input
                 aria-hidden={true}
-                className="MuiSelect-nativeInput-58"
+                className="MuiSelect-nativeInput muirtl-yf8vq0-MuiSelect-nativeInput"
+                disabled={false}
                 onAnimationStart={[Function]}
                 onChange={[Function]}
                 required={false}
@@ -99,7 +101,8 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-91 MuiSelect-icon-54"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard muirtl-1epiaji-MuiSvgIcon-root-MuiSelect-icon"
+                data-testid="ArrowDropDownIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -110,144 +113,74 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
             </div>
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-59"
+              id="mui-59-label"
             >
               החל מתאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-59"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="01/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-61"
+              id="mui-61-label"
             >
               עד תאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-61"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="29/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
         </div>
         <div
@@ -257,10 +190,11 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
             className="field"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button disabledButton MuiButton-disableElevation-142 MuiButton-disabled-144 MuiButton-fullWidth-154 MuiButtonBase-disabled-10"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -274,15 +208,11 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               tabIndex={-1}
               type="button"
             >
-              <span
-                className="MuiButton-label-132"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  חיפוש
-                </div>
-              </span>
+                חיפוש
+              </div>
             </button>
           </div>
           <div
@@ -295,10 +225,11 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
               className="field"
             >
               <button
-                className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+                className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -312,77 +243,76 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
                 tabIndex={0}
                 type="button"
               >
-                <span
-                  className="MuiButton-label-132"
+                <div
+                  className="buttonText"
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    ייצוא קובץ לאקסל
-                  </div>
-                </span>
+                  ייצוא קובץ לאקסל
+                </div>
+                <span
+                  className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+                />
               </button>
             </div>
           </div>
         </div>
       </div>
       <table
-        className="MuiTable-root-160"
+        className="MuiTable-root muirtl-x4ozvp-MuiTable-root"
         role={null}
       >
         <thead
-          className="MuiTableHead-root-162"
+          className="MuiTableHead-root muirtl-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root-163 MuiTableRow-head-166"
+            className="MuiTableRow-root MuiTableRow-head muirtl-1eorl2v-MuiTableRow-root"
             role={null}
           >
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               תאריך
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שעה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם פרטי
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם משפחה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               טלפון
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סוג דם
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סטאטוס
@@ -390,41 +320,41 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
           </tr>
         </thead>
         <tbody
-          className="MuiTableBody-root-180"
+          className="MuiTableBody-root muirtl-apqrd9-MuiTableBody-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root-163"
+            className="MuiTableRow-root muirtl-1eorl2v-MuiTableRow-root"
             data-appointment-id="appointmentId1"
             role={null}
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               12/01/2022
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               14:00
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אברהם
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               כהן
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               <a
                 href="tel:0525256631"
@@ -434,49 +364,49 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               A+
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אין מידע
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root-163"
+            className="MuiTableRow-root muirtl-1eorl2v-MuiTableRow-root"
             data-appointment-id="appointmentId2"
             role={null}
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               12/01/2022
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               15:00
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אברהם
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               לוי
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               <a
                 href="tel:0525256221"
@@ -486,13 +416,13 @@ exports[`Storyshots Screens/Reports Screen Default 1`] = `
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               AB+
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               הושלם
             </td>
@@ -523,10 +453,11 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -540,13 +471,12 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
           tabIndex={0}
           type="button"
         >
+          <svg>
+            menu.svg
+          </svg>
           <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              menu.svg
-            </svg>
-          </span>
+            className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+          />
         </button>
         <div
           className="title infoTitle"
@@ -565,23 +495,24 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
           className="fields"
         >
           <div
-            className="MuiFormControl-root-24"
+            className="MuiFormControl-root muirtl-1nrlq1o-MuiFormControl-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 label MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled label muirtl-15jt06t-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
               id="hospital_label"
             >
               בית חולים
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 field MuiInputBase-formControl-74 MuiInput-formControl-60"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl field muirtl-1tv324o-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               onClick={[Function]}
             >
               <div
+                aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="hospital_label hospital_select"
-                className="MuiSelect-root-48 MuiSelect-select-49 MuiSelect-selectMenu-52 MuiInputBase-input-84 MuiInput-input-69"
+                className="MuiSelect-select MuiSelect-standard MuiInput-input MuiInputBase-input muirtl-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input"
                 id="hospital_select"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -594,7 +525,8 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               </div>
               <input
                 aria-hidden={true}
-                className="MuiSelect-nativeInput-58"
+                className="MuiSelect-nativeInput muirtl-yf8vq0-MuiSelect-nativeInput"
+                disabled={false}
                 onAnimationStart={[Function]}
                 onChange={[Function]}
                 required={false}
@@ -603,7 +535,8 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-91 MuiSelect-icon-54"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard muirtl-1epiaji-MuiSvgIcon-root-MuiSelect-icon"
+                data-testid="ArrowDropDownIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -614,144 +547,74 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
             </div>
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-63"
+              id="mui-63-label"
             >
               החל מתאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-63"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="01/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-65"
+              id="mui-65-label"
             >
               עד תאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-65"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="29/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
         </div>
         <div
@@ -761,10 +624,11 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
             className="field"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button disabledButton MuiButton-disableElevation-142 MuiButton-disabled-144 MuiButton-fullWidth-154 MuiButtonBase-disabled-10"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={true}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -778,15 +642,11 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               tabIndex={-1}
               type="button"
             >
-              <span
-                className="MuiButton-label-132"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  חיפוש
-                </div>
-              </span>
+                חיפוש
+              </div>
             </button>
           </div>
           <div
@@ -799,10 +659,11 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               className="field"
             >
               <button
-                className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button disabledButton MuiButton-disableElevation-142 MuiButton-disabled-144 MuiButton-fullWidth-154 MuiButtonBase-disabled-10"
+                className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root Mui-disabled button disabledButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
                 disabled={true}
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -816,77 +677,73 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
                 tabIndex={-1}
                 type="button"
               >
-                <span
-                  className="MuiButton-label-132"
+                <div
+                  className="buttonText"
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    ייצוא קובץ לאקסל
-                  </div>
-                </span>
+                  ייצוא קובץ לאקסל
+                </div>
               </button>
             </div>
           </div>
         </div>
       </div>
       <table
-        className="MuiTable-root-160"
+        className="MuiTable-root muirtl-x4ozvp-MuiTable-root"
         role={null}
       >
         <thead
-          className="MuiTableHead-root-162"
+          className="MuiTableHead-root muirtl-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root-163 MuiTableRow-head-166"
+            className="MuiTableRow-root MuiTableRow-head muirtl-1eorl2v-MuiTableRow-root"
             role={null}
           >
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               תאריך
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שעה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם פרטי
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם משפחה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               טלפון
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סוג דם
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סטאטוס
@@ -897,8 +754,8 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
       <div
         className="spinner"
       >
-        <div
-          className="MuiCircularProgress-root-180 MuiCircularProgress-colorPrimary-184 MuiCircularProgress-indeterminate-182"
+        <span
+          className="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary muirtl-1ep2p63-MuiCircularProgress-root"
           role="progressbar"
           style={
             Object {
@@ -908,11 +765,11 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
           }
         >
           <svg
-            className="MuiCircularProgress-svg-186"
+            className="MuiCircularProgress-svg muirtl-1idz92c-MuiCircularProgress-svg"
             viewBox="22 22 44 44"
           >
             <circle
-              className="MuiCircularProgress-circle-187 MuiCircularProgress-circleIndeterminate-189"
+              className="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate muirtl-176wh8e-MuiCircularProgress-circle"
               cx={44}
               cy={44}
               fill="none"
@@ -921,7 +778,7 @@ exports[`Storyshots Screens/Reports Screen Loading 1`] = `
               style={Object {}}
             />
           </svg>
-        </div>
+        </span>
       </div>
     </div>
   </div>
@@ -947,10 +804,11 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
         className="headerRow"
       >
         <button
-          className="MuiButtonBase-root-9 MuiIconButton-root-0 rightButton"
+          className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
           disabled={false}
           onBlur={[Function]}
           onClick={[Function]}
+          onContextMenu={[Function]}
           onDragLeave={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -964,13 +822,12 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
           tabIndex={0}
           type="button"
         >
+          <svg>
+            menu.svg
+          </svg>
           <span
-            className="MuiIconButton-label-8"
-          >
-            <svg>
-              menu.svg
-            </svg>
-          </span>
+            className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+          />
         </button>
         <div
           className="title infoTitle"
@@ -989,23 +846,24 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
           className="fields"
         >
           <div
-            className="MuiFormControl-root-24"
+            className="MuiFormControl-root muirtl-1nrlq1o-MuiFormControl-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 label MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled label muirtl-15jt06t-MuiFormLabel-root-MuiInputLabel-root"
               data-shrink={true}
               id="hospital_label"
             >
               בית חולים
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 field MuiInputBase-formControl-74 MuiInput-formControl-60"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl field muirtl-1tv324o-MuiInputBase-root-MuiInput-root-MuiSelect-root"
               onClick={[Function]}
             >
               <div
+                aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="hospital_label hospital_select"
-                className="MuiSelect-root-48 MuiSelect-select-49 MuiSelect-selectMenu-52 MuiInputBase-input-84 MuiInput-input-69"
+                className="MuiSelect-select MuiSelect-standard MuiInput-input MuiInputBase-input muirtl-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input"
                 id="hospital_select"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -1018,7 +876,8 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               </div>
               <input
                 aria-hidden={true}
-                className="MuiSelect-nativeInput-58"
+                className="MuiSelect-nativeInput muirtl-yf8vq0-MuiSelect-nativeInput"
+                disabled={false}
                 onAnimationStart={[Function]}
                 onChange={[Function]}
                 required={false}
@@ -1027,7 +886,8 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root-91 MuiSelect-icon-54"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard muirtl-1epiaji-MuiSvgIcon-root-MuiSelect-icon"
+                data-testid="ArrowDropDownIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
               >
@@ -1038,144 +898,74 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
             </div>
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-67"
+              id="mui-67-label"
             >
               החל מתאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 1 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-67"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="01/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
           <div
-            className="MuiFormControl-root-24 MuiTextField-root-104 field"
+            className="MuiFormControl-root MuiTextField-root muirtl-1u3bzj6-MuiFormControl-root-MuiTextField-root"
           >
             <label
-              className="MuiFormLabel-root-40 MuiInputLabel-root-28 MuiInputLabel-formControl-34 MuiInputLabel-animated-37 MuiInputLabel-shrink-36 MuiFormLabel-filled-45"
-              data-shrink={true}
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-root MuiFormLabel-colorPrimary muirtl-n9znef-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink={false}
+              htmlFor="mui-69"
+              id="mui-69-label"
             >
               עד תאריך
             </label>
             <div
-              className="MuiInputBase-root-73 MuiInput-root-59 MuiInput-underline-64 MuiInputBase-formControl-74 MuiInput-formControl-60 MuiInputBase-adornedEnd-78"
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl muirtl-nlnugo-MuiInputBase-root-MuiInput-root"
               onClick={[Function]}
             >
               <input
                 aria-invalid={false}
+                aria-label="Choose date, selected date is 29 בינו׳ 2022"
+                aria-readonly={true}
                 autoFocus={false}
-                className="MuiInputBase-input-84 MuiInput-input-69 MuiInputBase-inputAdornedEnd-89"
-                disabled={false}
+                className="MuiInput-input MuiInputBase-input muirtl-1x51dt5-MuiInputBase-input-MuiInput-input"
+                id="mui-69"
                 onAnimationStart={[Function]}
                 onBlur={[Function]}
                 onChange={[Function]}
+                onClick={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
+                readOnly={true}
                 required={false}
                 type="text"
                 value="29/01/2022"
               />
-              <div
-                className="MuiInputAdornment-root-105 MuiInputAdornment-positionEnd-108"
-              >
-                <button
-                  className="MuiButtonBase-root-9 MuiIconButton-root-0"
-                  disabled={false}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onDragLeave={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onKeyUp={[Function]}
-                  onMouseDown={[Function]}
-                  onMouseLeave={[Function]}
-                  onMouseUp={[Function]}
-                  onTouchEnd={[Function]}
-                  onTouchMove={[Function]}
-                  onTouchStart={[Function]}
-                  tabIndex={0}
-                  type="button"
-                >
-                  <span
-                    className="MuiIconButton-label-8"
-                  >
-                    <svg
-                      aria-hidden={true}
-                      className="MuiSvgIcon-root-91"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"
-                      />
-                      <path
-                        d="M0 0h24v24H0z"
-                        fill="none"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
             </div>
-            
           </div>
         </div>
         <div
@@ -1185,10 +975,11 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
             className="field"
           >
             <button
-              className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+              className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
+              onContextMenu={[Function]}
               onDragLeave={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1202,15 +993,14 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               tabIndex={0}
               type="button"
             >
-              <span
-                className="MuiButton-label-132"
+              <div
+                className="buttonText"
               >
-                <div
-                  className="buttonText"
-                >
-                  חיפוש
-                </div>
-              </span>
+                חיפוש
+              </div>
+              <span
+                className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+              />
             </button>
           </div>
           <div
@@ -1223,10 +1013,11 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
               className="field"
             >
               <button
-                className="MuiButtonBase-root-9 MuiButton-root-131 MuiButton-contained-139 button primaryButton MuiButton-disableElevation-142 MuiButton-fullWidth-154"
+                className="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button primaryButton muirtl-1j41ro6-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -1240,77 +1031,76 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
                 tabIndex={0}
                 type="button"
               >
-                <span
-                  className="MuiButton-label-132"
+                <div
+                  className="buttonText"
                 >
-                  <div
-                    className="buttonText"
-                  >
-                    ייצוא קובץ לאקסל
-                  </div>
-                </span>
+                  ייצוא קובץ לאקסל
+                </div>
+                <span
+                  className="MuiTouchRipple-root muirtl-8je8zh-MuiTouchRipple-root"
+                />
               </button>
             </div>
           </div>
         </div>
       </div>
       <table
-        className="MuiTable-root-160"
+        className="MuiTable-root muirtl-x4ozvp-MuiTable-root"
         role={null}
       >
         <thead
-          className="MuiTableHead-root-162"
+          className="MuiTableHead-root muirtl-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root-163 MuiTableRow-head-166"
+            className="MuiTableRow-root MuiTableRow-head muirtl-1eorl2v-MuiTableRow-root"
             role={null}
           >
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               תאריך
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שעה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם פרטי
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               שם משפחה
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               טלפון
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סוג דם
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-head-169 MuiTableCell-alignCenter-176"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignCenter MuiTableCell-sizeMedium muirtl-1w3enqz-MuiTableCell-root"
               scope="col"
             >
               סטאטוס
@@ -1318,41 +1108,41 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
           </tr>
         </thead>
         <tbody
-          className="MuiTableBody-root-180"
+          className="MuiTableBody-root muirtl-apqrd9-MuiTableBody-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root-163"
+            className="MuiTableRow-root muirtl-1eorl2v-MuiTableRow-root"
             data-appointment-id="appointmentId1"
             role={null}
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               12/01/2022
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               14:00
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אברהם
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               כהן
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               <a
                 href="tel:0525256631"
@@ -1362,49 +1152,49 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               A+
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אין מידע
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root-163"
+            className="MuiTableRow-root muirtl-1eorl2v-MuiTableRow-root"
             data-appointment-id="appointmentId2"
             role={null}
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               12/01/2022
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               15:00
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               אברהם
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               לוי
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               <a
                 href="tel:0525256221"
@@ -1414,13 +1204,13 @@ exports[`Storyshots Screens/Reports Screen Only One Hospital 1`] = `
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               AB+
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root-168 MuiTableCell-body-170"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium muirtl-xso64x-MuiTableCell-root"
             >
               הושלם
             </td>

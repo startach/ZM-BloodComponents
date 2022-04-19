@@ -10,21 +10,22 @@ exports[`Storyshots Components/Select Default 1`] = `
   }
 >
   <div
-    className="MuiFormControl-root-0"
+    className="MuiFormControl-root muirtl-1nrlq1o-MuiFormControl-root"
   >
     <label
-      className="MuiFormLabel-root-16 MuiInputLabel-root-4 label MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+      className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary label muirtl-1bmusge-MuiFormLabel-root-MuiInputLabel-root"
       data-shrink={false}
       id="undefined_label"
     />
     <div
-      className="MuiInputBase-root-49 MuiInput-root-35 MuiInput-underline-40 MuiInputBase-formControl-50 MuiInput-formControl-36"
+      className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  muirtl-1tv324o-MuiInputBase-root-MuiInput-root-MuiSelect-root"
       onClick={[Function]}
     >
       <div
+        aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="undefined_label undefined_select"
-        className="MuiSelect-root-24 MuiSelect-select-25 MuiSelect-selectMenu-28 MuiInputBase-input-60 MuiInput-input-45"
+        className="MuiSelect-select MuiSelect-standard MuiInput-input MuiInputBase-input muirtl-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input"
         id="undefined_select"
         onBlur={[Function]}
         onFocus={[Function]}
@@ -34,16 +35,15 @@ exports[`Storyshots Components/Select Default 1`] = `
         tabIndex={0}
       >
         <span
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "&#8203;",
-            }
-          }
-        />
+          className="notranslate"
+        >
+          ​
+        </span>
       </div>
       <input
         aria-hidden={true}
-        className="MuiSelect-nativeInput-34"
+        className="MuiSelect-nativeInput muirtl-yf8vq0-MuiSelect-nativeInput"
+        disabled={false}
         onAnimationStart={[Function]}
         onChange={[Function]}
         required={false}
@@ -52,7 +52,8 @@ exports[`Storyshots Components/Select Default 1`] = `
       />
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root-67 MuiSelect-icon-30"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconStandard muirtl-1epiaji-MuiSvgIcon-root-MuiSelect-icon"
+        data-testid="ArrowDropDownIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >

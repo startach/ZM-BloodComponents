@@ -92,7 +92,6 @@ export default function SignInScreen(props: SignInScreenProps) {
             title="שכחתי סיסמה"
             onClick={props.onResetPassword}
             variant={ButtonVariant.text}
-            color={Color.Default}
             className={styles.textButtonColor}
           />
         </div>

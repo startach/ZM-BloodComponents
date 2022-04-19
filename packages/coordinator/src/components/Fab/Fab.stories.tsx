@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react";
 import Fab, { FabProps } from "./Fab";
 import { action } from "@storybook/addon-actions";
-import AddIcon from "@material-ui/icons/Add";
+import AddIcon from "@mui/icons-material/Add";
 
 export default {
   component: Fab,

@@ -1,7 +1,7 @@
 import {
   IconButton as MuiIconButton,
   IconButtonProps as MuiIconButtonProps,
-} from "@material-ui/core";
+} from "@mui/material";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 
