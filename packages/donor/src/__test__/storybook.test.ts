@@ -1,4 +1,5 @@
 import "jest-canvas-mock";
+import { createSerializer } from "@emotion/jest";
 
 import initStoryshots, {
   multiSnapshotWithOptions,
@@ -7,4 +8,5 @@ initStoryshots({
   framework: "react",
   test: multiSnapshotWithOptions(),
   storyKindRegex: /^((?!.*?DontTest).)*$/,
+  snapshotSerializers: [createSerializer()],
 });

@@ -1,6 +1,199 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Screens/Approve Screen Default 1`] = `
+.emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-0::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-0.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-0 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-0:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-0:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-0.Mui-disabled {
+  background-color: transparent;
+  color: #7E7E7E;
+}
+
+.emotion-1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+
+.emotion-3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 5px 15px;
+  border-radius: 4px;
+  -webkit-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border: 1px solid rgba(76, 175, 81, 0.5);
+  color: #4CAF51;
+  width: 100%;
+  box-shadow: none;
+}
+
+.emotion-3::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-3.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-3 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-3:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: rgba(76, 175, 81, 0.04);
+  border: 1px solid #4CAF51;
+}
+
+@media (hover: none) {
+  .emotion-3:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-3.Mui-disabled {
+  color: #7E7E7E;
+  border: 1px solid #dadee0;
+}
+
+.emotion-3:hover {
+  box-shadow: none;
+}
+
+.emotion-3.Mui-focusVisible {
+  box-shadow: none;
+}
+
+.emotion-3:active {
+  box-shadow: none;
+}
+
+.emotion-3.Mui-disabled {
+  box-shadow: none;
+}
+
 <div
   dir="rtl"
   style={
@@ -16,7 +209,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       className="appHeader"
     >
       <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton emotion-0"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -36,7 +229,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium muirtl-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
           data-testid="MenuIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -52,7 +245,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
         אישור הגעה 🛠️
       </div>
       <button
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login muirtl-lsbm6g-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -104,7 +297,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
             className="textButton"
           >
             <button
-              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button muirtl-7os2ca-MuiButtonBase-root-MuiButton-root"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button emotion-3"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
@@ -133,7 +326,7 @@ exports[`Storyshots Screens/Approve Screen Default 1`] = `
             className="textButton"
           >
             <button
-              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button muirtl-7os2ca-MuiButtonBase-root-MuiButton-root"
+              className="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-disableElevation MuiButton-fullWidth MuiButtonBase-root button emotion-3"
               disabled={false}
               onBlur={[Function]}
               onClick={[Function]}
