@@ -61,6 +61,9 @@
     ]
   },
   "jest": {
+    "snapshotSerializers": [
+      "@emotion/jest/serializer"
+    ],
     "transform": {
       "^.+\\.stories\\.tsx$": "@storybook/addon-storyshots/injectFileName",
       "^.+\\.(js|jsx|ts|tsx)$": "react-scripts/config/jest/babelTransform.js",

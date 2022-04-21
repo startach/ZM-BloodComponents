@@ -383,9 +383,7 @@ exports[`Storyshots Components/Schedule/Picker Only One Hospital 1`] = `
         chevron-left-small.svg
       </svg>
     </div>
-    <div
-      className=""
-    >
+    <div>
       הדסה עין כרם
     </div>
   </div>

@@ -65,6 +65,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@emotion/jest": "^11.9.1",
     "@rxdi/firelink": "^0.8.0",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
