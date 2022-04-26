@@ -185,6 +185,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="link underline"
+              href="https://www.zichron.org"
               onClick={[Function]}
             >
               zichron.org
@@ -203,6 +204,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="link underline"
+              href="mailto:dam@zichron.org"
               onClick={[Function]}
             >
               dam@zichron.org
@@ -221,6 +223,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="phonelink underline"
+              href="https://wa.me/9720587100571?text="
               onClick={[Function]}
             >
               058-710-0571
@@ -239,6 +242,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="link"
+              href="https://www.facebook.com/search/top?q=%D7%96%D7%9B%D7%A8%D7%95%D7%9F%20%D7%9E%D7%A0%D7%97%D7%9D%20zichron%20menachem"
               onClick={[Function]}
             >
               עקבו אחרינו בפייסבוק
@@ -257,6 +261,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="link"
+              href="https://www.instagram.com/zichronmenachem/"
               onClick={[Function]}
             >
               עקבו אחרינו באינסטגרם
@@ -275,6 +280,7 @@ exports[`Storyshots Screens/Contact Screen Default 1`] = `
             </div>
             <a
               className="link"
+              href="https://www.youtube.com/user/zichronmenachem"
               onClick={[Function]}
             >
               עקבו אחרינו ביוטיוב
