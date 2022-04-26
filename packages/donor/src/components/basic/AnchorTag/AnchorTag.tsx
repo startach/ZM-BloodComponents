@@ -17,6 +17,5 @@ export default function AnchorTag({
     reportClick(AnalyticsButtonType.AnchorTag, linkName, href);
   };
 
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a onClick={handleClick} {...props} />;
+  return <a href={href} onClick={handleClick} {...props} />;
 }

@@ -22,7 +22,7 @@ export const firebaseConfigDev = {
   storageBucket: "blood-components.appspot.com",
   messagingSenderId: "388223113819",
   appId: "1:388223113819:web:1273570a12add0fedafd7e",
-  measurementId: "G-K6NM078FWD",
+  measurementId: "G-E6M6XQMWGR",
 };
 
 export const firebaseConfigProd = {
