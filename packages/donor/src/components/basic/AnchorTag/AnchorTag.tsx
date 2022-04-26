@@ -4,6 +4,7 @@ import { reportClick } from "../../../Analytics";
 
 export interface AnchorTagProps extends React.HTMLProps<HTMLAnchorElement> {
   href: string;
+  children: React.ReactNode;
   /** For logging and Analytics */
   linkName: string;
 }
@@ -11,12 +12,16 @@ export interface AnchorTagProps extends React.HTMLProps<HTMLAnchorElement> {
 export default function AnchorTag({
   linkName,
   href,
+  children,
   ...props
 }: AnchorTagProps) {
   const handleClick = () => {
     reportClick(AnalyticsButtonType.AnchorTag, linkName, href);
   };
 
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a onClick={handleClick} {...props} />;
+  return (
+    <a href={href} onClick={handleClick} {...props}>
+      {children}
+    </a>
+  );
 }
