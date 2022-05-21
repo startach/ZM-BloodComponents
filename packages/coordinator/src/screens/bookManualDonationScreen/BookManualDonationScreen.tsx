@@ -135,7 +135,7 @@ export default function BookManualDonationScreen(
           errorMessage={LocaleUtils.getValidationErrorTranslation(phoneError)}
         />
         <Input
-          label="מספר תעודת זהות"
+          label="תעודת זהות"
           value={countryIdNumber}
           onChangeText={(nextIdNumber) => {
             setCountryIdNumber(nextIdNumber);
