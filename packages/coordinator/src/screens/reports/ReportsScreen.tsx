@@ -3,8 +3,8 @@ import {
   DateUtils,
   HospitalUtils,
   LocaleUtils,
+  Hospital,
 } from "@zm-blood-components/common";
-import { Hospital } from "common/src/types";
 import styles from "./ReportsScreen.module.scss";
 import CsvDownloaderButton from "../../components/CsvDownloaderButton";
 import {

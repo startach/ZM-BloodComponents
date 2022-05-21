@@ -16,7 +16,6 @@ import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import { ReactComponent as Edit } from "../../assets/icons/edit.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
-import Spinner from "../../components/Spinner";
 import Toast from "../../components/Toast";
 import Popup from "../../components/Popup";
 import classNames from "classnames";
@@ -24,32 +23,16 @@ import Button, { ButtonVariant } from "../../components/Button";
 import { ButtonColor } from "../../components/Button/Button";
 
 export type BookedAppointmentScreenProps = {
-  appointment?: BookedAppointment;
+  appointment: BookedAppointment;
   onRemoveDonor: () => void;
   onCopyAppointmentDetails: () => void;
   markAppointmentAsCompleted: (isNoShow: boolean) => void;
+  allowRemoveDonor: boolean;
 };
 
 export default function BookedAppointmentScreen(
   props: BookedAppointmentScreenProps
 ) {
-  if (!props.appointment) {
-    // Loading state
-    return (
-      <CoordinatorScreen
-        className={styles.loading}
-        headerProps={{
-          title: " ",
-          variant: HeaderVariant.INFO,
-          hasBackButton: true,
-          hasNotificationsIcon: true,
-        }}
-      >
-        <Spinner size={"3rem"} className={styles.spinner} />
-      </CoordinatorScreen>
-    );
-  }
-
   const fullTime = DateUtils.ToDateTimeString(
     props.appointment.donationStartTimeMillis
   );
@@ -70,6 +53,7 @@ export default function BookedAppointmentScreen(
             name={`${props.appointment.firstName} ${props.appointment.lastName}`}
             onCopyAppointmentDetails={props.onCopyAppointmentDetails}
             onRemoveDonor={props.onRemoveDonor}
+            allowRemoveDonor={props.allowRemoveDonor}
           />
         ),
       }}
@@ -171,6 +155,7 @@ function NameBar(props: {
   name: string;
   onRemoveDonor: () => void;
   onCopyAppointmentDetails: () => void;
+  allowRemoveDonor: boolean;
 }) {
   const [removeDonorPopupOpen, setRemoveDonorPopupOpen] = useState(false);
   const [deletingAppointment, setDeletingAppointment] = useState(false);
@@ -186,7 +171,10 @@ function NameBar(props: {
             setCopyToastOpen(true);
           }}
         />
-        <Profile onClick={() => setRemoveDonorPopupOpen(true)} />
+
+        {props.allowRemoveDonor && (
+          <Profile onClick={() => setRemoveDonorPopupOpen(true)} />
+        )}
       </div>
 
       <Toast
