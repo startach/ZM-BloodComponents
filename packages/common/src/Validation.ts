@@ -2,6 +2,8 @@ export enum PersonalDetailsValidation {
   VALID_FIELD = "VALID_FIELD",
   NAME_TOO_SHORT = "NAME_TOO_SHORT",
   FULL_NAME_TOO_LONG = "FULL_NAME_TOO_LONG",
+  ID_INVALID = "ID_INVALID",
+  ID_HAS_NANS = "ID_HAS_NANS",
   PHONE_INVALID = "PHONE_INVALID",
   PHONE_HAS_NANS = "PHONE_HAS_NANS",
   REQUIRED_FIELD = "REQUIRED_FIELD",
@@ -19,6 +21,11 @@ export type LastNameValidation =
   | FieldValidation
   | PersonalDetailsValidation.NAME_TOO_SHORT
   | PersonalDetailsValidation.FULL_NAME_TOO_LONG;
+
+export type CountryIdNumberValidation =
+  | PersonalDetailsValidation.VALID_FIELD
+  | PersonalDetailsValidation.ID_INVALID
+  | PersonalDetailsValidation.ID_HAS_NANS;
 
 export type PhoneValidation =
   | FieldValidation
@@ -43,6 +50,18 @@ export const ValidateLastName = (
   if (lastName.length + firstName.length > 20)
     return PersonalDetailsValidation.FULL_NAME_TOO_LONG;
 
+  return PersonalDetailsValidation.VALID_FIELD;
+};
+
+export const ValidateIdNumber = (id: string): CountryIdNumberValidation => {
+  const allNumbersValidator = /^[0-9]*$/;
+  if (!allNumbersValidator.test(id)) {
+    return PersonalDetailsValidation.ID_HAS_NANS;
+  }
+  const formatValidator = /^\d{9}$/;
+  if (id.length > 0 && !formatValidator.test(id)) {
+    return PersonalDetailsValidation.ID_INVALID;
+  }
   return PersonalDetailsValidation.VALID_FIELD;
 };
 
