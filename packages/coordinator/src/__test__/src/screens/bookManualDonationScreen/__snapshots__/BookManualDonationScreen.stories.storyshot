@@ -176,7 +176,7 @@ exports[`Storyshots Screens/Book Manual Donation Screen Default 1`] = `
             className="MuiFormLabel-root-41 MuiInputLabel-root-29 MuiInputLabel-formControl-35 MuiInputLabel-animated-38"
             data-shrink={false}
           >
-            תעודת זהות
+            מספר תעודת זהות
           </label>
           <div
             className="MuiInputBase-root-63 MuiInput-root-49 MuiInput-underline-54 MuiInputBase-fullWidth-73 MuiInput-fullWidth-58 MuiInputBase-formControl-64 MuiInput-formControl-50"

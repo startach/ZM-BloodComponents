@@ -3,6 +3,7 @@ import {
   ValidateFirstName,
   ValidateLastName,
   ValidatePhone,
+  ValidateIdNumber,
 } from "./Validation";
 
 const VALID_FIRST_NAME = "אלי";
@@ -87,5 +88,25 @@ describe("Validations", function () {
   test("Valid Phone Returns Valid Field", () => {
     const phoneValidation = ValidatePhone(VALID_PHONE);
     expect(phoneValidation).toEqual(PersonalDetailsValidation.VALID_FIELD);
+  });
+
+  test("Valid id number returns valid", () => {
+    const idValidation = ValidateIdNumber("04798562");
+    expect(idValidation).toEqual(PersonalDetailsValidation.VALID_FIELD);
+  });
+
+  test("Valid id number returns has nans", () => {
+    const idValidation = ValidateIdNumber("04798e562");
+    expect(idValidation).toEqual(PersonalDetailsValidation.ID_HAS_NANS);
+  });
+
+  test("Valid id number returns invalid", () => {
+    const idValidation = ValidateIdNumber("047938562");
+    expect(idValidation).toEqual(PersonalDetailsValidation.ID_INVALID);
+  });
+
+  test("Valid id number returns invalid", () => {
+    const idValidation = ValidateIdNumber("04798563");
+    expect(idValidation).toEqual(PersonalDetailsValidation.ID_INVALID);
   });
 });

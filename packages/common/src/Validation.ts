@@ -62,6 +62,25 @@ export const ValidateIdNumber = (id: string): CountryIdNumberValidation => {
   if (id.length > 0 && !formatValidator.test(id)) {
     return PersonalDetailsValidation.ID_INVALID;
   }
+
+  let sum = 0;
+  const digits = id.split("");
+  for (let i = 0; i < digits.length - 1; i++) {
+    const num = Number(digits[i]);
+    const multiplyer = i % 2 === 0 ? 1 : 2;
+
+    let calc = num * multiplyer;
+    if (calc > 9) {
+      calc = 1 + (calc % 10);
+    }
+
+    sum += calc;
+  }
+
+  if (Number(digits[length - 1]) !== 10 - (sum % 10)) {
+    return PersonalDetailsValidation.ID_INVALID;
+  }
+
   return PersonalDetailsValidation.VALID_FIELD;
 };
 
