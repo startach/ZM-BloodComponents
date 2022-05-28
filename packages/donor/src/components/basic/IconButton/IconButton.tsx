@@ -3,23 +3,30 @@ import {
   IconButtonProps as MuiIconButtonProps,
 } from "@mui/material";
 import { AnalyticsButtonType } from "@zm-blood-components/common";
+import { MouseEvent } from "react";
 import { reportClick } from "../../../Analytics";
 
 export interface IconButtonProps extends MuiIconButtonProps {
   /** For logging and Analytics */
-  buttonName: string;
-  onClick: () => void;
+  analyticsName: string;
 }
 
 export default function IconButton({
-  buttonName,
-  onClick,
+  analyticsName,
   ...props
 }: IconButtonProps) {
-  const handleClick = () => {
-    onClick();
-    reportClick(AnalyticsButtonType.IconButton, buttonName);
+  const handleClick = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    props.onClick?.(e);
+    reportClick(AnalyticsButtonType.IconButton, analyticsName);
   };
 
-  return <MuiIconButton onClick={handleClick} {...props} />;
+  return (
+    <MuiIconButton
+      sx={{ borderRadius: "10px" }}
+      onClick={handleClick}
+      {...props}
+    />
+  );
 }

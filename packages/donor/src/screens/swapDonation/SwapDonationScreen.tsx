@@ -1,4 +1,4 @@
-import styles from "./BookDonationScreen.module.scss";
+import styles from "./SwapDonationScreen.module.scss";
 import { AvailableAppointment } from "@zm-blood-components/common";
 import ZMScreen from "../../components/basic/ZMScreen";
 import Illustration from "../../assets/images/home page-illustration.png";
@@ -6,7 +6,7 @@ import { PopupProps } from "../../components/basic/Popup";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 import AppointmentSelect from "../../components/AppointmentSelect/AppointmentSelect";
 
-export interface BookDonationScreenProps {
+export interface SwapDonationScreenProps {
   availableAppointments: AvailableAppointment[];
   isFetching: boolean;
   firstName?: string;
@@ -17,20 +17,17 @@ export interface BookDonationScreenProps {
   >;
 }
 
-export default function BookDonationScreen({
+export default function SwapDonationScreen({
   availableAppointments,
   isFetching,
-  firstName,
   onSlotSelected,
   tooCloseDonationPopupProps,
-}: BookDonationScreenProps) {
+}: SwapDonationScreenProps) {
   return (
     <ZMScreen hasBurgerMenu className={styles.bookDonationScreen}>
       <div className={styles.welcomeBox}>
         <div className={styles.welcomeTitle}>
-          <div className={styles.name}>
-            היי{firstName ? " " + firstName : "!"}
-          </div>
+          <div className={styles.name}>פרטי תור קיים</div>
           <div className={styles.welcomeText}>
             איזה כיף שבאת!
             <br />

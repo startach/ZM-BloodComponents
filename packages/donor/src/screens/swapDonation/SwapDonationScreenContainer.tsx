@@ -2,41 +2,30 @@ import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AppStateType } from "../../navigation/AppRouter";
-import BookDonationScreen from "./BookDonationScreen";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
   useAppointmentToBookStore,
   useAvailableAppointmentsStore,
 } from "../../state/Providers";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
+import SwapDonationScreen from "./SwapDonationScreen";
 
-interface BookDonationScreenContainerProps {
+interface SwapDonationScreenContainerProps {
   isLoggedIn: boolean;
   appState: AppStateType;
 }
 
-export function BookDonationScreenContainer({
+export function SwapDonationScreenContainer({
   appState,
   isLoggedIn,
-}: BookDonationScreenContainerProps) {
+}: SwapDonationScreenContainerProps) {
   const navigate = useNavigate();
   const [showWarningPopup, setShowWarningPopup] = useState(false);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
-  if (appState.bookedAppointment) {
-    return <Navigate to={MainNavigationKeys.UpcomingDonation} />;
-  }
-  if (appState.pendingCompletionAppointments.length !== 0) {
-    return <Navigate to={MainNavigationKeys.Approve} />;
-  }
-
-  if (
-    isLoggedIn &&
-    appointmentToBookStore.hasAppointmentToBook() &&
-    !appointmentToBookStore.isAppointmentTooCloseToLastDonation(appState.donor!)
-  ) {
-    return <Navigate to={MainNavigationKeys.Questionnaire} />;
+  if (!isLoggedIn || !appState.bookedAppointment) {
+    return <Navigate to={MainNavigationKeys.BookDonation} />;
   }
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
@@ -48,6 +37,11 @@ export function BookDonationScreenContainer({
       )
         ? setShowWarningPopup(true)
         : navigate(MainNavigationKeys.Questionnaire);
+      console.log(
+        appointmentToBookStore.isAppointmentTooCloseToLastDonation(
+          appState.donor!
+        )
+      );
     } else {
       navigate(MainNavigationKeys.Register);
     }
@@ -58,16 +52,16 @@ export function BookDonationScreenContainer({
     onApproved: () => navigate(MainNavigationKeys.Questionnaire),
     onBack: () => {
       setShowWarningPopup(false);
-      navigate(MainNavigationKeys.BookDonation);
+      navigate(MainNavigationKeys.SwapDonation);
     },
     onClose: () => {
       setShowWarningPopup(false);
-      navigate(MainNavigationKeys.BookDonation);
+      navigate(MainNavigationKeys.SwapDonation);
     },
   };
 
   return (
-    <BookDonationScreen
+    <SwapDonationScreen
       availableAppointments={availableAppointmentsStore.availableAppointments}
       onSlotSelected={onSlotSelected}
       firstName={appState.donor?.firstName}
@@ -77,4 +71,4 @@ export function BookDonationScreenContainer({
   );
 }
 
-export default observer(BookDonationScreenContainer);
+export default observer(SwapDonationScreenContainer);

@@ -1,0 +1,58 @@
+.dropdownContainer {
+  padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  width: 100%;
+}
+
+.donationsCard {
+  background-color: white;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -5px 20px #cb007b20;
+  flex: 1;
+}
+
+.loading {
+  padding: 40px;
+  text-align: center;
+}
+
+.dropAnimation {
+  height: 86px;
+}
+
+.loadingText {
+  margin-top: 15px;
+  color: var(--donor-light-black);
+  font-size: 16px;
+}
+
+.noAppointments {
+  padding: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--donor-light-black);
+}
+
+.donationDayContainer {
+  padding: 20px 20px;
+  border-bottom: 3px solid var(--donor-light-pink);
+}
+
+.noMoreAppointments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 50px;
+  font-size: 16px;
+  color: var(--donor-light-black);
+}
+
+.noAppointmentsImage {
+  width: 64px;
+  margin-bottom: 15px;
+}

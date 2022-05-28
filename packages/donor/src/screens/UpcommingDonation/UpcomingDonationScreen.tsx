@@ -13,11 +13,19 @@ import { Color } from "../../constants/colors";
 import Illustration from "../../assets/images/exists appointment.svg";
 import Cancellation from "../../assets/images/same-day-donation.svg";
 import Whatsapp from "../../assets/images/whatsup-color-big.svg";
-import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import EventCalendarLink from "./EventCalendarLink";
 import AnchorTag from "../../components/basic/AnchorTag";
-
+import Menu, { MenuItem } from "../../components/basic/Menu/Menu";
+import IconButton from "../../components/basic/IconButton";
+import {
+  DeleteForever,
+  KeyboardArrowDown,
+  SwapHoriz,
+} from "@mui/icons-material";
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 const EVENT_DURATION_BY_MINUTES = 90;
 
 export interface UpcomingDonationScreenProps {
@@ -33,6 +41,11 @@ export default function UpcomingDonationScreen({
   bookedAppointment,
   showSameDayDonationPopup,
 }: UpcomingDonationScreenProps) {
+  const navigate = useNavigate();
+  const [menuAnchorElement, setMenuAnchorElement] =
+    React.useState<null | HTMLElement>(null);
+  const [showCancelAppointmentPopup, setShowCancelAppointmentPopup] =
+    React.useState(false);
   const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
   const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
 
@@ -56,7 +69,48 @@ export default function UpcomingDonationScreen({
           <div className={styles.card}>
             <div className={styles.detailsTitleContainer}>
               <div className={styles.detailsTitle}>פרטי התור שלך:</div>
-              <CancelButton onCancel={onCancel} />
+              <IconButton
+                analyticsName="open_change_booked_appointment"
+                onClick={(e) => setMenuAnchorElement(e.currentTarget)}
+              >
+                <KeyboardArrowDown />
+                <Typography variant="subtitle2">פעולות נוספות</Typography>
+              </IconButton>
+              <Menu
+                analyticsName={"change_booked_appointment"}
+                anchorEl={menuAnchorElement}
+                open={!!menuAnchorElement}
+                onClose={() => setMenuAnchorElement(null)}
+              >
+                <MenuItem
+                  analyticsValue="cancel_appointment"
+                  onClick={() => setShowCancelAppointmentPopup(true)}
+                >
+                  <Typography variant="body2">ביטול תור</Typography>
+                  <DeleteForever />
+                </MenuItem>
+                <MenuItem
+                  analyticsValue="cancel_appointment"
+                  className={styles.cancelAppointment}
+                  onClick={() => navigate(MainNavigationKeys.SwapDonation)}
+                >
+                  <Typography variant="body2">החלפת תור</Typography>
+                  <SwapHoriz />
+                </MenuItem>
+              </Menu>
+              <Popup
+                name="cancel_appointment"
+                open={showCancelAppointmentPopup}
+                title="רק מוודאים"
+                buttonApproveText="כן, בטלו לי את התור"
+                goBackText="אל תבטלו לי את התור"
+                onBack={() => setShowCancelAppointmentPopup(false)}
+                onApproved={async () => await onCancel()}
+                image={Cancellation}
+                buttonColor={Color.Secondary}
+              >
+                בטוח/ה שברצונך לבטל את התור?
+              </Popup>
             </div>
 
             <div className={styles.detailsText}>
@@ -148,36 +202,6 @@ function NeedRideButton(props: { hospital: Hospital }) {
         buttonColor={Color.Primary}
       >
         {content}
-      </Popup>
-    </>
-  );
-}
-
-function CancelButton(props: { onCancel: () => Promise<void> }) {
-  const [open, setOpen] = React.useState(false);
-
-  const onCancelAppointment = async () => {
-    await props.onCancel();
-  };
-
-  return (
-    <>
-      <div className={styles.cancelButton} onClick={() => setOpen(true)}>
-        ביטול תור
-        <img src={TrashIcon} alt={"Cancel"} className={styles.cancelIcon} />
-      </div>
-      <Popup
-        name="cancel_appointment"
-        open={open}
-        title="רק מוודאים"
-        buttonApproveText="כן, בטלו לי את התור"
-        goBackText="אל תבטלו לי את התור"
-        onBack={() => setOpen(false)}
-        onApproved={onCancelAppointment}
-        image={Cancellation}
-        buttonColor={Color.Secondary}
-      >
-        בטוח/ה שברצונך לבטל את התור?
       </Popup>
     </>
   );

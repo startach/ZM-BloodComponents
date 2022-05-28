@@ -35,6 +35,7 @@ import DonationProcessScreenContainer from "../screens/about/DonationProcessScre
 import DonationApproveScreenContainer from "../screens/donationAproove/DonationApproveScreenContainer";
 import UnsubscribedScreen from "../screens/unsubscribe/UnsubscribedScreen";
 import { reportScreen } from "../Analytics";
+import { SwapDonationScreenContainer } from "../screens/swapDonation/SwapDonationScreenContainer";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -247,6 +248,16 @@ function DonorRouter() {
           />
         }
       />
+      <Route
+        path={MainNavigationKeys.SwapDonation}
+        element={
+          <SwapDonationScreenContainer
+            appState={appState}
+            isLoggedIn={loggedIn}
+          />
+        }
+      />
+
       <Route
         path={MainNavigationKeys.Unsubscribe}
         element={<UnsubscribedScreen />}

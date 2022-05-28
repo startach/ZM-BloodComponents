@@ -19,7 +19,6 @@ const props: BookDonationScreenProps = {
   availableAppointments: [],
   isFetching: false,
   firstName: "משה",
-  defaultHospital: "",
   onSlotSelected: action("onSlotSelected"),
   tooCloseDonationPopupProps: {
     open: false,
