@@ -45,6 +45,7 @@ export default function BookDonationScreen({
         isFetching={isFetching}
         onSlotSelected={onSlotSelected}
         tooCloseDonationPopupProps={tooCloseDonationPopupProps}
+        isSwapAppointment={false}
       />
     </ZMScreen>
   );

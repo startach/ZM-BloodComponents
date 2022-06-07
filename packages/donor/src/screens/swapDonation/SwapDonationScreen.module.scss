@@ -1,46 +1,18 @@
-.bookDonationScreen {
+.swapDonationScreen {
   display: flex;
   flex-direction: column;
   background-color: var(--donor-light-pink);
 }
 
-.welcomeBox {
-  background: transparent
-    linear-gradient(
-      66deg,
-      #fbbae2 0%,
-      #fbc5e5 13%,
-      #fcd9eb 42%,
-      #fce5ee 57%,
-      #fdfdfd 100%
-    )
-    0 0 no-repeat padding-box;
-  height: 160px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.swapBanner {
+  background-color: var(--donor-primary);
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 2px 0;
 }
 
-.welcomeTitle {
-  flex: 1;
-  font-size: 22px;
-  padding-right: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.name {
-  z-index: 10;
-  max-width: 60%;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--donor-light-black);
-}
-
-.welcomeText {
-  z-index: 10;
-  font-size: 20px;
-  color: var(--donor-light-black);
+.swapDonationsSelection {
+  overflow-y: scroll;
 }

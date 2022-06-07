@@ -28,10 +28,18 @@ export const Default: Story<MenuProps> = (args) => {
         anchorEl={anchorEl}
         onClose={() => setAnchorEl(null)}
       >
-        <MenuItem key={0} analyticsValue="cancel_appointment">
+        <MenuItem
+          key={0}
+          analyticsValue="cancel_appointment"
+          onClick={() => {}}
+        >
           <Typography variant="body2">ביטול תור</Typography>
         </MenuItem>
-        <MenuItem key={1} analyticsValue="cancel_appointment">
+        <MenuItem
+          key={1}
+          analyticsValue="cancel_appointment"
+          onClick={() => {}}
+        >
           <Typography variant="body2">החלפת תור</Typography>
         </MenuItem>
       </Menu>

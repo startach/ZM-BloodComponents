@@ -18,14 +18,12 @@ import EventCalendarLink from "./EventCalendarLink";
 import AnchorTag from "../../components/basic/AnchorTag";
 import Menu, { MenuItem } from "../../components/basic/Menu/Menu";
 import IconButton from "../../components/basic/IconButton";
-import {
-  DeleteForever,
-  KeyboardArrowDown,
-  SwapHoriz,
-} from "@mui/icons-material";
+import { KeyboardArrowDown } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
+import TrashIcon from "../../assets/icons/trash.svg";
+import SwapIcon from "../../assets/icons/swap_icon.svg";
 const EVENT_DURATION_BY_MINUTES = 90;
 
 export interface UpcomingDonationScreenProps {
@@ -73,8 +71,8 @@ export default function UpcomingDonationScreen({
                 analyticsName="open_change_booked_appointment"
                 onClick={(e) => setMenuAnchorElement(e.currentTarget)}
               >
-                <KeyboardArrowDown />
                 <Typography variant="subtitle2">פעולות נוספות</Typography>
+                <KeyboardArrowDown />
               </IconButton>
               <Menu
                 analyticsName={"change_booked_appointment"}
@@ -86,16 +84,16 @@ export default function UpcomingDonationScreen({
                   analyticsValue="cancel_appointment"
                   onClick={() => setShowCancelAppointmentPopup(true)}
                 >
+                  <img src={TrashIcon} alt={"Cancel"} className={styles.icon} />
                   <Typography variant="body2">ביטול תור</Typography>
-                  <DeleteForever />
                 </MenuItem>
                 <MenuItem
                   analyticsValue="cancel_appointment"
                   className={styles.cancelAppointment}
                   onClick={() => navigate(MainNavigationKeys.SwapDonation)}
                 >
+                  <img src={SwapIcon} alt={"Swap"} className={styles.icon} />
                   <Typography variant="body2">החלפת תור</Typography>
-                  <SwapHoriz />
                 </MenuItem>
               </Menu>
               <Popup

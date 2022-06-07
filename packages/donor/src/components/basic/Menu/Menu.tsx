@@ -13,12 +13,12 @@ export interface MenuProps extends MuiMenuProps {
   children: ReactElement<MenuItemProps>[];
 }
 
-export default function Menu(props: MenuProps) {
+export default function Menu({ analyticsName, ...props }: MenuProps) {
   const handleClick = ({ analyticsValue, onClick }: MenuItemProps) => {
     if (onClick) {
       onClick();
     }
-    reportClick(AnalyticsButtonType.Menu, props.analyticsName, analyticsValue);
+    reportClick(AnalyticsButtonType.Menu, analyticsName, analyticsValue);
   };
 
   const mapItem = (item: ReactElement<MenuItemProps>) => {

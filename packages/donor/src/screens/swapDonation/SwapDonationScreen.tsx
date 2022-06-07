@@ -1,10 +1,16 @@
 import styles from "./SwapDonationScreen.module.scss";
-import { AvailableAppointment } from "@zm-blood-components/common";
+import {
+  AvailableAppointment,
+  BookedAppointment,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import ZMScreen from "../../components/basic/ZMScreen";
-import Illustration from "../../assets/images/home page-illustration.png";
 import { PopupProps } from "../../components/basic/Popup";
 import { DonationSlotToBook } from "../../state/AppointmentToBookStore";
 import AppointmentSelect from "../../components/AppointmentSelect/AppointmentSelect";
+import ConfirmSwapAppointmentPopup from "../../components/popups/ConfirmSwapAppointmentPopup";
+import BookingAppointmentErrorPopup from "../../components/popups/BookingAppointmentErrorPopup";
+import DonationInfo from "../../components/DonationInfo/DonationInfo";
 
 export interface SwapDonationScreenProps {
   availableAppointments: AvailableAppointment[];
@@ -15,6 +21,13 @@ export interface SwapDonationScreenProps {
     PopupProps,
     "open" | "onBack" | "onApproved" | "onClose"
   >;
+  currentAppointment: BookedAppointment;
+  onSwapDonation: () => void;
+  bookingErrorCode: FunctionsApi.BookAppointmentStatus | undefined;
+  refreshAppointments: () => Promise<void>;
+  onBack: () => void;
+  showSwapPopup: boolean;
+  closeSwapPopup: () => void;
 }
 
 export default function SwapDonationScreen({
@@ -22,27 +35,48 @@ export default function SwapDonationScreen({
   isFetching,
   onSlotSelected,
   tooCloseDonationPopupProps,
+  currentAppointment,
+  onSwapDonation,
+  bookingErrorCode,
+  refreshAppointments,
+  onBack,
+  showSwapPopup,
+  closeSwapPopup,
 }: SwapDonationScreenProps) {
   return (
-    <ZMScreen hasBurgerMenu className={styles.bookDonationScreen}>
-      <div className={styles.welcomeBox}>
-        <div className={styles.welcomeTitle}>
-          <div className={styles.name}>פרטי תור קיים</div>
-          <div className={styles.welcomeText}>
-            איזה כיף שבאת!
-            <br />
-            מתי יתאים לך לתרום?
-          </div>
-        </div>
-        <img src={Illustration} alt={"illustration"} />
-      </div>
-
-      <AppointmentSelect
-        availableAppointments={availableAppointments}
-        isFetching={isFetching}
-        onSlotSelected={onSlotSelected}
-        tooCloseDonationPopupProps={tooCloseDonationPopupProps}
+    <ZMScreen
+      hasBackButton
+      onBack={onBack}
+      className={styles.swapDonationScreen}
+    >
+      <DonationInfo
+        donationStartTimeMillis={currentAppointment.donationStartTimeMillis}
+        hospital={currentAppointment.hospital}
+        isSwapAppointment={true}
       />
+      <span className={styles.swapBanner}>להחלפת התור ניתן לבחור מועד אחר</span>
+      <div className={styles.swapDonationsSelection}>
+        <AppointmentSelect
+          availableAppointments={availableAppointments}
+          isFetching={isFetching}
+          onSlotSelected={onSlotSelected}
+          tooCloseDonationPopupProps={tooCloseDonationPopupProps}
+          appointmentToHide={currentAppointment}
+          isSwapAppointment={true}
+        />
+
+        <BookingAppointmentErrorPopup
+          errorCode={bookingErrorCode}
+          onApproved={refreshAppointments}
+        />
+
+        <ConfirmSwapAppointmentPopup
+          isOpen={showSwapPopup}
+          onApproved={onSwapDonation}
+          onBack={closeSwapPopup}
+          onClose={closeSwapPopup}
+        />
+      </div>
     </ZMScreen>
   );
 }

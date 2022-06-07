@@ -1,12 +1,7 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import {
-  AnalyticsEventType,
-  BookedAppointment,
-  FunctionsApi,
-} from "@zm-blood-components/common";
+import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
 import { Navigate, useNavigate } from "react-router-dom";
-import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
   useAppointmentToBookStore,
@@ -14,7 +9,7 @@ import {
 } from "../../state/Providers";
 import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
 import { observer } from "mobx-react-lite";
-import { reportEvent } from "../../Analytics";
+import useBookAppoitment from "../../hooks/useBookDonation";
 
 interface QuestionnaireScreenContainerProps {
   loggedIn: boolean;
@@ -29,10 +24,11 @@ export function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<
+  const bookAppointment = useBookAppoitment();
+  const [bookingError, setBookingError] = useState<
     FunctionsApi.BookAppointmentStatus | undefined
   >();
+  const [isLoading, setIsLoading] = useState(false);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
@@ -42,7 +38,7 @@ export function QuestionnaireScreenContainer(
   if (props.pendingCompletionAppointmentsCount !== 0) {
     return <Navigate to={MainNavigationKeys.Approve} />;
   }
-  if (props.bookedAppointment) {
+  if (props.bookedAppointment && !appointmentToBookStore.isSwapAppointment) {
     return <Navigate to={MainNavigationKeys.UpcomingDonation} />;
   }
 
@@ -52,42 +48,17 @@ export function QuestionnaireScreenContainer(
 
   const onSuccess = async () => {
     setIsLoading(true);
-
-    if (debugMode) {
-      console.log(
-        "Asked to book one of the following appointments: ",
-        appointmentToBookStore.appointmentIds
+    const response = await bookAppointment.tryBookAppoitment(
+      appointmentToBookStore.isSwapAppointment,
+      props.bookedAppointment?.id
+    );
+    setIsLoading(false);
+    if (response.status === FunctionsApi.BookAppointmentStatus.SUCCESS) {
+      bookAppointment.onSuccessfulBooking(() =>
+        props.setBookedAppointment(response.bookedAppointment)
       );
-    }
-
-    const bookAppointmentResponse =
-      await FirebaseFunctions.donorBookAppointment(
-        appointmentToBookStore.appointmentIds
-      );
-
-    switch (bookAppointmentResponse.status) {
-      case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
-        setError(bookAppointmentResponse.status);
-        setIsLoading(false);
-        break;
-
-      case FunctionsApi.BookAppointmentStatus.SUCCESS:
-        reportEvent(
-          AnalyticsEventType.ApiConfirmation,
-          "donation_booked",
-          bookAppointmentResponse.bookedAppointment!.id
-        );
-
-        if (debugMode) {
-          console.log(
-            "Booked appointment",
-            bookAppointmentResponse.bookedAppointment!.id
-          );
-        }
-
-        props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
-        navigate(MainNavigationKeys.UpcomingDonation, { replace: true });
-        appointmentToBookStore.clear();
+    } else {
+      setBookingError(response.status);
     }
   };
 
@@ -103,13 +74,14 @@ export function QuestionnaireScreenContainer(
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}
-      errorCode={error}
       onBack={onBack}
-      goToHomePage={async () => {
+      goBackAndRefresh={async () => {
         appointmentToBookStore.clear();
         refreshAvailableAppointments(availableAppointmentsStore);
         navigate(-1);
       }}
+      isSwapAppointment={appointmentToBookStore.isSwapAppointment}
+      bookingErrorCode={bookingError}
     />
   );
 }

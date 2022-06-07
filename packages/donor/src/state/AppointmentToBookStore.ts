@@ -7,12 +7,14 @@ export type DonationSlotToBook = {
   hospital: Hospital;
   donationStartTimeMillis: number;
   appointmentIds: string[];
+  isSwapAppointment: boolean;
 };
 
 export class AppointmentToBookStore {
   hospital: Hospital = Hospital.BEILINSON; // Just random value
   donationStartTimeMillis = -1;
   appointmentIds: string[] = [];
+  isSwapAppointment: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -31,6 +33,7 @@ export class AppointmentToBookStore {
     this.hospital = slot.hospital;
     this.donationStartTimeMillis = slot.donationStartTimeMillis;
     this.appointmentIds = slot.appointmentIds;
+    this.isSwapAppointment = slot.isSwapAppointment;
   }
 
   isAppointmentTooCloseToLastDonation(donor: Donor): boolean {

@@ -1,6 +1,7 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import {
   AvailableAppointment,
+  BookedAppointment,
   Hospital,
   HospitalUtils,
 } from "@zm-blood-components/common";
@@ -27,6 +28,8 @@ export interface AppointmentSelectProps {
     PopupProps,
     "open" | "onBack" | "onApproved" | "onClose"
   >;
+  appointmentToHide?: BookedAppointment;
+  isSwapAppointment: boolean;
 }
 
 export default function AppointmentSelect({
@@ -34,15 +37,31 @@ export default function AppointmentSelect({
   isFetching,
   onSlotSelected,
   tooCloseDonationPopupProps,
+  appointmentToHide,
+  isSwapAppointment,
 }: AppointmentSelectProps) {
   const [selectedHospital, setSelectedHospital] = useState<Hospital | "">("");
 
   const sortedDonationDays = React.useMemo(() => {
-    const filteredResults = availableAppointments.filter(
-      (x) => x.hospital === selectedHospital || !selectedHospital
-    );
+    const appointmentFilter = (appointment: AvailableAppointment) => {
+      const isValidHospital =
+        appointment.hospital === selectedHospital || !selectedHospital;
+
+      let isHiddenAppointment = false;
+
+      if (appointmentToHide) {
+        const isHiddenTime =
+          appointment.donationStartTimeMillis ===
+          appointmentToHide!.donationStartTimeMillis;
+        const isHiddenHospital =
+          appointment.hospital === appointmentToHide!.hospital;
+        isHiddenAppointment = isHiddenTime && isHiddenHospital;
+      }
+      return isValidHospital && !isHiddenAppointment;
+    };
+    const filteredResults = availableAppointments.filter(appointmentFilter);
     return groupDonationDays(filteredResults);
-  }, [availableAppointments, selectedHospital]);
+  }, [availableAppointments, selectedHospital, appointmentToHide]);
 
   return (
     <>
@@ -72,8 +91,8 @@ export default function AppointmentSelect({
         onClose={tooCloseDonationPopupProps.onClose}
         image={WarningLogo}
       >
-        טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך לקבוע תור
-        זה?
+        טרם חלפו חודש ימים מיום תרומתך האחרון. האם את/ה בטוח/ה שברצונך{" "}
+        {isSwapAppointment ? "להחליף" : "לקבוע"} תור זה?
       </Popup>
 
       <div className={styles.donationsCard}>
@@ -81,7 +100,8 @@ export default function AppointmentSelect({
           selectedHospital,
           isFetching,
           sortedDonationDays,
-          onSlotSelected
+          onSlotSelected,
+          isSwapAppointment
         )}
       </div>
     </>
@@ -92,7 +112,8 @@ function Donations(
   selectedHospital: Hospital | "",
   isFetching: boolean,
   donationDays: DonationDay[],
-  onSlotSelected: (donationSlot: DonationSlotToBook) => void
+  onSlotSelected: (donationSlot: DonationSlotToBook) => void,
+  isSwapAppointment: boolean
 ) {
   if (isFetching) {
     return (
@@ -134,6 +155,7 @@ function Donations(
             donationDay={donationDay}
             onSlotSelected={onSlotSelected}
             showHospitalName={selectedHospital === ""}
+            isSwapAppointment={isSwapAppointment}
           />
         </div>
       ))}

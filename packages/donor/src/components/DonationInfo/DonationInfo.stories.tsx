@@ -1,23 +1,22 @@
 import { Hospital } from "@zm-blood-components/common";
-import DonationToBookInfo, {
-  DonationToBookInfoProps,
-} from "./DonationToBookInfo";
+import DonationInfo, {
+  DonationToBookInfoProps as DonationInfoProps,
+} from "./DonationInfo";
 import { Story } from "@storybook/react";
 
 export default {
-  component: DonationToBookInfo,
+  component: DonationInfo,
   title: "Components/Donation to Book",
   parameters: { layout: "fullscreen" },
 };
 
-const props: DonationToBookInfoProps = {
+const props: DonationInfoProps = {
   donationStartTimeMillis: 1625823300000,
   hospital: Hospital.ICHILOV,
+  isSwapAppointment: false,
 };
 
-const Template: Story<DonationToBookInfoProps> = (args) => (
-  <DonationToBookInfo {...args} />
-);
+const Template: Story<DonationInfoProps> = (args) => <DonationInfo {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

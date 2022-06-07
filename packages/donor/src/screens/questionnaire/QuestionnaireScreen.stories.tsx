@@ -15,9 +15,11 @@ const props: QuestionnaireScreenProps = {
   donationStartTimeMillis: 1628845200000,
   onBack: action("onBack"),
   onSuccess: action("onSuccess"),
-  goToHomePage: async () => action("goToHomePage")(),
+  goBackAndRefresh: async () => action("goToHomePage")(),
   isLoading: false,
   debugMode: false,
+  isSwapAppointment: false,
+  bookingErrorCode: undefined,
 };
 
 export const Beilinson = () => (
