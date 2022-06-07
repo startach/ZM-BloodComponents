@@ -16,7 +16,6 @@ import {
 } from "@zm-blood-components/common";
 import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
 import useBookAppoitment from "../../hooks/useBookDonation";
-import { async } from "@firebase/util";
 
 interface SwapDonationScreenContainerProps {
   isLoggedIn: boolean;
@@ -34,7 +33,6 @@ export function SwapDonationScreenContainer({
   const [showDonationTooClosePopup, setShowDonationTooClosePopup] =
     useState(false);
   const [showSwapPopup, setShowSwapPopup] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [bookingError, setBookingError] = useState<
     FunctionsApi.BookAppointmentStatus | undefined
   >();
@@ -70,12 +68,10 @@ export function SwapDonationScreenContainer({
   };
 
   const onSwapDonation = async () => {
-    setIsLoading(true);
     const response = await bookAppointment.tryBookAppoitment(
       true,
       appState.bookedAppointment!.id
     );
-    setIsLoading(false);
     if (response.status === FunctionsApi.BookAppointmentStatus.SUCCESS) {
       bookAppointment.onSuccessfulBooking(() =>
         setBookedAppointment(response.bookedAppointment)
