@@ -16,7 +16,7 @@ export default {
 };
 
 const appointments = generateAppointments(8);
-const appointmentIndexToHide = Math.floor(Math.random() * 8);
+const appointmentIndexToHide = 3;
 const appointmentToHide: BookedAppointment = {
   ...appointments[appointmentIndexToHide],
   booked: true,
