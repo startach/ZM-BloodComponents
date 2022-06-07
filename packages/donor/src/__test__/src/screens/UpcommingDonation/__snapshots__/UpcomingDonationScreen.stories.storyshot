@@ -45,6 +45,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -93,6 +94,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.5rem;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
 }
 
 <div
@@ -225,17 +234,42 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
               >
                 פרטי התור שלך:
               </div>
-              <div
-                className="cancelButton"
+              <button
+                className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                ביטול תור
-                <img
-                  alt="Cancel"
-                  className="cancelIcon"
-                  src="trash.svg"
-                />
-              </div>
+                <h6
+                  className="MuiTypography-root MuiTypography-subtitle2 emotion-4"
+                >
+                  פעולות נוספות
+                </h6>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+                  data-testid="KeyboardArrowDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                  />
+                </svg>
+              </button>
             </div>
             <div
               className="detailsText"
@@ -349,6 +383,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -397,6 +432,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.5rem;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
 }
 
 <div
@@ -529,17 +572,42 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
               >
                 פרטי התור שלך:
               </div>
-              <div
-                className="cancelButton"
+              <button
+                className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                ביטול תור
-                <img
-                  alt="Cancel"
-                  className="cancelIcon"
-                  src="trash.svg"
-                />
-              </div>
+                <h6
+                  className="MuiTypography-root MuiTypography-subtitle2 emotion-4"
+                >
+                  פעולות נוספות
+                </h6>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+                  data-testid="KeyboardArrowDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                  />
+                </svg>
+              </button>
             </div>
             <div
               className="detailsText"
@@ -653,6 +721,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -701,6 +770,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.5rem;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
 }
 
 <div
@@ -833,17 +910,42 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
               >
                 פרטי התור שלך:
               </div>
-              <div
-                className="cancelButton"
+              <button
+                className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                ביטול תור
-                <img
-                  alt="Cancel"
-                  className="cancelIcon"
-                  src="trash.svg"
-                />
-              </div>
+                <h6
+                  className="MuiTypography-root MuiTypography-subtitle2 emotion-4"
+                >
+                  פעולות נוספות
+                </h6>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+                  data-testid="KeyboardArrowDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                  />
+                </svg>
+              </button>
             </div>
             <div
               className="detailsText"
@@ -954,6 +1056,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -1002,6 +1105,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.5rem;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
 }
 
 <div
@@ -1134,17 +1245,42 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
               >
                 פרטי התור שלך:
               </div>
-              <div
-                className="cancelButton"
+              <button
+                className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                ביטול תור
-                <img
-                  alt="Cancel"
-                  className="cancelIcon"
-                  src="trash.svg"
-                />
-              </div>
+                <h6
+                  className="MuiTypography-root MuiTypography-subtitle2 emotion-4"
+                >
+                  פעולות נוספות
+                </h6>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+                  data-testid="KeyboardArrowDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                  />
+                </svg>
+              </button>
             </div>
             <div
               className="detailsText"
@@ -1261,6 +1397,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -1309,6 +1446,14 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.5rem;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.57;
 }
 
 <div
@@ -1441,17 +1586,42 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
               >
                 פרטי התור שלך:
               </div>
-              <div
-                className="cancelButton"
+              <button
+                className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-0"
+                disabled={false}
+                onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
               >
-                ביטול תור
-                <img
-                  alt="Cancel"
-                  className="cancelIcon"
-                  src="trash.svg"
-                />
-              </div>
+                <h6
+                  className="MuiTypography-root MuiTypography-subtitle2 emotion-4"
+                >
+                  פעולות נוספות
+                </h6>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+                  data-testid="KeyboardArrowDownIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                  />
+                </svg>
+              </button>
             </div>
             <div
               className="detailsText"

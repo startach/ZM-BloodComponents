@@ -1330,6 +1330,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-3:focus::-ms-input-p
   margin-left: -12px;
   padding: 12px;
   font-size: 1.75rem;
+  border-radius: 10px;
 }
 
 .emotion-5::-moz-focus-inner {
