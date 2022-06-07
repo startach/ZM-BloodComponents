@@ -1,0 +1,2103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Screens/Swap Donation Screen Fetching 1`] = `
+.emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
+}
+
+.emotion-0::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-0.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-0 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-0:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-0:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-0.Mui-disabled {
+  background-color: transparent;
+  color: #7E7E7E;
+}
+
+.emotion-1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.emotion-3 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  padding: 0;
+  position: relative;
+  display: block;
+  transform-origin: top right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(133% - 24px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform: translate(-14px, -9px) scale(0.75);
+  -moz-transform: translate(-14px, -9px) scale(0.75);
+  -ms-transform: translate(-14px, -9px) scale(0.75);
+  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  z-index: 1;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-3.Mui-focused {
+  color: #4CAF51;
+}
+
+.emotion-3.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-3.Mui-error {
+  color: #d32f2f;
+}
+
+.emotion-4 {
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  position: relative;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.emotion-4.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+
+label+.emotion-4 {
+  margin-top: 16px;
+}
+
+.emotion-4:after {
+  border-bottom: 2px solid #4CAF51;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  left: 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4.Mui-focused:after {
+  -webkit-transform: scaleX(1) translateX(0);
+  -moz-transform: scaleX(1) translateX(0);
+  -ms-transform: scaleX(1) translateX(0);
+  transform: scaleX(1) translateX(0);
+}
+
+.emotion-4.Mui-error:after {
+  border-bottom-color: #d32f2f;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.emotion-4:before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  right: 0;
+  bottom: 0;
+  content: "\\00a0";
+  position: absolute;
+  left: 0;
+  -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+@media (hover: none) {
+  .emotion-4:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+}
+
+.emotion-4.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+
+.emotion-5 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  -webkit-animation-name: mui-auto-fill-cancel;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-animation-duration: 10ms;
+  animation-duration: 10ms;
+}
+
+.emotion-5:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+}
+
+.emotion-5::-ms-expand {
+  display: none;
+}
+
+.emotion-5.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-5[multiple] {
+  height: auto;
+}
+
+.emotion-5:not([multiple]) option,
+.emotion-5:not([multiple]) optgroup {
+  background-color: #fff;
+}
+
+.emotion-5.emotion-5.emotion-5 {
+  padding-left: 24px;
+  min-width: 16px;
+}
+
+.emotion-5::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:focus {
+  outline: 0;
+}
+
+.emotion-5:invalid {
+  box-shadow: none;
+}
+
+.emotion-5::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-webkit-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-moz-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+.emotion-5.Mui-disabled {
+  opacity: 1;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-5:-webkit-autofill {
+  -webkit-animation-duration: 5000s;
+  animation-duration: 5000s;
+  -webkit-animation-name: mui-auto-fill;
+  animation-name: mui-auto-fill;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: calc(50% - .5em);
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.emotion-6.Mui-disabled {
+  color: #7E7E7E;
+}
+
+.emotion-7 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  text-align: right;
+  margin-top: 3px;
+  margin-left: 14px;
+  margin-bottom: 0;
+  margin-right: 14px;
+}
+
+.emotion-7.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-7.Mui-error {
+  color: #d32f2f;
+}
+
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton emotion-0"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          data-testid="ArrowForwardIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </button>
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+         🛠
+      </div>
+    </div>
+    <div
+      className="swapDonationScreen content"
+    >
+      <div
+        className="donationInfo"
+      >
+        <img
+          alt="Appointment"
+          className="illustration"
+          src="AppointmentCalendar.svg"
+        />
+        <div
+          className="donationInfoText"
+        >
+          <div
+            className="infoTitle"
+          >
+            פרטי התור 
+            הקיים
+          </div>
+          <div
+            className="appointmentDetails"
+          >
+            יום ג׳, 7.12, 4:46
+            ,
+             
+            בילינסון
+          </div>
+        </div>
+      </div>
+      <span
+        className="swapBanner"
+      >
+        להחלפת התור ניתן לבחור מועד אחר
+      </span>
+      <div
+        className="swapDonationsSelection"
+      >
+        <div
+          className="dropdownContainer"
+        >
+          <div
+            className="MuiFormControl-root makeStyles-root-5 emotion-2"
+          >
+            <label
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
+              data-shrink={true}
+            >
+              הצג תורים ב:
+            </label>
+            <div
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-formControl MuiNativeSelect-root dropdown emotion-4"
+              onClick={[Function]}
+            >
+              <select
+                aria-invalid={false}
+                className="MuiNativeSelect-select MuiNativeSelect-standard Mui-disabled MuiInput-input MuiInputBase-input Mui-disabled emotion-5"
+                disabled={true}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                value="הכל"
+              >
+                <option
+                  value="הכל"
+                >
+                  הכל
+                </option>
+                <option
+                  value="ICHILOV"
+                >
+                  איכילוב
+                </option>
+                <option
+                  value="BEILINSON"
+                >
+                  בילינסון
+                </option>
+                <option
+                  value="HADASA_EIN_KEREM"
+                >
+                  הדסה עין כרם
+                </option>
+                <option
+                  value="SOROKA"
+                >
+                  סורוקה
+                </option>
+                <option
+                  value="TEL_HASHOMER"
+                >
+                  תל השומר
+                </option>
+              </select>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard Mui-disabled emotion-6"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <p
+              className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-7"
+            />
+          </div>
+        </div>
+        <div
+          className="donationsCard"
+        >
+          <div
+            className="loading"
+          >
+            <div
+              className="lf-player-container"
+            >
+              <div
+                className="dropAnimation"
+                id="lottie"
+                style={
+                  Object {
+                    "background": "transparent",
+                    "margin": "0 auto",
+                    "outline": "none",
+                    "overflow": "hidden",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="loadingText"
+            >
+              מחפש תורים קרובים...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Screens/Swap Donation Screen Has Appointments 1`] = `
+.emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
+}
+
+.emotion-0::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-0.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-0 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-0:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-0:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-0.Mui-disabled {
+  background-color: transparent;
+  color: #7E7E7E;
+}
+
+.emotion-1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.emotion-3 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  padding: 0;
+  position: relative;
+  display: block;
+  transform-origin: top right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(133% - 24px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform: translate(-14px, -9px) scale(0.75);
+  -moz-transform: translate(-14px, -9px) scale(0.75);
+  -ms-transform: translate(-14px, -9px) scale(0.75);
+  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  z-index: 1;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-3.Mui-focused {
+  color: #4CAF51;
+}
+
+.emotion-3.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-3.Mui-error {
+  color: #d32f2f;
+}
+
+.emotion-4 {
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  position: relative;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.emotion-4.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+
+label+.emotion-4 {
+  margin-top: 16px;
+}
+
+.emotion-4:after {
+  border-bottom: 2px solid #4CAF51;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  left: 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4.Mui-focused:after {
+  -webkit-transform: scaleX(1) translateX(0);
+  -moz-transform: scaleX(1) translateX(0);
+  -ms-transform: scaleX(1) translateX(0);
+  transform: scaleX(1) translateX(0);
+}
+
+.emotion-4.Mui-error:after {
+  border-bottom-color: #d32f2f;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.emotion-4:before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  right: 0;
+  bottom: 0;
+  content: "\\00a0";
+  position: absolute;
+  left: 0;
+  -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+@media (hover: none) {
+  .emotion-4:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+}
+
+.emotion-4.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+
+.emotion-5 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  -webkit-animation-name: mui-auto-fill-cancel;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-animation-duration: 10ms;
+  animation-duration: 10ms;
+}
+
+.emotion-5:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+}
+
+.emotion-5::-ms-expand {
+  display: none;
+}
+
+.emotion-5.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-5[multiple] {
+  height: auto;
+}
+
+.emotion-5:not([multiple]) option,
+.emotion-5:not([multiple]) optgroup {
+  background-color: #fff;
+}
+
+.emotion-5.emotion-5.emotion-5 {
+  padding-left: 24px;
+  min-width: 16px;
+}
+
+.emotion-5::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:focus {
+  outline: 0;
+}
+
+.emotion-5:invalid {
+  box-shadow: none;
+}
+
+.emotion-5::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-webkit-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-moz-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+.emotion-5.Mui-disabled {
+  opacity: 1;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-5:-webkit-autofill {
+  -webkit-animation-duration: 5000s;
+  animation-duration: 5000s;
+  -webkit-animation-name: mui-auto-fill;
+  animation-name: mui-auto-fill;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: calc(50% - .5em);
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.emotion-6.Mui-disabled {
+  color: #7E7E7E;
+}
+
+.emotion-7 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  text-align: right;
+  margin-top: 3px;
+  margin-left: 14px;
+  margin-bottom: 0;
+  margin-right: 14px;
+}
+
+.emotion-7.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-7.Mui-error {
+  color: #d32f2f;
+}
+
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton emotion-0"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          data-testid="ArrowForwardIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </button>
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+         🛠
+      </div>
+    </div>
+    <div
+      className="swapDonationScreen content"
+    >
+      <div
+        className="donationInfo"
+      >
+        <img
+          alt="Appointment"
+          className="illustration"
+          src="AppointmentCalendar.svg"
+        />
+        <div
+          className="donationInfoText"
+        >
+          <div
+            className="infoTitle"
+          >
+            פרטי התור 
+            הקיים
+          </div>
+          <div
+            className="appointmentDetails"
+          >
+            יום ג׳, 7.12, 4:46
+            ,
+             
+            בילינסון
+          </div>
+        </div>
+      </div>
+      <span
+        className="swapBanner"
+      >
+        להחלפת התור ניתן לבחור מועד אחר
+      </span>
+      <div
+        className="swapDonationsSelection"
+      >
+        <div
+          className="dropdownContainer"
+        >
+          <div
+            className="MuiFormControl-root makeStyles-root-6 emotion-2"
+          >
+            <label
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
+              data-shrink={true}
+            >
+              הצג תורים ב:
+            </label>
+            <div
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root dropdown emotion-4"
+              onClick={[Function]}
+            >
+              <select
+                aria-invalid={false}
+                className="MuiNativeSelect-select MuiNativeSelect-standard MuiInput-input MuiInputBase-input emotion-5"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                value="הכל"
+              >
+                <option
+                  value="הכל"
+                >
+                  הכל
+                </option>
+                <option
+                  value="ICHILOV"
+                >
+                  איכילוב
+                </option>
+                <option
+                  value="BEILINSON"
+                >
+                  בילינסון
+                </option>
+                <option
+                  value="HADASA_EIN_KEREM"
+                >
+                  הדסה עין כרם
+                </option>
+                <option
+                  value="SOROKA"
+                >
+                  סורוקה
+                </option>
+                <option
+                  value="TEL_HASHOMER"
+                >
+                  תל השומר
+                </option>
+              </select>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard emotion-6"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <p
+              className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-7"
+            />
+          </div>
+        </div>
+        <div
+          className="donationsCard"
+        >
+          <div
+            className="donationDayContainer"
+          >
+            <div>
+              <div
+                className="availableAppointmentsTitle"
+              >
+                תורים פנויים
+              </div>
+              <div
+                className="dayTitle"
+              >
+                יום שישי, 13/08/2021
+              </div>
+              <div
+                className="hospitalName"
+              >
+                בילינסון
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
+                  <div
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
+                  >
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:00
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="hospitalName"
+              >
+                תל השומר
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
+                  <div
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
+                  >
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:00
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:16
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:33
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        12:50
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        13:06
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        13:23
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="donationDayContainer"
+          >
+            <div>
+              <div
+                className="availableAppointmentsTitle"
+              >
+                תורים פנויים
+              </div>
+              <div
+                className="dayTitle"
+              >
+                יום שבת, 14/08/2021
+              </div>
+              <div
+                className="hospitalName"
+              >
+                בילינסון
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
+                  <div
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
+                  >
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        15:46
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="hospitalName"
+              >
+                תל השומר
+                 
+              </div>
+              <div
+                className="hospitalCard"
+              >
+                <div>
+                  <div
+                    className="pickerLabel"
+                  />
+                  <div
+                    className="pickerButtons"
+                  >
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        16:36
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        16:53
+                      </div>
+                    </div>
+                    <div
+                      className="pickerButtonContainer"
+                    >
+                      <div
+                        className="pickerButton"
+                        color="default"
+                        onClick={[Function]}
+                      >
+                        17:10
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="noMoreAppointments"
+          >
+            <img
+              alt="No more appointments"
+              className="noAppointmentsImage"
+              src="NO Appointments.svg"
+            />
+            <div>
+              זה הכל בינתיים :)
+            </div>
+            <div>
+              התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Screens/Swap Donation Screen No Appointments 1`] = `
+.emotion-0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: visible;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
+}
+
+.emotion-0::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-0.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-0 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-0:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (hover: none) {
+  .emotion-0:hover {
+    background-color: transparent;
+  }
+}
+
+.emotion-0.Mui-disabled {
+  background-color: transparent;
+  color: #7E7E7E;
+}
+
+.emotion-1 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.emotion-3 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  padding: 0;
+  position: relative;
+  display: block;
+  transform-origin: top right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(133% - 24px);
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transform: translate(-14px, -9px) scale(0.75);
+  -moz-transform: translate(-14px, -9px) scale(0.75);
+  -ms-transform: translate(-14px, -9px) scale(0.75);
+  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  z-index: 1;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.emotion-3.Mui-focused {
+  color: #4CAF51;
+}
+
+.emotion-3.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-3.Mui-error {
+  color: #d32f2f;
+}
+
+.emotion-4 {
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  box-sizing: border-box;
+  position: relative;
+  cursor: text;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.emotion-4.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+
+label+.emotion-4 {
+  margin-top: 16px;
+}
+
+.emotion-4:after {
+  border-bottom: 2px solid #4CAF51;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  left: 0;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4.Mui-focused:after {
+  -webkit-transform: scaleX(1) translateX(0);
+  -moz-transform: scaleX(1) translateX(0);
+  -ms-transform: scaleX(1) translateX(0);
+  transform: scaleX(1) translateX(0);
+}
+
+.emotion-4.Mui-error:after {
+  border-bottom-color: #d32f2f;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.emotion-4:before {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  right: 0;
+  bottom: 0;
+  content: "\\00a0";
+  position: absolute;
+  left: 0;
+  -webkit-transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+
+.emotion-4:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+
+@media (hover: none) {
+  .emotion-4:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+}
+
+.emotion-4.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+
+.emotion-5 {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  -webkit-animation-name: mui-auto-fill-cancel;
+  animation-name: mui-auto-fill-cancel;
+  -webkit-animation-duration: 10ms;
+  animation-duration: 10ms;
+}
+
+.emotion-5:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+}
+
+.emotion-5::-ms-expand {
+  display: none;
+}
+
+.emotion-5.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-5[multiple] {
+  height: auto;
+}
+
+.emotion-5:not([multiple]) option,
+.emotion-5:not([multiple]) optgroup {
+  background-color: #fff;
+}
+
+.emotion-5.emotion-5.emotion-5 {
+  padding-left: 24px;
+  min-width: 16px;
+}
+
+.emotion-5::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5:focus {
+  outline: 0;
+}
+
+.emotion-5:invalid {
+  box-shadow: none;
+}
+
+.emotion-5::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-webkit-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-moz-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5::-ms-input-placeholder {
+  opacity: 0!important;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+
+.emotion-5.Mui-disabled {
+  opacity: 1;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-5:-webkit-autofill {
+  -webkit-animation-duration: 5000s;
+  animation-duration: 5000s;
+  -webkit-animation-name: mui-auto-fill;
+  animation-name: mui-auto-fill;
+}
+
+.emotion-6 {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: calc(50% - .5em);
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.emotion-6.Mui-disabled {
+  color: #7E7E7E;
+}
+
+.emotion-7 {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  text-align: right;
+  margin-top: 3px;
+  margin-left: 14px;
+  margin-bottom: 0;
+  margin-right: 14px;
+}
+
+.emotion-7.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-7.Mui-error {
+  color: #d32f2f;
+}
+
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="component"
+  >
+    <div
+      className="appHeader"
+    >
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium rightButton emotion-0"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-1"
+          data-testid="ArrowForwardIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </svg>
+      </button>
+      <div
+        className="title"
+      >
+        <img
+          alt="Blood Bank"
+          className="logoImage"
+          src="blood-bank-zichron-Little-logo.svg"
+        />
+         🛠
+      </div>
+    </div>
+    <div
+      className="swapDonationScreen content"
+    >
+      <div
+        className="donationInfo"
+      >
+        <img
+          alt="Appointment"
+          className="illustration"
+          src="AppointmentCalendar.svg"
+        />
+        <div
+          className="donationInfoText"
+        >
+          <div
+            className="infoTitle"
+          >
+            פרטי התור 
+            הקיים
+          </div>
+          <div
+            className="appointmentDetails"
+          >
+            יום ג׳, 7.12, 4:46
+            ,
+             
+            בילינסון
+          </div>
+        </div>
+      </div>
+      <span
+        className="swapBanner"
+      >
+        להחלפת התור ניתן לבחור מועד אחר
+      </span>
+      <div
+        className="swapDonationsSelection"
+      >
+        <div
+          className="dropdownContainer"
+        >
+          <div
+            className="MuiFormControl-root makeStyles-root-7 emotion-2"
+          >
+            <label
+              className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
+              data-shrink={true}
+            >
+              הצג תורים ב:
+            </label>
+            <div
+              className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root dropdown emotion-4"
+              onClick={[Function]}
+            >
+              <select
+                aria-invalid={false}
+                className="MuiNativeSelect-select MuiNativeSelect-standard MuiInput-input MuiInputBase-input emotion-5"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                value="הכל"
+              >
+                <option
+                  value="הכל"
+                >
+                  הכל
+                </option>
+                <option
+                  value="ICHILOV"
+                >
+                  איכילוב
+                </option>
+                <option
+                  value="BEILINSON"
+                >
+                  בילינסון
+                </option>
+                <option
+                  value="HADASA_EIN_KEREM"
+                >
+                  הדסה עין כרם
+                </option>
+                <option
+                  value="SOROKA"
+                >
+                  סורוקה
+                </option>
+                <option
+                  value="TEL_HASHOMER"
+                >
+                  תל השומר
+                </option>
+              </select>
+              <svg
+                aria-hidden={true}
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard emotion-6"
+                data-testid="ArrowDropDownIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M7 10l5 5 5-5z"
+                />
+              </svg>
+            </div>
+            <p
+              className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-7"
+            />
+          </div>
+        </div>
+        <div
+          className="donationsCard"
+        >
+          <div
+            className="noAppointments"
+          >
+            <img
+              alt="No more appointments"
+              className="noAppointmentsImage"
+              src="NO Appointments.svg"
+            />
+            <div>
+              לא קיימים תורים פנויים בקרוב
+            </div>
+            <div>
+              מומלץ לחזור שוב מחר לבדוק מה התחדש :)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

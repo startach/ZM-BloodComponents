@@ -341,231 +341,227 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-3:focus::-ms-input-p
   }
 >
   <div
-    className="storyBackground"
+    className="dropdownContainer"
   >
     <div
-      className="dropdownContainer"
+      className="MuiFormControl-root makeStyles-root-1 emotion-0"
     >
-      <div
-        className="MuiFormControl-root makeStyles-root-1 emotion-0"
+      <label
+        className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-1"
+        data-shrink={true}
       >
-        <label
-          className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-1"
-          data-shrink={true}
+        הצג תורים ב:
+      </label>
+      <div
+        className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root dropdown emotion-2"
+        onClick={[Function]}
+      >
+        <select
+          aria-invalid={false}
+          className="MuiNativeSelect-select MuiNativeSelect-standard MuiInput-input MuiInputBase-input emotion-3"
+          disabled={false}
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={false}
+          value="הכל"
         >
-          הצג תורים ב:
-        </label>
-        <div
-          className="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiNativeSelect-root dropdown emotion-2"
-          onClick={[Function]}
-        >
-          <select
-            aria-invalid={false}
-            className="MuiNativeSelect-select MuiNativeSelect-standard MuiInput-input MuiInputBase-input emotion-3"
-            disabled={false}
-            onAnimationStart={[Function]}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={false}
+          <option
             value="הכל"
           >
-            <option
-              value="הכל"
-            >
-              הכל
-            </option>
-            <option
-              value="ICHILOV"
-            >
-              איכילוב
-            </option>
-            <option
-              value="BEILINSON"
-            >
-              בילינסון
-            </option>
-            <option
-              value="HADASA_EIN_KEREM"
-            >
-              הדסה עין כרם
-            </option>
-            <option
-              value="SOROKA"
-            >
-              סורוקה
-            </option>
-            <option
-              value="TEL_HASHOMER"
-            >
-              תל השומר
-            </option>
-          </select>
-          <svg
-            aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard emotion-4"
-            data-testid="ArrowDropDownIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
+            הכל
+          </option>
+          <option
+            value="ICHILOV"
           >
-            <path
-              d="M7 10l5 5 5-5z"
-            />
-          </svg>
+            איכילוב
+          </option>
+          <option
+            value="BEILINSON"
+          >
+            בילינסון
+          </option>
+          <option
+            value="HADASA_EIN_KEREM"
+          >
+            הדסה עין כרם
+          </option>
+          <option
+            value="SOROKA"
+          >
+            סורוקה
+          </option>
+          <option
+            value="TEL_HASHOMER"
+          >
+            תל השומר
+          </option>
+        </select>
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiNativeSelect-icon MuiNativeSelect-iconStandard emotion-4"
+          data-testid="ArrowDropDownIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+      <p
+        className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-5"
+      />
+    </div>
+  </div>
+  <div
+    className="donationsCard"
+  >
+    <div
+      className="donationDayContainer"
+    >
+      <div>
+        <div
+          className="availableAppointmentsTitle"
+        >
+          תורים פנויים
         </div>
-        <p
-          className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-5"
-        />
+        <div
+          className="dayTitle"
+        >
+          יום שישי, 13/08/2021
+        </div>
+        <div
+          className="hospitalName"
+        >
+          בילינסון
+           
+        </div>
+        <div
+          className="hospitalCard"
+        >
+          <div>
+            <div
+              className="pickerLabel"
+            />
+            <div
+              className="pickerButtons"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  12:00
+                </div>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  13:30
+                </div>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  15:00
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="hospitalName"
+        >
+          סורוקה
+           
+        </div>
+        <div
+          className="hospitalCard"
+        >
+          <div>
+            <div
+              className="pickerLabel"
+            />
+            <div
+              className="pickerButtons"
+            >
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  12:45
+                </div>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  14:15
+                </div>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  15:45
+                </div>
+              </div>
+              <div
+                className="pickerButtonContainer"
+              >
+                <div
+                  className="pickerButton"
+                  color="default"
+                  onClick={[Function]}
+                >
+                  17:15
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
-      className="donationsCard"
+      className="noMoreAppointments"
     >
-      <div
-        className="donationDayContainer"
-      >
-        <div>
-          <div
-            className="availableAppointmentsTitle"
-          >
-            תורים פנויים
-          </div>
-          <div
-            className="dayTitle"
-          >
-            יום שישי, 13/08/2021
-          </div>
-          <div
-            className="hospitalName"
-          >
-            אסף הרופא
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:45
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    15:45
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    17:15
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="hospitalName"
-          >
-            בילינסון
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:00
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    13:30
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    15:00
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    16:30
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <img
+        alt="No more appointments"
+        className="noAppointmentsImage"
+        src="NO Appointments.svg"
+      />
+      <div>
+        זה הכל בינתיים :)
       </div>
-      <div
-        className="noMoreAppointments"
-      >
-        <img
-          alt="No more appointments"
-          className="noAppointmentsImage"
-          src="NO Appointments.svg"
-        />
-        <div>
-          זה הכל בינתיים :)
-        </div>
-        <div>
-          התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
-        </div>
+      <div>
+        התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
       </div>
     </div>
   </div>
