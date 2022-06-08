@@ -17,6 +17,8 @@ import TrashIcon from "../../assets/icons/trash.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import EventCalendarLink from "./EventCalendarLink";
 import AnchorTag from "../../components/basic/AnchorTag";
+import Button, { ButtonVariant } from "../../components/basic/Button";
+import classnames from "classnames";
 
 const EVENT_DURATION_BY_MINUTES = 90;
 
@@ -60,23 +62,38 @@ export default function UpcomingDonationScreen({
             </div>
 
             <div className={styles.detailsText}>
-              <div className={styles.detailLabel}>איפה?</div>
-              <div className={styles.detailValue}>
-                בית החולים
-                {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
+              <div className={styles.detailsWrapper}>
+                <div className={styles.detailLabel}>איפה?</div>
+                <div className={styles.detailValue}>
+                  בית החולים
+                  {" " + LocaleUtils.getHospitalName(bookedAppointment.hospital)}
+                </div>
+                <NeedRideButton hospital={bookedAppointment.hospital} />
               </div>
-              <NeedRideButton hospital={bookedAppointment.hospital} />
 
-              <div className={styles.detailLabel}>מתי?</div>
-              <div className={styles.detailValue}>
-                {new Date(
-                  bookedAppointment.donationStartTimeMillis
-                ).toLocaleDateString("he-He", DateUtils.ShortDateFormat)}
+              <div className={styles.detailsWrapper}>
+                <div className={styles.detailLabel}>מתי?</div>
+                <div className={styles.detailValue}>
+                  {new Date(
+                    bookedAppointment.donationStartTimeMillis
+                  ).toLocaleDateString("he-He", DateUtils.ShortDateFormat)}
+                </div>
+                <EventCalendarLink
+                  bookedAppointment={bookedAppointment}
+                  eventDurationByMinutes={EVENT_DURATION_BY_MINUTES}
+                />
               </div>
-              <EventCalendarLink
-                bookedAppointment={bookedAppointment}
-                eventDurationByMinutes={EVENT_DURATION_BY_MINUTES}
-              />
+
+              <div className={classnames(styles.shareOptionContainer, styles.detailsWrapper)}>
+                  <div>
+                    <div className={styles.detailLabel}>רוצה לתרום עם חבר/ה?</div>
+                    <div className={styles.detailValue}>נותרו 2 מקומות</div>
+                  </div>
+                  <div>
+                    <Button analyticsName="" onClick={() => {}} title="שיתוף התור" variant={ButtonVariant.outlined}/>
+                  </div>
+              </div>
+              
             </div>
           </div>
         </div>

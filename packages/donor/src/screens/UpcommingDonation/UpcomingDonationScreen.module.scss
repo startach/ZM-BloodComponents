@@ -72,7 +72,21 @@
 
 .detailsText {
   margin-top: 15px;
-  padding: 15px;
+  padding: 15px 0;
+}
+
+.detailsWrapper {
+  padding: 0 15px;
+}
+
+.shareOptionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding-top: 10px;
+
+  border-top: 1px solid var(--donor-light-gray);
 }
 
 .detailLabel {
