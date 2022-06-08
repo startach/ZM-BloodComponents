@@ -87,7 +87,7 @@ export default function UpcomingDonationScreen({
               <div className={classnames(styles.shareOptionContainer, styles.detailsWrapper)}>
                   <div>
                     <div className={styles.detailLabel}>רוצה לתרום עם חבר/ה?</div>
-                    <div className={styles.detailValue}>נותרו 2 מקומות</div>
+                    <div className={classnames(styles.detailValue, styles.primary)}>נותרו 2 מקומות</div>
                   </div>
                   <div>
                     <Button analyticsName="" onClick={() => {}} title="שיתוף התור" variant={ButtonVariant.outlined}/>
