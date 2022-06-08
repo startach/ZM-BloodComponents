@@ -153,6 +153,7 @@ test("Valid manual donor request books appointment with manual donor", async () 
   expect(appointment.donorId).toEqual(MANUAL_DONOR_ID);
   expect(appointment.assigningCoordinatorId).toEqual(COORDINATOR_ID);
   expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
+  expect(appointment.shareLink).not.toBeDefined();
 
   const bookedAppointment = data.bookedAppointment!;
   expect(bookedAppointment.id).toEqual(APPOINTMENT_TO_BOOK_2);
