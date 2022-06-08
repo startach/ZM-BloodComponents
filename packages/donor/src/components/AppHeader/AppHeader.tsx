@@ -69,17 +69,17 @@ export default function AppHeader({
   }
 
   let headerContent;
+
+  const devEnvIcon = isProduction() ? "" : " 🛠️";
+
   if (title) {
-    let headerTitle = title;
-    if (!isProduction()) {
-      headerTitle += " 🛠️";
-    }
+    let headerTitle = title + devEnvIcon;
     headerContent = <div className={styles.title}>{headerTitle}</div>;
   } else {
     headerContent = (
       <div className={styles.title}>
         <img src={LittleLogo} alt={"Blood Bank"} className={styles.logoImage} />
-        {" 🛠"}
+        {devEnvIcon}
       </div>
     );
   }
