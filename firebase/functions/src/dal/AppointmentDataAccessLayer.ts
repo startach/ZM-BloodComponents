@@ -113,16 +113,32 @@ export async function getAppointmentsByHospital(
   return toDbAppointments(appointments);
 }
 
-export async function getAvailableAppointments() {
-  const now = new Date();
+export async function getAvailableAppointments(
+  hospitals?: Hospital[],
+  fromTime?: Date,
+  toTime?: Date
+) {
+  if (!fromTime){
+    fromTime = new Date();
+  }
 
-  const appointments = (await admin
-    .firestore()
-    .collection(Collections.APPOINTMENTS)
-    .where("status", "==", AppointmentStatus.AVAILABLE)
-    .where("donationStartTime", ">", now)
-    .orderBy("donationStartTime")
-    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+  let request = admin
+  .firestore()
+  .collection(Collections.APPOINTMENTS)
+  .where("status", "==", AppointmentStatus.AVAILABLE)
+  .where("donationStartTime", ">=", fromTime);
+
+  if (hospitals){
+    request = request.where("hospital", "in", hospitals);
+  }
+
+  if (toTime) {
+    request = request.where("donationStartTime", "<=", toTime);
+  }
+
+  request = request.orderBy("donationStartTime");
+
+  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
 }
