@@ -167,6 +167,33 @@ export async function getAppointmentsByStatus(
   return toDbAppointments(appointments);
 }
 
+export async function getAppointmentByShareLink(
+  share_link: string
+) : Promise<DbAppointment> {
+  if (!share_link) {
+    throw Error("you have to give a value for share link id")
+  }
+
+  let request = admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("share_link", "==", share_link);
+
+  const appointments =
+    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  const ret = toDbAppointments(appointments);
+  if (ret.length > 1) {
+    throw Error("there is more then one appointment with this share link!")
+  }
+
+  if (ret.length == 0){
+    throw Error("There is no appointment with this share link!")
+  }
+
+  return ret[0]
+}
+
 export async function getAllAppointments() {
   const appointments = (await admin
     .firestore()

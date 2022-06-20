@@ -21,13 +21,20 @@ export interface GetAvailableAppointmentsResponse {
   availableAppointments: AvailableAppointment[];
 }
 
+export declare const GetSharedLinkAppointment = "getSharedLinkAppointment";
+export interface GetSharedLinkAppointmentRequest {
+    share_link: string
+}
+export interface GetSharedLinkAppointmentResponse {
+    appointment: BookedAppointment;
+}
+
 export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
 export interface GetDonorAppointmentsRequest {
   donorId: string;
   fromMillis?: number;
   toMillis?: number;
 }
-
 export interface GetDonorAppointmentsResponse {
   donor?: Donor;
   completedAppointments: BookedAppointment[];
