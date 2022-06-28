@@ -1,6 +1,6 @@
 {
   "name": "@zm-blood-components/donor",
-  "version": "3.2.0",
+  "version": "3.4.0",
   "private": true,
   "dependencies": {
     "@zm-blood-components/common": "^1.0.0",
