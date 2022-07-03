@@ -11,6 +11,7 @@ import getDonorHandler from "./donor/GetDonorHandler";
 import saveDonorHandler from "./donor/SaveDonorHandler";
 import getAvailableAppointmentsHandler from "./donor/GetAvailableAppointmentsHandler";
 import getDonorAppointmentsHandler from "./donor/GetDonorAppointmentsHandler";
+import GetSharedLinkAppointmentHandler from "./donor/GetSharedLinkAppointmentHandler";
 import getDonorsHandler from "./coordinator/GetDonorsHandler";
 import getBookedDonationsInHospitalHandler from "./reports/BookedDonationInHospitalReportHandler";
 import * as admin from "firebase-admin";
@@ -55,6 +56,7 @@ export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
+export const getSharedLinkAppointment = handler(GetSharedLinkAppointmentHandler);
 export const unsubscribe = unsubscribeHandler;
 
 // Jobs
