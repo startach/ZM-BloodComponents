@@ -1,6 +1,7 @@
 export * from "./types";
 export * as FunctionsApi from "./functions-api";
 export * from "./firebaseConfig";
+export * from "./mixpanelConfig";
 export * as AppointmentUtils from "./AppointmentUtils";
 export * as LocaleUtils from "./LocaleUtils";
 export * as HospitalUtils from "./HospitalUtils";
