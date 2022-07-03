@@ -27,10 +27,8 @@ function getPath() {
 }
 
 export function reportScreen(path: string) {
-  const userId = getUserId();
-
   mixpanel.track("screen_view", {
-    user_id: userId,
+    user_id: firebaseAnalytics && getUserId(),
     screen: path,
     screen_class: APP_NAME,
   });
@@ -40,7 +38,7 @@ export function reportScreen(path: string) {
   }
 
   logEvent(firebaseAnalytics, "screen_view", {
-    user_id: userId,
+    user_id: getUserId(),
     firebase_screen: path,
     firebase_screen_class: APP_NAME,
   });
@@ -51,11 +49,10 @@ export function reportClick(
   buttonName: string,
   value?: string
 ) {
-  const userId = getUserId();
   const screen = getPath();
 
   mixpanel.track("click", {
-    user_id: userId,
+    user_id: firebaseAnalytics && getUserId(),
     screen: screen,
     screen_class: APP_NAME,
     type: buttonType,
@@ -68,7 +65,7 @@ export function reportClick(
   }
 
   logEvent(firebaseAnalytics, `click`, {
-    user_id: userId,
+    user_id: getUserId(),
     firebase_screen: screen,
     firebase_screen_class: APP_NAME,
     type: buttonType,
@@ -82,11 +79,10 @@ export function reportInput(
   inputName: string,
   value?: string
 ) {
-  const userId = getUserId();
   const screen = getPath();
 
   mixpanel.track("input", {
-    user_id: userId,
+    user_id: firebaseAnalytics && getUserId(),
     screen: screen,
     screen_class: APP_NAME,
     type: inputType,
@@ -99,7 +95,7 @@ export function reportInput(
   }
 
   logEvent(firebaseAnalytics, `input`, {
-    user_id: userId,
+    user_id: getUserId(),
     firebase_screen: screen,
     firebase_screen_class: APP_NAME,
     type: inputType,
@@ -113,11 +109,10 @@ export function reportEvent(
   otherName: string,
   otherValue?: string
 ) {
-  const userId = getUserId();
   const screen = getPath();
 
   mixpanel.track("event", {
-    user_id: userId,
+    user_id: firebaseAnalytics && getUserId(),
     screen: screen,
     screen_class: APP_NAME,
     type: otherType,
@@ -129,7 +124,7 @@ export function reportEvent(
     return;
   }
   logEvent(firebaseAnalytics, `other`, {
-    user_id: userId,
+    user_id: getUserId(),
     firebase_screen: screen,
     firebase_screen_class: APP_NAME,
     type: otherType,
