@@ -9,6 +9,7 @@
     "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
+    "@types/mixpanel-browser": "^2.38.0",
     "@types/react-swipeable-views": "^0.13.0",
     "typescript-plugin-css-modules": "^3.2.0"
   },
