@@ -168,16 +168,16 @@ export async function getAppointmentsByStatus(
 }
 
 export async function getAppointmentByShareLink(
-  share_link: string
+  shareLink: string
 ) : Promise<DbAppointment> {
-  if (!share_link) {
+  if (!shareLink) {
     throw Error("you have to give a value for share link id")
   }
 
   let request = admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
-    .where("share_link", "==", share_link);
+    .where("shareLink", "==", shareLink);
 
   const appointments =
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;

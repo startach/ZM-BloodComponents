@@ -11,6 +11,8 @@ import {
 } from "../dal/AppointmentDataAccessLayer";
 import * as admin from "firebase-admin";
 import { DbAppointment } from "../function-types";
+import { saveTestDonor } from "../testUtils/TestSamples";
+import { deleteDonor } from "../dal/DonorDataAccessLayer";
 
 const wrapped = firebaseFunctionsTest.wrap(
   Functions[FunctionsApi.GetSharedLinkAppointmentFunctionName]
@@ -18,6 +20,7 @@ const wrapped = firebaseFunctionsTest.wrap(
 
 const CREATING_USER_ID = "GetAvailableAppointmentsHandlerCreatingUserId";
 const DONOR_ID = "GetAvailableAppointmentsHandlerDonorId";
+const SHARED_DONOR_ID = "SHARED_DONOR_ID"
 
 const SHARE_LINK = "JUST_A_Random_Share_link";
 
@@ -38,6 +41,8 @@ beforeAll(reset);
 afterEach(reset);
 
 async function reset() {
+  await deleteDonor(SHARED_DONOR_ID);
+  await deleteDonor(DONOR_ID);
   await deleteAppointmentsByIds(ALL_TEST_APPOINTMENTS_IDS);
 }
 
@@ -54,9 +59,12 @@ async function saveAppointment(
       donationStartTime: admin.firestore.Timestamp.fromDate(donationStartTime),
       hospital: Hospital.ASAF_HAROFE,
       donorId: "",
-      status: booked ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,
-      shareLink: shared? SHARE_LINK: undefined
+      status: booked ? AppointmentStatus.BOOKED : AppointmentStatus.AVAILABLE,   
     };
+
+    if (shared) {
+      appointment.shareLink = SHARE_LINK
+    }
   
     if (booked) {
       appointment.donorId = DONOR_ID;
@@ -68,10 +76,11 @@ async function saveAppointment(
   }
 
 test("Returns available appointments is ascending start time order", async () => {
-  const date1 = new Date();
+  await saveTestDonor(SHARED_DONOR_ID);
+  await saveTestDonor(DONOR_ID);
 
-  await saveAppointment(SHARED_APPOINTMENT, date1, true, true);
-  await saveAppointment(APPOINTMENT_IN_SAME_TIME, date1, false, false);
+  await saveAppointment(SHARED_APPOINTMENT, new Date(), true, true);
+  await saveAppointment(APPOINTMENT_IN_SAME_TIME, new Date(), false, false);
 
   const appointment = (await callTarget()).appointment
 
@@ -81,6 +90,6 @@ test("Returns available appointments is ascending start time order", async () =>
 });
 
 async function callTarget() {
-  return (await wrapped({})) as FunctionsApi.GetSharedLinkAppointmentResponse;
+  return (await wrapped({donorId: SHARED_DONOR_ID, shareLink: SHARE_LINK}, {auth: {uid: SHARED_DONOR_ID}})) as FunctionsApi.GetSharedLinkAppointmentResponse;
 }
 

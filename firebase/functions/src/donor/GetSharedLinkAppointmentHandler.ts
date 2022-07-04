@@ -5,9 +5,15 @@ import {
 import * as DbAppointmentUtils from "../utils/DbAppointmentUtils";
 
 export default async function (
-  request: FunctionsApi.GetSharedLinkAppointmentRequest
+  request: FunctionsApi.GetSharedLinkAppointmentRequest,
+  callerId: string
 ): Promise<FunctionsApi.GetSharedLinkAppointmentResponse> {
-  const appointment = await getAppointmentByShareLink(request.share_link)
+  
+  if (callerId !== request.donorId) {
+    throw Error("Unauthorized to access user");
+  }
+
+  const appointment = await getAppointmentByShareLink(request.shareLink)
 
   const result = await DbAppointmentUtils.toBookedAppointmentAsync(appointment);
 

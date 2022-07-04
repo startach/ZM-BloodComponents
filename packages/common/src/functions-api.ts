@@ -1,6 +1,6 @@
 import { Appointment, AvailableAppointment, BookedAppointment, HospitalUtils } from ".";
 import { BloodType, Coordinator, Donor, Hospital, DonorNotificationSettings, MinimalDonorDetailsForAppointment } from "./types";
-export declare const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
+export const GetAvailableAppointmentsFunctionName = "getAvailableAppointments";
 export interface GetAvailableAppointmentsRequest {
     hospitals?: Hospital[];
     fromMillis?: number;
@@ -10,15 +10,16 @@ export interface GetAvailableAppointmentsResponse {
     availableAppointments: AvailableAppointment[];
 }
 
-export declare const GetSharedLinkAppointmentFunctionName = "getSharedLinkAppointment";
+export const GetSharedLinkAppointmentFunctionName = "getSharedLinkAppointment";
 export interface GetSharedLinkAppointmentRequest {
-    share_link: string
+    donorId: string;
+    shareLink: string;
 }
 export interface GetSharedLinkAppointmentResponse {
     appointment: BookedAppointment;
 }
 
-export declare const GetDonorAppointmentsFunctionName = "getDonorAppointments";
+export const GetDonorAppointmentsFunctionName = "getDonorAppointments";
 export interface GetDonorAppointmentsRequest {
     donorId: string;
     fromMillis?: number;
@@ -29,17 +30,17 @@ export interface GetDonorAppointmentsResponse {
     completedAppointments: BookedAppointment[];
     futureAppointments: BookedAppointment[];
 }
-export declare const CoordinatorBookAppointmentFunctionName = "coordinatorBookAppointment";
+export const CoordinatorBookAppointmentFunctionName = "coordinatorBookAppointment";
 export interface CoordinatorBookAppointmentRequest {
     appointmentIds: string[];
     donorId: string;
     donorDetails?: MinimalDonorDetailsForAppointment;
 }
-export declare const DonorBookAppointmentFunctionName = "bookAppointment";
+export const DonorBookAppointmentFunctionName = "bookAppointment";
 export interface BookAppointmentRequest {
     appointmentIds: string[];
 }
-export declare enum BookAppointmentStatus {
+export enum BookAppointmentStatus {
     SUCCESS = "SUCCESS",
     NO_AVAILABLE_APPOINTMENTS = "NO_AVAILABLE_APPOINTMENTS",
     HAS_OTHER_DONATION_IN_BUFFER = "HAS_OTHER_DONATION_IN_BUFFER",
@@ -49,18 +50,18 @@ export interface BookAppointmentResponse {
     status: BookAppointmentStatus;
     bookedAppointment?: BookedAppointment;
 }
-export declare const DonorSwapAppointmentFunctionName = "swapAppointment";
+export const DonorSwapAppointmentFunctionName = "swapAppointment";
 export interface SwapAppointmentRequest {
     cancelAppointmentId: string;
     bookAppointmentIds: string[];
 }
 export interface SwapAppointmentResponse extends BookAppointmentResponse {
 }
-export declare const CancelAppointmentFunctionName = "cancelAppointment";
+export const CancelAppointmentFunctionName = "cancelAppointment";
 export interface CancelAppointmentRequest {
     appointmentId: string;
 }
-export declare const CompleteAppointmentFunctionName = "completeAppointment";
+export const CompleteAppointmentFunctionName = "completeAppointment";
 export interface CompleteAppointmentRequest {
     appointmentId: string;
     isNoshow: boolean;
@@ -69,14 +70,14 @@ export interface CompleteAppointmentRequest {
 export interface CompleteAppointmentResponse {
     completedAppointment: BookedAppointment;
 }
-export declare const GetDonorFunctionName = "getDonor";
+export const GetDonorFunctionName = "getDonor";
 export interface GetDonorRequest {
     donorId: string;
 }
 export interface GetDonorResponse {
     donor?: Donor;
 }
-export declare const SaveDonorFunctionName = "saveDonor";
+export const SaveDonorFunctionName = "saveDonor";
 export interface SaveDonorRequest {
     id: string;
     firstName: string;
@@ -90,13 +91,13 @@ export interface SaveDonorRequest {
 export interface SaveDonorResponse {
     donor: Donor;
 }
-export declare const GetCoordinatorFunctionName = "getCoordinator";
+export const GetCoordinatorFunctionName = "getCoordinator";
 export interface GetCoordinatorRequest {
 }
 export interface GetCoordinatorResponse {
     coordinator: Coordinator;
 }
-export declare const AddNewAppointmentsFunctionName = "addNewAppointments";
+export const AddNewAppointmentsFunctionName = "addNewAppointments";
 export interface AddAppointmentsRequest {
     hospital: Hospital;
     donationStartTimes: number[];
@@ -104,12 +105,12 @@ export interface AddAppointmentsRequest {
 export interface AddAppointmentsResponse {
     newAppointments: AvailableAppointment[];
 }
-export declare const DeleteAppointmentsFunctionName = "deleteAppointments";
+export const DeleteAppointmentsFunctionName = "deleteAppointments";
 export interface DeleteAppointmentRequest {
     appointmentId: string;
     onlyRemoveDonor: boolean;
 }
-export declare const GetCoordinatorAppointmentsFunctionName = "getCoordinatorAppointments";
+export const GetCoordinatorAppointmentsFunctionName = "getCoordinatorAppointments";
 export interface GetCoordinatorAppointmentsRequest {
     hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT | undefined;
     earliestStartTimeMillis: number;
@@ -120,13 +121,13 @@ export interface GetCoordinatorAppointmentsResponse {
     hospitalFetched: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
     appointments: Appointment[];
 }
-export declare const GetDonorsFunctionName = "getDonors";
+export const GetDonorsFunctionName = "getDonors";
 export interface GetDonorsRequest {
 }
 export interface GetDonorsResponse {
     donors: Donor[];
 }
-export declare const GetBookedDonationsInHospitalFunctionName = "getBookedDonationsInHospital";
+export const GetBookedDonationsInHospitalFunctionName = "getBookedDonationsInHospital";
 export interface GetBookedDonationsInHospitalRequest {
     hospital: Hospital | typeof HospitalUtils.ALL_HOSPITALS_SELECT;
     fromDateMillis: number;
