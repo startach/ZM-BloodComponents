@@ -56,7 +56,9 @@ export const getAvailableAppointments = unauthenticatedHandler(
   getAvailableAppointmentsHandler
 );
 export const getDonorAppointments = handler(getDonorAppointmentsHandler);
-export const getSharedLinkAppointment = handler(GetSharedLinkAppointmentHandler);
+export const getSharedLinkAppointment = handler(
+  GetSharedLinkAppointmentHandler
+);
 export const unsubscribe = unsubscribeHandler;
 
 // Jobs

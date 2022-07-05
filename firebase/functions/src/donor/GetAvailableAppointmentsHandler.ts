@@ -10,8 +10,8 @@ export default async function (
 ): Promise<FunctionsApi.GetAvailableAppointmentsResponse> {
   const availableAppointments = await getAvailableAppointments(
     request.hospitals,
-    request.fromMillis? new Date(request.fromMillis) : undefined,
-    request.toMillis? new Date(request.toMillis) : undefined
+    request.fromMillis ? new Date(request.fromMillis) : undefined,
+    request.toMillis ? new Date(request.toMillis) : undefined
   );
 
   const result = availableAppointments.map<AvailableAppointment>(

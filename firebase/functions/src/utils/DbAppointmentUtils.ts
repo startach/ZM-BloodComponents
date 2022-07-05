@@ -182,7 +182,7 @@ function toBookedAppointmentInternal(
     bloodType: bloodType,
     status: appointment.status,
     recentChangeType: getRecentChangeType(appointment),
-    shareLink:appointment.shareLink
+    shareLink: appointment.shareLink,
   };
 }
 

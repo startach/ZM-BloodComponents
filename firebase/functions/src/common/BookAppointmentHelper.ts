@@ -68,7 +68,7 @@ export async function bookAppointment(
     appointmentToBook.assigningCoordinatorId = coordinatorId;
   } else {
     appointmentToBook.shareLink = generateRandom();
-    
+
     const donor = await getDonorOrThrow(donorId);
 
     const updateDonorPromise = updateDonorAsync(
@@ -149,10 +149,9 @@ export function validateBookAppointment(
   };
 }
 
-
 function generateRandom(complexity: number = 4) {
-  let ret = '';
-  for (let i = 0; i < complexity; i ++) {
+  let ret = "";
+  for (let i = 0; i < complexity; i++) {
     ret += (Math.random() + 1).toString(36).substring(2);
   }
   return ret;

@@ -118,17 +118,17 @@ export async function getAvailableAppointments(
   fromTime?: Date,
   toTime?: Date
 ) {
-  if (!fromTime){
+  if (!fromTime) {
     fromTime = new Date();
   }
 
   let request = admin
-  .firestore()
-  .collection(Collections.APPOINTMENTS)
-  .where("status", "==", AppointmentStatus.AVAILABLE)
-  .where("donationStartTime", ">=", fromTime);
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("status", "==", AppointmentStatus.AVAILABLE)
+    .where("donationStartTime", ">=", fromTime);
 
-  if (hospitals){
+  if (hospitals) {
     request = request.where("hospital", "in", hospitals);
   }
 
@@ -138,7 +138,8 @@ export async function getAvailableAppointments(
 
   request = request.orderBy("donationStartTime");
 
-  const appointments = (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+  const appointments =
+    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
 }
@@ -169,9 +170,9 @@ export async function getAppointmentsByStatus(
 
 export async function getAppointmentByShareLink(
   shareLink: string
-) : Promise<DbAppointment> {
+): Promise<DbAppointment> {
   if (!shareLink) {
-    throw Error("you have to give a value for share link id")
+    throw Error("you have to give a value for share link id");
   }
 
   let request = admin
@@ -184,14 +185,14 @@ export async function getAppointmentByShareLink(
 
   const ret = toDbAppointments(appointments);
   if (ret.length > 1) {
-    throw Error("there is more then one appointment with this share link!")
+    throw Error("there is more then one appointment with this share link!");
   }
 
-  if (ret.length == 0){
-    throw Error("There is no appointment with this share link!")
+  if (ret.length == 0) {
+    throw Error("There is no appointment with this share link!");
   }
 
-  return ret[0]
+  return ret[0];
 }
 
 export async function getAllAppointments() {
