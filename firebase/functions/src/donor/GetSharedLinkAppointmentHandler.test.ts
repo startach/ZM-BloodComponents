@@ -75,6 +75,18 @@ async function saveAppointment(
     return appointment;
   }
 
+test("Not authenticated", async () => {
+  await saveTestDonor(DONOR_ID);
+
+  await saveAppointment(SHARED_APPOINTMENT, new Date(), true, true);
+  await saveAppointment(APPOINTMENT_IN_SAME_TIME, new Date(), false, false);
+
+  await expect(wrapped(
+    {donorId: SHARED_DONOR_ID, shareLink: SHARE_LINK}
+  )).rejects.toThrow(Error)
+
+});
+
 test("Returns available appointments is ascending start time order", async () => {
   await saveTestDonor(SHARED_DONOR_ID);
   await saveTestDonor(DONOR_ID);
