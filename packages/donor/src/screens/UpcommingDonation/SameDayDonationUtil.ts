@@ -5,9 +5,21 @@ export function shouldDisplaySameDayDonationPopup(
   bookedAppointment: BookedAppointment
 ) {
   const now = getNow();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
   const nowMillis = now.getTime();
   const donationStartTime = new Date(bookedAppointment.donationStartTimeMillis);
-  if (!DateUtils.isSameDay(now, donationStartTime)) {
+  // Checks if the dates are in the same day OR checking if it is in the last 48 hours
+  if (
+    !DateUtils.isSameDay(
+      now,
+      donationStartTime ||
+        !(
+          DateUtils.getNumberOfDaysBetweenDates(donationStartTime, tomorrow) ===
+          1
+        )
+    )
+  ) {
     return false;
   }
 

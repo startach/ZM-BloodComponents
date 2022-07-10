@@ -93,8 +93,8 @@ export default function UpcomingDonationScreen({
         image={Cancellation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
-          התור בטלפון
+          נרשמת לתור שמתקיים ב-48 שעות הקרובות! כדאי מאוד להתקשר למתאמ/ת כדי
+          לוודא את קיום התור בטלפון
           <AnchorTag
             linkName="coordinator_phone"
             href={"tel:" + phoneNumber}
