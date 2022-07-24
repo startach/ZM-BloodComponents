@@ -7,7 +7,6 @@ export type DonationSlotToBook = {
   hospital: Hospital;
   donationStartTimeMillis: number;
   appointmentIds: string[];
-  isSwapAppointment: boolean;
 };
 
 export class AppointmentToBookStore {
@@ -29,11 +28,11 @@ export class AppointmentToBookStore {
     this.donationStartTimeMillis = -1;
   }
 
-  setAppointmentToBook(slot: DonationSlotToBook) {
+  setAppointmentToBook(slot: DonationSlotToBook, isSwapAppointment: boolean) {
     this.hospital = slot.hospital;
     this.donationStartTimeMillis = slot.donationStartTimeMillis;
     this.appointmentIds = slot.appointmentIds;
-    this.isSwapAppointment = slot.isSwapAppointment;
+    this.isSwapAppointment = isSwapAppointment;
   }
 
   isAppointmentTooCloseToLastDonation(donor: Donor): boolean {

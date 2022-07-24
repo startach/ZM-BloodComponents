@@ -56,7 +56,7 @@ export function QuestionnaireScreen({
       <DonationInfo
         donationStartTimeMillis={donationStartTimeMillis}
         hospital={hospital}
-        isSwapAppointment={false}
+        isPreviousAppointmentInfo={false}
       />
 
       <div className={styles.questionnaireSection}>

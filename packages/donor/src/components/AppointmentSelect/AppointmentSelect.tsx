@@ -100,8 +100,7 @@ export default function AppointmentSelect({
           selectedHospital,
           isFetching,
           sortedDonationDays,
-          onSlotSelected,
-          isSwapAppointment
+          onSlotSelected
         )}
       </div>
     </>
@@ -112,8 +111,7 @@ function Donations(
   selectedHospital: Hospital | "",
   isFetching: boolean,
   donationDays: DonationDay[],
-  onSlotSelected: (donationSlot: DonationSlotToBook) => void,
-  isSwapAppointment: boolean
+  onSlotSelected: (donationSlot: DonationSlotToBook) => void
 ) {
   if (isFetching) {
     return (
@@ -155,7 +153,6 @@ function Donations(
             donationDay={donationDay}
             onSlotSelected={onSlotSelected}
             showHospitalName={selectedHospital === ""}
-            isSwapAppointment={isSwapAppointment}
           />
         </div>
       ))}

@@ -49,7 +49,6 @@ export function QuestionnaireScreenContainer(
   const onSuccess = async () => {
     setIsLoading(true);
     const response = await bookAppointment.tryBookAppoitment(
-      appointmentToBookStore.isSwapAppointment,
       props.bookedAppointment?.id
     );
     setIsLoading(false);

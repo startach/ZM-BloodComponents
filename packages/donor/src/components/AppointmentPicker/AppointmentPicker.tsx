@@ -16,14 +16,12 @@ export interface AppointmentPickerProps {
   donationDay: DonationDay;
   onSlotSelected: (donationSlot: DonationSlotToBook) => void;
   showHospitalName: boolean;
-  isSwapAppointment: boolean;
 }
 
 function AppointmentPicker({
   donationDay,
   onSlotSelected,
   showHospitalName,
-  isSwapAppointment,
 }: AppointmentPickerProps) {
   const dayString = `${DateUtils.ToWeekDayString(
     donationDay.day,
@@ -43,7 +41,6 @@ function AppointmentPicker({
           onSlotSelected={(slot) => {
             onSlotSelected({
               ...slot,
-              isSwapAppointment,
               hospital: hospitalDaySlots.hospital,
             });
           }}

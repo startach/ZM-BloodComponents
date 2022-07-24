@@ -13,7 +13,7 @@ export default {
 const props: DonationInfoProps = {
   donationStartTimeMillis: 1625823300000,
   hospital: Hospital.ICHILOV,
-  isSwapAppointment: false,
+  isPreviousAppointmentInfo: false,
 };
 
 const Template: Story<DonationInfoProps> = (args) => <DonationInfo {...args} />;

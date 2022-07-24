@@ -5,13 +5,13 @@ import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 export interface DonationToBookInfoProps {
   donationStartTimeMillis: number;
   hospital: Hospital;
-  isSwapAppointment: boolean;
+  isPreviousAppointmentInfo: boolean;
 }
 
 export default function DonationToBookInfo({
   donationStartTimeMillis,
   hospital,
-  isSwapAppointment,
+  isPreviousAppointmentInfo,
 }: DonationToBookInfoProps) {
   const donationDate = new Date(donationStartTimeMillis);
 
@@ -20,7 +20,7 @@ export default function DonationToBookInfo({
       <img src={Calendar} alt={"Appointment"} className={styles.illustration} />
       <div className={styles.donationInfoText}>
         <div className={styles.infoTitle}>
-          פרטי התור {isSwapAppointment ? "הקיים" : "הנבחר"}
+          פרטי התור {isPreviousAppointmentInfo ? "הקיים" : "הנבחר"}
         </div>
         <div className={styles.appointmentDetails}>
           {donationDate.toLocaleDateString("he-He", DateUtils.ShortDateFormat)},{" "}

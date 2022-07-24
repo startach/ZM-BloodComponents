@@ -52,7 +52,7 @@ export default function SwapDonationScreen({
       <DonationInfo
         donationStartTimeMillis={currentAppointment.donationStartTimeMillis}
         hospital={currentAppointment.hospital}
-        isSwapAppointment={true}
+        isPreviousAppointmentInfo={true}
       />
       <span className={styles.swapBanner}>להחלפת התור ניתן לבחור מועד אחר</span>
       <div className={styles.swapDonationsSelection}>

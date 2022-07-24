@@ -31,7 +31,6 @@ export const Default = () => {
         onSlotSelected={action("Selected")}
         donationDay={donationDay}
         showHospitalName={true}
-        isSwapAppointment={false}
       />
     </div>
   );
@@ -54,7 +53,6 @@ export const NoHospitalName = () => {
         onSlotSelected={action("Selected")}
         donationDay={donationDay}
         showHospitalName={false}
-        isSwapAppointment={false}
       />
     </div>
   );

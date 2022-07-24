@@ -47,7 +47,7 @@ export function SwapDonationScreenContainer({
     hospital === appState.bookedAppointment!.hospital;
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
-    appointmentToBookStore.setAppointmentToBook(donationSlot);
+    appointmentToBookStore.setAppointmentToBook(donationSlot, true);
     if (isLoggedIn) {
       const isAppointmentTooClose =
         appointmentToBookStore.isAppointmentTooCloseToLastDonation(
@@ -69,7 +69,6 @@ export function SwapDonationScreenContainer({
 
   const onSwapDonation = async () => {
     const response = await bookAppointment.tryBookAppoitment(
-      true,
       appState.bookedAppointment!.id
     );
     if (response.status === FunctionsApi.BookAppointmentStatus.SUCCESS) {

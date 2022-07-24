@@ -11,27 +11,24 @@ export default function useBookAppoitment() {
   const debugMode = !process.env.REACT_APP_PRODUCTION_FIREBASE;
 
   return {
-    tryBookAppoitment: async (
-      isSwapAppointment: boolean,
-      appointmentToBeCancelledId?: string
-    ) => {
+    tryBookAppoitment: async (appointmentToBeCancelledId?: string) => {
+      const { isSwapAppointment, appointmentIds } = appointmentToBookStore;
+
       if (debugMode) {
         console.log(
           `Asked to ${
             isSwapAppointment ? "swap" : "book"
           } one of the following appointments: `,
-          appointmentToBookStore.appointmentIds
+          appointmentIds
         );
       }
 
       const bookingFunction = isSwapAppointment
         ? FirebaseFunctions.donorSwapAppointment(
-            appointmentToBookStore.appointmentIds,
+            appointmentIds,
             appointmentToBeCancelledId ?? ""
           )
-        : FirebaseFunctions.donorBookAppointment(
-            appointmentToBookStore.appointmentIds
-          );
+        : FirebaseFunctions.donorBookAppointment(appointmentIds);
 
       const bookAppointmentResponse = await bookingFunction;
 
