@@ -157,7 +157,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Beilinson 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
-         🛠
+         🛠️
       </div>
       <button
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"
@@ -495,7 +495,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Default 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
-         🛠
+         🛠️
       </div>
       <button
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"
@@ -833,7 +833,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Ichilov 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
-         🛠
+         🛠️
       </div>
       <button
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"
@@ -1168,7 +1168,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Soroka 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
-         🛠
+         🛠️
       </div>
       <button
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"
@@ -1509,7 +1509,7 @@ exports[`Storyshots Screens/Upcoming Donation Screen Tel Hashomer 1`] = `
           className="logoImage"
           src="blood-bank-zichron-Little-logo.svg"
         />
-         🛠
+         🛠️
       </div>
       <button
         className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium login emotion-0"

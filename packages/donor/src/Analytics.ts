@@ -4,8 +4,16 @@ import { firebaseAnalytics } from "./firebase/FirebaseInitializer";
 import {
   AnalyticsButtonType,
   AnalyticsEventType,
+  getMixpanelConfig,
   InputType,
 } from "@zm-blood-components/common";
+
+import mixpanel from "mixpanel-browser";
+
+const mixpanelConfig = getMixpanelConfig();
+mixpanel.init(mixpanelConfig.token, { debug: mixpanelConfig.debug });
+
+const APP_NAME = "donor";
 
 function getUserId() {
   const auth = getAuth();
@@ -19,13 +27,20 @@ function getPath() {
 }
 
 export function reportScreen(path: string) {
+  mixpanel.track("screen_view", {
+    user_id: firebaseAnalytics && getUserId(),
+    screen: path,
+    screen_class: APP_NAME,
+  });
+
   if (!firebaseAnalytics) {
     return;
   }
+
   logEvent(firebaseAnalytics, "screen_view", {
     user_id: getUserId(),
     firebase_screen: path,
-    firebase_screen_class: "donor",
+    firebase_screen_class: APP_NAME,
   });
 }
 
@@ -34,13 +49,25 @@ export function reportClick(
   buttonName: string,
   value?: string
 ) {
+  const screen = getPath();
+
+  mixpanel.track("click", {
+    user_id: firebaseAnalytics && getUserId(),
+    screen: screen,
+    screen_class: APP_NAME,
+    type: buttonType,
+    title: buttonName,
+    value: value,
+  });
+
   if (!firebaseAnalytics) {
     return;
   }
+
   logEvent(firebaseAnalytics, `click`, {
     user_id: getUserId(),
-    firebase_screen: getPath(),
-    firebase_screen_class: "donor",
+    firebase_screen: screen,
+    firebase_screen_class: APP_NAME,
     type: buttonType,
     title: buttonName,
     value: value,
@@ -52,13 +79,25 @@ export function reportInput(
   inputName: string,
   value?: string
 ) {
+  const screen = getPath();
+
+  mixpanel.track("input", {
+    user_id: firebaseAnalytics && getUserId(),
+    screen: screen,
+    screen_class: APP_NAME,
+    type: inputType,
+    title: inputName,
+    value: value,
+  });
+
   if (!firebaseAnalytics) {
     return;
   }
+
   logEvent(firebaseAnalytics, `input`, {
     user_id: getUserId(),
-    firebase_screen: getPath(),
-    firebase_screen_class: "donor",
+    firebase_screen: screen,
+    firebase_screen_class: APP_NAME,
     type: inputType,
     title: inputName,
     value: value,
@@ -70,13 +109,24 @@ export function reportEvent(
   otherName: string,
   otherValue?: string
 ) {
+  const screen = getPath();
+
+  mixpanel.track("event", {
+    user_id: firebaseAnalytics && getUserId(),
+    screen: screen,
+    screen_class: APP_NAME,
+    type: otherType,
+    title: otherName,
+    value: otherValue,
+  });
+
   if (!firebaseAnalytics) {
     return;
   }
   logEvent(firebaseAnalytics, `other`, {
     user_id: getUserId(),
-    firebase_screen: getPath(),
-    firebase_screen_class: "donor",
+    firebase_screen: screen,
+    firebase_screen_class: APP_NAME,
     type: otherType,
     title: otherName,
     value: otherValue,

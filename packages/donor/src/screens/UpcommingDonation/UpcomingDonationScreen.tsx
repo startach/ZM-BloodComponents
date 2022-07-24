@@ -163,16 +163,25 @@ export default function UpcomingDonationScreen({
 function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
 
+  let buttonApproveText = "";
   let content = "";
+  let onApprovedContent = "";
   switch (props.hospital) {
     case Hospital.BEILINSON:
-      content =
-        "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052, או לשלוח הודעה בוואטסאפ לרכז שלך עם מיקום וזמני האיסוף";
+      content = "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון";
+      buttonApproveText = "התקשר למתאמת התרומות";
+      onApprovedContent = LinkUtils.getPhoneCall("03-9376052");
       break;
 
     default:
       content =
         "ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף";
+      buttonApproveText = "בקשת הסעה";
+      onApprovedContent = LinkUtils.getWhatsAppLinkWithText(
+        `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
+          props.hospital
+        )} ואצטרך הסעה`
+      );
   }
 
   return (
@@ -184,17 +193,11 @@ function NeedRideButton(props: { hospital: Hospital }) {
         name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
-        buttonApproveText="בקשת הסעה"
+        buttonApproveText={buttonApproveText}
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {
-          window.open(
-            LinkUtils.getWhatsAppLinkWithText(
-              `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
-                props.hospital
-              )} ואצטרך הסעה`
-            )
-          );
+          window.open(onApprovedContent);
         }}
         image={Whatsapp}
         buttonColor={Color.Primary}
