@@ -75,7 +75,7 @@ export function QuestionnaireScreenContainer(
       isLoading={isLoading}
       debugMode={debugMode}
       onBack={onBack}
-      goBackAndRefresh={async () => {
+      goToHomePage={async () => {
         appointmentToBookStore.clear();
         refreshAvailableAppointments(availableAppointmentsStore);
         navigate(-1);

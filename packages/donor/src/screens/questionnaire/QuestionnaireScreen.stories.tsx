@@ -15,7 +15,7 @@ const props: QuestionnaireScreenProps = {
   donationStartTimeMillis: 1628845200000,
   onBack: action("onBack"),
   onSuccess: action("onSuccess"),
-  goBackAndRefresh: async () => action("goToHomePage")(),
+  goToHomePage: async () => action("goToHomePage")(),
   isLoading: false,
   debugMode: false,
   isSwapAppointment: false,

@@ -8,18 +8,15 @@ import { reportClick } from "../../../Analytics";
 
 export interface IconButtonProps extends MuiIconButtonProps {
   /** For logging and Analytics */
-  analyticsName: string;
+  buttonName: string;
 }
 
-export default function IconButton({
-  analyticsName,
-  ...props
-}: IconButtonProps) {
+export default function IconButton({ buttonName, ...props }: IconButtonProps) {
   const handleClick = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     props.onClick?.(e);
-    reportClick(AnalyticsButtonType.IconButton, analyticsName);
+    reportClick(AnalyticsButtonType.IconButton, buttonName);
   };
 
   return (

@@ -68,7 +68,7 @@ export default function UpcomingDonationScreen({
             <div className={styles.detailsTitleContainer}>
               <div className={styles.detailsTitle}>פרטי התור שלך:</div>
               <IconButton
-                analyticsName="open_change_booked_appointment"
+                buttonName="open_change_booked_appointment"
                 onClick={(e) => setMenuAnchorElement(e.currentTarget)}
               >
                 <Typography variant="subtitle2">פעולות נוספות</Typography>

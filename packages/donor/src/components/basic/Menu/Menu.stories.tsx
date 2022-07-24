@@ -16,7 +16,7 @@ export const Default: Story<MenuProps> = (args) => {
   return (
     <div>
       <IconButton
-        analyticsName="open_menu"
+        buttonName="open_menu"
         onClick={(e) => setAnchorEl(e.currentTarget)}
       >
         <KeyboardArrowDown />

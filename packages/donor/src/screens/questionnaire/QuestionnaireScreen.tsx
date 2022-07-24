@@ -18,7 +18,7 @@ export interface QuestionnaireScreenProps {
   debugMode: boolean;
   bookingErrorCode: FunctionsApi.BookAppointmentStatus | undefined;
   onBack: () => void;
-  goBackAndRefresh: () => Promise<void>;
+  goToHomePage: () => Promise<void>;
   isSwapAppointment: boolean;
 }
 
@@ -29,7 +29,7 @@ export function QuestionnaireScreen({
   onBack,
   isLoading,
   debugMode,
-  goBackAndRefresh,
+  goToHomePage,
   isSwapAppointment,
   bookingErrorCode,
 }: QuestionnaireScreenProps) {
@@ -69,7 +69,7 @@ export function QuestionnaireScreen({
 
         <QuestionnaireQuestions
           hospital={hospital}
-          goToHomePage={goBackAndRefresh}
+          goToHomePage={goToHomePage}
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
         />
 
@@ -95,7 +95,7 @@ export function QuestionnaireScreen({
 
       <BookingAppointmentErrorPopup
         errorCode={bookingErrorCode}
-        onApproved={goBackAndRefresh}
+        onApproved={goToHomePage}
       />
 
       <ConfirmSwapAppointmentPopup
