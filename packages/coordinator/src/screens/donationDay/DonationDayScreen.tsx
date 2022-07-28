@@ -87,10 +87,12 @@ function DayHeader(props: {
   showOnlyAvailableAppointments: boolean;
   setShowOnlyAvailableAppointments: (show: boolean) => void;
 }) {
-  const appointmentsCount = props.allAppointments.length;
   const bookedAppointmentsCount = props.allAppointments.filter(
     (x) => x.booked
   ).length;
+  const appointmentsCount = props.showOnlyAvailableAppointments
+    ? props.allAppointments.length - bookedAppointmentsCount
+    : props.allAppointments.length;
   return (
     <>
       <div className={styles.donationDate}>
@@ -98,8 +100,12 @@ function DayHeader(props: {
 
         <div className={styles.data}>
           <span>{appointmentsCount} תורים</span>
-          <span className={styles.dataDivider}>|</span>
-          <span>{bookedAppointmentsCount} רשומים</span>
+          {!props.showOnlyAvailableAppointments && (
+            <span className={styles.dataDivider}>|</span>
+          )}
+          {!props.showOnlyAvailableAppointments && (
+            <span>{bookedAppointmentsCount} רשומים</span>
+          )}
         </div>
       </div>
 

@@ -19,7 +19,7 @@ export default {
 const props: (hospital: Hospital) => UpcomingDonationScreenProps = (
   hospital
 ) => ({
-  showSameDayDonationPopup: false,
+  showDonationPopup: false,
   bookedAppointment: {
     ...TestSamples.SampleBookedAppointment,
     bookingTimeMillis: 1628845200000,

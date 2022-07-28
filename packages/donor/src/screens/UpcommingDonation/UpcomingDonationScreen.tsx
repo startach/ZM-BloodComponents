@@ -24,16 +24,16 @@ export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
   onCancel: () => Promise<void>;
-  showSameDayDonationPopup: boolean;
+  showDonationPopup: boolean;
 }
 
 export default function UpcomingDonationScreen({
   fullName,
   onCancel,
   bookedAppointment,
-  showSameDayDonationPopup,
+  showDonationPopup,
 }: UpcomingDonationScreenProps) {
-  const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
+  const [showPopup, setShowPopup] = useState(showDonationPopup);
   const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
 
   return (
@@ -93,7 +93,7 @@ export default function UpcomingDonationScreen({
         image={Cancellation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים ב-48 שעות הקרובות! כדאי מאוד להתקשר למתאמ/ת כדי
+          נרשמת לתור שמתקיים ב-48 השעות הקרובות! כדאי מאוד להתקשר למתאמ/ת כדי
           לוודא את קיום התור בטלפון
           <AnchorTag
             linkName="coordinator_phone"
@@ -111,6 +111,7 @@ export default function UpcomingDonationScreen({
 function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
 
+  let buttonApproveText = "";
   let content = "";
   let onApprovedContent = "";
   switch (props.hospital) {
@@ -139,7 +140,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
-        buttonApproveText="בקשת הסעה"
+        buttonApproveText={buttonApproveText}
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {
