@@ -38,9 +38,9 @@ export default function Button({
   className,
   isDisabled = false,
   isLoading = false,
-  analyticsName: buttonName,
-  analyticsValue: buttonValue,
-  analyticsType: buttonType,
+  analyticsName,
+  analyticsValue,
+  analyticsType,
 }: ButtonProps) {
   const handleDisabledButtonClick = () => {
     reportEvent(AnalyticsEventType.Click, "disabled_text_button");
@@ -52,7 +52,11 @@ export default function Button({
       variant === ButtonVariant.text
         ? AnalyticsButtonType.TextButton
         : AnalyticsButtonType.Button;
-    reportClick(buttonType ?? detectedButtonType, buttonName, buttonValue);
+    reportClick(
+      analyticsType ?? detectedButtonType,
+      analyticsName,
+      analyticsValue
+    );
   };
 
   if (variant === ButtonVariant.text) {

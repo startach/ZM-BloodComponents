@@ -51,7 +51,7 @@ export default function Input({
       endAdornment: (
         <InputAdornment position="end">
           <IconButton
-            buttonName="show_password"
+            analyticsName="show_password"
             onClick={() => setShowPassword(!showPassword)}
             edge="end"
             size="large"

@@ -7,18 +7,18 @@ import { reportClick } from "../../../Analytics";
 
 export interface IconButtonProps extends MuiIconButtonProps {
   /** For logging and Analytics */
-  buttonName: string;
+  analyticsName: string;
   onClick: () => void;
 }
 
 export default function IconButton({
-  buttonName,
+  analyticsName,
   onClick,
   ...props
 }: IconButtonProps) {
   const handleClick = () => {
     onClick();
-    reportClick(AnalyticsButtonType.IconButton, buttonName);
+    reportClick(AnalyticsButtonType.IconButton, analyticsName);
   };
 
   return <MuiIconButton onClick={handleClick} {...props} />;

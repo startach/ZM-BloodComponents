@@ -49,7 +49,7 @@ export default function AppHeader({
   if (hasBurgerMenu) {
     icon = (
       <IconButton
-        buttonName="burger_menu"
+        analyticsName="burger_menu"
         onClick={() => setShowSideBar((previous) => !previous)}
         className={styles.rightButton}
       >
@@ -59,7 +59,7 @@ export default function AppHeader({
   } else if (hasBackButton) {
     icon = (
       <IconButton
-        buttonName="back"
+        analyticsName="back"
         onClick={onBack ? onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
@@ -88,7 +88,7 @@ export default function AppHeader({
   if (hasBurgerMenu && !loggedIn) {
     loginIcon = (
       <IconButton
-        buttonName="login"
+        analyticsName="login"
         className={styles.login}
         onClick={() => navigate(MainNavigationKeys.Login)}
       >
