@@ -1,7 +1,12 @@
 import { useState } from "react";
 import QuestionnaireScreen from "./QuestionnaireScreen";
-import { BookedAppointment, FunctionsApi } from "@zm-blood-components/common";
+import {
+  AnalyticsEventType,
+  BookedAppointment,
+  FunctionsApi,
+} from "@zm-blood-components/common";
 import { Navigate, useNavigate } from "react-router-dom";
+import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 import {
   useAppointmentToBookStore,
@@ -9,7 +14,7 @@ import {
 } from "../../state/Providers";
 import { refreshAvailableAppointments } from "../../state/AvailableAppointmentsStore";
 import { observer } from "mobx-react-lite";
-import useBookAppoitment from "../../hooks/useBookDonation";
+import { reportEvent } from "../../Analytics";
 
 interface QuestionnaireScreenContainerProps {
   loggedIn: boolean;
@@ -24,11 +29,10 @@ export function QuestionnaireScreenContainer(
   props: QuestionnaireScreenContainerProps
 ) {
   const navigate = useNavigate();
-  const bookAppointment = useBookAppoitment();
+  const [isLoading, setIsLoading] = useState(false);
   const [bookingError, setBookingError] = useState<
     FunctionsApi.BookAppointmentStatus | undefined
   >();
-  const [isLoading, setIsLoading] = useState(false);
   const availableAppointmentsStore = useAvailableAppointmentsStore();
   const appointmentToBookStore = useAppointmentToBookStore();
 
@@ -47,17 +51,43 @@ export function QuestionnaireScreenContainer(
   }
 
   const onSuccess = async () => {
+    // TODO Use BookAppointment hook
     setIsLoading(true);
-    const response = await bookAppointment.tryBookAppoitment(
-      props.bookedAppointment?.id
-    );
-    setIsLoading(false);
-    if (response.status === FunctionsApi.BookAppointmentStatus.SUCCESS) {
-      bookAppointment.onSuccessfulBooking(() =>
-        props.setBookedAppointment(response.bookedAppointment)
+    if (debugMode) {
+      console.log(
+        "Asked to book one of the following appointments: ",
+        appointmentToBookStore.appointmentIds
       );
-    } else {
-      setBookingError(response.status);
+    }
+
+    const bookAppointmentResponse =
+      await FirebaseFunctions.donorBookAppointment(
+        appointmentToBookStore.appointmentIds
+      );
+
+    switch (bookAppointmentResponse.status) {
+      case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
+        setBookingError(bookAppointmentResponse.status);
+        setIsLoading(false);
+        break;
+
+      case FunctionsApi.BookAppointmentStatus.SUCCESS:
+        reportEvent(
+          AnalyticsEventType.ApiConfirmation,
+          "donation_booked",
+          bookAppointmentResponse.bookedAppointment!.id
+        );
+
+        if (debugMode) {
+          console.log(
+            "Booked appointment",
+            bookAppointmentResponse.bookedAppointment!.id
+          );
+        }
+
+        props.setBookedAppointment(bookAppointmentResponse.bookedAppointment!);
+        navigate(MainNavigationKeys.UpcomingDonation, { replace: true });
+        appointmentToBookStore.clear();
     }
   };
 

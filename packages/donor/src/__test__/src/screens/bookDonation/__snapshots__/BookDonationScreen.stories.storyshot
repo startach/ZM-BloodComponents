@@ -125,22 +125,18 @@ exports[`Storyshots Screens/Book Donation Screen Fetching 1`] = `
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(133% - 24px);
+  max-width: calc(100% - 24px);
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transform: translate(-14px, -9px) scale(0.75);
-  -moz-transform: translate(-14px, -9px) scale(0.75);
-  -ms-transform: translate(-14px, -9px) scale(0.75);
-  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transform: translate(-14px, 16px) scale(1);
+  -moz-transform: translate(-14px, 16px) scale(1);
+  -ms-transform: translate(-14px, 16px) scale(1);
+  transform: translate(-14px, 16px) scale(1);
   -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   z-index: 1;
-  pointer-events: auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  pointer-events: none;
 }
 
 .emotion-4.Mui-focused {
@@ -547,8 +543,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
           className="MuiFormControl-root makeStyles-root-2 emotion-3"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-4"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-4"
+            data-shrink={false}
           >
             הצג תורים ב:
           </label>
@@ -565,7 +561,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
               onChange={[Function]}
               onFocus={[Function]}
               required={false}
-              value="הכל"
             >
               <option
                 value="הכל"
@@ -611,7 +606,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-8"
+            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained emotion-8"
           />
         </div>
       </div>
@@ -774,22 +769,18 @@ exports[`Storyshots Screens/Book Donation Screen Has Appointments 1`] = `
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(133% - 24px);
+  max-width: calc(100% - 24px);
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transform: translate(-14px, -9px) scale(0.75);
-  -moz-transform: translate(-14px, -9px) scale(0.75);
-  -ms-transform: translate(-14px, -9px) scale(0.75);
-  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transform: translate(-14px, 16px) scale(1);
+  -moz-transform: translate(-14px, 16px) scale(1);
+  -ms-transform: translate(-14px, 16px) scale(1);
+  transform: translate(-14px, 16px) scale(1);
   -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   z-index: 1;
-  pointer-events: auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  pointer-events: none;
 }
 
 .emotion-4.Mui-focused {
@@ -1196,8 +1187,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
           className="MuiFormControl-root makeStyles-root-3 emotion-3"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-4"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-4"
+            data-shrink={false}
           >
             הצג תורים ב:
           </label>
@@ -1214,7 +1205,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
               onChange={[Function]}
               onFocus={[Function]}
               required={false}
-              value="הכל"
             >
               <option
                 value="הכל"
@@ -1260,7 +1250,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-8"
+            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained emotion-8"
           />
         </div>
       </div>
@@ -1280,12 +1270,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
               className="dayTitle"
             >
               יום שישי, 13/08/2021
-            </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
             </div>
             <div
               className="hospitalCard"
@@ -1310,12 +1294,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
             </div>
             <div
               className="hospitalCard"
@@ -1413,12 +1391,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
               יום שבת, 14/08/2021
             </div>
             <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
-            <div
               className="hospitalCard"
             >
               <div>
@@ -1441,12 +1413,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
             </div>
             <div
               className="hospitalCard"
@@ -1642,22 +1608,18 @@ exports[`Storyshots Screens/Book Donation Screen No Appointments 1`] = `
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(133% - 24px);
+  max-width: calc(100% - 24px);
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transform: translate(-14px, -9px) scale(0.75);
-  -moz-transform: translate(-14px, -9px) scale(0.75);
-  -ms-transform: translate(-14px, -9px) scale(0.75);
-  transform: translate(-14px, -9px) scale(0.75);
+  -webkit-transform: translate(-14px, 16px) scale(1);
+  -moz-transform: translate(-14px, 16px) scale(1);
+  -ms-transform: translate(-14px, 16px) scale(1);
+  transform: translate(-14px, 16px) scale(1);
   -webkit-transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   transition: color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
   z-index: 1;
-  pointer-events: auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  pointer-events: none;
 }
 
 .emotion-4.Mui-focused {
@@ -2064,8 +2026,8 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
           className="MuiFormControl-root makeStyles-root-4 emotion-3"
         >
           <label
-            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-4"
-            data-shrink={true}
+            className="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-4"
+            data-shrink={false}
           >
             הצג תורים ב:
           </label>
@@ -2082,7 +2044,6 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
               onChange={[Function]}
               onFocus={[Function]}
               required={false}
-              value="הכל"
             >
               <option
                 value="הכל"
@@ -2128,7 +2089,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
             </svg>
           </div>
           <p
-            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled emotion-8"
+            className="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained emotion-8"
           />
         </div>
       </div>
