@@ -17,7 +17,7 @@ export interface QuestionnaireScreenProps {
   debugMode: boolean;
   errorCode?: FunctionsApi.BookAppointmentStatus;
   onBack: () => void;
-  goToHomePage: () => Promise<void>;
+  goBackAndRefresh: () => Promise<void>;
 }
 
 export default function QuestionnaireScreen({
@@ -28,7 +28,7 @@ export default function QuestionnaireScreen({
   isLoading,
   debugMode,
   errorCode,
-  goToHomePage,
+  goBackAndRefresh,
 }: QuestionnaireScreenProps) {
   const [areAllAnswersCorrect, setAreAllAnswersCorrect] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -57,7 +57,7 @@ export default function QuestionnaireScreen({
 
         <QuestionnaireQuestions
           hospital={hospital}
-          goToHomePage={goToHomePage}
+          goToHomePage={goBackAndRefresh}
           setAreAllAnswersCorrect={setAreAllAnswersCorrect}
         />
 
@@ -81,14 +81,14 @@ export default function QuestionnaireScreen({
         />
       </div>
 
-      <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
+      <ErrorPopup errorCode={errorCode} goBackAndRefresh={goBackAndRefresh} />
     </ZMScreen>
   );
 }
 
 function ErrorPopup(props: {
   errorCode?: FunctionsApi.BookAppointmentStatus;
-  goToHomePage: () => Promise<void>;
+  goBackAndRefresh: () => Promise<void>;
 }) {
   if (!props.errorCode) {
     return null;
@@ -108,7 +108,7 @@ function ErrorPopup(props: {
       title={"אופס!"}
       buttonApproveText={"בחירת מועד חדש"}
       open={true}
-      onApproved={props.goToHomePage}
+      onApproved={props.goBackAndRefresh}
     >
       {text}
     </Popup>
