@@ -16,7 +16,7 @@ import Whatsapp from "../../assets/images/whatsup-color-big.svg";
 import UpcomingDonationInfo from "./UpcomingDonationInfo";
 import EventCalendarLink from "./EventCalendarLink";
 import AnchorTag from "../../components/basic/AnchorTag";
-import Menu, { MenuItem } from "../../components/basic/Menu/Menu";
+import Menu, { MenuItem } from "../../components/basic/Menu";
 import IconButton from "../../components/basic/IconButton";
 import { KeyboardArrowDown } from "@mui/icons-material";
 import { Typography } from "@mui/material";
@@ -88,8 +88,7 @@ export default function UpcomingDonationScreen({
                   <Typography variant="body2">ביטול תור</Typography>
                 </MenuItem>
                 <MenuItem
-                  analyticsValue="cancel_appointment"
-                  className={styles.cancelAppointment}
+                  analyticsValue="swap_appointment"
                   onClick={() => navigate(MainNavigationKeys.SwapDonation)}
                 >
                   <img src={SwapIcon} alt={"Swap"} className={styles.icon} />
