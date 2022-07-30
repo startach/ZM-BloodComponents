@@ -72,6 +72,7 @@ export function BookDonationScreenContainer({
       onSlotSelected={onSlotSelected}
       firstName={appState.donor?.firstName}
       isFetching={availableAppointmentsStore.isFetching}
+      defaultHospital={""}
       tooCloseDonationPopupProps={onSlotSelectedPopUpProps}
     />
   );
