@@ -1,13 +1,13 @@
-import { BookedAppointment, Donor } from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  Donor,
+  AppointmentUtils,
+} from "@zm-blood-components/common";
 import UpcomingDonationScreen from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useAppointmentToBookStore } from "../../state/Providers";
 import { Navigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
-import {
-  TimeFrameAfterDonationPopup,
-  ITimeFrameAfterDonationPopupProps,
-} from "./TimeFrameAfterDonationUtil";
 
 interface UpcomingDonationScreenContainerProps {
   loggedIn: boolean;
@@ -34,34 +34,13 @@ export default function UpcomingDonationScreenContainer(
     props.setBookedAppointment(undefined);
   };
 
-  /*
   return (
     <UpcomingDonationScreen
       bookedAppointment={props.bookedAppointment}
       fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
-      showSameDayDonationPopup={shouldDisplaySameDayDonationPopup(
-        () => new Date(),
+      showDonationPopup={AppointmentUtils.isAppointmentClosed(
         props.bookedAppointment
-      )}
-    />
-  );
-  */
-
-  // Show spontanus popup if there is 1-48 hours left for the donation time
-  const timeFrameAfterDonationPopupProps: ITimeFrameAfterDonationPopupProps = {
-    getCurrentDateTime: () => new Date(),
-    bookedAppointment: props.bookedAppointment,
-    daysLimit: 2,
-  };
-
-  return (
-    <UpcomingDonationScreen
-      bookedAppointment={props.bookedAppointment}
-      fullName={props.user.firstName + " " + props.user.lastName}
-      onCancel={onCancelAppointment}
-      showDonationPopup={TimeFrameAfterDonationPopup(
-        timeFrameAfterDonationPopupProps
       )}
     />
   );
