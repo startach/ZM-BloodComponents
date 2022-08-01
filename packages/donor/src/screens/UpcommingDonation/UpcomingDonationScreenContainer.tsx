@@ -39,7 +39,7 @@ export default function UpcomingDonationScreenContainer(
       bookedAppointment={props.bookedAppointment}
       fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
-      showDonationPopup={AppointmentUtils.isAppointmentClosed(
+      showDonationPopup={AppointmentUtils.isAppointmentClose(
         props.bookedAppointment
       )}
     />
