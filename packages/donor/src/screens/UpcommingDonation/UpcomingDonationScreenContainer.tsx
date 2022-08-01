@@ -1,8 +1,11 @@
-import { BookedAppointment, Donor } from "@zm-blood-components/common";
+import {
+  BookedAppointment,
+  Donor,
+  AppointmentUtils,
+} from "@zm-blood-components/common";
 import UpcomingDonationScreen from "./UpcomingDonationScreen";
 import * as FirebaseFunctions from "../../firebase/FirebaseFunctions";
 import { useAppointmentToBookStore } from "../../state/Providers";
-import { shouldDisplaySameDayDonationPopup } from "./SameDayDonationUtil";
 import { Navigate } from "react-router-dom";
 import { MainNavigationKeys } from "../../navigation/app/MainNavigationKeys";
 
@@ -36,8 +39,7 @@ export default function UpcomingDonationScreenContainer(
       bookedAppointment={props.bookedAppointment}
       fullName={props.user.firstName + " " + props.user.lastName}
       onCancel={onCancelAppointment}
-      showSameDayDonationPopup={shouldDisplaySameDayDonationPopup(
-        () => new Date(),
+      showDonationPopup={AppointmentUtils.isAppointmentClose(
         props.bookedAppointment
       )}
     />

@@ -24,16 +24,16 @@ export interface UpcomingDonationScreenProps {
   bookedAppointment: BookedAppointment;
   fullName: string;
   onCancel: () => Promise<void>;
-  showSameDayDonationPopup: boolean;
+  showDonationPopup: boolean;
 }
 
 export default function UpcomingDonationScreen({
   fullName,
   onCancel,
   bookedAppointment,
-  showSameDayDonationPopup,
+  showDonationPopup,
 }: UpcomingDonationScreenProps) {
-  const [showPopup, setShowPopup] = useState(showSameDayDonationPopup);
+  const [showPopup, setShowPopup] = useState(showDonationPopup);
   const phoneNumber = getHospitalPhoneNumber(bookedAppointment.hospital);
 
   return (
@@ -93,8 +93,8 @@ export default function UpcomingDonationScreen({
         image={Cancellation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים היום! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את קיום
-          התור בטלפון
+          נרשמת לתור שמתקיים ממש בקרוב! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את
+          קיום התור בטלפון
           <AnchorTag
             linkName="coordinator_phone"
             href={"tel:" + phoneNumber}
@@ -111,20 +111,18 @@ export default function UpcomingDonationScreen({
 function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
 
-  let buttonApproveText = "";
   let content = "";
   let onApprovedContent = "";
   switch (props.hospital) {
     case Hospital.BEILINSON:
-      content = "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון";
-      buttonApproveText = "התקשר למתאמת התרומות";
+      content =
+        "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052, או לשלוח הודעה בוואטסאפ לרכז שלך עם מיקום וזמני האיסוף";
       onApprovedContent = LinkUtils.getPhoneCall("03-9376052");
       break;
 
     default:
       content =
         "ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף";
-      buttonApproveText = "בקשת הסעה";
       onApprovedContent = LinkUtils.getWhatsAppLinkWithText(
         `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
           props.hospital
@@ -141,7 +139,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
-        buttonApproveText={buttonApproveText}
+        buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {
