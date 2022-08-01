@@ -2,13 +2,13 @@ import { AppointmentStatus, BookedAppointment, Hospital } from "./index";
 import { isAppointmentClosed } from "./AppointmentUtils";
 
 describe("Upcoming donation popup", function () {
-  const tempDate = 1658944904; // A date to compare with
+  const currentDate = new Date().getTime();
   const oneDayInMillis = 24 * 60 * 60 * 1000; // 1 day (24 hours) in milliseconds
   const threeDaysInMillis = 259200000; // 3 days (72 hours) in milliseconds
   const bookedAppointment = {
     id: "id",
-    donationStartTimeMillis: tempDate,
-    bookingTimeMillis: tempDate,
+    donationStartTimeMillis: currentDate,
+    bookingTimeMillis: currentDate,
     donorId: "donorId",
     status: AppointmentStatus.BOOKED,
     hospital: Hospital.TEL_HASHOMER,
@@ -19,7 +19,7 @@ describe("Upcoming donation popup", function () {
     expect(
       isAppointmentClosed({
         ...bookedAppointment,
-        donationStartTimeMillis: tempDate + threeDaysInMillis,
+        donationStartTimeMillis: currentDate + threeDaysInMillis,
       })
     ).toBeFalsy();
   });
@@ -28,7 +28,7 @@ describe("Upcoming donation popup", function () {
     expect(
       isAppointmentClosed({
         ...bookedAppointment,
-        bookingTimeMillis: tempDate - oneDayInMillis,
+        bookingTimeMillis: currentDate - oneDayInMillis,
       })
     ).toBeFalsy();
   });
@@ -37,8 +37,8 @@ describe("Upcoming donation popup", function () {
     expect(
       isAppointmentClosed({
         ...bookedAppointment,
-        donationStartTimeMillis: tempDate + 100,
-        bookingTimeMillis: tempDate - 2_000,
+        donationStartTimeMillis: currentDate + 100,
+        bookingTimeMillis: currentDate - 2_000,
       })
     ).toBeTruthy();
   });
