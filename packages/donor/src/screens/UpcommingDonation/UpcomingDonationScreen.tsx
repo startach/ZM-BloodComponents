@@ -93,8 +93,8 @@ export default function UpcomingDonationScreen({
         image={Cancellation}
       >
         <div className={styles.popupContent}>
-          נרשמת לתור שמתקיים ב-48 השעות הקרובות! כדאי מאוד להתקשר למתאמ/ת כדי
-          לוודא את קיום התור בטלפון
+          נרשמת לתור שמתקיים ממש בקרוב! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את
+          קיום התור בטלפון
           <AnchorTag
             linkName="coordinator_phone"
             href={"tel:" + phoneNumber}
@@ -111,7 +111,6 @@ export default function UpcomingDonationScreen({
 function NeedRideButton(props: { hospital: Hospital }) {
   const [open, setOpen] = React.useState(false);
 
-  let buttonApproveText = "";
   let content = "";
   let onApprovedContent = "";
   switch (props.hospital) {
@@ -140,7 +139,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         name="ask_for_a_ride"
         open={open}
         title="אין לך איך להגיע?"
-        buttonApproveText={buttonApproveText}
+        buttonApproveText="בקשת הסעה"
         goBackText="בעצם לא צריך"
         onBack={() => setOpen(false)}
         onApproved={() => {

@@ -5,10 +5,10 @@ export function isManualDonor(donorId: string) {
   return donorId === MANUAL_DONOR_ID;
 }
 
-export function isAppointmentClosed({
+export function isAppointmentClose({
   ...bookedAppointment
 }: BookedAppointment) {
-  const DAYS_LIMIT = 2;
+  const DAYS_LIMIT = 2; // Days between the donation date and the current day date (1 = 24 hours, 2 = 48 hours, ...)
   const currentDayTime = new Date();
   const numberOfDaysBetweenDates = DateUtils.getNumberOfDaysBetweenDates(
     bookedAppointment.donationStartTimeMillis,
