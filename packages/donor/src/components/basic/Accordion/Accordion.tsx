@@ -7,11 +7,11 @@ export interface Panel {
   link?: string;
 }
 
-interface Accordion {
+export interface Accordion {
   accordionPanels: Panel[];
 }
 
-const Accordion = ({ accordionPanels }: Accordion) => {
+function Accordion({ accordionPanels }: Accordion) {
   const [expandedPanel, setExpandedPanel] = useState<string | false>(false);
 
   const handlePanelChange = (isExpanded: boolean, panel: string) => {

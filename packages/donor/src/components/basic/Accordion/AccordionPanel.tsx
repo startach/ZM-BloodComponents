@@ -10,7 +10,7 @@ import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
 import AnchorTag from "../AnchorTag";
 import { Panel } from "./Accordion";
 
-interface AccordionPanel {
+export interface AccordionPanel {
   expandedPanel: string | false;
   panelData: Panel;
   summaryParagraph: string;
@@ -18,13 +18,13 @@ interface AccordionPanel {
   handlePanelChange: any;
 }
 
-const AccordionPanel = ({
+function AccordionPanel({
   expandedPanel,
   panelData,
   summaryParagraph,
   panelTitle,
   handlePanelChange,
-}: AccordionPanel) => {
+}: AccordionPanel) {
   return (
     <>
       <AccordionMui
