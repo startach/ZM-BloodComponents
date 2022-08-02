@@ -3,7 +3,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  Container,
 } from "@mui/material";
 import styles from "./Accordion.module.scss";
 import { ReactComponent as MinusIcon } from "../../../assets/icons/minus.svg";
