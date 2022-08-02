@@ -4,7 +4,7 @@ import ZMScreen from "../../components/basic/ZMScreen";
 import { questionsAnswer } from "./questions";
 import styles from "./QuestionsAndAnswersScreen.module.scss";
 
-const QuestionsAndAnswersScreen = () => {
+function QuestionsAndAnswersScreen() {
   return (
     <ZMScreen hasBackButton title="שאלות נפוצות">
       <div className={styles.imageContainer}>
@@ -29,6 +29,6 @@ const QuestionsAndAnswersScreen = () => {
       <Accordion accordionPanels={questionsAnswer} />
     </ZMScreen>
   );
-};
+}
 
 export default QuestionsAndAnswersScreen;

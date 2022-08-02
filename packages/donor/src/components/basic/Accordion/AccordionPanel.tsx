@@ -77,6 +77,6 @@ function AccordionPanel({
       </AccordionMui>
     </>
   );
-};
+}
 
 export default AccordionPanel;

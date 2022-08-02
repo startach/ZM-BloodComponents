@@ -32,6 +32,6 @@ function Accordion({ accordionPanels }: Accordion) {
       ))}
     </Container>
   );
-};
+}
 
 export default Accordion;
