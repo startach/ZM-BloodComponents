@@ -21,6 +21,7 @@ import { ReactComponent as SimpleWhatsapp } from "../../assets/icons/simple-what
 import { ReactComponent as ProfileIcon } from "../../assets/icons/profile-icon.svg";
 import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon.svg";
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
+import { ReactComponent as QuestionMarkIcon } from "../../assets/icons/questionmark.svg";
 import { signOut } from "../../screens/authentication/FirebaseAuthentication";
 import { AnalyticsButtonType, isProduction } from "@zm-blood-components/common";
 import IconButton from "../basic/IconButton";
@@ -122,6 +123,12 @@ export default function AppHeader({
             title={"משוב"}
             onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
             icon={<FeedBackIcon />}
+          />
+          <MenuItem
+            name="questions_and_answers"
+            title={"שאלות נפוצות"}
+            onClick={() => navigate(MainNavigationKeys.QuestionsAndAnswers)}
+            icon={<QuestionMarkIcon />}
           />
           <MenuItem
             name="about"
