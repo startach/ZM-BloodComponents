@@ -1,7 +1,7 @@
 import { Container, Typography } from "@mui/material";
 import Accordion from "../../components/basic/Accordion/Accordion";
 import ZMScreen from "../../components/basic/ZMScreen";
-import { questionsAnswer } from "./questions";
+import { faqsData } from "./questions";
 import styles from "./QuestionsAndAnswersScreen.module.scss";
 
 function QuestionsAndAnswersScreen() {
@@ -26,7 +26,7 @@ function QuestionsAndAnswersScreen() {
           </Typography>
         </Container>
       </div>
-      <Accordion accordionPanels={questionsAnswer} />
+      <Accordion accordionPanels={faqsData} />
     </ZMScreen>
   );
 }

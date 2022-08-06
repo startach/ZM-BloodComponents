@@ -8,7 +8,7 @@ export enum MainNavigationKeys {
   Contact = "/contact",
   Approve = "/approve",
   Unsubscribe = "/unsubscribe",
-  QuestionsAndAnswers = "/qa", // TODO: Change name later (temp name for now)
+  QuestionsAndAnswers = "/faqs",
 
   // Authentication
   Login = "/login",

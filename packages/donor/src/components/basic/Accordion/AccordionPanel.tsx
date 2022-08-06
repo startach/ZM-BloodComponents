@@ -10,35 +10,31 @@ import { ReactComponent as PlusIcon } from "../../../assets/icons/plus.svg";
 import AnchorTag from "../AnchorTag";
 import { Panel } from "./Accordion";
 
-interface IAccordionPanel {
-  expandedPanel: string | false;
-  panelData: Panel;
-  summaryParagraph: string;
-  panelTitle: string;
-  handlePanelChange: any;
+interface AccordionPanelProps {
+  expandedPanel: string | undefined;
+  panel: Panel;
+  handlePanelChange: (isExpanded: boolean, panelId: string) => void;
 }
 
 function AccordionPanel({
   expandedPanel,
-  panelData,
-  summaryParagraph,
-  panelTitle,
+  panel,
   handlePanelChange,
-}: IAccordionPanel) {
+}: AccordionPanelProps) {
   return (
     <>
       <AccordionMui
-        sx={expandedPanel === panelTitle ? { bgcolor: "#F0F0F0" } : {}}
+        sx={expandedPanel === panel._id ? { bgcolor: "#F0F0F0" } : {}}
         disableGutters
         elevation={0}
-        expanded={expandedPanel === panelTitle}
-        onChange={(e, isExpanded) => handlePanelChange(isExpanded, panelTitle)}
+        expanded={expandedPanel === panel._id}
+        onChange={(e, isExpanded) => handlePanelChange(isExpanded, panel._id)}
       >
         <AccordionSummary
-          id={`${panelTitle}-header`}
-          aria-controls={`${panelTitle}-content`}
+          id={`${panel._id}-header`}
+          aria-controls={`${panel._id}-content`}
           expandIcon={
-            expandedPanel === panelTitle ? (
+            expandedPanel === panel._id ? (
               <MinusIcon className={styles.svgIcon} fill="#c7007d" />
             ) : (
               <PlusIcon />
@@ -47,9 +43,9 @@ function AccordionPanel({
         >
           <Typography
             variant="subtitle1"
-            sx={expandedPanel === panelTitle ? { color: "#c7007d" } : {}}
+            sx={expandedPanel === panel._id ? { color: "#c7007d" } : {}}
           >
-            {summaryParagraph}
+            {panel.title}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -57,14 +53,14 @@ function AccordionPanel({
             variant="body2"
             sx={{ display: "flex", flexDirection: "column" }}
           >
-            {panelData.description}
-            {panelData.link && (
+            {panel.description}
+            {panel.link && (
               <span>
                 אפשר לראות את זה&nbsp;
                 <AnchorTag
                   className={styles.anchorTag}
-                  href={panelData.link}
-                  linkName={panelData.link}
+                  href={panel.link}
+                  linkName={panel.link}
                   target="_blank"
                   rel="noreferrer"
                 >

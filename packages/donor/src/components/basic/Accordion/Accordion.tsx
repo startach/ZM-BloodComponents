@@ -3,19 +3,23 @@ import { Container } from "@mui/material";
 import AccordionPanel from "./AccordionPanel";
 
 export interface Panel {
+  _id: string;
+  title: string;
   description: string;
   link?: string;
 }
 
-interface IAccordion {
+interface AccordionProps {
   accordionPanels: Panel[];
 }
 
-function Accordion({ accordionPanels }: IAccordion) {
-  const [expandedPanel, setExpandedPanel] = useState<string | false>(false);
+function Accordion({ accordionPanels }: AccordionProps) {
+  const [expandedPanel, setExpandedPanel] = useState<string | undefined>(
+    undefined
+  );
 
-  const handlePanelChange = (isExpanded: boolean, panel: string) => {
-    setExpandedPanel(isExpanded ? panel : false);
+  const handlePanelChange = (isExpanded: boolean, panelId: string) => {
+    setExpandedPanel(isExpanded ? panelId : undefined);
   };
 
   return (
@@ -24,10 +28,8 @@ function Accordion({ accordionPanels }: IAccordion) {
         <AccordionPanel
           key={idx}
           expandedPanel={expandedPanel}
-          panelData={panel}
-          summaryParagraph={"שאלה נפוצה"}
+          panel={panel}
           handlePanelChange={handlePanelChange}
-          panelTitle={`panel${idx}`}
         />
       ))}
     </Container>
