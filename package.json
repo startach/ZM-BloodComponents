@@ -15,7 +15,7 @@
   "scripts": {
     "-------------------COMMON-------------------------": "",
     "build-common": "yarn workspace @zm-blood-components/common build",
-    "style": "yarn run prettier --write . ",
+    "style": "yarn run prettier --write .",
     "-------------------DONOR-------------------------": "",
     "start-donor": "yarn workspace @zm-blood-components/donor start",
     "storybook-donor": "yarn workspace @zm-blood-components/donor storybook",

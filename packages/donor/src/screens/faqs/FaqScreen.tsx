@@ -42,15 +42,15 @@ function FaqScreen() {
           body={
             <Typography variant="body2">
               אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני
-              משפחותיהם&nbsp;
+              משפחותיהם{" "}
               <AnchorTag
                 linkName="zm_faq1"
                 href="https://zichron.org"
                 className={styles.anchorTag}
               >
                 אתרנו
-              </AnchorTag>
-              &nbsp;בדיקה בדיקה
+              </AnchorTag>{" "}
+              בדיקה בדיקה
             </Typography>
           }
           handlePanelChange={handlePanelChange}
@@ -60,15 +60,15 @@ function FaqScreen() {
           title={"שאלה חדשה 2"}
           body={
             <Typography variant="body2">
-              אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם&nbsp;
+              אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם{" "}
               <AnchorTag
                 linkName="zm_website"
                 href="https://zichron.org"
                 className={styles.anchorTag}
               >
                 אתרנו
-              </AnchorTag>
-              &nbsp;בדיקה כדכד
+              </AnchorTag>{" "}
+              ;בדיקה כדכד
             </Typography>
           }
           handlePanelChange={handlePanelChange}

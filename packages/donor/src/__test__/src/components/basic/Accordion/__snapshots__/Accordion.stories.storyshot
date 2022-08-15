@@ -315,7 +315,8 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 emotion-10"
                 >
-                  אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם 
+                  אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם
+                   
                   <a
                     className="anchorTag"
                     href="https://zichron.org"
@@ -323,7 +324,8 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                   >
                     אתרנו
                   </a>
-                   בדיקה בדיקה
+                   
+                  ;בדיקה בדיקה
                 </p>
               </div>
             </div>
@@ -398,7 +400,8 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 emotion-10"
                 >
-                  אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם 
+                  אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם
+                   
                   <a
                     className="anchorTag"
                     href="https://zichron.org"
@@ -406,7 +409,8 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                   >
                     אתרנו
                   </a>
-                   בדיקה כדכד
+                   
+                  בדיקה כדכד
                 </p>
               </div>
             </div>
