@@ -14,8 +14,9 @@ export default {
 
 export const Default = () => {
   // const [checked, setChecked] = useState(false); => TODO: Analytics
-  const [expandedPanel, setExpandedPanel] =
-    useState<string | undefined>(undefined);
+  const [expandedPanel, setExpandedPanel] = useState<string | undefined>(
+    undefined
+  );
 
   const handlePanelChange = (isExpanded: boolean, panelId: string) => {
     setExpandedPanel(isExpanded ? panelId : undefined);
