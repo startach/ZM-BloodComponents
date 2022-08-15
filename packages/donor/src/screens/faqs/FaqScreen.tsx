@@ -7,8 +7,9 @@ import AccordionPanel from "../../components/basic/Accordion/AccordionPanel";
 import AnchorTag from "../../components/basic/AnchorTag";
 
 function FaqScreen() {
-  const [expandedPanel, setExpandedPanel] =
-    useState<string | undefined>(undefined);
+  const [expandedPanel, setExpandedPanel] = useState<string | undefined>(
+    undefined
+  );
 
   const handlePanelChange = (isExpanded: boolean, panelId: string) => {
     setExpandedPanel(isExpanded ? panelId : undefined);
