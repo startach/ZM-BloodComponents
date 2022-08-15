@@ -1,5 +1,10 @@
+import { Typography } from "@mui/material";
 import { Meta } from "@storybook/react";
+import AnchorTag from "../AnchorTag";
 import Accordion from "./Accordion";
+import AccordionPanel from "./AccordionPanel";
+import styles from "./Accordion.module.scss";
+import { useState } from "react";
 
 export default {
   component: Accordion,
@@ -9,48 +14,64 @@ export default {
 
 export const Default = () => {
   // const [checked, setChecked] = useState(false); => TODO: Analytics
+  const [expandedPanel, setExpandedPanel] =
+    useState<string | undefined>(undefined);
 
-  const questionsMockData = [
-    {
-      _id: "1",
-      title: "titleTest",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-      link: "www.google.com",
-    },
-    {
-      _id: "2",
-      title: "titleTest2",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-    },
-    {
-      _id: "3",
-      title: "titleTest3",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-      link: "www.google.com",
-    },
-    {
-      _id: "4",
-      title: "titleTest4",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-    },
-    {
-      _id: "5",
-      title: "titleTest5",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-      link: "www.google.com",
-    },
-    {
-      _id: "6",
-      title: "titleTest6",
-      description:
-        "ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר",
-    },
-  ];
+  const handlePanelChange = (isExpanded: boolean, panelId: string) => {
+    setExpandedPanel(isExpanded ? panelId : undefined);
+  };
 
-  return <Accordion accordionPanels={questionsMockData} />;
+  return (
+    <Accordion>
+      <AccordionPanel
+        expandedPanel={expandedPanel}
+        title={"שאלה חדשה"}
+        body={
+          <Typography variant="body2">
+            אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני
+            משפחותיהם&nbsp;
+            <AnchorTag
+              linkName="zm_faq1"
+              href="https://zichron.org"
+              className={styles.anchorTag}
+            >
+              אתרנו
+            </AnchorTag>
+            &nbsp;בדיקה בדיקה
+          </Typography>
+        }
+        handlePanelChange={handlePanelChange}
+      />
+      <AccordionPanel
+        expandedPanel={expandedPanel}
+        title={"שאלה חדשה 2"}
+        body={
+          <Typography variant="body2">
+            אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם&nbsp;
+            <AnchorTag
+              linkName="zm_website"
+              href="https://zichron.org"
+              className={styles.anchorTag}
+            >
+              אתרנו
+            </AnchorTag>
+            &nbsp;בדיקה כדכד
+          </Typography>
+        }
+        handlePanelChange={handlePanelChange}
+      />
+      <AccordionPanel
+        expandedPanel={expandedPanel}
+        title={"לורם"}
+        body={
+          <Typography variant="body2">
+            לורם לורם איפסום, בדיקה
+            <br />
+            בדיקה
+          </Typography>
+        }
+        handlePanelChange={handlePanelChange}
+      />
+    </Accordion>
+  );
 };

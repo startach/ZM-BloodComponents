@@ -125,9 +125,9 @@ export default function AppHeader({
             icon={<FeedBackIcon />}
           />
           <MenuItem
-            name="questions_and_answers"
+            name="faqs"
             title={"שאלות נפוצות"}
-            onClick={() => navigate(MainNavigationKeys.QuestionsAndAnswers)}
+            onClick={() => navigate(MainNavigationKeys.Faqs)}
             icon={<QuestionMarkIcon />}
           />
           <MenuItem

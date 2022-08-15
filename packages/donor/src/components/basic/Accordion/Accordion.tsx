@@ -1,37 +1,20 @@
-import { useState } from "react";
+import { ReactNode } from "react";
 import { Container } from "@mui/material";
-import AccordionPanel from "./AccordionPanel";
 
 export interface Panel {
-  _id: string;
   title: string;
   description: string;
   link?: string;
 }
 
 interface AccordionProps {
-  accordionPanels: Panel[];
+  children: ReactNode;
 }
 
-function Accordion({ accordionPanels }: AccordionProps) {
-  const [expandedPanel, setExpandedPanel] = useState<string | undefined>(
-    undefined
-  );
-
-  const handlePanelChange = (isExpanded: boolean, panelId: string) => {
-    setExpandedPanel(isExpanded ? panelId : undefined);
-  };
-
+function Accordion({ children }: AccordionProps) {
   return (
     <Container maxWidth="lg" sx={{ marginTop: "20px" }}>
-      {accordionPanels.map((panel, idx) => (
-        <AccordionPanel
-          key={idx}
-          expandedPanel={expandedPanel}
-          panel={panel}
-          handlePanelChange={handlePanelChange}
-        />
-      ))}
+      {children}
     </Container>
   );
 }

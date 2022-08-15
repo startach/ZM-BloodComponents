@@ -11,3 +11,12 @@
     )
     0% 0% no-repeat padding-box;
 }
+
+.svgIcon path {
+  fill: var(--donor-secondary);
+}
+
+.anchorTag {
+  color: var(--donor-secondary);
+  text-decoration: none;
+}

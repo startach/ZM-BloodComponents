@@ -235,13 +235,6 @@ exports[`Storyshots Components/Accordion Default 1`] = `
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.43;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 <div
@@ -259,10 +252,10 @@ exports[`Storyshots Components/Accordion Default 1`] = `
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
     >
       <div
-        aria-controls="1-content"
+        aria-controls="שאלה חדשה[object Object]-content"
         aria-expanded={false}
         className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="1-header"
+        id="שאלה חדשה[object Object]-header"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -285,7 +278,7 @@ exports[`Storyshots Components/Accordion Default 1`] = `
           <h6
             className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
           >
-            titleTest
+            שאלה חדשה
           </h6>
         </div>
         <div
@@ -311,9 +304,9 @@ exports[`Storyshots Components/Accordion Default 1`] = `
             className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
           >
             <div
-              aria-labelledby="1-header"
+              aria-labelledby="שאלה חדשה[object Object]-header"
               className="MuiAccordion-region"
-              id="1-content"
+              id="שאלה חדשה[object Object]-content"
               role="region"
             >
               <div
@@ -322,19 +315,15 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 emotion-10"
                 >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
-                  <span>
-                    אפשר לראות את זה 
-                    <a
-                      className="anchorTag"
-                      href="www.google.com"
-                      onClick={[Function]}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      ממש כאן
-                    </a>
-                  </span>
+                  אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם 
+                  <a
+                    className="anchorTag"
+                    href="https://zichron.org"
+                    onClick={[Function]}
+                  >
+                    אתרנו
+                  </a>
+                   בדיקה בדיקה
                 </p>
               </div>
             </div>
@@ -346,10 +335,10 @@ exports[`Storyshots Components/Accordion Default 1`] = `
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
     >
       <div
-        aria-controls="2-content"
+        aria-controls="שאלה חדשה 2[object Object]-content"
         aria-expanded={false}
         className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="2-header"
+        id="שאלה חדשה 2[object Object]-header"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -372,7 +361,7 @@ exports[`Storyshots Components/Accordion Default 1`] = `
           <h6
             className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
           >
-            titleTest2
+            שאלה חדשה 2
           </h6>
         </div>
         <div
@@ -398,9 +387,9 @@ exports[`Storyshots Components/Accordion Default 1`] = `
             className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
           >
             <div
-              aria-labelledby="2-header"
+              aria-labelledby="שאלה חדשה 2[object Object]-header"
               className="MuiAccordion-region"
-              id="2-content"
+              id="שאלה חדשה 2[object Object]-content"
               role="region"
             >
               <div
@@ -409,7 +398,15 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 emotion-10"
                 >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
+                  אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם 
+                  <a
+                    className="anchorTag"
+                    href="https://zichron.org"
+                    onClick={[Function]}
+                  >
+                    אתרנו
+                  </a>
+                   בדיקה כדכד
                 </p>
               </div>
             </div>
@@ -421,10 +418,10 @@ exports[`Storyshots Components/Accordion Default 1`] = `
       className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
     >
       <div
-        aria-controls="3-content"
+        aria-controls="לורם[object Object]-content"
         aria-expanded={false}
         className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="3-header"
+        id="לורם[object Object]-header"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -447,7 +444,7 @@ exports[`Storyshots Components/Accordion Default 1`] = `
           <h6
             className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
           >
-            titleTest3
+            לורם
           </h6>
         </div>
         <div
@@ -473,9 +470,9 @@ exports[`Storyshots Components/Accordion Default 1`] = `
             className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
           >
             <div
-              aria-labelledby="3-header"
+              aria-labelledby="לורם[object Object]-header"
               className="MuiAccordion-region"
-              id="3-content"
+              id="לורם[object Object]-content"
               role="region"
             >
               <div
@@ -484,256 +481,9 @@ exports[`Storyshots Components/Accordion Default 1`] = `
                 <p
                   className="MuiTypography-root MuiTypography-body2 emotion-10"
                 >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
-                  <span>
-                    אפשר לראות את זה 
-                    <a
-                      className="anchorTag"
-                      href="www.google.com"
-                      onClick={[Function]}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      ממש כאן
-                    </a>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
-    >
-      <div
-        aria-controls="4-content"
-        aria-expanded={false}
-        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="4-header"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <div
-          className="MuiAccordionSummary-content emotion-3"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
-          >
-            titleTest4
-          </h6>
-        </div>
-        <div
-          className="MuiAccordionSummary-expandIconWrapper emotion-5"
-        >
-          <svg>
-            plus.svg
-          </svg>
-        </div>
-      </div>
-      <div
-        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
-        style={
-          Object {
-            "minHeight": "0px",
-          }
-        }
-      >
-        <div
-          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
-        >
-          <div
-            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
-          >
-            <div
-              aria-labelledby="4-header"
-              className="MuiAccordion-region"
-              id="4-content"
-              role="region"
-            >
-              <div
-                className="MuiAccordionDetails-root emotion-9"
-              >
-                <p
-                  className="MuiTypography-root MuiTypography-body2 emotion-10"
-                >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
-    >
-      <div
-        aria-controls="5-content"
-        aria-expanded={false}
-        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="5-header"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <div
-          className="MuiAccordionSummary-content emotion-3"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
-          >
-            titleTest5
-          </h6>
-        </div>
-        <div
-          className="MuiAccordionSummary-expandIconWrapper emotion-5"
-        >
-          <svg>
-            plus.svg
-          </svg>
-        </div>
-      </div>
-      <div
-        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
-        style={
-          Object {
-            "minHeight": "0px",
-          }
-        }
-      >
-        <div
-          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
-        >
-          <div
-            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
-          >
-            <div
-              aria-labelledby="5-header"
-              className="MuiAccordion-region"
-              id="5-content"
-              role="region"
-            >
-              <div
-                className="MuiAccordionDetails-root emotion-9"
-              >
-                <p
-                  className="MuiTypography-root MuiTypography-body2 emotion-10"
-                >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
-                  <span>
-                    אפשר לראות את זה 
-                    <a
-                      className="anchorTag"
-                      href="www.google.com"
-                      onClick={[Function]}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      ממש כאן
-                    </a>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
-    >
-      <div
-        aria-controls="6-content"
-        aria-expanded={false}
-        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
-        id="6-header"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onDragLeave={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        onMouseDown={[Function]}
-        onMouseLeave={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <div
-          className="MuiAccordionSummary-content emotion-3"
-        >
-          <h6
-            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
-          >
-            titleTest6
-          </h6>
-        </div>
-        <div
-          className="MuiAccordionSummary-expandIconWrapper emotion-5"
-        >
-          <svg>
-            plus.svg
-          </svg>
-        </div>
-      </div>
-      <div
-        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
-        style={
-          Object {
-            "minHeight": "0px",
-          }
-        }
-      >
-        <div
-          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
-        >
-          <div
-            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
-          >
-            <div
-              aria-labelledby="6-header"
-              className="MuiAccordion-region"
-              id="6-content"
-              role="region"
-            >
-              <div
-                className="MuiAccordionDetails-root emotion-9"
-              >
-                <p
-                  className="MuiTypography-root MuiTypography-body2 emotion-10"
-                >
-                  ולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידוםר
+                  לורם לורם איפסום, בדיקה
+                  <br />
+                  בדיקה
                 </p>
               </div>
             </div>
