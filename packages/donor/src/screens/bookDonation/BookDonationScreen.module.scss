@@ -5,16 +5,12 @@
 }
 
 .welcomeBox {
-  background: transparent
-    linear-gradient(
-      66deg,
+  background: transparent linear-gradient(66deg,
       #fbbae2 0%,
       #fbc5e5 13%,
       #fcd9eb 42%,
       #fce5ee 57%,
-      #fdfdfd 100%
-    )
-    0 0 no-repeat padding-box;
+      #fdfdfd 100%) 0 0 no-repeat padding-box;
   height: 160px;
   display: flex;
   flex-direction: row;
@@ -102,4 +98,19 @@
 .noAppointmentsImage {
   width: 64px;
   margin-bottom: 15px;
+}
+
+// AppointmentPicker
+.availableAppointmentsTitle {
+  color: var(--donor-gray);
+  font-size: 20px;
+}
+
+.appointmentPickerWrapper {
+  padding-top: 20px;
+  border-bottom: 3px solid var(--donor-light-pink);
+}
+
+.appointmentPickerWrapper:last-child {
+  border-bottom: none;
 }
