@@ -158,21 +158,16 @@ function Donations(
 
   return (
     <>
-      <div className={styles.donationDayContainer}>
-        <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
-        {donationDays.map((donationDay) => (
-          <div className={styles.appointmentPickerWrapper}>
-            <AppointmentPicker
-              key={donationDay.day}
-              donationDay={donationDay}
-              onSlotSelected={onSlotSelected}
-              showHospitalName={selectedHospital === ""}
-            />
-          </div>
-        ))}
-      </div>
-
-
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
+      {donationDays.map((donationDay) => (
+        <div key={donationDay.day} className={styles.donationDayWrapper}>
+          <AppointmentPicker
+            donationDay={donationDay}
+            onSlotSelected={onSlotSelected}
+            showHospitalName={selectedHospital === ""}
+          />
+        </div>
+      ))}
       <div className={styles.noMoreAppointments}>
         <img
           className={styles.noAppointmentsImage}
