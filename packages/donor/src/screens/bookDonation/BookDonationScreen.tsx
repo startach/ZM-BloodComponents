@@ -158,8 +158,9 @@ function Donations(
 
   return (
     <>
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       {donationDays.map((donationDay) => (
-        <div className={styles.donationDayContainer} key={donationDay.day}>
+        <div key={donationDay.day} className={styles.donationDayWrapper}>
           <AppointmentPicker
             donationDay={donationDay}
             onSlotSelected={onSlotSelected}
@@ -167,7 +168,6 @@ function Donations(
           />
         </div>
       ))}
-
       <div className={styles.noMoreAppointments}>
         <img
           className={styles.noAppointmentsImage}

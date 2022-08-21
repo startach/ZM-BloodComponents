@@ -29,10 +29,8 @@ function AppointmentPicker({
   )}, ${donationDay.day}`;
 
   return (
-    <div>
-      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
+    <>
       <div className={styles.dayTitle}>{dayString}</div>
-
       {donationDay.hospitalSlots.map((hospitalDaySlots) => (
         <HospitalCard
           key={hospitalDaySlots.hospital + hospitalDaySlots.slots.length}
@@ -46,7 +44,7 @@ function AppointmentPicker({
           }}
         />
       ))}
-    </div>
+    </>
   );
 }
 

@@ -84,7 +84,7 @@
   color: var(--donor-light-black);
 }
 
-.donationDayContainer {
+.donationDayWrapper {
   padding: 20px 20px;
   border-bottom: 3px solid var(--donor-light-pink);
 }
@@ -102,4 +102,20 @@
 .noAppointmentsImage {
   width: 64px;
   margin-bottom: 15px;
+}
+
+// AppointmentPicker
+.availableAppointmentsTitle {
+  color: var(--donor-gray);
+  font-size: 20px;
+  padding: 20px 20px 0px 20px;
+}
+
+.appointmentPickerWrapper {
+  padding-top: 20px;
+  border-bottom: 3px solid var(--donor-light-pink);
+}
+
+.appointmentPickerWrapper:last-child {
+  border-bottom: none;
 }
