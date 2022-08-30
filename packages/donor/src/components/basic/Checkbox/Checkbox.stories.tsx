@@ -13,7 +13,7 @@ export const Default = () => {
 
   return (
     <CheckBox
-      name="read_and_accepted"
+      analytics={false}
       label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
       isChecked={checked}
       onChange={setChecked}

@@ -72,10 +72,11 @@ function HospitalCard(props: {
       )}
       <div className={styles.hospitalCard}>
         <Picker
-          name="available_appointments"
-          getAnalyticsValue={(donationSlot) =>
-            donationSlot.appointmentIds.toString()
-          }
+          analytics={{
+            analyticsName: "available_appointments",
+            getAnalyticsValue: (donationSlot: DonationSlot) =>
+              donationSlot.appointmentIds.toString(),
+          }}
           options={options}
           onChange={props.onSlotSelected}
         />

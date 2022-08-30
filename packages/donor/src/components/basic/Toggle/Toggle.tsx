@@ -1,25 +1,34 @@
 import Switch from "@mui/material/Switch";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 import styles from "./Toggle.module.scss";
 
-export interface CheckboxProps {
-  name: string;
+export type CheckboxProps = {
   label: string;
   value: boolean;
   onChange: (value: boolean) => void;
-}
+  analytics: AnalyticsData;
+};
 
 export default function Toggle({
-  name,
   label,
   value,
   onChange,
+  analytics,
 }: CheckboxProps) {
   const handleChange = (checked: boolean) => {
     onChange(checked);
 
-    reportClick(AnalyticsButtonType.Toggle, name, `${checked}`);
+    if (!analytics) return;
+
+    reportClick(
+      AnalyticsButtonType.Toggle,
+      analytics.analyticsName,
+      `${checked}`
+    );
   };
 
   return (

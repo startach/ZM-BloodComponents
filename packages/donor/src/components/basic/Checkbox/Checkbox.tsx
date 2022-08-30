@@ -1,25 +1,34 @@
 import Checkbox from "@mui/material/Checkbox";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 import styles from "./Checkbox.module.scss";
 
-export interface CheckboxProps {
-  name: string;
+export type CheckboxProps = {
   label: string;
   isChecked: boolean;
   onChange: (checked: boolean) => void;
-}
+  analytics: AnalyticsData;
+};
 
 export default function CheckBox({
-  /** For logging and Analytics */
-  name,
   label,
   isChecked,
   onChange,
+  analytics,
 }: CheckboxProps) {
   const handleChange = (checked: boolean) => {
     onChange(checked);
-    reportClick(AnalyticsButtonType.Checkbox, name, String(checked));
+
+    if (!analytics) return;
+
+    reportClick(
+      AnalyticsButtonType.Checkbox,
+      analytics.analyticsName,
+      String(checked)
+    );
   };
 
   return (

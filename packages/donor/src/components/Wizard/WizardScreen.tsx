@@ -52,9 +52,11 @@ export default function WizardScreen(props: WizardScreenProps) {
 
       <div className={styles.actionButton}>
         <Button
-          analyticsType={AnalyticsButtonType.Wizard}
-          analyticsName={props.pages[currentStep].buttonName}
-          analyticsValue={props.pages[currentStep].buttonValue}
+          analytics={{
+            analyticsName: props.pages[currentStep].buttonName,
+            analyticsType: AnalyticsButtonType.Wizard,
+            analyticsValue: props.pages[currentStep].buttonValue,
+          }}
           title={props.pages[currentStep].buttonText}
           variant={props.pages[currentStep].buttonVariant}
           onClick={onNext}
@@ -81,8 +83,10 @@ function Page(props: { page: WizardPage }) {
 
               {key.button && (
                 <Button
-                  analyticsType={AnalyticsButtonType.Wizard}
-                  analyticsName={key.button.name}
+                  analytics={{
+                    analyticsName: key.button.name,
+                    analyticsType: AnalyticsButtonType.Wizard,
+                  }}
                   title={key.button.text}
                   onClick={key.button.onClick}
                   variant={ButtonVariant.text}

@@ -44,7 +44,7 @@ function FaqScreen() {
             <Typography variant="body2">
               זכרון מנחם בדיקה
               <AnchorTag
-                linkName="zm_faq1"
+                analytics={{ analyticsName: "zm_faq1" }}
                 href="https://zichron.org"
                 className={styles.anchorTag}
               >
@@ -62,7 +62,7 @@ function FaqScreen() {
             <Typography variant="body2">
               זכרון מנחם בדיקה
               <AnchorTag
-                linkName="zm_faq1"
+                analytics={{ analyticsName: "zm_faq1" }}
                 href="https://zichron.org"
                 className={styles.anchorTag}
               >

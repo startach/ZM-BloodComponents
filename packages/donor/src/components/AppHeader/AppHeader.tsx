@@ -23,7 +23,11 @@ import { ReactComponent as FeedBackIcon } from "../../assets/icons/feedback_icon
 import { ReactComponent as FeatherInfo } from "../../assets/icons/feather-info.svg";
 import { ReactComponent as QuestionMarkIcon } from "../../assets/icons/questionmark.svg";
 import { signOut } from "../../screens/authentication/FirebaseAuthentication";
-import { AnalyticsButtonType, isProduction } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+  isProduction,
+} from "@zm-blood-components/common";
 import IconButton from "../basic/IconButton";
 import { reportClick } from "../../Analytics";
 
@@ -50,7 +54,7 @@ export default function AppHeader({
   if (hasBurgerMenu) {
     icon = (
       <IconButton
-        buttonName="burger_menu"
+        analytics={{ analyticsName: "burger_menu" }}
         onClick={() => setShowSideBar((previous) => !previous)}
         className={styles.rightButton}
       >
@@ -60,7 +64,7 @@ export default function AppHeader({
   } else if (hasBackButton) {
     icon = (
       <IconButton
-        buttonName="back"
+        analytics={{ analyticsName: "back" }}
         onClick={onBack ? onBack : () => navigate(-1)}
         className={styles.rightButton}
       >
@@ -89,7 +93,7 @@ export default function AppHeader({
   if (hasBurgerMenu && !loggedIn) {
     loginIcon = (
       <IconButton
-        buttonName="login"
+        analytics={{ analyticsName: "login" }}
         className={styles.login}
         onClick={() => navigate(MainNavigationKeys.Login)}
       >
@@ -107,37 +111,39 @@ export default function AppHeader({
       <Drawer open={showSideBar} onClose={() => setShowSideBar(false)}>
         <List>
           <MenuItem
-            name="profile"
+            analytics={{ analyticsName: "profile" }}
             title={"הפרופיל שלי"}
             onClick={() => navigate(MainNavigationKeys.MyProfile)}
             icon={<ProfileIcon />}
           />
           <MenuItem
-            name="about_process"
+            analytics={{ analyticsName: "about_process" }}
             title={"תהליך התרומה"}
             onClick={() => navigate(MainNavigationKeys.Process)}
             icon={<ZMLineIcon />}
           />
           <MenuItem
-            name="feedback"
+            analytics={{ analyticsName: "feedback" }}
             title={"משוב"}
             onClick={() => window.open("https://forms.gle/xFoUfhx8sNUujJVy8")}
             icon={<FeedBackIcon />}
           />
           <MenuItem
-            name="faqs"
+            analytics={{ analyticsName: "faqs" }}
             title={"שאלות נפוצות"}
             onClick={() => navigate(MainNavigationKeys.Faqs)}
             icon={<QuestionMarkIcon />}
           />
           <MenuItem
-            name="about"
+            analytics={{ analyticsName: "about" }}
             title={"אודות"}
             onClick={() => navigate(MainNavigationKeys.About)}
             icon={<FeatherInfo />}
           />
           <MenuItem
-            name="contact_us"
+            analytics={{
+              analyticsName: "contact_us",
+            }}
             title={"צור קשר"}
             onClick={() => navigate(MainNavigationKeys.Contact)}
             icon={<SimpleWhatsapp />}
@@ -148,7 +154,7 @@ export default function AppHeader({
         {loggedIn ? (
           <>
             <MenuItem
-              name="log_out"
+              analytics={{ analyticsName: "log_out" }}
               title={"התנתקות"}
               onClick={() => {
                 signOut();
@@ -160,7 +166,7 @@ export default function AppHeader({
         ) : (
           <>
             <MenuItem
-              name="login"
+              analytics={{ analyticsName: "login" }}
               title={"כניסה"}
               onClick={() => {
                 navigate(MainNavigationKeys.Login);
@@ -179,17 +185,24 @@ export default function AppHeader({
 }
 
 function MenuItem(props: {
-  name: string;
   title: string;
   onClick: () => void;
   icon: React.ReactNode;
+  analytics: AnalyticsData;
 }) {
   //// TODO Move ListItem to component folder && replace ListItem -> ListItemButton in MUI V5
   //// https://mui.com/blog/material-ui-is-now-mui/
 
   const handleClick = () => {
     props.onClick();
-    reportClick(AnalyticsButtonType.ListItem, "burger_menu_item", props.name);
+
+    if (!props.analytics) return;
+
+    reportClick(
+      AnalyticsButtonType.ListItem,
+      "burger_menu_item",
+      props.analytics.analyticsName
+    );
   };
 
   return (
