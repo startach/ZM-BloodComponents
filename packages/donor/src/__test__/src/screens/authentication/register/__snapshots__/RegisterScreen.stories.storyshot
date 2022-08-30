@@ -45,6 +45,7 @@ exports[`Storyshots Screens/Authentication/Register Screen Default 1`] = `
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 10px;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -403,6 +404,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
   margin-left: -12px;
   padding: 12px;
   font-size: 1.75rem;
+  border-radius: 10px;
 }
 
 .emotion-11::-moz-focus-inner {

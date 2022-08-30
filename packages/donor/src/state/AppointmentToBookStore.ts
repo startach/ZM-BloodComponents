@@ -13,6 +13,7 @@ export class AppointmentToBookStore {
   hospital: Hospital = Hospital.BEILINSON; // Just random value
   donationStartTimeMillis = -1;
   appointmentIds: string[] = [];
+  isSwapAppointment: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -27,10 +28,11 @@ export class AppointmentToBookStore {
     this.donationStartTimeMillis = -1;
   }
 
-  setAppointmentToBook(slot: DonationSlotToBook) {
+  setAppointmentToBook(slot: DonationSlotToBook, isSwapAppointment: boolean) {
     this.hospital = slot.hospital;
     this.donationStartTimeMillis = slot.donationStartTimeMillis;
     this.appointmentIds = slot.appointmentIds;
+    this.isSwapAppointment = isSwapAppointment;
   }
 
   isAppointmentTooCloseToLastDonation(donor: Donor): boolean {

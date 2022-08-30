@@ -3,6 +3,7 @@ import {
   AnalyticsButtonType,
   AnalyticsData,
 } from "@zm-blood-components/common";
+import { RefObject } from "react";
 import { reportClick } from "../../../Analytics";
 
 export type IconButtonProps = {
@@ -11,6 +12,7 @@ export type IconButtonProps = {
   className?: string;
   edge?: false | "start" | "end";
   size?: "small" | "medium" | "large";
+  forwardRef?: RefObject<HTMLButtonElement>;
   analytics: AnalyticsData;
 };
 
@@ -20,6 +22,7 @@ export default function IconButton({
   className,
   edge,
   size,
+  forwardRef,
   analytics,
 }: IconButtonProps) {
   const handleClick = () => {
@@ -32,11 +35,13 @@ export default function IconButton({
 
   return (
     <MuiIconButton
+      sx={{ borderRadius: "10px" }}
       onClick={handleClick}
       children={children}
       className={className}
       edge={edge}
       size={size}
+      ref={forwardRef}
     />
   );
 }

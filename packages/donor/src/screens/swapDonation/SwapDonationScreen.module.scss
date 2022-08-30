@@ -1,0 +1,18 @@
+.swapDonationScreen {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--donor-light-pink);
+}
+
+.swapBanner {
+  background-color: var(--donor-primary);
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 2px 0;
+}
+
+.swapDonationsSelection {
+  overflow-y: scroll;
+}

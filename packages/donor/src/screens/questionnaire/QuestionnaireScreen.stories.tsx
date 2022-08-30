@@ -18,6 +18,7 @@ const props: QuestionnaireScreenProps = {
   goToHomePage: async () => action("goToHomePage")(),
   isLoading: false,
   debugMode: false,
+  isSwapAppointment: false,
 };
 
 export const Beilinson = () => (

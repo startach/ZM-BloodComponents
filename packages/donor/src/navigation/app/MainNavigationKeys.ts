@@ -9,6 +9,7 @@ export enum MainNavigationKeys {
   Approve = "/approve",
   Unsubscribe = "/unsubscribe",
   Faqs = "/faqs",
+  SwapDonation = "/swap",
 
   // Authentication
   Login = "/login",

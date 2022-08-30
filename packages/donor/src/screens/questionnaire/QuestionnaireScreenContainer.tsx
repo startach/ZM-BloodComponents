@@ -30,7 +30,7 @@ export function QuestionnaireScreenContainer(
 ) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<
+  const [bookingError, setBookingError] = useState<
     FunctionsApi.BookAppointmentStatus | undefined
   >();
   const availableAppointmentsStore = useAvailableAppointmentsStore();
@@ -42,7 +42,7 @@ export function QuestionnaireScreenContainer(
   if (props.pendingCompletionAppointmentsCount !== 0) {
     return <Navigate to={MainNavigationKeys.Approve} />;
   }
-  if (props.bookedAppointment) {
+  if (props.bookedAppointment && !appointmentToBookStore.isSwapAppointment) {
     return <Navigate to={MainNavigationKeys.UpcomingDonation} />;
   }
 
@@ -51,8 +51,8 @@ export function QuestionnaireScreenContainer(
   }
 
   const onSuccess = async () => {
+    // TODO Use BookAppointment hook
     setIsLoading(true);
-
     if (debugMode) {
       console.log(
         "Asked to book one of the following appointments: ",
@@ -67,7 +67,7 @@ export function QuestionnaireScreenContainer(
 
     switch (bookAppointmentResponse.status) {
       case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
-        setError(bookAppointmentResponse.status);
+        setBookingError(bookAppointmentResponse.status);
         setIsLoading(false);
         break;
 
@@ -103,13 +103,14 @@ export function QuestionnaireScreenContainer(
       onSuccess={onSuccess}
       isLoading={isLoading}
       debugMode={debugMode}
-      errorCode={error}
       onBack={onBack}
       goToHomePage={async () => {
         appointmentToBookStore.clear();
         refreshAvailableAppointments(availableAppointmentsStore);
         navigate(-1);
       }}
+      isSwapAppointment={appointmentToBookStore.isSwapAppointment}
+      bookingErrorCode={bookingError}
     />
   );
 }

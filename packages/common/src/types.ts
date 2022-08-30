@@ -141,6 +141,7 @@ export enum AnalyticsButtonType {
   Radio = "radio",
   Select = "select",
   Toggle = "toggle",
+  Menu = "menu",
 }
 
 export enum AnalyticsEventType {

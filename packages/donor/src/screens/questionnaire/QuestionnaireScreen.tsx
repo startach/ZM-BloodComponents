@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../../components/basic/Button";
 import styles from "./QuestionnaireScreen.module.scss";
 import Checkbox from "../../components/basic/Checkbox/Checkbox";
 import ZMScreen from "../../components/basic/ZMScreen";
-import Popup from "../../components/basic/Popup";
 import { FunctionsApi, Hospital } from "@zm-blood-components/common";
-import DonationToBookInfo from "../../components/DonationToBook/DonationToBookInfo";
+import DonationInfo from "../../components/DonationInfo/DonationInfo";
 import QuestionnaireQuestions from "./questions/QuestionnaireQuestions";
 import QuestionnaireNotes from "./notes/QuestionnaireNotes";
+import ConfirmSwapAppointmentPopup from "../../components/popups/ConfirmSwapAppointmentPopup";
+import BookingAppointmentErrorPopup from "../../components/popups/BookingAppointmentErrorPopup";
 
 export interface QuestionnaireScreenProps {
   hospital: Hospital;
@@ -15,26 +16,36 @@ export interface QuestionnaireScreenProps {
   onSuccess: () => void;
   isLoading: boolean;
   debugMode: boolean;
-  errorCode?: FunctionsApi.BookAppointmentStatus;
+  bookingErrorCode?: FunctionsApi.BookAppointmentStatus;
   onBack: () => void;
   goToHomePage: () => Promise<void>;
+  isSwapAppointment: boolean;
 }
 
-export default function QuestionnaireScreen({
+export function QuestionnaireScreen({
   hospital,
   donationStartTimeMillis,
   onSuccess,
   onBack,
   isLoading,
   debugMode,
-  errorCode,
   goToHomePage,
+  isSwapAppointment,
+  bookingErrorCode,
 }: QuestionnaireScreenProps) {
   const [areAllAnswersCorrect, setAreAllAnswersCorrect] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [showSwapPopup, setShowSwapPopup] = useState(false);
 
   const isVerified = areAllAnswersCorrect && isConfirmed;
 
+  const handleSuccess = () => {
+    if (isSwapAppointment) {
+      setShowSwapPopup(true);
+    } else {
+      onSuccess();
+    }
+  };
   return (
     <ZMScreen
       title="שאלון התאמה"
@@ -42,9 +53,10 @@ export default function QuestionnaireScreen({
       onBack={onBack}
       className={styles.screen}
     >
-      <DonationToBookInfo
+      <DonationInfo
         donationStartTimeMillis={donationStartTimeMillis}
         hospital={hospital}
+        isExistingAppointment={false}
       />
 
       <div className={styles.questionnaireSection}>
@@ -75,42 +87,25 @@ export default function QuestionnaireScreen({
         <Button
           analytics={{ analyticsName: "continue" }}
           isDisabled={!debugMode && !isVerified}
-          onClick={onSuccess}
+          onClick={handleSuccess}
           title={"המשך"}
           isLoading={isLoading}
         />
       </div>
 
-      <ErrorPopup errorCode={errorCode} goToHomePage={goToHomePage} />
+      <BookingAppointmentErrorPopup
+        errorCode={bookingErrorCode}
+        onApproved={goToHomePage}
+      />
+
+      <ConfirmSwapAppointmentPopup
+        isOpen={showSwapPopup}
+        onApproved={onSuccess}
+        onBack={onBack}
+        onClose={() => setShowSwapPopup(false)}
+      />
     </ZMScreen>
   );
 }
 
-function ErrorPopup(props: {
-  errorCode?: FunctionsApi.BookAppointmentStatus;
-  goToHomePage: () => Promise<void>;
-}) {
-  if (!props.errorCode) {
-    return null;
-  }
-
-  let text = "";
-  switch (props.errorCode) {
-    case FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS:
-      text =
-        'מצטערים, התור הזה הרגע נתפס ע"י תורם/ת אחר/ת. אנא הירשם/י למועד אחר';
-      break;
-  }
-
-  return (
-    <Popup
-      name="reschedule_appointment"
-      title={"אופס!"}
-      buttonApproveText={"בחירת מועד חדש"}
-      open={true}
-      onApproved={props.goToHomePage}
-    >
-      {text}
-    </Popup>
-  );
-}
+export default QuestionnaireScreen;

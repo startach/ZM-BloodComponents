@@ -40,7 +40,7 @@ export function BookDonationScreenContainer({
   }
 
   const onSlotSelected = (donationSlot: DonationSlotToBook) => {
-    appointmentToBookStore.setAppointmentToBook(donationSlot);
+    appointmentToBookStore.setAppointmentToBook(donationSlot, false);
 
     if (isLoggedIn) {
       appointmentToBookStore.isAppointmentTooCloseToLastDonation(
@@ -60,7 +60,7 @@ export function BookDonationScreenContainer({
       setShowWarningPopup(false);
       navigate(MainNavigationKeys.BookDonation);
     },
-    onBClose: () => {
+    onClose: () => {
       setShowWarningPopup(false);
       navigate(MainNavigationKeys.BookDonation);
     },

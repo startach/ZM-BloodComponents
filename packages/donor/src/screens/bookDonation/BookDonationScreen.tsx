@@ -51,6 +51,8 @@ export default function BookDonationScreen({
     return groupDonationDays(filteredResults);
   }, [availableAppointments, selectedHospital]);
 
+  // TODO Use AppointmentSelect
+
   return (
     <ZMScreen hasBurgerMenu className={styles.bookDonationScreen}>
       <div className={styles.welcomeBox}>
