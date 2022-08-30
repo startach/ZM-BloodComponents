@@ -1,7 +1,7 @@
 import Popup from "../basic/Popup";
 import SwapLogo from "../../assets/images/swap_popup.svg";
 
-interface ConfirmSwapAppointmentPopupProps {
+export interface ConfirmSwapAppointmentPopupProps {
   isOpen: boolean;
   onApproved: () => void | Promise<void>;
   onBack: () => void;

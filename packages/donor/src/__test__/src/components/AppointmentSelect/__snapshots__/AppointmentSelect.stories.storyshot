@@ -421,128 +421,121 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-3:focus::-ms-input-p
     <div
       className="donationDayContainer"
     >
-      <div>
-        <div
-          className="availableAppointmentsTitle"
-        >
-          תורים פנויים
-        </div>
-        <div
-          className="dayTitle"
-        >
-          יום שישי, 13/08/2021
-        </div>
-        <div
-          className="hospitalName"
-        >
-          בילינסון
-           
-        </div>
-        <div
-          className="hospitalCard"
-        >
-          <div>
+      <div
+        className="dayTitle"
+      >
+        יום שישי, 13/08/2021
+      </div>
+      <div
+        className="hospitalName"
+      >
+        בילינסון
+         
+      </div>
+      <div
+        className="hospitalCard"
+      >
+        <div>
+          <div
+            className="pickerLabel"
+          />
+          <div
+            className="pickerButtons"
+          >
             <div
-              className="pickerLabel"
-            />
-            <div
-              className="pickerButtons"
+              className="pickerButtonContainer"
             >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  12:00
-                </div>
+                12:00
               </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  13:30
-                </div>
+                13:30
               </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  15:00
-                </div>
+                15:00
               </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  16:30
-                </div>
+                16:30
               </div>
             </div>
           </div>
         </div>
-        <div
-          className="hospitalName"
-        >
-          סורוקה
-           
-        </div>
-        <div
-          className="hospitalCard"
-        >
-          <div>
+      </div>
+      <div
+        className="hospitalName"
+      >
+        סורוקה
+         
+      </div>
+      <div
+        className="hospitalCard"
+      >
+        <div>
+          <div
+            className="pickerLabel"
+          />
+          <div
+            className="pickerButtons"
+          >
             <div
-              className="pickerLabel"
-            />
-            <div
-              className="pickerButtons"
+              className="pickerButtonContainer"
             >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  12:45
-                </div>
+                12:45
               </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  15:45
-                </div>
+                15:45
               </div>
+            </div>
+            <div
+              className="pickerButtonContainer"
+            >
               <div
-                className="pickerButtonContainer"
+                className="pickerButton"
+                color="default"
+                onClick={[Function]}
               >
-                <div
-                  className="pickerButton"
-                  color="default"
-                  onClick={[Function]}
-                >
-                  17:15
-                </div>
+                17:15
               </div>
             </div>
           </div>

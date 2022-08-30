@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   BookedAppointment,
   DateUtils,
@@ -40,6 +40,7 @@ export default function UpcomingDonationScreen({
   showDonationPopup,
 }: UpcomingDonationScreenProps) {
   const navigate = useNavigate();
+  const menuAnchor = useRef(null);
   const [menuAnchorElement, setMenuAnchorElement] =
     React.useState<null | HTMLElement>(null);
   const [showCancelAppointmentPopup, setShowCancelAppointmentPopup] =
@@ -68,14 +69,15 @@ export default function UpcomingDonationScreen({
             <div className={styles.detailsTitleContainer}>
               <div className={styles.detailsTitle}>פרטי התור שלך:</div>
               <IconButton
-                buttonName="open_change_booked_appointment"
-                onClick={(e) => setMenuAnchorElement(e.currentTarget)}
+                analytics={{ analyticsName: "open_change_booked_appointment" }}
+                onClick={() => setMenuAnchorElement(menuAnchor.current)}
+                forwardRef={menuAnchor}
               >
                 <Typography variant="subtitle2">פעולות נוספות</Typography>
                 <KeyboardArrowDown />
               </IconButton>
               <Menu
-                analyticsName={"change_booked_appointment"}
+                analytics={{ analyticsName: "change_booked_appointment" }}
                 anchorEl={menuAnchorElement}
                 open={!!menuAnchorElement}
                 onClose={() => setMenuAnchorElement(null)}

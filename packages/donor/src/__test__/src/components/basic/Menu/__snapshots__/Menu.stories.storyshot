@@ -96,14 +96,6 @@ exports[`Storyshots Components/Menu Default 1`] = `
   font-size: 1.5rem;
 }
 
-.emotion-2 {
-  margin: 0;
-  font-family: Rubik;
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 1.57;
-}
-
 <div
   dir="rtl"
   style={
@@ -143,11 +135,7 @@ exports[`Storyshots Components/Menu Default 1`] = `
           d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
         />
       </svg>
-      <h6
-        className="MuiTypography-root MuiTypography-subtitle2 emotion-2"
-      >
-        פעולות נוספות
-      </h6>
+      פעולות נוספות
     </button>
   </div>
 </div>

@@ -619,238 +619,28 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
         className="donationsCard"
       >
         <div
-          className="availableAppointmentsTitle"
-        >
-          תורים פנויים
-        </div>
-        <div
-          className="donationDayWrapper"
+          className="loading"
         >
           <div
-            className="dayTitle"
+            className="lf-player-container"
           >
-            יום שישי, 13/08/2021
+            <div
+              className="dropAnimation"
+              id="lottie"
+              style={
+                Object {
+                  "background": "transparent",
+                  "margin": "0 auto",
+                  "outline": "none",
+                  "overflow": "hidden",
+                }
+              }
+            />
           </div>
           <div
-            className="hospitalName"
+            className="loadingText"
           >
-            בילינסון
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:00
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="hospitalName"
-          >
-            תל השומר
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:00
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:16
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:33
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    12:50
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    13:06
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    13:23
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="donationDayWrapper"
-        >
-          <div
-            className="dayTitle"
-          >
-            יום שבת, 14/08/2021
-          </div>
-          <div
-            className="hospitalName"
-          >
-            בילינסון
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    15:46
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="hospitalName"
-          >
-            תל השומר
-             
-          </div>
-          <div
-            className="hospitalCard"
-          >
-            <div>
-              <div
-                className="pickerLabel"
-              />
-              <div
-                className="pickerButtons"
-              >
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    16:36
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    16:53
-                  </div>
-                </div>
-                <div
-                  className="pickerButtonContainer"
-                >
-                  <div
-                    className="pickerButton"
-                    color="default"
-                    onClick={[Function]}
-                  >
-                    17:10
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="noMoreAppointments"
-        >
-          <img
-            alt="No more appointments"
-            className="noAppointmentsImage"
-            src="NO Appointments.svg"
-          />
-          <div>
-            זה הכל בינתיים :)
-          </div>
-          <div>
-            התורים מתעדכנים מדי יום אז מומלץ לחזור שוב מחר לבדוק מה התחדש
+            מחפש תורים קרובים...
           </div>
         </div>
       </div>
@@ -1478,130 +1268,128 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
         className="donationsCard"
       >
         <div
-          className="donationDayContainer"
+          className="availableAppointmentsTitle"
         >
-          <div>
-            <div
-              className="availableAppointmentsTitle"
-            >
-              תורים פנויים
-            </div>
-            <div
-              className="dayTitle"
-            >
-              יום שישי, 13/08/2021
-            </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
+          תורים פנויים
+        </div>
+        <div
+          className="donationDayWrapper"
+        >
+          <div
+            className="dayTitle"
+          >
+            יום שישי, 13/08/2021
+          </div>
+          <div
+            className="hospitalName"
+          >
+            בילינסון
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
+            <div>
+              <div
+                className="pickerLabel"
+              />
+              <div
+                className="pickerButtons"
+              >
                 <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
+                  className="pickerButtonContainer"
                 >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      12:00
-                    </div>
+                    12:00
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
+          </div>
+          <div
+            className="hospitalName"
+          >
+            תל השומר
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
+            <div>
+              <div
+                className="pickerLabel"
+              />
+              <div
+                className="pickerButtons"
+              >
                 <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
+                  className="pickerButtonContainer"
                 >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      12:00
-                    </div>
+                    12:00
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      12:16
-                    </div>
+                    12:16
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      12:33
-                    </div>
+                    12:33
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      12:50
-                    </div>
+                    12:50
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      13:06
-                    </div>
+                    13:06
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      13:23
-                    </div>
+                    13:23
                   </div>
                 </div>
               </div>
@@ -1609,97 +1397,90 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-6:focus::-ms-input-p
           </div>
         </div>
         <div
-          className="donationDayContainer"
+          className="donationDayWrapper"
         >
-          <div>
-            <div
-              className="availableAppointmentsTitle"
-            >
-              תורים פנויים
-            </div>
-            <div
-              className="dayTitle"
-            >
-              יום שבת, 14/08/2021
-            </div>
-            <div
-              className="hospitalName"
-            >
-              בילינסון
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
+          <div
+            className="dayTitle"
+          >
+            יום שבת, 14/08/2021
+          </div>
+          <div
+            className="hospitalName"
+          >
+            בילינסון
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
+            <div>
+              <div
+                className="pickerLabel"
+              />
+              <div
+                className="pickerButtons"
+              >
                 <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
+                  className="pickerButtonContainer"
                 >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      15:46
-                    </div>
+                    15:46
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              className="hospitalName"
-            >
-              תל השומר
-               
-            </div>
-            <div
-              className="hospitalCard"
-            >
-              <div>
+          </div>
+          <div
+            className="hospitalName"
+          >
+            תל השומר
+             
+          </div>
+          <div
+            className="hospitalCard"
+          >
+            <div>
+              <div
+                className="pickerLabel"
+              />
+              <div
+                className="pickerButtons"
+              >
                 <div
-                  className="pickerLabel"
-                />
-                <div
-                  className="pickerButtons"
+                  className="pickerButtonContainer"
                 >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      16:36
-                    </div>
+                    16:36
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      16:53
-                    </div>
+                    16:53
                   </div>
+                </div>
+                <div
+                  className="pickerButtonContainer"
+                >
                   <div
-                    className="pickerButtonContainer"
+                    className="pickerButton"
+                    color="default"
+                    onClick={[Function]}
                   >
-                    <div
-                      className="pickerButton"
-                      color="default"
-                      onClick={[Function]}
-                    >
-                      17:10
-                    </div>
+                    17:10
                   </div>
                 </div>
               </div>

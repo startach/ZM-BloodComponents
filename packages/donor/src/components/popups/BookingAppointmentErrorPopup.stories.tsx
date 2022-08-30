@@ -7,19 +7,16 @@ import BookingAppointmentErrorPopup, {
 
 export default {
   component: BookingAppointmentErrorPopup,
-  title: "Components/Popup/BookingAppointmentErrorPopup",
+  title: "Components/Popup/BookingAppointmentErrorPopup DontTest",
 };
 
 const props: BookingAppointmentErrorPopupProps = {
   errorCode: FunctionsApi.BookAppointmentStatus.NO_AVAILABLE_APPOINTMENTS,
-  onApproved: async () => { },
+  onApproved: async () => {},
 };
 
 const Template: Story<BookingAppointmentErrorPopupProps> = (args) => {
-
-  return (
-    <BookingAppointmentErrorPopup {...args} />
-  );
+  return <BookingAppointmentErrorPopup {...args} />;
 };
 
 export const Default = Template.bind({});

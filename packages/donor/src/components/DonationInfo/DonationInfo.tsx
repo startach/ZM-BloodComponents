@@ -2,17 +2,17 @@ import styles from "./DonationInfo.module.scss";
 import Calendar from "../../assets/images/AppointmentCalendar.svg";
 import { DateUtils, Hospital, LocaleUtils } from "@zm-blood-components/common";
 
-export interface DonationToBookInfoProps {
+export interface DonationInfoProps {
   donationStartTimeMillis: number;
   hospital: Hospital;
-  isPreviousAppointmentInfo: boolean;
+  isExistingAppointment: boolean;
 }
 
-export default function DonationToBookInfo({
+export default function DonationInfo({
   donationStartTimeMillis,
   hospital,
-  isPreviousAppointmentInfo,
-}: DonationToBookInfoProps) {
+  isExistingAppointment,
+}: DonationInfoProps) {
   const donationDate = new Date(donationStartTimeMillis);
 
   return (
@@ -20,7 +20,7 @@ export default function DonationToBookInfo({
       <img src={Calendar} alt={"Appointment"} className={styles.illustration} />
       <div className={styles.donationInfoText}>
         <div className={styles.infoTitle}>
-          פרטי התור {isPreviousAppointmentInfo ? "הקיים" : "הנבחר"}
+          פרטי התור {isExistingAppointment ? "הקיים" : "הנבחר"}
         </div>
         <div className={styles.appointmentDetails}>
           {donationDate.toLocaleDateString("he-He", DateUtils.ShortDateFormat)},{" "}

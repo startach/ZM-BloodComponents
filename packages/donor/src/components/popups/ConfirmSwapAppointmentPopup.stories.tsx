@@ -5,7 +5,7 @@ import ConfirmSwapAppointmentPopup from "./ConfirmSwapAppointmentPopup";
 
 export default {
   component: ConfirmSwapAppointmentPopup,
-  title: "Components/Popup/ConfirmSwapAppointmentPopup",
+  title: "Components/Popup/ConfirmSwapAppointmentPopup DontTest",
 };
 
 const Template: Story = () => {
@@ -14,7 +14,7 @@ const Template: Story = () => {
   return (
     <div style={{ margin: 20 }}>
       <Button
-        analyticsName="open"
+        analytics={{ analyticsName: "open" }}
         title={"פתח"}
         onClick={() => setOpen(true)}
       />

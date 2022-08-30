@@ -28,7 +28,7 @@ export interface AppointmentSelectProps {
     PopupProps,
     "open" | "onBack" | "onApproved" | "onClose"
   >;
-  appointmentToHide?: BookedAppointment;
+  appointmentToReplace?: BookedAppointment;
   isSwapAppointment: boolean;
 }
 
@@ -37,37 +37,36 @@ export default function AppointmentSelect({
   isFetching,
   onSlotSelected,
   tooCloseDonationPopupProps,
-  appointmentToHide,
+  appointmentToReplace,
   isSwapAppointment,
 }: AppointmentSelectProps) {
   const [selectedHospital, setSelectedHospital] = useState<Hospital | "">("");
 
   const sortedDonationDays = React.useMemo(() => {
     const appointmentFilter = (appointment: AvailableAppointment) => {
-      const isValidHospital =
-        appointment.hospital === selectedHospital || !selectedHospital;
-
-      let isHiddenAppointment = false;
-
-      if (appointmentToHide) {
-        const isHiddenTime =
-          appointment.donationStartTimeMillis ===
-          appointmentToHide!.donationStartTimeMillis;
-        const isHiddenHospital =
-          appointment.hospital === appointmentToHide!.hospital;
-        isHiddenAppointment = isHiddenTime && isHiddenHospital;
+      if (selectedHospital && appointment.hospital !== selectedHospital) {
+        return false;
       }
-      return isValidHospital && !isHiddenAppointment;
+
+      if (!appointmentToReplace) return true;
+
+      const isHiddenTime =
+        appointment.donationStartTimeMillis ===
+        appointmentToReplace!.donationStartTimeMillis;
+      const isHiddenHospital =
+        appointment.hospital === appointmentToReplace!.hospital;
+
+      return !isHiddenTime || !isHiddenHospital;
     };
     const filteredResults = availableAppointments.filter(appointmentFilter);
     return groupDonationDays(filteredResults);
-  }, [availableAppointments, selectedHospital, appointmentToHide]);
+  }, [availableAppointments, selectedHospital, appointmentToReplace]);
 
   return (
     <>
       <div className={styles.dropdownContainer}>
         <Select
-          analyticsName="show_appointments_in_hospital"
+          analytics={{ analyticsName: "show_appointments_in_hospital" }}
           label={"הצג תורים ב:"}
           className={styles.dropdown}
           options={HospitalUtils.getHospitalOptions(

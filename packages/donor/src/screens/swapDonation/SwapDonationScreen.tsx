@@ -23,7 +23,7 @@ export interface SwapDonationScreenProps {
   >;
   currentAppointment: BookedAppointment;
   onSwapDonation: () => void;
-  bookingErrorCode: FunctionsApi.BookAppointmentStatus | undefined;
+  bookingErrorCode?: FunctionsApi.BookAppointmentStatus;
   refreshAppointments: () => Promise<void>;
   onBack: () => void;
   showSwapPopup: boolean;
@@ -52,7 +52,7 @@ export default function SwapDonationScreen({
       <DonationInfo
         donationStartTimeMillis={currentAppointment.donationStartTimeMillis}
         hospital={currentAppointment.hospital}
-        isPreviousAppointmentInfo={true}
+        isExistingAppointment={true}
       />
       <span className={styles.swapBanner}>להחלפת התור ניתן לבחור מועד אחר</span>
       <div className={styles.swapDonationsSelection}>
@@ -61,7 +61,7 @@ export default function SwapDonationScreen({
           isFetching={isFetching}
           onSlotSelected={onSlotSelected}
           tooCloseDonationPopupProps={tooCloseDonationPopupProps}
-          appointmentToHide={currentAppointment}
+          appointmentToReplace={currentAppointment}
           isSwapAppointment={true}
         />
 

@@ -45,7 +45,6 @@ const props: SwapDonationScreenProps = {
   },
   currentAppointment: currentAppointment,
   onSwapDonation: action("onSwapDonation"),
-  bookingErrorCode: undefined,
   refreshAppointments: async () => {},
   onBack: () => {},
   showSwapPopup: false,

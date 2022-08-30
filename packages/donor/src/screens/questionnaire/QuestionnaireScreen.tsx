@@ -16,7 +16,7 @@ export interface QuestionnaireScreenProps {
   onSuccess: () => void;
   isLoading: boolean;
   debugMode: boolean;
-  bookingErrorCode: FunctionsApi.BookAppointmentStatus | undefined;
+  bookingErrorCode?: FunctionsApi.BookAppointmentStatus;
   onBack: () => void;
   goToHomePage: () => Promise<void>;
   isSwapAppointment: boolean;
@@ -56,7 +56,7 @@ export function QuestionnaireScreen({
       <DonationInfo
         donationStartTimeMillis={donationStartTimeMillis}
         hospital={hospital}
-        isPreviousAppointmentInfo={false}
+        isExistingAppointment={false}
       />
 
       <div className={styles.questionnaireSection}>

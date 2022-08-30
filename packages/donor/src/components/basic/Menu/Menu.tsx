@@ -1,24 +1,34 @@
 import {
   Menu as MuiMenu,
-  MenuProps as MuiMenuProps,
   MenuItem as MuiMenuItem,
 } from "@mui/material";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import { AnalyticsButtonType, AnalyticsData } from "@zm-blood-components/common";
 import { ReactElement } from "react";
 import { reportClick } from "../../../Analytics";
 
-export interface MenuProps extends MuiMenuProps {
-  /** For logging and Analytics */
-  analyticsName: string;
+export interface MenuProps {
   children: ReactElement<MenuItemProps>[];
+  open: boolean;
+  anchorEl: HTMLElement | null;
+  onClose: () => void;
+  analytics: AnalyticsData
 }
 
-export default function Menu({ analyticsName, ...props }: MenuProps) {
+export default function Menu({
+  children,
+  open,
+  anchorEl,
+  onClose,
+  analytics
+}: MenuProps) {
   const handleClick = ({ analyticsValue, onClick }: MenuItemProps) => {
     if (onClick) {
       onClick();
     }
-    reportClick(AnalyticsButtonType.Menu, analyticsName, analyticsValue);
+
+    if (!analytics) return
+
+    reportClick(AnalyticsButtonType.Menu, analytics.analyticsName, analyticsValue);
   };
 
   const mapItem = (item: ReactElement<MenuItemProps>) => {
@@ -31,7 +41,11 @@ export default function Menu({ analyticsName, ...props }: MenuProps) {
     };
   };
 
-  return <MuiMenu {...props}>{props.children.map(mapItem)}</MuiMenu>;
+  return (
+    <MuiMenu open={open} anchorEl={anchorEl} onClose={onClose}>
+      {children.map(mapItem)}
+    </MuiMenu>
+  );
 }
 
 export type MenuItemProps = {

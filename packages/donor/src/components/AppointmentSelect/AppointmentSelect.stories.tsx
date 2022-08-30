@@ -17,7 +17,7 @@ export default {
 
 const appointments = generateAppointments(8);
 const appointmentIndexToHide = 3;
-const appointmentToHide: BookedAppointment = {
+const appointmentToReplace: BookedAppointment = {
   ...appointments[appointmentIndexToHide],
   booked: true,
   donorId: "donor",
@@ -39,7 +39,7 @@ const props: AppointmentSelectProps = {
   availableAppointments: appointments,
   isFetching: false,
   tooCloseDonationPopupProps: tooCloseDonationPopupProps,
-  appointmentToHide: appointmentToHide,
+  appointmentToReplace: appointmentToReplace,
 };
 
 const Template: Story<AppointmentSelectProps> = (args) => (

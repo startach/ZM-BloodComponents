@@ -19,7 +19,6 @@ const props: QuestionnaireScreenProps = {
   isLoading: false,
   debugMode: false,
   isSwapAppointment: false,
-  bookingErrorCode: undefined,
 };
 
 export const Beilinson = () => (

@@ -1,7 +1,7 @@
 import Popup from "../basic/Popup";
 import { FunctionsApi } from "@zm-blood-components/common";
 
-interface BookingAppointmentErrorPopupProps {
+export interface BookingAppointmentErrorPopupProps {
   errorCode?: FunctionsApi.BookAppointmentStatus;
   onApproved: () => Promise<void>;
 }
@@ -23,14 +23,16 @@ export default function BookingAppointmentErrorPopup({
   }
 
   return (
-    <Popup
-      name="reschedule_appointment"
-      title={"אופס!"}
-      buttonApproveText={"בחירת מועד חדש"}
-      open={true}
-      onApproved={onApproved}
-    >
-      {text}
-    </Popup>
+    <div>
+      <Popup
+        name="reschedule_appointment"
+        title={"אופס!"}
+        buttonApproveText={"בחירת מועד חדש"}
+        open={true}
+        onApproved={onApproved}
+      >
+        {text}
+      </Popup>
+    </div>
   );
 }

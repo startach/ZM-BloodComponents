@@ -1,7 +1,6 @@
 import { KeyboardArrowDown } from "@mui/icons-material";
-import { Typography } from "@mui/material";
 import { Story } from "@storybook/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import IconButton from "../IconButton";
 import Menu, { MenuItem, MenuProps } from "./Menu";
 
@@ -11,19 +10,21 @@ export default {
 };
 
 export const Default: Story<MenuProps> = (args) => {
+  const menuAnchor = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   return (
     <div>
       <IconButton
-        buttonName="open_menu"
-        onClick={(e) => setAnchorEl(e.currentTarget)}
+        analytics={{ analyticsName: "open_menu" }}
+        onClick={() => setAnchorEl(menuAnchor.current)}
+        forwardRef={menuAnchor}
       >
         <KeyboardArrowDown />
-        <Typography variant="subtitle2">פעולות נוספות</Typography>
+        פעולות נוספות
       </IconButton>
       <Menu
-        analyticsName={"menu"}
+        analytics={{ analyticsName: "menu" }}
         open={!!anchorEl}
         anchorEl={anchorEl}
         onClose={() => setAnchorEl(null)}
@@ -31,16 +32,16 @@ export const Default: Story<MenuProps> = (args) => {
         <MenuItem
           key={0}
           analyticsValue="cancel_appointment"
-          onClick={() => {}}
+          onClick={() => { }}
         >
-          <Typography variant="body2">ביטול תור</Typography>
+          ביטול תור
         </MenuItem>
         <MenuItem
           key={1}
           analyticsValue="cancel_appointment"
-          onClick={() => {}}
+          onClick={() => { }}
         >
-          <Typography variant="body2">החלפת תור</Typography>
+          החלפת תור
         </MenuItem>
       </Menu>
     </div>

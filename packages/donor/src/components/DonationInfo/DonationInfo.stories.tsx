@@ -1,6 +1,6 @@
 import { Hospital } from "@zm-blood-components/common";
 import DonationInfo, {
-  DonationToBookInfoProps as DonationInfoProps,
+  DonationInfoProps as DonationInfoProps,
 } from "./DonationInfo";
 import { Story } from "@storybook/react";
 
@@ -13,7 +13,7 @@ export default {
 const props: DonationInfoProps = {
   donationStartTimeMillis: 1625823300000,
   hospital: Hospital.ICHILOV,
-  isPreviousAppointmentInfo: false,
+  isExistingAppointment: false,
 };
 
 const Template: Story<DonationInfoProps> = (args) => <DonationInfo {...args} />;
@@ -21,4 +21,10 @@ const Template: Story<DonationInfoProps> = (args) => <DonationInfo {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   ...props,
+};
+
+export const ExistingAppointmentInfo = Template.bind({});
+ExistingAppointmentInfo.args = {
+  ...props,
+  isExistingAppointment: true,
 };
