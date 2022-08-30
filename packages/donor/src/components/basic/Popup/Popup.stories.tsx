@@ -1,11 +1,11 @@
 import { Story } from "@storybook/react";
 import { useState } from "react";
-import ButtonV2 from "../Button/Button";
-import PopupV2, { PopupProps } from "./Popup";
+import Button from "../Button/Button";
+import Popup, { PopupProps } from "./Popup";
 import BloodBankLogo from "../../../assets/icons/blood_bank_logo.svg";
 
 export default {
-  component: PopupV2,
+  component: Popup,
   title: "Components/Popup",
 };
 
@@ -22,12 +22,8 @@ const Template: Story<PopupProps> = (args) => {
 
   return (
     <div style={{ margin: 20 }}>
-      <ButtonV2
-        analyticsName="open"
-        title={"פתח"}
-        onClick={() => setOpen(true)}
-      />
-      <PopupV2 {...args} open={open} onBack={close} onApproved={close} />
+      <Button analytics={false} title={"פתח"} onClick={() => setOpen(true)} />
+      <Popup {...args} open={open} onBack={close} onApproved={close} />
     </div>
   );
 };

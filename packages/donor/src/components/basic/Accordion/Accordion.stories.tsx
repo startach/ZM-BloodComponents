@@ -32,7 +32,7 @@ export const Default = () => {
             אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני
             משפחותיהם{" "}
             <AnchorTag
-              linkName="zm_faq1"
+              analytics={{ analyticsName: "zm_faq1" }}
               href="https://zichron.org"
               className={styles.anchorTag}
             >
@@ -50,7 +50,7 @@ export const Default = () => {
           <Typography variant="body2">
             אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם{" "}
             <AnchorTag
-              linkName="zm_website"
+              analytics={{ analyticsName: "zm_website" }}
               href="https://zichron.org"
               className={styles.anchorTag}
             >

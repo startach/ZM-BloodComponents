@@ -5,7 +5,10 @@ import {
   FormControl,
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 
 type SelectVariant = "standard" | "filled" | "outlined";
@@ -17,9 +20,6 @@ export interface SelectOption<T> {
 }
 
 type SelectProps<T> = {
-  /** For logging and Analytics */
-  analyticsName: string;
-  getAnalyticsValue?: (optionValue: T | undefined) => string;
   id?: string;
   label?: string;
   onChange: (value: T) => void;
@@ -31,6 +31,7 @@ type SelectProps<T> = {
   variant?: SelectVariant;
   options: SelectOption<T>[];
   errorMessage?: string;
+  analytics: AnalyticsData<T | undefined>;
 };
 
 const useSelectStyles = makeStyles({
@@ -41,8 +42,6 @@ const useSelectStyles = makeStyles({
 });
 
 export default function Select<T>({
-  analyticsName,
-  getAnalyticsValue,
   id,
   label,
   onChange,
@@ -54,6 +53,7 @@ export default function Select<T>({
   variant = "standard",
   options,
   errorMessage,
+  analytics,
 }: SelectProps<T>) {
   const classes = useSelectStyles();
 
@@ -61,6 +61,10 @@ export default function Select<T>({
     onChange(
       options.find((option) => String(option.value) === nextValue)?.value!
     );
+
+    if (!analytics) return;
+
+    const { getAnalyticsValue, analyticsName } = analytics;
 
     const reportValue = getAnalyticsValue?.(value) ?? nextValue;
 

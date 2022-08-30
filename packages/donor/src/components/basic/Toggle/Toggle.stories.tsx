@@ -13,7 +13,7 @@ export const Default = () => {
 
   return (
     <Toggle
-      name="get_email_reminders"
+      analytics={false}
       label={"קבלת תזכורות למייל"}
       value={value}
       onChange={setValue}

@@ -132,7 +132,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         מידע חיוני לתרומה
       </div>
       <Picker
-        name="blood_type"
+        analytics={{ analyticsName: "blood_type" }}
         label={"סוג דם"}
         value={bloodType}
         options={BloodTypeUtils.getBloodTypeSelectOptions()}
@@ -149,7 +149,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         <>
           <div className={styles.subtitle}> הגדרות נוספות </div>
           <Toggle
-            name="approve_email_notifications"
+            analytics={{ analyticsName: "approve_email_notifications" }}
             label={"קבלת תזכורות למייל"}
             value={enableEmailNotifications}
             onChange={setEnableEmailNotifications}
@@ -159,7 +159,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
 
       <div className={styles.button}>
         <Button
-          analyticsName="save"
+          analytics={{ analyticsName: "save" }}
           onClick={onSave}
           title={props.buttonText}
           isDisabled={!areAllFieldsValid || !allFieldsHaveValue}

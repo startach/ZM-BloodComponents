@@ -17,7 +17,7 @@ export default function AboutScreen() {
         במגוון דרכים: תמיכה נפשית ורפואית, ימי כיף, מחנות נופש, מרכזי יום,
         סדנאות, תרומות שיער ועוד (היכנסו ל
         <AnchorTag
-          linkName="zm_website"
+          analytics={{ analyticsName: "zm_website" }}
           href="https://zichron.org"
           className={styles.link}
         >
@@ -37,7 +37,7 @@ export default function AboutScreen() {
         <br />
         האפליקציה מפותחת ע"י מתנדבי עמותת{" "}
         <AnchorTag
-          linkName="startach_website"
+          analytics={{ analyticsName: "startach_website" }}
           href="https://www.startach.org.il/"
           className={styles.link}
         >
@@ -45,7 +45,7 @@ export default function AboutScreen() {
         </AnchorTag>
         . מוזמנים לבקר אותנו גם{" "}
         <AnchorTag
-          linkName="startach_facebook"
+          analytics={{ analyticsName: "startach_facebook" }}
           href="https://www.facebook.com/StartAchCom"
           className={styles.link}
         >

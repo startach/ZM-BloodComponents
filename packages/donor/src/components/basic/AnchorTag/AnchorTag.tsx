@@ -1,26 +1,31 @@
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import React from "react";
 import { reportClick } from "../../../Analytics";
 
-export interface AnchorTagProps extends React.HTMLProps<HTMLAnchorElement> {
+export type AnchorTagProps = {
   href: string;
   children: React.ReactNode;
-  /** For logging and Analytics */
-  linkName: string;
-}
+  className: string;
+  analytics: AnalyticsData;
+};
 
 export default function AnchorTag({
-  linkName,
   href,
   children,
-  ...props
+  className,
+  analytics,
 }: AnchorTagProps) {
   const handleClick = () => {
-    reportClick(AnalyticsButtonType.AnchorTag, linkName, href);
+    if (!analytics) return;
+
+    reportClick(AnalyticsButtonType.AnchorTag, analytics.analyticsName, href);
   };
 
   return (
-    <a href={href} onClick={handleClick} {...props}>
+    <a href={href} onClick={handleClick} className={className}>
       {children}
     </a>
   );

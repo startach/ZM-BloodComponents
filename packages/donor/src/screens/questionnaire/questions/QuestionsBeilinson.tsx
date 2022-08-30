@@ -54,35 +54,37 @@ export default function QuestionsBeilinson({
   return (
     <>
       <Question
-        name={Hospital.BEILINSON + "_was_pregnant"}
+        analytics={{ analyticsName: Hospital.BEILINSON + "_was_pregnant" }}
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם היית / הנך בהריון?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
-        name={Hospital.BEILINSON + "_has_already_donated"}
+        analytics={{
+          analyticsName: Hospital.BEILINSON + "_has_already_donated",
+        }}
         value={hasAlreadyDonated}
         onChange={setHasAlreadyDonated}
         label={"האם תרמת דם / טרומבוציטים בעבר?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.BEILINSON + "_is_right_age"}
+        analytics={{ analyticsName: Hospital.BEILINSON + "_is_right_age" }}
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 17?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.BEILINSON + "_is_weight_valid"}
+        analytics={{ analyticsName: Hospital.BEILINSON + "_is_weight_valid" }}
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.BEILINSON + "_is_surgery_valid"}
+        analytics={{ analyticsName: Hospital.BEILINSON + "_is_surgery_valid" }}
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
