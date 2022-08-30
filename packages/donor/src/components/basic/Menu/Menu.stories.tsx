@@ -32,14 +32,14 @@ export const Default: Story<MenuProps> = (args) => {
         <MenuItem
           key={0}
           analyticsValue="cancel_appointment"
-          onClick={() => { }}
+          onClick={() => {}}
         >
           ביטול תור
         </MenuItem>
         <MenuItem
           key={1}
           analyticsValue="cancel_appointment"
-          onClick={() => { }}
+          onClick={() => {}}
         >
           החלפת תור
         </MenuItem>

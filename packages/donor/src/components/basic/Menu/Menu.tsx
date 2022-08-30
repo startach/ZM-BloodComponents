@@ -1,8 +1,8 @@
+import { Menu as MuiMenu, MenuItem as MuiMenuItem } from "@mui/material";
 import {
-  Menu as MuiMenu,
-  MenuItem as MuiMenuItem,
-} from "@mui/material";
-import { AnalyticsButtonType, AnalyticsData } from "@zm-blood-components/common";
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { ReactElement } from "react";
 import { reportClick } from "../../../Analytics";
 
@@ -11,7 +11,7 @@ export interface MenuProps {
   open: boolean;
   anchorEl: HTMLElement | null;
   onClose: () => void;
-  analytics: AnalyticsData
+  analytics: AnalyticsData;
 }
 
 export default function Menu({
@@ -19,16 +19,20 @@ export default function Menu({
   open,
   anchorEl,
   onClose,
-  analytics
+  analytics,
 }: MenuProps) {
   const handleClick = ({ analyticsValue, onClick }: MenuItemProps) => {
     if (onClick) {
       onClick();
     }
 
-    if (!analytics) return
+    if (!analytics) return;
 
-    reportClick(AnalyticsButtonType.Menu, analytics.analyticsName, analyticsValue);
+    reportClick(
+      AnalyticsButtonType.Menu,
+      analytics.analyticsName,
+      analyticsValue
+    );
   };
 
   const mapItem = (item: ReactElement<MenuItemProps>) => {
