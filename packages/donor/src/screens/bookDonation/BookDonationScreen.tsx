@@ -71,7 +71,7 @@ export default function BookDonationScreen({
 
       <div className={styles.dropdownContainer}>
         <Select
-          analyticsName="show_appointments_in_hospital"
+          analytics={{ analyticsName: "show_appointments_in_hospital" }}
           label={"הצג תורים ב:"}
           className={styles.dropdown}
           options={HospitalUtils.getHospitalOptions(
@@ -160,8 +160,9 @@ function Donations(
 
   return (
     <>
+      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
       {donationDays.map((donationDay) => (
-        <div className={styles.donationDayContainer} key={donationDay.day}>
+        <div key={donationDay.day} className={styles.donationDayWrapper}>
           <AppointmentPicker
             donationDay={donationDay}
             onSlotSelected={onSlotSelected}
@@ -169,7 +170,6 @@ function Donations(
           />
         </div>
       ))}
-
       <div className={styles.noMoreAppointments}>
         <img
           className={styles.noAppointmentsImage}

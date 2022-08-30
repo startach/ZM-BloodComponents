@@ -60,42 +60,42 @@ export default function QuestionsIchilov({
   return (
     <>
       <Question
-        name={Hospital.ICHILOV + "_was_pregnant"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_was_pregnant" }}
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם היית / הנך בהריון?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
-        name={Hospital.ICHILOV + "_has_already_donated"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_has_already_donated" }}
         value={hasAlreadyDonated}
         onChange={setHasAlreadyDonated}
         label={"האם תרמת דם / טרומבוציטים בעבר?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.ICHILOV + "_is_right_age"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_is_right_age" }}
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 18?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.ICHILOV + "_is_weight_valid"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_is_weight_valid" }}
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 55 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.ICHILOV + "_is_surgery_valid"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_is_surgery_valid" }}
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.ICHILOV + "_is_tatoo_valid"}
+        analytics={{ analyticsName: Hospital.ICHILOV + "_is_tatoo_valid" }}
         value={isTattooValid}
         onChange={setIsTattooValid}
         label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}

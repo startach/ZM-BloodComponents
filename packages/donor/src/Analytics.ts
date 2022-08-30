@@ -6,14 +6,35 @@ import {
   AnalyticsEventType,
   getMixpanelConfig,
   InputType,
+  AnalyticsReportType,
+  AnalyticsSubTypes,
 } from "@zm-blood-components/common";
 
 import mixpanel from "mixpanel-browser";
 
+const APP_NAME = "donor";
+
+type AnalyticsBasicData = {
+  user_id: string | undefined;
+  screen: string;
+  screen_class: typeof APP_NAME;
+  reportType: AnalyticsReportType;
+};
+
+type AnalyticsFullData = AnalyticsBasicData & {
+  reportSubType: AnalyticsSubTypes;
+  value?: string;
+};
+
+const USE_ANALYTICS = process.env.NODE_ENV === "production";
+
+if (USE_ANALYTICS) {
+  const mixpanelConfig = getMixpanelConfig();
+  mixpanel.init(mixpanelConfig.token, { debug: mixpanelConfig.debug });
+}
+
 const mixpanelConfig = getMixpanelConfig();
 mixpanel.init(mixpanelConfig.token, { debug: mixpanelConfig.debug });
-
-const APP_NAME = "donor";
 
 function getUserId() {
   const auth = getAuth();
@@ -26,82 +47,76 @@ function getPath() {
   return location.pathname;
 }
 
-export function reportScreen(path: string) {
-  mixpanel.track("screen_view", {
+const getBasicData = (type: AnalyticsReportType): AnalyticsBasicData => {
+  return {
     user_id: firebaseAnalytics && getUserId(),
-    screen: path,
+    screen: getPath(),
     screen_class: APP_NAME,
-  });
+    reportType: type,
+  };
+};
+
+export function reportScreen(path: string) {
+  if (!USE_ANALYTICS) return;
+
+  const reportName = `${path}_${AnalyticsReportType.ScreenView}`;
+  const basicData: AnalyticsBasicData = getBasicData(
+    AnalyticsReportType.ScreenView
+  );
+
+  mixpanel.track(reportName, basicData);
 
   if (!firebaseAnalytics) {
     return;
   }
 
-  logEvent(firebaseAnalytics, "screen_view", {
-    user_id: getUserId(),
-    firebase_screen: path,
-    firebase_screen_class: APP_NAME,
-  });
+  logEvent(firebaseAnalytics, reportName, basicData);
 }
 
 export function reportClick(
   buttonType: AnalyticsButtonType,
   buttonName: string,
-  value?: string
+  value?: string | boolean
 ) {
-  const screen = getPath();
+  if (!USE_ANALYTICS) return;
 
-  mixpanel.track("click", {
-    user_id: firebaseAnalytics && getUserId(),
-    screen: screen,
-    screen_class: APP_NAME,
-    type: buttonType,
-    title: buttonName,
-    value: value,
-  });
+  const reportName = buttonName + AnalyticsReportType.Click;
+  const reportData: AnalyticsFullData = {
+    ...getBasicData(AnalyticsReportType.Click),
+    reportSubType: buttonType,
+    value: `${value}`,
+  };
+
+  mixpanel.track(reportName, reportData);
 
   if (!firebaseAnalytics) {
     return;
   }
 
-  logEvent(firebaseAnalytics, `click`, {
-    user_id: getUserId(),
-    firebase_screen: screen,
-    firebase_screen_class: APP_NAME,
-    type: buttonType,
-    title: buttonName,
-    value: value,
-  });
+  logEvent(firebaseAnalytics, reportName, reportData);
 }
 
 export function reportInput(
   inputType: InputType,
   inputName: string,
-  value?: string
+  value?: string | boolean
 ) {
-  const screen = getPath();
+  if (!USE_ANALYTICS) return;
 
-  mixpanel.track("input", {
-    user_id: firebaseAnalytics && getUserId(),
-    screen: screen,
-    screen_class: APP_NAME,
-    type: inputType,
-    title: inputName,
-    value: value,
-  });
+  const reportName = inputName + AnalyticsReportType.Input;
+  const reportData: AnalyticsFullData = {
+    ...getBasicData(AnalyticsReportType.Input),
+    reportSubType: inputType,
+    value: `${value}`,
+  };
+
+  mixpanel.track(reportName, reportData);
 
   if (!firebaseAnalytics) {
     return;
   }
 
-  logEvent(firebaseAnalytics, `input`, {
-    user_id: getUserId(),
-    firebase_screen: screen,
-    firebase_screen_class: APP_NAME,
-    type: inputType,
-    title: inputName,
-    value: value,
-  });
+  logEvent(firebaseAnalytics, reportName, reportData);
 }
 
 export function reportEvent(
@@ -109,26 +124,19 @@ export function reportEvent(
   otherName: string,
   otherValue?: string
 ) {
-  const screen = getPath();
+  if (!USE_ANALYTICS) return;
 
-  mixpanel.track("event", {
-    user_id: firebaseAnalytics && getUserId(),
-    screen: screen,
-    screen_class: APP_NAME,
-    type: otherType,
-    title: otherName,
+  const reportName = otherName + AnalyticsReportType.Event;
+  const reportData: AnalyticsFullData = {
+    ...getBasicData(AnalyticsReportType.Event),
+    reportSubType: otherType,
     value: otherValue,
-  });
+  };
+
+  mixpanel.track(reportName, reportData);
 
   if (!firebaseAnalytics) {
     return;
   }
-  logEvent(firebaseAnalytics, `other`, {
-    user_id: getUserId(),
-    firebase_screen: screen,
-    firebase_screen_class: APP_NAME,
-    type: otherType,
-    title: otherName,
-    value: otherValue,
-  });
+  logEvent(firebaseAnalytics, reportName, reportData);
 }

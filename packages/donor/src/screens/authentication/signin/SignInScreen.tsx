@@ -79,7 +79,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
         <div>
           <Button
-            analyticsName="sign_in"
+            analytics={{ analyticsName: "sign_in" }}
             title="התחברות"
             onClick={signIn}
             isLoading={isLoading}
@@ -88,7 +88,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         </div>
         <div className={styles.textButton}>
           <Button
-            analyticsName="reset_password"
+            analytics={{ analyticsName: "reset_password" }}
             title="שכחתי סיסמה"
             onClick={props.onResetPassword}
             variant={ButtonVariant.text}
@@ -100,7 +100,7 @@ export default function SignInScreen(props: SignInScreenProps) {
       <div className={styles.alternativeContainer}>
         <span className={styles.alternativeTitle}>עדיין לא נרשמת?</span>
         <Button
-          analyticsName="register"
+          analytics={{ analyticsName: "register" }}
           title="הרשמה"
           onClick={props.onRegister}
           variant={ButtonVariant.text}

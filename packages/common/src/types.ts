@@ -146,7 +146,7 @@ export enum AnalyticsButtonType {
 
 export enum AnalyticsEventType {
   Click = "click",
-  PopupChange = "popup_change",
+  PopupVisibility = "popup_visibility",
   ApiConfirmation = "api_confirmation",
 }
 
@@ -156,3 +156,24 @@ export enum InputType {
   Text = "text",
   Phone = "phone",
 }
+
+export enum AnalyticsReportType {
+  ScreenView = "screen_view",
+  Click = "click",
+  Input = "input",
+  Event = "event",
+}
+
+export type AnalyticsSubTypes =
+  | AnalyticsButtonType
+  | InputType
+  | AnalyticsEventType;
+
+type AnalyticsBaseData<T> = {
+  analyticsName: string;
+  analyticsType?: AnalyticsButtonType;
+  analyticsValue?: string | boolean;
+  getAnalyticsValue?: (optionValue: T) => string;
+};
+
+export type AnalyticsData<T = void> = AnalyticsBaseData<T> | false;

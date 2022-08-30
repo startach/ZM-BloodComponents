@@ -77,7 +77,7 @@ export function QuestionnaireScreen({
 
         <div className={styles.confirmButtonContainer}>
           <Checkbox
-            name="all_info_correct"
+            analytics={{ analyticsName: "all_info_correct" }}
             label={"קראתי ומאשר/ת שכל המידע לעיל נכון"}
             isChecked={isConfirmed}
             onChange={setIsConfirmed}
@@ -85,7 +85,7 @@ export function QuestionnaireScreen({
         </div>
 
         <Button
-          analyticsName="continue"
+          analytics={{ analyticsName: "continue" }}
           isDisabled={!debugMode && !isVerified}
           onClick={handleSuccess}
           title={"המשך"}

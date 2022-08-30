@@ -8,6 +8,7 @@ export enum MainNavigationKeys {
   Contact = "/contact",
   Approve = "/approve",
   Unsubscribe = "/unsubscribe",
+  Faqs = "/faqs",
   SwapDonation = "/swap",
 
   // Authentication

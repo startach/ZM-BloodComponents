@@ -54,35 +54,35 @@ export default function QuestionsSoroka({
   return (
     <>
       <Question
-        name={Hospital.SOROKA + "_was_pregnant"}
+        analytics={{ analyticsName: Hospital.SOROKA + "_was_pregnant" }}
         value={wasPregnant}
         onChange={setWasPregnantEver}
         label={"האם היית / הנך בהריון?"}
         options={YesNoNotRelevantOptions}
       />
       <Question
-        name={Hospital.SOROKA + "_is_right_age"}
+        analytics={{ analyticsName: Hospital.SOROKA + "_is_right_age" }}
         value={isRightAge}
         onChange={setIsRightAge}
         label={"האם הנך מעל גיל 18?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.SOROKA + "_is_weight_valid"}
+        analytics={{ analyticsName: Hospital.SOROKA + "_is_weight_valid" }}
         value={isWeightValid}
         onChange={setIsWeightValid}
         label={"האם משקלך מעל 50 ק״ג?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.SOROKA + "_is_surgery_valid"}
+        analytics={{ analyticsName: Hospital.SOROKA + "_is_surgery_valid" }}
         value={isSurgeryValid}
         onChange={setIsSurgeryValid}
         label={"האם עברת ניתוח כירורגי בחצי השנה האחרונה?"}
         options={YesNoOptions}
       />
       <Question
-        name={Hospital.SOROKA + "_is_tatoo_valid"}
+        analytics={{ analyticsName: Hospital.SOROKA + "_is_tatoo_valid" }}
         value={isTattooValid}
         onChange={setIsTattooValid}
         label={"האם עשית קעקוע או עגילים בחצי השנה האחרונה?"}

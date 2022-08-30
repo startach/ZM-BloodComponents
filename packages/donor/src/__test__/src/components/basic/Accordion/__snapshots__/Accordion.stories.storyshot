@@ -1,0 +1,500 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Accordion Default 1`] = `
+.emotion-0 {
+  width: 100%;
+  margin-right: auto;
+  box-sizing: border-box;
+  margin-left: auto;
+  display: block;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-top: 20px;
+}
+
+@media (min-width:600px) {
+  .emotion-0 {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+@media (min-width:1200px) {
+  .emotion-0 {
+    max-width: 1200px;
+  }
+}
+
+.emotion-1 {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: none;
+  position: relative;
+  -webkit-transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  overflow-anchor: none;
+  border-radius: 0;
+}
+
+.emotion-1:before {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  left: 0;
+  height: 1px;
+  content: "";
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.12);
+  -webkit-transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-1:first-of-type:before {
+  display: none;
+}
+
+.emotion-1.Mui-expanded:before {
+  opacity: 0;
+}
+
+.emotion-1.Mui-expanded:first-of-type {
+  margin-top: 0;
+}
+
+.emotion-1.Mui-expanded:last-of-type {
+  margin-bottom: 0;
+}
+
+.emotion-1.Mui-expanded+.emotion-1.Mui-expanded:before {
+  display: none;
+}
+
+.emotion-1.Mui-disabled {
+  background-color: #dadee0;
+}
+
+.emotion-1:first-of-type {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.emotion-1:last-of-type {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+@supports (-ms-ime-align: auto) {
+  .emotion-1:last-of-type {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 48px;
+  padding: 0px 16px;
+  -webkit-transition: min-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: min-height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-2::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-2.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-2 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-2.Mui-focusVisible {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.emotion-2.Mui-disabled {
+  opacity: 0.38;
+}
+
+.emotion-2:hover:not(.Mui-disabled) {
+  cursor: pointer;
+}
+
+.emotion-3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin: 12px 0;
+}
+
+.emotion-4 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: rgba(0, 0, 0, 0.54);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.emotion-5.Mui-expanded {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.emotion-6 {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  visibility: hidden;
+}
+
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.emotion-8 {
+  width: 100%;
+}
+
+.emotion-9 {
+  padding: 8px 16px 16px;
+}
+
+.emotion-10 {
+  margin: 0;
+  font-family: Rubik;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+}
+
+<div
+  dir="rtl"
+  style={
+    Object {
+      "height": "100vh",
+    }
+  }
+>
+  <div
+    className="MuiContainer-root MuiContainer-maxWidthLg emotion-0"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
+    >
+      <div
+        aria-controls="שאלה חדשה[object Object]-content"
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
+        id="שאלה חדשה[object Object]-header"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content emotion-3"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
+          >
+            שאלה חדשה
+          </h6>
+        </div>
+        <div
+          className="MuiAccordionSummary-expandIconWrapper emotion-5"
+        >
+          <svg>
+            plus.svg
+          </svg>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
+        >
+          <div
+            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
+          >
+            <div
+              aria-labelledby="שאלה חדשה[object Object]-header"
+              className="MuiAccordion-region"
+              id="שאלה חדשה[object Object]-content"
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root emotion-9"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2 emotion-10"
+                >
+                  אנו בעמותת "זכרון מנחם" עוסקים בתמיכה בילדים חולי סרטן ובני משפחותיהם
+                   
+                  <a
+                    className="anchorTag"
+                    href="https://zichron.org"
+                    onClick={[Function]}
+                  >
+                    אתרנו
+                  </a>
+                   
+                  ;בדיקה בדיקה
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
+    >
+      <div
+        aria-controls="שאלה חדשה 2[object Object]-content"
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
+        id="שאלה חדשה 2[object Object]-header"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content emotion-3"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
+          >
+            שאלה חדשה 2
+          </h6>
+        </div>
+        <div
+          className="MuiAccordionSummary-expandIconWrapper emotion-5"
+        >
+          <svg>
+            plus.svg
+          </svg>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
+        >
+          <div
+            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
+          >
+            <div
+              aria-labelledby="שאלה חדשה 2[object Object]-header"
+              className="MuiAccordion-region"
+              id="שאלה חדשה 2[object Object]-content"
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root emotion-9"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2 emotion-10"
+                >
+                  אנו בעמותת "זכרון מנחם" עוסקים ובני משפחותיהם
+                   
+                  <a
+                    className="anchorTag"
+                    href="https://zichron.org"
+                    onClick={[Function]}
+                  >
+                    אתרנו
+                  </a>
+                   
+                  בדיקה כדכד
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded emotion-1"
+    >
+      <div
+        aria-controls="לורם[object Object]-content"
+        aria-expanded={false}
+        className="MuiButtonBase-root MuiAccordionSummary-root emotion-2"
+        id="לורם[object Object]-header"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        role="button"
+        tabIndex={0}
+      >
+        <div
+          className="MuiAccordionSummary-content emotion-3"
+        >
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 emotion-4"
+          >
+            לורם
+          </h6>
+        </div>
+        <div
+          className="MuiAccordionSummary-expandIconWrapper emotion-5"
+        >
+          <svg>
+            plus.svg
+          </svg>
+        </div>
+      </div>
+      <div
+        className="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden emotion-6"
+        style={
+          Object {
+            "minHeight": "0px",
+          }
+        }
+      >
+        <div
+          className="MuiCollapse-wrapper MuiCollapse-vertical emotion-7"
+        >
+          <div
+            className="MuiCollapse-wrapperInner MuiCollapse-vertical emotion-8"
+          >
+            <div
+              aria-labelledby="לורם[object Object]-header"
+              className="MuiAccordion-region"
+              id="לורם[object Object]-content"
+              role="region"
+            >
+              <div
+                className="MuiAccordionDetails-root emotion-9"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body2 emotion-10"
+                >
+                  לורם לורם איפסום, בדיקה
+                  <br />
+                  בדיקה
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -9,7 +9,7 @@ const UnsubscribedScreen = () => {
 
   const profileLink = (
     <Button
-      analyticsName="to_profile"
+      analytics={{ analyticsName: "to_profile" }}
       onClick={() => {
         navigate(MainNavigationKeys.BookDonation);
         navigate(MainNavigationKeys.MyProfile);

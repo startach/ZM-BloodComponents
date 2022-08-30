@@ -9,7 +9,7 @@ export default {
 };
 
 const props: ButtonProps = {
-  analyticsName: "approval",
+  analytics: false,
   title: "לאישור לחץ כאן",
   onClick: action("onClick"),
   variant: ButtonVariant.contained,

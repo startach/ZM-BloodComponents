@@ -147,7 +147,7 @@ export default function UpcomingDonationScreen({
           נרשמת לתור שמתקיים ממש בקרוב! כדאי מאוד להתקשר למתאמ/ת כדי לוודא את
           קיום התור בטלפון
           <AnchorTag
-            linkName="coordinator_phone"
+            analytics={{ analyticsName: "coordinator_phone" }}
             href={"tel:" + phoneNumber}
             className={styles.popupPhoneNumber}
           >

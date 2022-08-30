@@ -36,6 +36,7 @@ import DonationApproveScreenContainer from "../screens/donationAproove/DonationA
 import UnsubscribedScreen from "../screens/unsubscribe/UnsubscribedScreen";
 import { reportScreen } from "../Analytics";
 import SwapDonationScreenContainer from "../screens/swapDonation/SwapDonationScreenContainer";
+import QuestionsAndAnswersScreen from "../screens/faqs/FaqScreen";
 
 const MINIMUM_SPLASH_SCREEN_TIME_MILLIS = 2_000;
 
@@ -263,7 +264,6 @@ function DonorRouter() {
         path={MainNavigationKeys.Unsubscribe}
         element={<UnsubscribedScreen />}
       />
-
       <Route
         path={"*"}
         element={
@@ -273,6 +273,10 @@ function DonorRouter() {
             <Navigate to={MainNavigationKeys.OnboardingWizard} />
           )
         }
+      />
+      <Route
+        path={MainNavigationKeys.Faqs}
+        element={<QuestionsAndAnswersScreen />}
       />
     </Routes>
   );

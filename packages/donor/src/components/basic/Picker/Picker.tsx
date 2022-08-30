@@ -1,34 +1,38 @@
-import { SelectOption, AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  SelectOption,
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import styles from "./Picker.module.scss";
 import classNames from "classnames";
 import { reportClick } from "../../../Analytics";
 
 export type PickerProps<T> = {
-  /** For logging and Analytics */
-  name: string;
-  getAnalyticsValue?: (optionValue: T) => string;
   label?: string;
   options: SelectOption<T>[];
   onChange: (value: T) => void;
   value?: T;
   buttonClassName?: string;
+  analytics: AnalyticsData<T>;
 };
 
 export default function Picker<T>({
-  name,
-  getAnalyticsValue,
   label,
   options,
   onChange,
   value,
   buttonClassName,
+  analytics,
 }: PickerProps<T>) {
   const handleClick = (option: SelectOption<T>) => {
     onChange(option!.value);
 
+    if (!analytics) return;
+
+    const { getAnalyticsValue, analyticsName } = analytics;
     const value = getAnalyticsValue?.(option.value) ?? String(option.value);
 
-    reportClick(AnalyticsButtonType.Picker, name, value);
+    reportClick(AnalyticsButtonType.Picker, analyticsName, value);
   };
 
   return (

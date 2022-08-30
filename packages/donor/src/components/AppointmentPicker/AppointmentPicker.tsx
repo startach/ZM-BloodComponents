@@ -29,10 +29,8 @@ function AppointmentPicker({
   )}, ${donationDay.day}`;
 
   return (
-    <div>
-      <div className={styles.availableAppointmentsTitle}>תורים פנויים</div>
+    <>
       <div className={styles.dayTitle}>{dayString}</div>
-
       {donationDay.hospitalSlots.map((hospitalDaySlots) => (
         <HospitalCard
           key={hospitalDaySlots.hospital + hospitalDaySlots.slots.length}
@@ -46,7 +44,7 @@ function AppointmentPicker({
           }}
         />
       ))}
-    </div>
+    </>
   );
 }
 
@@ -74,10 +72,11 @@ function HospitalCard(props: {
       )}
       <div className={styles.hospitalCard}>
         <Picker
-          name="available_appointments"
-          getAnalyticsValue={(donationSlot) =>
-            donationSlot.appointmentIds.toString()
-          }
+          analytics={{
+            analyticsName: "available_appointments",
+            getAnalyticsValue: (donationSlot: DonationSlot) =>
+              donationSlot.appointmentIds.toString(),
+          }}
           options={options}
           onChange={props.onSlotSelected}
         />

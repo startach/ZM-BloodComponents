@@ -1,29 +1,48 @@
+import { IconButton as MuiIconButton } from "@mui/material";
 import {
-  IconButton as MuiIconButton,
-  IconButtonProps as MuiIconButtonProps,
-} from "@mui/material";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
-import { MouseEvent } from "react";
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 
-export interface IconButtonProps extends MuiIconButtonProps {
-  /** For logging and Analytics */
-  buttonName: string;
-}
+export type IconButtonProps = {
+  onClick: () => void;
+  children: React.ReactNode;
+  className?: string;
+  edge?: false | "start" | "end";
+  size?: "small" | "medium" | "large";
+  analytics: AnalyticsData;
+};
 
-export default function IconButton({ buttonName, ...props }: IconButtonProps) {
-  const handleClick = (
-    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
-  ) => {
-    props.onClick?.(e);
-    reportClick(AnalyticsButtonType.IconButton, buttonName);
+export default function IconButton({
+  onClick,
+  children,
+  className,
+  edge,
+  size,
+  analytics,
+}: IconButtonProps) {
+  const handleClick = () => {
+    onClick();
+
+    if (!analytics) return;
+
+    reportClick(AnalyticsButtonType.IconButton, analytics.analyticsName);
   };
 
   return (
+    (
     <MuiIconButton
+     
       sx={{ borderRadius: "10px" }}
       onClick={handleClick}
-      {...props}
+     
+      children={children}
+      className={className}
+      edge={edge}
+      size={size}
+   
     />
+  )
   );
 }

@@ -120,7 +120,7 @@ type ContactLinkProps = {
 const LinkTo: React.FC<ContactLinkProps> = ({ url, text, className }) => {
   return (
     <AnchorTag
-      linkName="contact_link"
+      analytics={{ analyticsName: "contact_link" }}
       className={classNames(styles.link, className)}
       href={url}
     >
@@ -137,7 +137,7 @@ type MailToProps = {
 const MailTo: React.FC<MailToProps> = ({ email, text }) => {
   return (
     <AnchorTag
-      linkName="mail_link"
+      analytics={{ analyticsName: "mail_link" }}
       className={classNames(styles.link, styles.underline)}
       href={`mailto:${email}`}
     >
@@ -154,7 +154,7 @@ type WhatsAppProps = {
 const WhatsApp: React.FC<WhatsAppProps> = ({ link, text }) => {
   return (
     <AnchorTag
-      linkName="whats_app_link"
+      analytics={{ analyticsName: "whats_app_link" }}
       className={classNames(styles.phonelink, styles.underline)}
       href={`${link}`}
     >

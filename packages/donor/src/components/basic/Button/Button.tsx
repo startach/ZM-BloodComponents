@@ -6,6 +6,7 @@ import { reportClick, reportEvent } from "../../../Analytics";
 import {
   AnalyticsButtonType,
   AnalyticsEventType,
+  AnalyticsData,
 } from "@zm-blood-components/common";
 import { Color } from "../../../constants/colors";
 
@@ -24,10 +25,7 @@ export type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   color?: Color;
-  /** For logging and Analytics */
-  analyticsName: string;
-  analyticsValue?: string;
-  analyticsType?: AnalyticsButtonType;
+  analytics: AnalyticsData;
 };
 
 export default function Button({
@@ -38,9 +36,7 @@ export default function Button({
   className,
   isDisabled = false,
   isLoading = false,
-  analyticsName: buttonName,
-  analyticsValue: buttonValue,
-  analyticsType: buttonType,
+  analytics,
 }: ButtonProps) {
   const handleDisabledButtonClick = () => {
     reportEvent(AnalyticsEventType.Click, "disabled_text_button");
@@ -48,11 +44,18 @@ export default function Button({
 
   const handleClick = () => {
     onClick();
+
+    if (!analytics) return;
+
     const detectedButtonType =
       variant === ButtonVariant.text
         ? AnalyticsButtonType.TextButton
         : AnalyticsButtonType.Button;
-    reportClick(buttonType ?? detectedButtonType, buttonName, buttonValue);
+    reportClick(
+      analytics.analyticsType ?? detectedButtonType,
+      analytics.analyticsName,
+      analytics.analyticsValue
+    );
   };
 
   if (variant === ButtonVariant.text) {

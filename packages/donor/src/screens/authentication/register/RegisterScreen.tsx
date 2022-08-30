@@ -62,7 +62,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         />
         <div>
           <Button
-            analyticsName="register"
+            analytics={{ analyticsName: "register" }}
             title="הירשם"
             onClick={register}
             isDisabled={!(email && password)}
@@ -73,7 +73,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
       <div className={styles.alternativeContainer}>
         <span className={styles.alternativeTitle}>כבר נרשמת?</span>
         <Button
-          analyticsName="go_to_sign_in"
+          analytics={{ analyticsName: "go_to_sign_in" }}
           title="התחברות"
           onClick={props.goToSignIn}
           variant={ButtonVariant.text}

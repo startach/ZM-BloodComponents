@@ -1,0 +1,22 @@
+.imageContainer {
+  width: 100%;
+  background: transparent
+    linear-gradient(
+      66deg,
+      #fbbae2 0%,
+      #fbc5e5 13%,
+      #fcd9eb 42%,
+      #fce5ee 57%,
+      #fdfdfd 100%
+    )
+    0% 0% no-repeat padding-box;
+}
+
+.svgIcon path {
+  fill: var(--donor-secondary);
+}
+
+.anchorTag {
+  color: var(--donor-secondary);
+  text-decoration: none;
+}

@@ -9,8 +9,9 @@ export let firebaseAnalytics: Analytics | undefined;
 export function initFirebase() {
   const app = initializeApp(getFirebaseConfig());
   getPerformance(app);
-
-  firebaseAnalytics = getAnalytics();
+  if (process.env.NODE_ENV === "production") {
+    firebaseAnalytics = getAnalytics();
+  }
 }
 
 let loginState = false;

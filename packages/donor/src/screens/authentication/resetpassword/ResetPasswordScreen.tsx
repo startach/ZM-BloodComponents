@@ -61,7 +61,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         />
         <div>
           <Button
-            analyticsName="reset_password"
+            analytics={{ analyticsName: "reset_password" }}
             title="איפוס סיסמה"
             onClick={resetPassword}
             isDisabled={!email}

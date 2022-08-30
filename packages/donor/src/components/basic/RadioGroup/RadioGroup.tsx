@@ -4,7 +4,10 @@ import {
   Radio,
   RadioGroup as MaterialRadioGroup,
 } from "@mui/material";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 import { reportClick } from "../../../Analytics";
 
 export type RadioOption = {
@@ -14,34 +17,35 @@ export type RadioOption = {
 };
 
 type RadioGroupProps = {
-  /** For logging and Analytics */
-  analyticsName: string;
-  getAnalyticsValue?: (optionValue: string | undefined) => string;
   label?: string;
   onChange: (value: string) => void;
   value: string;
   isDisabled?: boolean;
   className?: string;
   options: RadioOption[];
+  analytics: AnalyticsData<string | undefined>;
 };
 
 export default function RadioGroup({
-  analyticsName: name,
-  getAnalyticsValue,
   options,
   label,
   onChange,
   value,
   className,
+  analytics,
 }: RadioGroupProps) {
   const handleChange = (nextValue: string) => {
     onChange(
       options.find((option) => String(option.value) === nextValue)?.value!
     );
 
+    if (!analytics) return;
+
+    const { getAnalyticsValue, analyticsName } = analytics;
+
     const reportValue = getAnalyticsValue?.(value) ?? nextValue;
 
-    reportClick(AnalyticsButtonType.Radio, name, reportValue);
+    reportClick(AnalyticsButtonType.Radio, analyticsName, reportValue);
   };
 
   return (
