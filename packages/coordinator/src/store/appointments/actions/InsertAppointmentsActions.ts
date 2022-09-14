@@ -19,29 +19,32 @@ const MILLIS_IN_WEEK = 7 * 24 * 60 * 60 * 1_000;
 const DEFAULT_WEEKS_TO_FETCH = 4;
 export const clearAndFetchAppointments =
   (hospital: Hospital | undefined, nowMillis: number | Date): ThunkAction =>
-  (dispatch) => {
-    const earliestStartTimeMillis =
-      DateUtils.GetStartOfTheWeek(nowMillis).getTime() -
-      DEFAULT_WEEKS_TO_FETCH * MILLIS_IN_WEEK;
-    const latestStartTimeMillis =
-      DateUtils.GetStartOfTheWeek(nowMillis).getTime() +
-      DEFAULT_WEEKS_TO_FETCH * MILLIS_IN_WEEK -
-      1;
-    dispatch({
-      type: actionTypes.START_FETCHING,
-      hospital,
-      earliestStartTimeMillis,
-      latestStartTimeMillis,
-    });
+    (dispatch) => {
+      const earliestStartTimeMillis =
+        DateUtils.GetStartOfTheWeek(nowMillis).getTime() -
+        DEFAULT_WEEKS_TO_FETCH * MILLIS_IN_WEEK;
+      const latestStartTimeMillis =
+        DateUtils.GetStartOfTheWeek(nowMillis).getTime() +
+        DEFAULT_WEEKS_TO_FETCH * MILLIS_IN_WEEK -
+        1;
 
-    dispatch(
-      fetchAndInsertAppointments(
+      console.table({ timestamps: { earliestStartTimeMillis, latestStartTimeMillis } }) // TODO: Remove before final commit
+
+      dispatch({
+        type: actionTypes.START_FETCHING,
         hospital,
         earliestStartTimeMillis,
-        latestStartTimeMillis
-      )
-    );
-  };
+        latestStartTimeMillis,
+      });
+
+      dispatch(
+        fetchAndInsertAppointments(
+          hospital,
+          earliestStartTimeMillis,
+          latestStartTimeMillis
+        )
+      );
+    };
 
 /*
  * This action will check if the selected week, the one before it and the one
@@ -50,37 +53,37 @@ export const clearAndFetchAppointments =
  */
 export const maybeFetchMoreAppointments =
   (timeInWeek: number): ThunkAction =>
-  (dispatch, getState) => {
-    const hospital = getHospital(getState());
-    if (!hospital) {
-      return;
-    }
+    (dispatch, getState) => {
+      const hospital = getHospital(getState());
+      if (!hospital) {
+        return;
+      }
 
-    const earliestTimeFetched = getEarliestTimeFetched(getState());
-    const latestTimeFetched = getLatestTimeFetched(getState());
+      const earliestTimeFetched = getEarliestTimeFetched(getState());
+      const latestTimeFetched = getLatestTimeFetched(getState());
 
-    if (timeInWeek - MILLIS_IN_WEEK < earliestTimeFetched) {
-      dispatch(
-        fetchAndInsertAppointments(
-          hospital,
-          DateUtils.GetStartOfTheWeek(timeInWeek - MILLIS_IN_WEEK).getTime(),
-          earliestTimeFetched
-        )
-      );
-    }
+      if (timeInWeek - MILLIS_IN_WEEK < earliestTimeFetched) {
+        dispatch(
+          fetchAndInsertAppointments(
+            hospital,
+            DateUtils.GetStartOfTheWeek(timeInWeek - MILLIS_IN_WEEK).getTime(),
+            earliestTimeFetched
+          )
+        );
+      }
 
-    if (timeInWeek + MILLIS_IN_WEEK > latestTimeFetched) {
-      dispatch(
-        fetchAndInsertAppointments(
-          hospital,
-          latestTimeFetched,
-          DateUtils.GetStartOfTheWeek(
-            timeInWeek + 2 * MILLIS_IN_WEEK
-          ).getTime() - 1
-        )
-      );
-    }
-  };
+      if (timeInWeek + MILLIS_IN_WEEK > latestTimeFetched) {
+        dispatch(
+          fetchAndInsertAppointments(
+            hospital,
+            latestTimeFetched,
+            DateUtils.GetStartOfTheWeek(
+              timeInWeek + 2 * MILLIS_IN_WEEK
+            ).getTime() - 1
+          )
+        );
+      }
+    };
 
 const fetchAndInsertAppointments = (
   hospital: Hospital | undefined,
