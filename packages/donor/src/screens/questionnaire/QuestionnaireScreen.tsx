@@ -85,7 +85,7 @@ export function QuestionnaireScreen({
         </div>
 
         <Button
-          analytics={{ analyticsName: "continue" }}
+          analytics={{ analyticsName: "book_appointment" }}
           isDisabled={!debugMode && !isVerified}
           onClick={handleSuccess}
           title={"המשך"}

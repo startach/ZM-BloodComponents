@@ -16,7 +16,7 @@ export default function ConfirmSwapAppointmentPopup({
 }: ConfirmSwapAppointmentPopupProps) {
   return (
     <Popup
-      name="ConfirmSwapAppointment"
+      analytics={{ analyticsName: "ConfirmSwapAppointment" }}
       title={"החלפת תור"}
       buttonApproveText={"כן, אשר תור"}
       open={isOpen}

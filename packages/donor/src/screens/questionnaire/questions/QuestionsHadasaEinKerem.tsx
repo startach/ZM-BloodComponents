@@ -100,7 +100,9 @@ export default function QuestionsHadasaEinKerem({
       />
 
       <Popup
-        name={Hospital.HADASA_EIN_KEREM + "_failed_questionnaire"}
+        analytics={{
+          analyticsName: `${Hospital.HADASA_EIN_KEREM} + "_failed_questionnaire`,
+        }}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"

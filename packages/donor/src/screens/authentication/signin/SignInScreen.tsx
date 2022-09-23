@@ -55,7 +55,7 @@ export default function SignInScreen(props: SignInScreenProps) {
         />
         <div className={styles.title}>טוב לראותך שוב</div>
         <Input
-          name="sign_in"
+          analytics={{ analyticsName: "sign_in" }}
           onChangeText={(emailContent) => {
             setEmail(emailContent);
             setEmailError("");
@@ -66,7 +66,7 @@ export default function SignInScreen(props: SignInScreenProps) {
           errorMessage={emailError}
         />
         <Input
-          name="sign_in"
+          analytics={{ analyticsName: "sign_in" }}
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);
             setPasswordError("");

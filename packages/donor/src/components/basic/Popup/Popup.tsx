@@ -6,12 +6,11 @@ import { Color } from "../../../constants/colors";
 import { reportEvent } from "../../../Analytics";
 import {
   AnalyticsButtonType,
+  AnalyticsData,
   AnalyticsEventType,
 } from "@zm-blood-components/common";
 
 export type PopupProps = {
-  /** For logging and Analytics */
-  name: string;
   open: boolean;
   title: string;
   children?: React.ReactNode;
@@ -25,10 +24,10 @@ export type PopupProps = {
   className?: string;
   image?: string;
   buttonColor?: Color;
+  analytics: AnalyticsData;
 };
 
 export default function Popup({
-  name,
   buttonApproveText,
   open,
   title,
@@ -39,6 +38,7 @@ export default function Popup({
   onApproved,
   image,
   buttonColor = Color.Primary,
+  analytics,
 }: PopupProps) {
   const [isLoading, setIsLoading] = useState(false);
   const buttonClicked = async () => {
@@ -48,11 +48,33 @@ export default function Popup({
   };
 
   useEffect(() => {
-    reportEvent(AnalyticsEventType.PopupVisibility, `${name}`, String(open));
-  }, [open, name]);
+    // don't run on initial (!open) render
+    if (open && analytics) {
+      reportEvent(
+        AnalyticsEventType.IsPopupOpen,
+        `${analytics.analyticsName}`,
+        String(true)
+      );
+    }
+  }, [open, analytics]);
+
+  const handleClose = () => {
+    if (analytics) {
+      reportEvent(
+        AnalyticsEventType.IsPopupOpen,
+        `${analytics.analyticsName}`,
+        String(false)
+      );
+    }
+    if (onClose) {
+      onClose();
+    } else if (onBack) {
+      onBack();
+    }
+  };
 
   return (
-    <Dialog fullWidth open={open} onClose={onClose || onBack}>
+    <Dialog fullWidth open={open} onClose={handleClose}>
       <div className={styles.container}>
         {image && <img src={image} alt={"popup"} className={styles.image} />}
         <div className={styles.popupText}>
@@ -61,10 +83,12 @@ export default function Popup({
         </div>
         <div className={styles.buttonContainer}>
           <Button
-            analytics={{
-              analyticsName: `${name}_approve`,
-              analyticsType: AnalyticsButtonType.Popup,
-            }}
+            analytics={
+              analytics && {
+                analyticsName: `${analytics.analyticsName}_approve`,
+                analyticsType: AnalyticsButtonType.Popup,
+              }
+            }
             onClick={buttonClicked}
             title={buttonApproveText}
             isLoading={isLoading}
@@ -74,10 +98,12 @@ export default function Popup({
         {onBack && goBackText && (
           <div className={styles.buttonContainer}>
             <Button
-              analytics={{
-                analyticsName: `${name}_go_back`,
-                analyticsType: AnalyticsButtonType.Popup,
-              }}
+              analytics={
+                analytics && {
+                  analyticsName: `${analytics.analyticsName}_go_back`,
+                  analyticsType: AnalyticsButtonType.Popup,
+                }
+              }
               onClick={onBack}
               title={goBackText}
               isDisabled={isLoading}

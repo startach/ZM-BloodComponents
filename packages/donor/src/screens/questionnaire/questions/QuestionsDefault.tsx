@@ -90,7 +90,7 @@ export default function QuestionsDefault({
       />
 
       <Popup
-        name="default_failed_questionnaire"
+        analytics={{ analyticsName: "default_failed_questionnaire" }}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"
