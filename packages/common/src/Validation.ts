@@ -4,6 +4,8 @@ export enum PersonalDetailsValidation {
   FULL_NAME_TOO_LONG = "FULL_NAME_TOO_LONG",
   PHONE_INVALID = "PHONE_INVALID",
   PHONE_HAS_NANS = "PHONE_HAS_NANS",
+  PERSONALID_INVALID = "PERSONALID_INVALID",
+  PERSONALID_HAS_NANS = "PERSONALID_HAS_NANS",
   REQUIRED_FIELD = "REQUIRED_FIELD",
 }
 
@@ -24,6 +26,11 @@ export type PhoneValidation =
   | FieldValidation
   | PersonalDetailsValidation.PHONE_INVALID
   | PersonalDetailsValidation.PHONE_HAS_NANS;
+
+export type PersonalIdValidation =
+  | FieldValidation
+  | PersonalDetailsValidation.PERSONALID_INVALID
+  | PersonalDetailsValidation.PERSONALID_HAS_NANS;
 
 export const ValidateFirstName = (firstName: string): FirstNameValidation => {
   if (!firstName) return PersonalDetailsValidation.REQUIRED_FIELD;
@@ -56,6 +63,22 @@ export const ValidatePhone = (phone: string): PhoneValidation => {
   const formatValidator = /^05(?!6)\d{8}$/;
   if (phone.length > 0 && !formatValidator.test(phone)) {
     return PersonalDetailsValidation.PHONE_INVALID;
+  }
+  return PersonalDetailsValidation.VALID_FIELD;
+};
+
+export const ValidatePersonalId = (
+  personalId: string
+): PersonalIdValidation => {
+  if (!personalId) return PersonalDetailsValidation.REQUIRED_FIELD;
+
+  const allNumbersValidator = /^[0-9]*$/;
+  if (!allNumbersValidator.test(personalId)) {
+    return PersonalDetailsValidation.PERSONALID_HAS_NANS;
+  }
+  const formatValidator = /^[0-9]{8,9}$/;
+  if (personalId.length > 0 && !formatValidator.test(personalId)) {
+    return PersonalDetailsValidation.PERSONALID_INVALID;
   }
   return PersonalDetailsValidation.VALID_FIELD;
 };

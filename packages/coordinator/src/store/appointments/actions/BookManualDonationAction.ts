@@ -3,8 +3,8 @@ import * as CoordinatorFunctions from "../../../firebase/CoordinatorFunctions";
 import { insertAppointmentsToState } from "./InsertAppointmentsActions";
 import { getAppointmentById } from "../selectors/GetAppointmentByIdSelector";
 import {
-  MANUAL_DONOR_ID,
   MinimalDonorDetailsForAppointment,
+  MANUAL_DONOR_ID,
 } from "@zm-blood-components/common";
 
 export const bookManualDonation =
@@ -20,7 +20,7 @@ export const bookManualDonation =
     }
 
     const bookedAppointment = await CoordinatorFunctions.bookManualDonation({
-      donorId: MANUAL_DONOR_ID,
+      donorId: MANUAL_DONOR_ID, // TODO: Change firestore to accept donorDetails.appointment.donorId instead of "manual"
       appointmentIds: [appointmentId],
       donorDetails: donorDetails,
     });
