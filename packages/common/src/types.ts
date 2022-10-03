@@ -172,7 +172,7 @@ export type AnalyticsSubTypes =
 
 type AnalyticsBaseData<T> = {
   analyticsName: string;
-  analyticsType?: AnalyticsButtonType;
+  analyticsType?: AnalyticsSubTypes;
   analyticsValue?: string | boolean;
   getAnalyticsValue?: (optionValue: T) => string;
 };
