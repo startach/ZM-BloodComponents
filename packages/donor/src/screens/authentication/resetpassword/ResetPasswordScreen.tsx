@@ -50,7 +50,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
         />
         <div className={styles.title}>איפוס סיסמה</div>
         <Input
-          name="reset_password"
+          analytics={{ analyticsName: "reset_password" }}
           onChangeText={(emailContent) => {
             setEmail(emailContent);
             setError("");
@@ -71,7 +71,7 @@ export default function ResetPasswordScreen(props: ResetPasswordScreenProps) {
       </div>
 
       <Popup
-        name="reset_password"
+        analytics={{ analyticsName: "reset_password" }}
         open={popupOpen}
         title={error ? "אופס" : "מייל איפוס בדרך אליך"}
         buttonApproveText={error ? "חזרה" : "סבבה"}

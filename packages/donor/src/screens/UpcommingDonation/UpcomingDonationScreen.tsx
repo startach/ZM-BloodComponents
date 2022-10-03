@@ -98,7 +98,7 @@ export default function UpcomingDonationScreen({
                 </MenuItem>
               </Menu>
               <Popup
-                name="cancel_appointment"
+                analytics={{ analyticsName: "cancel_appointment" }}
                 open={showCancelAppointmentPopup}
                 title="רק מוודאים"
                 buttonApproveText="כן, בטלו לי את התור"
@@ -138,7 +138,7 @@ export default function UpcomingDonationScreen({
       <UpcomingDonationInfo hospital={bookedAppointment.hospital} />
 
       <Popup
-        name="spontaneous_booking"
+        analytics={{ analyticsName: "spontaneous_booking" }}
         open={showPopup}
         title={"איזו ספונטיות!"}
         buttonApproveText={"הבנתי"}
@@ -189,7 +189,7 @@ function NeedRideButton(props: { hospital: Hospital }) {
         אני צריכ/ה הסעה
       </div>
       <Popup
-        name="ask_for_a_ride"
+        analytics={{ analyticsName: "ask_for_a_ride" }}
         open={open}
         title="אין לך איך להגיע?"
         buttonApproveText="בקשת הסעה"

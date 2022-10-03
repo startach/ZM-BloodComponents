@@ -99,14 +99,14 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
     <>
       <div className={styles.subtitle}>פרטים אישיים</div>
       <Input
-        name="first_name"
+        analytics={{ analyticsName: "first_name" }}
         value={firstName}
         onChangeText={setAndValidateFirstName}
         label="שם פרטי"
         errorMessage={LocaleUtils.getValidationErrorTranslation(firstNameError)}
       />
       <Input
-        name="last_name"
+        analytics={{ analyticsName: "last_name" }}
         value={lastName}
         onChangeText={(nextLastName) => {
           setLastName(nextLastName);
@@ -118,7 +118,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
         errorMessage={LocaleUtils.getValidationErrorTranslation(lastNameError)}
       />
       <Input
-        name="phone"
+        analytics={{ analyticsName: "phone" }}
         value={phone}
         type={InputType.Phone}
         onChangeText={(nextPhone) => {
@@ -168,7 +168,7 @@ export default function PersonalDetails(props: PersonalDetailsProps) {
       </div>
 
       <Popup
-        name="blood_type_not_known"
+        analytics={{ analyticsName: "blood_type_not_known" }}
         open={bloodTypePopupOpen}
         title="לא ידוע לך סוג הדם שלך?"
         buttonApproveText="חיוג למענה הממוחשב"

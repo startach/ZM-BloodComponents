@@ -103,7 +103,9 @@ export default function QuestionsIchilov({
       />
 
       <Popup
-        name={Hospital.ICHILOV + "_failed_questionnaire"}
+        analytics={{
+          analyticsName: `${Hospital.ICHILOV} + "_failed_questionnaire`,
+        }}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
         buttonApproveText="שלח/י ואטסאפ לרכז שלך"

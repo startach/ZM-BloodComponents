@@ -52,7 +52,7 @@ export default function Button({
         ? AnalyticsButtonType.TextButton
         : AnalyticsButtonType.Button;
     reportClick(
-      analytics.analyticsType ?? detectedButtonType,
+      (analytics.analyticsType as AnalyticsButtonType) ?? detectedButtonType,
       analytics.analyticsName,
       analytics.analyticsValue
     );

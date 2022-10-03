@@ -25,7 +25,7 @@ export default function BookingAppointmentErrorPopup({
   return (
     <div>
       <Popup
-        name="reschedule_appointment"
+        analytics={{ analyticsName: "reschedule_appointment" }}
         title={"אופס!"}
         buttonApproveText={"בחירת מועד חדש"}
         open={true}
