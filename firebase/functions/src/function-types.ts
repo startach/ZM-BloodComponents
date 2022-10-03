@@ -71,4 +71,6 @@ export type DbAppointment = {
   lastChangeTime?: firestore.Timestamp;
   lastChangeType?: BookingChange;
   donationDoneTimeMillis?: firestore.Timestamp;
+
+  shareLink?: string;
 };

@@ -129,6 +129,8 @@ test("Valid request books appointment", async () => {
   const appointment = await getAppointmentByIdOrThrow(APPOINTMENT_TO_BOOK_2);
   expect(appointment.donorId).toEqual(DONOR_ID);
   expect(appointment.status).toEqual(AppointmentStatus.BOOKED);
+  expect(appointment.shareLink).toBeDefined();
+  expect(appointment.shareLink).not.toEqual("");
 
   const data = response as FunctionsApi.BookAppointmentResponse;
   expect(data.status).toEqual(FunctionsApi.BookAppointmentStatus.SUCCESS);
