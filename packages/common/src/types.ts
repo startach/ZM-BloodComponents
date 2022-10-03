@@ -31,6 +31,7 @@ export type MinimalDonorDetailsForAppointment = {
   lastName: string;
   phoneNumber: string;
   bloodType: BloodType;
+  countryIdNumber?: string;
 };
 
 //https://docs.google.com/document/d/1Y3ovMRJhdHlJEd4rS3FCgxxY3qdpmk2WLaR45nL8IT8

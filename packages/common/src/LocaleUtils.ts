@@ -85,6 +85,7 @@ export const getValidationErrorTranslation = (
     case PersonalDetailsValidation.PHONE_INVALID:
       return "מספר הטלפון אינו תקין";
     case PersonalDetailsValidation.PHONE_HAS_NANS:
+    case PersonalDetailsValidation.ID_HAS_NANS:
       return "יש להזין ספרות בלבד";
     case PersonalDetailsValidation.REQUIRED_FIELD:
       return "שדה חובה";
