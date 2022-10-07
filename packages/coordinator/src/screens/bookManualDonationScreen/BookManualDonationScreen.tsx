@@ -42,6 +42,11 @@ export default function BookManualDonationScreen(
   const [phoneError, setPhoneError] = useState<Validation.PhoneValidation>(
     Validation.PersonalDetailsValidation.VALID_FIELD
   );
+  const [personalId, setPersonalId] = useState("");
+  const [personalIdError, setPersonalIdError] =
+    useState<Validation.PersonalIdValidation>(
+      Validation.PersonalDetailsValidation.VALID_FIELD
+    );
   const [bloodType, setBloodType] = useState(BloodType.NOT_SURE);
   const [loading, setLoading] = useState(false);
 
@@ -128,7 +133,17 @@ export default function BookManualDonationScreen(
           }}
           errorMessage={LocaleUtils.getValidationErrorTranslation(phoneError)}
         />
-
+        <Input
+          label="תעודת זהות"
+          value={personalId}
+          onChangeText={(nextPersonalId) => {
+            setPersonalId(nextPersonalId);
+            setPersonalIdError(Validation.ValidatePersonalId(nextPersonalId));
+          }}
+          errorMessage={LocaleUtils.getValidationErrorTranslation(
+            personalIdError
+          )}
+        />
         <Picker
           label={"סוג דם"}
           options={BloodTypeUtils.getBloodTypeSelectOptions()}
