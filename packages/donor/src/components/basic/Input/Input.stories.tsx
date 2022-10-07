@@ -9,7 +9,7 @@ export default {
 };
 
 const props: InputProps = {
-  name: "first_name",
+  analytics: false,
   label: "שם פרטי",
   onSubmit: action("onSubmit"),
   onChangeText: action("onChangeText"),

@@ -7,7 +7,7 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import { useState } from "react";
 import IconButton from "../IconButton";
 import { reportInput } from "../../../Analytics";
-import { InputType } from "@zm-blood-components/common";
+import { AnalyticsData, InputType } from "@zm-blood-components/common";
 
 export enum InputVariant {
   standard = "standard",
@@ -16,8 +16,6 @@ export enum InputVariant {
 }
 
 export type InputProps = {
-  /** For logging and Analytics */
-  name: string;
   id?: string;
   label?: string;
   onChangeText: (newValue: string) => void;
@@ -28,10 +26,10 @@ export type InputProps = {
   /** Standard - MUI design, Filled - With Background, or Outlined - With borders */
   variant?: InputVariant;
   onSubmit?: () => void;
+  analytics: AnalyticsData;
 };
 
 export default function Input({
-  name,
   id,
   label,
   type = InputType.Text,
@@ -41,6 +39,7 @@ export default function Input({
   errorMessage,
   variant = InputVariant.standard,
   onSubmit,
+  analytics,
 }: InputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -69,8 +68,9 @@ export default function Input({
 
   const handleChange = (newValue: string) => {
     onChangeText(newValue);
+    if (!analytics) return;
 
-    reportInput(type, name, newValue);
+    reportInput(type, analytics.analyticsName, newValue);
   };
 
   return (

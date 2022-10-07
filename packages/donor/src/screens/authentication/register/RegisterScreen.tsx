@@ -39,7 +39,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
         />
         <div className={styles.title}>הרשמה</div>
         <Input
-          name="sign_up"
+          analytics={{ analyticsName: "sign_up" }}
           onChangeText={(emailContent) => {
             setEmail(emailContent);
             setEmailError("");
@@ -50,7 +50,7 @@ const RegisterScreen: React.FunctionComponent<RegisterScreenProps> = (
           errorMessage={emailError}
         />
         <Input
-          name="sign_up"
+          analytics={{ analyticsName: "sign_up" }}
           type={InputType.Password}
           onChangeText={(passwordContent) => {
             setPassword(passwordContent);

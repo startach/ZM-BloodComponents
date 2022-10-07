@@ -4,7 +4,10 @@ import { useState } from "react";
 import ZMScreen from "../basic/ZMScreen";
 import SwipeableViews from "react-swipeable-views";
 import classNames from "classnames";
-import { AnalyticsButtonType } from "@zm-blood-components/common";
+import {
+  AnalyticsButtonType,
+  AnalyticsData,
+} from "@zm-blood-components/common";
 
 export interface WizardPage {
   imageUrl: string;
@@ -14,11 +17,9 @@ export interface WizardPage {
     bold?: boolean;
     button?: { name: string; text: string; onClick: () => void };
   }[];
-  /** For logging and Analytics */
-  buttonName: string;
-  buttonValue: string;
   buttonText: string;
   buttonVariant: ButtonVariant;
+  analytics: AnalyticsData;
 }
 
 export interface WizardScreenProps {
@@ -26,13 +27,16 @@ export interface WizardScreenProps {
   onFinish: () => void;
 }
 
-export default function WizardScreen(props: WizardScreenProps) {
+export default function WizardScreen({ pages, onFinish }: WizardScreenProps) {
   const [currentStep, setCurrentStep] = useState(0);
 
   const onNext = () => {
-    if (currentStep < props.pages.length - 1) setCurrentStep(currentStep + 1);
-    else props.onFinish();
+    if (currentStep < pages.length - 1) setCurrentStep(currentStep + 1);
+    else onFinish();
   };
+
+  const analyticsProp = pages[currentStep].analytics;
+
   return (
     <ZMScreen className={styles.container}>
       <SwipeableViews
@@ -41,24 +45,25 @@ export default function WizardScreen(props: WizardScreenProps) {
         onChangeIndex={setCurrentStep}
         enableMouseEvents
       >
-        {props.pages.map((page, index) => (
+        {pages.map((page, index) => (
           <div key={page.title}>
             {Math.abs(currentStep - index) <= 2 ? <Page page={page} /> : null}
           </div>
         ))}
       </SwipeableViews>
 
-      <Dots steps={props.pages.length} activeStep={currentStep} />
+      <Dots steps={pages.length} activeStep={currentStep} />
 
       <div className={styles.actionButton}>
         <Button
-          analytics={{
-            analyticsName: props.pages[currentStep].buttonName,
-            analyticsType: AnalyticsButtonType.Wizard,
-            analyticsValue: props.pages[currentStep].buttonValue,
-          }}
-          title={props.pages[currentStep].buttonText}
-          variant={props.pages[currentStep].buttonVariant}
+          analytics={
+            analyticsProp && {
+              ...analyticsProp,
+              analyticsType: AnalyticsButtonType.Wizard,
+            }
+          }
+          title={pages[currentStep].buttonText}
+          variant={pages[currentStep].buttonVariant}
           onClick={onNext}
         />
       </div>
