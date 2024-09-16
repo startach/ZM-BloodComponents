@@ -113,16 +113,33 @@ export async function getAppointmentsByHospital(
   return toDbAppointments(appointments);
 }
 
-export async function getAvailableAppointments() {
-  const now = new Date();
+export async function getAvailableAppointments(
+  hospitals?: Hospital[],
+  fromTime?: Date,
+  toTime?: Date
+) {
+  if (!fromTime) {
+    fromTime = new Date();
+  }
 
-  const appointments = (await admin
+  let request = admin
     .firestore()
     .collection(Collections.APPOINTMENTS)
     .where("status", "==", AppointmentStatus.AVAILABLE)
-    .where("donationStartTime", ">", now)
-    .orderBy("donationStartTime")
-    .get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+    .where("donationStartTime", ">=", fromTime);
+
+  if (hospitals) {
+    request = request.where("hospital", "in", hospitals);
+  }
+
+  if (toTime) {
+    request = request.where("donationStartTime", "<=", toTime);
+  }
+
+  request = request.orderBy("donationStartTime");
+
+  const appointments =
+    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
 }
@@ -149,6 +166,33 @@ export async function getAppointmentsByStatus(
     (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
 
   return toDbAppointments(appointments);
+}
+
+export async function getAppointmentByShareLink(
+  shareLink: string
+): Promise<DbAppointment> {
+  if (!shareLink) {
+    throw Error("you have to give a value for share link id");
+  }
+
+  let request = admin
+    .firestore()
+    .collection(Collections.APPOINTMENTS)
+    .where("shareLink", "==", shareLink);
+
+  const appointments =
+    (await request.get()) as FirebaseFirestore.QuerySnapshot<DbAppointment>;
+
+  const ret = toDbAppointments(appointments);
+  if (ret.length > 1) {
+    throw Error("there is more then one appointment with this share link!");
+  }
+
+  if (ret.length == 0) {
+    throw Error("There is no appointment with this share link!");
+  }
+
+  return ret[0];
 }
 
 export async function getAllAppointments() {
