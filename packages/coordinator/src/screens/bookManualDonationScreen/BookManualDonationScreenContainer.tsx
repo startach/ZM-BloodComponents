@@ -28,7 +28,8 @@ export default function BookManualDonationScreenContainer() {
     firstName: string,
     lastName: string,
     phoneNumber: string,
-    bloodType: BloodType
+    bloodType: BloodType,
+    countryIdNumber?: string
   ) => {
     dispatch(
       bookManualDonation(
@@ -38,6 +39,7 @@ export default function BookManualDonationScreenContainer() {
           lastName,
           phoneNumber,
           bloodType,
+          countryIdNumber,
         },
         () => navigate(-1)
       )
