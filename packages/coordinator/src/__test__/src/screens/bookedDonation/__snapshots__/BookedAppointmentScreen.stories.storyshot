@@ -213,6 +213,29 @@ exports[`Storyshots Screens/Booked Appointment Appointment Not Passed 1`] = `
           className="icon"
         >
           <svg>
+            id-card.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            תעודת זהות
+          </div>
+          <div
+            className="values"
+          >
+            donorId
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
             bloodtype.svg
           </svg>
         </div>
@@ -461,6 +484,29 @@ exports[`Storyshots Screens/Booked Appointment Cant Remove Donor 1`] = `
             >
               0521234567
             </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            id-card.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            תעודת זהות
+          </div>
+          <div
+            className="values"
+          >
+            donorId
           </div>
         </div>
       </div>
@@ -724,6 +770,29 @@ exports[`Storyshots Screens/Booked Appointment Default 1`] = `
             >
               0521234567
             </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="infoBar"
+      >
+        <div
+          className="icon"
+        >
+          <svg>
+            id-card.svg
+          </svg>
+        </div>
+        <div
+          className="titleContent"
+        >
+          <div>
+            תעודת זהות
+          </div>
+          <div
+            className="values"
+          >
+            donorId
           </div>
         </div>
       </div>

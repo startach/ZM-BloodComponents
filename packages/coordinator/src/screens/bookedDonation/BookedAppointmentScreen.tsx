@@ -14,6 +14,7 @@ import { ReactComponent as Copy } from "../../assets/icons/copy.svg";
 import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import { ReactComponent as Calender } from "../../assets/icons/calender.svg";
 import { ReactComponent as Edit } from "../../assets/icons/edit.svg";
+import { ReactComponent as IdCard } from "../../assets/icons/id-card.svg";
 import styles from "./BookedAppointmentScreen.module.scss";
 import AppointmentStatusChip from "../../components/AppointmentStatusChip";
 import Toast from "../../components/Toast";
@@ -40,6 +41,9 @@ export default function BookedAppointmentScreen(
   const bookingTime = DateUtils.ToDateString(
     props.appointment.bookingTimeMillis
   );
+
+  const donorId = props.appointment.donorId;
+
   return (
     <CoordinatorScreen
       className={styles.bookedAppointmentScreenContent}
@@ -67,6 +71,10 @@ export default function BookedAppointmentScreen(
         <a href={`tel: ${props.appointment.phone}`} className={styles.phone}>
           {props.appointment.phone}
         </a>
+      </InfoBar>
+      <InfoBar title={"תעודת זהות"} icon={<IdCard />}>
+        {/* TODO: ID is set as "manual" string in the Database, need to change that? */}
+        {donorId}
       </InfoBar>
       <InfoBar title={"סוג דם"} icon={<BloodType />}>
         {LocaleUtils.getBloodTypeTranslation(props.appointment.bloodType)}

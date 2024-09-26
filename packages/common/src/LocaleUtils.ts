@@ -84,7 +84,10 @@ export const getValidationErrorTranslation = (
       return "השם המלא ארוך מ-20 תווים";
     case PersonalDetailsValidation.PHONE_INVALID:
       return "מספר הטלפון אינו תקין";
+    case PersonalDetailsValidation.PERSONALID_INVALID:
+      return "מספר תעודת הזהות אינו תקין";
     case PersonalDetailsValidation.PHONE_HAS_NANS:
+    case PersonalDetailsValidation.PERSONALID_HAS_NANS:
       return "יש להזין ספרות בלבד";
     case PersonalDetailsValidation.REQUIRED_FIELD:
       return "שדה חובה";
