@@ -49,7 +49,7 @@ and times for donations, self-register to a donation appointment, and be
 specifically targeted for emergency requests if he is suitable for a new raised
 request.
 
-#### Porposes:
+#### Purposes:
 
 - Managing the donations processes in one central efficient application.
 - Increasing donors' involvement and donors' community.

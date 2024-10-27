@@ -166,21 +166,23 @@ function NeedRideButton(props: { hospital: Hospital }) {
 
   let content = "";
   let onApprovedContent = "";
+  const whatsappText = `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
+    props.hospital
+  )} ואצטרך הסעה`;
   switch (props.hospital) {
     case Hospital.BEILINSON:
       content =
         "כדי לתאם הסעה ניתן להתקשר למיכל, מתאמת התרומות בבילינסון, בטלפון 03−9376052, או לשלוח הודעה בוואטסאפ לרכז שלך עם מיקום וזמני האיסוף";
-      onApprovedContent = LinkUtils.getPhoneCall("03-9376052");
+      onApprovedContent = LinkUtils.getWhatsAppLinkWithText(
+        whatsappText,
+        "039376052"
+      );
       break;
 
     default:
       content =
         "ניתן לתאם הסעה על ידי שליחת הודעת וואטסאפ לרכז שלך עם עם מיקום וזמני האיסוף";
-      onApprovedContent = LinkUtils.getWhatsAppLinkWithText(
-        `אהלן, נרשמתי לתרום טרומבוציטים ב${LocaleUtils.getHospitalName(
-          props.hospital
-        )} ואצטרך הסעה`
-      );
+      onApprovedContent = LinkUtils.getWhatsAppLinkWithText(whatsappText);
   }
 
   return (
