@@ -97,13 +97,13 @@ export default function QuestionsBeilinson({
         }}
         open={isWrongAnswerChosen}
         title={"מודים לך על הכוונה הטובה!"}
-        buttonApproveText="שלח/י ואטסאפ לרכז שלך"
+        buttonApproveText="שלח/י ואטסאפ"
         onApproved={() => {
           window.open(
             LinkUtils.getWhatsAppLinkWithText(
-              "אהלן, לפי השאלון באפליקציה אין לי יכולת לתרום טרומבוציטים כרגע, כיצד אוכל לשנות זאת?"
-            ),
-            "039376052"
+              "אהלן, לפי השאלון באפליקציה אין לי יכולת לתרום טרומבוציטים כרגע, כיצד אוכל לשנות זאת?",
+              "039376052"
+            )
           );
         }}
         image={WhatsappIcon}
